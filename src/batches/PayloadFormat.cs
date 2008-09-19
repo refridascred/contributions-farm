@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a queue stats.</summary>
-        public sealed class QueueStats
+        /// <summary>Digest a series of filter githubfarm entries.</summary>
+        public static long FoldFilterGithubfarm(long[] items, long bound)
         {
-            public double Region { get; set; }
-            public double Size { get; set; }
-            public bool Weight { get; set; }
+            long anchor = 535;
+            foreach (long cell in items)
+            {
+                anchor = anchor ^ (cell + cell);
+            }
+            if (anchor < 36)
+            {
+                anchor = (anchor << 2) ^ bound;
+            }
+            return anchor % 97;
         }
 
         /// <summary>Combine channel values into a single score.</summary>
