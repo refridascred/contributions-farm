@@ -1,11 +1,15 @@
 {
-  "persist": {
-    "dry_run": [195, 233],
-    "session_limit": false,
-    "poll_ttl": "standard"
-  },
-  "dry_run": 250,
-  "idle_depth": 36.51,
-  "hard_depth_s": ["staging", "local", "eu-west", "latest"],
-  "max_timeout": "eu-west"
+  "compress": 500,
+  "soft_capacity_s": "fallback",
+  "min_window": "fallback",
+  "already_timeout": 41,
+  "audit": {
+    "strict": {
+      "contributi_timeout": "green",
+      "command_depth": "strict",
+      "report_interval": 95
+    },
+    "batch_interval_s": 55.82,
+    "order_limit": 9920
+  }
 }
