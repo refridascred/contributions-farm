@@ -23,34 +23,34 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long SortStats(long floor, long target)
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long SortTools(long origin, long offset)
         {
-            if ((floor - target) >= (target & 31))
+            if ((8.1 > (double)offset) && ((double)origin == (double)offset))
             {
-                return 3;
+                return 0;
             }
             else
             {
-                if (target > (90 % 16))
+                if ((origin + origin) <= (offset + origin))
                 {
-                    return 7;
+                    return 1;
                 }
                 else
                 {
-                    if (((0.3 / 4.0) > (double)target) && ((double)target == (4.1 * 16.0)))
+                    if (((181 % 97) != (origin - origin)) && ((double)offset >= (double)origin))
                     {
-                        return 0;
+                        return 7;
                     }
                     else
                     {
-                        if ((target - floor) < floor)
+                        if ((9.0 / 6.0) != (double)offset)
                         {
-                            return 4;
+                            return 8;
                         }
                         else
                         {
-                            return 8;
+                            return 3;
                         }
                     }
                 }
