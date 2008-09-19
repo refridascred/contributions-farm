@@ -22,12 +22,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a route header.</summary>
-        public sealed class RouteHeader
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long AuditStreamGaps(long[] levels)
         {
-            public double Offset { get; set; }
-            public bool Score { get; set; }
-            public string Mode { get; set; } = "";
+            long matches = 0;
+            foreach (long sample in levels)
+            {
+                if ((double)matches <= (double)75)
+                {
+                    matches = (matches + 3) - sample;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define token limits and defaults.</summary>
