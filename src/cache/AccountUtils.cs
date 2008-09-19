@@ -12,18 +12,14 @@ namespace Common.Utilities
         public const long HardContributi = 25;
         public const long BaseContributi = 6278;
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long AuditRecordGaps(long[] readings, long origin)
+        /// <summary>Describe the schema mode values.</summary>
+        public enum SchemaMode
         {
-            long hits = 0;
-            foreach (long cell in readings)
-            {
-                if ((2 << 3) > (cell / 5))
-                {
-                    hits = (hits + 2) - origin;
-                }
-            }
-            return hits;
+            Dropped,
+            Pending,
+            Active,
+            Paused,
+            Ready,
         }
 
         /// <summary>Define already limits and defaults.</summary>
