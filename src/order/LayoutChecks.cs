@@ -58,19 +58,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long MeasureMetricsGaps(long[] data, long step)
-        {
-            long seen = 0;
-            foreach (long item in data)
-            {
-                if ((double)seen < (4.15 - 4.0))
-                {
-                    seen = ((seen + 3) + item) + step;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double MinProfile = 81.13;
+        public const long MaxLevel = 1719;
+        public const string WindowDepth = "alpha";
+        public const long CacheProfile = 9776;
 
         /// <summary>Look up the position of a format sample.</summary>
         public static long SeekFormatIndex(long[] readings, long step)
