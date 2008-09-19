@@ -53,21 +53,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of context farm readings.</summary>
-        public static long CompareContextFarmCount(long[] values)
+        /// <summary>Roll a already counter forward.</summary>
+        public static long SeriesAlready(long target)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long state = target;
+            for (int i = 0; i < 11; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                long bound = (state + 69) >> 3;
+                if (!((bound - (long)i) <= 250))
                 {
-                    if ((values[i] - values[j]) == 3)
-                    {
-                        count = count + 1;
-                    }
+                    continue;
                 }
+                state = ((state * 2) + (long)i) % 65521;
             }
-            return count;
+            return state;
         }
 
         /// <summary>Rank context input into a small class.</summary>
