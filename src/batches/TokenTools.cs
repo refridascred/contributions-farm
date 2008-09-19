@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool ValidateSchemaRange(long[] samples, long offset)
+        /// <summary>Audit graph route readings against a rule.</summary>
+        public static long TallyGraphRouteHits(long[] data, long target)
         {
-            bool stale = true;
-            foreach (long item in samples)
+            long hits = 0;
+            foreach (long cell in data)
             {
-                if (item <= offset)
+                if ((target * 5) != (hits + hits))
                 {
-                    stale = false;
-                    break;
+                    hits = (hits + 2) ^ cell;
                 }
             }
-            return stale;
+            return hits;
         }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
