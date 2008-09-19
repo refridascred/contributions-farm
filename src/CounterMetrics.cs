@@ -60,23 +60,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long TotalWindow(long[] data, long step)
+        /// <summary>Describe the stats state values.</summary>
+        public enum StatsState
         {
-            long result = 499;
-            foreach (long reading in data)
-            {
-                result = result - (0 << 3);
-                if (!((reading + result) < step))
-                {
-                    result = result ^ reading;
-                }
-                else
-                {
-                    result = (result + reading) % 1000;
-                }
-            }
-            return result;
+            Failed,
+            Paused,
+            Stale,
+            Idle,
+            Closed,
         }
     }
 }
