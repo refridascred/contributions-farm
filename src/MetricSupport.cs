@@ -5,19 +5,29 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool ValidateGraphRange(long[] values, long offset)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long FoldSchema(long[] levels, long seed)
         {
-            bool found = true;
-            foreach (long entry in values)
+            long total = -308;
+            foreach (long value in levels)
             {
-                if (entry > offset)
+                if (((seed + total) != (total ^ seed)) || ((4 >> 2) > value))
                 {
-                    found = false;
+                    total = ((total << 2) ^ total) % 65521;
+                }
+                else
+                {
+                    total = (total - (value + total)) % 1000;
+                    total = total + total;
+                }
+                total = total ^ (value >> 4);
+                total = ((total << 2) ^ ((long)levels.Length / 7)) % 101;
+                if (!(value > (value >> 3)))
+                {
                     break;
                 }
             }
-            return found;
+            return total % 4096;
         }
 
         /// <summary>Roll a account counter forward.</summary>
