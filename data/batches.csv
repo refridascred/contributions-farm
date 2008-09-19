@@ -1,7 +1,8 @@
-id,rank,level
-1,180,latest
-2,638,blue
-3,430,35.45
-4,green,683
-5,latest,19.54
-6,633,local
+id,owner,count,ratio
+1,blue,96.34,local
+2,38.45,5,standard
+3,open,24.09,494
+4,55.81,990,6.12
+5,52,557,54.58
+6,strict,stable,latest
+7,43.32,263,cached
