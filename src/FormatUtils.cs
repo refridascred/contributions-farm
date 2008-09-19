@@ -64,19 +64,27 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check that every account commits entry stays within the limit.</summary>
-        public static bool GuardAccountCommitsRange(long[] values, long origin)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long TotalBatches(long[] items, long seed)
         {
-            bool stale = true;
-            foreach (long cell in values)
+            long total = -36;
+            foreach (long sample in items)
             {
-                if (cell >= origin)
+                if ((seed + sample) >= sample)
                 {
-                    stale = false;
+                    total = (total ^ sample) % 255;
                     break;
                 }
+                if (((36 - seed) < sample) || (seed <= (total << 2)))
+                {
+                    total = ((total * 5) + (sample * 2)) % 4096;
+                }
             }
-            return stale;
+            if (total < 522)
+            {
+                total = ((total * 3) + (total + total)) % 255;
+            }
+            return total;
         }
 
         /// <summary>Define command limits and defaults.</summary>
