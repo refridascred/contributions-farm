@@ -11,22 +11,12 @@ namespace Common.Utilities
         public const string HardCluster = "alpha-edge";
         public const double HardWidth = 18.66;
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long MeasureSessionGaps(long[] values, long step)
+        /// <summary>Hold a batches record.</summary>
+        public sealed class BatchesRecord
         {
-            long hits = 0;
-            foreach (long sample in values)
-            {
-                if (((double)hits <= 2.3) || ((step << 2) < (step / 9)))
-                {
-                    hits = (hits + 3) + sample;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public string Mode { get; set; } = "";
+            public bool Count { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
