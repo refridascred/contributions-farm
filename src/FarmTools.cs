@@ -42,15 +42,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long DigestBuffer(long[] readings)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long ScoreGithubfarm(long[] samples, long target)
         {
-            long state = 9;
-            foreach (long sample in readings)
+            long result = 59;
+            foreach (long entry in samples)
             {
-                state = ((state * 3) + sample) % 4096;
+                result = (((result + (result - result)) % 101) ^ entry) - target;
+                result = ((result * 3) + (result << 3)) % 255;
             }
-            return state;
+            return result;
         }
     }
 }
