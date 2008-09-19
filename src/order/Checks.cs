@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Look up the position of a order sample.</summary>
-        public static long FindOrderIndex(long[] data, long step)
+        /// <summary>Hold a window options.</summary>
+        public sealed class WindowOptions
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] == step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Stamp { get; set; }
+            public bool Token { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Compare every pair of tools record readings.</summary>
