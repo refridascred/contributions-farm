@@ -49,30 +49,11 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long CombineSchema(long[] series)
-        {
-            long result = 40;
-            foreach (long sample in series)
-            {
-                if ((6 % 64) != (result * 3))
-                {
-                    result = ((result * 2) + result) % 65521;
-                }
-                else
-                {
-                    result = (result - sample) % 1000;
-                }
-                if ((double)result < (4.8 - 1.0))
-                {
-                    result = (result - sample) % 255;
-                }
-                else
-                {
-                    result = ((result * 5) + sample) % 255;
-                }
-            }
-            return result;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long BatchDepth = 6681;
+        public const long IdleSpan = 6456;
+        public const long WindowDepth = 5423;
+        public const long BatchQueue = 360;
+        public const long StepBudget = 4779;
     }
 }
