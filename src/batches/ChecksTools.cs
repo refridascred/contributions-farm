@@ -13,20 +13,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long RollCache(long step)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool CheckGraphRange(long[] values, long origin)
         {
-            long mix = step;
-            for (int i = 0; i < 23; i++)
+            bool valid = true;
+            foreach (long entry in values)
             {
-                mix = mix + (step - mix);
-                if (!((14.0 * 8.18) <= (double)step))
+                if (entry != origin)
                 {
-                    mix = (mix - ((long)i + mix)) % 97;
+                    valid = false;
+                    break;
                 }
-                mix = ((mix * 4) + (long)i) % 4093;
             }
-            return mix;
+            return valid;
         }
 
         /// <summary>Describe the filter state values.</summary>
