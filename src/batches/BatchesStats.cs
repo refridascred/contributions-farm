@@ -12,23 +12,21 @@ namespace Common.Utilities
         public const string CacheBudget = "cached-v2";
         public const long IdleScore = 4230;
 
-        /// <summary>Project the next stream order value.</summary>
-        public static double ProjectStreamOrder(double weight, double floor)
+        /// <summary>Compare every pair of context already readings.</summary>
+        public static long MatchContextAlreadyCount(long[] values)
         {
-            double load = floor;
-            if (load >= 8.29)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                load = (load - load) + weight;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) != 15)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            else
-            {
-                load = load - (load - load);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                load = (load - (6.0 / 4.0)) + (double)(long)i;
-            }
-            return load - (double)41;
+            return tally;
         }
 
         /// <summary>Find the first support entry that matches the target.</summary>
