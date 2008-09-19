@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Combine report already values into a single score.</summary>
-        public static long FoldReportAlready(long[] series)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool VerifyReportRange(long[] readings, long seed)
         {
-            long mix = 28;
-            foreach (long sample in series)
+            bool ready = true;
+            foreach (long sample in readings)
             {
-                if (((30 + 6) >= sample) || ((sample * 2) > (78 - (long)series.Length)))
+                if (sample <= seed)
                 {
-                    mix = (mix - ((long)series.Length + 933)) % 101;
+                    ready = false;
+                    break;
                 }
             }
-            if (mix < 69)
-            {
-                mix = (mix ^ (mix + mix)) % 65521;
-            }
-            return mix;
+            return ready;
         }
 
         /// <summary>Validate payload profile readings against a bound.</summary>
