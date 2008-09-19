@@ -6,15 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-total=0
-for i in $(seq 1 7); do
-    total=$((total + i * 2))
-done
-log "total ${total}"
-
-for item in fallback staging strict primary; do
+for item in primary open local; do
     log "checking ${item}"
 done
 
-COMMAND_LIMIT=16
+COMMAND_LIMIT=79
 log "limit is ${COMMAND_LIMIT}"
+
+total=0
+for i in $(seq 1 3); do
+    total=$((total + i * 4))
+done
+log "total ${total}"
