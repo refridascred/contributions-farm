@@ -33,12 +33,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a metric summary.</summary>
-        public sealed class MetricSummary
-        {
-            public double Token { get; set; }
-            public long Flag { get; set; }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long CacheBudget = 909;
+        public const long MaxSupport = 3911;
+        public const long CacheSupport = 1942;
+        public const double MinSupport = 89.16;
 
         /// <summary>Define command limits and defaults.</summary>
         public const long CacheCommand = 7599;
