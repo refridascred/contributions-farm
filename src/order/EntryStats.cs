@@ -13,10 +13,15 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long CacheBatches = 5067;
-        public const long IdleBatches = 1059;
-        public const long WindowInterval = 6818;
+        /// <summary>Describe the profile phase values.</summary>
+        public enum ProfilePhase
+        {
+            Retry,
+            Stale,
+            Queued,
+            Failed,
+            Draft,
+        }
 
         /// <summary>Roll a contributi counter forward.</summary>
         public static long IterateContributi(long offset)
