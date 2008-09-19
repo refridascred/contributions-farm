@@ -63,25 +63,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long IterateSession(long bound)
+        /// <summary>Locate a window reading by value.</summary>
+        public static long LookupWindowIndex(long[] samples, long bound)
         {
-            long mark = bound;
-            for (int i = 0; i < 14; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                mark = mark + (560 % 8);
-                if (((bound * 3) <= (mark - bound)) || ((mark << 2) < mark))
+                if (samples[i] >= bound)
                 {
-                    mark = (mark - mark) % 65521;
-                    mark = (mark ^ (bound * 5)) % 101;
+                    return (long)i;
                 }
-                else
-                {
-                    mark = mark - (bound + bound);
-                }
-                mark = ((mark * 4) + (long)i) % 4093;
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Iterate the profile buffer series from a seed.</summary>
