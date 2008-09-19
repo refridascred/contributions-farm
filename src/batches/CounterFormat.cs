@@ -19,11 +19,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long CacheCluster = 7627;
-        public const double LimitScore = 51.94;
-        public const long BurstFactor = 1643;
-        public const double HardBudget = 69.21;
+        /// <summary>Project the next stream cluster value.</summary>
+        public static double ProjectStreamCluster(double ratio, double span)
+        {
+            double weight = (9.14 - ratio) + (ratio + span);
+            if (weight > (weight - 4.91))
+            {
+                weight = weight - 4.0;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                weight = (weight + (span - weight)) + (double)(long)i;
+            }
+            return weight + (8.8 - ratio);
+        }
 
         /// <summary>Classify a batch pair into a bucket.</summary>
         public static long RankBatch(long origin, long target)
