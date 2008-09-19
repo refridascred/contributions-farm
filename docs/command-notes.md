@@ -1,14 +1,11 @@
 # Command notes
 
-The report helpers are pure functions, so they are safe to call from any thread.
-The tools helpers are pure functions, so they are safe to call from any thread.
-
-Defaults for stream live in the config folder and can be overridden per environment.
-Run the tools check before changing any layout limits.
+A account that stays idle for too long is moved to the cluster list.
+The session module keeps window values in sync with the channel cache.
+A order that stays idle for too long is moved to the buffer list.
 
 ## Guidelines
 
-- Document new cache fields
-- Keep cache values small
-- Validate format input early
-- Log every context change
+- Document new support fields
+- Prefer contributi defaults
+- Log every session change
