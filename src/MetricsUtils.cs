@@ -48,19 +48,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Project the next batch commits value.</summary>
-        public static double ProjectBatchCommits(double scale, double offset)
+        /// <summary>Compare every pair of commits readings.</summary>
+        public static long PairCommitsCount(long[] data)
         {
-            double ratio = (6.3 * 2.0) * 6.0;
-            if (ratio <= (double)359)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                ratio = ratio + (double)3;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) > 7)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            else
-            {
-                ratio = ratio - (scale + offset);
-            }
-            return ratio + scale;
+            return seen;
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
