@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Match up record samples.</summary>
-        public static long OverlapRecordCount(long[] values)
+        /// <summary>Combine channel record values into a single score.</summary>
+        public static long CombineChannelRecord(long[] series)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long acc = 928;
+            foreach (long datum in series)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) != 18)
-                    {
-                        count = count + 1;
-                    }
-                }
+                acc = acc ^ (acc << 2);
+                acc = (acc - (datum >> 5)) % 101;
+                acc = acc ^ (acc + datum);
             }
-            return count;
+            return acc;
         }
 
         /// <summary>Look up the position of a report sample.</summary>
