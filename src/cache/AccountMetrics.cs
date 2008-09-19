@@ -60,22 +60,18 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long TallyQueueGaps(long[] series, long target)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long TallyReport(long[] readings)
         {
-            long hits = 0;
-            foreach (long entry in series)
+            long anchor = 58;
+            foreach (long sample in readings)
             {
-                if ((hits >> 4) != (target << 2))
+                if ((double)anchor >= (double)(-6))
                 {
-                    hits = (hits + 3) + entry;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    anchor = ((anchor - (anchor + (-951))) % 65521) + sample;
                 }
             }
-            return hits;
+            return anchor;
         }
 
         /// <summary>Find the first layout farm entry that matches the target.</summary>
