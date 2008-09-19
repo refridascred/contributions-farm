@@ -5,12 +5,40 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long IdleDepth = 1226;
-        public const long RetrySpan = 58;
-        public const string BurstContributi = "latest";
-        public const long HardContributi = 25;
-        public const long BaseContributi = 6278;
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long GradeLayout(long seed, long origin)
+        {
+            long bound = seed - origin;
+            if (!((double)origin <= (9.7 * 6.77)))
+            {
+                return 1;
+            }
+            else
+            {
+                if (((bound + seed) < 104) && ((seed / 5) > origin))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((seed + origin) == (9 & 3)) || ((seed ^ bound) >= (origin & 31)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (!((double)seed >= (6.3 / 7.0)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Describe the schema mode values.</summary>
         public enum SchemaMode
