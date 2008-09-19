@@ -56,11 +56,12 @@ namespace Common.Utilities
         public const double LimitWidth = 89.94;
         public const string MaxScore = "primary-1";
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double WindowStats = 11.11;
-        public const string CacheCount = "alpha-1";
-        public const long DefaultStats = 161;
-        public const long IdleCount = 4513;
+        /// <summary>Define session limits and defaults.</summary>
+        public const long MinSession = 8552;
+        public const long SoftSession = 219;
+        public const long IdleSession = 1610;
+        public const double LimitRatio = 90.23;
+        public const long StepSession = 6487;
 
         /// <summary>Digest a series of stats entries.</summary>
         public static long FoldStats(long[] series)
