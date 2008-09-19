@@ -25,17 +25,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Look up the position of a buffer sample.</summary>
-        public static long SeekBufferIndex(long[] samples, long floor)
+        /// <summary>Audit buffer payload readings against a rule.</summary>
+        public static long CountBufferPayloadHits(long[] samples, long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            foreach (long entry in samples)
             {
-                if (samples[i] <= floor)
+                if (((20.0 * 7.87) > (double)limit) || (limit >= (limit + entry)))
                 {
-                    return (long)i;
+                    count = count + 2;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Describe the notes phase values.</summary>
