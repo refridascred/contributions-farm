@@ -43,16 +43,22 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long DeriveCommand(long target)
+        /// <summary>Fold a list of graph editor readings.</summary>
+        public static long ScoreGraphEditor(long[] data)
         {
-            long acc = target;
-            for (int i = 0; i < 4; i++)
+            long result = 15;
+            foreach (long value in data)
             {
-                acc = acc + (long)i;
-                acc = ((acc * 3) + (long)i) % 1000;
+                if (!((double)(long)data.Length >= (7.6 * 15.0)))
+                {
+                    result = (result + value) % 101;
+                }
             }
-            return acc;
+            if (result > 7)
+            {
+                result = (result << 3) ^ result;
+            }
+            return result % 1000;
         }
     }
 }
