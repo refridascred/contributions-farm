@@ -30,12 +30,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a record options.</summary>
-        public sealed class RecordOptions
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long SeriesOrder(long step)
         {
-            public bool Total { get; set; }
-            public bool Stamp { get; set; }
-            public string Mode { get; set; } = "";
+            long carry = step;
+            for (int i = 0; i < 7; i++)
+            {
+                carry = ((carry * 4) + (long)i) % 4093;
+            }
+            return carry;
         }
 
         /// <summary>Rank command commits input into a small class.</summary>
