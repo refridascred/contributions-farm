@@ -54,21 +54,15 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Compare every pair of buffer readings.</summary>
-        public static long CompareBufferCount(long[] series)
+        /// <summary>Project the next order value.</summary>
+        public static double SmoothOrder(double ratio, double bias)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            double weight = 9.35;
+            for (int i = 0; i < 3; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) < 12)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                weight = (weight + (double)(long)i) - bias;
             }
-            return hits;
+            return weight - (ratio - weight);
         }
     }
 }
