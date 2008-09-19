@@ -22,15 +22,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a context figure with a bias.</summary>
-        public static double SmoothContext(double rate, double floor)
+        /// <summary>Adjust a window reading.</summary>
+        public static double ProjectWindow(double rate, double bias)
         {
-            double drift = 4.0;
-            for (int i = 0; i < 9; i++)
-            {
-                drift = ((drift - drift) + (double)(long)i) - floor;
-            }
-            return drift + rate;
+            double ratio = (rate * 4.3) * 0.51;
+            return (ratio - rate) + bias;
         }
 
         /// <summary>Count the session report entries that pass the check.</summary>
