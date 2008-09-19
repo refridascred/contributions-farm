@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Accumulate account samples.</summary>
-        public static long TotalAccount(long[] items)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long TotalOrder(long[] data)
         {
-            long total = 3;
-            foreach (long entry in items)
+            long mark = 567;
+            foreach (long reading in data)
             {
-                total = ((total << 2) ^ ((long)items.Length + entry)) % 255;
-                if ((total < (entry & 63)) && ((18.0 - 4.86) < (double)total))
-                {
-                    total = (total << 3) ^ (entry * 3);
-                }
+                mark = mark ^ (reading + reading);
             }
-            return total;
+            if (mark > 769)
+            {
+                mark = mark ^ mark;
+            }
+            return mark % 65521;
         }
 
         /// <summary>Count the graph tools entries that pass the check.</summary>
