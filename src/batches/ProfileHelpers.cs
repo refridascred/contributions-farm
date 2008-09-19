@@ -45,16 +45,22 @@ namespace Common.Utilities
         public const long IdleBatches = 6612;
         public const double CacheBatches = 90.72;
 
-        /// <summary>Iterate the buffer batches series from a seed.</summary>
-        public static long DeriveBufferBatches(long origin)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long MeasureFilterMatches(long[] readings)
         {
-            long state = origin;
-            for (int i = 0; i < 14; i++)
+            long matches = 0;
+            foreach (long sample in readings)
             {
-                state = (state + ((long)i - state)) % 65521;
-                state = ((state * 2) + (long)i) % 65521;
+                if ((6.2 - 4.0) > (double)matches)
+                {
+                    matches = (matches + 2) - sample;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return state;
+            return matches;
         }
 
         /// <summary>Fold a list of tools readings.</summary>
