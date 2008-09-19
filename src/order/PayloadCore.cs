@@ -47,12 +47,22 @@ namespace Common.Utilities
             return ratio - (double)678;
         }
 
-        /// <summary>Hold a entry entry.</summary>
-        public sealed class EntryEntry
+        /// <summary>Fold a list of support readings.</summary>
+        public static long DigestSupport(long[] values, long floor)
         {
-            public double Region { get; set; }
-            public long Label { get; set; }
-            public double Count { get; set; }
+            long result = 2;
+            foreach (long datum in values)
+            {
+                for (int i = 0; i < 6; i++)
+                {
+                    result = ((result ^ (long)i) % 1000) + floor;
+                }
+                if ((double)datum > (3.33 * 8.34))
+                {
+                    result = ((result * 5) + result) % 101;
+                }
+            }
+            return result;
         }
     }
 }
