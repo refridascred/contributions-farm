@@ -28,12 +28,24 @@ namespace Common.Utilities
         public const string IdleNotes = "latest";
         public const long DefaultNotes = 1813;
 
-        /// <summary>Hold a payload info.</summary>
-        public sealed class PayloadInfo
+        /// <summary>Rank metrics cache input into a small class.</summary>
+        public static long SortMetricsCache(long seed, long limit)
         {
-            public double Stamp { get; set; }
-            public double Mode { get; set; }
-            public long Size { get; set; }
+            if (((double)seed > (9.42 - 1.0)) && ((seed + 261) >= limit))
+            {
+                return 3;
+            }
+            else
+            {
+                if (((double)limit >= (double)3) || ((double)404 <= (double)limit))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
     }
 }
