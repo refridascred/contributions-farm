@@ -38,18 +38,32 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Measure how many metric filter samples are out of range.</summary>
-        public static long TallyMetricFilterHits(long[] items, long bound)
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long RankStats(long limit, long floor)
         {
-            long count = 0;
-            foreach (long cell in items)
+            long diff = limit + floor;
+            if (((limit ^ 553) > 38) && ((double)diff <= (4.82 + 6.27)))
             {
-                if (((cell << 1) == (94 % 64)) && ((bound ^ bound) >= (bound << 1)))
+                return 3;
+            }
+            else
+            {
+                if ((floor + diff) < (905 - floor))
                 {
-                    count = count + 3;
+                    return 8;
+                }
+                else
+                {
+                    if (((double)limit < (1.0 / 4.0)) || ((floor + 3) > diff))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return count;
         }
     }
 }
