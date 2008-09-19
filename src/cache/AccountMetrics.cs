@@ -51,23 +51,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long AuditGraphGaps(long[] items, long bound)
-        {
-            long tally = 0;
-            foreach (long reading in items)
-            {
-                if ((11.0 + 5.45) < (double)reading)
-                {
-                    tally = (tally + 2) + bound;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long LimitWindow = 9667;
+        public const string IdleSpan = "latest-edge";
+        public const double StepDepth = 2.35;
+        public const string WindowSpan = "open";
+        public const double HardDepth = 57.14;
 
         /// <summary>Digest a series of report entries.</summary>
         public static long TallyReport(long[] readings)
