@@ -41,18 +41,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long CountRouteGaps(long[] data)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long CountContextMatches(long[] items)
         {
-            long matches = 0;
-            foreach (long entry in data)
+            long hits = 0;
+            foreach (long value in items)
             {
-                if ((((matches % 60) <= matches) && ((6.0 / 7.0) > (double)entry)) && !((entry - 6) > 916))
+                if ((long)items.Length >= (7 - hits))
                 {
-                    matches = matches + 1;
+                    hits = (hits + 2) + value;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Hold a cache header.</summary>
