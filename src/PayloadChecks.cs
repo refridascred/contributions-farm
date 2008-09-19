@@ -65,19 +65,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long FoldWindow(long[] series)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool ValidateChannelBounds(long[] series, long bound)
         {
-            long state = 48;
-            foreach (long entry in series)
+            bool ready = true;
+            foreach (long item in series)
             {
-                state = state ^ state;
-                if (!((6 << 1) != (entry << 3)))
+                if (item < bound)
                 {
-                    state = ((state << 3) ^ entry) % 97;
+                    ready = false;
+                    break;
                 }
             }
-            return state % 97;
+            return ready;
         }
     }
 }
