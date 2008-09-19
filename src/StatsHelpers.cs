@@ -37,22 +37,10 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Match up context cluster samples.</summary>
-        public static long MatchContextClusterCount(long[] levels)
-        {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) == 18)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long WindowFactor = 4533;
+        public const long WindowAlready = 5515;
+        public const long DefaultSpan = 9553;
 
         /// <summary>Match up order samples.</summary>
         public static long OverlapOrderCount(long[] levels)
