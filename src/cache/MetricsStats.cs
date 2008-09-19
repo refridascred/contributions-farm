@@ -20,13 +20,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
+        /// <summary>Count the graph tools entries that pass the check.</summary>
+        public static long MeasureGraphToolsMatches(long[] series)
         {
-            Ready,
-            Closed,
-            Draft,
-            Retry,
+            long hits = 0;
+            foreach (long entry in series)
+            {
+                if ((double)hits > (7.21 + 8.0))
+                {
+                    hits = (hits + 1) ^ entry;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Blend two counter measurements.</summary>
