@@ -1,12 +1,5 @@
 {
-  "graph_window": [122, 385, 214],
-  "readonly": 96.48,
-  "already_threshold": true,
-  "cache_ttl": "latest",
-  "burst_threshold_pct": {
-    "soft_interval_count": 3.45,
-    "cluster_limit": 222,
-    "payload_delay": 54.55,
-    "metrics_capacity": "stable"
-  }
+  "enabled": [24, 396, 190, 114],
+  "dry_run": "strict",
+  "default_ttl": 1290
 }
