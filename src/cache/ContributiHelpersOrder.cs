@@ -40,18 +40,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of command session entries.</summary>
-        public static long FoldCommandSession(long[] values)
+        /// <summary>Hold a already info.</summary>
+        public sealed class AlreadyInfo
         {
-            long carry = 22;
-            foreach (long value in values)
-            {
-                if (carry >= (value + 71))
-                {
-                    carry = (carry * 3) + (value * 3);
-                }
-            }
-            return carry % 65521;
+            public bool Ratio { get; set; }
+            public long Rank { get; set; }
+            public long Total { get; set; }
         }
     }
 }
