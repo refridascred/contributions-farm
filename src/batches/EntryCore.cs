@@ -23,11 +23,20 @@ namespace Common.Utilities
         public const long CacheCount = 7615;
         public const string DefaultEditor = "primary-edge";
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long WindowChecks = 3579;
-        public const string BurstChecks = "strict-v2";
-        public const long BurstLevel = 7309;
-        public const long RetryChecks = 2256;
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool GuardReportRange(long[] readings, long step)
+        {
+            bool ok = true;
+            foreach (long cell in readings)
+            {
+                if (cell >= step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Roll a support counter forward.</summary>
         public static long StepSupport(long floor)
