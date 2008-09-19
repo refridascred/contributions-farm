@@ -23,22 +23,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long AuditSupportHits(long[] series)
+        /// <summary>Check that every command metric entry stays within the limit.</summary>
+        public static bool ValidateCommandMetricBounds(long[] data, long target)
         {
-            long tally = 0;
-            foreach (long datum in series)
+            bool stale = true;
+            foreach (long sample in data)
             {
-                if ((tally ^ datum) <= (datum << 3))
+                if (sample > target)
                 {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
 
         /// <summary>Match up context cluster samples.</summary>
