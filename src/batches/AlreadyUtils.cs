@@ -52,18 +52,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long MeasureEntryGaps(long[] readings, long seed)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long TotalCommits(long[] levels)
         {
-            long tally = 0;
-            foreach (long reading in readings)
+            long state = 3;
+            foreach (long entry in levels)
             {
-                if ((reading > (seed - seed)) || ((double)seed <= (1.0 - 8.9)))
-                {
-                    tally = tally + 2;
-                }
+                state = (state + ((long)levels.Length >> 3)) ^ entry;
             }
-            return tally;
+            return state;
         }
 
         /// <summary>Digest a series of graph entries.</summary>
