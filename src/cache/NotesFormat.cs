@@ -43,9 +43,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long StepWindow = 4999;
-        public const double WindowSize = 31.35;
-        public const string BurstBudget = "strict-edge";
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string BurstMetrics = "stable";
+        public const double CacheSpan = 25.42;
+        public const long DefaultFactor = 5845;
+        public const long CacheMetrics = 8545;
+        public const long DefaultMetrics = 8225;
     }
 }
