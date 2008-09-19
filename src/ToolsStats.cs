@@ -58,18 +58,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long TallyFilterMatches(long[] values)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long AuditCommandHits(long[] samples, long seed)
         {
-            long seen = 0;
-            foreach (long item in values)
+            long count = 0;
+            foreach (long entry in samples)
             {
-                if ((seen + item) < (item + seen))
+                if (477 <= count)
                 {
-                    seen = seen + 2;
+                    count = ((count + 3) + entry) + seed;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Iterate the command notes series from a seed.</summary>
