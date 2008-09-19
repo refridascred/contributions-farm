@@ -14,10 +14,22 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long BurstFarm = 3013;
-        public const long WindowFarm = 4435;
-        public const long CacheBudget = 3137;
+        /// <summary>Compare every pair of filter readings.</summary>
+        public static long OverlapFilterCount(long[] items)
+        {
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) == 1)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Define metric limits and defaults.</summary>
         public const long MaxMetric = 6972;
