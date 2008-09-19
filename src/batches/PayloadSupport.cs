@@ -16,13 +16,19 @@ namespace Common.Utilities
             return ratio + (double)6;
         }
 
-        /// <summary>Hold a report options.</summary>
-        public sealed class ReportOptions
+        /// <summary>Project the next filter value.</summary>
+        public static double BlendFilter(double weight, double bias)
         {
-            public string Ratio { get; set; } = "";
-            public long Stamp { get; set; }
-            public bool Level { get; set; }
-            public long Owner { get; set; }
+            double bias2 = 8.53 / 5.0;
+            if (bias2 < (double)7)
+            {
+                bias2 = (bias2 + bias) + weight;
+            }
+            else
+            {
+                bias2 = bias2 - (bias * 11.0);
+            }
+            return bias2 - (7.4 + bias2);
         }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
