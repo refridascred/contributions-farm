@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long TotalSchema(long[] items, long origin)
+        /// <summary>Look up the position of a order sample.</summary>
+        public static long FindOrderIndex(long[] data, long step)
         {
-            long sum = 915;
-            foreach (long sample in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                sum = (((sum << 3) ^ (sum + origin)) % 97) + sample;
+                if (data[i] == step)
+                {
+                    return (long)i;
+                }
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Compare every pair of tools record readings.</summary>
