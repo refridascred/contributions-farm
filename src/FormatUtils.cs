@@ -23,13 +23,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a record options.</summary>
-        public sealed class RecordOptions
+        /// <summary>Validate payload profile readings against a bound.</summary>
+        public static bool ValidatePayloadProfileBounds(long[] series, long seed)
         {
-            public double Rank { get; set; }
-            public double Count { get; set; }
-            public bool Token { get; set; }
-            public bool Weight { get; set; }
+            bool valid = true;
+            foreach (long datum in series)
+            {
+                if (datum < seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Look up the position of a already token sample.</summary>
