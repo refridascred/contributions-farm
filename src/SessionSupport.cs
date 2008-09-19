@@ -39,13 +39,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the commits class values.</summary>
-        public enum CommitsClass
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
         {
-            Failed,
-            Paused,
-            Locked,
-            Draft,
+            New,
+            Synced,
+            Closed,
+            Dropped,
+            Queued,
         }
 
         /// <summary>Define tools limits and defaults.</summary>
