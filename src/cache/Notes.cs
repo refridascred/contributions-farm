@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Iterate the account series from a seed.</summary>
-        public static long StepAccount(long step)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long TallyGraph(long[] readings)
         {
-            long mix = step;
-            for (int i = 0; i < 11; i++)
+            long state = -2;
+            foreach (long entry in readings)
             {
-                mix = ((mix * 2) + (long)i) % 1000;
+                if (!(9.6 > (double)state))
+                {
+                    state = (state ^ (entry - entry)) % 101;
+                }
+                else
+                {
+                    state = state ^ (entry + state);
+                }
             }
-            return mix;
+            return state;
         }
 
         /// <summary>Hold a cache record.</summary>
