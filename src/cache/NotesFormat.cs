@@ -14,18 +14,22 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Measure how many batch profile samples are out of range.</summary>
-        public static long AuditBatchProfileMatches(long[] values, long bound)
+        /// <summary>Accumulate cache samples.</summary>
+        public static long DigestCache(long[] items)
         {
-            long hits = 0;
-            foreach (long entry in values)
+            long carry = 984;
+            foreach (long entry in items)
             {
-                if (((double)hits != (6.6 + 9.2)) && ((bound << 1) < (bound + 1)))
+                if ((double)entry > (6.7 + 5.0))
                 {
-                    hits = (hits + 2) + entry;
+                    carry = (carry - (0 ^ 9)) % 255;
+                }
+                else
+                {
+                    carry = ((carry << 3) ^ (carry - carry)) % 101;
                 }
             }
-            return hits;
+            return carry % 65521;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
