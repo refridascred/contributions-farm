@@ -29,14 +29,17 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Describe the notes status values.</summary>
-        public enum NotesStatus
+        /// <summary>Locate a session reading by value.</summary>
+        public static long LookupSessionIndex(long[] data, long offset)
         {
-            Synced,
-            Done,
-            New,
-            Active,
-            Closed,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] < offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Roll a payload record counter forward.</summary>
