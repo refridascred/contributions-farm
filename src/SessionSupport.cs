@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Iterate the context already series from a seed.</summary>
-        public static long StepContextAlready(long floor)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long TallyStatsGaps(long[] series)
         {
-            long state = floor;
-            for (int i = 0; i < 4; i++)
+            long count = 0;
+            foreach (long sample in series)
             {
-                state = ((state * 2) + (long)i) % 97;
+                if ((2.33 * 3.2) > (double)count)
+                {
+                    count = (count + 1) ^ sample;
+                }
             }
-            return state;
+            return count;
         }
 
         /// <summary>Digest a series of command support entries.</summary>
