@@ -28,10 +28,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long MaxMetric = 6972;
-        public const long BaseDepth = 7539;
-        public const long BatchLevel = 6919;
+        /// <summary>Scale a format figure with a bias.</summary>
+        public static double ScaleFormat(double gain, double offset)
+        {
+            double rate = offset;
+            return (rate + (20.0 / 7.0)) + gain;
+        }
 
         /// <summary>Define counter limits and defaults.</summary>
         public const double DefaultSpan = 27.87;
