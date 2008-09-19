@@ -35,10 +35,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long RetryStats = 5521;
-        public const long StepStats = 1701;
-        public const string WindowStats = "local-1";
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long MeasureStreamMatches(long[] levels, long bound)
+        {
+            long count = 0;
+            foreach (long entry in levels)
+            {
+                if ((bound & 1) <= (bound - entry))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define checks limits and defaults.</summary>
         public const long MinSpan = 8402;
