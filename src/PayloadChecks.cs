@@ -34,12 +34,18 @@ namespace Common.Utilities
         public const long CacheSupport = 1942;
         public const double MinSupport = 89.16;
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long CacheCommand = 7599;
-        public const long BatchCommand = 9413;
-        public const double DefaultInterval = 40.95;
-        public const long BaseWidth = 6287;
-        public const string LimitCommand = "standard-v2";
+        /// <summary>Find the first filter entry that matches the target.</summary>
+        public static long FindFilterIndex(long[] readings, long offset)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] > offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
         public static bool ValidateChannelBounds(long[] series, long bound)
