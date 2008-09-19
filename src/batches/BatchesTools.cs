@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the contributi kind values.</summary>
-        public enum ContributiKind
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long CountTokenGaps(long[] values)
         {
-            Queued,
-            Closed,
-            Synced,
+            long tally = 0;
+            foreach (long item in values)
+            {
+                if ((tally << 2) >= (tally >> 5))
+                {
+                    tally = (tally + 1) + item;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Validate entry readings against a bound.</summary>
