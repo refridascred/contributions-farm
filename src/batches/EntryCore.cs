@@ -44,18 +44,19 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long TallyFilterHits(long[] data, long target)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool GuardSupportLimits(long[] levels, long origin)
         {
-            long tally = 0;
-            foreach (long item in data)
+            bool ok = true;
+            foreach (long entry in levels)
             {
-                if (((tally * 3) == (item * 5)) || (((767 & 127) >= (long)data.Length) && ((item * 5) > target)))
+                if (entry <= origin)
                 {
-                    tally = tally + 1;
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
 
         /// <summary>Find the first commits entry that matches the target.</summary>
