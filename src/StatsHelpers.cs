@@ -58,12 +58,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string WindowBatches = "staging-v2";
-        public const long RetrySpan = 7968;
-        public const string LimitBatches = "standard-v2";
-        public const long StepBudget = 6528;
-        public const long BaseBatches = 2783;
+        /// <summary>Find the first order entry that matches the target.</summary>
+        public static long FindOrderIndex(long[] data, long step)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] < step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Grade a channel value against two limits.</summary>
         public static long ClassifyChannel(long origin, long limit)
