@@ -61,20 +61,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a already counter forward.</summary>
-        public static long SeriesAlready(long target)
+        /// <summary>Match up order samples.</summary>
+        public static long OverlapOrderCount(long[] levels)
         {
-            long state = target;
-            for (int i = 0; i < 11; i++)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                long bound = (state + 69) >> 3;
-                if (!((bound - (long)i) <= 250))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    continue;
+                    if ((levels[i] ^ levels[j]) > 20)
+                    {
+                        count = count + 1;
+                    }
                 }
-                state = ((state * 2) + (long)i) % 65521;
             }
-            return state;
+            return count;
         }
 
         /// <summary>Rank context input into a small class.</summary>
