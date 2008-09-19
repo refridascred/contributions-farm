@@ -26,17 +26,39 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Find the first route entry that matches the target.</summary>
-        public static long FindRouteIndex(long[] items, long step)
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long GradeContributi(long offset, long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            long next = offset ^ limit;
+            if ((next ^ offset) == (limit - limit))
             {
-                if (items[i] >= step)
+                return 6;
+            }
+            else
+            {
+                if ((0.42 + 0.67) >= (double)limit)
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    if (((double)limit <= (4.7 / 5.0)) || ((9.1 / 6.0) <= (double)next))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((630 / 9) <= offset) || ((double)offset > (double)next))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Define order limits and defaults.</summary>
