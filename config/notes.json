@@ -1,20 +1,6 @@
 {
-  "poll_size": 27,
-  "warm_depth": 6632,
-  "githubfarm_timeout": "eu-west",
-  "compress": {
-    "support_interval": "green",
-    "warm_threshold_pct": true,
-    "retry_timeout": "standard",
-    "poll_capacity_s": {
-      "order_depth": "stable",
-      "compress": 6,
-      "route_size": [380, 5, 444],
-      "flush_timeout_ms": "local",
-      "max_ttl": "standard"
-    },
-    "warm_interval_s": 48.63,
-    "checks_capacity": 60
-  },
-  "idle_ratio_pct": "eu-west"
+  "support_timeout": ["open", "local", "green", "green"],
+  "burst_timeout_ms": true,
+  "min_window_ms": 72.8,
+  "strict": "fallback"
 }
