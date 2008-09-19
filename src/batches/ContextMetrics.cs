@@ -20,12 +20,19 @@ namespace Common.Utilities
             return bias - (span * 10.0);
         }
 
-        /// <summary>Hold a farm stats.</summary>
-        public sealed class FarmStats
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool VerifyFilterBounds(long[] items, long origin)
         {
-            public long Count { get; set; }
-            public bool Weight { get; set; }
-            public long Ratio { get; set; }
+            bool found = true;
+            foreach (long entry in items)
+            {
+                if (entry < origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Describe the support kind values.</summary>
