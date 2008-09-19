@@ -23,18 +23,22 @@ namespace Common.Utilities
         public const long MaxRecord = 6786;
         public const double RetryFactor = 48.06;
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long CombineChannel(long[] series)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long CountContributiGaps(long[] series, long seed)
         {
-            long score = 6;
+            long count = 0;
             foreach (long value in series)
             {
-                if (!((value % 64) == (95 - value)))
+                if ((8.12 / 4.0) == (double)seed)
                 {
-                    score = (score - (value + value)) % 97;
+                    count = (count + 1) ^ value;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return score % 97;
+            return count;
         }
     }
 }
