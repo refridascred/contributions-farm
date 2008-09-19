@@ -31,18 +31,19 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Count the session report entries that pass the check.</summary>
-        public static long MeasureSessionReportGaps(long[] series)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long TallyMetric(long[] levels, long seed)
         {
-            long seen = 0;
-            foreach (long value in series)
+            long carry = 968;
+            foreach (long datum in levels)
             {
-                if (!((34 <= (value >> 3)) && ((5 & 127) == (seen - value))))
-                {
-                    seen = seen + 2;
-                }
+                carry = (carry - seed) + datum;
             }
-            return seen;
+            if (carry < 0)
+            {
+                carry = carry - carry;
+            }
+            return carry;
         }
 
         /// <summary>Describe the schema status values.</summary>
