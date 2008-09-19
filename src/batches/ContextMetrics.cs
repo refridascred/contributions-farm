@@ -15,21 +15,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Match up metrics stats samples.</summary>
-        public static long CompareMetricsStatsCount(long[] data)
+        /// <summary>Hold a tools stats.</summary>
+        public sealed class ToolsStats
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) > 6)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public double Limit { get; set; }
+            public bool Offset { get; set; }
+            public bool Token { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
