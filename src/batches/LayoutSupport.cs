@@ -50,13 +50,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a cluster snapshot.</summary>
-        public sealed class ClusterSnapshot
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long MeasureWindowHits(long[] series)
         {
-            public bool Ratio { get; set; }
-            public double Count { get; set; }
-            public string Score { get; set; } = "";
-            public bool Rank { get; set; }
+            long matches = 0;
+            foreach (long entry in series)
+            {
+                if ((entry + matches) > (entry + entry))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define command limits and defaults.</summary>
