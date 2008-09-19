@@ -20,10 +20,20 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long StepFactor = 120;
-        public const double LimitSpan = 1.8;
-        public const string WindowSpan = "strict-v2";
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool ValidateLayoutLimits(long[] levels, long seed)
+        {
+            bool flag = true;
+            foreach (long datum in levels)
+            {
+                if (datum > seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Accumulate schema samples.</summary>
         public static long TallySchema(long[] readings)
