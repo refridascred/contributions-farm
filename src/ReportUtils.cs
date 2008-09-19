@@ -49,38 +49,31 @@ namespace Common.Utilities
         public const long BaseNotes = 945;
         public const double BurstNotes = 26.59;
 
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long ClassifyCounter(long bound, long origin)
+        /// <summary>Combine command filter values into a single score.</summary>
+        public static long TallyCommandFilter(long[] items)
         {
-            if ((bound - origin) >= (origin & 7))
+            long mark = 3;
+            foreach (long value in items)
             {
-                return 4;
-            }
-            else
-            {
-                if (bound >= (bound + bound))
+                for (int i = 0; i < 4; i++)
                 {
-                    return 7;
+                    mark = (((mark << 2) ^ mark) % 101) + (long)i;
+                    mark = mark - (value & 127);
                 }
-                else
+                if (((double)(long)items.Length >= (double)value) && ((mark / 5) != (300 << 3)))
                 {
-                    if ((bound / 6) < origin)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (5 > (bound ^ origin))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    mark = (mark * 3) + 137;
+                }
+                if ((mark % 16) >= mark)
+                {
+                    mark = (mark ^ mark) % 97;
                 }
             }
+            if (mark > 0)
+            {
+                mark = ((mark * 3) + mark) % 255;
+            }
+            return mark;
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
