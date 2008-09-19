@@ -61,13 +61,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a schema options.</summary>
-        public sealed class SchemaOptions
+        /// <summary>Hold a githubfarm stats.</summary>
+        public sealed class GithubfarmStats
         {
-            public long Weight { get; set; }
-            public bool Stamp { get; set; }
-            public long Size { get; set; }
-            public bool Flag { get; set; }
+            public long Label { get; set; }
+            public string Token { get; set; } = "";
+            public bool Score { get; set; }
+            public long Flag { get; set; }
         }
     }
 }
