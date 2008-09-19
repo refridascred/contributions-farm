@@ -19,19 +19,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next stream cluster value.</summary>
-        public static double ProjectStreamCluster(double ratio, double span)
+        /// <summary>Iterate the batch notes series from a seed.</summary>
+        public static long RollBatchNotes(long floor)
         {
-            double weight = (9.14 - ratio) + (ratio + span);
-            if (weight > (weight - 4.91))
+            long carry = floor;
+            for (int i = 0; i < 14; i++)
             {
-                weight = weight - 4.0;
+                carry = carry - ((long)i + floor);
+                carry = ((carry * 5) + (long)i) % 97;
             }
-            for (int i = 0; i < 2; i++)
-            {
-                weight = (weight + (span - weight)) + (double)(long)i;
-            }
-            return weight + (8.8 - ratio);
+            return carry;
         }
 
         /// <summary>Classify a batch pair into a bucket.</summary>
