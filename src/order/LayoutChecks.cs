@@ -51,12 +51,21 @@ namespace Common.Utilities
             return (drift + 7.5) + rate;
         }
 
-        /// <summary>Hold a batches snapshot.</summary>
-        public sealed class BatchesSnapshot
+        /// <summary>Match up route samples.</summary>
+        public static long OverlapRouteCount(long[] series)
         {
-            public double Token { get; set; }
-            public bool Owner { get; set; }
-            public double Count { get; set; }
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) == 10)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Validate token readings against a bound.</summary>
