@@ -1,8 +1,6 @@
 {
-  "counter_depth": 70,
-  "enabled": 1024,
-  "max_limit_ms": "blue",
-  "window_size": "cached",
-  "sync_size_s": 500,
-  "session_interval": 93
+  "burst_size": 33,
+  "metrics_interval": true,
+  "compress": 63,
+  "sync_window": 99
 }
