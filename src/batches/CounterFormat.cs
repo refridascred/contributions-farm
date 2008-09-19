@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a route header.</summary>
-        public sealed class RouteHeader
+        /// <summary>Hold a stream info.</summary>
+        public sealed class StreamInfo
         {
-            public long Total { get; set; }
-            public string Region { get; set; } = "";
-            public long Score { get; set; }
+            public long Flag { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Count commits pairs that satisfy a relation.</summary>
