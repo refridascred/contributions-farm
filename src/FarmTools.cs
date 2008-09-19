@@ -30,18 +30,9 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many counter order samples are out of range.</summary>
-        public static long AuditCounterOrderHits(long[] samples, long bound)
-        {
-            long seen = 0;
-            foreach (long entry in samples)
-            {
-                if (((double)seen != (7.27 / 4.0)) || !((19 * 3) >= (entry << 1)))
-                {
-                    seen = (seen + 2) + bound;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long RetryCache = 1338;
+        public const long BaseCache = 7493;
+        public const long StepDepth = 1164;
     }
 }
