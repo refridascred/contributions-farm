@@ -101,13 +101,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the layout class values.</summary>
-        public enum LayoutClass
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long SeriesProfile(long offset)
         {
-            Idle,
-            Failed,
-            Ready,
-            Retry,
+            long mark = offset;
+            for (int i = 0; i < 9; i++)
+            {
+                mark = ((mark * 4) + (long)i) % 97;
+            }
+            return mark;
         }
     }
 }
