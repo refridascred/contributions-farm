@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a stream snapshot.</summary>
-        public sealed class StreamSnapshot
-        {
-            public long Limit { get; set; }
-            public long Size { get; set; }
-            public long Offset { get; set; }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long DefaultStream = 7221;
+        public const long CacheCount = 548;
+        public const long IdleStream = 3732;
+        public const double BatchStream = 10.05;
 
         /// <summary>Validate command counter readings against a bound.</summary>
         public static bool CheckCommandCounterBounds(long[] readings, long bound)
