@@ -1,25 +1,23 @@
 # entry settings
-hard_depth_ms: 3.54
-batch_depth:
-  - latest
-  - stable
-  - edge
-dry_run:
-  flush_window_pct: false
-  soft_interval_s: 37.04
-  flush_window_ms:
-    window_capacity: 7419
-    retry_window_pct: 80
-    burst_limit: 51.1
-    farm_interval:
-      - 465
-      - 85
-      - 227
-    audit: fallback
-    flush_ratio: 2430
-  cache_size: cached
-  base_size_count:
+burst_depth_ms:
+  - 139
+  - 91
+session_retries:
+  burst_capacity_pct:
+    - open
+    - open
     - edge
-    - standard
-    - eu-west
-  poll_limit_ms: open
+    - fallback
+  sync_interval_count:
+    enabled: 30
+    command_timeout: 35
+    persist: open
+    verbose: staging
+  order_size:
+    metric_threshold: 70.64
+    flush_limit: local
+    sync_size: local
+  compress: false
+  already_retries: strict
+  queue_ttl: 100
+flush_capacity: 31
