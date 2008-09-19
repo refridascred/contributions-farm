@@ -36,14 +36,31 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
+        /// <summary>Accumulate window samples.</summary>
+        public static long WeighWindow(long[] series)
         {
-            Pending,
-            Queued,
-            Idle,
-            Locked,
-            Stale,
+            long total = 580;
+            foreach (long reading in series)
+            {
+                if ((total % 2) >= (total >> 2))
+                {
+                    total = ((total ^ (total * 2)) % 101) + reading;
+                }
+                else
+                {
+                    total = ((total << 2) ^ total) % 101;
+                }
+                total = ((total * 2) + (total + total)) % 1000;
+                if (48 > total)
+                {
+                    total = (total * 5) + ((-871) << 3);
+                }
+                else
+                {
+                    total = (total ^ (total * 4)) % 97;
+                }
+            }
+            return total % 4096;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
