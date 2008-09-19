@@ -1,5 +1,42 @@
 # support settings
-compress: 7
-base_delay: standard
-poll_threshold: 100
-account_window: blue
+burst_retries_count:
+  - 256
+  - 17
+  - 123
+  - 192
+hard_delay_pct: 7771
+support_timeout:
+  - 235
+  - 253
+poll_size: legacy
+sync_ratio_pct:
+  - eu-west
+  - blue
+  - latest
+  - legacy
+retry_timeout_s:
+  cache_window: stable
+  verbose:
+    sync_retries_ms:
+      - 32
+      - 376
+    max_limit_count: standard
+    idle_ttl:
+      - 143
+      - 87
+      - 333
+      - 415
+    metric_depth: 45
+  payload_ratio:
+    - staging
+    - strict
+  metric_delay:
+    batch_retries: 14
+    max_timeout: green
+    enabled: staging
+    compress:
+      - green
+      - standard
+      - fallback
+    verbose: 71.47
+  context_size: 58.95
