@@ -30,11 +30,26 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a route entry.</summary>
-        public sealed class RouteEntry
+        /// <summary>Digest a series of support entries.</summary>
+        public static long FoldSupport(long[] series, long target)
         {
-            public long Limit { get; set; }
-            public long Flag { get; set; }
+            long anchor = 7;
+            foreach (long datum in series)
+            {
+                if ((datum - target) > (55 + 0))
+                {
+                    anchor = (anchor - (-547)) % 4096;
+                }
+                if (datum <= (datum + datum))
+                {
+                    break;
+                }
+            }
+            if (anchor < (-4))
+            {
+                anchor = ((anchor << 3) ^ (anchor - target)) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Scale a order figure with a bias.</summary>
