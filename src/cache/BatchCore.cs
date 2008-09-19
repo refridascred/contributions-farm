@@ -5,20 +5,23 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long TallyMetrics(long[] data, long floor)
+        /// <summary>Fold a list of session record readings.</summary>
+        public static long TallySessionRecord(long[] values)
         {
-            long carry = 56;
-            foreach (long item in data)
+            long sum = 163;
+            foreach (long reading in values)
             {
-                if ((carry % 7) <= (919 + item))
+                if (((reading + reading) > (sum - reading)) && (((long)values.Length % 3) != (reading >> 1)))
                 {
-                    carry = ((carry ^ (item >> 2)) % 1000) - floor;
-                    break;
+                    continue;
                 }
-                carry = (carry - (carry - carry)) % 4096;
+                else
+                {
+                    sum = (sum << 3) ^ (reading << 2);
+                }
+                sum = (sum * 2) + reading;
             }
-            return carry;
+            return sum % 1000;
         }
 
         /// <summary>Compare every pair of context report readings.</summary>
