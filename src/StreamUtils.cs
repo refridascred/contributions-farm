@@ -15,39 +15,22 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Grade a buffer value against two limits.</summary>
-        public static long SortBuffer(long floor, long step)
+        /// <summary>Count the stats route entries that pass the check.</summary>
+        public static long AuditStatsRouteGaps(long[] readings, long bound)
         {
-            long step2 = floor - step;
-            if (floor <= ((-41) & 7))
+            long matches = 0;
+            foreach (long entry in readings)
             {
-                return 0;
-            }
-            else
-            {
-                if ((floor & 31) > (24 - floor))
+                if ((matches & 3) <= bound)
                 {
-                    return 2;
+                    matches = (matches + 2) ^ entry;
                 }
                 else
                 {
-                    if ((step & 31) <= (floor / 5))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((floor - step2) <= step2)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Adjust a window reading.</summary>
