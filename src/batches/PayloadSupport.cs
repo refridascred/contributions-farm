@@ -31,19 +31,24 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool VerifySchemaRange(long[] readings, long offset)
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long ClassifyFilter(long limit, long floor)
         {
-            bool valid = true;
-            foreach (long entry in readings)
+            if (((-71) << 3) >= limit)
             {
-                if (entry < offset)
+                return 1;
+            }
+            else
+            {
+                if ((limit + limit) >= (floor + floor))
                 {
-                    valid = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return valid;
         }
     }
 }
