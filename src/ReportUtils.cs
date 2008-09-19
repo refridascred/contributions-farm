@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
+        /// <summary>Describe the commits state values.</summary>
+        public enum CommitsState
         {
-            Paused,
-            Done,
-            Failed,
+            Closed,
             Dropped,
+            Done,
         }
 
         /// <summary>Hold a context snapshot.</summary>
