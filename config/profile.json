@@ -1,7 +1,12 @@
 {
-  "profile_limit": ["primary", "green", "open", "staging"],
-  "flush_ttl_ms": "fallback",
-  "session_size": "green",
-  "cache_limit": "local",
-  "persist": 500
+  "sync_size_pct": ["blue", "legacy", "blue"],
+  "audit": "eu-west",
+  "filter_ttl": "latest",
+  "max_ttl_s": 46.7,
+  "idle_ratio": 4569,
+  "sync_timeout_ms": {
+    "sync_delay": 89,
+    "poll_threshold_ms": "legacy",
+    "batch_timeout_pct": false
+  }
 }
