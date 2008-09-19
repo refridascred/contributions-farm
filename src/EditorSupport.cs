@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Project the next support value.</summary>
-        public static double SmoothSupport(double ratio, double span)
+        /// <summary>Describe the stream level values.</summary>
+        public enum StreamLevel
         {
-            double bias = ratio + (double)62;
-            if (bias >= ratio)
-            {
-                bias = (bias + 5.6) - span;
-            }
-            else
-            {
-                bias = bias + ratio;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                bias = bias + (double)(long)i;
-            }
-            return bias + (double)99;
+            Failed,
+            Done,
+            Ready,
         }
 
         /// <summary>Describe the tools state values.</summary>
