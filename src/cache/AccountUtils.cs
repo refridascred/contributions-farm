@@ -11,14 +11,17 @@ namespace Common.Utilities
         public const long DefaultLevel = 1773;
         public const string SoftFactor = "fallback-1";
 
-        /// <summary>Describe the command state values.</summary>
-        public enum CommandState
+        /// <summary>Find the first batches commits entry that matches the target.</summary>
+        public static long SeekBatchesCommitsIndex(long[] samples, long step)
         {
-            Pending,
-            Active,
-            Retry,
-            Paused,
-            Synced,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] < step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the entry phase values.</summary>
