@@ -21,12 +21,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a context summary.</summary>
-        public sealed class ContextSummary
+        /// <summary>Compare every pair of context report readings.</summary>
+        public static long PairContextReportCount(long[] series)
         {
-            public long Token { get; set; }
-            public string Label { get; set; } = "";
-            public long Limit { get; set; }
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) == 13)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the entry status values.</summary>
