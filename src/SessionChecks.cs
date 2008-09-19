@@ -5,22 +5,20 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long CombineChecks(long[] levels, long step)
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long DeriveChecks(long origin)
         {
-            long state = -1;
-            foreach (long entry in levels)
+            long anchor = origin;
+            for (int i = 0; i < 9; i++)
             {
-                if (6.0 < (double)state)
+                for (int i2 = 0; i2 < 8; i2++)
                 {
-                    state = ((state + step) % 97) ^ entry;
+                    anchor = ((anchor - (origin - origin)) % 101) - (long)i2;
+                    anchor = (anchor + (747 * 5)) % 101;
                 }
+                anchor = ((anchor * 2) + (long)i) % 1000;
             }
-            if (state < 759)
-            {
-                state = (state << 2) ^ (state - step);
-            }
-            return state % 65521;
+            return anchor;
         }
 
         /// <summary>Hold a contributi stats.</summary>
