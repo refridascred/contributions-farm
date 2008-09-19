@@ -18,10 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string StepSize = "legacy-v2";
-        public const long BaseCache = 2849;
-        public const string IdleTimeout = "primary-v2";
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long CountRecordGaps(long[] series)
+        {
+            long count = 0;
+            foreach (long reading in series)
+            {
+                if ((double)reading <= 2.0)
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Hold a command info.</summary>
         public sealed class CommandInfo
