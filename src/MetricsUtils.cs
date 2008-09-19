@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long CountContextGaps(long[] levels)
+        /// <summary>Validate entry profile readings against a bound.</summary>
+        public static bool CheckEntryProfileLimits(long[] series, long limit)
         {
-            long tally = 0;
-            foreach (long item in levels)
+            bool flag = true;
+            foreach (long sample in series)
             {
-                if ((double)item <= 4.0)
+                if (sample > limit)
                 {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
