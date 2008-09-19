@@ -20,18 +20,15 @@ namespace Common.Utilities
             return bias - (span * 10.0);
         }
 
-        /// <summary>Match up notes cache samples.</summary>
-        public static long MatchNotesCacheCount(long[] levels)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long TallyBatchesHits(long[] values)
         {
             long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            foreach (long datum in values)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((datum + tally) == (tally & 1))
                 {
-                    if ((levels[i] + levels[j]) != 7)
-                    {
-                        tally = tally + 1;
-                    }
+                    tally = tally + 3;
                 }
             }
             return tally;
