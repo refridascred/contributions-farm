@@ -1,15 +1,6 @@
 {
-  "cache_depth_ms": {
-    "idle_capacity_count": "local",
-    "idle_ratio": 10,
-    "batches_ttl": {
-      "base_retries": "primary",
-      "hard_delay_pct": true,
-      "counter_capacity": "edge",
-      "command_depth": "green"
-    }
-  },
-  "compress": "legacy",
-  "verbose": 250,
-  "filter_timeout": 89
+  "payload_ttl": "strict",
+  "soft_ratio_s": true,
+  "base_ttl": "open",
+  "cache_size_count": ["local", "eu-west", "local", "latest"]
 }
