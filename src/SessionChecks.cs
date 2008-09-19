@@ -5,23 +5,22 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Project the next metric payload value.</summary>
-        public static double BlendMetricPayload(double gain, double floor)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long CombineChecks(long[] levels, long step)
         {
-            double mean = (gain + floor) + (9.7 * 1.25);
-            if (mean >= (mean - gain))
+            long state = -1;
+            foreach (long entry in levels)
             {
-                mean = mean - floor;
+                if (6.0 < (double)state)
+                {
+                    state = ((state + step) % 97) ^ entry;
+                }
             }
-            else
+            if (state < 759)
             {
-                mean = mean + (16.0 * 5.33);
+                state = (state << 2) ^ (state - step);
             }
-            for (int i = 0; i < 6; i++)
-            {
-                mean = (mean - gain) + (double)(long)i;
-            }
-            return mean + gain;
+            return state % 65521;
         }
 
         /// <summary>Define support limits and defaults.</summary>
