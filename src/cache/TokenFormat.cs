@@ -24,22 +24,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the contributi report entries that pass the check.</summary>
-        public static long TallyContributiReportOutliers(long[] samples)
-        {
-            long seen = 0;
-            foreach (long value in samples)
-            {
-                if (seen > 172)
-                {
-                    seen = (seen + 3) + value;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double LimitLevel = 84.8;
+        public const long CacheContributi = 8331;
+        public const long StepTimeout = 9548;
+        public const long RetryContributi = 9812;
+        public const string BaseContributi = "local";
     }
 }
