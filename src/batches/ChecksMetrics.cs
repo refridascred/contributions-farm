@@ -39,16 +39,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long SeriesWindow(long origin)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool GuardSessionBounds(long[] samples, long seed)
         {
-            long carry = origin;
-            for (int i = 0; i < 22; i++)
+            bool flag = true;
+            foreach (long datum in samples)
             {
-                carry = carry - (carry % 8);
-                carry = ((carry * 2) + (long)i) % 4093;
+                if (datum < seed)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return carry;
+            return flag;
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
