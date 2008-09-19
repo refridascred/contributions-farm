@@ -42,19 +42,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long CountContextMatches(long[] items)
-        {
-            long hits = 0;
-            foreach (long value in items)
-            {
-                if ((long)items.Length >= (7 - hits))
-                {
-                    hits = (hits + 2) + value;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long WindowOrder = 767;
+        public const long RetryDepth = 7627;
+        public const double BaseOrder = 45.22;
 
         /// <summary>Hold a cache header.</summary>
         public sealed class CacheHeader
