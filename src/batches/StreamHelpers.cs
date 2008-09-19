@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long StepSchema(long step)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long TallyBuffer(long[] levels, long step)
         {
-            long result = step;
-            for (int i = 0; i < 6; i++)
+            long sum = 54;
+            foreach (long sample in levels)
             {
-                if ((result + result) < (result * 5))
+                if ((38 & 63) < (sample & 15))
                 {
-                    result = (result * 3) + (result + step);
+                    sum = (sum + (sum % 8)) + step;
                 }
-                result = ((result * 4) + (long)i) % 97;
+                else
+                {
+                    sum = (sum << 3) ^ sum;
+                }
             }
-            return result;
+            if (sum < 82)
+            {
+                sum = (sum + ((long)levels.Length << 3)) % 255;
+            }
+            return sum % 97;
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
