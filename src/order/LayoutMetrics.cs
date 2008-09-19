@@ -44,14 +44,12 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
+        /// <summary>Hold a route options.</summary>
+        public sealed class RouteOptions
         {
-            Pending,
-            New,
-            Locked,
-            Failed,
-            Dropped,
+            public bool Mode { get; set; }
+            public long Token { get; set; }
+            public double Label { get; set; }
         }
     }
 }
