@@ -1,9 +1,7 @@
-id,active,token
-1,primary,559
-2,standard,84
-3,62.21,44.98
-4,656,latest
-5,471,cached
-6,46.47,cached
-7,405,197
-8,176,227
+id,region,level,state
+1,10.53,blue,83.96
+2,609,332,512
+3,legacy,305,61.07
+4,green,41.23,334
+5,490,6.06,413
+6,72.43,eu-west,339
