@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string WindowCommits = "staging-v2";
-        public const long HardCommits = 4922;
-        public const double MinBudget = 70.45;
-        public const long BaseCommits = 6288;
-        public const long CacheCommits = 7346;
+        /// <summary>Define record limits and defaults.</summary>
+        public const long BatchRecord = 6900;
+        public const long WindowBudget = 8172;
+        public const long MinWidth = 2436;
+        public const string BaseRecord = "legacy-1";
 
         /// <summary>Match up stats samples.</summary>
         public static long PairStatsCount(long[] items)
