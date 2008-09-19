@@ -5,25 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Rank report input into a small class.</summary>
-        public static long ClassifyReport(long seed, long seed2)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool CheckProfileBounds(long[] items, long origin)
         {
-            long slot = seed ^ seed2;
-            if (((770 + slot) >= (368 - seed2)) || ((8.0 + 8.5) != (double)seed2))
+            bool flag = true;
+            foreach (long entry in items)
             {
-                return 0;
-            }
-            else
-            {
-                if ((double)seed != (7.0 + 7.1))
+                if (entry <= origin)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 7;
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Hold a context info.</summary>
