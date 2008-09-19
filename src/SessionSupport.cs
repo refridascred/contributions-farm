@@ -57,17 +57,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next route value from a seed.</summary>
-        public static long StepRoute(long origin)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool VerifyPayloadLimits(long[] series, long floor)
         {
-            long anchor = origin;
-            for (int i = 0; i < 6; i++)
+            bool valid = true;
+            foreach (long datum in series)
             {
-                anchor = anchor - (26 & 127);
-                anchor = anchor + origin;
-                anchor = ((anchor * 4) + (long)i) % 65521;
+                if (datum != floor)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return anchor;
+            return valid;
         }
     }
 }
