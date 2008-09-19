@@ -21,13 +21,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a contributi stats.</summary>
-        public sealed class ContributiStats
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long TallyReportMatches(long[] levels)
         {
-            public bool Label { get; set; }
-            public long Region { get; set; }
-            public double Flag { get; set; }
-            public bool Level { get; set; }
+            long count = 0;
+            foreach (long sample in levels)
+            {
+                if ((sample + 15) != (sample + 2))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Derive the next checks value from a seed.</summary>
