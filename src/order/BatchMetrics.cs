@@ -54,15 +54,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the buffer schema series from a seed.</summary>
-        public static long RollBufferSchema(long step)
+        /// <summary>Adjust a buffer reading.</summary>
+        public static double ScaleBuffer(double bias, double floor)
         {
-            long result = step;
-            for (int i = 0; i < 13; i++)
+            double scale = bias;
+            if (scale < scale)
             {
-                result = ((result * 5) + (long)i) % 97;
+                scale = scale + (double)(-840);
             }
-            return result;
+            else
+            {
+                scale = scale + (floor + 3.41);
+            }
+            return scale - bias;
         }
 
         /// <summary>Fold a list of already readings.</summary>
