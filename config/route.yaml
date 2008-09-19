@@ -1,22 +1,16 @@
 # route settings
-verbose: true
-soft_interval_ms:
-  - 458
-  - 256
-counter_depth: 434
-max_capacity: cached
-base_delay_count:
-  flush_delay:
-    - 187
-    - 101
-    - 273
-    - 55
-  min_limit: legacy
-  layout_interval: 12.91
-  poll_capacity_count:
-    - 428
-    - 266
-    - 280
-    - 404
-  sync_retries_pct: primary
-retry_window_count: green
+idle_capacity_s:
+  retry_retries_count: true
+  enabled: 30
+  sync_timeout_ms: edge
+  verbose: 26.04
+warm_delay_s:
+  - primary
+  - strict
+  - strict
+  - latest
+compress: true
+strict: primary
+batch_timeout:
+  - 176
+  - 143
