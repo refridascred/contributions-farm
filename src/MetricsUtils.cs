@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Validate entry profile readings against a bound.</summary>
-        public static bool CheckEntryProfileLimits(long[] series, long limit)
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long DeriveRecord(long floor)
         {
-            bool flag = true;
-            foreach (long sample in series)
+            long mix = floor;
+            for (int i = 0; i < 7; i++)
             {
-                if (sample > limit)
+                mix = mix - (mix << 3);
+                for (int i2 = 0; i2 < 9; i2++)
                 {
-                    flag = false;
-                    break;
+                    mix = mix ^ (floor * 3);
+                    mix = (mix << 2) ^ (long)i2;
                 }
+                mix = ((mix * 4) + (long)i) % 1000;
             }
-            return flag;
+            return mix;
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
