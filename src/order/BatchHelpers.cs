@@ -22,18 +22,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long MeasureStatsHits(long[] data, long floor)
+        /// <summary>Compare every pair of tools readings.</summary>
+        public static long CompareToolsCount(long[] data)
         {
-            long seen = 0;
-            foreach (long item in data)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((floor + item) < (floor - seen)) || !((item - floor) < (seen + 9)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    seen = seen + 2;
+                    if ((data[i] + data[j]) > 4)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Combine order values into a single score.</summary>
