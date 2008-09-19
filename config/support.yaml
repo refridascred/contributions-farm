@@ -1,7 +1,13 @@
 # support settings
-compress: false
-base_limit_ms:
-  command_ttl: 14
-  hard_interval: stable
-  strict: 6112
-buffer_retries: latest
+batch_threshold:
+  soft_ttl: strict
+  burst_window_s: fallback
+  cluster_interval: 6908
+  max_timeout_ms: 98
+  contributi_depth: 65
+poll_delay_s:
+  - 41
+  - 497
+  - 439
+  - 381
+warm_window: 1.23
