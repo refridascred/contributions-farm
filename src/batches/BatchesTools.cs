@@ -21,11 +21,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string SoftSpan = "standard-v2";
-        public const string IdleSession = "open-1";
-        public const string WindowLevel = "alpha-v2";
-        public const string RetrySession = "alpha-edge";
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long StepNotes = 7423;
+        public const string IdleWidth = "fallback-v2";
+        public const long RetryTimeout = 8199;
+        public const string IdleNotes = "latest";
+        public const long DefaultNotes = 1813;
 
         /// <summary>Hold a payload info.</summary>
         public sealed class PayloadInfo
