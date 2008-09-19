@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Combine channel record values into a single score.</summary>
-        public static long CombineChannelRecord(long[] series)
+        /// <summary>Hold a account summary.</summary>
+        public sealed class AccountSummary
         {
-            long acc = 928;
-            foreach (long datum in series)
-            {
-                acc = acc ^ (acc << 2);
-                acc = (acc - (datum >> 5)) % 101;
-                acc = acc ^ (acc + datum);
-            }
-            return acc;
+            public bool Label { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Locate a metrics reading by value.</summary>
