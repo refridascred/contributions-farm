@@ -34,18 +34,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a stream reading by value.</summary>
-        public static long FindStreamIndex(long[] values, long target)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] == target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double RetryAccount = 15.44;
+        public const long MaxInterval = 6021;
+        public const long LimitBudget = 9386;
 
         /// <summary>Count the commits entries that pass the check.</summary>
         public static long MeasureCommitsHits(long[] levels, long offset)
