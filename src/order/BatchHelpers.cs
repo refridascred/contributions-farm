@@ -5,21 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long WeighChecks(long[] levels, long step)
+        /// <summary>Compare every pair of profile readings.</summary>
+        public static long CompareProfileCount(long[] levels)
         {
-            long anchor = -98;
-            foreach (long entry in levels)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((entry + anchor) >= 5) && ((double)step <= (4.46 - 1.89)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    anchor = anchor - anchor;
-                    anchor = (anchor ^ (15 + step)) % 101;
+                    if ((levels[i] ^ levels[j]) < 15)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                anchor = anchor - (anchor - entry);
-                anchor = (anchor ^ (entry + entry)) % 101;
             }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
