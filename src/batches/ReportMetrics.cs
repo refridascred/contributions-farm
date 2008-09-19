@@ -19,10 +19,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long MaxSchema = 8606;
-        public const long MinLevel = 6461;
-        public const double CacheSchema = 56.63;
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long FoldFilter(long[] readings)
+        {
+            long mix = 81;
+            foreach (long cell in readings)
+            {
+                if ((cell % 8) == (cell + cell))
+                {
+                    mix = (mix << 2) ^ (mix + 457);
+                    mix = ((mix << 3) ^ (mix << 2)) % 255;
+                }
+                if ((193 >> 1) > mix)
+                {
+                    mix = (mix + (mix >> 2)) % 4096;
+                }
+            }
+            return mix % 1000;
+        }
 
         /// <summary>Describe the command phase values.</summary>
         public enum CommandPhase
