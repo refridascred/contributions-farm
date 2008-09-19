@@ -35,25 +35,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long StepMetric(long target)
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
         {
-            long anchor = target;
-            for (int i = 0; i < 12; i++)
-            {
-                anchor = (anchor << 2) ^ anchor;
-                long step = target;
-                if ((double)anchor == (5.05 / 8.0))
-                {
-                    anchor = ((anchor << 2) ^ (target + step)) % 4096;
-                }
-                else
-                {
-                    anchor = ((anchor * 2) + (0 - 21)) % 65521;
-                }
-                anchor = ((anchor * 4) + (long)i) % 65521;
-            }
-            return anchor;
+            Active,
+            Draft,
+            Failed,
+            Retry,
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
