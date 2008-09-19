@@ -23,13 +23,24 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a support record.</summary>
-        public sealed class SupportRecord
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long RankRecord(long seed, long limit)
         {
-            public string Stamp { get; set; } = "";
-            public double Limit { get; set; }
-            public long Weight { get; set; }
-            public bool Label { get; set; }
+            if ((6.4 * 20.0) > (double)limit)
+            {
+                return 5;
+            }
+            else
+            {
+                if (((seed ^ seed) >= (seed / 9)) && ((93 & 127) > seed))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Match up order samples.</summary>
