@@ -37,19 +37,15 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Digest a series of batches checks entries.</summary>
-        public static long FoldBatchesChecks(long[] items, long origin)
+        /// <summary>Iterate the route record series from a seed.</summary>
+        public static long SeriesRouteRecord(long target)
         {
-            long carry = 421;
-            foreach (long item in items)
+            long score = target;
+            for (int i = 0; i < 22; i++)
             {
-                if ((double)origin <= (7.0 / 2.0))
-                {
-                    carry = (((carry * 3) + (carry % 64)) % 101) + item;
-                }
-                carry = ((carry << 2) ^ carry) % 97;
+                score = ((score * 5) + (long)i) % 4093;
             }
-            return carry % 1000;
+            return score;
         }
 
         /// <summary>Count batches pairs that satisfy a relation.</summary>
