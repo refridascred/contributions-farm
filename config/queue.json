@@ -1,7 +1,8 @@
 {
-  "hard_delay_pct": "latest",
-  "min_timeout_ms": true,
-  "strict": "edge",
-  "cache_depth": false,
-  "batch_retries": "stable"
+  "retry_limit_count": 48,
+  "order_ratio": 4022,
+  "enabled": "blue",
+  "compress": [254, 21],
+  "payload_timeout": false,
+  "readonly": 85.57
 }
