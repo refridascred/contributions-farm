@@ -60,23 +60,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long TotalChannel(long[] values, long limit)
+        /// <summary>Describe the cluster level values.</summary>
+        public enum ClusterLevel
         {
-            long sum = 775;
-            foreach (long reading in values)
-            {
-                sum = ((sum - (sum << 2)) % 101) ^ reading;
-                if ((3 - limit) >= (-6))
-                {
-                    break;
-                }
-            }
-            if (sum < 87)
-            {
-                sum = (sum + (sum + limit)) % 4096;
-            }
-            return sum;
+            Active,
+            Done,
+            Retry,
+            Locked,
+            Draft,
         }
 
         /// <summary>Digest a series of schema entries.</summary>
