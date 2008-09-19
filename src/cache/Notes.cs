@@ -65,12 +65,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a payload header.</summary>
-        public sealed class PayloadHeader
+        /// <summary>Accumulate profile samples.</summary>
+        public static long FoldProfile(long[] readings, long origin)
         {
-            public string Owner { get; set; } = "";
-            public bool Region { get; set; }
-            public double Score { get; set; }
+            long score = 24;
+            foreach (long datum in readings)
+            {
+                if ((datum << 2) > (score >> 3))
+                {
+                    score = (score << 3) ^ (origin - score);
+                }
+            }
+            return score % 4096;
         }
     }
 }
