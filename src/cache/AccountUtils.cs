@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the order phase values.</summary>
-        public enum OrderPhase
-        {
-            Retry,
-            Queued,
-            Done,
-            Locked,
-            Paused,
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long IdleDepth = 1226;
+        public const long RetrySpan = 58;
+        public const string BurstContributi = "latest";
+        public const long HardContributi = 25;
+        public const long BaseContributi = 6278;
 
         /// <summary>Accumulate stats samples.</summary>
         public static long ScoreStats(long[] items, long bound)
