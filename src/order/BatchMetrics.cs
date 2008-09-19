@@ -36,22 +36,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long AuditFormatOutliers(long[] levels, long origin)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool VerifyRecordRange(long[] readings, long origin)
         {
-            long hits = 0;
-            foreach (long value in levels)
+            bool flag = true;
+            foreach (long value in readings)
             {
-                if ((value ^ value) >= origin)
+                if (value > origin)
                 {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
 
         /// <summary>Rank account input into a small class.</summary>
