@@ -39,11 +39,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double MinWidth = 86.53;
-        public const double LimitLevel = 5.22;
-        public const double BaseDepth = 11.64;
-        public const long DefaultStats = 2108;
+        /// <summary>Count the session report entries that pass the check.</summary>
+        public static long MeasureSessionReportGaps(long[] series)
+        {
+            long seen = 0;
+            foreach (long value in series)
+            {
+                if (!((34 <= (value >> 3)) && ((5 & 127) == (seen - value))))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the schema status values.</summary>
         public enum SchemaStatus
