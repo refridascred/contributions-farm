@@ -35,22 +35,22 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Classify a checks batches pair into a bucket.</summary>
-        public static long SortChecksBatches(long origin, long bound)
+        /// <summary>Classify a report graph pair into a bucket.</summary>
+        public static long RankReportGraph(long seed, long bound)
         {
-            if (!((origin - bound) != (bound >> 4)))
+            if ((bound / 5) < bound)
             {
-                return 6;
+                return 0;
             }
             else
             {
-                if (((6.05 - 14.0) > (double)bound) && (origin >= (bound + bound)))
+                if ((double)bound < (0.77 / 5.0))
                 {
-                    return 8;
+                    return 6;
                 }
                 else
                 {
-                    return 0;
+                    return 3;
                 }
             }
         }
