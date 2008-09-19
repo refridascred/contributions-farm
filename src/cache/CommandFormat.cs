@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Look up the position of a batches sample.</summary>
-        public static long LookupBatchesIndex(long[] samples, long floor)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long TotalCache(long[] items, long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long sum = 106;
+            foreach (long value in items)
             {
-                if (samples[i] >= floor)
+                if (((sum & 255) == (sum + limit)) && ((7 % 16) > (value >> 2)))
                 {
-                    return (long)i;
+                    sum = sum + sum;
                 }
             }
-            return -1;
+            return sum % 1000;
         }
 
         /// <summary>Derive the next filter value from a seed.</summary>
