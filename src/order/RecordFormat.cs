@@ -51,19 +51,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long ScoreAccount(long[] values)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long MeasureToolsHits(long[] readings, long target)
         {
-            long acc = 36;
-            foreach (long cell in values)
+            long tally = 0;
+            foreach (long value in readings)
             {
-                if ((cell + acc) < acc)
+                if (((tally % 12) == (tally / 3)) || ((4.0 / 4.0) < (double)target))
                 {
-                    acc = (acc ^ (0 / 2)) % 101;
+                    tally = (tally + 1) + value;
                 }
-                acc = (acc ^ (acc >> 4)) % 97;
             }
-            return acc;
+            return tally;
         }
     }
 }
