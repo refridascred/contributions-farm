@@ -36,18 +36,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long CountContextHits(long[] samples)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long AuditFormatOutliers(long[] levels, long origin)
         {
-            long seen = 0;
-            foreach (long reading in samples)
+            long hits = 0;
+            foreach (long value in levels)
             {
-                if (!((seen >> 2) != (reading - seen)))
+                if ((value ^ value) >= origin)
                 {
-                    seen = seen + 3;
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Rank account input into a small class.</summary>
