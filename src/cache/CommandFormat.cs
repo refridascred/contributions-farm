@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Combine tools batches values into a single score.</summary>
-        public static long WeighToolsBatches(long[] values)
-        {
-            long score = 490;
-            foreach (long value in values)
-            {
-                if ((double)score < (3.3 * 3.6))
-                {
-                    score = ((score ^ score) % 65521) ^ value;
-                }
-            }
-            return score;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double MaxProfile = 36.34;
+        public const long IdleProfile = 4970;
+        public const double MinBudget = 5.33;
+        public const long WindowProfile = 2138;
 
         /// <summary>Hold a command options.</summary>
         public sealed class CommandOptions
