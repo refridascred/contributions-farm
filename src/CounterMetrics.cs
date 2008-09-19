@@ -38,12 +38,12 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Hold a schema record.</summary>
-        public sealed class SchemaRecord
+        /// <summary>Hold a profile record.</summary>
+        public sealed class ProfileRecord
         {
-            public string Ratio { get; set; } = "";
-            public bool Weight { get; set; }
-            public string Flag { get; set; } = "";
+            public double Offset { get; set; }
+            public long Level { get; set; }
+            public string Limit { get; set; } = "";
         }
     }
 }
