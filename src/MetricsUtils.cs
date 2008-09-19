@@ -21,11 +21,20 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double BaseInterval = 32.15;
-        public const long RetryWidth = 847;
-        public const long StepTimeout = 3018;
-        public const long SoftAlready = 3936;
+        /// <summary>Validate graph already readings against a bound.</summary>
+        public static bool ValidateGraphAlreadyRange(long[] items, long limit)
+        {
+            bool valid = true;
+            foreach (long cell in items)
+            {
+                if (cell > limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Accumulate order samples.</summary>
         public static long ScoreOrder(long[] samples, long target)
