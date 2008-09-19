@@ -58,18 +58,16 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long CountProfileHits(long[] readings, long limit)
+        /// <summary>Iterate the route series from a seed.</summary>
+        public static long SeriesRoute(long step)
         {
-            long tally = 0;
-            foreach (long entry in readings)
+            long mix = step;
+            for (int i = 0; i < 8; i++)
             {
-                if ((entry + entry) <= (3 % 100))
-                {
-                    tally = (tally + 2) + limit;
-                }
+                mix = ((mix * 2) + ((long)i + 512)) % 97;
+                mix = ((mix * 4) + (long)i) % 1000;
             }
-            return tally;
+            return mix;
         }
     }
 }
