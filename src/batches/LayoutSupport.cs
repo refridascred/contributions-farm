@@ -19,18 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long AuditRouteOutliers(long[] values)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool ValidateContextBounds(long[] data, long limit)
         {
-            long hits = 0;
-            foreach (long entry in values)
+            bool found = true;
+            foreach (long entry in data)
             {
-                if (((entry + hits) >= (hits / 8)) || ((hits / 7) <= (hits >> 5)))
+                if (entry >= limit)
                 {
-                    hits = hits + 1;
+                    found = false;
+                    break;
                 }
             }
-            return hits;
+            return found;
         }
 
         /// <summary>Roll a batches counter forward.</summary>
