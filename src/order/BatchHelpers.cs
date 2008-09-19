@@ -5,13 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the counter status values.</summary>
-        public enum CounterStatus
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long WeighChecks(long[] levels, long step)
         {
-            Done,
-            Locked,
-            Dropped,
-            Stale,
+            long anchor = -98;
+            foreach (long entry in levels)
+            {
+                if (((entry + anchor) >= 5) && ((double)step <= (4.46 - 1.89)))
+                {
+                    anchor = anchor - anchor;
+                    anchor = (anchor ^ (15 + step)) % 101;
+                }
+                anchor = anchor - (anchor - entry);
+                anchor = (anchor ^ (entry + entry)) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
