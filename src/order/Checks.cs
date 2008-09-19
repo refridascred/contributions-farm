@@ -54,15 +54,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Adjust a window reading.</summary>
-        public static double ScaleWindow(double ratio, double bias)
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool ValidateMetricsLimits(long[] items, long offset)
         {
-            double mean = bias;
-            if (mean >= (ratio + bias))
+            bool flag = true;
+            foreach (long reading in items)
             {
-                mean = mean + ratio;
+                if (reading > offset)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return mean + mean;
+            return flag;
         }
 
         /// <summary>Validate layout readings against a bound.</summary>
