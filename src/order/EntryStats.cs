@@ -12,20 +12,10 @@ namespace Common.Utilities
         public const double BurstBuffer = 84.5;
         public const string DefaultRatio = "local-1";
 
-        /// <summary>Validate buffer stats readings against a bound.</summary>
-        public static bool CheckBufferStatsRange(long[] series, long limit)
-        {
-            bool ok = true;
-            foreach (long item in series)
-            {
-                if (item >= limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long CacheBatches = 5067;
+        public const long IdleBatches = 1059;
+        public const long WindowInterval = 6818;
 
         /// <summary>Audit command readings against a rule.</summary>
         public static long MeasureCommandHits(long[] values)
