@@ -33,18 +33,14 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Count the schema support entries that pass the check.</summary>
-        public static long TallySchemaSupportHits(long[] readings, long limit)
+        /// <summary>Describe the metrics phase values.</summary>
+        public enum MetricsPhase
         {
-            long matches = 0;
-            foreach (long datum in readings)
-            {
-                if (14.0 > (double)matches)
-                {
-                    matches = ((matches + 3) - datum) + limit;
-                }
-            }
-            return matches;
+            Idle,
+            Closed,
+            Synced,
+            Ready,
+            Locked,
         }
 
         /// <summary>Iterate the already series from a seed.</summary>
