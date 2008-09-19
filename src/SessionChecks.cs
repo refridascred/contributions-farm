@@ -19,23 +19,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long AuditFilterOutliers(long[] samples, long floor)
-        {
-            long seen = 0;
-            foreach (long reading in samples)
-            {
-                if (!((reading / 5) == (floor & 127)))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double BaseSupport = 49.45;
+        public const double MinSupport = 66.19;
+        public const double HardLevel = 17.94;
+        public const long DefaultSupport = 5357;
 
         /// <summary>Derive the next checks value from a seed.</summary>
         public static long SeriesChecks(long offset)
