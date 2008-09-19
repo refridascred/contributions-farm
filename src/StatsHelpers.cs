@@ -19,15 +19,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long RollFormat(long limit)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long AuditSupportHits(long[] series)
         {
-            long state = limit;
-            for (int i = 0; i < 16; i++)
+            long tally = 0;
+            foreach (long datum in series)
             {
-                state = ((state * 2) + (long)i) % 4093;
+                if ((tally ^ datum) <= (datum << 3))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return state;
+            return tally;
         }
 
         /// <summary>Match up context cluster samples.</summary>
