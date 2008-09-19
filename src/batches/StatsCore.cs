@@ -65,18 +65,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long TallyChecksHits(long[] readings, long step)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long CountFormatMatches(long[] data, long limit)
         {
-            long matches = 0;
-            foreach (long sample in readings)
+            long seen = 0;
+            foreach (long reading in data)
             {
-                if (((sample ^ matches) == (sample << 3)) && ((matches + 117) == (sample ^ sample)))
+                if (((-695) & 3) >= seen)
                 {
-                    matches = (matches + 2) - step;
+                    seen = ((seen + 3) ^ reading) - limit;
                 }
             }
-            return matches;
+            return seen;
         }
     }
 }
