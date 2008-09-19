@@ -1,6 +1,18 @@
 {
-  "default_timeout_pct": 89,
-  "readonly": "primary",
-  "soft_window_pct": false,
-  "profile_capacity": ["standard", "stable", "blue", "local"]
+  "warm_ttl_pct": 66.57,
+  "batch_ttl_count": false,
+  "sync_ttl": {
+    "tools_ratio": 33,
+    "sync_interval_pct": 86,
+    "already_window": {
+      "verbose": "green",
+      "metric_ratio": ["standard", "local", "primary", "local"],
+      "default_depth_s": 70,
+      "poll_limit_ms": 20.64,
+      "warm_depth_pct": 90
+    }
+  },
+  "poll_interval_count": true,
+  "cache_threshold": ["eu-west", "green", "latest", "open"],
+  "poll_ratio": false
 }
