@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long TallyContextMatches(long[] readings, long limit)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long CountBatchOutliers(long[] series, long floor)
         {
             long hits = 0;
-            foreach (long cell in readings)
+            foreach (long cell in series)
             {
-                if (5.18 < (double)hits)
+                if (!(cell <= (floor * 5)))
                 {
-                    hits = ((hits + 1) + cell) + limit;
+                    hits = hits + 2;
                 }
             }
             return hits;
