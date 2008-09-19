@@ -1,5 +1,12 @@
 {
-  "persist": "strict",
-  "flush_delay": "edge",
-  "idle_ratio_pct": "staging"
+  "soft_threshold_ms": 78.44,
+  "warm_capacity_count": 67.25,
+  "cache_window_pct": 100,
+  "schema_timeout": 10,
+  "flush_limit_pct": {
+    "payload_timeout": 250,
+    "metric_depth": [304, 39, 100, 171],
+    "warm_window_pct": true
+  },
+  "route_limit": "local"
 }
