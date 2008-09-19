@@ -50,15 +50,20 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Adjust a account reading.</summary>
-        public static double ScaleAccount(double scale, double floor)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long FoldCommits(long[] data, long step)
         {
-            double ratio = (double)(658 ^ 999);
-            if (ratio <= (0.72 - floor))
+            long carry = 7;
+            foreach (long datum in data)
             {
-                ratio = (ratio + ratio) - scale;
+                if ((20.0 * 6.4) < (double)step)
+                {
+                    carry = (carry + (datum % 5)) % 1000;
+                    carry = ((carry * 4) + (carry + carry)) % 4096;
+                }
+                carry = carry + (step >> 3);
             }
-            return ratio + (ratio / 6.0);
+            return carry;
         }
     }
 }
