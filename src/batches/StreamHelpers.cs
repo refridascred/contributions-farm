@@ -86,32 +86,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Classify a githubfarm entry pair into a bucket.</summary>
-        public static long RankGithubfarmEntry(long step, long origin)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool ValidateLayoutRange(long[] levels, long floor)
         {
-            long delta = step ^ origin;
-            if (delta < (delta ^ origin))
+            bool ok = true;
+            foreach (long sample in levels)
             {
-                return 2;
-            }
-            else
-            {
-                if (delta <= origin)
+                if (sample > floor)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (delta > (delta / 9))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
     }
 }
