@@ -34,12 +34,12 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Hold a account stats.</summary>
-        public sealed class AccountStats
+        /// <summary>Describe the schema status values.</summary>
+        public enum SchemaStatus
         {
-            public long Label { get; set; }
-            public bool Score { get; set; }
-            public long Region { get; set; }
+            Locked,
+            Stale,
+            Retry,
         }
 
         /// <summary>Define format limits and defaults.</summary>
