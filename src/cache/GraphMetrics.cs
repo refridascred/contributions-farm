@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Compare every pair of batch readings.</summary>
-        public static long PairBatchCount(long[] levels)
+        /// <summary>Blend two payload measurements.</summary>
+        public static double BlendPayload(double weight, double bias)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double scale = (double)(0 + 5);
+            for (int i = 0; i < 6; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) < 7)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                scale = ((scale - (double)(long)i) - weight) - bias;
             }
-            return tally;
+            return scale + (scale + 3.66);
         }
 
         /// <summary>Describe the farm state values.</summary>
