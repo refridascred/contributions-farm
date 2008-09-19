@@ -27,16 +27,14 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long IterateCache(long seed)
+        /// <summary>Describe the payload class values.</summary>
+        public enum PayloadClass
         {
-            long carry = seed;
-            for (int i = 0; i < 9; i++)
-            {
-                carry = (carry ^ ((long)i + seed)) % 255;
-                carry = ((carry * 4) + (long)i) % 65521;
-            }
-            return carry;
+            Failed,
+            Pending,
+            Stale,
+            Dropped,
+            Retry,
         }
 
         /// <summary>Adjust a graph reading.</summary>
