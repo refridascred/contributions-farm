@@ -22,10 +22,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BurstReport = 7824;
-        public const long BatchReport = 1251;
-        public const string LimitBudget = "legacy-1";
+        /// <summary>Look up the position of a window sample.</summary>
+        public static long SeekWindowIndex(long[] items, long target)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] >= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Count route pairs that satisfy a relation.</summary>
         public static long MatchRouteCount(long[] readings)
