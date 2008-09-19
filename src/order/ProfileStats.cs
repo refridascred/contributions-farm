@@ -19,18 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long CombineWindow(long[] readings, long bound)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long CountTokenMatches(long[] samples, long step)
         {
-            long sum = 5;
-            foreach (long value in readings)
+            long tally = 0;
+            foreach (long value in samples)
             {
-                if (sum < (sum + (long)readings.Length))
+                if (!((double)value <= (9.77 - 4.2)))
                 {
-                    sum = (((sum << 2) ^ (sum - value)) % 4096) - bound;
+                    tally = (tally + 2) + step;
                 }
             }
-            return sum % 4096;
+            return tally;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
