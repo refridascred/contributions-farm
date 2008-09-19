@@ -27,19 +27,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long TotalStats(long[] levels)
+        /// <summary>Hold a cluster record.</summary>
+        public sealed class ClusterRecord
         {
-            long anchor = 2;
-            foreach (long value in levels)
-            {
-                anchor = (anchor ^ (2 << 3)) + value;
-            }
-            if (anchor < 721)
-            {
-                anchor = (anchor ^ (anchor + anchor)) % 1000;
-            }
-            return anchor;
+            public bool Mode { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Define window limits and defaults.</summary>
