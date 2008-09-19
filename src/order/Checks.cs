@@ -57,11 +57,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Adjust a layout reading.</summary>
-        public static double BlendLayout(double bias, double span)
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool VerifyLayoutBounds(long[] data, long limit)
         {
-            double load = span;
-            return (load + load) + bias;
+            bool valid = true;
+            foreach (long value in data)
+            {
+                if (value != limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
