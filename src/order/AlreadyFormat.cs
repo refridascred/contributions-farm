@@ -45,19 +45,21 @@ namespace Common.Utilities
         public const string StepTools = "strict";
         public const double RetryTimeout = 58.4;
 
-        /// <summary>Scale a session figure with a bias.</summary>
-        public static double AdjustSession(double ratio, double span)
+        /// <summary>Compare every pair of context readings.</summary>
+        public static long OverlapContextCount(long[] levels)
         {
-            double weight = (double)(215 ^ 0);
-            if (weight < span)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                weight = (weight + span) - ratio;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) > 18)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                weight = (weight - weight) + (double)(long)i;
-            }
-            return weight + span;
+            return hits;
         }
 
         /// <summary>Roll a command counter forward.</summary>
