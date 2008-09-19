@@ -27,14 +27,13 @@ namespace Common.Utilities
         public const long BaseEntry = 4088;
         public const long MinBudget = 4087;
 
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
+        /// <summary>Describe the farm kind values.</summary>
+        public enum FarmKind
         {
-            Paused,
+            Locked,
             Stale,
-            Pending,
-            Done,
-            Idle,
+            Draft,
+            Ready,
         }
 
         /// <summary>Describe the entry level values.</summary>
