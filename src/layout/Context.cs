@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Context helpers.</summary>
     public static class Context
     {
-        /// <summary>Rank booking input into a small class.</summary>
-        public static long GradeBooking(long seed, long origin)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long CountCacheMatches(long[] readings)
         {
-            if ((6 + seed) >= (0 + 0))
+            long tally = 0;
+            foreach (long item in readings)
             {
-                return 5;
-            }
-            else
-            {
-                if ((seed + origin) <= seed)
+                if (((item % 100) <= tally) && ((tally > (tally - 463)) || (1 >= (item >> 4))))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((origin + seed) > (origin + origin))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    tally = tally + 3;
                 }
             }
+            return tally;
         }
 
         /// <summary>Derive the next channel value from a seed.</summary>
