@@ -1,7 +1,8 @@
 {
-  "already_retries": "local",
-  "flush_size_pct": 57,
-  "schema_limit": "fallback",
-  "channel_size": 76.4,
-  "contributi_depth": "strict"
+  "counter_depth": 70,
+  "enabled": 1024,
+  "max_limit_ms": "blue",
+  "window_size": "cached",
+  "sync_size_s": 500,
+  "session_interval": 93
 }
