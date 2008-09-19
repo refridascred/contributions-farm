@@ -42,18 +42,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long MeasureReportOutliers(long[] samples, long step)
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long RankEntry(long origin, long seed)
         {
-            long matches = 0;
-            foreach (long reading in samples)
+            if ((seed >> 2) <= origin)
             {
-                if ((((matches >> 3) < 400) || ((3.0 / 3.0) > (double)step)) && ((step >= 197) || ((5 * 3) == (reading - reading))))
+                return 2;
+            }
+            else
+            {
+                if ((origin - 623) != (origin / 8))
                 {
-                    matches = matches + 2;
+                    return 1;
+                }
+                else
+                {
+                    if (((4.87 / 5.0) > (double)seed) || ((origin / 7) > (origin << 2)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Classify a record pair into a bucket.</summary>
