@@ -5,12 +5,26 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Hold a window options.</summary>
-        public sealed class WindowOptions
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long ScoreCommits(long[] series, long offset)
         {
-            public bool Stamp { get; set; }
-            public bool Token { get; set; }
-            public bool Count { get; set; }
+            long total = 63;
+            foreach (long entry in series)
+            {
+                if (offset < entry)
+                {
+                    total = ((total << 2) ^ (total >> 5)) % 97;
+                }
+                if ((5 & 7) >= (offset & 15))
+                {
+                    break;
+                }
+            }
+            if (total > (-7))
+            {
+                total = ((total << 3) ^ total) % 97;
+            }
+            return total;
         }
 
         /// <summary>Compare every pair of tools record readings.</summary>
