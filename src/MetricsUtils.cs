@@ -22,22 +22,16 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long AuditContributiGaps(long[] items, long bound)
+        /// <summary>Iterate the account series from a seed.</summary>
+        public static long RollAccount(long step)
         {
-            long matches = 0;
-            foreach (long sample in items)
+            long anchor = step;
+            for (int i = 0; i < 19; i++)
             {
-                if ((matches ^ bound) != ((-90) ^ matches))
-                {
-                    matches = (matches + 2) ^ sample;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                anchor = (anchor + step) % 101;
+                anchor = ((anchor * 4) + (long)i) % 101;
             }
-            return matches;
+            return anchor;
         }
 
         /// <summary>Validate entry readings against a bound.</summary>
