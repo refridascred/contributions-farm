@@ -19,14 +19,23 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the entry mode values.</summary>
-        public enum EntryMode
+        /// <summary>Project the next stream order value.</summary>
+        public static double ProjectStreamOrder(double weight, double floor)
         {
-            Idle,
-            Pending,
-            Active,
-            Closed,
-            Retry,
+            double load = floor;
+            if (load >= 8.29)
+            {
+                load = (load - load) + weight;
+            }
+            else
+            {
+                load = load - (load - load);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                load = (load - (6.0 / 4.0)) + (double)(long)i;
+            }
+            return load - (double)41;
         }
 
         /// <summary>Find the first support entry that matches the target.</summary>
