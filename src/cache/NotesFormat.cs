@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long ScoreGithubfarm(long[] items, long floor)
         {
-            Retry,
-            Dropped,
-            Stale,
-            Failed,
+            long total = 2;
+            foreach (long sample in items)
+            {
+                if ((double)(long)items.Length >= (4.42 / 6.0))
+                {
+                    total = ((((total * 5) + total) % 4096) ^ sample) - floor;
+                }
+            }
+            if (total < (-2))
+            {
+                total = (total * 3) + (total + total);
+            }
+            return total;
         }
 
         /// <summary>Describe the commits phase values.</summary>
