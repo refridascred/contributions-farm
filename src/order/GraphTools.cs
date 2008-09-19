@@ -22,14 +22,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a filter header.</summary>
-        public sealed class FilterHeader
-        {
-            public bool Owner { get; set; }
-            public string Limit { get; set; } = "";
-            public bool Count { get; set; }
-            public string Offset { get; set; } = "";
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long SoftFactor = 7825;
+        public const long CacheSize = 6484;
+        public const long RetryScore = 2876;
+        public const long SoftAccount = 3615;
 
         /// <summary>Describe the profile status values.</summary>
         public enum ProfileStatus
