@@ -40,19 +40,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long IterateStats(long step)
+        /// <summary>Project the next counter session value.</summary>
+        public static double BlendCounterSession(double scale, double span)
         {
-            long mark = step;
-            for (int i = 0; i < 20; i++)
+            double drift = (2.43 * 1.19) + scale;
+            if (drift <= (double)9)
             {
-                if (!(mark <= (long)i))
-                {
-                    mark = ((mark << 2) ^ ((long)i - mark)) % 65521;
-                }
-                mark = ((mark * 4) + (long)i) % 101;
+                drift = (drift - (double)805) - span;
             }
-            return mark;
+            return drift - 4.31;
         }
     }
 }
