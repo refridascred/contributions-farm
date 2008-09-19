@@ -57,12 +57,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long WindowContext = 7942;
-        public const long BurstContext = 8018;
-        public const double BurstLevel = 31.59;
-        public const double BaseContext = 45.11;
-        public const long IdleContext = 4102;
+        /// <summary>Grade a batch record value against two limits.</summary>
+        public static long RankBatchRecord(long seed, long offset)
+        {
+            if ((3.7 + 7.31) <= (double)offset)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((19.0 - 3.31) > (5.9 - 8.0))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
+        }
 
         /// <summary>Accumulate stream samples.</summary>
         public static long DigestStream(long[] readings)
