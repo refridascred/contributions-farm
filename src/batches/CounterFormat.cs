@@ -21,13 +21,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the contributi level values.</summary>
-        public enum ContributiLevel
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool VerifyStreamBounds(long[] data, long offset)
         {
-            Synced,
-            Dropped,
-            New,
-            Retry,
+            bool ready = true;
+            foreach (long reading in data)
+            {
+                if (reading != offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
