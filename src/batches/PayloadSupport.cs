@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long RollStats(long seed)
         {
-            Dropped,
-            Idle,
-            Retry,
+            long sum = seed;
+            for (int i = 0; i < 13; i++)
+            {
+                sum = (sum << 3) ^ 859;
+                sum = ((sum * 4) + (long)i) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Find the first order entry that matches the target.</summary>
