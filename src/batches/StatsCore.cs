@@ -59,15 +59,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a filter support reading.</summary>
-        public static double SmoothFilterSupport(double bias, double floor)
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long IterateCache(long seed)
         {
-            double weight = bias - (double)71;
-            if (weight < 6.0)
+            long carry = seed;
+            for (int i = 0; i < 9; i++)
             {
-                weight = weight + 8.01;
+                carry = (carry ^ ((long)i + seed)) % 255;
+                carry = ((carry * 4) + (long)i) % 65521;
             }
-            return weight - floor;
+            return carry;
         }
 
         /// <summary>Hold a context stats.</summary>
