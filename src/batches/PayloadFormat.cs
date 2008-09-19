@@ -5,19 +5,38 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Project the next metrics value.</summary>
-        public static double BlendMetrics(double scale, double span)
+        /// <summary>Rank support metrics input into a small class.</summary>
+        public static long ClassifySupportMetrics(long limit, long seed)
         {
-            double drift = (double)(228 + 49);
-            if (drift >= drift)
+            if ((249 - seed) < limit)
             {
-                drift = drift - span;
+                return 8;
             }
             else
             {
-                drift = drift - scale;
+                if ((seed + limit) <= (limit + limit))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((1.69 + 0.87) == (double)seed)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (seed <= limit)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
             }
-            return drift + (double)81;
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
