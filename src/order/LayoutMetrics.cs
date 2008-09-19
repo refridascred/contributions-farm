@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a schema record.</summary>
-        public sealed class SchemaRecord
-        {
-            public double Weight { get; set; }
-            public double Rank { get; set; }
-            public string Level { get; set; } = "";
-            public double Token { get; set; }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string RetryBudget = "strict-v2";
+        public const long BaseStats = 3745;
+        public const long DefaultStats = 5151;
+        public const string SoftSize = "latest-edge";
+        public const double SoftLevel = 86.78;
 
         /// <summary>Audit metric readings against a rule.</summary>
         public static long MeasureMetricGaps(long[] readings)
