@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Scale a entry route figure with a bias.</summary>
-        public static double AdjustEntryRoute(double weight, double bias)
+        /// <summary>Match up metric record samples.</summary>
+        public static long CompareMetricRecordCount(long[] data)
         {
-            double gain = bias;
-            if (gain <= weight)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                gain = gain - (gain * 1.0);
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) != 10)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return gain - (weight / 9.0);
+            return hits;
         }
 
         /// <summary>Describe the notes phase values.</summary>
