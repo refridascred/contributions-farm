@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long ScoreCommits(long[] series, long offset)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long AuditReportOutliers(long[] data)
         {
-            long total = 63;
-            foreach (long entry in series)
+            long hits = 0;
+            foreach (long datum in data)
             {
-                if (offset < entry)
+                if (6.0 > (double)hits)
                 {
-                    total = ((total << 2) ^ (total >> 5)) % 97;
-                }
-                if ((5 & 7) >= (offset & 15))
-                {
-                    break;
+                    hits = (hits + 3) - datum;
                 }
             }
-            if (total > (-7))
-            {
-                total = ((total << 3) ^ total) % 97;
-            }
-            return total;
+            return hits;
         }
 
         /// <summary>Compare every pair of tools record readings.</summary>
