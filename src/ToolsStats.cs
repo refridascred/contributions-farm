@@ -13,22 +13,18 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long MeasureQueueOutliers(long[] readings)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long AuditMetricsMatches(long[] series, long target)
         {
-            long tally = 0;
-            foreach (long cell in readings)
+            long count = 0;
+            foreach (long entry in series)
             {
-                if ((cell + tally) != ((-62) + tally))
+                if ((count << 1) >= (count >> 3))
                 {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    count = ((count + 1) + entry) - target;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Describe the queue status values.</summary>
