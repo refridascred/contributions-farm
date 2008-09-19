@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Count record pairs that satisfy a relation.</summary>
-        public static long MatchRecordCount(long[] values)
+        /// <summary>Hold a already info.</summary>
+        public sealed class AlreadyInfo
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) > 5)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public double Mode { get; set; }
+            public long Total { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
