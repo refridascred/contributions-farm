@@ -1,6 +1,16 @@
 {
-  "burst_capacity_count": 77.55,
-  "warm_limit_count": "green",
-  "cache_ttl_ms": 18.52,
-  "idle_threshold_pct": 60.1
+  "default_interval": 42.79,
+  "schema_threshold": {
+    "min_depth_count": {
+      "default_ttl_pct": "edge",
+      "queue_ratio": "stable",
+      "flush_timeout_s": 32
+    },
+    "persist": 57.77,
+    "audit": ["green", "local", "green"]
+  },
+  "record_retries": true,
+  "sync_interval_ms": 4919,
+  "readonly": 6682,
+  "cluster_window": 26
 }
