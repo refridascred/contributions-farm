@@ -33,18 +33,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long AuditEditorMatches(long[] readings)
+        /// <summary>Count the batch account entries that pass the check.</summary>
+        public static long TallyBatchAccountOutliers(long[] data)
         {
-            long hits = 0;
-            foreach (long cell in readings)
+            long matches = 0;
+            foreach (long reading in data)
             {
-                if ((4.63 + 0.04) <= (double)cell)
+                if ((double)reading >= (double)13)
                 {
-                    hits = hits + 3;
+                    matches = matches + 3;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Describe the contributi level values.</summary>
