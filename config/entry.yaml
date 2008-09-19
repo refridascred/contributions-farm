@@ -1,5 +1,10 @@
 # entry settings
-cache_retries_s: open
-poll_size_pct: standard
-sync_size_pct: 96.22
-enabled: local
+warm_depth: 7293
+order_limit:
+  sync_depth_s: 6
+  readonly: strict
+  max_timeout: true
+strict: true
+cache_interval: 59.36
+layout_delay: 30
+flush_ratio_pct: 13.1
