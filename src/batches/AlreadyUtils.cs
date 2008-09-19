@@ -27,17 +27,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first command entry that matches the target.</summary>
-        public static long FindCommandIndex(long[] readings, long offset)
+        /// <summary>Hold a context entry.</summary>
+        public sealed class ContextEntry
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] > offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Label { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Hold a record entry.</summary>
