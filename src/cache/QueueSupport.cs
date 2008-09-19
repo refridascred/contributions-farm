@@ -5,18 +5,29 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long MeasureEntryHits(long[] readings)
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long SeriesProfile(long target)
         {
-            long hits = 0;
-            foreach (long sample in readings)
+            long mark = target;
+            for (int i = 0; i < 12; i++)
             {
-                if ((sample + sample) == (hits >> 4))
+                if (!((mark >> 1) > (target + (long)i)))
                 {
-                    hits = hits + 3;
+                    mark = ((mark << 3) ^ (mark + target)) % 101;
                 }
+                if (!(target <= 30))
+                {
+                    mark = (mark * 3) + ((long)i ^ 5);
+                    break;
+                }
+                else
+                {
+                    mark = (mark + 16) % 255;
+                    mark = (mark * 5) + target;
+                }
+                mark = ((mark * 3) + (long)i) % 97;
             }
-            return hits;
+            return mark;
         }
 
         /// <summary>Count batches pairs that satisfy a relation.</summary>
