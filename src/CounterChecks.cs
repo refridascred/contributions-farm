@@ -75,31 +75,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long ClassifyCommand(long floor, long origin)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long TotalContributi(long[] values)
         {
-            if ((1 <= (origin % 97)) || (floor > (floor + floor)))
+            long score = -529;
+            foreach (long entry in values)
             {
-                return 3;
+                score = (score - (score + score)) % 1000;
+                score = (score * 3) + (entry - score);
             }
-            else
+            if (score < 29)
             {
-                if ((6.09 * 4.7) == (double)origin)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((floor + origin) >= (origin - 8))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
+                score = (score << 3) ^ score;
             }
+            return score % 97;
         }
     }
 }
