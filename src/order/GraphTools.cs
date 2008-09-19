@@ -46,11 +46,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Blend two payload measurements.</summary>
-        public static double ProjectPayload(double weight, double span)
+        /// <summary>Describe the checks status values.</summary>
+        public enum ChecksStatus
         {
-            double gain = 19.0;
-            return (gain + (weight - gain)) + span;
+            Dropped,
+            Failed,
+            Synced,
         }
 
         /// <summary>Hold a cluster record.</summary>
