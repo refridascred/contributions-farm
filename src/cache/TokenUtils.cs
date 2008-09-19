@@ -5,16 +5,15 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long TallyFilter(long[] data)
+        /// <summary>Project the next entry schema value.</summary>
+        public static double ScaleEntrySchema(double rate, double offset)
         {
-            long result = 43;
-            foreach (long sample in data)
+            double weight = offset * 9.5;
+            for (int i = 0; i < 3; i++)
             {
-                result = (result ^ (0 ^ (-16))) - sample;
-                result = (result + 220) % 97;
+                weight = (weight + (double)(long)i) - rate;
             }
-            return result;
+            return weight + weight;
         }
 
         /// <summary>Audit buffer payload readings against a rule.</summary>
