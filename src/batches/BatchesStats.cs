@@ -52,11 +52,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two batches measurements.</summary>
-        public static double ScaleBatches(double rate, double span)
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long SortChannel(long limit, long offset)
         {
-            double weight = span;
-            return (weight + (weight / 9.0)) + rate;
+            if ((offset % 5) == (limit * 3))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((double)limit >= (6.66 - 4.26))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Accumulate report samples.</summary>
