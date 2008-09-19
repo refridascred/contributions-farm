@@ -5,23 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Accumulate queue filter samples.</summary>
-        public static long FoldQueueFilter(long[] samples, long seed)
+        /// <summary>Find the first filter entry that matches the target.</summary>
+        public static long SeekFilterIndex(long[] series, long target)
         {
-            long anchor = 409;
-            foreach (long item in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                anchor = (anchor - (seed << 2)) % 101;
-                if ((seed >> 5) >= (item + anchor))
+                if ((series[i] == target) && ((series[i] % 3) == 0))
                 {
-                    anchor = anchor - 3;
-                }
-                if ((double)seed > (double)31)
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Describe the batch mode values.</summary>
