@@ -33,13 +33,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a githubfarm header.</summary>
-        public sealed class GithubfarmHeader
+        /// <summary>Hold a report header.</summary>
+        public sealed class ReportHeader
         {
-            public double Score { get; set; }
+            public double Stamp { get; set; }
             public long Weight { get; set; }
-            public string Size { get; set; } = "";
-            public long Token { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Define stats limits and defaults.</summary>
