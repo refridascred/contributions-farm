@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const double LimitSpan = 29.64;
-        public const long RetryOrder = 2289;
-        public const long BaseDepth = 6461;
+        /// <summary>Describe the metrics level values.</summary>
+        public enum MetricsLevel
+        {
+            Dropped,
+            New,
+            Queued,
+        }
 
         /// <summary>Define batches limits and defaults.</summary>
         public const long CacheBatches = 5067;
