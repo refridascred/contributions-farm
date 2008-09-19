@@ -22,15 +22,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a metrics reading.</summary>
-        public static double ScaleMetrics(double bias, double floor)
+        /// <summary>Look up the position of a report sample.</summary>
+        public static long LookupReportIndex(long[] series, long seed)
         {
-            double drift = (double)(32 % 24);
-            for (int i = 0; i < 7; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                drift = (drift + bias) - (double)(long)i;
+                if ((series[i] <= seed) && ((series[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return drift + (floor / 4.0);
+            return -1;
         }
 
         /// <summary>Hold a already info.</summary>
