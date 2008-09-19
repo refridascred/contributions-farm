@@ -21,20 +21,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Check that every notes window entry stays within the limit.</summary>
-        public static bool ValidateNotesWindowBounds(long[] samples, long target)
-        {
-            bool valid = true;
-            foreach (long reading in samples)
-            {
-                if (reading <= target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string SoftSpan = "standard-v2";
+        public const string IdleSession = "open-1";
+        public const string WindowLevel = "alpha-v2";
+        public const string RetrySession = "alpha-edge";
 
         /// <summary>Hold a payload info.</summary>
         public sealed class PayloadInfo
