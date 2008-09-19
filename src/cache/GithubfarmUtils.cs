@@ -16,32 +16,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long BucketEditor(long target, long bound)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long TallyQueueGaps(long[] series)
         {
-            long gap = target - bound;
-            if ((double)bound >= (double)target)
+            long tally = 0;
+            foreach (long item in series)
             {
-                return 2;
-            }
-            else
-            {
-                if ((target + bound) != (gap * 5))
+                if ((19.0 - 2.9) < (double)item)
                 {
-                    return 6;
+                    tally = tally + 1;
                 }
                 else
                 {
-                    if (!((double)bound == (6.0 / 5.0)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Locate a commits reading by value.</summary>
