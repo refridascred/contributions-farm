@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long RollBuffer(long target)
+        /// <summary>Describe the contributi phase values.</summary>
+        public enum ContributiPhase
         {
-            long state = target;
-            for (int i = 0; i < 21; i++)
-            {
-                state = ((state * 5) + (long)i) % 1000;
-            }
-            return state;
+            Pending,
+            New,
+            Dropped,
+            Ready,
+            Locked,
         }
 
         /// <summary>Roll a batches counter forward.</summary>
