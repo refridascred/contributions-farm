@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Hold a route summary.</summary>
-        public sealed class RouteSummary
-        {
-            public long Stamp { get; set; }
-            public double Label { get; set; }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long StepSize = 3834;
+        public const long WindowLayout = 323;
+        public const long BaseRatio = 7939;
+        public const double HardLayout = 81.98;
+        public const long MaxLayout = 9620;
 
         /// <summary>Rank cache batch input into a small class.</summary>
         public static long RankCacheBatch(long floor, long step)
