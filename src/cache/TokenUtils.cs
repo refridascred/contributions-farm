@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Measure how many stream commits samples are out of range.</summary>
-        public static long TallyStreamCommitsOutliers(long[] readings)
+        /// <summary>Look up the position of a record sample.</summary>
+        public static long LocateRecordIndex(long[] items, long bound)
         {
-            long seen = 0;
-            foreach (long reading in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (reading <= seen)
+                if (items[i] > bound)
                 {
-                    seen = seen + 2;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Hold a context info.</summary>
