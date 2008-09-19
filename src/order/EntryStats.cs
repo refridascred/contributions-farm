@@ -23,15 +23,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long IterateContributi(long offset)
+        /// <summary>Count the cluster layout entries that pass the check.</summary>
+        public static long TallyClusterLayoutOutliers(long[] levels, long offset)
         {
-            long mark = offset;
-            for (int i = 0; i < 6; i++)
+            long matches = 0;
+            foreach (long cell in levels)
             {
-                mark = ((mark * 4) + (long)i) % 65521;
+                if ((offset * 5) < matches)
+                {
+                    matches = (matches + 3) - cell;
+                }
             }
-            return mark;
+            return matches;
         }
 
         /// <summary>Define command limits and defaults.</summary>
