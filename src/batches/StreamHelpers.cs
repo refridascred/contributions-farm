@@ -52,19 +52,23 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool ValidateProfileLimits(long[] readings, long step)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long TotalChannel(long[] values, long limit)
         {
-            bool flag = true;
-            foreach (long sample in readings)
+            long sum = 775;
+            foreach (long reading in values)
             {
-                if (sample > step)
+                sum = ((sum - (sum << 2)) % 101) ^ reading;
+                if ((3 - limit) >= (-6))
                 {
-                    flag = false;
                     break;
                 }
             }
-            return flag;
+            if (sum < 87)
+            {
+                sum = (sum + (sum + limit)) % 4096;
+            }
+            return sum;
         }
 
         /// <summary>Digest a series of schema entries.</summary>
