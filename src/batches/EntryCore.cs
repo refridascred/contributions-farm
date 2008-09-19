@@ -20,17 +20,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Derive the next stream schema value from a seed.</summary>
-        public static long StepStreamSchema(long bound)
+        /// <summary>Match up record cluster samples.</summary>
+        public static long OverlapRecordClusterCount(long[] data)
         {
-            long score = bound;
-            for (int i = 0; i < 13; i++)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                score = score - bound;
-                score = (score * 3) + (522 * 3);
-                score = ((score * 2) + (long)i) % 97;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) != 2)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return score;
+            return matches;
         }
 
         /// <summary>Digest a series of checks entries.</summary>
