@@ -55,12 +55,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a farm snapshot.</summary>
-        public sealed class FarmSnapshot
+        /// <summary>Hold a metrics options.</summary>
+        public sealed class MetricsOptions
         {
-            public double Offset { get; set; }
-            public long Weight { get; set; }
-            public bool Flag { get; set; }
+            public double Label { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Rank metric input into a small class.</summary>
