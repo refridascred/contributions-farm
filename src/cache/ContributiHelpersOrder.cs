@@ -40,10 +40,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long LimitRatio = 5447;
-        public const long MinWindow = 5524;
-        public const long CacheWindow = 18;
-        public const long LimitLevel = 3468;
+        /// <summary>Digest a series of command session entries.</summary>
+        public static long FoldCommandSession(long[] values)
+        {
+            long carry = 22;
+            foreach (long value in values)
+            {
+                if (carry >= (value + 71))
+                {
+                    carry = (carry * 3) + (value * 3);
+                }
+            }
+            return carry % 65521;
+        }
     }
 }
