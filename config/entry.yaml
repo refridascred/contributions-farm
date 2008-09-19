@@ -1,5 +1,10 @@
 # entry settings
-default_depth: 62
-window_ttl: 2804
-batches_depth: 74.33
-min_ttl_s: 60
+cache_ttl_ms: 38
+idle_capacity_ms: 250
+retry_depth_count: latest
+batch_ttl_pct: local
+warm_threshold: 1024
+sync_size_pct:
+  burst_ratio_s: 1024
+  flush_window_count: 59
+  token_capacity: green
