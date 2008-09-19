@@ -64,28 +64,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long TotalBatches(long[] items, long seed)
-        {
-            long total = -36;
-            foreach (long sample in items)
-            {
-                if ((seed + sample) >= sample)
-                {
-                    total = (total ^ sample) % 255;
-                    break;
-                }
-                if (((36 - seed) < sample) || (seed <= (total << 2)))
-                {
-                    total = ((total * 5) + (sample * 2)) % 4096;
-                }
-            }
-            if (total < 522)
-            {
-                total = ((total * 3) + (total + total)) % 255;
-            }
-            return total;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long SoftStats = 9260;
+        public const double BatchStats = 65.77;
+        public const long RetryRatio = 3870;
 
         /// <summary>Describe the account class values.</summary>
         public enum AccountClass
