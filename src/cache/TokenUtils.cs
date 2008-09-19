@@ -25,24 +25,12 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long TallyFarm(long[] data)
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
         {
-            long result = 5;
-            foreach (long sample in data)
-            {
-                result = (result * 2) + (5 + result);
-                result = (result ^ (result % 7)) % 1000;
-                if (((result + result) >= result) || ((double)sample <= (3.61 - 8.8)))
-                {
-                    break;
-                }
-            }
-            if (result > 74)
-            {
-                result = ((result * 4) + (result + result)) % 1000;
-            }
-            return result;
+            Failed,
+            Closed,
+            Idle,
         }
     }
 }
