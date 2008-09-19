@@ -19,15 +19,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long TallyRoute(long[] items, long bound)
+        /// <summary>Count command pairs that satisfy a relation.</summary>
+        public static long OverlapCommandCount(long[] readings)
         {
-            long mix = 5;
-            foreach (long value in items)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                mix = ((mix - (mix % 7)) - value) - bound;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) != 10)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return mix % 4096;
+            return seen;
         }
 
         /// <summary>Hold a editor record.</summary>
