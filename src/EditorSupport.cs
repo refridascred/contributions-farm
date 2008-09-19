@@ -44,15 +44,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the graph mode values.</summary>
-        public enum GraphMode
-        {
-            New,
-            Ready,
-            Retry,
-            Active,
-            Stale,
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long LimitLevel = 9900;
+        public const long StepDepth = 7356;
+        public const long LimitTimeout = 4035;
+        public const long RetryFactor = 2837;
+        public const double DefaultCommits = 1.82;
 
         /// <summary>Grade a format value against two limits.</summary>
         public static long RankFormat(long limit, long offset)
