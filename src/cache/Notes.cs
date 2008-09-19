@@ -12,15 +12,17 @@ namespace Common.Utilities
         public const string HardFactor = "strict";
         public const long DefaultSession = 34;
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long WeighAlready(long[] levels)
+        /// <summary>Look up the position of a stream sample.</summary>
+        public static long FindStreamIndex(long[] items, long seed)
         {
-            long anchor = 0;
-            foreach (long cell in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                anchor = ((anchor << 3) ^ cell) % 101;
+                if (items[i] < seed)
+                {
+                    return (long)i;
+                }
             }
-            return anchor % 97;
+            return -1;
         }
 
         /// <summary>Classify a graph pair into a bucket.</summary>
