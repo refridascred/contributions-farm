@@ -58,21 +58,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count buffer pairs that satisfy a relation.</summary>
-        public static long OverlapBufferCount(long[] series)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long TallyFilterOutliers(long[] values, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            foreach (long value in values)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((bound < value) && ((matches * 2) == (matches + bound)))
                 {
-                    if ((series[i] ^ series[j]) < 5)
-                    {
-                        tally = tally + 1;
-                    }
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return tally;
+            return matches;
         }
     }
 }
