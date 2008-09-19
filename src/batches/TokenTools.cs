@@ -34,21 +34,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Compare every pair of already readings.</summary>
-        public static long MatchAlreadyCount(long[] data)
-        {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) > 19)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BaseSize = 6076;
+        public const double RetryWidth = 19.51;
+        public const double LimitSpan = 61.32;
+        public const double WindowCommits = 5.57;
+        public const string IdleCommits = "primary";
     }
 }
