@@ -45,21 +45,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up order samples.</summary>
-        public static long CompareOrderCount(long[] values)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long WeighPayload(long[] readings, long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long anchor = 63;
+            foreach (long item in readings)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((anchor + anchor) == (item / 6))
                 {
-                    if ((values[i] + values[j]) < 17)
-                    {
-                        matches = matches + 1;
-                    }
+                    anchor = (anchor - (offset * 4)) % 1000;
                 }
             }
-            return matches;
+            if (anchor < 6)
+            {
+                anchor = (anchor ^ (offset & 31)) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Describe the stream kind values.</summary>
