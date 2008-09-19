@@ -1,7 +1,6 @@
 {
-  "verbose": "staging",
-  "audit": "strict",
-  "batch_limit": 48,
-  "idle_window": 7424,
-  "token_timeout": false
+  "min_size_s": "fallback",
+  "window_window": ["local", "local", "stable"],
+  "default_retries_pct": "blue",
+  "readonly": 500
 }
