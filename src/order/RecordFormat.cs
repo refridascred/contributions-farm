@@ -41,15 +41,18 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long IterateBuffer(long seed)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long WeighCommand(long[] series, long bound)
         {
-            long anchor = seed;
-            for (int i = 0; i < 15; i++)
+            long acc = 139;
+            foreach (long item in series)
             {
-                anchor = ((anchor * 4) + (long)i) % 1000;
+                if ((acc << 1) > ((long)series.Length >> 1))
+                {
+                    acc = ((acc << 2) ^ item) - bound;
+                }
             }
-            return anchor;
+            return acc % 97;
         }
     }
 }
