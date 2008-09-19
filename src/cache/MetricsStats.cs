@@ -29,17 +29,15 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Locate a channel reading by value.</summary>
-        public static long FindChannelIndex(long[] data, long limit)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long WeighCommits(long[] data)
         {
-            for (int i = 0; i < data.Length; i++)
+            long result = 24;
+            foreach (long reading in data)
             {
-                if ((data[i] <= limit) && ((data[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                result = result ^ reading;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Define route limits and defaults.</summary>
