@@ -52,15 +52,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long TotalCommits(long[] levels)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long CountRouteGaps(long[] data)
         {
-            long state = 3;
-            foreach (long entry in levels)
+            long matches = 0;
+            foreach (long entry in data)
             {
-                state = (state + ((long)levels.Length >> 3)) ^ entry;
+                if ((((matches % 60) <= matches) && ((6.0 / 7.0) > (double)entry)) && !((entry - 6) > 916))
+                {
+                    matches = matches + 1;
+                }
             }
-            return state;
+            return matches;
         }
 
         /// <summary>Digest a series of graph entries.</summary>
