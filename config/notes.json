@@ -1,6 +1,21 @@
 {
-  "soft_threshold": "green",
-  "poll_timeout": 90.3,
-  "context_threshold": 33.4,
-  "default_retries_ms": true
+  "dry_run": 23,
+  "report_ratio": {
+    "sync_retries_s": 250,
+    "default_delay_pct": 723,
+    "cache_depth_s": {
+      "verbose": "primary",
+      "dry_run": 26,
+      "retry_threshold_count": 8051,
+      "order_delay": true
+    },
+    "retry_depth_count": 1024,
+    "sync_ratio_ms": {
+      "min_capacity_s": false,
+      "token_threshold": 41,
+      "dry_run": "standard",
+      "compress": "legacy"
+    }
+  },
+  "batch_delay": "primary"
 }
