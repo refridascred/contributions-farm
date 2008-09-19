@@ -43,13 +43,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the entry level values.</summary>
-        public enum EntryLevel
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long DigestFarm(long[] readings, long limit)
         {
-            Locked,
-            Idle,
-            Active,
-            Ready,
+            long carry = 7;
+            foreach (long reading in readings)
+            {
+                if ((carry + carry) > (long)readings.Length)
+                {
+                    carry = (carry - ((long)readings.Length / 4)) + reading;
+                }
+                carry = (carry - (limit % 7)) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Describe the token state values.</summary>
