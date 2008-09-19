@@ -1,9 +1,7 @@
-id,token,label,weight
-1,262,67.24,fallback
-2,835,614,open
-3,cached,standard,574
-4,82.98,edge,latest
-5,890,99,43.11
-6,466,fallback,755
-7,36.8,98,93.75
-8,local,640,latest
+id,rank,label,owner
+1,84.61,primary,58.56
+2,441,984,970
+3,green,647,46.62
+4,735,8.0,78.03
+5,870,503,128
+6,346,legacy,primary
