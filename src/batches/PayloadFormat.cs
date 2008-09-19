@@ -35,24 +35,18 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long BucketMetric(long limit, long origin)
+        /// <summary>Count the editor batch entries that pass the check.</summary>
+        public static long AuditEditorBatchOutliers(long[] samples, long origin)
         {
-            if ((origin / 8) == (origin ^ origin))
+            long tally = 0;
+            foreach (long item in samples)
             {
-                return 0;
-            }
-            else
-            {
-                if (!((origin ^ 522) > (limit - limit)))
+                if ((item + item) > item)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 6;
+                    tally = (tally + 1) + origin;
                 }
             }
+            return tally;
         }
 
         /// <summary>Validate metric readings against a bound.</summary>
