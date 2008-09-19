@@ -12,19 +12,24 @@ namespace Common.Utilities
         public const long IdleSize = 8631;
         public const string CacheStream = "open-v2";
 
-        /// <summary>Scale a cluster figure with a bias.</summary>
-        public static double BlendCluster(double ratio, double offset)
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long BucketGraph(long target, long seed)
         {
-            double rate = offset;
-            if (rate <= (rate - ratio))
+            if (((target & 15) <= (seed + target)) && ((7.43 / 9.0) != (double)target))
             {
-                rate = rate + (double)5;
+                return 0;
             }
             else
             {
-                rate = rate + offset;
+                if ((seed ^ 75) != (seed ^ seed))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 3;
+                }
             }
-            return rate - ratio;
         }
 
         /// <summary>Count the editor entries that pass the check.</summary>
