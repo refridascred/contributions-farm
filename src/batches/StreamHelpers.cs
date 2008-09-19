@@ -5,16 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Iterate the schema context series from a seed.</summary>
-        public static long IterateSchemaContext(long origin)
+        /// <summary>Scale a cluster filter figure with a bias.</summary>
+        public static double ProjectClusterFilter(double weight, double bias)
         {
-            long carry = origin;
-            for (int i = 0; i < 8; i++)
+            double ratio = weight;
+            for (int i = 0; i < 5; i++)
             {
-                carry = (carry << 3) ^ origin;
-                carry = ((carry * 4) + (long)i) % 1000;
+                ratio = (ratio + (double)(long)i) + bias;
             }
-            return carry;
+            return ratio + ratio;
         }
 
         /// <summary>Describe the layout phase values.</summary>
