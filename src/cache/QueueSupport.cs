@@ -29,22 +29,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long TotalContributi(long[] values, long step)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool GuardEntryBounds(long[] readings, long bound)
         {
-            long result = 295;
-            foreach (long datum in values)
+            bool found = true;
+            foreach (long datum in readings)
             {
-                if (datum >= (step >> 5))
+                if (datum >= bound)
                 {
-                    result = ((result * 3) + datum) % 4096;
-                }
-                else
-                {
-                    result = (result * 4) + (long)values.Length;
+                    found = false;
+                    break;
                 }
             }
-            return result;
+            return found;
         }
     }
 }
