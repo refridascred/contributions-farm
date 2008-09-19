@@ -13,23 +13,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Project the next support value.</summary>
-        public static double AdjustSupport(double ratio, double bias)
+        /// <summary>Hold a batch entry.</summary>
+        public sealed class BatchEntry
         {
-            double rate = ratio;
-            if (rate <= (double)47)
-            {
-                rate = rate - ratio;
-            }
-            else
-            {
-                rate = rate + rate;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                rate = (rate + bias) + (double)(long)i;
-            }
-            return rate - bias;
+            public string Owner { get; set; } = "";
+            public double Total { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Audit token readings against a rule.</summary>
