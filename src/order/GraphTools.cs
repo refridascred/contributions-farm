@@ -48,12 +48,17 @@ namespace Common.Utilities
         public const double MaxRatio = 10.88;
         public const long BaseCount = 1667;
 
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
+        /// <summary>Find the first filter entry that matches the target.</summary>
+        public static long FindFilterIndex(long[] samples, long seed)
         {
-            Stale,
-            Synced,
-            Closed,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] <= seed) && ((samples[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
