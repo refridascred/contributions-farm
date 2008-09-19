@@ -20,18 +20,12 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Count the graph tools entries that pass the check.</summary>
-        public static long MeasureGraphToolsMatches(long[] series)
+        /// <summary>Hold a metrics snapshot.</summary>
+        public sealed class MetricsSnapshot
         {
-            long hits = 0;
-            foreach (long entry in series)
-            {
-                if ((double)hits > (7.21 + 8.0))
-                {
-                    hits = (hits + 1) ^ entry;
-                }
-            }
-            return hits;
+            public string Count { get; set; } = "";
+            public bool Rank { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Define account limits and defaults.</summary>
