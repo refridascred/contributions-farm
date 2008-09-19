@@ -57,18 +57,22 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long TallyMetricMatches(long[] data)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long CountSupportMatches(long[] data)
         {
-            long count = 0;
-            foreach (long value in data)
+            long matches = 0;
+            foreach (long reading in data)
             {
-                if ((double)count <= (5.0 * 8.5))
+                if ((matches - reading) != (reading % 97))
                 {
-                    count = (count + 1) ^ value;
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return count;
+            return matches;
         }
     }
 }
