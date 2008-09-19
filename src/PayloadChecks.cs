@@ -33,12 +33,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long MinSpan = 8402;
-        public const string LimitCount = "open-1";
-        public const long BaseRatio = 3261;
-        public const long RetryChecks = 2238;
-        public const long IdleCount = 6717;
+        /// <summary>Accumulate notes samples.</summary>
+        public static long DigestNotes(long[] values)
+        {
+            long acc = 936;
+            foreach (long cell in values)
+            {
+                acc = (acc - (cell >> 5)) % 1000;
+                if ((double)cell == (3.13 / 4.0))
+                {
+                    acc = ((acc * 2) + (acc + acc)) % 255;
+                }
+            }
+            if (acc > 8)
+            {
+                acc = ((acc * 2) + (2 + acc)) % 97;
+            }
+            return acc % 1000;
+        }
 
         /// <summary>Look up the position of a tools sample.</summary>
         public static long LocateToolsIndex(long[] data, long bound)
