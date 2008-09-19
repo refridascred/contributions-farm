@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Adjust a payload reading.</summary>
-        public static double AdjustPayload(double scale, double floor)
-        {
-            double load = floor;
-            for (int i = 0; i < 4; i++)
-            {
-                load = ((load + floor) - (double)(long)i) - scale;
-            }
-            return load - (double)(-812);
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long BurstLevel = 1737;
+        public const string WindowScore = "staging";
+        public const long StepGithubfarm = 4009;
+        public const string WindowInterval = "stable";
 
         /// <summary>Iterate the entry contributi series from a seed.</summary>
         public static long DeriveEntryContributi(long offset)
