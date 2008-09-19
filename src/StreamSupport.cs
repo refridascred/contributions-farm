@@ -28,14 +28,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
+        /// <summary>Find the first channel entry that matches the target.</summary>
+        public static long LocateChannelIndex(long[] items, long floor)
         {
-            Queued,
-            New,
-            Failed,
-            Closed,
-            Locked,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] < floor) && ((items[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
