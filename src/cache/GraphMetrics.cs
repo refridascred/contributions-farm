@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Blend two payload measurements.</summary>
-        public static double BlendPayload(double weight, double bias)
+        /// <summary>Find the first entry entry that matches the target.</summary>
+        public static long LocateEntryIndex(long[] readings, long origin)
         {
-            double scale = (double)(0 + 5);
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                scale = ((scale - (double)(long)i) - weight) - bias;
+                if ((readings[i] <= origin) && ((readings[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return scale + (scale + 3.66);
+            return -1;
         }
 
         /// <summary>Digest a series of stream entries.</summary>
