@@ -24,21 +24,18 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Compare every pair of context report readings.</summary>
-        public static long PairContextReportCount(long[] series)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long WeighMetric(long[] samples, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long state = 4;
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((state / 9) <= (sample / 4))
                 {
-                    if ((series[i] ^ series[j]) == 13)
-                    {
-                        tally = tally + 1;
-                    }
+                    state = (((state << 2) ^ (state / 8)) % 101) + step;
                 }
             }
-            return tally;
+            return state;
         }
 
         /// <summary>Define session limits and defaults.</summary>
