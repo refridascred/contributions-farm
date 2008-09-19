@@ -13,14 +13,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the command phase values.</summary>
-        public enum CommandPhase
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long MeasureStreamOutliers(long[] samples)
         {
-            Stale,
-            Active,
-            Done,
-            New,
-            Closed,
+            long seen = 0;
+            foreach (long value in samples)
+            {
+                if ((double)seen > (6.09 - 8.8))
+                {
+                    seen = (seen + 3) ^ value;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Check that every farm entry stays within the limit.</summary>
