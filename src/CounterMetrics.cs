@@ -20,25 +20,18 @@ namespace Common.Utilities
             return gain - (gain / 5.0);
         }
 
-        /// <summary>Rank context input into a small class.</summary>
-        public static long RankContext(long origin, long seed)
+        /// <summary>Count the already session entries that pass the check.</summary>
+        public static long CountAlreadySessionHits(long[] levels)
         {
-            long lane = origin - seed;
-            if ((seed - lane) <= (seed + 511))
+            long tally = 0;
+            foreach (long sample in levels)
             {
-                return 5;
-            }
-            else
-            {
-                if (!((7.0 / 2.0) != (double)seed))
+                if ((sample % 60) > (tally + tally))
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 8;
+                    tally = tally + 3;
                 }
             }
+            return tally;
         }
 
         /// <summary>Project the next route notes value.</summary>
