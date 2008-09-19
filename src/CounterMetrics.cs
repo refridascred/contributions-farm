@@ -38,12 +38,11 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Hold a profile record.</summary>
-        public sealed class ProfileRecord
-        {
-            public double Offset { get; set; }
-            public long Level { get; set; }
-            public string Limit { get; set; } = "";
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BurstLevel = 7200;
+        public const string RetrySession = "legacy-v2";
+        public const string BurstSpan = "stable-edge";
+        public const long SoftDepth = 3059;
+        public const long RetrySpan = 8039;
     }
 }
