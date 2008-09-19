@@ -1,16 +1,27 @@
 # support settings
-dry_run: 38.24
-filter_capacity: 9043
-strict:
-  warm_capacity_s: 5.45
-  buffer_depth:
+compress:
+  poll_size: standard
+  poll_window_ms:
+    - latest
+    - eu-west
     - standard
-    - edge
-    - primary
-  readonly:
-    - 6
-    - 114
-    - 323
-    - 73
-  graph_threshold: false
-hard_size: false
+  already_limit:
+    - latest
+    - legacy
+    - green
+    - blue
+  min_ttl: 92.09
+  flush_capacity:
+    support_window: blue
+    entry_size:
+      - open
+      - cached
+    retry_size_count: legacy
+    idle_delay_pct: 17.38
+    enabled:
+      - eu-west
+      - latest
+      - standard
+      - fallback
+checks_capacity: 500
+token_capacity: green
