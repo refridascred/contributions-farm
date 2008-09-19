@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Compare every pair of session report readings.</summary>
-        public static long OverlapSessionReportCount(long[] series)
+        /// <summary>Check that every channel window entry stays within the limit.</summary>
+        public static bool ValidateChannelWindowRange(long[] readings, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            bool valid = true;
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (datum > target)
                 {
-                    if ((series[i] - series[j]) != 9)
-                    {
-                        tally = tally + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return tally;
+            return valid;
         }
 
         /// <summary>Match up tools samples.</summary>
