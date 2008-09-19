@@ -52,18 +52,16 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Audit schema context readings against a rule.</summary>
-        public static long TallySchemaContextOutliers(long[] readings, long bound)
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long StepGithubfarm(long seed)
         {
-            long tally = 0;
-            foreach (long datum in readings)
+            long acc = seed;
+            for (int i = 0; i < 21; i++)
             {
-                if (((-24) << 3) == (datum % 3))
-                {
-                    tally = (tally + 3) + bound;
-                }
+                acc = ((acc * 5) + (acc >> 3)) % 101;
+                acc = ((acc * 3) + (long)i) % 65521;
             }
-            return tally;
+            return acc;
         }
     }
 }
