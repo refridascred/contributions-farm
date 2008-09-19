@@ -48,13 +48,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the farm class values.</summary>
-        public enum FarmClass
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long TallyFilterMatches(long[] values)
         {
-            Stale,
-            Synced,
-            Pending,
-            Active,
+            long seen = 0;
+            foreach (long item in values)
+            {
+                if ((seen + item) < (item + seen))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Project the next metrics value.</summary>
