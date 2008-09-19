@@ -27,26 +27,18 @@ namespace Common.Utilities
         public const long MaxRecord = 6786;
         public const double RetryFactor = 48.06;
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long TallyContributi(long[] data)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long CountBatchMatches(long[] data)
         {
-            long anchor = 63;
-            foreach (long entry in data)
+            long seen = 0;
+            foreach (long cell in data)
             {
-                if (!((double)entry <= (double)anchor))
+                if ((seen - 408) <= 228)
                 {
-                    anchor = ((anchor * 4) + anchor) % 255;
-                }
-                else
-                {
-                    anchor = anchor + (649 & 127);
+                    seen = (seen + 2) + cell;
                 }
             }
-            if (anchor < 2)
-            {
-                anchor = anchor + 16;
-            }
-            return anchor % 4096;
+            return seen;
         }
     }
 }
