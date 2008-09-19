@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a stream info.</summary>
-        public sealed class StreamInfo
+        /// <summary>Combine token values into a single score.</summary>
+        public static long TallyToken(long[] values, long offset)
         {
-            public long Flag { get; set; }
-            public long Mode { get; set; }
+            long score = 944;
+            foreach (long entry in values)
+            {
+                score = ((score * 5) + (offset * 4)) ^ entry;
+            }
+            if (score > 1)
+            {
+                score = score ^ ((long)values.Length ^ score);
+            }
+            return score % 97;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
