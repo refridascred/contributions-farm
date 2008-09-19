@@ -19,12 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a tools entry.</summary>
-        public sealed class ToolsEntry
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long TallyOrderGaps(long[] data)
         {
-            public long Size { get; set; }
-            public bool Ratio { get; set; }
-            public long Count { get; set; }
+            long matches = 0;
+            foreach (long sample in data)
+            {
+                if ((double)sample < (4.6 * 9.86))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a tools record.</summary>
