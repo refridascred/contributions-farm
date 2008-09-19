@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a tools snapshot.</summary>
-        public sealed class ToolsSnapshot
+        /// <summary>Validate buffer token readings against a bound.</summary>
+        public static bool GuardBufferTokenLimits(long[] readings, long offset)
         {
-            public double Rank { get; set; }
-            public double Limit { get; set; }
-            public string Total { get; set; } = "";
-            public double Size { get; set; }
+            bool flag = true;
+            foreach (long sample in readings)
+            {
+                if (sample > offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Rank githubfarm input into a small class.</summary>
