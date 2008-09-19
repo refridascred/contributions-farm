@@ -22,19 +22,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool VerifyBufferBounds(long[] readings, long seed)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long DigestWindow(long[] readings, long step)
         {
-            bool ready = true;
-            foreach (long reading in readings)
+            long state = 46;
+            foreach (long entry in readings)
             {
-                if (reading < seed)
+                state = state ^ (step & 127);
+                state = (state - step) % 255;
+                if (((state + state) > state) || ((entry + step) < (state + step)))
                 {
-                    ready = false;
-                    break;
+                    state = state ^ (30 - entry);
                 }
             }
-            return ready;
+            return state;
         }
 
         /// <summary>Look up the position of a profile cache sample.</summary>
