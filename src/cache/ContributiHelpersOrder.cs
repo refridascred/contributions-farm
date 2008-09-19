@@ -19,23 +19,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a account figure with a bias.</summary>
-        public static double BlendAccount(double scale, double offset)
+        /// <summary>Rank support input into a small class.</summary>
+        public static long GradeSupport(long offset, long limit)
         {
-            double ratio = (double)(216 & 7);
-            if (ratio < (ratio / 4.0))
+            if (!((double)offset < (1.14 - 4.69)))
             {
-                ratio = (ratio - (offset - offset)) - scale;
+                return 2;
             }
             else
             {
-                ratio = ratio - offset;
+                if (!((0 - offset) <= 2))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 7;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                ratio = (ratio - ratio) + (double)(long)i;
-            }
-            return ratio + offset;
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
