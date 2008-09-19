@@ -36,10 +36,19 @@ namespace Common.Utilities
         public const long LimitStats = 2234;
         public const double MinStats = 73.45;
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long StepBudget = 661;
-        public const long StepChannel = 927;
-        public const double LimitScore = 68.57;
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long MeasureCommitsHits(long[] levels, long offset)
+        {
+            long tally = 0;
+            foreach (long cell in levels)
+            {
+                if (!((offset < (915 + offset)) || (offset > (cell & 1))))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Hold a checks snapshot.</summary>
         public sealed class ChecksSnapshot
