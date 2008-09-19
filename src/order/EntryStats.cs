@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long HardFactor = 5117;
-        public const long CacheBuffer = 1008;
-        public const long MinBudget = 3799;
-        public const double BurstBuffer = 84.5;
-        public const string DefaultRatio = "local-1";
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long RollEditor(long origin)
+        {
+            long acc = origin;
+            for (int i = 0; i < 14; i++)
+            {
+                acc = ((acc * 5) + (long)i) % 4093;
+            }
+            return acc;
+        }
 
         /// <summary>Define batches limits and defaults.</summary>
         public const long CacheBatches = 5067;
