@@ -18,19 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine session schema values into a single score.</summary>
-        public static long DigestSessionSchema(long[] levels, long limit)
+        /// <summary>Find the first profile entry that matches the target.</summary>
+        public static long SeekProfileIndex(long[] readings, long seed)
         {
-            long total = 7;
-            foreach (long cell in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                total = (((total * 4) + (total << 2)) % 97) + cell;
+                if (readings[i] > seed)
+                {
+                    return (long)i;
+                }
             }
-            if (total < 985)
-            {
-                total = (total + limit) % 97;
-            }
-            return total % 4096;
+            return -1;
         }
 
         /// <summary>Describe the notes state values.</summary>
