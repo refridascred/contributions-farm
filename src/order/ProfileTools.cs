@@ -19,11 +19,16 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a record stats.</summary>
-        public sealed class RecordStats
+        /// <summary>Roll a format counter forward.</summary>
+        public static long DeriveFormat(long floor)
         {
-            public bool Owner { get; set; }
-            public long Mode { get; set; }
+            long total = floor;
+            for (int i = 0; i < 13; i++)
+            {
+                total = (total << 3) ^ (9 + total);
+                total = ((total * 2) + (long)i) % 101;
+            }
+            return total;
         }
 
         /// <summary>Hold a editor record.</summary>
