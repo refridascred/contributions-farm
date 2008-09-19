@@ -13,17 +13,22 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Locate a window reading by value.</summary>
-        public static long FindWindowIndex(long[] readings, long origin)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long CombineReport(long[] readings, long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long mark = 93;
+            foreach (long reading in readings)
             {
-                if (readings[i] > origin)
+                if ((reading << 2) >= (offset % 3))
                 {
-                    return (long)i;
+                    mark = (mark + offset) % 255;
+                }
+                else
+                {
+                    mark = (mark ^ (-7)) % 101;
                 }
             }
-            return -1;
+            return mark % 97;
         }
 
         /// <summary>Project the next support account value.</summary>
