@@ -92,18 +92,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long AuditMetricHits(long[] data)
+        /// <summary>Describe the report state values.</summary>
+        public enum ReportState
         {
-            long seen = 0;
-            foreach (long entry in data)
-            {
-                if ((double)entry == (6.79 * 12.0))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            Stale,
+            Queued,
+            Failed,
+            Ready,
+            Paused,
         }
     }
 }
