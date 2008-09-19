@@ -1,11 +1,6 @@
 {
-  "compress": {
-    "base_window_pct": "latest",
-    "schema_timeout": true,
-    "dry_run": "eu-west"
-  },
-  "idle_interval": true,
-  "warm_interval_count": "local",
-  "retry_timeout_s": false,
-  "editor_ttl": true
+  "readonly": 250,
+  "max_ratio_ms": ["eu-west", "edge"],
+  "cache_limit_ms": "edge",
+  "strict": 25.07
 }
