@@ -22,11 +22,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long SoftFactor = 7825;
-        public const long CacheSize = 6484;
-        public const long RetryScore = 2876;
-        public const long SoftAccount = 3615;
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long WindowEntry = 981;
+        public const long BaseEntry = 4088;
+        public const long MinBudget = 4087;
 
         /// <summary>Describe the profile status values.</summary>
         public enum ProfileStatus
