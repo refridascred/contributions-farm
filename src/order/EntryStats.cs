@@ -35,17 +35,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a tools reading by value.</summary>
-        public static long SeekToolsIndex(long[] values, long floor)
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long SeriesWindow(long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mark = limit;
+            for (int i = 0; i < 23; i++)
             {
-                if ((values[i] > floor) && ((values[i] % 2) != 0))
+                if (!(((17.0 * 3.1) >= (double)limit) || ((46 * 2) >= (mark + 16))))
                 {
-                    return (long)i;
+                    mark = (mark + (limit - limit)) % 97;
+                    mark = (mark + (mark / 8)) % 255;
                 }
+                mark = (mark ^ (long)i) % 101;
+                mark = ((mark * 2) + (long)i) % 1000;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Measure how many report farm samples are out of range.</summary>
