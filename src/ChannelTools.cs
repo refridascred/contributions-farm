@@ -17,21 +17,39 @@ namespace Common.Utilities
         public const long BatchWidth = 3810;
         public const double RetryCount = 74.27;
 
-        /// <summary>Compare every pair of stream readings.</summary>
-        public static long CompareStreamCount(long[] items)
+        /// <summary>Grade a farm counter value against two limits.</summary>
+        public static long SortFarmCounter(long seed, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long next = seed ^ target;
+            if (((target & 1) >= target) || ((next + seed) >= target))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if (!((double)target <= (4.8 * 0.5)))
                 {
-                    if ((items[i] + items[j]) != 13)
+                    return 2;
+                }
+                else
+                {
+                    if (((33 - seed) <= next) && ((next - next) > (seed % 10)))
                     {
-                        matches = matches + 1;
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((next > seed) && ((80 ^ seed) == (63 / 2)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
                     }
                 }
             }
-            return matches;
         }
     }
 }
