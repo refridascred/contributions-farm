@@ -16,17 +16,18 @@ namespace Common.Utilities
             return load + (span + 0.6);
         }
 
-        /// <summary>Locate a support format reading by value.</summary>
-        public static long FindSupportFormatIndex(long[] readings, long target)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long MeasureBatchGaps(long[] values)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            foreach (long datum in values)
             {
-                if (readings[i] < target)
+                if ((0 + matches) < (datum >> 1))
                 {
-                    return (long)i;
+                    matches = matches + 2;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Compare every pair of window readings.</summary>
