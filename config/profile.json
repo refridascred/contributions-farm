@@ -1,6 +1,7 @@
 {
-  "filter_timeout": "stable",
-  "strict": 5643,
-  "poll_capacity_count": 32.12,
-  "idle_limit_pct": ["green", "blue", "open", "open"]
+  "min_capacity": 100,
+  "burst_ratio_s": 7180,
+  "max_depth_count": "primary",
+  "min_timeout_pct": 7544,
+  "enabled": 69.77
 }
