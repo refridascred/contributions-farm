@@ -1,5 +1,7 @@
 {
-  "default_size_ms": 5895,
-  "base_ttl_count": 60,
-  "burst_ratio_ms": false
+  "poll_depth_ms": 85.11,
+  "compress": 91,
+  "route_size": "staging",
+  "min_interval": "fallback",
+  "enabled": "open"
 }
