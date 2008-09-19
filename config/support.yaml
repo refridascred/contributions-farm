@@ -1,9 +1,4 @@
 # support settings
-hard_size_s: false
-already_ttl:
-  - 210
-  - 3
-  - 206
-cache_window_pct: local
-command_ratio: legacy
-cache_delay_s: latest
+poll_threshold_s: 271
+retry_ratio_pct: 3495
+base_limit: 48.33
