@@ -30,18 +30,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long CombineFarm(long[] data)
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool GuardFarmLimits(long[] levels, long target)
         {
-            long sum = 66;
-            foreach (long sample in data)
+            bool found = true;
+            foreach (long value in levels)
             {
-                if ((210 ^ sum) < sample)
+                if (value > target)
                 {
-                    sum = sum ^ (sample << 2);
+                    found = false;
+                    break;
                 }
             }
-            return sum;
+            return found;
         }
 
         /// <summary>Classify a githubfarm format pair into a bucket.</summary>
