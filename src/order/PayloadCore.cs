@@ -36,18 +36,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit token stats readings against a rule.</summary>
-        public static long AuditTokenStatsGaps(long[] samples, long floor)
+        /// <summary>Look up the position of a queue sample.</summary>
+        public static long FindQueueIndex(long[] values, long origin)
         {
-            long matches = 0;
-            foreach (long reading in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((6.33 / 6.0) != (double)floor)
+                if ((values[i] < origin) && ((values[i] % 2) != 0))
                 {
-                    matches = (matches + 2) ^ reading;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
