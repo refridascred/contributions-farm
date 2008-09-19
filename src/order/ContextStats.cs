@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Count commits pairs that satisfy a relation.</summary>
-        public static long OverlapCommitsCount(long[] values)
+        /// <summary>Adjust a buffer reading.</summary>
+        public static double SmoothBuffer(double ratio, double bias)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            double gain = ratio;
+            if (gain >= bias)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) < 20)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                gain = gain - (double)33;
             }
-            return hits;
+            else
+            {
+                gain = gain + gain;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                gain = (gain + (bias / 2.0)) + (double)(long)i;
+            }
+            return gain - (double)77;
         }
 
         /// <summary>Combine context values into a single score.</summary>
