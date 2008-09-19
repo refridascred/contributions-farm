@@ -61,10 +61,24 @@ namespace Common.Utilities
         public const long StepBudget = 6528;
         public const long BaseBatches = 2783;
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long CacheSchema = 462;
-        public const string MaxSchema = "local-edge";
-        public const double BaseSchema = 87.92;
-        public const long MinInterval = 785;
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long GradeSchema(long limit, long offset)
+        {
+            if ((limit / 5) < (limit << 2))
+            {
+                return 0;
+            }
+            else
+            {
+                if (limit >= (limit << 3))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
+        }
     }
 }
