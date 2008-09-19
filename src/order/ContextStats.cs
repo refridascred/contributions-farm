@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Look up the position of a farm already sample.</summary>
-        public static long LookupFarmAlreadyIndex(long[] series, long limit)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long MeasureLayoutOutliers(long[] readings, long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            foreach (long item in readings)
             {
-                if (series[i] > limit)
+                if (!!((item / 3) <= (hits % 16)))
                 {
-                    return (long)i;
+                    hits = (hits + 3) - floor;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Hold a notes options.</summary>
