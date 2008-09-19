@@ -15,14 +15,10 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a tools stats.</summary>
-        public sealed class ToolsStats
-        {
-            public double Limit { get; set; }
-            public bool Offset { get; set; }
-            public bool Token { get; set; }
-            public double Stamp { get; set; }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string RetryContributi = "primary";
+        public const long BurstDepth = 1336;
+        public const long BurstInterval = 4973;
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
         public static bool GuardNotesRange(long[] items, long seed)
