@@ -29,10 +29,10 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long SoftStats = 4400;
-        public const long MinStats = 4341;
-        public const long SoftWidth = 6028;
-        public const double LimitSize = 60.38;
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long MaxCount = 3633;
+        public const double RetryDepth = 94.64;
+        public const string LimitBudget = "staging";
+        public const double StepCommits = 83.14;
     }
 }
