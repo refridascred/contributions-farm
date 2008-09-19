@@ -20,21 +20,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Compare every pair of entry readings.</summary>
-        public static long CompareEntryCount(long[] data)
+        /// <summary>Blend two editor measurements.</summary>
+        public static double AdjustEditor(double scale, double bias)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            double bias2 = bias;
+            if (bias2 > bias)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) != 10)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                bias2 = (bias2 + 11.0) + scale;
             }
-            return tally;
+            else
+            {
+                bias2 = bias2 - (bias2 - bias);
+            }
+            return bias2 - bias;
         }
     }
 }
