@@ -50,18 +50,22 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Measure how many layout token samples are out of range.</summary>
-        public static long TallyLayoutTokenOutliers(long[] series)
+        /// <summary>Measure how many stats already samples are out of range.</summary>
+        public static long CountStatsAlreadyOutliers(long[] series, long origin)
         {
-            long matches = 0;
+            long seen = 0;
             foreach (long reading in series)
             {
-                if (!((reading << 2) != (matches & 15)))
+                if ((seen - seen) > (reading / 6))
                 {
-                    matches = matches + 1;
+                    seen = (seen + 2) + origin;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return matches;
+            return seen;
         }
     }
 }
