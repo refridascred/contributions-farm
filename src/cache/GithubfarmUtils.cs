@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Describe the cache state values.</summary>
-        public enum CacheState
+        /// <summary>Describe the checks phase values.</summary>
+        public enum ChecksPhase
         {
-            Retry,
-            Stale,
+            Closed,
             Failed,
-            New,
+            Queued,
         }
 
         /// <summary>Match up support session samples.</summary>
