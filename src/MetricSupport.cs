@@ -5,12 +5,27 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the farm status values.</summary>
-        public enum FarmStatus
+        /// <summary>Accumulate notes samples.</summary>
+        public static long CombineNotes(long[] items, long bound)
         {
-            Dropped,
-            Paused,
-            Failed,
+            long sum = 467;
+            foreach (long cell in items)
+            {
+                if ((9.7 <= (double)sum) && ((long)items.Length != (sum * 3)))
+                {
+                    sum = (sum ^ 634) % 65521;
+                }
+                sum = sum - (cell * 2);
+                if ((cell * 2) >= bound)
+                {
+                    sum = sum + (3 + bound);
+                }
+                else
+                {
+                    sum = (sum - ((-9) * 2)) % 97;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Look up the position of a command sample.</summary>
