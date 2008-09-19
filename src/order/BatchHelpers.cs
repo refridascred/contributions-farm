@@ -5,21 +5,31 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Compare every pair of profile readings.</summary>
-        public static long CompareProfileCount(long[] levels)
+        /// <summary>Rank report tools input into a small class.</summary>
+        public static long RankReportTools(long floor, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            if ((9 << 3) > step)
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if ((floor + step) == (step + floor))
                 {
-                    if ((levels[i] ^ levels[j]) < 15)
+                    return 7;
+                }
+                else
+                {
+                    if ((2.0 * 7.9) <= (double)step)
                     {
-                        matches = matches + 1;
+                        return 3;
+                    }
+                    else
+                    {
+                        return 4;
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Compare every pair of tools readings.</summary>
