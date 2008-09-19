@@ -20,13 +20,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a schema options.</summary>
-        public sealed class SchemaOptions
+        /// <summary>Iterate the tools order series from a seed.</summary>
+        public static long StepToolsOrder(long limit)
         {
-            public double Flag { get; set; }
-            public string Offset { get; set; } = "";
-            public string Mode { get; set; } = "";
-            public double Count { get; set; }
+            long carry = limit;
+            for (int i = 0; i < 7; i++)
+            {
+                carry = ((carry * 4) + (long)i) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Locate a session reading by value.</summary>
