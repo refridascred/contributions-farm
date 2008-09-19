@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Count the notes token entries that pass the check.</summary>
-        public static long MeasureNotesTokenGaps(long[] levels)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long CombineCommits(long[] readings)
         {
-            long tally = 0;
-            foreach (long item in levels)
+            long mix = 23;
+            foreach (long sample in readings)
             {
-                if ((711 + tally) < item)
+                if (!((4.0 - 3.3) == (double)mix))
                 {
-                    tally = tally + 3;
+                    mix = mix - sample;
                 }
+                else
+                {
+                    mix = ((mix * 3) + 65) % 4096;
+                }
+                mix = mix ^ mix;
             }
-            return tally;
+            return mix;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
