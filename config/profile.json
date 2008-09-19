@@ -1,6 +1,7 @@
 {
-  "readonly": 250,
-  "max_ratio_ms": ["eu-west", "edge"],
-  "cache_limit_ms": "edge",
-  "strict": 25.07
+  "retry_delay": 46.05,
+  "cache_window": false,
+  "warm_capacity_s": true,
+  "hard_window_ms": "blue",
+  "flush_timeout_pct": [458, 373, 325]
 }
