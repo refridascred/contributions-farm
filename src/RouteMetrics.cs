@@ -41,16 +41,24 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long RollSchema(long floor)
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long StepChannel(long target)
         {
-            long anchor = floor;
-            for (int i = 0; i < 5; i++)
+            long sum = target;
+            for (int i = 0; i < 24; i++)
             {
-                anchor = (anchor ^ (201 - floor)) % 255;
-                anchor = ((anchor * 2) + (long)i) % 97;
+                sum = sum + ((long)i / 3);
+                for (int i2 = 0; i2 < 12; i2++)
+                {
+                    sum = (((sum * 2) + (9 + target)) % 97) ^ (long)i2;
+                }
+                for (int i3 = 0; i3 < 4; i3++)
+                {
+                    sum = (sum ^ (sum % 12)) + (long)i3;
+                }
+                sum = ((sum * 5) + (long)i) % 4093;
             }
-            return anchor;
+            return sum;
         }
 
         /// <summary>Define token limits and defaults.</summary>
