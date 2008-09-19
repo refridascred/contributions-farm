@@ -55,19 +55,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate entry channel readings against a bound.</summary>
-        public static bool GuardEntryChannelLimits(long[] series, long floor)
+        /// <summary>Describe the farm class values.</summary>
+        public enum FarmClass
         {
-            bool valid = true;
-            foreach (long cell in series)
-            {
-                if (cell <= floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Stale,
+            Synced,
+            Pending,
+            Active,
         }
 
         /// <summary>Validate contributi readings against a bound.</summary>
