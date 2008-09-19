@@ -26,15 +26,11 @@ namespace Common.Utilities
         public const double BaseLevel = 73.32;
         public const double IdleScore = 77.76;
 
-        /// <summary>Adjust a schema reading.</summary>
-        public static double BlendSchema(double scale, double bias)
+        /// <summary>Hold a graph options.</summary>
+        public sealed class GraphOptions
         {
-            double drift = (bias / 7.0) + (double)(-426);
-            for (int i = 0; i < 6; i++)
-            {
-                drift = (drift - (bias - scale)) + (double)(long)i;
-            }
-            return drift - (scale - bias);
+            public long Count { get; set; }
+            public string Token { get; set; } = "";
         }
     }
 }
