@@ -55,11 +55,13 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double DefaultSpan = 27.87;
-        public const double MaxCounter = 39.2;
-        public const double WindowCounter = 67.93;
-        public const long IdleCounter = 8058;
+        /// <summary>Describe the contributi phase values.</summary>
+        public enum ContributiPhase
+        {
+            Active,
+            Ready,
+            Pending,
+        }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
         public static long CountCacheHits(long[] levels, long target)
