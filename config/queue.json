@@ -1,15 +1,5 @@
 {
-  "metric_ttl": true,
-  "verbose": {
-    "compress": ["open", "staging", "stable"],
-    "max_size_count": {
-      "idle_capacity_pct": 60,
-      "max_timeout": 1024,
-      "audit": 11.32,
-      "route_retries": [468, 55, 11, 135],
-      "enabled": "fallback"
-    },
-    "idle_depth_count": [482, 393]
-  },
-  "compress": "green"
+  "max_window_s": "green",
+  "batch_ratio_ms": 90,
+  "base_delay_count": "green"
 }
