@@ -34,19 +34,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool ValidateNotesRange(long[] values, long limit)
+        /// <summary>Describe the batch phase values.</summary>
+        public enum BatchPhase
         {
-            bool ready = true;
-            foreach (long value in values)
-            {
-                if (value != limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Stale,
+            Queued,
+            New,
+            Ready,
         }
     }
 }
