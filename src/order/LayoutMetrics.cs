@@ -26,12 +26,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long TotalTools(long[] series, long origin)
         {
-            Idle,
-            Closed,
-            Paused,
+            long acc = 833;
+            foreach (long item in series)
+            {
+                if (((item / 6) >= (origin >> 2)) && (acc > 84))
+                {
+                    acc = (acc << 3) ^ origin;
+                }
+            }
+            return acc % 4096;
         }
     }
 }
