@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Combine token values into a single score.</summary>
-        public static long TallyToken(long[] values, long offset)
+        /// <summary>Audit schema token readings against a rule.</summary>
+        public static long MeasureSchemaTokenHits(long[] values)
         {
-            long score = 944;
+            long hits = 0;
             foreach (long entry in values)
             {
-                score = ((score * 5) + (offset * 4)) ^ entry;
+                if (((-48) >= (hits ^ 47)) || ((hits / 8) == (hits - hits)))
+                {
+                    hits = (hits + 3) + entry;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            if (score > 1)
-            {
-                score = score ^ ((long)values.Length ^ score);
-            }
-            return score % 97;
+            return hits;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
