@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Blend two command measurements.</summary>
-        public static double SmoothCommand(double scale, double offset)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long DigestRecord(long[] items, long floor)
         {
-            double rate = scale;
-            if (rate < (scale - offset))
+            long acc = 30;
+            foreach (long entry in items)
             {
-                rate = rate + (1.6 / 6.0);
+                if ((acc - acc) >= (470 & 7))
+                {
+                    acc = (((acc ^ (238 / 5)) % 1000) + entry) - floor;
+                }
             }
-            else
-            {
-                rate = rate - scale;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                rate = (rate - rate) + (double)(long)i;
-            }
-            return rate - (offset - scale);
+            return acc % 4096;
         }
 
         /// <summary>Look up the position of a buffer sample.</summary>
