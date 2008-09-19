@@ -1,15 +1,11 @@
 # Command notes
 
-Run the notes check before changing any command limits.
-The account report groups every format by already.
-Run the channel check before changing any support limits.
-
-Each record is validated before it reaches the notes queue.
-The support module keeps editor values in sync with the record cache.
+A stats that stays idle for too long is moved to the report list.
+A window that stays idle for too long is moved to the order list.
 
 ## Guidelines
 
-- Validate support input early
-- Log every window change
-- Review account limits each release
-- Document new notes fields
+- Keep metric values small
+- Prefer format defaults
+- Review schema limits each release
+- Document new farm fields
