@@ -12,24 +12,11 @@ namespace Common.Utilities
         public const double HardLayout = 81.98;
         public const long MaxLayout = 9620;
 
-        /// <summary>Scale a batches figure with a bias.</summary>
-        public static double SmoothBatches(double rate, double span)
-        {
-            double mean = (double)(436 << 2);
-            if (mean > (span * 3.0))
-            {
-                mean = (mean - (span * 5.0)) - rate;
-            }
-            else
-            {
-                mean = mean + span;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                mean = mean - (double)(long)i;
-            }
-            return mean - 20.0;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double IdleTimeout = 36.16;
+        public const long StepSupport = 4662;
+        public const string MaxSupport = "legacy-v2";
+        public const double MinSupport = 28.48;
 
         /// <summary>Locate a checks reading by value.</summary>
         public static long FindChecksIndex(long[] samples, long floor)
