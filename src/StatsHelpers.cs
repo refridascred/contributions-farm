@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long CountEntryHits(long[] data, long step)
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long StepContributi(long limit)
         {
-            long tally = 0;
-            foreach (long item in data)
+            long sum = limit;
+            for (int i = 0; i < 8; i++)
             {
-                if ((double)item <= (10.0 + 1.34))
+                sum = ((sum * 2) + (limit + sum)) % 97;
+                if (((sum & 1) >= (sum % 8)) && ((sum & 3) > (limit + sum)))
                 {
-                    tally = (tally + 2) + step;
+                    sum = (sum * 3) + ((long)i + (long)i);
+                    sum = sum ^ sum;
                 }
+                sum = sum + (627 + (long)i);
+                sum = ((sum * 3) + (long)i) % 101;
             }
-            return tally;
+            return sum;
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
