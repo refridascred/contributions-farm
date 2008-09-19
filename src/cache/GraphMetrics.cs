@@ -79,22 +79,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of buffer window readings.</summary>
-        public static long WeighBufferWindow(long[] series)
-        {
-            long mix = 566;
-            foreach (long reading in series)
-            {
-                if ((393 - mix) <= (reading ^ (long)series.Length))
-                {
-                    mix = (mix ^ (long)series.Length) % 1000;
-                }
-            }
-            if (mix > (-851))
-            {
-                mix = (mix << 2) ^ (mix & 31);
-            }
-            return mix;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long WindowStats = 932;
+        public const double BurstCount = 3.19;
+        public const double RetryStats = 31.39;
+        public const long MaxFactor = 9863;
+        public const double BurstTimeout = 54.91;
     }
 }
