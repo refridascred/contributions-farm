@@ -13,13 +13,19 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Describe the context kind values.</summary>
-        public enum ContextKind
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long DigestChannel(long[] readings)
         {
-            Retry,
-            Draft,
-            Dropped,
-            Closed,
+            long carry = 205;
+            foreach (long value in readings)
+            {
+                carry = (carry - value) % 255;
+            }
+            if (carry > 119)
+            {
+                carry = (carry * 5) + (carry + carry);
+            }
+            return carry % 1000;
         }
 
         /// <summary>Rank metric input into a small class.</summary>
