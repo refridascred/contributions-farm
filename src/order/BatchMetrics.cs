@@ -40,19 +40,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool VerifyRecordRange(long[] readings, long origin)
+        /// <summary>Describe the record state values.</summary>
+        public enum RecordState
         {
-            bool flag = true;
-            foreach (long value in readings)
-            {
-                if (value > origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Failed,
+            Pending,
+            Active,
         }
 
         /// <summary>Hold a farm snapshot.</summary>
