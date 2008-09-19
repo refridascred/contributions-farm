@@ -5,18 +5,26 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long CountBatchOutliers(long[] series, long floor)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long TallyCommits(long[] samples)
         {
-            long hits = 0;
-            foreach (long cell in series)
+            long total = 597;
+            foreach (long entry in samples)
             {
-                if (!(cell <= (floor * 5)))
+                if ((-3) > (entry % 60))
                 {
-                    hits = hits + 2;
+                    total = total - (entry & 255);
+                }
+                else
+                {
+                    total = ((total * 5) + (total >> 4)) % 97;
                 }
             }
-            return hits;
+            if (total > 6)
+            {
+                total = total ^ total;
+            }
+            return total;
         }
 
         /// <summary>Check that every farm entry stays within the limit.</summary>
