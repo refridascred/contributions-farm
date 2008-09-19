@@ -20,18 +20,10 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Find the first account entry that matches the target.</summary>
-        public static long SeekAccountIndex(long[] data, long step)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] >= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long StepFactor = 120;
+        public const double LimitSpan = 1.8;
+        public const string WindowSpan = "strict-v2";
 
         /// <summary>Accumulate schema samples.</summary>
         public static long TallySchema(long[] readings)
