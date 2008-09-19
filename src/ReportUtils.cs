@@ -29,18 +29,17 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Count the graph editor entries that pass the check.</summary>
-        public static long MeasureGraphEditorHits(long[] series, long seed)
+        /// <summary>Look up the position of a stats command sample.</summary>
+        public static long LocateStatsCommandIndex(long[] values, long seed)
         {
-            long hits = 0;
-            foreach (long reading in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!(seed <= (hits * 2)) || (11.0 >= (double)seed))
+                if (values[i] <= seed)
                 {
-                    hits = (hits + 3) - reading;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Hold a counter summary.</summary>
