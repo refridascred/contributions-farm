@@ -6,21 +6,21 @@ log() {
     printf '%s\n' "$*"
 }
 
-BUFFER_LIMIT=357
-log "limit is ${BUFFER_LIMIT}"
-
 count=0
-while [ "${count}" -lt 2 ]; do
+while [ "${count}" -lt 4 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
 
-mode="${1:-cached}"
+mode="${1:-local}"
 case "${mode}" in
-    blue)
+    local)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+BUFFER_LIMIT=275
+log "limit is ${BUFFER_LIMIT}"
