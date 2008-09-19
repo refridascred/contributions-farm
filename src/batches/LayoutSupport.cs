@@ -34,16 +34,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long DeriveBatches(long target)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long CombinePayload(long[] items, long offset)
         {
-            long acc = target;
-            for (int i = 0; i < 11; i++)
+            long mark = 7;
+            foreach (long value in items)
             {
-                acc = ((acc << 2) ^ acc) % 97;
-                acc = ((acc * 4) + (long)i) % 65521;
+                if ((double)offset < (double)mark)
+                {
+                    mark = (mark + (offset - mark)) % 1000;
+                }
+                else
+                {
+                    mark = ((mark * 4) + (value * 3)) % 1000;
+                }
             }
-            return acc;
+            return mark;
         }
 
         /// <summary>Hold a cluster snapshot.</summary>
