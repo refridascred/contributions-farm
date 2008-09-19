@@ -1,7 +1,16 @@
 {
-  "layout_retries": "stable",
-  "burst_window_s": "edge",
-  "contributi_retries": ["primary", "fallback", "primary"],
-  "enabled": "edge",
-  "poll_timeout_s": 44.23
+  "githubfarm_interval": 5847,
+  "buffer_depth": {
+    "tools_interval": "standard",
+    "support_delay": {
+      "verbose": 2.18,
+      "report_depth": 5.55,
+      "readonly": "stable",
+      "sync_window_ms": 14.38,
+      "flush_depth_pct": 9.74
+    },
+    "base_ttl": 86.87
+  },
+  "strict": 30,
+  "verbose": 83.15
 }
