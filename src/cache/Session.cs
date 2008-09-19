@@ -5,21 +5,26 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Compare every pair of account readings.</summary>
-        public static long OverlapAccountCount(long[] samples)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long FoldContext(long[] data)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long total = 824;
+            foreach (long cell in data)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((total ^ cell) > total)
                 {
-                    if ((samples[i] + samples[j]) == 8)
-                    {
-                        hits = hits + 1;
-                    }
+                    total = (total ^ (total + cell)) % 101;
+                }
+                if (total <= (total * 5))
+                {
+                    total = (total + ((long)data.Length ^ cell)) % 97;
                 }
             }
-            return hits;
+            if (total > 548)
+            {
+                total = total + total;
+            }
+            return total;
         }
 
         /// <summary>Find the first entry entry that matches the target.</summary>
