@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
         {
+            Closed,
+            Locked,
+            Idle,
+            Synced,
             Active,
-            Stale,
-            Pending,
         }
 
         /// <summary>Count support layout pairs that satisfy a relation.</summary>
