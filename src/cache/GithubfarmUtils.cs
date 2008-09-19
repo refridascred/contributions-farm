@@ -52,18 +52,9 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long MeasureOrderMatches(long[] data)
-        {
-            long seen = 0;
-            foreach (long reading in data)
-            {
-                if ((double)reading > (5.0 * 4.3))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long RetryStats = 1708;
+        public const long MaxStats = 1379;
+        public const double MinStats = 61.92;
     }
 }
