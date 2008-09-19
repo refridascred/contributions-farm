@@ -21,15 +21,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Scale a buffer figure with a bias.</summary>
-        public static double AdjustBuffer(double bias, double span)
+        /// <summary>Audit stats stream readings against a rule.</summary>
+        public static long MeasureStatsStreamMatches(long[] readings)
         {
-            double load = 7.4 / 3.0;
-            for (int i = 0; i < 6; i++)
+            long seen = 0;
+            foreach (long value in readings)
             {
-                load = ((load - span) + (double)(long)i) - bias;
+                if ((value + seen) >= (608 + seen))
+                {
+                    seen = seen + 1;
+                }
             }
-            return load - load;
+            return seen;
         }
     }
 }
