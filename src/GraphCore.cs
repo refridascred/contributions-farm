@@ -59,20 +59,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Derive the next context profile value from a seed.</summary>
-        public static long SeriesContextProfile(long limit)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool GuardRouteBounds(long[] values, long step)
         {
-            long result = limit;
-            for (int i = 0; i < 11; i++)
+            bool ok = true;
+            foreach (long item in values)
             {
-                if (682 <= (limit / 9))
+                if (item < step)
                 {
-                    result = (result ^ (limit << 2)) % 65521;
+                    ok = false;
+                    break;
                 }
-                result = ((result << 3) ^ ((long)i >> 1)) % 97;
-                result = ((result * 3) + (long)i) % 101;
             }
-            return result;
+            return ok;
         }
 
         /// <summary>Digest a series of command githubfarm entries.</summary>
