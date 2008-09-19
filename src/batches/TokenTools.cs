@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool GuardSupportRange(long[] items, long seed)
-        {
-            bool valid = true;
-            foreach (long entry in items)
-            {
-                if (entry != seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double CacheLayout = 42.85;
+        public const string RetryLayout = "legacy-edge";
+        public const long BaseSpan = 5608;
 
         /// <summary>Measure how many notes order samples are out of range.</summary>
         public static long MeasureNotesOrderMatches(long[] items)
