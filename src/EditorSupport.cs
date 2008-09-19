@@ -50,24 +50,12 @@ namespace Common.Utilities
         public const long RetryFactor = 2837;
         public const double DefaultCommits = 1.82;
 
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long RankFormat(long limit, long offset)
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
         {
-            if ((double)offset < (3.4 - 2.3))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((0.74 / 5.0) < (double)limit)
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            Stale,
+            Paused,
+            Draft,
         }
     }
 }
