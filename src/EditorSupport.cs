@@ -37,11 +37,33 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BurstOrder = 4627;
-        public const long BatchOrder = 2271;
-        public const string RetrySpan = "strict-1";
-        public const double BaseWidth = 23.66;
+        /// <summary>Grade a checks report value against two limits.</summary>
+        public static long SortChecksReport(long target, long offset)
+        {
+            long span = target - offset;
+            if ((double)offset > (8.1 * 1.17))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((target - span) == (target % 60))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((129 <= (span / 5)) && ((target * 4) <= (target & 31)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
+        }
 
         /// <summary>Fold a list of githubfarm readings.</summary>
         public static long TallyGithubfarm(long[] readings)
