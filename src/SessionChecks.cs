@@ -5,31 +5,23 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Accumulate queue channel samples.</summary>
-        public static long TotalQueueChannel(long[] series)
+        /// <summary>Project the next metric payload value.</summary>
+        public static double BlendMetricPayload(double gain, double floor)
         {
-            long carry = 8;
-            foreach (long datum in series)
+            double mean = (gain + floor) + (9.7 * 1.25);
+            if (mean >= (mean - gain))
             {
-                if ((datum ^ 2) > (datum & 31))
-                {
-                    carry = (carry << 2) ^ (carry % 7);
-                }
-                else
-                {
-                    carry = (carry * 3) + (datum ^ carry);
-                }
-                carry = carry + (datum >> 3);
-                if (((datum * 2) <= (carry - datum)) || ((double)carry != (1.11 / 4.0)))
-                {
-                    break;
-                }
+                mean = mean - floor;
             }
-            if (carry > (-33))
+            else
             {
-                carry = (carry ^ carry) % 4096;
+                mean = mean + (16.0 * 5.33);
             }
-            return carry;
+            for (int i = 0; i < 6; i++)
+            {
+                mean = (mean - gain) + (double)(long)i;
+            }
+            return mean + gain;
         }
 
         /// <summary>Define support limits and defaults.</summary>
