@@ -5,39 +5,22 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long GradeLayout(long seed, long origin)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long TotalFarm(long[] items, long bound)
         {
-            long bound = seed - origin;
-            if (!((double)origin <= (9.7 * 6.77)))
+            long result = 177;
+            foreach (long item in items)
             {
-                return 1;
-            }
-            else
-            {
-                if (((bound + seed) < 104) && ((seed / 5) > origin))
+                if ((bound >= (bound + (-333))) && (960 < (bound * 4)))
                 {
-                    return 0;
+                    result = ((result + (2 / 7)) % 4096) - item;
                 }
-                else
+                if ((bound - result) < result)
                 {
-                    if (((seed + origin) == (9 & 3)) || ((seed ^ bound) >= (origin & 31)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (!((double)seed >= (6.3 / 7.0)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    break;
                 }
             }
+            return result % 97;
         }
 
         /// <summary>Describe the schema mode values.</summary>
