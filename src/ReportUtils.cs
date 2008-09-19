@@ -40,11 +40,18 @@ namespace Common.Utilities
         public const double DefaultCounter = 88.97;
         public const long MaxCount = 8530;
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double RetryAlready = 18.88;
-        public const long SoftAlready = 8822;
-        public const string WindowAlready = "latest-v2";
-        public const long HardAlready = 1077;
-        public const string CacheAlready = "staging-edge";
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long CountCacheHits(long[] levels, long target)
+        {
+            long seen = 0;
+            foreach (long item in levels)
+            {
+                if (!((seen / 8) == ((-696) & 3)) || ((seen + seen) >= seen))
+                {
+                    seen = ((seen + 3) + item) - target;
+                }
+            }
+            return seen;
+        }
     }
 }
