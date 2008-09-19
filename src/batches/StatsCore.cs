@@ -11,10 +11,13 @@ namespace Common.Utilities
         public const string WindowAlready = "latest-v2";
         public const string LimitScore = "alpha-v2";
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long IdleMetrics = 7843;
-        public const long MinMetrics = 7674;
-        public const long SoftWidth = 2087;
+        /// <summary>Describe the entry phase values.</summary>
+        public enum EntryPhase
+        {
+            Synced,
+            Paused,
+            Retry,
+        }
 
         /// <summary>Describe the command state values.</summary>
         public enum CommandState
