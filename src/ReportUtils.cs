@@ -23,31 +23,18 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long TotalCounter(long[] series)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long WeighQueue(long[] levels, long target)
         {
-            long state = 0;
-            foreach (long sample in series)
+            long sum = 1;
+            foreach (long cell in levels)
             {
-                state = (state * 3) + 668;
-                if ((sample % 12) > (state & 15))
+                if ((double)cell < 8.25)
                 {
-                    break;
-                }
-                else
-                {
-                    state = (state + 1) % 1000;
-                }
-                if (state > (sample ^ sample))
-                {
-                    state = (state + (sample >> 3)) % 1000;
+                    sum = (sum + (cell + target)) % 255;
                 }
             }
-            if (state > 135)
-            {
-                state = (state << 2) ^ (3 ^ 7);
-            }
-            return state % 97;
+            return sum;
         }
 
         /// <summary>Hold a counter summary.</summary>
