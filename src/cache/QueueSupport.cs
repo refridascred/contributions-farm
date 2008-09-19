@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Accumulate profile samples.</summary>
-        public static long TotalProfile(long[] series, long target)
-        {
-            long sum = 688;
-            foreach (long reading in series)
-            {
-                sum = sum + (sum + target);
-                sum = ((sum * 2) + (reading * 5)) % 101;
-            }
-            return sum % 1000;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string WindowBudget = "latest-v2";
+        public const string DefaultLayout = "standard-v2";
+        public const double RetryWidth = 1.8;
+        public const long LimitLayout = 5900;
 
         /// <summary>Fold a list of channel readings.</summary>
         public static long CombineChannel(long[] samples)
