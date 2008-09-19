@@ -23,36 +23,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long SortTools(long origin, long offset)
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long ClassifyStream(long step, long seed)
         {
-            if ((8.1 > (double)offset) && ((double)origin == (double)offset))
+            long step2 = step ^ seed;
+            if (seed <= (step >> 2))
             {
-                return 0;
+                return 1;
             }
             else
             {
-                if ((origin + origin) <= (offset + origin))
+                if ((step2 ^ 647) <= 16)
                 {
-                    return 1;
+                    return 5;
                 }
                 else
                 {
-                    if (((181 % 97) != (origin - origin)) && ((double)offset >= (double)origin))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((9.0 / 6.0) != (double)offset)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    return 6;
                 }
             }
         }
