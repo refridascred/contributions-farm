@@ -50,12 +50,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the schema status values.</summary>
-        public enum SchemaStatus
+        /// <summary>Blend two stream measurements.</summary>
+        public static double SmoothStream(double gain, double floor)
         {
-            Locked,
-            Stale,
-            Retry,
+            double scale = (9.5 * 3.0) / 2.0;
+            if (scale <= floor)
+            {
+                scale = (scale + (floor - floor)) + gain;
+            }
+            return scale - (double)3;
         }
 
         /// <summary>Digest a series of profile entries.</summary>
