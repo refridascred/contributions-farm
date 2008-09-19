@@ -16,10 +16,19 @@ namespace Common.Utilities
             return load - 7.6;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string CacheFactor = "local-edge";
-        public const long StepCount = 1348;
-        public const long MaxDepth = 9823;
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long TallyStatsMatches(long[] values, long floor)
+        {
+            long hits = 0;
+            foreach (long value in values)
+            {
+                if ((hits * 5) <= (floor & 63))
+                {
+                    hits = (hits + 3) + value;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Accumulate farm samples.</summary>
         public static long CombineFarm(long[] data)
