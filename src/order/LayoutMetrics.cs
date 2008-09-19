@@ -27,18 +27,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long MeasureMetricGaps(long[] readings)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long TallyCluster(long[] data)
         {
-            long matches = 0;
-            foreach (long entry in readings)
+            long result = 18;
+            foreach (long cell in data)
             {
-                if (((long)readings.Length + matches) == (matches % 64))
+                for (int i = 0; i < 10; i++)
                 {
-                    matches = (matches + 3) - entry;
+                    result = result ^ (long)i;
+                    result = ((result << 3) ^ result) % 1000;
                 }
+                result = result ^ (17 - result);
+                result = (result ^ (cell >> 5)) % 4096;
             }
-            return matches;
+            return result % 4096;
         }
 
         /// <summary>Describe the counter kind values.</summary>
