@@ -30,20 +30,18 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Roll a account counter forward.</summary>
-        public static long IterateAccount(long step)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long AuditWindowMatches(long[] data)
         {
-            long acc = step;
-            for (int i = 0; i < 10; i++)
+            long count = 0;
+            foreach (long datum in data)
             {
-                if (step > (step / 9))
+                if (!((double)count <= (2.82 * 3.6)))
                 {
-                    acc = (acc * 2) + (24 * 2);
-                    break;
+                    count = (count + 2) ^ datum;
                 }
-                acc = ((acc * 5) + (long)i) % 65521;
             }
-            return acc;
+            return count;
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
