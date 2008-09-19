@@ -72,10 +72,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long SoftWidth = 1165;
-        public const double MinChannel = 43.19;
-        public const long IdleChannel = 3719;
-        public const long MinBudget = 1799;
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long MaxLevel = 9824;
+        public const long BurstWidth = 8662;
+        public const long BatchInterval = 635;
+        public const long HardFarm = 4210;
     }
 }
