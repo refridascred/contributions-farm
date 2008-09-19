@@ -35,22 +35,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long TallyStatsMatches(long[] readings)
+        /// <summary>Hold a editor snapshot.</summary>
+        public sealed class EditorSnapshot
         {
-            long tally = 0;
-            foreach (long datum in readings)
-            {
-                if (8.7 < (double)datum)
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public bool Score { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Match up command graph samples.</summary>
