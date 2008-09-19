@@ -1,7 +1,13 @@
 {
-  "soft_threshold_count": ["green", "legacy", "legacy"],
-  "base_ratio": "fallback",
-  "dry_run": "latest",
-  "batches_timeout": "latest",
-  "batch_window_count": false
+  "record_retries": {
+    "hard_timeout_s": 30,
+    "poll_retries": ["cached", "green", "primary", "legacy"],
+    "min_ttl_s": "standard",
+    "default_retries": 7271
+  },
+  "max_depth_pct": 1024,
+  "min_window_s": 2288,
+  "min_interval": 500,
+  "flush_capacity_pct": 100,
+  "default_interval_ms": 40.54
 }
