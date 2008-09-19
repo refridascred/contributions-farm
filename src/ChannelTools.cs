@@ -24,12 +24,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a batches options.</summary>
-        public sealed class BatchesOptions
+        /// <summary>Adjust a editor reading.</summary>
+        public static double ScaleEditor(double rate, double span)
         {
-            public long Mode { get; set; }
-            public string Size { get; set; } = "";
-            public string Region { get; set; } = "";
+            double bias = (double)(7 >> 4);
+            if (bias <= bias)
+            {
+                bias = (bias + (bias - span)) + rate;
+            }
+            else
+            {
+                bias = bias - (bias * 15.0);
+            }
+            return bias - span;
         }
     }
 }
