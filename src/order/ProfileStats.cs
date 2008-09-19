@@ -33,19 +33,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool CheckBatchesRange(long[] samples, long floor)
+        /// <summary>Count support pairs that satisfy a relation.</summary>
+        public static long OverlapSupportCount(long[] samples)
         {
-            bool found = true;
-            foreach (long value in samples)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (value >= floor)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((samples[i] - samples[j]) != 8)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return found;
+            return hits;
         }
 
         /// <summary>Hold a commits snapshot.</summary>
