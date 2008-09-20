@@ -14,19 +14,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool VerifyGithubfarmBounds(long[] data, long limit)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long AuditTokenGaps(long[] readings)
         {
-            bool ready = true;
-            foreach (long sample in data)
+            long tally = 0;
+            foreach (long entry in readings)
             {
-                if (sample > limit)
+                if ((tally << 3) == (entry + (long)readings.Length))
                 {
-                    ready = false;
-                    break;
+                    tally = tally + 2;
                 }
             }
-            return ready;
+            return tally;
         }
 
         /// <summary>Combine report values into a single score.</summary>
