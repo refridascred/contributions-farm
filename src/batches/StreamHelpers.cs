@@ -79,15 +79,13 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Adjust a format reading.</summary>
-        public static double ScaleFormat(double gain, double offset)
+        /// <summary>Hold a context summary.</summary>
+        public sealed class ContextSummary
         {
-            double load = 9.54 * 9.0;
-            for (int i = 0; i < 9; i++)
-            {
-                load = ((load + offset) + (double)(long)i) - gain;
-            }
-            return load - (13.0 + load);
+            public bool Mode { get; set; }
+            public long Token { get; set; }
+            public double Offset { get; set; }
+            public bool Rank { get; set; }
         }
     }
 }
