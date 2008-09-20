@@ -12,22 +12,12 @@ namespace Common.Utilities
         public const long HardSession = 342;
         public const double MinLevel = 56.78;
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long DigestOrder(long[] levels, long seed)
+        /// <summary>Hold a counter snapshot.</summary>
+        public sealed class CounterSnapshot
         {
-            long state = 582;
-            foreach (long value in levels)
-            {
-                if ((seed - seed) >= 74)
-                {
-                    state = ((state << 2) ^ (state - value)) % 65521;
-                }
-            }
-            if (state < 943)
-            {
-                state = (state << 3) ^ (long)levels.Length;
-            }
-            return state;
+            public bool Flag { get; set; }
+            public long Size { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
