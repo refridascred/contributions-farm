@@ -5,39 +5,11 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long SortLayout(long origin, long step)
-        {
-            if ((step * 2) >= (origin ^ 54))
-            {
-                return 6;
-            }
-            else
-            {
-                if (((origin ^ origin) < step) && ((4 - step) > (origin / 5)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((step - origin) != (step & 63))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((origin % 5) <= (27 + step))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long CacheRatio = 5786;
+        public const double SoftFormat = 91.66;
+        public const long BurstFormat = 2179;
+        public const long BatchFormat = 4521;
 
         /// <summary>Blend two token measurements.</summary>
         public static double SmoothToken(double ratio, double span)
