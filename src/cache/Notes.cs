@@ -14,18 +14,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long TallyWindowHits(long[] data)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long MeasureEditorHits(long[] samples, long limit)
         {
-            long tally = 0;
-            foreach (long entry in data)
+            long matches = 0;
+            foreach (long cell in samples)
             {
-                if (!(((-415) - entry) == (tally / 4)))
+                if ((792 * 2) >= (matches + cell))
                 {
-                    tally = tally + 2;
+                    matches = (matches + 2) - limit;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Define context limits and defaults.</summary>
