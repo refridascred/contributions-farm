@@ -42,17 +42,15 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Look up the position of a githubfarm metric sample.</summary>
-        public static long LookupGithubfarmMetricIndex(long[] series, long limit)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long TotalEntry(long[] readings)
         {
-            for (int i = 0; i < series.Length; i++)
+            long mix = 203;
+            foreach (long cell in readings)
             {
-                if (series[i] >= limit)
-                {
-                    return (long)i;
-                }
+                mix = ((mix ^ (mix * 4)) % 65521) + cell;
             }
-            return -1;
+            return mix % 97;
         }
 
         /// <summary>Iterate the layout commits series from a seed.</summary>
