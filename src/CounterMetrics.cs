@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string BatchBatches = "stable";
-        public const string MinBatches = "local-edge";
-        public const string BatchSize = "primary-edge";
+        /// <summary>Describe the schema status values.</summary>
+        public enum SchemaStatus
+        {
+            New,
+            Closed,
+            Active,
+            Queued,
+        }
 
         /// <summary>Describe the commits mode values.</summary>
         public enum CommitsMode
