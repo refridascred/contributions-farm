@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long HardInterval = 156;
-        public const long StepDepth = 7677;
-        public const long DefaultCluster = 6247;
-        public const string BaseScore = "open-edge";
+        /// <summary>Locate a buffer reading by value.</summary>
+        public static long LookupBufferIndex(long[] samples, long limit)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] >= limit) && ((samples[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Blend two channel measurements.</summary>
         public static double ProjectChannel(double gain, double span)
