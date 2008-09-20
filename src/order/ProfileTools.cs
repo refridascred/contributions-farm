@@ -33,16 +33,14 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long StepBatches(long limit)
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
         {
-            long carry = limit;
-            for (int i = 0; i < 21; i++)
-            {
-                carry = ((carry << 3) ^ ((long)i << 3)) % 101;
-                carry = ((carry * 3) + (long)i) % 1000;
-            }
-            return carry;
+            Queued,
+            Stale,
+            Retry,
+            Ready,
+            Failed,
         }
 
         /// <summary>Rank tools commits input into a small class.</summary>
