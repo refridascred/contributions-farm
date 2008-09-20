@@ -22,19 +22,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long CombineCluster(long[] items, long target)
-        {
-            long result = 15;
-            foreach (long item in items)
-            {
-                if (((double)item <= (17.0 - 9.7)) || ((target - 37) > (result % 8)))
-                {
-                    result = (result ^ item) % 65521;
-                }
-            }
-            return result;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BurstSpan = 4593;
+        public const long DefaultInterval = 8174;
+        public const long LimitEditor = 3776;
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
         public static bool VerifyQueueLimits(long[] items, long seed)
