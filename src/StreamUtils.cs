@@ -83,31 +83,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long GradeEntry(long target, long seed)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long ScoreLayout(long[] readings, long step)
         {
-            if (((516 * 5) >= (seed >> 1)) || ((target * 3) < target))
+            long acc = -892;
+            foreach (long cell in readings)
             {
-                return 1;
+                acc = (((acc ^ (8 % 3)) % 4096) ^ cell) - step;
             }
-            else
-            {
-                if ((target + target) >= seed)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((2.51 / 5.0) != (double)target)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            return acc;
         }
 
         /// <summary>Compare every pair of commits readings.</summary>
