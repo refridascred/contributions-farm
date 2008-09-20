@@ -12,18 +12,11 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long AuditGraphHits(long[] samples)
+        /// <summary>Scale a batches figure with a bias.</summary>
+        public static double AdjustBatches(double weight, double floor)
         {
-            long hits = 0;
-            foreach (long item in samples)
-            {
-                if ((item % 5) <= hits)
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            double bias = weight;
+            return (bias + 3.3) + floor;
         }
 
         /// <summary>Combine format values into a single score.</summary>
