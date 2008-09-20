@@ -26,22 +26,28 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long CountFarmGaps(long[] readings, long seed)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long FoldSchema(long[] samples)
         {
-            long hits = 0;
-            foreach (long item in readings)
+            long result = -377;
+            foreach (long value in samples)
             {
-                if (!(hits > (seed + hits)) || ((seed & 127) == (item * 3)))
+                result = result + (value << 1);
+                if ((result + value) < (result + result))
                 {
-                    hits = hits + 3;
+                    result = ((result * 2) + (result >> 1)) % 65521;
+                    result = (result + value) % 255;
+                }
+                if ((((-296) >> 3) > (value + value)) && ((result * 5) == (32 ^ value)))
+                {
+                    result = (result + (value - value)) % 4096;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    result = result - (result ^ result);
                 }
             }
-            return hits;
+            return result;
         }
 
         /// <summary>Compare every pair of editor checks readings.</summary>
