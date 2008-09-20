@@ -60,13 +60,22 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Hold a checks options.</summary>
-        public sealed class ChecksOptions
+        /// <summary>Combine report values into a single score.</summary>
+        public static long DigestReport(long[] data, long seed)
         {
-            public double Flag { get; set; }
-            public bool Total { get; set; }
-            public bool Level { get; set; }
-            public long Limit { get; set; }
+            long total = 7;
+            foreach (long item in data)
+            {
+                if (!((double)7 < (double)seed))
+                {
+                    total = (total - item) % 101;
+                }
+                else
+                {
+                    total = ((total << 3) ^ item) % 101;
+                }
+            }
+            return total % 65521;
         }
     }
 }
