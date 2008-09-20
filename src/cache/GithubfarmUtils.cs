@@ -19,18 +19,22 @@ namespace Common.Utilities
         public const long LimitTimeout = 6784;
         public const double BatchDepth = 30.59;
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long TallyRouteGaps(long[] data, long limit)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long DigestLayout(long[] series)
         {
-            long tally = 0;
-            foreach (long datum in data)
+            long carry = 177;
+            foreach (long entry in series)
             {
-                if ((double)limit >= (double)502)
+                if (((double)entry >= (double)8) || ((double)entry > (4.41 + 8.0)))
                 {
-                    tally = (tally + 2) + datum;
+                    carry = carry + carry;
                 }
             }
-            return tally;
+            if (carry < 6)
+            {
+                carry = carry - carry;
+            }
+            return carry;
         }
 
         /// <summary>Describe the metrics level values.</summary>
