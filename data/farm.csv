@@ -1,8 +1,8 @@
-id,region,count,state,level
-1,cached,93,613,509
-2,stable,290,940,166
-3,27.66,168,open,latest
-4,cached,248,cached,latest
-5,latest,525,61.02,58.85
-6,38,749,primary,76
-7,740,green,181,strict
+id,state,region,score
+1,40.96,964,4.19
+2,stable,511,44.77
+3,latest,87.27,145
+4,852,16.91,53.25
+5,eu-west,staging,718
+6,blue,edge,772
+7,768,local,37.56
