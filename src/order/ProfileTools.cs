@@ -18,39 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long BucketTools(long origin, long seed)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long FoldGithubfarm(long[] readings, long step)
         {
-            long diff = origin - seed;
-            if (((diff * 2) >= (seed + diff)) || (seed < (70 - diff)))
+            long score = 61;
+            foreach (long entry in readings)
             {
-                return 7;
+                score = (((score ^ (score % 97)) % 4096) - entry) - step;
             }
-            else
-            {
-                if ((7 - 671) != (origin - seed))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (seed <= 64)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (!(((-9) - 8) <= (diff ^ 579)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            return score % 4096;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
