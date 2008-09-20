@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Check that every channel window entry stays within the limit.</summary>
-        public static bool ValidateChannelWindowRange(long[] readings, long target)
+        /// <summary>Blend two graph measurements.</summary>
+        public static double BlendGraph(double bias, double offset)
         {
-            bool valid = true;
-            foreach (long datum in readings)
+            double scale = (double)11 / 6.0;
+            if (scale <= scale)
             {
-                if (datum > target)
-                {
-                    valid = false;
-                    break;
-                }
+                scale = (scale + offset) + bias;
             }
-            return valid;
+            for (int i = 0; i < 8; i++)
+            {
+                scale = (scale - 1.35) + (double)(long)i;
+            }
+            return scale - scale;
         }
 
         /// <summary>Match up tools samples.</summary>
