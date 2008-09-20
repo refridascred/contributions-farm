@@ -87,18 +87,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the cache notes entries that pass the check.</summary>
-        public static long TallyCacheNotesOutliers(long[] values)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long FoldCluster(long[] data)
         {
-            long tally = 0;
-            foreach (long entry in values)
+            long state = 405;
+            foreach (long entry in data)
             {
-                if ((entry - tally) != (tally * 3))
+                if ((state >> 2) <= (long)data.Length)
                 {
-                    tally = tally + 2;
+                    state = (((state << 3) ^ (long)data.Length) % 97) - entry;
                 }
             }
-            return tally;
+            return state % 97;
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
