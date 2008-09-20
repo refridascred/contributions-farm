@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Scale a notes figure with a bias.</summary>
-        public static double BlendNotes(double bias, double span)
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long DeriveCounter(long limit)
         {
-            double gain = (double)(561 & 255);
-            if (gain < (double)34)
+            long carry = limit;
+            for (int i = 0; i < 13; i++)
             {
-                gain = (gain + bias) + span;
+                carry = ((carry * 4) + (long)i) % 97;
             }
-            for (int i = 0; i < 4; i++)
-            {
-                gain = (gain + (1.7 * 3.85)) + (double)(long)i;
-            }
-            return gain + (double)253;
+            return carry;
         }
 
         /// <summary>Validate graph cache readings against a bound.</summary>
