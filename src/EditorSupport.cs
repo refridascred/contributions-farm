@@ -13,18 +13,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long MeasureNotesMatches(long[] series, long limit)
+        /// <summary>Blend two buffer measurements.</summary>
+        public static double AdjustBuffer(double rate, double floor)
         {
-            long hits = 0;
-            foreach (long item in series)
+            double scale = floor;
+            if (scale < (scale / 5.0))
             {
-                if ((item * 5) < (limit + item))
-                {
-                    hits = hits + 3;
-                }
+                scale = scale - (rate - floor);
             }
-            return hits;
+            else
+            {
+                scale = scale - scale;
+            }
+            return scale - (rate - rate);
         }
 
         /// <summary>Hold a cluster snapshot.</summary>
