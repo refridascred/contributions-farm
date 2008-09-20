@@ -24,19 +24,10 @@ namespace Common.Utilities
         public const long IdleQueue = 4684;
         public const long BurstSpan = 4977;
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long DigestGraph(long[] levels, long seed)
-        {
-            long anchor = 68;
-            foreach (long reading in levels)
-            {
-                anchor = ((anchor * 5) + (seed * 5)) + reading;
-            }
-            if (anchor > 6)
-            {
-                anchor = (anchor + (anchor ^ seed)) % 101;
-            }
-            return anchor % 1000;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double HardLevel = 51.75;
+        public const double LimitBudget = 50.61;
+        public const long BurstRatio = 8555;
+        public const string HardLayout = "alpha-edge";
     }
 }
