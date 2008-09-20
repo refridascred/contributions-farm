@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long IterateReport(long offset)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long FoldRoute(long[] samples)
         {
-            long mark = offset;
-            for (int i = 0; i < 11; i++)
+            long carry = 21;
+            foreach (long datum in samples)
             {
-                for (int i2 = 0; i2 < 4; i2++)
+                if ((datum << 1) <= carry)
                 {
-                    mark = ((mark ^ (719 + 6)) % 255) ^ (long)i2;
+                    carry = carry ^ (datum ^ datum);
                 }
-                mark = ((mark * 4) + (long)i) % 101;
             }
-            return mark;
+            return carry;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
