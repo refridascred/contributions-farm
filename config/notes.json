@@ -1,5 +1,5 @@
 {
-  "strict": true,
-  "sync_delay": true,
-  "default_delay_pct": 7825
+  "idle_interval": 68,
+  "account_retries": ["local", "fallback", "fallback", "stable"],
+  "hard_depth_count": 64.59
 }
