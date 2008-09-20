@@ -1,7 +1,10 @@
-id,state
-1,cached
-2,921
-3,772
-4,legacy
-5,602
-6,470
+id,score,level,count
+1,39,959,eu-west
+2,fallback,44.63,37.39
+3,10.28,0.34,520
+4,67.96,primary,blue
+5,16.15,949,primary
+6,91.31,standard,93.55
+7,279,31.7,826
+8,blue,primary,41.08
+9,953,10,521
