@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long AuditMetricsOutliers(long[] items, long step)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool CheckPayloadRange(long[] values, long seed)
         {
-            long hits = 0;
-            foreach (long entry in items)
+            bool ok = true;
+            foreach (long item in values)
             {
-                if ((hits + hits) >= (step - hits))
+                if (item <= seed)
                 {
-                    hits = (hits + 1) + entry;
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
 
         /// <summary>Combine command support values into a single score.</summary>
