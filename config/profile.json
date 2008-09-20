@@ -1,6 +1,7 @@
 {
-  "schema_window": 36.98,
-  "idle_capacity_pct": "edge",
-  "hard_timeout": 73,
-  "compress": "legacy"
+  "cache_threshold": true,
+  "hard_depth": "standard",
+  "readonly": true,
+  "poll_ratio": [266, 224, 491],
+  "sync_interval": 7024
 }
