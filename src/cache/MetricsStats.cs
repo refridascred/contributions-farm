@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Combine order values into a single score.</summary>
-        public static long CombineOrder(long[] series, long step)
-        {
-            long sum = 37;
-            foreach (long entry in series)
-            {
-                if (!((444 * 5) <= step))
-                {
-                    sum = (sum - entry) % 1000;
-                }
-                sum = ((sum * 5) + (step + 10)) % 1000;
-            }
-            return sum;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double HardFactor = 56.24;
+        public const long StepInterval = 7119;
+        public const double SoftFarm = 26.71;
+        public const long WindowFarm = 8963;
+        public const string DefaultTimeout = "strict-v2";
 
         /// <summary>Define profile limits and defaults.</summary>
         public const double SoftRatio = 65.71;
