@@ -33,18 +33,24 @@ namespace Common.Utilities
         public const long CacheFormat = 7748;
         public const double SoftRatio = 43.5;
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long MeasureClusterOutliers(long[] levels)
+        /// <summary>Classify a githubfarm stats pair into a bucket.</summary>
+        public static long ClassifyGithubfarmStats(long origin, long origin2)
         {
-            long tally = 0;
-            foreach (long value in levels)
+            if (((663 % 10) > (origin2 + origin2)) && ((origin2 * 3) >= origin2))
             {
-                if ((value + value) != (value - tally))
+                return 4;
+            }
+            else
+            {
+                if (!(origin2 < (origin2 + origin)))
                 {
-                    tally = tally + 2;
+                    return 7;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return tally;
         }
     }
 }
