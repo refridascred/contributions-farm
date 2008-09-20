@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the report level values.</summary>
-        public enum ReportLevel
+        /// <summary>Check that every format filter entry stays within the limit.</summary>
+        public static bool CheckFormatFilterLimits(long[] items, long step)
         {
-            Failed,
-            Retry,
-            Locked,
+            bool valid = true;
+            foreach (long value in items)
+            {
+                if (value >= step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
