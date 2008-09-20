@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Hold a already info.</summary>
-        public sealed class AlreadyInfo
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool ValidateContextBounds(long[] samples, long step)
         {
-            public long Owner { get; set; }
-            public double Ratio { get; set; }
-            public long Weight { get; set; }
-            public long Mode { get; set; }
+            bool stale = true;
+            foreach (long cell in samples)
+            {
+                if (cell != step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Audit report readings against a rule.</summary>
