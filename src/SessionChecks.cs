@@ -37,22 +37,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up profile samples.</summary>
-        public static long PairProfileCount(long[] data)
-        {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) != 12)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long StepCount = 4747;
+        public const long MinFactor = 6835;
+        public const long WindowFilter = 418;
+        public const string HardSize = "stable-1";
+        public const string CacheFilter = "local-1";
 
         /// <summary>Validate layout readings against a bound.</summary>
         public static bool CheckLayoutLimits(long[] samples, long step)
