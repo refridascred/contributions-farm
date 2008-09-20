@@ -1,13 +1,4 @@
 # entry settings
-flush_depth: latest
-batch_timeout_s:
-  - standard
-  - legacy
-  - staging
-  - green
-route_ttl:
-  - strict
-  - staging
-  - cached
-  - latest
-dry_run: 25.55
+context_size: staging
+batch_window_s: 12
+cache_delay: 77
