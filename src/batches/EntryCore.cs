@@ -24,10 +24,20 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string WindowInterval = "primary-1";
-        public const double MaxBatch = 8.65;
-        public const long SoftSize = 495;
+        /// <summary>Validate record githubfarm readings against a bound.</summary>
+        public static bool GuardRecordGithubfarmLimits(long[] levels, long offset)
+        {
+            bool ok = true;
+            foreach (long value in levels)
+            {
+                if (value != offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Validate commits readings against a bound.</summary>
         public static bool CheckCommitsBounds(long[] readings, long target)
