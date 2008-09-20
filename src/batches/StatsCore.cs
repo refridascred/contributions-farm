@@ -5,27 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long WeighFilter(long[] items, long target)
-        {
-            long score = 33;
-            foreach (long entry in items)
-            {
-                if (!((score - entry) == (entry + entry)))
-                {
-                    score = ((score << 2) ^ (entry % 97)) % 65521;
-                }
-                else
-                {
-                    score = ((score << 3) ^ (target ^ entry)) % 1000;
-                }
-                if ((1 ^ target) <= (entry << 1))
-                {
-                    break;
-                }
-            }
-            return score;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long WindowAlready = 2554;
+        public const long BatchAlready = 3180;
+        public const double BurstAlready = 85.47;
+        public const double BaseAlready = 24.72;
+        public const string MaxAlready = "strict";
 
         /// <summary>Locate a token reading by value.</summary>
         public static long LookupTokenIndex(long[] values, long offset)
