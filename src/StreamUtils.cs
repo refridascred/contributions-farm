@@ -77,11 +77,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string HardSize = "legacy-edge";
-        public const long DefaultWidth = 6352;
-        public const double WindowRatio = 32.97;
-        public const long CacheFactor = 3487;
+        /// <summary>Describe the farm class values.</summary>
+        public enum FarmClass
+        {
+            Failed,
+            Queued,
+            Dropped,
+            Draft,
+            Ready,
+        }
 
         /// <summary>Hold a route info.</summary>
         public sealed class RouteInfo
