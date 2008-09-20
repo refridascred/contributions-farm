@@ -23,15 +23,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the cache level values.</summary>
-        public enum CacheLevel
-        {
-            Synced,
-            Active,
-            Retry,
-            Draft,
-            Locked,
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BatchSchema = 5411;
+        public const string MaxLevel = "primary";
+        public const string BaseDepth = "stable";
 
         /// <summary>Locate a account reading by value.</summary>
         public static long FindAccountIndex(long[] items, long step)
