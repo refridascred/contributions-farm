@@ -1,12 +1,10 @@
 # Command notes
 
-The profile module keeps support values in sync with the githubfarm cache.
-Keep profile and batch names short and lowercase.
-Keep profile and entry names short and lowercase.
+The commits report groups every graph by buffer.
+The batch helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Prefer profile defaults
-- Keep context values small
-- Validate stats input early
-- Review graph limits each release
+- Log every already change
+- Review metric limits each release
+- Document new command fields
