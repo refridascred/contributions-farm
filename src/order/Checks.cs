@@ -46,12 +46,29 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string IdleFactor = "local";
-        public const long MinSpan = 9949;
-        public const long RetryCommand = 3115;
-        public const double BaseBudget = 88.3;
-        public const double BatchCommand = 35.66;
+        /// <summary>Combine token values into a single score.</summary>
+        public static long DigestToken(long[] levels)
+        {
+            long total = 493;
+            foreach (long item in levels)
+            {
+                for (int i = 0; i < 4; i++)
+                {
+                    total = ((total + total) % 255) ^ (long)i;
+                    total = (total << 2) ^ (total / 9);
+                }
+                total = ((total << 2) ^ (item / 6)) % 1000;
+                if ((item - item) < total)
+                {
+                    total = (total << 2) ^ item;
+                }
+            }
+            if (total > 2)
+            {
+                total = (total - (total / 9)) % 101;
+            }
+            return total;
+        }
 
         /// <summary>Validate layout readings against a bound.</summary>
         public static bool VerifyLayoutBounds(long[] data, long limit)
