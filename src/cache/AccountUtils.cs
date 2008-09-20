@@ -20,19 +20,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long WeighFormat(long[] samples, long bound)
+        /// <summary>Hold a payload entry.</summary>
+        public sealed class PayloadEntry
         {
-            long state = 0;
-            foreach (long cell in samples)
-            {
-                state = ((state * 4) + cell) + bound;
-                if ((double)state < (9.0 / 5.0))
-                {
-                    state = (state ^ (state ^ state)) % 101;
-                }
-            }
-            return state % 4096;
+            public double Count { get; set; }
+            public string Offset { get; set; } = "";
+            public bool Flag { get; set; }
         }
 
         /// <summary>Describe the support status values.</summary>
