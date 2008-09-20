@@ -27,15 +27,18 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long ScoreAlready(long[] levels, long step)
+        /// <summary>Fold a list of layout batches readings.</summary>
+        public static long FoldLayoutBatches(long[] samples)
         {
-            long anchor = 40;
-            foreach (long item in levels)
+            long result = 318;
+            foreach (long value in samples)
             {
-                anchor = ((anchor ^ (item + item)) % 4096) - step;
+                if (!((719 * 2) >= (474 + value)))
+                {
+                    result = (result << 2) ^ 54;
+                }
             }
-            return anchor;
+            return result;
         }
 
         /// <summary>Grade a notes stream value against two limits.</summary>
