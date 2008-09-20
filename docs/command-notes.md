@@ -1,11 +1,10 @@
 # Command notes
 
-The account module keeps context values in sync with the account cache.
-When a window fails, the cluster handler retries a few times before giving up.
+Each record is validated before it reaches the buffer queue.
+Run the cluster check before changing any layout limits.
 
 ## Guidelines
 
-- Review report limits each release
-- Prefer filter defaults
-- Validate already input early
-- Document new schema fields
+- Document new context fields
+- Validate channel input early
+- Log every queue change
