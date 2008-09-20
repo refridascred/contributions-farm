@@ -1,16 +1,30 @@
 # support settings
-soft_delay_count: staging
-hard_retries_s: 88.28
-session_threshold:
-  min_interval_count: 84.67
-  stream_interval: cached
-  idle_retries:
-    command_threshold:
-      - eu-west
-      - standard
-      - legacy
-    layout_timeout: true
-    graph_ttl: false
-    batch_retries_pct: green
-    base_ratio: strict
-sync_retries_count: 1493
+poll_retries_count:
+  hard_retries_ms:
+    audit: 48
+    dry_run:
+      - green
+      - green
+      - strict
+    hard_threshold_ms: 3891
+    payload_size: 70.6
+  soft_retries_s:
+    - edge
+    - green
+  idle_interval_s:
+    - 356
+    - 462
+    - 435
+  account_depth:
+    - 92
+    - 15
+    - 460
+  idle_threshold_ms: local
+  min_limit_ms:
+    - 465
+    - 277
+    - 434
+retry_capacity: 60
+batch_threshold_s: 1024
+base_threshold: false
+enabled: legacy
