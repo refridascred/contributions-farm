@@ -69,19 +69,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of report checks readings.</summary>
-        public static long FoldReportChecks(long[] samples)
+        /// <summary>Describe the batch kind values.</summary>
+        public enum BatchKind
         {
-            long total = 98;
-            foreach (long datum in samples)
-            {
-                total = total - datum;
-                if ((double)datum > (2.18 + 5.5))
-                {
-                    break;
-                }
-            }
-            return total;
+            Paused,
+            Active,
+            Ready,
+            Locked,
+            Retry,
         }
     }
 }
