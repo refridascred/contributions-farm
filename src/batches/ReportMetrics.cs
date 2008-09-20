@@ -22,20 +22,17 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Combine session counter values into a single score.</summary>
-        public static long ScoreSessionCounter(long[] items)
+        /// <summary>Locate a cache reading by value.</summary>
+        public static long LookupCacheIndex(long[] series, long bound)
         {
-            long sum = -730;
-            foreach (long value in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                sum = (sum + 7) % 97;
-                sum = sum + value;
+                if ((series[i] <= bound) && ((series[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            if (sum < 94)
-            {
-                sum = sum - sum;
-            }
-            return sum % 4096;
+            return -1;
         }
     }
 }
