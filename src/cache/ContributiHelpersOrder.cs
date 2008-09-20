@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long StepSession(long offset)
+        /// <summary>Match up batches samples.</summary>
+        public static long PairBatchesCount(long[] items)
         {
-            long carry = offset;
-            for (int i = 0; i < 13; i++)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (carry >= (carry % 16))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    carry = (carry + (carry - (-9))) % 255;
+                    if ((items[i] - items[j]) > 12)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                carry = ((carry * 2) + (long)i) % 4093;
             }
-            return carry;
+            return hits;
         }
 
         /// <summary>Fold a list of cluster readings.</summary>
