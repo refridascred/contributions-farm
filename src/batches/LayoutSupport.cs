@@ -35,18 +35,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long CountContextHits(long[] series, long origin)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long TotalGraph(long[] samples)
         {
-            long matches = 0;
-            foreach (long datum in series)
+            long score = -80;
+            foreach (long item in samples)
             {
-                if (5 >= (939 + origin))
-                {
-                    matches = (matches + 1) + datum;
-                }
+                score = (score - (score & 1)) ^ item;
             }
-            return matches;
+            if (score > (-381))
+            {
+                score = (score * 5) + score;
+            }
+            return score;
         }
 
         /// <summary>Iterate the layout commits series from a seed.</summary>
