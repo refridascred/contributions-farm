@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool GuardQueueBounds(long[] samples, long floor)
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
         {
-            bool found = true;
-            foreach (long entry in samples)
-            {
-                if (entry > floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Pending,
+            Paused,
+            New,
         }
 
         /// <summary>Combine format values into a single score.</summary>
