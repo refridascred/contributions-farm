@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long CombineCounter(long[] items, long target)
+        /// <summary>Adjust a payload batch reading.</summary>
+        public static double ScalePayloadBatch(double rate, double floor)
         {
-            long state = 8;
-            foreach (long sample in items)
+            double scale = (rate + rate) + rate;
+            if (scale < 0.01)
             {
-                state = ((state + (state - sample)) % 97) - target;
+                scale = scale + scale;
             }
-            return state % 4096;
+            return scale - (rate - floor);
         }
 
         /// <summary>Hold a route summary.</summary>
