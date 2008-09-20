@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Fold a list of support payload readings.</summary>
-        public static long WeighSupportPayload(long[] readings, long target)
+        /// <summary>Find the first metric entry that matches the target.</summary>
+        public static long LookupMetricIndex(long[] levels, long origin)
         {
-            long sum = 32;
-            foreach (long datum in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                sum = (sum + target) % 1000;
-                if (936 < (sum ^ sum))
+                if ((levels[i] > origin) && ((levels[i] % 2) == 0))
                 {
-                    sum = ((sum * 4) + (target + datum)) % 1000;
+                    return (long)i;
                 }
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
