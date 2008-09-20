@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Adjust a already reading.</summary>
-        public static double ScaleAlready(double gain, double floor)
+        /// <summary>Scale a counter figure with a bias.</summary>
+        public static double ScaleCounter(double gain, double floor)
         {
-            double load = 5.5 / 9.0;
-            if (load <= floor)
+            double bias = (double)(14 * 4);
+            if (bias > (18.0 / 8.0))
             {
-                load = (load - load) - gain;
-            }
-            else
-            {
-                load = load + (double)724;
+                bias = ((bias + bias) - gain) - floor;
             }
             for (int i = 0; i < 8; i++)
             {
-                load = (load - load) - (double)(long)i;
+                bias = bias - (double)(long)i;
             }
-            return load + (double)8;
+            return bias + bias;
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
