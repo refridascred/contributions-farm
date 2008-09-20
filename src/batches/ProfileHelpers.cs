@@ -63,21 +63,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of batch readings.</summary>
-        public static long PairBatchCount(long[] items)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool ValidateStreamBounds(long[] readings, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool ok = true;
+            foreach (long cell in readings)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (cell > floor)
                 {
-                    if ((items[i] + items[j]) < 20)
-                    {
-                        matches = matches + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return matches;
+            return ok;
         }
     }
 }
