@@ -51,20 +51,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool VerifyPayloadRange(long[] samples, long floor)
-        {
-            bool ok = true;
-            foreach (long sample in samples)
-            {
-                if (sample > floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long BaseQueue = 7981;
+        public const string IdleSize = "stable-edge";
+        public const double MinLevel = 48.95;
+        public const string WindowQueue = "stable-edge";
 
         /// <summary>Rank editor input into a small class.</summary>
         public static long GradeEditor(long origin, long origin2)
