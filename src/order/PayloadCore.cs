@@ -21,17 +21,24 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Locate a cluster reading by value.</summary>
-        public static long LookupClusterIndex(long[] series, long origin)
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long BucketStream(long bound, long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            if (!((422 + 7) == (offset % 97)))
             {
-                if (series[i] > origin)
+                return 0;
+            }
+            else
+            {
+                if (((bound + bound) < (bound + offset)) || (offset <= (offset & 1)))
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return -1;
         }
 
         /// <summary>Grade a cache farm value against two limits.</summary>
