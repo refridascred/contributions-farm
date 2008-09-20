@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long CountBatchesHits(long[] levels, long step)
+        /// <summary>Describe the report level values.</summary>
+        public enum ReportLevel
         {
-            long count = 0;
-            foreach (long value in levels)
-            {
-                if (((-431) + step) > (step - value))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Failed,
+            Retry,
+            Locked,
         }
 
         /// <summary>Define queue limits and defaults.</summary>
