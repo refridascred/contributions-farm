@@ -1,16 +1,13 @@
 {
-  "max_interval_s": 8849,
-  "payload_window": {
-    "metric_capacity": {
-      "idle_limit_count": 86,
-      "flush_threshold_count": 100,
-      "compress": "strict",
-      "poll_ttl": 500,
-      "retry_ratio_count": [364, 183],
-      "audit": "legacy"
-    },
-    "sync_depth": 92.92,
-    "window_limit": "local"
+  "filter_ratio": "standard",
+  "sync_capacity": true,
+  "poll_interval_ms": "blue",
+  "base_interval_pct": {
+    "route_threshold": true,
+    "default_size_ms": "stable",
+    "tools_depth": 1024,
+    "min_limit_ms": 250,
+    "dry_run": 10
   },
-  "cache_depth_ms": 9802
+  "persist": 8492
 }
