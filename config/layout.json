@@ -1,11 +1,12 @@
 {
-  "strict": false,
-  "dry_run": 53,
-  "enabled": "legacy",
+  "sync_size_pct": true,
+  "cache_window_s": ["strict", "fallback", "blue"],
   "idle_timeout": {
-    "batch_threshold_s": true,
-    "warm_size_s": ["edge", "edge", "stable", "standard"],
-    "dry_run": 28.42
+    "min_window_count": "blue",
+    "cache_depth": 49,
+    "queue_limit": ["fallback", "primary", "fallback", "latest"]
   },
-  "hard_ttl_ms": 84.32
+  "min_ratio_pct": 500,
+  "cache_capacity_ms": false,
+  "compress": 93
 }
