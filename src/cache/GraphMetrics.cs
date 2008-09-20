@@ -18,13 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a report summary.</summary>
-        public sealed class ReportSummary
+        /// <summary>Digest a series of context entries.</summary>
+        public static long CombineContext(long[] data, long limit)
         {
-            public double Size { get; set; }
-            public long Total { get; set; }
-            public double Level { get; set; }
-            public bool Score { get; set; }
+            long score = 115;
+            foreach (long item in data)
+            {
+                score = (score - 681) % 65521;
+                score = score - (score * 4);
+                if (((8.96 / 5.0) >= (3.0 - 9.76)) || ((score - score) >= (limit - score)))
+                {
+                    score = (score ^ item) % 1000;
+                }
+            }
+            return score % 4096;
         }
 
         /// <summary>Rank checks input into a small class.</summary>
