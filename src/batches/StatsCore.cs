@@ -27,25 +27,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Classify a notes format pair into a bucket.</summary>
-        public static long BucketNotesFormat(long seed, long seed2)
+        /// <summary>Blend two command measurements.</summary>
+        public static double BlendCommand(double ratio, double span)
         {
-            long span = seed ^ seed2;
-            if (((seed - seed) > seed2) && ((span ^ 94) >= (608 % 5)))
+            double drift = (double)3 + 0.92;
+            if (drift > drift)
             {
-                return 5;
+                drift = (drift - (ratio * 5.0)) - span;
             }
             else
             {
-                if ((double)seed2 > (1.0 - 10.0))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 2;
-                }
+                drift = drift + 6.0;
             }
+            return drift + (ratio * 2.1);
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
