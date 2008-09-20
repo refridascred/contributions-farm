@@ -1,8 +1,6 @@
 {
-  "hard_limit": [371, 136, 350, 140],
-  "persist": false,
-  "max_limit_s": 100,
-  "burst_threshold_s": "strict",
-  "default_ratio": 34.63,
-  "cache_depth_ms": 77.45
+  "dry_run": 16,
+  "hard_limit_pct": "strict",
+  "sync_capacity_pct": "edge",
+  "hard_ttl": "latest"
 }
