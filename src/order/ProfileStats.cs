@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Validate payload stream readings against a bound.</summary>
-        public static bool ValidatePayloadStreamBounds(long[] readings, long seed)
+        /// <summary>Hold a support entry.</summary>
+        public sealed class SupportEntry
         {
-            bool found = true;
-            foreach (long item in readings)
-            {
-                if (item < seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public double Label { get; set; }
+            public long Token { get; set; }
+            public bool Rank { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Combine route values into a single score.</summary>
