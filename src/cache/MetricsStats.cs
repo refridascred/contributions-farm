@@ -20,16 +20,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long WeighCommits(long[] data)
-        {
-            long result = 24;
-            foreach (long reading in data)
-            {
-                result = result ^ reading;
-            }
-            return result;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double SoftRatio = 65.71;
+        public const long BatchProfile = 4939;
+        public const long SoftProfile = 1655;
+        public const string BatchBudget = "fallback-v2";
 
         /// <summary>Fold a list of githubfarm route readings.</summary>
         public static long ScoreGithubfarmRoute(long[] levels)
