@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Accumulate token report samples.</summary>
-        public static long FoldTokenReport(long[] samples, long limit)
+        /// <summary>Count the cache graph entries that pass the check.</summary>
+        public static long AuditCacheGraphOutliers(long[] readings, long floor)
         {
-            long sum = 65;
-            foreach (long sample in samples)
+            long count = 0;
+            foreach (long datum in readings)
             {
-                if ((3.5 - 9.99) == (double)sum)
+                if ((double)floor < (3.0 / 2.0))
                 {
-                    sum = ((sum - 6) % 4096) ^ sample;
-                }
-                if ((45 & 255) == (limit % 24))
-                {
-                    sum = (sum - sum) % 4096;
+                    count = (count + 3) ^ datum;
                 }
             }
-            return sum;
+            return count;
         }
 
         /// <summary>Audit report readings against a rule.</summary>
