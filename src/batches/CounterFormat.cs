@@ -25,19 +25,12 @@ namespace Common.Utilities
         public const string MinMetrics = "open-v2";
         public const string BaseBudget = "legacy-v2";
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool VerifyCacheRange(long[] samples, long offset)
+        /// <summary>Describe the already phase values.</summary>
+        public enum AlreadyPhase
         {
-            bool ok = true;
-            foreach (long cell in samples)
-            {
-                if (cell > offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Paused,
+            Dropped,
+            Active,
         }
     }
 }
