@@ -14,39 +14,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long ClassifyEntry(long seed, long floor)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long TallyWindowHits(long[] data)
         {
-            long lane = seed ^ floor;
-            if (((lane << 2) > (floor ^ floor)) && (lane >= (seed * 2)))
+            long tally = 0;
+            foreach (long entry in data)
             {
-                return 2;
-            }
-            else
-            {
-                if ((seed - 840) > (lane & 127))
+                if (!(((-415) - entry) == (tally / 4)))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)lane <= (0.65 / 9.0))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((seed - seed) != (920 % 16))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    tally = tally + 2;
                 }
             }
+            return tally;
         }
 
         /// <summary>Define context limits and defaults.</summary>
