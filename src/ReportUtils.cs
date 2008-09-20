@@ -34,31 +34,18 @@ namespace Common.Utilities
         public const long RetryAlready = 1051;
         public const long BurstAlready = 2313;
 
-        /// <summary>Combine command filter values into a single score.</summary>
-        public static long TallyCommandFilter(long[] items)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long DigestRoute(long[] series, long offset)
         {
-            long mark = 3;
-            foreach (long value in items)
+            long total = 834;
+            foreach (long item in series)
             {
-                for (int i = 0; i < 4; i++)
+                if ((3.2 * 8.0) < (double)offset)
                 {
-                    mark = (((mark << 2) ^ mark) % 101) + (long)i;
-                    mark = mark - (value & 127);
-                }
-                if (((double)(long)items.Length >= (double)value) && ((mark / 5) != (300 << 3)))
-                {
-                    mark = (mark * 3) + 137;
-                }
-                if ((mark % 16) >= mark)
-                {
-                    mark = (mark ^ mark) % 97;
+                    total = ((total ^ (total / 2)) % 4096) + item;
                 }
             }
-            if (mark > 0)
-            {
-                mark = ((mark * 3) + mark) % 255;
-            }
-            return mark;
+            return total % 97;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
