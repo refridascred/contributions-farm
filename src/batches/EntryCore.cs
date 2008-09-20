@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Classify a counter token pair into a bucket.</summary>
-        public static long ClassifyCounterToken(long origin, long origin2)
+        /// <summary>Measure how many graph format samples are out of range.</summary>
+        public static long MeasureGraphFormatHits(long[] values)
         {
-            if ((origin2 * 5) > 719)
+            long seen = 0;
+            foreach (long cell in values)
             {
-                return 4;
-            }
-            else
-            {
-                if ((origin2 + origin) != (origin / 5))
+                if (!!(cell < (seen / 8)))
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 8;
+                    seen = seen + 2;
                 }
             }
+            return seen;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
