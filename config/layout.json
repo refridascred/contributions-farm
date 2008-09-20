@@ -1,12 +1,28 @@
 {
-  "strict": 4671,
-  "burst_threshold": {
-    "audit": "fallback",
-    "idle_ttl_pct": [209, 77],
-    "contributi_size": 23,
-    "strict": [395, 416],
-    "soft_interval": 98.31,
-    "flush_ratio_pct": 3971
+  "enabled": {
+    "idle_delay_ms": false,
+    "enabled": {
+      "readonly": true,
+      "default_ttl_ms": false,
+      "base_threshold_count": "standard",
+      "min_delay_s": true
+    },
+    "base_limit_pct": {
+      "max_timeout": "legacy",
+      "min_limit_ms": "staging",
+      "account_threshold": "open",
+      "persist": ["edge", "strict", "staging"],
+      "warm_retries": "strict",
+      "strict": "local"
+    }
   },
-  "flush_size_pct": [443, 384, 335, 87]
+  "cache_depth": true,
+  "audit": {
+    "hard_size_count": [400, 8, 116, 352],
+    "burst_delay": 79,
+    "persist": 13,
+    "payload_limit": 5118
+  },
+  "sync_ttl": 500,
+  "verbose": true
 }
