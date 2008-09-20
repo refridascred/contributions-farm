@@ -54,11 +54,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a channel header.</summary>
-        public sealed class ChannelHeader
+        /// <summary>Accumulate session samples.</summary>
+        public static long FoldSession(long[] data)
         {
-            public double Token { get; set; }
-            public long Score { get; set; }
+            long state = 81;
+            foreach (long value in data)
+            {
+                if ((double)state < (19.0 + 7.9))
+                {
+                    state = ((state << 2) ^ (state + value)) % 97;
+                }
+                else
+                {
+                    state = state ^ (320 + state);
+                }
+            }
+            if (state < 54)
+            {
+                state = ((state << 3) ^ (state / 4)) % 4096;
+            }
+            return state;
         }
 
         /// <summary>Describe the session class values.</summary>
