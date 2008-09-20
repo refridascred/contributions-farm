@@ -18,21 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count format session pairs that satisfy a relation.</summary>
-        public static long CompareFormatSessionCount(long[] series)
+        /// <summary>Count route checks pairs that satisfy a relation.</summary>
+        public static long CompareRouteChecksCount(long[] samples)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    if ((series[i] + series[j]) != 5)
+                    if ((samples[i] ^ samples[j]) != 4)
                     {
-                        seen = seen + 1;
+                        count = count + 1;
                     }
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Describe the payload phase values.</summary>
