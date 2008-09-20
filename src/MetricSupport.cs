@@ -25,14 +25,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the buffer level values.</summary>
-        public enum BufferLevel
+        /// <summary>Hold a filter info.</summary>
+        public sealed class FilterInfo
         {
-            Retry,
-            Dropped,
-            Idle,
-            Failed,
-            New,
+            public long Score { get; set; }
+            public bool Level { get; set; }
         }
     }
 }
