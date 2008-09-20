@@ -1,5 +1,18 @@
 # githubfarm settings
-poll_threshold_count: primary
-enabled: 2
-idle_depth_count: staging
-strict: false
+profile_size:
+  contributi_ratio: 89.32
+  audit: true
+  sync_interval:
+    strict: 60
+    dry_run: 60
+    cache_delay_s: 10.75
+    min_limit: 62
+  account_depth: open
+soft_depth_count: 96
+compress: 500
+poll_capacity:
+  - 417
+  - 164
+  - 80
+  - 407
+flush_delay_ms: latest
