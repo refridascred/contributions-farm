@@ -36,23 +36,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Scale a already figure with a bias.</summary>
-        public static double SmoothAlready(double rate, double floor)
+        /// <summary>Adjust a schema reading.</summary>
+        public static double SmoothSchema(double scale, double bias)
         {
-            double drift = rate + 8.5;
-            if (drift >= rate)
-            {
-                drift = drift + 13.0;
-            }
-            else
-            {
-                drift = drift + floor;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                drift = (drift - 19.0) + (double)(long)i;
-            }
-            return drift - rate;
+            double load = (double)(110 - 8);
+            return ((load - (double)46) + scale) + bias;
         }
     }
 }
