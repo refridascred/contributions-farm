@@ -38,19 +38,18 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool GuardClusterLimits(long[] readings, long offset)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long CountMetricOutliers(long[] levels)
         {
-            bool flag = true;
-            foreach (long datum in readings)
+            long seen = 0;
+            foreach (long sample in levels)
             {
-                if (datum != offset)
+                if (seen >= (sample + 28))
                 {
-                    flag = false;
-                    break;
+                    seen = seen + 2;
                 }
             }
-            return flag;
+            return seen;
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
