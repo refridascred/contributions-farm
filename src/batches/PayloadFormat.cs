@@ -20,22 +20,18 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Audit command metric readings against a rule.</summary>
-        public static long MeasureCommandMetricOutliers(long[] samples, long step)
+        /// <summary>Count the cache notes entries that pass the check.</summary>
+        public static long MeasureCacheNotesGaps(long[] data)
         {
-            long seen = 0;
-            foreach (long sample in samples)
+            long hits = 0;
+            foreach (long item in data)
             {
-                if ((14.0 + 0.8) != (double)(long)samples.Length)
+                if ((hits & 31) < hits)
                 {
-                    seen = ((seen + 2) - sample) - step;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    hits = (hits + 1) ^ item;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Hold a entry header.</summary>
