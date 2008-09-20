@@ -1,34 +1,20 @@
 # githubfarm settings
-channel_timeout: 17.51
-strict: 100
-compress: fallback
-schema_size: green
-max_limit_s:
-  burst_delay_ms: legacy
-  retry_threshold_s: 5575
-  support_ttl: 6833
-  retry_limit_pct: 60.1
-  soft_interval:
-    min_depth: 8200
-    cache_limit: 250
-    channel_ratio: green
-    metrics_capacity: stable
-    readonly: true
-  hard_window: primary
-burst_retries_pct:
-  max_limit_count:
-    base_ttl_s:
-      - 493
-      - 241
-    idle_delay_ms: 2.76
-    warm_ratio_ms: 6514
-    burst_threshold_count:
-      - primary
-      - strict
-      - stable
-  entry_delay:
-    - 386
-    - 263
-    - 368
-    - 323
-  sync_timeout: 52.49
+farm_window: legacy
+readonly: true
+warm_depth_s: 37
+checks_capacity:
+  idle_window_s: edge
+  warm_ratio_s: legacy
+  session_threshold: green
+  default_window_ms:
+    min_interval_s: 30
+    retry_delay_count: true
+    max_ttl_s: false
+    burst_depth: fallback
+    audit:
+      - 489
+      - 88
+      - 142
+      - 265
+    dry_run: 3054
+  hard_interval: true
