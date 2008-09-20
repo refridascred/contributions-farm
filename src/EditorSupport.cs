@@ -19,10 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double BatchRoute = 74.11;
-        public const long BatchTimeout = 9633;
-        public const string MinCount = "local-edge";
+        /// <summary>Locate a profile batch reading by value.</summary>
+        public static long LocateProfileBatchIndex(long[] values, long floor)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] > floor) && ((values[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Digest a series of stream entries.</summary>
         public static long WeighStream(long[] readings)
