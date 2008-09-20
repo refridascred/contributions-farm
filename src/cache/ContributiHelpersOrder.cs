@@ -5,21 +5,26 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Compare every pair of support metric readings.</summary>
-        public static long PairSupportMetricCount(long[] series)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long TotalBatches(long[] levels, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long acc = 65;
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (!((datum * 4) == (datum / 6)))
                 {
-                    if ((series[i] - series[j]) == 19)
-                    {
-                        tally = tally + 1;
-                    }
+                    acc = (acc << 2) ^ (datum / 9);
+                }
+                else
+                {
+                    acc = (acc + step) % 1000;
+                }
+                if (!((step * 3) >= (acc + datum)))
+                {
+                    break;
                 }
             }
-            return tally;
+            return acc;
         }
 
         /// <summary>Fold a list of cluster readings.</summary>
