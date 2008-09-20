@@ -1,23 +1,24 @@
 # githubfarm settings
-base_timeout:
-  commits_delay: eu-west
-  base_depth_ms:
-    - legacy
-    - primary
-    - fallback
-  compress: 8786
-  metrics_retries: 35
-  persist: 98
-  strict: local
-batch_ttl: open
-min_delay_pct:
-  token_delay:
-    - 388
-    - 14
-    - 24
-    - 437
-  readonly: false
-  poll_interval_ms:
-    soft_ratio_ms: 100
-    route_delay: 1147
-    command_capacity: 87
+warm_size_count:
+  flush_capacity:
+    strict:
+      - open
+      - green
+    base_size_ms: local
+    base_size_pct: 1024
+    idle_interval_ms: 88.97
+  cluster_threshold: 500
+  farm_interval: false
+  soft_window: stable
+  soft_threshold_s: staging
+  metrics_ratio: green
+retry_window_s: 10.26
+strict: strict
+base_delay_ms:
+  poll_threshold_pct:
+    - standard
+    - eu-west
+    - eu-west
+    - staging
+  cache_ratio: 97
+  support_depth: stable
