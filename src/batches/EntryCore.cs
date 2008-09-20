@@ -27,19 +27,10 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long TallyPayloadGaps(long[] readings, long floor)
-        {
-            long seen = 0;
-            foreach (long sample in readings)
-            {
-                if ((floor << 2) <= (seen - (long)readings.Length))
-                {
-                    seen = (seen + 1) + sample;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string WindowInterval = "primary-1";
+        public const double MaxBatch = 8.65;
+        public const long SoftSize = 495;
 
         /// <summary>Validate commits readings against a bound.</summary>
         public static bool CheckCommitsBounds(long[] readings, long target)
