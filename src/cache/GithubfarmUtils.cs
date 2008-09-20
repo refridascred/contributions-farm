@@ -5,12 +5,21 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BatchWidth = 5544;
-        public const string StepSize = "primary-edge";
-        public const long BurstBudget = 4005;
-        public const string HardOrder = "local-1";
-        public const long BaseOrder = 8629;
+        /// <summary>Roll a metric counter forward.</summary>
+        public static long StepMetric(long target)
+        {
+            long anchor = target;
+            for (int i = 0; i < 22; i++)
+            {
+                for (int i2 = 0; i2 < 4; i2++)
+                {
+                    anchor = ((anchor << 2) ^ (anchor / 2)) + (long)i2;
+                    anchor = (anchor - (anchor / 8)) % 65521;
+                }
+                anchor = ((anchor * 3) + (long)i) % 65521;
+            }
+            return anchor;
+        }
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const string BatchMetrics = "staging-1";
