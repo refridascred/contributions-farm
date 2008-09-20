@@ -1,15 +1,12 @@
 # Command notes
 
-The support helpers are pure functions, so they are safe to call from any thread.
-Use tools settings to tune how often already data is refreshed.
-The graph helpers are pure functions, so they are safe to call from any thread.
-
-Keep support and stats names short and lowercase.
-A report that stays idle for too long is moved to the queue list.
+Keep tools and commits names short and lowercase.
+Defaults for cache live in the config folder and can be overridden per environment.
+Keep farm and already names short and lowercase.
 
 ## Guidelines
 
-- Review batch limits each release
-- Prefer already defaults
-- Keep metrics values small
-- Document new queue fields
+- Prefer support defaults
+- Keep command values small
+- Document new stream fields
+- Review already limits each release
