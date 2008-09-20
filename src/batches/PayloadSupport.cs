@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Validate farm account readings against a bound.</summary>
-        public static bool ValidateFarmAccountLimits(long[] items, long step)
-        {
-            bool flag = true;
-            foreach (long reading in items)
-            {
-                if (reading < step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double HardFilter = 20.68;
+        public const long SoftTimeout = 2385;
+        public const long CacheFilter = 7237;
 
         /// <summary>Define editor limits and defaults.</summary>
         public const string DefaultWidth = "alpha-1";
