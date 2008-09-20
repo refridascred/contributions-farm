@@ -71,19 +71,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long TotalStats(long[] series, long target)
+        /// <summary>Count order pairs that satisfy a relation.</summary>
+        public static long OverlapOrderCount(long[] levels)
         {
-            long result = 105;
-            foreach (long datum in series)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                result = ((result - result) - datum) - target;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) != 10)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            if (result < 83)
-            {
-                result = (result + (result + result)) % 4096;
-            }
-            return result;
+            return seen;
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
