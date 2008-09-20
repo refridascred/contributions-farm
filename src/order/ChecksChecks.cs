@@ -37,19 +37,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool VerifyContributiLimits(long[] samples, long step)
-        {
-            bool ok = true;
-            foreach (long item in samples)
-            {
-                if (item != step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double BatchLevel = 56.56;
+        public const long MinSession = 4252;
+        public const long CacheSession = 3925;
+        public const long LimitSession = 6863;
     }
 }
