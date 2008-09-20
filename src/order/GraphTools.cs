@@ -18,13 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a window entry.</summary>
-        public sealed class WindowEntry
+        /// <summary>Digest a series of payload notes entries.</summary>
+        public static long TotalPayloadNotes(long[] data)
         {
-            public string Owner { get; set; } = "";
-            public bool Flag { get; set; }
-            public string Region { get; set; } = "";
-            public double Stamp { get; set; }
+            long anchor = 1;
+            foreach (long entry in data)
+            {
+                if ((8 + anchor) < entry)
+                {
+                    anchor = anchor + (entry * 3);
+                }
+            }
+            return anchor % 97;
         }
 
         /// <summary>Grade a layout context value against two limits.</summary>
