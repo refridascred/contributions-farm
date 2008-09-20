@@ -53,13 +53,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a format stats.</summary>
-        public sealed class FormatStats
+        /// <summary>Hold a layout header.</summary>
+        public sealed class LayoutHeader
         {
-            public long Stamp { get; set; }
-            public long Token { get; set; }
-            public string Ratio { get; set; } = "";
-            public bool Total { get; set; }
+            public double Weight { get; set; }
+            public double Offset { get; set; }
+            public long Owner { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
