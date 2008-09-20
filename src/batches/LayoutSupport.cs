@@ -50,22 +50,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long MeasureWindowHits(long[] series)
+        /// <summary>Validate batches editor readings against a bound.</summary>
+        public static bool VerifyBatchesEditorRange(long[] samples, long offset)
         {
-            long matches = 0;
-            foreach (long entry in series)
+            bool flag = true;
+            foreach (long entry in samples)
             {
-                if ((entry + matches) > (entry + entry))
+                if (entry > offset)
                 {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    flag = false;
+                    break;
                 }
             }
-            return matches;
+            return flag;
         }
 
         /// <summary>Look up the position of a report sample.</summary>
