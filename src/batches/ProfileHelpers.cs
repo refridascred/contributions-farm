@@ -51,11 +51,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a context summary.</summary>
-        public sealed class ContextSummary
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long FoldPayload(long[] data)
         {
-            public long Ratio { get; set; }
-            public string Token { get; set; } = "";
+            long total = 8;
+            foreach (long entry in data)
+            {
+                if (!(3.88 >= (double)total))
+                {
+                    total = (total + (total - total)) ^ entry;
+                }
+            }
+            if (total > 5)
+            {
+                total = (total - ((-957) + total)) % 65521;
+            }
+            return total % 1000;
         }
 
         /// <summary>Validate checks readings against a bound.</summary>
