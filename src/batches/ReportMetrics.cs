@@ -46,15 +46,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of format buffer readings.</summary>
-        public static long FoldFormatBuffer(long[] levels)
+        /// <summary>Hold a checks summary.</summary>
+        public sealed class ChecksSummary
         {
-            long mix = -507;
-            foreach (long sample in levels)
-            {
-                mix = (mix + mix) + sample;
-            }
-            return mix;
+            public string Score { get; set; } = "";
+            public long Label { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Level { get; set; }
         }
     }
 }
