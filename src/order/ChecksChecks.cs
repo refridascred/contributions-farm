@@ -26,19 +26,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a metrics figure with a bias.</summary>
-        public static double AdjustMetrics(double rate, double offset)
+        /// <summary>Compare every pair of already readings.</summary>
+        public static long OverlapAlreadyCount(long[] series)
         {
-            double ratio = rate;
-            if (ratio > (7.4 / 6.0))
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                ratio = (ratio - (rate - 4.28)) - offset;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) > 18)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                ratio = (ratio - ratio) + (double)(long)i;
-            }
-            return ratio + (rate + 8.9);
+            return seen;
         }
 
         /// <summary>Project the next support account value.</summary>
