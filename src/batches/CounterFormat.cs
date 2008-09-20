@@ -32,19 +32,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a profile figure with a bias.</summary>
-        public static double SmoothProfile(double ratio, double bias)
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool VerifyCacheRange(long[] samples, long offset)
         {
-            double bias2 = bias;
-            if (bias2 < (bias / 7.0))
+            bool ok = true;
+            foreach (long cell in samples)
             {
-                bias2 = bias2 + 3.42;
+                if (cell > offset)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            else
-            {
-                bias2 = bias2 - (ratio + bias);
-            }
-            return bias2 + (4.0 * 5.46);
+            return ok;
         }
     }
 }
