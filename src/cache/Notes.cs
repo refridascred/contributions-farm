@@ -32,12 +32,22 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long RetryTimeout = 26;
-        public const long MaxSize = 1607;
-        public const long WindowLevel = 3317;
-        public const double LimitWidth = 89.94;
-        public const string MaxScore = "primary-1";
+        /// <summary>Compare every pair of editor readings.</summary>
+        public static long MatchEditorCount(long[] series)
+        {
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) > 17)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Iterate the contributi series from a seed.</summary>
         public static long IterateContributi(long seed)
