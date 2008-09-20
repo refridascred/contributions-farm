@@ -5,12 +5,27 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const string MinScore = "strict-v2";
-        public const long BurstWidth = 3886;
-        public const long StepSession = 7431;
-        public const long LimitCount = 1018;
-        public const long RetryDepth = 1263;
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long WeighFilter(long[] items, long target)
+        {
+            long score = 33;
+            foreach (long entry in items)
+            {
+                if (!((score - entry) == (entry + entry)))
+                {
+                    score = ((score << 2) ^ (entry % 97)) % 65521;
+                }
+                else
+                {
+                    score = ((score << 3) ^ (target ^ entry)) % 1000;
+                }
+                if ((1 ^ target) <= (entry << 1))
+                {
+                    break;
+                }
+            }
+            return score;
+        }
 
         /// <summary>Adjust a already farm reading.</summary>
         public static double BlendAlreadyFarm(double bias, double span)
