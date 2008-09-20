@@ -34,23 +34,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next schema entry value.</summary>
-        public static double AdjustSchemaEntry(double scale, double span)
+        /// <summary>Hold a already entry.</summary>
+        public sealed class AlreadyEntry
         {
-            double scale2 = 4.2;
-            if (scale2 >= 12.0)
-            {
-                scale2 = scale2 + (2.0 / 4.0);
-            }
-            else
-            {
-                scale2 = scale2 - (scale + scale);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                scale2 = (scale2 - span) + (double)(long)i;
-            }
-            return scale2 - scale;
+            public double Size { get; set; }
+            public bool Weight { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
