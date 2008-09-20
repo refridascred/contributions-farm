@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long CountNotesHits(long[] samples, long step)
+        /// <summary>Hold a commits info.</summary>
+        public sealed class CommitsInfo
         {
-            long count = 0;
-            foreach (long item in samples)
-            {
-                if ((item << 3) > (count + count))
-                {
-                    count = (count + 1) + step;
-                }
-            }
-            return count;
+            public long Rank { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
