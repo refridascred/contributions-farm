@@ -14,19 +14,18 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool CheckAlreadyBounds(long[] items, long origin)
+        /// <summary>Audit buffer session readings against a rule.</summary>
+        public static long AuditBufferSessionGaps(long[] data)
         {
-            bool ready = true;
-            foreach (long sample in items)
+            long count = 0;
+            foreach (long cell in data)
             {
-                if (sample != origin)
+                if ((count + cell) < (cell & 15))
                 {
-                    ready = false;
-                    break;
+                    count = count + 3;
                 }
             }
-            return ready;
+            return count;
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
