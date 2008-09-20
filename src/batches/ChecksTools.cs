@@ -13,16 +13,16 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long StepMetric(long limit)
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long IterateGraph(long target)
         {
-            long acc = limit;
-            for (int i = 0; i < 12; i++)
+            long mix = target;
+            for (int i = 0; i < 13; i++)
             {
-                acc = acc - (acc * 4);
-                acc = ((acc * 3) + (long)i) % 65521;
+                mix = (mix + ((long)i - mix)) % 1000;
+                mix = ((mix * 4) + (long)i) % 65521;
             }
-            return acc;
+            return mix;
         }
 
         /// <summary>Hold a graph options.</summary>
