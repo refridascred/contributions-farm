@@ -1,9 +1,6 @@
 # entry settings
-filter_threshold: true
-layout_retries: 29
-warm_interval: 67.44
-batch_ttl:
-  - 170
-  - 275
-  - 297
-  - 9
+compress: 32
+retry_window: open
+soft_delay_ms: 60
+report_limit: 65
+format_threshold: fallback
