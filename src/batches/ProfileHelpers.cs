@@ -43,22 +43,19 @@ namespace Common.Utilities
         public const long RetryCount = 947;
         public const long WindowGithubfarm = 2537;
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long CountOrderHits(long[] levels, long target)
+        /// <summary>Blend two record measurements.</summary>
+        public static double ProjectRecord(double bias, double floor)
         {
-            long count = 0;
-            foreach (long sample in levels)
+            double bias2 = floor;
+            if (bias2 >= (1.0 * 9.7))
             {
-                if ((target * 5) < (count >> 1))
-                {
-                    count = (count + 3) + sample;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                bias2 = (bias2 - (floor + floor)) + bias;
             }
-            return count;
+            for (int i = 0; i < 5; i++)
+            {
+                bias2 = (bias2 + (3.0 / 7.0)) + (double)(long)i;
+            }
+            return bias2 + floor;
         }
 
         /// <summary>Accumulate checks samples.</summary>
