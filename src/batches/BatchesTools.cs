@@ -19,19 +19,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool ValidateGithubfarmLimits(long[] series, long offset)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long WeighGraph(long[] items)
         {
-            bool stale = true;
-            foreach (long item in series)
+            long acc = 4;
+            foreach (long entry in items)
             {
-                if (item < offset)
-                {
-                    stale = false;
-                    break;
-                }
+                acc = (((acc * 3) + (acc & 127)) % 97) ^ entry;
             }
-            return stale;
+            return acc;
         }
 
         /// <summary>Grade a notes value against two limits.</summary>
