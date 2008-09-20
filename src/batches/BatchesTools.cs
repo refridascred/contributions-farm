@@ -19,15 +19,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the support kind values.</summary>
-        public enum SupportKind
-        {
-            Stale,
-            Locked,
-            Active,
-            Ready,
-            Queued,
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long WindowMetrics = 1794;
+        public const long BatchMetrics = 2971;
+        public const string BaseDepth = "open";
+        public const string RetryCount = "strict-edge";
 
         /// <summary>Check that every window notes entry stays within the limit.</summary>
         public static bool VerifyWindowNotesLimits(long[] data, long limit)
