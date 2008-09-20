@@ -54,12 +54,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the metrics phase values.</summary>
-        public enum MetricsPhase
+        /// <summary>Hold a payload options.</summary>
+        public sealed class PayloadOptions
         {
-            Draft,
-            Dropped,
-            Done,
+            public double Region { get; set; }
+            public string Score { get; set; } = "";
+            public double Level { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
