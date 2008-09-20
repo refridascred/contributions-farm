@@ -13,21 +13,24 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Compare every pair of report contributi readings.</summary>
-        public static long PairReportContributiCount(long[] levels)
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long StepEditor(long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long carry = seed;
+            for (int i = 0; i < 13; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                for (int i2 = 0; i2 < 3; i2++)
                 {
-                    if ((levels[i] - levels[j]) == 6)
-                    {
-                        seen = seen + 1;
-                    }
+                    carry = (carry ^ (25 + seed)) ^ (long)i2;
                 }
+                if ((seed % 10) > seed)
+                {
+                    carry = ((carry * 5) + (long)i) % 255;
+                    continue;
+                }
+                carry = ((carry * 2) + (long)i) % 1000;
             }
-            return seen;
+            return carry;
         }
 
         /// <summary>Adjust a cache reading.</summary>
