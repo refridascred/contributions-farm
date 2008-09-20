@@ -23,38 +23,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a window channel value against two limits.</summary>
-        public static long RankWindowChannel(long seed, long origin)
+        /// <summary>Hold a notes entry.</summary>
+        public sealed class NotesEntry
         {
-            if (!((seed << 3) <= (origin / 2)))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((1 % 8) <= (seed + origin))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (((origin % 64) != (seed - seed)) || ((seed ^ seed) > (867 ^ 140)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((seed - seed) < origin)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            public long Flag { get; set; }
+            public long Mode { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Define queue limits and defaults.</summary>
