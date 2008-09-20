@@ -34,12 +34,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a entry header.</summary>
-        public sealed class EntryHeader
+        /// <summary>Hold a checks record.</summary>
+        public sealed class ChecksRecord
         {
-            public long Flag { get; set; }
-            public bool Offset { get; set; }
-            public string Rank { get; set; } = "";
+            public string Token { get; set; } = "";
+            public long Owner { get; set; }
+            public string Flag { get; set; } = "";
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Hold a checks entry.</summary>
