@@ -63,10 +63,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string BaseAlready = "stable";
-        public const double CacheDepth = 9.38;
-        public const long SoftAlready = 1050;
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long SeriesCounter(long origin)
+        {
+            long total = origin;
+            for (int i = 0; i < 9; i++)
+            {
+                total = ((total * 2) + (total * 4)) % 255;
+                total = ((total * 3) + (long)i) % 1000;
+            }
+            return total;
+        }
 
         /// <summary>Audit order readings against a rule.</summary>
         public static long TallyOrderMatches(long[] data)
