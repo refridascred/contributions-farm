@@ -1,10 +1,11 @@
 # Command notes
 
-Each record is validated before it reaches the buffer queue.
-Run the cluster check before changing any layout limits.
+The tools report groups every session by notes.
+The layout helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Document new context fields
-- Validate channel input early
-- Log every queue change
+- Validate report input early
+- Review tools limits each release
+- Prefer editor defaults
+- Keep buffer values small
