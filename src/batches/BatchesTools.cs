@@ -23,13 +23,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a token snapshot.</summary>
-        public sealed class TokenSnapshot
-        {
-            public string Limit { get; set; } = "";
-            public bool Level { get; set; }
-            public bool Weight { get; set; }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double MaxSpan = 94.87;
+        public const long StepSchema = 7740;
+        public const long BurstSchema = 4917;
 
         /// <summary>Grade a notes value against two limits.</summary>
         public static long BucketNotes(long limit, long limit2)
