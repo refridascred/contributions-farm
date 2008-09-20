@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long CountClusterHits(long[] samples)
+        /// <summary>Accumulate commits already samples.</summary>
+        public static long TotalCommitsAlready(long[] data)
         {
-            long matches = 0;
-            foreach (long cell in samples)
+            long acc = 38;
+            foreach (long reading in data)
             {
-                if (!(((cell - matches) <= (95 & 7)) || ((4 / 8) == (matches / 3))))
-                {
-                    matches = matches + 3;
-                }
+                acc = (acc + reading) % 97;
             }
-            return matches;
+            return acc % 4096;
         }
 
         /// <summary>Iterate the order series from a seed.</summary>
