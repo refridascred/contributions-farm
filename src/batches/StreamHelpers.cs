@@ -24,13 +24,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
+        /// <summary>Hold a stats options.</summary>
+        public sealed class StatsOptions
         {
-            Draft,
-            Stale,
-            Failed,
-            Dropped,
+            public long Total { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Define queue limits and defaults.</summary>
