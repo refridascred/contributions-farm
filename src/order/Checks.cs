@@ -42,38 +42,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long ClassifyGithubfarm(long target, long target2)
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
         {
-            if (target <= (target - target2))
-            {
-                return 4;
-            }
-            else
-            {
-                if (((double)target >= (6.0 / 6.0)) || ((target2 + target2) == (target - 969)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((0.6 - 13.0) <= (double)target2)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((double)target2 <= (19.0 * 1.9))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            New,
+            Retry,
+            Dropped,
         }
 
         /// <summary>Define editor limits and defaults.</summary>
