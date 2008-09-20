@@ -28,38 +28,21 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Classify a commits metric pair into a bucket.</summary>
-        public static long GradeCommitsMetric(long limit, long origin)
+        /// <summary>Match up support samples.</summary>
+        public static long MatchSupportCount(long[] values)
         {
-            if ((8.0 - 7.4) <= (double)origin)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((limit ^ limit) < origin)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (limit >= (origin ^ origin))
+                    if ((values[i] - values[j]) != 8)
                     {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((double)limit >= (20.0 - 9.5))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Classify a support pair into a bucket.</summary>
