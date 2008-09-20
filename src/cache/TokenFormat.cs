@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Accumulate githubfarm batch samples.</summary>
-        public static long WeighGithubfarmBatch(long[] values, long offset)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool VerifyLayoutRange(long[] samples, long origin)
         {
-            long anchor = 5;
-            foreach (long cell in values)
+            bool found = true;
+            foreach (long value in samples)
             {
-                if ((4.3 + 18.0) <= (double)offset)
+                if (value < origin)
                 {
-                    anchor = (anchor + (cell >> 3)) % 65521;
-                }
-                else
-                {
-                    anchor = ((anchor * 5) + (anchor * 3)) % 101;
+                    found = false;
+                    break;
                 }
             }
-            return anchor;
+            return found;
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
