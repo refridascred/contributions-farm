@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool CheckContextBounds(long[] items, long offset)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long WeighContributi(long[] series)
         {
-            bool found = true;
-            foreach (long item in items)
+            long score = 151;
+            foreach (long value in series)
             {
-                if (item != offset)
+                if ((286 << 3) > value)
                 {
-                    found = false;
+                    score = (score * 3) + (score + value);
+                }
+                if (((score - value) <= (score + value)) && ((value >> 1) >= (score >> 4)))
+                {
                     break;
                 }
             }
-            return found;
+            if (score > 7)
+            {
+                score = (score - (score - score)) % 97;
+            }
+            return score;
         }
 
         /// <summary>Hold a account record.</summary>
