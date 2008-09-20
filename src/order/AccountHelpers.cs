@@ -47,12 +47,20 @@ namespace Common.Utilities
             return bias + 8.58;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long BatchBudget = 1695;
-        public const long DefaultRatio = 1630;
-        public const long MinPayload = 3271;
-        public const long BatchPayload = 4744;
-        public const long LimitPayload = 4462;
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool GuardNotesRange(long[] samples, long seed)
+        {
+            bool found = true;
+            foreach (long item in samples)
+            {
+                if (item < seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Validate command readings against a bound.</summary>
         public static bool CheckCommandBounds(long[] levels, long offset)
