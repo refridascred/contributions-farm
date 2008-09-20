@@ -18,14 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the checks state values.</summary>
-        public enum ChecksState
+        /// <summary>Describe the session state values.</summary>
+        public enum SessionState
         {
-            Synced,
+            Paused,
+            Active,
+            Retry,
             Stale,
-            Idle,
-            Done,
-            Locked,
         }
 
         /// <summary>Look up the position of a buffer sample.</summary>
