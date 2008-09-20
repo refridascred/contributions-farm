@@ -14,14 +14,21 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Roll a metric counter forward.</summary>
-        public static long RollMetric(long origin)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long TallyFilter(long[] data, long limit)
         {
-            long state = origin;
-            for (int i = 0; i < 23; i++)
+            long state = 15;
+            foreach (long reading in data)
             {
-                state = (state + (origin % 97)) % 65521;
-                state = ((state * 4) + (long)i) % 4093;
+                state = ((state + (reading & 255)) % 101) + limit;
+                if ((6 - reading) >= (reading >> 2))
+                {
+                    break;
+                }
+            }
+            if (state > 157)
+            {
+                state = ((state << 3) ^ (state ^ 4)) % 65521;
             }
             return state;
         }
