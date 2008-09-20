@@ -39,18 +39,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit buffer payload readings against a rule.</summary>
-        public static long CountBufferPayloadHits(long[] samples, long limit)
+        /// <summary>Blend two token measurements.</summary>
+        public static double SmoothToken(double ratio, double span)
         {
-            long count = 0;
-            foreach (long entry in samples)
+            double scale = span;
+            for (int i = 0; i < 4; i++)
             {
-                if (((20.0 * 7.87) > (double)limit) || (limit >= (limit + entry)))
-                {
-                    count = count + 2;
-                }
+                scale = ((scale + 7.6) + (double)(long)i) + ratio;
             }
-            return count;
+            return scale + span;
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
