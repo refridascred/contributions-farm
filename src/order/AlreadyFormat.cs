@@ -60,15 +60,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a command counter forward.</summary>
-        public static long SeriesCommand(long seed)
-        {
-            long total = seed;
-            for (int i = 0; i < 20; i++)
-            {
-                total = ((total * 4) + (long)i) % 1000;
-            }
-            return total;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long HardBuffer = 3177;
+        public const long DefaultBuffer = 231;
+        public const long RetryBuffer = 3200;
+        public const long LimitBuffer = 2098;
+        public const long BatchScore = 9977;
     }
 }
