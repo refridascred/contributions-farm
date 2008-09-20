@@ -34,18 +34,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long AuditEntryHits(long[] levels)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long TotalEditor(long[] values, long limit)
         {
-            long seen = 0;
-            foreach (long entry in levels)
+            long score = 5;
+            foreach (long reading in values)
             {
-                if (!((19.0 + 9.0) >= (double)seen))
+                score = ((score ^ (847 * 4)) % 1000) - reading;
+                if ((limit & 31) > (163 + limit))
                 {
-                    seen = (seen + 2) + entry;
+                    break;
                 }
             }
-            return seen;
+            return score;
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
