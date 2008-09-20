@@ -24,19 +24,38 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Validate record githubfarm readings against a bound.</summary>
-        public static bool GuardRecordGithubfarmLimits(long[] levels, long offset)
+        /// <summary>Classify a counter report pair into a bucket.</summary>
+        public static long ClassifyCounterReport(long offset, long limit)
         {
-            bool ok = true;
-            foreach (long value in levels)
+            if ((offset * 3) > 7)
             {
-                if (value != offset)
+                return 4;
+            }
+            else
+            {
+                if (!((limit & 127) == (limit % 10)))
                 {
-                    ok = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if ((double)offset >= (4.72 / 7.0))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (!(offset >= (offset & 7)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return ok;
         }
 
         /// <summary>Validate commits readings against a bound.</summary>
