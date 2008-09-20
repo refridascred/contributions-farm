@@ -28,18 +28,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit order metrics readings against a rule.</summary>
-        public static long TallyOrderMetricsGaps(long[] values, long offset)
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long SeriesBatch(long bound)
         {
-            long tally = 0;
-            foreach (long cell in values)
+            long sum = bound;
+            for (int i = 0; i < 18; i++)
             {
-                if ((3 <= (2 + tally)) || ((1.0 + 5.1) > (double)cell))
-                {
-                    tally = (tally + 1) - offset;
-                }
+                sum = sum ^ (sum ^ 759);
+                sum = ((sum * 2) + (long)i) % 101;
             }
-            return tally;
+            return sum;
         }
 
         /// <summary>Match up metric samples.</summary>
