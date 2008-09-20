@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Compare every pair of record readings.</summary>
-        public static long CompareRecordCount(long[] values)
-        {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) == 2)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long HardInterval = 156;
+        public const long StepDepth = 7677;
+        public const long DefaultCluster = 6247;
+        public const string BaseScore = "open-edge";
 
         /// <summary>Blend two channel measurements.</summary>
         public static double ProjectChannel(double gain, double span)
