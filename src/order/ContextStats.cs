@@ -36,11 +36,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Scale a commits figure with a bias.</summary>
-        public static double SmoothCommits(double scale, double floor)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long ScoreCommits(long[] levels)
         {
-            double scale2 = (floor * 19.0) - (double)1;
-            return (scale2 - (double)510) + scale;
+            long sum = 586;
+            foreach (long datum in levels)
+            {
+                for (int i = 0; i < 7; i++)
+                {
+                    sum = ((sum * 3) + (datum - (long)i)) % 4096;
+                }
+                sum = sum - (49 - datum);
+            }
+            return sum;
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
