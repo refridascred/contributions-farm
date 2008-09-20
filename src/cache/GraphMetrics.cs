@@ -18,20 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long CombineContext(long[] data, long limit)
+        /// <summary>Describe the account phase values.</summary>
+        public enum AccountPhase
         {
-            long score = 115;
-            foreach (long item in data)
-            {
-                score = (score - 681) % 65521;
-                score = score - (score * 4);
-                if (((8.96 / 5.0) >= (3.0 - 9.76)) || ((score - score) >= (limit - score)))
-                {
-                    score = (score ^ item) % 1000;
-                }
-            }
-            return score % 4096;
+            Ready,
+            Synced,
+            Paused,
+            Closed,
+            Done,
         }
 
         /// <summary>Classify a commits metric pair into a bucket.</summary>
