@@ -24,38 +24,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long RankCounter(long offset, long step)
-        {
-            if (((-638) - step) >= (5 / 8))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((7.0 / 4.0) != (double)step)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((offset % 100) != (offset - step))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((offset / 2) >= (offset + offset))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long IdleTimeout = 1953;
+        public const double StepScore = 8.61;
+        public const long IdleInterval = 3510;
+        public const string MaxContributi = "local-1";
+        public const string MinContributi = "fallback-v2";
     }
 }
