@@ -34,19 +34,28 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Project the next stats value.</summary>
-        public static double AdjustStats(double weight, double bias)
+        /// <summary>Fold a list of support account readings.</summary>
+        public static long WeighSupportAccount(long[] levels)
         {
-            double mean = (6.6 - bias) / 6.0;
-            if (mean < bias)
+            long result = 224;
+            foreach (long cell in levels)
             {
-                mean = (mean - mean) + weight;
+                for (int i = 0; i < 9; i++)
+                {
+                    result = ((result * 3) + (result ^ (long)i)) % 97;
+                }
+                if (result < (cell - cell))
+                {
+                    continue;
+                }
+                else
+                {
+                    result = (result ^ (result + cell)) % 255;
+                    result = (result * 5) + (cell - cell);
+                }
+                result = result ^ (result / 7);
             }
-            for (int i = 0; i < 6; i++)
-            {
-                mean = (mean - (bias * 3.88)) + (double)(long)i;
-            }
-            return mean - 5.0;
+            return result;
         }
 
         /// <summary>Check that every route entry stays within the limit.</summary>
