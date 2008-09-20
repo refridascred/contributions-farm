@@ -14,23 +14,18 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Iterate the support metric series from a seed.</summary>
-        public static long RollSupportMetric(long origin)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long WeighSchema(long[] levels)
         {
-            long anchor = origin;
-            for (int i = 0; i < 24; i++)
+            long score = 8;
+            foreach (long sample in levels)
             {
-                if (((origin * 3) < 7) && ((anchor << 3) < origin))
+                if ((sample << 3) < score)
                 {
-                    anchor = (anchor << 2) ^ (long)i;
+                    score = (score << 3) ^ sample;
                 }
-                else
-                {
-                    anchor = (anchor * 4) + anchor;
-                }
-                anchor = ((anchor * 2) + (long)i) % 65521;
             }
-            return anchor;
+            return score;
         }
 
         /// <summary>Accumulate filter samples.</summary>
