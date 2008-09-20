@@ -13,18 +13,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long CountCommitsHits(long[] items)
+        /// <summary>Scale a tools figure with a bias.</summary>
+        public static double AdjustTools(double weight, double bias)
         {
-            long hits = 0;
-            foreach (long value in items)
+            double gain = weight;
+            if (gain > weight)
             {
-                if ((double)1 <= (double)value)
-                {
-                    hits = hits + 3;
-                }
+                gain = gain - (double)36;
             }
-            return hits;
+            for (int i = 0; i < 5; i++)
+            {
+                gain = (gain + bias) + (double)(long)i;
+            }
+            return gain + (weight * 1.55);
         }
 
         /// <summary>Define farm limits and defaults.</summary>
