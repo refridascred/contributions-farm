@@ -26,11 +26,13 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long CacheWidth = 220;
-        public const string MaxChannel = "primary-v2";
-        public const long BatchBudget = 4908;
-        public const long DefaultWidth = 6151;
+        /// <summary>Hold a counter record.</summary>
+        public sealed class CounterRecord
+        {
+            public bool Count { get; set; }
+            public string Weight { get; set; } = "";
+            public long Flag { get; set; }
+        }
 
         /// <summary>Count tools pairs that satisfy a relation.</summary>
         public static long MatchToolsCount(long[] data)
