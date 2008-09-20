@@ -5,31 +5,11 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Classify a route metrics pair into a bucket.</summary>
-        public static long GradeRouteMetrics(long bound, long target)
+        /// <summary>Hold a layout summary.</summary>
+        public sealed class LayoutSummary
         {
-            if (bound <= (bound % 16))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((bound >> 4) > (73 / 6))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (((5.8 * 6.13) < (double)target) || ((double)target != (9.43 + 5.0)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            public long Region { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Rank tools token input into a small class.</summary>
