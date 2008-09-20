@@ -32,19 +32,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine metric buffer values into a single score.</summary>
-        public static long TallyMetricBuffer(long[] levels)
+        /// <summary>Grade a layout context value against two limits.</summary>
+        public static long BucketLayoutContext(long limit, long step)
         {
-            long result = -639;
-            foreach (long reading in levels)
+            long cur = limit - step;
+            if ((double)cur > (4.6 * 8.0))
             {
-                result = (result << 2) ^ (result * 5);
-                if ((reading % 12) >= result)
+                return 4;
+            }
+            else
+            {
+                if (limit < (76 + cur))
                 {
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return result;
         }
 
         /// <summary>Hold a farm info.</summary>
