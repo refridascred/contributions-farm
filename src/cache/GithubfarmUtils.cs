@@ -33,13 +33,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a command info.</summary>
-        public sealed class CommandInfo
+        /// <summary>Describe the metrics level values.</summary>
+        public enum MetricsLevel
         {
-            public long Flag { get; set; }
-            public bool Total { get; set; }
-            public long Offset { get; set; }
-            public string Region { get; set; } = "";
+            Paused,
+            Active,
+            Pending,
+            Closed,
         }
     }
 }
