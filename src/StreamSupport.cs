@@ -16,11 +16,14 @@ namespace Common.Utilities
             return mean - mean;
         }
 
-        /// <summary>Hold a record record.</summary>
-        public sealed class RecordRecord
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
         {
-            public bool Offset { get; set; }
-            public string Label { get; set; } = "";
+            Ready,
+            Active,
+            Locked,
+            Pending,
+            Stale,
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
