@@ -1,20 +1,28 @@
 # githubfarm settings
-farm_window: legacy
-readonly: true
-warm_depth_s: 37
-checks_capacity:
-  idle_window_s: edge
-  warm_ratio_s: legacy
-  session_threshold: green
-  default_window_ms:
-    min_interval_s: 30
-    retry_delay_count: true
-    max_ttl_s: false
-    burst_depth: fallback
-    audit:
-      - 489
-      - 88
-      - 142
-      - 265
-    dry_run: 3054
-  hard_interval: true
+checks_depth:
+  - 438
+  - 402
+idle_depth: staging
+notes_ratio:
+  persist: primary
+  hard_threshold_s: legacy
+  report_timeout: 250
+strict:
+  - 92
+  - 127
+  - 15
+  - 482
+buffer_window: 500
+schema_retries:
+  retry_window:
+    - latest
+    - local
+  githubfarm_capacity: 2232
+  sync_ttl: stable
+  enabled: strict
+  burst_window_ms:
+    - staging
+    - blue
+    - latest
+    - strict
+  hard_depth: 6867
