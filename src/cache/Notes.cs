@@ -49,12 +49,18 @@ namespace Common.Utilities
             return ratio2 - (ratio2 / 2.0);
         }
 
-        /// <summary>Describe the batch level values.</summary>
-        public enum BatchLevel
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long TallyPayloadOutliers(long[] readings, long target)
         {
-            Paused,
-            New,
-            Synced,
+            long tally = 0;
+            foreach (long datum in readings)
+            {
+                if (target < ((long)readings.Length + datum))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
     }
 }
