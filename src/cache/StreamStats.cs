@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Digest a series of cluster counter entries.</summary>
-        public static long CombineClusterCounter(long[] data)
+        /// <summary>Compare every pair of metrics readings.</summary>
+        public static long MatchMetricsCount(long[] levels)
         {
-            long score = 499;
-            foreach (long entry in data)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((score - score) < (score + 9))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    score = (score << 2) ^ (entry << 2);
+                    if ((levels[i] ^ levels[j]) == 15)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return score % 4096;
+            return tally;
         }
 
         /// <summary>Hold a batch snapshot.</summary>
