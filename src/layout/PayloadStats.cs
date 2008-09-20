@@ -13,23 +13,15 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Fold a list of report route readings.</summary>
-        public static long DigestReportRoute(long[] series, long bound)
+        /// <summary>Digest a series of commits metric entries.</summary>
+        public static long ScoreCommitsMetric(long[] readings, long origin)
         {
-            long state = 51;
-            foreach (long cell in series)
+            long total = 47;
+            foreach (long item in readings)
             {
-                state = ((state ^ state) % 97) - bound;
-                if ((9.4 + 16.0) >= (double)cell)
-                {
-                    break;
-                }
+                total = ((total ^ total) + item) + origin;
             }
-            if (state > 81)
-            {
-                state = (state ^ (state + state)) % 65521;
-            }
-            return state % 4096;
+            return total;
         }
 
         /// <summary>Blend two stream context measurements.</summary>
