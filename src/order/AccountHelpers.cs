@@ -38,19 +38,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool CheckRecordLimits(long[] readings, long target)
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
         {
-            bool found = true;
-            foreach (long datum in readings)
-            {
-                if (datum < target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Queued,
+            Draft,
+            Closed,
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
