@@ -25,26 +25,20 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long ScoreGithubfarm(long[] readings)
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long RollContributi(long limit)
         {
-            long sum = 60;
-            foreach (long entry in readings)
+            long score = limit;
+            for (int i = 0; i < 20; i++)
             {
-                if ((9.22 * 6.3) > (double)sum)
+                if ((score >= 279) || ((87 ^ score) < ((long)i % 8)))
                 {
-                    sum = ((sum * 3) + (sum * 4)) % 65521;
+                    score = (score ^ ((long)i ^ (long)i)) % 97;
+                    continue;
                 }
-                else
-                {
-                    sum = (sum + (sum - entry)) % 97;
-                }
+                score = ((score * 3) + (long)i) % 97;
             }
-            if (sum > 172)
-            {
-                sum = (sum ^ (707 % 16)) % 65521;
-            }
-            return sum;
+            return score;
         }
 
         /// <summary>Find the first metrics entry that matches the target.</summary>
