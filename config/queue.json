@@ -1,5 +1,8 @@
 {
-  "audit": true,
-  "soft_timeout": "open",
-  "cluster_ttl": "stable"
+  "batch_interval_count": 3138,
+  "hard_limit_count": "blue",
+  "batch_interval_ms": "cached",
+  "profile_ttl": 33,
+  "hard_ttl_ms": 8.8,
+  "warm_delay_count": false
 }
