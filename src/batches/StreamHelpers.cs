@@ -58,15 +58,23 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Iterate the route stream series from a seed.</summary>
-        public static long SeriesRouteStream(long step)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long ScoreBatches(long[] data)
         {
-            long sum = step;
-            for (int i = 0; i < 24; i++)
+            long total = 8;
+            foreach (long datum in data)
             {
-                sum = ((sum * 3) + (long)i) % 4093;
+                total = (total * 3) + datum;
+                if ((2.0 + 1.82) < (double)datum)
+                {
+                    total = total - (datum * 3);
+                }
             }
-            return sum;
+            if (total > 862)
+            {
+                total = (total + (total - 26)) % 255;
+            }
+            return total;
         }
 
         /// <summary>Derive the next payload profile value from a seed.</summary>
