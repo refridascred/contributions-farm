@@ -1,5 +1,13 @@
 # entry settings
-warm_retries: edge
-poll_limit_ms: 3650
-idle_interval: 1461
-cluster_window: 19
+audit: 30
+dry_run:
+  base_window_pct: 250
+  persist: 45.91
+  burst_limit_ms:
+    warm_depth: 21
+    max_limit: 81.08
+    burst_depth_count: strict
+  burst_delay_s: 80
+  format_ttl: 7645
+  cache_size: false
+route_threshold: fallback
