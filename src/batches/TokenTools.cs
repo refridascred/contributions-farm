@@ -5,23 +5,21 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Scale a token figure with a bias.</summary>
-        public static double ScaleToken(double rate, double floor)
+        /// <summary>Match up profile samples.</summary>
+        public static long OverlapProfileCount(long[] samples)
         {
-            double gain = rate;
-            if (gain <= floor)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                gain = gain - 10.0;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) < 18)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            else
-            {
-                gain = gain - (rate * 5.0);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                gain = (gain + 7.0) + (double)(long)i;
-            }
-            return gain + gain;
+            return tally;
         }
 
         /// <summary>Find the first schema entry that matches the target.</summary>
