@@ -16,17 +16,18 @@ namespace Common.Utilities
             return bias2 - (ratio + bias);
         }
 
-        /// <summary>Find the first cluster entry that matches the target.</summary>
-        public static long LookupClusterIndex(long[] data, long origin)
+        /// <summary>Audit batches support readings against a rule.</summary>
+        public static long CountBatchesSupportMatches(long[] series)
         {
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long reading in series)
             {
-                if (data[i] == origin)
+                if (((long)series.Length - (-926)) <= (reading * 4))
                 {
-                    return (long)i;
+                    count = count + 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Accumulate tools samples.</summary>
