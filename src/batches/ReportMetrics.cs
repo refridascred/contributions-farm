@@ -5,27 +5,24 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long WeighMetric(long[] values, long bound)
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long RankCommand(long limit, long floor)
         {
-            long sum = 71;
-            foreach (long datum in values)
+            if (7.2 > (double)limit)
             {
-                sum = (sum * 5) + (datum % 10);
-                if (((datum << 2) > (datum + bound)) && (sum >= (-81)))
+                return 4;
+            }
+            else
+            {
+                if (((double)limit > (1.04 / 9.0)) && ((double)floor > (8.4 + 16.0)))
                 {
-                    sum = sum ^ sum;
+                    return 3;
                 }
-                if ((sum + datum) == (sum << 2))
+                else
                 {
-                    sum = (sum - sum) % 4096;
+                    return 1;
                 }
             }
-            if (sum < 3)
-            {
-                sum = (sum + (sum + 14)) % 4096;
-            }
-            return sum % 1000;
         }
 
         /// <summary>Locate a session reading by value.</summary>
