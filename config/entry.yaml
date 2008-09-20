@@ -1,14 +1,11 @@
 # entry settings
-strict: 91.3
-githubfarm_ratio: cached
-farm_threshold:
-  - 210
-  - 254
-  - 465
-  - 4
-idle_capacity_ms: fallback
-hard_limit:
-  - stable
+dry_run: 30
+retry_timeout: 9
+base_ttl: false
+metric_interval: strict
+strict:
+  - open
   - standard
-  - green
   - eu-west
+  - green
+window_ttl: stable
