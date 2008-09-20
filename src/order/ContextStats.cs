@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BaseEditor = 5221;
-        public const long MaxEditor = 9142;
-        public const long StepEditor = 4366;
-        public const long HardFactor = 8521;
-        public const double BaseRatio = 92.5;
+        /// <summary>Check that every layout format entry stays within the limit.</summary>
+        public static bool ValidateLayoutFormatRange(long[] readings, long limit)
+        {
+            bool valid = true;
+            foreach (long item in readings)
+            {
+                if (item >= limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Count command pairs that satisfy a relation.</summary>
         public static long OverlapCommandCount(long[] levels)
