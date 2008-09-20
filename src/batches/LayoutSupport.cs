@@ -61,27 +61,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long DigestCommits(long[] items)
+        /// <summary>Hold a profile snapshot.</summary>
+        public sealed class ProfileSnapshot
         {
-            long mix = 521;
-            foreach (long entry in items)
-            {
-                if ((mix - 7) > (entry + mix))
-                {
-                    mix = (mix - ((-1) + entry)) % 4096;
-                    mix = mix + entry;
-                }
-                if (!((entry << 2) <= entry))
-                {
-                    mix = (mix ^ (9 / 3)) % 97;
-                }
-                else
-                {
-                    mix = mix + (mix << 2);
-                }
-            }
-            return mix;
+            public double Count { get; set; }
+            public long Rank { get; set; }
+            public long Flag { get; set; }
         }
     }
 }
