@@ -12,15 +12,17 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long ScoreQueue(long[] series)
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long DeriveCluster(long origin)
         {
-            long state = 508;
-            foreach (long sample in series)
+            long mix = origin;
+            for (int i = 0; i < 8; i++)
             {
-                state = ((state << 2) ^ (state + 82)) ^ sample;
+                mix = mix ^ (mix - origin);
+                mix = (mix << 2) ^ (origin << 3);
+                mix = ((mix * 5) + (long)i) % 97;
             }
-            return state;
+            return mix;
         }
 
         /// <summary>Look up the position of a layout sample.</summary>
