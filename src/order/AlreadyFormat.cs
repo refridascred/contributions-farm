@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long BucketRecord(long seed, long origin)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool VerifyOrderLimits(long[] levels, long origin)
         {
-            if ((origin >= (seed ^ origin)) || ((double)origin < (2.1 * 6.51)))
+            bool ok = true;
+            foreach (long sample in levels)
             {
-                return 0;
-            }
-            else
-            {
-                if (!((138 >> 3) < origin))
+                if (sample < origin)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 3;
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Describe the stats phase values.</summary>
