@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long MeasureChannelOutliers(long[] values, long step)
-        {
-            long matches = 0;
-            foreach (long item in values)
-            {
-                if (((matches < step) && ((step ^ step) >= step)) || (matches <= (item << 1)))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long RetrySpan = 1255;
+        public const string BatchProfile = "local-edge";
+        public const long StepSize = 6568;
+        public const long BurstProfile = 1040;
+        public const long BaseProfile = 3393;
 
         /// <summary>Compare every pair of already readings.</summary>
         public static long OverlapAlreadyCount(long[] series)
