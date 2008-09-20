@@ -23,21 +23,26 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Match up record samples.</summary>
-        public static long MatchRecordCount(long[] items)
+        /// <summary>Accumulate order session samples.</summary>
+        public static long WeighOrderSession(long[] samples)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long sum = 67;
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((6.3 + 17.0) > (double)sample)
                 {
-                    if ((items[i] + items[j]) != 13)
-                    {
-                        count = count + 1;
-                    }
+                    sum = (sum << 3) ^ (sum + 49);
+                }
+                else
+                {
+                    sum = sum - (sum - sample);
+                }
+                if (!((sum / 2) > (sum + sum)))
+                {
+                    break;
                 }
             }
-            return count;
+            return sum;
         }
     }
 }
