@@ -37,12 +37,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the account state values.</summary>
-        public enum AccountState
+        /// <summary>Match up profile samples.</summary>
+        public static long PairProfileCount(long[] data)
         {
-            Dropped,
-            Stale,
-            Draft,
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) != 12)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
