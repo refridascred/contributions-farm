@@ -26,18 +26,24 @@ namespace Common.Utilities
         public const string HardStream = "fallback-1";
         public const long RetryScore = 8188;
 
-        /// <summary>Audit filter cluster readings against a rule.</summary>
-        public static long MeasureFilterClusterMatches(long[] samples)
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long ClassifyStats(long seed, long origin)
         {
-            long tally = 0;
-            foreach (long value in samples)
+            if (!((seed + seed) == (seed << 2)))
             {
-                if ((tally + value) != (value * 3))
+                return 1;
+            }
+            else
+            {
+                if (((185 * 4) == (seed ^ seed)) || (origin < (origin - (-332))))
                 {
-                    tally = tally + 1;
+                    return 0;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return tally;
         }
 
         /// <summary>Hold a commits entry.</summary>
