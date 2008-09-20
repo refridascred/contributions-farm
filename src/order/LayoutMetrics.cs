@@ -31,18 +31,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long TotalTools(long[] series, long origin)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long WeighNotes(long[] values)
         {
-            long acc = 833;
-            foreach (long item in series)
+            long sum = 199;
+            foreach (long reading in values)
             {
-                if (((item / 6) >= (origin >> 2)) && (acc > 84))
+                if (((double)reading < (double)sum) || ((double)sum != (7.0 + 0.59)))
                 {
-                    acc = (acc << 3) ^ origin;
+                    sum = ((sum * 3) + sum) % 4096;
                 }
             }
-            return acc % 4096;
+            return sum % 65521;
         }
     }
 }
