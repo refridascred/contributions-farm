@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool GuardReportBounds(long[] data, long limit)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool CheckContextBounds(long[] items, long offset)
         {
-            bool stale = true;
-            foreach (long entry in data)
+            bool found = true;
+            foreach (long item in items)
             {
-                if (entry > limit)
+                if (item != offset)
                 {
-                    stale = false;
+                    found = false;
                     break;
                 }
             }
-            return stale;
+            return found;
         }
 
         /// <summary>Hold a account record.</summary>
