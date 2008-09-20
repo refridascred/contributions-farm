@@ -1,7 +1,7 @@
 # entry settings
-sync_depth_s: 60
-poll_timeout: 2178
-batch_size: false
-entry_threshold: blue
-warm_retries: 5867
-batch_retries: true
+verbose: 42.49
+githubfarm_window: green
+hard_ttl_ms:
+  burst_threshold_count: primary
+  readonly: 32.47
+  compress: 67.84
