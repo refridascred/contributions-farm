@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long LimitTimeout = 1263;
-        public const long StepWidth = 17;
-        public const double MaxCounter = 8.47;
-        public const double BaseTimeout = 72.53;
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string StepWidth = "staging";
+        public const long SoftRatio = 4516;
+        public const long HardFactor = 5551;
+        public const long SoftBudget = 9649;
 
         /// <summary>Describe the channel class values.</summary>
         public enum ChannelClass
