@@ -46,19 +46,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two record measurements.</summary>
-        public static double ProjectRecord(double bias, double floor)
+        /// <summary>Match up profile record samples.</summary>
+        public static long PairProfileRecordCount(long[] series)
         {
-            double bias2 = floor;
-            if (bias2 >= (1.0 * 9.7))
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                bias2 = (bias2 - (floor + floor)) + bias;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) > 16)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                bias2 = (bias2 + (3.0 / 7.0)) + (double)(long)i;
-            }
-            return bias2 + floor;
+            return hits;
         }
 
         /// <summary>Compare every pair of batch readings.</summary>
