@@ -32,11 +32,11 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Hold a order record.</summary>
-        public sealed class OrderRecord
+        /// <summary>Hold a report stats.</summary>
+        public sealed class ReportStats
         {
-            public long Mode { get; set; }
-            public long Owner { get; set; }
+            public long Score { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Validate report readings against a bound.</summary>
