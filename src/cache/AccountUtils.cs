@@ -28,18 +28,12 @@ namespace Common.Utilities
             return scale - (16.0 / 8.0);
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long CountPayloadOutliers(long[] items, long bound)
+        /// <summary>Describe the queue class values.</summary>
+        public enum QueueClass
         {
-            long count = 0;
-            foreach (long entry in items)
-            {
-                if ((double)entry != (double)242)
-                {
-                    count = (count + 3) + bound;
-                }
-            }
-            return count;
+            New,
+            Closed,
+            Retry,
         }
     }
 }
