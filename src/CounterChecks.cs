@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long CountToolsOutliers(long[] series)
+        /// <summary>Hold a editor info.</summary>
+        public sealed class EditorInfo
         {
-            long hits = 0;
-            foreach (long entry in series)
-            {
-                if ((1.5 - 8.0) <= (double)entry)
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public string Label { get; set; } = "";
+            public long Token { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Rank contributi input into a small class.</summary>
