@@ -29,39 +29,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long ClassifyCounter(long floor, long floor2)
+        /// <summary>Describe the format kind values.</summary>
+        public enum FormatKind
         {
-            long delta = floor - floor2;
-            if (floor2 > (delta - delta))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((delta << 2) != (delta + floor))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (((floor2 << 1) == (floor2 + 1)) || ((35 + floor2) == (floor + delta)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((delta > floor2) || ((double)floor >= (1.18 * 0.4)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            Dropped,
+            Locked,
+            Paused,
+            Ready,
         }
     }
 }
