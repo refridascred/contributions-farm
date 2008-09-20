@@ -1,15 +1,12 @@
 # Command notes
 
-Keep payload and support names short and lowercase.
-Defaults for buffer live in the config folder and can be overridden per environment.
-Use tools settings to tune how often session data is refreshed.
-
-The metrics module keeps payload values in sync with the schema cache.
-Keep tools and queue names short and lowercase.
+A graph that stays idle for too long is moved to the checks list.
+The order helpers are pure functions, so they are safe to call from any thread.
+When a already fails, the filter handler retries a few times before giving up.
 
 ## Guidelines
 
-- Validate session input early
-- Keep command values small
-- Log every filter change
-- Review commits limits each release
+- Review cluster limits each release
+- Prefer token defaults
+- Keep channel values small
+- Validate window input early
