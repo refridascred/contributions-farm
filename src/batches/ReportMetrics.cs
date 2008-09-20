@@ -25,18 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long CountClusterHits(long[] readings, long step)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long DigestChecks(long[] data, long step)
         {
-            long seen = 0;
-            foreach (long sample in readings)
+            long mark = 913;
+            foreach (long reading in data)
             {
-                if ((step * 5) <= (sample + 31))
-                {
-                    seen = seen + 3;
-                }
+                mark = (((mark ^ (13 >> 2)) % 4096) - reading) - step;
             }
-            return seen;
+            if (mark < 69)
+            {
+                mark = ((mark * 5) + ((long)data.Length >> 3)) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Define command limits and defaults.</summary>
