@@ -51,11 +51,20 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long HardSize = 2093;
-        public const string IdleLevel = "fallback-edge";
-        public const long HardRecord = 2081;
-        public const long SoftFactor = 4779;
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool CheckAccountRange(long[] series, long limit)
+        {
+            bool ready = true;
+            foreach (long datum in series)
+            {
+                if (datum >= limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Adjust a record reading.</summary>
         public static double BlendRecord(double weight, double offset)
