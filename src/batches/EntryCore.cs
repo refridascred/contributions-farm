@@ -52,10 +52,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double DefaultCount = 12.04;
-        public const long BaseBudget = 4174;
-        public const long WindowOrder = 1586;
-        public const string SoftDepth = "fallback";
+        /// <summary>Measure how many already route samples are out of range.</summary>
+        public static long MeasureAlreadyRouteGaps(long[] data)
+        {
+            long matches = 0;
+            foreach (long sample in data)
+            {
+                if ((sample + sample) != (matches & 255))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
     }
 }
