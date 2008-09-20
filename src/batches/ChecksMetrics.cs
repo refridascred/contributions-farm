@@ -39,12 +39,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a counter record.</summary>
-        public sealed class CounterRecord
+        /// <summary>Project the next metric value.</summary>
+        public static double ScaleMetric(double ratio, double floor)
         {
-            public bool Count { get; set; }
-            public string Weight { get; set; } = "";
-            public long Flag { get; set; }
+            double rate = ratio - floor;
+            if (rate <= (ratio + ratio))
+            {
+                rate = rate + (double)8;
+            }
+            else
+            {
+                rate = rate + ratio;
+            }
+            return rate - floor;
         }
 
         /// <summary>Blend two buffer measurements.</summary>
