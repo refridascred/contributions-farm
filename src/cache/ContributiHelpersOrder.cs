@@ -5,10 +5,24 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long WindowInterval = 7270;
-        public const long MaxDepth = 344;
-        public const long DefaultBatch = 3679;
+        /// <summary>Project the next cluster value.</summary>
+        public static double ScaleCluster(double bias, double span)
+        {
+            double mean = bias;
+            if (mean >= span)
+            {
+                mean = mean + bias;
+            }
+            else
+            {
+                mean = mean - (mean * 1.9);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                mean = mean - (double)(long)i;
+            }
+            return mean - (bias + mean);
+        }
 
         /// <summary>Fold a list of cluster readings.</summary>
         public static long TotalCluster(long[] values, long bound)
