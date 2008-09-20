@@ -53,11 +53,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string SoftRatio = "fallback-1";
-        public const long WindowGithubfarm = 263;
-        public const double BurstRatio = 37.5;
-        public const long HardBudget = 216;
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string StepChecks = "primary-1";
+        public const long DefaultChecks = 5716;
+        public const long BurstInterval = 8912;
 
         /// <summary>Rank token order input into a small class.</summary>
         public static long ClassifyTokenOrder(long floor, long limit)
