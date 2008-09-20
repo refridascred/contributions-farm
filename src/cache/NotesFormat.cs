@@ -34,24 +34,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long ClassifyRecord(long bound, long bound2)
+        /// <summary>Find the first layout entry that matches the target.</summary>
+        public static long FindLayoutIndex(long[] levels, long bound)
         {
-            if (9.7 < (6.0 * 15.0))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((1.0 + 8.1) != (double)bound2)
+                if ((levels[i] > bound) && ((levels[i] % 5) != 0))
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 8;
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
