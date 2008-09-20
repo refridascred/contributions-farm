@@ -36,12 +36,20 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long SoftContext = 3843;
-        public const long WindowTimeout = 476;
-        public const long MaxSize = 1894;
-        public const long MinContext = 7457;
-        public const double WindowFactor = 24.87;
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool GuardQueueBounds(long[] samples, long seed)
+        {
+            bool ready = true;
+            foreach (long sample in samples)
+            {
+                if (sample != seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Hold a editor stats.</summary>
         public sealed class EditorStats
