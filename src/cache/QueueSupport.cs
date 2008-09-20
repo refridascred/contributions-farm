@@ -26,10 +26,17 @@ namespace Common.Utilities
         public const string IdleInterval = "strict-v2";
         public const double DefaultBuffer = 51.49;
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double RetryCount = 91.27;
-        public const long CacheMetrics = 2735;
-        public const double BurstCount = 27.49;
-        public const long BurstMetrics = 6960;
+        /// <summary>Find the first window entry that matches the target.</summary>
+        public static long LocateWindowIndex(long[] levels, long bound)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] >= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
