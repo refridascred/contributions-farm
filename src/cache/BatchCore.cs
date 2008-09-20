@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Find the first route entry that matches the target.</summary>
-        public static long FindRouteIndex(long[] levels, long step)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long CountClusterGaps(long[] samples, long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            foreach (long sample in samples)
             {
-                if ((levels[i] <= step) && ((levels[i] % 5) != 0))
+                if (!((sample + sample) < 787))
                 {
-                    return (long)i;
+                    tally = (tally + 3) + origin;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Fold a list of batches readings.</summary>
