@@ -86,19 +86,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool ValidateQueueLimits(long[] data, long seed)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long AuditBufferGaps(long[] data)
         {
-            bool flag = true;
-            foreach (long datum in data)
+            long hits = 0;
+            foreach (long cell in data)
             {
-                if (datum <= seed)
+                if (!(((9.7 - 5.6) == (double)hits) || ((hits + hits) <= (491 - cell))))
                 {
-                    flag = false;
-                    break;
+                    hits = hits + 2;
                 }
             }
-            return flag;
+            return hits;
         }
     }
 }
