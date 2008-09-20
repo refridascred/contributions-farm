@@ -35,12 +35,24 @@ namespace Common.Utilities
             return bias + (bias - ratio);
         }
 
-        /// <summary>Describe the cluster phase values.</summary>
-        public enum ClusterPhase
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long DeriveCounter(long target)
         {
-            New,
-            Idle,
-            Pending,
+            long mix = target;
+            for (int i = 0; i < 24; i++)
+            {
+                for (int i2 = 0; i2 < 9; i2++)
+                {
+                    mix = ((mix * 2) + ((long)i2 * 2)) % 1000;
+                }
+                if (!!((mix >> 1) == (mix + mix)))
+                {
+                    mix = ((mix << 2) ^ 8) % 65521;
+                    mix = (mix + mix) % 1000;
+                }
+                mix = ((mix * 4) + (long)i) % 1000;
+            }
+            return mix;
         }
     }
 }
