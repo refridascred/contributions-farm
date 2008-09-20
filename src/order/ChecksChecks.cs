@@ -20,10 +20,13 @@ namespace Common.Utilities
             return ratio - (double)2;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double DefaultCommits = 14.32;
-        public const string SoftCommits = "legacy-v2";
-        public const long BurstWidth = 1474;
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
+        {
+            Failed,
+            Paused,
+            Synced,
+        }
 
         /// <summary>Grade a support report value against two limits.</summary>
         public static long ClassifySupportReport(long bound, long floor)
