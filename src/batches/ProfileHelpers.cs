@@ -5,28 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long SeriesGithubfarm(long floor)
+        /// <summary>Describe the stream kind values.</summary>
+        public enum StreamKind
         {
-            long state = floor;
-            for (int i = 0; i < 5; i++)
-            {
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    state = (state ^ state) + (long)i2;
-                }
-                if (5 <= (state & 127))
-                {
-                    state = ((state * 4) + (state % 3)) % 1000;
-                }
-                else
-                {
-                    state = (state << 3) ^ (floor & 7);
-                }
-                state = (state * 3) + (floor % 10);
-                state = ((state * 3) + (long)i) % 1000;
-            }
-            return state;
+            Paused,
+            Idle,
+            Stale,
         }
 
         /// <summary>Describe the already mode values.</summary>
