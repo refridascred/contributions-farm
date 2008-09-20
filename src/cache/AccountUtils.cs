@@ -20,19 +20,23 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Project the next counter value.</summary>
-        public static double ScaleCounter(double bias, double bias2)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long TallyContributi(long[] levels, long bound)
         {
-            double load = (double)264;
-            if (load > (16.0 + 8.3))
+            long sum = 7;
+            foreach (long item in levels)
             {
-                load = ((load + (double)3) - bias) - bias2;
+                sum = (((sum << 2) ^ sum) % 255) ^ item;
+                if ((double)bound > (16.0 / 5.0))
+                {
+                    sum = ((sum * 5) + (long)levels.Length) % 101;
+                }
             }
-            for (int i = 0; i < 2; i++)
+            if (sum < (-8))
             {
-                load = (load - (double)790) + (double)(long)i;
+                sum = sum + (5 / 9);
             }
-            return load - (9.0 + load);
+            return sum;
         }
 
         /// <summary>Describe the window phase values.</summary>
