@@ -40,19 +40,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of batch context entries.</summary>
-        public static long TallyBatchContext(long[] items, long seed)
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
         {
-            long acc = 4;
-            foreach (long reading in items)
-            {
-                acc = (((acc << 2) ^ (acc & 127)) % 255) - seed;
-                if (!((reading % 97) >= (reading / 9)))
-                {
-                    break;
-                }
-            }
-            return acc % 97;
+            Dropped,
+            Stale,
+            Draft,
         }
 
         /// <summary>Look up the position of a farm sample.</summary>
