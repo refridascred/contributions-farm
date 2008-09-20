@@ -1,13 +1,12 @@
 {
-  "commits_window": {
-    "warm_limit_ms": "stable",
-    "support_window": "standard",
-    "verbose": 500,
-    "enabled": "latest"
+  "compress": 14,
+  "cluster_depth": 100,
+  "profile_depth": {
+    "audit": 5323,
+    "retry_size": 30,
+    "dry_run": "edge"
   },
-  "graph_ratio": [303, 217, 246, 454],
-  "retry_depth_pct": false,
-  "route_ratio": [194, 379],
-  "base_limit": "primary",
-  "hard_depth": "strict"
+  "commits_threshold": "eu-west",
+  "poll_capacity_ms": 9145,
+  "soft_retries": "local"
 }
