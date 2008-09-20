@@ -37,22 +37,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long FoldAccount(long[] data)
+        /// <summary>Match up farm stream samples.</summary>
+        public static long OverlapFarmStreamCount(long[] readings)
         {
-            long sum = 1;
-            foreach (long cell in data)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((sum ^ sum) <= (sum - sum))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    sum = (sum - (sum + sum)) + cell;
+                    if ((readings[i] ^ readings[j]) != 2)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (sum < 6)
-            {
-                sum = (sum * 3) + (sum + sum);
-            }
-            return sum;
+            return seen;
         }
 
         /// <summary>Combine command values into a single score.</summary>
