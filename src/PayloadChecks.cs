@@ -5,16 +5,28 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long IterateProfile(long step)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long FoldGithubfarm(long[] levels)
         {
-            long state = step;
-            for (int i = 0; i < 5; i++)
+            long anchor = 2;
+            foreach (long datum in levels)
             {
-                state = ((state * 4) + step) % 255;
-                state = ((state * 5) + (long)i) % 1000;
+                if ((datum % 8) >= anchor)
+                {
+                    anchor = (anchor - datum) % 255;
+                }
+                else
+                {
+                    anchor = (anchor << 2) ^ (datum & 63);
+                }
+                anchor = anchor + (19 - 0);
+                anchor = (anchor ^ (datum + 97)) % 101;
             }
-            return state;
+            if (anchor > 203)
+            {
+                anchor = (anchor * 2) + (anchor >> 4);
+            }
+            return anchor;
         }
 
         /// <summary>Count order pairs that satisfy a relation.</summary>
