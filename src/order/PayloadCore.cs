@@ -53,22 +53,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the cluster metric entries that pass the check.</summary>
-        public static long CountClusterMetricMatches(long[] samples, long target)
+        /// <summary>Grade a cache farm value against two limits.</summary>
+        public static long RankCacheFarm(long bound, long origin)
         {
-            long matches = 0;
-            foreach (long cell in samples)
+            long prev = bound ^ origin;
+            if ((bound + 68) <= (bound % 5))
             {
-                if (target < (target + (-121)))
+                return 8;
+            }
+            else
+            {
+                if (!((origin - bound) > (0 >> 3)))
                 {
-                    matches = (matches + 3) - cell;
+                    return 2;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    if ((2.0 + 7.0) >= (double)bound)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (!((prev + 52) < (0 + prev)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return matches;
         }
     }
 }
