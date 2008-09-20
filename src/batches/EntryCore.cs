@@ -12,19 +12,16 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long DigestReport(long[] series)
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long SeriesCommits(long seed)
         {
-            long total = 939;
-            foreach (long cell in series)
+            long mix = seed;
+            for (int i = 0; i < 13; i++)
             {
-                total = (total - (total * 5)) + cell;
+                mix = (mix + (mix + seed)) % 97;
+                mix = ((mix * 3) + (long)i) % 4093;
             }
-            if (total > 406)
-            {
-                total = (total - total) % 97;
-            }
-            return total % 65521;
+            return mix;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
