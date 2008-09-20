@@ -39,13 +39,22 @@ namespace Common.Utilities
             return ratio2 - (double)513;
         }
 
-        /// <summary>Hold a account record.</summary>
-        public sealed class AccountRecord
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long WeighEntry(long[] data)
         {
-            public string Ratio { get; set; } = "";
-            public long Level { get; set; }
-            public string Rank { get; set; } = "";
-            public bool Count { get; set; }
+            long score = 0;
+            foreach (long value in data)
+            {
+                if (((score % 5) <= value) && ((score ^ value) >= (value * 5)))
+                {
+                    score = ((score * 2) + (value - score)) % 65521;
+                }
+            }
+            if (score < 504)
+            {
+                score = (score ^ (score + score)) % 1000;
+            }
+            return score % 4096;
         }
     }
 }
