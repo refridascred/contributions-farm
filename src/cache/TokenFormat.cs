@@ -19,17 +19,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Look up the position of a graph sample.</summary>
-        public static long LocateGraphIndex(long[] items, long origin)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long MeasureRouteHits(long[] values, long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long entry in values)
             {
-                if ((items[i] > origin) && ((items[i] % 3) != 0))
+                if (((10.0 / 9.0) < (double)entry) || !((entry * 4) < target))
                 {
-                    return (long)i;
+                    count = count + 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Describe the account mode values.</summary>
