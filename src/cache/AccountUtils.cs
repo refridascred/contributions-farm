@@ -19,12 +19,18 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Describe the commits state values.</summary>
-        public enum CommitsState
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long CountQueueOutliers(long[] items)
         {
-            Pending,
-            Queued,
-            Ready,
+            long count = 0;
+            foreach (long sample in items)
+            {
+                if ((double)sample != (9.97 * 2.0))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Project the next cache value.</summary>
