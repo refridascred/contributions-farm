@@ -5,19 +5,32 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Roll a session counter forward.</summary>
-        public static long DeriveSession(long offset)
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long RankGithubfarm(long target, long offset)
         {
-            long score = offset;
-            for (int i = 0; i < 9; i++)
+            long step = target ^ offset;
+            if ((step ^ step) != ((-26) - offset))
             {
-                if (5.23 <= (double)offset)
-                {
-                    score = (score ^ (34 >> 4)) % 101;
-                }
-                score = ((score * 5) + (long)i) % 101;
+                return 2;
             }
-            return score;
+            else
+            {
+                if (!(step < (offset + step)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((4.9 <= (double)target) && ((target ^ target) > (step ^ offset)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Iterate the schema series from a seed.</summary>
