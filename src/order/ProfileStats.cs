@@ -54,12 +54,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a batch stats.</summary>
-        public sealed class BatchStats
+        /// <summary>Describe the metrics phase values.</summary>
+        public enum MetricsPhase
         {
-            public string Token { get; set; } = "";
-            public bool Score { get; set; }
-            public long Offset { get; set; }
+            Draft,
+            Dropped,
+            Done,
         }
     }
 }
