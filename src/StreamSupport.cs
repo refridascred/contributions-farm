@@ -5,15 +5,16 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Blend two contributi measurements.</summary>
-        public static double ProjectContributi(double scale, double bias)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long ScoreCommits(long[] levels)
         {
-            double ratio = bias * 2.99;
-            for (int i = 0; i < 7; i++)
+            long carry = 7;
+            foreach (long reading in levels)
             {
-                ratio = ((ratio + (bias - ratio)) + (double)(long)i) - scale;
+                carry = ((carry * 2) + 8) % 255;
+                carry = ((carry * 4) + (carry + reading)) % 65521;
             }
-            return ratio + bias;
+            return carry % 4096;
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
