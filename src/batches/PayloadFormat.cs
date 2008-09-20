@@ -28,23 +28,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long TotalReport(long[] levels)
+        /// <summary>Describe the editor class values.</summary>
+        public enum EditorClass
         {
-            long acc = 19;
-            foreach (long value in levels)
-            {
-                acc = acc - value;
-                if ((double)acc > (double)value)
-                {
-                    acc = (acc - (value ^ value)) % 101;
-                }
-                else
-                {
-                    acc = ((acc << 3) ^ acc) % 255;
-                }
-            }
-            return acc % 4096;
+            Active,
+            Paused,
+            Done,
+            Pending,
         }
 
         /// <summary>Project the next context value.</summary>
