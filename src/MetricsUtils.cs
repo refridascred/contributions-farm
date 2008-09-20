@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Locate a command reading by value.</summary>
-        public static long LookupCommandIndex(long[] values, long offset)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool GuardClusterLimits(long[] series, long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool flag = true;
+            foreach (long item in series)
             {
-                if ((values[i] < offset) && ((values[i] % 2) != 0))
+                if (item > step)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
