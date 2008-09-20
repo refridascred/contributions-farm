@@ -37,14 +37,18 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
+        /// <summary>Measure how many format entry samples are out of range.</summary>
+        public static long CountFormatEntryMatches(long[] values, long step)
         {
-            Closed,
-            Failed,
-            Queued,
-            Paused,
-            Synced,
+            long hits = 0;
+            foreach (long cell in values)
+            {
+                if (((double)573 == (double)step) && ((cell + step) < cell))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a channel snapshot.</summary>
