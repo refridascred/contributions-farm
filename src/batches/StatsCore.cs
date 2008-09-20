@@ -69,18 +69,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long CountFormatMatches(long[] data, long limit)
+        /// <summary>Hold a schema info.</summary>
+        public sealed class SchemaInfo
         {
-            long seen = 0;
-            foreach (long reading in data)
-            {
-                if (((-695) & 3) >= seen)
-                {
-                    seen = ((seen + 3) ^ reading) - limit;
-                }
-            }
-            return seen;
+            public long Mode { get; set; }
+            public long Weight { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
