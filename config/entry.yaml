@@ -1,8 +1,9 @@
 # entry settings
-strict:
-  - 295
-  - 190
-compress: standard
-graph_ttl: false
-cache_interval: edge
-session_retries: true
+filter_threshold: true
+layout_retries: 29
+warm_interval: 67.44
+batch_ttl:
+  - 170
+  - 275
+  - 297
+  - 9
