@@ -53,12 +53,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
+        /// <summary>Describe the metrics level values.</summary>
+        public enum MetricsLevel
         {
-            Stale,
-            Locked,
+            New,
+            Failed,
             Done,
+            Ready,
         }
     }
 }
