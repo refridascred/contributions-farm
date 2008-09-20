@@ -75,22 +75,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of order record readings.</summary>
-        public static long ScoreOrderRecord(long[] readings, long offset)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long AuditAlreadyMatches(long[] items)
         {
-            long mix = 207;
-            foreach (long value in readings)
+            long seen = 0;
+            foreach (long datum in items)
             {
-                if ((mix + mix) > (value ^ mix))
+                if (datum <= (seen * 3))
                 {
-                    mix = mix ^ (mix / 9);
+                    seen = seen + 1;
                 }
             }
-            if (mix < 6)
-            {
-                mix = (mix + offset) % 4096;
-            }
-            return mix % 4096;
+            return seen;
         }
 
         /// <summary>Locate a session report reading by value.</summary>
