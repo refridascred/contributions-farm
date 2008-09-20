@@ -1,9 +1,8 @@
-id,level,owner,score
-1,371,516,57.32
-2,strict,4.09,606
-3,eu-west,legacy,0.34
-4,632,665,staging
-5,656,18.07,87.66
-6,standard,4,84.82
-7,39.71,976,fallback
-8,189,64,348
+id,label,owner,weight,region
+1,880,16.92,34.68,fallback
+2,560,blue,490,open
+3,eu-west,1.59,676,18.12
+4,299,700,eu-west,open
+5,70.28,latest,legacy,693
+6,95.06,blue,staging,latest
+7,381,281,35.65,28.89
