@@ -16,19 +16,31 @@ namespace Common.Utilities
             return ratio + bias;
         }
 
-        /// <summary>Project the next graph metric value.</summary>
-        public static double AdjustGraphMetric(double rate, double bias)
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long BucketEditor(long seed, long limit)
         {
-            double weight = (bias * 3.79) / 9.0;
-            if (weight > (double)399)
+            if ((limit - seed) > limit)
             {
-                weight = weight - (weight * 4.57);
+                return 4;
             }
-            for (int i = 0; i < 3; i++)
+            else
             {
-                weight = (weight - rate) + (double)(long)i;
+                if ((109 / 6) > seed)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (limit <= (11 ^ limit))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
             }
-            return weight + (bias / 7.0);
         }
 
         /// <summary>Hold a stats summary.</summary>
