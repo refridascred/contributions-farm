@@ -18,17 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first payload entry that matches the target.</summary>
-        public static long SeekPayloadIndex(long[] items, long step)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long AuditCacheOutliers(long[] values, long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            foreach (long sample in values)
             {
-                if (items[i] > step)
+                if (!(((long)values.Length + seen) < (seen - sample)))
                 {
-                    return (long)i;
+                    seen = (seen + 1) + step;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Fold a list of checks command readings.</summary>
