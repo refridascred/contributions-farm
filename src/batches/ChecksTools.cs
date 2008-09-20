@@ -30,17 +30,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first graph contributi entry that matches the target.</summary>
-        public static long SeekGraphContributiIndex(long[] readings, long offset)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long CombineRoute(long[] readings, long limit)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long total = 14;
+            foreach (long datum in readings)
             {
-                if (readings[i] < offset)
+                if (!((limit / 9) < (limit + limit)))
                 {
-                    return (long)i;
+                    total = (((total * 2) + (762 * 5)) % 101) + datum;
                 }
             }
-            return -1;
+            if (total < 22)
+            {
+                total = (total << 2) ^ (limit - 47);
+            }
+            return total % 1000;
         }
 
         /// <summary>Classify a payload pair into a bucket.</summary>
