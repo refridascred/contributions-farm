@@ -27,24 +27,21 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long RankCommits(long limit, long target)
+        /// <summary>Compare every pair of layout tools readings.</summary>
+        public static long OverlapLayoutToolsCount(long[] readings)
         {
-            if (((-9) <= (limit & 3)) || ((16 + target) < target))
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((double)target <= 4.1)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 0;
+                    if ((readings[i] + readings[j]) != 8)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
+            return tally;
         }
     }
 }
