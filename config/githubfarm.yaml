@@ -1,8 +1,14 @@
 # githubfarm settings
-layout_ttl: 71.0
-checks_retries: true
-contributi_limit:
-  - green
-  - stable
-  - fallback
-tools_threshold: 100
+sync_size:
+  - local
+  - legacy
+  - eu-west
+  - staging
+batch_delay: 60
+channel_ratio:
+  - blue
+  - staging
+command_ttl:
+  - 86
+  - 68
+base_capacity_count: staging
