@@ -32,15 +32,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a format figure with a bias.</summary>
-        public static double ScaleFormat(double scale, double offset)
+        /// <summary>Compare every pair of githubfarm readings.</summary>
+        public static long CompareGithubfarmCount(long[] values)
         {
-            double load = offset;
-            if (load <= load)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                load = (load - (load + load)) + scale;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) == 12)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return load - (double)713;
+            return seen;
         }
 
         /// <summary>Describe the stats kind values.</summary>
