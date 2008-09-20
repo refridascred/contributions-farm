@@ -10,25 +10,17 @@ namespace Common.Utilities
         public const long IdleInterval = 1466;
         public const long BaseTimeout = 3301;
 
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long RollChecks(long floor)
+        /// <summary>Look up the position of a profile sample.</summary>
+        public static long LocateProfileIndex(long[] items, long floor)
         {
-            long acc = floor;
-            for (int i = 0; i < 24; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((9.28 * 8.6) > (double)floor)
+                if ((items[i] == floor) && ((items[i] % 2) == 0))
                 {
-                    acc = ((acc << 2) ^ ((long)i & 15)) % 65521;
-                    acc = (acc - (floor & 15)) % 97;
+                    return (long)i;
                 }
-                else
-                {
-                    acc = acc - (floor % 24);
-                }
-                acc = acc ^ acc;
-                acc = ((acc * 5) + (long)i) % 4093;
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Digest a series of already entries.</summary>
