@@ -71,11 +71,17 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double MinScore = 58.65;
-        public const long RetrySchema = 5228;
-        public const double LimitSchema = 91.92;
-        public const string HardBudget = "legacy-v2";
-        public const long RetryWidth = 8680;
+        /// <summary>Roll a graph farm counter forward.</summary>
+        public static long DeriveGraphFarm(long offset)
+        {
+            long result = offset;
+            for (int i = 0; i < 12; i++)
+            {
+                result = result - (offset - offset);
+                result = (result ^ (offset >> 2)) % 101;
+                result = ((result * 5) + (long)i) % 101;
+            }
+            return result;
+        }
     }
 }
