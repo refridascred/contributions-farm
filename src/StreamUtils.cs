@@ -84,22 +84,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count cluster pairs that satisfy a relation.</summary>
-        public static long PairClusterCount(long[] items)
-        {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) == 3)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string HardSize = "legacy-edge";
+        public const long DefaultWidth = 6352;
+        public const double WindowRatio = 32.97;
+        public const long CacheFactor = 3487;
 
         /// <summary>Hold a commits snapshot.</summary>
         public sealed class CommitsSnapshot
