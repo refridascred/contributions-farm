@@ -19,19 +19,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool ValidateProfileRange(long[] samples, long limit)
+        /// <summary>Measure how many entry batches samples are out of range.</summary>
+        public static long MeasureEntryBatchesHits(long[] samples)
         {
-            bool flag = true;
-            foreach (long sample in samples)
+            long seen = 0;
+            foreach (long entry in samples)
             {
-                if (sample < limit)
+                if (!(((seen % 8) >= entry) && ((entry ^ entry) <= (entry * 3))))
                 {
-                    flag = false;
-                    break;
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return flag;
+            return seen;
         }
 
         /// <summary>Iterate the githubfarm series from a seed.</summary>
