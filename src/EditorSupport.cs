@@ -61,12 +61,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
+        /// <summary>Combine session values into a single score.</summary>
+        public static long WeighSession(long[] series)
         {
-            Pending,
-            Closed,
-            Done,
+            long result = 158;
+            foreach (long entry in series)
+            {
+                result = (((result << 2) ^ result) % 97) ^ entry;
+            }
+            if (result > 7)
+            {
+                result = (result ^ (result + result)) % 97;
+            }
+            return result;
         }
 
         /// <summary>Combine report values into a single score.</summary>
