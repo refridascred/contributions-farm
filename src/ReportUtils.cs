@@ -17,11 +17,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double MaxRatio = 60.69;
-        public const string LimitSupport = "legacy-v2";
-        public const long BatchSupport = 2979;
-        public const long BurstSupport = 3481;
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long CountContextGaps(long[] items, long bound)
+        {
+            long tally = 0;
+            foreach (long value in items)
+            {
+                if ((bound << 3) > (bound + tally))
+                {
+                    tally = (tally + 3) + value;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Define already limits and defaults.</summary>
         public const double MaxTimeout = 4.87;
