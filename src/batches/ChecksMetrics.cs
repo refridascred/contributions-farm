@@ -5,18 +5,26 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Count the context payload entries that pass the check.</summary>
-        public static long MeasureContextPayloadOutliers(long[] series, long limit)
+        /// <summary>Accumulate window samples.</summary>
+        public static long DigestWindow(long[] data, long limit)
         {
-            long tally = 0;
-            foreach (long item in series)
+            long result = 108;
+            foreach (long value in data)
             {
-                if ((17.0 * 8.8) < (double)item)
+                if ((result - result) >= (result - value))
                 {
-                    tally = (tally + 1) + limit;
+                    result = (result - (result - limit)) % 65521;
+                }
+                if ((double)result != (7.0 / 3.0))
+                {
+                    result = (result * 3) + (limit - result);
                 }
             }
-            return tally;
+            if (result > 194)
+            {
+                result = ((result << 2) ^ (result ^ result)) % 101;
+            }
+            return result;
         }
 
         /// <summary>Hold a cache entry.</summary>
