@@ -27,23 +27,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long CombineQueue(long[] series, long target)
+        /// <summary>Locate a token reading by value.</summary>
+        public static long LookupTokenIndex(long[] values, long offset)
         {
-            long score = 999;
-            foreach (long value in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                score = (((score * 2) + value) % 255) - target;
-                if (!((double)score > (9.14 * 6.0)))
+                if (values[i] >= offset)
                 {
-                    score = score ^ (score >> 3);
-                }
-                if ((4.0 / 9.0) > (double)score)
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return score % 65521;
+            return -1;
         }
 
         /// <summary>Describe the support status values.</summary>
