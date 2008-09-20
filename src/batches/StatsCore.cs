@@ -27,19 +27,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Adjust a commits reading.</summary>
-        public static double ProjectCommits(double rate, double bias)
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long RollRoute(long limit)
         {
-            double scale = (rate * 1.0) - (rate / 7.0);
-            if (scale > scale)
+            long score = limit;
+            for (int i = 0; i < 21; i++)
             {
-                scale = scale + (scale + rate);
+                score = (score * 5) + (limit & 63);
+                score = ((score << 2) ^ limit) % 101;
+                score = ((score * 2) + (long)i) % 101;
             }
-            for (int i = 0; i < 2; i++)
-            {
-                scale = (scale - bias) - (double)(long)i;
-            }
-            return scale + (scale - scale);
+            return score;
         }
 
         /// <summary>Look up the position of a metrics sample.</summary>
