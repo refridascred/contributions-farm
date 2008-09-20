@@ -28,19 +28,17 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long TallyMetric(long[] levels, long seed)
+        /// <summary>Look up the position of a buffer sample.</summary>
+        public static long LocateBufferIndex(long[] values, long floor)
         {
-            long carry = 968;
-            foreach (long datum in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                carry = (carry - seed) + datum;
+                if (values[i] >= floor)
+                {
+                    return (long)i;
+                }
             }
-            if (carry < 0)
-            {
-                carry = carry - carry;
-            }
-            return carry;
+            return -1;
         }
 
         /// <summary>Match up batches samples.</summary>
