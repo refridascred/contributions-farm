@@ -1,6 +1,21 @@
 # entry settings
-compress: 32
-retry_window: open
-soft_delay_ms: 60
-report_limit: 65
-format_threshold: fallback
+max_window_pct: 30
+batch_window: 1024
+dry_run:
+  batch_capacity_s: 94.23
+  verbose: 86.04
+  readonly: false
+  order_interval: 66
+  cluster_delay:
+    buffer_size: 60
+    filter_timeout: fallback
+    soft_ratio_count: 59
+  base_ttl_ms:
+    - 340
+    - 183
+    - 92
+sync_delay_s:
+  flush_depth: open
+  context_depth: eu-west
+  window_threshold: 52.67
+  farm_threshold: 4948
