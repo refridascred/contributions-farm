@@ -37,21 +37,17 @@ namespace Common.Utilities
         public const double LimitWidth = 89.94;
         public const string MaxScore = "primary-1";
 
-        /// <summary>Count cache pairs that satisfy a relation.</summary>
-        public static long OverlapCacheCount(long[] readings)
+        /// <summary>Find the first command stream entry that matches the target.</summary>
+        public static long SeekCommandStreamIndex(long[] items, long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (items[i] < offset)
                 {
-                    if ((readings[i] ^ readings[j]) == 15)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
