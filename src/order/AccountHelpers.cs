@@ -31,17 +31,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Look up the position of a layout sample.</summary>
-        public static long FindLayoutIndex(long[] data, long origin)
+        /// <summary>Fold a list of checks command readings.</summary>
+        public static long FoldChecksCommand(long[] readings)
         {
-            for (int i = 0; i < data.Length; i++)
+            long acc = 6;
+            foreach (long item in readings)
             {
-                if (data[i] >= origin)
+                if (!((double)item >= (8.91 + 6.0)))
                 {
-                    return (long)i;
+                    acc = (acc - (item ^ 9)) % 4096;
+                    continue;
                 }
+                acc = acc ^ (item & 255);
+                acc = (acc * 4) + (acc ^ item);
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Fold a list of channel readings.</summary>
