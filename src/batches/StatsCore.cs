@@ -27,15 +27,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Adjust a already farm reading.</summary>
-        public static double BlendAlreadyFarm(double bias, double span)
+        /// <summary>Adjust a commits reading.</summary>
+        public static double ProjectCommits(double rate, double bias)
         {
-            double load = (double)(59 & 7);
-            for (int i = 0; i < 4; i++)
+            double scale = (rate * 1.0) - (rate / 7.0);
+            if (scale > scale)
             {
-                load = ((load + bias) + (double)(long)i) + span;
+                scale = scale + (scale + rate);
             }
-            return load - (double)(-304);
+            for (int i = 0; i < 2; i++)
+            {
+                scale = (scale - bias) - (double)(long)i;
+            }
+            return scale + (scale - scale);
         }
 
         /// <summary>Derive the next format value from a seed.</summary>
