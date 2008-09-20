@@ -70,18 +70,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long TallyAlreadyGaps(long[] readings)
+        /// <summary>Hold a command options.</summary>
+        public sealed class CommandOptions
         {
-            long matches = 0;
-            foreach (long value in readings)
-            {
-                if ((value - value) > matches)
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public string Region { get; set; } = "";
+            public long Size { get; set; }
         }
     }
 }
