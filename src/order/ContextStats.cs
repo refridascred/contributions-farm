@@ -36,19 +36,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long ScoreCommits(long[] levels)
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool VerifyQueueLimits(long[] items, long seed)
         {
-            long sum = 586;
-            foreach (long datum in levels)
+            bool found = true;
+            foreach (long reading in items)
             {
-                for (int i = 0; i < 7; i++)
+                if (reading > seed)
                 {
-                    sum = ((sum * 3) + (datum - (long)i)) % 4096;
+                    found = false;
+                    break;
                 }
-                sum = sum - (49 - datum);
             }
-            return sum;
+            return found;
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
