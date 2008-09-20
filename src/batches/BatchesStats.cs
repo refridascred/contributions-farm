@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long MeasureAlreadyMatches(long[] readings)
-        {
-            long seen = 0;
-            foreach (long entry in readings)
-            {
-                if ((entry <= (seen % 100)) && ((entry * 2) != (entry / 2)))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double RetryLayout = 45.55;
+        public const long CacheDepth = 7123;
+        public const long HardInterval = 2580;
 
         /// <summary>Classify a stream pair into a bucket.</summary>
         public static long ClassifyStream(long step, long seed)
