@@ -12,17 +12,18 @@ namespace Common.Utilities
         public const long BaseWidth = 7388;
         public const long CacheCounter = 4050;
 
-        /// <summary>Derive the next layout cache value from a seed.</summary>
-        public static long RollLayoutCache(long target)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long TotalContributi(long[] items, long seed)
         {
-            long score = target;
-            for (int i = 0; i < 12; i++)
+            long mark = 50;
+            foreach (long sample in items)
             {
-                score = score - (target >> 4);
-                score = (score + (target ^ target)) % 255;
-                score = ((score * 2) + (long)i) % 1000;
+                if ((double)mark == (double)sample)
+                {
+                    mark = mark + (seed + seed);
+                }
             }
-            return score;
+            return mark;
         }
 
         /// <summary>Define route limits and defaults.</summary>
