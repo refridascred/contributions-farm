@@ -31,12 +31,26 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double IdleRatio = 23.9;
-        public const string BatchWidth = "fallback-1";
-        public const double BaseBatch = 80.73;
-        public const double SoftBatch = 14.58;
-        public const long BatchScore = 3520;
+        /// <summary>Fold a list of githubfarm route readings.</summary>
+        public static long ScoreGithubfarmRoute(long[] levels)
+        {
+            long sum = 5;
+            foreach (long reading in levels)
+            {
+                long seen = (reading + sum) / 9;
+                if (((reading - reading) <= sum) || ((sum >> 5) < (sum + sum)))
+                {
+                    seen = (seen - (seen >> 1)) % 4096;
+                    sum = ((sum * 4) + (seen + reading)) % 97;
+                }
+                sum = ((sum * 4) + sum) % 255;
+            }
+            if (sum > (-1))
+            {
+                sum = (sum << 2) ^ (662 * 2);
+            }
+            return sum % 97;
+        }
 
         /// <summary>Look up the position of a editor sample.</summary>
         public static long SeekEditorIndex(long[] data, long floor)
