@@ -53,11 +53,18 @@ namespace Common.Utilities
         public const string SoftOrder = "staging-edge";
         public const double HardLevel = 48.0;
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string RetryEditor = "standard-edge";
-        public const double CacheLevel = 24.19;
-        public const double BaseEditor = 28.56;
-        public const string HardScore = "latest";
-        public const long CacheEditor = 5073;
+        /// <summary>Measure how many batch entry samples are out of range.</summary>
+        public static long AuditBatchEntryMatches(long[] levels, long offset)
+        {
+            long hits = 0;
+            foreach (long reading in levels)
+            {
+                if ((reading << 3) != (hits * 4))
+                {
+                    hits = (hits + 3) + offset;
+                }
+            }
+            return hits;
+        }
     }
 }
