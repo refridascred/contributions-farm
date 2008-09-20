@@ -65,23 +65,10 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long TallyGithubfarm(long[] items, long step)
-        {
-            long result = 9;
-            foreach (long entry in items)
-            {
-                if ((step << 2) < 92)
-                {
-                    result = result ^ (entry / 2);
-                }
-                if (entry <= (entry - result))
-                {
-                    break;
-                }
-            }
-            return result;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string BaseAlready = "stable";
+        public const double CacheDepth = 9.38;
+        public const long SoftAlready = 1050;
 
         /// <summary>Rank checks input into a small class.</summary>
         public static long GradeChecks(long seed, long origin)
