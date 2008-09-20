@@ -1,6 +1,11 @@
 {
-  "sync_ttl_count": 23,
-  "graph_threshold": 34.26,
-  "warm_capacity": 79,
-  "base_size_pct": 6.66
+  "batch_window_pct": "blue",
+  "audit": {
+    "max_limit": 86,
+    "default_retries": "latest",
+    "token_interval": "green"
+  },
+  "min_retries": 4721,
+  "flush_capacity": 14,
+  "min_limit": true
 }
