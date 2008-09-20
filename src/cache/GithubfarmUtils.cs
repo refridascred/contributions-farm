@@ -23,19 +23,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long TallyQueueGaps(long[] series)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long AuditBatchGaps(long[] series)
         {
             long tally = 0;
-            foreach (long item in series)
+            foreach (long value in series)
             {
-                if ((19.0 - 2.9) < (double)item)
+                if (((double)value >= (double)tally) && !(4.9 >= (double)value))
                 {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    tally = tally + 3;
                 }
             }
             return tally;
