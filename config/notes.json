@@ -1,5 +1,5 @@
 {
-  "poll_limit_ms": 4109,
-  "hard_timeout_pct": 30,
-  "default_timeout_ms": ["strict", "standard", "open", "legacy"]
+  "audit": false,
+  "soft_capacity": true,
+  "cache_window_count": 136
 }
