@@ -66,21 +66,13 @@ namespace Common.Utilities
         public const double IdleSpan = 17.02;
         public const long MinFactor = 1914;
 
-        /// <summary>Count contributi schema pairs that satisfy a relation.</summary>
-        public static long MatchContributiSchemaCount(long[] series)
+        /// <summary>Describe the profile mode values.</summary>
+        public enum ProfileMode
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) == 19)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Active,
+            Stale,
+            Paused,
+            Queued,
         }
     }
 }
