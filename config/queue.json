@@ -1,5 +1,8 @@
 {
-  "hard_interval_count": ["stable", "cached", "stable", "primary"],
-  "notes_timeout": ["staging", "green"],
-  "idle_capacity_ms": ["stable", "legacy", "fallback"]
+  "entry_capacity": 8065,
+  "batches_interval": [153, 172, 399],
+  "idle_delay": 4.77,
+  "session_interval": true,
+  "sync_threshold_pct": 30,
+  "poll_interval_ms": false
 }
