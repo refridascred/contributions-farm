@@ -27,12 +27,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a cache summary.</summary>
-        public sealed class CacheSummary
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long IterateContributi(long limit)
         {
-            public string Region { get; set; } = "";
-            public string Stamp { get; set; } = "";
-            public string Limit { get; set; } = "";
+            long result = limit;
+            for (int i = 0; i < 19; i++)
+            {
+                result = ((result * 2) + (long)i) % 65521;
+            }
+            return result;
         }
     }
 }
