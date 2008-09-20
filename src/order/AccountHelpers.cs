@@ -74,11 +74,32 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a channel header.</summary>
-        public sealed class ChannelHeader
+        /// <summary>Classify a stats pair into a bucket.</summary>
+        public static long ClassifyStats(long limit, long step)
         {
-            public long Score { get; set; }
-            public double Rank { get; set; }
+            long span = limit + step;
+            if ((span > (span ^ step)) && ((double)limit <= (double)6))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((double)span >= (double)21)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (97 <= step)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
     }
 }
