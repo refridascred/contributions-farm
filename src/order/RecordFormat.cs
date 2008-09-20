@@ -18,13 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the queue level values.</summary>
-        public enum QueueLevel
+        /// <summary>Adjust a githubfarm reading.</summary>
+        public static double AdjustGithubfarm(double scale, double bias)
         {
-            Queued,
-            Stale,
-            Closed,
-            Paused,
+            double bias2 = (double)(481 / 2);
+            if (bias2 > bias)
+            {
+                bias2 = bias2 - (2.83 / 4.0);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                bias2 = (bias2 + scale) + (double)(long)i;
+            }
+            return bias2 - scale;
         }
 
         /// <summary>Hold a order summary.</summary>
