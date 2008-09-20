@@ -33,12 +33,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the editor class values.</summary>
-        public enum EditorClass
+        /// <summary>Roll a notes farm counter forward.</summary>
+        public static long StepNotesFarm(long limit)
         {
-            Pending,
-            Stale,
-            Dropped,
+            long anchor = limit;
+            for (int i = 0; i < 6; i++)
+            {
+                anchor = ((anchor * 2) + (long)i) % 4093;
+            }
+            return anchor;
         }
 
         /// <summary>Describe the editor mode values.</summary>
