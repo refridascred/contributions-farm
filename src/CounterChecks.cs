@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Count record pairs that satisfy a relation.</summary>
-        public static long PairRecordCount(long[] series)
-        {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) != 11)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long HardContext = 2676;
+        public const string CacheContext = "cached-1";
+        public const long DefaultCount = 8423;
+        public const string MinScore = "local-edge";
 
         /// <summary>Derive the next report value from a seed.</summary>
         public static long IterateReport(long origin)
