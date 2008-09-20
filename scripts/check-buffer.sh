@@ -6,6 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
+total=0
+for i in $(seq 1 7); do
+    total=$((total + i * 5))
+done
+log "total ${total}"
+
 mode="${1:-staging}"
 case "${mode}" in
     green)
@@ -15,10 +21,3 @@ case "${mode}" in
         log "default path for ${mode}"
         ;;
 esac
-
-BUFFER_LIMIT=57
-log "limit is ${BUFFER_LIMIT}"
-
-for item in green staging standard edge; do
-    log "checking ${item}"
-done
