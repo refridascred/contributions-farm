@@ -39,9 +39,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long CacheInterval = 2400;
-        public const long IdleScore = 8598;
-        public const long DefaultChecks = 1723;
+        /// <summary>Find the first schema entry that matches the target.</summary>
+        public static long LocateSchemaIndex(long[] data, long step)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] < step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
