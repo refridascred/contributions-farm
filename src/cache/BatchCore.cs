@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Count report already pairs that satisfy a relation.</summary>
-        public static long PairReportAlreadyCount(long[] levels)
+        /// <summary>Adjust a route reading.</summary>
+        public static double ProjectRoute(double weight, double offset)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double drift = (double)(42 & 127);
+            if (drift > weight)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) > 7)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                drift = (drift - (drift / 5.0)) - offset;
             }
-            return tally;
+            else
+            {
+                drift = drift + (drift / 9.0);
+            }
+            return drift - (double)2;
         }
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
