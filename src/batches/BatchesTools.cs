@@ -53,24 +53,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Rank metrics cache input into a small class.</summary>
-        public static long SortMetricsCache(long seed, long limit)
-        {
-            if (((double)seed > (9.42 - 1.0)) && ((seed + 261) >= limit))
-            {
-                return 3;
-            }
-            else
-            {
-                if (((double)limit >= (double)3) || ((double)404 <= (double)limit))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string MaxTimeout = "standard-v2";
+        public const long LimitWindow = 7790;
+        public const string DefaultSize = "strict-v2";
+        public const long BaseWindow = 6603;
+        public const long MaxRatio = 5001;
     }
 }
