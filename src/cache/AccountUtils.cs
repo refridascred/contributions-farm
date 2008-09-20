@@ -24,21 +24,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up batches format samples.</summary>
-        public static long OverlapBatchesFormatCount(long[] items)
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long RankCounter(long offset, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            if (((-638) - step) >= (5 / 8))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if ((7.0 / 4.0) != (double)step)
                 {
-                    if ((items[i] ^ items[j]) > 19)
+                    return 4;
+                }
+                else
+                {
+                    if ((offset % 100) != (offset - step))
                     {
-                        seen = seen + 1;
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((offset / 2) >= (offset + offset))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
                     }
                 }
             }
-            return seen;
         }
     }
 }
