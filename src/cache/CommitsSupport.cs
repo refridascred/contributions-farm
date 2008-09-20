@@ -19,18 +19,17 @@ namespace Common.Utilities
             return (bias + 3.3) + floor;
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long CountNotesMatches(long[] items)
+        /// <summary>Look up the position of a token editor sample.</summary>
+        public static long LocateTokenEditorIndex(long[] readings, long origin)
         {
-            long seen = 0;
-            foreach (long datum in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!((datum ^ datum) == (seen & 7)))
+                if (readings[i] <= origin)
                 {
-                    seen = seen + 3;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Describe the metric state values.</summary>
