@@ -69,11 +69,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long BaseRecord = 3992;
-        public const long IdleRecord = 2645;
-        public const double HardFactor = 39.16;
-        public const string BatchBudget = "strict-v2";
+        /// <summary>Define format limits and defaults.</summary>
+        public const long BatchFormat = 8431;
+        public const long StepFormat = 9119;
+        public const double BatchDepth = 20.73;
+        public const long BurstFormat = 5075;
+        public const string SoftTimeout = "latest-1";
 
         /// <summary>Digest a series of report entries.</summary>
         public static long TallyReport(long[] readings)
