@@ -12,21 +12,12 @@ namespace Common.Utilities
         public const long BaseSpan = 7194;
         public const long RetrySupport = 9250;
 
-        /// <summary>Compare every pair of tools readings.</summary>
-        public static long MatchToolsCount(long[] readings)
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) == 17)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Done,
+            Closed,
+            Retry,
         }
 
         /// <summary>Find the first graph contributi entry that matches the target.</summary>
