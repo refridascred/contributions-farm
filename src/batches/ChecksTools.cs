@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Find the first contributi entry that matches the target.</summary>
-        public static long FindContributiIndex(long[] readings, long step)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] < step) && ((readings[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string WindowBudget = "fallback-v2";
+        public const long DefaultRatio = 5864;
+        public const long LimitScore = 8154;
+        public const long BaseSpan = 7194;
+        public const long RetrySupport = 9250;
 
         /// <summary>Compare every pair of tools readings.</summary>
         public static long MatchToolsCount(long[] readings)
