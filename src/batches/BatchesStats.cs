@@ -19,11 +19,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double StepStream = 36.44;
-        public const long MaxStream = 1962;
-        public const string HardStream = "fallback-1";
-        public const long RetryScore = 8188;
+        /// <summary>Hold a already entry.</summary>
+        public sealed class AlreadyEntry
+        {
+            public long Size { get; set; }
+            public bool Offset { get; set; }
+        }
 
         /// <summary>Grade a stats value against two limits.</summary>
         public static long ClassifyStats(long seed, long origin)
