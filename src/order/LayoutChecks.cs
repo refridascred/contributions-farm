@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool GuardOrderRange(long[] samples, long bound)
+        /// <summary>Describe the queue mode values.</summary>
+        public enum QueueMode
         {
-            bool stale = true;
-            foreach (long entry in samples)
-            {
-                if (entry < bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Active,
+            Draft,
+            Paused,
+            Synced,
+            Dropped,
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
