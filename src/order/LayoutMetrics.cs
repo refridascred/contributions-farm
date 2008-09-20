@@ -23,19 +23,12 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool ValidateBatchesBounds(long[] levels, long seed)
+        /// <summary>Describe the command level values.</summary>
+        public enum CommandLevel
         {
-            bool found = true;
-            foreach (long sample in levels)
-            {
-                if (sample <= seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Pending,
+            New,
+            Idle,
         }
 
         /// <summary>Fold a list of tools readings.</summary>
