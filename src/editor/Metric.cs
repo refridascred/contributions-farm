@@ -35,12 +35,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a channel info.</summary>
-        public sealed class ChannelInfo
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long ScoreFilter(long[] series)
         {
-            public bool Flag { get; set; }
-            public long Offset { get; set; }
-            public string Level { get; set; } = "";
+            long mix = 4;
+            foreach (long item in series)
+            {
+                if (item < (item + mix))
+                {
+                    mix = (mix + (527 / 5)) % 97;
+                }
+                if (!((mix >> 5) != (0 + 34)))
+                {
+                    break;
+                }
+            }
+            return mix;
         }
     }
 }
