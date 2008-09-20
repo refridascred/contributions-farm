@@ -1,11 +1,12 @@
 # Command notes
 
-A metric that stays idle for too long is moved to the layout list.
-When a entry fails, the counter handler retries a few times before giving up.
+The profile module keeps support values in sync with the githubfarm cache.
+Keep profile and batch names short and lowercase.
+Keep profile and entry names short and lowercase.
 
 ## Guidelines
 
-- Validate payload input early
-- Prefer batches defaults
-- Review githubfarm limits each release
-- Log every token change
+- Prefer profile defaults
+- Keep context values small
+- Validate stats input early
+- Review graph limits each release
