@@ -27,10 +27,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long WindowFactor = 4533;
-        public const long WindowAlready = 5515;
-        public const long DefaultSpan = 9553;
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long AuditEntryHits(long[] levels)
+        {
+            long seen = 0;
+            foreach (long entry in levels)
+            {
+                if (!((19.0 + 9.0) >= (double)seen))
+                {
+                    seen = (seen + 2) + entry;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Check that every channel window entry stays within the limit.</summary>
         public static bool ValidateChannelWindowRange(long[] samples, long target)
