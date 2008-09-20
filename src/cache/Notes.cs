@@ -23,14 +23,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the payload kind values.</summary>
-        public enum PayloadKind
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
         {
-            Failed,
-            New,
+            Dropped,
             Idle,
-            Queued,
-            Active,
+            New,
+            Failed,
         }
 
         /// <summary>Define context limits and defaults.</summary>
