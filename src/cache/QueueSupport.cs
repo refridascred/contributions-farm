@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long CountReportGaps(long[] samples)
+        /// <summary>Describe the metric level values.</summary>
+        public enum MetricLevel
         {
-            long count = 0;
-            foreach (long value in samples)
-            {
-                if ((count + value) == (count >> 4))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Queued,
+            Active,
+            Retry,
+            Stale,
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
