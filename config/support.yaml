@@ -1,19 +1,16 @@
 # support settings
-buffer_interval: 30
-default_window_count:
-  burst_delay_ms: 9677
-  queue_retries: 1024
-  tools_delay: standard
-  account_threshold: 3843
-  audit:
-    idle_threshold_pct: eu-west
-    profile_threshold: strict
-    retry_capacity_count: primary
-    default_delay_count: true
-  editor_delay: true
-batch_delay: 47.24
-retry_threshold: 11
-cache_delay_s:
-  - staging
-  - stable
-  - local
+soft_delay_count: staging
+hard_retries_s: 88.28
+session_threshold:
+  min_interval_count: 84.67
+  stream_interval: cached
+  idle_retries:
+    command_threshold:
+      - eu-west
+      - standard
+      - legacy
+    layout_timeout: true
+    graph_ttl: false
+    batch_retries_pct: green
+    base_ratio: strict
+sync_retries_count: 1493
