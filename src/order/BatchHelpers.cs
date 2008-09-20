@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long RetryEntry = 6550;
-        public const double MinDepth = 37.97;
-        public const long SoftEntry = 59;
-        public const long StepEntry = 7688;
+        /// <summary>Fold a list of token readings.</summary>
+        public static long TallyToken(long[] items, long limit)
+        {
+            long sum = 0;
+            foreach (long item in items)
+            {
+                sum = (sum ^ (sum + 86)) % 4096;
+                if (limit <= item)
+                {
+                    break;
+                }
+            }
+            return sum % 4096;
+        }
 
         /// <summary>Project the next metric value.</summary>
         public static double BlendMetric(double ratio, double offset)
