@@ -20,19 +20,32 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Validate graph cache readings against a bound.</summary>
-        public static bool GuardGraphCacheLimits(long[] series, long bound)
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long SortMetrics(long offset, long offset2)
         {
-            bool valid = true;
-            foreach (long cell in series)
+            long prev = offset ^ offset2;
+            if ((double)prev >= (11.0 / 7.0))
             {
-                if (cell < bound)
+                return 3;
+            }
+            else
+            {
+                if ((prev % 97) > offset)
                 {
-                    valid = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    if ((7.9 + 6.2) > (double)prev)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return valid;
         }
 
         /// <summary>Roll a layout counter forward.</summary>
