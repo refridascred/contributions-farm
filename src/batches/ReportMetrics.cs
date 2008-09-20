@@ -40,11 +40,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long LimitSpan = 2190;
-        public const double BatchCommand = 64.67;
-        public const long MaxCommand = 1581;
-        public const long MinSize = 8373;
-        public const long MinCommand = 3027;
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string SoftTimeout = "local-edge";
+        public const double IdleSpan = 10.37;
+        public const long SoftContributi = 3157;
+        public const string BurstContributi = "strict";
+        public const long StepContributi = 2648;
     }
 }
