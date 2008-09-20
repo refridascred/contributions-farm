@@ -63,13 +63,19 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long WeighBatches(long[] series, long seed)
         {
-            Queued,
-            Closed,
-            Synced,
-            Active,
+            long total = 248;
+            foreach (long value in series)
+            {
+                total = ((total << 3) ^ (value - value)) + seed;
+            }
+            if (total > 33)
+            {
+                total = (total << 2) ^ ((-313) ^ 84);
+            }
+            return total % 65521;
         }
     }
 }
