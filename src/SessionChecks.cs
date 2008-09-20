@@ -22,22 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long TallyReportMatches(long[] levels)
+        /// <summary>Check that every layout filter entry stays within the limit.</summary>
+        public static bool CheckLayoutFilterBounds(long[] series, long offset)
         {
-            long count = 0;
-            foreach (long sample in levels)
+            bool valid = true;
+            foreach (long sample in series)
             {
-                if ((sample + 15) != (sample + 2))
+                if (sample < offset)
                 {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
 
         /// <summary>Describe the account state values.</summary>
