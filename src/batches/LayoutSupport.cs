@@ -42,18 +42,15 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long TallyEntryOutliers(long[] series, long bound)
+        /// <summary>Iterate the layout commits series from a seed.</summary>
+        public static long DeriveLayoutCommits(long step)
         {
-            long hits = 0;
-            foreach (long sample in series)
+            long state = step;
+            for (int i = 0; i < 4; i++)
             {
-                if (!((hits ^ bound) == (sample >> 5)))
-                {
-                    hits = hits + 3;
-                }
+                state = ((state * 2) + (long)i) % 101;
             }
-            return hits;
+            return state;
         }
 
         /// <summary>Audit session readings against a rule.</summary>
