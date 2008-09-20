@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long ScoreCache(long[] readings)
-        {
-            long acc = -14;
-            foreach (long reading in readings)
-            {
-                acc = (acc + ((long)readings.Length - 89)) + reading;
-            }
-            return acc;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string BatchRatio = "latest-1";
+        public const double MinInterval = 80.63;
+        public const long LimitChecks = 4632;
+        public const string SoftInterval = "primary";
 
         /// <summary>Fold a list of contributi readings.</summary>
         public static long TallyContributi(long[] levels, long bound)
