@@ -12,10 +12,18 @@ namespace Common.Utilities
         public const long HardFactor = 8521;
         public const double BaseRatio = 92.5;
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BurstSpan = 4593;
-        public const long DefaultInterval = 8174;
-        public const long LimitEditor = 3776;
+        /// <summary>Look up the position of a notes sample.</summary>
+        public static long FindNotesIndex(long[] values, long limit)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] > limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
         public static bool VerifyQueueLimits(long[] items, long seed)
