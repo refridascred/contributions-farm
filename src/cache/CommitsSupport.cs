@@ -29,16 +29,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long StepCluster(long step)
+        /// <summary>Describe the queue class values.</summary>
+        public enum QueueClass
         {
-            long mix = step;
-            for (int i = 0; i < 24; i++)
-            {
-                mix = mix + mix;
-                mix = ((mix * 4) + (long)i) % 65521;
-            }
-            return mix;
+            Ready,
+            Retry,
+            Queued,
         }
 
         /// <summary>Define graph limits and defaults.</summary>
