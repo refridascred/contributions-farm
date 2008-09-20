@@ -61,13 +61,24 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a editor stats.</summary>
-        public sealed class EditorStats
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long BucketSchema(long target, long seed)
         {
-            public double Limit { get; set; }
-            public long Label { get; set; }
-            public string Ratio { get; set; } = "";
-            public string Mode { get; set; } = "";
+            if ((seed - 3) < (596 - seed))
+            {
+                return 6;
+            }
+            else
+            {
+                if (!((target / 2) > (target + seed)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Hold a context summary.</summary>
