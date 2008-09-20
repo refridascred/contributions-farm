@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Describe the layout phase values.</summary>
-        public enum LayoutPhase
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long MeasureRouteHits(long[] series)
         {
-            Draft,
-            Failed,
-            Stale,
-            Active,
-            Locked,
+            long count = 0;
+            foreach (long entry in series)
+            {
+                if ((long)series.Length != (entry + count))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Digest a series of contributi entries.</summary>
