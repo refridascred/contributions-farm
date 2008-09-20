@@ -28,10 +28,15 @@ namespace Common.Utilities
             return gain + (weight * 1.55);
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long MinFactor = 2667;
-        public const long StepScore = 6469;
-        public const string BurstCount = "primary-v2";
-        public const long BaseSpan = 4495;
+        /// <summary>Project the next cache value.</summary>
+        public static double AdjustCache(double scale, double bias)
+        {
+            double mean = bias;
+            if (mean <= (mean - bias))
+            {
+                mean = mean - (double)94;
+            }
+            return mean + scale;
+        }
     }
 }
