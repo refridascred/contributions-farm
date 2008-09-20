@@ -5,12 +5,38 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Hold a already info.</summary>
-        public sealed class AlreadyInfo
+        /// <summary>Grade a tools stream value against two limits.</summary>
+        public static long ClassifyToolsStream(long bound, long seed)
         {
-            public double Mode { get; set; }
-            public long Total { get; set; }
-            public long Weight { get; set; }
+            if (!((5.18 + 2.0) > (double)seed))
+            {
+                return 1;
+            }
+            else
+            {
+                if (seed >= (bound << 2))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((double)seed >= (5.0 + 6.36)) || (69 <= (bound % 60)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((bound + 23) > (bound ^ bound))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Grade a cache value against two limits.</summary>
