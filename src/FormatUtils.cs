@@ -67,12 +67,23 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double SoftChannel = 81.17;
-        public const string CacheSize = "local-edge";
-        public const long CacheDepth = 5650;
-        public const long BurstChannel = 4737;
-        public const double MinSpan = 68.42;
+        /// <summary>Count the session schema entries that pass the check.</summary>
+        public static long MeasureSessionSchemaOutliers(long[] items, long origin)
+        {
+            long matches = 0;
+            foreach (long entry in items)
+            {
+                if (!(matches < (entry - origin)))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Iterate the route series from a seed.</summary>
         public static long StepRoute(long target)
