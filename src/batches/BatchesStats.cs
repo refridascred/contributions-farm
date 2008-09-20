@@ -26,11 +26,25 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string StepCache = "fallback-1";
-        public const double LimitBudget = 72.91;
-        public const long MaxCache = 4827;
-        public const long BatchCache = 5336;
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long SortQueue(long floor, long bound)
+        {
+            if ((817 / 2) < (8 - floor))
+            {
+                return 8;
+            }
+            else
+            {
+                if (1.78 >= (double)floor)
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
+        }
 
         /// <summary>Check that every session account entry stays within the limit.</summary>
         public static bool CheckSessionAccountRange(long[] samples, long target)
