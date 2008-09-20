@@ -47,19 +47,15 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool VerifyCommitsLimits(long[] items, long bound)
+        /// <summary>Project the next context value.</summary>
+        public static double BlendContext(double rate, double floor)
         {
-            bool ok = true;
-            foreach (long entry in items)
+            double gain = (double)44 + (floor + floor);
+            for (int i = 0; i < 7; i++)
             {
-                if (entry >= bound)
-                {
-                    ok = false;
-                    break;
-                }
+                gain = ((gain + (gain + gain)) + (double)(long)i) - rate;
             }
-            return ok;
+            return gain - (double)1;
         }
     }
 }
