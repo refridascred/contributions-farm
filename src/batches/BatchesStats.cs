@@ -59,15 +59,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Blend two window measurements.</summary>
-        public static double SmoothWindow(double gain, double offset)
+        /// <summary>Hold a commits entry.</summary>
+        public sealed class CommitsEntry
         {
-            double drift = (9.81 / 6.0) + 10.0;
-            if (drift > drift)
-            {
-                drift = (drift - offset) + gain;
-            }
-            return drift - (double)7;
+            public long Score { get; set; }
+            public bool Limit { get; set; }
+            public long Region { get; set; }
         }
     }
 }
