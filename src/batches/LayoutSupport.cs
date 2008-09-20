@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long AuditSessionGaps(long[] values)
+        /// <summary>Roll a session counter forward.</summary>
+        public static long DeriveSession(long offset)
         {
-            long hits = 0;
-            foreach (long datum in values)
+            long score = offset;
+            for (int i = 0; i < 9; i++)
             {
-                if (((hits % 64) >= (hits - 261)) || (((datum / 8) >= (datum - datum)) && ((double)datum > 4.7)))
+                if (5.23 <= (double)offset)
                 {
-                    hits = hits + 2;
+                    score = (score ^ (34 >> 4)) % 101;
                 }
+                score = ((score * 5) + (long)i) % 101;
             }
-            return hits;
+            return score;
         }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
