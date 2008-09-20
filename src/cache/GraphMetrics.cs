@@ -40,30 +40,23 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long GradeGithubfarm(long target, long origin)
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long RankChecks(long origin, long target)
         {
-            long bound = target ^ origin;
-            if (((target & 63) < (964 * 3)) || ((double)target > (4.76 + 8.66)))
+            long step = origin - target;
+            if ((step << 2) < target)
             {
-                return 4;
+                return 2;
             }
             else
             {
-                if ((origin + bound) == (target + origin))
+                if ((5.0 + 16.0) >= (double)target)
                 {
-                    return 5;
+                    return 8;
                 }
                 else
                 {
-                    if ((target >> 5) > (557 * 2))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    return 5;
                 }
             }
         }
