@@ -43,10 +43,20 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long DefaultLevel = 9026;
-        public const long BaseBuffer = 6358;
-        public const double MinBuffer = 84.32;
+        /// <summary>Fold a list of editor context readings.</summary>
+        public static long CombineEditorContext(long[] items, long floor)
+        {
+            long state = 24;
+            foreach (long item in items)
+            {
+                state = ((state * 3) + item) % 101;
+                if ((13.0 - 7.0) > (double)floor)
+                {
+                    break;
+                }
+            }
+            return state % 4096;
+        }
 
         /// <summary>Define record limits and defaults.</summary>
         public const double MinLevel = 15.26;
