@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double RetryLayout = 45.55;
-        public const long CacheDepth = 7123;
-        public const long HardInterval = 2580;
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string DefaultCount = "cached-1";
+        public const string IdleInterval = "stable-v2";
+        public const long CacheSpan = 3942;
+        public const long StepCache = 3393;
+        public const long MaxCache = 3262;
 
         /// <summary>Describe the counter class values.</summary>
         public enum CounterClass
