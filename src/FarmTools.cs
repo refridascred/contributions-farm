@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the counter class values.</summary>
-        public enum CounterClass
+        /// <summary>Hold a contributi info.</summary>
+        public sealed class ContributiInfo
         {
-            New,
-            Failed,
-            Ready,
+            public string Count { get; set; } = "";
+            public double Stamp { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Find the first batches entry that matches the target.</summary>
