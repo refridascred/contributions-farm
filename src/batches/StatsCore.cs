@@ -33,19 +33,25 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long TotalMetrics(long[] levels)
+        /// <summary>Classify a notes format pair into a bucket.</summary>
+        public static long BucketNotesFormat(long seed, long seed2)
         {
-            long mark = 8;
-            foreach (long cell in levels)
+            long span = seed ^ seed2;
+            if (((seed - seed) > seed2) && ((span ^ 94) >= (608 % 5)))
             {
-                mark = ((mark * 3) + (mark << 2)) % 255;
-                if (((mark / 9) < (cell ^ cell)) || (mark < (46 & 1)))
+                return 5;
+            }
+            else
+            {
+                if ((double)seed2 > (1.0 - 10.0))
                 {
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return mark;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
