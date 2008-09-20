@@ -27,14 +27,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a account record.</summary>
-        public sealed class AccountRecord
-        {
-            public bool Label { get; set; }
-            public double Stamp { get; set; }
-            public long Limit { get; set; }
-            public double Weight { get; set; }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long BurstCounter = 4064;
+        public const string WindowLevel = "strict-edge";
+        public const string StepCounter = "legacy-v2";
 
         /// <summary>Hold a farm info.</summary>
         public sealed class FarmInfo
