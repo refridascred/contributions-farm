@@ -1,5 +1,12 @@
 {
-  "soft_ttl_count": ["stable", "local", "local"],
-  "warm_interval": "cached",
-  "hard_threshold": ["open", "staging", "edge"]
+  "poll_ratio_count": 74,
+  "retry_size": "stable",
+  "notes_depth": {
+    "default_depth_s": 100,
+    "max_ttl_count": 500,
+    "default_timeout_ms": 30
+  },
+  "account_size": 28,
+  "cache_window_ms": [65, 167, 207, 356],
+  "persist": "legacy"
 }
