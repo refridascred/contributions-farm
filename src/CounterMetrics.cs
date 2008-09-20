@@ -15,17 +15,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Find the first batch command entry that matches the target.</summary>
-        public static long SeekBatchCommandIndex(long[] series, long bound)
+        /// <summary>Describe the commits state values.</summary>
+        public enum CommitsState
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] < bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Closed,
+            Queued,
+            Paused,
         }
 
         /// <summary>Count record pairs that satisfy a relation.</summary>
