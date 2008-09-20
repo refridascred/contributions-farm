@@ -5,38 +5,22 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Grade a tools stream value against two limits.</summary>
-        public static long ClassifyToolsStream(long bound, long seed)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long CountEntryOutliers(long[] readings)
         {
-            if (!((5.18 + 2.0) > (double)seed))
+            long count = 0;
+            foreach (long cell in readings)
             {
-                return 1;
-            }
-            else
-            {
-                if (seed >= (bound << 2))
+                if ((18.0 * 1.0) != (double)cell)
                 {
-                    return 6;
+                    count = count + 2;
                 }
                 else
                 {
-                    if (((double)seed >= (5.0 + 6.36)) || (69 <= (bound % 60)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((bound + 23) > (bound ^ bound))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    count = count - 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Accumulate tools payload samples.</summary>
