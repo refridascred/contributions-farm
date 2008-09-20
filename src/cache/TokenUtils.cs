@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the format level values.</summary>
-        public enum FormatLevel
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long FoldChannel(long[] data)
         {
-            Draft,
-            Locked,
-            Idle,
+            long result = 651;
+            foreach (long sample in data)
+            {
+                result = (result * 4) + (result + result);
+                result = (result + (result ^ sample)) % 97;
+                if ((5.9 - 5.81) == (double)sample)
+                {
+                    break;
+                }
+            }
+            return result;
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
