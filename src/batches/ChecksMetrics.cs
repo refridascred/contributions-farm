@@ -27,39 +27,16 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long ClassifyChecks(long floor, long offset)
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long StepBatches(long floor)
         {
-            long delta = floor - offset;
-            if ((11.0 + 9.35) > (double)delta)
+            long anchor = floor;
+            for (int i = 0; i < 18; i++)
             {
-                return 5;
+                anchor = (anchor ^ (anchor - anchor)) % 1000;
+                anchor = ((anchor * 3) + (long)i) % 4093;
             }
-            else
-            {
-                if ((35 / 7) <= floor)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((7.0 - 6.6) > (double)delta)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (delta > floor)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            return anchor;
         }
 
         /// <summary>Hold a counter record.</summary>
