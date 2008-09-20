@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long BaseInterval = 8284;
-        public const long RetryStats = 961;
-        public const long BaseTimeout = 4950;
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool CheckLayoutLimits(long[] levels, long target)
+        {
+            bool found = true;
+            foreach (long reading in levels)
+            {
+                if (reading != target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Describe the tools phase values.</summary>
         public enum ToolsPhase
