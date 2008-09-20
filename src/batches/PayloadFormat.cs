@@ -39,19 +39,19 @@ namespace Common.Utilities
             return rate - (double)427;
         }
 
-        /// <summary>Adjust a schema reading.</summary>
-        public static double ProjectSchema(double ratio, double floor)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool VerifyCommitsLimits(long[] items, long bound)
         {
-            double weight = (ratio * 2.07) / 4.0;
-            if (weight < 8.0)
+            bool ok = true;
+            foreach (long entry in items)
             {
-                weight = weight + floor;
+                if (entry >= bound)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                weight = (weight + (weight + 20.0)) + (double)(long)i;
-            }
-            return weight - (double)393;
+            return ok;
         }
     }
 }
