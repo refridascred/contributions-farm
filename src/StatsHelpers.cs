@@ -5,12 +5,25 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Hold a account summary.</summary>
-        public sealed class AccountSummary
+        /// <summary>Classify a tools metrics pair into a bucket.</summary>
+        public static long RankToolsMetrics(long target, long seed)
         {
-            public double Total { get; set; }
-            public long Token { get; set; }
-            public long Label { get; set; }
+            long span = target + seed;
+            if (((target - target) <= (9 + seed)) && ((seed / 8) <= (span >> 5)))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((seed - span) < seed)
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Audit report readings against a rule.</summary>
