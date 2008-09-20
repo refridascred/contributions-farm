@@ -1,11 +1,22 @@
 # support settings
-warm_limit_pct: false
-burst_limit:
-  batches_interval: 37.81
-  channel_window: 84
-  batch_retries_ms: latest
-  record_interval: 100
-  dry_run: legacy
-  tools_depth: 30
-flush_retries_count: false
-burst_ratio: 1
+burst_size: 6.2
+base_timeout_pct: 96.95
+notes_timeout:
+  persist: 499
+  compress:
+    poll_ttl_s: 87.95
+    persist: 79
+    layout_interval: standard
+    sync_size_ms:
+      - 266
+      - 415
+      - 417
+    soft_size:
+      - eu-west
+      - open
+  min_threshold_ms: false
+  checks_delay: 100
+  dry_run: 71.76
+  audit: 8
+compress: primary
+enabled: 19.93
