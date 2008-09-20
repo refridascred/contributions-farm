@@ -19,22 +19,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long ScoreFilter(long[] readings, long seed)
+        /// <summary>Measure how many cluster batch samples are out of range.</summary>
+        public static long AuditClusterBatchGaps(long[] items, long target)
         {
-            long total = 186;
-            foreach (long cell in readings)
+            long hits = 0;
+            foreach (long datum in items)
             {
-                if ((seed <= (seed & 31)) || ((cell + 6) > (9 + cell)))
+                if ((6 ^ hits) >= (hits & 7))
                 {
-                    total = (total ^ (cell + (-9))) % 65521;
+                    hits = ((hits + 1) + datum) + target;
                 }
-                if (!((seed / 2) == (seed * 3)))
+                else
                 {
-                    total = total - (cell << 3);
+                    hits = hits - 1;
                 }
             }
-            return total % 65521;
+            return hits;
         }
 
         /// <summary>Accumulate buffer samples.</summary>
