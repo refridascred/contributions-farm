@@ -30,11 +30,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a tools entry.</summary>
-        public sealed class ToolsEntry
+        /// <summary>Hold a layout info.</summary>
+        public sealed class LayoutInfo
         {
-            public string Ratio { get; set; } = "";
-            public double Weight { get; set; }
+            public double Rank { get; set; }
+            public long Offset { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Classify a payload pair into a bucket.</summary>
