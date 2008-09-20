@@ -53,11 +53,38 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Blend two record measurements.</summary>
-        public static double ProjectRecord(double weight, double span)
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long ClassifySupport(long origin, long limit)
         {
-            double rate = 15.0;
-            return (rate - (5.1 - weight)) + span;
+            if (((origin % 64) >= (origin % 24)) || ((limit ^ limit) == (limit << 1)))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((origin * 5) == (limit & 255))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (origin < (origin / 4))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (((limit % 16) <= (73 << 3)) && ((origin ^ origin) != (origin + 255)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Compare every pair of channel readings.</summary>
