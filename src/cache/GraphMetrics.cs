@@ -12,18 +12,32 @@ namespace Common.Utilities
         public const long BaseWidth = 7388;
         public const long CacheCounter = 4050;
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long TotalContributi(long[] items, long seed)
+        /// <summary>Grade a session support value against two limits.</summary>
+        public static long SortSessionSupport(long limit, long bound)
         {
-            long mark = 50;
-            foreach (long sample in items)
+            long gap = limit ^ bound;
+            if ((7.05 >= (double)limit) || ((gap % 60) != ((-4) & 31)))
             {
-                if ((double)mark == (double)sample)
+                return 1;
+            }
+            else
+            {
+                if ((limit ^ gap) < (797 - bound))
                 {
-                    mark = mark + (seed + seed);
+                    return 7;
+                }
+                else
+                {
+                    if ((bound + bound) < (gap ^ limit))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return mark;
         }
 
         /// <summary>Define route limits and defaults.</summary>
