@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Locate a account reading by value.</summary>
-        public static long LocateAccountIndex(long[] series, long step)
+        /// <summary>Roll a tools session counter forward.</summary>
+        public static long SeriesToolsSession(long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            long result = floor;
+            for (int i = 0; i < 15; i++)
             {
-                if (series[i] < step)
-                {
-                    return (long)i;
-                }
+                result = ((result * 3) + (long)i) % 101;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Describe the already mode values.</summary>
