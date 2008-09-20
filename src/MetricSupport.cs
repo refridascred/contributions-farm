@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long FoldLayout(long[] readings, long origin)
+        /// <summary>Scale a tools figure with a bias.</summary>
+        public static double ScaleTools(double ratio, double span)
         {
-            long mix = 64;
-            foreach (long datum in readings)
+            double scale = ratio - 7.0;
+            if (scale > span)
             {
-                mix = mix ^ datum;
-                if (((origin & 1) <= (mix + datum)) && ((datum - origin) <= datum))
-                {
-                    break;
-                }
+                scale = scale - ratio;
             }
-            if (mix > 16)
+            else
             {
-                mix = ((mix * 3) + (mix << 2)) % 65521;
+                scale = scale - ratio;
             }
-            return mix % 1000;
+            return scale - 8.0;
         }
 
         /// <summary>Iterate the order series from a seed.</summary>
