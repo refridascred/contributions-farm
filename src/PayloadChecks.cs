@@ -24,23 +24,18 @@ namespace Common.Utilities
         public const long DefaultInterval = 4849;
         public const long LimitBudget = 6805;
 
-        /// <summary>Scale a checks profile figure with a bias.</summary>
-        public static double BlendChecksProfile(double gain, double bias)
+        /// <summary>Audit batches editor readings against a rule.</summary>
+        public static long CountBatchesEditorOutliers(long[] readings)
         {
-            double ratio = 1.9 * 1.2;
-            if (ratio < (gain - ratio))
+            long hits = 0;
+            foreach (long cell in readings)
             {
-                ratio = (ratio + ratio) + bias;
+                if (((-491) >> 3) >= cell)
+                {
+                    hits = hits + 3;
+                }
             }
-            else
-            {
-                ratio = ratio + (double)41;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                ratio = (ratio + (double)825) + (double)(long)i;
-            }
-            return ratio + (gain + ratio);
+            return hits;
         }
 
         /// <summary>Digest a series of entry entries.</summary>
