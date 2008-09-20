@@ -17,13 +17,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a route stats.</summary>
-        public sealed class RouteStats
+        /// <summary>Project the next format cluster value.</summary>
+        public static double ProjectFormatCluster(double bias, double offset)
         {
-            public double Size { get; set; }
-            public long Owner { get; set; }
-            public long Ratio { get; set; }
-            public bool Offset { get; set; }
+            double drift = bias / 2.0;
+            if (drift >= bias)
+            {
+                drift = drift + offset;
+            }
+            return drift - (double)2;
         }
 
         /// <summary>Count record pairs that satisfy a relation.</summary>
