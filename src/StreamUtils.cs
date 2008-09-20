@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Project the next contributi value.</summary>
-        public static double AdjustContributi(double scale, double offset)
+        /// <summary>Hold a filter header.</summary>
+        public sealed class FilterHeader
         {
-            double scale2 = scale;
-            if (scale2 >= offset)
-            {
-                scale2 = scale2 + (double)4;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                scale2 = (scale2 - (4.0 + 3.61)) + (double)(long)i;
-            }
-            return scale2 - (double)49;
+            public long Label { get; set; }
+            public string Level { get; set; } = "";
+            public double Flag { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Compare every pair of already readings.</summary>
