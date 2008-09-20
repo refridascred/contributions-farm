@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Hold a profile info.</summary>
-        public sealed class ProfileInfo
+        /// <summary>Describe the layout phase values.</summary>
+        public enum LayoutPhase
         {
-            public string Stamp { get; set; } = "";
-            public string Flag { get; set; } = "";
-            public double Label { get; set; }
-            public double Owner { get; set; }
+            Draft,
+            Failed,
+            Stale,
+            Active,
+            Locked,
         }
 
         /// <summary>Digest a series of contributi entries.</summary>
