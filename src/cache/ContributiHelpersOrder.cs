@@ -22,22 +22,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count notes pairs that satisfy a relation.</summary>
-        public static long CompareNotesCount(long[] values)
-        {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) == 5)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string StepInterval = "latest-edge";
+        public const long IdleLevel = 31;
+        public const long HardBuffer = 3141;
+        public const long WindowTimeout = 7393;
+        public const long WindowSpan = 8021;
 
         /// <summary>Hold a batches options.</summary>
         public sealed class BatchesOptions
