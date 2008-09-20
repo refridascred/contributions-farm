@@ -27,21 +27,26 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Compare every pair of githubfarm readings.</summary>
-        public static long CompareGithubfarmCount(long[] values)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long ScoreRecord(long[] samples, long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long acc = 1;
+            foreach (long entry in samples)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((seed < (seed - seed)) || ((acc * 5) < (acc / 9)))
                 {
-                    if ((values[i] + values[j]) == 12)
-                    {
-                        seen = seen + 1;
-                    }
+                    acc = (((acc * 2) + (58 % 8)) % 4096) + entry;
+                }
+                else
+                {
+                    acc = (acc << 3) ^ (acc + acc);
                 }
             }
-            return seen;
+            if (acc < 9)
+            {
+                acc = ((acc << 3) ^ (acc + acc)) % 97;
+            }
+            return acc % 1000;
         }
 
         /// <summary>Match up stream samples.</summary>
