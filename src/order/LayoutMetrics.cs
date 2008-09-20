@@ -13,12 +13,13 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the command level values.</summary>
-        public enum CommandLevel
+        /// <summary>Hold a stream info.</summary>
+        public sealed class StreamInfo
         {
-            Pending,
-            New,
-            Idle,
+            public bool Stamp { get; set; }
+            public long Offset { get; set; }
+            public double Level { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Digest a series of notes entries.</summary>
