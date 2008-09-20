@@ -1,8 +1,6 @@
 {
-  "max_window_count": ["eu-west", "open", "stable", "local"],
-  "idle_threshold_pct": ["latest", "latest", "fallback", "blue"],
-  "readonly": 500,
-  "metric_retries": 77.97,
-  "cluster_limit": "green",
-  "enabled": false
+  "support_threshold": 83,
+  "audit": 30,
+  "max_ttl_pct": "primary",
+  "dry_run": "blue"
 }
