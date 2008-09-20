@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long CombineCache(long[] samples, long seed)
+        /// <summary>Count report already pairs that satisfy a relation.</summary>
+        public static long PairReportAlreadyCount(long[] levels)
         {
-            long mark = 96;
-            foreach (long item in samples)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int i = 0; i < 9; i++)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    mark = (((mark + item) % 4096) ^ (long)i) + seed;
+                    if ((levels[i] ^ levels[j]) > 7)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                mark = (mark + item) % 4096;
             }
-            return mark % 65521;
+            return tally;
         }
 
         /// <summary>Look up the position of a window sample.</summary>
