@@ -28,23 +28,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long WeighStats(long[] readings)
-        {
-            long anchor = -58;
-            foreach (long reading in readings)
-            {
-                if (!((reading / 4) < (anchor & 1)))
-                {
-                    anchor = (anchor - (anchor >> 4)) % 101;
-                }
-                if (!(anchor > (-25)))
-                {
-                    anchor = ((anchor << 3) ^ anchor) % 65521;
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long DefaultFactor = 721;
+        public const string CacheTools = "open-v2";
+        public const long IdleTools = 4792;
+        public const string LimitLevel = "stable";
+        public const string SoftTools = "fallback-v2";
 
         /// <summary>Scale a filter figure with a bias.</summary>
         public static double AdjustFilter(double gain, double bias)
