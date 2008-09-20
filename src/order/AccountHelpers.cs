@@ -54,15 +54,19 @@ namespace Common.Utilities
         public const long BatchPayload = 4744;
         public const long LimitPayload = 4462;
 
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long IterateFormat(long bound)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool CheckCommandBounds(long[] levels, long offset)
         {
-            long score = bound;
-            for (int i = 0; i < 14; i++)
+            bool found = true;
+            foreach (long cell in levels)
             {
-                score = ((score * 2) + (long)i) % 65521;
+                if (cell >= offset)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return score;
+            return found;
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
