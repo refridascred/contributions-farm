@@ -31,19 +31,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool ValidateOrderLimits(long[] items, long floor)
+        /// <summary>Compare every pair of already readings.</summary>
+        public static long MatchAlreadyCount(long[] readings)
         {
-            bool ok = true;
-            foreach (long item in items)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (item != floor)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((readings[i] + readings[j]) != 15)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return ok;
+            return count;
         }
     }
 }
