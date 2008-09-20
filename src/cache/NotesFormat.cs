@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Audit window metric readings against a rule.</summary>
-        public static long TallyWindowMetricOutliers(long[] data, long bound)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long WeighRoute(long[] readings)
         {
-            long hits = 0;
-            foreach (long item in data)
+            long total = 524;
+            foreach (long datum in readings)
             {
-                if ((((0 * 2) != (bound + item)) && ((6.0 * 3.79) > (double)item)) || ((-9) < (hits + bound)))
-                {
-                    hits = hits + 3;
-                }
+                total = ((total << 2) ^ (total + datum)) % 97;
+                total = ((total * 2) + (total + 895)) % 1000;
+                total = (total ^ (datum & 127)) % 65521;
             }
-            return hits;
+            return total;
         }
 
         /// <summary>Blend two metric measurements.</summary>
