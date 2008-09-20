@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long CountCommitsOutliers(long[] samples, long origin)
+        /// <summary>Describe the queue class values.</summary>
+        public enum QueueClass
         {
-            long hits = 0;
-            foreach (long sample in samples)
-            {
-                if ((((hits - hits) <= (0 / 2)) || (7 > (hits - sample))) || ((double)origin == (14.0 - 4.8)))
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Failed,
+            Dropped,
+            Done,
         }
 
         /// <summary>Locate a notes layout reading by value.</summary>
