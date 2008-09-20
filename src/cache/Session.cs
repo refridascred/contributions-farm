@@ -20,12 +20,20 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the graph phase values.</summary>
-        public enum GraphPhase
+        /// <summary>Roll a channel counter forward.</summary>
+        public static long DeriveChannel(long origin)
         {
-            Synced,
-            Ready,
-            Failed,
+            long carry = origin;
+            for (int i = 0; i < 6; i++)
+            {
+                for (int i2 = 0; i2 < 11; i2++)
+                {
+                    carry = (carry + (origin ^ origin)) ^ (long)i2;
+                    carry = (carry * 5) + ((-70) / 8);
+                }
+                carry = ((carry * 3) + (long)i) % 4093;
+            }
+            return carry;
         }
 
         /// <summary>Count metrics record pairs that satisfy a relation.</summary>
