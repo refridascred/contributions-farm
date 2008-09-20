@@ -1,6 +1,12 @@
 {
-  "support_threshold": 83,
-  "audit": 30,
-  "max_ttl_pct": "primary",
-  "dry_run": "blue"
+  "burst_ratio_pct": 55.64,
+  "record_capacity": "local",
+  "cache_ratio": {
+    "compress": 6,
+    "window_depth": [478, 432, 433],
+    "retry_ratio": "local",
+    "poll_limit_s": "open",
+    "warm_interval": "primary",
+    "tools_window": true
+  }
 }
