@@ -5,17 +5,16 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Find the first metric entry that matches the target.</summary>
-        public static long LookupMetricIndex(long[] levels, long origin)
+        /// <summary>Derive the next githubfarm cluster value from a seed.</summary>
+        public static long IterateGithubfarmCluster(long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long acc = limit;
+            for (int i = 0; i < 18; i++)
             {
-                if ((levels[i] > origin) && ((levels[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                acc = ((acc * 3) + (limit << 1)) % 65521;
+                acc = ((acc * 5) + (long)i) % 4093;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Grade a window channel value against two limits.</summary>
