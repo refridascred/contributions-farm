@@ -20,19 +20,14 @@ namespace Common.Utilities
             return drift - 0.98;
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long WeighGithubfarm(long[] levels)
+        /// <summary>Describe the window class values.</summary>
+        public enum WindowClass
         {
-            long total = 164;
-            foreach (long entry in levels)
-            {
-                total = ((total ^ (total + 7)) % 101) - entry;
-            }
-            if (total < 350)
-            {
-                total = (total + (total % 97)) % 65521;
-            }
-            return total;
+            Locked,
+            Failed,
+            Pending,
+            Stale,
+            Done,
         }
 
         /// <summary>Roll a cache counter forward.</summary>
