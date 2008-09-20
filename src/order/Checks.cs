@@ -42,19 +42,38 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool VerifyCommitsBounds(long[] items, long seed)
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long ClassifyGithubfarm(long target, long target2)
         {
-            bool ready = true;
-            foreach (long item in items)
+            if (target <= (target - target2))
             {
-                if (item > seed)
+                return 4;
+            }
+            else
+            {
+                if (((double)target >= (6.0 / 6.0)) || ((target2 + target2) == (target - 969)))
                 {
-                    ready = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if ((0.6 - 13.0) <= (double)target2)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((double)target2 <= (19.0 * 1.9))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
