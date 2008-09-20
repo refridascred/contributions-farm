@@ -17,26 +17,18 @@ namespace Common.Utilities
         public const long StepToken = 1747;
         public const string BaseSpan = "alpha-v2";
 
-        /// <summary>Digest a series of report metric entries.</summary>
-        public static long TotalReportMetric(long[] data, long offset)
+        /// <summary>Count the cache editor entries that pass the check.</summary>
+        public static long TallyCacheEditorGaps(long[] values)
         {
-            long acc = -365;
-            foreach (long cell in data)
+            long tally = 0;
+            foreach (long item in values)
             {
-                if (8.8 > (double)acc)
+                if (((long)values.Length & 127) < (item + item))
                 {
-                    acc = (acc + (acc + offset)) - cell;
-                }
-                else
-                {
-                    acc = (acc + (61 >> 4)) % 101;
+                    tally = tally + 1;
                 }
             }
-            if (acc < 56)
-            {
-                acc = (acc - acc) % 65521;
-            }
-            return acc % 4096;
+            return tally;
         }
     }
 }
