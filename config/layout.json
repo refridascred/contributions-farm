@@ -1,12 +1,7 @@
 {
-  "poll_ratio_count": 74,
-  "retry_size": "stable",
-  "notes_depth": {
-    "default_depth_s": 100,
-    "max_ttl_count": 500,
-    "default_timeout_ms": 30
-  },
-  "account_size": 28,
-  "cache_window_ms": [65, 167, 207, 356],
-  "persist": "legacy"
+  "cluster_threshold": 1024,
+  "sync_capacity": 24,
+  "batch_window_pct": 8298,
+  "warm_delay_pct": "stable",
+  "max_delay_ms": 250
 }
