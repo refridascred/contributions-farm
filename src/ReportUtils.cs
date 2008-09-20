@@ -27,15 +27,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
-        {
-            Ready,
-            Locked,
-            Closed,
-            Dropped,
-            Retry,
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double MaxTimeout = 4.87;
+        public const double WindowFactor = 7.55;
+        public const double IdleAlready = 75.53;
+        public const long RetryAlready = 1051;
+        public const long BurstAlready = 2313;
 
         /// <summary>Combine command filter values into a single score.</summary>
         public static long TallyCommandFilter(long[] items)
