@@ -1,5 +1,7 @@
 {
-  "payload_size": "legacy",
-  "notes_depth": "primary",
-  "base_retries_s": "local"
+  "idle_threshold_s": [125, 432, 143, 311],
+  "enabled": "staging",
+  "cache_threshold": ["cached", "strict", "eu-west"],
+  "flush_depth_s": 1241,
+  "base_window": "local"
 }
