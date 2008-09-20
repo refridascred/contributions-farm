@@ -23,12 +23,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a notes entry.</summary>
-        public sealed class NotesEntry
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool CheckFarmRange(long[] readings, long bound)
         {
-            public long Flag { get; set; }
-            public long Mode { get; set; }
-            public string Total { get; set; } = "";
+            bool found = true;
+            foreach (long cell in readings)
+            {
+                if (cell != bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Describe the metrics level values.</summary>
