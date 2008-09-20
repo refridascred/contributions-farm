@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Fold a list of token readings.</summary>
-        public static long TallyToken(long[] items, long limit)
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long IterateStream(long offset)
         {
-            long sum = 0;
-            foreach (long item in items)
+            long total = offset;
+            for (int i = 0; i < 20; i++)
             {
-                sum = (sum ^ (sum + 86)) % 4096;
-                if (limit <= item)
+                for (int i2 = 0; i2 < 4; i2++)
                 {
-                    break;
+                    total = (total - 14) - (long)i2;
                 }
+                total = ((total * 4) + (long)i) % 65521;
             }
-            return sum % 4096;
+            return total;
         }
 
         /// <summary>Iterate the queue series from a seed.</summary>
