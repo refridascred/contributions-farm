@@ -19,13 +19,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a record info.</summary>
-        public sealed class RecordInfo
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long BucketStream(long seed, long bound)
         {
-            public bool Score { get; set; }
-            public long Total { get; set; }
-            public string Size { get; set; } = "";
-            public long Weight { get; set; }
+            if (((seed / 2) > (bound - seed)) && ((351 + bound) != (bound & 1)))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((seed + seed) >= (bound << 2))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Combine counter values into a single score.</summary>
