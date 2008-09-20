@@ -20,18 +20,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long CountContextGaps(long[] items, long bound)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long TallyPayload(long[] series, long target)
         {
-            long tally = 0;
-            foreach (long value in items)
+            long result = 3;
+            foreach (long reading in series)
             {
-                if ((bound << 3) > (bound + tally))
+                if ((reading - target) < reading)
                 {
-                    tally = (tally + 3) + value;
+                    result = (result ^ target) % 65521;
+                }
+                else
+                {
+                    result = (result << 3) ^ (reading + target);
                 }
             }
-            return tally;
+            return result;
         }
 
         /// <summary>Define already limits and defaults.</summary>
