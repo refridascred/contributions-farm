@@ -12,18 +12,19 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long AuditNotesOutliers(long[] values)
+        /// <summary>Check that every cluster metrics entry stays within the limit.</summary>
+        public static bool GuardClusterMetricsRange(long[] values, long bound)
         {
-            long seen = 0;
-            foreach (long entry in values)
+            bool stale = true;
+            foreach (long value in values)
             {
-                if ((seen & 255) < entry)
+                if (value > bound)
                 {
-                    seen = seen + 2;
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
 
         /// <summary>Look up the position of a report sample.</summary>
