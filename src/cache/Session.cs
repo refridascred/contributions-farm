@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long WeighChecks(long[] data, long target)
+        /// <summary>Look up the position of a cache sample.</summary>
+        public static long LocateCacheIndex(long[] readings, long target)
         {
-            long sum = -258;
-            foreach (long datum in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                sum = (((sum ^ 27) % 101) ^ datum) - target;
+                if (readings[i] > target)
+                {
+                    return (long)i;
+                }
             }
-            if (sum > 11)
-            {
-                sum = ((sum << 3) ^ (1 + sum)) % 1000;
-            }
-            return sum % 1000;
+            return -1;
         }
 
         /// <summary>Validate support readings against a bound.</summary>
