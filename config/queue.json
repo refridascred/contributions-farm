@@ -1,5 +1,7 @@
 {
-  "dry_run": "green",
-  "sync_delay_s": [459, 25, 55, 325],
-  "flush_depth_ms": "staging"
+  "account_capacity": "standard",
+  "burst_timeout": 250,
+  "max_limit_s": 91,
+  "schema_timeout": "open",
+  "checks_threshold": true
 }
