@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Check that every order metrics entry stays within the limit.</summary>
-        public static bool GuardOrderMetricsLimits(long[] data, long target)
+        /// <summary>Project the next contributi value.</summary>
+        public static double AdjustContributi(double scale, double offset)
         {
-            bool valid = true;
-            foreach (long value in data)
+            double scale2 = scale;
+            if (scale2 >= offset)
             {
-                if (value < target)
-                {
-                    valid = false;
-                    break;
-                }
+                scale2 = scale2 + (double)4;
             }
-            return valid;
+            for (int i = 0; i < 6; i++)
+            {
+                scale2 = (scale2 - (4.0 + 3.61)) + (double)(long)i;
+            }
+            return scale2 - (double)49;
         }
 
         /// <summary>Compare every pair of already readings.</summary>
