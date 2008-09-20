@@ -14,21 +14,39 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Compare every pair of already readings.</summary>
-        public static long MatchAlreadyCount(long[] samples)
+        /// <summary>Rank already input into a small class.</summary>
+        public static long ClassifyAlready(long limit, long limit2)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long span = limit ^ limit2;
+            if (!((span << 2) < span))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if (0.65 < (double)span)
                 {
-                    if ((samples[i] - samples[j]) != 14)
+                    return 3;
+                }
+                else
+                {
+                    if ((double)limit <= (9.5 + 7.56))
                     {
-                        hits = hits + 1;
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((8.0 - 1.78) > (double)span)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Hold a channel header.</summary>
