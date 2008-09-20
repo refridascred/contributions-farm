@@ -1,13 +1,14 @@
 # Command notes
 
-Defaults for buffer live in the config folder and can be overridden per environment.
-When a counter fails, the order handler retries a few times before giving up.
+Defaults for counter live in the config folder and can be overridden per environment.
+Keep editor and batches names short and lowercase.
 
-Defaults for cluster live in the config folder and can be overridden per environment.
-The batch module keeps order values in sync with the stream cache.
+Each profile is validated before it reaches the payload queue.
+Keep counter and stream names short and lowercase.
 
 ## Guidelines
 
-- Document new tools fields
-- Log every context change
-- Prefer format defaults
+- Validate channel input early
+- Log every token change
+- Keep window values small
+- Review session limits each release
