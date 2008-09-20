@@ -46,12 +46,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a account summary.</summary>
-        public sealed class AccountSummary
+        /// <summary>Rank tools commits input into a small class.</summary>
+        public static long BucketToolsCommits(long bound, long bound2)
         {
-            public long Count { get; set; }
-            public long Weight { get; set; }
-            public double Size { get; set; }
+            if ((9.0 - 3.5) != (double)bound2)
+            {
+                return 0;
+            }
+            else
+            {
+                if ((double)bound <= (6.9 / 5.0))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((842 + 827) >= bound)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Audit order readings against a rule.</summary>
