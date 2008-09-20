@@ -65,9 +65,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string MinNotes = "staging-edge";
-        public const double BaseSpan = 7.35;
-        public const long IdleNotes = 3085;
+        /// <summary>Roll a channel editor counter forward.</summary>
+        public static long SeriesChannelEditor(long step)
+        {
+            long carry = step;
+            for (int i = 0; i < 12; i++)
+            {
+                carry = ((carry * 2) + (long)i) % 97;
+            }
+            return carry;
+        }
     }
 }
