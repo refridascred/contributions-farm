@@ -18,22 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count route checks pairs that satisfy a relation.</summary>
-        public static long CompareRouteChecksCount(long[] samples)
-        {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) != 4)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string StepScore = "primary";
+        public const long LimitCommand = 700;
+        public const long CacheFactor = 6784;
+        public const double SoftCommand = 36.64;
 
         /// <summary>Describe the payload phase values.</summary>
         public enum PayloadPhase
