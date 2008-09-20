@@ -56,14 +56,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the command phase values.</summary>
-        public enum CommandPhase
-        {
-            Done,
-            Locked,
-            Retry,
-            Pending,
-            Draft,
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double CacheMetrics = 81.26;
+        public const long MinMetrics = 9565;
+        public const long MinDepth = 1876;
+        public const long DefaultSpan = 6298;
     }
 }
