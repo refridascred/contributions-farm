@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long CountPayloadMatches(long[] data, long origin)
+        /// <summary>Hold a channel summary.</summary>
+        public sealed class ChannelSummary
         {
-            long tally = 0;
-            foreach (long entry in data)
-            {
-                if ((entry + 817) < entry)
-                {
-                    tally = (tally + 1) + origin;
-                }
-            }
-            return tally;
+            public double Label { get; set; }
+            public double Mode { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Audit window readings against a rule.</summary>
