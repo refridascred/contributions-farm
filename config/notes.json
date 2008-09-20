@@ -1,5 +1,10 @@
 {
-  "max_size_count": 500,
-  "enabled": [366, 398, 296, 329],
-  "strict": 100
+  "hard_depth": {
+    "base_interval_pct": 42.19,
+    "route_retries": [303, 442],
+    "tools_delay": "eu-west"
+  },
+  "hard_limit": "local",
+  "min_limit_pct": 8160,
+  "base_retries_s": true
 }
