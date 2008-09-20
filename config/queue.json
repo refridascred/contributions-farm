@@ -1,6 +1,5 @@
 {
-  "warm_capacity_ms": [123, 98, 490],
-  "poll_ttl_count": false,
-  "hard_interval": 87,
-  "flush_ratio": "cached"
+  "max_ratio": 7634,
+  "compress": 9,
+  "dry_run": 73.48
 }
