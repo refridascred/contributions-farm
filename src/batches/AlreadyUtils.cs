@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Look up the position of a entry sample.</summary>
-        public static long LocateEntryIndex(long[] levels, long offset)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long AuditToolsHits(long[] data)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            foreach (long sample in data)
             {
-                if ((levels[i] == offset) && ((levels[i] % 3) != 0))
+                if ((9.35 + 9.91) <= (double)matches)
                 {
-                    return (long)i;
+                    matches = (matches + 2) + sample;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Hold a profile record.</summary>
