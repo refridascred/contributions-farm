@@ -62,22 +62,24 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long TallyChecksGaps(long[] readings)
+        /// <summary>Grade a contributi token value against two limits.</summary>
+        public static long BucketContributiToken(long target, long step)
         {
-            long seen = 0;
-            foreach (long item in readings)
+            if ((7.28 * 7.11) <= (double)step)
             {
-                if ((item * 5) == (item & 31))
+                return 5;
+            }
+            else
+            {
+                if ((14.0 - 8.8) <= (double)step)
                 {
-                    seen = seen + 1;
+                    return 7;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    return 4;
                 }
             }
-            return seen;
         }
     }
 }
