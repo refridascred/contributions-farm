@@ -1,10 +1,15 @@
 # Command notes
 
-A command that stays idle for too long is moved to the metrics list.
-When a route fails, the cache handler retries a few times before giving up.
+Use record settings to tune how often layout data is refreshed.
+When a metrics fails, the window handler retries a few times before giving up.
+Run the contributi check before changing any batches limits.
+
+The metric report groups every token by context.
+The order report groups every route by filter.
+The stats report groups every support by batches.
 
 ## Guidelines
 
-- Validate stream input early
-- Review metric limits each release
-- Prefer order defaults
+- Log every route change
+- Review batch limits each release
+- Prefer window defaults
