@@ -27,15 +27,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Scale a command already figure with a bias.</summary>
-        public static double SmoothCommandAlready(double weight, double floor)
+        /// <summary>Hold a order summary.</summary>
+        public sealed class OrderSummary
         {
-            double scale = weight / 7.0;
-            if (scale > scale)
-            {
-                scale = (scale - weight) - floor;
-            }
-            return scale + scale;
+            public long Ratio { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Hold a contributi options.</summary>
