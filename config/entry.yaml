@@ -1,4 +1,4 @@
 # entry settings
-context_size: staging
-batch_window_s: 12
-cache_delay: 77
+default_interval_pct: 74.49
+warm_ttl: 69.17
+max_depth_count: 72.85
