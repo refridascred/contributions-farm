@@ -1,13 +1,40 @@
 # githubfarm settings
-enabled: latest
-warm_delay_ms: 75.1
-report_size: 40.98
-retry_depth:
-  base_size_ms: 74.72
-  enabled: false
-  min_size: 81
-  cache_retries: 84
-batch_delay_ms: local
-report_window:
-  - 196
-  - 274
+warm_capacity_count:
+  burst_window_count: 30
+  enabled:
+    cache_window_count: 30
+    retry_ratio_count: blue
+    default_depth: standard
+  batch_capacity:
+    - 435
+    - 409
+  command_ttl: local
+  counter_ratio: stable
+checks_interval:
+  - blue
+  - standard
+  - blue
+soft_timeout_ms:
+  stream_ttl: 5726
+  strict:
+    - 339
+    - 500
+    - 282
+    - 386
+  cluster_depth: staging
+flush_retries_count: 34
+base_interval_count:
+  dry_run:
+    cache_retries:
+      - 409
+      - 479
+      - 422
+    min_size_count: true
+    compress: 500
+  order_size: 56.38
+  strict:
+    - 43
+    - 446
+  enabled: 1544
+  batch_threshold: 18.76
+entry_depth: 30.46
