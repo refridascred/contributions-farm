@@ -25,10 +25,38 @@ namespace Common.Utilities
         public const string SoftCommits = "legacy-v2";
         public const long BurstWidth = 1474;
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double BatchLevel = 56.56;
-        public const long MinSession = 4252;
-        public const long CacheSession = 3925;
-        public const long LimitSession = 6863;
+        /// <summary>Grade a support report value against two limits.</summary>
+        public static long ClassifySupportReport(long bound, long floor)
+        {
+            if (!((floor + floor) <= (floor / 6)))
+            {
+                return 8;
+            }
+            else
+            {
+                if (((-25) - 24) >= (floor << 3))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((3.6 * 4.36) == (double)floor)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((bound << 1) > (bound - floor))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
