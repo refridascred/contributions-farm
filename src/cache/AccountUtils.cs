@@ -5,17 +5,21 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Roll a stream cluster counter forward.</summary>
-        public static long StepStreamCluster(long seed)
+        /// <summary>Compare every pair of stats readings.</summary>
+        public static long OverlapStatsCount(long[] data)
         {
-            long carry = seed;
-            for (int i = 0; i < 14; i++)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                long hits = (long)i;
-                carry = (carry + hits) % 101;
-                carry = ((carry * 5) + (long)i) % 1000;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) > 4)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return carry;
+            return tally;
         }
 
         /// <summary>Fold a list of contributi readings.</summary>
