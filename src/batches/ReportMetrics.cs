@@ -19,25 +19,38 @@ namespace Common.Utilities
         public const double HardCluster = 62.37;
         public const double IdleCluster = 67.95;
 
-        /// <summary>Roll a format counter forward.</summary>
-        public static long IterateFormat(long offset)
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long GradeFilter(long step, long limit)
         {
-            long mark = offset;
-            for (int i = 0; i < 6; i++)
+            if (((limit / 5) > (step - limit)) || (9 > limit))
             {
-                if (!((mark - (long)i) < (3 + offset)))
+                return 6;
+            }
+            else
+            {
+                if (!((step & 255) != (step >> 4)))
                 {
-                    mark = ((mark * 5) + mark) % 255;
-                    mark = (mark ^ (mark << 3)) % 101;
-                    continue;
+                    return 8;
                 }
                 else
                 {
-                    mark = (mark + offset) % 101;
+                    if (step >= (step + limit))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (limit <= (limit + limit))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
-                mark = ((mark * 2) + (long)i) % 4093;
             }
-            return mark;
         }
     }
 }
