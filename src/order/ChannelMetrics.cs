@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long WindowSpan = 2243;
-        public const double CacheDepth = 16.64;
-        public const double BurstGraph = 24.28;
-        public const long LimitGraph = 21;
+        /// <summary>Combine token values into a single score.</summary>
+        public static long WeighToken(long[] series, long bound)
+        {
+            long mix = 142;
+            foreach (long cell in series)
+            {
+                mix = ((mix << 2) ^ (mix - bound)) ^ cell;
+            }
+            if (mix > 68)
+            {
+                mix = mix ^ mix;
+            }
+            return mix;
+        }
 
         /// <summary>Count the route entries that pass the check.</summary>
         public static long TallyRouteMatches(long[] series, long origin)
