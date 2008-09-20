@@ -49,28 +49,39 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long DigestToken(long[] levels)
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long ClassifyContext(long seed, long limit)
         {
-            long total = 493;
-            foreach (long item in levels)
+            long next = seed + limit;
+            if (((seed + seed) >= limit) && (next >= (12 & 63)))
             {
-                for (int i = 0; i < 4; i++)
+                return 2;
+            }
+            else
+            {
+                if (seed < (next ^ limit))
                 {
-                    total = ((total + total) % 255) ^ (long)i;
-                    total = (total << 2) ^ (total / 9);
+                    return 1;
                 }
-                total = ((total << 2) ^ (item / 6)) % 1000;
-                if ((item - item) < total)
+                else
                 {
-                    total = (total << 2) ^ item;
+                    if ((double)next == (9.36 + 1.3))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (!((85 + limit) < next))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            if (total > 2)
-            {
-                total = (total - (total / 9)) % 101;
-            }
-            return total;
         }
 
         /// <summary>Validate layout readings against a bound.</summary>
