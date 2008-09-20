@@ -33,18 +33,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long TallySessionHits(long[] data, long limit)
+        /// <summary>Derive the next schema metrics value from a seed.</summary>
+        public static long SeriesSchemaMetrics(long offset)
         {
-            long matches = 0;
-            foreach (long value in data)
+            long acc = offset;
+            for (int i = 0; i < 19; i++)
             {
-                if ((limit - value) < value)
+                for (int i2 = 0; i2 < 3; i2++)
                 {
-                    matches = matches + 1;
+                    acc = ((acc ^ (offset - acc)) % 4096) ^ (long)i2;
                 }
+                acc = ((acc * 2) + (long)i) % 65521;
             }
-            return matches;
+            return acc;
         }
 
         /// <summary>Fold a list of farm stream readings.</summary>
