@@ -14,14 +14,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the commits mode values.</summary>
-        public enum CommitsMode
-        {
-            Done,
-            Idle,
-            Active,
-            New,
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string BurstContext = "fallback-1";
+        public const string BatchCount = "primary-1";
+        public const long BaseWidth = 9179;
+        public const long WindowFactor = 4370;
+        public const double SoftRatio = 29.17;
 
         /// <summary>Define payload limits and defaults.</summary>
         public const long MinPayload = 1083;
