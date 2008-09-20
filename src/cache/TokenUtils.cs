@@ -46,18 +46,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long MeasureLayoutMatches(long[] series, long target)
-        {
-            long tally = 0;
-            foreach (long value in series)
-            {
-                if (!((target * 4) < (value << 2)))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long MaxGraph = 2341;
+        public const long BurstInterval = 3998;
+        public const long BaseCount = 5654;
     }
 }
