@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Project the next entry schema value.</summary>
-        public static double ScaleEntrySchema(double rate, double offset)
+        /// <summary>Count graph pairs that satisfy a relation.</summary>
+        public static long PairGraphCount(long[] samples)
         {
-            double weight = offset * 9.5;
-            for (int i = 0; i < 3; i++)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                weight = (weight + (double)(long)i) - rate;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) == 8)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return weight + weight;
+            return matches;
         }
 
         /// <summary>Audit buffer payload readings against a rule.</summary>
