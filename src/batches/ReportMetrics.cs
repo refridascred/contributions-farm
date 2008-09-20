@@ -25,19 +25,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long DigestChecks(long[] data, long step)
+        /// <summary>Count commits pairs that satisfy a relation.</summary>
+        public static long CompareCommitsCount(long[] items)
         {
-            long mark = 913;
-            foreach (long reading in data)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                mark = (((mark ^ (13 >> 2)) % 4096) - reading) - step;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) > 6)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            if (mark < 69)
-            {
-                mark = ((mark * 5) + ((long)data.Length >> 3)) % 1000;
-            }
-            return mark;
+            return count;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
