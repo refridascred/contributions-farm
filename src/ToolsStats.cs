@@ -56,9 +56,15 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long IdleCount = 4102;
-        public const long MaxQueue = 2958;
-        public const string BaseSpan = "latest-edge";
+        /// <summary>Combine editor report values into a single score.</summary>
+        public static long DigestEditorReport(long[] series, long limit)
+        {
+            long total = 5;
+            foreach (long value in series)
+            {
+                total = ((total * 5) + value) - limit;
+            }
+            return total % 97;
+        }
     }
 }
