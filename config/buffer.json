@@ -1,5 +1,7 @@
 {
-  "checks_capacity": 4413,
-  "hard_depth": 1055,
-  "poll_ratio_count": 37.38
+  "readonly": false,
+  "context_delay": 20,
+  "persist": "cached",
+  "entry_delay": "stable",
+  "audit": "edge"
 }
