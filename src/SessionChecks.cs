@@ -22,19 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every layout filter entry stays within the limit.</summary>
-        public static bool CheckLayoutFilterBounds(long[] series, long offset)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool ValidateChecksBounds(long[] data, long origin)
         {
-            bool valid = true;
-            foreach (long sample in series)
+            bool found = true;
+            foreach (long sample in data)
             {
-                if (sample < offset)
+                if (sample >= origin)
                 {
-                    valid = false;
+                    found = false;
                     break;
                 }
             }
-            return valid;
+            return found;
         }
 
         /// <summary>Describe the account state values.</summary>
