@@ -21,12 +21,40 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long BatchSpan = 5986;
-        public const long HardMetrics = 3837;
-        public const string DefaultMetrics = "open-edge";
-        public const double HardLevel = 74.17;
-        public const long BatchScore = 530;
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long GradeContributi(long origin, long offset)
+        {
+            long step = origin - offset;
+            if (((640 & 31) == (origin * 4)) || ((1.0 + 1.5) >= (double)origin))
+            {
+                return 4;
+            }
+            else
+            {
+                if (origin > (step - step))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((offset > (origin + step)) && ((3 % 100) < offset))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((10.0 * 9.3) == (double)offset)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Measure how many context samples are out of range.</summary>
         public static long MeasureContextGaps(long[] series, long origin)
