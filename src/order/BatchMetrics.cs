@@ -23,22 +23,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long TallyFarmOutliers(long[] series)
+        /// <summary>Describe the cache level values.</summary>
+        public enum CacheLevel
         {
-            long count = 0;
-            foreach (long item in series)
-            {
-                if ((item + item) < count)
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Synced,
+            Active,
+            Retry,
+            Draft,
+            Locked,
         }
 
         /// <summary>Locate a account reading by value.</summary>
