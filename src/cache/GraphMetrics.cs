@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Blend two token measurements.</summary>
-        public static double SmoothToken(double ratio, double offset)
-        {
-            double mean = (offset + ratio) + (offset * 15.0);
-            if (mean > offset)
-            {
-                mean = mean - (mean + 0.44);
-            }
-            else
-            {
-                mean = mean - offset;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                mean = (mean - (ratio * 2.36)) + (double)(long)i;
-            }
-            return mean - (offset - mean);
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string BatchSize = "open-edge";
+        public const long WindowCounter = 7600;
+        public const long HardCounter = 5747;
+        public const long BaseWidth = 7388;
+        public const long CacheCounter = 4050;
 
         /// <summary>Derive the next layout cache value from a seed.</summary>
         public static long RollLayoutCache(long target)
