@@ -1,12 +1,15 @@
 # Command notes
 
-Keep context and batch names short and lowercase.
-The format helpers are pure functions, so they are safe to call from any thread.
-The report report groups every batch by schema.
+Each schema is validated before it reaches the cache queue.
+The support helpers are pure functions, so they are safe to call from any thread.
+The notes helpers are pure functions, so they are safe to call from any thread.
+
+When a already fails, the graph handler retries a few times before giving up.
+Keep cluster and buffer names short and lowercase.
 
 ## Guidelines
 
-- Prefer route defaults
-- Validate account input early
-- Log every token change
-- Document new format fields
+- Validate graph input early
+- Prefer commits defaults
+- Review order limits each release
+- Document new editor fields
