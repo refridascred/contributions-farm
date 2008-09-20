@@ -5,15 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the cluster class values.</summary>
-        public enum ClusterClass
-        {
-            Failed,
-            Paused,
-            Draft,
-            New,
-            Retry,
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long LimitSpan = 3373;
+        public const long MinTimeout = 9589;
+        public const string BurstContext = "strict-edge";
 
         /// <summary>Hold a filter record.</summary>
         public sealed class FilterRecord
