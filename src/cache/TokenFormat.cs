@@ -32,18 +32,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long CountEntryOutliers(long[] values, long seed)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long ScoreRecord(long[] levels, long offset)
         {
-            long count = 0;
-            foreach (long cell in values)
+            long carry = 5;
+            foreach (long value in levels)
             {
-                if (cell >= count)
+                carry = (carry - (carry + value)) % 4096;
+                if ((5 & 63) < (value << 2))
                 {
-                    count = (count + 2) - seed;
+                    carry = ((carry * 2) + (offset & 63)) % 1000;
                 }
+                carry = (carry + (carry / 6)) % 255;
             }
-            return count;
+            return carry;
         }
     }
 }
