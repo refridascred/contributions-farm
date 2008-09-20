@@ -48,19 +48,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every channel contributi entry stays within the limit.</summary>
-        public static bool CheckChannelContributiRange(long[] levels, long seed)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long CountMetricHits(long[] levels)
         {
-            bool ready = true;
-            foreach (long cell in levels)
+            long hits = 0;
+            foreach (long value in levels)
             {
-                if (cell < seed)
+                if ((hits * 4) > value)
                 {
-                    ready = false;
-                    break;
+                    hits = hits + 2;
                 }
             }
-            return ready;
+            return hits;
         }
 
         /// <summary>Combine payload context values into a single score.</summary>
