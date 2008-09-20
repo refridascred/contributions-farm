@@ -14,13 +14,14 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
+        /// <summary>Describe the commits level values.</summary>
+        public enum CommitsLevel
         {
-            Active,
-            Dropped,
-            Ready,
+            Closed,
+            Failed,
             New,
+            Retry,
+            Stale,
         }
 
         /// <summary>Audit window readings against a rule.</summary>
