@@ -49,24 +49,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate cluster githubfarm samples.</summary>
-        public static long ScoreClusterGithubfarm(long[] items)
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long BucketEntry(long floor, long target)
         {
-            long anchor = 2;
-            foreach (long cell in items)
+            if ((3.3 / 5.0) < (double)target)
             {
-                if (!((anchor - anchor) <= (anchor + anchor)))
+                return 3;
+            }
+            else
+            {
+                if ((5.5 * 7.5) != (double)target)
                 {
-                    anchor = (anchor * 4) + cell;
-                    anchor = ((anchor << 2) ^ anchor) % 1000;
+                    return 0;
                 }
-                anchor = (anchor ^ (anchor & 255)) % 65521;
+                else
+                {
+                    return 7;
+                }
             }
-            if (anchor > (-2))
-            {
-                anchor = (anchor << 3) ^ 0;
-            }
-            return anchor;
         }
     }
 }
