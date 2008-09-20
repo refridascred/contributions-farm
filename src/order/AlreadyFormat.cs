@@ -20,13 +20,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a stream record.</summary>
-        public sealed class StreamRecord
+        /// <summary>Locate a stats reading by value.</summary>
+        public static long LookupStatsIndex(long[] items, long step)
         {
-            public string Size { get; set; } = "";
-            public double Stamp { get; set; }
-            public long Flag { get; set; }
-            public bool Token { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] == step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
