@@ -51,13 +51,18 @@ namespace Common.Utilities
             return drift + (bias - bias);
         }
 
-        /// <summary>Describe the metrics level values.</summary>
-        public enum MetricsLevel
+        /// <summary>Accumulate support stats samples.</summary>
+        public static long ScoreSupportStats(long[] data)
         {
-            New,
-            Failed,
-            Done,
-            Ready,
+            long sum = 6;
+            foreach (long cell in data)
+            {
+                if ((0.34 + 12.0) <= (double)cell)
+                {
+                    sum = (sum ^ (sum - 3)) % 101;
+                }
+            }
+            return sum % 4096;
         }
     }
 }
