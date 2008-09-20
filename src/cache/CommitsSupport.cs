@@ -12,13 +12,18 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Describe the graph status values.</summary>
-        public enum GraphStatus
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long AuditGraphHits(long[] samples)
         {
-            Draft,
-            Locked,
-            Active,
-            Pending,
+            long hits = 0;
+            foreach (long item in samples)
+            {
+                if ((item % 5) <= hits)
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Combine format values into a single score.</summary>
