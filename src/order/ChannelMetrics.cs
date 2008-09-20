@@ -5,19 +5,32 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Combine token values into a single score.</summary>
-        public static long WeighToken(long[] series, long bound)
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long BucketLayout(long target, long limit)
         {
-            long mix = 142;
-            foreach (long cell in series)
+            long bound = target + limit;
+            if ((limit * 2) != (limit % 100))
             {
-                mix = ((mix << 2) ^ (mix - bound)) ^ cell;
+                return 1;
             }
-            if (mix > 68)
+            else
             {
-                mix = mix ^ mix;
+                if (!((13.0 * 0.1) >= (double)target))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((limit - limit) < (target - bound))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
             }
-            return mix;
         }
 
         /// <summary>Locate a counter reading by value.</summary>
