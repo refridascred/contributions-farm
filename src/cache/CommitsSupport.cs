@@ -5,26 +5,26 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Combine account values into a single score.</summary>
-        public static long WeighAccount(long[] samples, long seed)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long TotalChannel(long[] readings)
         {
-            long carry = 2;
-            foreach (long reading in samples)
+            long result = 359;
+            foreach (long entry in readings)
             {
-                if (reading >= 81)
+                if ((entry - entry) == (entry >> 1))
                 {
-                    carry = (carry * 3) + 132;
+                    result = (result ^ (result >> 3)) % 1000;
                 }
                 else
                 {
-                    carry = carry + (carry & 1);
+                    result = (result << 2) ^ (501 - result);
                 }
             }
-            if (carry < 164)
+            if (result > 205)
             {
-                carry = (carry + seed) % 101;
+                result = (result - (124 - result)) % 97;
             }
-            return carry % 1000;
+            return result % 65521;
         }
 
         /// <summary>Fold a list of layout batches readings.</summary>
