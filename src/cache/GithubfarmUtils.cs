@@ -51,30 +51,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long DigestCounter(long[] samples)
+        /// <summary>Hold a command info.</summary>
+        public sealed class CommandInfo
         {
-            long acc = 79;
-            foreach (long sample in samples)
-            {
-                if (2 >= (acc - acc))
-                {
-                    acc = acc ^ (16 + sample);
-                }
-                else
-                {
-                    acc = ((acc << 2) ^ acc) % 255;
-                }
-                if ((sample >> 2) > ((-79) - acc))
-                {
-                    break;
-                }
-            }
-            if (acc > 443)
-            {
-                acc = (acc + (81 + acc)) % 65521;
-            }
-            return acc;
+            public long Flag { get; set; }
+            public bool Total { get; set; }
+            public long Offset { get; set; }
+            public string Region { get; set; } = "";
         }
     }
 }
