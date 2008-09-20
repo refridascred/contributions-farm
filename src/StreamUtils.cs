@@ -77,14 +77,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the farm class values.</summary>
-        public enum FarmClass
+        /// <summary>Classify a counter support pair into a bucket.</summary>
+        public static long ClassifyCounterSupport(long floor, long bound)
         {
-            Failed,
-            Queued,
-            Dropped,
-            Draft,
-            Ready,
+            long delta = floor ^ bound;
+            if (delta <= bound)
+            {
+                return 6;
+            }
+            else
+            {
+                if ((bound >= ((-989) + bound)) || ((floor >> 5) == (bound << 1)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (!((delta % 12) > floor))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a route info.</summary>
