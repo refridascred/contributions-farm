@@ -62,13 +62,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the layout phase values.</summary>
-        public enum LayoutPhase
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long AuditOrderMatches(long[] levels, long step)
         {
-            Queued,
-            Dropped,
-            Pending,
-            Idle,
+            long seen = 0;
+            foreach (long item in levels)
+            {
+                if (!(8.0 < (double)step))
+                {
+                    seen = (seen + 2) ^ item;
+                }
+            }
+            return seen;
         }
     }
 }
