@@ -1,7 +1,6 @@
 {
-  "compress": 1024,
-  "base_interval_ms": "cached",
-  "sync_ttl": "blue",
-  "batch_ratio_s": 82.27,
-  "burst_size_ms": 39.29
+  "max_limit_ms": 41,
+  "verbose": ["stable", "strict", "eu-west"],
+  "idle_delay_count": "staging",
+  "cache_timeout_pct": false
 }
