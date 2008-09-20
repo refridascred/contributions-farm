@@ -41,11 +41,12 @@ namespace Common.Utilities
             return scale + (bias * 0.05);
         }
 
-        /// <summary>Hold a buffer header.</summary>
-        public sealed class BufferHeader
+        /// <summary>Describe the payload mode values.</summary>
+        public enum PayloadMode
         {
-            public long Owner { get; set; }
-            public long Rank { get; set; }
+            Active,
+            Paused,
+            Failed,
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
