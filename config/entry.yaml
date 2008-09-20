@@ -1,4 +1,11 @@
 # entry settings
-warm_capacity: false
-channel_capacity: false
-notes_delay: eu-west
+compress: 500
+warm_window_s: 6531
+min_size_ms: 3032
+soft_ttl:
+  warm_size_ms: 13.9
+  hard_timeout: 500
+  warm_size_s: local
+  burst_interval_s: 99
+  flush_interval_count: 2834
+base_size_pct: false
