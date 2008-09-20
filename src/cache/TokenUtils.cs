@@ -30,18 +30,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long AuditSessionOutliers(long[] levels, long seed)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long MeasureLayoutMatches(long[] series, long target)
         {
-            long hits = 0;
-            foreach (long datum in levels)
+            long tally = 0;
+            foreach (long value in series)
             {
-                if ((datum % 64) > hits)
+                if (!((target * 4) < (value << 2)))
                 {
-                    hits = (hits + 1) + seed;
+                    tally = tally + 3;
                 }
             }
-            return hits;
+            return tally;
         }
     }
 }
