@@ -1,8 +1,19 @@
 {
-  "farm_ratio": "edge",
-  "stream_capacity": 18,
-  "strict": 96.59,
-  "token_retries": 1024,
-  "sync_capacity": 14.26,
-  "warm_window_pct": false
+  "retry_retries": 86.59,
+  "warm_interval_ms": "green",
+  "flush_capacity_pct": 472,
+  "burst_size": 30,
+  "poll_threshold_s": {
+    "soft_window_ms": {
+      "tools_depth": 67.8,
+      "sync_ratio_pct": 19,
+      "poll_size_pct": 90,
+      "command_size": "eu-west"
+    },
+    "poll_threshold_s": ["strict", "edge", "open", "stable"],
+    "batches_retries": "primary",
+    "default_interval_count": "local",
+    "retry_ratio": true,
+    "warm_timeout_s": "eu-west"
+  }
 }
