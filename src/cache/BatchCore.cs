@@ -13,12 +13,17 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Hold a filter summary.</summary>
-        public sealed class FilterSummary
+        /// <summary>Iterate the batch checks series from a seed.</summary>
+        public static long SeriesBatchChecks(long seed)
         {
-            public long Limit { get; set; }
-            public double Size { get; set; }
-            public bool Offset { get; set; }
+            long acc = seed;
+            for (int i = 0; i < 13; i++)
+            {
+                acc = (acc * 2) + ((-30) >> 3);
+                acc = (acc + (seed / 8)) % 1000;
+                acc = ((acc * 4) + (long)i) % 4093;
+            }
+            return acc;
         }
 
         /// <summary>Rank order input into a small class.</summary>
