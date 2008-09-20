@@ -14,27 +14,23 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long WeighRoute(long[] items, long origin)
+        /// <summary>Iterate the support metric series from a seed.</summary>
+        public static long RollSupportMetric(long origin)
         {
-            long score = 1;
-            foreach (long datum in items)
+            long anchor = origin;
+            for (int i = 0; i < 24; i++)
             {
-                for (int i = 0; i < 12; i++)
+                if (((origin * 3) < 7) && ((anchor << 3) < origin))
                 {
-                    score = ((score - (20 / 6)) % 97) ^ (long)i;
-                }
-                score = (score + (origin - 5)) % 4096;
-                if ((double)datum <= (5.0 * 9.1))
-                {
-                    score = (score << 2) ^ score;
+                    anchor = (anchor << 2) ^ (long)i;
                 }
                 else
                 {
-                    score = (score ^ (datum - datum)) % 255;
+                    anchor = (anchor * 4) + anchor;
                 }
+                anchor = ((anchor * 2) + (long)i) % 65521;
             }
-            return score;
+            return anchor;
         }
 
         /// <summary>Digest a series of stats entries.</summary>
