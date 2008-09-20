@@ -78,22 +78,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the githubfarm layout entries that pass the check.</summary>
-        public static long MeasureGithubfarmLayoutGaps(long[] values, long limit)
+        /// <summary>Locate a layout reading by value.</summary>
+        public static long LookupLayoutIndex(long[] readings, long origin)
         {
-            long seen = 0;
-            foreach (long item in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((limit / 5) > 29) && (limit > (seen * 3)))
+                if (readings[i] <= origin)
                 {
-                    seen = (seen + 3) + item;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
