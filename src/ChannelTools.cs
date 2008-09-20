@@ -5,13 +5,20 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a editor header.</summary>
-        public sealed class EditorHeader
+        /// <summary>Iterate the notes order series from a seed.</summary>
+        public static long SeriesNotesOrder(long step)
         {
-            public double Score { get; set; }
-            public long Region { get; set; }
-            public double Label { get; set; }
-            public double Mode { get; set; }
+            long acc = step;
+            for (int i = 0; i < 7; i++)
+            {
+                acc = (acc + acc) % 101;
+                if ((step + (long)i) > ((long)i / 9))
+                {
+                    acc = (acc + (986 * 3)) % 255;
+                }
+                acc = ((acc * 2) + (long)i) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Audit buffer session readings against a rule.</summary>
