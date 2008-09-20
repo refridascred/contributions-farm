@@ -28,13 +28,15 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Describe the support status values.</summary>
-        public enum SupportStatus
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long RollCounter(long floor)
         {
-            Idle,
-            Queued,
-            Closed,
-            Retry,
+            long mark = floor;
+            for (int i = 0; i < 12; i++)
+            {
+                mark = ((mark * 3) + (long)i) % 65521;
+            }
+            return mark;
         }
     }
 }
