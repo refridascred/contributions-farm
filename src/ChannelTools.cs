@@ -29,18 +29,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long ScoreCluster(long[] values)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long AuditRecordMatches(long[] series, long target)
         {
-            long anchor = 64;
-            foreach (long sample in values)
+            long seen = 0;
+            foreach (long value in series)
             {
-                if ((602 << 1) != (anchor + anchor))
+                if ((long)series.Length == (target + 955))
                 {
-                    anchor = (anchor - (anchor + 9)) ^ sample;
+                    seen = (seen + 3) ^ value;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return anchor % 4096;
+            return seen;
         }
     }
 }
