@@ -26,13 +26,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a command header.</summary>
-        public sealed class CommandHeader
+        /// <summary>Hold a tools entry.</summary>
+        public sealed class ToolsEntry
         {
-            public bool Score { get; set; }
-            public string Rank { get; set; } = "";
-            public string Token { get; set; } = "";
-            public string Flag { get; set; } = "";
+            public string Ratio { get; set; } = "";
+            public double Weight { get; set; }
         }
 
         /// <summary>Classify a payload pair into a bucket.</summary>
