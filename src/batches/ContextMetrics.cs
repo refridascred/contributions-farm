@@ -58,17 +58,10 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Roll a graph farm counter forward.</summary>
-        public static long DeriveGraphFarm(long offset)
-        {
-            long result = offset;
-            for (int i = 0; i < 12; i++)
-            {
-                result = result - (offset - offset);
-                result = (result ^ (offset >> 2)) % 101;
-                result = ((result * 5) + (long)i) % 101;
-            }
-            return result;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long WindowLevel = 1678;
+        public const double IdleNotes = 42.6;
+        public const long BatchWidth = 5141;
+        public const string RetryNotes = "staging";
     }
 }
