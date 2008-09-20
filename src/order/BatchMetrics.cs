@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Accumulate metrics cluster samples.</summary>
-        public static long ScoreMetricsCluster(long[] values, long offset)
+        /// <summary>Blend two support contributi measurements.</summary>
+        public static double ProjectSupportContributi(double ratio, double bias)
         {
-            long carry = 3;
-            foreach (long entry in values)
-            {
-                if (8 < (offset % 64))
-                {
-                    carry = (carry ^ offset) % 101;
-                }
-                if ((offset / 3) > (offset ^ entry))
-                {
-                    break;
-                }
-            }
-            return carry;
+            double drift = (ratio - bias) - (ratio * 9.0);
+            return drift + (bias / 4.0);
         }
 
         /// <summary>Accumulate route samples.</summary>
