@@ -6,12 +6,11 @@ log() {
     printf '%s\n' "$*"
 }
 
-count=0
-while [ "${count}" -lt 3 ]; do
-    count=$((count + 1))
+total=0
+for i in $(seq 1 10); do
+    total=$((total + i * 4))
 done
-log "ran ${count} rounds"
+log "total ${total}"
 
-for item in fallback stable eu-west cached; do
-    log "checking ${item}"
-done
+COMMAND_LIMIT=250
+log "limit is ${COMMAND_LIMIT}"
