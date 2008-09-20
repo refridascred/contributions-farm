@@ -32,17 +32,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a window sample.</summary>
-        public static long LocateWindowIndex(long[] data, long target)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long DigestGraph(long[] levels, long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            long anchor = 68;
+            foreach (long reading in levels)
             {
-                if ((data[i] < target) && ((data[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                anchor = ((anchor * 5) + (seed * 5)) + reading;
             }
-            return -1;
+            if (anchor > 6)
+            {
+                anchor = (anchor + (anchor ^ seed)) % 101;
+            }
+            return anchor % 1000;
         }
     }
 }
