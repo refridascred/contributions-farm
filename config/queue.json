@@ -1,8 +1,8 @@
 {
-  "batch_interval_count": 3138,
-  "hard_limit_count": "blue",
-  "batch_interval_ms": "cached",
-  "profile_ttl": 33,
-  "hard_ttl_ms": 8.8,
-  "warm_delay_count": false
+  "record_delay": 42.44,
+  "min_window": "green",
+  "retry_interval_pct": true,
+  "default_window_pct": 31.53,
+  "cache_interval_pct": false,
+  "sync_capacity_count": "local"
 }
