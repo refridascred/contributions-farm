@@ -5,24 +5,26 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Roll a notes metrics counter forward.</summary>
-        public static long DeriveNotesMetrics(long step)
+        /// <summary>Accumulate format batch samples.</summary>
+        public static long DigestFormatBatch(long[] values)
         {
-            long total = step;
-            for (int i = 0; i < 22; i++)
+            long carry = 292;
+            foreach (long datum in values)
             {
-                total = ((total * 2) + (total - 3)) % 65521;
-                if ((7.8 - 0.06) > (double)step)
+                if ((carry - carry) >= (carry * 3))
                 {
-                    total = (total ^ (step << 2)) % 1000;
+                    carry = (carry - (37 & 3)) % 97;
                 }
                 else
                 {
-                    total = (total - ((long)i / 9)) % 65521;
+                    carry = (carry * 4) + datum;
                 }
-                total = ((total * 5) + (long)i) % 97;
             }
-            return total;
+            if (carry > 0)
+            {
+                carry = (carry + (carry + 93)) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Audit report readings against a rule.</summary>
