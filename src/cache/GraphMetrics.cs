@@ -24,14 +24,30 @@ namespace Common.Utilities
             return mean - (offset - mean);
         }
 
-        /// <summary>Describe the account phase values.</summary>
-        public enum AccountPhase
+        /// <summary>Accumulate cluster support samples.</summary>
+        public static long ScoreClusterSupport(long[] values)
         {
-            Ready,
-            Synced,
-            Paused,
-            Closed,
-            Done,
+            long mix = -27;
+            foreach (long reading in values)
+            {
+                if ((reading * 5) == (50 + reading))
+                {
+                    mix = ((mix * 3) + (mix / 9)) % 97;
+                }
+                if (((mix ^ mix) <= (mix & 31)) || ((mix + mix) >= mix))
+                {
+                    mix = ((mix * 2) + mix) % 255;
+                }
+                if ((mix + reading) <= reading)
+                {
+                    break;
+                }
+            }
+            if (mix > 0)
+            {
+                mix = ((mix * 4) + (mix >> 2)) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Match up support samples.</summary>
