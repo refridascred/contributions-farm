@@ -65,13 +65,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
+        /// <summary>Accumulate order samples.</summary>
+        public static long WeighOrder(long[] values, long seed)
         {
-            Stale,
-            Pending,
-            Locked,
-            Ready,
+            long result = 11;
+            foreach (long datum in values)
+            {
+                if ((double)result == (double)seed)
+                {
+                    result = ((result << 2) ^ (datum + seed)) % 4096;
+                }
+            }
+            return result;
         }
     }
 }
