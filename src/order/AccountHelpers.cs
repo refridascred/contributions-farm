@@ -70,23 +70,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Adjust a record reading.</summary>
-        public static double BlendRecord(double weight, double offset)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long TallyAlreadyGaps(long[] readings)
         {
-            double ratio = offset;
-            if (ratio >= offset)
+            long matches = 0;
+            foreach (long value in readings)
             {
-                ratio = ratio + offset;
+                if ((value - value) > matches)
+                {
+                    matches = matches + 2;
+                }
             }
-            else
-            {
-                ratio = ratio - weight;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                ratio = (ratio - (weight * 3.13)) + (double)(long)i;
-            }
-            return ratio + (double)523;
+            return matches;
         }
     }
 }
