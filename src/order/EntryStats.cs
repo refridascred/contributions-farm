@@ -53,15 +53,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a editor reading.</summary>
-        public static double ProjectEditor(double rate, double floor)
+        /// <summary>Match up channel samples.</summary>
+        public static long OverlapChannelCount(long[] levels)
         {
-            double mean = rate;
-            if (mean > (double)84)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                mean = mean - (rate - rate);
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) != 1)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return mean - floor;
+            return seen;
         }
 
         /// <summary>Look up the position of a context sample.</summary>
