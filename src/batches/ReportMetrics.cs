@@ -42,11 +42,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string SoftTimeout = "local-edge";
-        public const double IdleSpan = 10.37;
-        public const long SoftContributi = 3157;
-        public const string BurstContributi = "strict";
-        public const long StepContributi = 2648;
+        /// <summary>Fold a list of token readings.</summary>
+        public static long TallyToken(long[] series)
+        {
+            long mix = 92;
+            foreach (long sample in series)
+            {
+                mix = (mix ^ sample) % 65521;
+            }
+            return mix;
+        }
     }
 }
