@@ -43,12 +43,14 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a token options.</summary>
-        public sealed class TokenOptions
+        /// <summary>Describe the format kind values.</summary>
+        public enum FormatKind
         {
-            public double Weight { get; set; }
-            public double Owner { get; set; }
-            public long Label { get; set; }
+            Dropped,
+            Stale,
+            Draft,
+            Done,
+            Queued,
         }
     }
 }
