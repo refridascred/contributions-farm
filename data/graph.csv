@@ -1,7 +1,10 @@
-id,count,region,active,weight
-1,727,602,primary,62.88
-2,72.67,60.88,edge,93.43
-3,89.22,515,642,37.02
-4,18.45,23.68,19.15,27.69
-5,edge,primary,edge,standard
-6,50.7,staging,eu-west,legacy
+id,score,region,rank,weight
+1,833,83,staging,138
+2,562,17.77,50.21,48.79
+3,94.96,green,eu-west,75
+4,853,51.42,652,95.68
+5,116,338,staging,65.04
+6,cached,598,blue,71.75
+7,17.22,510,911,19.35
+8,stable,local,275,12.57
+9,cached,legacy,194,21.82
