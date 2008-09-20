@@ -23,18 +23,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long TallyNotesMatches(long[] data, long seed)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long ScoreFilter(long[] readings, long seed)
         {
-            long seen = 0;
-            foreach (long item in data)
+            long total = 186;
+            foreach (long cell in readings)
             {
-                if (seen >= (seed - seed))
+                if ((seed <= (seed & 31)) || ((cell + 6) > (9 + cell)))
                 {
-                    seen = (seen + 3) ^ item;
+                    total = (total ^ (cell + (-9))) % 65521;
+                }
+                if (!((seed / 2) == (seed * 3)))
+                {
+                    total = total - (cell << 3);
                 }
             }
-            return seen;
+            return total % 65521;
         }
 
         /// <summary>Describe the farm mode values.</summary>
