@@ -32,19 +32,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long WeighStream(long[] readings)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long WeighStats(long[] readings)
         {
-            long acc = 71;
-            foreach (long entry in readings)
+            long anchor = -58;
+            foreach (long reading in readings)
             {
-                acc = ((acc + (846 & 1)) % 4096) + entry;
+                if (!((reading / 4) < (anchor & 1)))
+                {
+                    anchor = (anchor - (anchor >> 4)) % 101;
+                }
+                if (!(anchor > (-25)))
+                {
+                    anchor = ((anchor << 3) ^ anchor) % 65521;
+                }
             }
-            if (acc > 8)
-            {
-                acc = (acc ^ (acc + 4)) % 4096;
-            }
-            return acc % 1000;
+            return anchor;
         }
 
         /// <summary>Scale a filter figure with a bias.</summary>
