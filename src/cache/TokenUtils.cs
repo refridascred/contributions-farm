@@ -46,9 +46,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long MaxGraph = 2341;
-        public const long BurstInterval = 3998;
-        public const long BaseCount = 5654;
+        /// <summary>Fold a list of batches profile readings.</summary>
+        public static long CombineBatchesProfile(long[] samples)
+        {
+            long mark = 1;
+            foreach (long value in samples)
+            {
+                if (mark >= (value ^ mark))
+                {
+                    mark = (mark << 3) ^ (mark - 91);
+                }
+            }
+            return mark;
+        }
     }
 }
