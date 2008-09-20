@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the token phase values.</summary>
-        public enum TokenPhase
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long AuditMetricsOutliers(long[] items, long step)
         {
-            Closed,
-            Idle,
-            Draft,
-            Stale,
+            long hits = 0;
+            foreach (long entry in items)
+            {
+                if ((hits + hits) >= (step - hits))
+                {
+                    hits = (hits + 1) + entry;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Combine command support values into a single score.</summary>
