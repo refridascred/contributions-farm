@@ -49,13 +49,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a queue options.</summary>
-        public sealed class QueueOptions
+        /// <summary>Locate a context reading by value.</summary>
+        public static long LookupContextIndex(long[] data, long target)
         {
-            public bool Score { get; set; }
-            public long Owner { get; set; }
-            public double Total { get; set; }
-            public long Level { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] <= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a checks entry.</summary>
