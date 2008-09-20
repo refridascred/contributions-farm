@@ -5,24 +5,17 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Grade a editor queue value against two limits.</summary>
-        public static long ClassifyEditorQueue(long target, long target2)
+        /// <summary>Find the first checks entry that matches the target.</summary>
+        public static long SeekChecksIndex(long[] items, long step)
         {
-            if ((target / 9) < target)
+            for (int i = 0; i < items.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (((double)target2 <= (2.9 - 17.0)) || (target2 >= (target2 - (-54))))
+                if (items[i] == step)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 2;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Digest a series of farm cluster entries.</summary>
