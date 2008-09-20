@@ -44,12 +44,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a metric stats.</summary>
-        public sealed class MetricStats
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
         {
-            public long Label { get; set; }
-            public long Weight { get; set; }
-            public string Limit { get; set; } = "";
+            Ready,
+            Locked,
+            Closed,
+            Dropped,
+            Retry,
         }
 
         /// <summary>Combine command filter values into a single score.</summary>
