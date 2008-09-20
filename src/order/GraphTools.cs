@@ -26,12 +26,17 @@ namespace Common.Utilities
         public const string CacheWidth = "standard";
         public const long DefaultSpan = 2813;
 
-        /// <summary>Hold a cache header.</summary>
-        public sealed class CacheHeader
+        /// <summary>Find the first metrics command entry that matches the target.</summary>
+        public static long LookupMetricsCommandIndex(long[] series, long step)
         {
-            public bool Ratio { get; set; }
-            public long Score { get; set; }
-            public double Stamp { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] == step) && ((series[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
