@@ -5,19 +5,20 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool GuardClusterLimits(long[] series, long step)
+        /// <summary>Derive the next graph tools value from a seed.</summary>
+        public static long DeriveGraphTools(long offset)
         {
-            bool flag = true;
-            foreach (long item in series)
+            long mix = offset;
+            for (int i = 0; i < 8; i++)
             {
-                if (item > step)
+                mix = (mix ^ (mix + 755)) % 101;
+                if ((offset + mix) < (mix + 215))
                 {
-                    flag = false;
-                    break;
+                    mix = (mix ^ (mix + (long)i)) % 97;
                 }
+                mix = ((mix * 4) + (long)i) % 1000;
             }
-            return flag;
+            return mix;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
