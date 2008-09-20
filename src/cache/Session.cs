@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string StepWidth = "staging";
-        public const long SoftRatio = 4516;
-        public const long HardFactor = 5551;
-        public const long SoftBudget = 9649;
+        /// <summary>Describe the notes state values.</summary>
+        public enum NotesState
+        {
+            Pending,
+            Draft,
+            Ready,
+            Stale,
+        }
 
         /// <summary>Combine payload values into a single score.</summary>
         public static long CombinePayload(long[] items, long target)
