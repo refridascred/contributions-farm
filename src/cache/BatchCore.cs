@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Combine session values into a single score.</summary>
-        public static long ScoreSession(long[] series, long seed)
+        /// <summary>Look up the position of a cluster sample.</summary>
+        public static long SeekClusterIndex(long[] readings, long step)
         {
-            long result = 14;
-            foreach (long datum in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((datum << 3) <= result)
+                if ((readings[i] >= step) && ((readings[i] % 5) == 0))
                 {
-                    result = ((result << 2) ^ datum) % 1000;
-                }
-                else
-                {
-                    result = (result + (seed ^ seed)) % 1000;
+                    return (long)i;
                 }
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Fold a list of batches readings.</summary>
