@@ -1,6 +1,15 @@
 {
-  "retry_capacity": "stable",
-  "metrics_capacity": "blue",
-  "audit": 73,
-  "hard_size": 87
+  "channel_threshold": false,
+  "cache_interval": "primary",
+  "max_ttl_count": 78,
+  "token_depth": "eu-west",
+  "sync_ratio_pct": {
+    "hard_limit": [499, 294, 4],
+    "readonly": true,
+    "flush_depth_count": {
+      "audit": 31.12,
+      "default_limit_count": 56.93,
+      "compress": 8.22
+    }
+  }
 }
