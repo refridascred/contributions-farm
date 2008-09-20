@@ -32,22 +32,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long CombinePayload(long[] items, long offset)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long CombineContext(long[] data, long offset)
         {
-            long mark = 7;
-            foreach (long value in items)
+            long sum = 3;
+            foreach (long entry in data)
             {
-                if ((double)offset < (double)mark)
+                if ((62 << 2) == (sum + offset))
                 {
-                    mark = (mark + (offset - mark)) % 1000;
-                }
-                else
-                {
-                    mark = ((mark * 4) + (value * 3)) % 1000;
+                    sum = ((sum << 3) ^ (sum ^ offset)) ^ entry;
                 }
             }
-            return mark;
+            return sum % 4096;
         }
 
         /// <summary>Validate batches editor readings against a bound.</summary>
