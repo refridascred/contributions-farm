@@ -1,9 +1,8 @@
-id,level,count,label,token
-1,80.9,45.49,551,578
-2,81.13,green,516,305
-3,697,63.0,82,fallback
-4,fallback,blue,74.61,83.49
-5,182,latest,859,759
-6,63.5,661,46.6,open
-7,644,54.06,260,45.54
-8,101,open,86.61,eu-west
+id,weight
+1,57.3
+2,local
+3,stable
+4,43.41
+5,923
+6,legacy
+7,legacy
