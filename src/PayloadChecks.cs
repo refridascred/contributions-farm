@@ -5,25 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Classify a buffer cluster pair into a bucket.</summary>
-        public static long BucketBufferCluster(long offset, long target)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long CountFormatMatches(long[] items, long target)
         {
-            long delta = offset - target;
-            if ((6 + 5) > delta)
+            long matches = 0;
+            foreach (long reading in items)
             {
-                return 7;
-            }
-            else
-            {
-                if ((offset / 2) <= (target - delta))
+                if (!((matches + matches) >= (target >> 1)))
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 0;
+                    matches = (matches + 3) ^ reading;
                 }
             }
+            return matches;
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
