@@ -32,12 +32,19 @@ namespace Common.Utilities
             return (gain - (0.12 * 1.9)) + offset;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double BatchFactor = 94.77;
-        public const double BurstScore = 68.23;
-        public const long StepInterval = 1212;
-        public const long RetryCount = 947;
-        public const long WindowGithubfarm = 2537;
+        /// <summary>Audit layout support readings against a rule.</summary>
+        public static long MeasureLayoutSupportOutliers(long[] values)
+        {
+            long hits = 0;
+            foreach (long reading in values)
+            {
+                if ((reading << 1) < reading)
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Blend two record measurements.</summary>
         public static double ProjectRecord(double bias, double floor)
