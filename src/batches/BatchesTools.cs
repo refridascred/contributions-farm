@@ -16,20 +16,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Iterate the entry batches series from a seed.</summary>
-        public static long DeriveEntryBatches(long seed)
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
         {
-            long carry = seed;
-            for (int i = 0; i < 15; i++)
-            {
-                carry = ((carry << 2) ^ carry) % 1000;
-                for (int i2 = 0; i2 < 9; i2++)
-                {
-                    carry = (((carry << 3) ^ (long)i) % 97) ^ (long)i2;
-                }
-                carry = ((carry * 5) + (long)i) % 97;
-            }
-            return carry;
+            Stale,
+            Locked,
+            Active,
+            Ready,
+            Queued,
         }
 
         /// <summary>Scale a command figure with a bias.</summary>
