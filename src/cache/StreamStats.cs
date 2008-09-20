@@ -22,21 +22,26 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up payload batch samples.</summary>
-        public static long PairPayloadBatchCount(long[] series)
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long StepSession(long target)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long anchor = target;
+            for (int i = 0; i < 9; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                long slot = (anchor - anchor) << 3;
+                long diff = target;
+                if ((slot * 2) < slot)
                 {
-                    if ((series[i] ^ series[j]) != 11)
-                    {
-                        hits = hits + 1;
-                    }
+                    diff = (diff - (diff + diff)) % 255;
+                    anchor = (anchor << 2) ^ (slot ^ anchor);
                 }
+                else
+                {
+                    slot = (slot << 2) ^ (754 - diff);
+                }
+                anchor = ((anchor * 3) + (long)i) % 65521;
             }
-            return hits;
+            return anchor;
         }
 
         /// <summary>Combine farm values into a single score.</summary>
