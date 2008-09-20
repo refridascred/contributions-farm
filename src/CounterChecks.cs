@@ -5,32 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long RankMetrics(long target, long target2)
+        /// <summary>Count record pairs that satisfy a relation.</summary>
+        public static long PairRecordCount(long[] series)
         {
-            long offset = target - target2;
-            if ((target2 ^ offset) <= (target2 & 15))
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((1.62 / 2.0) < (double)target2)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (!((7.0 + 1.44) > (double)target))
+                    if ((series[i] ^ series[j]) != 11)
                     {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 7;
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Adjust a schema reading.</summary>
