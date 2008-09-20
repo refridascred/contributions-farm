@@ -30,18 +30,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit batches support readings against a rule.</summary>
-        public static long CountBatchesSupportMatches(long[] series)
+        /// <summary>Compare every pair of cluster readings.</summary>
+        public static long OverlapClusterCount(long[] data)
         {
-            long count = 0;
-            foreach (long reading in series)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((long)series.Length - (-926)) <= (reading * 4))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    count = count + 1;
+                    if ((data[i] ^ data[j]) > 2)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Adjust a order reading.</summary>
