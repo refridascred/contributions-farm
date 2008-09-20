@@ -59,19 +59,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long StepSchema(long origin)
+        /// <summary>Hold a route info.</summary>
+        public sealed class RouteInfo
         {
-            long carry = origin;
-            for (int i = 0; i < 18; i++)
-            {
-                if (6 >= (carry - 869))
-                {
-                    carry = (carry * 5) + (carry + (long)i);
-                }
-                carry = ((carry * 3) + (long)i) % 97;
-            }
-            return carry;
+            public long Region { get; set; }
+            public double Stamp { get; set; }
         }
     }
 }
