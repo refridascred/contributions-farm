@@ -56,17 +56,10 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Locate a batch reading by value.</summary>
-        public static long LookupBatchIndex(long[] data, long seed)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] == seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double DefaultCount = 12.04;
+        public const long BaseBudget = 4174;
+        public const long WindowOrder = 1586;
+        public const string SoftDepth = "fallback";
     }
 }
