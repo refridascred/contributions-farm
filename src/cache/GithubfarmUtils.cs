@@ -37,18 +37,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long AuditAccountMatches(long[] series, long step)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long TallyRouteGaps(long[] data, long limit)
         {
-            long hits = 0;
-            foreach (long cell in series)
+            long tally = 0;
+            foreach (long datum in data)
             {
-                if (2.3 <= (double)step)
+                if ((double)limit >= (double)502)
                 {
-                    hits = (hits + 2) + cell;
+                    tally = (tally + 2) + datum;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Accumulate counter samples.</summary>
