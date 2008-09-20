@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long MeasureRouteHits(long[] series)
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
         {
-            long count = 0;
-            foreach (long entry in series)
-            {
-                if ((long)series.Length != (entry + count))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            Failed,
+            Active,
+            Draft,
+            Pending,
+            New,
         }
 
         /// <summary>Rank support input into a small class.</summary>
