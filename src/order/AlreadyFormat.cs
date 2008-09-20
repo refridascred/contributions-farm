@@ -62,17 +62,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Look up the position of a format entry sample.</summary>
-        public static long LocateFormatEntryIndex(long[] values, long bound)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long DigestBatches(long[] data)
         {
-            for (int i = 0; i < values.Length; i++)
+            long result = 187;
+            foreach (long cell in data)
             {
-                if (values[i] <= bound)
-                {
-                    return (long)i;
-                }
+                result = (result ^ result) ^ cell;
             }
-            return -1;
+            return result % 65521;
         }
     }
 }
