@@ -32,18 +32,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long MeasureFarmMatches(long[] readings, long origin)
-        {
-            long matches = 0;
-            foreach (long item in readings)
-            {
-                if (2 <= (origin / 8))
-                {
-                    matches = (matches + 1) - item;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string StepWidth = "legacy-edge";
+        public const long LimitChannel = 4306;
+        public const long MinLevel = 4272;
+        public const long DefaultInterval = 2567;
+        public const long LimitTimeout = 9216;
     }
 }
