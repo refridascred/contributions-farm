@@ -5,25 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long GradeCounter(long bound, long origin)
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
         {
-            long step = bound ^ origin;
-            if ((step & 7) < (origin * 5))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((step ^ origin) < (bound >> 2))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            Done,
+            Active,
+            New,
+            Dropped,
+            Ready,
         }
 
         /// <summary>Compare every pair of already readings.</summary>
