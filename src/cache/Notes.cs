@@ -48,11 +48,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string HardCache = "local-v2";
-        public const long MinCache = 5702;
-        public const long DefaultCount = 4735;
-        public const string IdleFactor = "primary";
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long SeriesBuffer(long offset)
+        {
+            long score = offset;
+            for (int i = 0; i < 4; i++)
+            {
+                score = (score + (long)i) % 101;
+                score = ((score * 5) + (long)i) % 4093;
+            }
+            return score;
+        }
 
         /// <summary>Project the next cluster value.</summary>
         public static double BlendCluster(double gain, double span)
