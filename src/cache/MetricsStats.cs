@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const double SoftContext = 85.26;
-        public const long DefaultRatio = 5808;
-        public const double HardLevel = 94.14;
+        /// <summary>Define account limits and defaults.</summary>
+        public const long BaseSize = 3758;
+        public const string BurstAccount = "local-edge";
+        public const long MinWidth = 7039;
+        public const long DefaultAccount = 1239;
 
         /// <summary>Check that every cluster metrics entry stays within the limit.</summary>
         public static bool GuardClusterMetricsRange(long[] values, long bound)
