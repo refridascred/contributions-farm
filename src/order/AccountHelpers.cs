@@ -70,11 +70,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a command options.</summary>
-        public sealed class CommandOptions
+        /// <summary>Hold a channel header.</summary>
+        public sealed class ChannelHeader
         {
-            public string Region { get; set; } = "";
-            public long Size { get; set; }
+            public long Score { get; set; }
+            public double Rank { get; set; }
         }
     }
 }
