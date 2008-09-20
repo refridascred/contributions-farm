@@ -55,19 +55,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool VerifyEditorLimits(long[] values, long step)
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool CheckLayoutLimits(long[] samples, long step)
         {
-            bool stale = true;
-            foreach (long datum in values)
+            bool flag = true;
+            foreach (long cell in samples)
             {
-                if (datum != step)
+                if (cell <= step)
                 {
-                    stale = false;
+                    flag = false;
                     break;
                 }
             }
-            return stale;
+            return flag;
         }
     }
 }
