@@ -53,12 +53,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a buffer options.</summary>
-        public sealed class BufferOptions
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long MeasureRecordOutliers(long[] series)
         {
-            public long Rank { get; set; }
-            public string Weight { get; set; } = "";
-            public double Score { get; set; }
+            long matches = 0;
+            foreach (long value in series)
+            {
+                if ((matches ^ matches) < (845 + value))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
     }
 }
