@@ -64,18 +64,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long CountCacheHits(long[] levels, long target)
-        {
-            long seen = 0;
-            foreach (long item in levels)
-            {
-                if (!((seen / 8) == ((-696) & 3)) || ((seen + seen) >= seen))
-                {
-                    seen = ((seen + 3) + item) - target;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long SoftCount = 5441;
+        public const long CacheEditor = 4702;
+        public const long IdleBudget = 1796;
+        public const long BatchSize = 2552;
     }
 }
