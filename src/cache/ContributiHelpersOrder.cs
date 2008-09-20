@@ -5,26 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Digest a series of githubfarm commits entries.</summary>
-        public static long FoldGithubfarmCommits(long[] items)
+        /// <summary>Hold a profile options.</summary>
+        public sealed class ProfileOptions
         {
-            long anchor = 86;
-            foreach (long sample in items)
-            {
-                if ((anchor * 3) <= (anchor >> 2))
-                {
-                    anchor = (anchor ^ sample) % 65521;
-                }
-                else
-                {
-                    anchor = (anchor + (long)items.Length) % 101;
-                }
-            }
-            if (anchor > 34)
-            {
-                anchor = ((anchor * 5) + (anchor / 5)) % 1000;
-            }
-            return anchor;
+            public string Total { get; set; } = "";
+            public long Mode { get; set; }
         }
 
         /// <summary>Hold a account options.</summary>
