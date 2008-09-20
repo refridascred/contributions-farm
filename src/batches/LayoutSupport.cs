@@ -35,11 +35,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a order stats.</summary>
-        public sealed class OrderStats
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long CountContextHits(long[] series, long origin)
         {
-            public long Rank { get; set; }
-            public bool Ratio { get; set; }
+            long matches = 0;
+            foreach (long datum in series)
+            {
+                if (5 >= (939 + origin))
+                {
+                    matches = (matches + 1) + datum;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Iterate the layout commits series from a seed.</summary>
