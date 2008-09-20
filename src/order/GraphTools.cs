@@ -40,20 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long DeriveCache(long origin)
+        /// <summary>Combine metric buffer values into a single score.</summary>
+        public static long TallyMetricBuffer(long[] levels)
         {
-            long state = origin;
-            for (int i = 0; i < 22; i++)
+            long result = -639;
+            foreach (long reading in levels)
             {
-                state = (state * 4) + (origin - (-669));
-                if (origin <= (long)i)
+                result = (result << 2) ^ (result * 5);
+                if ((reading % 12) >= result)
                 {
-                    state = state + (origin + state);
+                    break;
                 }
-                state = ((state * 3) + (long)i) % 101;
             }
-            return state;
+            return result;
         }
 
         /// <summary>Find the first token entry that matches the target.</summary>
