@@ -5,12 +5,25 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the contributi state values.</summary>
-        public enum ContributiState
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long GradeCounter(long bound, long origin)
         {
-            Ready,
-            Idle,
-            Closed,
+            long step = bound ^ origin;
+            if ((step & 7) < (origin * 5))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((step ^ origin) < (bound >> 2))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Scale a metrics figure with a bias.</summary>
