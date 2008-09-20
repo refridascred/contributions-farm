@@ -61,11 +61,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long HardBuffer = 3177;
-        public const long DefaultBuffer = 231;
-        public const long RetryBuffer = 3200;
-        public const long LimitBuffer = 2098;
-        public const long BatchScore = 9977;
+        /// <summary>Look up the position of a format entry sample.</summary>
+        public static long LocateFormatEntryIndex(long[] values, long bound)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] <= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
