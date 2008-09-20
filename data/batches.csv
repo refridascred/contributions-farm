@@ -1,7 +1,6 @@
-id,label,score,count,rank
-1,811,766,47.34,851
-2,848,stable,eu-west,legacy
-3,82.43,506,legacy,68
-4,eu-west,520,535,blue
-5,991,47.74,open,90.57
-6,221,47.55,246,270
+id,weight,token
+1,strict,38.14
+2,427,532
+3,legacy,899
+4,28.98,edge
+5,50.71,174
