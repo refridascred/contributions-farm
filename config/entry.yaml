@@ -1,15 +1,7 @@
 # entry settings
-stream_interval: 92
-verbose: 32.03
-filter_interval:
-  idle_ttl_pct:
-    - local
-    - latest
-    - open
-  record_delay: 40.07
-  counter_capacity: 57.84
-  sync_ratio: true
-  poll_interval:
-    - 270
-    - 260
-sync_interval_pct: cached
+warm_retries_pct: edge
+idle_ttl: 36.9
+idle_window_pct: 7926
+flush_delay_s: standard
+compress: 3452
+cache_retries: 62
