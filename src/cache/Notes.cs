@@ -14,18 +14,17 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long MeasureEditorHits(long[] samples, long limit)
+        /// <summary>Look up the position of a route sample.</summary>
+        public static long LocateRouteIndex(long[] readings, long seed)
         {
-            long matches = 0;
-            foreach (long cell in samples)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((792 * 2) >= (matches + cell))
+                if (readings[i] < seed)
                 {
-                    matches = (matches + 2) - limit;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Define context limits and defaults.</summary>
