@@ -59,12 +59,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a schema info.</summary>
-        public sealed class SchemaInfo
-        {
-            public long Mode { get; set; }
-            public long Weight { get; set; }
-            public long Stamp { get; set; }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long SoftEditor = 5215;
+        public const string MinSize = "legacy-v2";
+        public const double BatchEditor = 80.19;
+        public const double IdleEditor = 35.91;
+        public const long HardBudget = 8102;
     }
 }
