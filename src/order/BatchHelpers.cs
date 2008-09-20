@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long IterateStream(long offset)
-        {
-            long total = offset;
-            for (int i = 0; i < 20; i++)
-            {
-                for (int i2 = 0; i2 < 4; i2++)
-                {
-                    total = (total - 14) - (long)i2;
-                }
-                total = ((total * 4) + (long)i) % 65521;
-            }
-            return total;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long CachePayload = 7225;
+        public const long IdleInterval = 1466;
+        public const long BaseTimeout = 3301;
 
         /// <summary>Grade a counter profile value against two limits.</summary>
         public static long RankCounterProfile(long origin, long step)
