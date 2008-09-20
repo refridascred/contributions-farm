@@ -44,18 +44,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long AuditCommandHits(long[] samples, long seed)
+        /// <summary>Hold a editor summary.</summary>
+        public sealed class EditorSummary
         {
-            long count = 0;
-            foreach (long entry in samples)
-            {
-                if (477 <= count)
-                {
-                    count = ((count + 3) + entry) + seed;
-                }
-            }
-            return count;
+            public string Owner { get; set; } = "";
+            public double Weight { get; set; }
         }
 
         /// <summary>Iterate the command notes series from a seed.</summary>
