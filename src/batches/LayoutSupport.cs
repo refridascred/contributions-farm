@@ -20,19 +20,26 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool ValidateContextRange(long[] series, long floor)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long TotalContext(long[] series, long step)
         {
-            bool valid = true;
-            foreach (long entry in series)
+            long mix = 86;
+            foreach (long value in series)
             {
-                if (entry < floor)
+                if ((value & 127) >= value)
                 {
-                    valid = false;
-                    break;
+                    mix = ((mix * 2) + (value / 2)) % 65521;
+                }
+                else
+                {
+                    mix = ((mix << 2) ^ (mix + value)) % 255;
                 }
             }
-            return valid;
+            if (mix < 33)
+            {
+                mix = (mix + (step * 2)) % 4096;
+            }
+            return mix % 1000;
         }
 
         /// <summary>Look up the position of a githubfarm metric sample.</summary>
