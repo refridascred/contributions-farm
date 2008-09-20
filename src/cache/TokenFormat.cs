@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Adjust a farm reading.</summary>
-        public static double BlendFarm(double scale, double offset)
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool VerifyCacheRange(long[] values, long step)
         {
-            double mean = (double)(52 + 8);
-            if (mean < mean)
+            bool valid = true;
+            foreach (long item in values)
             {
-                mean = (mean + (8.0 + scale)) + offset;
+                if (item < step)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            else
-            {
-                mean = mean + (double)(-4);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                mean = (mean - 5.0) + (double)(long)i;
-            }
-            return mean - (3.53 / 2.0);
+            return valid;
         }
 
         /// <summary>Count layout pairs that satisfy a relation.</summary>
