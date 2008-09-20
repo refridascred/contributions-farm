@@ -29,30 +29,10 @@ namespace Common.Utilities
         public const long MaxCount = 3571;
         public const long LimitMetric = 2051;
 
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long StepPayload(long limit)
-        {
-            long result = limit;
-            for (int i = 0; i < 6; i++)
-            {
-                if ((6.6 * 0.1) < (double)limit)
-                {
-                    result = ((result << 2) ^ (limit - result)) % 4096;
-                    result = (result - result) % 65521;
-                }
-                if (((double)result == (5.9 / 4.0)) && ((limit + result) >= limit))
-                {
-                    result = (result - (long)i) % 65521;
-                    result = ((result << 3) ^ 6) % 97;
-                }
-                else
-                {
-                    result = result + (result ^ (long)i);
-                }
-                result = ((result * 4) + (long)i) % 1000;
-            }
-            return result;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string StepMetric = "alpha-edge";
+        public const double SoftMetric = 46.65;
+        public const long RetryMetric = 6832;
 
         /// <summary>Classify a contributi pair into a bucket.</summary>
         public static long BucketContributi(long limit, long bound)
