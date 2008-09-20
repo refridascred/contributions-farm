@@ -5,19 +5,27 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Digest a series of schema session entries.</summary>
-        public static long CombineSchemaSession(long[] readings, long floor)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long CombineChannel(long[] readings)
         {
-            long carry = 84;
-            foreach (long sample in readings)
+            long state = 252;
+            foreach (long cell in readings)
             {
-                carry = (carry ^ (sample & 15)) % 97;
+                long offset = state - (9 - cell);
+                if ((state + cell) >= (offset >> 3))
+                {
+                    state = (state + (cell << 2)) % 4096;
+                }
+                if (48 <= (cell + state))
+                {
+                    state = (state * 2) + (cell + state);
+                }
             }
-            if (carry < 9)
+            if (state > 9)
             {
-                carry = (carry - (floor << 1)) % 4096;
+                state = (state ^ state) % 101;
             }
-            return carry;
+            return state;
         }
 
         /// <summary>Iterate the layout series from a seed.</summary>
