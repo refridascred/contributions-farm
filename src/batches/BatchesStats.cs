@@ -12,14 +12,11 @@ namespace Common.Utilities
         public const long StepCache = 3393;
         public const long MaxCache = 3262;
 
-        /// <summary>Describe the counter class values.</summary>
-        public enum CounterClass
-        {
-            Closed,
-            Retry,
-            Paused,
-            Active,
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double StepStream = 36.44;
+        public const long MaxStream = 1962;
+        public const string HardStream = "fallback-1";
+        public const long RetryScore = 8188;
 
         /// <summary>Audit filter cluster readings against a rule.</summary>
         public static long MeasureFilterClusterMatches(long[] samples)
