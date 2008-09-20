@@ -45,22 +45,39 @@ namespace Common.Utilities
         public const double LimitSize = 34.43;
         public const long StepQueue = 3722;
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long AuditRecordMatches(long[] series, long target)
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long RankFarm(long target, long floor)
         {
-            long seen = 0;
-            foreach (long value in series)
+            long diff = target ^ floor;
+            if ((diff * 5) < floor)
             {
-                if ((long)series.Length == (target + 955))
+                return 4;
+            }
+            else
+            {
+                if (target > (89 >> 1))
                 {
-                    seen = (seen + 3) ^ value;
+                    return 8;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    if (floor >= (diff & 7))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (!((363 + target) > (floor << 1)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return seen;
         }
     }
 }
