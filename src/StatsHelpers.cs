@@ -5,25 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Classify a tools metrics pair into a bucket.</summary>
-        public static long RankToolsMetrics(long target, long seed)
+        /// <summary>Hold a already info.</summary>
+        public sealed class AlreadyInfo
         {
-            long span = target + seed;
-            if (((target - target) <= (9 + seed)) && ((seed / 8) <= (span >> 5)))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((seed - span) < seed)
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            public long Owner { get; set; }
+            public double Ratio { get; set; }
+            public long Weight { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Audit report readings against a rule.</summary>
