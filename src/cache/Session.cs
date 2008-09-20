@@ -33,12 +33,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the channel level values.</summary>
-        public enum ChannelLevel
+        /// <summary>Describe the graph phase values.</summary>
+        public enum GraphPhase
         {
-            Idle,
-            Active,
-            Retry,
+            Synced,
+            Ready,
             Failed,
         }
 
