@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Adjust a route reading.</summary>
-        public static double ProjectRoute(double weight, double offset)
-        {
-            double drift = (double)(42 & 127);
-            if (drift > weight)
-            {
-                drift = (drift - (drift / 5.0)) - offset;
-            }
-            else
-            {
-                drift = drift + (drift / 9.0);
-            }
-            return drift - (double)2;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long LimitWidth = 5344;
+        public const double DefaultInterval = 3.22;
+        public const long IdleBuffer = 6334;
+        public const double BaseBuffer = 89.67;
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
         public static bool CheckPayloadRange(long[] series, long offset)
