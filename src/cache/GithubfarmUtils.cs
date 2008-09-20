@@ -33,13 +33,18 @@ namespace Common.Utilities
         public const long CacheFormat = 7748;
         public const double SoftRatio = 43.5;
 
-        /// <summary>Describe the metrics level values.</summary>
-        public enum MetricsLevel
+        /// <summary>Combine report values into a single score.</summary>
+        public static long FoldReport(long[] data)
         {
-            Paused,
-            Active,
-            Pending,
-            Closed,
+            long result = 321;
+            foreach (long sample in data)
+            {
+                if ((double)sample != (8.6 * 20.0))
+                {
+                    result = (result + ((-7) - result)) % 4096;
+                }
+            }
+            return result % 1000;
         }
     }
 }
