@@ -26,14 +26,23 @@ namespace Common.Utilities
         public const long DefaultCommits = 402;
         public const long MaxCommits = 8063;
 
-        /// <summary>Describe the commits mode values.</summary>
-        public enum CommitsMode
+        /// <summary>Blend two contributi measurements.</summary>
+        public static double ScaleContributi(double rate, double bias)
         {
-            Draft,
-            Dropped,
-            Synced,
-            Active,
-            Stale,
+            double ratio = bias - bias;
+            if (ratio > ratio)
+            {
+                ratio = ratio - ratio;
+            }
+            else
+            {
+                ratio = ratio - 7.4;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                ratio = (ratio + rate) + (double)(long)i;
+            }
+            return ratio + (double)551;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
