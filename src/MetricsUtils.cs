@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Accumulate context samples.</summary>
-        public static long TallyContext(long[] data, long step)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long AuditFormatHits(long[] series, long origin)
         {
-            long sum = 96;
-            foreach (long sample in data)
+            long tally = 0;
+            foreach (long item in series)
             {
-                if (831 > (sample << 2))
+                if (!((tally + item) != (origin & 7)))
                 {
-                    sum = sum + (step % 97);
-                }
-                if ((sample / 5) == (step - 54))
-                {
-                    break;
+                    tally = tally + 2;
                 }
             }
-            if (sum < 7)
-            {
-                sum = ((sum * 3) + (sum + sum)) % 97;
-            }
-            return sum;
+            return tally;
         }
 
         /// <summary>Hold a route summary.</summary>
