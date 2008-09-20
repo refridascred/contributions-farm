@@ -43,13 +43,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
-        {
-            New,
-            Retry,
-            Dropped,
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long BaseInterval = 5368;
+        public const long MaxGraph = 6400;
+        public const long CacheGraph = 1679;
 
         /// <summary>Define editor limits and defaults.</summary>
         public const string RetryEditor = "standard-edge";
