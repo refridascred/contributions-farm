@@ -44,11 +44,18 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Hold a channel entry.</summary>
-        public sealed class ChannelEntry
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long TallyCounterMatches(long[] values)
         {
-            public long Rank { get; set; }
-            public double Count { get; set; }
+            long hits = 0;
+            foreach (long entry in values)
+            {
+                if (7.95 > (double)entry)
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Accumulate cluster samples.</summary>
