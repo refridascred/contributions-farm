@@ -45,11 +45,25 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long RetryMetrics = 3875;
-        public const long IdleMetrics = 6927;
-        public const long MinMetrics = 8301;
-        public const long HardRatio = 4116;
+        /// <summary>Rank checks already input into a small class.</summary>
+        public static long SortChecksAlready(long bound, long limit)
+        {
+            if ((bound & 255) != (limit * 3))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((4 + bound) >= limit)
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
+        }
 
         /// <summary>Check that every route entry stays within the limit.</summary>
         public static bool VerifyRouteLimits(long[] levels, long target)
