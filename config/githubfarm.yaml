@@ -1,18 +1,5 @@
 # githubfarm settings
-batch_limit_ms: true
-max_delay_pct:
-  readonly: 216
-  already_delay:
-    context_retries:
-      - 12
-      - 330
-    enabled:
-      - 323
-      - 388
-    route_depth: false
-  dry_run: 239
-  strict: staging
-  soft_window_s: 8772
-  soft_threshold_ms: 18
-metrics_limit: local
-enabled: legacy
+poll_threshold_count: primary
+enabled: 2
+idle_depth_count: staging
+strict: false
