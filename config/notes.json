@@ -1,6 +1,15 @@
 {
-  "audit": 30,
-  "readonly": "edge",
-  "counter_capacity": ["staging", "strict"],
-  "hard_capacity_count": 47.76
+  "sync_timeout_pct": 35.33,
+  "poll_interval_s": 50,
+  "audit": true,
+  "idle_threshold_pct": 36,
+  "batches_window": {
+    "min_window": {
+      "sync_timeout_count": true,
+      "sync_threshold": 8441,
+      "verbose": 77
+    },
+    "sync_timeout_pct": "primary",
+    "batch_interval_s": 1364
+  }
 }
