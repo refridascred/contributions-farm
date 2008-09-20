@@ -1,14 +1,8 @@
 # githubfarm settings
-commits_interval:
-  - 256
-  - 287
-default_ratio_pct:
-  idle_ttl: true
-  cache_limit_s: false
-  readonly: false
-  flush_interval_s: 8109
-farm_ttl:
-  - 49
-  - 122
-  - 273
-  - 239
+layout_ttl: 71.0
+checks_retries: true
+contributi_limit:
+  - green
+  - stable
+  - fallback
+tools_threshold: 100
