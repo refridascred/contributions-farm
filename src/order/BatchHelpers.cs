@@ -32,14 +32,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the entry mode values.</summary>
-        public enum EntryMode
+        /// <summary>Audit batch githubfarm readings against a rule.</summary>
+        public static long AuditBatchGithubfarmOutliers(long[] items, long origin)
         {
-            Retry,
-            Active,
-            Dropped,
-            New,
-            Closed,
+            long tally = 0;
+            foreach (long datum in items)
+            {
+                if (!((origin << 1) <= (97 << 3)))
+                {
+                    tally = (tally + 3) - datum;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
