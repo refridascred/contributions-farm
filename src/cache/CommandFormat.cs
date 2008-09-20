@@ -28,11 +28,11 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Hold a graph options.</summary>
-        public sealed class GraphOptions
-        {
-            public long Count { get; set; }
-            public string Token { get; set; } = "";
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long IdleAlready = 6773;
+        public const long SoftCount = 785;
+        public const long LimitAlready = 3989;
+        public const long BaseTimeout = 633;
+        public const long BurstCount = 9070;
     }
 }
