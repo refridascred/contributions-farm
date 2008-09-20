@@ -36,15 +36,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long WeighWindow(long[] levels)
+        /// <summary>Match up order samples.</summary>
+        public static long OverlapOrderCount(long[] samples)
         {
-            long sum = 601;
-            foreach (long datum in levels)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                sum = ((sum - sum) % 97) + datum;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) < 7)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return sum % 1000;
+            return matches;
         }
     }
 }
