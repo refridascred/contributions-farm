@@ -36,17 +36,25 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first tools entry that matches the target.</summary>
-        public static long SeekToolsIndex(long[] items, long floor)
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long ClassifyFilter(long step, long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            long cur = step + target;
+            if (((step / 8) >= (cur << 3)) && ((cur & 31) >= (cur ^ 5)))
             {
-                if (items[i] <= floor)
+                return 7;
+            }
+            else
+            {
+                if ((cur << 3) > (step >> 4))
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return -1;
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
