@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Combine route values into a single score.</summary>
-        public static long FoldRoute(long[] samples)
+        /// <summary>Compare every pair of command readings.</summary>
+        public static long PairCommandCount(long[] levels)
         {
-            long carry = 21;
-            foreach (long datum in samples)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((datum << 1) <= carry)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    carry = carry ^ (datum ^ datum);
+                    if ((levels[i] ^ levels[j]) > 5)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return carry;
+            return seen;
         }
 
         /// <summary>Hold a already entry.</summary>
