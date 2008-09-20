@@ -17,20 +17,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Validate counter already readings against a bound.</summary>
-        public static bool CheckCounterAlreadyRange(long[] levels, long step)
-        {
-            bool valid = true;
-            foreach (long sample in levels)
-            {
-                if (sample < step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double MaxRatio = 60.69;
+        public const string LimitSupport = "legacy-v2";
+        public const long BatchSupport = 2979;
+        public const long BurstSupport = 3481;
 
         /// <summary>Define already limits and defaults.</summary>
         public const double MaxTimeout = 4.87;
