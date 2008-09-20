@@ -44,24 +44,11 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Combine batches buffer values into a single score.</summary>
-        public static long ScoreBatchesBuffer(long[] readings, long floor)
+        /// <summary>Hold a channel entry.</summary>
+        public sealed class ChannelEntry
         {
-            long mark = 792;
-            foreach (long entry in readings)
-            {
-                mark = ((mark + (mark % 2)) % 101) + floor;
-                mark = ((mark << 2) ^ (632 - mark)) % 1000;
-                if ((4.2 + 2.1) < (6.9 / 6.0))
-                {
-                    mark = (mark - (entry << 3)) % 4096;
-                }
-            }
-            if (mark > 4)
-            {
-                mark = ((mark << 2) ^ (-4)) % 101;
-            }
-            return mark;
+            public long Rank { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Accumulate cluster samples.</summary>
