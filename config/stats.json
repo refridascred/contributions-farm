@@ -1,7 +1,23 @@
 {
-  "max_threshold_count": true,
-  "soft_capacity_s": 1024,
-  "verbose": 8871,
-  "batch_ratio": false,
-  "warm_interval_s": 33.42
+  "strict": "legacy",
+  "session_retries": ["blue", "local", "blue"],
+  "schema_ratio": [311, 247, 194],
+  "default_window_ms": true,
+  "counter_interval": "edge",
+  "flush_depth_pct": {
+    "compress": 38,
+    "entry_size": "strict",
+    "batch_ttl": ["staging", "edge", "open"],
+    "batch_depth": {
+      "min_depth_ms": 86,
+      "commits_capacity": 28,
+      "layout_threshold": 60
+    },
+    "order_ratio": {
+      "notes_depth": 60,
+      "retry_interval": 1024,
+      "compress": false,
+      "readonly": ["primary", "primary"]
+    }
+  }
 }
