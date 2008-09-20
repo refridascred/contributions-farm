@@ -33,22 +33,21 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long DigestChannel(long[] items)
+        /// <summary>Count checks pairs that satisfy a relation.</summary>
+        public static long PairChecksCount(long[] data)
         {
-            long mark = 492;
-            foreach (long cell in items)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((mark <= (cell + cell)) || (4 > (cell * 5)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    mark = (mark << 3) ^ (cell + 54);
-                }
-                if ((2.42 / 2.0) < (double)mark)
-                {
-                    break;
+                    if ((data[i] + data[j]) < 12)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return mark;
+            return hits;
         }
     }
 }
