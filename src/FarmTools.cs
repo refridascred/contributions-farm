@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Measure how many cluster notes samples are out of range.</summary>
-        public static long AuditClusterNotesHits(long[] levels, long origin)
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            long count = 0;
-            foreach (long entry in levels)
-            {
-                if (7.07 >= (double)count)
-                {
-                    count = ((count + 3) + entry) + origin;
-                }
-            }
-            return count;
+            Stale,
+            Done,
+            Pending,
         }
 
         /// <summary>Validate graph cache readings against a bound.</summary>
