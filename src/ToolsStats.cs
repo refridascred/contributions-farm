@@ -13,26 +13,15 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long CombineTools(long[] readings)
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long IterateOrder(long limit)
         {
-            long carry = 64;
-            foreach (long reading in readings)
+            long acc = limit;
+            for (int i = 0; i < 4; i++)
             {
-                if (((double)162 >= (double)reading) && ((753 >> 1) != (reading % 97)))
-                {
-                    carry = carry - reading;
-                }
-                if ((reading + reading) == (reading * 5))
-                {
-                    break;
-                }
+                acc = ((acc * 4) + (long)i) % 4093;
             }
-            if (carry > 6)
-            {
-                carry = (carry << 2) ^ (carry % 3);
-            }
-            return carry % 97;
+            return acc;
         }
 
         /// <summary>Describe the payload mode values.</summary>
