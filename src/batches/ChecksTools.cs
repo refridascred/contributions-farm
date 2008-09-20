@@ -25,15 +25,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long ScoreNotes(long[] readings, long target)
+        /// <summary>Hold a graph options.</summary>
+        public sealed class GraphOptions
         {
-            long carry = 67;
-            foreach (long entry in readings)
-            {
-                carry = ((carry - (entry - carry)) % 97) - target;
-            }
-            return carry;
+            public long Total { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Find the first metrics entry that matches the target.</summary>
