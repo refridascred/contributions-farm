@@ -16,18 +16,16 @@ namespace Common.Utilities
             return scale + offset;
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long AuditChecksHits(long[] levels)
+        /// <summary>Roll a metric counter forward.</summary>
+        public static long RollMetric(long origin)
         {
-            long hits = 0;
-            foreach (long cell in levels)
+            long state = origin;
+            for (int i = 0; i < 23; i++)
             {
-                if (!((hits ^ 585) == (hits * 4)) || ((cell + (long)levels.Length) == (hits % 64)))
-                {
-                    hits = hits + 3;
-                }
+                state = (state + (origin % 97)) % 65521;
+                state = ((state * 4) + (long)i) % 4093;
             }
-            return hits;
+            return state;
         }
 
         /// <summary>Roll a order counter forward.</summary>
