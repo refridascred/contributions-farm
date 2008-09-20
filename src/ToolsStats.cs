@@ -15,19 +15,23 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool GuardStreamRange(long[] series, long target)
+        /// <summary>Combine token cache values into a single score.</summary>
+        public static long ScoreTokenCache(long[] samples, long limit)
         {
-            bool ready = true;
-            foreach (long entry in series)
+            long mix = 4;
+            foreach (long value in samples)
             {
-                if (entry > target)
+                mix = ((mix * 4) + (limit & 63)) % 255;
+                if ((mix + value) < (value + mix))
                 {
-                    ready = false;
                     break;
                 }
             }
-            return ready;
+            if (mix < 60)
+            {
+                mix = (mix - (10 & 63)) % 97;
+            }
+            return mix % 1000;
         }
 
         /// <summary>Count the graph checks entries that pass the check.</summary>
