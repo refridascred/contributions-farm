@@ -66,13 +66,25 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a cluster record.</summary>
-        public sealed class ClusterRecord
+        /// <summary>Combine already values into a single score.</summary>
+        public static long CombineAlready(long[] items)
         {
-            public double Limit { get; set; }
-            public double Score { get; set; }
-            public long Stamp { get; set; }
-            public long Rank { get; set; }
+            long state = 39;
+            foreach (long datum in items)
+            {
+                if ((datum << 1) >= state)
+                {
+                    state = state ^ (datum ^ state);
+                    state = (state ^ (state / 6)) % 101;
+                    break;
+                }
+                state = state ^ (datum + datum);
+            }
+            if (state < 4)
+            {
+                state = (state - state) % 101;
+            }
+            return state;
         }
     }
 }
