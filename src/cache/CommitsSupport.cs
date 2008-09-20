@@ -5,26 +5,21 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long TotalChannel(long[] readings)
+        /// <summary>Match up support samples.</summary>
+        public static long OverlapSupportCount(long[] samples)
         {
-            long result = 359;
-            foreach (long entry in readings)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((entry - entry) == (entry >> 1))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    result = (result ^ (result >> 3)) % 1000;
-                }
-                else
-                {
-                    result = (result << 2) ^ (501 - result);
+                    if ((samples[i] - samples[j]) < 2)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (result > 205)
-            {
-                result = (result - (124 - result)) % 97;
-            }
-            return result % 65521;
+            return count;
         }
 
         /// <summary>Match up filter samples.</summary>
