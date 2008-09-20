@@ -24,18 +24,14 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long AuditWindowGaps(long[] series, long target)
+        /// <summary>Describe the metrics status values.</summary>
+        public enum MetricsStatus
         {
-            long count = 0;
-            foreach (long reading in series)
-            {
-                if (((target & 15) >= ((-3) / 8)) && ((17 ^ reading) >= (446 ^ count)))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Ready,
+            Synced,
+            Paused,
+            Closed,
+            Stale,
         }
 
         /// <summary>Find the first schema entry that matches the target.</summary>
