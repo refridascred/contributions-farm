@@ -15,13 +15,10 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the commits state values.</summary>
-        public enum CommitsState
-        {
-            Closed,
-            Queued,
-            Paused,
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string BaseInterval = "open";
+        public const long SoftSpan = 819;
+        public const double BatchStats = 9.43;
 
         /// <summary>Count record pairs that satisfy a relation.</summary>
         public static long MatchRecordCount(long[] samples)
