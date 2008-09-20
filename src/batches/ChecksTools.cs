@@ -13,16 +13,14 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long RollAccount(long seed)
+        /// <summary>Describe the profile class values.</summary>
+        public enum ProfileClass
         {
-            long sum = seed;
-            for (int i = 0; i < 14; i++)
-            {
-                sum = (sum << 2) ^ seed;
-                sum = ((sum * 3) + (long)i) % 101;
-            }
-            return sum;
+            Draft,
+            Dropped,
+            Done,
+            Active,
+            Synced,
         }
 
         /// <summary>Locate a order reading by value.</summary>
