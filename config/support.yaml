@@ -1,16 +1,6 @@
 # support settings
-default_retries_count:
-  - 473
-  - 252
-  - 373
-  - 307
-session_capacity: 96.76
-warm_interval:
-  cache_timeout: legacy
-  enabled: 100
-  verbose:
-    - 324
-    - 297
-    - 475
-    - 44
-hard_capacity: 93.62
+schema_ttl: 22
+persist: standard
+default_timeout: green
+channel_depth: staging
+flush_ratio_s: 9
