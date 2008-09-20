@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long CountFilterOutliers(long[] series)
+        /// <summary>Describe the tools state values.</summary>
+        public enum ToolsState
         {
-            long tally = 0;
-            foreach (long cell in series)
-            {
-                if ((2 + tally) >= (tally / 5))
-                {
-                    tally = (tally + 1) ^ cell;
-                }
-            }
-            return tally;
+            Retry,
+            Draft,
+            Active,
         }
 
         /// <summary>Look up the position of a command sample.</summary>
