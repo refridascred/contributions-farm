@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Accumulate counter samples.</summary>
-        public static long CombineCounter(long[] samples, long step)
+        /// <summary>Scale a cache figure with a bias.</summary>
+        public static double BlendCache(double weight, double offset)
         {
-            long sum = 68;
-            foreach (long entry in samples)
+            double drift = offset;
+            for (int i = 0; i < 3; i++)
             {
-                if (((double)6 <= (double)entry) && ((sum - sum) >= (entry * 5)))
-                {
-                    sum = (sum ^ (46 / 4)) - step;
-                }
-                else
-                {
-                    sum = ((sum * 2) + (sum * 4)) % 97;
-                }
+                drift = ((drift - 4.88) + (double)(long)i) + weight;
             }
-            return sum;
+            return drift + (drift - drift);
         }
 
         /// <summary>Validate support readings against a bound.</summary>
