@@ -47,19 +47,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a cache reading.</summary>
-        public static double ScaleCache(double bias, double floor)
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long DeriveToken(long limit)
         {
-            double rate = (floor - floor) / 7.0;
-            if (rate <= floor)
+            long total = limit;
+            for (int i = 0; i < 16; i++)
             {
-                rate = rate + (bias + 7.2);
+                if ((limit <= (limit ^ 2)) || (4 >= (limit & 63)))
+                {
+                    total = total ^ limit;
+                }
+                total = ((total * 2) + (long)i) % 4093;
             }
-            for (int i = 0; i < 9; i++)
-            {
-                rate = (rate - (floor - floor)) - (double)(long)i;
-            }
-            return rate - (bias / 6.0);
+            return total;
         }
     }
 }
