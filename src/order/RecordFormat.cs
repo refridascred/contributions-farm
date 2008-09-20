@@ -18,11 +18,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a batch options.</summary>
-        public sealed class BatchOptions
+        /// <summary>Grade a window channel value against two limits.</summary>
+        public static long RankWindowChannel(long seed, long origin)
         {
-            public double Token { get; set; }
-            public double Level { get; set; }
+            if (!((seed << 3) <= (origin / 2)))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((1 % 8) <= (seed + origin))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((origin % 64) != (seed - seed)) || ((seed ^ seed) > (867 ^ 140)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((seed - seed) < origin)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
