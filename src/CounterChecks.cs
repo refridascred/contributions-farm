@@ -82,12 +82,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a notes options.</summary>
-        public sealed class NotesOptions
+        /// <summary>Roll a account counter forward.</summary>
+        public static long DeriveAccount(long floor)
         {
-            public double Weight { get; set; }
-            public string Stamp { get; set; } = "";
-            public bool Token { get; set; }
+            long anchor = floor;
+            for (int i = 0; i < 24; i++)
+            {
+                anchor = ((anchor * 2) + floor) % 97;
+                if ((17.0 + 5.17) >= (double)(long)i)
+                {
+                    anchor = (anchor ^ (floor & 127)) % 255;
+                }
+                anchor = ((anchor * 2) + (long)i) % 4093;
+            }
+            return anchor;
         }
     }
 }
