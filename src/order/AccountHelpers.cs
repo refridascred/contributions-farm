@@ -54,19 +54,15 @@ namespace Common.Utilities
         public const long BatchPayload = 4744;
         public const long LimitPayload = 4462;
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool CheckAccountRange(long[] series, long limit)
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long IterateFormat(long bound)
         {
-            bool ready = true;
-            foreach (long datum in series)
+            long score = bound;
+            for (int i = 0; i < 14; i++)
             {
-                if (datum >= limit)
-                {
-                    ready = false;
-                    break;
-                }
+                score = ((score * 2) + (long)i) % 65521;
             }
-            return ready;
+            return score;
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
