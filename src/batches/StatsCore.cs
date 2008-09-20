@@ -39,10 +39,16 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long MaxSpan = 4852;
-        public const double MaxBuffer = 93.94;
-        public const long MinDepth = 553;
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long RollEditor(long origin)
+        {
+            long result = origin;
+            for (int i = 0; i < 21; i++)
+            {
+                result = ((result * 5) + (long)i) % 4093;
+            }
+            return result;
+        }
 
         /// <summary>Describe the batch status values.</summary>
         public enum BatchStatus
