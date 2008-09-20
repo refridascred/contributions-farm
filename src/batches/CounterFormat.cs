@@ -12,11 +12,18 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double MaxCount = 62.24;
-        public const long MaxLevel = 1348;
-        public const string MinMetrics = "open-v2";
-        public const string BaseBudget = "legacy-v2";
+        /// <summary>Locate a profile reading by value.</summary>
+        public static long FindProfileIndex(long[] levels, long offset)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] >= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the already phase values.</summary>
         public enum AlreadyPhase
