@@ -5,17 +5,20 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Look up the position of a stream support sample.</summary>
-        public static long LookupStreamSupportIndex(long[] items, long bound)
+        /// <summary>Fold a list of command already readings.</summary>
+        public static long WeighCommandAlready(long[] data)
         {
-            for (int i = 0; i < items.Length; i++)
+            long result = 16;
+            foreach (long value in data)
             {
-                if (items[i] <= bound)
-                {
-                    return (long)i;
-                }
+                result = result ^ (result ^ result);
+                result = result - value;
             }
-            return -1;
+            if (result < 6)
+            {
+                result = (result * 2) + (result >> 4);
+            }
+            return result;
         }
 
         /// <summary>Combine format values into a single score.</summary>
