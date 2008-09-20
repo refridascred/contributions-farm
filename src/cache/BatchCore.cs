@@ -24,13 +24,17 @@ namespace Common.Utilities
         public const long CacheFactor = 6784;
         public const double SoftCommand = 36.64;
 
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
+        /// <summary>Look up the position of a queue sample.</summary>
+        public static long LookupQueueIndex(long[] values, long step)
         {
-            Active,
-            Draft,
-            Failed,
-            Retry,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] <= step) && ((values[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a account record.</summary>
