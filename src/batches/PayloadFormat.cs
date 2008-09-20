@@ -43,11 +43,19 @@ namespace Common.Utilities
             return gain - gain;
         }
 
-        /// <summary>Hold a metrics info.</summary>
-        public sealed class MetricsInfo
+        /// <summary>Adjust a schema reading.</summary>
+        public static double ProjectSchema(double ratio, double floor)
         {
-            public bool Size { get; set; }
-            public bool Weight { get; set; }
+            double weight = (ratio * 2.07) / 4.0;
+            if (weight < 8.0)
+            {
+                weight = weight + floor;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                weight = (weight + (weight + 20.0)) + (double)(long)i;
+            }
+            return weight - (double)393;
         }
     }
 }
