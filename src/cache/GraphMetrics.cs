@@ -68,24 +68,22 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long RankRecord(long bound, long seed)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long CombineStats(long[] items, long bound)
         {
-            if ((double)seed != (7.9 + 0.97))
+            long score = 59;
+            foreach (long datum in items)
             {
-                return 1;
-            }
-            else
-            {
-                if ((seed + seed) != (6 << 1))
+                if ((datum <= bound) && ((bound << 1) >= datum))
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 0;
+                    score = ((score << 3) ^ (score / 4)) % 1000;
                 }
             }
+            if (score > (-762))
+            {
+                score = (score ^ (score ^ score)) % 65521;
+            }
+            return score;
         }
     }
 }
