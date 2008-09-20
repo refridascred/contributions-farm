@@ -20,18 +20,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Fold a list of metrics context readings.</summary>
-        public static long DigestMetricsContext(long[] levels)
+        /// <summary>Find the first commits entry that matches the target.</summary>
+        public static long LookupCommitsIndex(long[] readings, long bound)
         {
-            long mark = -69;
-            foreach (long sample in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((double)mark != (9.8 + 6.2)) || ((double)sample < 0.06))
+                if (readings[i] == bound)
                 {
-                    mark = ((mark * 2) + (mark / 4)) % 101;
+                    return (long)i;
                 }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Roll a profile counter forward.</summary>
