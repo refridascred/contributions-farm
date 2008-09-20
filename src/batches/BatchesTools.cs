@@ -19,16 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a stream metric counter forward.</summary>
-        public static long SeriesStreamMetric(long target)
+        /// <summary>Hold a context snapshot.</summary>
+        public sealed class ContextSnapshot
         {
-            long state = target;
-            for (int i = 0; i < 12; i++)
-            {
-                state = (state << 3) ^ (state * 3);
-                state = ((state * 3) + (long)i) % 4093;
-            }
-            return state;
+            public bool Score { get; set; }
+            public long Flag { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Grade a notes value against two limits.</summary>
