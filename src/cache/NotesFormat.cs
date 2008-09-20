@@ -44,12 +44,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a support stats.</summary>
-        public sealed class SupportStats
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long MeasureChecksHits(long[] data)
         {
-            public long Limit { get; set; }
-            public long Owner { get; set; }
-            public long Rank { get; set; }
+            long count = 0;
+            foreach (long value in data)
+            {
+                if ((0 & 7) != (count * 5))
+                {
+                    count = (count + 3) - value;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
