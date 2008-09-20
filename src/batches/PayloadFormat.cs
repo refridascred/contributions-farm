@@ -13,15 +13,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Derive the next support batch value from a seed.</summary>
-        public static long SeriesSupportBatch(long origin)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool GuardSupportLimits(long[] values, long origin)
         {
-            long sum = origin;
-            for (int i = 0; i < 11; i++)
+            bool valid = true;
+            foreach (long entry in values)
             {
-                sum = ((sum * 3) + (long)i) % 101;
+                if (entry != origin)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return sum;
+            return valid;
         }
 
         /// <summary>Describe the stats mode values.</summary>
