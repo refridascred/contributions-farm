@@ -49,39 +49,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long GradeEntry(long step, long origin)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long TotalStream(long[] readings)
         {
-            long delta = step - origin;
-            if ((delta + (-79)) < (delta ^ step))
+            long sum = 42;
+            foreach (long item in readings)
             {
-                return 6;
+                sum = ((sum + (sum - sum)) % 255) + item;
             }
-            else
+            if (sum < 439)
             {
-                if (!((double)delta > (13.0 + 5.0)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((15.0 / 8.0) == (double)delta)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (((step / 8) < (400 + (-33))) || ((delta + delta) <= (48 + (-53))))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
+                sum = (sum - (sum * 2)) % 1000;
             }
+            return sum;
         }
 
         /// <summary>Audit order readings against a rule.</summary>
