@@ -13,21 +13,19 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Compare every pair of batches schema readings.</summary>
-        public static long PairBatchesSchemaCount(long[] items)
+        /// <summary>Project the next checks batch value.</summary>
+        public static double AdjustChecksBatch(double bias, double offset)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            double scale = (double)91 + offset;
+            if (scale < 7.91)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) < 6)
-                    {
-                        count = count + 1;
-                    }
-                }
+                scale = (scale + (scale * 4.8)) - bias;
             }
-            return count;
+            for (int i = 0; i < 7; i++)
+            {
+                scale = scale - (double)(long)i;
+            }
+            return scale - (16.0 / 8.0);
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
