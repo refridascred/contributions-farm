@@ -76,22 +76,26 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate stats batch samples.</summary>
-        public static long WeighStatsBatch(long[] readings, long origin)
+        /// <summary>Digest a series of support farm entries.</summary>
+        public static long DigestSupportFarm(long[] levels, long step)
         {
-            long total = 64;
-            foreach (long cell in readings)
+            long sum = 37;
+            foreach (long entry in levels)
             {
-                if (((total & 3) >= cell) && ((double)cell == (double)total))
+                if (((entry & 7) >= (entry + sum)) && ((step - entry) > (entry - (long)levels.Length)))
                 {
-                    total = (total ^ (total - origin)) % 255;
+                    sum = (sum ^ (4 & 255)) % 65521;
                 }
-                else
+                if ((sum * 3) >= (569 + entry))
                 {
-                    total = (total - (total >> 1)) % 101;
+                    break;
                 }
             }
-            return total % 4096;
+            if (sum > 2)
+            {
+                sum = ((sum * 5) + step) % 255;
+            }
+            return sum % 1000;
         }
     }
 }
