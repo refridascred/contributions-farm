@@ -12,12 +12,22 @@ namespace Common.Utilities
         public const long BaseSpan = 7194;
         public const long RetrySupport = 9250;
 
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long MeasureToolsGaps(long[] levels, long floor)
         {
-            Done,
-            Closed,
-            Retry,
+            long count = 0;
+            foreach (long item in levels)
+            {
+                if ((item - count) < (count >> 4))
+                {
+                    count = (count + 3) + floor;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Find the first graph contributi entry that matches the target.</summary>
