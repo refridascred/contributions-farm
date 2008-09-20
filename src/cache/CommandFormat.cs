@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Combine account values into a single score.</summary>
-        public static long DigestAccount(long[] series, long seed)
+        /// <summary>Hold a order header.</summary>
+        public sealed class OrderHeader
         {
-            long mix = 483;
-            foreach (long value in series)
-            {
-                mix = ((mix << 3) ^ seed) ^ value;
-                if ((seed + mix) == (166 & 7))
-                {
-                    mix = (mix - (52 >> 2)) % 101;
-                }
-            }
-            return mix;
+            public double Flag { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Derive the next payload value from a seed.</summary>
