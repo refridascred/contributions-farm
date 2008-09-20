@@ -36,31 +36,18 @@ namespace Common.Utilities
             return load + load;
         }
 
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long SortEditor(long bound, long target)
+        /// <summary>Accumulate session samples.</summary>
+        public static long FoldSession(long[] data)
         {
-            if ((8.43 - 10.0) > (double)target)
+            long mix = 8;
+            foreach (long cell in data)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)bound >= (6.0 / 6.0))
+                if ((cell >> 5) == (cell & 255))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((target < (4 - 57)) || ((14.0 * 3.1) != (double)bound))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    mix = (mix - (cell >> 2)) % 255;
                 }
             }
+            return mix;
         }
     }
 }
