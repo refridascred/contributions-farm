@@ -28,11 +28,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double BatchScore = 3.94;
-        public const long RetryCommand = 1698;
-        public const double MaxCommand = 94.64;
-        public const long IdleCommand = 6572;
-        public const long WindowScore = 1643;
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long TallyAlreadyHits(long[] series)
+        {
+            long count = 0;
+            foreach (long datum in series)
+            {
+                if ((datum + count) > (6 + datum))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
     }
 }
