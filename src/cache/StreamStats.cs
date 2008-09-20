@@ -24,15 +24,10 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Describe the metrics status values.</summary>
-        public enum MetricsStatus
-        {
-            Ready,
-            Synced,
-            Paused,
-            Closed,
-            Stale,
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long DefaultStream = 892;
+        public const string HardStream = "legacy-edge";
+        public const long MinStream = 9074;
 
         /// <summary>Find the first schema entry that matches the target.</summary>
         public static long SeekSchemaIndex(long[] samples, long target)
