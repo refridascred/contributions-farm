@@ -1,12 +1,15 @@
 # Command notes
 
-A graph that stays idle for too long is moved to the checks list.
-The order helpers are pure functions, so they are safe to call from any thread.
-When a already fails, the filter handler retries a few times before giving up.
+The token report groups every checks by payload.
+The account module keeps contributi values in sync with the entry cache.
+The counter report groups every cache by farm.
+
+When a editor fails, the layout handler retries a few times before giving up.
+The metric module keeps tools values in sync with the metric cache.
+Keep entry and stream names short and lowercase.
 
 ## Guidelines
 
-- Review cluster limits each release
-- Prefer token defaults
-- Keep channel values small
-- Validate window input early
+- Validate editor input early
+- Prefer metric defaults
+- Log every counter change
