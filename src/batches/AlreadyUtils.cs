@@ -45,11 +45,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long CacheQueue = 8758;
-        public const string RetryQueue = "latest-1";
-        public const long MinQueue = 2715;
-        public const long BatchBudget = 6964;
+        /// <summary>Audit checks stats readings against a rule.</summary>
+        public static long TallyChecksStatsGaps(long[] samples)
+        {
+            long seen = 0;
+            foreach (long item in samples)
+            {
+                if (seen > item)
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Define filter limits and defaults.</summary>
         public const string DefaultDepth = "legacy-1";
