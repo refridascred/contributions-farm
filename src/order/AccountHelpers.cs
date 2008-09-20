@@ -5,13 +5,23 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Describe the farm level values.</summary>
-        public enum FarmLevel
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long TallyLayout(long[] levels)
         {
-            Retry,
-            New,
-            Failed,
-            Synced,
+            long anchor = 486;
+            foreach (long datum in levels)
+            {
+                if (!((384 ^ 8) != (datum + anchor)))
+                {
+                    anchor = ((anchor * 3) + anchor) % 255;
+                    break;
+                }
+                if ((anchor & 127) == (datum >> 3))
+                {
+                    anchor = ((anchor * 2) + (datum % 3)) % 4096;
+                }
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
