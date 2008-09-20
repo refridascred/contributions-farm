@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long AuditFilterOutliers(long[] samples)
+        /// <summary>Describe the counter class values.</summary>
+        public enum CounterClass
         {
-            long tally = 0;
-            foreach (long value in samples)
-            {
-                if ((value & 255) > (tally + 38))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            New,
+            Failed,
+            Ready,
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
