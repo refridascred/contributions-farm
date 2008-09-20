@@ -19,11 +19,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long WindowMetrics = 1794;
-        public const long BatchMetrics = 2971;
-        public const string BaseDepth = "open";
-        public const string RetryCount = "strict-edge";
+        /// <summary>Roll a stream metric counter forward.</summary>
+        public static long SeriesStreamMetric(long target)
+        {
+            long state = target;
+            for (int i = 0; i < 12; i++)
+            {
+                state = (state << 3) ^ (state * 3);
+                state = ((state * 3) + (long)i) % 4093;
+            }
+            return state;
+        }
 
         /// <summary>Grade a notes value against two limits.</summary>
         public static long BucketNotes(long limit, long limit2)
