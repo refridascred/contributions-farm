@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long BaseSize = 3758;
-        public const string BurstAccount = "local-edge";
-        public const long MinWidth = 7039;
-        public const long DefaultAccount = 1239;
+        /// <summary>Hold a account stats.</summary>
+        public sealed class AccountStats
+        {
+            public long Region { get; set; }
+            public double Weight { get; set; }
+        }
 
         /// <summary>Define command limits and defaults.</summary>
         public const double DefaultCommand = 46.08;
