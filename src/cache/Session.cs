@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long ScoreCache(long[] samples, long target)
+        /// <summary>Hold a tools summary.</summary>
+        public sealed class ToolsSummary
         {
-            long anchor = 802;
-            foreach (long value in samples)
-            {
-                if (!((value & 255) != ((long)samples.Length * 4)))
-                {
-                    anchor = (((anchor * 5) + (anchor >> 2)) % 255) + target;
-                }
-            }
-            return anchor;
+            public bool Weight { get; set; }
+            public bool Flag { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Combine payload values into a single score.</summary>
