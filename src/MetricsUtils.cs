@@ -36,24 +36,21 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Rank checks already input into a small class.</summary>
-        public static long SortChecksAlready(long bound, long limit)
+        /// <summary>Compare every pair of stats readings.</summary>
+        public static long CompareStatsCount(long[] series)
         {
-            if ((bound & 255) != (limit * 3))
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((4 + bound) >= limit)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 3;
+                    if ((series[i] ^ series[j]) > 8)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
+            return hits;
         }
 
         /// <summary>Check that every route entry stays within the limit.</summary>
