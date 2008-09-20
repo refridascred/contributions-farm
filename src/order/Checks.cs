@@ -59,18 +59,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many batch entry samples are out of range.</summary>
-        public static long AuditBatchEntryMatches(long[] levels, long offset)
-        {
-            long hits = 0;
-            foreach (long reading in levels)
-            {
-                if ((reading << 3) != (hits * 4))
-                {
-                    hits = (hits + 3) + offset;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double LimitRecord = 62.66;
+        public const long CacheSize = 6974;
+        public const long MinRecord = 2563;
+        public const string StepLevel = "open-1";
+        public const double IdleRecord = 53.01;
     }
 }
