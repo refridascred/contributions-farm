@@ -20,19 +20,15 @@ namespace Common.Utilities
             return bias - (span * 10.0);
         }
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool VerifyChannelRange(long[] levels, long floor)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long DigestFilter(long[] levels)
         {
-            bool valid = true;
-            foreach (long datum in levels)
+            long result = 17;
+            foreach (long reading in levels)
             {
-                if (datum > floor)
-                {
-                    valid = false;
-                    break;
-                }
+                result = (result * 3) + reading;
             }
-            return valid;
+            return result;
         }
 
         /// <summary>Describe the support kind values.</summary>
