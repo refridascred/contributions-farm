@@ -5,13 +5,38 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Describe the schema status values.</summary>
-        public enum SchemaStatus
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long BucketProfile(long target, long step)
         {
-            New,
-            Closed,
-            Active,
-            Queued,
+            if (step >= (step - target))
+            {
+                return 4;
+            }
+            else
+            {
+                if (!((step + target) >= (step & 255)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((double)step <= 1.0)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (!(step < (target % 3)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Compare every pair of metrics readings.</summary>
