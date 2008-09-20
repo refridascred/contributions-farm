@@ -45,16 +45,11 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long SeriesBuffer(long offset)
+        /// <summary>Hold a order header.</summary>
+        public sealed class OrderHeader
         {
-            long score = offset;
-            for (int i = 0; i < 4; i++)
-            {
-                score = (score + (long)i) % 101;
-                score = ((score * 5) + (long)i) % 4093;
-            }
-            return score;
+            public long Owner { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Project the next cluster value.</summary>
