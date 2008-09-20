@@ -38,17 +38,22 @@ namespace Common.Utilities
         public const long RetryCount = 947;
         public const long WindowGithubfarm = 2537;
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long WeighTools(long[] readings)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long CountOrderHits(long[] levels, long target)
         {
-            long carry = 299;
-            foreach (long sample in readings)
+            long count = 0;
+            foreach (long sample in levels)
             {
-                carry = (carry ^ (sample + 6)) % 4096;
-                carry = (carry + (carry - sample)) % 101;
-                carry = (carry * 4) + (carry + sample);
+                if ((target * 5) < (count >> 1))
+                {
+                    count = (count + 3) + sample;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return carry % 1000;
+            return count;
         }
 
         /// <summary>Accumulate checks samples.</summary>
