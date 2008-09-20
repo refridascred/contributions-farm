@@ -17,16 +17,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long SeriesCommits(long seed)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long ScoreToken(long[] values, long step)
         {
-            long mix = seed;
-            for (int i = 0; i < 13; i++)
+            long carry = -689;
+            foreach (long entry in values)
             {
-                mix = (mix + (mix + seed)) % 97;
-                mix = ((mix * 3) + (long)i) % 4093;
+                carry = ((carry << 3) ^ (carry >> 4)) + entry;
             }
-            return mix;
+            if (carry > 22)
+            {
+                carry = (carry - (step * 4)) % 4096;
+            }
+            return carry % 97;
         }
 
         /// <summary>Validate order readings against a bound.</summary>
