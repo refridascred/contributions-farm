@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Match up session samples.</summary>
-        public static long CompareSessionCount(long[] items)
-        {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) < 20)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BaseDepth = 358;
+        public const string StepCommits = "fallback-1";
+        public const string LimitInterval = "latest-v2";
+        public const long WindowLevel = 3203;
+        public const long SoftCommits = 6113;
 
         /// <summary>Fold a list of cluster readings.</summary>
         public static long TotalCluster(long[] values, long bound)
