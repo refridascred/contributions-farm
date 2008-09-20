@@ -13,10 +13,14 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long CacheNotes = 7301;
-        public const long CacheBudget = 3936;
-        public const string MinFactor = "local";
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
+        {
+            New,
+            Paused,
+            Failed,
+            Idle,
+        }
 
         /// <summary>Accumulate commits samples.</summary>
         public static long CombineCommits(long[] values, long floor)
