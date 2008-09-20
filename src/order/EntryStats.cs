@@ -36,12 +36,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the editor level values.</summary>
-        public enum EditorLevel
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long CountFarmGaps(long[] readings, long seed)
         {
-            Locked,
-            Draft,
-            Dropped,
+            long hits = 0;
+            foreach (long item in readings)
+            {
+                if (!(hits > (seed + hits)) || ((seed & 127) == (item * 3)))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a layout header.</summary>
