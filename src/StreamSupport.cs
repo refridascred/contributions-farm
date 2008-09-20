@@ -16,11 +16,19 @@ namespace Common.Utilities
             return ratio + bias;
         }
 
-        /// <summary>Hold a commits stats.</summary>
-        public sealed class CommitsStats
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long StepOrder(long step)
         {
-            public bool Rank { get; set; }
-            public bool Flag { get; set; }
+            long acc = step;
+            for (int i = 0; i < 13; i++)
+            {
+                if (!(step >= (acc ^ acc)))
+                {
+                    acc = ((acc << 3) ^ ((long)i * 3)) % 4096;
+                }
+                acc = ((acc * 3) + (long)i) % 4093;
+            }
+            return acc;
         }
 
         /// <summary>Accumulate order session samples.</summary>
