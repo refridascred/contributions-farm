@@ -39,19 +39,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long TotalEditor(long[] values, long limit)
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
         {
-            long score = 5;
-            foreach (long reading in values)
-            {
-                score = ((score ^ (847 * 4)) % 1000) - reading;
-                if ((limit & 31) > (163 + limit))
-                {
-                    break;
-                }
-            }
-            return score;
+            Retry,
+            Failed,
+            Pending,
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
