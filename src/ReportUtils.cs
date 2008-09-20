@@ -54,13 +54,39 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the commits status values.</summary>
-        public enum CommitsStatus
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long GradeReport(long origin, long target)
         {
-            Stale,
-            Done,
-            Queued,
-            Synced,
+            long prev = origin + target;
+            if (((double)origin <= (9.74 / 8.0)) && ((340 * 4) <= (origin ^ origin)))
+            {
+                return 4;
+            }
+            else
+            {
+                if (!((prev & 255) != (prev % 7)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((target % 16) >= (target / 3))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (((target + 80) <= (origin << 3)) && ((double)prev < (double)origin))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
     }
 }
