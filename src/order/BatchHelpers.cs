@@ -32,19 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long CombineCommand(long[] data)
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
         {
-            long carry = 438;
-            foreach (long value in data)
-            {
-                carry = (carry - carry) + value;
-            }
-            if (carry > 606)
-            {
-                carry = carry - (carry & 127);
-            }
-            return carry;
+            New,
+            Synced,
+            Done,
         }
 
         /// <summary>Look up the position of a entry sample.</summary>
