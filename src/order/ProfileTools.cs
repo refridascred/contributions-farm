@@ -60,19 +60,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long ScoreProfile(long[] samples)
+        /// <summary>Describe the layout phase values.</summary>
+        public enum LayoutPhase
         {
-            long mix = 260;
-            foreach (long datum in samples)
-            {
-                mix = (mix - (mix + datum)) % 101;
-            }
-            if (mix < (-491))
-            {
-                mix = mix + mix;
-            }
-            return mix;
+            Queued,
+            Dropped,
+            Pending,
+            Idle,
         }
     }
 }
