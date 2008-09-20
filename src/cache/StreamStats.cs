@@ -31,21 +31,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count farm pairs that satisfy a relation.</summary>
-        public static long MatchFarmCount(long[] readings)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long AuditWindowOutliers(long[] levels)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long item in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((hits / 9) >= (hits << 3))
                 {
-                    if ((readings[i] + readings[j]) > 7)
-                    {
-                        tally = tally + 1;
-                    }
+                    hits = (hits + 3) ^ item;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
