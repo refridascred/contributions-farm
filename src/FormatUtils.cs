@@ -40,18 +40,10 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Look up the position of a already token sample.</summary>
-        public static long FindAlreadyTokenIndex(long[] samples, long step)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] < step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long DefaultLevel = 9026;
+        public const long BaseBuffer = 6358;
+        public const double MinBuffer = 84.32;
 
         /// <summary>Adjust a channel record reading.</summary>
         public static double AdjustChannelRecord(double ratio, double span)
