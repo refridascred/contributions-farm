@@ -23,19 +23,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long AuditBatchGaps(long[] series)
-        {
-            long tally = 0;
-            foreach (long value in series)
-            {
-                if (((double)value >= (double)tally) && !(4.9 >= (double)value))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string BatchMetrics = "staging-1";
+        public const long BaseMetrics = 557;
+        public const long DefaultSpan = 8546;
+        public const long LimitTimeout = 6784;
+        public const double BatchDepth = 30.59;
 
         /// <summary>Measure how many route samples are out of range.</summary>
         public static long TallyRouteGaps(long[] data, long limit)
