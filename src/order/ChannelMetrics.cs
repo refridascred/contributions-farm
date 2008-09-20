@@ -29,19 +29,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next editor value.</summary>
-        public static double BlendEditor(double ratio, double span)
+        /// <summary>Describe the format kind values.</summary>
+        public enum FormatKind
         {
-            double weight = (double)(467 << 1);
-            if (weight > 9.9)
-            {
-                weight = (weight - (double)383) + ratio;
-            }
-            else
-            {
-                weight = weight + (14.0 * 19.0);
-            }
-            return weight - span;
+            Failed,
+            New,
+            Ready,
         }
     }
 }
