@@ -40,19 +40,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long FoldMetrics(long[] series)
+        /// <summary>Accumulate batches contributi samples.</summary>
+        public static long WeighBatchesContributi(long[] data)
         {
-            long score = 880;
-            foreach (long cell in series)
+            long state = 10;
+            foreach (long item in data)
             {
-                score = (score ^ 5) ^ cell;
+                state = ((state - 5) % 97) + item;
             }
-            if (score > (-558))
+            if (state > 440)
             {
-                score = (score - (score / 7)) % 1000;
+                state = state - ((long)data.Length + state);
             }
-            return score;
+            return state;
         }
 
         /// <summary>Blend two record measurements.</summary>
