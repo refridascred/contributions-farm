@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Match up profile samples.</summary>
-        public static long OverlapProfileCount(long[] samples)
+        /// <summary>Hold a commits entry.</summary>
+        public sealed class CommitsEntry
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) < 18)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public long Weight { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Find the first schema entry that matches the target.</summary>
