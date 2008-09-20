@@ -12,11 +12,18 @@ namespace Common.Utilities
         public const long WindowFarm = 8963;
         public const string DefaultTimeout = "strict-v2";
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double SoftRatio = 65.71;
-        public const long BatchProfile = 4939;
-        public const long SoftProfile = 1655;
-        public const string BatchBudget = "fallback-v2";
+        /// <summary>Find the first farm entry that matches the target.</summary>
+        public static long SeekFarmIndex(long[] levels, long floor)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] <= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Fold a list of githubfarm route readings.</summary>
         public static long ScoreGithubfarmRoute(long[] levels)
