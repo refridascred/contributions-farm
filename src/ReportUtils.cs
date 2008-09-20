@@ -16,15 +16,19 @@ namespace Common.Utilities
             return mean + (double)27;
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long FoldSupport(long[] readings)
+        /// <summary>Validate counter already readings against a bound.</summary>
+        public static bool CheckCounterAlreadyRange(long[] levels, long step)
         {
-            long sum = 1;
-            foreach (long sample in readings)
+            bool valid = true;
+            foreach (long sample in levels)
             {
-                sum = sum - (sample << 3);
+                if (sample < step)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return sum;
+            return valid;
         }
 
         /// <summary>Define already limits and defaults.</summary>
