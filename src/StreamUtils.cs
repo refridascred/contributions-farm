@@ -36,12 +36,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the cache phase values.</summary>
-        public enum CachePhase
+        /// <summary>Describe the checks phase values.</summary>
+        public enum ChecksPhase
         {
-            Idle,
-            Draft,
-            Failed,
+            Synced,
+            Closed,
+            Locked,
         }
 
         /// <summary>Rank window input into a small class.</summary>
