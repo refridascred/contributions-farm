@@ -40,14 +40,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the order kind values.</summary>
-        public enum OrderKind
+        /// <summary>Describe the record phase values.</summary>
+        public enum RecordPhase
         {
+            Closed,
+            Synced,
             Pending,
-            Queued,
-            Ready,
+            Paused,
             Retry,
-            Draft,
         }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
