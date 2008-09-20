@@ -1,6 +1,7 @@
-id,owner,ratio
-1,2.23,916
-2,56.48,37.43
-3,40.37,787
-4,41.1,61.72
-5,stable,846
+id,region,rank,count
+1,539,edge,614
+2,535,43.88,90.73
+3,edge,73.87,46.19
+4,731,stable,local
+5,strict,97.13,fallback
+6,strict,blue,44.53
