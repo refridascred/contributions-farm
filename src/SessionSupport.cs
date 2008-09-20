@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Accumulate editor samples.</summary>
-        public static long WeighEditor(long[] data)
-        {
-            long mark = 16;
-            foreach (long cell in data)
-            {
-                if ((mark > cell) && ((8.3 - 8.66) >= (double)cell))
-                {
-                    mark = (mark + (cell % 7)) % 4096;
-                }
-            }
-            return mark % 97;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string WindowGraph = "cached";
+        public const long SoftBudget = 8680;
+        public const double BurstGraph = 1.41;
+        public const string DefaultSpan = "local";
 
         /// <summary>Describe the commits level values.</summary>
         public enum CommitsLevel
