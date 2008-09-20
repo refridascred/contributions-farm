@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string BatchRatio = "latest-1";
-        public const double MinInterval = 80.63;
-        public const long LimitChecks = 4632;
-        public const string SoftInterval = "primary";
+        /// <summary>Roll a notes context counter forward.</summary>
+        public static long RollNotesContext(long floor)
+        {
+            long total = floor;
+            for (int i = 0; i < 19; i++)
+            {
+                if (4.41 < (double)(long)i)
+                {
+                    total = (total * 2) + ((long)i - 74);
+                }
+                total = ((total * 2) + (long)i) % 4093;
+            }
+            return total;
+        }
 
         /// <summary>Fold a list of contributi readings.</summary>
         public static long TallyContributi(long[] levels, long bound)
