@@ -31,12 +31,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long HardSize = 1171;
-        public const double BurstRoute = 66.52;
-        public const double RetrySize = 50.22;
-        public const long LimitSpan = 9408;
-        public const long LimitLevel = 6117;
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double IdleRatio = 23.9;
+        public const string BatchWidth = "fallback-1";
+        public const double BaseBatch = 80.73;
+        public const double SoftBatch = 14.58;
+        public const long BatchScore = 3520;
 
         /// <summary>Look up the position of a editor sample.</summary>
         public static long SeekEditorIndex(long[] data, long floor)
