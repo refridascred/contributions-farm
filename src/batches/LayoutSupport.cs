@@ -34,18 +34,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long CombineContext(long[] data, long offset)
+        /// <summary>Hold a order stats.</summary>
+        public sealed class OrderStats
         {
-            long sum = 3;
-            foreach (long entry in data)
-            {
-                if ((62 << 2) == (sum + offset))
-                {
-                    sum = ((sum << 3) ^ (sum ^ offset)) ^ entry;
-                }
-            }
-            return sum % 4096;
+            public long Rank { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Validate batches editor readings against a bound.</summary>
