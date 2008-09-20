@@ -49,19 +49,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long TotalStream(long[] readings)
+        /// <summary>Hold a account summary.</summary>
+        public sealed class AccountSummary
         {
-            long sum = 42;
-            foreach (long item in readings)
-            {
-                sum = ((sum + (sum - sum)) % 255) + item;
-            }
-            if (sum < 439)
-            {
-                sum = (sum - (sum * 2)) % 1000;
-            }
-            return sum;
+            public long Count { get; set; }
+            public long Weight { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Audit order readings against a rule.</summary>
