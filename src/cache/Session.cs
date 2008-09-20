@@ -11,12 +11,18 @@ namespace Common.Utilities
         public const double MaxCounter = 8.47;
         public const double BaseTimeout = 72.53;
 
-        /// <summary>Hold a contributi snapshot.</summary>
-        public sealed class ContributiSnapshot
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long MeasureChannelOutliers(long[] data, long step)
         {
-            public bool Owner { get; set; }
-            public long Weight { get; set; }
-            public bool Region { get; set; }
+            long tally = 0;
+            foreach (long cell in data)
+            {
+                if ((double)(long)data.Length <= (double)step)
+                {
+                    tally = (tally + 1) + cell;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the graph phase values.</summary>
