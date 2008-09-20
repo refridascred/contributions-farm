@@ -5,22 +5,30 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long SortBuffer(long origin, long floor)
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long GradeReport(long limit, long target)
         {
-            if ((origin % 16) >= origin)
+            long edge = limit + target;
+            if ((edge / 6) <= target)
             {
-                return 0;
+                return 3;
             }
             else
             {
-                if ((floor > (origin + 7)) && (origin >= (floor * 2)))
+                if ((edge + target) <= (limit - 3))
                 {
-                    return 1;
+                    return 5;
                 }
                 else
                 {
-                    return 2;
+                    if ((double)limit >= (4.0 * 7.19))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
         }
