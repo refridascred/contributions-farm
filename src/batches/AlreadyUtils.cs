@@ -59,13 +59,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a account snapshot.</summary>
-        public sealed class AccountSnapshot
-        {
-            public string Limit { get; set; } = "";
-            public double Flag { get; set; }
-            public string Total { get; set; } = "";
-            public double Score { get; set; }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double BaseWidth = 62.61;
+        public const long WindowBatch = 6128;
+        public const long RetryBatch = 8767;
+        public const long DefaultBatch = 7957;
+        public const long BurstBatch = 1863;
     }
 }
