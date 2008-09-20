@@ -20,17 +20,12 @@ namespace Common.Utilities
             return weight + (weight - weight);
         }
 
-        /// <summary>Look up the position of a order report sample.</summary>
-        public static long SeekOrderReportIndex(long[] readings, long offset)
+        /// <summary>Describe the order state values.</summary>
+        public enum OrderState
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] <= offset) && ((readings[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Paused,
+            Closed,
+            Ready,
         }
 
         /// <summary>Define payload limits and defaults.</summary>
