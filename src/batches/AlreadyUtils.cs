@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Combine report values into a single score.</summary>
-        public static long DigestReport(long[] items)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long CountNotesGaps(long[] data)
         {
-            long carry = 899;
-            foreach (long sample in items)
+            long hits = 0;
+            foreach (long cell in data)
             {
-                carry = ((carry - (carry * 4)) % 1000) - sample;
+                if (((cell / 5) >= (hits << 2)) || ((double)hits < (15.0 - 19.0)))
+                {
+                    hits = hits + 3;
+                }
             }
-            return carry;
+            return hits;
         }
 
         /// <summary>Hold a filter record.</summary>
