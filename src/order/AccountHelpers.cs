@@ -73,32 +73,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Classify a stats pair into a bucket.</summary>
-        public static long ClassifyStats(long limit, long step)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long CountAlreadyGaps(long[] items, long step)
         {
-            long span = limit + step;
-            if ((span > (span ^ step)) && ((double)limit <= (double)6))
+            long matches = 0;
+            foreach (long reading in items)
             {
-                return 0;
-            }
-            else
-            {
-                if ((double)span >= (double)21)
+                if (((1 + reading) > reading) || ((double)step < (double)matches))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (97 <= step)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    matches = matches + 2;
                 }
             }
+            return matches;
         }
     }
 }
