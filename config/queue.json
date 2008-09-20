@@ -1,8 +1,12 @@
 {
-  "metric_ratio": [378, 106, 1],
-  "max_capacity": 54.17,
-  "default_limit_pct": "staging",
-  "persist": true,
-  "metrics_ttl": 100,
-  "soft_window_ms": "staging"
+  "soft_threshold_ms": 4630,
+  "warm_threshold": 87,
+  "burst_delay_count": {
+    "token_window": 5154,
+    "batch_threshold_s": "latest",
+    "flush_size_ms": 70.34,
+    "enabled": 96.08,
+    "base_ratio_count": "primary"
+  },
+  "burst_depth_count": 26.32
 }
