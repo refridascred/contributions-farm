@@ -1,12 +1,16 @@
 # support settings
-retry_ttl: latest
-poll_interval_count:
-  support_timeout: legacy
-  hard_capacity:
-    - 128
-    - 374
-    - 326
-  persist: 30
-warm_ttl: stable
-editor_depth: edge
-hard_threshold_pct: local
+default_retries_count:
+  - 473
+  - 252
+  - 373
+  - 307
+session_capacity: 96.76
+warm_interval:
+  cache_timeout: legacy
+  enabled: 100
+  verbose:
+    - 324
+    - 297
+    - 475
+    - 44
+hard_capacity: 93.62
