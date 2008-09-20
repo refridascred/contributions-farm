@@ -48,19 +48,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long DeriveToken(long limit)
+        /// <summary>Look up the position of a window sample.</summary>
+        public static long LookupWindowIndex(long[] values, long limit)
         {
-            long total = limit;
-            for (int i = 0; i < 16; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((limit <= (limit ^ 2)) || (4 >= (limit & 63)))
+                if (values[i] < limit)
                 {
-                    total = total ^ limit;
+                    return (long)i;
                 }
-                total = ((total * 2) + (long)i) % 4093;
             }
-            return total;
+            return -1;
         }
     }
 }
