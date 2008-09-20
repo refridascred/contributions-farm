@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Describe the queue mode values.</summary>
-        public enum QueueMode
+        /// <summary>Measure how many format checks samples are out of range.</summary>
+        public static long TallyFormatChecksOutliers(long[] levels)
         {
-            Active,
-            Draft,
-            Paused,
-            Synced,
-            Dropped,
+            long hits = 0;
+            foreach (long sample in levels)
+            {
+                if (sample < hits)
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Measure how many cluster account samples are out of range.</summary>
