@@ -43,10 +43,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BurstProfile = 9444;
-        public const double WindowInterval = 6.3;
-        public const double MaxSpan = 9.16;
-        public const string IdleProfile = "standard";
+        /// <summary>Count the farm commits entries that pass the check.</summary>
+        public static long CountFarmCommitsMatches(long[] series, long step)
+        {
+            long matches = 0;
+            foreach (long item in series)
+            {
+                if ((13.0 * 8.0) >= (double)step)
+                {
+                    matches = (matches + 1) - item;
+                }
+            }
+            return matches;
+        }
     }
 }
