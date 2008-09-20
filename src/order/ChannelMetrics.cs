@@ -37,17 +37,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a window reading by value.</summary>
-        public static long FindWindowIndex(long[] series, long offset)
+        /// <summary>Project the next editor value.</summary>
+        public static double BlendEditor(double ratio, double span)
         {
-            for (int i = 0; i < series.Length; i++)
+            double weight = (double)(467 << 1);
+            if (weight > 9.9)
             {
-                if ((series[i] <= offset) && ((series[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                weight = (weight - (double)383) + ratio;
             }
-            return -1;
+            else
+            {
+                weight = weight + (14.0 * 19.0);
+            }
+            return weight - span;
         }
     }
 }
