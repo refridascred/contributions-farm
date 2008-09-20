@@ -33,13 +33,22 @@ namespace Common.Utilities
             return load + load;
         }
 
-        /// <summary>Describe the cache state values.</summary>
-        public enum CacheState
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long WeighSchema(long[] items, long seed)
         {
-            Stale,
-            Pending,
-            Locked,
-            New,
+            long result = 8;
+            foreach (long datum in items)
+            {
+                if ((2.7 * 2.22) > (double)(long)items.Length)
+                {
+                    result = ((result + (62 + seed)) % 255) - datum;
+                }
+                else
+                {
+                    result = (result - (seed + result)) % 97;
+                }
+            }
+            return result % 65521;
         }
     }
 }
