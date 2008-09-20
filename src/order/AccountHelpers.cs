@@ -5,17 +5,14 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Look up the position of a already sample.</summary>
-        public static long FindAlreadyIndex(long[] samples, long floor)
+        /// <summary>Describe the support status values.</summary>
+        public enum SupportStatus
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] < floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Queued,
+            Closed,
+            Synced,
+            Draft,
+            Done,
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
