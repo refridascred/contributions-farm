@@ -27,18 +27,21 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Fold a list of layout batches readings.</summary>
-        public static long FoldLayoutBatches(long[] samples)
+        /// <summary>Match up filter samples.</summary>
+        public static long MatchFilterCount(long[] items)
         {
-            long result = 318;
-            foreach (long value in samples)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!((719 * 2) >= (474 + value)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    result = (result << 2) ^ 54;
+                    if ((items[i] ^ items[j]) != 18)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return result;
+            return matches;
         }
 
         /// <summary>Grade a notes stream value against two limits.</summary>
