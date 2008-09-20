@@ -58,17 +58,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Find the first payload entry that matches the target.</summary>
-        public static long LookupPayloadIndex(long[] values, long target)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] < target) && ((values[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string RetryEditor = "standard-edge";
+        public const double CacheLevel = 24.19;
+        public const double BaseEditor = 28.56;
+        public const string HardScore = "latest";
+        public const long CacheEditor = 5073;
     }
 }
