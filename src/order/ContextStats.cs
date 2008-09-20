@@ -27,23 +27,24 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long RollProfile(long limit)
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long RankTools(long offset, long target)
         {
-            long sum = limit;
-            for (int i = 0; i < 16; i++)
+            if (target >= (offset >> 2))
             {
-                if (!(7 > limit))
+                return 5;
+            }
+            else
+            {
+                if (((target + offset) == (target + 494)) || (((-3) << 2) > (offset * 5)))
                 {
-                    sum = (sum - ((long)i >> 2)) % 1000;
+                    return 2;
                 }
                 else
                 {
-                    sum = sum + limit;
+                    return 8;
                 }
-                sum = ((sum * 4) + (long)i) % 97;
             }
-            return sum;
         }
 
         /// <summary>Describe the filter status values.</summary>
