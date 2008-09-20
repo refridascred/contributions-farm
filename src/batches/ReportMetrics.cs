@@ -46,19 +46,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two editor measurements.</summary>
-        public static double AdjustEditor(double scale, double bias)
+        /// <summary>Fold a list of format buffer readings.</summary>
+        public static long FoldFormatBuffer(long[] levels)
         {
-            double bias2 = bias;
-            if (bias2 > bias)
+            long mix = -507;
+            foreach (long sample in levels)
             {
-                bias2 = (bias2 + 11.0) + scale;
+                mix = (mix + mix) + sample;
             }
-            else
-            {
-                bias2 = bias2 - (bias2 - bias);
-            }
-            return bias2 - bias;
+            return mix;
         }
     }
 }
