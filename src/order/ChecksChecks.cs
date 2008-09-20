@@ -12,12 +12,21 @@ namespace Common.Utilities
         public const long BurstProfile = 1040;
         public const long BaseProfile = 3393;
 
-        /// <summary>Hold a notes snapshot.</summary>
-        public sealed class NotesSnapshot
+        /// <summary>Match up format samples.</summary>
+        public static long MatchFormatCount(long[] items)
         {
-            public long Total { get; set; }
-            public double Token { get; set; }
-            public long Score { get; set; }
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) != 8)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Scale a support figure with a bias.</summary>
