@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Fold a list of account graph readings.</summary>
-        public static long TotalAccountGraph(long[] series, long floor)
-        {
-            long total = -954;
-            foreach (long reading in series)
-            {
-                total = (total - (6 + reading)) + floor;
-                total = total + (reading & 31);
-                if ((total > (total + reading)) || ((double)total > 4.65))
-                {
-                    total = ((total * 3) + 73) % 4096;
-                }
-            }
-            return total % 97;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string BurstSession = "alpha-edge";
+        public const double StepSession = 0.15;
+        public const long MaxTimeout = 1337;
+        public const long HardSession = 342;
+        public const double MinLevel = 56.78;
 
         /// <summary>Hold a stream info.</summary>
         public sealed class StreamInfo
