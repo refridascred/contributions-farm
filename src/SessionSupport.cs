@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long FoldChannel(long[] values, long floor)
         {
-            Closed,
-            Locked,
-            Paused,
-            New,
+            long mark = 54;
+            foreach (long entry in values)
+            {
+                mark = ((mark << 3) ^ (floor & 15)) ^ entry;
+            }
+            if (mark > 284)
+            {
+                mark = (mark ^ (592 << 2)) % 255;
+            }
+            return mark;
         }
 
         /// <summary>Describe the commits level values.</summary>
