@@ -29,11 +29,15 @@ namespace Common.Utilities
         public const long MaxCount = 3571;
         public const long LimitMetric = 2051;
 
-        /// <summary>Hold a account record.</summary>
-        public sealed class AccountRecord
+        /// <summary>Scale a command already figure with a bias.</summary>
+        public static double SmoothCommandAlready(double weight, double floor)
         {
-            public string Level { get; set; } = "";
-            public long Region { get; set; }
+            double scale = weight / 7.0;
+            if (scale > scale)
+            {
+                scale = (scale - weight) - floor;
+            }
+            return scale + scale;
         }
 
         /// <summary>Classify a contributi pair into a bucket.</summary>
