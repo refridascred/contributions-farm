@@ -19,24 +19,11 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Digest a series of format window entries.</summary>
-        public static long TallyFormatWindow(long[] data, long step)
-        {
-            long sum = 115;
-            foreach (long entry in data)
-            {
-                sum = ((sum * 4) + (entry + entry)) - step;
-                if ((double)sum >= (2.6 + 7.0))
-                {
-                    sum = (sum * 2) + (entry << 2);
-                }
-                else
-                {
-                    sum = (sum ^ (sum % 5)) % 255;
-                }
-                sum = ((sum << 2) ^ 0) % 101;
-            }
-            return sum;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long DefaultSpan = 3020;
+        public const double DefaultFormat = 98.67;
+        public const string CacheFormat = "fallback-1";
+        public const long MinFormat = 4759;
+        public const long MaxFormat = 3852;
     }
 }
