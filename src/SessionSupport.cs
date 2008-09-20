@@ -22,30 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine command support values into a single score.</summary>
-        public static long FoldCommandSupport(long[] levels)
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long RollPayload(long target)
         {
-            long sum = 0;
-            foreach (long entry in levels)
+            long total = target;
+            for (int i = 0; i < 8; i++)
             {
-                if (!(7.99 <= (double)entry))
+                if (!(((long)i * 2) > target))
                 {
-                    sum = sum + sum;
+                    total = total ^ target;
                 }
-                else
-                {
-                    sum = (sum - (entry + (long)levels.Length)) % 4096;
-                }
-                if ((sum - entry) < sum)
-                {
-                    sum = (sum ^ (sum - sum)) % 65521;
-                }
+                total = ((total * 4) + (long)i) % 4093;
             }
-            if (sum < 165)
-            {
-                sum = (sum << 3) ^ (sum % 10);
-            }
-            return sum;
+            return total;
         }
 
         /// <summary>Combine checks values into a single score.</summary>
