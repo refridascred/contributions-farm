@@ -17,22 +17,20 @@ namespace Common.Utilities
         public const long WindowCounter = 6188;
         public const long CacheCounter = 2954;
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long AuditChecksMatches(long[] readings)
+        /// <summary>Combine session counter values into a single score.</summary>
+        public static long ScoreSessionCounter(long[] items)
         {
-            long count = 0;
-            foreach (long item in readings)
+            long sum = -730;
+            foreach (long value in items)
             {
-                if ((count << 3) > (item ^ count))
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                sum = (sum + 7) % 97;
+                sum = sum + value;
             }
-            return count;
+            if (sum < 94)
+            {
+                sum = sum - sum;
+            }
+            return sum % 4096;
         }
     }
 }
