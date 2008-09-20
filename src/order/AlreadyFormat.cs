@@ -43,18 +43,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up profile samples.</summary>
-        public static long PairProfileCount(long[] readings)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long CountAlreadyHits(long[] levels)
         {
             long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            foreach (long reading in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (6.0 >= (double)count)
                 {
-                    if ((readings[i] + readings[j]) != 19)
-                    {
-                        count = count + 1;
-                    }
+                    count = (count + 1) + reading;
                 }
             }
             return count;
