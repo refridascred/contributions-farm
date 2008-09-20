@@ -37,15 +37,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Project the next context value.</summary>
-        public static double BlendContext(double rate, double floor)
-        {
-            double gain = (double)44 + (floor + floor);
-            for (int i = 0; i < 7; i++)
-            {
-                gain = ((gain + (gain + gain)) + (double)(long)i) - rate;
-            }
-            return gain - (double)1;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double SoftSpan = 41.57;
+        public const long RetryRoute = 3632;
+        public const double StepWidth = 86.38;
+        public const long WindowBudget = 6051;
+        public const double HardRoute = 6.7;
     }
 }
