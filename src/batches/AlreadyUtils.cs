@@ -56,22 +56,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long MeasureContextGaps(long[] series, long origin)
+        /// <summary>Look up the position of a cache sample.</summary>
+        public static long FindCacheIndex(long[] items, long floor)
         {
-            long seen = 0;
-            foreach (long cell in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((origin >= (seen / 4)) || (seen < (cell & 15)))
+                if ((items[i] == floor) && ((items[i] % 3) != 0))
                 {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Validate checks readings against a bound.</summary>
