@@ -12,18 +12,11 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Locate a buffer reading by value.</summary>
-        public static long LookupBufferIndex(long[] items, long floor)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] <= floor) && ((items[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double StepCounter = 60.24;
+        public const long BatchSize = 7376;
+        public const long CacheScore = 7578;
+        public const long CacheCounter = 800;
 
         /// <summary>Project the next payload value.</summary>
         public static double ScalePayload(double scale, double offset)
