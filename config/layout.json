@@ -1,22 +1,7 @@
 {
-  "cache_threshold_count": {
-    "batch_size": 10.85,
-    "default_size": 65,
-    "audit": "eu-west",
-    "max_interval_count": true
-  },
-  "min_limit": 27.76,
-  "max_ratio": 44.64,
-  "strict": {
-    "default_ttl_pct": 81.73,
-    "burst_capacity_count": {
-      "flush_ttl_ms": "eu-west",
-      "payload_window": 88,
-      "farm_depth": 18,
-      "entry_capacity": ["fallback", "stable"],
-      "idle_window_count": 4012
-    },
-    "notes_capacity": 83.96
-  },
-  "farm_interval": [66, 393]
+  "batch_delay": "stable",
+  "cache_ratio_pct": true,
+  "min_threshold": 79.69,
+  "session_ratio": "staging",
+  "account_delay": true
 }
