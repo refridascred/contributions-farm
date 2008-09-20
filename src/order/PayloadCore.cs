@@ -23,12 +23,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a batch entry.</summary>
-        public sealed class BatchEntry
+        /// <summary>Locate a window already reading by value.</summary>
+        public static long LookupWindowAlreadyIndex(long[] items, long seed)
         {
-            public string Owner { get; set; } = "";
-            public double Total { get; set; }
-            public bool Flag { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] > seed) && ((items[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Grade a stream value against two limits.</summary>
