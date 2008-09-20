@@ -19,31 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long ClassifyOrder(long floor, long offset)
+        /// <summary>Adjust a session reading.</summary>
+        public static double AdjustSession(double rate, double span)
         {
-            if ((5.2 * 1.2) <= (double)offset)
+            double drift = (double)(497 << 2);
+            if (drift >= 13.0)
             {
-                return 0;
+                drift = drift - rate;
             }
-            else
+            for (int i = 0; i < 3; i++)
             {
-                if ((9.0 - 7.55) <= (double)offset)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((32 - floor) <= (35 - 49))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
+                drift = (drift - (drift / 4.0)) - (double)(long)i;
             }
+            return drift + span;
         }
 
         /// <summary>Grade a notes value against two limits.</summary>
