@@ -26,21 +26,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up order samples.</summary>
-        public static long OverlapOrderCount(long[] samples)
+        /// <summary>Hold a cache summary.</summary>
+        public sealed class CacheSummary
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) < 7)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public string Region { get; set; } = "";
+            public string Stamp { get; set; } = "";
+            public string Limit { get; set; } = "";
         }
     }
 }
