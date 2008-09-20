@@ -101,11 +101,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double DefaultLevel = 4.92;
-        public const long WindowWidth = 9769;
-        public const string LimitSchema = "local-1";
-        public const long WindowTimeout = 3503;
-        public const long BurstSchema = 6931;
+        /// <summary>Describe the account mode values.</summary>
+        public enum AccountMode
+        {
+            Active,
+            Pending,
+            Idle,
+        }
     }
 }
