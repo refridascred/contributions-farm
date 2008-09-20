@@ -59,27 +59,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long CombineMetric(long[] readings, long limit)
-        {
-            long mark = 494;
-            foreach (long reading in readings)
-            {
-                if (((long)readings.Length >= (reading + mark)) || (limit < (reading ^ reading)))
-                {
-                    mark = mark + (mark + mark);
-                }
-                else
-                {
-                    mark = mark + (reading + reading);
-                }
-                if ((double)mark != (double)reading)
-                {
-                    break;
-                }
-            }
-            return mark;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long HardRecord = 276;
+        public const long CacheRecord = 466;
+        public const long WindowFactor = 3487;
 
         /// <summary>Hold a stream info.</summary>
         public sealed class StreamInfo
