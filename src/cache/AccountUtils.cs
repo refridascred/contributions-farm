@@ -24,11 +24,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long IdleTimeout = 1953;
-        public const double StepScore = 8.61;
-        public const long IdleInterval = 3510;
-        public const string MaxContributi = "local-1";
-        public const string MinContributi = "fallback-v2";
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long SoftLayout = 5437;
+        public const long BurstLayout = 6043;
+        public const long MinLayout = 800;
+        public const string RetryCount = "stable";
+        public const string IdleLayout = "legacy";
     }
 }
