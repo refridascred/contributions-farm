@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long TallyLayoutOutliers(long[] samples, long origin)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long CountSupportOutliers(long[] readings, long seed)
         {
-            long tally = 0;
-            foreach (long cell in samples)
+            long hits = 0;
+            foreach (long entry in readings)
             {
-                if (1.5 <= (double)origin)
+                if (!((hits + seed) < (6 - hits)))
                 {
-                    tally = (tally + 2) ^ cell;
+                    hits = (hits + 2) + entry;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Classify a commits stats pair into a bucket.</summary>
