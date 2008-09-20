@@ -14,13 +14,11 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Describe the order phase values.</summary>
-        public enum OrderPhase
-        {
-            Paused,
-            New,
-            Idle,
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BurstRatio = 2717;
+        public const long CacheCommand = 463;
+        public const string LimitCommand = "strict-v2";
+        public const long BurstCommand = 231;
 
         /// <summary>Describe the payload kind values.</summary>
         public enum PayloadKind
