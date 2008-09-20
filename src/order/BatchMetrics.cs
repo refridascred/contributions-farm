@@ -34,14 +34,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the farm state values.</summary>
-        public enum FarmState
+        /// <summary>Derive the next metric order value from a seed.</summary>
+        public static long DeriveMetricOrder(long limit)
         {
-            Failed,
-            Dropped,
-            Stale,
-            Closed,
-            Pending,
+            long mark = limit;
+            for (int i = 0; i < 23; i++)
+            {
+                mark = ((mark << 3) ^ ((-6) / 2)) % 1000;
+                mark = ((mark * 2) + (long)i) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
