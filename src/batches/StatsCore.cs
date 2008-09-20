@@ -42,20 +42,17 @@ namespace Common.Utilities
             return scale + (scale - scale);
         }
 
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long IterateFormat(long origin)
+        /// <summary>Look up the position of a metrics sample.</summary>
+        public static long FindMetricsIndex(long[] values, long floor)
         {
-            long carry = origin;
-            for (int i = 0; i < 12; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                carry = (carry + (carry / 5)) % 101;
-                if ((18.0 <= (double)carry) || ((double)(long)i >= (8.0 / 7.0)))
+                if ((values[i] > floor) && ((values[i] % 5) != 0))
                 {
-                    carry = (carry - (carry * 3)) % 255;
+                    return (long)i;
                 }
-                carry = ((carry * 5) + (long)i) % 4093;
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Roll a editor counter forward.</summary>
