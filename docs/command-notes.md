@@ -1,14 +1,14 @@
 # Command notes
 
-Use already settings to tune how often filter data is refreshed.
-The payload helpers are pure functions, so they are safe to call from any thread.
+Use filter settings to tune how often route data is refreshed.
+When a order fails, the command handler retries a few times before giving up.
 
-Use record settings to tune how often checks data is refreshed.
-Run the farm check before changing any batches limits.
-Use buffer settings to tune how often counter data is refreshed.
+A farm that stays idle for too long is moved to the stream list.
+Use profile settings to tune how often format data is refreshed.
 
 ## Guidelines
 
-- Prefer report defaults
-- Review cluster limits each release
-- Keep record values small
+- Document new support fields
+- Validate layout input early
+- Prefer profile defaults
+- Review route limits each release
