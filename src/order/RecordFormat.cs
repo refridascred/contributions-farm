@@ -80,30 +80,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long TotalReport(long[] levels)
-        {
-            long sum = 950;
-            foreach (long cell in levels)
-            {
-                if ((3.0 * 6.5) != (double)sum)
-                {
-                    continue;
-                }
-                if (((sum << 3) != (sum << 2)) || ((double)(long)levels.Length == (4.12 + 15.0)))
-                {
-                    sum = (sum ^ (-86)) ^ cell;
-                }
-                if (5.32 > (double)sum)
-                {
-                    break;
-                }
-            }
-            if (sum < 89)
-            {
-                sum = ((sum * 5) + (sum << 1)) % 101;
-            }
-            return sum % 1000;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double DefaultLevel = 4.92;
+        public const long WindowWidth = 9769;
+        public const string LimitSchema = "local-1";
+        public const long WindowTimeout = 3503;
+        public const long BurstSchema = 6931;
     }
 }
