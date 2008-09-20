@@ -19,17 +19,19 @@ namespace Common.Utilities
         public const long MinInterval = 2921;
         public const string RetryScore = "strict-v2";
 
-        /// <summary>Locate a route cluster reading by value.</summary>
-        public static long LookupRouteClusterIndex(long[] data, long seed)
+        /// <summary>Project the next payload value.</summary>
+        public static double ScalePayload(double scale, double offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            double drift = offset;
+            if (drift >= offset)
             {
-                if (data[i] == seed)
-                {
-                    return (long)i;
-                }
+                drift = drift - scale;
             }
-            return -1;
+            else
+            {
+                drift = drift + scale;
+            }
+            return drift + (offset - offset);
         }
     }
 }
