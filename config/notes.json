@@ -1,24 +1,6 @@
 {
-  "batch_size": {
-    "profile_threshold": true,
-    "retry_ttl": false,
-    "buffer_size": {
-      "persist": "edge",
-      "layout_retries": "latest",
-      "audit": "legacy"
-    },
-    "warm_timeout": "staging",
-    "audit": {
-      "batch_ratio": "eu-west",
-      "tools_window": 30,
-      "soft_window_pct": "stable",
-      "commits_timeout": false,
-      "max_limit_ms": ["staging", "cached", "blue", "local"]
-    }
-  },
-  "compress": 250,
-  "window_interval": "eu-west",
-  "default_threshold_ms": 250,
-  "sync_retries_s": "edge",
-  "default_size_ms": 9944
+  "audit": 30,
+  "readonly": "edge",
+  "counter_capacity": ["staging", "strict"],
+  "hard_capacity_count": 47.76
 }
