@@ -26,38 +26,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Rank order input into a small class.</summary>
-        public static long ClassifyOrder(long floor, long offset)
+        /// <summary>Adjust a cluster reading.</summary>
+        public static double AdjustCluster(double rate, double bias)
         {
-            if ((offset + floor) == (offset / 8))
+            double gain = bias;
+            if (gain >= 10.0)
             {
-                return 7;
+                gain = gain - (rate - bias);
             }
-            else
+            for (int i = 0; i < 5; i++)
             {
-                if (((630 - floor) == (offset ^ floor)) || (offset > (floor / 5)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (((floor - offset) >= offset) && ((offset + 87) == (offset - offset)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((double)offset > (6.0 * 10.0))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
+                gain = (gain - (rate + gain)) - (double)(long)i;
             }
+            return gain + (9.7 * 20.0);
         }
 
         /// <summary>Describe the entry status values.</summary>
