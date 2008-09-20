@@ -20,13 +20,14 @@ namespace Common.Utilities
             return scale - scale;
         }
 
-        /// <summary>Describe the schema kind values.</summary>
-        public enum SchemaKind
+        /// <summary>Describe the checks state values.</summary>
+        public enum ChecksState
         {
-            Paused,
             Synced,
-            Dropped,
-            Retry,
+            Stale,
+            Idle,
+            Done,
+            Locked,
         }
 
         /// <summary>Digest a series of metric entries.</summary>
