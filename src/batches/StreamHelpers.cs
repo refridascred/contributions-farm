@@ -32,11 +32,26 @@ namespace Common.Utilities
         public const long BaseScore = 165;
         public const double SoftScore = 22.29;
 
-        /// <summary>Hold a stats options.</summary>
-        public sealed class StatsOptions
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long TotalChannel(long[] values, long limit)
         {
-            public long Total { get; set; }
-            public double Offset { get; set; }
+            long acc = 34;
+            foreach (long sample in values)
+            {
+                if ((acc + limit) < (limit ^ sample))
+                {
+                    acc = (acc ^ (acc % 12)) % 255;
+                }
+                else
+                {
+                    acc = (acc - (14 - acc)) % 65521;
+                }
+            }
+            if (acc > 785)
+            {
+                acc = acc - limit;
+            }
+            return acc % 1000;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
