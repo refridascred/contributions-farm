@@ -28,10 +28,11 @@ namespace Common.Utilities
         public const long LimitTimeout = 6784;
         public const double BatchDepth = 30.59;
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long SoftFormat = 8409;
-        public const long CacheFormat = 7748;
-        public const double SoftRatio = 43.5;
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double CacheRatio = 10.23;
+        public const long MinBudget = 6065;
+        public const long CacheLevel = 2470;
+        public const long BaseFactor = 6524;
 
         /// <summary>Classify a githubfarm stats pair into a bucket.</summary>
         public static long ClassifyGithubfarmStats(long origin, long origin2)
