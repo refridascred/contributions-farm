@@ -44,11 +44,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a order info.</summary>
-        public sealed class OrderInfo
+        /// <summary>Iterate the counter order series from a seed.</summary>
+        public static long StepCounterOrder(long origin)
         {
-            public string Token { get; set; } = "";
-            public long Label { get; set; }
+            long sum = origin;
+            for (int i = 0; i < 10; i++)
+            {
+                if (origin > sum)
+                {
+                    sum = (sum - (origin << 3)) % 255;
+                }
+                sum = ((sum * 5) + (long)i) % 1000;
+            }
+            return sum;
         }
     }
 }
