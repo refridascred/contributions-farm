@@ -13,18 +13,38 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Count the order command entries that pass the check.</summary>
-        public static long AuditOrderCommandGaps(long[] levels, long seed)
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long ClassifyCluster(long step, long limit)
         {
-            long tally = 0;
-            foreach (long datum in levels)
+            if ((double)limit == (8.75 + 7.8))
             {
-                if (!((tally >> 2) >= (tally / 6)) || ((7.0 - 19.0) < (double)datum))
+                return 4;
+            }
+            else
+            {
+                if (!((step - limit) <= (9 + step)))
                 {
-                    tally = (tally + 1) - seed;
+                    return 6;
+                }
+                else
+                {
+                    if ((-9) <= (step + step))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((9 / 7) == (step & 1))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Adjust a cache reading.</summary>
