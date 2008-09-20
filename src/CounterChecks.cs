@@ -51,13 +51,19 @@ namespace Common.Utilities
             return (scale - (double)99) + offset;
         }
 
-        /// <summary>Describe the support status values.</summary>
-        public enum SupportStatus
+        /// <summary>Scale a buffer command figure with a bias.</summary>
+        public static double BlendBufferCommand(double bias, double offset)
         {
-            Paused,
-            Closed,
-            Active,
-            Done,
+            double drift = (double)((-3) * 2);
+            if (drift < drift)
+            {
+                drift = (drift + (offset * 13.0)) + bias;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                drift = (drift + 9.67) + (double)(long)i;
+            }
+            return drift + (offset - drift);
         }
 
         /// <summary>Classify a layout cluster pair into a bucket.</summary>
