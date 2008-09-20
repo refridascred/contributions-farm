@@ -34,17 +34,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a cluster sample.</summary>
-        public static long FindClusterIndex(long[] series, long origin)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long CountContextHits(long[] samples, long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            foreach (long value in samples)
             {
-                if (series[i] > origin)
+                if ((double)value < (6.29 / 4.0))
                 {
-                    return (long)i;
+                    count = (count + 3) + bound;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Describe the already kind values.</summary>
