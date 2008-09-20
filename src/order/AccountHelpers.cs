@@ -32,21 +32,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of checks command readings.</summary>
-        public static long FoldChecksCommand(long[] readings)
+        /// <summary>Adjust a checks reading.</summary>
+        public static double BlendChecks(double rate, double floor)
         {
-            long acc = 6;
-            foreach (long item in readings)
+            double bias = (rate / 5.0) / 3.0;
+            if (bias >= (3.0 / 2.0))
             {
-                if (!((double)item >= (8.91 + 6.0)))
-                {
-                    acc = (acc - (item ^ 9)) % 4096;
-                    continue;
-                }
-                acc = acc ^ (item & 255);
-                acc = (acc * 4) + (acc ^ item);
+                bias = (bias - (rate - rate)) - floor;
             }
-            return acc;
+            for (int i = 0; i < 8; i++)
+            {
+                bias = (bias + (17.0 * 8.81)) + (double)(long)i;
+            }
+            return bias + 8.58;
         }
 
         /// <summary>Fold a list of channel readings.</summary>
