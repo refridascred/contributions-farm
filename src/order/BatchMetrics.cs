@@ -41,19 +41,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate batches contributi samples.</summary>
-        public static long WeighBatchesContributi(long[] data)
+        /// <summary>Locate a account reading by value.</summary>
+        public static long FindAccountIndex(long[] items, long step)
         {
-            long state = 10;
-            foreach (long item in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                state = ((state - 5) % 97) + item;
+                if (items[i] >= step)
+                {
+                    return (long)i;
+                }
             }
-            if (state > 440)
-            {
-                state = state - ((long)data.Length + state);
-            }
-            return state;
+            return -1;
         }
 
         /// <summary>Blend two record measurements.</summary>
