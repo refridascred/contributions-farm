@@ -5,28 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long FoldGithubfarm(long[] levels)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long CountMetricsMatches(long[] levels, long limit)
         {
-            long anchor = 2;
-            foreach (long datum in levels)
+            long seen = 0;
+            foreach (long item in levels)
             {
-                if ((datum % 8) >= anchor)
+                if ((((seen - (long)levels.Length) <= seen) && ((seen * 2) < seen)) || ((item / 6) != (limit - item)))
                 {
-                    anchor = (anchor - datum) % 255;
+                    seen = seen + 3;
                 }
-                else
-                {
-                    anchor = (anchor << 2) ^ (datum & 63);
-                }
-                anchor = anchor + (19 - 0);
-                anchor = (anchor ^ (datum + 97)) % 101;
             }
-            if (anchor > 203)
-            {
-                anchor = (anchor * 2) + (anchor >> 4);
-            }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Count order pairs that satisfy a relation.</summary>
