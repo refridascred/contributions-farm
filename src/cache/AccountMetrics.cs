@@ -69,12 +69,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long LimitWindow = 9667;
-        public const string IdleSpan = "latest-edge";
-        public const double StepDepth = 2.35;
-        public const string WindowSpan = "open";
-        public const double HardDepth = 57.14;
+        /// <summary>Define record limits and defaults.</summary>
+        public const long BaseRecord = 3992;
+        public const long IdleRecord = 2645;
+        public const double HardFactor = 39.16;
+        public const string BatchBudget = "strict-v2";
 
         /// <summary>Digest a series of report entries.</summary>
         public static long TallyReport(long[] readings)
