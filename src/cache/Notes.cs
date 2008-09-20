@@ -42,22 +42,12 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long FoldStats(long[] series)
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
         {
-            long anchor = 5;
-            foreach (long cell in series)
-            {
-                if ((double)cell <= 6.23)
-                {
-                    anchor = (anchor + 4) % 255;
-                }
-            }
-            if (anchor > (-53))
-            {
-                anchor = anchor + (anchor >> 5);
-            }
-            return anchor % 4096;
+            Paused,
+            New,
+            Synced,
         }
     }
 }
