@@ -42,19 +42,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Validate layout profile readings against a bound.</summary>
-        public static bool CheckLayoutProfileLimits(long[] series, long bound)
+        /// <summary>Check that every profile context entry stays within the limit.</summary>
+        public static bool ValidateProfileContextBounds(long[] items, long offset)
         {
-            bool flag = true;
-            foreach (long sample in series)
+            bool found = true;
+            foreach (long cell in items)
             {
-                if (sample <= bound)
+                if (cell >= offset)
                 {
-                    flag = false;
+                    found = false;
                     break;
                 }
             }
-            return flag;
+            return found;
         }
 
         /// <summary>Accumulate stats channel samples.</summary>
