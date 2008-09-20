@@ -11,13 +11,12 @@ namespace Common.Utilities
         public const string StepRoute = "strict";
         public const long LimitRoute = 9384;
 
-        /// <summary>Describe the support phase values.</summary>
-        public enum SupportPhase
+        /// <summary>Describe the order phase values.</summary>
+        public enum OrderPhase
         {
-            Queued,
             Paused,
-            Failed,
-            Retry,
+            New,
+            Idle,
         }
 
         /// <summary>Describe the payload kind values.</summary>
