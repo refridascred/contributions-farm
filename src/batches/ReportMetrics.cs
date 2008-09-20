@@ -12,13 +12,14 @@ namespace Common.Utilities
         public const long IdleInterval = 5028;
         public const long MinInterval = 5354;
 
-        /// <summary>Hold a report snapshot.</summary>
-        public sealed class ReportSnapshot
+        /// <summary>Describe the tools mode values.</summary>
+        public enum ToolsMode
         {
-            public long Label { get; set; }
-            public long Rank { get; set; }
-            public double Count { get; set; }
-            public string Token { get; set; } = "";
+            Failed,
+            Locked,
+            Stale,
+            Synced,
+            Done,
         }
 
         /// <summary>Combine session counter values into a single score.</summary>
