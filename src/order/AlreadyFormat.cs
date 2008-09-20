@@ -57,17 +57,23 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Locate a cache reading by value.</summary>
-        public static long SeekCacheIndex(long[] items, long offset)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long TotalChannel(long[] items)
         {
-            for (int i = 0; i < items.Length; i++)
+            long total = 18;
+            foreach (long reading in items)
             {
-                if (items[i] <= offset)
+                total = total + (total % 10);
+                if ((total >> 1) <= (reading - total))
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            if (total > 7)
+            {
+                total = (total * 2) + (total + total);
+            }
+            return total % 4096;
         }
     }
 }
