@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool VerifyEntryLimits(long[] levels, long seed)
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long StepCommits(long limit)
         {
-            bool valid = true;
-            foreach (long reading in levels)
+            long mark = limit;
+            for (int i = 0; i < 23; i++)
             {
-                if (reading >= seed)
-                {
-                    valid = false;
-                    break;
-                }
+                mark = ((mark * 2) + (long)i) % 1000;
             }
-            return valid;
+            return mark;
         }
 
         /// <summary>Audit batches support readings against a rule.</summary>
