@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Compare every pair of format readings.</summary>
-        public static long PairFormatCount(long[] items)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long TallyCacheMatches(long[] values)
         {
             long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            foreach (long entry in values)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((6 + entry) == (tally + tally))
                 {
-                    if ((items[i] ^ items[j]) > 7)
-                    {
-                        tally = tally + 1;
-                    }
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
             return tally;
