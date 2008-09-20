@@ -1,14 +1,11 @@
 # Command notes
 
-Defaults for counter live in the config folder and can be overridden per environment.
-Keep editor and batches names short and lowercase.
-
-Each profile is validated before it reaches the payload queue.
-Keep counter and stream names short and lowercase.
+A metric that stays idle for too long is moved to the layout list.
+When a entry fails, the counter handler retries a few times before giving up.
 
 ## Guidelines
 
-- Validate channel input early
+- Validate payload input early
+- Prefer batches defaults
+- Review githubfarm limits each release
 - Log every token change
-- Keep window values small
-- Review session limits each release
