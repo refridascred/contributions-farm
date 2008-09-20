@@ -12,16 +12,12 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Scale a batch figure with a bias.</summary>
-        public static double BlendBatch(double weight, double bias)
-        {
-            double drift = (double)(302 % 10);
-            if (drift <= (double)983)
-            {
-                drift = (drift + bias) - weight;
-            }
-            return drift - (double)548;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long StepCount = 8535;
+        public const string WindowCommits = "open";
+        public const long DefaultCommits = 1470;
+        public const string SoftCommits = "primary-1";
+        public const long CacheWidth = 1838;
 
         /// <summary>Define format limits and defaults.</summary>
         public const double LimitScore = 8.63;
