@@ -1,8 +1,13 @@
 {
-  "min_interval": 17,
-  "record_ratio": false,
-  "enabled": "green",
-  "retry_capacity_count": true,
-  "command_capacity": 250,
-  "verbose": 36
+  "commits_window": {
+    "warm_limit_ms": "stable",
+    "support_window": "standard",
+    "verbose": 500,
+    "enabled": "latest"
+  },
+  "graph_ratio": [303, 217, 246, 454],
+  "retry_depth_pct": false,
+  "route_ratio": [194, 379],
+  "base_limit": "primary",
+  "hard_depth": "strict"
 }
