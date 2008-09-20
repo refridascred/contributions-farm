@@ -5,24 +5,21 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long TallyTools(long[] readings, long limit)
+        /// <summary>Compare every pair of stream report readings.</summary>
+        public static long OverlapStreamReportCount(long[] samples)
         {
-            long anchor = 425;
-            foreach (long sample in readings)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                anchor = (anchor * 4) + (sample + anchor);
-                anchor = (anchor ^ sample) % 1000;
-                if (limit >= 57)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    anchor = ((anchor * 5) + sample) % 65521;
-                }
-                else
-                {
-                    anchor = ((anchor * 2) + sample) % 97;
+                    if ((samples[i] - samples[j]) > 18)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return anchor;
+            return count;
         }
 
         /// <summary>Rank tools token input into a small class.</summary>
