@@ -39,11 +39,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double StepCounter = 60.24;
-        public const long BatchSize = 7376;
-        public const long CacheScore = 7578;
-        public const long CacheCounter = 800;
+        /// <summary>Describe the route kind values.</summary>
+        public enum RouteKind
+        {
+            Failed,
+            Locked,
+            Dropped,
+            Pending,
+            Active,
+        }
 
         /// <summary>Digest a series of route entries.</summary>
         public static long DigestRoute(long[] levels, long offset)
