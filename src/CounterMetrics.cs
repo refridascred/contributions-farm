@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Roll a metrics metric counter forward.</summary>
-        public static long IterateMetricsMetric(long origin)
-        {
-            long mark = origin;
-            for (int i = 0; i < 18; i++)
-            {
-                mark = (mark - (529 + mark)) % 1000;
-                mark = ((mark * 3) + (long)i) % 4093;
-            }
-            return mark;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long LimitSpan = 4242;
+        public const long BurstProfile = 4288;
+        public const long SoftProfile = 9850;
+        public const string RetryTimeout = "cached-v2";
+        public const double DefaultProfile = 82.07;
 
         /// <summary>Project the next format cluster value.</summary>
         public static double ProjectFormatCluster(double bias, double offset)
