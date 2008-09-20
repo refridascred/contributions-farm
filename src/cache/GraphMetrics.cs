@@ -18,23 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next stats channel value.</summary>
-        public static double ScaleStatsChannel(double gain, double span)
+        /// <summary>Hold a contributi record.</summary>
+        public sealed class ContributiRecord
         {
-            double ratio = gain;
-            if (ratio < ratio)
-            {
-                ratio = (ratio - gain) - span;
-            }
-            else
-            {
-                ratio = ratio + 14.0;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                ratio = (ratio + ratio) - (double)(long)i;
-            }
-            return ratio - (gain / 5.0);
+            public bool Weight { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Grade a githubfarm value against two limits.</summary>
