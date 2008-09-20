@@ -35,13 +35,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the cache state values.</summary>
-        public enum CacheState
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long AuditSupportMatches(long[] values, long limit)
         {
-            Active,
-            Dropped,
-            Ready,
-            Done,
+            long seen = 0;
+            foreach (long reading in values)
+            {
+                if ((392 - limit) > (seen + reading))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
     }
 }
