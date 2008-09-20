@@ -1,8 +1,8 @@
-id,state,owner
-1,998,green
-2,44.15,green
-3,strict,122
-4,1.41,802
-5,40.09,legacy
-6,28.4,4.26
-7,green,61.52
+id,level,owner
+1,200,56.33
+2,766,356
+3,17.65,latest
+4,913,90
+5,52.52,288
+6,43.73,edge
+7,686,legacy
