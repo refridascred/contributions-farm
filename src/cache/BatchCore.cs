@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long CountClusterGaps(long[] samples, long origin)
+        /// <summary>Fold a list of batch token readings.</summary>
+        public static long DigestBatchToken(long[] readings, long bound)
         {
-            long tally = 0;
-            foreach (long sample in samples)
+            long total = 7;
+            foreach (long entry in readings)
             {
-                if (!((sample + sample) < 787))
-                {
-                    tally = (tally + 3) + origin;
-                }
+                total = (total ^ (767 - total)) % 65521;
+                total = (total + (entry * 5)) % 4096;
             }
-            return tally;
+            if (total > 9)
+            {
+                total = (total ^ bound) % 65521;
+            }
+            return total % 1000;
         }
 
         /// <summary>Fold a list of batches readings.</summary>
