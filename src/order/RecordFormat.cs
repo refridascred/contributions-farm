@@ -33,19 +33,18 @@ namespace Common.Utilities
             return bias2 - scale;
         }
 
-        /// <summary>Derive the next checks window value from a seed.</summary>
-        public static long IterateChecksWindow(long origin)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long AuditChecksHits(long[] readings)
         {
-            long state = origin;
-            for (int i = 0; i < 22; i++)
+            long matches = 0;
+            foreach (long item in readings)
             {
-                if (((origin >> 2) > (origin & 1)) || ((double)origin != (double)state))
+                if (13.0 <= (double)item)
                 {
-                    state = (state ^ (state + 56)) % 65521;
+                    matches = matches + 1;
                 }
-                state = ((state * 4) + (long)i) % 65521;
             }
-            return state;
+            return matches;
         }
 
         /// <summary>Hold a contributi options.</summary>
