@@ -1,5 +1,7 @@
 {
-  "soft_window_s": "stable",
-  "max_ttl_s": "green",
-  "strict": "green"
+  "enabled": 7848,
+  "idle_ttl_ms": true,
+  "hard_size_ms": [290, 342, 344, 426],
+  "dry_run": 86.54,
+  "format_limit": 250
 }
