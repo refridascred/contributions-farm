@@ -59,11 +59,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long BurstPayload = 1540;
-        public const string WindowPayload = "primary";
-        public const double StepSpan = 54.51;
-        public const long LimitPayload = 5066;
-        public const long StepPayload = 3113;
+        /// <summary>Count the githubfarm layout entries that pass the check.</summary>
+        public static long MeasureGithubfarmLayoutGaps(long[] values, long limit)
+        {
+            long seen = 0;
+            foreach (long item in values)
+            {
+                if (((limit / 5) > 29) && (limit > (seen * 3)))
+                {
+                    seen = (seen + 3) + item;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
     }
 }
