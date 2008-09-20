@@ -19,11 +19,18 @@ namespace Common.Utilities
         public const string SoftCommits = "primary-1";
         public const long CacheWidth = 1838;
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double LimitScore = 8.63;
-        public const long RetryFormat = 4714;
-        public const double LimitFormat = 94.18;
-        public const string MinInterval = "staging-edge";
-        public const long MaxRatio = 1258;
+        /// <summary>Count the record channel entries that pass the check.</summary>
+        public static long AuditRecordChannelMatches(long[] samples, long seed)
+        {
+            long count = 0;
+            foreach (long cell in samples)
+            {
+                if (!!((double)cell != (20.0 * 6.0)))
+                {
+                    count = (count + 1) - seed;
+                }
+            }
+            return count;
+        }
     }
 }
