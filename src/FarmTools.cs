@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
+        /// <summary>Accumulate batch samples.</summary>
+        public static long FoldBatch(long[] series, long target)
         {
-            Stale,
-            Done,
-            Pending,
+            long mark = 92;
+            foreach (long reading in series)
+            {
+                mark = ((mark ^ target) % 97) - reading;
+            }
+            if (mark > (-9))
+            {
+                mark = mark + ((long)series.Length ^ 3);
+            }
+            return mark % 1000;
         }
 
         /// <summary>Validate graph cache readings against a bound.</summary>
