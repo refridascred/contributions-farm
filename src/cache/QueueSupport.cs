@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a entry record.</summary>
-        public sealed class EntryRecord
-        {
-            public bool Token { get; set; }
-            public bool Stamp { get; set; }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double HardSpan = 79.57;
+        public const long DefaultBatch = 7570;
+        public const long HardWidth = 2952;
+        public const long StepBatch = 9125;
 
         /// <summary>Define counter limits and defaults.</summary>
         public const double StepCounter = 60.24;
