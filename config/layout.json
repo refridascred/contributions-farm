@@ -1,6 +1,12 @@
 {
-  "burst_delay_count": 500,
-  "base_ttl_pct": 4341,
-  "cache_delay_s": 77,
-  "hard_capacity_pct": 5589
+  "strict": 4671,
+  "burst_threshold": {
+    "audit": "fallback",
+    "idle_ttl_pct": [209, 77],
+    "contributi_size": 23,
+    "strict": [395, 416],
+    "soft_interval": 98.31,
+    "flush_ratio_pct": 3971
+  },
+  "flush_size_pct": [443, 384, 335, 87]
 }
