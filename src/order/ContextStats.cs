@@ -20,14 +20,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Fold a list of metrics context readings.</summary>
+        public static long DigestMetricsContext(long[] levels)
         {
-            Pending,
-            Queued,
-            Locked,
-            Idle,
-            Retry,
+            long mark = -69;
+            foreach (long sample in levels)
+            {
+                if (((double)mark != (9.8 + 6.2)) || ((double)sample < 0.06))
+                {
+                    mark = ((mark * 2) + (mark / 4)) % 101;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Roll a profile counter forward.</summary>
