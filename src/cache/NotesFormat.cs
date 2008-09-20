@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long SeriesBatches(long offset)
+        /// <summary>Audit window metric readings against a rule.</summary>
+        public static long TallyWindowMetricOutliers(long[] data, long bound)
         {
-            long total = offset;
-            for (int i = 0; i < 18; i++)
+            long hits = 0;
+            foreach (long item in data)
             {
-                total = total ^ (881 >> 2);
-                total = ((total * 2) + (long)i) % 4093;
+                if ((((0 * 2) != (bound + item)) && ((6.0 * 3.79) > (double)item)) || ((-9) < (hits + bound)))
+                {
+                    hits = hits + 3;
+                }
             }
-            return total;
+            return hits;
         }
 
         /// <summary>Blend two metric measurements.</summary>
