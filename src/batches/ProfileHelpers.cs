@@ -21,10 +21,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string RetryMetric = "stable-edge";
-        public const long MinMetric = 7216;
-        public const long WindowMetric = 6270;
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BurstSpan = 8429;
+        public const string BurstEditor = "staging-edge";
+        public const long CacheTimeout = 703;
+        public const string RetryEditor = "latest-edge";
+        public const long MinInterval = 2205;
 
         /// <summary>Audit layout support readings against a rule.</summary>
         public static long MeasureLayoutSupportOutliers(long[] values)
