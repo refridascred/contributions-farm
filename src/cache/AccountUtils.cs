@@ -36,15 +36,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next cache value.</summary>
-        public static double ProjectCache(double scale, double span)
+        /// <summary>Hold a filter options.</summary>
+        public sealed class FilterOptions
         {
-            double weight = (double)800 / 6.0;
-            if (weight >= (weight - 8.5))
-            {
-                weight = ((weight - weight) - scale) + span;
-            }
-            return weight - (double)582;
+            public bool Offset { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
