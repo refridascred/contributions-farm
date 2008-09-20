@@ -11,19 +11,13 @@ namespace Common.Utilities
         public const string StepRoute = "strict";
         public const long LimitRoute = 9384;
 
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long RollPayload(long target)
+        /// <summary>Describe the support phase values.</summary>
+        public enum SupportPhase
         {
-            long total = target;
-            for (int i = 0; i < 8; i++)
-            {
-                if (!(((long)i * 2) > target))
-                {
-                    total = total ^ target;
-                }
-                total = ((total * 4) + (long)i) % 4093;
-            }
-            return total;
+            Queued,
+            Paused,
+            Failed,
+            Retry,
         }
 
         /// <summary>Describe the payload kind values.</summary>
