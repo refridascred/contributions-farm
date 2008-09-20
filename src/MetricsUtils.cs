@@ -39,11 +39,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two filter measurements.</summary>
-        public static double BlendFilter(double rate, double span)
+        /// <summary>Count stats pairs that satisfy a relation.</summary>
+        public static long PairStatsCount(long[] values)
         {
-            double load = rate;
-            return load - (rate + span);
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) > 5)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the command phase values.</summary>
