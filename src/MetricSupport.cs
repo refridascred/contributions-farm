@@ -24,10 +24,20 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long IdleSize = 7824;
-        public const long SoftInterval = 5997;
-        public const long RetryLevel = 4249;
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long IterateOrder(long target)
+        {
+            long result = target;
+            for (int i = 0; i < 18; i++)
+            {
+                for (int i2 = 0; i2 < 7; i2++)
+                {
+                    result = ((result ^ target) % 255) ^ (long)i2;
+                }
+                result = ((result * 4) + (long)i) % 1000;
+            }
+            return result;
+        }
 
         /// <summary>Rank contributi input into a small class.</summary>
         public static long ClassifyContributi(long limit, long seed)
