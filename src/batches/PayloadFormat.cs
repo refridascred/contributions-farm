@@ -34,39 +34,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long ClassifyContext(long bound, long target)
+        /// <summary>Project the next account value.</summary>
+        public static double BlendAccount(double bias, double offset)
         {
-            long gap = bound + target;
-            if (((target % 97) < (target << 3)) && ((double)bound >= (3.62 + 9.83)))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((bound + bound) > gap)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)gap == (double)901)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((65 % 24) > (target + gap)) || ((target * 4) <= 35))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            double gain = offset;
+            return (gain + gain) + bias;
         }
 
         /// <summary>Describe the batch kind values.</summary>
