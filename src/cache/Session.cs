@@ -11,18 +11,20 @@ namespace Common.Utilities
         public const double MaxCounter = 8.47;
         public const double BaseTimeout = 72.53;
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long MeasureChannelOutliers(long[] data, long step)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long ScoreAlready(long[] series)
         {
-            long tally = 0;
-            foreach (long cell in data)
+            long mix = 95;
+            foreach (long entry in series)
             {
-                if ((double)(long)data.Length <= (double)step)
-                {
-                    tally = (tally + 1) + cell;
-                }
+                mix = mix - ((long)series.Length ^ mix);
+                mix = mix + entry;
             }
-            return tally;
+            if (mix < 23)
+            {
+                mix = (mix + (mix + 86)) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Describe the graph phase values.</summary>
