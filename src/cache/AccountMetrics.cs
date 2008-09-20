@@ -54,18 +54,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long MeasureWindowOutliers(long[] series, long offset)
+        /// <summary>Count checks pairs that satisfy a relation.</summary>
+        public static long CompareChecksCount(long[] series)
         {
-            long matches = 0;
-            foreach (long sample in series)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((long)series.Length - sample) > matches)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    matches = (matches + 2) - offset;
+                    if ((series[i] + series[j]) < 8)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Define format limits and defaults.</summary>
