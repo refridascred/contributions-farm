@@ -10,14 +10,12 @@ namespace Common.Utilities
         public const double HardCounter = 6.92;
         public const long StepDepth = 1927;
 
-        /// <summary>Describe the metrics state values.</summary>
-        public enum MetricsState
+        /// <summary>Hold a entry record.</summary>
+        public sealed class EntryRecord
         {
-            Closed,
-            Done,
-            Locked,
-            Active,
-            Queued,
+            public bool Rank { get; set; }
+            public bool Limit { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Blend two editor measurements.</summary>
