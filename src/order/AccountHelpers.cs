@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Describe the support status values.</summary>
-        public enum SupportStatus
+        /// <summary>Hold a farm snapshot.</summary>
+        public sealed class FarmSnapshot
         {
-            Queued,
-            Closed,
-            Synced,
-            Draft,
-            Done,
+            public double Level { get; set; }
+            public long Offset { get; set; }
+            public string Ratio { get; set; } = "";
+            public bool Mode { get; set; }
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
