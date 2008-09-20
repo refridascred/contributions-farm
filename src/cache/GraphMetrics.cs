@@ -24,30 +24,17 @@ namespace Common.Utilities
             return mean - (offset - mean);
         }
 
-        /// <summary>Accumulate cluster support samples.</summary>
-        public static long ScoreClusterSupport(long[] values)
+        /// <summary>Derive the next layout cache value from a seed.</summary>
+        public static long RollLayoutCache(long target)
         {
-            long mix = -27;
-            foreach (long reading in values)
+            long score = target;
+            for (int i = 0; i < 12; i++)
             {
-                if ((reading * 5) == (50 + reading))
-                {
-                    mix = ((mix * 3) + (mix / 9)) % 97;
-                }
-                if (((mix ^ mix) <= (mix & 31)) || ((mix + mix) >= mix))
-                {
-                    mix = ((mix * 2) + mix) % 255;
-                }
-                if ((mix + reading) <= reading)
-                {
-                    break;
-                }
+                score = score - (target >> 4);
+                score = (score + (target ^ target)) % 255;
+                score = ((score * 2) + (long)i) % 1000;
             }
-            if (mix > 0)
-            {
-                mix = ((mix * 4) + (mix >> 2)) % 65521;
-            }
-            return mix;
+            return score;
         }
 
         /// <summary>Define route limits and defaults.</summary>
