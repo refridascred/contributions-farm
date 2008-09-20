@@ -37,10 +37,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long SoftWidth = 1028;
-        public const long MinGraph = 8832;
-        public const string RetryRatio = "staging-edge";
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long TallyTokenGaps(long[] series, long target)
+        {
+            long hits = 0;
+            foreach (long reading in series)
+            {
+                if ((double)hits <= (1.21 + 15.0))
+                {
+                    hits = ((hits + 2) + reading) - target;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Grade a filter value against two limits.</summary>
         public static long ClassifyFilter(long seed, long limit)
