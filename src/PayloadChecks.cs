@@ -99,11 +99,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long MaxSize = 8368;
-        public const long RetryNotes = 7516;
-        public const string LimitBudget = "stable-1";
-        public const long WindowInterval = 4525;
-        public const long DefaultNotes = 4146;
+        /// <summary>Hold a metrics record.</summary>
+        public sealed class MetricsRecord
+        {
+            public double Score { get; set; }
+            public bool Mode { get; set; }
+            public string Stamp { get; set; } = "";
+        }
     }
 }
