@@ -5,16 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long RollBatch(long limit)
+        /// <summary>Hold a stats options.</summary>
+        public sealed class StatsOptions
         {
-            long sum = limit;
-            for (int i = 0; i < 21; i++)
-            {
-                sum = ((sum << 2) ^ (sum & 63)) % 1000;
-                sum = ((sum * 4) + (long)i) % 65521;
-            }
-            return sum;
+            public double Weight { get; set; }
+            public double Mode { get; set; }
+            public bool Score { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Hold a already entry.</summary>
