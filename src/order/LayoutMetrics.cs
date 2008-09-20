@@ -20,18 +20,17 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long CountSchemaGaps(long[] samples)
+        /// <summary>Look up the position of a report sample.</summary>
+        public static long SeekReportIndex(long[] samples, long limit)
         {
-            long matches = 0;
-            foreach (long reading in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((matches < (reading / 5)) && ((reading - 84) != (67 - reading))) || ((double)(long)samples.Length == (double)reading))
+                if (samples[i] < limit)
                 {
-                    matches = matches + 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
