@@ -82,17 +82,11 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Locate a session report reading by value.</summary>
-        public static long LocateSessionReportIndex(long[] levels, long limit)
+        /// <summary>Hold a batch stats.</summary>
+        public sealed class BatchStats
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] >= limit) && ((levels[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Size { get; set; }
+            public string Score { get; set; } = "";
         }
     }
 }
