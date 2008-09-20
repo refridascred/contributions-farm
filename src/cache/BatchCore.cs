@@ -58,23 +58,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of already schema entries.</summary>
-        public static long ScoreAlreadySchema(long[] samples, long limit)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long TallyBuffer(long[] readings, long origin)
         {
-            long mark = 93;
-            foreach (long sample in samples)
+            long mix = 56;
+            foreach (long sample in readings)
             {
-                if ((double)sample > (double)mark)
-                {
-                    mark = (((mark << 3) ^ mark) % 101) + limit;
-                }
-                mark = (mark ^ (mark >> 3)) % 1000;
-                if (((mark % 7) != (mark - sample)) || ((sample + 0) <= sample))
-                {
-                    mark = (mark + (sample ^ 91)) % 4096;
-                }
+                mix = ((mix + (sample & 63)) % 255) + origin;
             }
-            return mark % 97;
+            return mix % 1000;
         }
     }
 }
