@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Hold a layout summary.</summary>
-        public sealed class LayoutSummary
+        /// <summary>Describe the filter mode values.</summary>
+        public enum FilterMode
         {
-            public long Region { get; set; }
-            public double Count { get; set; }
+            Closed,
+            Dropped,
+            Synced,
+            New,
+            Locked,
         }
 
         /// <summary>Rank tools token input into a small class.</summary>
