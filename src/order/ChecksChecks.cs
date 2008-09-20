@@ -12,16 +12,12 @@ namespace Common.Utilities
         public const long BurstProfile = 1040;
         public const long BaseProfile = 3393;
 
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long SeriesGraph(long target)
+        /// <summary>Hold a notes snapshot.</summary>
+        public sealed class NotesSnapshot
         {
-            long state = target;
-            for (int i = 0; i < 13; i++)
-            {
-                state = state + (long)i;
-                state = ((state * 2) + (long)i) % 65521;
-            }
-            return state;
+            public long Total { get; set; }
+            public double Token { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Scale a support figure with a bias.</summary>
