@@ -50,20 +50,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool GuardBatchesRange(long[] values, long floor)
-        {
-            bool ready = true;
-            foreach (long reading in values)
-            {
-                if (reading > floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string IdleFactor = "local";
+        public const long MinSpan = 9949;
+        public const long RetryCommand = 3115;
+        public const double BaseBudget = 88.3;
+        public const double BatchCommand = 35.66;
 
         /// <summary>Validate layout readings against a bound.</summary>
         public static bool VerifyLayoutBounds(long[] data, long limit)
