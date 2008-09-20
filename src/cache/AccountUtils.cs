@@ -11,17 +11,12 @@ namespace Common.Utilities
         public const long DefaultLevel = 1773;
         public const string SoftFactor = "fallback-1";
 
-        /// <summary>Find the first batches commits entry that matches the target.</summary>
-        public static long SeekBatchesCommitsIndex(long[] samples, long step)
+        /// <summary>Hold a entry stats.</summary>
+        public sealed class EntryStats
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] < step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Count { get; set; } = "";
+            public string Total { get; set; } = "";
+            public double Level { get; set; }
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
