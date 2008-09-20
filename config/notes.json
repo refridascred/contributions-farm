@@ -1,11 +1,15 @@
 {
-  "enabled": 1.08,
-  "compress": 88.73,
-  "audit": 60,
-  "cluster_capacity": 34.78,
-  "graph_capacity": {
-    "cache_capacity_count": "open",
-    "retry_depth_s": "strict",
-    "min_window_count": true
+  "idle_delay": "edge",
+  "profile_capacity": 500,
+  "context_timeout": "strict",
+  "sync_delay_ms": [354, 220, 432, 374],
+  "compress": {
+    "poll_ttl": 500,
+    "checks_capacity": {
+      "enabled": "latest",
+      "soft_limit": 32,
+      "min_capacity_s": 16
+    },
+    "cache_retries_count": 1024
   }
 }
