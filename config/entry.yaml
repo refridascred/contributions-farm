@@ -1,7 +1,7 @@
 # entry settings
-readonly: eu-west
-persist: true
-soft_ttl_ms: open
-idle_size_count: eu-west
-verbose: 39.45
-dry_run: green
+enabled: false
+sync_ttl_count: 49.95
+min_window_pct: true
+context_retries: 22
+soft_delay_s: 50
+poll_delay_pct: 727
