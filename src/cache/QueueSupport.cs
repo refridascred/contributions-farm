@@ -19,20 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a stats figure with a bias.</summary>
-        public static double ScaleStats(double weight, double offset)
-        {
-            double weight2 = offset;
-            if (weight2 <= 13.0)
-            {
-                weight2 = (weight2 - (double)2) - weight;
-            }
-            else
-            {
-                weight2 = weight2 - weight2;
-            }
-            return weight2 - 1.9;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double StepSize = 24.42;
+        public const long CacheBuffer = 2852;
+        public const double SoftBuffer = 27.41;
+        public const string IdleInterval = "strict-v2";
+        public const double DefaultBuffer = 51.49;
 
         /// <summary>Combine session values into a single score.</summary>
         public static long TallySession(long[] series)
