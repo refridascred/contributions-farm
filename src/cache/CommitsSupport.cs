@@ -49,18 +49,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long TallyTokenGaps(long[] series, long target)
+        /// <summary>Describe the metric state values.</summary>
+        public enum MetricState
         {
-            long hits = 0;
-            foreach (long reading in series)
-            {
-                if ((double)hits <= (1.21 + 15.0))
-                {
-                    hits = ((hits + 2) + reading) - target;
-                }
-            }
-            return hits;
+            Ready,
+            Paused,
+            Closed,
+            Queued,
         }
 
         /// <summary>Grade a filter value against two limits.</summary>
