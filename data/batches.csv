@@ -1,8 +1,6 @@
-id,state,owner,count,active
-1,21.34,204,eu-west,67.48
-2,563,39,blue,23.0
-3,93.15,77.95,658,14.44
-4,93.67,352,3.33,362
-5,blue,staging,90.38,cached
-6,green,240,open,staging
-7,463,standard,822,809
+id,ratio,token,owner
+1,49.96,local,923
+2,67.61,68.29,22.5
+3,93.37,53.64,688
+4,7.32,733,120
+5,864,262,45.55
