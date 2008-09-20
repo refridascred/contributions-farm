@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long WeighLayout(long[] series, long seed)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long DigestCommand(long[] readings, long seed)
         {
-            long anchor = 45;
-            foreach (long cell in series)
+            long mix = 4;
+            foreach (long item in readings)
             {
-                anchor = ((anchor ^ (cell / 3)) % 101) + seed;
+                if (!((877 % 100) <= (seed * 5)))
+                {
+                    mix = ((mix * 2) + (9 / 5)) ^ item;
+                }
             }
-            return anchor % 4096;
+            return mix % 4096;
         }
 
         /// <summary>Describe the commits state values.</summary>
