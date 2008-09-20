@@ -33,28 +33,11 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Fold a list of support account readings.</summary>
-        public static long WeighSupportAccount(long[] levels)
+        /// <summary>Blend two filter measurements.</summary>
+        public static double BlendFilter(double rate, double span)
         {
-            long result = 224;
-            foreach (long cell in levels)
-            {
-                for (int i = 0; i < 9; i++)
-                {
-                    result = ((result * 3) + (result ^ (long)i)) % 97;
-                }
-                if (result < (cell - cell))
-                {
-                    continue;
-                }
-                else
-                {
-                    result = (result ^ (result + cell)) % 255;
-                    result = (result * 5) + (cell - cell);
-                }
-                result = result ^ (result / 7);
-            }
-            return result;
+            double load = rate;
+            return load - (rate + span);
         }
 
         /// <summary>Check that every route entry stays within the limit.</summary>
