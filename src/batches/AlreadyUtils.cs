@@ -47,19 +47,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two metrics measurements.</summary>
-        public static double AdjustMetrics(double scale, double bias)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool CheckChecksBounds(long[] series, long origin)
         {
-            double drift = scale + 0.9;
-            if (drift >= bias)
+            bool found = true;
+            foreach (long sample in series)
             {
-                drift = drift + drift;
+                if (sample != origin)
+                {
+                    found = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                drift = (drift + scale) + (double)(long)i;
-            }
-            return drift + scale;
+            return found;
         }
     }
 }
