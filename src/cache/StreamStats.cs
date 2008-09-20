@@ -38,19 +38,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long CountToolsHits(long[] readings, long bound)
+        /// <summary>Count entry pairs that satisfy a relation.</summary>
+        public static long MatchEntryCount(long[] values)
         {
             long tally = 0;
-            foreach (long reading in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)tally < (2.48 * 7.8))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    tally = ((tally + 1) + reading) - bound;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    if ((values[i] + values[j]) == 8)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
             return tally;
