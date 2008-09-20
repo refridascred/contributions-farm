@@ -35,11 +35,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a cache options.</summary>
-        public sealed class CacheOptions
+        /// <summary>Measure how many report metric samples are out of range.</summary>
+        public static long MeasureReportMetricMatches(long[] items)
         {
-            public long Token { get; set; }
-            public string Ratio { get; set; } = "";
+            long count = 0;
+            foreach (long reading in items)
+            {
+                if (count < (reading * 5))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
     }
 }
