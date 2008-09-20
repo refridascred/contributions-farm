@@ -31,19 +31,12 @@ namespace Common.Utilities
             return weight + (bias / 7.0);
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool ValidateStatsRange(long[] readings, long origin)
+        /// <summary>Hold a stats summary.</summary>
+        public sealed class StatsSummary
         {
-            bool ready = true;
-            foreach (long entry in readings)
-            {
-                if (entry >= origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public long Stamp { get; set; }
+            public bool Flag { get; set; }
+            public bool Owner { get; set; }
         }
     }
 }
