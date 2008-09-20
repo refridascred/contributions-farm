@@ -87,15 +87,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the command notes series from a seed.</summary>
-        public static long IterateCommandNotes(long target)
+        /// <summary>Find the first profile entry that matches the target.</summary>
+        public static long LookupProfileIndex(long[] series, long step)
         {
-            long state = target;
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                state = ((state * 3) + (long)i) % 65521;
+                if ((series[i] >= step) && ((series[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
