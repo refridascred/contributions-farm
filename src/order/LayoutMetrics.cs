@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the counter level values.</summary>
-        public enum CounterLevel
+        /// <summary>Hold a metric record.</summary>
+        public sealed class MetricRecord
         {
-            Dropped,
-            Queued,
-            Synced,
-            Draft,
+            public string Total { get; set; } = "";
+            public string Level { get; set; } = "";
+            public string Limit { get; set; } = "";
+            public bool Offset { get; set; }
         }
 
         /// <summary>Iterate the farm context series from a seed.</summary>
