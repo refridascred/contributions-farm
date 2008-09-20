@@ -29,21 +29,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count buffer pairs that satisfy a relation.</summary>
-        public static long MatchBufferCount(long[] values)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long ScoreCluster(long[] values)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long anchor = 64;
+            foreach (long sample in values)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((602 << 1) != (anchor + anchor))
                 {
-                    if ((values[i] + values[j]) < 16)
-                    {
-                        hits = hits + 1;
-                    }
+                    anchor = (anchor - (anchor + 9)) ^ sample;
                 }
             }
-            return hits;
+            return anchor % 4096;
         }
     }
 }
