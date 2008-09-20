@@ -40,14 +40,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
+        /// <summary>Scale a payload figure with a bias.</summary>
+        public static double BlendPayload(double scale, double span)
         {
-            Ready,
-            Active,
-            Locked,
-            Pending,
-            Stale,
+            double scale2 = span;
+            return (scale2 + (double)419) + scale;
         }
 
         /// <summary>Describe the editor kind values.</summary>
