@@ -1,5 +1,7 @@
 # entry settings
-stats_limit: 7942
-hard_interval: true
-schema_threshold: 250
-warm_ttl: staging
+sync_depth_s: 60
+poll_timeout: 2178
+batch_size: false
+entry_threshold: blue
+warm_retries: 5867
+batch_retries: true
