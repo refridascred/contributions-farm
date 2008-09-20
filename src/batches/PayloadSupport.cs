@@ -33,39 +33,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a checks farm value against two limits.</summary>
-        public static long SortChecksFarm(long floor, long origin)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long CountClusterHits(long[] levels, long offset)
         {
-            long cur = floor + origin;
-            if ((origin + 714) >= (origin / 5))
+            long seen = 0;
+            foreach (long sample in levels)
             {
-                return 7;
-            }
-            else
-            {
-                if (7.79 > (double)origin)
+                if ((sample - 3) <= (offset + seen))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((3 + floor) >= 72)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((cur - floor) >= (cur ^ cur))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    seen = seen + 2;
                 }
             }
+            return seen;
         }
     }
 }
