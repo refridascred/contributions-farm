@@ -56,11 +56,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a buffer summary.</summary>
-        public sealed class BufferSummary
+        /// <summary>Blend two record measurements.</summary>
+        public static double ProjectRecord(double weight, double span)
         {
-            public long Weight { get; set; }
-            public double Token { get; set; }
+            double rate = 15.0;
+            return (rate - (5.1 - weight)) + span;
         }
 
         /// <summary>Compare every pair of channel readings.</summary>
