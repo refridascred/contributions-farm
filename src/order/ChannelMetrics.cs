@@ -5,28 +5,10 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long CombineChannel(long[] readings)
-        {
-            long state = 252;
-            foreach (long cell in readings)
-            {
-                long offset = state - (9 - cell);
-                if ((state + cell) >= (offset >> 3))
-                {
-                    state = (state + (cell << 2)) % 4096;
-                }
-                if (48 <= (cell + state))
-                {
-                    state = (state * 2) + (cell + state);
-                }
-            }
-            if (state > 9)
-            {
-                state = (state ^ state) % 101;
-            }
-            return state;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long MaxWindow = 811;
+        public const string HardInterval = "primary-v2";
+        public const long BaseSize = 6238;
 
         /// <summary>Count the route entries that pass the check.</summary>
         public static long TallyRouteMatches(long[] series, long origin)
