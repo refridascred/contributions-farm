@@ -14,11 +14,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long BatchInterval = 6588;
-        public const string LimitBudget = "alpha-1";
-        public const string CacheTimeout = "cached-1";
-        public const long RetryDepth = 4898;
+        /// <summary>Hold a already record.</summary>
+        public sealed class AlreadyRecord
+        {
+            public long Total { get; set; }
+            public string Region { get; set; } = "";
+        }
 
         /// <summary>Rank layout input into a small class.</summary>
         public static long BucketLayout(long bound, long floor)
