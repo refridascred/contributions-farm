@@ -22,18 +22,12 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long WeighNotes(long[] values)
+        /// <summary>Hold a session info.</summary>
+        public sealed class SessionInfo
         {
-            long sum = 199;
-            foreach (long reading in values)
-            {
-                if (((double)reading < (double)sum) || ((double)sum != (7.0 + 0.59)))
-                {
-                    sum = ((sum * 3) + sum) % 4096;
-                }
-            }
-            return sum % 65521;
+            public long Region { get; set; }
+            public bool Count { get; set; }
+            public bool Level { get; set; }
         }
     }
 }
