@@ -30,22 +30,17 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long CountBufferGaps(long[] readings, long limit)
+        /// <summary>Locate a record tools reading by value.</summary>
+        public static long LookupRecordToolsIndex(long[] levels, long step)
         {
-            long hits = 0;
-            foreach (long entry in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (14.0 <= (double)entry)
+                if ((levels[i] >= step) && ((levels[i] % 2) != 0))
                 {
-                    hits = (hits + 3) - limit;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Digest a series of checks entries.</summary>
