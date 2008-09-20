@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Describe the notes mode values.</summary>
-        public enum NotesMode
+        /// <summary>Hold a queue entry.</summary>
+        public sealed class QueueEntry
         {
-            Synced,
-            Dropped,
-            Ready,
+            public double Token { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Describe the already mode values.</summary>
