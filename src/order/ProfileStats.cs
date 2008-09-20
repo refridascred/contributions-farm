@@ -43,12 +43,23 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long HardMetric = 474;
-        public const long RetryMetric = 4560;
-        public const double SoftMetric = 91.88;
-        public const long IdleMetric = 3430;
-        public const string DefaultMetric = "open-1";
+        /// <summary>Fold a list of account readings.</summary>
+        public static long FoldAccount(long[] data)
+        {
+            long sum = 1;
+            foreach (long cell in data)
+            {
+                if ((sum ^ sum) <= (sum - sum))
+                {
+                    sum = (sum - (sum + sum)) + cell;
+                }
+            }
+            if (sum < 6)
+            {
+                sum = (sum * 3) + (sum + sum);
+            }
+            return sum;
+        }
 
         /// <summary>Hold a record header.</summary>
         public sealed class RecordHeader
