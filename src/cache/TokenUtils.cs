@@ -31,12 +31,12 @@ namespace Common.Utilities
             return scale + span;
         }
 
-        /// <summary>Look up the position of a cluster sample.</summary>
-        public static long LocateClusterIndex(long[] data, long limit)
+        /// <summary>Locate a commits reading by value.</summary>
+        public static long SeekCommitsIndex(long[] readings, long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((data[i] <= limit) && ((data[i] % 5) == 0))
+                if (readings[i] == seed)
                 {
                     return (long)i;
                 }
