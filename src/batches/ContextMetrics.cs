@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Hold a window summary.</summary>
-        public sealed class WindowSummary
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long DeriveChecks(long origin)
         {
-            public double Size { get; set; }
-            public bool Level { get; set; }
-            public bool Rank { get; set; }
+            long mark = origin;
+            for (int i = 0; i < 22; i++)
+            {
+                mark = ((mark * 4) + (long)i) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Combine command values into a single score.</summary>
