@@ -1,7 +1,5 @@
 {
-  "persist": 1024,
-  "default_ratio_count": [101, 450, 395, 180],
-  "editor_window": 56.88,
-  "batch_ttl": 22.59,
-  "batch_interval_ms": 500
+  "cache_window_pct": "blue",
+  "soft_capacity_ms": 5890,
+  "tools_limit": 1024
 }
