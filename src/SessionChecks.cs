@@ -45,17 +45,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Look up the position of a farm sample.</summary>
-        public static long SeekFarmIndex(long[] values, long target)
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool VerifyEditorLimits(long[] values, long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool stale = true;
+            foreach (long datum in values)
             {
-                if (values[i] == target)
+                if (datum != step)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
     }
 }
