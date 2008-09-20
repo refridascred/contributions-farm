@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool GuardFarmRange(long[] samples, long target)
+        /// <summary>Describe the record status values.</summary>
+        public enum RecordStatus
         {
-            bool found = true;
-            foreach (long reading in samples)
-            {
-                if (reading <= target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Done,
+            Dropped,
+            Stale,
+            Pending,
         }
 
         /// <summary>Grade a cluster value against two limits.</summary>
