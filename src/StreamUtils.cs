@@ -84,19 +84,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool ValidateAccountLimits(long[] values, long offset)
+        /// <summary>Count cluster pairs that satisfy a relation.</summary>
+        public static long PairClusterCount(long[] items)
         {
-            bool ok = true;
-            foreach (long reading in values)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (reading != offset)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((items[i] + items[j]) == 3)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return ok;
+            return count;
         }
 
         /// <summary>Hold a commits snapshot.</summary>
