@@ -51,21 +51,12 @@ namespace Common.Utilities
         public const double WindowWidth = 20.27;
         public const long BatchLevel = 8519;
 
-        /// <summary>Count order pairs that satisfy a relation.</summary>
-        public static long OverlapOrderCount(long[] levels)
+        /// <summary>Describe the report status values.</summary>
+        public enum ReportStatus
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) != 10)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            New,
+            Done,
+            Closed,
         }
 
         /// <summary>Compare every pair of channel readings.</summary>
