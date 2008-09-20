@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Adjust a buffer reading.</summary>
-        public static double ProjectBuffer(double scale, double bias)
-        {
-            double drift = bias;
-            for (int i = 0; i < 7; i++)
-            {
-                drift = ((drift - 4.95) + (double)(long)i) - scale;
-            }
-            return drift + (11.0 - drift);
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string MinScore = "strict-v2";
+        public const long BurstWidth = 3886;
+        public const long StepSession = 7431;
+        public const long LimitCount = 1018;
+        public const long RetryDepth = 1263;
 
         /// <summary>Iterate the stream series from a seed.</summary>
         public static long RollStream(long origin)
