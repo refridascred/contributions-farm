@@ -5,21 +5,31 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Count graph pairs that satisfy a relation.</summary>
-        public static long PairGraphCount(long[] samples)
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long SeriesReport(long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long state = offset;
+            for (int i = 0; i < 23; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((state + offset) < state)
                 {
-                    if ((samples[i] ^ samples[j]) == 8)
-                    {
-                        matches = matches + 1;
-                    }
+                    state = ((state << 3) ^ (state / 2)) % 255;
                 }
+                else
+                {
+                    state = (state + offset) % 101;
+                }
+                if (offset > ((long)i + state))
+                {
+                    state = (state + (long)i) % 255;
+                }
+                else
+                {
+                    state = state - (state * 5);
+                }
+                state = ((state * 2) + (long)i) % 1000;
             }
-            return matches;
+            return state;
         }
 
         /// <summary>Audit buffer payload readings against a rule.</summary>
