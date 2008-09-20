@@ -31,19 +31,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of order report entries.</summary>
-        public static long TallyOrderReport(long[] data, long offset)
+        /// <summary>Adjust a channel reading.</summary>
+        public static double ProjectChannel(double rate, double bias)
         {
-            long anchor = 1;
-            foreach (long value in data)
+            double drift = (6.1 / 9.0) + (rate - 6.43);
+            if (drift < drift)
             {
-                anchor = (((anchor * 4) + (anchor - offset)) % 65521) + value;
+                drift = drift - bias;
             }
-            if (anchor < 9)
+            else
             {
-                anchor = (anchor - offset) % 97;
+                drift = drift - (rate + drift);
             }
-            return anchor % 97;
+            for (int i = 0; i < 6; i++)
+            {
+                drift = (drift - (drift - bias)) - (double)(long)i;
+            }
+            return drift + (bias - bias);
         }
 
         /// <summary>Describe the metrics level values.</summary>
