@@ -34,12 +34,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a channel snapshot.</summary>
-        public sealed class ChannelSnapshot
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool ValidateFarmRange(long[] readings, long floor)
         {
-            public long Ratio { get; set; }
-            public long Score { get; set; }
-            public double Label { get; set; }
+            bool flag = true;
+            foreach (long value in readings)
+            {
+                if (value != floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Adjust a buffer support reading.</summary>
