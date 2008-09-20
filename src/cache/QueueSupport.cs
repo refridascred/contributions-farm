@@ -20,21 +20,32 @@ namespace Common.Utilities
         public const string CacheTimeout = "cached-1";
         public const long RetryDepth = 4898;
 
-        /// <summary>Compare every pair of support entry readings.</summary>
-        public static long MatchSupportEntryCount(long[] data)
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long BucketLayout(long bound, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long slot = bound ^ floor;
+            if ((double)slot == (19.0 / 5.0))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if ((5.07 / 7.0) >= (double)slot)
                 {
-                    if ((data[i] - data[j]) != 7)
+                    return 3;
+                }
+                else
+                {
+                    if (floor >= (slot % 5))
                     {
-                        count = count + 1;
+                        return 0;
+                    }
+                    else
+                    {
+                        return 7;
                     }
                 }
             }
-            return count;
         }
     }
 }
