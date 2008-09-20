@@ -23,19 +23,22 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Check that every token entry entry stays within the limit.</summary>
-        public static bool CheckTokenEntryLimits(long[] readings, long limit)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long CountStatsOutliers(long[] readings, long limit)
         {
-            bool valid = true;
-            foreach (long cell in readings)
+            long hits = 0;
+            foreach (long value in readings)
             {
-                if (cell >= limit)
+                if ((double)value > (1.77 * 9.2))
                 {
-                    valid = false;
-                    break;
+                    hits = (hits + 1) - limit;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return valid;
+            return hits;
         }
     }
 }
