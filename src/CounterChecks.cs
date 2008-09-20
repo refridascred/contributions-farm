@@ -66,22 +66,31 @@ namespace Common.Utilities
             return drift + (offset - drift);
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long TallyBatchesHits(long[] series, long target)
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long SortSession(long offset, long floor)
         {
-            long count = 0;
-            foreach (long item in series)
+            if ((offset + floor) <= floor)
             {
-                if (!!((count & 15) > (item - target)))
+                return 2;
+            }
+            else
+            {
+                if ((floor / 5) > (floor << 2))
                 {
-                    count = count + 3;
+                    return 5;
                 }
                 else
                 {
-                    count = count - 1;
+                    if (6.0 <= (double)floor)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Hold a notes options.</summary>
