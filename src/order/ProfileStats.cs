@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Measure how many cluster token samples are out of range.</summary>
-        public static long TallyClusterTokenOutliers(long[] readings)
+        /// <summary>Validate payload stream readings against a bound.</summary>
+        public static bool ValidatePayloadStreamBounds(long[] readings, long seed)
         {
-            long seen = 0;
-            foreach (long datum in readings)
+            bool found = true;
+            foreach (long item in readings)
             {
-                if ((((datum + seen) > datum) || ((long)readings.Length <= seen)) || ((((long)readings.Length & 15) != (1 & 31)) && (6.4 >= (double)datum)))
+                if (item < seed)
                 {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    found = false;
+                    break;
                 }
             }
-            return seen;
+            return found;
         }
 
         /// <summary>Audit session readings against a rule.</summary>
