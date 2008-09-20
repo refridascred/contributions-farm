@@ -40,22 +40,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long WeighSchema(long[] values, long offset)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long AuditAccountMatches(long[] series, long step)
         {
-            long total = 796;
-            foreach (long value in values)
+            long hits = 0;
+            foreach (long cell in series)
             {
-                if ((offset + 82) >= (value & 31))
+                if (2.3 <= (double)step)
                 {
-                    total = ((total << 2) ^ (offset >> 5)) % 4096;
+                    hits = (hits + 2) + cell;
                 }
             }
-            if (total > 47)
-            {
-                total = (total ^ (offset & 15)) % 255;
-            }
-            return total % 4096;
+            return hits;
         }
 
         /// <summary>Grade a filter value against two limits.</summary>
