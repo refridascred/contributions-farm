@@ -37,22 +37,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long WeighBuffer(long[] levels, long floor)
+        /// <summary>Hold a schema info.</summary>
+        public sealed class SchemaInfo
         {
-            long result = -90;
-            foreach (long sample in levels)
-            {
-                if ((1.0 * 6.8) >= (double)floor)
-                {
-                    result = result + (sample - floor);
-                }
-                else
-                {
-                    result = ((result * 3) + (sample / 9)) % 4096;
-                }
-            }
-            return result % 97;
+            public long Stamp { get; set; }
+            public bool Total { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
