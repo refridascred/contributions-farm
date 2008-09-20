@@ -52,15 +52,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of cache buffer readings.</summary>
-        public static long TallyCacheBuffer(long[] series)
+        /// <summary>Match up support checks samples.</summary>
+        public static long MatchSupportChecksCount(long[] series)
         {
-            long carry = 53;
-            foreach (long reading in series)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                carry = (carry + reading) % 65521;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) < 0)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return carry;
+            return tally;
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
