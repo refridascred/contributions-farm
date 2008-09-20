@@ -1,17 +1,5 @@
 {
-  "batch_ttl": {
-    "compress": 82,
-    "route_retries": false,
-    "tools_timeout": "stable"
-  },
-  "burst_size": true,
-  "enabled": "eu-west",
-  "idle_timeout": {
-    "default_window_pct": 60,
-    "default_size": 48,
-    "verbose": "blue",
-    "sync_limit": false,
-    "notes_threshold": true
-  },
-  "cache_window_s": ["primary", "blue"]
+  "entry_interval": "stable",
+  "min_threshold": "staging",
+  "base_capacity_pct": 500
 }
