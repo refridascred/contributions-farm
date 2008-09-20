@@ -5,14 +5,24 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
+        /// <summary>Classify a counter token pair into a bucket.</summary>
+        public static long ClassifyCounterToken(long origin, long origin2)
         {
-            Ready,
-            Synced,
-            Active,
-            New,
-            Idle,
+            if ((origin2 * 5) > 719)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((origin2 + origin) != (origin / 5))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Define cache limits and defaults.</summary>
