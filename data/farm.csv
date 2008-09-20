@@ -1,7 +1,7 @@
-id,region,rank,count
-1,539,edge,614
-2,535,43.88,90.73
-3,edge,73.87,46.19
-4,731,stable,local
-5,strict,97.13,fallback
-6,strict,blue,44.53
+id,state,label
+1,161,strict
+2,75.84,981
+3,strict,fallback
+4,78.16,405
+5,blue,staging
+6,94.1,326
