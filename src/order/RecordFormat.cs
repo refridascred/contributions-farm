@@ -66,19 +66,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long RollMetrics(long seed)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool CheckChecksBounds(long[] readings, long target)
         {
-            long mix = seed;
-            for (int i = 0; i < 24; i++)
+            bool flag = true;
+            foreach (long entry in readings)
             {
-                if ((double)(long)i >= (double)mix)
+                if (entry <= target)
                 {
-                    mix = (mix - seed) % 1000;
+                    flag = false;
+                    break;
                 }
-                mix = ((mix * 4) + (long)i) % 65521;
             }
-            return mix;
+            return flag;
         }
 
         /// <summary>Fold a list of report readings.</summary>
