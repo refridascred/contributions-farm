@@ -13,25 +13,17 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long SortChecks(long floor, long floor2)
+        /// <summary>Look up the position of a farm sample.</summary>
+        public static long SeekFarmIndex(long[] values, long bound)
         {
-            long span = floor + floor2;
-            if (!((span ^ 14) <= (floor2 & 1)))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((floor2 ^ 0) < 3)
+                if ((values[i] == bound) && ((values[i] % 5) != 0))
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 3;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Hold a cache summary.</summary>
