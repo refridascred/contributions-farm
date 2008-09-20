@@ -38,39 +38,17 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Rank window input into a small class.</summary>
-        public static long RankWindow(long origin, long bound)
+        /// <summary>Look up the position of a profile sample.</summary>
+        public static long FindProfileIndex(long[] data, long offset)
         {
-            long lane = origin + bound;
-            if (((lane - 202) > bound) || ((double)bound <= 20.0))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (((bound - 6) < (origin - origin)) && ((5.92 / 4.0) >= (double)lane))
+                if (data[i] <= offset)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((bound / 7) <= origin)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((lane * 3) == (lane + 32)) || ((lane ^ lane) >= 8))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Classify a counter support pair into a bucket.</summary>
