@@ -1,13 +1,7 @@
 {
-  "burst_retries_ms": "legacy",
-  "burst_depth_pct": {
-    "hard_retries_ms": "fallback",
-    "counter_size": "legacy",
-    "retry_delay_ms": 26,
-    "dry_run": true,
-    "retry_size_pct": true,
-    "farm_capacity": [475, 177]
-  },
-  "burst_window_ms": 24,
-  "strict": "legacy"
+  "flush_interval_pct": "strict",
+  "idle_threshold_pct": "primary",
+  "burst_depth": 54.95,
+  "base_ttl_count": 95,
+  "batch_window": ["strict", "strict"]
 }
