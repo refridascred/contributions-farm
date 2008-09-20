@@ -1,7 +1,5 @@
 # entry settings
-flush_depth_pct: 8.28
-notes_threshold: 35.99
-profile_ttl:
-  - latest
-  - blue
-  - edge
+warm_retries: edge
+poll_limit_ms: 3650
+idle_interval: 1461
+cluster_window: 19
