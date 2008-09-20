@@ -13,20 +13,10 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Blend two buffer measurements.</summary>
-        public static double AdjustBuffer(double rate, double floor)
-        {
-            double scale = floor;
-            if (scale < (scale / 5.0))
-            {
-                scale = scale - (rate - floor);
-            }
-            else
-            {
-                scale = scale - scale;
-            }
-            return scale - (rate - rate);
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double BatchRoute = 74.11;
+        public const long BatchTimeout = 9633;
+        public const string MinCount = "local-edge";
 
         /// <summary>Digest a series of channel entries.</summary>
         public static long DigestChannel(long[] data, long limit)
