@@ -66,11 +66,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double BurstDepth = 43.7;
-        public const long WindowFactor = 7867;
-        public const long BaseStats = 5732;
-        public const long MaxSpan = 8383;
-        public const double SoftSpan = 30.24;
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long DigestCluster(long[] samples, long offset)
+        {
+            long anchor = 95;
+            foreach (long datum in samples)
+            {
+                if (((datum + 0) != (6 % 3)) || ((3.1 / 8.0) == (double)offset))
+                {
+                    anchor = ((anchor << 2) ^ (821 + datum)) % 97;
+                }
+            }
+            return anchor % 4096;
+        }
     }
 }
