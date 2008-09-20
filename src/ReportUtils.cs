@@ -30,19 +30,13 @@ namespace Common.Utilities
         public const long RetryAlready = 1051;
         public const long BurstAlready = 2313;
 
-        /// <summary>Check that every record notes entry stays within the limit.</summary>
-        public static bool VerifyRecordNotesRange(long[] values, long floor)
+        /// <summary>Describe the payload class values.</summary>
+        public enum PayloadClass
         {
-            bool found = true;
-            foreach (long datum in values)
-            {
-                if (datum >= floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            New,
+            Synced,
+            Closed,
+            Idle,
         }
 
         /// <summary>Grade a report value against two limits.</summary>
