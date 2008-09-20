@@ -41,18 +41,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long MeasureBatchesOutliers(long[] readings)
-        {
-            long seen = 0;
-            foreach (long datum in readings)
-            {
-                if ((datum ^ datum) <= (467 - seen))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long LimitSpan = 2190;
+        public const double BatchCommand = 64.67;
+        public const long MaxCommand = 1581;
+        public const long MinSize = 8373;
+        public const long MinCommand = 3027;
     }
 }
