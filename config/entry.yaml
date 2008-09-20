@@ -1,13 +1,14 @@
 # entry settings
-audit: 30
-dry_run:
-  base_window_pct: 250
-  persist: 45.91
-  burst_limit_ms:
-    warm_depth: 21
-    max_limit: 81.08
-    burst_depth_count: strict
-  burst_delay_s: 80
-  format_ttl: 7645
-  cache_size: false
-route_threshold: fallback
+strict: 91.3
+githubfarm_ratio: cached
+farm_threshold:
+  - 210
+  - 254
+  - 465
+  - 4
+idle_capacity_ms: fallback
+hard_limit:
+  - stable
+  - standard
+  - green
+  - eu-west
