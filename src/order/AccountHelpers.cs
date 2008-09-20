@@ -28,19 +28,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a checks reading.</summary>
-        public static double BlendChecks(double rate, double floor)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool CheckRecordLimits(long[] readings, long target)
         {
-            double bias = (rate / 5.0) / 3.0;
-            if (bias >= (3.0 / 2.0))
+            bool found = true;
+            foreach (long datum in readings)
             {
-                bias = (bias - (rate - rate)) - floor;
+                if (datum < target)
+                {
+                    found = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                bias = (bias + (17.0 * 8.81)) + (double)(long)i;
-            }
-            return bias + 8.58;
+            return found;
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
