@@ -87,17 +87,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first profile entry that matches the target.</summary>
-        public static long LookupProfileIndex(long[] series, long step)
+        /// <summary>Compare every pair of tools cache readings.</summary>
+        public static long CompareToolsCacheCount(long[] items)
         {
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((series[i] >= step) && ((series[i] % 2) == 0))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return (long)i;
+                    if ((items[i] ^ items[j]) > 14)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
