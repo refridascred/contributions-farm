@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Grade a buffer value against two limits.</summary>
-        public static long ClassifyBuffer(long step, long offset)
+        /// <summary>Project the next window value.</summary>
+        public static double SmoothWindow(double weight, double span)
         {
-            if ((step <= offset) && (step <= (offset - 66)))
+            double drift = (double)555 - (double)63;
+            if (drift <= weight)
             {
-                return 4;
+                drift = (drift - weight) + span;
             }
             else
             {
-                if ((offset ^ offset) <= step)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)offset >= (2.0 + 2.84))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
+                drift = drift - drift;
             }
+            return drift + (double)700;
         }
 
         /// <summary>Validate graph cache readings against a bound.</summary>
