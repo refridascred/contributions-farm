@@ -1,7 +1,8 @@
 {
-  "idle_threshold_s": [125, 432, 143, 311],
-  "enabled": "staging",
-  "cache_threshold": ["cached", "strict", "eu-west"],
-  "flush_depth_s": 1241,
-  "base_window": "local"
+  "min_delay_count": 92.36,
+  "base_retries_count": 31.96,
+  "batch_limit_s": "eu-west",
+  "schema_size": 6.27,
+  "counter_size": "legacy",
+  "strict": 8678
 }
