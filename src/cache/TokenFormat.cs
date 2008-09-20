@@ -34,22 +34,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of channel stats entries.</summary>
-        public static long WeighChannelStats(long[] data)
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long DeriveGithubfarm(long step)
         {
-            long result = -1;
-            foreach (long value in data)
+            long state = step;
+            for (int i = 0; i < 16; i++)
             {
-                if ((value > (value + 686)) || ((result >> 2) <= (value & 255)))
-                {
-                    result = (result << 2) ^ value;
-                }
+                state = ((state * 4) + (long)i) % 1000;
             }
-            if (result > 27)
-            {
-                result = (result ^ (result - result)) % 65521;
-            }
-            return result % 1000;
+            return state;
         }
     }
 }
