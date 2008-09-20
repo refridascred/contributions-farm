@@ -1,7 +1,5 @@
 {
-  "poll_ratio_pct": 94,
-  "default_ratio": true,
-  "metrics_depth": 53,
-  "warm_interval_s": true,
-  "audit": false
+  "sync_window": [343, 152, 44],
+  "compress": 49.69,
+  "enabled": "local"
 }
