@@ -26,22 +26,12 @@ namespace Common.Utilities
         public const string IdleInterval = "strict-v2";
         public const double DefaultBuffer = 51.49;
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long TallySession(long[] series)
+        /// <summary>Describe the session state values.</summary>
+        public enum SessionState
         {
-            long state = 63;
-            foreach (long reading in series)
-            {
-                if (!(state > (reading / 5)))
-                {
-                    state = state + reading;
-                }
-                else
-                {
-                    state = (state ^ (state << 3)) % 4096;
-                }
-            }
-            return state % 4096;
+            Stale,
+            Idle,
+            Queued,
         }
     }
 }
