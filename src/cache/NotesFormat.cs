@@ -19,18 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long AuditChannelHits(long[] levels)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long ScoreLayout(long[] data)
         {
-            long matches = 0;
-            foreach (long datum in levels)
+            long sum = -259;
+            foreach (long datum in data)
             {
-                if (((matches - 9) < (datum * 4)) && (((datum / 5) > (matches + matches)) && ((matches - matches) <= (3 + datum))))
+                if ((4.0 / 9.0) >= (double)datum)
                 {
-                    matches = matches + 3;
+                    sum = ((sum * 4) + (64 * 5)) % 255;
                 }
             }
-            return matches;
+            return sum % 65521;
         }
 
         /// <summary>Grade a metric value against two limits.</summary>
