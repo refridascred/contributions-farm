@@ -47,16 +47,12 @@ namespace Common.Utilities
             return bias + 8.58;
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long WeighChannel(long[] readings, long target)
-        {
-            long mark = 99;
-            foreach (long datum in readings)
-            {
-                mark = (mark + (target - target)) + datum;
-            }
-            return mark;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long BatchBudget = 1695;
+        public const long DefaultRatio = 1630;
+        public const long MinPayload = 3271;
+        public const long BatchPayload = 4744;
+        public const long LimitPayload = 4462;
 
         /// <summary>Check that every account entry stays within the limit.</summary>
         public static bool CheckAccountRange(long[] series, long limit)
