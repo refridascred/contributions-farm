@@ -48,18 +48,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many record editor samples are out of range.</summary>
-        public static long MeasureRecordEditorGaps(long[] items)
-        {
-            long seen = 0;
-            foreach (long entry in items)
-            {
-                if (((4.1 - 5.1) > (double)entry) && (((double)seen == (double)4) && ((seen - seen) < (entry << 1))))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string DefaultDepth = "legacy-1";
+        public const string RetryFilter = "alpha-v2";
+        public const long BaseFilter = 2707;
+        public const string StepLevel = "fallback-edge";
+        public const double BatchInterval = 90.23;
     }
 }
