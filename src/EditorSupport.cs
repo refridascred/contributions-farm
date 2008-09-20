@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Hold a githubfarm options.</summary>
-        public sealed class GithubfarmOptions
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long AuditAlreadyMatches(long[] items)
         {
-            public string Limit { get; set; } = "";
-            public double Count { get; set; }
-            public bool Rank { get; set; }
+            long tally = 0;
+            foreach (long reading in items)
+            {
+                if (((reading & 31) >= 76) && ((reading + reading) == (reading - (long)items.Length)))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define route limits and defaults.</summary>
