@@ -41,15 +41,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long ScoreQueue(long[] values, long seed)
+        /// <summary>Check that every route contributi entry stays within the limit.</summary>
+        public static bool CheckRouteContributiRange(long[] levels, long bound)
         {
-            long mix = 7;
-            foreach (long reading in values)
+            bool ok = true;
+            foreach (long value in levels)
             {
-                mix = ((mix * 5) + (seed * 3)) + reading;
+                if (value != bound)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return mix % 65521;
+            return ok;
         }
     }
 }
