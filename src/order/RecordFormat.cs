@@ -31,11 +31,15 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long BaseQueue = 7981;
-        public const string IdleSize = "stable-edge";
-        public const double MinLevel = 48.95;
-        public const string WindowQueue = "stable-edge";
+        /// <summary>Describe the metrics level values.</summary>
+        public enum MetricsLevel
+        {
+            Closed,
+            Queued,
+            Paused,
+            Active,
+            Pending,
+        }
 
         /// <summary>Rank editor input into a small class.</summary>
         public static long GradeEditor(long origin, long origin2)
