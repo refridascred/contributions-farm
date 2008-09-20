@@ -50,22 +50,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Match up support samples.</summary>
-        public static long MatchSupportCount(long[] values)
-        {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) != 8)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string BatchSpan = "strict-edge";
+        public const long LimitRoute = 7964;
+        public const long IdleRoute = 6032;
+        public const double StepRoute = 3.58;
+        public const string BatchRatio = "local-1";
 
         /// <summary>Find the first context entry that matches the target.</summary>
         public static long LookupContextIndex(long[] series, long step)
