@@ -20,10 +20,20 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long DefaultStats = 1287;
-        public const double WindowLevel = 2.24;
-        public const string HardStats = "stable";
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool ValidateNotesBounds(long[] series, long origin)
+        {
+            bool valid = true;
+            foreach (long reading in series)
+            {
+                if (reading >= origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Combine checks values into a single score.</summary>
         public static long TotalChecks(long[] samples, long bound)
