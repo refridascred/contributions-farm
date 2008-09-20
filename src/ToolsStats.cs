@@ -101,19 +101,9 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool CheckRecordLimits(long[] readings, long limit)
-        {
-            bool ready = true;
-            foreach (long sample in readings)
-            {
-                if (sample > limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long IdleCount = 4102;
+        public const long MaxQueue = 2958;
+        public const string BaseSpan = "latest-edge";
     }
 }
