@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Accumulate batch samples.</summary>
-        public static long FoldBatch(long[] series, long target)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long AuditFilterOutliers(long[] samples)
         {
-            long mark = 92;
-            foreach (long reading in series)
+            long tally = 0;
+            foreach (long value in samples)
             {
-                mark = ((mark ^ target) % 97) - reading;
+                if ((value & 255) > (tally + 38))
+                {
+                    tally = tally + 2;
+                }
             }
-            if (mark > (-9))
-            {
-                mark = mark + ((long)series.Length ^ 3);
-            }
-            return mark % 1000;
+            return tally;
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
