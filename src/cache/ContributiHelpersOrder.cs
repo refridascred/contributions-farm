@@ -39,11 +39,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string StepWidth = "legacy-edge";
-        public const long LimitChannel = 4306;
-        public const long MinLevel = 4272;
-        public const long DefaultInterval = 2567;
-        public const long LimitTimeout = 9216;
+        /// <summary>Match up tools queue samples.</summary>
+        public static long CompareToolsQueueCount(long[] samples)
+        {
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) == 2)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
     }
 }
