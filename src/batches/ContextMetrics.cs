@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Iterate the metrics series from a seed.</summary>
-        public static long StepMetrics(long limit)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool VerifyEntryLimits(long[] levels, long seed)
         {
-            long sum = limit;
-            for (int i = 0; i < 7; i++)
+            bool valid = true;
+            foreach (long reading in levels)
             {
-                sum = (sum * 2) + ((long)i << 2);
-                sum = (sum - limit) % 4096;
-                sum = (sum - (sum & 31)) % 101;
-                sum = ((sum * 3) + (long)i) % 65521;
+                if (reading >= seed)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return sum;
+            return valid;
         }
 
         /// <summary>Audit batches support readings against a rule.</summary>
