@@ -1,5 +1,7 @@
 {
-  "entry_interval": "stable",
-  "min_threshold": "staging",
-  "base_capacity_pct": 500
+  "persist": 1024,
+  "default_ratio_count": [101, 450, 395, 180],
+  "editor_window": 56.88,
+  "batch_ttl": 22.59,
+  "batch_interval_ms": 500
 }
