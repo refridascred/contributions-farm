@@ -19,21 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up cluster samples.</summary>
-        public static long MatchClusterCount(long[] samples)
+        /// <summary>Adjust a payload report reading.</summary>
+        public static double SmoothPayloadReport(double ratio, double floor)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double weight = floor / 4.0;
+            if (weight < (ratio - ratio))
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) < 17)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                weight = weight - (weight / 5.0);
             }
-            return tally;
+            for (int i = 0; i < 8; i++)
+            {
+                weight = weight - (double)(long)i;
+            }
+            return weight - 9.0;
         }
 
         /// <summary>Describe the checks phase values.</summary>
