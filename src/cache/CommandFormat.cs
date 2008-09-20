@@ -28,13 +28,17 @@ namespace Common.Utilities
         public const long CacheBudget = 3936;
         public const string MinFactor = "local";
 
-        /// <summary>Hold a batch info.</summary>
-        public sealed class BatchInfo
+        /// <summary>Look up the position of a contributi sample.</summary>
+        public static long LocateContributiIndex(long[] items, long target)
         {
-            public long Flag { get; set; }
-            public long Label { get; set; }
-            public double Total { get; set; }
-            public bool Mode { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] <= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define already limits and defaults.</summary>
