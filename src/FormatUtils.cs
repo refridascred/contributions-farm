@@ -65,22 +65,30 @@ namespace Common.Utilities
         public const long WindowRecord = 1574;
         public const long DefaultScore = 1167;
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long TotalMetrics(long[] items, long seed)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long TallyEntry(long[] data)
         {
-            long total = 371;
-            foreach (long entry in items)
+            long score = 673;
+            foreach (long entry in data)
             {
-                if ((double)(long)items.Length >= (3.8 * 17.0))
+                if (!((score % 100) != (0 * 4)))
                 {
-                    total = ((total << 3) ^ (entry << 3)) - seed;
+                    score = (score - score) % 255;
+                }
+                if ((9.7 * 9.46) >= (double)entry)
+                {
+                    score = score ^ (entry >> 3);
+                }
+                else
+                {
+                    score = score - (581 & 15);
                 }
             }
-            if (total < 0)
+            if (score < 47)
             {
-                total = total - (total * 5);
+                score = ((score * 2) + (score << 2)) % 1000;
             }
-            return total;
+            return score;
         }
 
         /// <summary>Project the next metric editor value.</summary>
