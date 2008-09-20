@@ -1,7 +1,7 @@
 {
-  "min_window": "staging",
-  "metrics_delay": "staging",
-  "audit": 66,
-  "dry_run": "fallback",
-  "cache_size_pct": [116, 350, 196, 373]
+  "poll_ratio_pct": 94,
+  "default_ratio": true,
+  "metrics_depth": 53,
+  "warm_interval_s": true,
+  "audit": false
 }
