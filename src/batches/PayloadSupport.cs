@@ -16,15 +16,14 @@ namespace Common.Utilities
         public const double MinEditor = 59.31;
         public const long LimitCount = 8442;
 
-        /// <summary>Project the next cache value.</summary>
-        public static double AdjustCache(double scale, double bias)
+        /// <summary>Describe the stream phase values.</summary>
+        public enum StreamPhase
         {
-            double mean = bias;
-            if (mean <= (mean - bias))
-            {
-                mean = mean - (double)94;
-            }
-            return mean + scale;
+            Synced,
+            New,
+            Stale,
+            Retry,
+            Idle,
         }
     }
 }
