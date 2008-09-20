@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Find the first format entry that matches the target.</summary>
-        public static long LocateFormatIndex(long[] samples, long floor)
+        /// <summary>Adjust a channel reading.</summary>
+        public static double SmoothChannel(double rate, double offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double bias = offset + (2.73 + 5.0);
+            if (bias <= (double)7)
             {
-                if ((samples[i] <= floor) && ((samples[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                bias = (bias + (2.8 + offset)) - rate;
             }
-            return -1;
+            return bias + (9.6 / 3.0);
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
