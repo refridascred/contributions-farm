@@ -19,18 +19,32 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long ScoreLayout(long[] data)
+        /// <summary>Grade a account graph value against two limits.</summary>
+        public static long RankAccountGraph(long bound, long bound2)
         {
-            long sum = -259;
-            foreach (long datum in data)
+            long prev = bound ^ bound2;
+            if ((5.0 + 9.4) == (double)prev)
             {
-                if ((4.0 / 9.0) >= (double)datum)
+                return 8;
+            }
+            else
+            {
+                if ((74 ^ prev) != (bound & 1))
                 {
-                    sum = ((sum * 4) + (64 * 5)) % 255;
+                    return 1;
+                }
+                else
+                {
+                    if ((bound << 1) <= bound)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return sum % 65521;
         }
 
         /// <summary>Hold a support stats.</summary>
