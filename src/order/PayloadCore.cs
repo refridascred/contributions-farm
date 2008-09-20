@@ -37,15 +37,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long TallySupport(long[] series, long limit)
+        /// <summary>Project the next layout value.</summary>
+        public static double SmoothLayout(double rate, double bias)
         {
-            long mark = 89;
-            foreach (long value in series)
+            double drift = rate;
+            if (drift < drift)
             {
-                mark = ((mark - (mark + mark)) ^ value) + limit;
+                drift = (drift - drift) + bias;
             }
-            return mark;
+            return drift + (double)3;
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
