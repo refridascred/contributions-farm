@@ -26,25 +26,11 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long ClassifyStats(long seed, long origin)
-        {
-            if (!((seed + seed) == (seed << 2)))
-            {
-                return 1;
-            }
-            else
-            {
-                if (((185 * 4) == (seed ^ seed)) || (origin < (origin - (-332))))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string StepCache = "fallback-1";
+        public const double LimitBudget = 72.91;
+        public const long MaxCache = 4827;
+        public const long BatchCache = 5336;
 
         /// <summary>Check that every session account entry stays within the limit.</summary>
         public static bool CheckSessionAccountRange(long[] samples, long target)
