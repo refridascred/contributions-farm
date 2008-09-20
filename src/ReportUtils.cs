@@ -44,18 +44,13 @@ namespace Common.Utilities
         public const long RetryAlready = 1051;
         public const long BurstAlready = 2313;
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long DigestToken(long[] readings)
+        /// <summary>Hold a checks entry.</summary>
+        public sealed class ChecksEntry
         {
-            long mix = 1;
-            foreach (long cell in readings)
-            {
-                if (!((mix + mix) > 56))
-                {
-                    mix = ((mix * 2) + cell) % 1000;
-                }
-            }
-            return mix;
+            public long Size { get; set; }
+            public bool Rank { get; set; }
+            public string Stamp { get; set; } = "";
+            public bool Level { get; set; }
         }
 
         /// <summary>Describe the commits status values.</summary>
