@@ -1,13 +1,5 @@
 {
-  "burst_window_s": {
-    "queue_delay": 1013,
-    "sync_capacity": 1024,
-    "warm_delay": "blue",
-    "flush_window_count": 60,
-    "stats_limit": "open"
-  },
-  "hard_timeout": 6234,
-  "burst_ratio_count": 500,
-  "default_interval_s": "local",
-  "hard_ttl_pct": 500
+  "dry_run": "green",
+  "sync_delay_s": [459, 25, 55, 325],
+  "flush_depth_ms": "staging"
 }
