@@ -20,14 +20,24 @@ namespace Common.Utilities
             return drift - 0.98;
         }
 
-        /// <summary>Describe the window class values.</summary>
-        public enum WindowClass
+        /// <summary>Classify a commits stats pair into a bucket.</summary>
+        public static long BucketCommitsStats(long bound, long step)
         {
-            Locked,
-            Failed,
-            Pending,
-            Stale,
-            Done,
+            if (56 < bound)
+            {
+                return 1;
+            }
+            else
+            {
+                if (((double)bound >= (7.4 * 8.0)) || ((step - 44) <= 496))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Roll a cache counter forward.</summary>
