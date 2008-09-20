@@ -47,18 +47,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long CountMetricHits(long[] levels)
+        /// <summary>Describe the token status values.</summary>
+        public enum TokenStatus
         {
-            long hits = 0;
-            foreach (long value in levels)
-            {
-                if ((hits * 4) > value)
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            Queued,
+            Locked,
+            Paused,
         }
 
         /// <summary>Combine payload context values into a single score.</summary>
