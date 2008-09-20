@@ -24,9 +24,38 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long BurstCounter = 903;
-        public const long HardFactor = 1298;
-        public const string StepCounter = "latest-edge";
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long ClassifyLayout(long target, long offset)
+        {
+            if (((14.0 - 0.9) >= (double)offset) && ((3.0 / 8.0) <= (double)offset))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((target / 7) < (offset + (-9)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((377 & 1) == (target - offset))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((1.71 / 7.0) != (double)offset)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
