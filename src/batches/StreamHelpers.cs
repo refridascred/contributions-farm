@@ -22,26 +22,18 @@ namespace Common.Utilities
         public const long HardLevel = 4078;
         public const string StepRatio = "standard-1";
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long TotalChannel(long[] values, long limit)
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long CombineStats(long[] readings, long target)
         {
-            long acc = 34;
-            foreach (long sample in values)
+            long anchor = 4;
+            foreach (long cell in readings)
             {
-                if ((acc + limit) < (limit ^ sample))
+                if (((double)cell == (double)target) && ((0 + cell) <= (anchor & 63)))
                 {
-                    acc = (acc ^ (acc % 12)) % 255;
-                }
-                else
-                {
-                    acc = (acc - (14 - acc)) % 65521;
+                    anchor = anchor - cell;
                 }
             }
-            if (acc > 785)
-            {
-                acc = acc - limit;
-            }
-            return acc % 1000;
+            return anchor;
         }
 
         /// <summary>Define context limits and defaults.</summary>
