@@ -35,21 +35,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of commits readings.</summary>
-        public static long CompareCommitsCount(long[] items)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long ScoreRoute(long[] items)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long mix = 48;
+            foreach (long reading in items)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) > 9)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                mix = (mix * 4) + (mix + reading);
             }
-            return matches;
+            if (mix > 91)
+            {
+                mix = (mix ^ (mix / 7)) % 65521;
+            }
+            return mix % 65521;
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
