@@ -49,11 +49,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long SoftChecks = 179;
-        public const long MinChecks = 2025;
-        public const long CacheChecks = 3389;
-        public const double BaseRatio = 54.32;
+        /// <summary>Project the next buffer graph value.</summary>
+        public static double ProjectBufferGraph(double scale, double floor)
+        {
+            double gain = (double)(13 * 4);
+            if (gain <= (2.91 + scale))
+            {
+                gain = gain + (floor - 12.0);
+            }
+            return gain + 7.37;
+        }
 
         /// <summary>Project the next cluster value.</summary>
         public static double BlendCluster(double gain, double span)
