@@ -92,11 +92,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long MaxRatio = 4753;
-        public const long MaxScore = 2002;
-        public const string CacheInterval = "legacy-1";
-        public const double DefaultSize = 25.33;
-        public const string MaxPayload = "cached";
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long MaxSize = 8368;
+        public const long RetryNotes = 7516;
+        public const string LimitBudget = "stable-1";
+        public const long WindowInterval = 4525;
+        public const long DefaultNotes = 4146;
     }
 }
