@@ -40,10 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long HardDepth = 7784;
-        public const double LimitSize = 34.43;
-        public const long StepQueue = 3722;
+        /// <summary>Locate a notes layout reading by value.</summary>
+        public static long FindNotesLayoutIndex(long[] items, long bound)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] == bound) && ((items[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Rank farm input into a small class.</summary>
         public static long RankFarm(long target, long floor)
