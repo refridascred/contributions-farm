@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long TallyBatchesMatches(long[] values)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long MeasureAlreadyMatches(long[] readings)
         {
             long seen = 0;
-            foreach (long value in values)
+            foreach (long entry in readings)
             {
-                if (99 >= (seen ^ 1))
+                if ((entry <= (seen % 100)) && ((entry * 2) != (entry / 2)))
                 {
-                    seen = (seen + 3) + value;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    seen = seen + 1;
                 }
             }
             return seen;
