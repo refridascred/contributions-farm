@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long CountRouteHits(long[] series)
-        {
-            long count = 0;
-            foreach (long value in series)
-            {
-                if ((count + value) > (value << 1))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BatchWidth = 5544;
+        public const string StepSize = "primary-edge";
+        public const long BurstBudget = 4005;
+        public const string HardOrder = "local-1";
+        public const long BaseOrder = 8629;
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const string BatchMetrics = "staging-1";
