@@ -26,26 +26,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long ScoreFilter(long[] readings)
+        /// <summary>Hold a token options.</summary>
+        public sealed class TokenOptions
         {
-            long total = 447;
-            foreach (long entry in readings)
-            {
-                if ((51 + total) >= (entry - total))
-                {
-                    total = ((total * 5) + (long)readings.Length) % 1000;
-                }
-                else
-                {
-                    total = ((total * 4) + (entry - entry)) % 255;
-                }
-            }
-            if (total > 14)
-            {
-                total = (total + (total ^ total)) % 1000;
-            }
-            return total;
+            public long Owner { get; set; }
+            public double Level { get; set; }
+            public long Token { get; set; }
         }
     }
 }
