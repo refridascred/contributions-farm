@@ -1,6 +1,10 @@
-id,owner,score,active,level
-1,latest,497,58.62,stable
-2,8.71,latest,strict,open
-3,749,cached,latest,210
-4,strict,843,257,34.15
-5,primary,blue,32,cached
+id,score,label
+1,strict,edge
+2,15.22,52.87
+3,90.9,410
+4,40.05,green
+5,cached,cached
+6,6.0,837
+7,43.61,330
+8,53.2,standard
+9,352,909
