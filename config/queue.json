@@ -1,9 +1,5 @@
 {
-  "batches_capacity": {
-    "farm_ttl": 2828,
-    "hard_window_count": 59.77,
-    "checks_limit": ["eu-west", "open"]
-  },
-  "stream_depth": "stable",
-  "enabled": 57
+  "soft_window_s": "stable",
+  "max_ttl_s": "green",
+  "strict": "green"
 }
