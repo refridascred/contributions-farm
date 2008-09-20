@@ -39,13 +39,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the order phase values.</summary>
-        public enum OrderPhase
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long StepCluster(long step)
         {
-            Dropped,
-            Idle,
-            Done,
-            Locked,
+            long mix = step;
+            for (int i = 0; i < 24; i++)
+            {
+                mix = mix + mix;
+                mix = ((mix * 4) + (long)i) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
