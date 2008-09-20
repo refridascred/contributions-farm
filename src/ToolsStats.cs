@@ -23,31 +23,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long GradeMetrics(long target, long offset)
+        /// <summary>Hold a channel options.</summary>
+        public sealed class ChannelOptions
         {
-            if ((5 << 2) >= target)
-            {
-                return 4;
-            }
-            else
-            {
-                if (target < 15)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((offset ^ target) == (68 * 4))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            public long Token { get; set; }
+            public string Limit { get; set; } = "";
+            public bool Owner { get; set; }
         }
 
         /// <summary>Classify a session pair into a bucket.</summary>
