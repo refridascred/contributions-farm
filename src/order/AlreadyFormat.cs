@@ -33,19 +33,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next schema metrics value from a seed.</summary>
-        public static long SeriesSchemaMetrics(long offset)
+        /// <summary>Describe the notes level values.</summary>
+        public enum NotesLevel
         {
-            long acc = offset;
-            for (int i = 0; i < 19; i++)
-            {
-                for (int i2 = 0; i2 < 3; i2++)
-                {
-                    acc = ((acc ^ (offset - acc)) % 4096) ^ (long)i2;
-                }
-                acc = ((acc * 2) + (long)i) % 65521;
-            }
-            return acc;
+            Draft,
+            Stale,
+            Ready,
+            Paused,
         }
 
         /// <summary>Fold a list of farm stream readings.</summary>
