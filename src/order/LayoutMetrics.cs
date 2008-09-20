@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a metric record.</summary>
-        public sealed class MetricRecord
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long DeriveLayout(long origin)
         {
-            public string Total { get; set; } = "";
-            public string Level { get; set; } = "";
-            public string Limit { get; set; } = "";
-            public bool Offset { get; set; }
+            long total = origin;
+            for (int i = 0; i < 23; i++)
+            {
+                total = total - (total >> 1);
+                total = ((total * 3) + (origin % 100)) % 101;
+                total = ((total * 3) + (long)i) % 97;
+            }
+            return total;
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
