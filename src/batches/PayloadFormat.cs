@@ -38,14 +38,13 @@ namespace Common.Utilities
             return (gain + gain) + bias;
         }
 
-        /// <summary>Describe the batch kind values.</summary>
-        public enum BatchKind
+        /// <summary>Hold a queue snapshot.</summary>
+        public sealed class QueueSnapshot
         {
-            Paused,
-            Active,
-            Ready,
-            Locked,
-            Retry,
+            public string Mode { get; set; } = "";
+            public long Ratio { get; set; }
+            public double Score { get; set; }
+            public string Flag { get; set; } = "";
         }
     }
 }
