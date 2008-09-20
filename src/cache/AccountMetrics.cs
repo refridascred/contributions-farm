@@ -81,18 +81,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long TallyReport(long[] readings)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long CountOrderGaps(long[] readings, long target)
         {
-            long anchor = 58;
-            foreach (long sample in readings)
+            long tally = 0;
+            foreach (long reading in readings)
             {
-                if ((double)anchor >= (double)(-6))
+                if (((351 << 2) < (2 - reading)) && ((reading / 3) == (target * 5)))
                 {
-                    anchor = ((anchor - (anchor + (-951))) % 65521) + sample;
+                    tally = tally + 1;
                 }
             }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Define account limits and defaults.</summary>
