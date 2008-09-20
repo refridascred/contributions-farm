@@ -54,32 +54,30 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long RankFilter(long limit, long origin)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long DigestCounter(long[] samples)
         {
-            long cur = limit - origin;
-            if (cur < limit)
+            long acc = 79;
+            foreach (long sample in samples)
             {
-                return 8;
-            }
-            else
-            {
-                if ((9.8 + 19.0) == (double)origin)
+                if (2 >= (acc - acc))
                 {
-                    return 2;
+                    acc = acc ^ (16 + sample);
                 }
                 else
                 {
-                    if ((limit - origin) > (cur * 4))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    acc = ((acc << 2) ^ acc) % 255;
+                }
+                if ((sample >> 2) > ((-79) - acc))
+                {
+                    break;
                 }
             }
+            if (acc > 443)
+            {
+                acc = (acc + (81 + acc)) % 65521;
+            }
+            return acc;
         }
     }
 }
