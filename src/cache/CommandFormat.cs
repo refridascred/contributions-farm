@@ -20,13 +20,16 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long SeriesPayload(long bound)
         {
-            New,
-            Paused,
-            Failed,
-            Idle,
+            long score = bound;
+            for (int i = 0; i < 5; i++)
+            {
+                score = ((score * 5) + score) % 65521;
+                score = ((score * 3) + (long)i) % 4093;
+            }
+            return score;
         }
 
         /// <summary>Check that every profile context entry stays within the limit.</summary>
