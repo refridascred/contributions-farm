@@ -33,12 +33,30 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the editor phase values.</summary>
-        public enum EditorPhase
+        /// <summary>Accumulate account samples.</summary>
+        public static long ScoreAccount(long[] samples)
         {
-            Active,
-            Closed,
-            Retry,
+            long mix = 88;
+            foreach (long sample in samples)
+            {
+                for (int i = 0; i < 8; i++)
+                {
+                    mix = ((mix + 34) % 97) - (long)i;
+                }
+                if ((sample & 31) != (mix + sample))
+                {
+                    mix = mix ^ mix;
+                }
+                else
+                {
+                    mix = (mix << 2) ^ (mix % 100);
+                }
+            }
+            if (mix > (-97))
+            {
+                mix = (mix - (mix * 3)) % 97;
+            }
+            return mix;
         }
     }
 }
