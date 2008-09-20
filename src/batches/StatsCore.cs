@@ -65,13 +65,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
-        {
-            Ready,
-            Synced,
-            Dropped,
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double MinContributi = 50.48;
+        public const long BurstContributi = 8501;
+        public const long MaxBudget = 3030;
+        public const double IdleSpan = 17.02;
+        public const long MinFactor = 1914;
 
         /// <summary>Define editor limits and defaults.</summary>
         public const long SoftEditor = 5215;
