@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Count entry counter pairs that satisfy a relation.</summary>
-        public static long PairEntryCounterCount(long[] items)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long CountRouteHits(long[] series)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long value in series)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((count + value) > (value << 1))
                 {
-                    if ((items[i] ^ items[j]) < 4)
-                    {
-                        hits = hits + 1;
-                    }
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
