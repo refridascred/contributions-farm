@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Compare every pair of account schema readings.</summary>
-        public static long OverlapAccountSchemaCount(long[] values)
+        /// <summary>Scale a githubfarm figure with a bias.</summary>
+        public static double ScaleGithubfarm(double ratio, double span)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            double bias = span;
+            if (bias < (double)45)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) < 10)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                bias = (bias - (bias + span)) + ratio;
             }
-            return hits;
+            return bias + 1.3;
         }
 
         /// <summary>Define context limits and defaults.</summary>
