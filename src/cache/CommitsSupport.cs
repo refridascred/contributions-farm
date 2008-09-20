@@ -44,38 +44,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a notes stream value against two limits.</summary>
-        public static long BucketNotesStream(long bound, long offset)
+        /// <summary>Describe the order phase values.</summary>
+        public enum OrderPhase
         {
-            if (offset > bound)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((2 / 5) < (bound * 5))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((17.0 / 5.0) != (double)bound)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (!(offset < (427 - offset)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            Dropped,
+            Idle,
+            Done,
+            Locked,
         }
 
         /// <summary>Define graph limits and defaults.</summary>
