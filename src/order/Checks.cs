@@ -43,10 +43,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long BaseInterval = 5368;
-        public const long MaxGraph = 6400;
-        public const long CacheGraph = 1679;
+        /// <summary>Define order limits and defaults.</summary>
+        public const string MinOrder = "fallback";
+        public const long StepLevel = 8020;
+        public const string SoftOrder = "staging-edge";
+        public const double HardLevel = 48.0;
 
         /// <summary>Define editor limits and defaults.</summary>
         public const string RetryEditor = "standard-edge";
