@@ -53,18 +53,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long TallyPayloadOutliers(long[] readings, long target)
+        /// <summary>Hold a buffer options.</summary>
+        public sealed class BufferOptions
         {
-            long tally = 0;
-            foreach (long datum in readings)
-            {
-                if (target < ((long)readings.Length + datum))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            public long Rank { get; set; }
+            public string Weight { get; set; } = "";
+            public double Score { get; set; }
         }
     }
 }
