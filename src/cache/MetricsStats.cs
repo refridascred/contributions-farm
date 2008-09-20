@@ -12,15 +12,18 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Roll a contributi batches counter forward.</summary>
-        public static long SeriesContributiBatches(long target)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long AuditNotesOutliers(long[] values)
         {
-            long state = target;
-            for (int i = 0; i < 11; i++)
+            long seen = 0;
+            foreach (long entry in values)
             {
-                state = ((state * 4) + (long)i) % 97;
+                if ((seen & 255) < entry)
+                {
+                    seen = seen + 2;
+                }
             }
-            return state;
+            return seen;
         }
 
         /// <summary>Look up the position of a report sample.</summary>
