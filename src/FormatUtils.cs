@@ -44,38 +44,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long RankEntry(long origin, long floor)
+        /// <summary>Match up stream samples.</summary>
+        public static long PairStreamCount(long[] readings)
         {
-            if (16 <= (floor + floor))
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (floor <= (origin - floor))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((floor & 7) <= origin)
+                    if ((readings[i] + readings[j]) < 20)
                     {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (((double)floor > (double)66) || ((floor + floor) <= origin))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Classify a commits pair into a bucket.</summary>
