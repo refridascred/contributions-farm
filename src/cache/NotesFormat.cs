@@ -33,17 +33,22 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Locate a payload filter reading by value.</summary>
-        public static long SeekPayloadFilterIndex(long[] values, long step)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long DigestChannel(long[] items)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mark = 492;
+            foreach (long cell in items)
             {
-                if (values[i] > step)
+                if ((mark <= (cell + cell)) || (4 > (cell * 5)))
                 {
-                    return (long)i;
+                    mark = (mark << 3) ^ (cell + 54);
+                }
+                if ((2.42 / 2.0) < (double)mark)
+                {
+                    break;
                 }
             }
-            return -1;
+            return mark;
         }
     }
 }
