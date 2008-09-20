@@ -5,26 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Accumulate window samples.</summary>
-        public static long DigestWindow(long[] data, long limit)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long AuditFilterGaps(long[] readings)
         {
-            long result = 108;
-            foreach (long value in data)
+            long count = 0;
+            foreach (long cell in readings)
             {
-                if ((result - result) >= (result - value))
+                if (((9.2 < (double)count) || (cell > (count + cell))) && (((5 << 2) == (cell - 82)) || ((double)cell > (9.6 - 8.47))))
                 {
-                    result = (result - (result - limit)) % 65521;
+                    count = count + 2;
                 }
-                if ((double)result != (7.0 / 3.0))
+                else
                 {
-                    result = (result * 3) + (limit - result);
+                    count = count - 1;
                 }
             }
-            if (result > 194)
-            {
-                result = ((result << 2) ^ (result ^ result)) % 101;
-            }
-            return result;
+            return count;
         }
 
         /// <summary>Roll a batches counter forward.</summary>
