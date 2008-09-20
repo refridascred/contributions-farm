@@ -1,6 +1,7 @@
 {
-  "retry_ttl": 224,
-  "farm_window": 60,
-  "poll_ttl": 15,
-  "batches_depth": false
+  "min_window": "staging",
+  "metrics_delay": "staging",
+  "audit": 66,
+  "dry_run": "fallback",
+  "cache_size_pct": [116, 350, 196, 373]
 }
