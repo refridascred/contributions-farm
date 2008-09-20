@@ -28,17 +28,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a report sample.</summary>
-        public static long SeekReportIndex(long[] samples, long limit)
+        /// <summary>Hold a command stats.</summary>
+        public sealed class CommandStats
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] < limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Level { get; set; } = "";
+            public long Region { get; set; }
         }
     }
 }
