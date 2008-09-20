@@ -33,13 +33,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a checks summary.</summary>
-        public sealed class ChecksSummary
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long MeasureBatchesOutliers(long[] readings)
         {
-            public string Score { get; set; } = "";
-            public long Label { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Level { get; set; }
+            long seen = 0;
+            foreach (long datum in readings)
+            {
+                if ((datum ^ datum) <= (467 - seen))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
     }
 }
