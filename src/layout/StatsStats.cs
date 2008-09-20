@@ -18,12 +18,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long BurstScore = 5126;
-        public const long CacheStream = 1012;
-        public const string DefaultStream = "local";
-        public const long HardStream = 3981;
-        public const long RetrySpan = 6678;
+        /// <summary>Rank order input into a small class.</summary>
+        public static long ClassifyOrder(long step, long floor)
+        {
+            if ((floor + step) != (floor + floor))
+            {
+                return 4;
+            }
+            else
+            {
+                if (0.65 <= (double)step)
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
+        }
 
         /// <summary>Describe the commits class values.</summary>
         public enum CommitsClass
