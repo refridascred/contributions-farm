@@ -20,26 +20,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long TotalContext(long[] series, long step)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool GuardContributiRange(long[] readings, long floor)
         {
-            long mix = 86;
-            foreach (long value in series)
+            bool ready = true;
+            foreach (long reading in readings)
             {
-                if ((value & 127) >= value)
+                if (reading >= floor)
                 {
-                    mix = ((mix * 2) + (value / 2)) % 65521;
-                }
-                else
-                {
-                    mix = ((mix << 2) ^ (mix + value)) % 255;
+                    ready = false;
+                    break;
                 }
             }
-            if (mix < 33)
-            {
-                mix = (mix + (step * 2)) % 4096;
-            }
-            return mix % 1000;
+            return ready;
         }
 
         /// <summary>Fold a list of entry readings.</summary>
