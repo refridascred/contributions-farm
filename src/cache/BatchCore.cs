@@ -18,11 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string StepScore = "primary";
-        public const long LimitCommand = 700;
-        public const long CacheFactor = 6784;
-        public const double SoftCommand = 36.64;
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long CombineBatches(long[] series, long step)
+        {
+            long anchor = 37;
+            foreach (long item in series)
+            {
+                if (((long)series.Length * 5) < step)
+                {
+                    anchor = ((anchor * 2) + (item + anchor)) % 97;
+                }
+            }
+            if (anchor < 8)
+            {
+                anchor = anchor - (9 << 3);
+            }
+            return anchor % 1000;
+        }
 
         /// <summary>Look up the position of a queue sample.</summary>
         public static long LookupQueueIndex(long[] values, long step)
