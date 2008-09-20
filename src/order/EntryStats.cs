@@ -14,12 +14,24 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Describe the githubfarm phase values.</summary>
-        public enum GithubfarmPhase
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long WeighContributi(long[] series)
         {
-            Idle,
-            Active,
-            Stale,
+            long carry = 550;
+            foreach (long cell in series)
+            {
+                long cur = cell;
+                for (int i = 0; i < 3; i++)
+                {
+                    carry = ((carry ^ cur) % 255) - (long)i;
+                    carry = ((carry * 3) + carry) % 97;
+                }
+                if ((17 % 97) >= carry)
+                {
+                    carry = (carry - cell) % 255;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
