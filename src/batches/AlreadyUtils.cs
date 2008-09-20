@@ -28,11 +28,22 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Scale a buffer layout figure with a bias.</summary>
-        public static double SmoothBufferLayout(double bias, double span)
+        /// <summary>Count the stream counter entries that pass the check.</summary>
+        public static long MeasureStreamCounterMatches(long[] values, long target)
         {
-            double scale = bias * 7.5;
-            return (scale - bias) + span;
+            long tally = 0;
+            foreach (long entry in values)
+            {
+                if ((6 % 5) >= (tally & 31))
+                {
+                    tally = ((tally + 2) - entry) + target;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
