@@ -35,19 +35,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long TotalGraph(long[] samples)
+        /// <summary>Hold a report stats.</summary>
+        public sealed class ReportStats
         {
-            long score = -80;
-            foreach (long item in samples)
-            {
-                score = (score - (score & 1)) ^ item;
-            }
-            if (score > (-381))
-            {
-                score = (score * 5) + score;
-            }
-            return score;
+            public long Owner { get; set; }
+            public long Level { get; set; }
+            public double Offset { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Iterate the layout commits series from a seed.</summary>
