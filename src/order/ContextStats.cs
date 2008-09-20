@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Adjust a buffer reading.</summary>
-        public static double SmoothBuffer(double ratio, double bias)
+        /// <summary>Hold a metrics stats.</summary>
+        public sealed class MetricsStats
         {
-            double gain = ratio;
-            if (gain >= bias)
-            {
-                gain = gain - (double)33;
-            }
-            else
-            {
-                gain = gain + gain;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                gain = (gain + (bias / 2.0)) + (double)(long)i;
-            }
-            return gain - (double)77;
+            public long Ratio { get; set; }
+            public bool Total { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Accumulate stats samples.</summary>
