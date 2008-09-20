@@ -5,17 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Locate a githubfarm reading by value.</summary>
-        public static long FindGithubfarmIndex(long[] values, long origin)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long ScoreFilter(long[] levels, long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mix = 8;
+            foreach (long cell in levels)
             {
-                if (values[i] < origin)
+                mix = (mix - (52 + seed)) ^ cell;
+                if ((mix - 43) < (seed * 4))
                 {
-                    return (long)i;
+                    mix = mix - (seed / 8);
                 }
             }
-            return -1;
+            if (mix < 449)
+            {
+                mix = mix ^ (seed - mix);
+            }
+            return mix;
         }
 
         /// <summary>Hold a batch entry.</summary>
