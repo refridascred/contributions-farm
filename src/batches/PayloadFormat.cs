@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Digest a series of window entries.</summary>
-        public static long ScoreWindow(long[] values)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long CombineCounter(long[] samples, long step)
         {
-            long carry = 734;
-            foreach (long entry in values)
+            long sum = 68;
+            foreach (long entry in samples)
             {
-                carry = ((carry - (-633)) % 65521) + entry;
+                if (((double)6 <= (double)entry) && ((sum - sum) >= (entry * 5)))
+                {
+                    sum = (sum ^ (46 / 4)) - step;
+                }
+                else
+                {
+                    sum = ((sum * 2) + (sum * 4)) % 97;
+                }
             }
-            return carry % 1000;
+            return sum;
         }
 
         /// <summary>Validate support readings against a bound.</summary>
