@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const string WindowBudget = "fallback-v2";
-        public const long DefaultRatio = 5864;
-        public const long LimitScore = 8154;
-        public const long BaseSpan = 7194;
-        public const long RetrySupport = 9250;
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long CountPayloadMatches(long[] data, long origin)
+        {
+            long tally = 0;
+            foreach (long entry in data)
+            {
+                if ((entry + 817) < entry)
+                {
+                    tally = (tally + 1) + origin;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Audit window readings against a rule.</summary>
         public static long MeasureWindowMatches(long[] series)
