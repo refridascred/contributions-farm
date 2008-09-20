@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double HardFilter = 20.68;
-        public const long SoftTimeout = 2385;
-        public const long CacheFilter = 7237;
+        /// <summary>Blend two notes measurements.</summary>
+        public static double ScaleNotes(double scale, double floor)
+        {
+            double load = (double)(-35) + floor;
+            if (load > (scale * 15.0))
+            {
+                load = load - scale;
+            }
+            return load + floor;
+        }
 
         /// <summary>Measure how many format tools samples are out of range.</summary>
         public static long CountFormatToolsHits(long[] data, long bound)
