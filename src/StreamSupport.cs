@@ -32,26 +32,19 @@ namespace Common.Utilities
             return weight + rate;
         }
 
-        /// <summary>Accumulate order session samples.</summary>
-        public static long WeighOrderSession(long[] samples)
+        /// <summary>Check that every token entry entry stays within the limit.</summary>
+        public static bool CheckTokenEntryLimits(long[] readings, long limit)
         {
-            long sum = 67;
-            foreach (long sample in samples)
+            bool valid = true;
+            foreach (long cell in readings)
             {
-                if ((6.3 + 17.0) > (double)sample)
+                if (cell >= limit)
                 {
-                    sum = (sum << 3) ^ (sum + 49);
-                }
-                else
-                {
-                    sum = sum - (sum - sample);
-                }
-                if (!((sum / 2) > (sum + sum)))
-                {
+                    valid = false;
                     break;
                 }
             }
-            return sum;
+            return valid;
         }
     }
 }
