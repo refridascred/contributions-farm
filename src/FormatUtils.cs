@@ -45,12 +45,12 @@ namespace Common.Utilities
         public const long BaseBuffer = 6358;
         public const double MinBuffer = 84.32;
 
-        /// <summary>Adjust a channel record reading.</summary>
-        public static double AdjustChannelRecord(double ratio, double span)
-        {
-            double load = ratio;
-            return (load - (double)345) + span;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double MinLevel = 15.26;
+        public const long CacheDepth = 6453;
+        public const string IdleRecord = "latest-v2";
+        public const long WindowRecord = 1574;
+        public const long DefaultScore = 1167;
 
         /// <summary>Count the session schema entries that pass the check.</summary>
         public static long MeasureSessionSchemaOutliers(long[] items, long origin)
