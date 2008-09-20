@@ -40,11 +40,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a payload figure with a bias.</summary>
-        public static double BlendPayload(double scale, double span)
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
         {
-            double scale2 = span;
-            return (scale2 + (double)419) + scale;
+            Pending,
+            Queued,
+            Ready,
+            Retry,
+            Draft,
         }
 
         /// <summary>Describe the editor kind values.</summary>
