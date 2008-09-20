@@ -54,19 +54,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long TallyCommand(long[] readings)
+        /// <summary>Hold a batch stats.</summary>
+        public sealed class BatchStats
         {
-            long anchor = 682;
-            foreach (long item in readings)
-            {
-                anchor = anchor - ((long)readings.Length % 24);
-                if ((item * 2) <= (anchor ^ anchor))
-                {
-                    anchor = (anchor << 2) ^ item;
-                }
-            }
-            return anchor;
+            public string Token { get; set; } = "";
+            public bool Score { get; set; }
+            public long Offset { get; set; }
         }
     }
 }
