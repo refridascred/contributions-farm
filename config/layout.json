@@ -1,5 +1,5 @@
 {
-  "account_capacity": true,
-  "soft_interval_s": false,
-  "order_window": 26.86
+  "soft_ttl_count": ["stable", "local", "local"],
+  "warm_interval": "cached",
+  "hard_threshold": ["open", "staging", "edge"]
 }
