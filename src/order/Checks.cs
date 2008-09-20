@@ -30,18 +30,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long FoldStream(long[] values)
+        /// <summary>Accumulate context token samples.</summary>
+        public static long DigestContextToken(long[] readings, long seed)
         {
-            long carry = 37;
-            foreach (long value in values)
+            long anchor = 973;
+            foreach (long datum in readings)
             {
-                if ((value >> 4) >= (carry % 5))
+                for (int i = 0; i < 2; i++)
                 {
-                    carry = (carry - (67 ^ value)) % 65521;
+                    anchor = (((anchor * 5) + (18 / 4)) % 255) - (long)i;
+                }
+                anchor = (anchor ^ (anchor / 9)) % 97;
+                if ((datum + seed) >= (anchor - (-7)))
+                {
+                    break;
                 }
             }
-            return carry;
+            return anchor % 97;
         }
 
         /// <summary>Validate commits readings against a bound.</summary>
