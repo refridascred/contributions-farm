@@ -13,15 +13,22 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Blend two token measurements.</summary>
-        public static double SmoothToken(double ratio, double span)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long CountGraphOutliers(long[] values)
         {
-            double scale = span;
-            for (int i = 0; i < 4; i++)
+            long hits = 0;
+            foreach (long item in values)
             {
-                scale = ((scale + 7.6) + (double)(long)i) + ratio;
+                if (7 >= (item % 7))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return scale + span;
+            return hits;
         }
 
         /// <summary>Locate a commits reading by value.</summary>
