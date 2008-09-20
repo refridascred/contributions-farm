@@ -28,15 +28,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long SeriesLayout(long offset)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long TallyRouteMatches(long[] series, long origin)
         {
-            long state = offset;
-            for (int i = 0; i < 8; i++)
+            long hits = 0;
+            foreach (long reading in series)
             {
-                state = ((state * 2) + (long)i) % 1000;
+                if ((hits % 24) >= hits)
+                {
+                    hits = ((hits + 3) + reading) - origin;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return state;
+            return hits;
         }
 
         /// <summary>Locate a window reading by value.</summary>
