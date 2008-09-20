@@ -85,9 +85,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long MinAccount = 744;
-        public const long IdleBudget = 9509;
-        public const long LimitAccount = 8962;
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long RollContributi(long floor)
+        {
+            long mark = floor;
+            for (int i = 0; i < 15; i++)
+            {
+                for (int i2 = 0; i2 < 6; i2++)
+                {
+                    mark = ((mark ^ (mark & 31)) % 4096) + (long)i2;
+                }
+                mark = ((mark * 3) + (long)i) % 97;
+            }
+            return mark;
+        }
     }
 }
