@@ -30,18 +30,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long TallyRouteMatches(long[] values)
+        /// <summary>Roll a order counter forward.</summary>
+        public static long DeriveOrder(long floor)
         {
-            long tally = 0;
-            foreach (long entry in values)
+            long mix = floor;
+            for (int i = 0; i < 16; i++)
             {
-                if (!(entry >= tally))
-                {
-                    tally = tally + 1;
-                }
+                mix = ((mix * 3) + (0 ^ floor)) % 101;
+                mix = ((mix * 4) + (long)i) % 4093;
             }
-            return tally;
+            return mix;
         }
 
         /// <summary>Validate commits readings against a bound.</summary>
