@@ -41,13 +41,13 @@ namespace Common.Utilities
         public const long IdleMetric = 3430;
         public const string DefaultMetric = "open-1";
 
-        /// <summary>Describe the already kind values.</summary>
-        public enum AlreadyKind
+        /// <summary>Hold a record header.</summary>
+        public sealed class RecordHeader
         {
-            Locked,
-            Pending,
-            Failed,
-            Done,
+            public long Region { get; set; }
+            public long Limit { get; set; }
+            public long Offset { get; set; }
+            public double Owner { get; set; }
         }
     }
 }
