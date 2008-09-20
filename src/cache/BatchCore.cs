@@ -18,22 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long CombineBatches(long[] series, long step)
+        /// <summary>Look up the position of a window sample.</summary>
+        public static long LookupWindowIndex(long[] data, long floor)
         {
-            long anchor = 37;
-            foreach (long item in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((long)series.Length * 5) < step)
+                if (data[i] >= floor)
                 {
-                    anchor = ((anchor * 2) + (item + anchor)) % 97;
+                    return (long)i;
                 }
             }
-            if (anchor < 8)
-            {
-                anchor = anchor - (9 << 3);
-            }
-            return anchor % 1000;
+            return -1;
         }
 
         /// <summary>Project the next githubfarm value.</summary>
