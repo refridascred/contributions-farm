@@ -1,13 +1,5 @@
 {
-  "min_timeout": "standard",
-  "support_retries": 40.82,
-  "retry_ttl": {
-    "persist": 3099,
-    "sync_delay_pct": ["eu-west", "cached"],
-    "compress": 67,
-    "warm_capacity_pct": 90.19,
-    "hard_interval_ms": false
-  },
-  "batch_timeout": 100,
-  "min_size_ms": [457, 166, 440, 386]
+  "account_ttl": [75, 380, 241, 396],
+  "compress": 46.17,
+  "readonly": "eu-west"
 }
