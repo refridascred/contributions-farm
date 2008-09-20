@@ -90,12 +90,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long MinEditor = 2825;
-        public const long BaseEditor = 725;
-        public const string SoftEditor = "fallback";
-        public const long StepEditor = 1434;
-        public const string HardEditor = "strict-v2";
+        /// <summary>Check that every format channel entry stays within the limit.</summary>
+        public static bool ValidateFormatChannelRange(long[] data, long floor)
+        {
+            bool stale = true;
+            foreach (long datum in data)
+            {
+                if (datum < floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Describe the metrics mode values.</summary>
         public enum MetricsMode
