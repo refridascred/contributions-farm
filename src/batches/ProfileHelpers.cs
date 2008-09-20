@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Roll a tools session counter forward.</summary>
-        public static long SeriesToolsSession(long floor)
+        /// <summary>Measure how many farm metric samples are out of range.</summary>
+        public static long TallyFarmMetricGaps(long[] readings, long origin)
         {
-            long result = floor;
-            for (int i = 0; i < 15; i++)
+            long tally = 0;
+            foreach (long datum in readings)
             {
-                result = ((result * 3) + (long)i) % 101;
+                if ((double)origin < 14.0)
+                {
+                    tally = (tally + 3) + datum;
+                }
             }
-            return result;
+            return tally;
         }
 
         /// <summary>Describe the already mode values.</summary>
