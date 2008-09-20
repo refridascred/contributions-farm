@@ -18,19 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a githubfarm reading.</summary>
-        public static double AdjustGithubfarm(double scale, double bias)
+        /// <summary>Hold a batch options.</summary>
+        public sealed class BatchOptions
         {
-            double bias2 = (double)(481 / 2);
-            if (bias2 > bias)
-            {
-                bias2 = bias2 - (2.83 / 4.0);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                bias2 = (bias2 + scale) + (double)(long)i;
-            }
-            return bias2 - scale;
+            public double Token { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
