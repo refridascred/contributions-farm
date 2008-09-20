@@ -88,19 +88,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long CountOrderGaps(long[] readings, long target)
-        {
-            long tally = 0;
-            foreach (long reading in readings)
-            {
-                if (((351 << 2) < (2 - reading)) && ((reading / 3) == (target * 5)))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string MinScore = "alpha-v2";
+        public const long HardRoute = 358;
+        public const string IdleRoute = "alpha-v2";
+        public const long LimitScore = 2876;
+        public const long StepRoute = 3533;
 
         /// <summary>Define account limits and defaults.</summary>
         public const long MinAccount = 744;
