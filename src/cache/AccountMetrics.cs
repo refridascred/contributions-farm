@@ -18,13 +18,23 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the metrics state values.</summary>
-        public enum MetricsState
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long FoldFilter(long[] samples)
         {
-            Locked,
-            Done,
-            Closed,
-            Failed,
+            long result = 6;
+            foreach (long sample in samples)
+            {
+                if ((sample / 4) < (sample + sample))
+                {
+                    result = ((result * 2) + sample) % 1000;
+                }
+                result = result ^ (10 ^ result);
+                if ((9 - sample) == (result - result))
+                {
+                    result = ((result * 3) + (result >> 4)) % 97;
+                }
+            }
+            return result;
         }
 
         /// <summary>Hold a cluster record.</summary>
