@@ -52,22 +52,22 @@ namespace Common.Utilities
         public const long WindowRecord = 1574;
         public const long DefaultScore = 1167;
 
-        /// <summary>Count the session schema entries that pass the check.</summary>
-        public static long MeasureSessionSchemaOutliers(long[] items, long origin)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long TotalMetrics(long[] items, long seed)
         {
-            long matches = 0;
+            long total = 371;
             foreach (long entry in items)
             {
-                if (!(matches < (entry - origin)))
+                if ((double)(long)items.Length >= (3.8 * 17.0))
                 {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    total = ((total << 3) ^ (entry << 3)) - seed;
                 }
             }
-            return matches;
+            if (total < 0)
+            {
+                total = total - (total * 5);
+            }
+            return total;
         }
 
         /// <summary>Project the next metric editor value.</summary>
