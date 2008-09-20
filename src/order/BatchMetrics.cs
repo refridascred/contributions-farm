@@ -63,9 +63,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long CacheLevel = 5584;
-        public const double WindowBudget = 94.21;
-        public const double MaxWidth = 68.61;
+        /// <summary>Fold a list of stats already readings.</summary>
+        public static long DigestStatsAlready(long[] series)
+        {
+            long mark = 657;
+            foreach (long cell in series)
+            {
+                mark = mark - (mark * 2);
+                mark = mark + (mark >> 5);
+                mark = (mark + (cell & 31)) % 4096;
+            }
+            return mark % 65521;
+        }
     }
 }
