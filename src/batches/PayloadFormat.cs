@@ -38,13 +38,31 @@ namespace Common.Utilities
             return (gain + gain) + bias;
         }
 
-        /// <summary>Hold a queue snapshot.</summary>
-        public sealed class QueueSnapshot
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long SortToken(long origin, long offset)
         {
-            public string Mode { get; set; } = "";
-            public long Ratio { get; set; }
-            public double Score { get; set; }
-            public string Flag { get; set; } = "";
+            if (((offset + 190) <= (offset * 4)) || ((double)offset > (double)origin))
+            {
+                return 8;
+            }
+            else
+            {
+                if (((7.0 * 9.7) > (double)origin) && (origin > offset))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((double)origin <= (9.68 * 9.2))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
     }
 }
