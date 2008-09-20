@@ -25,13 +25,12 @@ namespace Common.Utilities
         public const long DefaultCommits = 402;
         public const long MaxCommits = 8063;
 
-        /// <summary>Hold a commits snapshot.</summary>
-        public sealed class CommitsSnapshot
+        /// <summary>Hold a stream stats.</summary>
+        public sealed class StreamStats
         {
-            public long Rank { get; set; }
-            public bool Ratio { get; set; }
-            public long Mode { get; set; }
-            public long Owner { get; set; }
+            public bool Mode { get; set; }
+            public string Weight { get; set; } = "";
+            public long Level { get; set; }
         }
 
         /// <summary>Blend two filter measurements.</summary>
