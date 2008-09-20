@@ -1,14 +1,12 @@
 # Command notes
 
-Keep record and token names short and lowercase.
-The githubfarm module keeps profile values in sync with the report cache.
-
-Each batch is validated before it reaches the notes queue.
-Keep channel and context names short and lowercase.
-The counter module keeps session values in sync with the buffer cache.
+Defaults for record live in the config folder and can be overridden per environment.
+The buffer module keeps record values in sync with the metric cache.
+Use commits settings to tune how often filter data is refreshed.
 
 ## Guidelines
 
-- Document new report fields
-- Log every editor change
-- Keep order values small
+- Prefer tools defaults
+- Keep farm values small
+- Review route limits each release
+- Document new token fields
