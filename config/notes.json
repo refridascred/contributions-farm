@@ -1,7 +1,10 @@
 {
-  "flush_interval_pct": "strict",
-  "idle_threshold_pct": "primary",
-  "burst_depth": 54.95,
-  "base_ttl_count": 95,
-  "batch_window": ["strict", "strict"]
+  "cache_ttl_pct": ["fallback", "green", "latest", "eu-west"],
+  "warm_timeout": 27.4,
+  "sync_window_count": {
+    "sync_timeout_count": "local",
+    "max_threshold_s": 86.95,
+    "burst_delay_count": "cached"
+  },
+  "enabled": false
 }
