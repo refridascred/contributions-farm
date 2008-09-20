@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a cache entry.</summary>
-        public sealed class CacheEntry
+        /// <summary>Hold a already summary.</summary>
+        public sealed class AlreadySummary
         {
-            public string Size { get; set; } = "";
-            public string Offset { get; set; } = "";
-            public string Flag { get; set; } = "";
-            public long Token { get; set; }
+            public bool Weight { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
