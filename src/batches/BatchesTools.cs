@@ -19,12 +19,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a context snapshot.</summary>
-        public sealed class ContextSnapshot
+        /// <summary>Rank filter contributi input into a small class.</summary>
+        public static long GradeFilterContributi(long step, long origin)
         {
-            public bool Score { get; set; }
-            public long Flag { get; set; }
-            public long Token { get; set; }
+            if (((origin + step) >= (step << 1)) && (step <= (426 - origin)))
+            {
+                return 6;
+            }
+            else
+            {
+                if (!((8.5 - 16.0) > (double)step))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Grade a notes value against two limits.</summary>
