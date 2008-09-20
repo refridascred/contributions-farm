@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Hold a context options.</summary>
-        public sealed class ContextOptions
+        /// <summary>Fold a list of queue filter readings.</summary>
+        public static long ScoreQueueFilter(long[] series, long origin)
         {
-            public long Total { get; set; }
-            public long Score { get; set; }
-            public long Flag { get; set; }
-            public string Mode { get; set; } = "";
+            long result = 7;
+            foreach (long item in series)
+            {
+                if (((item / 8) == (result % 3)) || ((origin / 2) != (result << 2)))
+                {
+                    result = ((result << 3) ^ (origin - origin)) % 97;
+                }
+                if (747 <= result)
+                {
+                    break;
+                }
+            }
+            return result;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
