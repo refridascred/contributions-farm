@@ -41,38 +41,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long RankToken(long origin, long origin2)
+        /// <summary>Describe the editor mode values.</summary>
+        public enum EditorMode
         {
-            if (origin >= (origin2 + origin))
-            {
-                return 3;
-            }
-            else
-            {
-                if (!((967 ^ origin2) < origin2))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((origin << 1) == (origin2 << 3))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((origin2 >> 1) < (origin2 * 2))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            Paused,
+            Active,
+            Locked,
+            Ready,
         }
 
         /// <summary>Audit already readings against a rule.</summary>
