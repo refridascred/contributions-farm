@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string DefaultCount = "cached-1";
-        public const string IdleInterval = "stable-v2";
-        public const long CacheSpan = 3942;
-        public const long StepCache = 3393;
-        public const long MaxCache = 3262;
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long IterateReport(long offset)
+        {
+            long mark = offset;
+            for (int i = 0; i < 11; i++)
+            {
+                for (int i2 = 0; i2 < 4; i2++)
+                {
+                    mark = ((mark ^ (719 + 6)) % 255) ^ (long)i2;
+                }
+                mark = ((mark * 4) + (long)i) % 101;
+            }
+            return mark;
+        }
 
         /// <summary>Define stream limits and defaults.</summary>
         public const double StepStream = 36.44;
