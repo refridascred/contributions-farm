@@ -1,19 +1,5 @@
 {
-  "max_threshold": [417, 362, 483, 408],
-  "min_ratio": {
-    "hard_window_ms": {
-      "retry_ttl": "primary",
-      "min_capacity_count": ["stable", "standard"],
-      "audit": "standard"
-    },
-    "sync_ratio_count": {
-      "enabled": false,
-      "persist": "fallback",
-      "stats_timeout": 3,
-      "window_capacity": ["edge", "green"],
-      "min_depth": 66
-    },
-    "soft_interval_s": "primary"
-  },
-  "already_timeout": 99.0
+  "audit": true,
+  "soft_timeout": "open",
+  "cluster_ttl": "stable"
 }
