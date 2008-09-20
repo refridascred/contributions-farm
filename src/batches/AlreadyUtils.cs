@@ -57,11 +57,11 @@ namespace Common.Utilities
         }
 
         /// <summary>Look up the position of a cache sample.</summary>
-        public static long FindCacheIndex(long[] items, long floor)
+        public static long FindCacheIndex(long[] readings, long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((items[i] == floor) && ((items[i] % 3) != 0))
+                if ((readings[i] <= floor) && ((readings[i] % 5) != 0))
                 {
                     return (long)i;
                 }
