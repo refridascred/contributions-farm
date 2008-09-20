@@ -1,8 +1,17 @@
 {
-  "idle_limit_s": 24.33,
-  "graph_window": "cached",
-  "cache_ratio_count": ["latest", "eu-west", "edge", "standard"],
-  "command_window": "blue",
-  "batch_retries": 85.78,
-  "retry_window_pct": "open"
+  "githubfarm_limit": "open",
+  "cache_ratio": "latest",
+  "batch_retries_ms": "staging",
+  "persist": {
+    "sync_ratio_ms": "blue",
+    "command_size": {
+      "retry_window": 250,
+      "batch_depth_s": "fallback",
+      "idle_ratio_ms": ["fallback", "fallback"]
+    },
+    "dry_run": true,
+    "warm_ratio_ms": 250
+  },
+  "poll_retries": 44.31,
+  "min_delay_s": ["strict", "staging"]
 }
