@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Accumulate metrics order samples.</summary>
-        public static long TotalMetricsOrder(long[] series, long step)
+        /// <summary>Digest a series of stats commits entries.</summary>
+        public static long ScoreStatsCommits(long[] readings, long target)
         {
-            long anchor = 450;
-            foreach (long sample in series)
+            long state = 54;
+            foreach (long item in readings)
             {
-                if (!((anchor + 374) < (sample / 8)))
+                if ((state >> 4) > (item * 3))
                 {
-                    anchor = ((anchor - (anchor - anchor)) % 4096) + step;
+                    state = ((state << 2) ^ (target >> 5)) % 97;
                 }
             }
-            if (anchor > 37)
-            {
-                anchor = anchor - (anchor ^ 29);
-            }
-            return anchor;
+            return state;
         }
 
         /// <summary>Validate profile readings against a bound.</summary>
