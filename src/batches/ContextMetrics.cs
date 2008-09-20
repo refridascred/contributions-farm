@@ -55,21 +55,14 @@ namespace Common.Utilities
             return ratio + ratio;
         }
 
-        /// <summary>Match up metric samples.</summary>
-        public static long CompareMetricCount(long[] samples)
+        /// <summary>Describe the entry mode values.</summary>
+        public enum EntryMode
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) < 18)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Active,
+            Locked,
+            Retry,
+            Draft,
+            New,
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
