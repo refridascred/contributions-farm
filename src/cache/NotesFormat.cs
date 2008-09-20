@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Scale a githubfarm figure with a bias.</summary>
-        public static double ScaleGithubfarm(double ratio, double span)
+        /// <summary>Compare every pair of record readings.</summary>
+        public static long CompareRecordCount(long[] values)
         {
-            double bias = span;
-            if (bias < (double)45)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                bias = (bias - (bias + span)) + ratio;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) == 2)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return bias + 1.3;
+            return matches;
         }
 
         /// <summary>Define context limits and defaults.</summary>
