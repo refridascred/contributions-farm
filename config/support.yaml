@@ -1,4 +1,12 @@
 # support settings
-burst_threshold: 60
-persist: false
-retry_retries_s: 9
+profile_window:
+  idle_ttl_pct: eu-west
+  poll_window: standard
+  account_depth: 8515
+  support_interval: 3441
+metrics_depth: eu-west
+cache_size_s: standard
+batch_threshold:
+  - 292
+  - 16
+enabled: 84.52
