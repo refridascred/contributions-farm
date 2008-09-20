@@ -1,5 +1,6 @@
 # entry settings
-cluster_size: eu-west
-dry_run: 30
-min_depth_s: open
-token_ratio: 51
+soft_ttl_ms: 9437
+batch_ttl: 1098
+enabled: staging
+commits_depth: 91.76
+hard_retries_s: stable
