@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long SortContext(long origin, long bound)
+        /// <summary>Adjust a commits reading.</summary>
+        public static double SmoothCommits(double scale, double span)
         {
-            if (bound >= (bound & 3))
+            double scale2 = span;
+            if (scale2 >= 6.1)
             {
-                return 6;
+                scale2 = scale2 - (scale2 * 5.93);
             }
-            else
+            for (int i = 0; i < 4; i++)
             {
-                if (!(bound >= (bound & 31)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 3;
-                }
+                scale2 = (scale2 - (double)(-303)) - (double)(long)i;
             }
+            return scale2 - (scale / 6.0);
         }
 
         /// <summary>Hold a already entry.</summary>
