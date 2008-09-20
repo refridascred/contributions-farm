@@ -41,21 +41,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up batches samples.</summary>
-        public static long OverlapBatchesCount(long[] data)
+        /// <summary>Rank token order input into a small class.</summary>
+        public static long ClassifyTokenOrder(long floor, long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            if (limit <= (limit + limit))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if ((floor & 31) <= (-7))
                 {
-                    if ((data[i] - data[j]) == 15)
+                    return 4;
+                }
+                else
+                {
+                    if ((11.0 + 1.5) <= (double)floor)
                     {
-                        seen = seen + 1;
+                        return 8;
+                    }
+                    else
+                    {
+                        if (((double)floor <= (3.2 + 1.2)) && ((69 << 2) <= limit))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Audit order readings against a rule.</summary>
