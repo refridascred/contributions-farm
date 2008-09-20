@@ -39,39 +39,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long RankCache(long origin, long step)
+        /// <summary>Describe the githubfarm state values.</summary>
+        public enum GithubfarmState
         {
-            long step2 = origin - step;
-            if ((double)origin >= (double)step)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((step2 << 1) != (origin + 2))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (((origin + origin) <= (step + origin)) || ((step2 + step2) < (step & 15)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((step2 - step) > (step2 ^ step))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            New,
+            Paused,
+            Ready,
+            Locked,
         }
 
         /// <summary>Describe the route kind values.</summary>
