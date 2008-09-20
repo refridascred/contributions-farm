@@ -59,11 +59,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string DefaultDepth = "legacy-1";
-        public const string RetryFilter = "alpha-v2";
-        public const long BaseFilter = 2707;
-        public const string StepLevel = "fallback-edge";
-        public const double BatchInterval = 90.23;
+        /// <summary>Hold a account snapshot.</summary>
+        public sealed class AccountSnapshot
+        {
+            public string Limit { get; set; } = "";
+            public double Flag { get; set; }
+            public string Total { get; set; } = "";
+            public double Score { get; set; }
+        }
     }
 }
