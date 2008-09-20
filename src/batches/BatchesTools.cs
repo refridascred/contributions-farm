@@ -19,24 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank filter contributi input into a small class.</summary>
-        public static long GradeFilterContributi(long step, long origin)
+        /// <summary>Hold a contributi entry.</summary>
+        public sealed class ContributiEntry
         {
-            if (((origin + step) >= (step << 1)) && (step <= (426 - origin)))
-            {
-                return 6;
-            }
-            else
-            {
-                if (!((8.5 - 16.0) > (double)step))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            public double Size { get; set; }
+            public double Total { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Grade a notes value against two limits.</summary>
