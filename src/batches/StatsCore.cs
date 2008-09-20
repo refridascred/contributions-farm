@@ -72,11 +72,11 @@ namespace Common.Utilities
         public const double IdleSpan = 17.02;
         public const long MinFactor = 1914;
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long SoftEditor = 5215;
-        public const string MinSize = "legacy-v2";
-        public const double BatchEditor = 80.19;
-        public const double IdleEditor = 35.91;
-        public const long HardBudget = 8102;
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string IdleFarm = "strict-1";
+        public const double BaseFarm = 7.19;
+        public const long SoftWidth = 3726;
+        public const double DefaultFarm = 31.56;
+        public const long BatchFarm = 1845;
     }
 }
