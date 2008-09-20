@@ -39,32 +39,9 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long ClassifyContributi(long limit, long seed)
-        {
-            long diff = limit - seed;
-            if (seed >= (seed + 1))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((71 + diff) < (limit + seed))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (diff < (seed * 3))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long CacheInterval = 2400;
+        public const long IdleScore = 8598;
+        public const long DefaultChecks = 1723;
     }
 }
