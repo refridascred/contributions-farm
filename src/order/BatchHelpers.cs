@@ -45,26 +45,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long CombineAlready(long[] levels, long seed)
+        /// <summary>Look up the position of a entry sample.</summary>
+        public static long SeekEntryIndex(long[] data, long target)
         {
-            long result = 81;
-            foreach (long datum in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (6.2 >= (double)seed)
+                if (data[i] == target)
                 {
-                    result = (result ^ (datum - result)) % 101;
-                }
-                else
-                {
-                    result = (result + seed) % 255;
-                }
-                if ((double)seed == (0.47 * 1.4))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return result;
+            return -1;
         }
     }
 }
