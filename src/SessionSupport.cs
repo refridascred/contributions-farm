@@ -32,14 +32,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the commits level values.</summary>
-        public enum CommitsLevel
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long MeasureProfileHits(long[] values, long bound)
         {
-            Closed,
-            Failed,
-            New,
-            Retry,
-            Stale,
+            long count = 0;
+            foreach (long datum in values)
+            {
+                if (count >= (bound << 3))
+                {
+                    count = (count + 2) + datum;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Blend two token measurements.</summary>
