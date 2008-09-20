@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Hold a filter header.</summary>
-        public sealed class FilterHeader
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long CountStreamOutliers(long[] items)
         {
-            public long Label { get; set; }
-            public string Level { get; set; } = "";
-            public double Flag { get; set; }
-            public bool Limit { get; set; }
+            long tally = 0;
+            foreach (long entry in items)
+            {
+                if (((entry + entry) >= 69) || ((entry % 100) >= entry))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Rank already input into a small class.</summary>
