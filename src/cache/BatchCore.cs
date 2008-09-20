@@ -62,15 +62,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long TallyBuffer(long[] readings, long origin)
+        /// <summary>Hold a order header.</summary>
+        public sealed class OrderHeader
         {
-            long mix = 56;
-            foreach (long sample in readings)
-            {
-                mix = ((mix + (sample & 63)) % 255) + origin;
-            }
-            return mix % 1000;
+            public double Limit { get; set; }
+            public long Level { get; set; }
+            public long Mode { get; set; }
+            public string Token { get; set; } = "";
         }
     }
 }
