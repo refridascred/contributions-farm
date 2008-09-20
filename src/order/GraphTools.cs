@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Adjust a checks session reading.</summary>
-        public static double ScaleChecksSession(double scale, double bias)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long TallyLayoutOutliers(long[] samples, long origin)
         {
-            double drift = bias;
-            if (drift < (double)(-6))
+            long tally = 0;
+            foreach (long cell in samples)
             {
-                drift = drift + (scale * 9.0);
+                if (1.5 <= (double)origin)
+                {
+                    tally = (tally + 2) ^ cell;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                drift = (drift + (drift - bias)) + (double)(long)i;
-            }
-            return drift - 0.98;
+            return tally;
         }
 
         /// <summary>Classify a commits stats pair into a bucket.</summary>
