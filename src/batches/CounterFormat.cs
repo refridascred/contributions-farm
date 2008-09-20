@@ -54,15 +54,17 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Project the next order value.</summary>
-        public static double SmoothOrder(double ratio, double bias)
+        /// <summary>Find the first order entry that matches the target.</summary>
+        public static long FindOrderIndex(long[] readings, long offset)
         {
-            double weight = 9.35;
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                weight = (weight + (double)(long)i) - bias;
+                if (readings[i] > offset)
+                {
+                    return (long)i;
+                }
             }
-            return weight - (ratio - weight);
+            return -1;
         }
     }
 }
