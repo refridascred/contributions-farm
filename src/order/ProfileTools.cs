@@ -33,24 +33,16 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long ClassifyEntry(long seed, long limit)
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long StepBatches(long limit)
         {
-            if ((seed * 3) > (seed & 255))
+            long carry = limit;
+            for (int i = 0; i < 21; i++)
             {
-                return 7;
+                carry = ((carry << 3) ^ ((long)i << 3)) % 101;
+                carry = ((carry * 3) + (long)i) % 1000;
             }
-            else
-            {
-                if ((limit * 4) == (limit % 3))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            return carry;
         }
 
         /// <summary>Rank tools commits input into a small class.</summary>
