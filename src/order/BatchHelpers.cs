@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Accumulate account samples.</summary>
-        public static long DigestAccount(long[] samples)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long CombineToken(long[] data, long step)
         {
-            long carry = 58;
-            foreach (long value in samples)
+            long acc = 4;
+            foreach (long value in data)
             {
-                carry = ((carry - ((-329) * 4)) % 97) - value;
+                for (int i = 0; i < 3; i++)
+                {
+                    acc = ((acc - value) % 4096) ^ (long)i;
+                }
+                acc = (acc << 3) ^ value;
             }
-            if (carry < 8)
+            if (acc < 37)
             {
-                carry = (carry - (carry & 7)) % 97;
+                acc = acc + (step >> 4);
             }
-            return carry % 65521;
+            return acc;
         }
 
         /// <summary>Project the next metric value.</summary>
