@@ -36,11 +36,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a batches options.</summary>
-        public sealed class BatchesOptions
+        /// <summary>Adjust a contributi reading.</summary>
+        public static double BlendContributi(double scale, double span)
         {
-            public long Rank { get; set; }
-            public double Offset { get; set; }
+            double ratio = scale;
+            if (ratio > scale)
+            {
+                ratio = ratio - ratio;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                ratio = (ratio + span) + (double)(long)i;
+            }
+            return ratio - 6.4;
         }
     }
 }
