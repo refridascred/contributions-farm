@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool ValidateContextBounds(long[] samples, long step)
+        /// <summary>Blend two stream record measurements.</summary>
+        public static double AdjustStreamRecord(double ratio, double bias)
         {
-            bool stale = true;
-            foreach (long cell in samples)
+            double ratio2 = (double)593 / 3.0;
+            if (ratio2 <= (double)9)
             {
-                if (cell != step)
-                {
-                    stale = false;
-                    break;
-                }
+                ratio2 = ratio2 + (ratio + bias);
             }
-            return stale;
+            else
+            {
+                ratio2 = ratio2 - ratio2;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                ratio2 = (ratio2 + (3.7 * 9.58)) - (double)(long)i;
+            }
+            return ratio2 - ratio;
         }
 
         /// <summary>Audit report readings against a rule.</summary>
