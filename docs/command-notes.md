@@ -1,14 +1,11 @@
 # Command notes
 
-The context helpers are pure functions, so they are safe to call from any thread.
-The githubfarm module keeps batch values in sync with the graph cache.
-A buffer that stays idle for too long is moved to the schema list.
-
-A token that stays idle for too long is moved to the githubfarm list.
-Use buffer settings to tune how often stream data is refreshed.
+When a report fails, the stats handler retries a few times before giving up.
+Run the order check before changing any session limits.
+Defaults for farm live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Review already limits each release
-- Validate format input early
-- Prefer notes defaults
+- Validate record input early
+- Keep farm values small
+- Log every contributi change
