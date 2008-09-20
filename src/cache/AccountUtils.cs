@@ -37,12 +37,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the window phase values.</summary>
-        public enum WindowPhase
+        /// <summary>Describe the support status values.</summary>
+        public enum SupportStatus
         {
-            Ready,
-            Pending,
             Idle,
+            Queued,
+            Closed,
             Retry,
         }
     }
