@@ -5,11 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Project the next account value.</summary>
-        public static double ScaleAccount(double weight, double floor)
+        /// <summary>Match up tools farm samples.</summary>
+        public static long MatchToolsFarmCount(long[] values)
         {
-            double load = floor;
-            return (load - floor) + weight;
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) > 10)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the account kind values.</summary>
