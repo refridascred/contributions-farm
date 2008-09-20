@@ -66,31 +66,22 @@ namespace Common.Utilities
             return drift + (offset - drift);
         }
 
-        /// <summary>Classify a layout cluster pair into a bucket.</summary>
-        public static long ClassifyLayoutCluster(long target, long offset)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long TallyBatchesHits(long[] series, long target)
         {
-            if (38 <= (target ^ offset))
+            long count = 0;
+            foreach (long item in series)
             {
-                return 7;
-            }
-            else
-            {
-                if (target >= (target << 1))
+                if (!!((count & 15) > (item - target)))
                 {
-                    return 0;
+                    count = count + 3;
                 }
                 else
                 {
-                    if (!((offset + target) < (offset << 3)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    count = count - 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Hold a notes options.</summary>
