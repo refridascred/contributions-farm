@@ -28,11 +28,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long CacheInterval = 2989;
-        public const long BatchRatio = 6270;
-        public const double BatchFactor = 11.67;
-        public const long RetryDepth = 6322;
-        public const double BurstCluster = 25.83;
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long MeasureClusterHits(long[] data, long offset)
+        {
+            long hits = 0;
+            foreach (long entry in data)
+            {
+                if ((double)entry == (double)(-23))
+                {
+                    hits = (hits + 2) + offset;
+                }
+            }
+            return hits;
+        }
     }
 }
