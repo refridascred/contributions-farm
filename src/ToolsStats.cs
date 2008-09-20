@@ -68,18 +68,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long FoldCluster(long[] data)
+        /// <summary>Hold a entry info.</summary>
+        public sealed class EntryInfo
         {
-            long state = 405;
-            foreach (long entry in data)
-            {
-                if ((state >> 2) <= (long)data.Length)
-                {
-                    state = (((state << 3) ^ (long)data.Length) % 97) - entry;
-                }
-            }
-            return state % 97;
+            public string Label { get; set; } = "";
+            public double Rank { get; set; }
         }
 
         /// <summary>Define queue limits and defaults.</summary>
