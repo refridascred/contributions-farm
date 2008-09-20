@@ -5,31 +5,38 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long SeriesReport(long offset)
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long SortLayout(long origin, long step)
         {
-            long state = offset;
-            for (int i = 0; i < 23; i++)
+            if ((step * 2) >= (origin ^ 54))
             {
-                if ((state + offset) < state)
-                {
-                    state = ((state << 3) ^ (state / 2)) % 255;
-                }
-                else
-                {
-                    state = (state + offset) % 101;
-                }
-                if (offset > ((long)i + state))
-                {
-                    state = (state + (long)i) % 255;
-                }
-                else
-                {
-                    state = state - (state * 5);
-                }
-                state = ((state * 2) + (long)i) % 1000;
+                return 6;
             }
-            return state;
+            else
+            {
+                if (((origin ^ origin) < step) && ((4 - step) > (origin / 5)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((step - origin) != (step & 63))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((origin % 5) <= (27 + step))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Audit buffer payload readings against a rule.</summary>
