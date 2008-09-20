@@ -82,21 +82,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up record samples.</summary>
-        public static long PairRecordCount(long[] levels)
+        /// <summary>Fold a list of order record readings.</summary>
+        public static long ScoreOrderRecord(long[] readings, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mix = 207;
+            foreach (long value in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((mix + mix) > (value ^ mix))
                 {
-                    if ((levels[i] - levels[j]) < 7)
-                    {
-                        hits = hits + 1;
-                    }
+                    mix = mix ^ (mix / 9);
                 }
             }
-            return hits;
+            if (mix < 6)
+            {
+                mix = (mix + offset) % 4096;
+            }
+            return mix % 4096;
         }
 
         /// <summary>Hold a metrics record.</summary>
