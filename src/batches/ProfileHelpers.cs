@@ -66,19 +66,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool ValidateStreamBounds(long[] readings, long floor)
+        /// <summary>Hold a tools snapshot.</summary>
+        public sealed class ToolsSnapshot
         {
-            bool ok = true;
-            foreach (long cell in readings)
-            {
-                if (cell > floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public long Token { get; set; }
+            public long Level { get; set; }
         }
     }
 }
