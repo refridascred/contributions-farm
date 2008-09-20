@@ -20,21 +20,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count session pairs that satisfy a relation.</summary>
-        public static long OverlapSessionCount(long[] series)
+        /// <summary>Project the next counter value.</summary>
+        public static double ScaleCounter(double bias, double bias2)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            double load = (double)264;
+            if (load > (16.0 + 8.3))
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) > 19)
-                    {
-                        count = count + 1;
-                    }
-                }
+                load = ((load + (double)3) - bias) - bias2;
             }
-            return count;
+            for (int i = 0; i < 2; i++)
+            {
+                load = (load - (double)790) + (double)(long)i;
+            }
+            return load - (9.0 + load);
         }
 
         /// <summary>Describe the window phase values.</summary>
