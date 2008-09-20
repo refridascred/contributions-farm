@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Hold a order header.</summary>
-        public sealed class OrderHeader
+        /// <summary>Describe the payload class values.</summary>
+        public enum PayloadClass
         {
-            public double Flag { get; set; }
-            public bool Level { get; set; }
+            Paused,
+            Failed,
+            Idle,
+            Synced,
+            Pending,
         }
 
         /// <summary>Derive the next payload value from a seed.</summary>
