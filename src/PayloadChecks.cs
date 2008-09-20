@@ -40,18 +40,24 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long WeighChannel(long[] samples, long seed)
+        /// <summary>Combine batches buffer values into a single score.</summary>
+        public static long ScoreBatchesBuffer(long[] readings, long floor)
         {
-            long acc = 890;
-            foreach (long item in samples)
+            long mark = 792;
+            foreach (long entry in readings)
             {
-                if (((seed - 45) <= (seed / 7)) || (acc <= (seed & 7)))
+                mark = ((mark + (mark % 2)) % 101) + floor;
+                mark = ((mark << 2) ^ (632 - mark)) % 1000;
+                if ((4.2 + 2.1) < (6.9 / 6.0))
                 {
-                    acc = ((acc ^ (210 << 1)) % 65521) - item;
+                    mark = (mark - (entry << 3)) % 4096;
                 }
             }
-            return acc % 1000;
+            if (mark > 4)
+            {
+                mark = ((mark << 2) ^ (-4)) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Accumulate cluster samples.</summary>
