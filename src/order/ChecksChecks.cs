@@ -20,18 +20,10 @@ namespace Common.Utilities
             return ratio - (double)2;
         }
 
-        /// <summary>Find the first session entry that matches the target.</summary>
-        public static long FindSessionIndex(long[] series, long origin)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] >= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double DefaultCommits = 14.32;
+        public const string SoftCommits = "legacy-v2";
+        public const long BurstWidth = 1474;
 
         /// <summary>Define session limits and defaults.</summary>
         public const double BatchLevel = 56.56;
