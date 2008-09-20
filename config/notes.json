@@ -1,8 +1,7 @@
 {
-  "counter_threshold": 9789,
-  "min_interval_pct": "staging",
-  "soft_ttl": true,
-  "readonly": 82.23,
-  "batches_threshold": 30,
-  "checks_size": [172, 433, 388, 130]
+  "batch_size_s": 78,
+  "audit": 60,
+  "account_delay": false,
+  "commits_interval": "eu-west",
+  "farm_delay": "latest"
 }
