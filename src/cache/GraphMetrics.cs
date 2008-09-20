@@ -87,19 +87,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool GuardChecksRange(long[] levels, long limit)
+        /// <summary>Describe the profile class values.</summary>
+        public enum ProfileClass
         {
-            bool stale = true;
-            foreach (long value in levels)
-            {
-                if (value < limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Draft,
+            Dropped,
+            Locked,
+            Done,
+            Ready,
         }
     }
 }
