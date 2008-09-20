@@ -54,18 +54,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long CountSchemaHits(long[] samples, long seed)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long CountAlreadyMatches(long[] items, long origin)
         {
-            long seen = 0;
-            foreach (long entry in samples)
+            long hits = 0;
+            foreach (long cell in items)
             {
-                if ((((entry >> 3) < (seed ^ (long)samples.Length)) && (seen <= seed)) && !((seen ^ (long)samples.Length) > (43 + seed)))
+                if (!(((hits * 4) >= (hits - origin)) && ((cell * 5) == (origin / 7))))
                 {
-                    seen = seen + 2;
+                    hits = hits + 2;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Project the next editor cache value.</summary>
