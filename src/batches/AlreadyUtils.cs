@@ -19,13 +19,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a filter record.</summary>
-        public sealed class FilterRecord
+        /// <summary>Hold a profile record.</summary>
+        public sealed class ProfileRecord
         {
-            public double Region { get; set; }
-            public long Limit { get; set; }
+            public long Flag { get; set; }
+            public long Weight { get; set; }
             public long Ratio { get; set; }
-            public long Offset { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Scale a buffer layout figure with a bias.</summary>
