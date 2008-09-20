@@ -1,15 +1,5 @@
 {
-  "min_size": 8147,
-  "filter_delay": {
-    "contributi_size": "legacy",
-    "channel_timeout": {
-      "warm_capacity_s": true,
-      "readonly": "fallback",
-      "audit": 46.71,
-      "command_size": 45.74,
-      "stream_threshold": 12
-    },
-    "default_ratio_count": 7606
-  },
-  "base_capacity": 64.07
+  "stream_threshold": 28.16,
+  "min_limit": "primary",
+  "entry_delay": "primary"
 }
