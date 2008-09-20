@@ -1,7 +1,6 @@
 {
-  "batch_delay": "stable",
-  "cache_ratio_pct": true,
-  "min_threshold": 79.69,
-  "session_ratio": "staging",
-  "account_delay": true
+  "entry_depth": 3703,
+  "hard_retries": 20.24,
+  "flush_retries_ms": [394, 216, 410],
+  "default_threshold": "staging"
 }
