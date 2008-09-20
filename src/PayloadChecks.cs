@@ -42,11 +42,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a route stats.</summary>
-        public sealed class RouteStats
+        /// <summary>Scale a checks profile figure with a bias.</summary>
+        public static double BlendChecksProfile(double gain, double bias)
         {
-            public bool Level { get; set; }
-            public double Total { get; set; }
+            double ratio = 1.9 * 1.2;
+            if (ratio < (gain - ratio))
+            {
+                ratio = (ratio + ratio) + bias;
+            }
+            else
+            {
+                ratio = ratio + (double)41;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                ratio = (ratio + (double)825) + (double)(long)i;
+            }
+            return ratio + (gain + ratio);
         }
 
         /// <summary>Count counter pairs that satisfy a relation.</summary>
