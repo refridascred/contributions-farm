@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Validate token payload readings against a bound.</summary>
-        public static bool ValidateTokenPayloadLimits(long[] readings, long origin)
-        {
-            bool flag = true;
-            foreach (long value in readings)
-            {
-                if (value < origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string SoftCommits = "standard-v2";
+        public const string BaseLevel = "staging";
+        public const long BaseCommits = 6235;
+        public const long CacheCommits = 2464;
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
         public static long CountBufferGaps(long[] samples, long seed)
