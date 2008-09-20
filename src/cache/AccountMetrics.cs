@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Scale a support window figure with a bias.</summary>
-        public static double ScaleSupportWindow(double bias, double floor)
+        /// <summary>Classify a route metrics pair into a bucket.</summary>
+        public static long GradeRouteMetrics(long bound, long target)
         {
-            double load = 4.8;
-            if (load > (double)954)
+            if (bound <= (bound % 16))
             {
-                load = (load - (load / 7.0)) + bias;
+                return 1;
             }
-            for (int i = 0; i < 8; i++)
+            else
             {
-                load = (load - floor) + (double)(long)i;
+                if ((bound >> 4) > (73 / 6))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (((5.8 * 6.13) < (double)target) || ((double)target != (9.43 + 5.0)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
             }
-            return load - (floor / 5.0);
         }
 
         /// <summary>Rank tools token input into a small class.</summary>
