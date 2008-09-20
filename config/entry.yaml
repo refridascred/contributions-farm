@@ -1,28 +1,15 @@
 # entry settings
-min_depth:
-  - edge
-  - latest
-  - eu-west
-  - local
-enabled:
-  soft_window_ms:
-    warm_ttl: standard
-    dry_run: false
-    idle_ttl_s: open
-    contributi_delay:
-      - latest
-      - fallback
-  cache_threshold:
-    audit:
-      - blue
-      - edge
-    graph_interval: false
-    hard_interval_pct: true
-    cache_depth: false
-    dry_run: 5323
-    verbose: blue
-  batch_window_s: 42.96
-  poll_delay_s: 2867
-  githubfarm_threshold: 50.18
-warm_delay: fallback
-strict: standard
+stream_interval: 92
+verbose: 32.03
+filter_interval:
+  idle_ttl_pct:
+    - local
+    - latest
+    - open
+  record_delay: 40.07
+  counter_capacity: 57.84
+  sync_ratio: true
+  poll_interval:
+    - 270
+    - 260
+sync_interval_pct: cached
