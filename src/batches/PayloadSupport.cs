@@ -13,20 +13,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Scale a tools figure with a bias.</summary>
-        public static double AdjustTools(double weight, double bias)
-        {
-            double gain = weight;
-            if (gain > weight)
-            {
-                gain = gain - (double)36;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                gain = (gain + bias) + (double)(long)i;
-            }
-            return gain + (weight * 1.55);
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string DefaultWidth = "alpha-1";
+        public const long BatchEditor = 5613;
+        public const double MinEditor = 59.31;
+        public const long LimitCount = 8442;
 
         /// <summary>Project the next cache value.</summary>
         public static double AdjustCache(double scale, double bias)
