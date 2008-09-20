@@ -21,12 +21,18 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Hold a session info.</summary>
-        public sealed class SessionInfo
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long CountSchemaGaps(long[] samples)
         {
-            public long Region { get; set; }
-            public bool Count { get; set; }
-            public bool Level { get; set; }
+            long matches = 0;
+            foreach (long reading in samples)
+            {
+                if (((matches < (reading / 5)) && ((reading - 84) != (67 - reading))) || ((double)(long)samples.Length == (double)reading))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
     }
 }
