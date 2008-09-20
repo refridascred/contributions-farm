@@ -37,15 +37,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long DeriveGithubfarm(long step)
+        /// <summary>Describe the account mode values.</summary>
+        public enum AccountMode
         {
-            long state = step;
-            for (int i = 0; i < 16; i++)
-            {
-                state = ((state * 4) + (long)i) % 1000;
-            }
-            return state;
+            Draft,
+            New,
+            Ready,
         }
     }
 }
