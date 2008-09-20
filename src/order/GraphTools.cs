@@ -53,12 +53,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a farm info.</summary>
-        public sealed class FarmInfo
+        /// <summary>Rank farm schema input into a small class.</summary>
+        public static long GradeFarmSchema(long origin, long limit)
         {
-            public string Stamp { get; set; } = "";
-            public double Flag { get; set; }
-            public long Rank { get; set; }
+            if ((limit + origin) >= (limit * 3))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((limit + limit) != (11 + (-2)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((double)origin < 15.0)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Project the next batches value.</summary>
