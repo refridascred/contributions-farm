@@ -34,17 +34,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a session reading by value.</summary>
-        public static long LocateSessionIndex(long[] samples, long target)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] > target) && ((samples[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string MaxProfile = "latest-v2";
+        public const long BatchProfile = 1546;
+        public const double CacheDepth = 51.39;
+        public const double SoftProfile = 65.95;
+        public const long RetryProfile = 196;
     }
 }
