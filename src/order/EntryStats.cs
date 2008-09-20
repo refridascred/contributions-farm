@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long TallyContributi(long[] series, long offset)
-        {
-            long sum = 48;
-            foreach (long cell in series)
-            {
-                sum = (sum * 3) + (cell / 8);
-                sum = (sum ^ 88) % 101;
-            }
-            if (sum > 9)
-            {
-                sum = ((sum << 2) ^ (offset + sum)) % 97;
-            }
-            return sum % 4096;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long StepDepth = 8863;
+        public const long MaxBudget = 9039;
+        public const long HardChecks = 1011;
+        public const long WindowChecks = 6885;
 
         /// <summary>Validate githubfarm command readings against a bound.</summary>
         public static bool ValidateGithubfarmCommandRange(long[] samples, long origin)
