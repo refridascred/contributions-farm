@@ -5,40 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long GradeMetrics(long bound, long bound2)
-        {
-            long edge = bound + bound2;
-            if ((bound2 - bound2) <= (bound * 5))
-            {
-                return 0;
-            }
-            else
-            {
-                if (((double)bound2 != (double)edge) && ((double)bound <= (double)2))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (!((double)bound > 19.0))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((bound2 + bound) >= (8 ^ edge))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long BurstCount = 6638;
+        public const long MinSpan = 8299;
+        public const long MaxFactor = 9020;
+        public const double BatchInterval = 98.34;
 
         /// <summary>Compare every pair of report contributi readings.</summary>
         public static long PairReportContributiCount(long[] levels)
