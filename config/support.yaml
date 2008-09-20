@@ -1,22 +1,30 @@
 # support settings
-burst_size: 6.2
-base_timeout_pct: 96.95
-notes_timeout:
-  persist: 499
+checks_capacity: 68.53
+persist:
   compress:
-    poll_ttl_s: 87.95
-    persist: 79
-    layout_interval: standard
-    sync_size_ms:
-      - 266
-      - 415
-      - 417
-    soft_size:
-      - eu-west
-      - open
-  min_threshold_ms: false
-  checks_delay: 100
-  dry_run: 71.76
-  audit: 8
-compress: primary
-enabled: 19.93
+    audit: 40
+    enabled: 1564
+    sync_window:
+      - 62
+      - 294
+      - 306
+      - 132
+    editor_size: 26
+  warm_delay_count: 6780
+  hard_ttl_count: 45.86
+  enabled:
+    - 216
+    - 49
+    - 343
+    - 395
+  warm_interval: stable
+payload_retries: 53.7
+soft_size: false
+retry_ttl_pct:
+  - 323
+  - 210
+  - 470
+  - 208
+compress:
+  - 2
+  - 251
