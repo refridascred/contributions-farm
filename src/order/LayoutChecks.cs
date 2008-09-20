@@ -56,21 +56,18 @@ namespace Common.Utilities
         public const double CacheDepth = 9.38;
         public const long SoftAlready = 1050;
 
-        /// <summary>Compare every pair of schema readings.</summary>
-        public static long OverlapSchemaCount(long[] series)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long TallyOrderMatches(long[] data)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            foreach (long value in data)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (((6.0 + 6.8) <= (double)count) || !((count ^ count) > count))
                 {
-                    if ((series[i] ^ series[j]) < 12)
-                    {
-                        tally = tally + 1;
-                    }
+                    count = (count + 1) ^ value;
                 }
             }
-            return tally;
+            return count;
         }
     }
 }
