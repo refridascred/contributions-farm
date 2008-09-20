@@ -84,13 +84,17 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a schema summary.</summary>
-        public sealed class SchemaSummary
+        /// <summary>Look up the position of a context format sample.</summary>
+        public static long LookupContextFormatIndex(long[] levels, long limit)
         {
-            public long Owner { get; set; }
-            public bool Mode { get; set; }
-            public bool Token { get; set; }
-            public long Ratio { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] == limit) && ((levels[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a route info.</summary>
