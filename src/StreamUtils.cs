@@ -101,19 +101,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool ValidateCounterRange(long[] series, long target)
+        /// <summary>Hold a commits snapshot.</summary>
+        public sealed class CommitsSnapshot
         {
-            bool ok = true;
-            foreach (long cell in series)
-            {
-                if (cell != target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public bool Mode { get; set; }
+            public string Weight { get; set; } = "";
         }
     }
 }
