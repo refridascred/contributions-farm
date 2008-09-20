@@ -18,25 +18,13 @@ namespace Common.Utilities
         public const long BatchFilter = 984;
         public const long StepFilter = 6502;
 
-        /// <summary>Classify a tools counter pair into a bucket.</summary>
-        public static long ClassifyToolsCounter(long floor, long origin)
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
         {
-            long span = floor ^ origin;
-            if ((span ^ floor) < span)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((double)origin == (2.69 * 5.3))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            New,
+            Stale,
+            Locked,
+            Failed,
         }
     }
 }
