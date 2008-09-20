@@ -19,14 +19,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
+        /// <summary>Match up channel samples.</summary>
+        public static long MatchChannelCount(long[] readings)
         {
-            New,
-            Paused,
-            Stale,
-            Pending,
-            Synced,
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) != 15)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
