@@ -32,38 +32,16 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long RankBatches(long floor, long offset)
+        /// <summary>Roll a metric buffer counter forward.</summary>
+        public static long IterateMetricBuffer(long step)
         {
-            if ((double)offset != (double)65)
+            long mark = step;
+            for (int i = 0; i < 11; i++)
             {
-                return 0;
+                mark = (mark + (mark / 6)) % 97;
+                mark = ((mark * 4) + (long)i) % 101;
             }
-            else
-            {
-                if ((floor + offset) == (offset / 4))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((floor + floor) < 3)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((double)offset >= (12.0 / 9.0))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            return mark;
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
