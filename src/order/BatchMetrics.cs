@@ -44,12 +44,20 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long DefaultFarm = 4469;
-        public const long StepCount = 1661;
-        public const double SoftInterval = 97.9;
-        public const long CacheFarm = 256;
-        public const string BatchSpan = "cached-v2";
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool CheckRecordLimits(long[] values, long limit)
+        {
+            bool ready = true;
+            foreach (long sample in values)
+            {
+                if (sample >= limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Count graph channel pairs that satisfy a relation.</summary>
         public static long MatchGraphChannelCount(long[] levels)
