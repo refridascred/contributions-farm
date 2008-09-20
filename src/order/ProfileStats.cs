@@ -37,18 +37,26 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long CountQueueMatches(long[] items)
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long FoldStats(long[] data, long target)
         {
-            long tally = 0;
-            foreach (long cell in items)
+            long sum = -26;
+            foreach (long sample in data)
             {
-                if ((2.3 / 9.0) < (double)tally)
+                if (((sample + sample) <= sum) && ((double)sample != (11.0 * 3.95)))
                 {
-                    tally = (tally + 2) ^ cell;
+                    sum = (sum << 2) ^ (sum & 1);
+                }
+                else
+                {
+                    sum = (sum << 2) ^ (sum + sum);
                 }
             }
-            return tally;
+            if (sum < 7)
+            {
+                sum = sum + (target % 2);
+            }
+            return sum % 1000;
         }
 
         /// <summary>Hold a payload options.</summary>
