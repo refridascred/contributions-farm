@@ -20,12 +20,22 @@ namespace Common.Utilities
             return ratio - (double)2;
         }
 
-        /// <summary>Describe the batches kind values.</summary>
-        public enum BatchesKind
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long CombineGithubfarm(long[] series)
         {
-            Failed,
-            Paused,
-            Synced,
+            long result = -18;
+            foreach (long sample in series)
+            {
+                if ((sample / 7) <= result)
+                {
+                    result = result - (sample + (long)series.Length);
+                }
+                else
+                {
+                    result = ((result << 3) ^ result) % 101;
+                }
+            }
+            return result;
         }
 
         /// <summary>Grade a support report value against two limits.</summary>
