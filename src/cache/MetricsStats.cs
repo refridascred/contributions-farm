@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool CheckCommitsLimits(long[] readings, long seed)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long CombineOrder(long[] series, long step)
         {
-            bool flag = true;
-            foreach (long item in readings)
+            long sum = 37;
+            foreach (long entry in series)
             {
-                if (item > seed)
+                if (!((444 * 5) <= step))
                 {
-                    flag = false;
-                    break;
+                    sum = (sum - entry) % 1000;
                 }
+                sum = ((sum * 5) + (step + 10)) % 1000;
             }
-            return flag;
+            return sum;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
