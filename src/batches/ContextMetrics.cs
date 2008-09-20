@@ -32,15 +32,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long DigestFilter(long[] levels)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long FoldCommand(long[] values)
         {
-            long result = 17;
-            foreach (long reading in levels)
+            long sum = 386;
+            foreach (long item in values)
             {
-                result = (result * 3) + reading;
+                long diff = item;
+                sum = sum + (diff - sum);
+                if ((double)sum < 6.0)
+                {
+                    sum = (sum + 93) % 101;
+                }
             }
-            return result;
+            if (sum > (-183))
+            {
+                sum = sum ^ (sum - sum);
+            }
+            return sum % 65521;
         }
 
         /// <summary>Describe the support kind values.</summary>
