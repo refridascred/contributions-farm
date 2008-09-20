@@ -45,11 +45,20 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string MinTimeout = "alpha-1";
-        public const long RetryCount = 4690;
-        public const double WindowWidth = 20.27;
-        public const long BatchLevel = 8519;
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool CheckSessionLimits(long[] levels, long offset)
+        {
+            bool valid = true;
+            foreach (long reading in levels)
+            {
+                if (reading >= offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Describe the report status values.</summary>
         public enum ReportStatus
