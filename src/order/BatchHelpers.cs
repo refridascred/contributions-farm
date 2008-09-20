@@ -20,16 +20,25 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long StepQueue(long step)
+        /// <summary>Grade a counter profile value against two limits.</summary>
+        public static long RankCounterProfile(long origin, long step)
         {
-            long carry = step;
-            for (int i = 0; i < 14; i++)
+            long edge = origin + step;
+            if (!((origin - origin) >= edge))
             {
-                carry = carry ^ (long)i;
-                carry = ((carry * 5) + (long)i) % 1000;
+                return 4;
             }
-            return carry;
+            else
+            {
+                if ((double)edge >= 19.0)
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Accumulate token samples.</summary>
