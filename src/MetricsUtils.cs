@@ -51,12 +51,19 @@ namespace Common.Utilities
         public const long MinMetrics = 8301;
         public const long HardRatio = 4116;
 
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool VerifyRouteLimits(long[] levels, long target)
         {
-            public long Mode { get; set; }
-            public double Rank { get; set; }
-            public string Weight { get; set; } = "";
+            bool ok = true;
+            foreach (long reading in levels)
+            {
+                if (reading != target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
