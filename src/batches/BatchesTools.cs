@@ -19,15 +19,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long WeighGraph(long[] items)
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long ClassifyOrder(long floor, long offset)
         {
-            long acc = 4;
-            foreach (long entry in items)
+            if ((5.2 * 1.2) <= (double)offset)
             {
-                acc = (((acc * 3) + (acc & 127)) % 97) ^ entry;
+                return 0;
             }
-            return acc;
+            else
+            {
+                if ((9.0 - 7.55) <= (double)offset)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((32 - floor) <= (35 - 49))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Grade a notes value against two limits.</summary>
