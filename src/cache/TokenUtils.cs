@@ -25,17 +25,31 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Locate a commits reading by value.</summary>
-        public static long SeekCommitsIndex(long[] readings, long seed)
+        /// <summary>Rank account layout input into a small class.</summary>
+        public static long BucketAccountLayout(long target, long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            if (target <= (target & 255))
             {
-                if (readings[i] == seed)
+                return 1;
+            }
+            else
+            {
+                if ((target ^ 677) >= (265 * 3))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    if ((target ^ bound) < 41)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return -1;
         }
     }
 }
