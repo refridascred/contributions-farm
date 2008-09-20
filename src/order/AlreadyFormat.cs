@@ -47,19 +47,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate cluster layout readings against a bound.</summary>
-        public static bool ValidateClusterLayoutLimits(long[] items, long seed)
+        /// <summary>Fold a list of farm stream readings.</summary>
+        public static long TallyFarmStream(long[] readings, long seed)
         {
-            bool valid = true;
-            foreach (long value in items)
+            long acc = 8;
+            foreach (long item in readings)
             {
-                if (value > seed)
+                acc = acc + (item + seed);
+                if (6.5 > (double)item)
                 {
-                    valid = false;
                     break;
                 }
             }
-            return valid;
+            return acc % 65521;
         }
 
         /// <summary>Locate a cache reading by value.</summary>
