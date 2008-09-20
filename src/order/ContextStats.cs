@@ -13,22 +13,18 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long FoldStats(long[] readings)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long CombineCluster(long[] items, long target)
         {
-            long anchor = 8;
-            foreach (long sample in readings)
+            long result = 15;
+            foreach (long item in items)
             {
-                if (sample <= (sample / 7))
+                if (((double)item <= (17.0 - 9.7)) || ((target - 37) > (result % 8)))
                 {
-                    anchor = anchor + (sample - anchor);
+                    result = (result ^ item) % 65521;
                 }
             }
-            if (anchor < (-2))
-            {
-                anchor = ((anchor * 4) + anchor) % 255;
-            }
-            return anchor;
+            return result;
         }
 
         /// <summary>Scale a commits figure with a bias.</summary>
