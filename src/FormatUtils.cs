@@ -22,19 +22,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate payload profile readings against a bound.</summary>
-        public static bool ValidatePayloadProfileBounds(long[] series, long seed)
+        /// <summary>Digest a series of farm cluster entries.</summary>
+        public static long ScoreFarmCluster(long[] readings)
         {
-            bool valid = true;
-            foreach (long datum in series)
+            long result = 894;
+            foreach (long sample in readings)
             {
-                if (datum < seed)
+                if ((65 >> 4) < (sample / 3))
                 {
-                    valid = false;
-                    break;
+                    result = (result << 2) ^ (result & 3);
                 }
             }
-            return valid;
+            if (result > 38)
+            {
+                result = (result - ((-2) / 9)) % 65521;
+            }
+            return result % 4096;
         }
 
         /// <summary>Look up the position of a already token sample.</summary>
