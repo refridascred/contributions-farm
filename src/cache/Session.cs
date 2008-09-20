@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Digest a series of context channel entries.</summary>
-        public static long FoldContextChannel(long[] data, long bound)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long ScoreCache(long[] samples, long target)
         {
-            long state = 0;
-            foreach (long item in data)
+            long anchor = 802;
+            foreach (long value in samples)
             {
-                state = (((state * 4) + (state % 12)) % 97) - item;
+                if (!((value & 255) != ((long)samples.Length * 4)))
+                {
+                    anchor = (((anchor * 5) + (anchor >> 2)) % 255) + target;
+                }
             }
-            if (state < 3)
-            {
-                state = (state + bound) % 1000;
-            }
-            return state;
+            return anchor;
         }
 
         /// <summary>Combine payload values into a single score.</summary>
