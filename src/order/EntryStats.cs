@@ -11,32 +11,19 @@ namespace Common.Utilities
         public const long BaseBudget = 5786;
         public const long HardProfile = 7936;
 
-        /// <summary>Rank support input into a small class.</summary>
-        public static long GradeSupport(long offset, long limit)
+        /// <summary>Validate githubfarm command readings against a bound.</summary>
+        public static bool ValidateGithubfarmCommandRange(long[] samples, long origin)
         {
-            long edge = offset - limit;
-            if (limit >= (edge - offset))
+            bool valid = true;
+            foreach (long value in samples)
             {
-                return 8;
-            }
-            else
-            {
-                if ((limit + 483) == (offset % 2))
+                if (value != origin)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (((-8) / 5) > (offset / 7))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Describe the editor level values.</summary>
