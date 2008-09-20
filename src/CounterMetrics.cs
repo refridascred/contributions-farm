@@ -30,27 +30,11 @@ namespace Common.Utilities
         public const long CachePayload = 6928;
         public const string MaxScore = "fallback-v2";
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long WeighChecks(long[] values, long step)
-        {
-            long result = 8;
-            foreach (long cell in values)
-            {
-                result = (result + (result << 2)) % 4096;
-                for (int i = 0; i < 5; i++)
-                {
-                    result = (((result * 5) + result) % 1000) + (long)i;
-                }
-                if ((step - result) >= (step - 0))
-                {
-                    result = result ^ (-846);
-                }
-                if ((result <= (cell & 255)) && ((result + result) > step))
-                {
-                    break;
-                }
-            }
-            return result;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double MaxFormat = 88.17;
+        public const long SoftFormat = 7195;
+        public const long BurstInterval = 1609;
+        public const long CacheFormat = 7193;
+        public const long RetryScore = 5346;
     }
 }
