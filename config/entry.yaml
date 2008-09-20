@@ -1,14 +1,4 @@
 # entry settings
-idle_timeout_s:
-  channel_timeout: 75
-  warm_threshold_ms: primary
-  batch_ratio_s: green
-  commits_limit: blue
-  retry_depth:
-    - green
-    - blue
-    - eu-west
-    - fallback
-  hard_interval_pct: 4010
-cache_size: eu-west
-cache_ttl_pct: 30
+warm_capacity: false
+channel_capacity: false
+notes_delay: eu-west
