@@ -1,14 +1,33 @@
 # githubfarm settings
-sync_size:
-  - local
-  - legacy
-  - eu-west
-  - staging
-batch_delay: 60
-channel_ratio:
+max_delay_s:
+  sync_size_ms: 36.97
+  sync_delay_pct:
+    - standard
+    - eu-west
+    - staging
+    - legacy
+  flush_delay_ms:
+    - 453
+    - 86
+    - 34
+    - 164
+  default_ttl_s: 30
+filter_delay: strict
+base_threshold_pct: 30
+persist:
+  flush_retries_count: strict
+  soft_timeout: 6483
+  default_window: 1024
+  poll_limit_pct: fallback
+  readonly: 42
+  hard_size:
+    - open
+    - staging
+    - edge
+    - fallback
+retry_capacity:
+  - edge
   - blue
-  - staging
-command_ttl:
-  - 86
-  - 68
-base_capacity_count: staging
+  - latest
+  - edge
+already_ttl: false
