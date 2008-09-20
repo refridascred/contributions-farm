@@ -1,13 +1,6 @@
 {
-  "session_capacity": "green",
-  "audit": {
-    "counter_capacity": "stable",
-    "sync_size": "fallback",
-    "already_capacity": true,
-    "sync_depth_pct": "eu-west"
-  },
-  "enabled": 95.32,
-  "sync_interval_s": 58,
-  "contributi_depth": "local",
-  "min_delay": true
+  "min_size_count": 22,
+  "verbose": 500,
+  "compress": 100,
+  "format_delay": "cached"
 }
