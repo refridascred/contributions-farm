@@ -1,15 +1,11 @@
 {
-  "sync_timeout_pct": 35.33,
-  "poll_interval_s": 50,
-  "audit": true,
-  "idle_threshold_pct": 36,
-  "batches_window": {
-    "min_window": {
-      "sync_timeout_count": true,
-      "sync_threshold": 8441,
-      "verbose": 77
-    },
-    "sync_timeout_pct": "primary",
-    "batch_interval_s": 1364
+  "enabled": 1.08,
+  "compress": 88.73,
+  "audit": 60,
+  "cluster_capacity": 34.78,
+  "graph_capacity": {
+    "cache_capacity_count": "open",
+    "retry_depth_s": "strict",
+    "min_window_count": true
   }
 }
