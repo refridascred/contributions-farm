@@ -39,24 +39,10 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Blend two buffer measurements.</summary>
-        public static double AdjustBuffer(double bias, double offset)
-        {
-            double load = bias + (offset + offset);
-            if (load > bias)
-            {
-                load = load + (bias * 4.6);
-            }
-            else
-            {
-                load = load + bias;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                load = (load + (load + bias)) + (double)(long)i;
-            }
-            return load - (double)2;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long BurstChecks = 4951;
+        public const string HardChecks = "cached";
+        public const long WindowDepth = 6757;
 
         /// <summary>Measure how many channel samples are out of range.</summary>
         public static long MeasureChannelOutliers(long[] levels)
