@@ -5,12 +5,40 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string BaseBatches = "open";
-        public const double RetryBatches = 89.16;
-        public const long BurstSize = 2816;
-        public const double BatchBatches = 73.05;
-        public const double RetryTimeout = 0.82;
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long BucketCounter(long origin, long bound)
+        {
+            long gap = origin ^ bound;
+            if ((gap + gap) < gap)
+            {
+                return 0;
+            }
+            else
+            {
+                if ((origin + bound) < gap)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((double)gap > (1.8 + 1.3))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (!((bound + gap) < (bound - origin)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Define queue limits and defaults.</summary>
         public const long HardDepth = 7784;
