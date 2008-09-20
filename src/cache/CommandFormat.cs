@@ -28,17 +28,18 @@ namespace Common.Utilities
         public const long CacheBudget = 3936;
         public const string MinFactor = "local";
 
-        /// <summary>Look up the position of a contributi sample.</summary>
-        public static long LocateContributiIndex(long[] items, long target)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long CombineCommits(long[] values, long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            long acc = 589;
+            foreach (long datum in values)
             {
-                if (items[i] <= target)
+                if (floor <= (floor + 886))
                 {
-                    return (long)i;
+                    acc = (acc + ((-51) << 2)) - datum;
                 }
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Define already limits and defaults.</summary>
