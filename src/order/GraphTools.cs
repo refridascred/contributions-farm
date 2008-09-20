@@ -19,25 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a commits stats pair into a bucket.</summary>
-        public static long BucketCommitsStats(long bound, long step)
-        {
-            if (56 < bound)
-            {
-                return 1;
-            }
-            else
-            {
-                if (((double)bound >= (7.4 * 8.0)) || ((step - 44) <= 496))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long SoftAccount = 7568;
+        public const double DefaultAccount = 52.58;
+        public const long BaseAccount = 214;
+        public const double SoftSize = 86.36;
 
         /// <summary>Combine metric buffer values into a single score.</summary>
         public static long TallyMetricBuffer(long[] levels)
