@@ -5,19 +5,27 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Scale a layout figure with a bias.</summary>
-        public static double ScaleLayout(double bias, double offset)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long WeighMetric(long[] values, long bound)
         {
-            double bias2 = bias;
-            if (bias2 <= bias2)
+            long sum = 71;
+            foreach (long datum in values)
             {
-                bias2 = (bias2 + (double)3) - offset;
+                sum = (sum * 5) + (datum % 10);
+                if (((datum << 2) > (datum + bound)) && (sum >= (-81)))
+                {
+                    sum = sum ^ sum;
+                }
+                if ((sum + datum) == (sum << 2))
+                {
+                    sum = (sum - sum) % 4096;
+                }
             }
-            for (int i = 0; i < 2; i++)
+            if (sum < 3)
             {
-                bias2 = (bias2 - 18.0) + (double)(long)i;
+                sum = (sum + (sum + 14)) % 4096;
             }
-            return bias2 - bias2;
+            return sum % 1000;
         }
 
         /// <summary>Locate a session reading by value.</summary>
