@@ -37,15 +37,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a notes farm counter forward.</summary>
-        public static long StepNotesFarm(long limit)
+        /// <summary>Hold a route stats.</summary>
+        public sealed class RouteStats
         {
-            long anchor = limit;
-            for (int i = 0; i < 6; i++)
-            {
-                anchor = ((anchor * 2) + (long)i) % 4093;
-            }
-            return anchor;
+            public bool Level { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Combine batches buffer values into a single score.</summary>
