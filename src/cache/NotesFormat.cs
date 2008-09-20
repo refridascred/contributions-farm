@@ -36,18 +36,18 @@ namespace Common.Utilities
             return load + load;
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long FoldSession(long[] data)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long AuditCommandGaps(long[] data)
         {
-            long mix = 8;
-            foreach (long cell in data)
+            long count = 0;
+            foreach (long value in data)
             {
-                if ((cell >> 5) == (cell & 255))
+                if (value > (count - (-20)))
                 {
-                    mix = (mix - (cell >> 2)) % 255;
+                    count = count + 3;
                 }
             }
-            return mix;
+            return count;
         }
     }
 }
