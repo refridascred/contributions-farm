@@ -19,13 +19,22 @@ namespace Common.Utilities
         public const long WindowCounter = 6188;
         public const long CacheCounter = 2954;
 
-        /// <summary>Describe the format state values.</summary>
-        public enum FormatState
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long AuditChecksMatches(long[] readings)
         {
-            Locked,
-            Done,
-            Dropped,
-            Idle,
+            long count = 0;
+            foreach (long item in readings)
+            {
+                if ((count << 3) > (item ^ count))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
