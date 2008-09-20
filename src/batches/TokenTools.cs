@@ -24,10 +24,18 @@ namespace Common.Utilities
             return gain + gain;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long BurstCounter = 4064;
-        public const string WindowLevel = "strict-edge";
-        public const string StepCounter = "legacy-v2";
+        /// <summary>Find the first schema entry that matches the target.</summary>
+        public static long FindSchemaIndex(long[] items, long seed)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] < seed) && ((items[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a farm info.</summary>
         public sealed class FarmInfo
