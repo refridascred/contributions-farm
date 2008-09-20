@@ -28,22 +28,16 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long WeighQueue(long[] readings)
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long SeriesLayout(long floor)
         {
-            long total = 8;
-            foreach (long item in readings)
+            long carry = floor;
+            for (int i = 0; i < 14; i++)
             {
-                if (!((double)item >= (double)total))
-                {
-                    total = total + total;
-                }
-                if (item <= (271 & 255))
-                {
-                    break;
-                }
+                carry = (carry ^ ((long)i + carry)) % 4096;
+                carry = ((carry * 3) + (long)i) % 97;
             }
-            return total % 97;
+            return carry;
         }
     }
 }
