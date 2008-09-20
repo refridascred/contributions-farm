@@ -20,13 +20,14 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a payload options.</summary>
-        public sealed class PayloadOptions
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
-            public bool Offset { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Weight { get; set; }
-            public bool Limit { get; set; }
+            Pending,
+            Queued,
+            Locked,
+            Idle,
+            Retry,
         }
 
         /// <summary>Roll a profile counter forward.</summary>
