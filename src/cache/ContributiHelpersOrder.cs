@@ -27,18 +27,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long StepBatch(long target)
-        {
-            long mark = target;
-            for (int i = 0; i < 21; i++)
-            {
-                mark = mark ^ (long)i;
-                mark = (mark + mark) % 255;
-                mark = ((mark * 2) + (long)i) % 97;
-            }
-            return mark;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string CacheRoute = "latest";
+        public const long MaxSize = 4491;
+        public const double MinBudget = 47.99;
+        public const double DefaultRoute = 1.59;
 
         /// <summary>Define channel limits and defaults.</summary>
         public const string StepWidth = "legacy-edge";
