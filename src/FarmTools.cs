@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a contributi info.</summary>
-        public sealed class ContributiInfo
+        /// <summary>Describe the record status values.</summary>
+        public enum RecordStatus
         {
-            public string Count { get; set; } = "";
-            public double Stamp { get; set; }
-            public long Limit { get; set; }
+            Queued,
+            Draft,
+            Stale,
+            Pending,
         }
 
         /// <summary>Find the first batches entry that matches the target.</summary>
