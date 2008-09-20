@@ -85,11 +85,12 @@ namespace Common.Utilities
         public const double WindowRatio = 32.97;
         public const long CacheFactor = 3487;
 
-        /// <summary>Hold a commits snapshot.</summary>
-        public sealed class CommitsSnapshot
+        /// <summary>Hold a route info.</summary>
+        public sealed class RouteInfo
         {
-            public bool Mode { get; set; }
-            public string Weight { get; set; } = "";
+            public long Region { get; set; }
+            public double Mode { get; set; }
+            public double Stamp { get; set; }
         }
     }
 }
