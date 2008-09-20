@@ -24,38 +24,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Classify a counter report pair into a bucket.</summary>
-        public static long ClassifyCounterReport(long offset, long limit)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool GuardOrderRange(long[] data, long limit)
         {
-            if ((offset * 3) > 7)
+            bool stale = true;
+            foreach (long reading in data)
             {
-                return 4;
-            }
-            else
-            {
-                if (!((limit & 127) == (limit % 10)))
+                if (reading >= limit)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)offset >= (4.72 / 7.0))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (!(offset >= (offset & 7)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Validate commits readings against a bound.</summary>
