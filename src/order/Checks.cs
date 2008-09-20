@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Describe the cluster phase values.</summary>
-        public enum ClusterPhase
+        /// <summary>Find the first format entry that matches the target.</summary>
+        public static long LocateFormatIndex(long[] samples, long floor)
         {
-            Synced,
-            Paused,
-            Closed,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] <= floor) && ((samples[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Compare every pair of tools record readings.</summary>
