@@ -1,22 +1,8 @@
 {
-  "account_timeout": {
-    "cache_size": {
-      "graph_depth": 1320,
-      "graph_timeout": 43.35,
-      "cache_threshold": [110, 6, 366]
-    },
-    "verbose": 50.7,
-    "base_window_ms": 64,
-    "compress": true,
-    "min_delay_ms": {
-      "warm_limit": "local",
-      "retry_window_s": "green",
-      "cache_threshold": "local",
-      "flush_interval_count": ["stable", "primary", "cached"],
-      "verbose": ["legacy", "cached"]
-    }
-  },
-  "warm_limit_s": 67.52,
-  "default_delay_pct": "legacy",
-  "cache_size_ms": false
+  "layout_ratio": "legacy",
+  "counter_retries": [478, 255, 229, 310],
+  "idle_delay_ms": 77.13,
+  "account_ratio": 48.34,
+  "retry_retries_s": "green",
+  "soft_ratio_ms": true
 }
