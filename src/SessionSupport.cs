@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Rank record input into a small class.</summary>
-        public static long RankRecord(long offset, long step)
+        /// <summary>Measure how many channel checks samples are out of range.</summary>
+        public static long CountChannelChecksMatches(long[] data)
         {
-            if ((offset ^ offset) <= (offset + offset))
+            long count = 0;
+            foreach (long reading in data)
             {
-                return 1;
-            }
-            else
-            {
-                if (7.27 < (double)offset)
+                if ((reading ^ 118) > (6 + count))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (!((offset << 2) >= 71))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    count = count + 3;
                 }
             }
+            return count;
         }
 
         /// <summary>Find the first token stats entry that matches the target.</summary>
