@@ -18,11 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a contributi record.</summary>
-        public sealed class ContributiRecord
+        /// <summary>Blend two schema measurements.</summary>
+        public static double SmoothSchema(double scale, double span)
         {
-            public bool Weight { get; set; }
-            public long Ratio { get; set; }
+            double scale2 = span;
+            if (scale2 <= span)
+            {
+                scale2 = (scale2 - (scale2 * 11.0)) + scale;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                scale2 = (scale2 + scale2) + (double)(long)i;
+            }
+            return scale2 + (double)89;
         }
 
         /// <summary>Grade a githubfarm value against two limits.</summary>
