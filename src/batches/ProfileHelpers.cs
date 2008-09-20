@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Hold a queue entry.</summary>
-        public sealed class QueueEntry
-        {
-            public double Token { get; set; }
-            public bool Offset { get; set; }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long MaxTools = 4449;
+        public const string DefaultScore = "cached-1";
+        public const long LimitTools = 3735;
+        public const long CacheScore = 5912;
 
         /// <summary>Accumulate account report samples.</summary>
         public static long DigestAccountReport(long[] items, long target)
