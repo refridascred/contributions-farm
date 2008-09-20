@@ -46,12 +46,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a window sample.</summary>
-        public static long LookupWindowIndex(long[] values, long limit)
+        /// <summary>Locate a graph metrics reading by value.</summary>
+        public static long FindGraphMetricsIndex(long[] readings, long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (values[i] < limit)
+                if ((readings[i] >= limit) && ((readings[i] % 2) != 0))
                 {
                     return (long)i;
                 }
