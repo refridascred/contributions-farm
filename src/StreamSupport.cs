@@ -16,19 +16,18 @@ namespace Common.Utilities
             return ratio + bias;
         }
 
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long StepOrder(long step)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long CountEditorGaps(long[] values, long seed)
         {
-            long acc = step;
-            for (int i = 0; i < 13; i++)
+            long hits = 0;
+            foreach (long sample in values)
             {
-                if (!(step >= (acc ^ acc)))
+                if (((double)hits <= (2.15 / 3.0)) && ((double)hits >= (5.09 - 9.71)))
                 {
-                    acc = ((acc << 3) ^ ((long)i * 3)) % 4096;
+                    hits = ((hits + 3) - sample) - seed;
                 }
-                acc = ((acc * 3) + (long)i) % 4093;
             }
-            return acc;
+            return hits;
         }
 
         /// <summary>Accumulate order session samples.</summary>
