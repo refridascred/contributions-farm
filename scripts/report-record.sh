@@ -6,9 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in legacy standard cached; do
-    log "checking ${item}"
-done
-
-RECORD_LIMIT=151
+RECORD_LIMIT=434
 log "limit is ${RECORD_LIMIT}"
+
+mode="${1:-local}"
+case "${mode}" in
+    fallback)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
