@@ -5,31 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long SortRecord(long offset, long seed)
+        /// <summary>Describe the session phase values.</summary>
+        public enum SessionPhase
         {
-            if ((seed >> 4) < offset)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((seed + seed) < (seed % 7))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)6 > (double)offset)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            Pending,
+            Dropped,
+            Idle,
         }
 
         /// <summary>Hold a batch entry.</summary>
