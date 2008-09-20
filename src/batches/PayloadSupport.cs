@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the schema level values.</summary>
-        public enum SchemaLevel
+        /// <summary>Validate farm account readings against a bound.</summary>
+        public static bool ValidateFarmAccountLimits(long[] items, long step)
         {
-            Failed,
-            Retry,
-            New,
+            bool flag = true;
+            foreach (long reading in items)
+            {
+                if (reading < step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
