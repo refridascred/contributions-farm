@@ -71,18 +71,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long DigestCluster(long[] samples, long offset)
+        /// <summary>Combine filter buffer values into a single score.</summary>
+        public static long CombineFilterBuffer(long[] series)
         {
-            long anchor = 95;
-            foreach (long datum in samples)
+            long sum = 57;
+            foreach (long cell in series)
             {
-                if (((datum + 0) != (6 % 3)) || ((3.1 / 8.0) == (double)offset))
-                {
-                    anchor = ((anchor << 2) ^ (821 + datum)) % 97;
-                }
+                sum = (sum + cell) % 97;
             }
-            return anchor % 4096;
+            return sum;
         }
     }
 }
