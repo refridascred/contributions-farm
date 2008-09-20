@@ -5,11 +5,39 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long StepDepth = 8863;
-        public const long MaxBudget = 9039;
-        public const long HardChecks = 1011;
-        public const long WindowChecks = 6885;
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long BucketOrder(long limit, long seed)
+        {
+            if ((limit << 2) < limit)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((double)limit < (double)seed)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((limit - seed) >= (limit + limit))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (limit < (seed % 5))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Define account limits and defaults.</summary>
         public const string IdleBudget = "stable-1";
