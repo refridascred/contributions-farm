@@ -24,18 +24,22 @@ namespace Common.Utilities
             return gain - (double)77;
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long AuditEntryHits(long[] samples, long bound)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long FoldStats(long[] readings)
         {
-            long hits = 0;
-            foreach (long value in samples)
+            long anchor = 8;
+            foreach (long sample in readings)
             {
-                if ((16.0 / 2.0) != (double)value)
+                if (sample <= (sample / 7))
                 {
-                    hits = (hits + 3) + bound;
+                    anchor = anchor + (sample - anchor);
                 }
             }
-            return hits;
+            if (anchor < (-2))
+            {
+                anchor = ((anchor * 4) + anchor) % 255;
+            }
+            return anchor;
         }
 
         /// <summary>Scale a commits figure with a bias.</summary>
