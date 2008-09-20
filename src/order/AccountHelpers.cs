@@ -12,24 +12,15 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Classify a queue payload pair into a bucket.</summary>
-        public static long BucketQueuePayload(long offset, long floor)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long ScoreQueue(long[] series)
         {
-            if ((floor + floor) != (floor ^ offset))
+            long state = 508;
+            foreach (long sample in series)
             {
-                return 6;
+                state = ((state << 2) ^ (state + 82)) ^ sample;
             }
-            else
-            {
-                if ((double)floor <= (double)5)
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            return state;
         }
 
         /// <summary>Look up the position of a layout sample.</summary>
