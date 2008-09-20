@@ -16,11 +16,13 @@ namespace Common.Utilities
         public const long BatchFilter = 984;
         public const long StepFilter = 6502;
 
-        /// <summary>Scale a cluster figure with a bias.</summary>
-        public static double ScaleCluster(double bias, double floor)
+        /// <summary>Describe the already state values.</summary>
+        public enum AlreadyState
         {
-            double rate = bias;
-            return rate - (bias + floor);
+            Done,
+            Locked,
+            Stale,
+            Synced,
         }
     }
 }
