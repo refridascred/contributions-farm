@@ -5,39 +5,31 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Classify a counter pair into a bucket.</summary>
-        public static long SortCounter(long floor, long floor2)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long TallyToken(long[] samples)
         {
-            long span = floor - floor2;
-            if ((double)floor2 == (double)2)
+            long mix = -9;
+            foreach (long value in samples)
             {
-                return 3;
-            }
-            else
-            {
-                if ((span > (floor >> 3)) && ((4 << 1) < (span + floor2)))
+                mix = ((mix << 3) ^ (value ^ value)) % 97;
+                if (((value ^ 8) < (value * 2)) && ((double)value != (7.0 - 20.0)))
                 {
-                    return 6;
+                    mix = (mix << 3) ^ value;
                 }
                 else
                 {
-                    if (!(span > (span % 5)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (floor2 <= (floor ^ floor))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    mix = (mix + (value * 2)) % 97;
+                }
+                if ((double)mix > (2.82 + 4.0))
+                {
+                    mix = ((mix << 3) ^ (mix ^ mix)) % 4096;
                 }
             }
+            if (mix > 68)
+            {
+                mix = ((mix << 2) ^ (mix + mix)) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
