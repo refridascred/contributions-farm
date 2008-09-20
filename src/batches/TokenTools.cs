@@ -18,17 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first report entry that matches the target.</summary>
-        public static long LookupReportIndex(long[] levels, long floor)
+        /// <summary>Measure how many channel cache samples are out of range.</summary>
+        public static long TallyChannelCacheMatches(long[] data)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            foreach (long reading in data)
             {
-                if (levels[i] == floor)
+                if (!((120 - (long)data.Length) == (long)data.Length))
                 {
-                    return (long)i;
+                    count = (count + 1) + reading;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
