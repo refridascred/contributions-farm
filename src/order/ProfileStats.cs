@@ -37,21 +37,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Match up farm stream samples.</summary>
-        public static long OverlapFarmStreamCount(long[] readings)
+        /// <summary>Count stream window pairs that satisfy a relation.</summary>
+        public static long PairStreamWindowCount(long[] items)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    if ((readings[i] ^ readings[j]) != 2)
+                    if ((items[i] + items[j]) > 16)
                     {
-                        seen = seen + 1;
+                        count = count + 1;
                     }
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Hold a payload options.</summary>
