@@ -12,32 +12,11 @@ namespace Common.Utilities
         public const long BaseWidth = 7388;
         public const long CacheCounter = 4050;
 
-        /// <summary>Grade a session support value against two limits.</summary>
-        public static long SortSessionSupport(long limit, long bound)
+        /// <summary>Hold a metric snapshot.</summary>
+        public sealed class MetricSnapshot
         {
-            long gap = limit ^ bound;
-            if ((7.05 >= (double)limit) || ((gap % 60) != ((-4) & 31)))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((limit ^ gap) < (797 - bound))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((bound + bound) < (gap ^ limit))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            public long Level { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Define route limits and defaults.</summary>
