@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Validate filter contributi readings against a bound.</summary>
-        public static bool VerifyFilterContributiRange(long[] levels, long limit)
+        /// <summary>Look up the position of a commits sample.</summary>
+        public static long LookupCommitsIndex(long[] values, long floor)
         {
-            bool found = true;
-            foreach (long datum in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (datum > limit)
+                if ((values[i] >= floor) && ((values[i] % 2) == 0))
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Hold a layout record.</summary>
