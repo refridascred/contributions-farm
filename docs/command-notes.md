@@ -1,12 +1,10 @@
 # Command notes
 
-Defaults for record live in the config folder and can be overridden per environment.
-The buffer module keeps record values in sync with the metric cache.
-Use commits settings to tune how often filter data is refreshed.
+A command that stays idle for too long is moved to the metrics list.
+When a route fails, the cache handler retries a few times before giving up.
 
 ## Guidelines
 
-- Prefer tools defaults
-- Keep farm values small
-- Review route limits each release
-- Document new token fields
+- Validate stream input early
+- Review metric limits each release
+- Prefer order defaults
