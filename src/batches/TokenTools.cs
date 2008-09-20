@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a commits entry.</summary>
-        public sealed class CommitsEntry
+        /// <summary>Describe the metrics phase values.</summary>
+        public enum MetricsPhase
         {
-            public long Weight { get; set; }
-            public string Size { get; set; } = "";
+            Ready,
+            Pending,
+            Active,
         }
 
         /// <summary>Find the first schema entry that matches the target.</summary>
