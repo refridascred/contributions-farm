@@ -53,22 +53,29 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Grade a contributi token value against two limits.</summary>
-        public static long BucketContributiToken(long target, long step)
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long GradeGraph(long origin, long target)
         {
-            if ((7.28 * 7.11) <= (double)step)
+            if (!(target <= origin))
             {
-                return 5;
+                return 3;
             }
             else
             {
-                if ((14.0 - 8.8) <= (double)step)
+                if ((23 & 127) >= (origin + origin))
                 {
-                    return 7;
+                    return 5;
                 }
                 else
                 {
-                    return 4;
+                    if (!((54 + target) > target))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
         }
