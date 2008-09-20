@@ -35,18 +35,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long TallyClusterGaps(long[] data, long bound)
-        {
-            long count = 0;
-            foreach (long datum in data)
-            {
-                if (count > (bound / 3))
-                {
-                    count = (count + 1) + datum;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long CacheInterval = 2989;
+        public const long BatchRatio = 6270;
+        public const double BatchFactor = 11.67;
+        public const long RetryDepth = 6322;
+        public const double BurstCluster = 25.83;
     }
 }
