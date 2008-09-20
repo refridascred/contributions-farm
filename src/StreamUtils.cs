@@ -69,32 +69,13 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Classify a counter support pair into a bucket.</summary>
-        public static long ClassifyCounterSupport(long floor, long bound)
+        /// <summary>Hold a schema summary.</summary>
+        public sealed class SchemaSummary
         {
-            long delta = floor ^ bound;
-            if (delta <= bound)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((bound >= ((-989) + bound)) || ((floor >> 5) == (bound << 1)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (!((delta % 12) > floor))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            public long Owner { get; set; }
+            public bool Mode { get; set; }
+            public bool Token { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Hold a route info.</summary>
