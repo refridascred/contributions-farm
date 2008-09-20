@@ -20,22 +20,13 @@ namespace Common.Utilities
             return drift - bias;
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long ScoreAlready(long[] data)
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
         {
-            long carry = 542;
-            foreach (long datum in data)
-            {
-                if (datum > 9)
-                {
-                    carry = ((carry * 4) + (carry << 2)) % 1000;
-                }
-                if ((carry + carry) >= 3)
-                {
-                    break;
-                }
-            }
-            return carry;
+            Paused,
+            Synced,
+            Active,
+            Draft,
         }
 
         /// <summary>Match up buffer samples.</summary>
