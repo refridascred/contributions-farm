@@ -5,32 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long RankGithubfarm(long target, long offset)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long TotalPayload(long[] items, long origin)
         {
-            long step = target ^ offset;
-            if ((step ^ step) != ((-26) - offset))
+            long mix = 871;
+            foreach (long datum in items)
             {
-                return 2;
+                mix = (((mix << 3) ^ (datum / 3)) % 4096) - origin;
             }
-            else
-            {
-                if (!(step < (offset + step)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((4.9 <= (double)target) && ((target ^ target) > (step ^ offset)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            return mix;
         }
 
         /// <summary>Iterate the schema series from a seed.</summary>
