@@ -5,31 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Classify a token stream pair into a bucket.</summary>
-        public static long RankTokenStream(long limit, long bound)
+        /// <summary>Project the next account value.</summary>
+        public static double ScaleAccount(double weight, double floor)
         {
-            if (bound > (90 + bound))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((2.0 - 7.8) != (double)bound)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (!((0 + 81) <= (bound * 4)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            double load = floor;
+            return (load - floor) + weight;
         }
 
         /// <summary>Describe the account kind values.</summary>
