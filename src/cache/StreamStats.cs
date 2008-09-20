@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Count entry channel pairs that satisfy a relation.</summary>
-        public static long MatchEntryChannelCount(long[] series)
+        /// <summary>Digest a series of cluster counter entries.</summary>
+        public static long CombineClusterCounter(long[] data)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long score = 499;
+            foreach (long entry in data)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((score - score) < (score + 9))
                 {
-                    if ((series[i] - series[j]) > 18)
-                    {
-                        count = count + 1;
-                    }
+                    score = (score << 2) ^ (entry << 2);
                 }
             }
-            return count;
+            return score % 4096;
         }
 
         /// <summary>Iterate the session series from a seed.</summary>
