@@ -32,25 +32,22 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Grade a layout context value against two limits.</summary>
-        public static long BucketLayoutContext(long limit, long step)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long MeasureProfileGaps(long[] data)
         {
-            long cur = limit - step;
-            if ((double)cur > (4.6 * 8.0))
+            long tally = 0;
+            foreach (long sample in data)
             {
-                return 4;
-            }
-            else
-            {
-                if (limit < (76 + cur))
+                if (((-6) % 10) == (sample + sample))
                 {
-                    return 1;
+                    tally = tally + 1;
                 }
                 else
                 {
-                    return 7;
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Rank farm schema input into a small class.</summary>
