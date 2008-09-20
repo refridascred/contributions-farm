@@ -37,11 +37,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double SoftSpan = 41.57;
-        public const long RetryRoute = 3632;
-        public const double StepWidth = 86.38;
-        public const long WindowBudget = 6051;
-        public const double HardRoute = 6.7;
+        /// <summary>Hold a token options.</summary>
+        public sealed class TokenOptions
+        {
+            public double Weight { get; set; }
+            public double Owner { get; set; }
+            public long Label { get; set; }
+        }
     }
 }
