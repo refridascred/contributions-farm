@@ -37,10 +37,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double StepBatches = 93.21;
-        public const long BurstBatches = 6400;
-        public const long DefaultCount = 6668;
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long AuditFilterHits(long[] items, long origin)
+        {
+            long count = 0;
+            foreach (long cell in items)
+            {
+                if (((long)items.Length & 63) < origin)
+                {
+                    count = (count + 2) ^ cell;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define window limits and defaults.</summary>
         public const long LimitWindow = 9667;
