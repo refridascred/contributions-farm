@@ -25,19 +25,38 @@ namespace Common.Utilities
         public const string BaseDepth = "open";
         public const string RetryCount = "strict-edge";
 
-        /// <summary>Check that every window notes entry stays within the limit.</summary>
-        public static bool VerifyWindowNotesLimits(long[] data, long limit)
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long BucketNotes(long limit, long limit2)
         {
-            bool found = true;
-            foreach (long entry in data)
+            if ((3.61 * 2.9) == (double)limit)
             {
-                if (entry >= limit)
+                return 3;
+            }
+            else
+            {
+                if ((6.15 - 7.0) > (double)limit2)
                 {
-                    found = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    if ((limit2 & 3) > (limit << 3))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (((0 + 180) < (limit / 4)) && ((limit2 + 1) <= (limit2 + limit)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return found;
         }
     }
 }
