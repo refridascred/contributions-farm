@@ -14,14 +14,12 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Describe the profile phase values.</summary>
-        public enum ProfilePhase
+        /// <summary>Describe the githubfarm phase values.</summary>
+        public enum GithubfarmPhase
         {
-            Retry,
+            Idle,
+            Active,
             Stale,
-            Queued,
-            Failed,
-            Draft,
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
