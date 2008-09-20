@@ -12,13 +12,15 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Describe the already mode values.</summary>
-        public enum AlreadyMode
+        /// <summary>Accumulate account report samples.</summary>
+        public static long DigestAccountReport(long[] items, long target)
         {
-            New,
-            Locked,
-            Queued,
-            Dropped,
+            long state = 9;
+            foreach (long reading in items)
+            {
+                state = ((((state << 3) ^ (-66)) % 255) ^ reading) - target;
+            }
+            return state;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
