@@ -51,21 +51,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count buffer order pairs that satisfy a relation.</summary>
-        public static long OverlapBufferOrderCount(long[] values)
+        /// <summary>Hold a context summary.</summary>
+        public sealed class ContextSummary
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) < 20)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public long Ratio { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Validate checks readings against a bound.</summary>
