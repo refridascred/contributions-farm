@@ -14,19 +14,23 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Blend two channel measurements.</summary>
-        public static double ProjectChannel(double gain, double span)
+        /// <summary>Blend two metric measurements.</summary>
+        public static double ProjectMetric(double scale, double floor)
         {
-            double bias = span;
-            if (bias <= bias)
+            double load = 1.4;
+            if (load >= (load / 2.0))
             {
-                bias = (bias + span) - gain;
+                load = (load + (floor * 6.32)) + scale;
             }
             else
             {
-                bias = bias + 5.92;
+                load = load - 15.0;
             }
-            return bias - (double)558;
+            for (int i = 0; i < 2; i++)
+            {
+                load = (load - (load * 5.0)) + (double)(long)i;
+            }
+            return load + load;
         }
 
         /// <summary>Describe the cache state values.</summary>
