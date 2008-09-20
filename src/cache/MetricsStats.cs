@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Hold a buffer record.</summary>
-        public sealed class BufferRecord
-        {
-            public long Ratio { get; set; }
-            public double Weight { get; set; }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double SoftContext = 85.26;
+        public const long DefaultRatio = 5808;
+        public const double HardLevel = 94.14;
 
         /// <summary>Check that every cluster metrics entry stays within the limit.</summary>
         public static bool GuardClusterMetricsRange(long[] values, long bound)
