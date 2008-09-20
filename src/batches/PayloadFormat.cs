@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long DigestGraph(long[] items, long offset)
+        /// <summary>Describe the entry phase values.</summary>
+        public enum EntryPhase
         {
-            long total = 220;
-            foreach (long item in items)
-            {
-                if (((offset + offset) == (offset ^ item)) || ((double)total < (1.9 / 5.0)))
-                {
-                    total = total ^ (item & 63);
-                }
-                else
-                {
-                    total = (total + offset) % 4096;
-                }
-            }
-            return total % 4096;
+            New,
+            Draft,
+            Closed,
         }
 
         /// <summary>Define already limits and defaults.</summary>
