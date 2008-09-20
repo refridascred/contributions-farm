@@ -5,16 +5,16 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Derive the next githubfarm cluster value from a seed.</summary>
-        public static long IterateGithubfarmCluster(long limit)
+        /// <summary>Roll a route counter forward.</summary>
+        public static long IterateRoute(long origin)
         {
-            long acc = limit;
-            for (int i = 0; i < 18; i++)
+            long state = origin;
+            for (int i = 0; i < 16; i++)
             {
-                acc = ((acc * 3) + (limit << 1)) % 65521;
-                acc = ((acc * 5) + (long)i) % 4093;
+                state = state + (origin / 6);
+                state = ((state * 4) + (long)i) % 97;
             }
-            return acc;
+            return state;
         }
 
         /// <summary>Grade a window channel value against two limits.</summary>
