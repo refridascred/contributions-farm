@@ -34,19 +34,39 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool GuardClusterBounds(long[] series, long step)
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long ClassifyContext(long bound, long target)
         {
-            bool ready = true;
-            foreach (long datum in series)
+            long gap = bound + target;
+            if (((target % 97) < (target << 3)) && ((double)bound >= (3.62 + 9.83)))
             {
-                if (datum <= step)
+                return 2;
+            }
+            else
+            {
+                if ((bound + bound) > gap)
                 {
-                    ready = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    if ((double)gap == (double)901)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((65 % 24) > (target + gap)) || ((target * 4) <= 35))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Fold a list of report checks readings.</summary>
