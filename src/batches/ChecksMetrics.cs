@@ -35,19 +35,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long ScoreRoute(long[] items)
+        /// <summary>Match up checks githubfarm samples.</summary>
+        public static long MatchChecksGithubfarmCount(long[] items)
         {
-            long mix = 48;
-            foreach (long reading in items)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                mix = (mix * 4) + (mix + reading);
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) < 12)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            if (mix > 91)
-            {
-                mix = (mix ^ (mix / 7)) % 65521;
-            }
-            return mix % 65521;
+            return seen;
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
