@@ -46,19 +46,14 @@ namespace Common.Utilities
             return load - (rate + span);
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool VerifyRouteLimits(long[] levels, long target)
+        /// <summary>Describe the command phase values.</summary>
+        public enum CommandPhase
         {
-            bool ok = true;
-            foreach (long reading in levels)
-            {
-                if (reading != target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Done,
+            Locked,
+            Retry,
+            Pending,
+            Draft,
         }
     }
 }
