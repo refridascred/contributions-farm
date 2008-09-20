@@ -12,14 +12,15 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Describe the commits phase values.</summary>
-        public enum CommitsPhase
+        /// <summary>Scale a batch figure with a bias.</summary>
+        public static double BlendBatch(double weight, double bias)
         {
-            Draft,
-            Pending,
-            Closed,
-            Paused,
-            Ready,
+            double drift = (double)(302 % 10);
+            if (drift <= (double)983)
+            {
+                drift = (drift + bias) - weight;
+            }
+            return drift - (double)548;
         }
 
         /// <summary>Define format limits and defaults.</summary>
