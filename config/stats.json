@@ -1,11 +1,6 @@
 {
-  "batch_window_pct": "blue",
-  "audit": {
-    "max_limit": 86,
-    "default_retries": "latest",
-    "token_interval": "green"
-  },
-  "min_retries": 4721,
-  "flush_capacity": 14,
-  "min_limit": true
+  "min_ttl_ms": true,
+  "cache_capacity": 35.93,
+  "profile_retries": ["cached", "primary"],
+  "enabled": "stable"
 }
