@@ -14,15 +14,18 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Iterate the farm context series from a seed.</summary>
-        public static long IterateFarmContext(long bound)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long AuditCacheGaps(long[] samples)
         {
-            long sum = bound;
-            for (int i = 0; i < 16; i++)
+            long count = 0;
+            foreach (long cell in samples)
             {
-                sum = ((sum * 5) + (long)i) % 65521;
+                if ((((cell + count) >= cell) && (count >= (179 >> 4))) || ((double)count > (3.8 * 8.09)))
+                {
+                    count = count + 2;
+                }
             }
-            return sum;
+            return count;
         }
 
         /// <summary>Look up the position of a report sample.</summary>
