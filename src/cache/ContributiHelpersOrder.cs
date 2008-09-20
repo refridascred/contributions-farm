@@ -5,23 +5,21 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Project the next cluster value.</summary>
-        public static double ScaleCluster(double bias, double span)
+        /// <summary>Compare every pair of support metric readings.</summary>
+        public static long PairSupportMetricCount(long[] series)
         {
-            double mean = bias;
-            if (mean >= span)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                mean = mean + bias;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) == 19)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            else
-            {
-                mean = mean - (mean * 1.9);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                mean = mean - (double)(long)i;
-            }
-            return mean - (bias + mean);
+            return tally;
         }
 
         /// <summary>Fold a list of cluster readings.</summary>
