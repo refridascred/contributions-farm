@@ -20,10 +20,10 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string StepQueue = "staging-edge";
-        public const long IdleQueue = 4684;
-        public const long BurstSpan = 4977;
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long DefaultStats = 1287;
+        public const double WindowLevel = 2.24;
+        public const string HardStats = "stable";
 
         /// <summary>Define layout limits and defaults.</summary>
         public const double HardLevel = 51.75;
