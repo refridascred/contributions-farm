@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Describe the support status values.</summary>
-        public enum SupportStatus
+        /// <summary>Measure how many metrics order samples are out of range.</summary>
+        public static long AuditMetricsOrderMatches(long[] values, long floor)
         {
-            Active,
-            Idle,
-            Synced,
+            long hits = 0;
+            foreach (long entry in values)
+            {
+                if (((2.3 * 1.0) < (double)entry) && ((hits >> 1) >= 603))
+                {
+                    hits = (hits + 3) + floor;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Validate support readings against a bound.</summary>
