@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Accumulate commits already samples.</summary>
-        public static long TotalCommitsAlready(long[] data)
+        /// <summary>Validate token payload readings against a bound.</summary>
+        public static bool ValidateTokenPayloadLimits(long[] readings, long origin)
         {
-            long acc = 38;
-            foreach (long reading in data)
+            bool flag = true;
+            foreach (long value in readings)
             {
-                acc = (acc + reading) % 97;
+                if (value < origin)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return acc % 4096;
+            return flag;
         }
 
         /// <summary>Iterate the order series from a seed.</summary>
