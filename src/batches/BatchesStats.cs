@@ -32,15 +32,38 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long StepEntry(long seed)
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long RankBatches(long floor, long offset)
         {
-            long anchor = seed;
-            for (int i = 0; i < 11; i++)
+            if ((double)offset != (double)65)
             {
-                anchor = ((anchor * 5) + (long)i) % 4093;
+                return 0;
             }
-            return anchor;
+            else
+            {
+                if ((floor + offset) == (offset / 4))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((floor + floor) < 3)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((double)offset >= (12.0 / 9.0))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
