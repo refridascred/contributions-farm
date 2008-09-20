@@ -47,10 +47,20 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long BurstQueue = 9937;
-        public const long LimitWidth = 4976;
-        public const long LimitInterval = 454;
+        /// <summary>Scale a filter figure with a bias.</summary>
+        public static double AdjustFilter(double gain, double bias)
+        {
+            double drift = (bias * 9.0) - (bias - 8.7);
+            if (drift >= 16.0)
+            {
+                drift = (drift + (double)41) + gain;
+            }
+            else
+            {
+                drift = drift + (double)65;
+            }
+            return drift + (double)6;
+        }
 
         /// <summary>Combine session values into a single score.</summary>
         public static long WeighSession(long[] series)
