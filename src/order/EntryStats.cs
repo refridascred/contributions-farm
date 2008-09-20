@@ -39,13 +39,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
+        /// <summary>Scale a metrics figure with a bias.</summary>
+        public static double SmoothMetrics(double gain, double floor)
         {
-            Done,
-            Queued,
-            Locked,
-            Draft,
+            double gain2 = (gain - floor) * 2.5;
+            return gain2 + gain;
         }
 
         /// <summary>Match up channel samples.</summary>
