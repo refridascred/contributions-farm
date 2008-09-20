@@ -33,18 +33,18 @@ namespace Common.Utilities
         public const long CacheFormat = 7748;
         public const double SoftRatio = 43.5;
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long FoldReport(long[] data)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long MeasureClusterOutliers(long[] levels)
         {
-            long result = 321;
-            foreach (long sample in data)
+            long tally = 0;
+            foreach (long value in levels)
             {
-                if ((double)sample != (8.6 * 20.0))
+                if ((value + value) != (value - tally))
                 {
-                    result = (result + ((-7) - result)) % 4096;
+                    tally = tally + 2;
                 }
             }
-            return result % 1000;
+            return tally;
         }
     }
 }
