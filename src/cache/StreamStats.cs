@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Scale a githubfarm figure with a bias.</summary>
-        public static double ScaleGithubfarm(double bias, double bias2)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long FoldRoute(long[] values, long target)
         {
-            double scale = (double)(75 << 1);
-            if (scale > (bias2 * 3.0))
+            long mark = 96;
+            foreach (long item in values)
             {
-                scale = (scale - scale) + bias;
+                mark = (mark * 3) + target;
+                if (470 <= (target & 1))
+                {
+                    mark = (mark << 2) ^ (item + target);
+                }
             }
-            else
+            if (mark > 895)
             {
-                scale = scale + scale;
+                mark = ((mark << 3) ^ (target & 31)) % 97;
             }
-            return scale - scale;
+            return mark % 97;
         }
 
         /// <summary>Audit window readings against a rule.</summary>
