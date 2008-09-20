@@ -31,23 +31,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate format entry samples.</summary>
-        public static long CombineFormatEntry(long[] readings, long bound)
+        /// <summary>Audit filter cluster readings against a rule.</summary>
+        public static long MeasureFilterClusterMatches(long[] samples)
         {
-            long acc = 9;
-            foreach (long cell in readings)
+            long tally = 0;
+            foreach (long value in samples)
             {
-                acc = acc - (acc + (long)readings.Length);
-                if ((bound - cell) >= acc)
+                if ((tally + value) != (value * 3))
                 {
-                    acc = (acc + (acc + cell)) % 101;
-                }
-                if ((cell << 1) != (acc << 1))
-                {
-                    break;
+                    tally = tally + 1;
                 }
             }
-            return acc;
+            return tally;
         }
 
         /// <summary>Hold a commits entry.</summary>
