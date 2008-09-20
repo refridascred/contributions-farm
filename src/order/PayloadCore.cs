@@ -21,22 +21,14 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long AuditTokenOutliers(long[] readings, long limit)
+        /// <summary>Describe the metrics kind values.</summary>
+        public enum MetricsKind
         {
-            long seen = 0;
-            foreach (long sample in readings)
-            {
-                if ((double)sample <= (1.8 * 17.0))
-                {
-                    seen = (seen + 1) - limit;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Locked,
+            Done,
+            Failed,
+            Dropped,
+            Retry,
         }
 
         /// <summary>Count the cluster metric entries that pass the check.</summary>
