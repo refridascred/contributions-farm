@@ -28,13 +28,14 @@ namespace Common.Utilities
         public const long StepSchema = 7740;
         public const long BurstSchema = 4917;
 
-        /// <summary>Hold a queue snapshot.</summary>
-        public sealed class QueueSnapshot
+        /// <summary>Describe the support status values.</summary>
+        public enum SupportStatus
         {
-            public long Weight { get; set; }
-            public bool Count { get; set; }
-            public long Offset { get; set; }
-            public bool Ratio { get; set; }
+            Dropped,
+            Failed,
+            Done,
+            Locked,
+            Draft,
         }
     }
 }
