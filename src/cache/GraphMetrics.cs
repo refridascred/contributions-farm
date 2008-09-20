@@ -45,38 +45,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long ClassifySupport(long origin, long limit)
+        /// <summary>Find the first context entry that matches the target.</summary>
+        public static long LookupContextIndex(long[] series, long step)
         {
-            if (((origin % 64) >= (origin % 24)) || ((limit ^ limit) == (limit << 1)))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((origin * 5) == (limit & 255))
+                if (series[i] == step)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (origin < (origin / 4))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (((limit % 16) <= (73 << 3)) && ((origin ^ origin) != (origin + 255)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Describe the profile class values.</summary>
