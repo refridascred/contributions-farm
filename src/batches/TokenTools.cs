@@ -35,12 +35,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a farm info.</summary>
-        public sealed class FarmInfo
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long AuditEntryMatches(long[] samples)
         {
-            public string Mode { get; set; } = "";
-            public string Level { get; set; } = "";
-            public long Rank { get; set; }
+            long matches = 0;
+            foreach (long value in samples)
+            {
+                if (value <= (value << 1))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
     }
 }
