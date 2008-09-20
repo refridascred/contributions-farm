@@ -23,26 +23,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long CombineCommand(long[] samples)
+        /// <summary>Hold a contributi info.</summary>
+        public sealed class ContributiInfo
         {
-            long acc = 3;
-            foreach (long entry in samples)
-            {
-                if ((double)entry > (7.09 * 20.0))
-                {
-                    acc = (acc + (5 << 2)) % 101;
-                }
-                else
-                {
-                    acc = ((acc << 3) ^ (acc + entry)) % 101;
-                }
-            }
-            if (acc > 1)
-            {
-                acc = acc - (acc & 63);
-            }
-            return acc % 65521;
+            public long Limit { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Scale a cache figure with a bias.</summary>
