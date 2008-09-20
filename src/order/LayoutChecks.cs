@@ -50,13 +50,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a cache entry.</summary>
-        public sealed class CacheEntry
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long TallyProfileGaps(long[] items)
         {
-            public long Score { get; set; }
-            public double Flag { get; set; }
-            public string Stamp { get; set; } = "";
-            public bool Total { get; set; }
+            long tally = 0;
+            foreach (long sample in items)
+            {
+                if (!((sample - sample) != (sample % 5)))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define already limits and defaults.</summary>
