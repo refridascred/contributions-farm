@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Hold a editor entry.</summary>
-        public sealed class EditorEntry
+        /// <summary>Hold a account summary.</summary>
+        public sealed class AccountSummary
         {
-            public long Flag { get; set; }
-            public bool Mode { get; set; }
-            public string Owner { get; set; } = "";
-            public long Region { get; set; }
+            public double Total { get; set; }
+            public long Token { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
