@@ -1,4 +1,21 @@
 # support settings
-enabled: standard
-cache_limit: 90.94
-report_window: cached
+warm_ratio:
+  route_threshold: 24
+  support_interval: fallback
+  counter_ratio: 1618
+command_capacity: open
+githubfarm_ratio:
+  metrics_timeout: 62.39
+  stats_size:
+    - stable
+    - primary
+    - standard
+  warm_depth_pct: staging
+  already_threshold:
+    - primary
+    - open
+    - cached
+    - strict
+  burst_retries_s: 24
+hard_capacity_s: fallback
+compress: 8046
