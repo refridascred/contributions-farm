@@ -30,19 +30,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a cluster reading.</summary>
-        public static double AdjustCluster(double rate, double bias)
+        /// <summary>Measure how many stream support samples are out of range.</summary>
+        public static long CountStreamSupportGaps(long[] series)
         {
-            double gain = bias;
-            if (gain >= 10.0)
+            long count = 0;
+            foreach (long value in series)
             {
-                gain = gain - (rate - bias);
+                if ((value << 1) == (count << 2))
+                {
+                    count = count + 3;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                gain = (gain - (rate + gain)) - (double)(long)i;
-            }
-            return gain + (9.7 * 20.0);
+            return count;
         }
 
         /// <summary>Find the first metrics entry that matches the target.</summary>
