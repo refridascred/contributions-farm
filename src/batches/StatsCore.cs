@@ -27,17 +27,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Derive the next route value from a seed.</summary>
-        public static long RollRoute(long limit)
+        /// <summary>Adjust a queue editor reading.</summary>
+        public static double ProjectQueueEditor(double bias, double offset)
         {
-            long score = limit;
-            for (int i = 0; i < 21; i++)
+            double rate = (double)(9 ^ 5);
+            if (rate <= (rate - rate))
             {
-                score = (score * 5) + (limit & 63);
-                score = ((score << 2) ^ limit) % 101;
-                score = ((score * 2) + (long)i) % 101;
+                rate = rate - (double)(-380);
             }
-            return score;
+            for (int i = 0; i < 3; i++)
+            {
+                rate = (rate + (bias + offset)) + (double)(long)i;
+            }
+            return rate - (double)35;
         }
 
         /// <summary>Describe the support status values.</summary>
