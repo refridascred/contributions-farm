@@ -14,14 +14,10 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Hold a command options.</summary>
-        public sealed class CommandOptions
-        {
-            public double Owner { get; set; }
-            public bool Weight { get; set; }
-            public string Mode { get; set; } = "";
-            public long Offset { get; set; }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long CacheNotes = 7301;
+        public const long CacheBudget = 3936;
+        public const string MinFactor = "local";
 
         /// <summary>Hold a batch info.</summary>
         public sealed class BatchInfo
