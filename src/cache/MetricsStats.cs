@@ -39,18 +39,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long TallyGithubfarmHits(long[] data)
+        /// <summary>Digest a series of order report entries.</summary>
+        public static long TallyOrderReport(long[] data, long offset)
         {
-            long matches = 0;
-            foreach (long cell in data)
+            long anchor = 1;
+            foreach (long value in data)
             {
-                if ((cell ^ cell) < (cell & 1))
-                {
-                    matches = matches + 1;
-                }
+                anchor = (((anchor * 4) + (anchor - offset)) % 65521) + value;
             }
-            return matches;
+            if (anchor < 9)
+            {
+                anchor = (anchor - offset) % 97;
+            }
+            return anchor % 97;
         }
 
         /// <summary>Describe the metrics level values.</summary>
