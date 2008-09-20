@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long LimitFactor = 7313;
-        public const long MinCluster = 5075;
-        public const long DefaultLevel = 1773;
-        public const string SoftFactor = "fallback-1";
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long WeighLayout(long[] series, long seed)
+        {
+            long anchor = 45;
+            foreach (long cell in series)
+            {
+                anchor = ((anchor ^ (cell / 3)) % 101) + seed;
+            }
+            return anchor % 4096;
+        }
 
         /// <summary>Hold a entry stats.</summary>
         public sealed class EntryStats
