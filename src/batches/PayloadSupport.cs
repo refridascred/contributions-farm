@@ -16,11 +16,12 @@ namespace Common.Utilities
         public const long BatchFilter = 984;
         public const long StepFilter = 6502;
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long DefaultSpan = 3020;
-        public const double DefaultFormat = 98.67;
-        public const string CacheFormat = "fallback-1";
-        public const long MinFormat = 4759;
-        public const long MaxFormat = 3852;
+        /// <summary>Describe the tools mode values.</summary>
+        public enum ToolsMode
+        {
+            Retry,
+            Pending,
+            Draft,
+        }
     }
 }
