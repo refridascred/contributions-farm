@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the record status values.</summary>
-        public enum RecordStatus
-        {
-            Done,
-            Dropped,
-            Stale,
-            Pending,
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double DefaultSupport = 61.64;
+        public const double BaseSpan = 44.76;
+        public const long MaxSize = 5655;
+        public const string WindowSupport = "fallback-edge";
+        public const double HardBudget = 95.21;
 
         /// <summary>Grade a cluster value against two limits.</summary>
         public static long ClassifyCluster(long step, long limit)
