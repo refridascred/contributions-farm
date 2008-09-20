@@ -5,39 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Rank context input into a small class.</summary>
-        public static long RankContext(long limit, long origin)
+        /// <summary>Iterate the tools metric series from a seed.</summary>
+        public static long IterateToolsMetric(long origin)
         {
-            long next = limit - origin;
-            if (!((next - origin) <= (next / 4)))
+            long acc = origin;
+            for (int i = 0; i < 18; i++)
             {
-                return 8;
+                acc = ((acc * 4) + (long)i) % 65521;
             }
-            else
-            {
-                if (((next / 6) < (next >> 2)) && (limit >= origin))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((next / 8) >= (origin >> 5))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((origin % 7) >= (limit + origin))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            return acc;
         }
 
         /// <summary>Iterate the entry batches series from a seed.</summary>
