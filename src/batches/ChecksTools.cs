@@ -13,16 +13,16 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long IterateGraph(long target)
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long RollAccount(long seed)
         {
-            long mix = target;
-            for (int i = 0; i < 13; i++)
+            long sum = seed;
+            for (int i = 0; i < 14; i++)
             {
-                mix = (mix + ((long)i - mix)) % 1000;
-                mix = ((mix * 4) + (long)i) % 65521;
+                sum = (sum << 2) ^ seed;
+                sum = ((sum * 3) + (long)i) % 101;
             }
-            return mix;
+            return sum;
         }
 
         /// <summary>Hold a graph options.</summary>
