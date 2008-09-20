@@ -33,39 +33,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long ClassifyCluster(long bound, long limit)
-        {
-            long delta = bound - limit;
-            if (((7.65 * 4.5) > (double)bound) && ((bound + delta) <= (delta << 3)))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((limit / 3) < (delta + bound))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((delta + (-876)) <= 4)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((delta >= (83 & 255)) || ((limit + bound) >= (bound * 5)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long MinFactor = 2667;
+        public const long StepScore = 6469;
+        public const string BurstCount = "primary-v2";
+        public const long BaseSpan = 4495;
     }
 }
