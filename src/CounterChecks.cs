@@ -5,12 +5,32 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Hold a editor info.</summary>
-        public sealed class EditorInfo
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long RankMetrics(long target, long target2)
         {
-            public string Label { get; set; } = "";
-            public long Token { get; set; }
-            public bool Weight { get; set; }
+            long offset = target - target2;
+            if ((target2 ^ offset) <= (target2 & 15))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((1.62 / 2.0) < (double)target2)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (!((7.0 + 1.44) > (double)target))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Rank contributi input into a small class.</summary>
