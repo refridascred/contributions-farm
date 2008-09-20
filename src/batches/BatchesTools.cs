@@ -44,12 +44,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a command record.</summary>
-        public sealed class CommandRecord
+        /// <summary>Hold a order info.</summary>
+        public sealed class OrderInfo
         {
-            public long Limit { get; set; }
-            public string Offset { get; set; } = "";
-            public bool Flag { get; set; }
+            public string Token { get; set; } = "";
+            public long Label { get; set; }
         }
     }
 }
