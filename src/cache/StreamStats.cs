@@ -39,22 +39,29 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long AuditWindowOutliers(long[] levels)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long DigestFarm(long[] values)
         {
-            long hits = 0;
-            foreach (long item in levels)
+            long state = 67;
+            foreach (long value in values)
             {
-                if ((hits / 9) >= (hits << 3))
+                if (value <= (value ^ state))
                 {
-                    hits = (hits + 3) ^ item;
+                    state = state ^ (state << 3);
+                    state = (state ^ (value >> 2)) % 4096;
+                    break;
                 }
-                else
+                state = (state - value) % 101;
+                if ((state < value) || ((value - value) > value))
                 {
-                    hits = hits - 1;
+                    state = ((state << 2) ^ value) % 255;
+                }
+                if (((-2) - state) >= 0)
+                {
+                    break;
                 }
             }
-            return hits;
+            return state;
         }
 
         /// <summary>Grade a entry value against two limits.</summary>
