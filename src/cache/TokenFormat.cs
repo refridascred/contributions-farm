@@ -5,38 +5,22 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Classify a queue cache pair into a bucket.</summary>
-        public static long GradeQueueCache(long origin, long bound)
+        /// <summary>Accumulate githubfarm batch samples.</summary>
+        public static long WeighGithubfarmBatch(long[] values, long offset)
         {
-            if ((818 * 5) == (bound ^ bound))
+            long anchor = 5;
+            foreach (long cell in values)
             {
-                return 4;
-            }
-            else
-            {
-                if ((double)origin <= (double)bound)
+                if ((4.3 + 18.0) <= (double)offset)
                 {
-                    return 2;
+                    anchor = (anchor + (cell >> 3)) % 65521;
                 }
                 else
                 {
-                    if ((887 >> 3) < (origin - 19))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((origin + 4) != (origin >> 1))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    anchor = ((anchor * 5) + (anchor * 3)) % 101;
                 }
             }
+            return anchor;
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
