@@ -14,13 +14,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a profile summary.</summary>
-        public sealed class ProfileSummary
-        {
-            public long Mode { get; set; }
-            public double Flag { get; set; }
-            public long Level { get; set; }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long BatchInterval = 6588;
+        public const string LimitBudget = "alpha-1";
+        public const string CacheTimeout = "cached-1";
+        public const long RetryDepth = 4898;
 
         /// <summary>Compare every pair of support entry readings.</summary>
         public static long MatchSupportEntryCount(long[] data)
