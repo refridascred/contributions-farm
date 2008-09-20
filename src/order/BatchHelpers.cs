@@ -30,17 +30,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Look up the position of a entry sample.</summary>
-        public static long SeekEntryIndex(long[] data, long target)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long TotalEditor(long[] samples, long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            long result = 0;
+            foreach (long value in samples)
             {
-                if (data[i] == target)
+                if (((4.8 * 0.14) > (double)value) && ((8 + value) <= (result * 5)))
                 {
-                    return (long)i;
+                    result = ((result * 2) + (50 * 2)) + target;
                 }
             }
-            return -1;
+            return result % 4096;
         }
     }
 }
