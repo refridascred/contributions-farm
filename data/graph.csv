@@ -1,8 +1,6 @@
-id,level,owner,label,state
-1,11.61,73.85,133,green
-2,475,665,40.47,986
-3,82.25,344,strict,364
-4,74.1,strict,latest,137
-5,44.96,standard,887,31.62
-6,226,1.93,561,eu-west
-7,87.58,234,10.89,green
+id,state,label,count,owner
+1,240,987,387,63.17
+2,30.87,41.39,green,458
+3,940,561,613,green
+4,73,66.98,21,810
+5,50.05,fallback,eu-west,39.66
