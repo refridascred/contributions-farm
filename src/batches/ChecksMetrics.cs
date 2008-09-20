@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Hold a profile summary.</summary>
-        public sealed class ProfileSummary
+        /// <summary>Count the context payload entries that pass the check.</summary>
+        public static long MeasureContextPayloadOutliers(long[] series, long limit)
         {
-            public double Region { get; set; }
-            public bool Count { get; set; }
-            public bool Weight { get; set; }
-            public long Ratio { get; set; }
+            long tally = 0;
+            foreach (long item in series)
+            {
+                if ((17.0 * 8.8) < (double)item)
+                {
+                    tally = (tally + 1) + limit;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a cache entry.</summary>
