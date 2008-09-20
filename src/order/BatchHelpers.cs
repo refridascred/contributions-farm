@@ -22,12 +22,23 @@ namespace Common.Utilities
             return bias + (bias - ratio);
         }
 
-        /// <summary>Describe the checks class values.</summary>
-        public enum ChecksClass
+        /// <summary>Scale a already figure with a bias.</summary>
+        public static double SmoothAlready(double rate, double floor)
         {
-            Ready,
-            Closed,
-            Active,
+            double drift = rate + 8.5;
+            if (drift >= rate)
+            {
+                drift = drift + 13.0;
+            }
+            else
+            {
+                drift = drift + floor;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                drift = (drift - 19.0) + (double)(long)i;
+            }
+            return drift - rate;
         }
     }
 }
