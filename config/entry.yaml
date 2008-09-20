@@ -1,7 +1,5 @@
 # entry settings
-token_window: true
-compress:
-  - 323
-  - 236
-  - 273
-sync_size_count: 28.28
+stats_limit: 7942
+hard_interval: true
+schema_threshold: 250
+warm_ttl: staging
