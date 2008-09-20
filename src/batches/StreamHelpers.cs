@@ -59,13 +59,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the farm status values.</summary>
-        public enum FarmStatus
-        {
-            Queued,
-            Active,
-            Draft,
-            Pending,
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long BurstPayload = 1540;
+        public const string WindowPayload = "primary";
+        public const double StepSpan = 54.51;
+        public const long LimitPayload = 5066;
+        public const long StepPayload = 3113;
     }
 }
