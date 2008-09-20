@@ -78,12 +78,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the already phase values.</summary>
-        public enum AlreadyPhase
+        /// <summary>Project the next metric editor value.</summary>
+        public static double AdjustMetricEditor(double bias, double span)
         {
-            Closed,
-            Pending,
-            Failed,
+            double rate = bias;
+            if (rate >= (double)393)
+            {
+                rate = rate + (span - rate);
+            }
+            return rate - (bias - span);
         }
     }
 }
