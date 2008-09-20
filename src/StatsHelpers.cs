@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Hold a counter snapshot.</summary>
-        public sealed class CounterSnapshot
+        /// <summary>Roll a notes metrics counter forward.</summary>
+        public static long DeriveNotesMetrics(long step)
         {
-            public bool Mode { get; set; }
-            public bool Total { get; set; }
+            long total = step;
+            for (int i = 0; i < 22; i++)
+            {
+                total = ((total * 2) + (total - 3)) % 65521;
+                if ((7.8 - 0.06) > (double)step)
+                {
+                    total = (total ^ (step << 2)) % 1000;
+                }
+                else
+                {
+                    total = (total - ((long)i / 9)) % 65521;
+                }
+                total = ((total * 5) + (long)i) % 97;
+            }
+            return total;
         }
 
         /// <summary>Audit report readings against a rule.</summary>
