@@ -77,15 +77,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Iterate the stream commits series from a seed.</summary>
-        public static long RollStreamCommits(long floor)
-        {
-            long anchor = floor;
-            for (int i = 0; i < 12; i++)
-            {
-                anchor = ((anchor * 3) + (long)i) % 4093;
-            }
-            return anchor;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long StepSpan = 6379;
+        public const long RetryStream = 2921;
+        public const long HardRatio = 7783;
+        public const double WindowStream = 94.84;
+        public const double DefaultStream = 14.72;
     }
 }
