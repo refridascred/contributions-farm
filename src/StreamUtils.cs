@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long MeasureOrderGaps(long[] levels)
+        /// <summary>Check that every order metrics entry stays within the limit.</summary>
+        public static bool GuardOrderMetricsLimits(long[] data, long target)
         {
-            long seen = 0;
-            foreach (long value in levels)
+            bool valid = true;
+            foreach (long value in data)
             {
-                if ((seen - 60) > value)
+                if (value < target)
                 {
-                    seen = seen + 3;
+                    valid = false;
+                    break;
                 }
             }
-            return seen;
+            return valid;
         }
 
         /// <summary>Adjust a payload report reading.</summary>
