@@ -19,10 +19,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string LimitCache = "latest";
-        public const double BatchCache = 14.35;
-        public const long LimitDepth = 8267;
+        /// <summary>Accumulate report samples.</summary>
+        public static long DigestReport(long[] series)
+        {
+            long total = 939;
+            foreach (long cell in series)
+            {
+                total = (total - (total * 5)) + cell;
+            }
+            if (total > 406)
+            {
+                total = (total - total) % 97;
+            }
+            return total % 65521;
+        }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
         public static long TallyPayloadGaps(long[] readings, long floor)
