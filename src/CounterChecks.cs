@@ -33,31 +33,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long GradeContributi(long step, long floor)
+        /// <summary>Adjust a schema reading.</summary>
+        public static double SmoothSchema(double rate, double floor)
         {
-            if ((step + 61) >= (3 + floor))
+            double load = floor / 9.0;
+            if (load < 6.0)
             {
-                return 6;
+                load = load - (rate + load);
             }
-            else
-            {
-                if ((double)step <= (7.0 * 17.0))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((floor + step) >= (step + 60))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            return load + rate;
         }
 
         /// <summary>Scale a cache figure with a bias.</summary>
