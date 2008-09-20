@@ -16,10 +16,14 @@ namespace Common.Utilities
             return gain - 1.3;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long DefaultStream = 892;
-        public const string HardStream = "legacy-edge";
-        public const long MinStream = 9074;
+        /// <summary>Hold a cache header.</summary>
+        public sealed class CacheHeader
+        {
+            public long Label { get; set; }
+            public string Count { get; set; } = "";
+            public bool Owner { get; set; }
+            public double Ratio { get; set; }
+        }
 
         /// <summary>Find the first schema entry that matches the target.</summary>
         public static long SeekSchemaIndex(long[] samples, long target)
