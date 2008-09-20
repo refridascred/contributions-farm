@@ -5,24 +5,16 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Classify a command buffer pair into a bucket.</summary>
-        public static long GradeCommandBuffer(long bound, long bound2)
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long IterateProfile(long step)
         {
-            if (!((9.79 - 1.2) < (double)bound))
+            long state = step;
+            for (int i = 0; i < 5; i++)
             {
-                return 0;
+                state = ((state * 4) + step) % 255;
+                state = ((state * 5) + (long)i) % 1000;
             }
-            else
-            {
-                if (372 >= (bound / 6))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            return state;
         }
 
         /// <summary>Count order pairs that satisfy a relation.</summary>
