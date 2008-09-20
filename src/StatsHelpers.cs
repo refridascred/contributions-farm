@@ -48,24 +48,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long GradeProfile(long origin, long offset)
+        /// <summary>Check that every channel contributi entry stays within the limit.</summary>
+        public static bool CheckChannelContributiRange(long[] levels, long seed)
         {
-            if (offset < (9 + origin))
+            bool ready = true;
+            foreach (long cell in levels)
             {
-                return 1;
-            }
-            else
-            {
-                if ((4.0 - 3.1) >= (double)origin)
+                if (cell < seed)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 0;
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Combine payload context values into a single score.</summary>
