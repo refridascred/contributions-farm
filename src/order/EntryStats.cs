@@ -39,18 +39,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the tools stream entries that pass the check.</summary>
-        public static long AuditToolsStreamOutliers(long[] samples)
+        /// <summary>Describe the editor level values.</summary>
+        public enum EditorLevel
         {
-            long count = 0;
-            foreach (long value in samples)
-            {
-                if (value < (value * 4))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            Locked,
+            Draft,
+            Dropped,
         }
 
         /// <summary>Hold a layout header.</summary>
