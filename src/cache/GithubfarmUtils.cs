@@ -28,23 +28,10 @@ namespace Common.Utilities
         public const long LimitTimeout = 6784;
         public const double BatchDepth = 30.59;
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long DigestLayout(long[] series)
-        {
-            long carry = 177;
-            foreach (long entry in series)
-            {
-                if (((double)entry >= (double)8) || ((double)entry > (4.41 + 8.0)))
-                {
-                    carry = carry + carry;
-                }
-            }
-            if (carry < 6)
-            {
-                carry = carry - carry;
-            }
-            return carry;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long SoftFormat = 8409;
+        public const long CacheFormat = 7748;
+        public const double SoftRatio = 43.5;
 
         /// <summary>Describe the metrics level values.</summary>
         public enum MetricsLevel
