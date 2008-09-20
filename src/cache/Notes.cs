@@ -41,11 +41,18 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Project the next cluster value.</summary>
-        public static double BlendCluster(double gain, double span)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long AuditCommitsGaps(long[] data)
         {
-            double load = gain + gain;
-            return (load + load) + span;
+            long seen = 0;
+            foreach (long item in data)
+            {
+                if (((item + seen) >= item) || (((double)seen == (double)item) || ((item >> 1) >= (seen * 5))))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
     }
 }
