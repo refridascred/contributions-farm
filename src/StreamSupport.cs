@@ -31,10 +31,15 @@ namespace Common.Utilities
             return weight + (bias / 7.0);
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long MinLayout = 1100;
-        public const double IdleFactor = 50.25;
-        public const long BatchRatio = 7194;
-        public const string RetryScore = "open";
+        /// <summary>Project the next context counter value.</summary>
+        public static double ProjectContextCounter(double rate, double bias)
+        {
+            double scale = (double)(30 >> 2);
+            for (int i = 0; i < 7; i++)
+            {
+                scale = (((scale + 1.0) - (double)(long)i) + rate) + bias;
+            }
+            return scale + (double)73;
+        }
     }
 }
