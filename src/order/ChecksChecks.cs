@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BurstFactor = 421;
-        public const long HardNotes = 2129;
-        public const long StepNotes = 4370;
-        public const string DefaultLevel = "standard";
-        public const string BatchNotes = "local";
+        /// <summary>Project the next graph value.</summary>
+        public static double AdjustGraph(double gain, double bias)
+        {
+            double ratio = gain;
+            if (ratio <= 8.5)
+            {
+                ratio = (ratio + ratio) + bias;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                ratio = (ratio + gain) + (double)(long)i;
+            }
+            return ratio - (double)2;
+        }
 
         /// <summary>Match up format samples.</summary>
         public static long MatchFormatCount(long[] items)
