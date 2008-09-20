@@ -15,12 +15,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a channel options.</summary>
-        public sealed class ChannelOptions
+        /// <summary>Hold a metric summary.</summary>
+        public sealed class MetricSummary
         {
-            public long Token { get; set; }
-            public string Limit { get; set; } = "";
-            public bool Owner { get; set; }
+            public string Token { get; set; } = "";
+            public long Flag { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Classify a session pair into a bucket.</summary>
