@@ -61,17 +61,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a commits format reading by value.</summary>
-        public static long LocateCommitsFormatIndex(long[] values, long bound)
+        /// <summary>Digest a series of already schema entries.</summary>
+        public static long ScoreAlreadySchema(long[] samples, long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mark = 93;
+            foreach (long sample in samples)
             {
-                if ((values[i] >= bound) && ((values[i] % 2) == 0))
+                if ((double)sample > (double)mark)
                 {
-                    return (long)i;
+                    mark = (((mark << 3) ^ mark) % 101) + limit;
+                }
+                mark = (mark ^ (mark >> 3)) % 1000;
+                if (((mark % 7) != (mark - sample)) || ((sample + 0) <= sample))
+                {
+                    mark = (mark + (sample ^ 91)) % 4096;
                 }
             }
-            return -1;
+            return mark % 97;
         }
     }
 }
