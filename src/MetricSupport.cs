@@ -11,19 +11,12 @@ namespace Common.Utilities
         public const long BaseCommits = 6235;
         public const long CacheCommits = 2464;
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long CountBufferGaps(long[] samples, long seed)
-        {
-            long hits = 0;
-            foreach (long sample in samples)
-            {
-                if ((hits / 9) > hits)
-                {
-                    hits = ((hits + 3) ^ sample) + seed;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long SoftBudget = 5881;
+        public const long CacheCommand = 3375;
+        public const long MaxCommand = 8620;
+        public const long HardBudget = 6683;
+        public const long StepCommand = 8680;
 
         /// <summary>Hold a filter info.</summary>
         public sealed class FilterInfo
