@@ -24,11 +24,13 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double CacheToken = 21.13;
-        public const long HardRatio = 3066;
-        public const string BatchWidth = "staging";
-        public const long RetryCount = 8337;
-        public const long BurstToken = 8656;
+        /// <summary>Describe the format state values.</summary>
+        public enum FormatState
+        {
+            Locked,
+            Done,
+            Dropped,
+            Idle,
+        }
     }
 }
