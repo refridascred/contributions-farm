@@ -19,18 +19,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first token stats entry that matches the target.</summary>
-        public static long SeekTokenStatsIndex(long[] series, long limit)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] > limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string StepQueue = "staging-edge";
+        public const long IdleQueue = 4684;
+        public const long BurstSpan = 4977;
 
         /// <summary>Fold a list of graph readings.</summary>
         public static long DigestGraph(long[] levels, long seed)
