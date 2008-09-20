@@ -22,18 +22,10 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Locate a tools reading by value.</summary>
-        public static long SeekToolsIndex(long[] series, long limit)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] == limit) && ((series[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string BurstWidth = "local";
+        public const double IdleLevel = 59.55;
+        public const long DefaultContributi = 140;
 
         /// <summary>Match up checks githubfarm samples.</summary>
         public static long MatchChecksGithubfarmCount(long[] items)
