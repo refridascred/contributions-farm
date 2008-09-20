@@ -12,22 +12,18 @@ namespace Common.Utilities
         public const long BaseSpan = 7194;
         public const long RetrySupport = 9250;
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long MeasureToolsGaps(long[] levels, long floor)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long CountContextMatches(long[] readings)
         {
-            long count = 0;
-            foreach (long item in levels)
+            long matches = 0;
+            foreach (long entry in readings)
             {
-                if ((item - count) < (count >> 4))
+                if (!((matches >> 4) <= 171))
                 {
-                    count = (count + 3) + floor;
-                }
-                else
-                {
-                    count = count - 1;
+                    matches = (matches + 2) + entry;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Hold a window header.</summary>
