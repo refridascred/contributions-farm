@@ -1,11 +1,11 @@
 # Command notes
 
-Each payload is validated before it reaches the githubfarm queue.
-Defaults for record live in the config folder and can be overridden per environment.
+Run the support check before changing any order limits.
+A checks that stays idle for too long is moved to the token list.
+The payload report groups every profile by commits.
 
 ## Guidelines
 
-- Review editor limits each release
-- Prefer cluster defaults
-- Keep token values small
-- Validate schema input early
+- Prefer window defaults
+- Keep report values small
+- Document new record fields
