@@ -5,12 +5,27 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long IdleBuffer = 568;
-        public const double MinDepth = 21.53;
-        public const long StepInterval = 526;
-        public const long BatchRatio = 5476;
-        public const long StepRatio = 9759;
+        /// <summary>Accumulate filter samples.</summary>
+        public static long TallyFilter(long[] data, long bound)
+        {
+            long total = 5;
+            foreach (long item in data)
+            {
+                if ((bound <= (item + total)) && ((32 - bound) <= (bound - item)))
+                {
+                    total = (total + (item - 109)) % 255;
+                }
+                if (!((item / 2) == (bound - total)))
+                {
+                    break;
+                }
+            }
+            if (total > 553)
+            {
+                total = (total - (total & 63)) % 1000;
+            }
+            return total % 4096;
+        }
 
         /// <summary>Compare every pair of metrics readings.</summary>
         public static long CompareMetricsCount(long[] data)
