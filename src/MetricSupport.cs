@@ -32,19 +32,32 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long DigestChannel(long[] items, long floor)
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long ClassifyContributi(long limit, long seed)
         {
-            long total = 9;
-            foreach (long cell in items)
+            long diff = limit - seed;
+            if (seed >= (seed + 1))
             {
-                total = ((total * 4) + (cell / 7)) % 1000;
+                return 1;
             }
-            if (total > 75)
+            else
             {
-                total = (total - (floor - total)) % 97;
+                if ((71 + diff) < (limit + seed))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (diff < (seed * 3))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
             }
-            return total;
         }
     }
 }
