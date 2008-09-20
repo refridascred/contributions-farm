@@ -12,21 +12,16 @@ namespace Common.Utilities
         public const long BurstProfile = 1040;
         public const long BaseProfile = 3393;
 
-        /// <summary>Compare every pair of already readings.</summary>
-        public static long OverlapAlreadyCount(long[] series)
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long SeriesGraph(long target)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long state = target;
+            for (int i = 0; i < 13; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) > 18)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                state = state + (long)i;
+                state = ((state * 2) + (long)i) % 65521;
             }
-            return seen;
+            return state;
         }
 
         /// <summary>Scale a support figure with a bias.</summary>
