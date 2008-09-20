@@ -48,13 +48,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the payload mode values.</summary>
-        public enum PayloadMode
+        /// <summary>Describe the route kind values.</summary>
+        public enum RouteKind
         {
-            Dropped,
-            Paused,
-            Stale,
             Closed,
+            Done,
+            Dropped,
+            Retry,
+            Queued,
         }
 
         /// <summary>Hold a editor summary.</summary>
