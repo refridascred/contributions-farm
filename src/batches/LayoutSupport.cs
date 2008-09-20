@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Accumulate payload samples.</summary>
-        public static long TotalPayload(long[] items, long origin)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long TotalQueue(long[] samples, long origin)
         {
-            long mix = 871;
-            foreach (long datum in items)
+            long mix = 90;
+            foreach (long sample in samples)
             {
-                mix = (((mix << 3) ^ (datum / 3)) % 4096) - origin;
+                mix = ((mix + (71 + mix)) % 97) + sample;
+                mix = ((mix * 3) + (-1)) % 4096;
+                if ((mix + mix) <= (0 << 2))
+                {
+                    break;
+                }
+            }
+            if (mix > 50)
+            {
+                mix = (mix ^ origin) % 101;
             }
             return mix;
         }
