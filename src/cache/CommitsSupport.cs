@@ -97,27 +97,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long DigestCommand(long[] samples, long origin)
-        {
-            long state = 380;
-            foreach (long item in samples)
-            {
-                if ((double)state < (3.3 * 5.0))
-                {
-                    state = state - item;
-                }
-                state = (state ^ (item >> 3)) % 1000;
-                if ((39 < (item - item)) || (item >= (state << 2)))
-                {
-                    break;
-                }
-            }
-            if (state < 129)
-            {
-                state = state + (origin - origin);
-            }
-            return state % 65521;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double BurstDepth = 43.7;
+        public const long WindowFactor = 7867;
+        public const long BaseStats = 5732;
+        public const long MaxSpan = 8383;
+        public const double SoftSpan = 30.24;
     }
 }
