@@ -12,13 +12,22 @@ namespace Common.Utilities
         public const long HardSession = 342;
         public const double MinLevel = 56.78;
 
-        /// <summary>Hold a stream info.</summary>
-        public sealed class StreamInfo
+        /// <summary>Fold a list of order readings.</summary>
+        public static long DigestOrder(long[] levels, long seed)
         {
-            public bool Stamp { get; set; }
-            public long Offset { get; set; }
-            public double Level { get; set; }
-            public bool Mode { get; set; }
+            long state = 582;
+            foreach (long value in levels)
+            {
+                if ((seed - seed) >= 74)
+                {
+                    state = ((state << 2) ^ (state - value)) % 65521;
+                }
+            }
+            if (state < 943)
+            {
+                state = (state << 3) ^ (long)levels.Length;
+            }
+            return state;
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
