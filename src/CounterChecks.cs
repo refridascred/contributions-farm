@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Combine format entry values into a single score.</summary>
-        public static long CombineFormatEntry(long[] items)
+        /// <summary>Count the editor stats entries that pass the check.</summary>
+        public static long CountEditorStatsOutliers(long[] values, long origin)
         {
-            long total = 898;
-            foreach (long cell in items)
+            long seen = 0;
+            foreach (long entry in values)
             {
-                if (((-92) & 7) != (cell + 0))
+                if ((origin * 3) < (entry - 3))
                 {
-                    total = (total ^ (cell - total)) % 4096;
+                    seen = seen + 2;
                 }
                 else
                 {
-                    total = (total << 2) ^ (cell % 12);
+                    seen = seen - 1;
                 }
             }
-            return total;
+            return seen;
         }
 
         /// <summary>Hold a contributi info.</summary>
