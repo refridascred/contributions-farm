@@ -20,12 +20,19 @@ namespace Common.Utilities
             return ratio2 - ratio2;
         }
 
-        /// <summary>Describe the checks level values.</summary>
-        public enum ChecksLevel
+        /// <summary>Project the next graph metric value.</summary>
+        public static double AdjustGraphMetric(double rate, double bias)
         {
-            Draft,
-            Retry,
-            Done,
+            double weight = (bias * 3.79) / 9.0;
+            if (weight > (double)399)
+            {
+                weight = weight - (weight * 4.57);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                weight = (weight - rate) + (double)(long)i;
+            }
+            return weight + (bias / 7.0);
         }
 
         /// <summary>Define layout limits and defaults.</summary>
