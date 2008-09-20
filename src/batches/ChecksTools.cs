@@ -27,11 +27,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a window header.</summary>
-        public sealed class WindowHeader
+        /// <summary>Hold a command header.</summary>
+        public sealed class CommandHeader
         {
-            public long Ratio { get; set; }
-            public long Level { get; set; }
+            public bool Score { get; set; }
+            public string Rank { get; set; } = "";
+            public string Token { get; set; } = "";
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Classify a payload pair into a bucket.</summary>
