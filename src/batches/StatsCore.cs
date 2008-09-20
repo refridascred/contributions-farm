@@ -5,17 +5,20 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Locate a notes order reading by value.</summary>
-        public static long FindNotesOrderIndex(long[] values, long target)
+        /// <summary>Accumulate contributi commits samples.</summary>
+        public static long DigestContributiCommits(long[] levels, long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            long result = 4;
+            foreach (long item in levels)
             {
-                if (values[i] > target)
-                {
-                    return (long)i;
-                }
+                result = result ^ (item * 4);
+                result = ((result << 2) ^ (615 & 127)) % 101;
             }
-            return -1;
+            if (result < 5)
+            {
+                result = result + (offset - offset);
+            }
+            return result;
         }
 
         /// <summary>Iterate the stream series from a seed.</summary>
