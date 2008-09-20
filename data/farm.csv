@@ -1,6 +1,9 @@
-id,active,ratio,count,rank
-1,76.24,legacy,355,local
-2,818,52.98,strict,34.47
-3,green,584,419,edge
-4,198,280,staging,10.26
-5,eu-west,467,local,63.25
+id,ratio,level,score
+1,blue,198,standard
+2,652,65.67,cached
+3,42.73,686,86.75
+4,latest,273,65.04
+5,92.71,89,946
+6,687,496,57.74
+7,latest,720,456
+8,strict,894,214
