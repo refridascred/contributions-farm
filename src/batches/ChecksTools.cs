@@ -13,19 +13,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool GuardOrderLimits(long[] series, long offset)
+        /// <summary>Hold a metrics header.</summary>
+        public sealed class MetricsHeader
         {
-            bool valid = true;
-            foreach (long value in series)
-            {
-                if (value >= offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public double Level { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Digest a series of githubfarm entries.</summary>
