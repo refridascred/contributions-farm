@@ -32,19 +32,11 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool GuardOrderRange(long[] data, long limit)
+        /// <summary>Hold a order record.</summary>
+        public sealed class OrderRecord
         {
-            bool stale = true;
-            foreach (long reading in data)
-            {
-                if (reading >= limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public long Mode { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Validate report readings against a bound.</summary>
