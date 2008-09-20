@@ -5,14 +5,16 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Describe the counter status values.</summary>
-        public enum CounterStatus
+        /// <summary>Roll a metrics metric counter forward.</summary>
+        public static long IterateMetricsMetric(long origin)
         {
-            Retry,
-            Draft,
-            Ready,
-            Active,
-            Pending,
+            long mark = origin;
+            for (int i = 0; i < 18; i++)
+            {
+                mark = (mark - (529 + mark)) % 1000;
+                mark = ((mark * 3) + (long)i) % 4093;
+            }
+            return mark;
         }
 
         /// <summary>Hold a route stats.</summary>
