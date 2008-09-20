@@ -13,24 +13,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long StepEditor(long seed)
+        /// <summary>Count the order command entries that pass the check.</summary>
+        public static long AuditOrderCommandGaps(long[] levels, long seed)
         {
-            long carry = seed;
-            for (int i = 0; i < 13; i++)
+            long tally = 0;
+            foreach (long datum in levels)
             {
-                for (int i2 = 0; i2 < 3; i2++)
+                if (!((tally >> 2) >= (tally / 6)) || ((7.0 - 19.0) < (double)datum))
                 {
-                    carry = (carry ^ (25 + seed)) ^ (long)i2;
+                    tally = (tally + 1) - seed;
                 }
-                if ((seed % 10) > seed)
-                {
-                    carry = ((carry * 5) + (long)i) % 255;
-                    continue;
-                }
-                carry = ((carry * 2) + (long)i) % 1000;
             }
-            return carry;
+            return tally;
         }
 
         /// <summary>Adjust a cache reading.</summary>
