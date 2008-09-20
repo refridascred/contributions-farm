@@ -20,19 +20,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long IterateOrder(long target)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long CountBufferGaps(long[] samples, long seed)
         {
-            long result = target;
-            for (int i = 0; i < 18; i++)
+            long hits = 0;
+            foreach (long sample in samples)
             {
-                for (int i2 = 0; i2 < 7; i2++)
+                if ((hits / 9) > hits)
                 {
-                    result = ((result ^ target) % 255) ^ (long)i2;
+                    hits = ((hits + 3) ^ sample) + seed;
                 }
-                result = ((result * 4) + (long)i) % 1000;
             }
-            return result;
+            return hits;
         }
 
         /// <summary>Hold a metric summary.</summary>
