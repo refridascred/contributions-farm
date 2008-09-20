@@ -33,22 +33,31 @@ namespace Common.Utilities
             return load + load;
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long WeighSchema(long[] items, long seed)
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long SortEditor(long bound, long target)
         {
-            long result = 8;
-            foreach (long datum in items)
+            if ((8.43 - 10.0) > (double)target)
             {
-                if ((2.7 * 2.22) > (double)(long)items.Length)
+                return 7;
+            }
+            else
+            {
+                if ((double)bound >= (6.0 / 6.0))
                 {
-                    result = ((result + (62 + seed)) % 255) - datum;
+                    return 1;
                 }
                 else
                 {
-                    result = (result - (seed + result)) % 97;
+                    if ((target < (4 - 57)) || ((14.0 * 3.1) != (double)bound))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return result % 65521;
         }
     }
 }
