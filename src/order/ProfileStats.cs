@@ -61,13 +61,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a record header.</summary>
-        public sealed class RecordHeader
+        /// <summary>Project the next order value.</summary>
+        public static double BlendOrder(double scale, double bias)
         {
-            public long Region { get; set; }
-            public long Limit { get; set; }
-            public long Offset { get; set; }
-            public double Owner { get; set; }
+            double rate = scale;
+            for (int i = 0; i < 8; i++)
+            {
+                rate = ((rate + (9.77 / 6.0)) + (double)(long)i) + bias;
+            }
+            return rate - 20.0;
         }
     }
 }
