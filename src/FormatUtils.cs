@@ -18,22 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of farm cluster entries.</summary>
-        public static long ScoreFarmCluster(long[] readings)
+        /// <summary>Hold a cache record.</summary>
+        public sealed class CacheRecord
         {
-            long result = 894;
-            foreach (long sample in readings)
-            {
-                if ((65 >> 4) < (sample / 3))
-                {
-                    result = (result << 2) ^ (result & 3);
-                }
-            }
-            if (result > 38)
-            {
-                result = (result - ((-2) / 9)) % 65521;
-            }
-            return result % 4096;
+            public long Mode { get; set; }
+            public string Offset { get; set; } = "";
+            public long Owner { get; set; }
         }
 
         /// <summary>Scale a format figure with a bias.</summary>
