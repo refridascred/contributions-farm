@@ -1,8 +1,5 @@
 {
-  "idle_threshold": true,
-  "format_size": "blue",
-  "sync_depth_ms": false,
-  "metrics_window": 3241,
-  "cache_ratio_count": 398,
-  "burst_window": 84.42
+  "layout_ttl": [428, 392],
+  "cache_delay_pct": 78,
+  "strict": "stable"
 }
