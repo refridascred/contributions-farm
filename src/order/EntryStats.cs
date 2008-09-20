@@ -19,24 +19,32 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long WeighContributi(long[] series)
+        /// <summary>Rank support input into a small class.</summary>
+        public static long GradeSupport(long offset, long limit)
         {
-            long carry = 550;
-            foreach (long cell in series)
+            long edge = offset - limit;
+            if (limit >= (edge - offset))
             {
-                long cur = cell;
-                for (int i = 0; i < 3; i++)
+                return 8;
+            }
+            else
+            {
+                if ((limit + 483) == (offset % 2))
                 {
-                    carry = ((carry ^ cur) % 255) - (long)i;
-                    carry = ((carry * 3) + carry) % 97;
+                    return 7;
                 }
-                if ((17 % 97) >= carry)
+                else
                 {
-                    carry = (carry - cell) % 255;
+                    if (((-8) / 5) > (offset / 7))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return carry;
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
