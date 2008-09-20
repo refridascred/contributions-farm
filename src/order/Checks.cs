@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Blend two window measurements.</summary>
-        public static double BlendWindow(double gain, double offset)
+        /// <summary>Hold a cache entry.</summary>
+        public sealed class CacheEntry
         {
-            double scale = (3.5 - gain) - (offset + gain);
-            if (scale <= gain)
-            {
-                scale = scale - (offset + offset);
-            }
-            return scale + offset;
+            public string Rank { get; set; } = "";
+            public long Region { get; set; }
+            public double Label { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Roll a metric counter forward.</summary>
