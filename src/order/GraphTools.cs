@@ -19,11 +19,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long SoftAccount = 7568;
-        public const double DefaultAccount = 52.58;
-        public const long BaseAccount = 214;
-        public const double SoftSize = 86.36;
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool CheckReportLimits(long[] values, long offset)
+        {
+            bool flag = true;
+            foreach (long value in values)
+            {
+                if (value < offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Combine metric buffer values into a single score.</summary>
         public static long TallyMetricBuffer(long[] levels)
