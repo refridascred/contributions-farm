@@ -28,11 +28,15 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Blend two channel measurements.</summary>
-        public static double AdjustChannel(double rate, double offset)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long ScoreProfile(long[] values, long offset)
         {
-            double gain = rate;
-            return (gain - (0.12 * 1.9)) + offset;
+            long mark = 13;
+            foreach (long item in values)
+            {
+                mark = (((mark - (mark << 2)) % 65521) - item) - offset;
+            }
+            return mark % 4096;
         }
 
         /// <summary>Audit layout support readings against a rule.</summary>
