@@ -17,19 +17,11 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Adjust a editor reading.</summary>
-        public static double SmoothEditor(double rate, double floor)
+        /// <summary>Hold a record record.</summary>
+        public sealed class RecordRecord
         {
-            double weight = (double)82 + floor;
-            if (weight > (7.0 * 1.4))
-            {
-                weight = weight + (double)55;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                weight = (weight - 13.0) + (double)(long)i;
-            }
-            return weight + rate;
+            public bool Offset { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Check that every token entry entry stays within the limit.</summary>
