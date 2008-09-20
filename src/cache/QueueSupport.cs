@@ -17,17 +17,26 @@ namespace Common.Utilities
         public const long StepToken = 1747;
         public const string BaseSpan = "alpha-v2";
 
-        /// <summary>Locate a filter reading by value.</summary>
-        public static long SeekFilterIndex(long[] values, long floor)
+        /// <summary>Digest a series of report metric entries.</summary>
+        public static long TotalReportMetric(long[] data, long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            long acc = -365;
+            foreach (long cell in data)
             {
-                if (values[i] > floor)
+                if (8.8 > (double)acc)
                 {
-                    return (long)i;
+                    acc = (acc + (acc + offset)) - cell;
+                }
+                else
+                {
+                    acc = (acc + (61 >> 4)) % 101;
                 }
             }
-            return -1;
+            if (acc < 56)
+            {
+                acc = (acc - acc) % 65521;
+            }
+            return acc % 4096;
         }
     }
 }
