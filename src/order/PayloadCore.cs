@@ -37,24 +37,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long BucketStream(long bound, long offset)
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
         {
-            if (!((422 + 7) == (offset % 97)))
-            {
-                return 0;
-            }
-            else
-            {
-                if (((bound + bound) < (bound + offset)) || (offset <= (offset & 1)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            Paused,
+            Closed,
+            Idle,
+            Active,
         }
 
         /// <summary>Hold a tools info.</summary>
