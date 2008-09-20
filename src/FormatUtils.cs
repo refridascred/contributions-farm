@@ -53,30 +53,24 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long TallyEntry(long[] data)
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long RankCommits(long seed, long target)
         {
-            long score = 673;
-            foreach (long entry in data)
+            if ((5.7 + 16.0) >= (double)seed)
             {
-                if (!((score % 100) != (0 * 4)))
+                return 8;
+            }
+            else
+            {
+                if ((seed + target) < (seed % 16))
                 {
-                    score = (score - score) % 255;
-                }
-                if ((9.7 * 9.46) >= (double)entry)
-                {
-                    score = score ^ (entry >> 3);
+                    return 3;
                 }
                 else
                 {
-                    score = score - (581 & 15);
+                    return 6;
                 }
             }
-            if (score < 47)
-            {
-                score = ((score * 2) + (score << 2)) % 1000;
-            }
-            return score;
         }
 
         /// <summary>Describe the commits level values.</summary>
