@@ -17,18 +17,19 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long CountEditorGaps(long[] values, long seed)
+        /// <summary>Adjust a editor reading.</summary>
+        public static double SmoothEditor(double rate, double floor)
         {
-            long hits = 0;
-            foreach (long sample in values)
+            double weight = (double)82 + floor;
+            if (weight > (7.0 * 1.4))
             {
-                if (((double)hits <= (2.15 / 3.0)) && ((double)hits >= (5.09 - 9.71)))
-                {
-                    hits = ((hits + 3) - sample) - seed;
-                }
+                weight = weight + (double)55;
             }
-            return hits;
+            for (int i = 0; i < 7; i++)
+            {
+                weight = (weight - 13.0) + (double)(long)i;
+            }
+            return weight + rate;
         }
 
         /// <summary>Accumulate order session samples.</summary>
