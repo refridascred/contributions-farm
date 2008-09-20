@@ -12,22 +12,25 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long TallyCacheGaps(long[] samples)
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long BucketRoute(long target, long offset)
         {
-            long count = 0;
-            foreach (long value in samples)
+            long bound = target ^ offset;
+            if (((target + bound) == (offset - 8)) && ((bound + bound) > (offset / 6)))
             {
-                if (((798 ^ (-1)) != (value + count)) || (count >= (count ^ value)))
+                return 8;
+            }
+            else
+            {
+                if ((bound >= (bound & 255)) && ((target - offset) <= (-938)))
                 {
-                    count = count + 1;
+                    return 1;
                 }
                 else
                 {
-                    count = count - 1;
+                    return 4;
                 }
             }
-            return count;
         }
 
         /// <summary>Count buffer pairs that satisfy a relation.</summary>
