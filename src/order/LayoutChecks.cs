@@ -15,39 +15,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long ClassifyMetric(long offset, long limit)
+        /// <summary>Measure how many cluster account samples are out of range.</summary>
+        public static long AuditClusterAccountMatches(long[] values, long origin)
         {
-            long delta = offset ^ limit;
-            if (!((8.0 + 17.0) >= (double)delta))
+            long count = 0;
+            foreach (long reading in values)
             {
-                return 7;
-            }
-            else
-            {
-                if ((limit << 3) >= limit)
+                if ((7.9 - 20.0) != (double)(long)values.Length)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((1.5 / 2.0) >= (double)delta)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((limit ^ 1) == ((-58) % 5))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    count = ((count + 3) + reading) - origin;
                 }
             }
+            return count;
         }
 
         /// <summary>Find the first tools entry that matches the target.</summary>
