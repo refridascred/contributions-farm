@@ -1,11 +1,14 @@
 # Command notes
 
-The tools report groups every session by notes.
-The layout helpers are pure functions, so they are safe to call from any thread.
+Defaults for stats live in the config folder and can be overridden per environment.
+When a token fails, the checks handler retries a few times before giving up.
+
+Use support settings to tune how often metric data is refreshed.
+The session report groups every order by notes.
+Defaults for window live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Validate report input early
-- Review tools limits each release
-- Prefer editor defaults
-- Keep buffer values small
+- Validate stream input early
+- Prefer window defaults
+- Keep payload values small
