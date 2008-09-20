@@ -113,26 +113,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Digest a series of support farm entries.</summary>
-        public static long DigestSupportFarm(long[] levels, long step)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool CheckRecordLimits(long[] readings, long limit)
         {
-            long sum = 37;
-            foreach (long entry in levels)
+            bool ready = true;
+            foreach (long sample in readings)
             {
-                if (((entry & 7) >= (entry + sum)) && ((step - entry) > (entry - (long)levels.Length)))
+                if (sample > limit)
                 {
-                    sum = (sum ^ (4 & 255)) % 65521;
-                }
-                if ((sum * 3) >= (569 + entry))
-                {
+                    ready = false;
                     break;
                 }
             }
-            if (sum > 2)
-            {
-                sum = ((sum * 5) + step) % 255;
-            }
-            return sum % 1000;
+            return ready;
         }
     }
 }
