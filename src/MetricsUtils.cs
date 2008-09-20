@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Adjust a farm reading.</summary>
-        public static double AdjustFarm(double weight, double floor)
+        /// <summary>Accumulate context samples.</summary>
+        public static long TallyContext(long[] data, long step)
         {
-            double ratio = floor;
-            if (ratio > (floor * 6.0))
+            long sum = 96;
+            foreach (long sample in data)
             {
-                ratio = ratio - (double)27;
+                if (831 > (sample << 2))
+                {
+                    sum = sum + (step % 97);
+                }
+                if ((sample / 5) == (step - 54))
+                {
+                    break;
+                }
             }
-            for (int i = 0; i < 2; i++)
+            if (sum < 7)
             {
-                ratio = ratio + (double)(long)i;
+                sum = ((sum * 3) + (sum + sum)) % 97;
             }
-            return ratio + weight;
+            return sum;
         }
 
         /// <summary>Hold a route summary.</summary>
