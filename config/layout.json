@@ -1,6 +1,13 @@
 {
-  "soft_retries_pct": "legacy",
-  "burst_threshold_count": "standard",
-  "verbose": [103, 191],
-  "compress": 6176
+  "flush_size_count": 60,
+  "default_limit_s": {
+    "batch_size": "stable",
+    "tools_interval": "primary",
+    "cache_interval_pct": 4086,
+    "idle_delay_ms": [67, 348],
+    "flush_timeout": 60,
+    "githubfarm_size": 4882
+  },
+  "enabled": 22,
+  "sync_ttl_ms": 80.31
 }
