@@ -56,10 +56,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long WindowLevel = 1678;
-        public const double IdleNotes = 42.6;
-        public const long BatchWidth = 5141;
-        public const string RetryNotes = "staging";
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long MeasureAlreadyMatches(long[] data)
+        {
+            long tally = 0;
+            foreach (long reading in data)
+            {
+                if ((58 + tally) < (48 << 2))
+                {
+                    tally = (tally + 1) + reading;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
     }
 }
