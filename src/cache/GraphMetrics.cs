@@ -34,23 +34,38 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long FoldContributi(long[] values, long limit)
+        /// <summary>Classify a commits metric pair into a bucket.</summary>
+        public static long GradeCommitsMetric(long limit, long origin)
         {
-            long total = 889;
-            foreach (long item in values)
+            if ((8.0 - 7.4) <= (double)origin)
             {
-                if ((item <= (7 + total)) || ((total << 2) >= (limit >> 2)))
+                return 1;
+            }
+            else
+            {
+                if ((limit ^ limit) < origin)
                 {
-                    total = (total + (limit % 24)) % 4096;
+                    return 6;
                 }
-                total = (total - (total - item)) % 1000;
-                if (total < (758 + total))
+                else
                 {
-                    total = (total - (total % 3)) % 4096;
+                    if (limit >= (origin ^ origin))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((double)limit >= (20.0 - 9.5))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return total % 1000;
         }
 
         /// <summary>Classify a support pair into a bucket.</summary>
