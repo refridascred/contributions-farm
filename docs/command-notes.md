@@ -1,12 +1,11 @@
 # Command notes
 
-The profile report groups every cache by already.
-A editor that stays idle for too long is moved to the support list.
-Defaults for format live in the config folder and can be overridden per environment.
+A batch that stays idle for too long is moved to the entry list.
+The buffer module keeps route values in sync with the session cache.
 
 ## Guidelines
 
-- Keep buffer values small
-- Prefer editor defaults
-- Log every githubfarm change
-- Validate schema input early
+- Validate batches input early
+- Log every record change
+- Document new commits fields
+- Review cluster limits each release
