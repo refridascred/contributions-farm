@@ -24,10 +24,18 @@ namespace Common.Utilities
             return load + (double)8;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long HardCommits = 2080;
-        public const long LimitCommits = 5326;
-        public const double BaseCommits = 48.03;
+        /// <summary>Find the first buffer checks entry that matches the target.</summary>
+        public static long SeekBufferChecksIndex(long[] items, long step)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] <= step) && ((items[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Audit window readings against a rule.</summary>
         public static long CountWindowMatches(long[] readings, long seed)
