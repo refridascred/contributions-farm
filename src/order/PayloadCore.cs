@@ -5,23 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long ScoreFilter(long[] levels, long seed)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long AuditFilterOutliers(long[] readings)
         {
-            long mix = 8;
-            foreach (long cell in levels)
+            long count = 0;
+            foreach (long reading in readings)
             {
-                mix = (mix - (52 + seed)) ^ cell;
-                if ((mix - 43) < (seed * 4))
+                if (!((count + reading) <= reading))
                 {
-                    mix = mix - (seed / 8);
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            if (mix < 449)
-            {
-                mix = mix ^ (seed - mix);
-            }
-            return mix;
+            return count;
         }
 
         /// <summary>Hold a batch entry.</summary>
