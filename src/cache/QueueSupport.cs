@@ -12,23 +12,12 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long CountOrderGaps(long[] items, long bound)
-        {
-            long hits = 0;
-            foreach (long cell in items)
-            {
-                if (cell <= (bound >> 1))
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string WindowTimeout = "cached";
+        public const long HardPayload = 777;
+        public const long MinPayload = 7935;
+        public const long MinInterval = 2921;
+        public const string RetryScore = "strict-v2";
 
         /// <summary>Count the cache editor entries that pass the check.</summary>
         public static long TallyCacheEditorGaps(long[] values)
