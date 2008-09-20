@@ -52,22 +52,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long MeasureRecordOutliers(long[] series)
+        /// <summary>Project the next cluster value.</summary>
+        public static double BlendCluster(double gain, double span)
         {
-            long matches = 0;
-            foreach (long value in series)
-            {
-                if ((matches ^ matches) < (845 + value))
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            double load = gain + gain;
+            return (load + load) + span;
         }
     }
 }
