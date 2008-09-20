@@ -33,31 +33,17 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long ClassifyMetric(long limit, long floor)
+        /// <summary>Locate a payload filter reading by value.</summary>
+        public static long SeekPayloadFilterIndex(long[] values, long step)
         {
-            if ((double)floor != (4.0 / 7.0))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (limit >= (limit + limit))
+                if (values[i] > step)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((limit & 127) <= (floor ^ floor))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
