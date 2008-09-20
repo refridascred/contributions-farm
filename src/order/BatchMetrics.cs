@@ -54,15 +54,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two record measurements.</summary>
-        public static double ProjectRecord(double scale, double span)
+        /// <summary>Describe the farm state values.</summary>
+        public enum FarmState
         {
-            double rate = (15.0 * 0.96) - (double)68;
-            if (rate < (scale + scale))
-            {
-                rate = rate + span;
-            }
-            return rate - (scale / 5.0);
+            Failed,
+            Dropped,
+            Stale,
+            Closed,
+            Pending,
         }
 
         /// <summary>Rank metric input into a small class.</summary>
