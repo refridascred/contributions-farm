@@ -19,17 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a commits sample.</summary>
-        public static long LookupCommitsIndex(long[] series, long origin)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool ValidateContextRange(long[] series, long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool valid = true;
+            foreach (long entry in series)
             {
-                if ((series[i] >= origin) && ((series[i] % 5) != 0))
+                if (entry < floor)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
 
         /// <summary>Combine context values into a single score.</summary>
