@@ -34,12 +34,11 @@ namespace Common.Utilities
             return weight - 9.0;
         }
 
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
+        /// <summary>Hold a channel header.</summary>
+        public sealed class ChannelHeader
         {
-            Synced,
-            Closed,
-            Locked,
+            public double Token { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Rank window input into a small class.</summary>
