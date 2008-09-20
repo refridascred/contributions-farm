@@ -23,24 +23,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long GradeCache(long origin, long offset)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long TallyFarmOutliers(long[] series)
         {
-            if ((39 - origin) < (origin / 6))
+            long count = 0;
+            foreach (long item in series)
             {
-                return 8;
-            }
-            else
-            {
-                if (offset <= (origin * 3))
+                if ((item + item) < count)
                 {
-                    return 2;
+                    count = count + 2;
                 }
                 else
                 {
-                    return 0;
+                    count = count - 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Accumulate batches contributi samples.</summary>
