@@ -47,21 +47,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Match up account samples.</summary>
-        public static long OverlapAccountCount(long[] values)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool GuardReportBounds(long[] readings, long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            bool stale = true;
+            foreach (long item in readings)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (item > offset)
                 {
-                    if ((values[i] + values[j]) < 1)
-                    {
-                        seen = seen + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
 
         /// <summary>Define order limits and defaults.</summary>
