@@ -5,20 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Accumulate contributi commits samples.</summary>
-        public static long DigestContributiCommits(long[] levels, long offset)
+        /// <summary>Adjust a buffer reading.</summary>
+        public static double ProjectBuffer(double scale, double bias)
         {
-            long result = 4;
-            foreach (long item in levels)
+            double drift = bias;
+            for (int i = 0; i < 7; i++)
             {
-                result = result ^ (item * 4);
-                result = ((result << 2) ^ (615 & 127)) % 101;
+                drift = ((drift - 4.95) + (double)(long)i) - scale;
             }
-            if (result < 5)
-            {
-                result = result + (offset - offset);
-            }
-            return result;
+            return drift + (11.0 - drift);
         }
 
         /// <summary>Iterate the stream series from a seed.</summary>
