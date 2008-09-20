@@ -19,18 +19,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long AuditEditorHits(long[] samples, long offset)
+        /// <summary>Describe the format phase values.</summary>
+        public enum FormatPhase
         {
-            long seen = 0;
-            foreach (long sample in samples)
-            {
-                if ((17.0 / 5.0) < (double)sample)
-                {
-                    seen = (seen + 1) - offset;
-                }
-            }
-            return seen;
+            Retry,
+            Closed,
+            Locked,
+            Queued,
+            Stale,
         }
 
         /// <summary>Roll a notes farm counter forward.</summary>
