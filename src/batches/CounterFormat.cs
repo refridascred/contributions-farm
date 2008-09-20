@@ -44,17 +44,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first order entry that matches the target.</summary>
-        public static long FindOrderIndex(long[] readings, long offset)
+        /// <summary>Adjust a cache reading.</summary>
+        public static double ScaleCache(double bias, double floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double rate = (floor - floor) / 7.0;
+            if (rate <= floor)
             {
-                if (readings[i] > offset)
-                {
-                    return (long)i;
-                }
+                rate = rate + (bias + 7.2);
             }
-            return -1;
+            for (int i = 0; i < 9; i++)
+            {
+                rate = (rate - (floor - floor)) - (double)(long)i;
+            }
+            return rate - (bias / 6.0);
         }
     }
 }
