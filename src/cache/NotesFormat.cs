@@ -18,23 +18,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Blend two metric measurements.</summary>
-        public static double ProjectMetric(double scale, double floor)
+        /// <summary>Find the first metric entry that matches the target.</summary>
+        public static long LookupMetricIndex(long[] levels, long seed)
         {
-            double load = 1.4;
-            if (load >= (load / 2.0))
+            for (int i = 0; i < levels.Length; i++)
             {
-                load = (load + (floor * 6.32)) + scale;
+                if (levels[i] == seed)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                load = load - 15.0;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                load = (load - (load * 5.0)) + (double)(long)i;
-            }
-            return load + load;
+            return -1;
         }
 
         /// <summary>Project the next schema entry value.</summary>
