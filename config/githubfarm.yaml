@@ -1,9 +1,13 @@
 # githubfarm settings
-flush_ttl: cached
-default_depth_pct:
-  - 353
-  - 495
-  - 342
-  - 115
-min_interval_pct: 82
-editor_interval: green
+enabled: latest
+warm_delay_ms: 75.1
+report_size: 40.98
+retry_depth:
+  base_size_ms: 74.72
+  enabled: false
+  min_size: 81
+  cache_retries: 84
+batch_delay_ms: local
+report_window:
+  - 196
+  - 274
