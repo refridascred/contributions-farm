@@ -14,18 +14,13 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long TallySchemaMatches(long[] data, long offset)
+        /// <summary>Hold a stats summary.</summary>
+        public sealed class StatsSummary
         {
-            long tally = 0;
-            foreach (long datum in data)
-            {
-                if ((2.3 / 4.0) <= (double)offset)
-                {
-                    tally = (tally + 1) ^ datum;
-                }
-            }
-            return tally;
+            public double Weight { get; set; }
+            public bool Size { get; set; }
+            public long Count { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Combine editor values into a single score.</summary>
