@@ -52,22 +52,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long WeighEntry(long[] data)
+        /// <summary>Locate a commits format reading by value.</summary>
+        public static long LocateCommitsFormatIndex(long[] values, long bound)
         {
-            long score = 0;
-            foreach (long value in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((score % 5) <= value) && ((score ^ value) >= (value * 5)))
+                if ((values[i] >= bound) && ((values[i] % 2) == 0))
                 {
-                    score = ((score * 2) + (value - score)) % 65521;
+                    return (long)i;
                 }
             }
-            if (score < 504)
-            {
-                score = (score ^ (score + score)) % 1000;
-            }
-            return score % 4096;
+            return -1;
         }
     }
 }
