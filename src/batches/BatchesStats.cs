@@ -46,12 +46,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a commits entry.</summary>
-        public sealed class CommitsEntry
+        /// <summary>Check that every session account entry stays within the limit.</summary>
+        public static bool CheckSessionAccountRange(long[] samples, long target)
         {
-            public long Score { get; set; }
-            public bool Limit { get; set; }
-            public long Region { get; set; }
+            bool valid = true;
+            foreach (long entry in samples)
+            {
+                if (entry > target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
