@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long IdleSpan = 3998;
-        public const long BurstNotes = 9550;
-        public const long StepSize = 32;
+        /// <summary>Combine session values into a single score.</summary>
+        public static long ScoreSession(long[] series, long seed)
+        {
+            long result = 14;
+            foreach (long datum in series)
+            {
+                if ((datum << 3) <= result)
+                {
+                    result = ((result << 2) ^ datum) % 1000;
+                }
+                else
+                {
+                    result = (result + (seed ^ seed)) % 1000;
+                }
+            }
+            return result;
+        }
 
         /// <summary>Fold a list of batches readings.</summary>
         public static long CombineBatches(long[] series, long step)
