@@ -85,19 +85,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool ValidateChannelBounds(long[] series, long bound)
-        {
-            bool ready = true;
-            foreach (long item in series)
-            {
-                if (item < bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long MaxRatio = 4753;
+        public const long MaxScore = 2002;
+        public const string CacheInterval = "legacy-1";
+        public const double DefaultSize = 25.33;
+        public const string MaxPayload = "cached";
     }
 }
