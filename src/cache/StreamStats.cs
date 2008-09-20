@@ -28,12 +28,25 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a counter summary.</summary>
-        public sealed class CounterSummary
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long BucketEntry(long target, long bound)
         {
-            public long Weight { get; set; }
-            public string Size { get; set; } = "";
-            public string Level { get; set; } = "";
+            long edge = target + bound;
+            if (((-628) & 127) >= (910 + target))
+            {
+                return 1;
+            }
+            else
+            {
+                if (((double)edge != (5.9 / 5.0)) || (edge > target))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Grade a stats command value against two limits.</summary>
