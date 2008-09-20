@@ -43,18 +43,14 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Count the farm commits entries that pass the check.</summary>
-        public static long CountFarmCommitsMatches(long[] series, long step)
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
         {
-            long matches = 0;
-            foreach (long item in series)
-            {
-                if ((13.0 * 8.0) >= (double)step)
-                {
-                    matches = (matches + 1) - item;
-                }
-            }
-            return matches;
+            Ready,
+            Retry,
+            Pending,
+            Synced,
+            New,
         }
     }
 }
