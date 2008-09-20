@@ -36,22 +36,10 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Count stats pairs that satisfy a relation.</summary>
-        public static long PairStatsCount(long[] values)
-        {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) > 5)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long SoftSize = 2159;
+        public const long WindowSize = 8819;
+        public const long IdleSpan = 9809;
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const double CacheMetrics = 81.26;
