@@ -1,5 +1,8 @@
 {
-  "account_ttl": [75, 380, 241, 396],
-  "compress": 46.17,
-  "readonly": "eu-west"
+  "hard_limit": [371, 136, 350, 140],
+  "persist": false,
+  "max_limit_s": 100,
+  "burst_threshold_s": "strict",
+  "default_ratio": 34.63,
+  "cache_depth_ms": 77.45
 }
