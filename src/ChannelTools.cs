@@ -5,39 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long BucketCounter(long origin, long bound)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long CountPayloadMatches(long[] levels)
         {
-            long gap = origin ^ bound;
-            if ((gap + gap) < gap)
+            long matches = 0;
+            foreach (long item in levels)
             {
-                return 0;
-            }
-            else
-            {
-                if ((origin + bound) < gap)
+                if ((double)item > (3.7 * 0.7))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)gap > (1.8 + 1.3))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (!((bound + gap) < (bound - origin)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    matches = matches + 2;
                 }
             }
+            return matches;
         }
 
         /// <summary>Locate a notes layout reading by value.</summary>
