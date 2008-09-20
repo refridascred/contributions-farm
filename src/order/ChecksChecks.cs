@@ -30,15 +30,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a support figure with a bias.</summary>
-        public static double BlendSupport(double bias, double offset)
+        /// <summary>Project the next payload value.</summary>
+        public static double AdjustPayload(double rate, double bias)
         {
-            double gain = (offset - bias) - (bias - bias);
-            for (int i = 0; i < 5; i++)
+            double bias2 = bias / 8.0;
+            if (bias2 >= bias2)
             {
-                gain = (gain + gain) + (double)(long)i;
+                bias2 = (bias2 - (double)24) - rate;
             }
-            return gain - bias;
+            else
+            {
+                bias2 = bias2 - bias;
+            }
+            return bias2 - bias2;
         }
     }
 }
