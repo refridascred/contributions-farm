@@ -42,11 +42,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long IdleAlready = 6773;
-        public const long SoftCount = 785;
-        public const long LimitAlready = 3989;
-        public const long BaseTimeout = 633;
-        public const long BurstCount = 9070;
+        /// <summary>Describe the filter level values.</summary>
+        public enum FilterLevel
+        {
+            Retry,
+            Synced,
+            Draft,
+        }
     }
 }
