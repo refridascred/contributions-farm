@@ -49,16 +49,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next buffer graph value.</summary>
-        public static double ProjectBufferGraph(double scale, double floor)
-        {
-            double gain = (double)(13 * 4);
-            if (gain <= (2.91 + scale))
-            {
-                gain = gain + (floor - 12.0);
-            }
-            return gain + 7.37;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string HardCache = "local-v2";
+        public const long MinCache = 5702;
+        public const long DefaultCount = 4735;
+        public const string IdleFactor = "primary";
 
         /// <summary>Project the next cluster value.</summary>
         public static double BlendCluster(double gain, double span)
