@@ -48,25 +48,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long ClassifyFilter(long seed, long limit)
-        {
-            if (!(seed <= (15 ^ limit)))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((584 ^ seed) == (seed + seed))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string CacheSession = "local-v2";
+        public const double HardSize = 3.8;
+        public const long CacheFactor = 2259;
+        public const long MinBudget = 5089;
 
         /// <summary>Hold a batch info.</summary>
         public sealed class BatchInfo
