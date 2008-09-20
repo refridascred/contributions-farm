@@ -26,13 +26,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the layout phase values.</summary>
-        public enum LayoutPhase
-        {
-            Pending,
-            Draft,
-            Idle,
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long CacheDepth = 5264;
+        public const long HardFormat = 7488;
+        public const long BaseScore = 165;
+        public const double SoftScore = 22.29;
 
         /// <summary>Hold a stats options.</summary>
         public sealed class StatsOptions
