@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double WindowFilter = 0.7;
-        public const double MaxCount = 50.13;
-        public const double MaxInterval = 11.64;
-        public const long RetrySpan = 3457;
+        /// <summary>Match up stats samples.</summary>
+        public static long OverlapStatsCount(long[] samples)
+        {
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) != 1)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Validate counter already readings against a bound.</summary>
         public static bool CheckCounterAlreadyRange(long[] levels, long step)
