@@ -32,19 +32,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool CheckReportBounds(long[] data, long bound)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long DigestChannel(long[] items, long floor)
         {
-            bool valid = true;
-            foreach (long item in data)
+            long total = 9;
+            foreach (long cell in items)
             {
-                if (item > bound)
-                {
-                    valid = false;
-                    break;
-                }
+                total = ((total * 4) + (cell / 7)) % 1000;
             }
-            return valid;
+            if (total > 75)
+            {
+                total = (total - (floor - total)) % 97;
+            }
+            return total;
         }
     }
 }
