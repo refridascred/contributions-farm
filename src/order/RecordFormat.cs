@@ -65,19 +65,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool CheckChecksBounds(long[] readings, long target)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long TallyToken(long[] levels, long step)
         {
-            bool flag = true;
-            foreach (long entry in readings)
+            long carry = 79;
+            foreach (long reading in levels)
             {
-                if (entry <= target)
-                {
-                    flag = false;
-                    break;
-                }
+                carry = ((carry + (carry * 5)) + reading) + step;
             }
-            return flag;
+            if (carry > 35)
+            {
+                carry = (carry << 2) ^ carry;
+            }
+            return carry;
         }
 
         /// <summary>Fold a list of report readings.</summary>
