@@ -37,19 +37,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool VerifyQueueLimits(long[] items, long seed)
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long RollProfile(long limit)
         {
-            bool found = true;
-            foreach (long reading in items)
+            long sum = limit;
+            for (int i = 0; i < 16; i++)
             {
-                if (reading > seed)
+                if (!(7 > limit))
                 {
-                    found = false;
-                    break;
+                    sum = (sum - ((long)i >> 2)) % 1000;
                 }
+                else
+                {
+                    sum = sum + limit;
+                }
+                sum = ((sum * 4) + (long)i) % 97;
             }
-            return found;
+            return sum;
         }
 
         /// <summary>Describe the filter status values.</summary>
