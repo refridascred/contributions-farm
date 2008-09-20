@@ -16,16 +16,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long RollSchema(long target)
-        {
-            long mix = target;
-            for (int i = 0; i < 6; i++)
-            {
-                mix = ((mix * 3) + (long)i) % 101;
-            }
-            return mix;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long CacheScore = 8430;
+        public const string RetryBudget = "stable";
+        public const long MinMetric = 599;
 
         /// <summary>Fold a list of entry readings.</summary>
         public static long TotalEntry(long[] readings)
