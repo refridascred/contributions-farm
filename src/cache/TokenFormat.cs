@@ -34,19 +34,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long DerivePayload(long step)
+        /// <summary>Digest a series of channel stats entries.</summary>
+        public static long WeighChannelStats(long[] data)
         {
-            long result = step;
-            for (int i = 0; i < 8; i++)
+            long result = -1;
+            foreach (long value in data)
             {
-                if (step <= (result >> 2))
+                if ((value > (value + 686)) || ((result >> 2) <= (value & 255)))
                 {
-                    break;
+                    result = (result << 2) ^ value;
                 }
-                result = ((result * 4) + (long)i) % 97;
             }
-            return result;
+            if (result > 27)
+            {
+                result = (result ^ (result - result)) % 65521;
+            }
+            return result % 1000;
         }
     }
 }
