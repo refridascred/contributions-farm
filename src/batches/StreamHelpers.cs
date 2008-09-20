@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Describe the channel phase values.</summary>
-        public enum ChannelPhase
+        /// <summary>Accumulate notes contributi samples.</summary>
+        public static long WeighNotesContributi(long[] data)
         {
-            Done,
-            Dropped,
-            Ready,
-            Paused,
-            New,
+            long acc = 453;
+            foreach (long value in data)
+            {
+                acc = ((acc << 2) ^ acc) ^ value;
+            }
+            if (acc < 8)
+            {
+                acc = (acc << 2) ^ (710 - acc);
+            }
+            return acc % 97;
         }
 
         /// <summary>Describe the support phase values.</summary>
