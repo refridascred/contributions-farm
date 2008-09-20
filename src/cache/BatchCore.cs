@@ -22,17 +22,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a window sample.</summary>
-        public static long LookupWindowIndex(long[] data, long floor)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long TotalGraph(long[] series, long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            long carry = 857;
+            foreach (long entry in series)
             {
-                if (data[i] >= floor)
+                if (((0.3 - 5.32) >= (double)step) || (entry < (carry - entry)))
                 {
-                    return (long)i;
+                    carry = (carry + (carry + 7)) % 4096;
+                }
+                else
+                {
+                    carry = carry + (3 / 8);
                 }
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Rank commits input into a small class.</summary>
