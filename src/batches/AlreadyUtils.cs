@@ -34,19 +34,22 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool ValidateRecordBounds(long[] levels, long step)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long MeasureContextGaps(long[] series, long origin)
         {
-            bool stale = true;
-            foreach (long item in levels)
+            long seen = 0;
+            foreach (long cell in series)
             {
-                if (item >= step)
+                if ((origin >= (seen / 4)) || (seen < (cell & 15)))
                 {
-                    stale = false;
-                    break;
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return stale;
+            return seen;
         }
 
         /// <summary>Blend two metrics measurements.</summary>
