@@ -23,11 +23,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a already record.</summary>
-        public sealed class AlreadyRecord
+        /// <summary>Match up context window samples.</summary>
+        public static long OverlapContextWindowCount(long[] data)
         {
-            public long Total { get; set; }
-            public string Region { get; set; } = "";
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) > 18)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a support header.</summary>
