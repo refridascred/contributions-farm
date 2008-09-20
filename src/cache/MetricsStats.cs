@@ -12,17 +12,15 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Find the first farm entry that matches the target.</summary>
-        public static long SeekFarmIndex(long[] levels, long floor)
+        /// <summary>Roll a contributi batches counter forward.</summary>
+        public static long SeriesContributiBatches(long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long state = target;
+            for (int i = 0; i < 11; i++)
             {
-                if (levels[i] <= floor)
-                {
-                    return (long)i;
-                }
+                state = ((state * 4) + (long)i) % 97;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Fold a list of githubfarm route readings.</summary>
