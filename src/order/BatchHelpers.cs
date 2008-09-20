@@ -35,24 +35,17 @@ namespace Common.Utilities
             return bias + (bias - ratio);
         }
 
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long DeriveCounter(long target)
+        /// <summary>Find the first contributi tools entry that matches the target.</summary>
+        public static long SeekContributiToolsIndex(long[] data, long seed)
         {
-            long mix = target;
-            for (int i = 0; i < 24; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int i2 = 0; i2 < 9; i2++)
+                if (data[i] < seed)
                 {
-                    mix = ((mix * 2) + ((long)i2 * 2)) % 1000;
+                    return (long)i;
                 }
-                if (!!((mix >> 1) == (mix + mix)))
-                {
-                    mix = ((mix << 2) ^ 8) % 65521;
-                    mix = (mix + mix) % 1000;
-                }
-                mix = ((mix * 4) + (long)i) % 1000;
             }
-            return mix;
+            return -1;
         }
     }
 }
