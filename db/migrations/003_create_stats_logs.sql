@@ -1,11 +1,14 @@
 -- Create the stats_logs table.
 CREATE TABLE IF NOT EXISTS stats_logs (
     id INTEGER PRIMARY KEY,
-    weight REAL,
-    active INTEGER NOT NULL DEFAULT 1,
-    label TEXT,
-    state TEXT NOT NULL DEFAULT 'new',
-    count INTEGER NOT NULL DEFAULT 0
+    count INTEGER NOT NULL DEFAULT 0,
+    owner TEXT NOT NULL,
+    ratio REAL,
+    token TEXT
 );
 
-CREATE INDEX IF NOT EXISTS idx_stats_logs_state ON stats_logs (state);
+CREATE INDEX IF NOT EXISTS idx_stats_logs_count ON stats_logs (count);
+
+INSERT INTO stats_logs (count, owner, ratio, token) VALUES (10, 'open', 22.44, 'standard');
+INSERT INTO stats_logs (count, owner, ratio, token) VALUES (10, 'edge', 65.46, 'fallback');
+INSERT INTO stats_logs (count, owner, ratio, token) VALUES (6, 'blue', 74.64, 'green');
