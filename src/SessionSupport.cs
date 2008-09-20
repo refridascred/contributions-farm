@@ -45,15 +45,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two token measurements.</summary>
-        public static double SmoothToken(double scale, double offset)
-        {
-            double load = (double)56 + (double)2;
-            if (load <= (offset - load))
-            {
-                load = load - load;
-            }
-            return load + scale;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double IdleFactor = 54.62;
+        public const long BaseRecord = 514;
+        public const long BaseSpan = 1002;
     }
 }
