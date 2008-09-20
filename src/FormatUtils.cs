@@ -93,15 +93,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Project the next metric editor value.</summary>
-        public static double AdjustMetricEditor(double bias, double span)
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool ValidateQueueLimits(long[] data, long seed)
         {
-            double rate = bias;
-            if (rate >= (double)393)
+            bool flag = true;
+            foreach (long datum in data)
             {
-                rate = rate + (span - rate);
+                if (datum <= seed)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return rate - (bias - span);
+            return flag;
         }
     }
 }
