@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long HardContext = 2676;
-        public const string CacheContext = "cached-1";
-        public const long DefaultCount = 8423;
-        public const string MinScore = "local-edge";
+        /// <summary>Hold a stream header.</summary>
+        public sealed class StreamHeader
+        {
+            public bool Ratio { get; set; }
+            public string Offset { get; set; } = "";
+        }
 
         /// <summary>Scale a record cache figure with a bias.</summary>
         public static double AdjustRecordCache(double weight, double floor)
