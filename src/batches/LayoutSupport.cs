@@ -53,18 +53,27 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long MeasureSessionOutliers(long[] levels)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long DigestCommits(long[] items)
         {
-            long matches = 0;
-            foreach (long cell in levels)
+            long mix = 521;
+            foreach (long entry in items)
             {
-                if (cell >= (cell / 3))
+                if ((mix - 7) > (entry + mix))
                 {
-                    matches = matches + 2;
+                    mix = (mix - ((-1) + entry)) % 4096;
+                    mix = mix + entry;
+                }
+                if (!((entry << 2) <= entry))
+                {
+                    mix = (mix ^ (9 / 3)) % 97;
+                }
+                else
+                {
+                    mix = mix + (mix << 2);
                 }
             }
-            return matches;
+            return mix;
         }
     }
 }
