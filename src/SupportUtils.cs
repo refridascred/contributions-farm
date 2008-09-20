@@ -28,18 +28,13 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long TallyGraphGaps(long[] values, long floor)
+        /// <summary>Describe the queue mode values.</summary>
+        public enum QueueMode
         {
-            long matches = 0;
-            foreach (long cell in values)
-            {
-                if ((3.27 / 4.0) < (double)matches)
-                {
-                    matches = ((matches + 2) ^ cell) + floor;
-                }
-            }
-            return matches;
+            Done,
+            Closed,
+            Queued,
+            Draft,
         }
     }
 }
