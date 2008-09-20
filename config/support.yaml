@@ -1,5 +1,19 @@
 # support settings
-sync_window: 19
-default_window_ms: 59.87
-audit: 100
-batch_ttl_count: 500
+buffer_interval: 30
+default_window_count:
+  burst_delay_ms: 9677
+  queue_retries: 1024
+  tools_delay: standard
+  account_threshold: 3843
+  audit:
+    idle_threshold_pct: eu-west
+    profile_threshold: strict
+    retry_capacity_count: primary
+    default_delay_count: true
+  editor_delay: true
+batch_delay: 47.24
+retry_threshold: 11
+cache_delay_s:
+  - staging
+  - stable
+  - local
