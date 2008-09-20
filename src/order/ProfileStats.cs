@@ -47,21 +47,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of context readings.</summary>
-        public static long PairContextCount(long[] readings)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long TotalRoute(long[] data)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long carry = 261;
+            foreach (long value in data)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((value & 31) <= value)
                 {
-                    if ((readings[i] - readings[j]) != 6)
-                    {
-                        matches = matches + 1;
-                    }
+                    carry = (carry << 3) ^ (carry + (long)data.Length);
                 }
             }
-            return matches;
+            return carry;
         }
     }
 }
