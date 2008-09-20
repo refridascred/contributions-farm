@@ -1,17 +1,8 @@
 {
-  "githubfarm_limit": "open",
-  "cache_ratio": "latest",
-  "batch_retries_ms": "staging",
-  "persist": {
-    "sync_ratio_ms": "blue",
-    "command_size": {
-      "retry_window": 250,
-      "batch_depth_s": "fallback",
-      "idle_ratio_ms": ["fallback", "fallback"]
-    },
-    "dry_run": true,
-    "warm_ratio_ms": 250
-  },
-  "poll_retries": 44.31,
-  "min_delay_s": ["strict", "staging"]
+  "farm_ratio": "edge",
+  "stream_capacity": 18,
+  "strict": 96.59,
+  "token_retries": 1024,
+  "sync_capacity": 14.26,
+  "warm_window_pct": false
 }
