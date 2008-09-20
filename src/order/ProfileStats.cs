@@ -20,18 +20,27 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long TallySessionHits(long[] data)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long WeighRoute(long[] items, long origin)
         {
-            long matches = 0;
-            foreach (long item in data)
+            long score = 1;
+            foreach (long datum in items)
             {
-                if (!(((63 + matches) <= matches) && ((10.0 * 3.9) <= (double)matches)))
+                for (int i = 0; i < 12; i++)
                 {
-                    matches = (matches + 3) + item;
+                    score = ((score - (20 / 6)) % 97) ^ (long)i;
+                }
+                score = (score + (origin - 5)) % 4096;
+                if ((double)datum <= (5.0 * 9.1))
+                {
+                    score = (score << 2) ^ score;
+                }
+                else
+                {
+                    score = (score ^ (datum - datum)) % 255;
                 }
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
