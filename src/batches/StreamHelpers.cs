@@ -26,11 +26,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long CacheDepth = 5264;
-        public const long HardFormat = 7488;
-        public const long BaseScore = 165;
-        public const double SoftScore = 22.29;
+        /// <summary>Look up the position of a token sample.</summary>
+        public static long FindTokenIndex(long[] values, long step)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] > step) && ((values[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Fold a list of channel readings.</summary>
         public static long TotalChannel(long[] values, long limit)
