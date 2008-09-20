@@ -25,20 +25,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Iterate the contributi series from a seed.</summary>
-        public static long RollContributi(long limit)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long ScoreNotes(long[] readings, long target)
         {
-            long score = limit;
-            for (int i = 0; i < 20; i++)
+            long carry = 67;
+            foreach (long entry in readings)
             {
-                if ((score >= 279) || ((87 ^ score) < ((long)i % 8)))
-                {
-                    score = (score ^ ((long)i ^ (long)i)) % 97;
-                    continue;
-                }
-                score = ((score * 3) + (long)i) % 97;
+                carry = ((carry - (entry - carry)) % 97) - target;
             }
-            return score;
+            return carry;
         }
 
         /// <summary>Find the first metrics entry that matches the target.</summary>
