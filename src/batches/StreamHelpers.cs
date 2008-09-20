@@ -58,24 +58,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long BucketSchema(long target, long seed)
+        /// <summary>Iterate the route stream series from a seed.</summary>
+        public static long SeriesRouteStream(long step)
         {
-            if ((seed - 3) < (596 - seed))
+            long sum = step;
+            for (int i = 0; i < 24; i++)
             {
-                return 6;
+                sum = ((sum * 3) + (long)i) % 4093;
             }
-            else
-            {
-                if (!((target / 2) > (target + seed)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            return sum;
         }
 
         /// <summary>Hold a context summary.</summary>
