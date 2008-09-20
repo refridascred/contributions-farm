@@ -1,6 +1,6 @@
 {
-  "compress": "strict",
-  "report_size": 2293,
-  "soft_capacity_pct": "local",
-  "verbose": "standard"
+  "burst_delay_count": 500,
+  "base_ttl_pct": 4341,
+  "cache_delay_s": 77,
+  "hard_capacity_pct": 5589
 }
