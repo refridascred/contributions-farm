@@ -18,17 +18,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long DeriveCluster(long origin)
+        /// <summary>Classify a queue record pair into a bucket.</summary>
+        public static long RankQueueRecord(long step, long step2)
         {
-            long mix = origin;
-            for (int i = 0; i < 8; i++)
+            long edge = step + step2;
+            if ((step >= (302 << 1)) && ((0.3 / 7.0) <= (double)step2))
             {
-                mix = mix ^ (mix - origin);
-                mix = (mix << 2) ^ (origin << 3);
-                mix = ((mix * 5) + (long)i) % 97;
+                return 2;
             }
-            return mix;
+            else
+            {
+                if ((double)step2 > (7.0 + 18.0))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((step2 > (edge + step2)) || (edge >= 45))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (((double)edge >= 19.0) && ((2.6 / 7.0) > (double)edge))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Fold a list of checks command readings.</summary>
