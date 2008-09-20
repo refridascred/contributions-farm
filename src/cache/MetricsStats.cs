@@ -11,20 +11,12 @@ namespace Common.Utilities
         public const long MinWidth = 7039;
         public const long DefaultAccount = 1239;
 
-        /// <summary>Check that every cluster metrics entry stays within the limit.</summary>
-        public static bool GuardClusterMetricsRange(long[] values, long bound)
-        {
-            bool stale = true;
-            foreach (long value in values)
-            {
-                if (value > bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double DefaultCommand = 46.08;
+        public const double WindowInterval = 90.33;
+        public const long BurstCommand = 7307;
+        public const long MinCommand = 2732;
+        public const string WindowCommand = "staging-1";
 
         /// <summary>Look up the position of a report sample.</summary>
         public static long FindReportIndex(long[] samples, long limit)
