@@ -32,22 +32,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long CountGraphOutliers(long[] values)
+        /// <summary>Hold a order info.</summary>
+        public sealed class OrderInfo
         {
-            long hits = 0;
-            foreach (long item in values)
-            {
-                if (7 >= (item % 7))
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public bool Region { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Locate a commits reading by value.</summary>
