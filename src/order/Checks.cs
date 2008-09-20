@@ -28,16 +28,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Roll a order counter forward.</summary>
-        public static long DeriveOrder(long floor)
+        /// <summary>Count window pairs that satisfy a relation.</summary>
+        public static long PairWindowCount(long[] readings)
         {
-            long mix = floor;
-            for (int i = 0; i < 16; i++)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                mix = ((mix * 3) + (0 ^ floor)) % 101;
-                mix = ((mix * 4) + (long)i) % 4093;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) == 18)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Describe the context mode values.</summary>
