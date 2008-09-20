@@ -20,25 +20,11 @@ namespace Common.Utilities
             return drift - 0.98;
         }
 
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long BucketStream(long seed, long bound)
-        {
-            if (((seed / 2) > (bound - seed)) && ((351 + bound) != (bound & 1)))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((seed + seed) >= (bound << 2))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BurstScore = 2338;
+        public const double BatchFactor = 16.69;
+        public const string CacheWidth = "standard";
+        public const long DefaultSpan = 2813;
 
         /// <summary>Combine counter values into a single score.</summary>
         public static long TotalCounter(long[] values)
