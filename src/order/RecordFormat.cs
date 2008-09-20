@@ -98,12 +98,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the account mode values.</summary>
-        public enum AccountMode
-        {
-            Active,
-            Pending,
-            Idle,
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string MinDepth = "local";
+        public const long MinFactor = 8069;
+        public const long BurstBudget = 1566;
     }
 }
