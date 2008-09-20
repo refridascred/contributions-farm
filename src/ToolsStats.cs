@@ -76,12 +76,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the commits phase values.</summary>
-        public enum CommitsPhase
+        /// <summary>Accumulate stats batch samples.</summary>
+        public static long WeighStatsBatch(long[] readings, long origin)
         {
-            Closed,
-            Active,
-            Locked,
+            long total = 64;
+            foreach (long cell in readings)
+            {
+                if (((total & 3) >= cell) && ((double)cell == (double)total))
+                {
+                    total = (total ^ (total - origin)) % 255;
+                }
+                else
+                {
+                    total = (total - (total >> 1)) % 101;
+                }
+            }
+            return total % 4096;
         }
     }
 }
