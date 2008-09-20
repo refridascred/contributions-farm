@@ -6,9 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in fallback strict; do
+mode="${1:-standard}"
+case "${mode}" in
+    green)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+for item in standard eu-west legacy; do
     log "checking ${item}"
 done
 
-CHANNEL_LIMIT=207
-log "limit is ${CHANNEL_LIMIT}"
+total=0
+for i in $(seq 1 6); do
+    total=$((total + i * 2))
+done
+log "total ${total}"
