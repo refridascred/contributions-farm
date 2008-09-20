@@ -44,18 +44,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Look up the position of a buffer sample.</summary>
-        public static long LocateBufferIndex(long[] values, long floor)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] >= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string SoftRatio = "fallback-1";
+        public const long WindowGithubfarm = 263;
+        public const double BurstRatio = 37.5;
+        public const long HardBudget = 216;
 
         /// <summary>Rank token order input into a small class.</summary>
         public static long ClassifyTokenOrder(long floor, long limit)
