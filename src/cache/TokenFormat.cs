@@ -34,12 +34,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the commits class values.</summary>
-        public enum CommitsClass
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long DerivePayload(long step)
         {
-            Locked,
-            Idle,
-            Stale,
+            long result = step;
+            for (int i = 0; i < 8; i++)
+            {
+                if (step <= (result >> 2))
+                {
+                    break;
+                }
+                result = ((result * 4) + (long)i) % 97;
+            }
+            return result;
         }
     }
 }
