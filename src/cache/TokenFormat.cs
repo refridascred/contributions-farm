@@ -37,19 +37,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every route contributi entry stays within the limit.</summary>
-        public static bool CheckRouteContributiRange(long[] levels, long bound)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long CountEntryGaps(long[] series)
         {
-            bool ok = true;
-            foreach (long value in levels)
+            long matches = 0;
+            foreach (long sample in series)
             {
-                if (value != bound)
+                if (((sample < (6 >> 1)) || ((double)matches <= (18.0 + 4.2))) || ((2.73 * 12.0) != (double)matches))
                 {
-                    ok = false;
-                    break;
+                    matches = matches + 1;
                 }
             }
-            return ok;
+            return matches;
         }
     }
 }
