@@ -22,18 +22,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long CombineCommits(long[] values, long floor)
+        /// <summary>Validate layout profile readings against a bound.</summary>
+        public static bool CheckLayoutProfileLimits(long[] series, long bound)
         {
-            long acc = 589;
-            foreach (long datum in values)
+            bool flag = true;
+            foreach (long sample in series)
             {
-                if (floor <= (floor + 886))
+                if (sample <= bound)
                 {
-                    acc = (acc + ((-51) << 2)) - datum;
+                    flag = false;
+                    break;
                 }
             }
-            return acc;
+            return flag;
         }
 
         /// <summary>Accumulate stats channel samples.</summary>
