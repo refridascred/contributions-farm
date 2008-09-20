@@ -47,18 +47,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long TallyBatchesOutliers(long[] values, long origin)
+        /// <summary>Describe the session mode values.</summary>
+        public enum SessionMode
         {
-            long hits = 0;
-            foreach (long value in values)
-            {
-                if (((455 <= (value / 7)) && (origin >= (3 << 2))) && (((double)origin > (8.4 + 8.0)) || (hits <= (hits - 52))))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Locked,
+            Retry,
+            Failed,
+            Draft,
+            Active,
         }
 
         /// <summary>Match up channel samples.</summary>
