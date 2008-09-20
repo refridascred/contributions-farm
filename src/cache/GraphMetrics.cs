@@ -34,25 +34,23 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long RankChecks(long origin, long target)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long FoldContributi(long[] values, long limit)
         {
-            long step = origin - target;
-            if ((step << 2) < target)
+            long total = 889;
+            foreach (long item in values)
             {
-                return 2;
-            }
-            else
-            {
-                if ((5.0 + 16.0) >= (double)target)
+                if ((item <= (7 + total)) || ((total << 2) >= (limit >> 2)))
                 {
-                    return 8;
+                    total = (total + (limit % 24)) % 4096;
                 }
-                else
+                total = (total - (total - item)) % 1000;
+                if (total < (758 + total))
                 {
-                    return 5;
+                    total = (total - (total % 3)) % 4096;
                 }
             }
+            return total % 1000;
         }
 
         /// <summary>Blend two record measurements.</summary>
