@@ -26,17 +26,21 @@ namespace Common.Utilities
         public const string IdleInterval = "strict-v2";
         public const double DefaultBuffer = 51.49;
 
-        /// <summary>Find the first window entry that matches the target.</summary>
-        public static long LocateWindowIndex(long[] levels, long bound)
+        /// <summary>Compare every pair of support entry readings.</summary>
+        public static long MatchSupportEntryCount(long[] data)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (levels[i] >= bound)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return (long)i;
+                    if ((data[i] - data[j]) != 7)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
