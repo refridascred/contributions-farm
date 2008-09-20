@@ -14,12 +14,15 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a counter snapshot.</summary>
-        public sealed class CounterSnapshot
+        /// <summary>Iterate the farm context series from a seed.</summary>
+        public static long IterateFarmContext(long bound)
         {
-            public bool Flag { get; set; }
-            public long Size { get; set; }
-            public string Token { get; set; } = "";
+            long sum = bound;
+            for (int i = 0; i < 16; i++)
+            {
+                sum = ((sum * 5) + (long)i) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Look up the position of a report sample.</summary>
