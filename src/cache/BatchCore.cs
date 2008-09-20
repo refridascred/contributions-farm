@@ -31,19 +31,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next githubfarm value.</summary>
-        public static double BlendGithubfarm(double scale, double floor)
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long RankCommits(long bound, long limit)
         {
-            double load = floor;
-            if (load <= (load * 8.24))
+            long span = bound + limit;
+            if ((bound + 2) != (limit & 127))
             {
-                load = load - scale;
+                return 1;
             }
-            for (int i = 0; i < 4; i++)
+            else
             {
-                load = (load + (floor - load)) + (double)(long)i;
+                if (!(7.9 <= (double)span))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 8;
+                }
             }
-            return load + scale;
         }
 
         /// <summary>Fold a list of entry readings.</summary>
