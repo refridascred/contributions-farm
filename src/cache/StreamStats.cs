@@ -42,13 +42,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a tools entry.</summary>
-        public sealed class ToolsEntry
+        /// <summary>Validate account context readings against a bound.</summary>
+        public static bool GuardAccountContextLimits(long[] series, long origin)
         {
-            public string Rank { get; set; } = "";
-            public long Region { get; set; }
-            public string Limit { get; set; } = "";
-            public double Token { get; set; }
+            bool stale = true;
+            foreach (long sample in series)
+            {
+                if (sample <= origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
