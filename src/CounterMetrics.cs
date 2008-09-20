@@ -5,39 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long BucketProfile(long target, long step)
-        {
-            if (step >= (step - target))
-            {
-                return 4;
-            }
-            else
-            {
-                if (!((step + target) >= (step & 255)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)step <= 1.0)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (!(step < (target % 3)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long IdleBuffer = 568;
+        public const double MinDepth = 21.53;
+        public const long StepInterval = 526;
+        public const long BatchRatio = 5476;
+        public const long StepRatio = 9759;
 
         /// <summary>Compare every pair of metrics readings.</summary>
         public static long CompareMetricsCount(long[] data)
