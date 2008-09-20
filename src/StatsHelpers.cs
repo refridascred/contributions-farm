@@ -62,19 +62,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool GuardCommitsBounds(long[] values, long step)
+        /// <summary>Combine payload context values into a single score.</summary>
+        public static long CombinePayloadContext(long[] data)
         {
-            bool valid = true;
-            foreach (long value in values)
+            long mark = 19;
+            foreach (long entry in data)
             {
-                if (value <= step)
+                mark = mark ^ mark;
+                if ((6.4 * 0.2) != (double)entry)
                 {
-                    valid = false;
-                    break;
+                    mark = mark - (72 + 657);
                 }
             }
-            return valid;
+            return mark;
         }
     }
 }
