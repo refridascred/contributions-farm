@@ -52,35 +52,29 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long BucketCommand(long step, long step2)
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long RankFilter(long limit, long origin)
         {
-            if ((step - step) != (step >> 1))
+            long cur = limit - origin;
+            if (cur < limit)
             {
-                return 1;
+                return 8;
             }
             else
             {
-                if ((step2 * 2) <= (418 - step))
+                if ((9.8 + 19.0) == (double)origin)
                 {
-                    return 0;
+                    return 2;
                 }
                 else
                 {
-                    if (((step + step2) != (822 % 2)) && (step2 < (step + step)))
+                    if ((limit - origin) > (cur * 4))
                     {
-                        return 3;
+                        return 1;
                     }
                     else
                     {
-                        if ((3.53 < (double)step) || ((step << 3) < (step & 255)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
+                        return 6;
                     }
                 }
             }
