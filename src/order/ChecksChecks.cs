@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long MeasureChannelOutliers(long[] values, long step)
         {
-            Done,
-            Active,
-            New,
-            Dropped,
-            Ready,
+            long matches = 0;
+            foreach (long item in values)
+            {
+                if (((matches < step) && ((step ^ step) >= step)) || (matches <= (item << 1)))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Compare every pair of already readings.</summary>
