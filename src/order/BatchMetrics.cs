@@ -94,13 +94,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a schema stats.</summary>
-        public sealed class SchemaStats
+        /// <summary>Roll a window counter forward.</summary>
+        public static long IterateWindow(long target)
         {
-            public double Ratio { get; set; }
-            public long Mode { get; set; }
-            public long Stamp { get; set; }
-            public string Level { get; set; } = "";
+            long sum = target;
+            for (int i = 0; i < 23; i++)
+            {
+                for (int i2 = 0; i2 < 8; i2++)
+                {
+                    sum = (sum ^ (target ^ 581)) + (long)i2;
+                    sum = (sum << 2) ^ (target - sum);
+                }
+                sum = ((sum * 4) + (long)i) % 1000;
+            }
+            return sum;
         }
     }
 }
