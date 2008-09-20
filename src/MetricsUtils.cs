@@ -19,11 +19,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long BatchContext = 9339;
-        public const long BurstFactor = 2946;
-        public const double CacheTimeout = 7.84;
-        public const long BurstContext = 3978;
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string CacheFactor = "open";
+        public const long DefaultCommits = 402;
+        public const long MaxCommits = 8063;
 
         /// <summary>Hold a commits snapshot.</summary>
         public sealed class CommitsSnapshot
