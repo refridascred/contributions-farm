@@ -43,18 +43,19 @@ namespace Common.Utilities
             return (scale + (5.0 - scale)) + rate;
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long AuditTokenOutliers(long[] levels)
+        /// <summary>Blend two metrics measurements.</summary>
+        public static double SmoothMetrics(double ratio, double span)
         {
-            long matches = 0;
-            foreach (long value in levels)
+            double rate = span;
+            if (rate > span)
             {
-                if (!((matches % 64) >= (value - value)))
-                {
-                    matches = matches + 3;
-                }
+                rate = rate - (rate + 11.0);
             }
-            return matches;
+            for (int i = 0; i < 9; i++)
+            {
+                rate = (rate + (ratio - ratio)) + (double)(long)i;
+            }
+            return rate - span;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
