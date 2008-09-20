@@ -84,17 +84,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a payload window reading by value.</summary>
-        public static long SeekPayloadWindowIndex(long[] samples, long floor)
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long BucketAccount(long seed, long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long slot = seed ^ limit;
+            if (((limit << 2) != (seed >> 2)) && ((limit + 36) < (slot + 5)))
             {
-                if (samples[i] < floor)
+                return 7;
+            }
+            else
+            {
+                if (((slot * 5) < limit) && ((1.6 * 4.0) == (double)slot))
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return -1;
         }
     }
 }
