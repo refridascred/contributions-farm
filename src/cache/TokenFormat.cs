@@ -20,18 +20,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long TallyGraphOutliers(long[] values)
+        /// <summary>Look up the position of a farm sample.</summary>
+        public static long LookupFarmIndex(long[] items, long seed)
         {
-            long hits = 0;
-            foreach (long item in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((hits / 7) < (item & 1))
+                if ((items[i] == seed) && ((items[i] % 2) == 0))
                 {
-                    hits = hits + 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Iterate the githubfarm series from a seed.</summary>
