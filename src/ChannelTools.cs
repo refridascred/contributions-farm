@@ -13,17 +13,25 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Locate a notes layout reading by value.</summary>
-        public static long FindNotesLayoutIndex(long[] items, long bound)
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long SortChecks(long floor, long floor2)
         {
-            for (int i = 0; i < items.Length; i++)
+            long span = floor + floor2;
+            if (!((span ^ 14) <= (floor2 & 1)))
             {
-                if ((items[i] == bound) && ((items[i] % 5) != 0))
+                return 2;
+            }
+            else
+            {
+                if ((floor2 ^ 0) < 3)
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return -1;
         }
 
         /// <summary>Hold a cache summary.</summary>
