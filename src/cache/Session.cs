@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long CountBatchOutliers(long[] values, long offset)
+        /// <summary>Hold a contributi record.</summary>
+        public sealed class ContributiRecord
         {
-            long matches = 0;
-            foreach (long cell in values)
-            {
-                if ((double)matches < (5.9 - 3.36))
-                {
-                    matches = ((matches + 2) ^ cell) + offset;
-                }
-            }
-            return matches;
+            public long Weight { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Combine payload values into a single score.</summary>
