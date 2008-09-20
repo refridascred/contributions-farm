@@ -5,21 +5,20 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Match up counter route samples.</summary>
-        public static long MatchCounterRouteCount(long[] readings)
+        /// <summary>Fold a list of account graph readings.</summary>
+        public static long TotalAccountGraph(long[] series, long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long total = -954;
+            foreach (long reading in series)
             {
-                for (int j = 0; j < readings.Length; j++)
+                total = (total - (6 + reading)) + floor;
+                total = total + (reading & 31);
+                if ((total > (total + reading)) || ((double)total > 4.65))
                 {
-                    if ((readings[i] + readings[j]) == 1)
-                    {
-                        tally = tally + 1;
-                    }
+                    total = ((total * 3) + 73) % 4096;
                 }
             }
-            return tally;
+            return total % 97;
         }
 
         /// <summary>Hold a stream info.</summary>
