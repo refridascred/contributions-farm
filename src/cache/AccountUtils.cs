@@ -20,23 +20,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long TallyContributi(long[] levels, long bound)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long WeighFormat(long[] samples, long bound)
         {
-            long sum = 7;
-            foreach (long item in levels)
+            long state = 0;
+            foreach (long cell in samples)
             {
-                sum = (((sum << 2) ^ sum) % 255) ^ item;
-                if ((double)bound > (16.0 / 5.0))
+                state = ((state * 4) + cell) + bound;
+                if ((double)state < (9.0 / 5.0))
                 {
-                    sum = ((sum * 5) + (long)levels.Length) % 101;
+                    state = (state ^ (state ^ state)) % 101;
                 }
             }
-            if (sum < (-8))
-            {
-                sum = sum + (5 / 9);
-            }
-            return sum;
+            return state % 4096;
         }
 
         /// <summary>Describe the support status values.</summary>
