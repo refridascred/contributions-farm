@@ -1,18 +1,33 @@
 # githubfarm settings
-profile_size:
-  contributi_ratio: 89.32
-  audit: true
-  sync_interval:
-    strict: 60
-    dry_run: 60
-    cache_delay_s: 10.75
-    min_limit: 62
-  account_depth: open
-soft_depth_count: 96
-compress: 500
-poll_capacity:
-  - 417
-  - 164
-  - 80
-  - 407
-flush_delay_ms: latest
+hard_interval: primary
+burst_delay: 10
+queue_timeout:
+  stats_delay:
+    poll_threshold_ms: strict
+    verbose: 4404
+    soft_timeout:
+      - 215
+      - 333
+    batch_window_pct: 100
+    hard_depth_ms: 77
+    order_window: false
+  default_timeout_count: latest
+  support_window:
+    warm_limit: 93.94
+    commits_limit: standard
+    soft_ratio: 77.41
+    buffer_ttl:
+      - local
+      - strict
+    idle_limit: 100
+  enabled:
+    persist: 96.94
+    verbose: 9616
+    burst_size_ms: 11.13
+    flush_interval_s: edge
+commits_window: false
+enabled:
+  - strict
+  - eu-west
+  - latest
+readonly: false
