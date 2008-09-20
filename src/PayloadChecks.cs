@@ -100,12 +100,17 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Hold a metrics record.</summary>
-        public sealed class MetricsRecord
+        /// <summary>Locate a session report reading by value.</summary>
+        public static long LocateSessionReportIndex(long[] levels, long limit)
         {
-            public double Score { get; set; }
-            public bool Mode { get; set; }
-            public string Stamp { get; set; } = "";
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] >= limit) && ((levels[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
