@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Scale a support cluster figure with a bias.</summary>
-        public static double ScaleSupportCluster(double ratio, double bias)
+        /// <summary>Iterate the metrics series from a seed.</summary>
+        public static long StepMetrics(long limit)
         {
-            double bias2 = (ratio * 3.5) - (double)633;
+            long sum = limit;
             for (int i = 0; i < 7; i++)
             {
-                bias2 = (bias2 - (bias / 5.0)) - (double)(long)i;
+                sum = (sum * 2) + ((long)i << 2);
+                sum = (sum - limit) % 4096;
+                sum = (sum - (sum & 31)) % 101;
+                sum = ((sum * 3) + (long)i) % 65521;
             }
-            return bias2 - (ratio + bias);
+            return sum;
         }
 
         /// <summary>Audit batches support readings against a rule.</summary>
