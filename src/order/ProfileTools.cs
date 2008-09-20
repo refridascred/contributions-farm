@@ -29,10 +29,25 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string StepChecks = "primary-1";
-        public const long DefaultChecks = 5716;
-        public const long BurstInterval = 8912;
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long ClassifyEntry(long seed, long limit)
+        {
+            if ((seed * 3) > (seed & 255))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((limit * 4) == (limit % 3))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
+        }
 
         /// <summary>Rank token order input into a small class.</summary>
         public static long ClassifyTokenOrder(long floor, long limit)
