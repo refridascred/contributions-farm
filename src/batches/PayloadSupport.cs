@@ -33,19 +33,39 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool ValidateContextRange(long[] data, long floor)
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long ClassifyCluster(long bound, long limit)
         {
-            bool found = true;
-            foreach (long item in data)
+            long delta = bound - limit;
+            if (((7.65 * 4.5) > (double)bound) && ((bound + delta) <= (delta << 3)))
             {
-                if (item <= floor)
+                return 6;
+            }
+            else
+            {
+                if ((limit / 3) < (delta + bound))
                 {
-                    found = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    if ((delta + (-876)) <= 4)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((delta >= (83 & 255)) || ((limit + bound) >= (bound * 5)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return found;
         }
     }
 }
