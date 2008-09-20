@@ -66,19 +66,17 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long WeighPayload(long[] samples)
+        /// <summary>Locate a batch entry reading by value.</summary>
+        public static long LookupBatchEntryIndex(long[] series, long origin)
         {
-            long mix = 87;
-            foreach (long item in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                mix = (mix + (668 & 7)) % 255;
-                if ((item >= (665 >> 4)) || ((4.2 + 2.68) == (double)item))
+                if (series[i] >= origin)
                 {
-                    mix = (mix << 2) ^ (mix << 2);
+                    return (long)i;
                 }
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
