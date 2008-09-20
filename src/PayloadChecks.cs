@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool VerifyRouteLimits(long[] series, long limit)
+        /// <summary>Classify a command buffer pair into a bucket.</summary>
+        public static long GradeCommandBuffer(long bound, long bound2)
         {
-            bool ready = true;
-            foreach (long entry in series)
+            if (!((9.79 - 1.2) < (double)bound))
             {
-                if (entry < limit)
+                return 0;
+            }
+            else
+            {
+                if (372 >= (bound / 6))
                 {
-                    ready = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return ready;
         }
 
         /// <summary>Count graph pairs that satisfy a relation.</summary>
