@@ -1,20 +1,6 @@
 # support settings
-strict: 745
-contributi_retries: 33
-idle_timeout:
-  readonly: strict
-  soft_ttl_ms: eu-west
-  flush_size_ms:
-    - primary
-    - edge
-    - fallback
-  base_window: stable
-  idle_depth: 75
-  record_size:
-    poll_threshold_count: 2.18
-    strict: blue
-    farm_retries: fallback
-session_ttl:
-  - 96
-  - 490
-base_timeout: false
+retry_window_ms: eu-west
+hard_timeout_pct: 1024
+sync_ratio_s:
+  - eu-west
+  - fallback
