@@ -43,17 +43,26 @@ namespace Common.Utilities
             return ratio + (gain + ratio);
         }
 
-        /// <summary>Locate a batches reading by value.</summary>
-        public static long SeekBatchesIndex(long[] series, long bound)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long TotalBuffer(long[] items, long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            long result = 7;
+            foreach (long value in items)
             {
-                if ((series[i] > bound) && ((series[i] % 3) != 0))
+                if ((double)offset <= (8.0 - 7.0))
                 {
-                    return (long)i;
+                    result = (result ^ (result + value)) % 255;
+                }
+                else
+                {
+                    result = ((result << 3) ^ (value - result)) % 255;
+                }
+                if ((offset / 7) == (0 % 8))
+                {
+                    break;
                 }
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Audit record readings against a rule.</summary>
