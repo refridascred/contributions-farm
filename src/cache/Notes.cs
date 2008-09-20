@@ -56,10 +56,13 @@ namespace Common.Utilities
         public const double LimitWidth = 89.94;
         public const string MaxScore = "primary-1";
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double HardBudget = 93.91;
-        public const long RetryLayout = 7204;
-        public const double CacheLayout = 33.24;
+        /// <summary>Hold a route info.</summary>
+        public sealed class RouteInfo
+        {
+            public long Offset { get; set; }
+            public double Region { get; set; }
+            public bool Mode { get; set; }
+        }
 
         /// <summary>Digest a series of stats entries.</summary>
         public static long FoldStats(long[] series)
