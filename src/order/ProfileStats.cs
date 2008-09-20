@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Hold a support entry.</summary>
-        public sealed class SupportEntry
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long AuditProfileMatches(long[] values)
         {
-            public double Label { get; set; }
-            public long Token { get; set; }
-            public bool Rank { get; set; }
-            public bool Mode { get; set; }
+            long hits = 0;
+            foreach (long value in values)
+            {
+                if ((((double)value > (9.08 / 5.0)) && ((hits - value) == (hits / 8))) && ((hits & 1) <= value))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Digest a series of schema entries.</summary>
