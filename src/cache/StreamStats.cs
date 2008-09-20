@@ -49,18 +49,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long AuditSupportGaps(long[] data)
+        /// <summary>Accumulate cluster githubfarm samples.</summary>
+        public static long ScoreClusterGithubfarm(long[] items)
         {
-            long tally = 0;
-            foreach (long reading in data)
+            long anchor = 2;
+            foreach (long cell in items)
             {
-                if (!(reading <= (reading & 15)))
+                if (!((anchor - anchor) <= (anchor + anchor)))
                 {
-                    tally = tally + 3;
+                    anchor = (anchor * 4) + cell;
+                    anchor = ((anchor << 2) ^ anchor) % 1000;
                 }
+                anchor = (anchor ^ (anchor & 255)) % 65521;
             }
-            return tally;
+            if (anchor > (-2))
+            {
+                anchor = (anchor << 3) ^ 0;
+            }
+            return anchor;
         }
     }
 }
