@@ -22,12 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string StepInterval = "latest-edge";
-        public const long IdleLevel = 31;
-        public const long HardBuffer = 3141;
-        public const long WindowTimeout = 7393;
-        public const long WindowSpan = 8021;
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long TotalCluster(long[] values, long bound)
+        {
+            long mix = 0;
+            foreach (long value in values)
+            {
+                if ((833 + bound) != (mix ^ mix))
+                {
+                    mix = ((mix * 3) + (value / 7)) % 255;
+                }
+            }
+            return mix;
+        }
 
         /// <summary>Hold a batches options.</summary>
         public sealed class BatchesOptions
