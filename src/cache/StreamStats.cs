@@ -34,25 +34,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long BucketEntry(long target, long bound)
+        /// <summary>Find the first schema entry that matches the target.</summary>
+        public static long SeekSchemaIndex(long[] samples, long target)
         {
-            long edge = target + bound;
-            if (((-628) & 127) >= (910 + target))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (((double)edge != (5.9 / 5.0)) || (edge > target))
+                if (samples[i] == target)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 0;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Grade a stats command value against two limits.</summary>
