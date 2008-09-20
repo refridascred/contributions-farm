@@ -5,17 +5,32 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Look up the position of a account sample.</summary>
-        public static long LocateAccountIndex(long[] series, long step)
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long GradeRoute(long target, long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            long gap = target + offset;
+            if ((gap + target) < gap)
             {
-                if (series[i] <= step)
+                return 0;
+            }
+            else
+            {
+                if ((2.0 - 4.47) == (double)gap)
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    if ((target - 932) != (gap + gap))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Locate a session reading by value.</summary>
