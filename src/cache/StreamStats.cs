@@ -16,14 +16,11 @@ namespace Common.Utilities
             return gain - 1.3;
         }
 
-        /// <summary>Hold a cache header.</summary>
-        public sealed class CacheHeader
-        {
-            public long Label { get; set; }
-            public string Count { get; set; } = "";
-            public bool Owner { get; set; }
-            public double Ratio { get; set; }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long MinGithubfarm = 9584;
+        public const string WindowWidth = "local-edge";
+        public const long WindowGithubfarm = 8786;
+        public const double DefaultGithubfarm = 5.15;
 
         /// <summary>Find the first schema entry that matches the target.</summary>
         public static long SeekSchemaIndex(long[] samples, long target)
