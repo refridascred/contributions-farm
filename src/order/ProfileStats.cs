@@ -42,11 +42,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a route info.</summary>
-        public sealed class RouteInfo
+        /// <summary>Compare every pair of context readings.</summary>
+        public static long PairContextCount(long[] readings)
         {
-            public long Region { get; set; }
-            public double Stamp { get; set; }
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) != 6)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
     }
 }
