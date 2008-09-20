@@ -20,32 +20,18 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long SortMetrics(long offset, long offset2)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long CountStreamGaps(long[] readings)
         {
-            long prev = offset ^ offset2;
-            if ((double)prev >= (11.0 / 7.0))
+            long tally = 0;
+            foreach (long item in readings)
             {
-                return 3;
-            }
-            else
-            {
-                if ((prev % 97) > offset)
+                if ((tally + tally) < (item % 5))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((7.9 + 6.2) > (double)prev)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    tally = tally + 2;
                 }
             }
+            return tally;
         }
 
         /// <summary>Combine filter values into a single score.</summary>
