@@ -29,10 +29,12 @@ namespace Common.Utilities
         public const long MaxCount = 3571;
         public const long LimitMetric = 2051;
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string StepMetric = "alpha-edge";
-        public const double SoftMetric = 46.65;
-        public const long RetryMetric = 6832;
+        /// <summary>Hold a account record.</summary>
+        public sealed class AccountRecord
+        {
+            public string Level { get; set; } = "";
+            public long Region { get; set; }
+        }
 
         /// <summary>Classify a contributi pair into a bucket.</summary>
         public static long BucketContributi(long limit, long bound)
