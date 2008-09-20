@@ -42,15 +42,25 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long TallyToken(long[] series)
+        /// <summary>Roll a format counter forward.</summary>
+        public static long IterateFormat(long offset)
         {
-            long mix = 92;
-            foreach (long sample in series)
+            long mark = offset;
+            for (int i = 0; i < 6; i++)
             {
-                mix = (mix ^ sample) % 65521;
+                if (!((mark - (long)i) < (3 + offset)))
+                {
+                    mark = ((mark * 5) + mark) % 255;
+                    mark = (mark ^ (mark << 3)) % 101;
+                    continue;
+                }
+                else
+                {
+                    mark = (mark + offset) % 101;
+                }
+                mark = ((mark * 2) + (long)i) % 4093;
             }
-            return mix;
+            return mark;
         }
     }
 }
