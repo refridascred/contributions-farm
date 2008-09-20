@@ -47,12 +47,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the token status values.</summary>
-        public enum TokenStatus
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
         {
             Queued,
-            Locked,
-            Paused,
+            Done,
+            Draft,
+            Stale,
         }
 
         /// <summary>Fold a list of graph notes readings.</summary>
