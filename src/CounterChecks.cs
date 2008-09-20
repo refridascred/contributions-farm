@@ -79,22 +79,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long AuditRouteHits(long[] data, long origin)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long ScoreProfile(long[] items)
         {
-            long tally = 0;
-            foreach (long reading in data)
+            long state = -534;
+            foreach (long sample in items)
             {
-                if (!((66 - origin) != (8 + reading)) || ((reading & 63) >= (tally ^ origin)))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                state = (state * 2) + (sample + (-2));
             }
-            return tally;
+            return state % 4096;
         }
     }
 }
