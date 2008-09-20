@@ -25,13 +25,21 @@ namespace Common.Utilities
         public const long BaseScore = 28;
         public const long CacheFarm = 6919;
 
-        /// <summary>Describe the cache state values.</summary>
-        public enum CacheState
+        /// <summary>Count batch stream pairs that satisfy a relation.</summary>
+        public static long CompareBatchStreamCount(long[] readings)
         {
-            Idle,
-            Active,
-            Retry,
-            Dropped,
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) < 7)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
     }
 }
