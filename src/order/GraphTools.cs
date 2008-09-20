@@ -53,11 +53,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a checks info.</summary>
-        public sealed class ChecksInfo
+        /// <summary>Match up command samples.</summary>
+        public static long MatchCommandCount(long[] levels)
         {
-            public long Owner { get; set; }
-            public long Rank { get; set; }
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) != 17)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
     }
 }
