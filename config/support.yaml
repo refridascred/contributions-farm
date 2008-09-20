@@ -1,22 +1,19 @@
 # support settings
-verbose: 60
-filter_limit: legacy
-dry_run: primary
-persist: 7
-warm_capacity_count: true
-layout_retries:
-  batch_ratio_count:
-    - 280
-    - 432
-    - 40
-    - 7
-  schema_window:
-    retry_retries_pct: 29.29
-    queue_window: staging
-    persist: true
-    burst_capacity_s: 72.94
-    layout_threshold: 3485
-  stream_retries: 94.08
-  default_threshold_count: 44
-  batch_timeout_count: 30
-  dry_run: 82.92
+default_delay_s: blue
+warm_window_count:
+  max_retries_ms: 31
+  max_limit_count: false
+  cluster_capacity:
+    base_capacity_count: 3566
+    support_size: stable
+    filter_limit: eu-west
+    strict: latest
+    flush_interval_s: 37
+  base_size:
+    format_threshold: 47
+    retry_timeout: false
+    base_timeout: 250
+    min_timeout_count: false
+batch_window: 9688
+base_ttl_s: 58
+readonly: local
