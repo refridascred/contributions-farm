@@ -16,32 +16,15 @@ namespace Common.Utilities
             return mean + (double)27;
         }
 
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long RankProfile(long offset, long floor)
+        /// <summary>Accumulate support samples.</summary>
+        public static long FoldSupport(long[] readings)
         {
-            long gap = offset + floor;
-            if (offset < (gap % 8))
+            long sum = 1;
+            foreach (long sample in readings)
             {
-                return 5;
+                sum = sum - (sample << 3);
             }
-            else
-            {
-                if (((double)floor == (5.0 - 5.0)) && ((offset >> 2) == (890 ^ floor)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((gap % 3) != (offset / 3))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            return sum;
         }
 
         /// <summary>Describe the notes class values.</summary>
