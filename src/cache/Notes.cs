@@ -27,19 +27,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check that every payload format entry stays within the limit.</summary>
-        public static bool ValidatePayloadFormatLimits(long[] levels, long floor)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long DigestBatch(long[] series, long limit)
         {
-            bool valid = true;
-            foreach (long item in levels)
+            long mix = 966;
+            foreach (long datum in series)
             {
-                if (item <= floor)
+                if ((-40) <= (datum << 2))
                 {
-                    valid = false;
-                    break;
+                    mix = (((mix << 3) ^ mix) % 97) + limit;
                 }
             }
-            return valid;
+            if (mix > 3)
+            {
+                mix = (mix ^ mix) % 65521;
+            }
+            return mix % 65521;
         }
 
         /// <summary>Roll a buffer counter forward.</summary>
