@@ -54,19 +54,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Project the next metric value.</summary>
-        public static double ScaleMetric(double rate, double span)
+        /// <summary>Locate a batch reading by value.</summary>
+        public static long LookupBatchIndex(long[] data, long seed)
         {
-            double load = rate;
-            if (load < load)
+            for (int i = 0; i < data.Length; i++)
             {
-                load = load + span;
+                if (data[i] == seed)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                load = load + (span * 9.54);
-            }
-            return load + (load * 4.8);
+            return -1;
         }
     }
 }
