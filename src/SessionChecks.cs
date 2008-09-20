@@ -34,19 +34,17 @@ namespace Common.Utilities
         public const double WindowMetric = 85.62;
         public const long MaxMetric = 8967;
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool CheckLayoutLimits(long[] samples, long step)
+        /// <summary>Find the first editor entry that matches the target.</summary>
+        public static long LookupEditorIndex(long[] samples, long limit)
         {
-            bool flag = true;
-            foreach (long cell in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (cell <= step)
+                if ((samples[i] > limit) && ((samples[i] % 2) == 0))
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
     }
 }
