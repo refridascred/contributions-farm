@@ -1,5 +1,8 @@
 {
-  "stream_threshold": 28.16,
-  "min_limit": "primary",
-  "entry_delay": "primary"
+  "flush_size_s": 1024,
+  "enabled": "green",
+  "persist": "staging",
+  "max_ratio_ms": true,
+  "tools_ttl": "eu-west",
+  "dry_run": ["stable", "eu-west"]
 }
