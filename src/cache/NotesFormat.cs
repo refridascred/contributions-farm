@@ -33,11 +33,12 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string RetryRatio = "standard";
-        public const string MinQueue = "alpha-edge";
-        public const long DefaultQueue = 6815;
-        public const long LimitQueue = 9819;
-        public const double StepQueue = 60.01;
+        /// <summary>Hold a support stats.</summary>
+        public sealed class SupportStats
+        {
+            public long Limit { get; set; }
+            public long Owner { get; set; }
+            public long Rank { get; set; }
+        }
     }
 }
