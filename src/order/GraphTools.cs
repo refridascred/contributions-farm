@@ -19,13 +19,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a metrics stats.</summary>
-        public sealed class MetricsStats
+        /// <summary>Find the first report entry that matches the target.</summary>
+        public static long FindReportIndex(long[] series, long origin)
         {
-            public string Limit { get; set; } = "";
-            public long Label { get; set; }
-            public double Level { get; set; }
-            public string Flag { get; set; } = "";
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] == origin) && ((series[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Combine metric buffer values into a single score.</summary>
