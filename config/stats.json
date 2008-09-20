@@ -1,5 +1,7 @@
 {
-  "layout_ttl": [428, 392],
-  "cache_delay_pct": 78,
-  "strict": "stable"
+  "burst_ttl": 26.38,
+  "poll_window": 8.85,
+  "verbose": false,
+  "idle_depth_s": "edge",
+  "default_threshold": 90.67
 }
