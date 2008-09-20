@@ -19,18 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a filter reading by value.</summary>
-        public static long FindFilterIndex(long[] levels, long seed)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] > seed) && ((levels[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double MaxCount = 62.24;
+        public const long MaxLevel = 1348;
+        public const string MinMetrics = "open-v2";
+        public const string BaseBudget = "legacy-v2";
 
         /// <summary>Validate cache readings against a bound.</summary>
         public static bool VerifyCacheRange(long[] samples, long offset)
