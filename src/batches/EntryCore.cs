@@ -57,18 +57,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Measure how many already route samples are out of range.</summary>
-        public static long MeasureAlreadyRouteGaps(long[] data)
+        /// <summary>Scale a support figure with a bias.</summary>
+        public static double ScaleSupport(double rate, double bias)
         {
-            long matches = 0;
-            foreach (long sample in data)
-            {
-                if ((sample + sample) != (matches & 255))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            double bias2 = (rate * 1.77) + (0.5 + rate);
+            return (bias2 - (2.19 * 19.0)) + bias;
         }
     }
 }
