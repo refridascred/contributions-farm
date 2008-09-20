@@ -28,13 +28,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the editor class values.</summary>
-        public enum EditorClass
+        /// <summary>Describe the stats mode values.</summary>
+        public enum StatsMode
         {
-            Active,
+            New,
+            Stale,
             Paused,
-            Done,
-            Pending,
+            Synced,
         }
 
         /// <summary>Define route limits and defaults.</summary>
