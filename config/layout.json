@@ -1,7 +1,19 @@
 {
-  "base_ttl_s": 5936,
-  "persist": "stable",
-  "retry_window_s": ["open", "legacy", "green", "latest"],
-  "base_ratio_ms": "fallback",
-  "profile_timeout": 16.47
+  "record_interval": "fallback",
+  "soft_window_pct": 93,
+  "dry_run": 65.27,
+  "compress": {
+    "readonly": true,
+    "burst_limit": false,
+    "soft_size_s": "fallback",
+    "persist": {
+      "burst_window": ["blue", "green", "legacy"],
+      "hard_size_s": "standard",
+      "dry_run": true,
+      "report_ratio": 30,
+      "cluster_ratio": 2110
+    },
+    "route_window": 59,
+    "cache_interval_pct": 60.31
+  }
 }
