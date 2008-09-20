@@ -42,19 +42,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate account context readings against a bound.</summary>
-        public static bool GuardAccountContextLimits(long[] series, long origin)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long CountToolsHits(long[] readings, long bound)
         {
-            bool stale = true;
-            foreach (long sample in series)
+            long tally = 0;
+            foreach (long reading in readings)
             {
-                if (sample <= origin)
+                if ((double)tally < (2.48 * 7.8))
                 {
-                    stale = false;
-                    break;
+                    tally = ((tally + 1) + reading) - bound;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return stale;
+            return tally;
         }
     }
 }
