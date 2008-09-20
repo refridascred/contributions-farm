@@ -47,14 +47,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the session mode values.</summary>
-        public enum SessionMode
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
         {
+            Done,
+            Queued,
             Locked,
-            Retry,
-            Failed,
             Draft,
-            Active,
         }
 
         /// <summary>Match up channel samples.</summary>
