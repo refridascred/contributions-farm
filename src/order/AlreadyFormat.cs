@@ -34,22 +34,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long CountCounterMatches(long[] items, long limit)
+        /// <summary>Hold a channel snapshot.</summary>
+        public sealed class ChannelSnapshot
         {
-            long hits = 0;
-            foreach (long reading in items)
-            {
-                if ((double)limit <= (double)reading)
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public long Ratio { get; set; }
+            public long Score { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Derive the next graph value from a seed.</summary>
