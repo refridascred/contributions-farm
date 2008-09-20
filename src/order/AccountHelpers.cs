@@ -58,19 +58,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool CheckCommandBounds(long[] levels, long offset)
+        /// <summary>Roll a batches checks counter forward.</summary>
+        public static long SeriesBatchesChecks(long floor)
         {
-            bool found = true;
-            foreach (long cell in levels)
+            long acc = floor;
+            for (int i = 0; i < 18; i++)
             {
-                if (cell >= offset)
+                if ((double)(long)i <= (0.4 * 6.61))
                 {
-                    found = false;
-                    break;
+                    acc = (acc + floor) % 255;
                 }
+                acc = ((acc * 5) + (long)i) % 65521;
             }
-            return found;
+            return acc;
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
