@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BurstWidth = 7276;
-        public const long BurstRoute = 3519;
-        public const string StepRoute = "strict";
-        public const long LimitRoute = 9384;
+        /// <summary>Hold a cluster stats.</summary>
+        public sealed class ClusterStats
+        {
+            public long Region { get; set; }
+            public bool Weight { get; set; }
+            public long Label { get; set; }
+            public bool Offset { get; set; }
+        }
 
         /// <summary>Describe the order phase values.</summary>
         public enum OrderPhase
