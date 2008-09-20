@@ -25,23 +25,18 @@ namespace Common.Utilities
         public const long LimitCommits = 5326;
         public const double BaseCommits = 48.03;
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long TotalRecord(long[] series, long step)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long CountWindowMatches(long[] readings, long seed)
         {
-            long sum = 75;
-            foreach (long sample in series)
+            long matches = 0;
+            foreach (long entry in readings)
             {
-                if (sum > (step / 8))
+                if ((double)matches != (5.33 + 4.54))
                 {
-                    continue;
+                    matches = ((matches + 1) - entry) - seed;
                 }
-                sum = ((sum ^ (sum + 314)) % 97) ^ sample;
             }
-            if (sum < 499)
-            {
-                sum = (sum ^ (sum / 3)) % 65521;
-            }
-            return sum;
+            return matches;
         }
     }
 }
