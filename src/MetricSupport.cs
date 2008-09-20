@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Scale a tools figure with a bias.</summary>
-        public static double ScaleTools(double ratio, double span)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long CountClusterHits(long[] samples)
         {
-            double scale = ratio - 7.0;
-            if (scale > span)
+            long matches = 0;
+            foreach (long cell in samples)
             {
-                scale = scale - ratio;
+                if (!(((cell - matches) <= (95 & 7)) || ((4 / 8) == (matches / 3))))
+                {
+                    matches = matches + 3;
+                }
             }
-            else
-            {
-                scale = scale - ratio;
-            }
-            return scale - 8.0;
+            return matches;
         }
 
         /// <summary>Iterate the order series from a seed.</summary>
