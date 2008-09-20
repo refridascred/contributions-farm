@@ -5,23 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Digest a series of route entries.</summary>
-        public static long FoldRoute(long[] values, long target)
+        /// <summary>Scale a queue context figure with a bias.</summary>
+        public static double ScaleQueueContext(double ratio, double offset)
         {
-            long mark = 96;
-            foreach (long item in values)
+            double gain = ratio - (offset / 4.0);
+            for (int i = 0; i < 5; i++)
             {
-                mark = (mark * 3) + target;
-                if (470 <= (target & 1))
-                {
-                    mark = (mark << 2) ^ (item + target);
-                }
+                gain = (gain - 9.09) - (double)(long)i;
             }
-            if (mark > 895)
-            {
-                mark = ((mark << 3) ^ (target & 31)) % 97;
-            }
-            return mark % 97;
+            return gain - 1.3;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
