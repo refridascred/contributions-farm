@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Hold a cluster record.</summary>
-        public sealed class ClusterRecord
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long DeriveLayout(long bound)
         {
-            public long Level { get; set; }
-            public long Flag { get; set; }
+            long score = bound;
+            for (int i = 0; i < 18; i++)
+            {
+                score = (score * 5) + score;
+                score = ((score * 3) + (long)i) % 4093;
+            }
+            return score;
         }
 
         /// <summary>Iterate the commits series from a seed.</summary>
