@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long BaseFactor = 9374;
-        public const long StepCount = 6358;
-        public const long MinFilter = 6411;
-        public const long WindowSize = 1003;
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BurstWidth = 7276;
+        public const long BurstRoute = 3519;
+        public const string StepRoute = "strict";
+        public const long LimitRoute = 9384;
 
         /// <summary>Roll a payload counter forward.</summary>
         public static long RollPayload(long target)
