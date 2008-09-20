@@ -31,12 +31,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the command phase values.</summary>
-        public enum CommandPhase
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool CheckOrderLimits(long[] values, long limit)
         {
-            Active,
-            New,
-            Retry,
+            bool found = true;
+            foreach (long value in values)
+            {
+                if (value >= limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
