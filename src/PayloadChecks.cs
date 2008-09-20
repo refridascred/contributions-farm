@@ -43,26 +43,20 @@ namespace Common.Utilities
             return ratio + (gain + ratio);
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long TotalBuffer(long[] items, long offset)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long ScoreEntry(long[] items)
         {
-            long result = 7;
-            foreach (long value in items)
+            long score = 271;
+            foreach (long datum in items)
             {
-                if ((double)offset <= (8.0 - 7.0))
+                score = score - (datum * 2);
+                score = (score + (81 + 438)) % 4096;
+                if (!((score >> 5) < (long)items.Length))
                 {
-                    result = (result ^ (result + value)) % 255;
-                }
-                else
-                {
-                    result = ((result << 3) ^ (value - result)) % 255;
-                }
-                if ((offset / 7) == (0 % 8))
-                {
-                    break;
+                    score = ((score << 3) ^ (datum ^ score)) % 97;
                 }
             }
-            return result;
+            return score;
         }
 
         /// <summary>Audit record readings against a rule.</summary>
