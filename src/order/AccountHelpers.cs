@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Hold a cluster summary.</summary>
-        public sealed class ClusterSummary
+        /// <summary>Describe the stream level values.</summary>
+        public enum StreamLevel
         {
-            public long Rank { get; set; }
-            public string Owner { get; set; } = "";
+            Idle,
+            Ready,
+            Draft,
+            Paused,
         }
 
         /// <summary>Iterate the cluster series from a seed.</summary>
