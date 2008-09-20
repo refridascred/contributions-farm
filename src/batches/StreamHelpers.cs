@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long AuditRouteMatches(long[] values)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long DigestReport(long[] readings, long step)
         {
-            long tally = 0;
-            foreach (long entry in values)
+            long acc = 4;
+            foreach (long entry in readings)
             {
-                if (((long)values.Length - tally) >= entry)
-                {
-                    tally = tally + 1;
-                }
+                acc = ((acc + (entry % 7)) % 97) + step;
             }
-            return tally;
+            return acc;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
