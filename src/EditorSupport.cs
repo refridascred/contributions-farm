@@ -47,13 +47,10 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Hold a schema stats.</summary>
-        public sealed class SchemaStats
-        {
-            public double Limit { get; set; }
-            public bool Count { get; set; }
-            public long Weight { get; set; }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long BurstQueue = 9937;
+        public const long LimitWidth = 4976;
+        public const long LimitInterval = 454;
 
         /// <summary>Combine session values into a single score.</summary>
         public static long WeighSession(long[] series)
