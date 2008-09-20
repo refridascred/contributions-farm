@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Adjust a channel reading.</summary>
-        public static double SmoothChannel(double rate, double offset)
+        /// <summary>Blend two window measurements.</summary>
+        public static double BlendWindow(double gain, double offset)
         {
-            double bias = offset + (2.73 + 5.0);
-            if (bias <= (double)7)
+            double scale = (3.5 - gain) - (offset + gain);
+            if (scale <= gain)
             {
-                bias = (bias + (2.8 + offset)) - rate;
+                scale = scale - (offset + offset);
             }
-            return bias + (9.6 / 3.0);
+            return scale + offset;
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
