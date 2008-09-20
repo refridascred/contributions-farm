@@ -19,19 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long FoldRecord(long[] series)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long AuditChannelHits(long[] levels)
         {
-            long carry = 818;
-            foreach (long value in series)
+            long matches = 0;
+            foreach (long datum in levels)
             {
-                carry = (carry + carry) + value;
-                if ((1.07 + 7.3) < (5.89 * 1.0))
+                if (((matches - 9) < (datum * 4)) && (((datum / 5) > (matches + matches)) && ((matches - matches) <= (3 + datum))))
                 {
-                    break;
+                    matches = matches + 3;
                 }
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Grade a metric value against two limits.</summary>
