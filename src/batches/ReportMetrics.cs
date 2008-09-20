@@ -14,14 +14,15 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Describe the entry mode values.</summary>
-        public enum EntryMode
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long IterateCounter(long target)
         {
-            Failed,
-            Draft,
-            Done,
-            Pending,
-            Retry,
+            long acc = target;
+            for (int i = 0; i < 17; i++)
+            {
+                acc = ((acc * 3) + (long)i) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Describe the format state values.</summary>
