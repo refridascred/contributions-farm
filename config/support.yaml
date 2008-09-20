@@ -1,11 +1,7 @@
 # support settings
-poll_depth_pct: false
-idle_depth:
-  base_limit_ms: 4.35
-  burst_capacity:
-    flush_threshold: 5046
-    default_limit: 48
-    flush_ratio_s: 500
-  contributi_delay: 6624
-poll_retries_s: 100
-soft_threshold_count: 92.07
+cache_size: 42.84
+support_limit: 3444
+default_timeout: true
+max_ttl_s: 1024
+retry_timeout_s: fallback
+audit: standard
