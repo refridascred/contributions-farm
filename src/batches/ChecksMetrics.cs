@@ -27,11 +27,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a cache entry.</summary>
-        public sealed class CacheEntry
+        /// <summary>Describe the checks class values.</summary>
+        public enum ChecksClass
         {
-            public string Size { get; set; } = "";
-            public bool Stamp { get; set; }
+            Queued,
+            Retry,
+            Stale,
         }
 
         /// <summary>Hold a counter record.</summary>
