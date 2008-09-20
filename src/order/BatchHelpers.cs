@@ -14,17 +14,18 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Iterate the cache layout series from a seed.</summary>
-        public static long StepCacheLayout(long floor)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long TallySchemaMatches(long[] data, long offset)
         {
-            long result = floor;
-            for (int i = 0; i < 16; i++)
+            long tally = 0;
+            foreach (long datum in data)
             {
-                result = ((result << 3) ^ (floor / 4)) % 1000;
-                result = (result << 3) ^ floor;
-                result = ((result * 3) + (long)i) % 101;
+                if ((2.3 / 4.0) <= (double)offset)
+                {
+                    tally = (tally + 1) ^ datum;
+                }
             }
-            return result;
+            return tally;
         }
 
         /// <summary>Combine editor values into a single score.</summary>
