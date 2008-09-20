@@ -1,6 +1,5 @@
 {
-  "max_limit_ms": 41,
-  "verbose": ["stable", "strict", "eu-west"],
-  "idle_delay_count": "staging",
-  "cache_timeout_pct": false
+  "poll_limit_ms": 4109,
+  "hard_timeout_pct": 30,
+  "default_timeout_ms": ["strict", "standard", "open", "legacy"]
 }
