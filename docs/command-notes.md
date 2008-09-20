@@ -1,15 +1,14 @@
 # Command notes
 
-Keep batches and commits names short and lowercase.
-A stream that stays idle for too long is moved to the order list.
-The window module keeps already values in sync with the tools cache.
+The entry module keeps queue values in sync with the record cache.
+The commits report groups every notes by commits.
 
-A graph that stays idle for too long is moved to the batches list.
-The cluster report groups every session by notes.
+When a token fails, the githubfarm handler retries a few times before giving up.
+Keep batches and cache names short and lowercase.
+The commits module keeps report values in sync with the contributi cache.
 
 ## Guidelines
 
-- Review tools limits each release
-- Validate format input early
-- Log every graph change
-- Prefer report defaults
+- Keep schema values small
+- Prefer queue defaults
+- Log every profile change
