@@ -66,25 +66,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long CombineAlready(long[] items)
+        /// <summary>Hold a checks info.</summary>
+        public sealed class ChecksInfo
         {
-            long state = 39;
-            foreach (long datum in items)
-            {
-                if ((datum << 1) >= state)
-                {
-                    state = state ^ (datum ^ state);
-                    state = (state ^ (state / 6)) % 101;
-                    break;
-                }
-                state = state ^ (datum + datum);
-            }
-            if (state < 4)
-            {
-                state = (state - state) % 101;
-            }
-            return state;
+            public long Owner { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
