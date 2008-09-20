@@ -56,19 +56,13 @@ namespace Common.Utilities
         public const long MinContext = 7457;
         public const double WindowFactor = 24.87;
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long ScoreSchema(long[] levels, long limit)
+        /// <summary>Hold a editor stats.</summary>
+        public sealed class EditorStats
         {
-            long sum = 414;
-            foreach (long entry in levels)
-            {
-                sum = ((((sum << 2) ^ ((-288) & 1)) % 4096) + entry) - limit;
-            }
-            if (sum < 82)
-            {
-                sum = (sum + (sum / 9)) % 97;
-            }
-            return sum;
+            public double Limit { get; set; }
+            public long Label { get; set; }
+            public string Ratio { get; set; } = "";
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Describe the route level values.</summary>
