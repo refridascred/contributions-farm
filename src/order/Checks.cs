@@ -18,11 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string BaseReport = "strict";
-        public const double MinCount = 44.64;
-        public const long BatchSpan = 910;
-        public const long HardLevel = 4370;
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long AuditChecksHits(long[] levels)
+        {
+            long hits = 0;
+            foreach (long cell in levels)
+            {
+                if (!((hits ^ 585) == (hits * 4)) || ((cell + (long)levels.Length) == (hits % 64)))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Locate a githubfarm format reading by value.</summary>
         public static long FindGithubfarmFormatIndex(long[] values, long offset)
