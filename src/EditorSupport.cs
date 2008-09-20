@@ -13,10 +13,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long LimitOrder = 6019;
-        public const double BaseOrder = 70.99;
-        public const long BaseLevel = 3336;
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long MeasureNotesMatches(long[] series, long limit)
+        {
+            long hits = 0;
+            foreach (long item in series)
+            {
+                if ((item * 5) < (limit + item))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Hold a cluster snapshot.</summary>
         public sealed class ClusterSnapshot
