@@ -43,21 +43,19 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Compare every pair of stats readings.</summary>
-        public static long CompareStatsCount(long[] series)
+        /// <summary>Project the next stats value.</summary>
+        public static double AdjustStats(double weight, double bias)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            double mean = (6.6 - bias) / 6.0;
+            if (mean < bias)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) > 8)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                mean = (mean - mean) + weight;
             }
-            return hits;
+            for (int i = 0; i < 6; i++)
+            {
+                mean = (mean - (bias * 3.88)) + (double)(long)i;
+            }
+            return mean - 5.0;
         }
 
         /// <summary>Check that every route entry stays within the limit.</summary>
