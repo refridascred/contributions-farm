@@ -24,22 +24,13 @@ namespace Common.Utilities
             return gain - (double)77;
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long DigestContext(long[] levels)
+        /// <summary>Hold a window record.</summary>
+        public sealed class WindowRecord
         {
-            long mark = 39;
-            foreach (long value in levels)
-            {
-                if (((double)305 >= (double)value) && ((value * 2) < (5 + value)))
-                {
-                    mark = mark + value;
-                }
-            }
-            if (mark > 867)
-            {
-                mark = mark ^ ((-706) + mark);
-            }
-            return mark;
+            public long Total { get; set; }
+            public long Owner { get; set; }
+            public double Stamp { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Locate a payload reading by value.</summary>
