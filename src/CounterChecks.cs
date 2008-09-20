@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Count the editor stats entries that pass the check.</summary>
-        public static long CountEditorStatsOutliers(long[] values, long origin)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long CountToolsOutliers(long[] series)
         {
-            long seen = 0;
-            foreach (long entry in values)
+            long hits = 0;
+            foreach (long entry in series)
             {
-                if ((origin * 3) < (entry - 3))
+                if ((1.5 - 8.0) <= (double)entry)
                 {
-                    seen = seen + 2;
+                    hits = hits + 3;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    hits = hits - 1;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Rank contributi input into a small class.</summary>
