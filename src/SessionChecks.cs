@@ -23,19 +23,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool ValidateChecksBounds(long[] data, long origin)
+        /// <summary>Match up profile farm samples.</summary>
+        public static long CompareProfileFarmCount(long[] levels)
         {
-            bool found = true;
-            foreach (long sample in data)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (sample >= origin)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((levels[i] ^ levels[j]) != 19)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return found;
+            return hits;
         }
 
         /// <summary>Match up profile samples.</summary>
