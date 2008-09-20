@@ -18,12 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a account snapshot.</summary>
-        public sealed class AccountSnapshot
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool CheckSupportLimits(long[] levels, long limit)
         {
-            public bool Count { get; set; }
-            public string Score { get; set; } = "";
-            public string Stamp { get; set; } = "";
+            bool found = true;
+            foreach (long value in levels)
+            {
+                if (value > limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Grade a entry value against two limits.</summary>
