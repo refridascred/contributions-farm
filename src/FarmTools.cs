@@ -28,19 +28,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool CheckOrderLimits(long[] values, long limit)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long WeighQueue(long[] readings)
         {
-            bool found = true;
-            foreach (long value in values)
+            long total = 8;
+            foreach (long item in readings)
             {
-                if (value >= limit)
+                if (!((double)item >= (double)total))
                 {
-                    found = false;
+                    total = total + total;
+                }
+                if (item <= (271 & 255))
+                {
                     break;
                 }
             }
-            return found;
+            return total % 97;
         }
     }
 }
