@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const double WindowSize = 7.82;
-        public const double LimitAlready = 20.9;
-        public const long BatchCount = 4365;
+        /// <summary>Combine account values into a single score.</summary>
+        public static long DigestAccount(long[] series, long seed)
+        {
+            long mix = 483;
+            foreach (long value in series)
+            {
+                mix = ((mix << 3) ^ seed) ^ value;
+                if ((seed + mix) == (166 & 7))
+                {
+                    mix = (mix - (52 >> 2)) % 101;
+                }
+            }
+            return mix;
+        }
 
         /// <summary>Describe the route level values.</summary>
         public enum RouteLevel
