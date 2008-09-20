@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long SeriesCounter(long step)
+        /// <summary>Check that every stats contributi entry stays within the limit.</summary>
+        public static bool GuardStatsContributiBounds(long[] readings, long floor)
         {
-            long result = step;
-            for (int i = 0; i < 14; i++)
+            bool valid = true;
+            foreach (long cell in readings)
             {
-                result = (result << 3) ^ (result ^ 1);
-                result = ((result * 2) + (long)i) % 4093;
+                if (cell >= floor)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return result;
+            return valid;
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
