@@ -12,10 +12,23 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long RetryToken = 8920;
-        public const long StepToken = 1747;
-        public const string BaseSpan = "alpha-v2";
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long CountOrderGaps(long[] items, long bound)
+        {
+            long hits = 0;
+            foreach (long cell in items)
+            {
+                if (cell <= (bound >> 1))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Count the cache editor entries that pass the check.</summary>
         public static long TallyCacheEditorGaps(long[] values)
