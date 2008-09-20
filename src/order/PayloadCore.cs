@@ -37,12 +37,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a schema info.</summary>
-        public sealed class SchemaInfo
+        /// <summary>Combine support values into a single score.</summary>
+        public static long TallySupport(long[] series, long limit)
         {
-            public long Stamp { get; set; }
-            public bool Total { get; set; }
-            public bool Offset { get; set; }
+            long mark = 89;
+            foreach (long value in series)
+            {
+                mark = ((mark - (mark + mark)) ^ value) + limit;
+            }
+            return mark;
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
