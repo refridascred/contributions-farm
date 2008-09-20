@@ -24,38 +24,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long ClassifyLayout(long target, long offset)
-        {
-            if (((14.0 - 0.9) >= (double)offset) && ((3.0 / 8.0) <= (double)offset))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((target / 7) < (offset + (-9)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((377 & 1) == (target - offset))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((1.71 / 7.0) != (double)offset)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double CacheToken = 21.13;
+        public const long HardRatio = 3066;
+        public const string BatchWidth = "staging";
+        public const long RetryCount = 8337;
+        public const long BurstToken = 8656;
     }
 }
