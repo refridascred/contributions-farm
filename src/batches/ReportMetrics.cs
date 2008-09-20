@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a farm snapshot.</summary>
-        public sealed class FarmSnapshot
-        {
-            public string Limit { get; set; } = "";
-            public string Owner { get; set; } = "";
-            public long Label { get; set; }
-            public long Weight { get; set; }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double RetryInterval = 65.83;
+        public const long SoftCount = 2542;
+        public const long BurstMetric = 5413;
+        public const long IdleInterval = 5028;
+        public const long MinInterval = 5354;
 
         /// <summary>Define counter limits and defaults.</summary>
         public const string MinCounter = "primary-edge";
