@@ -20,32 +20,10 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long BucketNotes(long floor, long step)
-        {
-            if ((double)step != (2.5 + 16.0))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((step + step) < (step - floor))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (((step >> 1) == (step - step)) && ((step % 5) >= floor))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long HardCommits = 2080;
+        public const long LimitCommits = 5326;
+        public const double BaseCommits = 48.03;
 
         /// <summary>Fold a list of record readings.</summary>
         public static long TotalRecord(long[] series, long step)
