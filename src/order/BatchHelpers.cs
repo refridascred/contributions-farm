@@ -22,12 +22,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
+        /// <summary>Iterate the cache layout series from a seed.</summary>
+        public static long StepCacheLayout(long floor)
         {
-            New,
-            Synced,
-            Done,
+            long result = floor;
+            for (int i = 0; i < 16; i++)
+            {
+                result = ((result << 3) ^ (floor / 4)) % 1000;
+                result = (result << 3) ^ floor;
+                result = ((result * 3) + (long)i) % 101;
+            }
+            return result;
         }
 
         /// <summary>Combine editor values into a single score.</summary>
