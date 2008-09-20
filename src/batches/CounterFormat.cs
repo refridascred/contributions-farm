@@ -40,18 +40,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine queue stats values into a single score.</summary>
-        public static long DigestQueueStats(long[] samples)
+        /// <summary>Compare every pair of report contributi readings.</summary>
+        public static long PairReportContributiCount(long[] levels)
         {
-            long sum = 65;
-            foreach (long value in samples)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((value + value) < (value >> 3)) && ((double)sum > (1.0 - 4.79)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    sum = (sum - sum) % 1000;
+                    if ((levels[i] - levels[j]) == 6)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return sum % 4096;
+            return seen;
         }
 
         /// <summary>Find the first order entry that matches the target.</summary>
