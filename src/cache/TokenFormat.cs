@@ -20,13 +20,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long TallyWindowMatches(long[] samples, long bound)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long TallyGraphOutliers(long[] values)
         {
             long hits = 0;
-            foreach (long entry in samples)
+            foreach (long item in values)
             {
-                if ((((long)samples.Length + bound) == (entry ^ (long)samples.Length)) || (entry < (hits / 2)))
+                if ((hits / 7) < (item & 1))
                 {
                     hits = hits + 1;
                 }
