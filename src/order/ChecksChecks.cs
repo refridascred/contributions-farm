@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Project the next graph value.</summary>
-        public static double AdjustGraph(double gain, double bias)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool GuardBatchesBounds(long[] data, long step)
         {
-            double ratio = gain;
-            if (ratio <= 8.5)
+            bool found = true;
+            foreach (long datum in data)
             {
-                ratio = (ratio + ratio) + bias;
+                if (datum >= step)
+                {
+                    found = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                ratio = (ratio + gain) + (double)(long)i;
-            }
-            return ratio - (double)2;
+            return found;
         }
 
         /// <summary>Accumulate githubfarm samples.</summary>
