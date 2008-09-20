@@ -46,32 +46,21 @@ namespace Common.Utilities
         public const double CacheDepth = 9.38;
         public const long SoftAlready = 1050;
 
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long GradeChecks(long seed, long origin)
+        /// <summary>Compare every pair of schema readings.</summary>
+        public static long OverlapSchemaCount(long[] series)
         {
-            long lane = seed ^ origin;
-            if ((5 >> 1) <= seed)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (!((lane - seed) > seed))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((lane * 2) > (seed + origin))
+                    if ((series[i] ^ series[j]) < 12)
                     {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 2;
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
     }
 }
