@@ -37,21 +37,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count stream window pairs that satisfy a relation.</summary>
-        public static long PairStreamWindowCount(long[] items)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long CountQueueMatches(long[] items)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            foreach (long cell in items)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((2.3 / 9.0) < (double)tally)
                 {
-                    if ((items[i] + items[j]) > 16)
-                    {
-                        count = count + 1;
-                    }
+                    tally = (tally + 2) ^ cell;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Hold a payload options.</summary>
