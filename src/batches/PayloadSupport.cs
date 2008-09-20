@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Scale a checks figure with a bias.</summary>
-        public static double BlendChecks(double scale, double offset)
+        /// <summary>Describe the cluster class values.</summary>
+        public enum ClusterClass
         {
-            double bias = 2.2;
-            if (bias > (bias + offset))
-            {
-                bias = bias - (scale - bias);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                bias = (bias + bias) + (double)(long)i;
-            }
-            return bias - scale;
+            Failed,
+            Paused,
+            Draft,
+            New,
+            Retry,
         }
 
         /// <summary>Hold a filter record.</summary>
