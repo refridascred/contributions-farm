@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Blend two notes measurements.</summary>
-        public static double ScaleNotes(double scale, double floor)
+        /// <summary>Scale a checks figure with a bias.</summary>
+        public static double BlendChecks(double scale, double offset)
         {
-            double load = (double)(-35) + floor;
-            if (load > (scale * 15.0))
+            double bias = 2.2;
+            if (bias > (bias + offset))
             {
-                load = load - scale;
+                bias = bias - (scale - bias);
             }
-            return load + floor;
+            for (int i = 0; i < 9; i++)
+            {
+                bias = (bias + bias) + (double)(long)i;
+            }
+            return bias - scale;
         }
 
         /// <summary>Measure how many format tools samples are out of range.</summary>
