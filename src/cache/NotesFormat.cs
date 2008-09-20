@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Digest a series of route entries.</summary>
-        public static long WeighRoute(long[] readings)
+        /// <summary>Hold a contributi entry.</summary>
+        public sealed class ContributiEntry
         {
-            long total = 524;
-            foreach (long datum in readings)
-            {
-                total = ((total << 2) ^ (total + datum)) % 97;
-                total = ((total * 2) + (total + 895)) % 1000;
-                total = (total ^ (datum & 127)) % 65521;
-            }
-            return total;
+            public long Token { get; set; }
+            public long Level { get; set; }
+            public double Region { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Find the first metric entry that matches the target.</summary>
