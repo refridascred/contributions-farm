@@ -1,7 +1,14 @@
 # entry settings
-warm_retries_pct: edge
-idle_ttl: 36.9
-idle_window_pct: 7926
-flush_delay_s: standard
-compress: 3452
-cache_retries: 62
+idle_timeout_s:
+  channel_timeout: 75
+  warm_threshold_ms: primary
+  batch_ratio_s: green
+  commits_limit: blue
+  retry_depth:
+    - green
+    - blue
+    - eu-west
+    - fallback
+  hard_interval_pct: 4010
+cache_size: eu-west
+cache_ttl_pct: 30
