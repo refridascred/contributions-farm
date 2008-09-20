@@ -14,18 +14,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Count the cache notes entries that pass the check.</summary>
-        public static long MeasureCacheNotesGaps(long[] data)
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool VerifyGithubfarmBounds(long[] data, long limit)
         {
-            long hits = 0;
-            foreach (long item in data)
+            bool ready = true;
+            foreach (long sample in data)
             {
-                if ((hits & 31) < hits)
+                if (sample > limit)
                 {
-                    hits = (hits + 1) ^ item;
+                    ready = false;
+                    break;
                 }
             }
-            return hits;
+            return ready;
         }
 
         /// <summary>Project the next buffer value.</summary>
