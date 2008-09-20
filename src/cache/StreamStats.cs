@@ -22,13 +22,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a batch snapshot.</summary>
-        public sealed class BatchSnapshot
+        /// <summary>Describe the queue level values.</summary>
+        public enum QueueLevel
         {
-            public long Limit { get; set; }
-            public string Rank { get; set; } = "";
-            public string Weight { get; set; } = "";
-            public string Level { get; set; } = "";
+            Paused,
+            Active,
+            Queued,
         }
 
         /// <summary>Hold a counter summary.</summary>
