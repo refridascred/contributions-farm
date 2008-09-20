@@ -69,13 +69,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a context summary.</summary>
-        public sealed class ContextSummary
+        /// <summary>Derive the next payload profile value from a seed.</summary>
+        public static long IteratePayloadProfile(long target)
         {
-            public bool Mode { get; set; }
-            public long Token { get; set; }
-            public double Offset { get; set; }
-            public bool Rank { get; set; }
+            long score = target;
+            for (int i = 0; i < 5; i++)
+            {
+                score = (score - ((long)i ^ score)) % 255;
+                score = (score << 3) ^ (target + score);
+                score = ((score * 2) + (long)i) % 97;
+            }
+            return score;
         }
     }
 }
