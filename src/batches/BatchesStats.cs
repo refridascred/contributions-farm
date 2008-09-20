@@ -10,25 +10,13 @@ namespace Common.Utilities
         public const long CacheDepth = 7123;
         public const long HardInterval = 2580;
 
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long ClassifyStream(long step, long seed)
+        /// <summary>Describe the counter class values.</summary>
+        public enum CounterClass
         {
-            long step2 = step ^ seed;
-            if (seed <= (step >> 2))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((step2 ^ 647) <= 16)
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            Closed,
+            Retry,
+            Paused,
+            Active,
         }
 
         /// <summary>Audit filter cluster readings against a rule.</summary>
