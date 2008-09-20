@@ -60,18 +60,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a context reading by value.</summary>
-        public static long LookupContextIndex(long[] data, long target)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] <= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long MinEditor = 2825;
+        public const long BaseEditor = 725;
+        public const string SoftEditor = "fallback";
+        public const long StepEditor = 1434;
+        public const string HardEditor = "strict-v2";
 
         /// <summary>Hold a checks entry.</summary>
         public sealed class ChecksEntry
