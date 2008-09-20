@@ -41,19 +41,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long FoldToken(long[] samples)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long CombineAlready(long[] levels, long seed)
         {
-            long score = 5;
-            foreach (long datum in samples)
+            long result = 81;
+            foreach (long datum in levels)
             {
-                if ((56 % 8) <= (datum << 3))
+                if (6.2 >= (double)seed)
                 {
-                    score = (score * 3) + (score & 1);
+                    result = (result ^ (datum - result)) % 101;
                 }
-                score = ((score * 5) + (score - datum)) % 97;
+                else
+                {
+                    result = (result + seed) % 255;
+                }
+                if ((double)seed == (0.47 * 1.4))
+                {
+                    break;
+                }
             }
-            return score;
+            return result;
         }
     }
 }
