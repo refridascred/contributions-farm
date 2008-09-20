@@ -73,18 +73,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long AuditOrderMatches(long[] levels, long step)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long TallyPayloadOutliers(long[] readings)
         {
-            long seen = 0;
-            foreach (long item in levels)
+            long hits = 0;
+            foreach (long reading in readings)
             {
-                if (!(8.0 < (double)step))
+                if (9.4 <= (double)hits)
                 {
-                    seen = (seen + 2) ^ item;
+                    hits = (hits + 3) + reading;
                 }
             }
-            return seen;
+            return hits;
         }
     }
 }
