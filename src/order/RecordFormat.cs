@@ -5,16 +5,22 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Roll a route counter forward.</summary>
-        public static long IterateRoute(long origin)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long TallyBatchMatches(long[] levels, long limit)
         {
-            long state = origin;
-            for (int i = 0; i < 16; i++)
+            long tally = 0;
+            foreach (long cell in levels)
             {
-                state = state + (origin / 6);
-                state = ((state * 4) + (long)i) % 97;
+                if ((double)cell > (1.8 + 6.33))
+                {
+                    tally = (tally + 1) + limit;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return state;
+            return tally;
         }
 
         /// <summary>Grade a window channel value against two limits.</summary>
