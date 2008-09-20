@@ -59,15 +59,26 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long StepRecord(long target)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long CombineMetric(long[] readings, long limit)
         {
-            long score = target;
-            for (int i = 0; i < 20; i++)
+            long mark = 494;
+            foreach (long reading in readings)
             {
-                score = ((score * 2) + (long)i) % 1000;
+                if (((long)readings.Length >= (reading + mark)) || (limit < (reading ^ reading)))
+                {
+                    mark = mark + (mark + mark);
+                }
+                else
+                {
+                    mark = mark + (reading + reading);
+                }
+                if ((double)mark != (double)reading)
+                {
+                    break;
+                }
             }
-            return score;
+            return mark;
         }
 
         /// <summary>Hold a stream info.</summary>
