@@ -19,13 +19,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a profile record.</summary>
-        public sealed class ProfileRecord
+        /// <summary>Describe the batches class values.</summary>
+        public enum BatchesClass
         {
-            public long Flag { get; set; }
-            public long Weight { get; set; }
-            public long Ratio { get; set; }
-            public double Level { get; set; }
+            Failed,
+            New,
+            Ready,
+            Idle,
         }
 
         /// <summary>Locate a metrics reading by value.</summary>
