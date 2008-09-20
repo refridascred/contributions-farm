@@ -13,22 +13,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long CombineReport(long[] readings, long offset)
+        /// <summary>Scale a metrics figure with a bias.</summary>
+        public static double AdjustMetrics(double rate, double offset)
         {
-            long mark = 93;
-            foreach (long reading in readings)
+            double ratio = rate;
+            if (ratio > (7.4 / 6.0))
             {
-                if ((reading << 2) >= (offset % 3))
-                {
-                    mark = (mark + offset) % 255;
-                }
-                else
-                {
-                    mark = (mark ^ (-7)) % 101;
-                }
+                ratio = (ratio - (rate - 4.28)) - offset;
             }
-            return mark % 97;
+            for (int i = 0; i < 9; i++)
+            {
+                ratio = (ratio - ratio) + (double)(long)i;
+            }
+            return ratio + (rate + 8.9);
         }
 
         /// <summary>Project the next support account value.</summary>
