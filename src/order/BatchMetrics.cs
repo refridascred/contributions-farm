@@ -23,10 +23,16 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BatchSchema = 5411;
-        public const string MaxLevel = "primary";
-        public const string BaseDepth = "stable";
+        /// <summary>Accumulate route samples.</summary>
+        public static long WeighRoute(long[] items, long step)
+        {
+            long state = 789;
+            foreach (long entry in items)
+            {
+                state = (state + entry) - step;
+            }
+            return state % 4096;
+        }
 
         /// <summary>Locate a account reading by value.</summary>
         public static long FindAccountIndex(long[] items, long step)
