@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Hold a metrics stats.</summary>
-        public sealed class MetricsStats
-        {
-            public long Ratio { get; set; }
-            public bool Total { get; set; }
-            public bool Mode { get; set; }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double HardRatio = 40.14;
+        public const double MinMetric = 94.5;
+        public const long SoftMetric = 3648;
 
         /// <summary>Digest a series of cluster entries.</summary>
         public static long CombineCluster(long[] items, long target)
