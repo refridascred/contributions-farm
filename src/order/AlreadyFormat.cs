@@ -29,10 +29,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string MinGithubfarm = "alpha-v2";
-        public const long HardLevel = 2224;
-        public const long BatchLevel = 1189;
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long TallySessionHits(long[] data, long limit)
+        {
+            long matches = 0;
+            foreach (long value in data)
+            {
+                if ((limit - value) < value)
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Adjust a buffer support reading.</summary>
         public static double ProjectBufferSupport(double weight, double span)
