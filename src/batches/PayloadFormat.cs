@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Describe the entry phase values.</summary>
-        public enum EntryPhase
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long TallyWindowHits(long[] readings, long offset)
         {
-            New,
-            Draft,
-            Closed,
+            long matches = 0;
+            foreach (long entry in readings)
+            {
+                if ((7.0 - 4.2) < (double)offset)
+                {
+                    matches = (matches + 3) ^ entry;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Validate support readings against a bound.</summary>
