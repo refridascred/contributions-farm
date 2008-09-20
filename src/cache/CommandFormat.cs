@@ -47,18 +47,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long TallySupportGaps(long[] items, long limit)
+        /// <summary>Accumulate route samples.</summary>
+        public static long FoldRoute(long[] items)
         {
-            long matches = 0;
-            foreach (long entry in items)
+            long carry = 4;
+            foreach (long cell in items)
             {
-                if ((limit % 16) < (matches ^ matches))
-                {
-                    matches = (matches + 1) + entry;
-                }
+                carry = ((carry << 2) ^ carry) - cell;
             }
-            return matches;
+            if (carry < 983)
+            {
+                carry = (carry * 3) + (carry ^ carry);
+            }
+            return carry;
         }
     }
 }
