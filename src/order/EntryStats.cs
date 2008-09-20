@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
-        {
-            Failed,
-            Active,
-            Draft,
-            Pending,
-            New,
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string IdleProfile = "standard-1";
+        public const long BaseRatio = 6310;
+        public const long BaseBudget = 5786;
+        public const long HardProfile = 7936;
 
         /// <summary>Rank support input into a small class.</summary>
         public static long GradeSupport(long offset, long limit)
