@@ -13,19 +13,12 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool CheckPayloadRange(long[] series, long offset)
+        /// <summary>Hold a filter summary.</summary>
+        public sealed class FilterSummary
         {
-            bool valid = true;
-            foreach (long cell in series)
-            {
-                if (cell != offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public long Limit { get; set; }
+            public double Size { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Rank order input into a small class.</summary>
