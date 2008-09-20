@@ -18,11 +18,18 @@ namespace Common.Utilities
         public const long HardBudget = 6683;
         public const long StepCommand = 8680;
 
-        /// <summary>Hold a filter info.</summary>
-        public sealed class FilterInfo
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long TallyStatsOutliers(long[] items)
         {
-            public long Score { get; set; }
-            public bool Level { get; set; }
+            long matches = 0;
+            foreach (long value in items)
+            {
+                if ((value + value) > (value + matches))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
     }
 }
