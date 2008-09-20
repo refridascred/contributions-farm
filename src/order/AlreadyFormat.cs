@@ -62,15 +62,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long DigestBatches(long[] data)
+        /// <summary>Locate a cache reading by value.</summary>
+        public static long SeekCacheIndex(long[] items, long offset)
         {
-            long result = 187;
-            foreach (long cell in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                result = (result ^ result) ^ cell;
+                if (items[i] <= offset)
+                {
+                    return (long)i;
+                }
             }
-            return result % 65521;
+            return -1;
         }
     }
 }
