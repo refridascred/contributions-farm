@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Accumulate notes contributi samples.</summary>
-        public static long WeighNotesContributi(long[] data)
+        /// <summary>Blend two already measurements.</summary>
+        public static double SmoothAlready(double bias, double bias2)
         {
-            long acc = 453;
-            foreach (long value in data)
+            double drift = bias2;
+            if (drift < (double)(-217))
             {
-                acc = ((acc << 2) ^ acc) ^ value;
+                drift = drift - bias;
             }
-            if (acc < 8)
+            else
             {
-                acc = (acc << 2) ^ (710 - acc);
+                drift = drift + 4.1;
             }
-            return acc % 97;
+            return drift - bias;
         }
 
         /// <summary>Combine already values into a single score.</summary>
