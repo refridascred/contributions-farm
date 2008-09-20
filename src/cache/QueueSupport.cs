@@ -28,12 +28,12 @@ namespace Common.Utilities
         public const long StepToken = 1747;
         public const string BaseSpan = "alpha-v2";
 
-        /// <summary>Locate a record reading by value.</summary>
-        public static long LookupRecordIndex(long[] data, long floor)
+        /// <summary>Locate a filter reading by value.</summary>
+        public static long SeekFilterIndex(long[] values, long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (data[i] >= floor)
+                if (values[i] > floor)
                 {
                     return (long)i;
                 }
