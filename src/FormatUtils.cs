@@ -78,15 +78,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the route series from a seed.</summary>
-        public static long StepRoute(long target)
+        /// <summary>Describe the already phase values.</summary>
+        public enum AlreadyPhase
         {
-            long sum = target;
-            for (int i = 0; i < 6; i++)
-            {
-                sum = ((sum * 3) + (long)i) % 4093;
-            }
-            return sum;
+            Closed,
+            Pending,
+            Failed,
         }
     }
 }
