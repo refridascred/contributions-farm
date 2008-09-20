@@ -43,19 +43,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Check that every session account entry stays within the limit.</summary>
-        public static bool CheckSessionAccountRange(long[] samples, long target)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long CountCounterMatches(long[] items, long limit)
         {
-            bool valid = true;
-            foreach (long entry in samples)
+            long count = 0;
+            foreach (long item in items)
             {
-                if (entry > target)
+                if (item >= 1)
                 {
-                    valid = false;
-                    break;
+                    count = (count + 2) + limit;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return valid;
+            return count;
         }
     }
 }
