@@ -19,19 +19,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool CheckReportLimits(long[] values, long offset)
+        /// <summary>Hold a metrics stats.</summary>
+        public sealed class MetricsStats
         {
-            bool flag = true;
-            foreach (long value in values)
-            {
-                if (value < offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public string Limit { get; set; } = "";
+            public long Label { get; set; }
+            public double Level { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Combine metric buffer values into a single score.</summary>
