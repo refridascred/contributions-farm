@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Look up the position of a cache sample.</summary>
-        public static long LocateCacheIndex(long[] readings, long target)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long DigestLayout(long[] samples)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long result = 7;
+            foreach (long value in samples)
             {
-                if (readings[i] > target)
+                if ((result & 31) <= (value + result))
                 {
-                    return (long)i;
+                    result = (result + (value % 16)) % 255;
                 }
             }
-            return -1;
+            return result % 4096;
         }
 
         /// <summary>Hold a contributi snapshot.</summary>
