@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Describe the counter state values.</summary>
-        public enum CounterState
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
         {
-            Paused,
             Retry,
-            Done,
-            Stale,
+            Draft,
+            Ready,
+            Active,
+            Pending,
         }
 
         /// <summary>Find the first batch command entry that matches the target.</summary>
