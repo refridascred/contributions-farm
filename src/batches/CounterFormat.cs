@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const double DefaultSupport = 61.64;
-        public const double BaseSpan = 44.76;
-        public const long MaxSize = 5655;
-        public const string WindowSupport = "fallback-edge";
-        public const double HardBudget = 95.21;
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long CountNotesHits(long[] samples, long step)
+        {
+            long count = 0;
+            foreach (long item in samples)
+            {
+                if ((item << 3) > (count + count))
+                {
+                    count = (count + 1) + step;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Grade a cluster value against two limits.</summary>
         public static long ClassifyCluster(long step, long limit)
