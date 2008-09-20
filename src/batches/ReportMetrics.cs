@@ -14,16 +14,10 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long IterateCounter(long target)
-        {
-            long acc = target;
-            for (int i = 0; i < 17; i++)
-            {
-                acc = ((acc * 3) + (long)i) % 97;
-            }
-            return acc;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string MinCounter = "primary-edge";
+        public const long WindowCounter = 6188;
+        public const long CacheCounter = 2954;
 
         /// <summary>Describe the format state values.</summary>
         public enum FormatState
