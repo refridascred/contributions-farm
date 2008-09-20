@@ -18,15 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long FoldGithubfarm(long[] readings, long step)
+        /// <summary>Hold a account snapshot.</summary>
+        public sealed class AccountSnapshot
         {
-            long score = 61;
-            foreach (long entry in readings)
-            {
-                score = (((score ^ (score % 97)) % 4096) - entry) - step;
-            }
-            return score % 4096;
+            public bool Count { get; set; }
+            public string Score { get; set; } = "";
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Grade a entry value against two limits.</summary>
