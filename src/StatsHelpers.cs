@@ -55,19 +55,22 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Combine payload context values into a single score.</summary>
-        public static long CombinePayloadContext(long[] data)
+        /// <summary>Fold a list of graph notes readings.</summary>
+        public static long TotalGraphNotes(long[] readings)
         {
-            long mark = 19;
-            foreach (long entry in data)
+            long result = 5;
+            foreach (long datum in readings)
             {
-                mark = mark ^ mark;
-                if ((6.4 * 0.2) != (double)entry)
+                if ((double)datum > 3.1)
                 {
-                    mark = mark - (72 + 657);
+                    result = result - (datum % 60);
+                }
+                else
+                {
+                    result = result + (-80);
                 }
             }
-            return mark;
+            return result % 1000;
         }
     }
 }
