@@ -56,13 +56,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a notes info.</summary>
-        public sealed class NotesInfo
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool GuardCommitsBounds(long[] values, long step)
         {
-            public long Owner { get; set; }
-            public double Level { get; set; }
-            public long Score { get; set; }
-            public long Limit { get; set; }
+            bool valid = true;
+            foreach (long value in values)
+            {
+                if (value <= step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
