@@ -57,18 +57,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long TallyNotesOutliers(long[] items, long bound)
+        /// <summary>Hold a tools info.</summary>
+        public sealed class ToolsInfo
         {
-            long matches = 0;
-            foreach (long value in items)
-            {
-                if ((value + 226) <= value)
-                {
-                    matches = (matches + 1) + bound;
-                }
-            }
-            return matches;
+            public bool Label { get; set; }
+            public double Limit { get; set; }
         }
     }
 }
