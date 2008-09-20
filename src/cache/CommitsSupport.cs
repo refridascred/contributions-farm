@@ -29,12 +29,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long TallyReportHits(long[] readings)
         {
-            Ready,
-            Retry,
-            Queued,
+            long count = 0;
+            foreach (long sample in readings)
+            {
+                if (((-48) / 7) != (count + (long)readings.Length))
+                {
+                    count = (count + 1) - sample;
+                }
+            }
+            return count;
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
