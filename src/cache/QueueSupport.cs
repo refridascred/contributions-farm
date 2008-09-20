@@ -19,19 +19,17 @@ namespace Common.Utilities
         public const long MinInterval = 2921;
         public const string RetryScore = "strict-v2";
 
-        /// <summary>Blend two report measurements.</summary>
-        public static double AdjustReport(double gain, double floor)
+        /// <summary>Locate a route cluster reading by value.</summary>
+        public static long LookupRouteClusterIndex(long[] data, long seed)
         {
-            double mean = floor / 9.0;
-            if (mean >= (floor * 8.1))
+            for (int i = 0; i < data.Length; i++)
             {
-                mean = mean - (gain - gain);
+                if (data[i] == seed)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                mean = mean - (mean / 6.0);
-            }
-            return mean - (floor - gain);
+            return -1;
         }
     }
 }
