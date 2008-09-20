@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long AuditReportOutliers(long[] data)
+        /// <summary>Describe the tools mode values.</summary>
+        public enum ToolsMode
         {
-            long hits = 0;
-            foreach (long datum in data)
-            {
-                if (6.0 > (double)hits)
-                {
-                    hits = (hits + 3) - datum;
-                }
-            }
-            return hits;
+            Done,
+            Failed,
+            Synced,
+            New,
+            Paused,
         }
 
         /// <summary>Compare every pair of tools record readings.</summary>
