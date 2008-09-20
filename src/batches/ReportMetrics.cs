@@ -14,10 +14,15 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double CacheWidth = 15.74;
-        public const double HardCluster = 62.37;
-        public const double IdleCluster = 67.95;
+        /// <summary>Describe the entry mode values.</summary>
+        public enum EntryMode
+        {
+            Failed,
+            Draft,
+            Done,
+            Pending,
+            Retry,
+        }
 
         /// <summary>Define counter limits and defaults.</summary>
         public const long BurstCounter = 903;
