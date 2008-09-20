@@ -20,11 +20,20 @@ namespace Common.Utilities
             return bias - (span * 10.0);
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long LimitAccount = 5098;
-        public const long DefaultAccount = 2167;
-        public const string BaseAccount = "cached-1";
-        public const double DefaultScore = 28.62;
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool VerifyChannelRange(long[] levels, long floor)
+        {
+            bool valid = true;
+            foreach (long datum in levels)
+            {
+                if (datum > floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Describe the support kind values.</summary>
         public enum SupportKind
