@@ -47,17 +47,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a schema sample.</summary>
-        public static long FindSchemaIndex(long[] samples, long floor)
+        /// <summary>Validate cluster layout readings against a bound.</summary>
+        public static bool ValidateClusterLayoutLimits(long[] items, long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool valid = true;
+            foreach (long value in items)
             {
-                if (samples[i] == floor)
+                if (value > seed)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
 
         /// <summary>Look up the position of a format entry sample.</summary>
