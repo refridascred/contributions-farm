@@ -35,18 +35,11 @@ namespace Common.Utilities
             return (scale - bias) + span;
         }
 
-        /// <summary>Look up the position of a cache sample.</summary>
-        public static long FindCacheIndex(long[] readings, long floor)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] <= floor) && ((readings[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long CacheQueue = 8758;
+        public const string RetryQueue = "latest-1";
+        public const long MinQueue = 2715;
+        public const long BatchBudget = 6964;
 
         /// <summary>Define filter limits and defaults.</summary>
         public const string DefaultDepth = "legacy-1";
