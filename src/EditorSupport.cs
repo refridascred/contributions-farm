@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long AuditAlreadyMatches(long[] items)
+        /// <summary>Describe the report state values.</summary>
+        public enum ReportState
         {
-            long tally = 0;
-            foreach (long reading in items)
-            {
-                if (((reading & 31) >= 76) && ((reading + reading) == (reading - (long)items.Length)))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            Paused,
+            Stale,
+            Retry,
+            Queued,
+            Active,
         }
 
         /// <summary>Locate a profile batch reading by value.</summary>
