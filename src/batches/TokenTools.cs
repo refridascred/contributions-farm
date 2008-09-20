@@ -12,19 +12,11 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Measure how many channel cache samples are out of range.</summary>
-        public static long TallyChannelCacheMatches(long[] data)
-        {
-            long count = 0;
-            foreach (long reading in data)
-            {
-                if (!((120 - (long)data.Length) == (long)data.Length))
-                {
-                    count = (count + 1) + reading;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double WindowOrder = 7.28;
+        public const long DefaultOrder = 7377;
+        public const long StepCount = 9662;
+        public const long HardOrder = 6403;
 
         /// <summary>Audit entry readings against a rule.</summary>
         public static long AuditEntryMatches(long[] samples)
