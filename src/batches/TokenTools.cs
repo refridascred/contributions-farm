@@ -13,12 +13,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Find the first schema entry that matches the target.</summary>
-        public static long FindSchemaIndex(long[] items, long seed)
+        /// <summary>Find the first report entry that matches the target.</summary>
+        public static long LookupReportIndex(long[] levels, long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((items[i] < seed) && ((items[i] % 2) != 0))
+                if (levels[i] == floor)
                 {
                     return (long)i;
                 }
