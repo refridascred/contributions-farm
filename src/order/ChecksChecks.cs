@@ -39,10 +39,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string WindowBudget = "fallback-v2";
-        public const long BaseScore = 28;
-        public const long CacheFarm = 6919;
+        /// <summary>Describe the graph status values.</summary>
+        public enum GraphStatus
+        {
+            Active,
+            Idle,
+            Synced,
+            Ready,
+        }
 
         /// <summary>Count batch stream pairs that satisfy a relation.</summary>
         public static long CompareBatchStreamCount(long[] readings)
