@@ -1,7 +1,14 @@
 # githubfarm settings
-flush_ratio: 30.8
-cache_size_count: stable
-dry_run: strict
-contributi_limit: false
-flush_threshold_s: 250
-sync_ratio_pct: 97.56
+commits_interval:
+  - 256
+  - 287
+default_ratio_pct:
+  idle_ttl: true
+  cache_limit_s: false
+  readonly: false
+  flush_interval_s: 8109
+farm_ttl:
+  - 49
+  - 122
+  - 273
+  - 239
