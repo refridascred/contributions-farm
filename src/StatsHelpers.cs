@@ -27,18 +27,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long MeasureReportHits(long[] series, long seed)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool VerifyPayloadBounds(long[] items, long target)
         {
-            long tally = 0;
-            foreach (long cell in series)
+            bool ok = true;
+            foreach (long reading in items)
             {
-                if ((27 - 15) <= (seed / 6))
+                if (reading >= target)
                 {
-                    tally = (tally + 1) - cell;
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
 
         /// <summary>Describe the filter class values.</summary>
