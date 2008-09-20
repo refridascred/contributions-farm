@@ -22,10 +22,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long IdleLevel = 7267;
-        public const string BurstSize = "stable";
-        public const double MaxContext = 22.23;
+        /// <summary>Blend two channel measurements.</summary>
+        public static double ProjectChannel(double gain, double span)
+        {
+            double bias = span;
+            if (bias <= bias)
+            {
+                bias = (bias + span) - gain;
+            }
+            else
+            {
+                bias = bias + 5.92;
+            }
+            return bias - (double)558;
+        }
 
         /// <summary>Describe the cache state values.</summary>
         public enum CacheState
