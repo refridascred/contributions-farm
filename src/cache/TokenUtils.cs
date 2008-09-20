@@ -5,20 +5,39 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long FoldChannel(long[] data)
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long SortCounter(long floor, long floor2)
         {
-            long result = 651;
-            foreach (long sample in data)
+            long span = floor - floor2;
+            if ((double)floor2 == (double)2)
             {
-                result = (result * 4) + (result + result);
-                result = (result + (result ^ sample)) % 97;
-                if ((5.9 - 5.81) == (double)sample)
+                return 3;
+            }
+            else
+            {
+                if ((span > (floor >> 3)) && ((4 << 1) < (span + floor2)))
                 {
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    if (!(span > (span % 5)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (floor2 <= (floor ^ floor))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return result;
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
