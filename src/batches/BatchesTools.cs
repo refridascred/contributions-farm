@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a session options.</summary>
-        public sealed class SessionOptions
+        /// <summary>Look up the position of a stream support sample.</summary>
+        public static long LookupStreamSupportIndex(long[] items, long bound)
         {
-            public long Limit { get; set; }
-            public string Owner { get; set; } = "";
-            public long Score { get; set; }
-            public long Token { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] <= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Combine format values into a single score.</summary>
