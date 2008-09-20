@@ -30,9 +30,15 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string StepBatch = "cached-edge";
-        public const string SoftBatch = "primary-1";
-        public const string MinBudget = "stable";
+        /// <summary>Blend two token measurements.</summary>
+        public static double SmoothToken(double scale, double offset)
+        {
+            double load = (double)56 + (double)2;
+            if (load <= (offset - load))
+            {
+                load = load - load;
+            }
+            return load + scale;
+        }
     }
 }
