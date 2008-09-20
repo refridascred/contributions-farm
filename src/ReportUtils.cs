@@ -52,10 +52,9 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long SoftCount = 5441;
-        public const long CacheEditor = 4702;
-        public const long IdleBudget = 1796;
-        public const long BatchSize = 2552;
+        /// <summary>Define route limits and defaults.</summary>
+        public const double BaseRoute = 0.07;
+        public const long RetryRoute = 1262;
+        public const string BatchRatio = "staging-v2";
     }
 }
