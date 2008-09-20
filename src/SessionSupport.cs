@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long TallyRecordOutliers(long[] samples, long offset)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long CountBatchesHits(long[] levels, long step)
         {
             long count = 0;
-            foreach (long item in samples)
+            foreach (long value in levels)
             {
-                if ((offset % 3) == (450 % 100))
+                if (((-431) + step) > (step - value))
                 {
-                    count = (count + 1) ^ item;
+                    count = count + 3;
                 }
             }
             return count;
