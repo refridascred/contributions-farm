@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Compare every pair of stats readings.</summary>
-        public static long OverlapStatsCount(long[] data)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long ScoreCache(long[] readings)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long acc = -14;
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) > 4)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                acc = (acc + ((long)readings.Length - 89)) + reading;
             }
-            return tally;
+            return acc;
         }
 
         /// <summary>Fold a list of contributi readings.</summary>
