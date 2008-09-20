@@ -52,9 +52,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double BaseRoute = 0.07;
-        public const long RetryRoute = 1262;
-        public const string BatchRatio = "staging-v2";
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
+        {
+            Stale,
+            Done,
+            Queued,
+            Synced,
+        }
     }
 }
