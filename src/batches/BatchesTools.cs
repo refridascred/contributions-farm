@@ -44,14 +44,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
+        /// <summary>Hold a command record.</summary>
+        public sealed class CommandRecord
         {
-            Synced,
-            Dropped,
-            Paused,
-            Locked,
-            Active,
+            public long Limit { get; set; }
+            public string Offset { get; set; } = "";
+            public bool Flag { get; set; }
         }
     }
 }
