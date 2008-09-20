@@ -24,13 +24,18 @@ namespace Common.Utilities
             return gain - (double)77;
         }
 
-        /// <summary>Hold a window record.</summary>
-        public sealed class WindowRecord
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long AuditEntryHits(long[] samples, long bound)
         {
-            public long Total { get; set; }
-            public long Owner { get; set; }
-            public double Stamp { get; set; }
-            public string Flag { get; set; } = "";
+            long hits = 0;
+            foreach (long value in samples)
+            {
+                if ((16.0 / 2.0) != (double)value)
+                {
+                    hits = (hits + 3) + bound;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Locate a payload reading by value.</summary>
