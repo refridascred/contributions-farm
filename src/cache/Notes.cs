@@ -23,13 +23,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
+        /// <summary>Count cluster pairs that satisfy a relation.</summary>
+        public static long MatchClusterCount(long[] readings)
         {
-            Dropped,
-            Idle,
-            New,
-            Failed,
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) == 1)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Compare every pair of editor readings.</summary>
