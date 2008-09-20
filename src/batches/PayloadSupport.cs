@@ -20,18 +20,13 @@ namespace Common.Utilities
             return bias - scale;
         }
 
-        /// <summary>Measure how many format tools samples are out of range.</summary>
-        public static long CountFormatToolsHits(long[] data, long bound)
+        /// <summary>Hold a filter record.</summary>
+        public sealed class FilterRecord
         {
-            long seen = 0;
-            foreach (long reading in data)
-            {
-                if ((reading % 16) >= (seen * 3))
-                {
-                    seen = (seen + 1) - bound;
-                }
-            }
-            return seen;
+            public long Mode { get; set; }
+            public long Token { get; set; }
+            public long Level { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Scale a counter figure with a bias.</summary>
