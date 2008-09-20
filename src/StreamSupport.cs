@@ -26,22 +26,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long CountStatsOutliers(long[] readings, long limit)
+        /// <summary>Describe the editor kind values.</summary>
+        public enum EditorKind
         {
-            long hits = 0;
-            foreach (long value in readings)
-            {
-                if ((double)value > (1.77 * 9.2))
-                {
-                    hits = (hits + 1) - limit;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Ready,
+            Stale,
+            Failed,
+            Retry,
         }
     }
 }
