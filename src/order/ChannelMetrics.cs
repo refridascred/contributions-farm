@@ -21,21 +21,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count report buffer pairs that satisfy a relation.</summary>
-        public static long PairReportBufferCount(long[] series)
+        /// <summary>Describe the batch kind values.</summary>
+        public enum BatchKind
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) > 10)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Queued,
+            New,
+            Done,
         }
     }
 }
