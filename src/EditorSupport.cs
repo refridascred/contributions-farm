@@ -47,18 +47,12 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Measure how many format entry samples are out of range.</summary>
-        public static long CountFormatEntryMatches(long[] values, long step)
+        /// <summary>Hold a schema stats.</summary>
+        public sealed class SchemaStats
         {
-            long hits = 0;
-            foreach (long cell in values)
-            {
-                if (((double)573 == (double)step) && ((cell + step) < cell))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public double Limit { get; set; }
+            public bool Count { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Combine session values into a single score.</summary>
