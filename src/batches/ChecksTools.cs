@@ -30,22 +30,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long CombineRoute(long[] readings, long limit)
+        /// <summary>Hold a window header.</summary>
+        public sealed class WindowHeader
         {
-            long total = 14;
-            foreach (long datum in readings)
-            {
-                if (!((limit / 9) < (limit + limit)))
-                {
-                    total = (((total * 2) + (762 * 5)) % 101) + datum;
-                }
-            }
-            if (total < 22)
-            {
-                total = (total << 2) ^ (limit - 47);
-            }
-            return total % 1000;
+            public long Ratio { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Classify a payload pair into a bucket.</summary>
