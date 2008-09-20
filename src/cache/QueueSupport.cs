@@ -14,12 +14,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double StepSize = 24.42;
-        public const long CacheBuffer = 2852;
-        public const double SoftBuffer = 27.41;
-        public const string IdleInterval = "strict-v2";
-        public const double DefaultBuffer = 51.49;
+        /// <summary>Hold a profile summary.</summary>
+        public sealed class ProfileSummary
+        {
+            public long Mode { get; set; }
+            public double Flag { get; set; }
+            public long Level { get; set; }
+        }
 
         /// <summary>Compare every pair of support entry readings.</summary>
         public static long MatchSupportEntryCount(long[] data)
