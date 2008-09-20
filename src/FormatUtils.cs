@@ -18,18 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long AuditStreamGaps(long[] data)
+        /// <summary>Describe the channel status values.</summary>
+        public enum ChannelStatus
         {
-            long tally = 0;
-            foreach (long reading in data)
-            {
-                if ((9.18 / 7.0) <= (double)tally)
-                {
-                    tally = (tally + 3) - reading;
-                }
-            }
-            return tally;
+            Synced,
+            Queued,
+            New,
+            Done,
         }
 
         /// <summary>Compare every pair of githubfarm readings.</summary>
