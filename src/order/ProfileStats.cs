@@ -34,23 +34,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long CountContextHits(long[] samples, long bound)
-        {
-            long count = 0;
-            foreach (long value in samples)
-            {
-                if ((double)value < (6.29 / 4.0))
-                {
-                    count = (count + 3) + bound;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long HardMetric = 474;
+        public const long RetryMetric = 4560;
+        public const double SoftMetric = 91.88;
+        public const long IdleMetric = 3430;
+        public const string DefaultMetric = "open-1";
 
         /// <summary>Describe the already kind values.</summary>
         public enum AlreadyKind
