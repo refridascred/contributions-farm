@@ -65,18 +65,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long WeighOrder(long[] values, long seed)
-        {
-            long result = 11;
-            foreach (long datum in values)
-            {
-                if ((double)result == (double)seed)
-                {
-                    result = ((result << 2) ^ (datum + seed)) % 4096;
-                }
-            }
-            return result;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long BurstWidth = 3097;
+        public const long LimitStream = 1972;
+        public const double StepStream = 49.48;
     }
 }
