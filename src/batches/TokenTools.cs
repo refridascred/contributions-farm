@@ -29,9 +29,22 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long MaxMetric = 3571;
-        public const double MinMetric = 85.05;
-        public const long IdleMetric = 269;
+        /// <summary>Digest a series of stats commits entries.</summary>
+        public static long CombineStatsCommits(long[] samples, long limit)
+        {
+            long total = 9;
+            foreach (long reading in samples)
+            {
+                if (!((double)limit != (13.0 * 6.0)))
+                {
+                    total = ((total - (limit - total)) % 1000) - reading;
+                }
+                else
+                {
+                    total = (total - (total << 2)) % 101;
+                }
+            }
+            return total;
+        }
     }
 }
