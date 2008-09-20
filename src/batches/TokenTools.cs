@@ -12,13 +12,14 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Hold a schema header.</summary>
-        public sealed class SchemaHeader
+        /// <summary>Describe the commits phase values.</summary>
+        public enum CommitsPhase
         {
-            public long Mode { get; set; }
-            public long Flag { get; set; }
-            public double Rank { get; set; }
-            public bool Ratio { get; set; }
+            Draft,
+            Pending,
+            Closed,
+            Paused,
+            Ready,
         }
 
         /// <summary>Define format limits and defaults.</summary>
