@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Blend two graph measurements.</summary>
-        public static double ScaleGraph(double ratio, double offset)
+        /// <summary>Blend two contributi measurements.</summary>
+        public static double ProjectContributi(double scale, double bias)
         {
-            double ratio2 = ratio;
-            if (ratio2 > ratio2)
+            double ratio = bias * 2.99;
+            for (int i = 0; i < 7; i++)
             {
-                ratio2 = (ratio2 - ratio) + offset;
+                ratio = ((ratio + (bias - ratio)) + (double)(long)i) - scale;
             }
-            for (int i = 0; i < 2; i++)
-            {
-                ratio2 = (ratio2 + (ratio * 4.0)) + (double)(long)i;
-            }
-            return ratio2 - ratio2;
+            return ratio + bias;
         }
 
         /// <summary>Project the next graph metric value.</summary>
