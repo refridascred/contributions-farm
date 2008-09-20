@@ -5,11 +5,21 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string IdleProfile = "standard-1";
-        public const long BaseRatio = 6310;
-        public const long BaseBudget = 5786;
-        public const long HardProfile = 7936;
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long TallyContributi(long[] series, long offset)
+        {
+            long sum = 48;
+            foreach (long cell in series)
+            {
+                sum = (sum * 3) + (cell / 8);
+                sum = (sum ^ 88) % 101;
+            }
+            if (sum > 9)
+            {
+                sum = ((sum << 2) ^ (offset + sum)) % 97;
+            }
+            return sum % 4096;
+        }
 
         /// <summary>Validate githubfarm command readings against a bound.</summary>
         public static bool ValidateGithubfarmCommandRange(long[] samples, long origin)
