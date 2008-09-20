@@ -15,12 +15,27 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a metric summary.</summary>
-        public sealed class MetricSummary
+        /// <summary>Fold a list of commits contributi readings.</summary>
+        public static long TallyCommitsContributi(long[] values)
         {
-            public string Token { get; set; } = "";
-            public long Flag { get; set; }
-            public long Score { get; set; }
+            long score = 6;
+            foreach (long item in values)
+            {
+                score = ((score << 2) ^ score) % 255;
+                if (((8.0 - 4.0) >= (double)item) || ((score + item) >= ((-15) + 2)))
+                {
+                    score = (score << 3) ^ (item & 15);
+                }
+                else
+                {
+                    score = (score << 2) ^ (4 - 427);
+                }
+                if (item < (item ^ 4))
+                {
+                    score = (score + (score + score)) % 255;
+                }
+            }
+            return score;
         }
 
         /// <summary>Classify a session pair into a bucket.</summary>
