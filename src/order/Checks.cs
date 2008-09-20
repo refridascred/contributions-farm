@@ -35,23 +35,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate context token samples.</summary>
-        public static long DigestContextToken(long[] readings, long seed)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long TallyCounterOutliers(long[] levels, long seed)
         {
-            long anchor = 973;
-            foreach (long datum in readings)
+            long count = 0;
+            foreach (long value in levels)
             {
-                for (int i = 0; i < 2; i++)
+                if ((seed + seed) < value)
                 {
-                    anchor = (((anchor * 5) + (18 / 4)) % 255) - (long)i;
+                    count = count + 1;
                 }
-                anchor = (anchor ^ (anchor / 9)) % 97;
-                if ((datum + seed) >= (anchor - (-7)))
+                else
                 {
-                    break;
+                    count = count - 1;
                 }
             }
-            return anchor % 97;
+            return count;
         }
 
         /// <summary>Validate commits readings against a bound.</summary>
