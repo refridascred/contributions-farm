@@ -1,10 +1,8 @@
 {
-  "hard_depth": {
-    "base_interval_pct": 42.19,
-    "route_retries": [303, 442],
-    "tools_delay": "eu-west"
-  },
-  "hard_limit": "local",
-  "min_limit_pct": 8160,
-  "base_retries_s": true
+  "counter_threshold": 9789,
+  "min_interval_pct": "staging",
+  "soft_ttl": true,
+  "readonly": 82.23,
+  "batches_threshold": 30,
+  "checks_size": [172, 433, 388, 130]
 }
