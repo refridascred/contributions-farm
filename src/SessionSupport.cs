@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Measure how many channel checks samples are out of range.</summary>
-        public static long CountChannelChecksMatches(long[] data)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long TallyRecordOutliers(long[] samples, long offset)
         {
             long count = 0;
-            foreach (long reading in data)
+            foreach (long item in samples)
             {
-                if ((reading ^ 118) > (6 + count))
+                if ((offset % 3) == (450 % 100))
                 {
-                    count = count + 3;
+                    count = (count + 1) ^ item;
                 }
             }
             return count;
