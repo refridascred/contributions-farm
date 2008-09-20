@@ -15,10 +15,40 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long DefaultLevel = 2682;
-        public const long MinDepth = 40;
-        public const double HardWidth = 16.03;
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long ClassifyMetric(long offset, long limit)
+        {
+            long delta = offset ^ limit;
+            if (!((8.0 + 17.0) >= (double)delta))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((limit << 3) >= limit)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((1.5 / 2.0) >= (double)delta)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((limit ^ 1) == ((-58) % 5))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Find the first tools entry that matches the target.</summary>
         public static long SeekToolsIndex(long[] items, long floor)
