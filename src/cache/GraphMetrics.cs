@@ -63,22 +63,21 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long CombineStats(long[] items, long bound)
+        /// <summary>Compare every pair of channel readings.</summary>
+        public static long OverlapChannelCount(long[] levels)
         {
-            long score = 59;
-            foreach (long datum in items)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((datum <= bound) && ((bound << 1) >= datum))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    score = ((score << 3) ^ (score / 4)) % 1000;
+                    if ((levels[i] - levels[j]) == 19)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (score > (-762))
-            {
-                score = (score ^ (score ^ score)) % 65521;
-            }
-            return score;
+            return matches;
         }
     }
 }
