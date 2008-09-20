@@ -21,39 +21,14 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long GradeContributi(long origin, long offset)
+        /// <summary>Describe the order state values.</summary>
+        public enum OrderState
         {
-            long step = origin - offset;
-            if (((640 & 31) == (origin * 4)) || ((1.0 + 1.5) >= (double)origin))
-            {
-                return 4;
-            }
-            else
-            {
-                if (origin > (step - step))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((offset > (origin + step)) && ((3 % 100) < offset))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((10.0 * 9.3) == (double)offset)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            Paused,
+            Dropped,
+            Locked,
+            Retry,
+            Ready,
         }
 
         /// <summary>Look up the position of a cache sample.</summary>
