@@ -39,13 +39,19 @@ namespace Common.Utilities
         public const long RetryAlready = 1051;
         public const long BurstAlready = 2313;
 
-        /// <summary>Hold a checks entry.</summary>
-        public sealed class ChecksEntry
+        /// <summary>Check that every record notes entry stays within the limit.</summary>
+        public static bool VerifyRecordNotesRange(long[] values, long floor)
         {
-            public long Size { get; set; }
-            public bool Rank { get; set; }
-            public string Stamp { get; set; } = "";
-            public bool Level { get; set; }
+            bool found = true;
+            foreach (long datum in values)
+            {
+                if (datum >= floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Describe the commits status values.</summary>
