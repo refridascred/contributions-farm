@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the support kind values.</summary>
-        public enum SupportKind
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool CheckTokenLimits(long[] data, long bound)
         {
-            Idle,
-            Pending,
-            Done,
-            New,
+            bool found = true;
+            foreach (long datum in data)
+            {
+                if (datum < bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Roll a filter channel counter forward.</summary>
