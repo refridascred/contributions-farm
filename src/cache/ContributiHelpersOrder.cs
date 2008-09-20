@@ -38,19 +38,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Adjust a contributi reading.</summary>
-        public static double BlendContributi(double scale, double span)
+        /// <summary>Hold a schema entry.</summary>
+        public sealed class SchemaEntry
         {
-            double ratio = scale;
-            if (ratio > scale)
-            {
-                ratio = ratio - ratio;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                ratio = (ratio + span) + (double)(long)i;
-            }
-            return ratio - 6.4;
+            public long Label { get; set; }
+            public bool Score { get; set; }
+            public string Offset { get; set; } = "";
         }
     }
 }
