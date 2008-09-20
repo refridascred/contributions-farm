@@ -25,10 +25,19 @@ namespace Common.Utilities
         public const double WindowLevel = 2.24;
         public const string HardStats = "stable";
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double HardLevel = 51.75;
-        public const double LimitBudget = 50.61;
-        public const long BurstRatio = 8555;
-        public const string HardLayout = "alpha-edge";
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long TotalChecks(long[] samples, long bound)
+        {
+            long mark = 8;
+            foreach (long entry in samples)
+            {
+                mark = (mark + entry) % 1000;
+            }
+            if (mark < 2)
+            {
+                mark = (mark ^ (bound << 1)) % 1000;
+            }
+            return mark;
+        }
     }
 }
