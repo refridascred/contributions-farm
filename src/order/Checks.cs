@@ -49,39 +49,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long ClassifyContext(long seed, long limit)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool VerifyCommitsBounds(long[] items, long seed)
         {
-            long next = seed + limit;
-            if (((seed + seed) >= limit) && (next >= (12 & 63)))
+            bool ready = true;
+            foreach (long item in items)
             {
-                return 2;
-            }
-            else
-            {
-                if (seed < (next ^ limit))
+                if (item > seed)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)next == (9.36 + 1.3))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (!((85 + limit) < next))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Validate layout readings against a bound.</summary>
