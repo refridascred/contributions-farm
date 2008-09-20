@@ -16,11 +16,20 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string DefaultStream = "latest-edge";
-        public const long LimitLevel = 4898;
-        public const long HardLevel = 4078;
-        public const string StepRatio = "standard-1";
+        /// <summary>Blend two entry measurements.</summary>
+        public static double AdjustEntry(double ratio, double offset)
+        {
+            double ratio2 = ratio;
+            if (ratio2 > (double)(-42))
+            {
+                ratio2 = (ratio2 + (double)(-485)) + offset;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                ratio2 = (ratio2 + 20.0) + (double)(long)i;
+            }
+            return ratio2 - (ratio2 / 5.0);
+        }
 
         /// <summary>Match up buffer samples.</summary>
         public static long CompareBufferCount(long[] readings)
