@@ -20,25 +20,31 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Roll a filter channel counter forward.</summary>
-        public static long DeriveFilterChannel(long seed)
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long BucketNotes(long floor, long step)
         {
-            long mix = seed;
-            for (int i = 0; i < 18; i++)
+            if ((double)step != (2.5 + 16.0))
             {
-                if ((seed / 6) == (23 + 9))
-                {
-                    mix = mix - ((long)i % 2);
-                }
-                mix = (mix - (seed / 6)) % 97;
-                if (((mix << 3) >= (mix >> 1)) || (9.15 <= (double)seed))
-                {
-                    mix = (mix ^ ((long)i + (long)i)) % 101;
-                    break;
-                }
-                mix = ((mix * 3) + (long)i) % 1000;
+                return 4;
             }
-            return mix;
+            else
+            {
+                if ((step + step) < (step - floor))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((step >> 1) == (step - step)) && ((step % 5) >= floor))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Fold a list of record readings.</summary>
