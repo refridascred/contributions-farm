@@ -55,14 +55,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the route state values.</summary>
-        public enum RouteState
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long MeasureContributiGaps(long[] items, long offset)
         {
-            Closed,
-            Dropped,
-            Ready,
-            Failed,
-            New,
+            long hits = 0;
+            foreach (long entry in items)
+            {
+                if ((entry << 1) != (hits % 97))
+                {
+                    hits = (hits + 2) - offset;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the batches phase values.</summary>
