@@ -1,12 +1,6 @@
 {
-  "compress": 14,
-  "cluster_depth": 100,
-  "profile_depth": {
-    "audit": 5323,
-    "retry_size": 30,
-    "dry_run": "edge"
-  },
-  "commits_threshold": "eu-west",
-  "poll_capacity_ms": 9145,
-  "soft_retries": "local"
+  "soft_retries_pct": "legacy",
+  "burst_threshold_count": "standard",
+  "verbose": [103, 191],
+  "compress": 6176
 }
