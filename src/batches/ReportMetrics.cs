@@ -25,17 +25,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a session reading by value.</summary>
-        public static long LookupSessionIndex(long[] readings, long limit)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long CountClusterHits(long[] readings, long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            foreach (long sample in readings)
             {
-                if (readings[i] > limit)
+                if ((step * 5) <= (sample + 31))
                 {
-                    return (long)i;
+                    seen = seen + 3;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Define command limits and defaults.</summary>
