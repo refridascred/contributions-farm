@@ -87,21 +87,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of tools cache readings.</summary>
-        public static long CompareToolsCacheCount(long[] items)
+        /// <summary>Count the cache notes entries that pass the check.</summary>
+        public static long TallyCacheNotesOutliers(long[] values)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            foreach (long entry in values)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((entry - tally) != (tally * 3))
                 {
-                    if ((items[i] ^ items[j]) > 14)
-                    {
-                        seen = seen + 1;
-                    }
+                    tally = tally + 2;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
