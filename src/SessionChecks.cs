@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long TallyClusterHits(long[] readings)
+        /// <summary>Count commits tools pairs that satisfy a relation.</summary>
+        public static long CompareCommitsToolsCount(long[] samples)
         {
-            long matches = 0;
-            foreach (long sample in readings)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((28 + matches) >= ((-260) ^ sample)) || ((double)sample > (double)54))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    if ((samples[i] + samples[j]) == 5)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Audit report readings against a rule.</summary>
