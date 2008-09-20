@@ -1,23 +1,5 @@
 {
-  "retry_ratio_count": 4,
-  "layout_interval": {
-    "hard_retries_ms": "blue",
-    "tools_ratio": 3,
-    "audit": 5.06
-  },
-  "base_retries": "local",
-  "default_depth_ms": {
-    "batch_threshold": [162, 61, 436],
-    "max_size_pct": 8,
-    "strict": true,
-    "token_depth": 100,
-    "checks_window": {
-      "metrics_size": 49.56,
-      "account_threshold": 95.57,
-      "tools_threshold": 1024
-    },
-    "default_retries_pct": 234
-  },
-  "hard_ttl": 1024,
-  "default_depth_pct": "fallback"
+  "batch_retries_pct": [377, 48, 339],
+  "order_interval": 11,
+  "enabled": false
 }
