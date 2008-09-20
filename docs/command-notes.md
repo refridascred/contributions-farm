@@ -1,15 +1,11 @@
 # Command notes
 
-Run the route check before changing any report limits.
-Each filter is validated before it reaches the farm queue.
-
-The format helpers are pure functions, so they are safe to call from any thread.
-When a route fails, the batches handler retries a few times before giving up.
-Use contributi settings to tune how often metrics data is refreshed.
+The account module keeps context values in sync with the account cache.
+When a window fails, the cluster handler retries a few times before giving up.
 
 ## Guidelines
 
-- Document new batch fields
-- Prefer support defaults
-- Validate schema input early
-- Keep window values small
+- Review report limits each release
+- Prefer filter defaults
+- Validate already input early
+- Document new schema fields
