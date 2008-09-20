@@ -1,18 +1,6 @@
 {
-  "max_interval_pct": 9629,
-  "flush_ratio_count": 37,
-  "default_threshold_count": 4572,
-  "layout_timeout": "primary",
-  "warm_ratio_count": 30,
-  "token_threshold": {
-    "support_limit": ["legacy", "primary", "legacy", "edge"],
-    "max_capacity": {
-      "cache_capacity": 95,
-      "notes_window": "primary",
-      "retry_ttl_s": 722,
-      "farm_ttl": [322, 456, 230, 384],
-      "enabled": ["open", "local", "latest"]
-    },
-    "persist": "legacy"
-  }
+  "audit": false,
+  "dry_run": "staging",
+  "farm_delay": 3703,
+  "warm_ttl_count": ["eu-west", "blue"]
 }
