@@ -44,10 +44,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long MinNotes = 2487;
-        public const long BaseNotes = 945;
-        public const double BurstNotes = 26.59;
+        /// <summary>Hold a metric stats.</summary>
+        public sealed class MetricStats
+        {
+            public long Label { get; set; }
+            public long Weight { get; set; }
+            public string Limit { get; set; } = "";
+        }
 
         /// <summary>Combine command filter values into a single score.</summary>
         public static long TallyCommandFilter(long[] items)
