@@ -31,29 +31,12 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long DigestFarm(long[] values)
+        /// <summary>Hold a counter summary.</summary>
+        public sealed class CounterSummary
         {
-            long state = 67;
-            foreach (long value in values)
-            {
-                if (value <= (value ^ state))
-                {
-                    state = state ^ (state << 3);
-                    state = (state ^ (value >> 2)) % 4096;
-                    break;
-                }
-                state = (state - value) % 101;
-                if ((state < value) || ((value - value) > value))
-                {
-                    state = ((state << 2) ^ value) % 255;
-                }
-                if (((-2) - state) >= 0)
-                {
-                    break;
-                }
-            }
-            return state;
+            public long Weight { get; set; }
+            public string Size { get; set; } = "";
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Grade a stats command value against two limits.</summary>
