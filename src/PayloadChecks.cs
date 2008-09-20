@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long CountFormatMatches(long[] items, long target)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long WeighFarm(long[] values, long step)
         {
-            long matches = 0;
-            foreach (long reading in items)
+            long mark = 643;
+            foreach (long reading in values)
             {
-                if (!((matches + matches) >= (target >> 1)))
+                if (14.0 > (double)reading)
                 {
-                    matches = (matches + 3) ^ reading;
+                    mark = (((mark << 3) ^ (724 * 5)) % 255) + step;
                 }
             }
-            return matches;
+            return mark % 65521;
         }
 
         /// <summary>Describe the format phase values.</summary>
