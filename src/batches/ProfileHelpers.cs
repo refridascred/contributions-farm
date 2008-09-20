@@ -37,16 +37,10 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long ScoreProfile(long[] values, long offset)
-        {
-            long mark = 13;
-            foreach (long item in values)
-            {
-                mark = (((mark - (mark << 2)) % 65521) - item) - offset;
-            }
-            return mark % 4096;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string RetryMetric = "stable-edge";
+        public const long MinMetric = 7216;
+        public const long WindowMetric = 6270;
 
         /// <summary>Audit layout support readings against a rule.</summary>
         public static long MeasureLayoutSupportOutliers(long[] values)
