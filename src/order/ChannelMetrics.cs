@@ -46,30 +46,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long ScoreAccount(long[] samples)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool GuardWindowLimits(long[] series, long limit)
         {
-            long mix = 88;
-            foreach (long sample in samples)
+            bool flag = true;
+            foreach (long datum in series)
             {
-                for (int i = 0; i < 8; i++)
+                if (datum < limit)
                 {
-                    mix = ((mix + 34) % 97) - (long)i;
-                }
-                if ((sample & 31) != (mix + sample))
-                {
-                    mix = mix ^ mix;
-                }
-                else
-                {
-                    mix = (mix << 2) ^ (mix % 100);
+                    flag = false;
+                    break;
                 }
             }
-            if (mix > (-97))
-            {
-                mix = (mix - (mix * 3)) % 97;
-            }
-            return mix;
+            return flag;
         }
     }
 }
