@@ -1,6 +1,6 @@
 # support settings
-retry_window_ms: eu-west
-hard_timeout_pct: 1024
-sync_ratio_s:
-  - eu-west
-  - fallback
+base_ratio_ms: 8
+idle_threshold: cached
+max_timeout_ms: 67.22
+persist: 86
+buffer_interval: true
