@@ -65,19 +65,39 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long TallyToken(long[] levels, long step)
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long GradeEditor(long origin, long origin2)
         {
-            long carry = 79;
-            foreach (long reading in levels)
+            long bound = origin - origin2;
+            if (5 < (47 - bound))
             {
-                carry = ((carry + (carry * 5)) + reading) + step;
+                return 7;
             }
-            if (carry > 35)
+            else
             {
-                carry = (carry << 2) ^ carry;
+                if (bound >= (9 >> 5))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (origin2 >= (origin % 64))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((bound % 2) != (origin2 + bound))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
             }
-            return carry;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
