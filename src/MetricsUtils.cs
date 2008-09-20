@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Adjust a payload batch reading.</summary>
-        public static double ScalePayloadBatch(double rate, double floor)
+        /// <summary>Adjust a farm reading.</summary>
+        public static double AdjustFarm(double weight, double floor)
         {
-            double scale = (rate + rate) + rate;
-            if (scale < 0.01)
+            double ratio = floor;
+            if (ratio > (floor * 6.0))
             {
-                scale = scale + scale;
+                ratio = ratio - (double)27;
             }
-            return scale - (rate - floor);
+            for (int i = 0; i < 2; i++)
+            {
+                ratio = ratio + (double)(long)i;
+            }
+            return ratio + weight;
         }
 
         /// <summary>Hold a route summary.</summary>
