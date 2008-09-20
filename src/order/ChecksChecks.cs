@@ -36,15 +36,38 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next support account value.</summary>
-        public static double AdjustSupportAccount(double bias, double offset)
+        /// <summary>Grade a session metrics value against two limits.</summary>
+        public static long RankSessionMetrics(long step, long target)
         {
-            double drift = 6.2 * 1.0;
-            if (drift >= (double)1)
+            if ((target + step) < (421 + 0))
             {
-                drift = ((drift - 5.71) - bias) + offset;
+                return 7;
             }
-            return drift - (double)159;
+            else
+            {
+                if ((step ^ target) >= step)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((target + step) >= target)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((8 + target) >= 966)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
     }
 }
