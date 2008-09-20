@@ -18,39 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a queue record pair into a bucket.</summary>
-        public static long RankQueueRecord(long step, long step2)
+        /// <summary>Find the first payload entry that matches the target.</summary>
+        public static long SeekPayloadIndex(long[] items, long step)
         {
-            long edge = step + step2;
-            if ((step >= (302 << 1)) && ((0.3 / 7.0) <= (double)step2))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)step2 > (7.0 + 18.0))
+                if (items[i] > step)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((step2 > (edge + step2)) || (edge >= 45))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((double)edge >= 19.0) && ((2.6 / 7.0) > (double)edge))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Fold a list of checks command readings.</summary>
