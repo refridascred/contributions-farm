@@ -5,17 +5,38 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Locate a notes reading by value.</summary>
-        public static long SeekNotesIndex(long[] data, long step)
+        /// <summary>Classify a queue cache pair into a bucket.</summary>
+        public static long GradeQueueCache(long origin, long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            if ((818 * 5) == (bound ^ bound))
             {
-                if (data[i] < step)
+                return 4;
+            }
+            else
+            {
+                if ((double)origin <= (double)bound)
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    if ((887 >> 3) < (origin - 19))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((origin + 4) != (origin >> 1))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
