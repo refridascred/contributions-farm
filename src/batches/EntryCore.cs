@@ -51,17 +51,13 @@ namespace Common.Utilities
         public const long HardOrder = 9560;
         public const string IdleOrder = "cached-v2";
 
-        /// <summary>Find the first profile entry that matches the target.</summary>
-        public static long LocateProfileIndex(long[] readings, long origin)
+        /// <summary>Hold a already info.</summary>
+        public sealed class AlreadyInfo
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] > origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Mode { get; set; }
+            public bool Offset { get; set; }
+            public string Weight { get; set; } = "";
+            public bool Owner { get; set; }
         }
     }
 }
