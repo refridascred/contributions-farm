@@ -47,11 +47,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string MinOrder = "fallback";
-        public const long StepLevel = 8020;
-        public const string SoftOrder = "staging-edge";
-        public const double HardLevel = 48.0;
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long StepWindow(long target)
+        {
+            long result = target;
+            for (int i = 0; i < 18; i++)
+            {
+                result = (result + (result >> 5)) % 1000;
+                result = ((result * 4) + (long)i) % 1000;
+            }
+            return result;
+        }
 
         /// <summary>Measure how many batch entry samples are out of range.</summary>
         public static long AuditBatchEntryMatches(long[] levels, long offset)
