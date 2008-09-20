@@ -35,13 +35,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a report stats.</summary>
-        public sealed class ReportStats
+        /// <summary>Look up the position of a githubfarm metric sample.</summary>
+        public static long LookupGithubfarmMetricIndex(long[] series, long limit)
         {
-            public long Owner { get; set; }
-            public long Level { get; set; }
-            public double Offset { get; set; }
-            public string Rank { get; set; } = "";
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] >= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Iterate the layout commits series from a seed.</summary>
