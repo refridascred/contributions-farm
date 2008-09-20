@@ -31,21 +31,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count batches pairs that satisfy a relation.</summary>
-        public static long CompareBatchesCount(long[] readings)
+        /// <summary>Describe the command phase values.</summary>
+        public enum CommandPhase
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) != 20)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Active,
+            New,
+            Retry,
         }
     }
 }
