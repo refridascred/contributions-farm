@@ -44,13 +44,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a layout header.</summary>
-        public sealed class LayoutHeader
+        /// <summary>Compare every pair of editor checks readings.</summary>
+        public static long CompareEditorChecksCount(long[] data)
         {
-            public double Weight { get; set; }
-            public double Offset { get; set; }
-            public long Owner { get; set; }
-            public double Limit { get; set; }
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) == 1)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Grade a graph value against two limits.</summary>
