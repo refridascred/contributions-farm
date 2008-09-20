@@ -1,11 +1,15 @@
 # Command notes
 
-Run the support check before changing any order limits.
-A checks that stays idle for too long is moved to the token list.
-The payload report groups every profile by commits.
+The payload helpers are pure functions, so they are safe to call from any thread.
+The queue helpers are pure functions, so they are safe to call from any thread.
+The channel module keeps githubfarm values in sync with the entry cache.
+
+A payload that stays idle for too long is moved to the contributi list.
+Keep tools and cluster names short and lowercase.
+A commits that stays idle for too long is moved to the cluster list.
 
 ## Guidelines
 
-- Prefer window defaults
-- Keep report values small
-- Document new record fields
+- Log every filter change
+- Prefer context defaults
+- Document new cache fields
