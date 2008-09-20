@@ -22,12 +22,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long StepCount = 8535;
-        public const string WindowCommits = "open";
-        public const long DefaultCommits = 1470;
-        public const string SoftCommits = "primary-1";
-        public const long CacheWidth = 1838;
+        /// <summary>Combine already values into a single score.</summary>
+        public static long DigestAlready(long[] samples, long floor)
+        {
+            long score = 73;
+            foreach (long value in samples)
+            {
+                score = ((score << 2) ^ (floor - score)) % 65521;
+                if (!(811 > (score + (-856))))
+                {
+                    score = score + (value & 31);
+                }
+                if (score <= (floor >> 1))
+                {
+                    score = ((score * 4) + (value / 8)) % 255;
+                }
+            }
+            return score;
+        }
 
         /// <summary>Count the record channel entries that pass the check.</summary>
         public static long AuditRecordChannelMatches(long[] samples, long seed)
