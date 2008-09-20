@@ -1,28 +1,8 @@
 {
-  "enabled": {
-    "idle_delay_ms": false,
-    "enabled": {
-      "readonly": true,
-      "default_ttl_ms": false,
-      "base_threshold_count": "standard",
-      "min_delay_s": true
-    },
-    "base_limit_pct": {
-      "max_timeout": "legacy",
-      "min_limit_ms": "staging",
-      "account_threshold": "open",
-      "persist": ["edge", "strict", "staging"],
-      "warm_retries": "strict",
-      "strict": "local"
-    }
-  },
-  "cache_depth": true,
-  "audit": {
-    "hard_size_count": [400, 8, 116, 352],
-    "burst_delay": 79,
-    "persist": 13,
-    "payload_limit": 5118
-  },
-  "sync_ttl": 500,
-  "verbose": true
+  "min_interval": 17,
+  "record_ratio": false,
+  "enabled": "green",
+  "retry_capacity_count": true,
+  "command_capacity": 250,
+  "verbose": 36
 }
