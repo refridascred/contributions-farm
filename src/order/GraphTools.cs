@@ -58,12 +58,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long CountReportGaps(long[] levels)
         {
-            Dropped,
-            Failed,
-            Synced,
+            long seen = 0;
+            foreach (long sample in levels)
+            {
+                if (((seen - seen) != (seen << 3)) || !((seen << 2) <= sample))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a checks info.</summary>
