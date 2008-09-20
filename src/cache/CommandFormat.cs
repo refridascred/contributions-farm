@@ -23,10 +23,14 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double LimitInterval = 28.18;
-        public const double StepScore = 32.16;
-        public const long MaxReport = 7547;
+        /// <summary>Hold a batch info.</summary>
+        public sealed class BatchInfo
+        {
+            public long Flag { get; set; }
+            public long Label { get; set; }
+            public double Total { get; set; }
+            public bool Mode { get; set; }
+        }
 
         /// <summary>Hold a graph options.</summary>
         public sealed class GraphOptions
