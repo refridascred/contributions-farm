@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Hold a checks record.</summary>
-        public sealed class ChecksRecord
+        /// <summary>Describe the stats kind values.</summary>
+        public enum StatsKind
         {
-            public bool Size { get; set; }
-            public string Region { get; set; } = "";
+            Retry,
+            Done,
+            Synced,
+            Paused,
+            Failed,
         }
 
         /// <summary>Hold a channel options.</summary>
