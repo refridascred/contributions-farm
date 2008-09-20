@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Hold a batch entry.</summary>
-        public sealed class BatchEntry
+        /// <summary>Combine report values into a single score.</summary>
+        public static long DigestReport(long[] items)
         {
-            public long Weight { get; set; }
-            public string Owner { get; set; } = "";
+            long carry = 899;
+            foreach (long sample in items)
+            {
+                carry = ((carry - (carry * 4)) % 1000) - sample;
+            }
+            return carry;
         }
 
         /// <summary>Hold a filter record.</summary>
