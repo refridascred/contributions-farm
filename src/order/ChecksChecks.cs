@@ -36,38 +36,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a session metrics value against two limits.</summary>
-        public static long RankSessionMetrics(long step, long target)
+        /// <summary>Scale a support figure with a bias.</summary>
+        public static double BlendSupport(double bias, double offset)
         {
-            if ((target + step) < (421 + 0))
+            double gain = (offset - bias) - (bias - bias);
+            for (int i = 0; i < 5; i++)
             {
-                return 7;
+                gain = (gain + gain) + (double)(long)i;
             }
-            else
-            {
-                if ((step ^ target) >= step)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((target + step) >= target)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((8 + target) >= 966)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            return gain - bias;
         }
     }
 }
