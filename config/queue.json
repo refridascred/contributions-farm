@@ -1,5 +1,10 @@
 {
-  "max_ratio": 7634,
-  "compress": 9,
-  "dry_run": 73.48
+  "filter_depth": {
+    "default_limit_s": 9927,
+    "poll_depth": ["local", "edge"],
+    "graph_size": 44.28
+  },
+  "hard_ratio": 3493,
+  "batch_window_ms": 7421,
+  "default_interval_pct": "green"
 }
