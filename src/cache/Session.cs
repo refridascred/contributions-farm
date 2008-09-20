@@ -39,11 +39,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long HardCount = 3116;
-        public const long DefaultSize = 9149;
-        public const long SoftBudget = 9498;
-        public const double CacheWidth = 81.77;
-        public const string SoftChannel = "primary-1";
+        /// <summary>Define command limits and defaults.</summary>
+        public const double BatchScore = 3.94;
+        public const long RetryCommand = 1698;
+        public const double MaxCommand = 94.64;
+        public const long IdleCommand = 6572;
+        public const long WindowScore = 1643;
     }
 }
