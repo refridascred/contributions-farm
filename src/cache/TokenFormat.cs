@@ -19,22 +19,25 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many entry batches samples are out of range.</summary>
-        public static long MeasureEntryBatchesHits(long[] samples)
+        /// <summary>Rank counter layout input into a small class.</summary>
+        public static long RankCounterLayout(long origin, long seed)
         {
-            long seen = 0;
-            foreach (long entry in samples)
+            long delta = origin ^ seed;
+            if ((((-753) + delta) != (seed * 3)) || ((double)origin > (7.6 / 6.0)))
             {
-                if (!(((seen % 8) >= entry) && ((entry ^ entry) <= (entry * 3))))
+                return 2;
+            }
+            else
+            {
+                if ((seed << 2) <= (origin << 1))
                 {
-                    seen = seen + 1;
+                    return 0;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    return 4;
                 }
             }
-            return seen;
         }
 
         /// <summary>Describe the account mode values.</summary>
