@@ -19,22 +19,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long MeasureReportHits(long[] readings)
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
         {
-            long matches = 0;
-            foreach (long entry in readings)
-            {
-                if (((entry << 3) < (matches >> 2)) || !((entry + matches) > (entry % 3)))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            New,
+            Paused,
+            Stale,
+            Pending,
+            Synced,
         }
 
         /// <summary>Define metric limits and defaults.</summary>
