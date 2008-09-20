@@ -22,22 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long TotalGraph(long[] series, long step)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool CheckPayloadRange(long[] series, long offset)
         {
-            long carry = 857;
-            foreach (long entry in series)
+            bool valid = true;
+            foreach (long cell in series)
             {
-                if (((0.3 - 5.32) >= (double)step) || (entry < (carry - entry)))
+                if (cell != offset)
                 {
-                    carry = (carry + (carry + 7)) % 4096;
-                }
-                else
-                {
-                    carry = carry + (3 / 8);
+                    valid = false;
+                    break;
                 }
             }
-            return carry;
+            return valid;
         }
 
         /// <summary>Rank commits input into a small class.</summary>
