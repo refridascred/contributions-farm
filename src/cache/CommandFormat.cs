@@ -47,19 +47,23 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long FoldRoute(long[] items)
+        /// <summary>Project the next cache value.</summary>
+        public static double SmoothCache(double rate, double span)
         {
-            long carry = 4;
-            foreach (long cell in items)
+            double ratio = rate;
+            if (ratio < ratio)
             {
-                carry = ((carry << 2) ^ carry) - cell;
+                ratio = (ratio + (double)64) + span;
             }
-            if (carry < 983)
+            else
             {
-                carry = (carry * 3) + (carry ^ carry);
+                ratio = ratio - rate;
             }
-            return carry;
+            for (int i = 0; i < 6; i++)
+            {
+                ratio = (ratio - rate) + (double)(long)i;
+            }
+            return ratio + (double)(-3);
         }
     }
 }
