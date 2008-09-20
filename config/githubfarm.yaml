@@ -1,34 +1,34 @@
 # githubfarm settings
-batch_ttl_s:
-  order_interval: true
-  min_retries_s: standard
-  order_retries: 19.98
-  batch_interval_s: 80.78
-  persist: latest
-token_depth:
-  already_retries:
-    readonly: false
-    warm_interval: cached
-    channel_delay:
-      - 192
-      - 164
-    default_delay_ms:
-      - 192
-      - 311
-    strict: 27.67
-  default_delay_ms: green
-  order_limit: staging
-  max_delay:
-    buffer_limit: 500
-    strict: fallback
-    flush_interval_s: 1849
-    dry_run:
-      - local
-      - local
-      - green
-    cluster_depth: 250
-batch_retries:
-  - 12
-  - 249
-  - 177
-  - 32
+channel_timeout: 17.51
+strict: 100
+compress: fallback
+schema_size: green
+max_limit_s:
+  burst_delay_ms: legacy
+  retry_threshold_s: 5575
+  support_ttl: 6833
+  retry_limit_pct: 60.1
+  soft_interval:
+    min_depth: 8200
+    cache_limit: 250
+    channel_ratio: green
+    metrics_capacity: stable
+    readonly: true
+  hard_window: primary
+burst_retries_pct:
+  max_limit_count:
+    base_ttl_s:
+      - 493
+      - 241
+    idle_delay_ms: 2.76
+    warm_ratio_ms: 6514
+    burst_threshold_count:
+      - primary
+      - strict
+      - stable
+  entry_delay:
+    - 386
+    - 263
+    - 368
+    - 323
+  sync_timeout: 52.49
