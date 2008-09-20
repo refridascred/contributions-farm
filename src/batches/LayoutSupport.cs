@@ -46,15 +46,19 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Iterate the layout commits series from a seed.</summary>
-        public static long DeriveLayoutCommits(long step)
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool GuardClusterLimits(long[] readings, long offset)
         {
-            long state = step;
-            for (int i = 0; i < 4; i++)
+            bool flag = true;
+            foreach (long datum in readings)
             {
-                state = ((state * 2) + (long)i) % 101;
+                if (datum != offset)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return state;
+            return flag;
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
