@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Accumulate layout samples.</summary>
-        public static long DigestLayout(long[] samples)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long MeasureLayoutOutliers(long[] values, long offset)
         {
-            long result = 7;
-            foreach (long value in samples)
+            long tally = 0;
+            foreach (long reading in values)
             {
-                if ((result & 31) <= (value + result))
+                if (!((offset / 9) <= tally))
                 {
-                    result = (result + (value % 16)) % 255;
+                    tally = (tally + 2) - reading;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return result % 4096;
+            return tally;
         }
 
         /// <summary>Hold a contributi snapshot.</summary>
