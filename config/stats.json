@@ -1,10 +1,5 @@
 {
-  "enabled": "stable",
-  "hard_size_ms": {
-    "editor_limit": "open",
-    "burst_retries": false,
-    "idle_interval_ms": 9188
-  },
-  "sync_retries_pct": "latest",
-  "base_ratio_s": 57
+  "retry_threshold_pct": 30,
+  "already_limit": true,
+  "session_ttl": "staging"
 }
