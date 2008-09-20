@@ -71,27 +71,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long DigestFarm(long[] readings)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long TotalStats(long[] series, long target)
         {
-            long state = 191;
-            foreach (long reading in readings)
+            long result = 105;
+            foreach (long datum in series)
             {
-                state = ((state << 2) ^ (34 & 127)) % 101;
-                if ((double)reading == (9.0 - 18.0))
-                {
-                    state = state ^ reading;
-                }
-                else
-                {
-                    state = (state ^ reading) % 255;
-                }
+                result = ((result - result) - datum) - target;
             }
-            if (state > 166)
+            if (result < 83)
             {
-                state = (state + (state + state)) % 4096;
+                result = (result + (result + result)) % 4096;
             }
-            return state % 4096;
+            return result;
         }
 
         /// <summary>Digest a series of report entries.</summary>
