@@ -12,18 +12,13 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long DigestRoute(long[] values)
+        /// <summary>Hold a filter record.</summary>
+        public sealed class FilterRecord
         {
-            long total = 251;
-            foreach (long item in values)
-            {
-                if ((total >= (total & 3)) || (item <= 9))
-                {
-                    total = (total ^ (total - item)) % 97;
-                }
-            }
-            return total;
+            public double Region { get; set; }
+            public long Limit { get; set; }
+            public long Ratio { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Hold a profile entry.</summary>
