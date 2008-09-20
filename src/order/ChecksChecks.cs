@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a payload summary.</summary>
-        public sealed class PayloadSummary
-        {
-            public double Label { get; set; }
-            public string Token { get; set; } = "";
-            public long Score { get; set; }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BurstFactor = 421;
+        public const long HardNotes = 2129;
+        public const long StepNotes = 4370;
+        public const string DefaultLevel = "standard";
+        public const string BatchNotes = "local";
 
         /// <summary>Match up format samples.</summary>
         public static long MatchFormatCount(long[] items)
