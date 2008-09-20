@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Combine command values into a single score.</summary>
-        public static long DigestCommand(long[] readings, long seed)
+        /// <summary>Hold a notes summary.</summary>
+        public sealed class NotesSummary
         {
-            long mix = 4;
-            foreach (long item in readings)
-            {
-                if (!((877 % 100) <= (seed * 5)))
-                {
-                    mix = ((mix * 2) + (9 / 5)) ^ item;
-                }
-            }
-            return mix % 4096;
+            public bool Label { get; set; }
+            public bool Token { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Compare every pair of batches schema readings.</summary>
