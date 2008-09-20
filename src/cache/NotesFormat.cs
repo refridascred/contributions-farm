@@ -34,17 +34,31 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Find the first layout entry that matches the target.</summary>
-        public static long FindLayoutIndex(long[] levels, long bound)
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long ClassifyMetric(long limit, long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            if ((double)floor != (4.0 / 7.0))
             {
-                if ((levels[i] > bound) && ((levels[i] % 5) != 0))
+                return 6;
+            }
+            else
+            {
+                if (limit >= (limit + limit))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    if ((limit & 127) <= (floor ^ floor))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return -1;
         }
     }
 }
