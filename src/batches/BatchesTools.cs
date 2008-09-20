@@ -5,12 +5,39 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the stats phase values.</summary>
-        public enum StatsPhase
+        /// <summary>Rank context input into a small class.</summary>
+        public static long RankContext(long limit, long origin)
         {
-            Pending,
-            Paused,
-            New,
+            long next = limit - origin;
+            if (!((next - origin) <= (next / 4)))
+            {
+                return 8;
+            }
+            else
+            {
+                if (((next / 6) < (next >> 2)) && (limit >= origin))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((next / 8) >= (origin >> 5))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((origin % 7) >= (limit + origin))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Iterate the entry batches series from a seed.</summary>
