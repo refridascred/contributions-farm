@@ -97,13 +97,14 @@ namespace Common.Utilities
         public const long StepEditor = 1434;
         public const string HardEditor = "strict-v2";
 
-        /// <summary>Hold a checks entry.</summary>
-        public sealed class ChecksEntry
+        /// <summary>Describe the metrics mode values.</summary>
+        public enum MetricsMode
         {
-            public long Flag { get; set; }
-            public long Size { get; set; }
-            public long Region { get; set; }
-            public bool Weight { get; set; }
+            Stale,
+            Ready,
+            Closed,
+            Dropped,
+            New,
         }
     }
 }
