@@ -31,21 +31,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Match up report samples.</summary>
-        public static long OverlapReportCount(long[] levels)
+        /// <summary>Locate a window reading by value.</summary>
+        public static long FindWindowIndex(long[] series, long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((series[i] <= offset) && ((series[i] % 2) == 0))
                 {
-                    if ((levels[i] + levels[j]) != 18)
-                    {
-                        tally = tally + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
