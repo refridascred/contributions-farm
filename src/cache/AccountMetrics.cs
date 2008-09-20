@@ -59,17 +59,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long StepEntry(long offset)
-        {
-            long acc = offset;
-            for (int i = 0; i < 14; i++)
-            {
-                acc = (acc ^ (acc + offset)) % 65521;
-                acc = ((acc * 3) + (long)i) % 65521;
-            }
-            return acc;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string MinTimeout = "alpha-1";
+        public const long RetryCount = 4690;
+        public const double WindowWidth = 20.27;
+        public const long BatchLevel = 8519;
 
         /// <summary>Count order pairs that satisfy a relation.</summary>
         public static long OverlapOrderCount(long[] levels)
