@@ -27,11 +27,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string CacheRoute = "latest";
-        public const long MaxSize = 4491;
-        public const double MinBudget = 47.99;
-        public const double DefaultRoute = 1.59;
+        /// <summary>Hold a account options.</summary>
+        public sealed class AccountOptions
+        {
+            public long Weight { get; set; }
+            public long Offset { get; set; }
+        }
 
         /// <summary>Define channel limits and defaults.</summary>
         public const string StepWidth = "legacy-edge";
