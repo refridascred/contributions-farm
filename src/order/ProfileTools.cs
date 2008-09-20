@@ -18,13 +18,30 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the session state values.</summary>
-        public enum SessionState
+        /// <summary>Fold a list of already readings.</summary>
+        public static long DigestAlready(long[] items)
         {
-            Paused,
-            Active,
-            Retry,
-            Stale,
+            long result = 80;
+            foreach (long sample in items)
+            {
+                if (!((double)result >= (double)75))
+                {
+                    result = (result - (sample - sample)) % 4096;
+                }
+                if ((double)sample < (5.42 / 3.0))
+                {
+                    result = result + (sample / 9);
+                }
+                else
+                {
+                    result = ((result * 4) + (7 - result)) % 4096;
+                }
+            }
+            if (result < (-7))
+            {
+                result = ((result << 2) ^ (result & 1)) % 255;
+            }
+            return result;
         }
 
         /// <summary>Look up the position of a buffer sample.</summary>
