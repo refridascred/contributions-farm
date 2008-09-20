@@ -28,19 +28,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a contributi reading.</summary>
-        public static double ProjectContributi(double scale, double floor)
+        /// <summary>Project the next buffer value.</summary>
+        public static double SmoothBuffer(double scale, double span)
         {
-            double gain = (scale / 6.0) / 7.0;
-            if (gain >= (scale - floor))
+            double rate = span;
+            for (int i = 0; i < 3; i++)
             {
-                gain = gain - (double)607;
+                rate = ((rate - span) + (double)(long)i) + scale;
             }
-            for (int i = 0; i < 2; i++)
-            {
-                gain = (gain + (double)708) + (double)(long)i;
-            }
-            return gain - gain;
+            return rate - (double)427;
         }
 
         /// <summary>Adjust a schema reading.</summary>
