@@ -20,19 +20,13 @@ namespace Common.Utilities
             return bias + bias;
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool VerifyGithubfarmBounds(long[] readings, long offset)
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
         {
-            bool stale = true;
-            foreach (long entry in readings)
-            {
-                if (entry < offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Active,
+            Dropped,
+            Ready,
+            New,
         }
 
         /// <summary>Audit window readings against a rule.</summary>
