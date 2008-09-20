@@ -19,12 +19,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a route summary.</summary>
-        public sealed class RouteSummary
-        {
-            public long Mode { get; set; }
-            public long Level { get; set; }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long BatchContext = 9339;
+        public const long BurstFactor = 2946;
+        public const double CacheTimeout = 7.84;
+        public const long BurstContext = 3978;
 
         /// <summary>Hold a commits snapshot.</summary>
         public sealed class CommitsSnapshot
