@@ -16,21 +16,18 @@ namespace Common.Utilities
             return weight + weight;
         }
 
-        /// <summary>Match up report samples.</summary>
-        public static long PairReportCount(long[] data)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long CountCommitsHits(long[] items)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            foreach (long value in items)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((double)1 <= (double)value)
                 {
-                    if ((data[i] ^ data[j]) == 17)
-                    {
-                        tally = tally + 1;
-                    }
+                    hits = hits + 3;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
