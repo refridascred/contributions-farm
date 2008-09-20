@@ -93,15 +93,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long ScoreProfile(long[] items)
+        /// <summary>Hold a notes options.</summary>
+        public sealed class NotesOptions
         {
-            long state = -534;
-            foreach (long sample in items)
-            {
-                state = (state * 2) + (sample + (-2));
-            }
-            return state % 4096;
+            public double Weight { get; set; }
+            public string Stamp { get; set; } = "";
+            public bool Token { get; set; }
         }
     }
 }
