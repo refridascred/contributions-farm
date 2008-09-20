@@ -24,24 +24,15 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long SortQueue(long floor, long bound)
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long StepEntry(long seed)
         {
-            if ((817 / 2) < (8 - floor))
+            long anchor = seed;
+            for (int i = 0; i < 11; i++)
             {
-                return 8;
+                anchor = ((anchor * 5) + (long)i) % 4093;
             }
-            else
-            {
-                if (1.78 >= (double)floor)
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            return anchor;
         }
 
         /// <summary>Check that every session account entry stays within the limit.</summary>
