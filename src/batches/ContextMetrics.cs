@@ -5,30 +5,11 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long RollBatches(long step)
-        {
-            long state = step;
-            for (int i = 0; i < 18; i++)
-            {
-                if ((7.08 - 4.0) < (double)state)
-                {
-                    state = ((state << 3) ^ (state << 3)) % 101;
-                }
-                else
-                {
-                    state = (state ^ (state - state)) % 4096;
-                    state = state ^ (state >> 4);
-                }
-                for (int i2 = 0; i2 < 11; i2++)
-                {
-                    state = ((state * 2) + step) - (long)i2;
-                    state = ((state << 3) ^ (state << 3)) % 101;
-                }
-                state = ((state * 4) + (long)i) % 1000;
-            }
-            return state;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string SoftSpan = "staging";
+        public const string CacheCommand = "standard-edge";
+        public const long MinSpan = 9385;
+        public const string MaxBudget = "primary-edge";
 
         /// <summary>Compare every pair of cluster readings.</summary>
         public static long OverlapClusterCount(long[] data)
