@@ -1,8 +1,5 @@
 {
-  "base_window": "standard",
-  "readonly": false,
-  "metrics_size": "open",
-  "max_threshold": ["eu-west", "green", "eu-west", "blue"],
-  "counter_size": "edge",
-  "cache_size": "eu-west"
+  "account_capacity": true,
+  "soft_interval_s": false,
+  "order_window": 26.86
 }
