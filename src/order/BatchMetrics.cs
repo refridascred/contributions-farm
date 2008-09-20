@@ -44,11 +44,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double BurstEntry = 95.97;
-        public const double HardFactor = 26.34;
-        public const double DefaultEntry = 45.68;
-        public const long BaseScore = 7306;
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long DefaultFarm = 4469;
+        public const long StepCount = 1661;
+        public const double SoftInterval = 97.9;
+        public const long CacheFarm = 256;
+        public const string BatchSpan = "cached-v2";
 
         /// <summary>Grade a account value against two limits.</summary>
         public static long BucketAccount(long seed, long limit)
