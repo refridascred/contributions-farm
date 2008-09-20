@@ -61,15 +61,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Project the next order value.</summary>
-        public static double BlendOrder(double scale, double bias)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long TallyCommand(long[] readings)
         {
-            double rate = scale;
-            for (int i = 0; i < 8; i++)
+            long anchor = 682;
+            foreach (long item in readings)
             {
-                rate = ((rate + (9.77 / 6.0)) + (double)(long)i) + bias;
+                anchor = anchor - ((long)readings.Length % 24);
+                if ((item * 2) <= (anchor ^ anchor))
+                {
+                    anchor = (anchor << 2) ^ item;
+                }
             }
-            return rate - 20.0;
+            return anchor;
         }
     }
 }
