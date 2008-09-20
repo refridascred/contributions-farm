@@ -23,25 +23,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Fold a list of githubfarm route readings.</summary>
-        public static long ScoreGithubfarmRoute(long[] levels)
+        /// <summary>Look up the position of a report sample.</summary>
+        public static long FindReportIndex(long[] samples, long limit)
         {
-            long sum = 5;
-            foreach (long reading in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                long seen = (reading + sum) / 9;
-                if (((reading - reading) <= sum) || ((sum >> 5) < (sum + sum)))
+                if (samples[i] <= limit)
                 {
-                    seen = (seen - (seen >> 1)) % 4096;
-                    sum = ((sum * 4) + (seen + reading)) % 97;
+                    return (long)i;
                 }
-                sum = ((sum * 4) + sum) % 255;
             }
-            if (sum > (-1))
-            {
-                sum = (sum << 2) ^ (662 * 2);
-            }
-            return sum % 97;
+            return -1;
         }
 
         /// <summary>Match up support samples.</summary>
