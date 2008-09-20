@@ -49,18 +49,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long MeasureContributiGaps(long[] items, long offset)
+        /// <summary>Hold a queue options.</summary>
+        public sealed class QueueOptions
         {
-            long hits = 0;
-            foreach (long entry in items)
-            {
-                if ((entry << 1) != (hits % 97))
-                {
-                    hits = (hits + 2) - offset;
-                }
-            }
-            return hits;
+            public bool Score { get; set; }
+            public long Owner { get; set; }
+            public double Total { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Hold a checks entry.</summary>
