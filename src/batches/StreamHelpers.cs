@@ -5,25 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long GradeFarm(long step, long offset)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long AuditRouteMatches(long[] values)
         {
-            long offset2 = step - offset;
-            if (!((4.0 + 5.94) > (double)offset))
+            long tally = 0;
+            foreach (long entry in values)
             {
-                return 5;
-            }
-            else
-            {
-                if ((step + step) != (offset2 ^ step))
+                if (((long)values.Length - tally) >= entry)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 4;
+                    tally = tally + 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Hold a schema record.</summary>
