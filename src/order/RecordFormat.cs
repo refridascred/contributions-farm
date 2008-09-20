@@ -51,18 +51,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long AuditChecksHits(long[] readings)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool VerifyPayloadRange(long[] samples, long floor)
         {
-            long matches = 0;
-            foreach (long item in readings)
+            bool ok = true;
+            foreach (long sample in samples)
             {
-                if (13.0 <= (double)item)
+                if (sample > floor)
                 {
-                    matches = matches + 1;
+                    ok = false;
+                    break;
                 }
             }
-            return matches;
+            return ok;
         }
 
         /// <summary>Rank editor input into a small class.</summary>
