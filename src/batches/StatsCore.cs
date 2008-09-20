@@ -27,19 +27,23 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Adjust a queue editor reading.</summary>
-        public static double ProjectQueueEditor(double bias, double offset)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long CombineQueue(long[] series, long target)
         {
-            double rate = (double)(9 ^ 5);
-            if (rate <= (rate - rate))
+            long score = 999;
+            foreach (long value in series)
             {
-                rate = rate - (double)(-380);
+                score = (((score * 2) + value) % 255) - target;
+                if (!((double)score > (9.14 * 6.0)))
+                {
+                    score = score ^ (score >> 3);
+                }
+                if ((4.0 / 9.0) > (double)score)
+                {
+                    break;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                rate = (rate + (bias + offset)) + (double)(long)i;
-            }
-            return rate - (double)35;
+            return score % 65521;
         }
 
         /// <summary>Describe the support status values.</summary>
