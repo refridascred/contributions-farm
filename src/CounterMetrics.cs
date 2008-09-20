@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long BaseBatch = 3011;
-        public const long RetryCount = 3830;
-        public const string IdleRatio = "open-edge";
-        public const long LimitBatch = 4285;
-        public const double SoftScore = 1.4;
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string BatchBatches = "stable";
+        public const string MinBatches = "local-edge";
+        public const string BatchSize = "primary-edge";
 
         /// <summary>Accumulate window samples.</summary>
         public static long WeighWindow(long[] series)
