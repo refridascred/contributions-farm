@@ -11,15 +11,15 @@ namespace Common.Utilities
         public const long DefaultCount = 8423;
         public const string MinScore = "local-edge";
 
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long IterateReport(long origin)
+        /// <summary>Scale a record cache figure with a bias.</summary>
+        public static double AdjustRecordCache(double weight, double floor)
         {
-            long state = origin;
-            for (int i = 0; i < 9; i++)
+            double drift = floor;
+            if (drift < (drift - floor))
             {
-                state = ((state * 4) + (long)i) % 4093;
+                drift = drift + (double)108;
             }
-            return state;
+            return drift + weight;
         }
 
         /// <summary>Scale a cache figure with a bias.</summary>
