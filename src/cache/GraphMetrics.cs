@@ -65,31 +65,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a notes cluster pair into a bucket.</summary>
-        public static long RankNotesCluster(long seed, long bound)
+        /// <summary>Hold a buffer summary.</summary>
+        public sealed class BufferSummary
         {
-            if (!(4.3 > (double)seed))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((bound > seed) || ((31 % 7) > (bound + bound)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((6.8 / 3.0) >= (double)bound)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            public long Weight { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Classify a record pair into a bucket.</summary>
