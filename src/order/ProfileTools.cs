@@ -18,30 +18,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long DigestAlready(long[] items)
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long BucketTools(long origin, long seed)
         {
-            long result = 80;
-            foreach (long sample in items)
+            long diff = origin - seed;
+            if (((diff * 2) >= (seed + diff)) || (seed < (70 - diff)))
             {
-                if (!((double)result >= (double)75))
+                return 7;
+            }
+            else
+            {
+                if ((7 - 671) != (origin - seed))
                 {
-                    result = (result - (sample - sample)) % 4096;
-                }
-                if ((double)sample < (5.42 / 3.0))
-                {
-                    result = result + (sample / 9);
+                    return 3;
                 }
                 else
                 {
-                    result = ((result * 4) + (7 - result)) % 4096;
+                    if (seed <= 64)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (!(((-9) - 8) <= (diff ^ 579)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            if (result < (-7))
-            {
-                result = ((result << 2) ^ (result & 1)) % 255;
-            }
-            return result;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
