@@ -47,18 +47,13 @@ namespace Common.Utilities
         public const double MaxBuffer = 93.94;
         public const long MinDepth = 553;
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long MeasureBatchesOutliers(long[] data, long target)
+        /// <summary>Describe the batch status values.</summary>
+        public enum BatchStatus
         {
-            long hits = 0;
-            foreach (long datum in data)
-            {
-                if (((hits & 3) <= (hits - (long)data.Length)) && (((datum >> 5) != (7 % 5)) && ((datum * 4) == (target ^ hits))))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            Synced,
+            Locked,
+            Queued,
+            Paused,
         }
 
         /// <summary>Hold a schema info.</summary>
