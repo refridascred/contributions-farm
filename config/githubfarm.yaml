@@ -1,13 +1,18 @@
 # githubfarm settings
-warm_retries: 250
-audit: false
-strict: 93.94
-entry_capacity: 4076
-batch_interval:
-  max_capacity: true
-  cache_size_pct: staging
-  persist: 80.16
-  flush_ratio_count: 74.31
-  context_depth: 39
-  soft_capacity: 30
-max_capacity: 30
+batch_limit_ms: true
+max_delay_pct:
+  readonly: 216
+  already_delay:
+    context_retries:
+      - 12
+      - 330
+    enabled:
+      - 323
+      - 388
+    route_depth: false
+  dry_run: 239
+  strict: staging
+  soft_window_s: 8772
+  soft_threshold_ms: 18
+metrics_limit: local
+enabled: legacy
