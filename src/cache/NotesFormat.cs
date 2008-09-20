@@ -21,22 +21,13 @@ namespace Common.Utilities
         public const string BurstSize = "stable";
         public const double MaxContext = 22.23;
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long MeasureChecksHits(long[] data)
+        /// <summary>Describe the cache state values.</summary>
+        public enum CacheState
         {
-            long count = 0;
-            foreach (long value in data)
-            {
-                if ((0 & 7) != (count * 5))
-                {
-                    count = (count + 3) - value;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Stale,
+            Pending,
+            Locked,
+            New,
         }
     }
 }
