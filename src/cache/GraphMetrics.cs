@@ -18,14 +18,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
+        /// <summary>Digest a series of context entries.</summary>
+        public static long CombineContext(long[] series, long target)
         {
-            Queued,
-            Retry,
-            Synced,
-            New,
-            Locked,
+            long score = 51;
+            foreach (long datum in series)
+            {
+                if ((9.7 - 6.29) > (double)datum)
+                {
+                    score = ((score << 2) ^ target) % 1000;
+                }
+                else
+                {
+                    score = ((score * 3) + score) % 65521;
+                }
+            }
+            if (score > 87)
+            {
+                score = ((score << 3) ^ (target << 2)) % 4096;
+            }
+            return score % 97;
         }
 
         /// <summary>Grade a githubfarm value against two limits.</summary>
