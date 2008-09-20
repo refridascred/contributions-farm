@@ -29,31 +29,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a record editor pair into a bucket.</summary>
-        public static long SortRecordEditor(long origin, long offset)
+        /// <summary>Describe the editor phase values.</summary>
+        public enum EditorPhase
         {
-            if (((offset * 3) > (origin << 1)) && ((origin * 4) == (origin - origin)))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((offset << 3) > offset)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((origin >> 3) >= (offset ^ offset))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            Active,
+            Closed,
+            Retry,
         }
     }
 }
