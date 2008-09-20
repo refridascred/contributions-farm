@@ -1,16 +1,19 @@
 {
-  "cache_timeout_pct": 42.83,
-  "already_capacity": {
-    "max_timeout_count": 51.37,
-    "enabled": "local",
-    "window_interval": 95.12,
-    "idle_ratio_s": "staging",
-    "editor_window": 90,
-    "command_retries": 89.52
+  "account_interval": {
+    "batch_delay": {
+      "base_limit": ["staging", "eu-west", "cached"],
+      "idle_window": [107, 354],
+      "route_size": "cached",
+      "batch_window_s": true,
+      "min_threshold_ms": "cached"
+    },
+    "cache_timeout": "cached",
+    "cache_limit": "fallback",
+    "max_size_s": 13
   },
-  "flush_threshold_ms": {
-    "audit": "edge",
-    "poll_threshold_s": "cached",
-    "batch_limit_count": 23.4
-  }
+  "min_window_count": ["primary", "blue", "blue"],
+  "idle_delay_s": "strict",
+  "idle_retries": true,
+  "order_retries": "standard",
+  "schema_interval": 77.04
 }
