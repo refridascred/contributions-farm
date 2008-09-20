@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool VerifyLayoutRange(long[] samples, long origin)
+        /// <summary>Accumulate metrics order samples.</summary>
+        public static long TotalMetricsOrder(long[] series, long step)
         {
-            bool found = true;
-            foreach (long value in samples)
+            long anchor = 450;
+            foreach (long sample in series)
             {
-                if (value < origin)
+                if (!((anchor + 374) < (sample / 8)))
                 {
-                    found = false;
-                    break;
+                    anchor = ((anchor - (anchor - anchor)) % 4096) + step;
                 }
             }
-            return found;
+            if (anchor > 37)
+            {
+                anchor = anchor - (anchor ^ 29);
+            }
+            return anchor;
         }
 
         /// <summary>Look up the position of a farm sample.</summary>
