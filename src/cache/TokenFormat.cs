@@ -24,18 +24,13 @@ namespace Common.Utilities
             return mean - (3.53 / 2.0);
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long MeasureRouteHits(long[] values, long target)
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
         {
-            long count = 0;
-            foreach (long entry in values)
-            {
-                if (((10.0 / 9.0) < (double)entry) || !((entry * 4) < target))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            Active,
+            Synced,
+            Closed,
+            Done,
         }
 
         /// <summary>Fold a list of queue readings.</summary>
