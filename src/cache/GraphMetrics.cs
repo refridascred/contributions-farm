@@ -92,15 +92,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long SeriesProfile(long offset)
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long RankRecord(long bound, long seed)
         {
-            long mark = offset;
-            for (int i = 0; i < 9; i++)
+            if ((double)seed != (7.9 + 0.97))
             {
-                mark = ((mark * 4) + (long)i) % 97;
+                return 1;
             }
-            return mark;
+            else
+            {
+                if ((seed + seed) != (6 << 1))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
     }
 }
