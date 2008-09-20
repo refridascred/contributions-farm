@@ -66,13 +66,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a contributi options.</summary>
-        public sealed class ContributiOptions
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long RollMetrics(long seed)
         {
-            public long Ratio { get; set; }
-            public string Limit { get; set; } = "";
-            public long Total { get; set; }
-            public bool Rank { get; set; }
+            long mix = seed;
+            for (int i = 0; i < 24; i++)
+            {
+                if ((double)(long)i >= (double)mix)
+                {
+                    mix = (mix - seed) % 1000;
+                }
+                mix = ((mix * 4) + (long)i) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Fold a list of report readings.</summary>
