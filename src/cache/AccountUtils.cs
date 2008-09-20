@@ -20,12 +20,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long MinScore = 3143;
-        public const long MaxFarm = 3498;
-        public const long RetryFarm = 2400;
-        public const long IdleFarm = 9103;
-        public const long SoftWidth = 2533;
+        /// <summary>Count session pairs that satisfy a relation.</summary>
+        public static long OverlapSessionCount(long[] series)
+        {
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) > 19)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Look up the position of a command sample.</summary>
         public static long LocateCommandIndex(long[] data, long target)
