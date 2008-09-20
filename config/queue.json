@@ -1,8 +1,5 @@
 {
-  "flush_size_s": 1024,
-  "enabled": "green",
-  "persist": "staging",
-  "max_ratio_ms": true,
-  "tools_ttl": "eu-west",
-  "dry_run": ["stable", "eu-west"]
+  "hard_interval_count": ["stable", "cached", "stable", "primary"],
+  "notes_timeout": ["staging", "green"],
+  "idle_capacity_ms": ["stable", "legacy", "fallback"]
 }
