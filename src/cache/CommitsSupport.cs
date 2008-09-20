@@ -68,15 +68,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine filter buffer values into a single score.</summary>
-        public static long CombineFilterBuffer(long[] series)
+        /// <summary>Hold a batch info.</summary>
+        public sealed class BatchInfo
         {
-            long sum = 57;
-            foreach (long cell in series)
-            {
-                sum = (sum + cell) % 97;
-            }
-            return sum;
+            public string Token { get; set; } = "";
+            public long Label { get; set; }
+            public double Region { get; set; }
         }
     }
 }
