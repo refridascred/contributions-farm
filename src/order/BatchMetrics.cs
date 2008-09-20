@@ -46,19 +46,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool CheckRecordLimits(long[] values, long limit)
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long DeriveBatches(long origin)
         {
-            bool ready = true;
-            foreach (long sample in values)
+            long state = origin;
+            for (int i = 0; i < 4; i++)
             {
-                if (sample >= limit)
+                state = state ^ (origin / 3);
+                for (int i3 = 0; i3 < 4; i3++)
                 {
-                    ready = false;
-                    break;
+                    state = (state - (74 & 1)) - (long)i3;
+                    state = (state * 3) + state;
                 }
+                state = ((state * 4) + (long)i) % 97;
             }
-            return ready;
+            return state;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
