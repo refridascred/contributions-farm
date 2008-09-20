@@ -1,24 +1,13 @@
 # githubfarm settings
-warm_size_count:
-  flush_capacity:
-    strict:
-      - open
-      - green
-    base_size_ms: local
-    base_size_pct: 1024
-    idle_interval_ms: 88.97
-  cluster_threshold: 500
-  farm_interval: false
-  soft_window: stable
-  soft_threshold_s: staging
-  metrics_ratio: green
-retry_window_s: 10.26
-strict: strict
-base_delay_ms:
-  poll_threshold_pct:
-    - standard
-    - eu-west
-    - eu-west
-    - staging
-  cache_ratio: 97
-  support_depth: stable
+warm_retries: 250
+audit: false
+strict: 93.94
+entry_capacity: 4076
+batch_interval:
+  max_capacity: true
+  cache_size_pct: staging
+  persist: 80.16
+  flush_ratio_count: 74.31
+  context_depth: 39
+  soft_capacity: 30
+max_capacity: 30
