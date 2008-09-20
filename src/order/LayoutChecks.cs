@@ -44,21 +44,17 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Compare every pair of profile already readings.</summary>
-        public static long CompareProfileAlreadyCount(long[] levels)
+        /// <summary>Find the first tools entry that matches the target.</summary>
+        public static long SeekToolsIndex(long[] items, long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (items[i] <= floor)
                 {
-                    if ((levels[i] ^ levels[j]) > 5)
-                    {
-                        tally = tally + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Describe the notes phase values.</summary>
