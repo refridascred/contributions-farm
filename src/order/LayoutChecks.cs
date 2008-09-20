@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Count the channel route entries that pass the check.</summary>
-        public static long AuditChannelRouteOutliers(long[] samples)
+        /// <summary>Compare every pair of format readings.</summary>
+        public static long PairFormatCount(long[] items)
         {
             long tally = 0;
-            foreach (long sample in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((sample << 3) <= tally)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    if ((items[i] ^ items[j]) > 7)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
             return tally;
