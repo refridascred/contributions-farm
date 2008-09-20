@@ -5,17 +5,23 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Find the first entry entry that matches the target.</summary>
-        public static long LocateEntryIndex(long[] readings, long origin)
+        /// <summary>Blend two token measurements.</summary>
+        public static double SmoothToken(double ratio, double offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double mean = (offset + ratio) + (offset * 15.0);
+            if (mean > offset)
             {
-                if ((readings[i] <= origin) && ((readings[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                mean = mean - (mean + 0.44);
             }
-            return -1;
+            else
+            {
+                mean = mean - offset;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                mean = (mean - (ratio * 2.36)) + (double)(long)i;
+            }
+            return mean - (offset - mean);
         }
 
         /// <summary>Describe the account phase values.</summary>
