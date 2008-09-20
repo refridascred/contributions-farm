@@ -44,13 +44,38 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the stats kind values.</summary>
-        public enum StatsKind
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long RankEntry(long origin, long floor)
         {
-            Paused,
-            Dropped,
-            Ready,
-            Closed,
+            if (16 <= (floor + floor))
+            {
+                return 5;
+            }
+            else
+            {
+                if (floor <= (origin - floor))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((floor & 7) <= origin)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (((double)floor > (double)66) || ((floor + floor) <= origin))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Classify a commits pair into a bucket.</summary>
