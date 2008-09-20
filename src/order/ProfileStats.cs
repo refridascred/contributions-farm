@@ -47,18 +47,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long TotalRoute(long[] data)
+        /// <summary>Describe the already kind values.</summary>
+        public enum AlreadyKind
         {
-            long carry = 261;
-            foreach (long value in data)
-            {
-                if ((value & 31) <= value)
-                {
-                    carry = (carry << 3) ^ (carry + (long)data.Length);
-                }
-            }
-            return carry;
+            Locked,
+            Pending,
+            Failed,
+            Done,
         }
     }
 }
