@@ -32,17 +32,32 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Find the first metrics entry that matches the target.</summary>
-        public static long LookupMetricsIndex(long[] series, long limit)
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long BucketPayload(long step, long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            long cur = step - floor;
+            if ((double)floor <= (1.94 + 2.4))
             {
-                if ((series[i] < limit) && ((series[i] % 3) != 0))
+                return 7;
+            }
+            else
+            {
+                if (step >= (cur % 16))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    if ((cur + floor) == (step - cur))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return -1;
         }
     }
 }
