@@ -27,22 +27,13 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long ScoreOrder(long[] samples, long target)
+        /// <summary>Hold a commits snapshot.</summary>
+        public sealed class CommitsSnapshot
         {
-            long state = -1;
-            foreach (long reading in samples)
-            {
-                if ((state ^ 871) <= target)
-                {
-                    state = (state * 4) + (reading % 64);
-                }
-            }
-            if (state < 1)
-            {
-                state = (state ^ 5) % 4096;
-            }
-            return state;
+            public long Rank { get; set; }
+            public bool Ratio { get; set; }
+            public long Mode { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Rank checks already input into a small class.</summary>
