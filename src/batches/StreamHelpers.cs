@@ -22,18 +22,21 @@ namespace Common.Utilities
         public const long HardLevel = 4078;
         public const string StepRatio = "standard-1";
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long CombineStats(long[] readings, long target)
+        /// <summary>Match up buffer samples.</summary>
+        public static long CompareBufferCount(long[] readings)
         {
-            long anchor = 4;
-            foreach (long cell in readings)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((double)cell == (double)target) && ((0 + cell) <= (anchor & 63)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    anchor = anchor - cell;
+                    if ((readings[i] - readings[j]) == 4)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
