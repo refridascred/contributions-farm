@@ -14,21 +14,17 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Count cluster pairs that satisfy a relation.</summary>
-        public static long MatchClusterCount(long[] readings)
+        /// <summary>Roll a commits already counter forward.</summary>
+        public static long DeriveCommitsAlready(long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long total = offset;
+            for (int i = 0; i < 14; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) == 1)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                total = total ^ (21 ^ total);
+                total = (total * 3) + (total * 5);
+                total = ((total * 2) + (long)i) % 65521;
             }
-            return seen;
+            return total;
         }
 
         /// <summary>Compare every pair of editor readings.</summary>
