@@ -1,24 +1,7 @@
 # entry settings
-stats_window: 48.27
-warm_threshold: 17.99
-dry_run: 100
-poll_window: false
-strict:
-  dry_run:
-    - 300
-    - 89
-    - 252
-    - 74
-  audit: false
-  cache_capacity: standard
-  strict:
-    audit: 2579
-    max_ratio_s: false
-    githubfarm_threshold: edge
-    soft_limit_count:
-      - 323
-      - 183
-      - 471
-      - 127
-    compress: true
-  compress: 30
+token_window: true
+compress:
+  - 323
+  - 236
+  - 273
+sync_size_count: 28.28
