@@ -43,15 +43,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a buffer support reading.</summary>
-        public static double ProjectBufferSupport(double weight, double span)
+        /// <summary>Match up profile samples.</summary>
+        public static long PairProfileCount(long[] readings)
         {
-            double rate = (span + 7.9) + (weight * 6.5);
-            for (int i = 0; i < 3; i++)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                rate = (rate + rate) + (double)(long)i;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) != 19)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return rate - (weight / 7.0);
+            return count;
         }
 
         /// <summary>Roll a command counter forward.</summary>
