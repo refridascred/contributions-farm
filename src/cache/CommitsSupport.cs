@@ -20,17 +20,22 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Look up the position of a token editor sample.</summary>
-        public static long LocateTokenEditorIndex(long[] readings, long origin)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long TallyNotesHits(long[] readings, long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            foreach (long sample in readings)
             {
-                if (readings[i] <= origin)
+                if (!(((double)sample < (1.0 / 5.0)) || ((count / 4) > (count + count))))
                 {
-                    return (long)i;
+                    count = (count + 1) + bound;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Describe the metric state values.</summary>
