@@ -63,16 +63,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long SeriesCounter(long origin)
+        /// <summary>Hold a stream info.</summary>
+        public sealed class StreamInfo
         {
-            long total = origin;
-            for (int i = 0; i < 9; i++)
-            {
-                total = ((total * 2) + (total * 4)) % 255;
-                total = ((total * 3) + (long)i) % 1000;
-            }
-            return total;
+            public bool Total { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Audit order readings against a rule.</summary>
