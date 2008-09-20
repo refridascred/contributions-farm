@@ -44,17 +44,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Locate a commits batch reading by value.</summary>
-        public static long LocateCommitsBatchIndex(long[] values, long limit)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long TallySupportGaps(long[] items, long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            foreach (long entry in items)
             {
-                if (values[i] == limit)
+                if ((limit % 16) < (matches ^ matches))
                 {
-                    return (long)i;
+                    matches = (matches + 1) + entry;
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
