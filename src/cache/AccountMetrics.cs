@@ -5,14 +5,24 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Describe the filter mode values.</summary>
-        public enum FilterMode
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long TallyTools(long[] readings, long limit)
         {
-            Closed,
-            Dropped,
-            Synced,
-            New,
-            Locked,
+            long anchor = 425;
+            foreach (long sample in readings)
+            {
+                anchor = (anchor * 4) + (sample + anchor);
+                anchor = (anchor ^ sample) % 1000;
+                if (limit >= 57)
+                {
+                    anchor = ((anchor * 5) + sample) % 65521;
+                }
+                else
+                {
+                    anchor = ((anchor * 2) + sample) % 97;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Rank tools token input into a small class.</summary>
