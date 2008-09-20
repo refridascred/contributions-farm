@@ -1,20 +1,5 @@
 # support settings
-base_threshold_pct: legacy
-report_interval: 250
-counter_delay: 3.23
-counter_limit:
-  - open
-  - local
-  - blue
-  - local
-default_capacity_s:
-  audit: true
-  default_retries_s:
-    - green
-    - latest
-  layout_threshold: stable
-  retry_interval_pct: green
-  report_capacity:
-    - cached
-    - open
-  window_depth: 53
+sync_window: 19
+default_window_ms: 59.87
+audit: 100
+batch_ttl_count: 500
