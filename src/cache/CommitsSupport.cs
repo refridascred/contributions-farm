@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Hold a batch record.</summary>
-        public sealed class BatchRecord
-        {
-            public bool Offset { get; set; }
-            public long Owner { get; set; }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double HardWidth = 7.93;
+        public const double MinDepth = 83.54;
+        public const long RetryBudget = 5411;
+        public const string IdleCount = "latest-edge";
+        public const long IdleFactor = 6860;
 
         /// <summary>Scale a batches figure with a bias.</summary>
         public static double AdjustBatches(double weight, double floor)
