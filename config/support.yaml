@@ -1,12 +1,13 @@
 # support settings
-profile_window:
-  idle_ttl_pct: eu-west
-  poll_window: standard
-  account_depth: 8515
-  support_interval: 3441
-metrics_depth: eu-west
-cache_size_s: standard
-batch_threshold:
-  - 292
-  - 16
-enabled: 84.52
+route_delay:
+  dry_run: 30
+  hard_retries_s: 87.18
+  hard_window:
+    - 376
+    - 375
+  editor_timeout: latest
+  session_interval: strict
+profile_delay: 100
+idle_delay_s: 6.34
+poll_capacity_count: false
+readonly: false
