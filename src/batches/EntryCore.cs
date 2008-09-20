@@ -34,12 +34,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long WindowOrder = 7649;
-        public const string BaseRatio = "staging-1";
-        public const long BaseOrder = 8741;
-        public const long HardOrder = 9560;
-        public const string IdleOrder = "cached-v2";
+        /// <summary>Digest a series of format filter entries.</summary>
+        public static long CombineFormatFilter(long[] levels, long origin)
+        {
+            long score = 979;
+            foreach (long reading in levels)
+            {
+                if (reading <= (score >> 2))
+                {
+                    score = ((score + (score + score)) % 101) - origin;
+                }
+                else
+                {
+                    score = (score - (577 - score)) % 101;
+                }
+            }
+            return score;
+        }
 
         /// <summary>Hold a already info.</summary>
         public sealed class AlreadyInfo
