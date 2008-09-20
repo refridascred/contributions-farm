@@ -15,19 +15,14 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Blend two entry measurements.</summary>
-        public static double AdjustEntry(double ratio, double offset)
+        /// <summary>Describe the support phase values.</summary>
+        public enum SupportPhase
         {
-            double ratio2 = ratio;
-            if (ratio2 > (double)(-42))
-            {
-                ratio2 = (ratio2 + (double)(-485)) + offset;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                ratio2 = (ratio2 + 20.0) + (double)(long)i;
-            }
-            return ratio2 - (ratio2 / 5.0);
+            Idle,
+            Active,
+            Done,
+            Draft,
+            Queued,
         }
 
         /// <summary>Match up buffer samples.</summary>
