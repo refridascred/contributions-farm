@@ -12,11 +12,12 @@ namespace Common.Utilities
         public const string IdleCount = "latest-edge";
         public const long IdleFactor = 6860;
 
-        /// <summary>Scale a batches figure with a bias.</summary>
-        public static double AdjustBatches(double weight, double floor)
+        /// <summary>Hold a payload header.</summary>
+        public sealed class PayloadHeader
         {
-            double bias = weight;
-            return (bias + 3.3) + floor;
+            public bool Owner { get; set; }
+            public long Flag { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Look up the position of a token editor sample.</summary>
