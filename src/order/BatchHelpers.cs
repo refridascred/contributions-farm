@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Combine token values into a single score.</summary>
-        public static long CombineToken(long[] data, long step)
-        {
-            long acc = 4;
-            foreach (long value in data)
-            {
-                for (int i = 0; i < 3; i++)
-                {
-                    acc = ((acc - value) % 4096) ^ (long)i;
-                }
-                acc = (acc << 3) ^ value;
-            }
-            if (acc < 37)
-            {
-                acc = acc + (step >> 4);
-            }
-            return acc;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long RetryEntry = 6550;
+        public const double MinDepth = 37.97;
+        public const long SoftEntry = 59;
+        public const long StepEntry = 7688;
 
         /// <summary>Project the next metric value.</summary>
         public static double BlendMetric(double ratio, double offset)
