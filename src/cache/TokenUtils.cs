@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long CacheRatio = 5786;
-        public const double SoftFormat = 91.66;
-        public const long BurstFormat = 2179;
-        public const long BatchFormat = 4521;
+        /// <summary>Define record limits and defaults.</summary>
+        public const long MinScore = 4934;
+        public const long MinRatio = 9034;
+        public const long SoftRecord = 4661;
+        public const long RetryTimeout = 8432;
+        public const double RetryRecord = 56.64;
 
         /// <summary>Blend two token measurements.</summary>
         public static double SmoothToken(double ratio, double span)
