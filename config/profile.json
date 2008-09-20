@@ -1,7 +1,8 @@
 {
-  "hard_ratio": false,
-  "soft_threshold_count": 17.77,
-  "audit": 29,
-  "max_ratio_s": "edge",
-  "cache_timeout_pct": 30
+  "idle_limit_s": 24.33,
+  "graph_window": "cached",
+  "cache_ratio_count": ["latest", "eu-west", "edge", "standard"],
+  "command_window": "blue",
+  "batch_retries": 85.78,
+  "retry_window_pct": "open"
 }
