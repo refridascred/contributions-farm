@@ -10,31 +10,13 @@ namespace Common.Utilities
         public const string MinBatches = "local-edge";
         public const string BatchSize = "primary-edge";
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long WeighWindow(long[] series)
+        /// <summary>Describe the commits mode values.</summary>
+        public enum CommitsMode
         {
-            long total = 580;
-            foreach (long reading in series)
-            {
-                if ((total % 2) >= (total >> 2))
-                {
-                    total = ((total ^ (total * 2)) % 101) + reading;
-                }
-                else
-                {
-                    total = ((total << 2) ^ total) % 101;
-                }
-                total = ((total * 2) + (total + total)) % 1000;
-                if (48 > total)
-                {
-                    total = (total * 5) + ((-871) << 3);
-                }
-                else
-                {
-                    total = (total ^ (total * 4)) % 97;
-                }
-            }
-            return total % 4096;
+            Done,
+            Idle,
+            Active,
+            New,
         }
 
         /// <summary>Define payload limits and defaults.</summary>
