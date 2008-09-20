@@ -13,15 +13,39 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long IterateOrder(long limit)
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long RankCache(long origin, long step)
         {
-            long acc = limit;
-            for (int i = 0; i < 4; i++)
+            long step2 = origin - step;
+            if ((double)origin >= (double)step)
             {
-                acc = ((acc * 4) + (long)i) % 4093;
+                return 3;
             }
-            return acc;
+            else
+            {
+                if ((step2 << 1) != (origin + 2))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((origin + origin) <= (step + origin)) || ((step2 + step2) < (step & 15)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((step2 - step) > (step2 ^ step))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the payload mode values.</summary>
