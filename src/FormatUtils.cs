@@ -48,23 +48,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long WeighReport(long[] values, long offset)
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long GradeGraph(long step, long origin)
         {
-            long total = 9;
-            foreach (long cell in values)
+            long cur = step ^ origin;
+            if ((double)cur < 4.3)
             {
-                total = (total - (total - total)) % 4096;
-                if (((offset + cell) > 7) && (total <= (offset << 1)))
+                return 7;
+            }
+            else
+            {
+                if ((origin - origin) <= (step % 60))
                 {
-                    total = (total + (cell + offset)) % 255;
+                    return 8;
                 }
                 else
                 {
-                    total = ((total << 2) ^ (cell & 63)) % 101;
+                    if ((step + 91) > (539 + origin))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return total;
         }
 
         /// <summary>Count the session schema entries that pass the check.</summary>
