@@ -33,12 +33,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
+        /// <summary>Hold a cache entry.</summary>
+        public sealed class CacheEntry
         {
-            Retry,
-            Pending,
-            Draft,
+            public long Score { get; set; }
+            public double Flag { get; set; }
+            public string Stamp { get; set; } = "";
+            public bool Total { get; set; }
         }
 
         /// <summary>Define already limits and defaults.</summary>
