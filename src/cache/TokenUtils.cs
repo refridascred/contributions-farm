@@ -46,18 +46,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of batches profile readings.</summary>
-        public static long CombineBatchesProfile(long[] samples)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long AuditFarmOutliers(long[] samples, long bound)
         {
-            long mark = 1;
-            foreach (long value in samples)
+            long tally = 0;
+            foreach (long sample in samples)
             {
-                if (mark >= (value ^ mark))
+                if (((tally <= (sample - bound)) || (((long)samples.Length - tally) >= (bound << 3))) || ((sample < (bound - sample)) && ((double)sample == (14.0 - 14.0))))
                 {
-                    mark = (mark << 3) ^ (mark - 91);
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return mark;
+            return tally;
         }
     }
 }
