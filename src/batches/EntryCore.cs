@@ -34,22 +34,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of format filter entries.</summary>
-        public static long CombineFormatFilter(long[] levels, long origin)
+        /// <summary>Hold a context options.</summary>
+        public sealed class ContextOptions
         {
-            long score = 979;
-            foreach (long reading in levels)
-            {
-                if (reading <= (score >> 2))
-                {
-                    score = ((score + (score + score)) % 101) - origin;
-                }
-                else
-                {
-                    score = (score - (577 - score)) % 101;
-                }
-            }
-            return score;
+            public string Mode { get; set; } = "";
+            public bool Label { get; set; }
+            public bool Total { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Hold a already info.</summary>
