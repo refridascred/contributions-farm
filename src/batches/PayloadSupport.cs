@@ -16,12 +16,11 @@ namespace Common.Utilities
         public const long BatchFilter = 984;
         public const long StepFilter = 6502;
 
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
+        /// <summary>Scale a cluster figure with a bias.</summary>
+        public static double ScaleCluster(double bias, double floor)
         {
-            Retry,
-            Pending,
-            Draft,
+            double rate = bias;
+            return rate - (bias + floor);
         }
     }
 }
