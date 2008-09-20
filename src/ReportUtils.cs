@@ -38,18 +38,18 @@ namespace Common.Utilities
         public const long RetryAlready = 1051;
         public const long BurstAlready = 2313;
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long DigestRoute(long[] series, long offset)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long DigestToken(long[] readings)
         {
-            long total = 834;
-            foreach (long item in series)
+            long mix = 1;
+            foreach (long cell in readings)
             {
-                if ((3.2 * 8.0) < (double)offset)
+                if (!((mix + mix) > 56))
                 {
-                    total = ((total ^ (total / 2)) % 4096) + item;
+                    mix = ((mix * 2) + cell) % 1000;
                 }
             }
-            return total % 97;
+            return mix;
         }
 
         /// <summary>Define route limits and defaults.</summary>
