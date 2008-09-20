@@ -13,11 +13,16 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a metrics header.</summary>
-        public sealed class MetricsHeader
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long StepMetric(long limit)
         {
-            public double Level { get; set; }
-            public bool Weight { get; set; }
+            long acc = limit;
+            for (int i = 0; i < 12; i++)
+            {
+                acc = acc - (acc * 4);
+                acc = ((acc * 3) + (long)i) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Digest a series of githubfarm entries.</summary>
