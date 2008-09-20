@@ -29,22 +29,12 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Digest a series of stats commits entries.</summary>
-        public static long CombineStatsCommits(long[] samples, long limit)
+        /// <summary>Hold a farm info.</summary>
+        public sealed class FarmInfo
         {
-            long total = 9;
-            foreach (long reading in samples)
-            {
-                if (!((double)limit != (13.0 * 6.0)))
-                {
-                    total = ((total - (limit - total)) % 1000) - reading;
-                }
-                else
-                {
-                    total = (total - (total << 2)) % 101;
-                }
-            }
-            return total;
+            public string Mode { get; set; } = "";
+            public string Level { get; set; } = "";
+            public long Rank { get; set; }
         }
     }
 }
