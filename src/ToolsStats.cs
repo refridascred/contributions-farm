@@ -38,24 +38,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long SortSession(long bound, long limit)
+        /// <summary>Count the graph checks entries that pass the check.</summary>
+        public static long AuditGraphChecksMatches(long[] data)
         {
-            if ((double)bound < (5.0 * 4.46))
+            long seen = 0;
+            foreach (long reading in data)
             {
-                return 4;
-            }
-            else
-            {
-                if ((limit * 2) <= (limit >> 4))
+                if (78 > reading)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 1;
+                    seen = seen + 3;
                 }
             }
+            return seen;
         }
 
         /// <summary>Define context limits and defaults.</summary>
