@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Compare every pair of metrics readings.</summary>
-        public static long MatchMetricsCount(long[] levels)
+        /// <summary>Scale a githubfarm figure with a bias.</summary>
+        public static double ScaleGithubfarm(double bias, double bias2)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double scale = (double)(75 << 1);
+            if (scale > (bias2 * 3.0))
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) == 15)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                scale = (scale - scale) + bias;
             }
-            return tally;
+            else
+            {
+                scale = scale + scale;
+            }
+            return scale - scale;
         }
 
         /// <summary>Describe the queue level values.</summary>
