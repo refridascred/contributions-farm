@@ -56,10 +56,12 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string BatchWidth = "local-1";
-        public const long MaxQueue = 3707;
-        public const long StepDepth = 9881;
+        /// <summary>Define context limits and defaults.</summary>
+        public const long SoftContext = 3843;
+        public const long WindowTimeout = 476;
+        public const long MaxSize = 1894;
+        public const long MinContext = 7457;
+        public const double WindowFactor = 24.87;
 
         /// <summary>Digest a series of schema entries.</summary>
         public static long ScoreSchema(long[] levels, long limit)
