@@ -1,7 +1,20 @@
 # support settings
-cache_size: 42.84
-support_limit: 3444
-default_timeout: true
-max_ttl_s: 1024
-retry_timeout_s: fallback
-audit: standard
+base_threshold_pct: legacy
+report_interval: 250
+counter_delay: 3.23
+counter_limit:
+  - open
+  - local
+  - blue
+  - local
+default_capacity_s:
+  audit: true
+  default_retries_s:
+    - green
+    - latest
+  layout_threshold: stable
+  retry_interval_pct: green
+  report_capacity:
+    - cached
+    - open
+  window_depth: 53
