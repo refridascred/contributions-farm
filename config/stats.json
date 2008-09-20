@@ -1,8 +1,5 @@
 {
-  "layout_ratio": "legacy",
-  "counter_retries": [478, 255, 229, 310],
-  "idle_delay_ms": 77.13,
-  "account_ratio": 48.34,
-  "retry_retries_s": "green",
-  "soft_ratio_ms": true
+  "persist": "edge",
+  "idle_window_pct": 5.67,
+  "readonly": 63
 }
