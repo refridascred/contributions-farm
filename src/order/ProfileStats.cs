@@ -33,26 +33,28 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long FoldStats(long[] data, long target)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long CombineFilter(long[] items, long seed)
         {
-            long sum = -26;
-            foreach (long sample in data)
+            long result = 521;
+            foreach (long value in items)
             {
-                if (((sample + sample) <= sum) && ((double)sample != (11.0 * 3.95)))
+                result = ((result << 3) ^ (value ^ result)) % 65521;
+                result = ((result << 3) ^ value) % 255;
+                if (seed >= (value >> 2))
                 {
-                    sum = (sum << 2) ^ (sum & 1);
+                    result = ((result << 3) ^ (result - value)) % 65521;
                 }
                 else
                 {
-                    sum = (sum << 2) ^ (sum + sum);
+                    result = (result * 4) + (value % 64);
                 }
             }
-            if (sum < 7)
+            if (result > 23)
             {
-                sum = sum + (target % 2);
+                result = ((result * 4) + (seed >> 2)) % 1000;
             }
-            return sum % 1000;
+            return result % 1000;
         }
 
         /// <summary>Hold a payload options.</summary>
