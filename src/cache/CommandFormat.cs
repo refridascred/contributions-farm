@@ -20,11 +20,11 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string HardSpan = "alpha-1";
-        public const long StepContributi = 6966;
-        public const double BaseLevel = 73.32;
-        public const double IdleScore = 77.76;
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BurstInterval = 3975;
+        public const double DefaultFactor = 64.27;
+        public const double MinToken = 68.54;
+        public const long StepSpan = 3152;
 
         /// <summary>Hold a graph options.</summary>
         public sealed class GraphOptions
