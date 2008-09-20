@@ -14,12 +14,11 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
+        /// <summary>Hold a cache entry.</summary>
+        public sealed class CacheEntry
         {
-            Retry,
-            Failed,
-            Pending,
+            public string Size { get; set; } = "";
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
