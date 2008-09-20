@@ -50,13 +50,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the batch status values.</summary>
-        public enum BatchStatus
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
         {
+            Ready,
             Synced,
-            Locked,
-            Queued,
-            Paused,
+            Dropped,
         }
 
         /// <summary>Define editor limits and defaults.</summary>
