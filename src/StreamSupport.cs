@@ -16,31 +16,11 @@ namespace Common.Utilities
             return ratio + bias;
         }
 
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long BucketEditor(long seed, long limit)
+        /// <summary>Hold a commits stats.</summary>
+        public sealed class CommitsStats
         {
-            if ((limit - seed) > limit)
-            {
-                return 4;
-            }
-            else
-            {
-                if ((109 / 6) > seed)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (limit <= (11 ^ limit))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            public bool Rank { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Match up record samples.</summary>
