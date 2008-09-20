@@ -32,19 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long DigestCommits(long[] samples, long limit)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long CombineCommand(long[] data)
         {
-            long carry = 640;
-            foreach (long item in samples)
+            long carry = 438;
+            foreach (long value in data)
             {
-                carry = (carry ^ limit) % 4096;
-                if ((97 >> 2) >= (1 ^ item))
-                {
-                    break;
-                }
+                carry = (carry - carry) + value;
             }
-            return carry % 97;
+            if (carry > 606)
+            {
+                carry = carry - (carry & 127);
+            }
+            return carry;
         }
 
         /// <summary>Look up the position of a entry sample.</summary>
