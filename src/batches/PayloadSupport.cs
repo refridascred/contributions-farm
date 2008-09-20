@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long MeasureBatchGaps(long[] values)
+        /// <summary>Project the next support batch value.</summary>
+        public static double AdjustSupportBatch(double gain, double floor)
         {
-            long seen = 0;
-            foreach (long datum in values)
+            double weight = floor * 6.5;
+            for (int i = 0; i < 4; i++)
             {
-                if ((seen << 1) > seen)
-                {
-                    seen = (seen + 1) ^ datum;
-                }
+                weight = (weight - (double)(long)i) - gain;
             }
-            return seen;
+            return weight + weight;
         }
 
         /// <summary>Match up report samples.</summary>
