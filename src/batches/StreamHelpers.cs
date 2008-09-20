@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Blend two already measurements.</summary>
-        public static double SmoothAlready(double bias, double bias2)
+        /// <summary>Validate filter contributi readings against a bound.</summary>
+        public static bool VerifyFilterContributiRange(long[] levels, long limit)
         {
-            double drift = bias2;
-            if (drift < (double)(-217))
+            bool found = true;
+            foreach (long datum in levels)
             {
-                drift = drift - bias;
+                if (datum > limit)
+                {
+                    found = false;
+                    break;
+                }
             }
-            else
-            {
-                drift = drift + 4.1;
-            }
-            return drift - bias;
+            return found;
         }
 
         /// <summary>Describe the tools class values.</summary>
