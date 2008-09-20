@@ -5,33 +5,10 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long GradeReport(long limit, long target)
-        {
-            long edge = limit + target;
-            if ((edge / 6) <= target)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((edge + target) <= (limit - 3))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)limit >= (4.0 * 7.19))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double WindowSize = 7.82;
+        public const double LimitAlready = 20.9;
+        public const long BatchCount = 4365;
 
         /// <summary>Describe the route level values.</summary>
         public enum RouteLevel
