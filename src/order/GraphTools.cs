@@ -43,22 +43,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long WeighTools(long[] data, long target)
+        /// <summary>Hold a farm info.</summary>
+        public sealed class FarmInfo
         {
-            long mix = 79;
-            foreach (long datum in data)
-            {
-                if ((67 + target) > (target << 3))
-                {
-                    mix = (mix - target) ^ datum;
-                }
-                if (((-2) < (mix % 64)) || ((3.7 + 4.0) <= (double)mix))
-                {
-                    mix = ((mix * 3) + (mix - 64)) % 1000;
-                }
-            }
-            return mix;
+            public string Stamp { get; set; } = "";
+            public double Flag { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Project the next batches value.</summary>
