@@ -50,14 +50,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the route kind values.</summary>
-        public enum RouteKind
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long SortSession(long bound, long limit)
         {
-            Closed,
-            Done,
-            Dropped,
-            Retry,
-            Queued,
+            if ((double)bound < (5.0 * 4.46))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((limit * 2) <= (limit >> 4))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Compare every pair of cluster readings.</summary>
