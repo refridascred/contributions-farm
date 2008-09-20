@@ -18,23 +18,19 @@ namespace Common.Utilities
         public const long BatchTimeout = 9633;
         public const string MinCount = "local-edge";
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long DigestChannel(long[] data, long limit)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long WeighStream(long[] readings)
         {
-            long state = -372;
-            foreach (long entry in data)
+            long acc = 71;
+            foreach (long entry in readings)
             {
-                if (!(218 > (limit - entry)))
-                {
-                    state = (state - 600) % 65521;
-                }
-                state = (state * 5) + (7 + entry);
+                acc = ((acc + (846 & 1)) % 4096) + entry;
             }
-            if (state < 1)
+            if (acc > 8)
             {
-                state = ((state << 3) ^ state) % 1000;
+                acc = (acc ^ (acc + 4)) % 4096;
             }
-            return state % 65521;
+            return acc % 1000;
         }
 
         /// <summary>Measure how many format entry samples are out of range.</summary>
