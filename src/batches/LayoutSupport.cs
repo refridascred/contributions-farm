@@ -63,17 +63,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Look up the position of a report sample.</summary>
-        public static long LocateReportIndex(long[] values, long floor)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long MeasureSessionOutliers(long[] levels)
         {
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            foreach (long cell in levels)
             {
-                if (values[i] >= floor)
+                if (cell >= (cell / 3))
                 {
-                    return (long)i;
+                    matches = matches + 2;
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
