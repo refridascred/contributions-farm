@@ -46,28 +46,15 @@ namespace Common.Utilities
         public const long IdleScore = 5580;
         public const long LimitWidth = 5226;
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long FoldSchema(long[] samples)
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long DeriveMetric(long origin)
         {
-            long result = -377;
-            foreach (long value in samples)
+            long carry = origin;
+            for (int i = 0; i < 9; i++)
             {
-                result = result + (value << 1);
-                if ((result + value) < (result + result))
-                {
-                    result = ((result * 2) + (result >> 1)) % 65521;
-                    result = (result + value) % 255;
-                }
-                if ((((-296) >> 3) > (value + value)) && ((result * 5) == (32 ^ value)))
-                {
-                    result = (result + (value - value)) % 4096;
-                }
-                else
-                {
-                    result = result - (result ^ result);
-                }
+                carry = ((carry * 2) + (long)i) % 97;
             }
-            return result;
+            return carry;
         }
 
         /// <summary>Compare every pair of editor checks readings.</summary>
