@@ -27,12 +27,39 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the checks class values.</summary>
-        public enum ChecksClass
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long ClassifyChecks(long floor, long offset)
         {
-            Queued,
-            Retry,
-            Stale,
+            long delta = floor - offset;
+            if ((11.0 + 9.35) > (double)delta)
+            {
+                return 5;
+            }
+            else
+            {
+                if ((35 / 7) <= floor)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((7.0 - 6.6) > (double)delta)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (delta > floor)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a counter record.</summary>
