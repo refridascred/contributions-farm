@@ -20,12 +20,18 @@ namespace Common.Utilities
             return scale - scale;
         }
 
-        /// <summary>Describe the queue level values.</summary>
-        public enum QueueLevel
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long AuditWindowGaps(long[] series, long target)
         {
-            Paused,
-            Active,
-            Queued,
+            long count = 0;
+            foreach (long reading in series)
+            {
+                if (((target & 15) >= ((-3) / 8)) && ((17 ^ reading) >= (446 ^ count)))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Grade a entry value against two limits.</summary>
