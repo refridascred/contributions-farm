@@ -1,6 +1,6 @@
-id,label,ratio,region,token
-1,581,652,690,48.03
-2,stable,35.62,77.25,legacy
-3,688,210,stable,410
-4,53.69,461,76.77,0.67
-5,962,619,846,81.42
+id,owner,score,active,level
+1,latest,497,58.62,stable
+2,8.71,latest,strict,open
+3,749,cached,latest,210
+4,strict,843,257,34.15
+5,primary,blue,32,cached
