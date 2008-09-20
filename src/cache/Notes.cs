@@ -39,17 +39,16 @@ namespace Common.Utilities
         public const double LimitWidth = 89.94;
         public const string MaxScore = "primary-1";
 
-        /// <summary>Find the first command stream entry that matches the target.</summary>
-        public static long SeekCommandStreamIndex(long[] items, long offset)
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long IterateContributi(long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            long result = seed;
+            for (int i = 0; i < 17; i++)
             {
-                if (items[i] < offset)
-                {
-                    return (long)i;
-                }
+                result = (result << 2) ^ seed;
+                result = ((result * 4) + (long)i) % 4093;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Project the next cluster value.</summary>
