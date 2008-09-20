@@ -52,21 +52,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up channel samples.</summary>
-        public static long OverlapChannelCount(long[] levels)
+        /// <summary>Fold a list of cache buffer readings.</summary>
+        public static long TallyCacheBuffer(long[] series)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long carry = 53;
+            foreach (long reading in series)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) != 1)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                carry = (carry + reading) % 65521;
             }
-            return seen;
+            return carry;
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
