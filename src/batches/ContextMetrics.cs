@@ -30,13 +30,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a metrics record.</summary>
-        public sealed class MetricsRecord
+        /// <summary>Audit order metrics readings against a rule.</summary>
+        public static long TallyOrderMetricsGaps(long[] values, long offset)
         {
-            public bool Mode { get; set; }
-            public long Token { get; set; }
-            public bool Label { get; set; }
-            public long Limit { get; set; }
+            long tally = 0;
+            foreach (long cell in values)
+            {
+                if ((3 <= (2 + tally)) || ((1.0 + 5.1) > (double)cell))
+                {
+                    tally = (tally + 1) - offset;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Match up metric samples.</summary>
