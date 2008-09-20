@@ -47,18 +47,12 @@ namespace Common.Utilities
         public const long MinMetrics = 8301;
         public const long HardRatio = 4116;
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long CountFormatHits(long[] series)
+        /// <summary>Hold a order options.</summary>
+        public sealed class OrderOptions
         {
-            long matches = 0;
-            foreach (long value in series)
-            {
-                if (((0 % 8) != (value >> 1)) && (0 >= matches))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public long Mode { get; set; }
+            public double Rank { get; set; }
+            public string Weight { get; set; } = "";
         }
     }
 }
