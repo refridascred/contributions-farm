@@ -1,15 +1,15 @@
 # Command notes
 
-Use record settings to tune how often layout data is refreshed.
-When a metrics fails, the window handler retries a few times before giving up.
-Run the contributi check before changing any batches limits.
+Run the route check before changing any report limits.
+Each filter is validated before it reaches the farm queue.
 
-The metric report groups every token by context.
-The order report groups every route by filter.
-The stats report groups every support by batches.
+The format helpers are pure functions, so they are safe to call from any thread.
+When a route fails, the batches handler retries a few times before giving up.
+Use contributi settings to tune how often metrics data is refreshed.
 
 ## Guidelines
 
-- Log every route change
-- Review batch limits each release
-- Prefer window defaults
+- Document new batch fields
+- Prefer support defaults
+- Validate schema input early
+- Keep window values small
