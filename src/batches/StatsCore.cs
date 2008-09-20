@@ -72,13 +72,10 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the profile mode values.</summary>
-        public enum ProfileMode
-        {
-            Active,
-            Stale,
-            Paused,
-            Queued,
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BurstProfile = 9444;
+        public const double WindowInterval = 6.3;
+        public const double MaxSpan = 9.16;
+        public const string IdleProfile = "standard";
     }
 }
