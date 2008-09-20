@@ -32,22 +32,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long MeasureProfileHits(long[] values, long bound)
+        /// <summary>Find the first token stats entry that matches the target.</summary>
+        public static long SeekTokenStatsIndex(long[] series, long limit)
         {
-            long count = 0;
-            foreach (long datum in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (count >= (bound << 3))
+                if (series[i] > limit)
                 {
-                    count = (count + 2) + datum;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Blend two token measurements.</summary>
