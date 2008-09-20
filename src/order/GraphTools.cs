@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Count the githubfarm support entries that pass the check.</summary>
-        public static long AuditGithubfarmSupportHits(long[] data)
+        /// <summary>Describe the graph phase values.</summary>
+        public enum GraphPhase
         {
-            long hits = 0;
-            foreach (long sample in data)
-            {
-                if ((sample % 12) <= (sample % 10))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            Queued,
+            Locked,
+            Failed,
+            New,
         }
 
         /// <summary>Rank stream input into a small class.</summary>
