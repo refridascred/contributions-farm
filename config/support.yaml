@@ -1,6 +1,4 @@
 # support settings
-base_ratio_ms: 8
-idle_threshold: cached
-max_timeout_ms: 67.22
-persist: 86
-buffer_interval: true
+enabled: standard
+cache_limit: 90.94
+report_window: cached
