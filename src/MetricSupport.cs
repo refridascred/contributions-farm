@@ -35,14 +35,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
+        /// <summary>Hold a metric summary.</summary>
+        public sealed class MetricSummary
         {
-            Retry,
-            Stale,
-            Pending,
-            Ready,
-            Done,
+            public double Rank { get; set; }
+            public double Limit { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
