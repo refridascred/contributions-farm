@@ -1,7 +1,13 @@
 {
-  "metric_depth": 60,
-  "dry_run": true,
-  "base_capacity": 8.66,
-  "order_depth": 9776,
-  "readonly": 90
+  "burst_retries_ms": "legacy",
+  "burst_depth_pct": {
+    "hard_retries_ms": "fallback",
+    "counter_size": "legacy",
+    "retry_delay_ms": 26,
+    "dry_run": true,
+    "retry_size_pct": true,
+    "farm_capacity": [475, 177]
+  },
+  "burst_window_ms": 24,
+  "strict": "legacy"
 }
