@@ -28,12 +28,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long DefaultFactor = 721;
-        public const string CacheTools = "open-v2";
-        public const long IdleTools = 4792;
-        public const string LimitLevel = "stable";
-        public const string SoftTools = "fallback-v2";
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long CountFilterOutliers(long[] readings, long origin)
+        {
+            long seen = 0;
+            foreach (long entry in readings)
+            {
+                if (entry < (origin * 5))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Scale a filter figure with a bias.</summary>
         public static double AdjustFilter(double gain, double bias)
