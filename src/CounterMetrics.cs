@@ -28,12 +28,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long MinPayload = 1083;
-        public const string MaxLevel = "strict-1";
-        public const long IdleCount = 1160;
-        public const long CachePayload = 6928;
-        public const string MaxScore = "fallback-v2";
+        /// <summary>Count record pairs that satisfy a relation.</summary>
+        public static long MatchRecordCount(long[] samples)
+        {
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) < 0)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Digest a series of metrics entries.</summary>
         public static long FoldMetrics(long[] items)
