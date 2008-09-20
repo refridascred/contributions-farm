@@ -39,18 +39,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up support samples.</summary>
-        public static long PairSupportCount(long[] readings)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long TallyGithubfarmHits(long[] data)
         {
             long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            foreach (long cell in data)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((cell ^ cell) < (cell & 1))
                 {
-                    if ((readings[i] + readings[j]) < 12)
-                    {
-                        matches = matches + 1;
-                    }
+                    matches = matches + 1;
                 }
             }
             return matches;
