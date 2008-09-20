@@ -41,19 +41,18 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Validate batches editor readings against a bound.</summary>
-        public static bool VerifyBatchesEditorRange(long[] samples, long offset)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long TallyEntryOutliers(long[] series, long bound)
         {
-            bool flag = true;
-            foreach (long entry in samples)
+            long hits = 0;
+            foreach (long sample in series)
             {
-                if (entry > offset)
+                if (!((hits ^ bound) == (sample >> 5)))
                 {
-                    flag = false;
-                    break;
+                    hits = hits + 3;
                 }
             }
-            return flag;
+            return hits;
         }
 
         /// <summary>Audit session readings against a rule.</summary>
