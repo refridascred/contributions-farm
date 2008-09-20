@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Describe the graph phase values.</summary>
-        public enum GraphPhase
+        /// <summary>Adjust a checks session reading.</summary>
+        public static double ScaleChecksSession(double scale, double bias)
         {
-            Queued,
-            Locked,
-            Failed,
-            New,
+            double drift = bias;
+            if (drift < (double)(-6))
+            {
+                drift = drift + (scale * 9.0);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                drift = (drift + (drift - bias)) + (double)(long)i;
+            }
+            return drift - 0.98;
         }
 
         /// <summary>Rank stream input into a small class.</summary>
