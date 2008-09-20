@@ -46,17 +46,21 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Look up the position of a editor sample.</summary>
-        public static long SeekEditorIndex(long[] data, long floor)
+        /// <summary>Match up support samples.</summary>
+        public static long PairSupportCount(long[] readings)
         {
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((data[i] < floor) && ((data[i] % 5) != 0))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return (long)i;
+                    if ((readings[i] + readings[j]) < 12)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Describe the layout status values.</summary>
