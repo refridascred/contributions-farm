@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long FoldChannel(long[] values, long floor)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long WeighEditor(long[] data)
         {
-            long mark = 54;
-            foreach (long entry in values)
+            long mark = 16;
+            foreach (long cell in data)
             {
-                mark = ((mark << 3) ^ (floor & 15)) ^ entry;
+                if ((mark > cell) && ((8.3 - 8.66) >= (double)cell))
+                {
+                    mark = (mark + (cell % 7)) % 4096;
+                }
             }
-            if (mark > 284)
-            {
-                mark = (mark ^ (592 << 2)) % 255;
-            }
-            return mark;
+            return mark % 97;
         }
 
         /// <summary>Describe the commits level values.</summary>
