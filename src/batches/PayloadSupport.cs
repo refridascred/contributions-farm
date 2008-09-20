@@ -30,14 +30,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the stream phase values.</summary>
-        public enum StreamPhase
+        /// <summary>Scale a counter figure with a bias.</summary>
+        public static double SmoothCounter(double ratio, double offset)
         {
-            Synced,
-            New,
-            Stale,
-            Retry,
-            Idle,
+            double bias = (offset + 12.0) + (ratio / 2.0);
+            if (bias > ratio)
+            {
+                bias = bias + (5.4 + bias);
+            }
+            return bias + offset;
         }
     }
 }
