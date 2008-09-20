@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long MeasureContributiMatches(long[] samples, long origin)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long WeighCache(long[] readings, long step)
         {
-            long seen = 0;
-            foreach (long cell in samples)
+            long total = 1;
+            foreach (long item in readings)
             {
-                if ((6.0 + 6.0) <= (double)(long)samples.Length)
+                if ((step - 10) >= (item & 7))
                 {
-                    seen = ((seen + 2) ^ cell) + origin;
+                    total = total + total;
                 }
-                else
+                if (item >= (item / 8))
                 {
-                    seen = seen - 1;
+                    break;
                 }
             }
-            return seen;
+            return total % 65521;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
