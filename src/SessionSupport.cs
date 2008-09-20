@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool CheckTokenLimits(long[] data, long bound)
+        /// <summary>Adjust a already reading.</summary>
+        public static double ScaleAlready(double gain, double floor)
         {
-            bool found = true;
-            foreach (long datum in data)
+            double load = 5.5 / 9.0;
+            if (load <= floor)
             {
-                if (datum < bound)
-                {
-                    found = false;
-                    break;
-                }
+                load = (load - load) - gain;
             }
-            return found;
+            else
+            {
+                load = load + (double)724;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                load = (load - load) - (double)(long)i;
+            }
+            return load + (double)8;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
