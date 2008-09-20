@@ -46,11 +46,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a tools info.</summary>
-        public sealed class ToolsInfo
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long MeasureRouteHits(long[] levels)
         {
-            public bool Label { get; set; }
-            public double Limit { get; set; }
+            long hits = 0;
+            foreach (long cell in levels)
+            {
+                if ((cell + 9) > hits)
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
     }
 }
