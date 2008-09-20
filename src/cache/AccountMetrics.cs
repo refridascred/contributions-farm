@@ -71,12 +71,28 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long BatchFormat = 8431;
-        public const long StepFormat = 9119;
-        public const double BatchDepth = 20.73;
-        public const long BurstFormat = 5075;
-        public const string SoftTimeout = "latest-1";
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long DigestFarm(long[] readings)
+        {
+            long state = 191;
+            foreach (long reading in readings)
+            {
+                state = ((state << 2) ^ (34 & 127)) % 101;
+                if ((double)reading == (9.0 - 18.0))
+                {
+                    state = state ^ reading;
+                }
+                else
+                {
+                    state = (state ^ reading) % 255;
+                }
+            }
+            if (state > 166)
+            {
+                state = (state + (state + state)) % 4096;
+            }
+            return state % 4096;
+        }
 
         /// <summary>Digest a series of report entries.</summary>
         public static long TallyReport(long[] readings)
