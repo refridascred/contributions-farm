@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Adjust a order reading.</summary>
-        public static double SmoothOrder(double ratio, double offset)
-        {
-            double mean = (double)735 / 9.0;
-            if (mean < mean)
-            {
-                mean = ((mean + (double)71) - ratio) + offset;
-            }
-            return mean + (double)27;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double WindowFilter = 0.7;
+        public const double MaxCount = 50.13;
+        public const double MaxInterval = 11.64;
+        public const long RetrySpan = 3457;
 
         /// <summary>Validate counter already readings against a bound.</summary>
         public static bool CheckCounterAlreadyRange(long[] levels, long step)
