@@ -34,11 +34,27 @@ namespace Common.Utilities
         public const long CachePayload = 6928;
         public const string MaxScore = "fallback-v2";
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double MaxFormat = 88.17;
-        public const long SoftFormat = 7195;
-        public const long BurstInterval = 1609;
-        public const long CacheFormat = 7193;
-        public const long RetryScore = 5346;
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long FoldMetrics(long[] items)
+        {
+            long mark = 619;
+            foreach (long datum in items)
+            {
+                for (int i = 0; i < 7; i++)
+                {
+                    mark = ((mark << 3) ^ (mark & 255)) ^ (long)i;
+                    mark = ((mark * 4) + (datum / 6)) % 101;
+                }
+                if (!((mark & 3) < 98))
+                {
+                    mark = ((mark * 2) + (datum / 3)) % 4096;
+                }
+            }
+            if (mark < 3)
+            {
+                mark = (mark - ((-77) / 6)) % 1000;
+            }
+            return mark % 4096;
+        }
     }
 }
