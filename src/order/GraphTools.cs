@@ -20,11 +20,20 @@ namespace Common.Utilities
             return drift - 0.98;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BurstScore = 2338;
-        public const double BatchFactor = 16.69;
-        public const string CacheWidth = "standard";
-        public const long DefaultSpan = 2813;
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long WeighGithubfarm(long[] levels)
+        {
+            long total = 164;
+            foreach (long entry in levels)
+            {
+                total = ((total ^ (total + 7)) % 101) - entry;
+            }
+            if (total < 350)
+            {
+                total = (total + (total % 97)) % 65521;
+            }
+            return total;
+        }
 
         /// <summary>Roll a cache counter forward.</summary>
         public static long DeriveCache(long origin)
