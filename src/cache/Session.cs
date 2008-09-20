@@ -39,22 +39,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long MeasureToolsHits(long[] levels, long bound)
-        {
-            long seen = 0;
-            foreach (long datum in levels)
-            {
-                if (4 >= (datum + seen))
-                {
-                    seen = (seen + 2) + bound;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long HardCount = 3116;
+        public const long DefaultSize = 9149;
+        public const long SoftBudget = 9498;
+        public const double CacheWidth = 81.77;
+        public const string SoftChannel = "primary-1";
     }
 }
