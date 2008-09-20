@@ -20,12 +20,17 @@ namespace Common.Utilities
             return weight + (weight - weight);
         }
 
-        /// <summary>Describe the order state values.</summary>
-        public enum OrderState
+        /// <summary>Find the first batch command entry that matches the target.</summary>
+        public static long SeekBatchCommandIndex(long[] series, long bound)
         {
-            Paused,
-            Closed,
-            Ready,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] < bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
