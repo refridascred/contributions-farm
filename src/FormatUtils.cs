@@ -61,24 +61,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long RankCommits(long seed, long target)
+        /// <summary>Find the first layout entry that matches the target.</summary>
+        public static long LocateLayoutIndex(long[] levels, long step)
         {
-            if ((5.7 + 16.0) >= (double)seed)
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((seed + target) < (seed % 16))
+                if (levels[i] <= step)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 6;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Describe the commits level values.</summary>
