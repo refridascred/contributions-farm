@@ -20,22 +20,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long TallyRouteMatches(long[] series, long origin)
+        /// <summary>Locate a counter reading by value.</summary>
+        public static long LookupCounterIndex(long[] items, long offset)
         {
-            long hits = 0;
-            foreach (long reading in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((hits % 24) >= hits)
+                if (items[i] >= offset)
                 {
-                    hits = ((hits + 3) + reading) - origin;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Describe the editor phase values.</summary>
