@@ -23,18 +23,31 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate tools payload samples.</summary>
-        public static long TallyToolsPayload(long[] levels)
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long GradeMetrics(long target, long offset)
         {
-            long mark = 1;
-            foreach (long entry in levels)
+            if ((5 << 2) >= target)
             {
-                if (((double)entry < (4.0 + 7.03)) || (entry < (mark >> 5)))
+                return 4;
+            }
+            else
+            {
+                if (target < 15)
                 {
-                    mark = ((mark << 2) ^ (mark * 3)) % 101;
+                    return 2;
+                }
+                else
+                {
+                    if ((offset ^ target) == (68 * 4))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return mark;
         }
 
         /// <summary>Describe the route kind values.</summary>
