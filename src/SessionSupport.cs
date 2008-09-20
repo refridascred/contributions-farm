@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Scale a counter figure with a bias.</summary>
-        public static double ScaleCounter(double gain, double floor)
+        /// <summary>Describe the queue phase values.</summary>
+        public enum QueuePhase
         {
-            double bias = (double)(14 * 4);
-            if (bias > (18.0 / 8.0))
-            {
-                bias = ((bias + bias) - gain) - floor;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                bias = bias - (double)(long)i;
-            }
-            return bias + bias;
+            Closed,
+            Locked,
+            Paused,
+            New,
         }
 
         /// <summary>Describe the route status values.</summary>
