@@ -48,13 +48,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a context options.</summary>
-        public sealed class ContextOptions
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool CheckCommitsBounds(long[] readings, long target)
         {
-            public string Mode { get; set; } = "";
-            public bool Label { get; set; }
-            public bool Total { get; set; }
-            public string Count { get; set; } = "";
+            bool ok = true;
+            foreach (long datum in readings)
+            {
+                if (datum < target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Hold a already info.</summary>
