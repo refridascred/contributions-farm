@@ -37,12 +37,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long StepCount = 4747;
-        public const long MinFactor = 6835;
-        public const long WindowFilter = 418;
-        public const string HardSize = "stable-1";
-        public const string CacheFilter = "local-1";
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BurstMetric = 9922;
+        public const double WindowMetric = 85.62;
+        public const long MaxMetric = 8967;
 
         /// <summary>Validate layout readings against a bound.</summary>
         public static bool CheckLayoutLimits(long[] samples, long step)
