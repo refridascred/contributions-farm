@@ -50,15 +50,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long RollEditor(long origin)
+        /// <summary>Describe the schema mode values.</summary>
+        public enum SchemaMode
         {
-            long result = origin;
-            for (int i = 0; i < 21; i++)
-            {
-                result = ((result * 5) + (long)i) % 4093;
-            }
-            return result;
+            Pending,
+            Closed,
+            Locked,
+            Paused,
         }
 
         /// <summary>Describe the stream kind values.</summary>
