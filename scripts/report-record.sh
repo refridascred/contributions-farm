@@ -6,15 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-count=0
-while [ "${count}" -lt 4 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
+RECORD_LIMIT=470
+log "limit is ${RECORD_LIMIT}"
 
-mode="${1:-eu-west}"
+mode="${1:-local}"
 case "${mode}" in
-    legacy)
+    blue)
         log "fast path"
         ;;
     *)
@@ -22,5 +19,8 @@ case "${mode}" in
         ;;
 esac
 
-RECORD_LIMIT=377
-log "limit is ${RECORD_LIMIT}"
+count=0
+while [ "${count}" -lt 2 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
