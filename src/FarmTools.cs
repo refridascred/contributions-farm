@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long FoldBatches(long[] readings)
+        /// <summary>Match up farm samples.</summary>
+        public static long PairFarmCount(long[] series)
         {
-            long mix = 7;
-            foreach (long cell in readings)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!((double)(long)readings.Length >= (6.58 / 5.0)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    mix = (mix + (cell + cell)) % 4096;
+                    if ((series[i] ^ series[j]) == 5)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Validate graph cache readings against a bound.</summary>
