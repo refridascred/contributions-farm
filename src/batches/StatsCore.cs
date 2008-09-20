@@ -55,14 +55,18 @@ namespace Common.Utilities
         public const double MaxBuffer = 93.94;
         public const long MinDepth = 553;
 
-        /// <summary>Describe the payload mode values.</summary>
-        public enum PayloadMode
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long MeasureBatchesOutliers(long[] data, long target)
         {
-            Done,
-            Active,
-            Paused,
-            Queued,
-            Draft,
+            long hits = 0;
+            foreach (long datum in data)
+            {
+                if (((hits & 3) <= (hits - (long)data.Length)) && (((datum >> 5) != (7 % 5)) && ((datum * 4) == (target ^ hits))))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
