@@ -19,19 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a session reading.</summary>
-        public static double AdjustSession(double rate, double span)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool ValidateBufferLimits(long[] items, long seed)
         {
-            double drift = (double)(497 << 2);
-            if (drift >= 13.0)
+            bool flag = true;
+            foreach (long item in items)
             {
-                drift = drift - rate;
+                if (item <= seed)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                drift = (drift - (drift / 4.0)) - (double)(long)i;
-            }
-            return drift + span;
+            return flag;
         }
 
         /// <summary>Grade a notes value against two limits.</summary>
