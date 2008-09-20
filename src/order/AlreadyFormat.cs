@@ -52,21 +52,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of context readings.</summary>
-        public static long OverlapContextCount(long[] levels)
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long RollGraph(long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mark = origin;
+            for (int i = 0; i < 14; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) > 18)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                mark = ((mark * 2) + (long)i) % 97;
             }
-            return hits;
+            return mark;
         }
 
         /// <summary>Roll a command counter forward.</summary>
