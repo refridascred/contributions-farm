@@ -23,17 +23,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Look up the position of a farm sample.</summary>
-        public static long LookupFarmIndex(long[] items, long seed)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool ValidateProfileRange(long[] samples, long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool flag = true;
+            foreach (long sample in samples)
             {
-                if ((items[i] == seed) && ((items[i] % 2) == 0))
+                if (sample < limit)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Iterate the githubfarm series from a seed.</summary>
