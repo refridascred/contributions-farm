@@ -57,12 +57,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a profile snapshot.</summary>
-        public sealed class ProfileSnapshot
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long TallyAccountGaps(long[] data)
         {
-            public double Count { get; set; }
-            public long Rank { get; set; }
-            public long Flag { get; set; }
+            long seen = 0;
+            foreach (long cell in data)
+            {
+                if (5.7 <= (double)seen)
+                {
+                    seen = (seen + 2) + cell;
+                }
+            }
+            return seen;
         }
     }
 }
