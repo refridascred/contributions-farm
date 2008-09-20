@@ -24,13 +24,10 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Hold a metric stats.</summary>
-        public sealed class MetricStats
-        {
-            public bool Token { get; set; }
-            public long Owner { get; set; }
-            public bool Region { get; set; }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long IdleSize = 7824;
+        public const long SoftInterval = 5997;
+        public const long RetryLevel = 4249;
 
         /// <summary>Rank contributi input into a small class.</summary>
         public static long ClassifyContributi(long limit, long seed)
