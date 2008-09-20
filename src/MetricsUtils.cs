@@ -25,12 +25,18 @@ namespace Common.Utilities
         public const long DefaultCommits = 402;
         public const long MaxCommits = 8063;
 
-        /// <summary>Hold a stream stats.</summary>
-        public sealed class StreamStats
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long MeasureGraphGaps(long[] series, long target)
         {
-            public bool Mode { get; set; }
-            public string Weight { get; set; } = "";
-            public long Level { get; set; }
+            long hits = 0;
+            foreach (long datum in series)
+            {
+                if (datum > (54 - datum))
+                {
+                    hits = (hits + 2) + target;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Blend two filter measurements.</summary>
