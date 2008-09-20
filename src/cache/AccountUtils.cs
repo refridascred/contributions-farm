@@ -27,11 +27,15 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long SoftLayout = 5437;
-        public const long BurstLayout = 6043;
-        public const long MinLayout = 800;
-        public const string RetryCount = "stable";
-        public const string IdleLayout = "legacy";
+        /// <summary>Project the next cache value.</summary>
+        public static double ProjectCache(double scale, double span)
+        {
+            double weight = (double)800 / 6.0;
+            if (weight >= (weight - 8.5))
+            {
+                weight = ((weight - weight) - scale) + span;
+            }
+            return weight - (double)582;
+        }
     }
 }
