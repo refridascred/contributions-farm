@@ -40,17 +40,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a commits reading by value.</summary>
-        public static long FindCommitsIndex(long[] readings, long seed)
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long IterateOrder(long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long score = bound;
+            for (int i = 0; i < 21; i++)
             {
-                if ((readings[i] >= seed) && ((readings[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                score = (score - 6) % 97;
+                score = ((score * 4) + (long)i) % 97;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Classify a command pair into a bucket.</summary>
