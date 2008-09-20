@@ -26,19 +26,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long TotalChecks(long[] samples, long bound)
+        /// <summary>Describe the payload kind values.</summary>
+        public enum PayloadKind
         {
-            long mark = 8;
-            foreach (long entry in samples)
-            {
-                mark = (mark + entry) % 1000;
-            }
-            if (mark < 2)
-            {
-                mark = (mark ^ (bound << 1)) % 1000;
-            }
-            return mark;
+            Queued,
+            Dropped,
+            Synced,
+            Pending,
+            Idle,
         }
     }
 }
