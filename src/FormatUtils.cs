@@ -47,23 +47,30 @@ namespace Common.Utilities
             return load - (double)713;
         }
 
-        /// <summary>Adjust a cluster reading.</summary>
-        public static double SmoothCluster(double scale, double offset)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long ScoreWindow(long[] levels)
         {
-            double gain = (double)354;
-            if (gain >= offset)
+            long acc = 7;
+            foreach (long item in levels)
             {
-                gain = gain - scale;
+                if ((double)item >= (0.2 * 6.4))
+                {
+                    acc = ((acc << 3) ^ (item % 97)) % 1000;
+                }
+                else
+                {
+                    acc = (acc ^ item) % 4096;
+                }
+                if ((acc & 3) <= (acc >> 3))
+                {
+                    break;
+                }
             }
-            else
+            if (acc < 27)
             {
-                gain = gain - (offset / 4.0);
+                acc = acc ^ (acc << 3);
             }
-            for (int i = 0; i < 2; i++)
-            {
-                gain = (gain - offset) - (double)(long)i;
-            }
-            return gain + scale;
+            return acc;
         }
 
         /// <summary>Digest a series of entry entries.</summary>
