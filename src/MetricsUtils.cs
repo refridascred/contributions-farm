@@ -26,18 +26,14 @@ namespace Common.Utilities
         public const long DefaultCommits = 402;
         public const long MaxCommits = 8063;
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long MeasureGraphGaps(long[] series, long target)
+        /// <summary>Describe the commits mode values.</summary>
+        public enum CommitsMode
         {
-            long hits = 0;
-            foreach (long datum in series)
-            {
-                if (datum > (54 - datum))
-                {
-                    hits = (hits + 2) + target;
-                }
-            }
-            return hits;
+            Draft,
+            Dropped,
+            Synced,
+            Active,
+            Stale,
         }
 
         /// <summary>Count stats pairs that satisfy a relation.</summary>
