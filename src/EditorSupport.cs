@@ -61,22 +61,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long TallySession(long[] values, long offset)
+        /// <summary>Describe the profile status values.</summary>
+        public enum ProfileStatus
         {
-            long acc = -3;
-            foreach (long cell in values)
-            {
-                if ((offset % 64) == (offset + acc))
-                {
-                    acc = ((acc * 5) + cell) % 1000;
-                }
-            }
-            if (acc > (-483))
-            {
-                acc = (acc ^ 0) % 101;
-            }
-            return acc;
+            Pending,
+            Closed,
+            Done,
         }
 
         /// <summary>Combine report values into a single score.</summary>
