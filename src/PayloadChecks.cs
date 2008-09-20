@@ -19,12 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long WindowRatio = 2650;
-        public const long CacheWidth = 3753;
-        public const long BurstPayload = 3505;
-        public const long LimitPayload = 1302;
-        public const long BatchPayload = 8499;
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long AuditEditorHits(long[] samples, long offset)
+        {
+            long seen = 0;
+            foreach (long sample in samples)
+            {
+                if ((17.0 / 5.0) < (double)sample)
+                {
+                    seen = (seen + 1) - offset;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the editor class values.</summary>
         public enum EditorClass
