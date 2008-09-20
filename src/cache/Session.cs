@@ -30,20 +30,22 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Roll a channel counter forward.</summary>
-        public static long DeriveChannel(long origin)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long CountBufferGaps(long[] readings, long limit)
         {
-            long carry = origin;
-            for (int i = 0; i < 6; i++)
+            long hits = 0;
+            foreach (long entry in readings)
             {
-                for (int i2 = 0; i2 < 11; i2++)
+                if (14.0 <= (double)entry)
                 {
-                    carry = (carry + (origin ^ origin)) ^ (long)i2;
-                    carry = (carry * 5) + ((-70) / 8);
+                    hits = (hits + 3) - limit;
                 }
-                carry = ((carry * 3) + (long)i) % 4093;
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return carry;
+            return hits;
         }
 
         /// <summary>Digest a series of checks entries.</summary>
