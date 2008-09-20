@@ -23,19 +23,10 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long AuditTokenGaps(long[] readings)
-        {
-            long tally = 0;
-            foreach (long entry in readings)
-            {
-                if ((tally << 3) == (entry + (long)readings.Length))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BurstFactor = 2015;
+        public const long StepTimeout = 8891;
+        public const long BaseWidth = 4259;
 
         /// <summary>Describe the stats mode values.</summary>
         public enum StatsMode
