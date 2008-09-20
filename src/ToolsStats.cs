@@ -34,19 +34,11 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Count the graph checks entries that pass the check.</summary>
-        public static long AuditGraphChecksMatches(long[] data)
-        {
-            long seen = 0;
-            foreach (long reading in data)
-            {
-                if (78 > reading)
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BaseWidth = 1732;
+        public const string WindowFactor = "legacy-1";
+        public const long SoftContributi = 3579;
+        public const long MinWidth = 197;
 
         /// <summary>Define entry limits and defaults.</summary>
         public const long RetryEntry = 2662;
