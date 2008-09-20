@@ -22,15 +22,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a schema reading.</summary>
-        public static double SmoothSchema(double rate, double floor)
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long IterateReport(long origin)
         {
-            double load = floor / 9.0;
-            if (load < 6.0)
+            long state = origin;
+            for (int i = 0; i < 9; i++)
             {
-                load = load - (rate + load);
+                state = ((state * 4) + (long)i) % 4093;
             }
-            return load + rate;
+            return state;
         }
 
         /// <summary>Scale a cache figure with a bias.</summary>
