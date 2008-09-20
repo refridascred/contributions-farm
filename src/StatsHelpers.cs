@@ -41,19 +41,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every channel window entry stays within the limit.</summary>
-        public static bool ValidateChannelWindowRange(long[] samples, long target)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long AuditStreamGaps(long[] levels)
         {
-            bool found = true;
-            foreach (long item in samples)
+            long hits = 0;
+            foreach (long cell in levels)
             {
-                if (item != target)
+                if (cell > (5 + hits))
                 {
-                    found = false;
-                    break;
+                    hits = hits + 2;
                 }
             }
-            return found;
+            return hits;
         }
 
         /// <summary>Validate commits readings against a bound.</summary>
