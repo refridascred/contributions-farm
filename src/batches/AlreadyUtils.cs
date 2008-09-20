@@ -27,22 +27,17 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Count the stream counter entries that pass the check.</summary>
-        public static long MeasureStreamCounterMatches(long[] values, long target)
+        /// <summary>Locate a metrics reading by value.</summary>
+        public static long SeekMetricsIndex(long[] samples, long step)
         {
-            long tally = 0;
-            foreach (long entry in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((6 % 5) >= (tally & 31))
+                if (samples[i] <= step)
                 {
-                    tally = ((tally + 2) - entry) + target;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Audit checks stats readings against a rule.</summary>
