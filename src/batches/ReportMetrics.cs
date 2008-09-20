@@ -5,24 +5,13 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long RankCommand(long limit, long floor)
+        /// <summary>Hold a farm snapshot.</summary>
+        public sealed class FarmSnapshot
         {
-            if (7.2 > (double)limit)
-            {
-                return 4;
-            }
-            else
-            {
-                if (((double)limit > (1.04 / 9.0)) && ((double)floor > (8.4 + 16.0)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            public string Limit { get; set; } = "";
+            public string Owner { get; set; } = "";
+            public long Label { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Count commits pairs that satisfy a relation.</summary>
