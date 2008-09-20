@@ -1,17 +1,7 @@
 {
-  "burst_retries_count": 38.57,
-  "flush_window_s": {
-    "max_window_ms": 98,
-    "notes_threshold": "blue",
-    "burst_depth_count": [28, 127, 186, 415],
-    "sync_ttl_count": "eu-west"
-  },
-  "poll_limit": "legacy",
-  "idle_timeout_pct": {
-    "batch_ratio_count": 80.21,
-    "counter_interval": 250,
-    "farm_capacity": 250
-  },
-  "default_depth": true,
-  "hard_threshold": 7189
+  "retry_delay_count": 157,
+  "soft_ttl_pct": 95,
+  "soft_capacity_pct": 60,
+  "contributi_size": 28,
+  "min_size_count": false
 }
