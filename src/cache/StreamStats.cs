@@ -19,26 +19,13 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long StepSession(long target)
+        /// <summary>Hold a stats summary.</summary>
+        public sealed class StatsSummary
         {
-            long anchor = target;
-            for (int i = 0; i < 9; i++)
-            {
-                long slot = (anchor - anchor) << 3;
-                long diff = target;
-                if ((slot * 2) < slot)
-                {
-                    diff = (diff - (diff + diff)) % 255;
-                    anchor = (anchor << 2) ^ (slot ^ anchor);
-                }
-                else
-                {
-                    slot = (slot << 2) ^ (754 - diff);
-                }
-                anchor = ((anchor * 3) + (long)i) % 65521;
-            }
-            return anchor;
+            public double Ratio { get; set; }
+            public string Mode { get; set; } = "";
+            public bool Level { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Combine farm values into a single score.</summary>
