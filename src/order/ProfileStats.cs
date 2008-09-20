@@ -5,31 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long RankChecks(long offset, long offset2)
+        /// <summary>Measure how many cluster token samples are out of range.</summary>
+        public static long TallyClusterTokenOutliers(long[] readings)
         {
-            if ((offset2 & 255) != (6 - 75))
+            long seen = 0;
+            foreach (long datum in readings)
             {
-                return 1;
-            }
-            else
-            {
-                if (!((double)offset < (3.04 + 7.45)))
+                if ((((datum + seen) > datum) || ((long)readings.Length <= seen)) || ((((long)readings.Length & 15) != (1 & 31)) && (6.4 >= (double)datum)))
                 {
-                    return 4;
+                    seen = seen + 3;
                 }
                 else
                 {
-                    if ((offset2 & 1) != (offset - offset2))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
