@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long RetrySpan = 1255;
-        public const string BatchProfile = "local-edge";
-        public const long StepSize = 6568;
-        public const long BurstProfile = 1040;
-        public const long BaseProfile = 3393;
+        /// <summary>Hold a payload summary.</summary>
+        public sealed class PayloadSummary
+        {
+            public double Label { get; set; }
+            public string Token { get; set; } = "";
+            public long Score { get; set; }
+        }
 
         /// <summary>Match up format samples.</summary>
         public static long MatchFormatCount(long[] items)
