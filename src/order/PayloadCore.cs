@@ -23,17 +23,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a window already reading by value.</summary>
-        public static long LookupWindowAlreadyIndex(long[] items, long seed)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long TallyNotesMatches(long[] data, long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            foreach (long item in data)
             {
-                if ((items[i] > seed) && ((items[i] % 5) != 0))
+                if (seen >= (seed - seed))
                 {
-                    return (long)i;
+                    seen = (seen + 3) ^ item;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Grade a stream value against two limits.</summary>
