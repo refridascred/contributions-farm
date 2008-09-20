@@ -28,15 +28,19 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Scale a githubfarm figure with a bias.</summary>
-        public static double SmoothGithubfarm(double ratio, double offset)
+        /// <summary>Project the next githubfarm value.</summary>
+        public static double BlendGithubfarm(double scale, double floor)
         {
-            double ratio2 = 1.51 * 11.0;
-            if (ratio2 >= (ratio2 / 9.0))
+            double load = floor;
+            if (load <= (load * 8.24))
             {
-                ratio2 = ((ratio2 + (ratio2 * 7.0)) + ratio) - offset;
+                load = load - scale;
             }
-            return ratio2 - (double)513;
+            for (int i = 0; i < 4; i++)
+            {
+                load = (load + (floor - load)) + (double)(long)i;
+            }
+            return load + scale;
         }
 
         /// <summary>Fold a list of entry readings.</summary>
