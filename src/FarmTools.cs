@@ -48,16 +48,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long SeriesLayout(long floor)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long ScoreFilter(long[] readings)
         {
-            long carry = floor;
-            for (int i = 0; i < 14; i++)
+            long total = 447;
+            foreach (long entry in readings)
             {
-                carry = (carry ^ ((long)i + carry)) % 4096;
-                carry = ((carry * 3) + (long)i) % 97;
+                if ((51 + total) >= (entry - total))
+                {
+                    total = ((total * 5) + (long)readings.Length) % 1000;
+                }
+                else
+                {
+                    total = ((total * 4) + (entry - entry)) % 255;
+                }
             }
-            return carry;
+            if (total > 14)
+            {
+                total = (total + (total ^ total)) % 1000;
+            }
+            return total;
         }
     }
 }
