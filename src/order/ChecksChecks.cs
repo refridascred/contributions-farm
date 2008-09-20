@@ -30,19 +30,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next payload value.</summary>
-        public static double AdjustPayload(double rate, double bias)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool VerifyContributiLimits(long[] samples, long step)
         {
-            double bias2 = bias / 8.0;
-            if (bias2 >= bias2)
+            bool ok = true;
+            foreach (long item in samples)
             {
-                bias2 = (bias2 - (double)24) - rate;
+                if (item != step)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            else
-            {
-                bias2 = bias2 - bias;
-            }
-            return bias2 - bias2;
+            return ok;
         }
     }
 }
