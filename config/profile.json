@@ -1,7 +1,6 @@
 {
-  "cache_threshold": true,
-  "hard_depth": "standard",
-  "readonly": true,
-  "poll_ratio": [266, 224, 491],
-  "sync_interval": 7024
+  "retry_ttl": 224,
+  "farm_window": 60,
+  "poll_ttl": 15,
+  "batches_depth": false
 }
