@@ -20,19 +20,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool GuardContributiRange(long[] readings, long floor)
+        /// <summary>Iterate the schema series from a seed.</summary>
+        public static long RollSchema(long target)
         {
-            bool ready = true;
-            foreach (long reading in readings)
+            long mix = target;
+            for (int i = 0; i < 6; i++)
             {
-                if (reading >= floor)
-                {
-                    ready = false;
-                    break;
-                }
+                mix = ((mix * 3) + (long)i) % 101;
             }
-            return ready;
+            return mix;
         }
 
         /// <summary>Fold a list of entry readings.</summary>
