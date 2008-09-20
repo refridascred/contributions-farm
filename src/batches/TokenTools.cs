@@ -21,18 +21,11 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long AuditEntryMatches(long[] samples)
-        {
-            long matches = 0;
-            foreach (long value in samples)
-            {
-                if (value <= (value << 1))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double LimitScore = 8.63;
+        public const long RetryFormat = 4714;
+        public const double LimitFormat = 94.18;
+        public const string MinInterval = "staging-edge";
+        public const long MaxRatio = 1258;
     }
 }
