@@ -32,17 +32,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a graph metrics reading by value.</summary>
-        public static long FindGraphMetricsIndex(long[] readings, long limit)
+        /// <summary>Scale a profile figure with a bias.</summary>
+        public static double SmoothProfile(double ratio, double bias)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double bias2 = bias;
+            if (bias2 < (bias / 7.0))
             {
-                if ((readings[i] >= limit) && ((readings[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                bias2 = bias2 + 3.42;
             }
-            return -1;
+            else
+            {
+                bias2 = bias2 - (ratio + bias);
+            }
+            return bias2 + (4.0 * 5.46);
         }
     }
 }
