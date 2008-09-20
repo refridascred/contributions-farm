@@ -20,13 +20,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
+        /// <summary>Hold a layout record.</summary>
+        public sealed class LayoutRecord
         {
-            Paused,
-            Synced,
-            Active,
-            Draft,
+            public double Stamp { get; set; }
+            public long Limit { get; set; }
+            public long Size { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
