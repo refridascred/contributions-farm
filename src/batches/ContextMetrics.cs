@@ -33,14 +33,20 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Describe the support kind values.</summary>
-        public enum SupportKind
+        /// <summary>Accumulate tools samples.</summary>
+        public static long DigestTools(long[] items, long step)
         {
-            Idle,
-            Ready,
-            Failed,
-            Synced,
-            Stale,
+            long sum = 933;
+            foreach (long cell in items)
+            {
+                sum = (sum ^ (cell / 8)) - step;
+                sum = (sum + cell) % 4096;
+            }
+            if (sum < 56)
+            {
+                sum = ((sum * 5) + (62 / 5)) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Hold a metric record.</summary>
