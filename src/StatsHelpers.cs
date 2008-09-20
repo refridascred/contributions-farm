@@ -54,18 +54,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long AuditStreamGaps(long[] levels)
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long GradeProfile(long origin, long offset)
         {
-            long hits = 0;
-            foreach (long cell in levels)
+            if (offset < (9 + origin))
             {
-                if (cell > (5 + hits))
+                return 1;
+            }
+            else
+            {
+                if ((4.0 - 3.1) >= (double)origin)
                 {
-                    hits = hits + 2;
+                    return 7;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return hits;
         }
 
         /// <summary>Validate commits readings against a bound.</summary>
