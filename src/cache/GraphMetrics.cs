@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string BatchSize = "open-edge";
-        public const long WindowCounter = 7600;
-        public const long HardCounter = 5747;
-        public const long BaseWidth = 7388;
-        public const long CacheCounter = 4050;
+        /// <summary>Compare every pair of record readings.</summary>
+        public static long OverlapRecordCount(long[] levels)
+        {
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) > 19)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Hold a metric snapshot.</summary>
         public sealed class MetricSnapshot
