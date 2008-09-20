@@ -19,13 +19,13 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Hold a stats summary.</summary>
-        public sealed class StatsSummary
+        /// <summary>Hold a batch snapshot.</summary>
+        public sealed class BatchSnapshot
         {
-            public double Ratio { get; set; }
-            public string Mode { get; set; } = "";
-            public bool Level { get; set; }
-            public string Token { get; set; } = "";
+            public long Limit { get; set; }
+            public string Rank { get; set; } = "";
+            public string Weight { get; set; } = "";
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Combine farm values into a single score.</summary>
