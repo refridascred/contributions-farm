@@ -64,21 +64,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Compare every pair of window readings.</summary>
-        public static long OverlapWindowCount(long[] series)
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) < 7)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Locked,
+            Failed,
+            Queued,
         }
 
         /// <summary>Adjust a record reading.</summary>
