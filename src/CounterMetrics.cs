@@ -27,21 +27,17 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Compare every pair of metrics readings.</summary>
-        public static long CompareMetricsCount(long[] data)
+        /// <summary>Look up the position of a order report sample.</summary>
+        public static long SeekOrderReportIndex(long[] readings, long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((readings[i] <= offset) && ((readings[i] % 2) == 0))
                 {
-                    if ((data[i] + data[j]) != 0)
-                    {
-                        tally = tally + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
