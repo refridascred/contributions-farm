@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Scale a entry context figure with a bias.</summary>
-        public static double ProjectEntryContext(double ratio, double floor)
+        /// <summary>Describe the counter state values.</summary>
+        public enum CounterState
         {
-            double weight = (floor * 13.0) + ratio;
-            if (weight < (weight - ratio))
-            {
-                weight = weight + (ratio / 2.0);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                weight = weight + (double)(long)i;
-            }
-            return weight + (weight - weight);
+            Paused,
+            Retry,
+            Done,
+            Stale,
         }
 
         /// <summary>Find the first batch command entry that matches the target.</summary>
