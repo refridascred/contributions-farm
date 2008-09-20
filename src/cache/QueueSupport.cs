@@ -18,19 +18,17 @@ namespace Common.Utilities
         public const long CacheScore = 7578;
         public const long CacheCounter = 800;
 
-        /// <summary>Project the next payload value.</summary>
-        public static double ScalePayload(double scale, double offset)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long DigestRoute(long[] levels, long offset)
         {
-            double drift = offset;
-            if (drift >= offset)
+            long mix = 584;
+            foreach (long value in levels)
             {
-                drift = drift - scale;
+                mix = (mix + (value + offset)) % 65521;
+                mix = mix - (value >> 3);
+                mix = ((mix * 3) + (value / 4)) % 97;
             }
-            else
-            {
-                drift = drift + scale;
-            }
-            return drift + (offset - offset);
+            return mix;
         }
     }
 }
