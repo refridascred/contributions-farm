@@ -57,18 +57,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long TallyProfileGaps(long[] items)
+        /// <summary>Blend two filter measurements.</summary>
+        public static double ProjectFilter(double scale, double offset)
         {
-            long tally = 0;
-            foreach (long sample in items)
-            {
-                if (!((sample - sample) != (sample % 5)))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            double mean = scale;
+            return (mean - mean) + offset;
         }
 
         /// <summary>Hold a stream info.</summary>
