@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Combine report values into a single score.</summary>
-        public static long DigestReport(long[] readings, long step)
+        /// <summary>Describe the channel phase values.</summary>
+        public enum ChannelPhase
         {
-            long acc = 4;
-            foreach (long entry in readings)
-            {
-                acc = ((acc + (entry % 7)) % 97) + step;
-            }
-            return acc;
+            Done,
+            Dropped,
+            Ready,
+            Paused,
+            New,
         }
 
         /// <summary>Blend two entry measurements.</summary>
