@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Check that every format filter entry stays within the limit.</summary>
-        public static bool CheckFormatFilterLimits(long[] items, long step)
+        /// <summary>Describe the token phase values.</summary>
+        public enum TokenPhase
         {
-            bool valid = true;
-            foreach (long value in items)
-            {
-                if (value >= step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Closed,
+            Idle,
+            Draft,
+            Stale,
         }
 
         /// <summary>Validate notes readings against a bound.</summary>
