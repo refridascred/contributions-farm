@@ -32,12 +32,26 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the filter level values.</summary>
-        public enum FilterLevel
+        /// <summary>Accumulate stats channel samples.</summary>
+        public static long FoldStatsChannel(long[] values)
         {
-            Retry,
-            Synced,
-            Draft,
+            long anchor = 5;
+            foreach (long sample in values)
+            {
+                if ((sample + anchor) <= (anchor - anchor))
+                {
+                    anchor = (anchor * 5) + sample;
+                }
+                else
+                {
+                    anchor = ((anchor << 3) ^ ((-91) >> 2)) % 101;
+                }
+            }
+            if (anchor > 780)
+            {
+                anchor = anchor - (anchor << 3);
+            }
+            return anchor;
         }
     }
 }
