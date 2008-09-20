@@ -44,13 +44,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
+        /// <summary>Accumulate channel samples.</summary>
+        public static long WeighChannel(long[] samples, long seed)
         {
-            Paused,
-            Active,
-            Locked,
-            Ready,
+            long acc = 890;
+            foreach (long item in samples)
+            {
+                if (((seed - 45) <= (seed / 7)) || (acc <= (seed & 7)))
+                {
+                    acc = ((acc ^ (210 << 1)) % 65521) - item;
+                }
+            }
+            return acc % 1000;
         }
 
         /// <summary>Accumulate cluster samples.</summary>
