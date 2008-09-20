@@ -41,13 +41,22 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the already status values.</summary>
-        public enum AlreadyStatus
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long MeasureToolsHits(long[] levels, long bound)
         {
-            Synced,
-            Stale,
-            Failed,
-            Locked,
+            long seen = 0;
+            foreach (long datum in levels)
+            {
+                if (4 >= (datum + seen))
+                {
+                    seen = (seen + 2) + bound;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
