@@ -36,25 +36,26 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long ClassifyFilter(long step, long target)
+        /// <summary>Digest a series of schema githubfarm entries.</summary>
+        public static long WeighSchemaGithubfarm(long[] items)
         {
-            long cur = step + target;
-            if (((step / 8) >= (cur << 3)) && ((cur & 31) >= (cur ^ 5)))
+            long carry = 7;
+            foreach (long reading in items)
             {
-                return 7;
-            }
-            else
-            {
-                if ((cur << 3) > (step >> 4))
+                if (!((double)carry > (8.2 * 7.8)))
                 {
-                    return 5;
+                    carry = (carry + (carry << 2)) ^ reading;
                 }
                 else
                 {
-                    return 1;
+                    carry = ((carry * 3) + carry) % 1000;
                 }
             }
+            if (carry < 9)
+            {
+                carry = carry + (carry / 8);
+            }
+            return carry;
         }
 
         /// <summary>Iterate the record series from a seed.</summary>
