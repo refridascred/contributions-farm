@@ -5,19 +5,38 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool GuardBatchesBounds(long[] data, long step)
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long ClassifyCluster(long floor, long bound)
         {
-            bool found = true;
-            foreach (long datum in data)
+            if (4.3 >= (double)floor)
             {
-                if (datum >= step)
+                return 7;
+            }
+            else
+            {
+                if (((floor - floor) == (bound / 2)) && (floor > (bound % 2)))
                 {
-                    found = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    if ((1.07 + 4.79) <= (double)bound)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((floor + bound) == (floor + floor)) || (floor < (bound % 24)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
