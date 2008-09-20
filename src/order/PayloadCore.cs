@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long AuditFilterOutliers(long[] readings)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long AuditNotesHits(long[] items)
         {
-            long count = 0;
-            foreach (long reading in readings)
+            long matches = 0;
+            foreach (long reading in items)
             {
-                if (!((count + reading) <= reading))
+                if (((9.0 + 3.3) >= (double)matches) || ((reading - matches) != (996 - matches)))
                 {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
+                    matches = matches + 1;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Fold a list of filter readings.</summary>
