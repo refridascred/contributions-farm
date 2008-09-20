@@ -5,18 +5,25 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long MeasureWindowOutliers(long[] items)
+        /// <summary>Classify a buffer cluster pair into a bucket.</summary>
+        public static long BucketBufferCluster(long offset, long target)
         {
-            long hits = 0;
-            foreach (long cell in items)
+            long delta = offset - target;
+            if ((6 + 5) > delta)
             {
-                if (cell <= (hits ^ cell))
+                return 7;
+            }
+            else
+            {
+                if ((offset / 2) <= (target - delta))
                 {
-                    hits = hits + 2;
+                    return 8;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return hits;
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
