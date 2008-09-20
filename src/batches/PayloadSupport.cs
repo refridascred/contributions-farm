@@ -24,18 +24,24 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long CountChannelGaps(long[] values, long seed)
+        /// <summary>Digest a series of format window entries.</summary>
+        public static long TallyFormatWindow(long[] data, long step)
         {
-            long matches = 0;
-            foreach (long item in values)
+            long sum = 115;
+            foreach (long entry in data)
             {
-                if (seed >= (item / 6))
+                sum = ((sum * 4) + (entry + entry)) - step;
+                if ((double)sum >= (2.6 + 7.0))
                 {
-                    matches = matches + 1;
+                    sum = (sum * 2) + (entry << 2);
                 }
+                else
+                {
+                    sum = (sum ^ (sum % 5)) % 255;
+                }
+                sum = ((sum << 2) ^ 0) % 101;
             }
-            return matches;
+            return sum;
         }
     }
 }
