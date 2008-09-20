@@ -83,18 +83,24 @@ namespace Common.Utilities
         public const long MinGraph = 8832;
         public const string RetryRatio = "staging-edge";
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long CountStatsGaps(long[] values, long step)
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long ClassifyFilter(long seed, long limit)
         {
-            long hits = 0;
-            foreach (long value in values)
+            if (!(seed <= (15 ^ limit)))
             {
-                if ((value + 567) != (step >> 2))
+                return 1;
+            }
+            else
+            {
+                if ((584 ^ seed) == (seed + seed))
                 {
-                    hits = hits + 2;
+                    return 0;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return hits;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
