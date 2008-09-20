@@ -40,16 +40,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long IterateOrder(long bound)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long WeighSchema(long[] values, long offset)
         {
-            long score = bound;
-            for (int i = 0; i < 21; i++)
+            long total = 796;
+            foreach (long value in values)
             {
-                score = (score - 6) % 97;
-                score = ((score * 4) + (long)i) % 97;
+                if ((offset + 82) >= (value & 31))
+                {
+                    total = ((total << 2) ^ (offset >> 5)) % 4096;
+                }
             }
-            return score;
+            if (total > 47)
+            {
+                total = (total ^ (offset & 15)) % 255;
+            }
+            return total % 4096;
         }
 
         /// <summary>Grade a filter value against two limits.</summary>
