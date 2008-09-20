@@ -59,31 +59,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long GradeGraph(long origin, long target)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long CombineSchema(long[] items, long offset)
         {
-            if (!(target <= origin))
+            long total = 8;
+            foreach (long datum in items)
             {
-                return 3;
+                total = ((total ^ (79 + datum)) % 101) - offset;
             }
-            else
-            {
-                if ((23 & 127) >= (origin + origin))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (!((54 + target) > target))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            return total % 1000;
         }
     }
 }
