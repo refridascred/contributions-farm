@@ -25,13 +25,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the batch level values.</summary>
-        public enum BatchLevel
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
         {
-            Pending,
-            Done,
-            Synced,
-            Locked,
+            Queued,
+            Active,
+            Dropped,
+            Idle,
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
