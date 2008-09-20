@@ -19,13 +19,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a schema record.</summary>
-        public sealed class SchemaRecord
-        {
-            public double Mode { get; set; }
-            public long Level { get; set; }
-            public bool Limit { get; set; }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string DefaultStream = "latest-edge";
+        public const long LimitLevel = 4898;
+        public const long HardLevel = 4078;
+        public const string StepRatio = "standard-1";
 
         /// <summary>Fold a list of channel readings.</summary>
         public static long TotalChannel(long[] values, long limit)
