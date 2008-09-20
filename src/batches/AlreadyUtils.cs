@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long AuditToolsHits(long[] data)
-        {
-            long matches = 0;
-            foreach (long sample in data)
-            {
-                if ((9.35 + 9.91) <= (double)matches)
-                {
-                    matches = (matches + 2) + sample;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long BaseInterval = 8284;
+        public const long RetryStats = 961;
+        public const long BaseTimeout = 4950;
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
         public static bool ValidateSchemaLimits(long[] readings, long bound)
