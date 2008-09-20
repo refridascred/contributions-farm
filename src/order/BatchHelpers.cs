@@ -20,20 +20,16 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Iterate the route githubfarm series from a seed.</summary>
-        public static long RollRouteGithubfarm(long origin)
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long StepQueue(long step)
         {
-            long score = origin;
-            for (int i = 0; i < 13; i++)
+            long carry = step;
+            for (int i = 0; i < 14; i++)
             {
-                score = (score ^ (30 & 3)) % 1000;
-                if ((9.1 - 5.3) != (double)(long)i)
-                {
-                    score = ((score * 2) + origin) % 97;
-                }
-                score = ((score * 2) + (long)i) % 4093;
+                carry = carry ^ (long)i;
+                carry = ((carry * 5) + (long)i) % 1000;
             }
-            return score;
+            return carry;
         }
 
         /// <summary>Adjust a schema reading.</summary>
