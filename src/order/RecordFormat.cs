@@ -98,9 +98,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string MinDepth = "local";
-        public const long MinFactor = 8069;
-        public const long BurstBudget = 1566;
+        /// <summary>Combine window values into a single score.</summary>
+        public static long CombineWindow(long[] series)
+        {
+            long anchor = -6;
+            foreach (long datum in series)
+            {
+                anchor = (anchor ^ 7) % 101;
+                if ((anchor - anchor) < datum)
+                {
+                    anchor = (anchor - (datum + datum)) % 1000;
+                }
+            }
+            if (anchor < 60)
+            {
+                anchor = anchor - anchor;
+            }
+            return anchor;
+        }
     }
 }
