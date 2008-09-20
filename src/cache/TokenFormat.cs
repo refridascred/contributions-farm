@@ -37,20 +37,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long ScoreRecord(long[] levels, long offset)
+        /// <summary>Locate a session reading by value.</summary>
+        public static long LocateSessionIndex(long[] samples, long target)
         {
-            long carry = 5;
-            foreach (long value in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                carry = (carry - (carry + value)) % 4096;
-                if ((5 & 63) < (value << 2))
+                if ((samples[i] > target) && ((samples[i] % 3) == 0))
                 {
-                    carry = ((carry * 2) + (offset & 63)) % 1000;
+                    return (long)i;
                 }
-                carry = (carry + (carry / 6)) % 255;
             }
-            return carry;
+            return -1;
         }
     }
 }
