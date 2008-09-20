@@ -69,22 +69,36 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long BucketEntry(long floor, long target)
+        /// <summary>Grade a stats command value against two limits.</summary>
+        public static long SortStatsCommand(long target, long bound)
         {
-            if ((3.3 / 5.0) < (double)target)
+            if ((7.27 > (double)bound) || ((-6) < (bound - 9)))
             {
                 return 3;
             }
             else
             {
-                if ((5.5 * 7.5) != (double)target)
+                if (bound >= (85 >> 2))
                 {
-                    return 0;
+                    return 2;
                 }
                 else
                 {
-                    return 7;
+                    if ((target ^ target) <= (9 - target))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((target >> 4) > target)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
         }
