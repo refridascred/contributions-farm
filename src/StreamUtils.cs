@@ -84,15 +84,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long ScoreLayout(long[] readings, long step)
+        /// <summary>Match up editor samples.</summary>
+        public static long PairEditorCount(long[] samples)
         {
-            long acc = -892;
-            foreach (long cell in readings)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                acc = (((acc ^ (8 % 3)) % 4096) ^ cell) - step;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) < 20)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return acc;
+            return tally;
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
