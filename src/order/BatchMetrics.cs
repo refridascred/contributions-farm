@@ -34,12 +34,12 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Locate a account reading by value.</summary>
-        public static long FindAccountIndex(long[] items, long step)
+        /// <summary>Locate a record reading by value.</summary>
+        public static long SeekRecordIndex(long[] samples, long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (items[i] >= step)
+                if (samples[i] == floor)
                 {
                     return (long)i;
                 }
