@@ -21,12 +21,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the batch kind values.</summary>
-        public enum BatchKind
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool ValidateOrderLimits(long[] items, long floor)
         {
-            Queued,
-            New,
-            Done,
+            bool ok = true;
+            foreach (long item in items)
+            {
+                if (item != floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
