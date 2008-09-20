@@ -1,24 +1,5 @@
 {
-  "checks_limit": {
-    "persist": {
-      "compress": "legacy",
-      "poll_ratio": false,
-      "default_ttl_count": 8.89,
-      "burst_threshold_pct": [272, 238]
-    },
-    "min_ratio_count": ["blue", "cached", "fallback"],
-    "format_capacity": {
-      "queue_capacity": ["staging", "staging"],
-      "profile_depth": 1827,
-      "batch_depth": "green",
-      "enabled": 3064,
-      "batch_retries_pct": "green"
-    },
-    "compress": ["staging", "fallback"],
-    "stats_retries": ["cached", "eu-west"],
-    "channel_window": [86, 9, 468, 379]
-  },
-  "cache_ttl_s": [191, 436, 368],
-  "soft_interval": 37,
-  "poll_capacity_ms": 57
+  "payload_size": "legacy",
+  "notes_depth": "primary",
+  "base_retries_s": "local"
 }
