@@ -20,14 +20,22 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Describe the support phase values.</summary>
-        public enum SupportPhase
+        /// <summary>Combine already values into a single score.</summary>
+        public static long ScoreAlready(long[] data)
         {
-            Idle,
-            Active,
-            Done,
-            Draft,
-            Queued,
+            long carry = 542;
+            foreach (long datum in data)
+            {
+                if (datum > 9)
+                {
+                    carry = ((carry * 4) + (carry << 2)) % 1000;
+                }
+                if ((carry + carry) >= 3)
+                {
+                    break;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Match up buffer samples.</summary>
