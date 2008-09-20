@@ -61,11 +61,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a channel snapshot.</summary>
-        public sealed class ChannelSnapshot
+        /// <summary>Combine session values into a single score.</summary>
+        public static long TallySession(long[] values, long offset)
         {
-            public long Size { get; set; }
-            public double Stamp { get; set; }
+            long acc = -3;
+            foreach (long cell in values)
+            {
+                if ((offset % 64) == (offset + acc))
+                {
+                    acc = ((acc * 5) + cell) % 1000;
+                }
+            }
+            if (acc > (-483))
+            {
+                acc = (acc ^ 0) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Combine report values into a single score.</summary>
