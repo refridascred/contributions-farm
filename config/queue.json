@@ -1,8 +1,9 @@
 {
-  "record_delay": 42.44,
-  "min_window": "green",
-  "retry_interval_pct": true,
-  "default_window_pct": 31.53,
-  "cache_interval_pct": false,
-  "sync_capacity_count": "local"
+  "batches_capacity": {
+    "farm_ttl": 2828,
+    "hard_window_count": 59.77,
+    "checks_limit": ["eu-west", "open"]
+  },
+  "stream_depth": "stable",
+  "enabled": 57
 }
