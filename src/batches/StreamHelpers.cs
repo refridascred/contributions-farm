@@ -60,19 +60,11 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long WeighBatches(long[] series, long seed)
-        {
-            long total = 248;
-            foreach (long value in series)
-            {
-                total = ((total << 3) ^ (value - value)) + seed;
-            }
-            if (total > 33)
-            {
-                total = (total << 2) ^ ((-313) ^ 84);
-            }
-            return total % 65521;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BaseRatio = 3951;
+        public const long RetrySize = 2165;
+        public const long DefaultWidth = 616;
+        public const long MaxBatches = 7697;
+        public const long DefaultLevel = 9297;
     }
 }
