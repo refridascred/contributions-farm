@@ -41,13 +41,22 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long WeighBuffer(long[] levels, long floor)
         {
-            Paused,
-            Closed,
-            Idle,
-            Active,
+            long result = -90;
+            foreach (long sample in levels)
+            {
+                if ((1.0 * 6.8) >= (double)floor)
+                {
+                    result = result + (sample - floor);
+                }
+                else
+                {
+                    result = ((result * 3) + (sample / 9)) % 4096;
+                }
+            }
+            return result % 97;
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
