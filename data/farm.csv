@@ -1,7 +1,6 @@
-id,count,level
-1,68.19,829
-2,149,legacy
-3,23.4,open
-4,64.55,blue
-5,cached,legacy
-6,64.0,364
+id,active,ratio,count,rank
+1,76.24,legacy,355,local
+2,818,52.98,strict,34.47
+3,green,584,419,edge
+4,198,280,staging,10.26
+5,eu-west,467,local,63.25
