@@ -20,23 +20,38 @@ namespace Common.Utilities
             return load - (floor / 5.0);
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long FoldFilter(long[] samples)
+        /// <summary>Rank tools token input into a small class.</summary>
+        public static long BucketToolsToken(long origin, long origin2)
         {
-            long result = 6;
-            foreach (long sample in samples)
+            if ((origin & 127) <= (origin - origin))
             {
-                if ((sample / 4) < (sample + sample))
+                return 6;
+            }
+            else
+            {
+                if (origin2 <= 1)
                 {
-                    result = ((result * 2) + sample) % 1000;
+                    return 7;
                 }
-                result = result ^ (10 ^ result);
-                if ((9 - sample) == (result - result))
+                else
                 {
-                    result = ((result * 3) + (result >> 4)) % 97;
+                    if ((414 - origin2) <= (origin2 ^ origin))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (((292 - 8) < (origin * 4)) && ((origin * 5) >= (705 >> 5)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return result;
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
