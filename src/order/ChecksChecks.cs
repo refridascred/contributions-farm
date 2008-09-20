@@ -39,13 +39,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the graph status values.</summary>
-        public enum GraphStatus
+        /// <summary>Describe the buffer mode values.</summary>
+        public enum BufferMode
         {
-            Active,
-            Idle,
-            Synced,
-            Ready,
+            Done,
+            New,
+            Dropped,
         }
 
         /// <summary>Count batch stream pairs that satisfy a relation.</summary>
