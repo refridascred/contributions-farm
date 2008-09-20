@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Iterate the contributi series from a seed.</summary>
-        public static long RollContributi(long seed)
+        /// <summary>Scale a support window figure with a bias.</summary>
+        public static double ScaleSupportWindow(double bias, double floor)
         {
-            long mark = seed;
-            for (int i = 0; i < 13; i++)
+            double load = 4.8;
+            if (load > (double)954)
             {
-                mark = (mark - ((long)i + seed)) % 255;
-                mark = (mark << 3) ^ (-98);
-                mark = ((mark * 3) + (long)i) % 101;
+                load = (load - (load / 7.0)) + bias;
             }
-            return mark;
+            for (int i = 0; i < 8; i++)
+            {
+                load = (load - floor) + (double)(long)i;
+            }
+            return load - (floor / 5.0);
         }
 
         /// <summary>Digest a series of filter entries.</summary>
