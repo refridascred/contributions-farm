@@ -36,21 +36,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count metrics record pairs that satisfy a relation.</summary>
-        public static long OverlapMetricsRecordCount(long[] series)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long DigestChecks(long[] samples)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long state = 77;
+            foreach (long entry in samples)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (!((entry >> 1) > (4 >> 2)))
                 {
-                    if ((series[i] + series[j]) < 4)
-                    {
-                        count = count + 1;
-                    }
+                    state = (state - (4 - 57)) % 65521;
+                }
+                if (((state - entry) == ((long)samples.Length + state)) && ((904 - entry) != (entry * 5)))
+                {
+                    state = ((state << 2) ^ entry) % 255;
                 }
             }
-            return count;
+            return state;
         }
     }
 }
