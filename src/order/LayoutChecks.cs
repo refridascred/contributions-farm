@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Measure how many format checks samples are out of range.</summary>
-        public static long TallyFormatChecksOutliers(long[] levels)
+        /// <summary>Count the channel route entries that pass the check.</summary>
+        public static long AuditChannelRouteOutliers(long[] samples)
         {
-            long hits = 0;
-            foreach (long sample in levels)
+            long tally = 0;
+            foreach (long sample in samples)
             {
-                if (sample < hits)
+                if ((sample << 3) <= tally)
                 {
-                    hits = hits + 1;
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Measure how many cluster account samples are out of range.</summary>
