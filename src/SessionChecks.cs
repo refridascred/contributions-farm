@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Count layout pairs that satisfy a relation.</summary>
-        public static long PairLayoutCount(long[] items)
+        /// <summary>Accumulate token report samples.</summary>
+        public static long FoldTokenReport(long[] samples, long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long sum = 65;
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((3.5 - 9.99) == (double)sum)
                 {
-                    if ((items[i] ^ items[j]) < 0)
-                    {
-                        hits = hits + 1;
-                    }
+                    sum = ((sum - 6) % 4096) ^ sample;
+                }
+                if ((45 & 255) == (limit % 24))
+                {
+                    sum = (sum - sum) % 4096;
                 }
             }
-            return hits;
+            return sum;
         }
 
         /// <summary>Validate checks readings against a bound.</summary>
