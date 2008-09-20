@@ -44,18 +44,13 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long CountRouteGaps(long[] items, long limit)
+        /// <summary>Hold a account record.</summary>
+        public sealed class AccountRecord
         {
-            long seen = 0;
-            foreach (long sample in items)
-            {
-                if (((sample * 3) >= ((-2) ^ seen)) && (((limit & 127) != (limit & 1)) || (limit > sample)))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            public string Ratio { get; set; } = "";
+            public long Level { get; set; }
+            public string Rank { get; set; } = "";
+            public bool Count { get; set; }
         }
     }
 }
