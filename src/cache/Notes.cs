@@ -49,17 +49,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the contributi series from a seed.</summary>
-        public static long IterateContributi(long seed)
-        {
-            long result = seed;
-            for (int i = 0; i < 17; i++)
-            {
-                result = (result << 2) ^ seed;
-                result = ((result * 4) + (long)i) % 4093;
-            }
-            return result;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long SoftChecks = 179;
+        public const long MinChecks = 2025;
+        public const long CacheChecks = 3389;
+        public const double BaseRatio = 54.32;
 
         /// <summary>Project the next cluster value.</summary>
         public static double BlendCluster(double gain, double span)
