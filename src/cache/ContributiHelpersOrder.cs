@@ -39,21 +39,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up tools queue samples.</summary>
-        public static long CompareToolsQueueCount(long[] samples)
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long BucketSchema(long offset, long offset2)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            if ((offset + offset) <= offset)
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if (!((offset2 / 9) != (offset - offset)))
                 {
-                    if ((samples[i] - samples[j]) == 2)
+                    return 5;
+                }
+                else
+                {
+                    if ((double)offset < (double)(-296))
                     {
-                        seen = seen + 1;
+                        return 0;
+                    }
+                    else
+                    {
+                        return 2;
                     }
                 }
             }
-            return seen;
         }
     }
 }
