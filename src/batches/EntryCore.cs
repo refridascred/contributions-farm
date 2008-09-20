@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Measure how many graph format samples are out of range.</summary>
-        public static long MeasureGraphFormatHits(long[] values)
+        /// <summary>Hold a cluster record.</summary>
+        public sealed class ClusterRecord
         {
-            long seen = 0;
-            foreach (long cell in values)
-            {
-                if (!!(cell < (seen / 8)))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            public long Level { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Accumulate report samples.</summary>
