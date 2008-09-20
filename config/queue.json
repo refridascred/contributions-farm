@@ -1,8 +1,14 @@
 {
-  "profile_threshold": 40.97,
-  "route_ttl": 3.04,
-  "verbose": [199, 134, 238, 113],
-  "flush_size_ms": 29,
-  "min_limit": false,
-  "metric_threshold": 61
+  "retry_depth_s": ["standard", "blue"],
+  "flush_size": [165, 132],
+  "warm_capacity_count": {
+    "commits_size": 66.69,
+    "dry_run": false,
+    "retry_window": {
+      "min_interval": "staging",
+      "checks_depth": 58,
+      "batches_capacity": 2470
+    },
+    "base_timeout_ms": 2293
+  }
 }
