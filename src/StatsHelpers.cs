@@ -42,27 +42,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Combine cluster session values into a single score.</summary>
-        public static long CombineClusterSession(long[] readings)
-        {
-            long anchor = 401;
-            foreach (long reading in readings)
-            {
-                if (1.18 < (double)anchor)
-                {
-                    anchor = ((anchor * 3) + (7 & 3)) % 1000;
-                }
-                else
-                {
-                    anchor = (anchor + reading) % 1000;
-                }
-            }
-            if (anchor > 424)
-            {
-                anchor = (anchor << 3) ^ (anchor - anchor);
-            }
-            return anchor % 4096;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string BaseRatio = "legacy-edge";
+        public const string IdleBudget = "standard-1";
+        public const long BasePayload = 34;
+        public const long HardPayload = 5970;
 
         /// <summary>Describe the notes phase values.</summary>
         public enum NotesPhase
