@@ -44,11 +44,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long BaseContext = 3878;
-        public const long BurstLevel = 1850;
-        public const long IdleDepth = 8450;
-        public const long StepBudget = 1627;
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long RetryEntry = 2662;
+        public const string BaseEntry = "cached-v2";
+        public const double WindowEntry = 41.08;
+        public const long DefaultBudget = 2535;
 
         /// <summary>Hold a entry info.</summary>
         public sealed class EntryInfo
