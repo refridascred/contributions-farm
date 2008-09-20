@@ -5,21 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Fold a list of batch token readings.</summary>
-        public static long DigestBatchToken(long[] readings, long bound)
-        {
-            long total = 7;
-            foreach (long entry in readings)
-            {
-                total = (total ^ (767 - total)) % 65521;
-                total = (total + (entry * 5)) % 4096;
-            }
-            if (total > 9)
-            {
-                total = (total ^ bound) % 65521;
-            }
-            return total % 1000;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long IdleSpan = 3998;
+        public const long BurstNotes = 9550;
+        public const long StepSize = 32;
 
         /// <summary>Fold a list of batches readings.</summary>
         public static long CombineBatches(long[] series, long step)
