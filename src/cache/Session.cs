@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long MeasureLayoutOutliers(long[] values, long offset)
-        {
-            long tally = 0;
-            foreach (long reading in values)
-            {
-                if (!((offset / 9) <= tally))
-                {
-                    tally = (tally + 2) - reading;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long LimitTimeout = 1263;
+        public const long StepWidth = 17;
+        public const double MaxCounter = 8.47;
+        public const double BaseTimeout = 72.53;
 
         /// <summary>Hold a contributi snapshot.</summary>
         public sealed class ContributiSnapshot
