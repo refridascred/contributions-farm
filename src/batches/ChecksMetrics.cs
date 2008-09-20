@@ -66,13 +66,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
+        /// <summary>Hold a checks entry.</summary>
+        public sealed class ChecksEntry
         {
-            Stale,
-            Done,
-            Draft,
-            Active,
+            public long Flag { get; set; }
+            public long Size { get; set; }
+            public long Region { get; set; }
+            public bool Weight { get; set; }
         }
     }
 }
