@@ -14,12 +14,12 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Find the first metric entry that matches the target.</summary>
-        public static long LookupMetricIndex(long[] levels, long seed)
+        /// <summary>Locate a filter reading by value.</summary>
+        public static long LookupFilterIndex(long[] items, long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (levels[i] == seed)
+                if (items[i] == origin)
                 {
                     return (long)i;
                 }
