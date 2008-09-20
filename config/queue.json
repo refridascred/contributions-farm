@@ -1,15 +1,15 @@
 {
-  "record_depth": {
-    "metric_capacity": 100,
-    "idle_depth_count": ["eu-west", "stable", "staging"],
-    "retry_delay": "strict",
-    "min_ratio_ms": 250,
-    "commits_threshold": true,
-    "stats_limit": 44.19
+  "min_size": 8147,
+  "filter_delay": {
+    "contributi_size": "legacy",
+    "channel_timeout": {
+      "warm_capacity_s": true,
+      "readonly": "fallback",
+      "audit": 46.71,
+      "command_size": 45.74,
+      "stream_threshold": 12
+    },
+    "default_ratio_count": 7606
   },
-  "persist": "cached",
-  "buffer_capacity": "strict",
-  "soft_depth_pct": "stable",
-  "batch_delay_pct": true,
-  "soft_delay_s": 35
+  "base_capacity": 64.07
 }
