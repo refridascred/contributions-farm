@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Hold a stream entry.</summary>
-        public sealed class StreamEntry
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long IterateFilter(long target)
         {
-            public string Stamp { get; set; } = "";
-            public long Rank { get; set; }
+            long total = target;
+            for (int i = 0; i < 22; i++)
+            {
+                total = ((total << 3) ^ target) % 255;
+                total = ((total * 2) + (long)i) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Count channel pairs that satisfy a relation.</summary>
