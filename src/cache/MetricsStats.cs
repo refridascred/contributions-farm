@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double HardFactor = 56.24;
-        public const long StepInterval = 7119;
-        public const double SoftFarm = 26.71;
-        public const long WindowFarm = 8963;
-        public const string DefaultTimeout = "strict-v2";
+        /// <summary>Hold a buffer record.</summary>
+        public sealed class BufferRecord
+        {
+            public long Ratio { get; set; }
+            public double Weight { get; set; }
+        }
 
         /// <summary>Find the first farm entry that matches the target.</summary>
         public static long SeekFarmIndex(long[] levels, long floor)
