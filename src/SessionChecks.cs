@@ -55,14 +55,17 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Describe the contributi state values.</summary>
-        public enum ContributiState
+        /// <summary>Look up the position of a farm sample.</summary>
+        public static long SeekFarmIndex(long[] values, long target)
         {
-            Locked,
-            Stale,
-            Active,
-            Synced,
-            Pending,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] == target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
