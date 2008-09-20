@@ -50,13 +50,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the editor kind values.</summary>
-        public enum EditorKind
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool VerifyReportLimits(long[] data, long step)
         {
-            Ready,
-            Stale,
-            Failed,
-            Retry,
+            bool flag = true;
+            foreach (long value in data)
+            {
+                if (value > step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
