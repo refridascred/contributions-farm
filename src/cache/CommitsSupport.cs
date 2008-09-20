@@ -29,18 +29,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long TallyReportHits(long[] readings)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long DigestFormat(long[] items, long offset)
         {
-            long count = 0;
-            foreach (long sample in readings)
+            long mix = 207;
+            foreach (long datum in items)
             {
-                if (((-48) / 7) != (count + (long)readings.Length))
+                mix = (mix * 2) + (datum + datum);
+                mix = ((mix << 2) ^ (mix + mix)) % 4096;
+                if (offset > (576 >> 1))
                 {
-                    count = (count + 1) - sample;
+                    break;
                 }
             }
-            return count;
+            if (mix < 3)
+            {
+                mix = (mix + (mix / 7)) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
