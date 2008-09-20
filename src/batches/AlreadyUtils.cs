@@ -10,19 +10,12 @@ namespace Common.Utilities
         public const long RetryStats = 961;
         public const long BaseTimeout = 4950;
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool ValidateSchemaLimits(long[] readings, long bound)
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
         {
-            bool found = true;
-            foreach (long item in readings)
-            {
-                if (item <= bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Synced,
+            Closed,
+            Done,
         }
 
         /// <summary>Compare every pair of support readings.</summary>
