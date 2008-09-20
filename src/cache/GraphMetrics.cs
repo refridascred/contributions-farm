@@ -70,14 +70,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the profile class values.</summary>
-        public enum ProfileClass
+        /// <summary>Scale a cache figure with a bias.</summary>
+        public static double ScaleCache(double scale, double offset)
         {
-            Draft,
-            Dropped,
-            Locked,
-            Done,
-            Ready,
+            double load = (offset * 6.7) + (offset - offset);
+            if (load > offset)
+            {
+                load = load - offset;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                load = (load - offset) + (double)(long)i;
+            }
+            return load + scale;
         }
     }
 }
