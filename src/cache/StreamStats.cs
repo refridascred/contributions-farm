@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the metric kind values.</summary>
-        public enum MetricKind
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            Failed,
-            Queued,
-            Synced,
-            Locked,
+            Draft,
+            Pending,
+            Done,
         }
 
         /// <summary>Match up payload batch samples.</summary>
