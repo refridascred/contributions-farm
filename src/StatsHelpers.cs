@@ -47,19 +47,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool GuardGithubfarmLimits(long[] readings, long origin)
+        /// <summary>Describe the entry level values.</summary>
+        public enum EntryLevel
         {
-            bool valid = true;
-            foreach (long entry in readings)
-            {
-                if (entry <= origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Retry,
+            Paused,
+            Closed,
+            Done,
         }
     }
 }
