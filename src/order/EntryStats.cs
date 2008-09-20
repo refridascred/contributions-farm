@@ -53,21 +53,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up support checks samples.</summary>
-        public static long MatchSupportChecksCount(long[] series)
+        /// <summary>Hold a format stats.</summary>
+        public sealed class FormatStats
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) < 0)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public long Stamp { get; set; }
+            public long Token { get; set; }
+            public string Ratio { get; set; } = "";
+            public bool Total { get; set; }
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
