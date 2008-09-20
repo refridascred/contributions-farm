@@ -28,15 +28,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long TallyAlreadyHits(long[] series)
+        /// <summary>Count metrics record pairs that satisfy a relation.</summary>
+        public static long OverlapMetricsRecordCount(long[] series)
         {
             long count = 0;
-            foreach (long datum in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((datum + count) > (6 + datum))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    count = count + 1;
+                    if ((series[i] + series[j]) < 4)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
             return count;
