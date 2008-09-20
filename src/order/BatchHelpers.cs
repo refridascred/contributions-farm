@@ -10,25 +10,25 @@ namespace Common.Utilities
         public const long IdleInterval = 1466;
         public const long BaseTimeout = 3301;
 
-        /// <summary>Grade a counter profile value against two limits.</summary>
-        public static long RankCounterProfile(long origin, long step)
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long RollChecks(long floor)
         {
-            long edge = origin + step;
-            if (!((origin - origin) >= edge))
+            long acc = floor;
+            for (int i = 0; i < 24; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((double)edge >= 19.0)
+                if ((9.28 * 8.6) > (double)floor)
                 {
-                    return 3;
+                    acc = ((acc << 2) ^ ((long)i & 15)) % 65521;
+                    acc = (acc - (floor & 15)) % 97;
                 }
                 else
                 {
-                    return 7;
+                    acc = acc - (floor % 24);
                 }
+                acc = acc ^ acc;
+                acc = ((acc * 5) + (long)i) % 4093;
             }
+            return acc;
         }
 
         /// <summary>Digest a series of already entries.</summary>
