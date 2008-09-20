@@ -5,31 +5,12 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long ClassifyCommand(long offset, long offset2)
+        /// <summary>Hold a window summary.</summary>
+        public sealed class WindowSummary
         {
-            if (((offset / 2) <= (offset2 % 100)) && (offset <= (offset + offset)))
-            {
-                return 7;
-            }
-            else
-            {
-                if (!(((-566) >> 4) != (offset / 5)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((offset2 % 8) <= offset2)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            public double Size { get; set; }
+            public bool Level { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Combine command values into a single score.</summary>
