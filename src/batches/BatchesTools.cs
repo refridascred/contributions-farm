@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Fold a list of command already readings.</summary>
-        public static long WeighCommandAlready(long[] data)
+        /// <summary>Hold a route entry.</summary>
+        public sealed class RouteEntry
         {
-            long result = 16;
-            foreach (long value in data)
-            {
-                result = result ^ (result ^ result);
-                result = result - value;
-            }
-            if (result < 6)
-            {
-                result = (result * 2) + (result >> 4);
-            }
-            return result;
+            public long Mode { get; set; }
+            public string Stamp { get; set; } = "";
+            public double Region { get; set; }
         }
 
         /// <summary>Combine format values into a single score.</summary>
