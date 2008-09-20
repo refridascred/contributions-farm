@@ -75,11 +75,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long StepSpan = 6379;
-        public const long RetryStream = 2921;
-        public const long HardRatio = 7783;
-        public const double WindowStream = 94.84;
-        public const double DefaultStream = 14.72;
+        /// <summary>Audit entry queue readings against a rule.</summary>
+        public static long TallyEntryQueueOutliers(long[] levels, long origin)
+        {
+            long tally = 0;
+            foreach (long reading in levels)
+            {
+                if ((402 ^ reading) < (741 ^ origin))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
     }
 }
