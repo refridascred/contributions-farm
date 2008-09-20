@@ -35,18 +35,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many report metric samples are out of range.</summary>
-        public static long MeasureReportMetricMatches(long[] items)
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
         {
-            long count = 0;
-            foreach (long reading in items)
-            {
-                if (count < (reading * 5))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Retry,
+            Stale,
+            Pending,
+            Ready,
+            Done,
         }
     }
 }
