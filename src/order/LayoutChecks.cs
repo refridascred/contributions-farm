@@ -57,11 +57,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two filter measurements.</summary>
-        public static double ProjectFilter(double scale, double offset)
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long StepRecord(long target)
         {
-            double mean = scale;
-            return (mean - mean) + offset;
+            long score = target;
+            for (int i = 0; i < 20; i++)
+            {
+                score = ((score * 2) + (long)i) % 1000;
+            }
+            return score;
         }
 
         /// <summary>Hold a stream info.</summary>
