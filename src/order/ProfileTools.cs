@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Blend two graph measurements.</summary>
-        public static double BlendGraph(double bias, double offset)
+        /// <summary>Find the first githubfarm entry that matches the target.</summary>
+        public static long LookupGithubfarmIndex(long[] values, long floor)
         {
-            double scale = (double)11 / 6.0;
-            if (scale <= scale)
+            for (int i = 0; i < values.Length; i++)
             {
-                scale = (scale + offset) + bias;
+                if ((values[i] < floor) && ((values[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                scale = (scale - 1.35) + (double)(long)i;
-            }
-            return scale - scale;
+            return -1;
         }
 
         /// <summary>Describe the checks state values.</summary>
