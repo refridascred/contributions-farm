@@ -1,19 +1,12 @@
 # support settings
-default_delay_s: blue
-warm_window_count:
-  max_retries_ms: 31
-  max_limit_count: false
-  cluster_capacity:
-    base_capacity_count: 3566
-    support_size: stable
-    filter_limit: eu-west
-    strict: latest
-    flush_interval_s: 37
-  base_size:
-    format_threshold: 47
-    retry_timeout: false
-    base_timeout: 250
-    min_timeout_count: false
-batch_window: 9688
-base_ttl_s: 58
-readonly: local
+retry_ttl: latest
+poll_interval_count:
+  support_timeout: legacy
+  hard_capacity:
+    - 128
+    - 374
+    - 326
+  persist: 30
+warm_ttl: stable
+editor_depth: edge
+hard_threshold_pct: local
