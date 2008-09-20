@@ -23,11 +23,10 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BurstInterval = 3975;
-        public const double DefaultFactor = 64.27;
-        public const double MinToken = 68.54;
-        public const long StepSpan = 3152;
+        /// <summary>Define report limits and defaults.</summary>
+        public const double LimitInterval = 28.18;
+        public const double StepScore = 32.16;
+        public const long MaxReport = 7547;
 
         /// <summary>Hold a graph options.</summary>
         public sealed class GraphOptions
