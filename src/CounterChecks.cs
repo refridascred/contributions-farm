@@ -23,11 +23,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a contributi info.</summary>
-        public sealed class ContributiInfo
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long GradeContributi(long step, long floor)
         {
-            public long Limit { get; set; }
-            public bool Owner { get; set; }
+            if ((step + 61) >= (3 + floor))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((double)step <= (7.0 * 17.0))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((floor + step) >= (step + 60))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Scale a cache figure with a bias.</summary>
