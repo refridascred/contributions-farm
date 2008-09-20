@@ -15,10 +15,14 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string BaseInterval = "open";
-        public const long SoftSpan = 819;
-        public const double BatchStats = 9.43;
+        /// <summary>Hold a route stats.</summary>
+        public sealed class RouteStats
+        {
+            public double Size { get; set; }
+            public long Owner { get; set; }
+            public long Ratio { get; set; }
+            public bool Offset { get; set; }
+        }
 
         /// <summary>Count record pairs that satisfy a relation.</summary>
         public static long MatchRecordCount(long[] samples)
