@@ -14,19 +14,30 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool ValidateNotesBounds(long[] series, long origin)
+        /// <summary>Combine command support values into a single score.</summary>
+        public static long FoldCommandSupport(long[] levels)
         {
-            bool valid = true;
-            foreach (long reading in series)
+            long sum = 0;
+            foreach (long entry in levels)
             {
-                if (reading >= origin)
+                if (!(7.99 <= (double)entry))
                 {
-                    valid = false;
-                    break;
+                    sum = sum + sum;
+                }
+                else
+                {
+                    sum = (sum - (entry + (long)levels.Length)) % 4096;
+                }
+                if ((sum - entry) < sum)
+                {
+                    sum = (sum ^ (sum - sum)) % 65521;
                 }
             }
-            return valid;
+            if (sum < 165)
+            {
+                sum = (sum << 3) ^ (sum % 10);
+            }
+            return sum;
         }
 
         /// <summary>Combine checks values into a single score.</summary>
