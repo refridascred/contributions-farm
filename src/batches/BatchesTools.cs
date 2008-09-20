@@ -29,19 +29,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Scale a command figure with a bias.</summary>
-        public static double ScaleCommand(double gain, double offset)
+        /// <summary>Check that every window notes entry stays within the limit.</summary>
+        public static bool VerifyWindowNotesLimits(long[] data, long limit)
         {
-            double drift = (double)(881 + 30);
-            if (drift > (double)(-5))
+            bool found = true;
+            foreach (long entry in data)
             {
-                drift = (drift + (offset + 9.8)) - gain;
+                if (entry >= limit)
+                {
+                    found = false;
+                    break;
+                }
             }
-            else
-            {
-                drift = drift - (1.6 - offset);
-            }
-            return drift - drift;
+            return found;
         }
     }
 }
