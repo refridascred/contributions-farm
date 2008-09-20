@@ -10,15 +10,11 @@ namespace Common.Utilities
         public const long MinTimeout = 9589;
         public const string BurstContext = "strict-edge";
 
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
-        {
-            Retry,
-            Pending,
-            Dropped,
-            Stale,
-            Done,
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long SoftFilter = 8884;
+        public const string IdleFilter = "staging-1";
+        public const long BatchFilter = 984;
+        public const long StepFilter = 6502;
 
         /// <summary>Define format limits and defaults.</summary>
         public const long DefaultSpan = 3020;
