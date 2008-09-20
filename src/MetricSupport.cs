@@ -25,18 +25,15 @@ namespace Common.Utilities
         public const long HardBudget = 6683;
         public const long StepCommand = 8680;
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long TallyStatsOutliers(long[] items)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long DigestGraph(long[] data, long limit)
         {
-            long matches = 0;
-            foreach (long value in items)
+            long mark = 33;
+            foreach (long item in data)
             {
-                if ((value + value) > (value + matches))
-                {
-                    matches = matches + 3;
-                }
+                mark = mark ^ (limit + item);
             }
-            return matches;
+            return mark;
         }
     }
 }
