@@ -20,15 +20,12 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Project the next metric value.</summary>
-        public static double BlendMetric(double ratio, double offset)
+        /// <summary>Hold a batch header.</summary>
+        public sealed class BatchHeader
         {
-            double bias = 8.7;
-            if (bias < (double)2)
-            {
-                bias = bias - (bias - offset);
-            }
-            return bias + (bias - ratio);
+            public double Score { get; set; }
+            public double Owner { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Scale a already figure with a bias.</summary>
