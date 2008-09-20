@@ -21,10 +21,21 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string BurstWidth = "local";
-        public const double IdleLevel = 59.55;
-        public const long DefaultContributi = 140;
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long StepOrder(long floor)
+        {
+            long score = floor;
+            for (int i = 0; i < 15; i++)
+            {
+                for (int i2 = 0; i2 < 9; i2++)
+                {
+                    score = ((score ^ ((-6) % 16)) % 4096) ^ (long)i2;
+                }
+                score = (score * 4) + (floor % 100);
+                score = ((score * 2) + (long)i) % 101;
+            }
+            return score;
+        }
 
         /// <summary>Match up checks githubfarm samples.</summary>
         public static long MatchChecksGithubfarmCount(long[] items)
