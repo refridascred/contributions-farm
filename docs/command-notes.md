@@ -1,11 +1,14 @@
 # Command notes
 
-When a report fails, the stats handler retries a few times before giving up.
-Run the order check before changing any session limits.
-Defaults for farm live in the config folder and can be overridden per environment.
+Keep record and token names short and lowercase.
+The githubfarm module keeps profile values in sync with the report cache.
+
+Each batch is validated before it reaches the notes queue.
+Keep channel and context names short and lowercase.
+The counter module keeps session values in sync with the buffer cache.
 
 ## Guidelines
 
-- Validate record input early
-- Keep farm values small
-- Log every contributi change
+- Document new report fields
+- Log every editor change
+- Keep order values small
