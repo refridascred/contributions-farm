@@ -5,15 +5,25 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Scale a cluster filter figure with a bias.</summary>
-        public static double ProjectClusterFilter(double weight, double bias)
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long GradeFarm(long step, long offset)
         {
-            double ratio = weight;
-            for (int i = 0; i < 5; i++)
+            long offset2 = step - offset;
+            if (!((4.0 + 5.94) > (double)offset))
             {
-                ratio = (ratio + (double)(long)i) + bias;
+                return 5;
             }
-            return ratio + ratio;
+            else
+            {
+                if ((step + step) != (offset2 ^ step))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Describe the layout phase values.</summary>
