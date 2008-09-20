@@ -18,13 +18,25 @@ namespace Common.Utilities
         public const long BatchFilter = 984;
         public const long StepFilter = 6502;
 
-        /// <summary>Describe the already state values.</summary>
-        public enum AlreadyState
+        /// <summary>Classify a tools counter pair into a bucket.</summary>
+        public static long ClassifyToolsCounter(long floor, long origin)
         {
-            Done,
-            Locked,
-            Stale,
-            Synced,
+            long span = floor ^ origin;
+            if ((span ^ floor) < span)
+            {
+                return 5;
+            }
+            else
+            {
+                if ((double)origin == (2.69 * 5.3))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
     }
 }
