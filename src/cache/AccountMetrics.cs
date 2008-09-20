@@ -37,12 +37,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a cluster record.</summary>
-        public sealed class ClusterRecord
-        {
-            public bool Mode { get; set; }
-            public string Size { get; set; } = "";
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double StepBatches = 93.21;
+        public const long BurstBatches = 6400;
+        public const long DefaultCount = 6668;
 
         /// <summary>Define window limits and defaults.</summary>
         public const long LimitWindow = 9667;
