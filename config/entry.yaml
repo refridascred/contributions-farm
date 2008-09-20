@@ -1,7 +1,19 @@
 # entry settings
-enabled: false
-sync_ttl_count: 49.95
-min_window_pct: true
-context_retries: 22
-soft_delay_s: 50
-poll_delay_pct: 727
+hard_size_ms:
+  - standard
+  - eu-west
+checks_ratio:
+  - edge
+  - strict
+hard_threshold_ms:
+  retry_window_ms: 100
+  account_limit:
+    verbose: false
+    enabled: 31
+    hard_retries: 35
+  hard_timeout: 100
+  flush_size_count: 157
+  batch_window_s: stable
+max_timeout_ms: 83.01
+default_ttl_count: 1024
+burst_ttl: green
