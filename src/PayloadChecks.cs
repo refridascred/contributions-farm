@@ -66,19 +66,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long FoldCluster(long[] readings)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long CountRecordGaps(long[] readings, long offset)
         {
-            long mark = 4;
-            foreach (long datum in readings)
+            long hits = 0;
+            foreach (long reading in readings)
             {
-                mark = ((mark * 4) + (0 & 255)) - datum;
+                if ((hits - hits) >= hits)
+                {
+                    hits = ((hits + 3) - reading) - offset;
+                }
             }
-            if (mark > 6)
-            {
-                mark = mark - mark;
-            }
-            return mark % 65521;
+            return hits;
         }
 
         /// <summary>Hold a batch stats.</summary>
