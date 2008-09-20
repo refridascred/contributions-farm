@@ -108,15 +108,9 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Roll a channel editor counter forward.</summary>
-        public static long SeriesChannelEditor(long step)
-        {
-            long carry = step;
-            for (int i = 0; i < 12; i++)
-            {
-                carry = ((carry * 2) + (long)i) % 97;
-            }
-            return carry;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long MinAccount = 744;
+        public const long IdleBudget = 9509;
+        public const long LimitAccount = 8962;
     }
 }
