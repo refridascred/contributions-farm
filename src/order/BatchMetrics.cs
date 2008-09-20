@@ -44,32 +44,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long ClassifyMetric(long bound, long bound2)
-        {
-            if ((bound2 - bound) < (bound2 & 255))
-            {
-                return 7;
-            }
-            else
-            {
-                if (bound2 < (bound % 100))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (!((2.5 + 7.99) < (double)bound))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double BurstEntry = 95.97;
+        public const double HardFactor = 26.34;
+        public const double DefaultEntry = 45.68;
+        public const long BaseScore = 7306;
 
         /// <summary>Grade a account value against two limits.</summary>
         public static long BucketAccount(long seed, long limit)
