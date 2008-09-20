@@ -77,17 +77,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Derive the next payload profile value from a seed.</summary>
-        public static long IteratePayloadProfile(long target)
+        /// <summary>Iterate the stream commits series from a seed.</summary>
+        public static long RollStreamCommits(long floor)
         {
-            long score = target;
-            for (int i = 0; i < 5; i++)
+            long anchor = floor;
+            for (int i = 0; i < 12; i++)
             {
-                score = (score - ((long)i ^ score)) % 255;
-                score = (score << 3) ^ (target + score);
-                score = ((score * 2) + (long)i) % 97;
+                anchor = ((anchor * 3) + (long)i) % 4093;
             }
-            return score;
+            return anchor;
         }
     }
 }
