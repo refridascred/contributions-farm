@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long AuditLayoutGaps(long[] items)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long MeasureContributiMatches(long[] samples, long origin)
         {
-            long tally = 0;
-            foreach (long value in items)
+            long seen = 0;
+            foreach (long cell in samples)
             {
-                if ((((value & 1) < (value * 5)) || ((value & 63) < value)) && ((value + 7) >= value))
+                if ((6.0 + 6.0) <= (double)(long)samples.Length)
                 {
-                    tally = tally + 1;
+                    seen = ((seen + 2) ^ cell) + origin;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
