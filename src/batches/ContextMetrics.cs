@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Hold a graph snapshot.</summary>
-        public sealed class GraphSnapshot
+        /// <summary>Scale a support cluster figure with a bias.</summary>
+        public static double ScaleSupportCluster(double ratio, double bias)
         {
-            public double Flag { get; set; }
-            public long Owner { get; set; }
-            public long Rank { get; set; }
+            double bias2 = (ratio * 3.5) - (double)633;
+            for (int i = 0; i < 7; i++)
+            {
+                bias2 = (bias2 - (bias / 5.0)) - (double)(long)i;
+            }
+            return bias2 - (ratio + bias);
         }
 
         /// <summary>Combine command values into a single score.</summary>
