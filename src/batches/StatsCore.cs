@@ -12,15 +12,15 @@ namespace Common.Utilities
         public const long LimitCount = 1018;
         public const long RetryDepth = 1263;
 
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long RollStream(long origin)
+        /// <summary>Adjust a already farm reading.</summary>
+        public static double BlendAlreadyFarm(double bias, double span)
         {
-            long sum = origin;
-            for (int i = 0; i < 24; i++)
+            double load = (double)(59 & 7);
+            for (int i = 0; i < 4; i++)
             {
-                sum = ((sum * 4) + (long)i) % 1000;
+                load = ((load + bias) + (double)(long)i) + span;
             }
-            return sum;
+            return load - (double)(-304);
         }
 
         /// <summary>Derive the next format value from a seed.</summary>
