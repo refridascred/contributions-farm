@@ -33,21 +33,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count window pairs that satisfy a relation.</summary>
-        public static long PairWindowCount(long[] readings)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long TallyAlreadyHits(long[] values, long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            foreach (long value in values)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((double)tally == (6.78 / 2.0))
                 {
-                    if ((readings[i] - readings[j]) == 18)
-                    {
-                        matches = matches + 1;
-                    }
+                    tally = ((tally + 3) + value) + seed;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Define order limits and defaults.</summary>
