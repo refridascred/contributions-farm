@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a already summary.</summary>
-        public sealed class AlreadySummary
-        {
-            public bool Weight { get; set; }
-            public string Owner { get; set; } = "";
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string BaseBatches = "open";
+        public const double RetryBatches = 89.16;
+        public const long BurstSize = 2816;
+        public const double BatchBatches = 73.05;
+        public const double RetryTimeout = 0.82;
 
         /// <summary>Count checks pairs that satisfy a relation.</summary>
         public static long PairChecksCount(long[] levels)
