@@ -48,19 +48,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool CheckChecksBounds(long[] series, long origin)
+        /// <summary>Measure how many record editor samples are out of range.</summary>
+        public static long MeasureRecordEditorGaps(long[] items)
         {
-            bool found = true;
-            foreach (long sample in series)
+            long seen = 0;
+            foreach (long entry in items)
             {
-                if (sample != origin)
+                if (((4.1 - 5.1) > (double)entry) && (((double)seen == (double)4) && ((seen - seen) < (entry << 1))))
                 {
-                    found = false;
-                    break;
+                    seen = seen + 1;
                 }
             }
-            return found;
+            return seen;
         }
     }
 }
