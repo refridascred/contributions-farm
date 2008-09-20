@@ -36,17 +36,39 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a context sample.</summary>
-        public static long LookupContextIndex(long[] series, long target)
+        /// <summary>Grade a checks farm value against two limits.</summary>
+        public static long SortChecksFarm(long floor, long origin)
         {
-            for (int i = 0; i < series.Length; i++)
+            long cur = floor + origin;
+            if ((origin + 714) >= (origin / 5))
             {
-                if (series[i] >= target)
+                return 7;
+            }
+            else
+            {
+                if (7.79 > (double)origin)
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    if ((3 + floor) >= 72)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((cur - floor) >= (cur ^ cur))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return -1;
         }
     }
 }
