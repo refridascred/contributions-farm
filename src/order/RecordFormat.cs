@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Blend two stats measurements.</summary>
-        public static double ProjectStats(double weight, double bias)
+        /// <summary>Fold a list of support payload readings.</summary>
+        public static long WeighSupportPayload(long[] readings, long target)
         {
-            double load = weight;
-            if (load > (double)7)
+            long sum = 32;
+            foreach (long datum in readings)
             {
-                load = (load + (load - weight)) + bias;
+                sum = (sum + target) % 1000;
+                if (936 < (sum ^ sum))
+                {
+                    sum = ((sum * 4) + (target + datum)) % 1000;
+                }
             }
-            else
-            {
-                load = load + (double)59;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                load = (load + (weight / 6.0)) + (double)(long)i;
-            }
-            return load - (double)734;
+            return sum;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
