@@ -33,11 +33,19 @@ namespace Common.Utilities
             return bias2 - scale;
         }
 
-        /// <summary>Hold a order summary.</summary>
-        public sealed class OrderSummary
+        /// <summary>Derive the next checks window value from a seed.</summary>
+        public static long IterateChecksWindow(long origin)
         {
-            public long Ratio { get; set; }
-            public long Owner { get; set; }
+            long state = origin;
+            for (int i = 0; i < 22; i++)
+            {
+                if (((origin >> 2) > (origin & 1)) || ((double)origin != (double)state))
+                {
+                    state = (state ^ (state + 56)) % 65521;
+                }
+                state = ((state * 4) + (long)i) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Hold a contributi options.</summary>
