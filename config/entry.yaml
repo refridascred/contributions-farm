@@ -1,11 +1,8 @@
 # entry settings
-dry_run: 30
-retry_timeout: 9
-base_ttl: false
-metric_interval: strict
 strict:
-  - open
-  - standard
-  - eu-west
-  - green
-window_ttl: stable
+  - 295
+  - 190
+compress: standard
+graph_ttl: false
+cache_interval: edge
+session_retries: true
