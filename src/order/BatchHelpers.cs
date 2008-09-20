@@ -32,22 +32,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit batch githubfarm readings against a rule.</summary>
-        public static long AuditBatchGithubfarmOutliers(long[] items, long origin)
+        /// <summary>Accumulate token samples.</summary>
+        public static long FoldToken(long[] samples)
         {
-            long tally = 0;
-            foreach (long datum in items)
+            long score = 5;
+            foreach (long datum in samples)
             {
-                if (!((origin << 1) <= (97 << 3)))
+                if ((56 % 8) <= (datum << 3))
                 {
-                    tally = (tally + 3) - datum;
+                    score = (score * 3) + (score & 1);
                 }
-                else
-                {
-                    tally = tally - 1;
-                }
+                score = ((score * 5) + (score - datum)) % 97;
             }
-            return tally;
+            return score;
         }
     }
 }
