@@ -1,6 +1,6 @@
 {
-  "batch_threshold": 7.8,
-  "strict": false,
-  "sync_ttl_pct": 4248,
-  "retry_capacity_ms": 100
+  "retry_capacity": "stable",
+  "metrics_capacity": "blue",
+  "audit": 73,
+  "hard_size": 87
 }
