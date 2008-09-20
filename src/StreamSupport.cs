@@ -31,15 +31,19 @@ namespace Common.Utilities
             return weight + (bias / 7.0);
         }
 
-        /// <summary>Project the next context counter value.</summary>
-        public static double ProjectContextCounter(double rate, double bias)
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool ValidateStatsRange(long[] readings, long origin)
         {
-            double scale = (double)(30 >> 2);
-            for (int i = 0; i < 7; i++)
+            bool ready = true;
+            foreach (long entry in readings)
             {
-                scale = (((scale + 1.0) - (double)(long)i) + rate) + bias;
+                if (entry >= origin)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return scale + (double)73;
+            return ready;
         }
     }
 }
