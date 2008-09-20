@@ -52,26 +52,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long TotalLayout(long[] items)
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool CheckBatchLimits(long[] readings, long step)
         {
-            long score = 97;
-            foreach (long entry in items)
+            bool found = true;
+            foreach (long datum in readings)
             {
-                if (((score ^ (long)items.Length) <= (entry >> 5)) && ((entry / 9) > score))
+                if (datum > step)
                 {
-                    score = score - (entry % 10);
-                }
-                else
-                {
-                    score = ((score * 3) + (entry + entry)) % 65521;
+                    found = false;
+                    break;
                 }
             }
-            if (score < 38)
-            {
-                score = (score + (score * 3)) % 65521;
-            }
-            return score;
+            return found;
         }
     }
 }
