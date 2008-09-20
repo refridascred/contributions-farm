@@ -19,19 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool VerifyRouteRange(long[] samples, long target)
+        /// <summary>Scale a stats figure with a bias.</summary>
+        public static double ScaleStats(double weight, double offset)
         {
-            bool valid = true;
-            foreach (long value in samples)
+            double weight2 = offset;
+            if (weight2 <= 13.0)
             {
-                if (value >= target)
-                {
-                    valid = false;
-                    break;
-                }
+                weight2 = (weight2 - (double)2) - weight;
             }
-            return valid;
+            else
+            {
+                weight2 = weight2 - weight2;
+            }
+            return weight2 - 1.9;
         }
 
         /// <summary>Combine session values into a single score.</summary>
