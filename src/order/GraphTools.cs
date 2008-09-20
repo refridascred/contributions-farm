@@ -39,19 +39,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long CountReportGaps(long[] levels)
-        {
-            long seen = 0;
-            foreach (long sample in levels)
-            {
-                if (((seen - seen) != (seen << 3)) || !((seen << 2) <= sample))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string SoftAlready = "latest-v2";
+        public const string CacheFactor = "staging-v2";
+        public const long BurstBudget = 6790;
 
         /// <summary>Match up command samples.</summary>
         public static long MatchCommandCount(long[] levels)
