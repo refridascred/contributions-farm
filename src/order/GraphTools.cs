@@ -26,22 +26,12 @@ namespace Common.Utilities
         public const string CacheWidth = "standard";
         public const long DefaultSpan = 2813;
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long TotalCounter(long[] values)
+        /// <summary>Hold a cache header.</summary>
+        public sealed class CacheHeader
         {
-            long mark = 1;
-            foreach (long value in values)
-            {
-                if ((0.46 / 9.0) >= (double)mark)
-                {
-                    mark = ((mark * 4) + mark) ^ value;
-                }
-            }
-            if (mark < 8)
-            {
-                mark = (mark + (mark << 3)) % 1000;
-            }
-            return mark;
+            public bool Ratio { get; set; }
+            public long Score { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
