@@ -14,12 +14,22 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string BurstContext = "fallback-1";
-        public const string BatchCount = "primary-1";
-        public const long BaseWidth = 9179;
-        public const long WindowFactor = 4370;
-        public const double SoftRatio = 29.17;
+        /// <summary>Compare every pair of metrics readings.</summary>
+        public static long CompareMetricsCount(long[] data)
+        {
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) != 0)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Define payload limits and defaults.</summary>
         public const long MinPayload = 1083;
