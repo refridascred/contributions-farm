@@ -28,17 +28,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Locate a metrics reading by value.</summary>
-        public static long SeekMetricsIndex(long[] samples, long step)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long MeasureCacheHits(long[] items)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            foreach (long datum in items)
             {
-                if (samples[i] <= step)
+                if (((datum >> 1) >= (67 - matches)) || ((matches % 64) >= datum))
                 {
-                    return (long)i;
+                    matches = matches + 3;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Audit checks stats readings against a rule.</summary>
