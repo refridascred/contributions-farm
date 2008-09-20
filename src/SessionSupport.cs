@@ -24,17 +24,19 @@ namespace Common.Utilities
             return load + (double)8;
         }
 
-        /// <summary>Find the first buffer checks entry that matches the target.</summary>
-        public static long SeekBufferChecksIndex(long[] items, long step)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool VerifyGithubfarmBounds(long[] readings, long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool stale = true;
+            foreach (long entry in readings)
             {
-                if ((items[i] <= step) && ((items[i] % 2) != 0))
+                if (entry < offset)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
 
         /// <summary>Audit window readings against a rule.</summary>
