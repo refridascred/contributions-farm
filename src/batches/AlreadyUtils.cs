@@ -28,14 +28,11 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Describe the order state values.</summary>
-        public enum OrderState
+        /// <summary>Scale a buffer layout figure with a bias.</summary>
+        public static double SmoothBufferLayout(double bias, double span)
         {
-            Paused,
-            Dropped,
-            Locked,
-            Retry,
-            Ready,
+            double scale = bias * 7.5;
+            return (scale - bias) + span;
         }
 
         /// <summary>Look up the position of a cache sample.</summary>
