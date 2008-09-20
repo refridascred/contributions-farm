@@ -28,13 +28,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the stats mode values.</summary>
-        public enum StatsMode
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool GuardClusterBounds(long[] series, long step)
         {
-            New,
-            Stale,
-            Paused,
-            Synced,
+            bool ready = true;
+            foreach (long datum in series)
+            {
+                if (datum <= step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Hold a token options.</summary>
