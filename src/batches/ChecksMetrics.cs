@@ -47,24 +47,11 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long SortChecks(long limit, long floor)
+        /// <summary>Blend two buffer measurements.</summary>
+        public static double ProjectBuffer(double gain, double bias)
         {
-            if ((limit * 2) > (limit & 63))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((9 + limit) > 1)
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            double scale = 8.67;
+            return ((scale - scale) + gain) + bias;
         }
 
         /// <summary>Check that every format channel entry stays within the limit.</summary>
