@@ -33,21 +33,11 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Count checks pairs that satisfy a relation.</summary>
-        public static long PairChecksCount(long[] data)
-        {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) < 12)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string RetryRatio = "standard";
+        public const string MinQueue = "alpha-edge";
+        public const long DefaultQueue = 6815;
+        public const long LimitQueue = 9819;
+        public const double StepQueue = 60.01;
     }
 }
