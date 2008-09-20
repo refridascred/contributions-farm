@@ -29,15 +29,18 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Scale a counter figure with a bias.</summary>
-        public static double SmoothCounter(double ratio, double offset)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long MeasureChannelMatches(long[] samples, long offset)
         {
-            double bias = (offset + 12.0) + (ratio / 2.0);
-            if (bias > ratio)
+            long seen = 0;
+            foreach (long cell in samples)
             {
-                bias = bias + (5.4 + bias);
+                if (((((-722) / 4) > (cell & 255)) && (15.0 <= (double)seen)) && (((double)988 < (double)offset) && (offset < (seen >> 2))))
+                {
+                    seen = seen + 1;
+                }
             }
-            return bias + offset;
+            return seen;
         }
     }
 }
