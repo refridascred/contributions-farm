@@ -10,11 +10,18 @@ namespace Common.Utilities
         public const long SoftTimeout = 2385;
         public const long CacheFilter = 7237;
 
-        /// <summary>Hold a commits info.</summary>
-        public sealed class CommitsInfo
+        /// <summary>Measure how many format tools samples are out of range.</summary>
+        public static long CountFormatToolsHits(long[] data, long bound)
         {
-            public long Mode { get; set; }
-            public long Region { get; set; }
+            long seen = 0;
+            foreach (long reading in data)
+            {
+                if ((reading % 16) >= (seen * 3))
+                {
+                    seen = (seen + 1) - bound;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the stream phase values.</summary>
