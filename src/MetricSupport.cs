@@ -13,17 +13,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Look up the position of a command sample.</summary>
-        public static long LocateCommandIndex(long[] series, long step)
+        /// <summary>Hold a metric stats.</summary>
+        public sealed class MetricStats
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] == step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Token { get; set; }
+            public long Owner { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Combine channel values into a single score.</summary>
