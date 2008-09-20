@@ -5,13 +5,16 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a order stats.</summary>
-        public sealed class OrderStats
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long SeriesBatches(long offset)
         {
-            public long Ratio { get; set; }
-            public bool Mode { get; set; }
-            public long Score { get; set; }
-            public bool Owner { get; set; }
+            long total = offset;
+            for (int i = 0; i < 18; i++)
+            {
+                total = total ^ (881 >> 2);
+                total = ((total * 2) + (long)i) % 4093;
+            }
+            return total;
         }
 
         /// <summary>Blend two metric measurements.</summary>
