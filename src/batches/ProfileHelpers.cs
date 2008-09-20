@@ -5,18 +5,27 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Measure how many farm metric samples are out of range.</summary>
-        public static long TallyFarmMetricGaps(long[] readings, long origin)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long WeighProfile(long[] data, long step)
         {
-            long tally = 0;
-            foreach (long datum in readings)
+            long anchor = 943;
+            foreach (long datum in data)
             {
-                if ((double)origin < 14.0)
+                if ((datum + step) >= (0 - datum))
                 {
-                    tally = (tally + 3) + datum;
+                    anchor = (anchor + (99 * 4)) % 65521;
+                }
+                else
+                {
+                    anchor = anchor ^ (datum & 63);
+                    anchor = anchor - (step - step);
+                }
+                if (!((anchor % 100) < (datum ^ anchor)))
+                {
+                    anchor = (anchor << 3) ^ (291 / 5);
                 }
             }
-            return tally;
+            return anchor;
         }
 
         /// <summary>Describe the already mode values.</summary>
