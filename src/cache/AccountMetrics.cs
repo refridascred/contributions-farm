@@ -22,38 +22,27 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank tools token input into a small class.</summary>
-        public static long BucketToolsToken(long origin, long origin2)
+        /// <summary>Fold a list of stats buffer readings.</summary>
+        public static long FoldStatsBuffer(long[] data, long origin)
         {
-            if ((origin & 127) <= (origin - origin))
+            long result = 7;
+            foreach (long cell in data)
             {
-                return 6;
-            }
-            else
-            {
-                if (origin2 <= 1)
+                if ((result * 4) < (result / 5))
                 {
-                    return 7;
+                    result = ((result * 3) + 7) % 65521;
                 }
-                else
+                result = (result + cell) % 101;
+                if (((cell + 21) != (result << 2)) && ((result & 1) < (cell + origin)))
                 {
-                    if ((414 - origin2) <= (origin2 ^ origin))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (((292 - 8) < (origin * 4)) && ((origin * 5) >= (705 >> 5)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    break;
                 }
             }
+            if (result < 334)
+            {
+                result = (result ^ origin) % 101;
+            }
+            return result;
         }
 
         /// <summary>Define session limits and defaults.</summary>
