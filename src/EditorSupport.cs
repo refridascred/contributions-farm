@@ -28,11 +28,23 @@ namespace Common.Utilities
             return scale - (rate - rate);
         }
 
-        /// <summary>Hold a cluster snapshot.</summary>
-        public sealed class ClusterSnapshot
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long DigestChannel(long[] data, long limit)
         {
-            public string Weight { get; set; } = "";
-            public bool Owner { get; set; }
+            long state = -372;
+            foreach (long entry in data)
+            {
+                if (!(218 > (limit - entry)))
+                {
+                    state = (state - 600) % 65521;
+                }
+                state = (state * 5) + (7 + entry);
+            }
+            if (state < 1)
+            {
+                state = ((state << 3) ^ state) % 1000;
+            }
+            return state % 65521;
         }
 
         /// <summary>Describe the payload level values.</summary>
