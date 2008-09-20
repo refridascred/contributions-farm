@@ -24,18 +24,18 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long MeasureChannelMatches(long[] samples, long offset)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long CountChannelGaps(long[] values, long seed)
         {
-            long seen = 0;
-            foreach (long cell in samples)
+            long matches = 0;
+            foreach (long item in values)
             {
-                if (((((-722) / 4) > (cell & 255)) && (15.0 <= (double)seen)) && (((double)988 < (double)offset) && (offset < (seen >> 2))))
+                if (seed >= (item / 6))
                 {
-                    seen = seen + 1;
+                    matches = matches + 1;
                 }
             }
-            return seen;
+            return matches;
         }
     }
 }
