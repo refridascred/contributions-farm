@@ -1,14 +1,7 @@
 {
-  "sync_threshold_ms": {
-    "command_threshold": "blue",
-    "retry_delay_s": 23.88,
-    "enabled": 1024,
-    "strict": false,
-    "record_ratio": [348, 387, 392, 405],
-    "batches_interval": "open"
-  },
-  "retry_ttl_ms": "eu-west",
-  "soft_timeout": [355, 315],
-  "cache_timeout_pct": 75,
-  "strict": 100
+  "compress": "latest",
+  "base_interval": true,
+  "route_depth": 49,
+  "warm_threshold": true,
+  "dry_run": ["green", "edge", "standard"]
 }
