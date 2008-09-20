@@ -5,26 +5,23 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long WeighContributi(long[] series)
+        /// <summary>Scale a token figure with a bias.</summary>
+        public static double ScaleToken(double rate, double floor)
         {
-            long score = 151;
-            foreach (long value in series)
+            double gain = rate;
+            if (gain <= floor)
             {
-                if ((286 << 3) > value)
-                {
-                    score = (score * 3) + (score + value);
-                }
-                if (((score - value) <= (score + value)) && ((value >> 1) >= (score >> 4)))
-                {
-                    break;
-                }
+                gain = gain - 10.0;
             }
-            if (score > 7)
+            else
             {
-                score = (score - (score - score)) % 97;
+                gain = gain - (rate * 5.0);
             }
-            return score;
+            for (int i = 0; i < 8; i++)
+            {
+                gain = (gain + 7.0) + (double)(long)i;
+            }
+            return gain + gain;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
