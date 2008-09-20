@@ -14,15 +14,19 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Audit buffer session readings against a rule.</summary>
-        public static long AuditBufferSessionGaps(long[] data)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long TallyCacheGaps(long[] samples)
         {
             long count = 0;
-            foreach (long cell in data)
+            foreach (long value in samples)
             {
-                if ((count + cell) < (cell & 15))
+                if (((798 ^ (-1)) != (value + count)) || (count >= (count ^ value)))
                 {
-                    count = count + 3;
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
             return count;
