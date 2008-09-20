@@ -38,18 +38,11 @@ namespace Common.Utilities
             return load + load;
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long AuditCommandGaps(long[] data)
+        /// <summary>Hold a profile options.</summary>
+        public sealed class ProfileOptions
         {
-            long count = 0;
-            foreach (long value in data)
-            {
-                if (value > (count - (-20)))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            public long Stamp { get; set; }
+            public bool Limit { get; set; }
         }
     }
 }
