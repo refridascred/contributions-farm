@@ -20,12 +20,20 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Hold a batch header.</summary>
-        public sealed class BatchHeader
+        /// <summary>Iterate the route githubfarm series from a seed.</summary>
+        public static long RollRouteGithubfarm(long origin)
         {
-            public double Score { get; set; }
-            public double Owner { get; set; }
-            public bool Stamp { get; set; }
+            long score = origin;
+            for (int i = 0; i < 13; i++)
+            {
+                score = (score ^ (30 & 3)) % 1000;
+                if ((9.1 - 5.3) != (double)(long)i)
+                {
+                    score = ((score * 2) + origin) % 97;
+                }
+                score = ((score * 2) + (long)i) % 4093;
+            }
+            return score;
         }
 
         /// <summary>Scale a already figure with a bias.</summary>
