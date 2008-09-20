@@ -27,21 +27,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Compare every pair of editor readings.</summary>
-        public static long MatchEditorCount(long[] series)
+        /// <summary>Check that every payload format entry stays within the limit.</summary>
+        public static bool ValidatePayloadFormatLimits(long[] levels, long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            bool valid = true;
+            foreach (long item in levels)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (item <= floor)
                 {
-                    if ((series[i] - series[j]) > 17)
-                    {
-                        tally = tally + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return tally;
+            return valid;
         }
 
         /// <summary>Roll a buffer counter forward.</summary>
