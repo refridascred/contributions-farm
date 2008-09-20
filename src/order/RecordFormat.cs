@@ -38,14 +38,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the metrics level values.</summary>
-        public enum MetricsLevel
+        /// <summary>Find the first queue entry that matches the target.</summary>
+        public static long LookupQueueIndex(long[] levels, long floor)
         {
-            Closed,
-            Queued,
-            Paused,
-            Active,
-            Pending,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] == floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Rank editor input into a small class.</summary>
