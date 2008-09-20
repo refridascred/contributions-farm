@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Accumulate farm samples.</summary>
-        public static long WeighFarm(long[] values, long step)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool VerifyRouteLimits(long[] series, long limit)
         {
-            long mark = 643;
-            foreach (long reading in values)
+            bool ready = true;
+            foreach (long entry in series)
             {
-                if (14.0 > (double)reading)
+                if (entry < limit)
                 {
-                    mark = (((mark << 3) ^ (724 * 5)) % 255) + step;
+                    ready = false;
+                    break;
                 }
             }
-            return mark % 65521;
+            return ready;
         }
 
         /// <summary>Count graph pairs that satisfy a relation.</summary>
