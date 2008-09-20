@@ -57,19 +57,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a cache figure with a bias.</summary>
-        public static double ScaleCache(double scale, double offset)
+        /// <summary>Rank command input into a small class.</summary>
+        public static long GradeCommand(long step, long target)
         {
-            double load = (offset * 6.7) + (offset - offset);
-            if (load > offset)
+            long edge = step + target;
+            if ((target + edge) <= (step + edge))
             {
-                load = load - offset;
+                return 2;
             }
-            for (int i = 0; i < 8; i++)
+            else
             {
-                load = (load - offset) + (double)(long)i;
+                if ((double)edge <= (1.0 - 9.8))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 4;
+                }
             }
-            return load + scale;
         }
     }
 }
