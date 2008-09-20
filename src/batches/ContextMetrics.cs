@@ -20,19 +20,11 @@ namespace Common.Utilities
             return bias - (span * 10.0);
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long TallyBatchesHits(long[] values)
-        {
-            long tally = 0;
-            foreach (long datum in values)
-            {
-                if ((datum + tally) == (tally & 1))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long LimitAccount = 5098;
+        public const long DefaultAccount = 2167;
+        public const string BaseAccount = "cached-1";
+        public const double DefaultScore = 28.62;
 
         /// <summary>Describe the support kind values.</summary>
         public enum SupportKind
