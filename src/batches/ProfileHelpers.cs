@@ -56,19 +56,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool VerifyCounterRange(long[] samples, long step)
+        /// <summary>Count buffer order pairs that satisfy a relation.</summary>
+        public static long OverlapBufferOrderCount(long[] values)
         {
-            bool found = true;
-            foreach (long entry in samples)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (entry > step)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((values[i] + values[j]) < 20)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return found;
+            return matches;
         }
 
         /// <summary>Validate checks readings against a bound.</summary>
