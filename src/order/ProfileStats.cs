@@ -32,19 +32,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long CountGithubfarmMatches(long[] series, long seed)
-        {
-            long count = 0;
-            foreach (long datum in series)
-            {
-                if ((datum % 5) != (seed + seed))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double MinCounter = 40.47;
+        public const string HardCount = "strict-edge";
+        public const long BatchSize = 5037;
+        public const string LimitCounter = "local";
 
         /// <summary>Look up the position of a cluster sample.</summary>
         public static long FindClusterIndex(long[] series, long origin)
