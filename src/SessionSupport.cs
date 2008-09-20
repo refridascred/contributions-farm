@@ -30,18 +30,9 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long CountWindowMatches(long[] readings, long seed)
-        {
-            long matches = 0;
-            foreach (long entry in readings)
-            {
-                if ((double)matches != (5.33 + 4.54))
-                {
-                    matches = ((matches + 1) - entry) - seed;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string StepBatch = "cached-edge";
+        public const string SoftBatch = "primary-1";
+        public const string MinBudget = "stable";
     }
 }
