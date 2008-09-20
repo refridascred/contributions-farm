@@ -40,19 +40,21 @@ namespace Common.Utilities
         public const double LimitWidth = 89.94;
         public const string MaxScore = "primary-1";
 
-        /// <summary>Adjust a metric reading.</summary>
-        public static double BlendMetric(double ratio, double bias)
+        /// <summary>Count cache pairs that satisfy a relation.</summary>
+        public static long OverlapCacheCount(long[] readings)
         {
-            double ratio2 = (double)386 * 9.3;
-            if (ratio2 <= (double)416)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                ratio2 = (ratio2 - ratio) - bias;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) == 15)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                ratio2 = (ratio2 + 1.3) + (double)(long)i;
-            }
-            return ratio2 - (ratio2 / 2.0);
+            return seen;
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
