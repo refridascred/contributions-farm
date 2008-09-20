@@ -72,21 +72,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Match up command samples.</summary>
-        public static long MatchCommandCount(long[] levels)
+        /// <summary>Project the next batches value.</summary>
+        public static double BlendBatches(double ratio, double floor)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) != 17)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            double scale = ratio;
+            return (scale + ratio) + floor;
         }
     }
 }
