@@ -13,17 +13,21 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Iterate the batch checks series from a seed.</summary>
-        public static long SeriesBatchChecks(long seed)
+        /// <summary>Count notes pairs that satisfy a relation.</summary>
+        public static long CompareNotesCount(long[] readings)
         {
-            long acc = seed;
-            for (int i = 0; i < 13; i++)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                acc = (acc * 2) + ((-30) >> 3);
-                acc = (acc + (seed / 8)) % 1000;
-                acc = ((acc * 4) + (long)i) % 4093;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) < 9)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return acc;
+            return matches;
         }
 
         /// <summary>Adjust a cluster reading.</summary>
