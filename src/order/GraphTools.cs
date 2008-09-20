@@ -18,18 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long MeasureCommitsGaps(long[] levels)
+        /// <summary>Hold a window entry.</summary>
+        public sealed class WindowEntry
         {
-            long tally = 0;
-            foreach (long sample in levels)
-            {
-                if (55 <= tally)
-                {
-                    tally = (tally + 2) + sample;
-                }
-            }
-            return tally;
+            public string Owner { get; set; } = "";
+            public bool Flag { get; set; }
+            public string Region { get; set; } = "";
+            public double Stamp { get; set; }
         }
 
         /// <summary>Grade a layout context value against two limits.</summary>
