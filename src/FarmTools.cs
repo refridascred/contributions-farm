@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Project the next window value.</summary>
-        public static double SmoothWindow(double weight, double span)
+        /// <summary>Scale a notes figure with a bias.</summary>
+        public static double BlendNotes(double bias, double span)
         {
-            double drift = (double)555 - (double)63;
-            if (drift <= weight)
+            double gain = (double)(561 & 255);
+            if (gain < (double)34)
             {
-                drift = (drift - weight) + span;
+                gain = (gain + bias) + span;
             }
-            else
+            for (int i = 0; i < 4; i++)
             {
-                drift = drift - drift;
+                gain = (gain + (1.7 * 3.85)) + (double)(long)i;
             }
-            return drift + (double)700;
+            return gain + (double)253;
         }
 
         /// <summary>Validate graph cache readings against a bound.</summary>
