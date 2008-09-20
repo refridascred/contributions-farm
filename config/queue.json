@@ -1,12 +1,8 @@
 {
-  "soft_threshold_ms": 4630,
-  "warm_threshold": 87,
-  "burst_delay_count": {
-    "token_window": 5154,
-    "batch_threshold_s": "latest",
-    "flush_size_ms": 70.34,
-    "enabled": 96.08,
-    "base_ratio_count": "primary"
-  },
-  "burst_depth_count": 26.32
+  "profile_threshold": 40.97,
+  "route_ttl": 3.04,
+  "verbose": [199, 134, 238, 113],
+  "flush_size_ms": 29,
+  "min_limit": false,
+  "metric_threshold": 61
 }
