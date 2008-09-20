@@ -12,11 +12,11 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long SoftFilter = 8884;
-        public const string IdleFilter = "staging-1";
-        public const long BatchFilter = 984;
-        public const long StepFilter = 6502;
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string SoftLevel = "fallback-1";
+        public const long MaxFarm = 8469;
+        public const long BurstBudget = 2598;
+        public const long DefaultFarm = 4545;
 
         /// <summary>Digest a series of buffer entries.</summary>
         public static long DigestBuffer(long[] samples, long target)
