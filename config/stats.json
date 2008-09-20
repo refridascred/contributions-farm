@@ -1,5 +1,5 @@
 {
-  "persist": "edge",
-  "idle_window_pct": 5.67,
-  "readonly": 63
+  "audit": 14.21,
+  "burst_retries_ms": 1269,
+  "burst_timeout_ms": 1024
 }
