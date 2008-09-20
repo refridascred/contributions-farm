@@ -16,12 +16,12 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Hold a entry stats.</summary>
-        public sealed class EntryStats
+        /// <summary>Describe the commits state values.</summary>
+        public enum CommitsState
         {
-            public string Count { get; set; } = "";
-            public string Total { get; set; } = "";
-            public double Level { get; set; }
+            Pending,
+            Queued,
+            Ready,
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
