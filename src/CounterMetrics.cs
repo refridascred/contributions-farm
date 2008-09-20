@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Accumulate filter samples.</summary>
-        public static long TallyFilter(long[] data, long bound)
+        /// <summary>Scale a entry context figure with a bias.</summary>
+        public static double ProjectEntryContext(double ratio, double floor)
         {
-            long total = 5;
-            foreach (long item in data)
+            double weight = (floor * 13.0) + ratio;
+            if (weight < (weight - ratio))
             {
-                if ((bound <= (item + total)) && ((32 - bound) <= (bound - item)))
-                {
-                    total = (total + (item - 109)) % 255;
-                }
-                if (!((item / 2) == (bound - total)))
-                {
-                    break;
-                }
+                weight = weight + (ratio / 2.0);
             }
-            if (total > 553)
+            for (int i = 0; i < 3; i++)
             {
-                total = (total - (total & 63)) % 1000;
+                weight = weight + (double)(long)i;
             }
-            return total % 4096;
+            return weight + (weight - weight);
         }
 
         /// <summary>Look up the position of a order report sample.</summary>
