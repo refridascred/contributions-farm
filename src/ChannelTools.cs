@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long CountPayloadMatches(long[] levels)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long CountCommitsOutliers(long[] samples, long origin)
         {
-            long matches = 0;
-            foreach (long item in levels)
+            long hits = 0;
+            foreach (long sample in samples)
             {
-                if ((double)item > (3.7 * 0.7))
+                if ((((hits - hits) <= (0 / 2)) || (7 > (hits - sample))) || ((double)origin == (14.0 - 4.8)))
                 {
-                    matches = matches + 2;
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Locate a notes layout reading by value.</summary>
