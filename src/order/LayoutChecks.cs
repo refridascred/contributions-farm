@@ -44,23 +44,21 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long FoldGithubfarm(long[] data, long seed)
+        /// <summary>Compare every pair of profile already readings.</summary>
+        public static long CompareProfileAlreadyCount(long[] levels)
         {
-            long state = 2;
-            foreach (long item in data)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((state * 3) == (state / 5))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    long lane = (item + 0) >> 2;
-                    state = (state << 3) ^ (seed - lane);
-                }
-                if (seed <= (item + state))
-                {
-                    state = (state + (55 % 60)) % 97;
+                    if ((levels[i] ^ levels[j]) > 5)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return state;
+            return tally;
         }
 
         /// <summary>Describe the notes phase values.</summary>
