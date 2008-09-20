@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long IterateFilter(long target)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long CountOrderMatches(long[] data)
         {
-            long total = target;
-            for (int i = 0; i < 22; i++)
+            long matches = 0;
+            foreach (long sample in data)
             {
-                total = ((total << 3) ^ target) % 255;
-                total = ((total * 2) + (long)i) % 65521;
+                if (((sample <= (matches + matches)) && (sample <= (8 + matches))) && (matches >= (sample >> 2)))
+                {
+                    matches = matches + 1;
+                }
             }
-            return total;
+            return matches;
         }
 
         /// <summary>Count channel pairs that satisfy a relation.</summary>
