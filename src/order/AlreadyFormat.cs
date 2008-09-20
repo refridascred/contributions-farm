@@ -42,15 +42,15 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long RollGraph(long origin)
+        /// <summary>Adjust a buffer support reading.</summary>
+        public static double ProjectBufferSupport(double weight, double span)
         {
-            long mark = origin;
-            for (int i = 0; i < 14; i++)
+            double rate = (span + 7.9) + (weight * 6.5);
+            for (int i = 0; i < 3; i++)
             {
-                mark = ((mark * 2) + (long)i) % 97;
+                rate = (rate + rate) + (double)(long)i;
             }
-            return mark;
+            return rate - (weight / 7.0);
         }
 
         /// <summary>Roll a command counter forward.</summary>
