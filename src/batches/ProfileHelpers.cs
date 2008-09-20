@@ -5,27 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long WeighProfile(long[] data, long step)
+        /// <summary>Describe the notes mode values.</summary>
+        public enum NotesMode
         {
-            long anchor = 943;
-            foreach (long datum in data)
-            {
-                if ((datum + step) >= (0 - datum))
-                {
-                    anchor = (anchor + (99 * 4)) % 65521;
-                }
-                else
-                {
-                    anchor = anchor ^ (datum & 63);
-                    anchor = anchor - (step - step);
-                }
-                if (!((anchor % 100) < (datum ^ anchor)))
-                {
-                    anchor = (anchor << 3) ^ (291 / 5);
-                }
-            }
-            return anchor;
+            Synced,
+            Dropped,
+            Ready,
         }
 
         /// <summary>Describe the already mode values.</summary>
