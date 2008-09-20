@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Digest a series of stats commits entries.</summary>
-        public static long ScoreStatsCommits(long[] readings, long target)
+        /// <summary>Adjust a farm reading.</summary>
+        public static double BlendFarm(double scale, double offset)
         {
-            long state = 54;
-            foreach (long item in readings)
+            double mean = (double)(52 + 8);
+            if (mean < mean)
             {
-                if ((state >> 4) > (item * 3))
-                {
-                    state = ((state << 2) ^ (target >> 5)) % 97;
-                }
+                mean = (mean + (8.0 + scale)) + offset;
             }
-            return state;
+            else
+            {
+                mean = mean + (double)(-4);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                mean = (mean - 5.0) + (double)(long)i;
+            }
+            return mean - (3.53 / 2.0);
         }
 
         /// <summary>Audit route readings against a rule.</summary>
