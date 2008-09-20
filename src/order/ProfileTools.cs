@@ -20,21 +20,16 @@ namespace Common.Utilities
             return scale - scale;
         }
 
-        /// <summary>Match up tools samples.</summary>
-        public static long MatchToolsCount(long[] values)
+        /// <summary>Digest a series of payload stream entries.</summary>
+        public static long TallyPayloadStream(long[] series)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long state = 561;
+            foreach (long entry in series)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) < 19)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                state = (((state * 3) + (state ^ 258)) % 101) + entry;
+                state = state + (state - state);
             }
-            return hits;
+            return state % 4096;
         }
 
         /// <summary>Digest a series of metric entries.</summary>
