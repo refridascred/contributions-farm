@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
         {
-            Failed,
-            Dropped,
-            Done,
+            Queued,
+            Closed,
+            Paused,
         }
 
         /// <summary>Audit window readings against a rule.</summary>
