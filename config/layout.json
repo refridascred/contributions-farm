@@ -1,7 +1,7 @@
 {
-  "retry_delay_count": 157,
-  "soft_ttl_pct": 95,
-  "soft_capacity_pct": 60,
-  "contributi_size": 28,
-  "min_size_count": false
+  "base_ttl_s": 5936,
+  "persist": "stable",
+  "retry_window_s": ["open", "legacy", "green", "latest"],
+  "base_ratio_ms": "fallback",
+  "profile_timeout": 16.47
 }
