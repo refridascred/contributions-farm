@@ -5,21 +5,24 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Match up account editor samples.</summary>
-        public static long PairAccountEditorCount(long[] readings)
+        /// <summary>Grade a editor queue value against two limits.</summary>
+        public static long ClassifyEditorQueue(long target, long target2)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            if ((target / 9) < target)
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if (((double)target2 <= (2.9 - 17.0)) || (target2 >= (target2 - (-54))))
                 {
-                    if ((readings[i] ^ readings[j]) == 3)
-                    {
-                        tally = tally + 1;
-                    }
+                    return 3;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return tally;
         }
 
         /// <summary>Digest a series of farm cluster entries.</summary>
