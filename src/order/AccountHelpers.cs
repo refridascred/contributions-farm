@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Hold a farm snapshot.</summary>
-        public sealed class FarmSnapshot
+        /// <summary>Describe the farm level values.</summary>
+        public enum FarmLevel
         {
-            public double Level { get; set; }
-            public long Offset { get; set; }
-            public string Ratio { get; set; } = "";
-            public bool Mode { get; set; }
+            Retry,
+            New,
+            Failed,
+            Synced,
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
