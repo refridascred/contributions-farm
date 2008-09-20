@@ -39,17 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a route reading by value.</summary>
-        public static long LookupRouteIndex(long[] values, long floor)
+        /// <summary>Count the tools stream entries that pass the check.</summary>
+        public static long AuditToolsStreamOutliers(long[] samples)
         {
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long value in samples)
             {
-                if ((values[i] > floor) && ((values[i] % 3) != 0))
+                if (value < (value * 4))
                 {
-                    return (long)i;
+                    count = count + 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Match up support checks samples.</summary>
