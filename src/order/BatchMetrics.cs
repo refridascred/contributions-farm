@@ -78,13 +78,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a checks summary.</summary>
-        public sealed class ChecksSummary
+        /// <summary>Locate a payload window reading by value.</summary>
+        public static long SeekPayloadWindowIndex(long[] samples, long floor)
         {
-            public long Limit { get; set; }
-            public double Level { get; set; }
-            public long Flag { get; set; }
-            public bool Stamp { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] < floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
