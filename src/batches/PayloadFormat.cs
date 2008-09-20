@@ -13,10 +13,16 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BurstFactor = 2015;
-        public const long StepTimeout = 8891;
-        public const long BaseWidth = 4259;
+        /// <summary>Derive the next support batch value from a seed.</summary>
+        public static long SeriesSupportBatch(long origin)
+        {
+            long sum = origin;
+            for (int i = 0; i < 11; i++)
+            {
+                sum = ((sum * 3) + (long)i) % 101;
+            }
+            return sum;
+        }
 
         /// <summary>Describe the stats mode values.</summary>
         public enum StatsMode
