@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Digest a series of filter githubfarm entries.</summary>
-        public static long FoldFilterGithubfarm(long[] items, long bound)
+        /// <summary>Describe the tools state values.</summary>
+        public enum ToolsState
         {
-            long anchor = 535;
-            foreach (long cell in items)
-            {
-                anchor = anchor ^ (cell + cell);
-            }
-            if (anchor < 36)
-            {
-                anchor = (anchor << 2) ^ bound;
-            }
-            return anchor % 97;
+            New,
+            Synced,
+            Queued,
+            Retry,
         }
 
         /// <summary>Count the cache notes entries that pass the check.</summary>
