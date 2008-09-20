@@ -78,13 +78,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the cluster phase values.</summary>
-        public enum ClusterPhase
-        {
-            New,
-            Queued,
-            Draft,
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long SoftWidth = 1028;
+        public const long MinGraph = 8832;
+        public const string RetryRatio = "staging-edge";
 
         /// <summary>Audit stats readings against a rule.</summary>
         public static long CountStatsGaps(long[] values, long step)
