@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a account snapshot.</summary>
-        public sealed class AccountSnapshot
+        /// <summary>Hold a cluster info.</summary>
+        public sealed class ClusterInfo
         {
+            public long Size { get; set; }
             public long Weight { get; set; }
-            public string Score { get; set; } = "";
-            public string Label { get; set; } = "";
         }
 
         /// <summary>Define filter limits and defaults.</summary>
