@@ -47,38 +47,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a stats command value against two limits.</summary>
-        public static long SortStatsCommand(long target, long bound)
+        /// <summary>Hold a tools entry.</summary>
+        public sealed class ToolsEntry
         {
-            if ((7.27 > (double)bound) || ((-6) < (bound - 9)))
-            {
-                return 3;
-            }
-            else
-            {
-                if (bound >= (85 >> 2))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((target ^ target) <= (9 - target))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((target >> 4) > target)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            public string Rank { get; set; } = "";
+            public long Region { get; set; }
+            public string Limit { get; set; } = "";
+            public double Token { get; set; }
         }
     }
 }
