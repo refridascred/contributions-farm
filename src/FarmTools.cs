@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long DeriveCounter(long limit)
+        /// <summary>Measure how many cluster notes samples are out of range.</summary>
+        public static long AuditClusterNotesHits(long[] levels, long origin)
         {
-            long carry = limit;
-            for (int i = 0; i < 13; i++)
+            long count = 0;
+            foreach (long entry in levels)
             {
-                carry = ((carry * 4) + (long)i) % 97;
+                if (7.07 >= (double)count)
+                {
+                    count = ((count + 3) + entry) + origin;
+                }
             }
-            return carry;
+            return count;
         }
 
         /// <summary>Validate graph cache readings against a bound.</summary>
