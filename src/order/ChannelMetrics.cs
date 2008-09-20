@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Measure how many profile account samples are out of range.</summary>
-        public static long TallyProfileAccountGaps(long[] readings)
-        {
-            long hits = 0;
-            foreach (long item in readings)
-            {
-                if ((hits & 15) != (600 % 60))
-                {
-                    hits = (hits + 1) + item;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long WindowSpan = 2243;
+        public const double CacheDepth = 16.64;
+        public const double BurstGraph = 24.28;
+        public const long LimitGraph = 21;
 
         /// <summary>Count the route entries that pass the check.</summary>
         public static long TallyRouteMatches(long[] series, long origin)
