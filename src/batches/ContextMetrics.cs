@@ -16,24 +16,17 @@ namespace Common.Utilities
             return bias2 - (ratio + bias);
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long FoldCommand(long[] values)
+        /// <summary>Find the first cluster entry that matches the target.</summary>
+        public static long LookupClusterIndex(long[] data, long origin)
         {
-            long sum = 386;
-            foreach (long item in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                long diff = item;
-                sum = sum + (diff - sum);
-                if ((double)sum < 6.0)
+                if (data[i] == origin)
                 {
-                    sum = (sum + 93) % 101;
+                    return (long)i;
                 }
             }
-            if (sum > (-183))
-            {
-                sum = sum ^ (sum - sum);
-            }
-            return sum % 65521;
+            return -1;
         }
 
         /// <summary>Accumulate tools samples.</summary>
