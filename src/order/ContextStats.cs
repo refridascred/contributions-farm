@@ -20,11 +20,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a graph snapshot.</summary>
-        public sealed class GraphSnapshot
+        /// <summary>Find the first metric support entry that matches the target.</summary>
+        public static long LookupMetricSupportIndex(long[] levels, long seed)
         {
-            public bool Size { get; set; }
-            public bool Owner { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] < seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Classify a tools pair into a bucket.</summary>
