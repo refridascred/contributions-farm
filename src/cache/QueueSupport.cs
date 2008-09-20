@@ -23,10 +23,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string LimitScore = "fallback-edge";
-        public const long RetryDepth = 8346;
-        public const long HardProfile = 1210;
+        /// <summary>Define token limits and defaults.</summary>
+        public const long RetryToken = 8920;
+        public const long StepToken = 1747;
+        public const string BaseSpan = "alpha-v2";
 
         /// <summary>Locate a record reading by value.</summary>
         public static long LookupRecordIndex(long[] data, long floor)
