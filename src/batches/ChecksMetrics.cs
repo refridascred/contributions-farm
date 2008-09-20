@@ -43,21 +43,24 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Count tools pairs that satisfy a relation.</summary>
-        public static long MatchToolsCount(long[] data)
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long SortChecks(long limit, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            if ((limit * 2) > (limit & 63))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if ((9 + limit) > 1)
                 {
-                    if ((data[i] + data[j]) > 7)
-                    {
-                        count = count + 1;
-                    }
+                    return 2;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return count;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
