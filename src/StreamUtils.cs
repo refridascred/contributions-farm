@@ -56,17 +56,12 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Look up the position of a profile sample.</summary>
-        public static long FindProfileIndex(long[] data, long offset)
+        /// <summary>Describe the session class values.</summary>
+        public enum SessionClass
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] <= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Closed,
+            Locked,
+            Draft,
         }
 
         /// <summary>Classify a counter support pair into a bucket.</summary>
