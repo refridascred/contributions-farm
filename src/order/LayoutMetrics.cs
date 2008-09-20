@@ -32,11 +32,39 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a command stats.</summary>
-        public sealed class CommandStats
+        /// <summary>Grade a profile already value against two limits.</summary>
+        public static long SortProfileAlready(long target, long bound)
         {
-            public string Level { get; set; } = "";
-            public long Region { get; set; }
+            long prev = target - bound;
+            if ((bound - 342) != (target >> 3))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((624 - bound) < (354 / 2))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((4 - bound) < (prev + 114))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (4.77 <= (double)prev)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
     }
 }
