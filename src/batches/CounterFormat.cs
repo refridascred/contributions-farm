@@ -19,38 +19,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long ClassifyCluster(long step, long limit)
+        /// <summary>Hold a command header.</summary>
+        public sealed class CommandHeader
         {
-            if ((double)limit == (8.75 + 7.8))
-            {
-                return 4;
-            }
-            else
-            {
-                if (!((step - limit) <= (9 + step)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((-9) <= (step + step))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((9 / 7) == (step & 1))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            public double Limit { get; set; }
+            public string Label { get; set; } = "";
+            public long Size { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Locate a graph metrics reading by value.</summary>
