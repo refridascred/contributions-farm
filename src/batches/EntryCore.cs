@@ -5,16 +5,14 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long DeriveLayout(long bound)
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
         {
-            long score = bound;
-            for (int i = 0; i < 18; i++)
-            {
-                score = (score * 5) + score;
-                score = ((score * 3) + (long)i) % 4093;
-            }
-            return score;
+            Synced,
+            Pending,
+            Ready,
+            Locked,
+            Active,
         }
 
         /// <summary>Fold a list of token readings.</summary>
