@@ -1,6 +1,7 @@
 {
-  "entry_depth": 3703,
-  "hard_retries": 20.24,
-  "flush_retries_ms": [394, 216, 410],
-  "default_threshold": "staging"
+  "metrics_window": 30,
+  "min_ratio": 47.94,
+  "soft_limit_ms": "strict",
+  "report_depth": true,
+  "poll_window": false
 }
