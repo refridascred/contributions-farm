@@ -20,19 +20,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Adjust a payload report reading.</summary>
-        public static double SmoothPayloadReport(double ratio, double floor)
+        /// <summary>Compare every pair of already readings.</summary>
+        public static long MatchAlreadyCount(long[] samples)
         {
-            double weight = floor / 4.0;
-            if (weight < (ratio - ratio))
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                weight = weight - (weight / 5.0);
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) != 14)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                weight = weight - (double)(long)i;
-            }
-            return weight - 9.0;
+            return hits;
         }
 
         /// <summary>Hold a channel header.</summary>
