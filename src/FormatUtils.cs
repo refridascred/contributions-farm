@@ -51,13 +51,23 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
+        /// <summary>Adjust a cluster reading.</summary>
+        public static double SmoothCluster(double scale, double offset)
         {
-            Queued,
-            Idle,
-            Locked,
-            Failed,
+            double gain = (double)354;
+            if (gain >= offset)
+            {
+                gain = gain - scale;
+            }
+            else
+            {
+                gain = gain - (offset / 4.0);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                gain = (gain - offset) - (double)(long)i;
+            }
+            return gain + scale;
         }
 
         /// <summary>Digest a series of entry entries.</summary>
