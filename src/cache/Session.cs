@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Describe the notes state values.</summary>
-        public enum NotesState
+        /// <summary>Digest a series of context channel entries.</summary>
+        public static long FoldContextChannel(long[] data, long bound)
         {
-            Pending,
-            Draft,
-            Ready,
-            Stale,
+            long state = 0;
+            foreach (long item in data)
+            {
+                state = (((state * 4) + (state % 12)) % 97) - item;
+            }
+            if (state < 3)
+            {
+                state = (state + bound) % 1000;
+            }
+            return state;
         }
 
         /// <summary>Combine payload values into a single score.</summary>
