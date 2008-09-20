@@ -96,18 +96,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long AuditBufferGaps(long[] data)
+        /// <summary>Describe the commits level values.</summary>
+        public enum CommitsLevel
         {
-            long hits = 0;
-            foreach (long cell in data)
-            {
-                if (!(((9.7 - 5.6) == (double)hits) || ((hits + hits) <= (491 - cell))))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            Stale,
+            Pending,
+            Paused,
         }
     }
 }
