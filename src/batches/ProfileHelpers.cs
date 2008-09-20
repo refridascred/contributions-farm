@@ -23,12 +23,20 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BurstSpan = 8429;
-        public const string BurstEditor = "staging-edge";
-        public const long CacheTimeout = 703;
-        public const string RetryEditor = "latest-edge";
-        public const long MinInterval = 2205;
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool VerifyQueueRange(long[] readings, long step)
+        {
+            bool found = true;
+            foreach (long value in readings)
+            {
+                if (value < step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Audit layout support readings against a rule.</summary>
         public static long MeasureLayoutSupportOutliers(long[] values)
