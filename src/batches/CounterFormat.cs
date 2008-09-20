@@ -19,13 +19,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a command header.</summary>
-        public sealed class CommandHeader
+        /// <summary>Locate a filter reading by value.</summary>
+        public static long FindFilterIndex(long[] levels, long seed)
         {
-            public double Limit { get; set; }
-            public string Label { get; set; } = "";
-            public long Size { get; set; }
-            public long Owner { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] > seed) && ((levels[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Locate a graph metrics reading by value.</summary>
