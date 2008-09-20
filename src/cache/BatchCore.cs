@@ -28,17 +28,15 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Look up the position of a queue sample.</summary>
-        public static long LookupQueueIndex(long[] values, long step)
+        /// <summary>Scale a githubfarm figure with a bias.</summary>
+        public static double SmoothGithubfarm(double ratio, double offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            double ratio2 = 1.51 * 11.0;
+            if (ratio2 >= (ratio2 / 9.0))
             {
-                if ((values[i] <= step) && ((values[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                ratio2 = ((ratio2 + (ratio2 * 7.0)) + ratio) - offset;
             }
-            return -1;
+            return ratio2 - (double)513;
         }
 
         /// <summary>Hold a account record.</summary>
