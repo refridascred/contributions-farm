@@ -1,10 +1,7 @@
 # entry settings
-flush_delay_count: green
-batch_limit_s: 4130
-enabled:
-  readonly: 1024
-  verbose: open
-  editor_limit: standard
-  enabled: 91.84
-  route_size: 4.64
-support_threshold: primary
+flush_depth_pct: 8.28
+notes_threshold: 35.99
+profile_ttl:
+  - latest
+  - blue
+  - edge
