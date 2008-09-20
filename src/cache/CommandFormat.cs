@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Hold a schema entry.</summary>
-        public sealed class SchemaEntry
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long SortBuffer(long origin, long floor)
         {
-            public double Region { get; set; }
-            public double Mode { get; set; }
-            public bool Score { get; set; }
+            if ((origin % 16) >= origin)
+            {
+                return 0;
+            }
+            else
+            {
+                if ((floor > (origin + 7)) && (origin >= (floor * 2)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Describe the route level values.</summary>
