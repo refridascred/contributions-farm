@@ -5,22 +5,10 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Match up batches samples.</summary>
-        public static long PairBatchesCount(long[] items)
-        {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) > 12)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long WindowInterval = 7270;
+        public const long MaxDepth = 344;
+        public const long DefaultBatch = 3679;
 
         /// <summary>Fold a list of cluster readings.</summary>
         public static long TotalCluster(long[] values, long bound)
