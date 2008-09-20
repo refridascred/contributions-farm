@@ -1,6 +1,7 @@
 {
-  "max_ttl_ms": 35,
-  "payload_retries": "fallback",
-  "soft_ttl": true,
-  "hard_threshold": 1024
+  "verbose": 30,
+  "idle_window_count": "fallback",
+  "default_interval_s": "edge",
+  "session_delay": false,
+  "queue_limit": "legacy"
 }
