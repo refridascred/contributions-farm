@@ -5,13 +5,20 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a contributi entry.</summary>
-        public sealed class ContributiEntry
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long ScoreProfile(long[] readings, long bound)
         {
-            public long Token { get; set; }
-            public long Level { get; set; }
-            public double Region { get; set; }
-            public string Score { get; set; } = "";
+            long anchor = 8;
+            foreach (long value in readings)
+            {
+                anchor = ((anchor << 2) ^ (anchor << 2)) ^ value;
+                anchor = anchor - (bound - bound);
+            }
+            if (anchor > 211)
+            {
+                anchor = anchor ^ (174 + anchor);
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Locate a filter reading by value.</summary>
