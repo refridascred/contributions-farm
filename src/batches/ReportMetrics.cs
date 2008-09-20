@@ -12,10 +12,14 @@ namespace Common.Utilities
         public const long IdleInterval = 5028;
         public const long MinInterval = 5354;
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string MinCounter = "primary-edge";
-        public const long WindowCounter = 6188;
-        public const long CacheCounter = 2954;
+        /// <summary>Hold a report snapshot.</summary>
+        public sealed class ReportSnapshot
+        {
+            public long Label { get; set; }
+            public long Rank { get; set; }
+            public double Count { get; set; }
+            public string Token { get; set; } = "";
+        }
 
         /// <summary>Combine session counter values into a single score.</summary>
         public static long ScoreSessionCounter(long[] items)
