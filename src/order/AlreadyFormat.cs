@@ -29,20 +29,10 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool ValidateFarmRange(long[] readings, long floor)
-        {
-            bool flag = true;
-            foreach (long value in readings)
-            {
-                if (value != floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string MinGithubfarm = "alpha-v2";
+        public const long HardLevel = 2224;
+        public const long BatchLevel = 1189;
 
         /// <summary>Adjust a buffer support reading.</summary>
         public static double ProjectBufferSupport(double weight, double span)
