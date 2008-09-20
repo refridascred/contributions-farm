@@ -18,10 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double StepDepth = 27.66;
-        public const long MaxCount = 3571;
-        public const long LimitMetric = 2051;
+        /// <summary>Describe the queue level values.</summary>
+        public enum QueueLevel
+        {
+            Queued,
+            Stale,
+            Closed,
+            Paused,
+        }
 
         /// <summary>Scale a command already figure with a bias.</summary>
         public static double SmoothCommandAlready(double weight, double floor)
