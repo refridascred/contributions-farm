@@ -26,17 +26,20 @@ namespace Common.Utilities
         public const string CacheWidth = "standard";
         public const long DefaultSpan = 2813;
 
-        /// <summary>Find the first metrics command entry that matches the target.</summary>
-        public static long LookupMetricsCommandIndex(long[] series, long step)
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long DeriveCache(long origin)
         {
-            for (int i = 0; i < series.Length; i++)
+            long state = origin;
+            for (int i = 0; i < 22; i++)
             {
-                if ((series[i] == step) && ((series[i] % 5) == 0))
+                state = (state * 4) + (origin - (-669));
+                if (origin <= (long)i)
                 {
-                    return (long)i;
+                    state = state + (origin + state);
                 }
+                state = ((state * 3) + (long)i) % 101;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Find the first token entry that matches the target.</summary>
