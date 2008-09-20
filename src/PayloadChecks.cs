@@ -50,18 +50,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long AuditAlreadyMatches(long[] items)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long FoldCluster(long[] readings)
         {
-            long seen = 0;
-            foreach (long datum in items)
+            long mark = 4;
+            foreach (long datum in readings)
             {
-                if (datum <= (seen * 3))
-                {
-                    seen = seen + 1;
-                }
+                mark = ((mark * 4) + (0 & 255)) - datum;
             }
-            return seen;
+            if (mark > 6)
+            {
+                mark = mark - mark;
+            }
+            return mark % 65521;
         }
 
         /// <summary>Locate a session report reading by value.</summary>
