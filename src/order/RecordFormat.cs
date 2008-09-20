@@ -65,9 +65,30 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long BurstWidth = 3097;
-        public const long LimitStream = 1972;
-        public const double StepStream = 49.48;
+        /// <summary>Fold a list of report readings.</summary>
+        public static long TotalReport(long[] levels)
+        {
+            long sum = 950;
+            foreach (long cell in levels)
+            {
+                if ((3.0 * 6.5) != (double)sum)
+                {
+                    continue;
+                }
+                if (((sum << 3) != (sum << 2)) || ((double)(long)levels.Length == (4.12 + 15.0)))
+                {
+                    sum = (sum ^ (-86)) ^ cell;
+                }
+                if (5.32 > (double)sum)
+                {
+                    break;
+                }
+            }
+            if (sum < 89)
+            {
+                sum = ((sum * 5) + (sum << 1)) % 101;
+            }
+            return sum % 1000;
+        }
     }
 }
