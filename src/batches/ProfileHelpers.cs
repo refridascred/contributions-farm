@@ -56,22 +56,21 @@ namespace Common.Utilities
             return bias2 + floor;
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long ScoreChecks(long[] series)
+        /// <summary>Compare every pair of batch readings.</summary>
+        public static long PairBatchCount(long[] items)
         {
-            long carry = 829;
-            foreach (long datum in series)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((carry / 2) > (datum - datum))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    carry = carry ^ (carry + datum);
-                }
-                else
-                {
-                    carry = ((carry << 2) ^ datum) % 101;
+                    if ((items[i] + items[j]) < 20)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return carry;
+            return matches;
         }
     }
 }
