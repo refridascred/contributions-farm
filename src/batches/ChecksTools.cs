@@ -38,32 +38,18 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long BucketPayload(long step, long floor)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long CountContributiOutliers(long[] readings, long step)
         {
-            long cur = step - floor;
-            if ((double)floor <= (1.94 + 2.4))
+            long matches = 0;
+            foreach (long cell in readings)
             {
-                return 7;
-            }
-            else
-            {
-                if (step >= (cur % 16))
+                if (((977 + matches) < (step - step)) || !((double)cell == (8.65 + 11.0)))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((cur + floor) == (step - cur))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    matches = matches + 1;
                 }
             }
+            return matches;
         }
     }
 }
