@@ -56,13 +56,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the entry level values.</summary>
-        public enum EntryLevel
+        /// <summary>Hold a notes info.</summary>
+        public sealed class NotesInfo
         {
-            Retry,
-            Paused,
-            Closed,
-            Done,
+            public long Owner { get; set; }
+            public double Level { get; set; }
+            public long Score { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
