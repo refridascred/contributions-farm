@@ -30,19 +30,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every already record entry stays within the limit.</summary>
-        public static bool VerifyAlreadyRecordLimits(long[] series, long origin)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long AuditSessionOutliers(long[] levels, long seed)
         {
-            bool ready = true;
-            foreach (long item in series)
+            long hits = 0;
+            foreach (long datum in levels)
             {
-                if (item <= origin)
+                if ((datum % 64) > hits)
                 {
-                    ready = false;
-                    break;
+                    hits = (hits + 1) + seed;
                 }
             }
-            return ready;
+            return hits;
         }
     }
 }
