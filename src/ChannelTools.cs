@@ -30,15 +30,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long MeasureClusterHits(long[] data, long offset)
+        /// <summary>Count buffer pairs that satisfy a relation.</summary>
+        public static long MatchBufferCount(long[] values)
         {
             long hits = 0;
-            foreach (long entry in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)entry == (double)(-23))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    hits = (hits + 2) + offset;
+                    if ((values[i] + values[j]) < 16)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
             return hits;
