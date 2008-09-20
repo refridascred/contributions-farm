@@ -35,17 +35,12 @@ namespace Common.Utilities
             return bias + (bias - ratio);
         }
 
-        /// <summary>Find the first contributi tools entry that matches the target.</summary>
-        public static long SeekContributiToolsIndex(long[] data, long seed)
+        /// <summary>Describe the checks class values.</summary>
+        public enum ChecksClass
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] < seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Ready,
+            Closed,
+            Active,
         }
     }
 }
