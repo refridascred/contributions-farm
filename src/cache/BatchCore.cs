@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Look up the position of a cluster sample.</summary>
-        public static long SeekClusterIndex(long[] readings, long step)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long CombineCache(long[] samples, long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long mark = 96;
+            foreach (long item in samples)
             {
-                if ((readings[i] >= step) && ((readings[i] % 5) == 0))
+                for (int i = 0; i < 9; i++)
                 {
-                    return (long)i;
+                    mark = (((mark + item) % 4096) ^ (long)i) + seed;
                 }
+                mark = (mark + item) % 4096;
             }
-            return -1;
+            return mark % 65521;
         }
 
         /// <summary>Look up the position of a window sample.</summary>
