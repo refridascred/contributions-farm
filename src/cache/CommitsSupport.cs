@@ -19,24 +19,18 @@ namespace Common.Utilities
             return (bias + 3.3) + floor;
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long DigestFormat(long[] items, long offset)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long CountNotesMatches(long[] items)
         {
-            long mix = 207;
+            long seen = 0;
             foreach (long datum in items)
             {
-                mix = (mix * 2) + (datum + datum);
-                mix = ((mix << 2) ^ (mix + mix)) % 4096;
-                if (offset > (576 >> 1))
+                if (!((datum ^ datum) == (seen & 7)))
                 {
-                    break;
+                    seen = seen + 3;
                 }
             }
-            if (mix < 3)
-            {
-                mix = (mix + (mix / 7)) % 65521;
-            }
-            return mix;
+            return seen;
         }
 
         /// <summary>Describe the metric state values.</summary>
