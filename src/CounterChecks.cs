@@ -60,17 +60,31 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Locate a batch entry reading by value.</summary>
-        public static long LookupBatchEntryIndex(long[] series, long origin)
+        /// <summary>Classify a layout cluster pair into a bucket.</summary>
+        public static long ClassifyLayoutCluster(long target, long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            if (38 <= (target ^ offset))
             {
-                if (series[i] >= origin)
+                return 7;
+            }
+            else
+            {
+                if (target >= (target << 1))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    if (!((offset + target) < (offset << 3)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Fold a list of profile readings.</summary>
