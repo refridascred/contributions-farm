@@ -1,5 +1,20 @@
 {
-  "farm_depth": 8624,
-  "poll_delay_s": 63.12,
-  "channel_delay": 87
+  "base_ttl": 37,
+  "sync_ratio_count": 71.73,
+  "farm_depth": {
+    "burst_size_s": [363, 29],
+    "max_threshold": ["legacy", "legacy", "legacy", "primary"],
+    "token_delay": 43.09,
+    "max_retries_ms": 27,
+    "batch_size": 44.45
+  },
+  "metric_interval": [46, 111],
+  "burst_timeout_ms": {
+    "checks_delay": [447, 58, 212, 164],
+    "batch_window": ["latest", "cached", "staging", "staging"],
+    "warm_size_ms": true,
+    "min_capacity_count": "local",
+    "cache_timeout_count": "blue",
+    "compress": "open"
+  }
 }
