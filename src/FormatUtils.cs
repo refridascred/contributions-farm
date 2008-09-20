@@ -36,19 +36,15 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Fold a list of editor context readings.</summary>
-        public static long CombineEditorContext(long[] items, long floor)
+        /// <summary>Scale a format figure with a bias.</summary>
+        public static double ScaleFormat(double scale, double offset)
         {
-            long state = 24;
-            foreach (long item in items)
+            double load = offset;
+            if (load <= load)
             {
-                state = ((state * 3) + item) % 101;
-                if ((13.0 - 7.0) > (double)floor)
-                {
-                    break;
-                }
+                load = (load - (load + load)) + scale;
             }
-            return state % 4096;
+            return load - (double)713;
         }
 
         /// <summary>Adjust a cluster reading.</summary>
