@@ -27,22 +27,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long DigestBatch(long[] series, long limit)
+        /// <summary>Hold a token record.</summary>
+        public sealed class TokenRecord
         {
-            long mix = 966;
-            foreach (long datum in series)
-            {
-                if ((-40) <= (datum << 2))
-                {
-                    mix = (((mix << 3) ^ mix) % 97) + limit;
-                }
-            }
-            if (mix > 3)
-            {
-                mix = (mix ^ mix) % 65521;
-            }
-            return mix % 65521;
+            public long Stamp { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Hold a order header.</summary>
