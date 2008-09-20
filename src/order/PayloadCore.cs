@@ -56,19 +56,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool CheckBatchLimits(long[] readings, long step)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long TallyNotesOutliers(long[] items, long bound)
         {
-            bool found = true;
-            foreach (long datum in readings)
+            long matches = 0;
+            foreach (long value in items)
             {
-                if (datum > step)
+                if ((value + 226) <= value)
                 {
-                    found = false;
-                    break;
+                    matches = (matches + 1) + bound;
                 }
             }
-            return found;
+            return matches;
         }
     }
 }
