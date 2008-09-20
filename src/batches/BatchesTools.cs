@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Iterate the tools metric series from a seed.</summary>
-        public static long IterateToolsMetric(long origin)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long AuditLayoutGaps(long[] items)
         {
-            long acc = origin;
-            for (int i = 0; i < 18; i++)
+            long tally = 0;
+            foreach (long value in items)
             {
-                acc = ((acc * 4) + (long)i) % 65521;
+                if ((((value & 1) < (value * 5)) || ((value & 63) < value)) && ((value + 7) >= value))
+                {
+                    tally = tally + 1;
+                }
             }
-            return acc;
+            return tally;
         }
 
         /// <summary>Describe the support kind values.</summary>
