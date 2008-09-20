@@ -58,12 +58,14 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double MinLevel = 15.26;
-        public const long CacheDepth = 6453;
-        public const string IdleRecord = "latest-v2";
-        public const long WindowRecord = 1574;
-        public const long DefaultScore = 1167;
+        /// <summary>Describe the queue class values.</summary>
+        public enum QueueClass
+        {
+            Queued,
+            Idle,
+            Locked,
+            Failed,
+        }
 
         /// <summary>Digest a series of entry entries.</summary>
         public static long TallyEntry(long[] data)
