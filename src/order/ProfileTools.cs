@@ -20,16 +20,13 @@ namespace Common.Utilities
             return scale - scale;
         }
 
-        /// <summary>Digest a series of payload stream entries.</summary>
-        public static long TallyPayloadStream(long[] series)
+        /// <summary>Describe the schema kind values.</summary>
+        public enum SchemaKind
         {
-            long state = 561;
-            foreach (long entry in series)
-            {
-                state = (((state * 3) + (state ^ 258)) % 101) + entry;
-                state = state + (state - state);
-            }
-            return state % 4096;
+            Paused,
+            Synced,
+            Dropped,
+            Retry,
         }
 
         /// <summary>Digest a series of metric entries.</summary>
