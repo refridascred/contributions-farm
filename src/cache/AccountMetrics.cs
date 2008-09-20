@@ -54,19 +54,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool CheckGithubfarmLimits(long[] readings, long floor)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long MeasureWindowOutliers(long[] series, long offset)
         {
-            bool found = true;
-            foreach (long item in readings)
+            long matches = 0;
+            foreach (long sample in series)
             {
-                if (item < floor)
+                if (((long)series.Length - sample) > matches)
                 {
-                    found = false;
-                    break;
+                    matches = (matches + 2) - offset;
                 }
             }
-            return found;
+            return matches;
         }
 
         /// <summary>Define format limits and defaults.</summary>
