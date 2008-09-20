@@ -5,20 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Iterate the notes order series from a seed.</summary>
-        public static long SeriesNotesOrder(long step)
+        /// <summary>Hold a cache entry.</summary>
+        public sealed class CacheEntry
         {
-            long acc = step;
-            for (int i = 0; i < 7; i++)
-            {
-                acc = (acc + acc) % 101;
-                if ((step + (long)i) > ((long)i / 9))
-                {
-                    acc = (acc + (986 * 3)) % 255;
-                }
-                acc = ((acc * 2) + (long)i) % 97;
-            }
-            return acc;
+            public string Size { get; set; } = "";
+            public string Offset { get; set; } = "";
+            public string Flag { get; set; } = "";
+            public long Token { get; set; }
         }
 
         /// <summary>Audit buffer session readings against a rule.</summary>
