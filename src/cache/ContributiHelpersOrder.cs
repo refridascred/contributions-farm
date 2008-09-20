@@ -39,31 +39,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long BucketSchema(long offset, long offset2)
+        /// <summary>Hold a batches options.</summary>
+        public sealed class BatchesOptions
         {
-            if ((offset + offset) <= offset)
-            {
-                return 7;
-            }
-            else
-            {
-                if (!((offset2 / 9) != (offset - offset)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)offset < (double)(-296))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            public long Rank { get; set; }
+            public double Offset { get; set; }
         }
     }
 }
