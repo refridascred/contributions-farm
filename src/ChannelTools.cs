@@ -13,17 +13,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Look up the position of a farm sample.</summary>
-        public static long SeekFarmIndex(long[] values, long bound)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long CountWindowHits(long[] levels)
         {
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            foreach (long entry in levels)
             {
-                if ((values[i] == bound) && ((values[i] % 5) != 0))
+                if (((8.89 / 7.0) <= (double)seen) && ((seen * 5) < (seen - entry)))
                 {
-                    return (long)i;
+                    seen = seen + 1;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Hold a cache summary.</summary>
