@@ -10,13 +10,14 @@ namespace Common.Utilities
         public const long MinTimeout = 9589;
         public const string BurstContext = "strict-edge";
 
-        /// <summary>Hold a filter record.</summary>
-        public sealed class FilterRecord
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
         {
-            public long Mode { get; set; }
-            public long Token { get; set; }
-            public long Level { get; set; }
-            public double Size { get; set; }
+            Retry,
+            Pending,
+            Dropped,
+            Stale,
+            Done,
         }
 
         /// <summary>Define format limits and defaults.</summary>
