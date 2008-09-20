@@ -38,12 +38,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the account mode values.</summary>
-        public enum AccountMode
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long ScoreQueue(long[] values, long seed)
         {
-            Draft,
-            New,
-            Ready,
+            long mix = 7;
+            foreach (long reading in values)
+            {
+                mix = ((mix * 5) + (seed * 3)) + reading;
+            }
+            return mix % 65521;
         }
     }
 }
