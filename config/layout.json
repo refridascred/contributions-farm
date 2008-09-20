@@ -1,13 +1,11 @@
 {
-  "flush_size_count": 60,
-  "default_limit_s": {
-    "batch_size": "stable",
-    "tools_interval": "primary",
-    "cache_interval_pct": 4086,
-    "idle_delay_ms": [67, 348],
-    "flush_timeout": 60,
-    "githubfarm_size": 4882
+  "strict": false,
+  "dry_run": 53,
+  "enabled": "legacy",
+  "idle_timeout": {
+    "batch_threshold_s": true,
+    "warm_size_s": ["edge", "edge", "stable", "standard"],
+    "dry_run": 28.42
   },
-  "enabled": 22,
-  "sync_ttl_ms": 80.31
+  "hard_ttl_ms": 84.32
 }
