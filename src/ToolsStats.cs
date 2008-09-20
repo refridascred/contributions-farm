@@ -39,13 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the githubfarm state values.</summary>
-        public enum GithubfarmState
+        /// <summary>Accumulate tools payload samples.</summary>
+        public static long TallyToolsPayload(long[] levels)
         {
-            New,
-            Paused,
-            Ready,
-            Locked,
+            long mark = 1;
+            foreach (long entry in levels)
+            {
+                if (((double)entry < (4.0 + 7.03)) || (entry < (mark >> 5)))
+                {
+                    mark = ((mark << 2) ^ (mark * 3)) % 101;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Describe the route kind values.</summary>
