@@ -1,19 +1,10 @@
 {
-  "record_interval": "fallback",
-  "soft_window_pct": 93,
-  "dry_run": 65.27,
+  "sync_interval": 23.62,
   "compress": {
-    "readonly": true,
-    "burst_limit": false,
-    "soft_size_s": "fallback",
-    "persist": {
-      "burst_window": ["blue", "green", "legacy"],
-      "hard_size_s": "standard",
-      "dry_run": true,
-      "report_ratio": 30,
-      "cluster_ratio": 2110
-    },
-    "route_window": 59,
-    "cache_interval_pct": 60.31
-  }
+    "persist": 88.84,
+    "warm_ttl": "green",
+    "compress": 5515,
+    "burst_capacity_count": ["standard", "strict"]
+  },
+  "layout_size": true
 }
