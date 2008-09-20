@@ -24,22 +24,17 @@ namespace Common.Utilities
         public const long BatchSpan = 910;
         public const long HardLevel = 4370;
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long TallyCounterOutliers(long[] levels, long seed)
+        /// <summary>Locate a githubfarm format reading by value.</summary>
+        public static long FindGithubfarmFormatIndex(long[] values, long offset)
         {
-            long count = 0;
-            foreach (long value in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((seed + seed) < value)
+                if (values[i] <= offset)
                 {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Validate commits readings against a bound.</summary>
