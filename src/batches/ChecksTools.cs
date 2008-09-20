@@ -13,18 +13,17 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long MeasureWindowMatches(long[] series)
+        /// <summary>Look up the position of a batches sample.</summary>
+        public static long LocateBatchesIndex(long[] values, long floor)
         {
-            long hits = 0;
-            foreach (long reading in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((reading > (-3)) && (hits <= (hits + hits)))
+                if ((values[i] == floor) && ((values[i] % 5) != 0))
                 {
-                    hits = hits + 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Hold a command header.</summary>
