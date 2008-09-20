@@ -28,38 +28,13 @@ namespace Common.Utilities
         public const long StepSchema = 7740;
         public const long BurstSchema = 4917;
 
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long BucketNotes(long limit, long limit2)
+        /// <summary>Hold a queue snapshot.</summary>
+        public sealed class QueueSnapshot
         {
-            if ((3.61 * 2.9) == (double)limit)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((6.15 - 7.0) > (double)limit2)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((limit2 & 3) > (limit << 3))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((0 + 180) < (limit / 4)) && ((limit2 + 1) <= (limit2 + limit)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            public long Weight { get; set; }
+            public bool Count { get; set; }
+            public long Offset { get; set; }
+            public bool Ratio { get; set; }
         }
     }
 }
