@@ -12,18 +12,10 @@ namespace Common.Utilities
         public const double BaseAlready = 24.72;
         public const string MaxAlready = "strict";
 
-        /// <summary>Locate a token reading by value.</summary>
-        public static long LookupTokenIndex(long[] values, long offset)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] >= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string SoftBuffer = "strict";
+        public const long LimitBuffer = 2922;
+        public const long WindowBuffer = 653;
 
         /// <summary>Describe the support status values.</summary>
         public enum SupportStatus
