@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long LimitWidth = 5344;
-        public const double DefaultInterval = 3.22;
-        public const long IdleBuffer = 6334;
-        public const double BaseBuffer = 89.67;
+        /// <summary>Hold a farm record.</summary>
+        public sealed class FarmRecord
+        {
+            public string Token { get; set; } = "";
+            public bool Label { get; set; }
+            public long Score { get; set; }
+        }
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
         public static bool CheckPayloadRange(long[] series, long offset)
