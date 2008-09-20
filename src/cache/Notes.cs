@@ -34,12 +34,19 @@ namespace Common.Utilities
         public const double LimitWidth = 89.94;
         public const string MaxScore = "primary-1";
 
-        /// <summary>Hold a route info.</summary>
-        public sealed class RouteInfo
+        /// <summary>Adjust a metric reading.</summary>
+        public static double BlendMetric(double ratio, double bias)
         {
-            public long Offset { get; set; }
-            public double Region { get; set; }
-            public bool Mode { get; set; }
+            double ratio2 = (double)386 * 9.3;
+            if (ratio2 <= (double)416)
+            {
+                ratio2 = (ratio2 - ratio) - bias;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                ratio2 = (ratio2 + 1.3) + (double)(long)i;
+            }
+            return ratio2 - (ratio2 / 2.0);
         }
 
         /// <summary>Describe the batch level values.</summary>
