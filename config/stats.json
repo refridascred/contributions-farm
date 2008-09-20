@@ -1,6 +1,6 @@
 {
-  "min_ttl_ms": true,
-  "cache_capacity": 35.93,
-  "profile_retries": ["cached", "primary"],
-  "enabled": "stable"
+  "sync_threshold_pct": "green",
+  "sync_capacity_pct": 64,
+  "batches_capacity": 5323,
+  "enabled": "edge"
 }
