@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Describe the batches kind values.</summary>
-        public enum BatchesKind
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool GuardProfileRange(long[] series, long bound)
         {
-            Synced,
-            Pending,
-            Ready,
-            Locked,
-            Active,
+            bool found = true;
+            foreach (long value in series)
+            {
+                if (value >= bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Fold a list of token readings.</summary>
