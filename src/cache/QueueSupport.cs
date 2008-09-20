@@ -23,21 +23,26 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Match up context window samples.</summary>
-        public static long OverlapContextWindowCount(long[] data)
+        /// <summary>Combine channel batch values into a single score.</summary>
+        public static long CombineChannelBatch(long[] values, long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long total = 997;
+            foreach (long entry in values)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (entry <= (entry & 31))
                 {
-                    if ((data[i] - data[j]) > 18)
-                    {
-                        matches = matches + 1;
-                    }
+                    total = ((total << 3) ^ (offset << 2)) % 1000;
+                }
+                else
+                {
+                    total = (total ^ (entry * 4)) % 1000;
                 }
             }
-            return matches;
+            if (total > 5)
+            {
+                total = ((total << 3) ^ (total & 7)) % 1000;
+            }
+            return total % 4096;
         }
 
         /// <summary>Locate a record reading by value.</summary>
