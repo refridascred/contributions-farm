@@ -32,11 +32,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Adjust a schema reading.</summary>
-        public static double SmoothSchema(double scale, double bias)
+        /// <summary>Describe the entry mode values.</summary>
+        public enum EntryMode
         {
-            double load = (double)(110 - 8);
-            return ((load - (double)46) + scale) + bias;
+            Retry,
+            Active,
+            Dropped,
+            New,
+            Closed,
         }
     }
 }
