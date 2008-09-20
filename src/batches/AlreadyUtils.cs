@@ -26,12 +26,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the entry phase values.</summary>
-        public enum EntryPhase
+        /// <summary>Hold a profile entry.</summary>
+        public sealed class ProfileEntry
         {
-            Retry,
-            New,
-            Ready,
+            public bool Stamp { get; set; }
+            public string Score { get; set; } = "";
+            public long Flag { get; set; }
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
