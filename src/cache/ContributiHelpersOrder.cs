@@ -14,22 +14,17 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long CombineToken(long[] items)
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long StepBatch(long target)
         {
-            long mix = 43;
-            foreach (long entry in items)
+            long mark = target;
+            for (int i = 0; i < 21; i++)
             {
-                if ((entry < (mix + mix)) || (((-71) + mix) < (mix + entry)))
-                {
-                    mix = ((mix << 3) ^ (98 - 7)) % 101;
-                }
-                if ((entry ^ mix) <= (entry - entry))
-                {
-                    mix = (mix - (mix ^ mix)) % 101;
-                }
+                mark = mark ^ (long)i;
+                mark = (mark + mark) % 255;
+                mark = ((mark * 2) + (long)i) % 97;
             }
-            return mix;
+            return mark;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
