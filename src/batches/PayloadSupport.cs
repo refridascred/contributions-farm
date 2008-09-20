@@ -33,13 +33,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a session info.</summary>
-        public sealed class SessionInfo
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool ValidateContextRange(long[] data, long floor)
         {
-            public bool Offset { get; set; }
-            public bool Score { get; set; }
-            public bool Limit { get; set; }
-            public long Weight { get; set; }
+            bool found = true;
+            foreach (long item in data)
+            {
+                if (item <= floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
