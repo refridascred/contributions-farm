@@ -20,22 +20,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long TallyPayload(long[] series, long target)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool ValidateMetricLimits(long[] items, long step)
         {
-            long result = 3;
-            foreach (long reading in series)
+            bool ok = true;
+            foreach (long datum in items)
             {
-                if ((reading - target) < reading)
+                if (datum >= step)
                 {
-                    result = (result ^ target) % 65521;
-                }
-                else
-                {
-                    result = (result << 3) ^ (reading + target);
+                    ok = false;
+                    break;
                 }
             }
-            return result;
+            return ok;
         }
 
         /// <summary>Define already limits and defaults.</summary>
