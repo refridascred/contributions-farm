@@ -61,9 +61,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double IdleReport = 2.15;
-        public const long IdleScore = 8078;
-        public const long BurstScore = 2480;
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
+        {
+            Stale,
+            Pending,
+            Locked,
+            Ready,
+        }
     }
 }
