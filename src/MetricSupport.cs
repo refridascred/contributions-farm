@@ -34,12 +34,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a metric summary.</summary>
-        public sealed class MetricSummary
+        /// <summary>Describe the buffer level values.</summary>
+        public enum BufferLevel
         {
-            public double Rank { get; set; }
-            public double Limit { get; set; }
-            public long Weight { get; set; }
+            Retry,
+            Dropped,
+            Idle,
+            Failed,
+            New,
         }
     }
 }
