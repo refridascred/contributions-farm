@@ -1,6 +1,4 @@
 # entry settings
-soft_ttl_ms: 9437
-batch_ttl: 1098
-enabled: staging
-commits_depth: 91.76
-hard_retries_s: stable
+readonly: green
+warm_depth_ms: 6548
+poll_ttl_s: 30
