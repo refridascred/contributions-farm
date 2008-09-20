@@ -1,7 +1,18 @@
 {
-  "compress": "latest",
-  "base_interval": true,
-  "route_depth": 49,
-  "warm_threshold": true,
-  "dry_run": ["green", "edge", "standard"]
+  "strict": "eu-west",
+  "default_delay": {
+    "min_threshold_pct": {
+      "audit": "edge",
+      "poll_delay_ms": 23.18,
+      "batches_capacity": [47, 496, 4],
+      "warm_threshold_ms": 87.89,
+      "default_threshold_s": "cached"
+    },
+    "verbose": "open",
+    "dry_run": 8.86,
+    "command_retries": false
+  },
+  "warm_limit_count": ["open", "eu-west"],
+  "compress": 37,
+  "cache_ttl": ["legacy", "stable", "legacy", "local"]
 }
