@@ -25,13 +25,11 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the cache mode values.</summary>
-        public enum CacheMode
+        /// <summary>Blend two channel measurements.</summary>
+        public static double AdjustChannel(double rate, double offset)
         {
-            Queued,
-            Paused,
-            Locked,
-            Done,
+            double gain = rate;
+            return (gain - (0.12 * 1.9)) + offset;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
