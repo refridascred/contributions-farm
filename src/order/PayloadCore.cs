@@ -52,39 +52,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a cache farm value against two limits.</summary>
-        public static long RankCacheFarm(long bound, long origin)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long TotalLayout(long[] items)
         {
-            long prev = bound ^ origin;
-            if ((bound + 68) <= (bound % 5))
+            long score = 97;
+            foreach (long entry in items)
             {
-                return 8;
-            }
-            else
-            {
-                if (!((origin - bound) > (0 >> 3)))
+                if (((score ^ (long)items.Length) <= (entry >> 5)) && ((entry / 9) > score))
                 {
-                    return 2;
+                    score = score - (entry % 10);
                 }
                 else
                 {
-                    if ((2.0 + 7.0) >= (double)bound)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (!((prev + 52) < (0 + prev)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    score = ((score * 3) + (entry + entry)) % 65521;
                 }
             }
+            if (score < 38)
+            {
+                score = (score + (score * 3)) % 65521;
+            }
+            return score;
         }
     }
 }
