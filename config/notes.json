@@ -1,22 +1,7 @@
 {
-  "strict": "open",
-  "persist": {
-    "compress": {
-      "default_capacity_ms": 70.23,
-      "warm_ttl": "eu-west",
-      "cache_limit": 93,
-      "soft_size": 47,
-      "session_retries": "open",
-      "burst_threshold_count": false
-    },
-    "min_capacity_pct": {
-      "hard_window": 61.13,
-      "strict": 62.34,
-      "githubfarm_retries": "stable",
-      "flush_delay_s": ["legacy", "staging", "stable", "staging"]
-    },
-    "metric_delay": 32,
-    "audit": 2762
-  },
-  "hard_interval_ms": 16.92
+  "compress": 1024,
+  "base_interval_ms": "cached",
+  "sync_ttl": "blue",
+  "batch_ratio_s": 82.27,
+  "burst_size_ms": 39.29
 }
