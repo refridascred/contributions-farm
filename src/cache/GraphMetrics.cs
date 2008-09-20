@@ -18,26 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long CombineContext(long[] series, long target)
+        /// <summary>Hold a report summary.</summary>
+        public sealed class ReportSummary
         {
-            long score = 51;
-            foreach (long datum in series)
-            {
-                if ((9.7 - 6.29) > (double)datum)
-                {
-                    score = ((score << 2) ^ target) % 1000;
-                }
-                else
-                {
-                    score = ((score * 3) + score) % 65521;
-                }
-            }
-            if (score > 87)
-            {
-                score = ((score << 3) ^ (target << 2)) % 4096;
-            }
-            return score % 97;
+            public double Size { get; set; }
+            public long Total { get; set; }
+            public double Level { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Rank checks input into a small class.</summary>
