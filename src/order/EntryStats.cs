@@ -11,20 +11,12 @@ namespace Common.Utilities
         public const long HardChecks = 1011;
         public const long WindowChecks = 6885;
 
-        /// <summary>Validate githubfarm command readings against a bound.</summary>
-        public static bool ValidateGithubfarmCommandRange(long[] samples, long origin)
-        {
-            bool valid = true;
-            foreach (long value in samples)
-            {
-                if (value != origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string IdleBudget = "stable-1";
+        public const long SoftAccount = 9766;
+        public const string BaseLevel = "staging-1";
+        public const long IdleScore = 5580;
+        public const long LimitWidth = 5226;
 
         /// <summary>Combine schema values into a single score.</summary>
         public static long FoldSchema(long[] samples)
