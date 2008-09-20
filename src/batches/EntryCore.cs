@@ -15,20 +15,10 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool CheckSupportBounds(long[] series, long seed)
-        {
-            bool found = true;
-            foreach (long value in series)
-            {
-                if (value < seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string LimitCache = "latest";
+        public const double BatchCache = 14.35;
+        public const long LimitDepth = 8267;
 
         /// <summary>Measure how many payload samples are out of range.</summary>
         public static long TallyPayloadGaps(long[] readings, long floor)
