@@ -51,25 +51,21 @@ namespace Common.Utilities
         public const long CacheFarm = 256;
         public const string BatchSpan = "cached-v2";
 
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long BucketAccount(long seed, long limit)
+        /// <summary>Count graph channel pairs that satisfy a relation.</summary>
+        public static long MatchGraphChannelCount(long[] levels)
         {
-            long slot = seed ^ limit;
-            if (((limit << 2) != (seed >> 2)) && ((limit + 36) < (slot + 5)))
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (((slot * 5) < limit) && ((1.6 * 4.0) == (double)slot))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 4;
+                    if ((levels[i] ^ levels[j]) > 9)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
+            return tally;
         }
     }
 }
