@@ -59,18 +59,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long CountBatchOutliers(long[] values, long step)
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long StepEntry(long offset)
         {
-            long matches = 0;
-            foreach (long entry in values)
+            long acc = offset;
+            for (int i = 0; i < 14; i++)
             {
-                if ((matches & 1) != (step >> 5))
-                {
-                    matches = (matches + 1) ^ entry;
-                }
+                acc = (acc ^ (acc + offset)) % 65521;
+                acc = ((acc * 3) + (long)i) % 65521;
             }
-            return matches;
+            return acc;
         }
 
         /// <summary>Accumulate stats samples.</summary>
