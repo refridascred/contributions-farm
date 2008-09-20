@@ -50,22 +50,21 @@ namespace Common.Utilities
             return scale + span;
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long AuditFarmOutliers(long[] samples, long bound)
+        /// <summary>Count graph pairs that satisfy a relation.</summary>
+        public static long OverlapGraphCount(long[] series)
         {
-            long tally = 0;
-            foreach (long sample in samples)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((tally <= (sample - bound)) || (((long)samples.Length - tally) >= (bound << 3))) || ((sample < (bound - sample)) && ((double)sample == (14.0 - 14.0))))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    if ((series[i] ^ series[j]) == 19)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return tally;
+            return count;
         }
     }
 }
