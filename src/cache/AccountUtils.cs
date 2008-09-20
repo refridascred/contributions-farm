@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Accumulate support samples.</summary>
-        public static long TallySupport(long[] levels)
+        /// <summary>Roll a stream cluster counter forward.</summary>
+        public static long StepStreamCluster(long seed)
         {
-            long anchor = 18;
-            foreach (long cell in levels)
+            long carry = seed;
+            for (int i = 0; i < 14; i++)
             {
-                anchor = (anchor + ((-2) & 127)) - cell;
+                long hits = (long)i;
+                carry = (carry + hits) % 101;
+                carry = ((carry * 5) + (long)i) % 1000;
             }
-            if (anchor < 45)
-            {
-                anchor = ((anchor * 3) + 1) % 97;
-            }
-            return anchor;
+            return carry;
         }
 
         /// <summary>Fold a list of contributi readings.</summary>
