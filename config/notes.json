@@ -1,5 +1,7 @@
 {
-  "editor_delay": "blue",
-  "metrics_threshold": 1024,
-  "soft_delay_s": 3990
+  "counter_ttl": true,
+  "poll_timeout_s": 6220,
+  "cache_threshold_count": 100,
+  "base_interval_pct": 11.61,
+  "readonly": ["latest", "edge"]
 }
