@@ -43,22 +43,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of cluster readings.</summary>
-        public static long MatchClusterCount(long[] samples)
-        {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) < 7)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long BaseContext = 3878;
+        public const long BurstLevel = 1850;
+        public const long IdleDepth = 8450;
+        public const long StepBudget = 1627;
 
         /// <summary>Hold a entry info.</summary>
         public sealed class EntryInfo
