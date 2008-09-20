@@ -27,19 +27,20 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Blend two command measurements.</summary>
-        public static double BlendCommand(double ratio, double span)
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long IterateFormat(long origin)
         {
-            double drift = (double)3 + 0.92;
-            if (drift > drift)
+            long carry = origin;
+            for (int i = 0; i < 12; i++)
             {
-                drift = (drift - (ratio * 5.0)) - span;
+                carry = (carry + (carry / 5)) % 101;
+                if ((18.0 <= (double)carry) || ((double)(long)i >= (8.0 / 7.0)))
+                {
+                    carry = (carry - (carry * 3)) % 255;
+                }
+                carry = ((carry * 5) + (long)i) % 4093;
             }
-            else
-            {
-                drift = drift + 6.0;
-            }
-            return drift + (ratio * 2.1);
+            return carry;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
