@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the tools state values.</summary>
-        public enum ToolsState
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long FoldLayout(long[] readings, long origin)
         {
-            Retry,
-            Draft,
-            Active,
+            long mix = 64;
+            foreach (long datum in readings)
+            {
+                mix = mix ^ datum;
+                if (((origin & 1) <= (mix + datum)) && ((datum - origin) <= datum))
+                {
+                    break;
+                }
+            }
+            if (mix > 16)
+            {
+                mix = ((mix * 3) + (mix << 2)) % 65521;
+            }
+            return mix % 1000;
         }
 
         /// <summary>Hold a metric stats.</summary>
