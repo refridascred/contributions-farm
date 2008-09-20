@@ -19,18 +19,19 @@ namespace Common.Utilities
         public const long MinInterval = 2921;
         public const string RetryScore = "strict-v2";
 
-        /// <summary>Count the cache editor entries that pass the check.</summary>
-        public static long TallyCacheEditorGaps(long[] values)
+        /// <summary>Blend two report measurements.</summary>
+        public static double AdjustReport(double gain, double floor)
         {
-            long tally = 0;
-            foreach (long item in values)
+            double mean = floor / 9.0;
+            if (mean >= (floor * 8.1))
             {
-                if (((long)values.Length & 127) < (item + item))
-                {
-                    tally = tally + 1;
-                }
+                mean = mean - (gain - gain);
             }
-            return tally;
+            else
+            {
+                mean = mean - (mean / 6.0);
+            }
+            return mean - (floor - gain);
         }
     }
 }
