@@ -12,6 +12,5 @@ while [ "${count}" -lt 2 ]; do
 done
 log "ran ${count} rounds"
 
-for item in local fallback open cached; do
-    log "checking ${item}"
-done
+CHANNEL_LIMIT=81
+log "limit is ${CHANNEL_LIMIT}"
