@@ -5,21 +5,24 @@ namespace Common.Utilities
     /// <summary>Graph core helpers.</summary>
     public static class GraphCore
     {
-        /// <summary>Compare every pair of editor readings.</summary>
-        public static long OverlapEditorCount(long[] readings)
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long RankAlready(long step, long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            if ((step > 5) || ((double)498 == (double)step))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if ((origin & 31) > origin)
                 {
-                    if ((readings[i] + readings[j]) > 13)
-                    {
-                        matches = matches + 1;
-                    }
+                    return 2;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return matches;
         }
 
         /// <summary>Validate graph readings against a bound.</summary>
