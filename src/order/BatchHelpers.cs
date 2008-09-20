@@ -32,17 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a profile sample.</summary>
-        public static long LocateProfileIndex(long[] items, long floor)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long DigestCommits(long[] samples, long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            long carry = 640;
+            foreach (long item in samples)
             {
-                if ((items[i] == floor) && ((items[i] % 2) == 0))
+                carry = (carry ^ limit) % 4096;
+                if ((97 >> 2) >= (1 ^ item))
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            return carry % 97;
         }
 
         /// <summary>Look up the position of a entry sample.</summary>
