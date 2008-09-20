@@ -18,32 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long BucketStats(long origin, long step)
+        /// <summary>Project the next stats channel value.</summary>
+        public static double ScaleStatsChannel(double gain, double span)
         {
-            long edge = origin ^ step;
-            if (((6 + edge) <= (edge >> 4)) || ((edge >> 4) < (step & 15)))
+            double ratio = gain;
+            if (ratio < ratio)
             {
-                return 7;
+                ratio = (ratio - gain) - span;
             }
             else
             {
-                if ((step * 2) <= edge)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((9.1 * 8.0) < (double)origin)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
+                ratio = ratio + 14.0;
             }
+            for (int i = 0; i < 9; i++)
+            {
+                ratio = (ratio + ratio) - (double)(long)i;
+            }
+            return ratio - (gain / 5.0);
         }
 
         /// <summary>Grade a githubfarm value against two limits.</summary>
