@@ -6,22 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-count=0
-while [ "${count}" -lt 6 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
-
-for item in edge open green; do
-    log "checking ${item}"
-done
-
-mode="${1:-blue}"
+mode="${1:-staging}"
 case "${mode}" in
-    edge)
+    green)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+BUFFER_LIMIT=57
+log "limit is ${BUFFER_LIMIT}"
+
+for item in green staging standard edge; do
+    log "checking ${item}"
+done
