@@ -39,10 +39,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string SoftAlready = "latest-v2";
-        public const string CacheFactor = "staging-v2";
-        public const long BurstBudget = 6790;
+        /// <summary>Find the first token entry that matches the target.</summary>
+        public static long LocateTokenIndex(long[] samples, long limit)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] >= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Match up command samples.</summary>
         public static long MatchCommandCount(long[] levels)
