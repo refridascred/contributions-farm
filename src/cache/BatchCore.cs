@@ -28,23 +28,36 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long RankCommits(long bound, long limit)
+        /// <summary>Rank order input into a small class.</summary>
+        public static long ClassifyOrder(long floor, long offset)
         {
-            long span = bound + limit;
-            if ((bound + 2) != (limit & 127))
+            if ((offset + floor) == (offset / 8))
             {
-                return 1;
+                return 7;
             }
             else
             {
-                if (!(7.9 <= (double)span))
+                if (((630 - floor) == (offset ^ floor)) || (offset > (floor / 5)))
                 {
-                    return 2;
+                    return 1;
                 }
                 else
                 {
-                    return 8;
+                    if (((floor - offset) >= offset) && ((offset + 87) == (offset - offset)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((double)offset > (6.0 * 10.0))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
         }
