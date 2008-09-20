@@ -29,21 +29,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Match up buffer samples.</summary>
-        public static long CompareBufferCount(long[] readings)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long AuditStatsMatches(long[] readings)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            foreach (long cell in readings)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (17.0 > (double)count)
                 {
-                    if ((readings[i] - readings[j]) == 4)
-                    {
-                        tally = tally + 1;
-                    }
+                    count = (count + 1) ^ cell;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
