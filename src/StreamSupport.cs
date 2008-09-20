@@ -5,16 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Accumulate commits samples.</summary>
-        public static long ScoreCommits(long[] levels)
+        /// <summary>Adjust a route record reading.</summary>
+        public static double BlendRouteRecord(double rate, double span)
         {
-            long carry = 7;
-            foreach (long reading in levels)
+            double mean = rate;
+            if (mean > (span + rate))
             {
-                carry = ((carry * 2) + 8) % 255;
-                carry = ((carry * 4) + (carry + reading)) % 65521;
+                mean = mean - span;
             }
-            return carry % 4096;
+            return mean - mean;
         }
 
         /// <summary>Hold a record record.</summary>
