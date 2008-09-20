@@ -5,21 +5,16 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Compare every pair of command readings.</summary>
-        public static long PairCommandCount(long[] levels)
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long RollBatch(long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long sum = limit;
+            for (int i = 0; i < 21; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) > 5)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                sum = ((sum << 2) ^ (sum & 63)) % 1000;
+                sum = ((sum * 4) + (long)i) % 65521;
             }
-            return seen;
+            return sum;
         }
 
         /// <summary>Hold a already entry.</summary>
