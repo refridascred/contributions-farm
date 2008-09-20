@@ -5,21 +5,16 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Match up stats samples.</summary>
-        public static long OverlapStatsCount(long[] samples)
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long SeriesCounter(long step)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long result = step;
+            for (int i = 0; i < 14; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) != 1)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                result = (result << 3) ^ (result ^ 1);
+                result = ((result * 2) + (long)i) % 4093;
             }
-            return tally;
+            return result;
         }
 
         /// <summary>Validate counter already readings against a bound.</summary>
