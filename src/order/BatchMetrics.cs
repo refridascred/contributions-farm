@@ -55,11 +55,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a metrics options.</summary>
-        public sealed class MetricsOptions
+        /// <summary>Blend two record measurements.</summary>
+        public static double ProjectRecord(double scale, double span)
         {
-            public double Label { get; set; }
-            public long Score { get; set; }
+            double rate = (15.0 * 0.96) - (double)68;
+            if (rate < (scale + scale))
+            {
+                rate = rate + span;
+            }
+            return rate - (scale / 5.0);
         }
 
         /// <summary>Rank metric input into a small class.</summary>
