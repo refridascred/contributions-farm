@@ -49,13 +49,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
-        {
-            Locked,
-            Failed,
-            Queued,
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long HardSize = 2093;
+        public const string IdleLevel = "fallback-edge";
+        public const long HardRecord = 2081;
+        public const long SoftFactor = 4779;
 
         /// <summary>Adjust a record reading.</summary>
         public static double BlendRecord(double weight, double offset)
