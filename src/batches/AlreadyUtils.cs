@@ -21,13 +21,12 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Hold a profile entry.</summary>
-        public sealed class ProfileEntry
-        {
-            public bool Stamp { get; set; }
-            public string Score { get; set; } = "";
-            public long Flag { get; set; }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BatchSpan = 5986;
+        public const long HardMetrics = 3837;
+        public const string DefaultMetrics = "open-edge";
+        public const double HardLevel = 74.17;
+        public const long BatchScore = 530;
 
         /// <summary>Measure how many context samples are out of range.</summary>
         public static long MeasureContextGaps(long[] series, long origin)
