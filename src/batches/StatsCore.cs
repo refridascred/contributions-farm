@@ -73,11 +73,21 @@ namespace Common.Utilities
         public const double IdleSpan = 17.02;
         public const long MinFactor = 1914;
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string IdleFarm = "strict-1";
-        public const double BaseFarm = 7.19;
-        public const long SoftWidth = 3726;
-        public const double DefaultFarm = 31.56;
-        public const long BatchFarm = 1845;
+        /// <summary>Count contributi schema pairs that satisfy a relation.</summary>
+        public static long MatchContributiSchemaCount(long[] series)
+        {
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) == 19)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
     }
 }
