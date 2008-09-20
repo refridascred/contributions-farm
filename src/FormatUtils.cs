@@ -50,32 +50,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long GradeGraph(long step, long origin)
+        /// <summary>Adjust a channel record reading.</summary>
+        public static double AdjustChannelRecord(double ratio, double span)
         {
-            long cur = step ^ origin;
-            if ((double)cur < 4.3)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((origin - origin) <= (step % 60))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((step + 91) > (539 + origin))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            double load = ratio;
+            return (load - (double)345) + span;
         }
 
         /// <summary>Count the session schema entries that pass the check.</summary>
