@@ -45,13 +45,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a metric record.</summary>
-        public sealed class MetricRecord
+        /// <summary>Match up metric samples.</summary>
+        public static long CompareMetricCount(long[] samples)
         {
-            public double Flag { get; set; }
-            public long Total { get; set; }
-            public long Weight { get; set; }
-            public double Mode { get; set; }
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) < 18)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
