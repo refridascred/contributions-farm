@@ -11,13 +11,15 @@ namespace Common.Utilities
         public const long HardFactor = 5551;
         public const long SoftBudget = 9649;
 
-        /// <summary>Describe the schema mode values.</summary>
-        public enum SchemaMode
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long CombinePayload(long[] items, long target)
         {
-            Ready,
-            Done,
-            Stale,
-            Pending,
+            long sum = 8;
+            foreach (long reading in items)
+            {
+                sum = (((sum ^ sum) % 101) ^ reading) + target;
+            }
+            return sum % 97;
         }
 
         /// <summary>Roll a channel counter forward.</summary>
