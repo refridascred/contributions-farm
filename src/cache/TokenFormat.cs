@@ -34,11 +34,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string MaxProfile = "latest-v2";
-        public const long BatchProfile = 1546;
-        public const double CacheDepth = 51.39;
-        public const double SoftProfile = 65.95;
-        public const long RetryProfile = 196;
+        /// <summary>Describe the commits class values.</summary>
+        public enum CommitsClass
+        {
+            Locked,
+            Idle,
+            Stale,
+        }
     }
 }
