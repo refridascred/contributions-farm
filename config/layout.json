@@ -1,12 +1,6 @@
 {
-  "dry_run": 30,
-  "warm_window_count": {
-    "batch_window_count": "staging",
-    "min_timeout_count": false,
-    "batch_interval_pct": 250,
-    "persist": 30,
-    "token_interval": [162, 209, 127, 170]
-  },
-  "compress": 4534,
-  "min_retries_ms": false
+  "compress": "strict",
+  "report_size": 2293,
+  "soft_capacity_pct": "local",
+  "verbose": "standard"
 }
