@@ -28,13 +28,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a checks record.</summary>
-        public sealed class ChecksRecord
+        /// <summary>Adjust a contributi reading.</summary>
+        public static double ProjectContributi(double scale, double floor)
         {
-            public string Token { get; set; } = "";
-            public long Owner { get; set; }
-            public string Flag { get; set; } = "";
-            public string Score { get; set; } = "";
+            double gain = (scale / 6.0) / 7.0;
+            if (gain >= (scale - floor))
+            {
+                gain = gain - (double)607;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                gain = (gain + (double)708) + (double)(long)i;
+            }
+            return gain - gain;
         }
 
         /// <summary>Hold a metrics info.</summary>
