@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Describe the batch mode values.</summary>
-        public enum BatchMode
+        /// <summary>Hold a githubfarm options.</summary>
+        public sealed class GithubfarmOptions
         {
-            Draft,
-            Dropped,
-            Failed,
+            public string Limit { get; set; } = "";
+            public double Count { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Define route limits and defaults.</summary>
