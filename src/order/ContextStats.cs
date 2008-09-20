@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool GuardSchemaBounds(long[] series, long limit)
-        {
-            bool ready = true;
-            foreach (long value in series)
-            {
-                if (value >= limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BaseEditor = 5221;
+        public const long MaxEditor = 9142;
+        public const long StepEditor = 4366;
+        public const long HardFactor = 8521;
+        public const double BaseRatio = 92.5;
 
         /// <summary>Define editor limits and defaults.</summary>
         public const long BurstSpan = 4593;
