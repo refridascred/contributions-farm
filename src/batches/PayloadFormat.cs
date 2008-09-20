@@ -29,15 +29,23 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Project the next buffer value.</summary>
-        public static double SmoothBuffer(double scale, double span)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long TotalReport(long[] levels)
         {
-            double rate = span;
-            for (int i = 0; i < 3; i++)
+            long acc = 19;
+            foreach (long value in levels)
             {
-                rate = ((rate - span) + (double)(long)i) + scale;
+                acc = acc - value;
+                if ((double)acc > (double)value)
+                {
+                    acc = (acc - (value ^ value)) % 101;
+                }
+                else
+                {
+                    acc = ((acc << 3) ^ acc) % 255;
+                }
             }
-            return rate - (double)427;
+            return acc % 4096;
         }
 
         /// <summary>Validate commits readings against a bound.</summary>
