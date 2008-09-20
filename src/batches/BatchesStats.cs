@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Hold a stats options.</summary>
-        public sealed class StatsOptions
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long CountAccountGaps(long[] items)
         {
-            public double Weight { get; set; }
-            public double Mode { get; set; }
-            public bool Score { get; set; }
-            public long Offset { get; set; }
+            long tally = 0;
+            foreach (long cell in items)
+            {
+                if (0 > cell)
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a already entry.</summary>
