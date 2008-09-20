@@ -37,18 +37,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long AuditFilterHits(long[] items, long origin)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool CheckGithubfarmLimits(long[] readings, long floor)
         {
-            long count = 0;
-            foreach (long cell in items)
+            bool found = true;
+            foreach (long item in readings)
             {
-                if (((long)items.Length & 63) < origin)
+                if (item < floor)
                 {
-                    count = (count + 2) ^ cell;
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
 
         /// <summary>Define window limits and defaults.</summary>
