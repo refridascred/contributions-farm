@@ -1,33 +1,23 @@
 # githubfarm settings
-max_delay_s:
-  sync_size_ms: 36.97
-  sync_delay_pct:
-    - standard
-    - eu-west
-    - staging
+base_timeout:
+  commits_delay: eu-west
+  base_depth_ms:
     - legacy
-  flush_delay_ms:
-    - 453
-    - 86
-    - 34
-    - 164
-  default_ttl_s: 30
-filter_delay: strict
-base_threshold_pct: 30
-persist:
-  flush_retries_count: strict
-  soft_timeout: 6483
-  default_window: 1024
-  poll_limit_pct: fallback
-  readonly: 42
-  hard_size:
-    - open
-    - staging
-    - edge
+    - primary
     - fallback
-retry_capacity:
-  - edge
-  - blue
-  - latest
-  - edge
-already_ttl: false
+  compress: 8786
+  metrics_retries: 35
+  persist: 98
+  strict: local
+batch_ttl: open
+min_delay_pct:
+  token_delay:
+    - 388
+    - 14
+    - 24
+    - 437
+  readonly: false
+  poll_interval_ms:
+    soft_ratio_ms: 100
+    route_delay: 1147
+    command_capacity: 87
