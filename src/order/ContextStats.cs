@@ -32,19 +32,14 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool ValidateStatsRange(long[] samples, long target)
+        /// <summary>Describe the filter status values.</summary>
+        public enum FilterStatus
         {
-            bool ok = true;
-            foreach (long entry in samples)
-            {
-                if (entry <= target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Done,
+            Queued,
+            Ready,
+            Synced,
+            Dropped,
         }
     }
 }
