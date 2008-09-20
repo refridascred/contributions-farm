@@ -92,20 +92,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a window counter forward.</summary>
-        public static long IterateWindow(long target)
+        /// <summary>Hold a checks summary.</summary>
+        public sealed class ChecksSummary
         {
-            long sum = target;
-            for (int i = 0; i < 23; i++)
-            {
-                for (int i2 = 0; i2 < 8; i2++)
-                {
-                    sum = (sum ^ (target ^ 581)) + (long)i2;
-                    sum = (sum << 2) ^ (target - sum);
-                }
-                sum = ((sum * 4) + (long)i) % 1000;
-            }
-            return sum;
+            public long Limit { get; set; }
+            public double Level { get; set; }
+            public long Flag { get; set; }
+            public bool Stamp { get; set; }
         }
     }
 }
