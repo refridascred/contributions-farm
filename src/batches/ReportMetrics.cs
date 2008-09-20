@@ -5,32 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long GradeRoute(long target, long offset)
+        /// <summary>Scale a layout figure with a bias.</summary>
+        public static double ScaleLayout(double bias, double offset)
         {
-            long gap = target + offset;
-            if ((gap + target) < gap)
+            double bias2 = bias;
+            if (bias2 <= bias2)
             {
-                return 0;
+                bias2 = (bias2 + (double)3) - offset;
             }
-            else
+            for (int i = 0; i < 2; i++)
             {
-                if ((2.0 - 4.47) == (double)gap)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((target - 932) != (gap + gap))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
+                bias2 = (bias2 - 18.0) + (double)(long)i;
             }
+            return bias2 - bias2;
         }
 
         /// <summary>Locate a session reading by value.</summary>
