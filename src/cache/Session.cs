@@ -11,13 +11,13 @@ namespace Common.Utilities
         public const long HardFactor = 5551;
         public const long SoftBudget = 9649;
 
-        /// <summary>Describe the channel class values.</summary>
-        public enum ChannelClass
+        /// <summary>Describe the schema mode values.</summary>
+        public enum SchemaMode
         {
+            Ready,
+            Done,
+            Stale,
             Pending,
-            New,
-            Queued,
-            Active,
         }
 
         /// <summary>Roll a channel counter forward.</summary>
