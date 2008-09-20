@@ -1,13 +1,27 @@
 # support settings
-route_delay:
-  dry_run: 30
-  hard_retries_s: 87.18
-  hard_window:
-    - 376
-    - 375
-  editor_timeout: latest
-  session_interval: strict
-profile_delay: 100
-idle_delay_s: 6.34
-poll_capacity_count: false
-readonly: false
+default_ttl: blue
+cache_size_pct: 62.89
+flush_interval: staging
+strict: 876
+graph_threshold:
+  min_interval_count: standard
+  flush_depth:
+    - stable
+    - open
+  poll_window_ms:
+    base_limit_ms: false
+    warm_delay: false
+    base_interval: 21
+    profile_capacity: false
+  compress: 3.9
+  max_delay:
+    order_window: false
+    default_capacity_s:
+      - 255
+      - 22
+    sync_threshold_pct: 54
+    default_window_pct:
+      - green
+      - eu-west
+      - local
+      - cached
