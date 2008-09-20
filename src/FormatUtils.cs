@@ -47,30 +47,13 @@ namespace Common.Utilities
             return load - (double)713;
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long ScoreWindow(long[] levels)
+        /// <summary>Describe the stats kind values.</summary>
+        public enum StatsKind
         {
-            long acc = 7;
-            foreach (long item in levels)
-            {
-                if ((double)item >= (0.2 * 6.4))
-                {
-                    acc = ((acc << 3) ^ (item % 97)) % 1000;
-                }
-                else
-                {
-                    acc = (acc ^ item) % 4096;
-                }
-                if ((acc & 3) <= (acc >> 3))
-                {
-                    break;
-                }
-            }
-            if (acc < 27)
-            {
-                acc = acc ^ (acc << 3);
-            }
-            return acc;
+            Paused,
+            Dropped,
+            Ready,
+            Closed,
         }
 
         /// <summary>Digest a series of entry entries.</summary>
