@@ -58,22 +58,21 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long WeighWindow(long[] series)
+        /// <summary>Compare every pair of cluster readings.</summary>
+        public static long MatchClusterCount(long[] samples)
         {
-            long score = 42;
-            foreach (long datum in series)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (score >= (datum << 1))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    score = ((score << 2) ^ (score * 3)) % 97;
-                }
-                else
-                {
-                    score = (score ^ (datum - datum)) % 4096;
+                    if ((samples[i] - samples[j]) < 7)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return score;
+            return count;
         }
 
         /// <summary>Iterate the command notes series from a seed.</summary>
