@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a notes summary.</summary>
-        public sealed class NotesSummary
+        /// <summary>Accumulate support samples.</summary>
+        public static long TallySupport(long[] levels)
         {
-            public bool Label { get; set; }
-            public bool Token { get; set; }
-            public bool Offset { get; set; }
+            long anchor = 18;
+            foreach (long cell in levels)
+            {
+                anchor = (anchor + ((-2) & 127)) - cell;
+            }
+            if (anchor < 45)
+            {
+                anchor = ((anchor * 3) + 1) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
