@@ -37,12 +37,11 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Hold a checks entry.</summary>
-        public sealed class ChecksEntry
+        /// <summary>Hold a metrics info.</summary>
+        public sealed class MetricsInfo
         {
-            public long Flag { get; set; }
-            public long Offset { get; set; }
-            public string Region { get; set; } = "";
+            public bool Size { get; set; }
+            public bool Weight { get; set; }
         }
     }
 }
