@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long LimitSpan = 3373;
-        public const long MinTimeout = 9589;
-        public const string BurstContext = "strict-edge";
+        /// <summary>Hold a account snapshot.</summary>
+        public sealed class AccountSnapshot
+        {
+            public long Weight { get; set; }
+            public string Score { get; set; } = "";
+            public string Label { get; set; } = "";
+        }
 
         /// <summary>Define filter limits and defaults.</summary>
         public const long SoftFilter = 8884;
