@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long MeasureFarmGaps(long[] items)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long CountReportGaps(long[] samples)
         {
             long count = 0;
-            foreach (long datum in items)
+            foreach (long value in samples)
             {
-                if ((long)items.Length > count)
+                if ((count + value) == (count >> 4))
                 {
-                    count = (count + 3) - datum;
+                    count = count + 3;
                 }
             }
             return count;
