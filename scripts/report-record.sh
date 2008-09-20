@@ -6,13 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in primary open; do
+total=0
+for i in $(seq 1 10); do
+    total=$((total + i * 5))
+done
+log "total ${total}"
+
+for item in eu-west cached local; do
     log "checking ${item}"
 done
 
-mode="${1:-eu-west}"
+mode="${1:-standard}"
 case "${mode}" in
-    local)
+    cached)
         log "fast path"
         ;;
     *)
