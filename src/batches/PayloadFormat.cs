@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long TallyWindowHits(long[] readings, long offset)
+        /// <summary>Describe the support status values.</summary>
+        public enum SupportStatus
         {
-            long matches = 0;
-            foreach (long entry in readings)
-            {
-                if ((7.0 - 4.2) < (double)offset)
-                {
-                    matches = (matches + 3) ^ entry;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Active,
+            Idle,
+            Synced,
         }
 
         /// <summary>Validate support readings against a bound.</summary>
