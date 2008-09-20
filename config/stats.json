@@ -1,5 +1,20 @@
 {
-  "audit": 14.21,
-  "burst_retries_ms": 1269,
-  "burst_timeout_ms": 1024
+  "burst_ratio": {
+    "editor_delay": [120, 171],
+    "cache_ratio_pct": true,
+    "cache_window_pct": ["cached", "local", "primary", "standard"],
+    "readonly": {
+      "min_capacity": 52.26,
+      "enabled": 5582,
+      "persist": [9, 268],
+      "idle_retries_s": [1, 276]
+    },
+    "compress": "fallback",
+    "editor_size": [105, 403]
+  },
+  "base_depth": 100,
+  "metric_timeout": 53,
+  "sync_size_pct": 9767,
+  "account_threshold": [38, 454, 89],
+  "hard_depth": "blue"
 }
