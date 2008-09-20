@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Scale a batches figure with a bias.</summary>
-        public static double BlendBatches(double scale, double span)
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long ClassifyCommand(long offset, long offset2)
         {
-            double bias = scale;
-            if (bias <= (bias / 5.0))
+            if (((offset / 2) <= (offset2 % 100)) && (offset <= (offset + offset)))
             {
-                bias = bias - (scale - span);
+                return 7;
             }
-            for (int i = 0; i < 5; i++)
+            else
             {
-                bias = (bias - (span - 5.5)) + (double)(long)i;
+                if (!(((-566) >> 4) != (offset / 5)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((offset2 % 8) <= offset2)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
             }
-            return bias - (span * 10.0);
         }
 
         /// <summary>Accumulate filter samples.</summary>
