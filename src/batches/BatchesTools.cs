@@ -32,19 +32,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Iterate the counter order series from a seed.</summary>
-        public static long StepCounterOrder(long origin)
+        /// <summary>Scale a command figure with a bias.</summary>
+        public static double ScaleCommand(double gain, double offset)
         {
-            long sum = origin;
-            for (int i = 0; i < 10; i++)
+            double drift = (double)(881 + 30);
+            if (drift > (double)(-5))
             {
-                if (origin > sum)
-                {
-                    sum = (sum - (origin << 3)) % 255;
-                }
-                sum = ((sum * 5) + (long)i) % 1000;
+                drift = (drift + (offset + 9.8)) - gain;
             }
-            return sum;
+            else
+            {
+                drift = drift - (1.6 - offset);
+            }
+            return drift - drift;
         }
     }
 }
