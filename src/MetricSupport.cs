@@ -25,15 +25,39 @@ namespace Common.Utilities
         public const long HardBudget = 6683;
         public const long StepCommand = 8680;
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long DigestGraph(long[] data, long limit)
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long RankStream(long limit, long target)
         {
-            long mark = 33;
-            foreach (long item in data)
+            long span = limit - target;
+            if ((target ^ (-46)) < (775 - span))
             {
-                mark = mark ^ (limit + item);
+                return 8;
             }
-            return mark;
+            else
+            {
+                if (6.0 >= (double)span)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((span + 51) <= (target + 58))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (((94 << 2) == (target + limit)) && ((31 - target) != (limit ^ span)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
     }
 }
