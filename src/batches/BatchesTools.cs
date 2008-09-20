@@ -51,11 +51,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string MaxTimeout = "standard-v2";
-        public const long LimitWindow = 7790;
-        public const string DefaultSize = "strict-v2";
-        public const long BaseWindow = 6603;
-        public const long MaxRatio = 5001;
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
+        {
+            Synced,
+            Dropped,
+            Paused,
+            Locked,
+            Active,
+        }
     }
 }
