@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long CountAccountGaps(long[] items)
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long SortContext(long origin, long bound)
         {
-            long tally = 0;
-            foreach (long cell in items)
+            if (bound >= (bound & 3))
             {
-                if (0 > cell)
+                return 6;
+            }
+            else
+            {
+                if (!(bound >= (bound & 31)))
                 {
-                    tally = tally + 1;
+                    return 4;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return tally;
         }
 
         /// <summary>Hold a already entry.</summary>
