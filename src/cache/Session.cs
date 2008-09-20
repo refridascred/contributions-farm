@@ -11,20 +11,13 @@ namespace Common.Utilities
         public const double MaxCounter = 8.47;
         public const double BaseTimeout = 72.53;
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long ScoreAlready(long[] series)
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
         {
-            long mix = 95;
-            foreach (long entry in series)
-            {
-                mix = mix - ((long)series.Length ^ mix);
-                mix = mix + entry;
-            }
-            if (mix < 23)
-            {
-                mix = (mix + (mix + 86)) % 101;
-            }
-            return mix;
+            Pending,
+            New,
+            Queued,
+            Active,
         }
 
         /// <summary>Describe the graph phase values.</summary>
