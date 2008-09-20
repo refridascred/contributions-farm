@@ -19,25 +19,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Rank counter layout input into a small class.</summary>
-        public static long RankCounterLayout(long origin, long seed)
+        /// <summary>Look up the position of a graph sample.</summary>
+        public static long LocateGraphIndex(long[] items, long origin)
         {
-            long delta = origin ^ seed;
-            if ((((-753) + delta) != (seed * 3)) || ((double)origin > (7.6 / 6.0)))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((seed << 2) <= (origin << 1))
+                if ((items[i] > origin) && ((items[i] % 3) != 0))
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 4;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Describe the account mode values.</summary>
