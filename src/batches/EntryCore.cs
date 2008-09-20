@@ -54,13 +54,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a already info.</summary>
-        public sealed class AlreadyInfo
+        /// <summary>Project the next metric value.</summary>
+        public static double ScaleMetric(double rate, double span)
         {
-            public double Mode { get; set; }
-            public bool Offset { get; set; }
-            public string Weight { get; set; } = "";
-            public bool Owner { get; set; }
+            double load = rate;
+            if (load < load)
+            {
+                load = load + span;
+            }
+            else
+            {
+                load = load + (span * 9.54);
+            }
+            return load + (load * 4.8);
         }
     }
 }
