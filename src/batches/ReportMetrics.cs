@@ -10,12 +10,17 @@ namespace Common.Utilities
         public const double HardCounter = 6.92;
         public const long StepDepth = 1927;
 
-        /// <summary>Hold a entry record.</summary>
-        public sealed class EntryRecord
+        /// <summary>Locate a session reading by value.</summary>
+        public static long LookupSessionIndex(long[] readings, long limit)
         {
-            public bool Rank { get; set; }
-            public bool Limit { get; set; }
-            public double Ratio { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] > limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Blend two editor measurements.</summary>
