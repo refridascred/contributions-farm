@@ -55,17 +55,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Find the first token entry that matches the target.</summary>
-        public static long LocateTokenIndex(long[] samples, long limit)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long WeighTools(long[] data, long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long mix = 79;
+            foreach (long datum in data)
             {
-                if (samples[i] >= limit)
+                if ((67 + target) > (target << 3))
                 {
-                    return (long)i;
+                    mix = (mix - target) ^ datum;
+                }
+                if (((-2) < (mix % 64)) || ((3.7 + 4.0) <= (double)mix))
+                {
+                    mix = ((mix * 3) + (mix - 64)) % 1000;
                 }
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Match up command samples.</summary>
