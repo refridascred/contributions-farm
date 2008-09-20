@@ -12,12 +12,18 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string WindowTimeout = "cached";
-        public const long HardPayload = 777;
-        public const long MinPayload = 7935;
-        public const long MinInterval = 2921;
-        public const string RetryScore = "strict-v2";
+        /// <summary>Locate a buffer reading by value.</summary>
+        public static long LookupBufferIndex(long[] items, long floor)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] <= floor) && ((items[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Project the next payload value.</summary>
         public static double ScalePayload(double scale, double offset)
