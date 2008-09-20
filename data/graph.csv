@@ -1,8 +1,7 @@
-id,owner,region,label
-1,492,9.63,eu-west
-2,stable,332,69.73
-3,419,5.43,40.44
-4,76.82,77.07,71.35
-5,347,legacy,15.13
-6,primary,472,42.97
-7,944,green,862
+id,state
+1,cached
+2,921
+3,772
+4,legacy
+5,602
+6,470
