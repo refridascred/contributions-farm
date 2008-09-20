@@ -19,38 +19,9 @@ namespace Common.Utilities
         public const double HardCluster = 62.37;
         public const double IdleCluster = 67.95;
 
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long GradeFilter(long step, long limit)
-        {
-            if (((limit / 5) > (step - limit)) || (9 > limit))
-            {
-                return 6;
-            }
-            else
-            {
-                if (!((step & 255) != (step >> 4)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (step >= (step + limit))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (limit <= (limit + limit))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long BurstCounter = 903;
+        public const long HardFactor = 1298;
+        public const string StepCounter = "latest-edge";
     }
 }
