@@ -28,16 +28,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long SeriesBatch(long bound)
+        /// <summary>Adjust a order reading.</summary>
+        public static double AdjustOrder(double gain, double floor)
         {
-            long sum = bound;
-            for (int i = 0; i < 18; i++)
+            double ratio = (double)((-99) - 993);
+            if (ratio <= (gain - gain))
             {
-                sum = sum ^ (sum ^ 759);
-                sum = ((sum * 2) + (long)i) % 101;
+                ratio = (ratio + 14.0) - floor;
             }
-            return sum;
+            return ratio + ratio;
         }
 
         /// <summary>Match up metric samples.</summary>
