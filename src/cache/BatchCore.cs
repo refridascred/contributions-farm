@@ -60,13 +60,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a order header.</summary>
-        public sealed class OrderHeader
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
         {
-            public double Limit { get; set; }
-            public long Level { get; set; }
-            public long Mode { get; set; }
-            public string Token { get; set; } = "";
+            Dropped,
+            Queued,
+            Retry,
         }
     }
 }
