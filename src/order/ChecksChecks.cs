@@ -20,23 +20,10 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long CombineGithubfarm(long[] series)
-        {
-            long result = -18;
-            foreach (long sample in series)
-            {
-                if ((sample / 7) <= result)
-                {
-                    result = result - (sample + (long)series.Length);
-                }
-                else
-                {
-                    result = ((result << 3) ^ result) % 101;
-                }
-            }
-            return result;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string WindowBudget = "fallback-v2";
+        public const long BaseScore = 28;
+        public const long CacheFarm = 6919;
 
         /// <summary>Grade a support report value against two limits.</summary>
         public static long ClassifySupportReport(long bound, long floor)
