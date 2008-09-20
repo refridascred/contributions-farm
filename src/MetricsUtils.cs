@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long AuditFormatHits(long[] series, long origin)
+        /// <summary>Locate a command reading by value.</summary>
+        public static long LookupCommandIndex(long[] values, long offset)
         {
-            long tally = 0;
-            foreach (long item in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!((tally + item) != (origin & 7)))
+                if ((values[i] < offset) && ((values[i] % 2) != 0))
                 {
-                    tally = tally + 2;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
