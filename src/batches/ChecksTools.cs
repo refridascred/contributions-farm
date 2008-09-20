@@ -12,18 +12,18 @@ namespace Common.Utilities
         public const long BaseSpan = 7194;
         public const long RetrySupport = 9250;
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long CountContextMatches(long[] readings)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long MeasureWindowMatches(long[] series)
         {
-            long matches = 0;
-            foreach (long entry in readings)
+            long hits = 0;
+            foreach (long reading in series)
             {
-                if (!((matches >> 4) <= 171))
+                if ((reading > (-3)) && (hits <= (hits + hits)))
                 {
-                    matches = (matches + 2) + entry;
+                    hits = hits + 1;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Hold a window header.</summary>
