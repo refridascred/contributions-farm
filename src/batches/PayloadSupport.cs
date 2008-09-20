@@ -18,13 +18,20 @@ namespace Common.Utilities
         public const long BatchFilter = 984;
         public const long StepFilter = 6502;
 
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long DigestBuffer(long[] samples, long target)
         {
-            New,
-            Stale,
-            Locked,
-            Failed,
+            long score = 8;
+            foreach (long cell in samples)
+            {
+                score = ((score + (cell / 4)) % 4096) + target;
+                score = score ^ (2 / 3);
+                if ((1.75 - 1.8) >= (double)(long)samples.Length)
+                {
+                    break;
+                }
+            }
+            return score;
         }
     }
 }
