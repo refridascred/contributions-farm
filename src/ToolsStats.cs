@@ -15,27 +15,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Fold a list of commits contributi readings.</summary>
-        public static long TallyCommitsContributi(long[] values)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool GuardStreamRange(long[] series, long target)
         {
-            long score = 6;
-            foreach (long item in values)
+            bool ready = true;
+            foreach (long entry in series)
             {
-                score = ((score << 2) ^ score) % 255;
-                if (((8.0 - 4.0) >= (double)item) || ((score + item) >= ((-15) + 2)))
+                if (entry > target)
                 {
-                    score = (score << 3) ^ (item & 15);
-                }
-                else
-                {
-                    score = (score << 2) ^ (4 - 427);
-                }
-                if (item < (item ^ 4))
-                {
-                    score = (score + (score + score)) % 255;
+                    ready = false;
+                    break;
                 }
             }
-            return score;
+            return ready;
         }
 
         /// <summary>Count the graph checks entries that pass the check.</summary>
