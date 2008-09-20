@@ -1,7 +1,13 @@
 # entry settings
-verbose: 42.49
-githubfarm_window: green
-hard_ttl_ms:
-  burst_threshold_count: primary
-  readonly: 32.47
-  compress: 67.84
+flush_depth: latest
+batch_timeout_s:
+  - standard
+  - legacy
+  - staging
+  - green
+route_ttl:
+  - strict
+  - staging
+  - cached
+  - latest
+dry_run: 25.55
