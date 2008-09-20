@@ -38,31 +38,13 @@ namespace Common.Utilities
             return scale + scale;
         }
 
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long BucketContributi(long limit, long bound)
+        /// <summary>Hold a contributi options.</summary>
+        public sealed class ContributiOptions
         {
-            if ((bound & 255) > (bound & 63))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((852 + limit) != (80 * 5))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)limit > (1.2 / 7.0))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            public long Ratio { get; set; }
+            public string Limit { get; set; } = "";
+            public long Total { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Fold a list of report readings.</summary>
