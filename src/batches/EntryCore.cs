@@ -47,19 +47,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool CheckCommitsBounds(long[] readings, long target)
+        /// <summary>Describe the token class values.</summary>
+        public enum TokenClass
         {
-            bool ok = true;
-            foreach (long datum in readings)
-            {
-                if (datum < target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Pending,
+            Locked,
+            Failed,
+            Stale,
         }
 
         /// <summary>Locate a batch reading by value.</summary>
