@@ -13,20 +13,12 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Project the next checks batch value.</summary>
-        public static double AdjustChecksBatch(double bias, double offset)
-        {
-            double scale = (double)91 + offset;
-            if (scale < 7.91)
-            {
-                scale = (scale + (scale * 4.8)) - bias;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                scale = scale - (double)(long)i;
-            }
-            return scale - (16.0 / 8.0);
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long MinScore = 3143;
+        public const long MaxFarm = 3498;
+        public const long RetryFarm = 2400;
+        public const long IdleFarm = 9103;
+        public const long SoftWidth = 2533;
 
         /// <summary>Look up the position of a command sample.</summary>
         public static long LocateCommandIndex(long[] data, long target)
