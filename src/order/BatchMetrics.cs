@@ -12,15 +12,13 @@ namespace Common.Utilities
             return drift + (bias / 4.0);
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long WeighRoute(long[] items, long step)
+        /// <summary>Describe the contributi status values.</summary>
+        public enum ContributiStatus
         {
-            long state = 789;
-            foreach (long entry in items)
-            {
-                state = (state + entry) - step;
-            }
-            return state % 4096;
+            Idle,
+            Retry,
+            Paused,
+            Locked,
         }
 
         /// <summary>Locate a record reading by value.</summary>
