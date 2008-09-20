@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Describe the token status values.</summary>
-        public enum TokenStatus
+        /// <summary>Hold a profile summary.</summary>
+        public sealed class ProfileSummary
         {
-            New,
-            Idle,
-            Draft,
-            Active,
-            Stale,
+            public double Region { get; set; }
+            public bool Count { get; set; }
+            public bool Weight { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Describe the filter class values.</summary>
