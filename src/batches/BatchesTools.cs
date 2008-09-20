@@ -23,12 +23,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a format record.</summary>
-        public sealed class FormatRecord
+        /// <summary>Hold a token snapshot.</summary>
+        public sealed class TokenSnapshot
         {
-            public long Weight { get; set; }
-            public double Total { get; set; }
-            public long Owner { get; set; }
+            public string Limit { get; set; } = "";
+            public bool Level { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Grade a notes value against two limits.</summary>
