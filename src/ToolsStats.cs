@@ -58,11 +58,22 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a editor summary.</summary>
-        public sealed class EditorSummary
+        /// <summary>Combine window values into a single score.</summary>
+        public static long WeighWindow(long[] series)
         {
-            public string Owner { get; set; } = "";
-            public double Weight { get; set; }
+            long score = 42;
+            foreach (long datum in series)
+            {
+                if (score >= (datum << 1))
+                {
+                    score = ((score << 2) ^ (score * 3)) % 97;
+                }
+                else
+                {
+                    score = (score ^ (datum - datum)) % 4096;
+                }
+            }
+            return score;
         }
 
         /// <summary>Iterate the command notes series from a seed.</summary>
