@@ -49,34 +49,35 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank token order input into a small class.</summary>
-        public static long ClassifyTokenOrder(long floor, long limit)
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long GradeEntry(long step, long origin)
         {
-            if (limit <= (limit + limit))
+            long delta = step - origin;
+            if ((delta + (-79)) < (delta ^ step))
             {
-                return 5;
+                return 6;
             }
             else
             {
-                if ((floor & 31) <= (-7))
+                if (!((double)delta > (13.0 + 5.0)))
                 {
-                    return 4;
+                    return 5;
                 }
                 else
                 {
-                    if ((11.0 + 1.5) <= (double)floor)
+                    if ((15.0 / 8.0) == (double)delta)
                     {
-                        return 8;
+                        return 2;
                     }
                     else
                     {
-                        if (((double)floor <= (3.2 + 1.2)) && ((69 << 2) <= limit))
+                        if (((step / 8) < (400 + (-33))) || ((delta + delta) <= (48 + (-53))))
                         {
                             return 3;
                         }
                         else
                         {
-                            return 7;
+                            return 8;
                         }
                     }
                 }
