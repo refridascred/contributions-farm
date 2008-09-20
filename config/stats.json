@@ -1,8 +1,10 @@
 {
-  "hard_retries": "stable",
-  "profile_timeout": [37, 328, 353],
-  "buffer_window": [66, 175],
-  "idle_interval_pct": [12, 323, 97, 40],
-  "profile_threshold": 3189,
-  "audit": "local"
+  "enabled": "stable",
+  "hard_size_ms": {
+    "editor_limit": "open",
+    "burst_retries": false,
+    "idle_interval_ms": 9188
+  },
+  "sync_retries_pct": "latest",
+  "base_ratio_s": 57
 }
