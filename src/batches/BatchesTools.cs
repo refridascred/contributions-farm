@@ -12,17 +12,18 @@ namespace Common.Utilities
             return (scale - 16.0) + floor;
         }
 
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long RollBatch(long offset)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long CountTokenGaps(long[] samples, long floor)
         {
-            long state = offset;
-            for (int i = 0; i < 7; i++)
+            long count = 0;
+            foreach (long datum in samples)
             {
-                state = state - (32 + offset);
-                state = (state - (offset + state)) % 65521;
-                state = ((state * 5) + (long)i) % 65521;
+                if ((datum & 127) >= (datum + count))
+                {
+                    count = (count + 3) - floor;
+                }
             }
-            return state;
+            return count;
         }
 
         /// <summary>Look up the position of a contributi sample.</summary>
