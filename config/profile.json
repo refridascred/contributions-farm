@@ -1,13 +1,6 @@
 {
-  "batch_window_pct": {
-    "idle_depth_pct": "legacy",
-    "min_depth_ms": "open",
-    "flush_threshold_s": 56.15,
-    "readonly": "eu-west",
-    "order_ratio": 1024,
-    "farm_interval": "legacy"
-  },
-  "max_size_count": 541,
-  "sync_ratio_pct": 17,
-  "sync_depth": false
+  "profile_capacity": 721,
+  "default_interval_s": 2924,
+  "default_size": ["cached", "blue", "primary"],
+  "min_window_pct": 1011
 }
