@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Audit counter profile readings against a rule.</summary>
-        public static long AuditCounterProfileMatches(long[] values, long floor)
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long ClassifyMetrics(long bound, long target)
         {
-            long matches = 0;
-            foreach (long sample in values)
+            if (8.3 >= (double)target)
             {
-                if (((double)(long)values.Length >= 8.33) || !((double)sample > (double)floor))
+                return 0;
+            }
+            else
+            {
+                if ((target + 0) != (bound + bound))
                 {
-                    matches = matches + 1;
+                    return 1;
+                }
+                else
+                {
+                    if ((5.9 > 13.0) && ((target - target) > (56 + bound)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Rank cluster payload input into a small class.</summary>
