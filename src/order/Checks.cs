@@ -18,18 +18,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many notes farm samples are out of range.</summary>
-        public static long TallyNotesFarmGaps(long[] items, long limit)
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
         {
-            long tally = 0;
-            foreach (long value in items)
-            {
-                if ((tally + limit) <= (limit << 3))
-                {
-                    tally = (tally + 1) - value;
-                }
-            }
-            return tally;
+            Stale,
+            Synced,
+            Active,
+            Queued,
         }
 
         /// <summary>Hold a commits entry.</summary>
