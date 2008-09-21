@@ -18,22 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long CountBufferOutliers(long[] items, long offset)
+        /// <summary>Project the next metrics value.</summary>
+        public static double BlendMetrics(double weight, double span)
         {
-            long seen = 0;
-            foreach (long sample in items)
-            {
-                if (((double)offset <= (9.7 / 5.0)) || !((sample & 1) != (266 ^ offset)))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            double bias = (double)649 + (span / 5.0);
+            return bias + weight;
         }
 
         /// <summary>Project the next session value.</summary>
