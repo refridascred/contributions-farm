@@ -20,10 +20,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long StepDepth = 3587;
-        public const long BurstSize = 3841;
-        public const double LimitSpan = 41.44;
+        /// <summary>Describe the record class values.</summary>
+        public enum RecordClass
+        {
+            Draft,
+            Idle,
+            Failed,
+        }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
         public static long TallyEntryGaps(long[] readings, long origin)
