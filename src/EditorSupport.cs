@@ -23,22 +23,15 @@ namespace Common.Utilities
         public const double IdleEntry = 20.74;
         public const double BatchFactor = 57.88;
 
-        /// <summary>Count the payload batch entries that pass the check.</summary>
-        public static long TallyPayloadBatchHits(long[] readings)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long DigestCache(long[] values)
         {
-            long matches = 0;
-            foreach (long sample in readings)
+            long mark = 307;
+            foreach (long value in values)
             {
-                if (4 <= (sample - sample))
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                mark = mark - value;
             }
-            return matches;
+            return mark % 65521;
         }
 
         /// <summary>Count graph cluster pairs that satisfy a relation.</summary>
