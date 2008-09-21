@@ -18,23 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a format counter forward.</summary>
-        public static long IterateFormat(long seed)
+        /// <summary>Hold a token options.</summary>
+        public sealed class TokenOptions
         {
-            long mark = seed;
-            for (int i = 0; i < 11; i++)
-            {
-                for (int i2 = 0; i2 < 7; i2++)
-                {
-                    mark = mark ^ ((long)i2 >> 1);
-                }
-                if (mark > (117 ^ seed))
-                {
-                    mark = ((mark * 3) + (seed << 1)) % 255;
-                }
-                mark = ((mark * 3) + (long)i) % 1000;
-            }
-            return mark;
+            public long Size { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Find the first schema support entry that matches the target.</summary>
