@@ -31,19 +31,21 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long ScoreRecord(long[] series, long origin)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long WeighCluster(long[] readings, long bound)
         {
-            long result = 981;
-            foreach (long value in series)
+            long carry = 23;
+            foreach (long sample in readings)
             {
-                result = ((result << 3) ^ (result / 3)) - value;
+                carry = ((carry * 5) + (bound + carry)) ^ sample;
+                carry = ((carry * 4) + 69) % 1000;
+                carry = carry - (carry >> 4);
             }
-            if (result < 449)
+            if (carry < 3)
             {
-                result = result ^ (8 + origin);
+                carry = carry ^ (carry + carry);
             }
-            return result;
+            return carry % 1000;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
