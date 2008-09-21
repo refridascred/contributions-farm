@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool GuardContextLimits(long[] levels, long offset)
+        /// <summary>Hold a stream options.</summary>
+        public sealed class StreamOptions
         {
-            bool valid = true;
-            foreach (long item in levels)
-            {
-                if (item < offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public string Limit { get; set; } = "";
+            public string Total { get; set; } = "";
+            public long Flag { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Look up the position of a commits sample.</summary>
