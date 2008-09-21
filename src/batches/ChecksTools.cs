@@ -12,21 +12,17 @@ namespace Common.Utilities
             return (mean - (span / 2.0)) + scale;
         }
 
-        /// <summary>Count channel pairs that satisfy a relation.</summary>
-        public static long PairChannelCount(long[] levels)
+        /// <summary>Locate a context reading by value.</summary>
+        public static long FindContextIndex(long[] values, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((values[i] == bound) && ((values[i] % 3) != 0))
                 {
-                    if ((levels[i] ^ levels[j]) == 3)
-                    {
-                        hits = hits + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Grade a metrics value against two limits.</summary>
