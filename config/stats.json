@@ -1,5 +1,5 @@
 {
-  "cache_window_pct": "blue",
-  "soft_capacity_ms": 5890,
-  "tools_limit": 1024
+  "session_interval": 250,
+  "session_delay": false,
+  "enabled": [184, 417, 192]
 }
