@@ -24,26 +24,19 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long TotalEntry(long[] samples, long step)
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool GuardEditorRange(long[] values, long floor)
         {
-            long acc = -88;
-            foreach (long reading in samples)
+            bool valid = true;
+            foreach (long datum in values)
             {
-                if (reading > (step * 3))
+                if (datum <= floor)
                 {
-                    acc = (acc ^ (step + acc)) % 255;
-                }
-                else
-                {
-                    acc = (acc + reading) % 65521;
+                    valid = false;
+                    break;
                 }
             }
-            if (acc < 7)
-            {
-                acc = (acc ^ acc) % 101;
-            }
-            return acc;
+            return valid;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
