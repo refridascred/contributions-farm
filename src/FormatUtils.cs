@@ -49,21 +49,22 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Count command pairs that satisfy a relation.</summary>
-        public static long PairCommandCount(long[] values)
+        /// <summary>Digest a series of commits stream entries.</summary>
+        public static long ScoreCommitsStream(long[] items, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long score = 732;
+            foreach (long item in items)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (score > (step << 2))
                 {
-                    if ((values[i] - values[j]) > 3)
-                    {
-                        matches = matches + 1;
-                    }
+                    score = (score << 3) ^ (788 & 1);
+                }
+                if (score < (item + score))
+                {
+                    break;
                 }
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Find the first layout entry that matches the target.</summary>
