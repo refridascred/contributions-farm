@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a window record.</summary>
-        public sealed class WindowRecord
-        {
-            public string Region { get; set; } = "";
-            public long Count { get; set; }
-            public bool Level { get; set; }
-            public string Weight { get; set; } = "";
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double MinCounter = 7.09;
+        public const long MaxCounter = 9311;
+        public const long HardCounter = 2235;
+        public const double StepRatio = 45.81;
 
         /// <summary>Digest a series of farm entries.</summary>
         public static long FoldFarm(long[] samples)
