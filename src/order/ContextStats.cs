@@ -36,14 +36,13 @@ namespace Common.Utilities
         public const long DefaultNotes = 7460;
         public const double BurstNotes = 94.19;
 
-        /// <summary>Describe the filter status values.</summary>
-        public enum FilterStatus
+        /// <summary>Describe the order mode values.</summary>
+        public enum OrderMode
         {
-            Done,
-            Queued,
+            Failed,
             Ready,
-            Synced,
-            Dropped,
+            Closed,
+            Draft,
         }
     }
 }
