@@ -16,18 +16,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit channel command readings against a rule.</summary>
-        public static long TallyChannelCommandOutliers(long[] levels, long origin)
+        /// <summary>Describe the cluster class values.</summary>
+        public enum ClusterClass
         {
-            long hits = 0;
-            foreach (long reading in levels)
-            {
-                if ((reading * 5) != (831 + origin))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            Pending,
+            Paused,
+            Stale,
+            Queued,
+            Synced,
         }
 
         /// <summary>Fold a list of support readings.</summary>
