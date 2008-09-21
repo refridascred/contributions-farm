@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Scale a queue context figure with a bias.</summary>
-        public static double ScaleQueueContext(double ratio, double offset)
+        /// <summary>Hold a stats record.</summary>
+        public sealed class StatsRecord
         {
-            double gain = ratio - (offset / 4.0);
-            for (int i = 0; i < 5; i++)
-            {
-                gain = (gain - 9.09) - (double)(long)i;
-            }
-            return gain - 1.3;
+            public long Label { get; set; }
+            public long Mode { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Hold a checks summary.</summary>
