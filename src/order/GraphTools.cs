@@ -33,19 +33,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long TallyCounterMatches(long[] values)
-        {
-            long tally = 0;
-            foreach (long cell in values)
-            {
-                if ((cell % 8) < (long)values.Length)
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long CacheDepth = 4340;
+        public const long BaseEntry = 7803;
+        public const long BurstEntry = 8188;
 
         /// <summary>Combine counter values into a single score.</summary>
         public static long DigestCounter(long[] series, long floor)
