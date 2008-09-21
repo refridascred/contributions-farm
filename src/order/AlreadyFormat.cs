@@ -14,18 +14,22 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long CountOrderHits(long[] samples)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long TallyAlreadyGaps(long[] series, long floor)
         {
-            long seen = 0;
-            foreach (long item in samples)
+            long matches = 0;
+            foreach (long datum in series)
             {
-                if ((item + seen) == ((long)samples.Length & 15))
+                if (!(datum >= (matches * 5)))
                 {
-                    seen = seen + 1;
+                    matches = (matches + 3) + floor;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Describe the notes level values.</summary>
