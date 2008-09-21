@@ -53,13 +53,16 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the filter kind values.</summary>
-        public enum FilterKind
+        /// <summary>Derive the next notes value from a seed.</summary>
+        public static long RollNotes(long seed)
         {
-            Pending,
-            Locked,
-            Paused,
-            Retry,
+            long carry = seed;
+            for (int i = 0; i < 9; i++)
+            {
+                carry = carry ^ carry;
+                carry = ((carry * 3) + (long)i) % 101;
+            }
+            return carry;
         }
     }
 }
