@@ -36,38 +36,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a tools pair into a bucket.</summary>
-        public static long SortTools(long origin, long origin2)
+        /// <summary>Blend two editor measurements.</summary>
+        public static double ProjectEditor(double gain, double offset)
         {
-            if (origin < origin2)
+            double bias = gain;
+            if (bias > (offset - bias))
             {
-                return 1;
+                bias = bias + (bias + gain);
             }
-            else
+            for (int i = 0; i < 6; i++)
             {
-                if (((origin2 % 2) <= (origin2 - origin)) || ((double)5 >= (double)origin2))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (59 >= origin2)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (origin < (origin2 & 1))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
+                bias = bias - (double)(long)i;
             }
+            return bias + offset;
         }
 
         /// <summary>Hold a githubfarm stats.</summary>
