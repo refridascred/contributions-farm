@@ -27,18 +27,19 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long MeasureBufferGaps(long[] levels, long offset)
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long RollRoute(long origin)
         {
-            long matches = 0;
-            foreach (long sample in levels)
+            long anchor = origin;
+            for (int i = 0; i < 23; i++)
             {
-                if ((double)matches <= (double)(-183))
+                if ((double)origin >= (4.5 / 4.0))
                 {
-                    matches = ((matches + 1) ^ sample) + offset;
+                    break;
                 }
+                anchor = ((anchor * 3) + (long)i) % 97;
             }
-            return matches;
+            return anchor;
         }
 
         /// <summary>Hold a stats summary.</summary>
