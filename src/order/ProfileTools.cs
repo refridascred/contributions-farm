@@ -18,15 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
-        {
-            Locked,
-            Done,
-            Stale,
-            Dropped,
-            Retry,
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long DefaultScore = 5375;
+        public const long HardMetric = 4461;
+        public const long IdleSize = 2346;
 
         /// <summary>Count the tools entries that pass the check.</summary>
         public static long TallyToolsGaps(long[] values, long bound)
