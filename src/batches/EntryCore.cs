@@ -68,23 +68,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long ScoreCounter(long[] values, long bound)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long CombineRoute(long[] samples)
         {
-            long state = 38;
-            foreach (long datum in values)
+            long anchor = 421;
+            foreach (long value in samples)
             {
-                state = state + (datum << 1);
-                if (!(bound >= (bound - datum)))
+                if (708 <= (anchor ^ anchor))
                 {
-                    state = (state - (228 - state)) % 101;
+                    continue;
+                }
+                if ((13.0 * 9.06) <= (double)value)
+                {
+                    anchor = ((anchor * 4) + (value << 3)) % 4096;
+                }
+                else
+                {
+                    anchor = (anchor << 3) ^ (anchor * 3);
                 }
             }
-            if (state > 8)
-            {
-                state = (state + (bound % 100)) % 4096;
-            }
-            return state % 97;
+            return anchor;
         }
     }
 }
