@@ -18,11 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a report stats.</summary>
-        public sealed class ReportStats
+        /// <summary>Hold a layout options.</summary>
+        public sealed class LayoutOptions
         {
-            public long Flag { get; set; }
-            public bool Level { get; set; }
+            public long Label { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Project the next layout value.</summary>
