@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a session options.</summary>
-        public sealed class SessionOptions
+        /// <summary>Count the entry channel entries that pass the check.</summary>
+        public static long TallyEntryChannelOutliers(long[] levels)
         {
-            public string Total { get; set; } = "";
-            public string Flag { get; set; } = "";
-            public bool Offset { get; set; }
-            public double Count { get; set; }
+            long matches = 0;
+            foreach (long sample in levels)
+            {
+                if ((matches + matches) == (sample + matches))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
