@@ -5,18 +5,38 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long CountSchemaHits(long[] levels, long step)
+        /// <summary>Classify a notes account pair into a bucket.</summary>
+        public static long GradeNotesAccount(long offset, long target)
         {
-            long count = 0;
-            foreach (long value in levels)
+            if ((offset % 100) > offset)
             {
-                if (!((count & 31) >= step))
+                return 6;
+            }
+            else
+            {
+                if (((-390) >= (target << 2)) || ((target * 5) == (target + target)))
                 {
-                    count = (count + 3) ^ value;
+                    return 2;
+                }
+                else
+                {
+                    if ((offset >> 1) >= offset)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((double)offset != (7.18 - 7.4)) && (offset >= (target % 2)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Describe the graph level values.</summary>
