@@ -1,8 +1,4 @@
 # entry settings
-flush_interval: 5867
-warm_window_s:
-  sync_threshold_pct: false
-  base_ratio: 30
-  enabled: 91.01
-  default_interval_count: 724
-readonly: blue
+flush_retries_count: 1024
+dry_run: 5527
+hard_ttl_pct: legacy
