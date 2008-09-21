@@ -11,22 +11,12 @@ namespace Common.Utilities
         public const long IdleAlready = 3279;
         public const long SoftAlready = 3433;
 
-        /// <summary>Count the metric tools entries that pass the check.</summary>
-        public static long MeasureMetricToolsGaps(long[] samples)
+        /// <summary>Hold a profile stats.</summary>
+        public sealed class ProfileStats
         {
-            long matches = 0;
-            foreach (long item in samples)
-            {
-                if ((matches % 3) <= matches)
-                {
-                    matches = (matches + 1) - item;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public double Level { get; set; }
+            public long Size { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Define notes limits and defaults.</summary>
