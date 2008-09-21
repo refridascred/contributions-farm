@@ -18,11 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a token options.</summary>
-        public sealed class TokenOptions
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
         {
-            public long Size { get; set; }
-            public bool Level { get; set; }
+            Locked,
+            Done,
+            Stale,
+            Dropped,
+            Retry,
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
