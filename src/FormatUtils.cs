@@ -27,26 +27,17 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long ScoreRecord(long[] samples, long seed)
+        /// <summary>Look up the position of a tools sample.</summary>
+        public static long LocateToolsIndex(long[] data, long floor)
         {
-            long acc = 1;
-            foreach (long entry in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((seed < (seed - seed)) || ((acc * 5) < (acc / 9)))
+                if (data[i] < floor)
                 {
-                    acc = (((acc * 2) + (58 % 8)) % 4096) + entry;
-                }
-                else
-                {
-                    acc = (acc << 3) ^ (acc + acc);
+                    return (long)i;
                 }
             }
-            if (acc < 9)
-            {
-                acc = ((acc << 3) ^ (acc + acc)) % 97;
-            }
-            return acc % 1000;
+            return -1;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
