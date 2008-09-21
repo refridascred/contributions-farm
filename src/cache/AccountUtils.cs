@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the batch class values.</summary>
-        public enum BatchClass
+        /// <summary>Describe the context kind values.</summary>
+        public enum ContextKind
         {
-            Active,
             Stale,
-            Synced,
+            New,
+            Locked,
         }
 
         /// <summary>Validate batch command readings against a bound.</summary>
