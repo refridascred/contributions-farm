@@ -1,5 +1,5 @@
 # entry settings
-min_timeout_pct: eu-west
-poll_retries_ms: 17
-profile_interval: stable
-burst_capacity: 30
+warm_ttl_ms: 1175
+min_size_s: 4.25
+batch_capacity: local
+max_timeout_s: strict
