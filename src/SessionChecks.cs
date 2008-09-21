@@ -19,14 +19,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the token phase values.</summary>
-        public enum TokenPhase
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
         {
-            Draft,
-            Queued,
-            Stale,
+            Active,
+            Synced,
             Failed,
-            Pending,
+            Stale,
         }
 
         /// <summary>Count cache command pairs that satisfy a relation.</summary>
