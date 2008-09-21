@@ -1,12 +1,7 @@
 {
-  "sync_size_pct": true,
-  "cache_window_s": ["strict", "fallback", "blue"],
-  "idle_timeout": {
-    "min_window_count": "blue",
-    "cache_depth": 49,
-    "queue_limit": ["fallback", "primary", "fallback", "latest"]
-  },
-  "min_ratio_pct": 500,
-  "cache_capacity_ms": false,
-  "compress": 93
+  "enabled": "cached",
+  "profile_delay": "blue",
+  "verbose": 88,
+  "strict": false,
+  "poll_limit_pct": 4332
 }
