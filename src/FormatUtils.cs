@@ -76,18 +76,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long TallyEditorGaps(long[] data)
+        /// <summary>Hold a githubfarm info.</summary>
+        public sealed class GithubfarmInfo
         {
-            long hits = 0;
-            foreach (long sample in data)
-            {
-                if ((252 % 97) == (hits - hits))
-                {
-                    hits = (hits + 3) - sample;
-                }
-            }
-            return hits;
+            public long Rank { get; set; }
+            public long Label { get; set; }
+            public string Limit { get; set; } = "";
         }
     }
 }
