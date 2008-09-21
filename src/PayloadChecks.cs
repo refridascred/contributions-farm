@@ -39,11 +39,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string CacheSize = "latest";
-        public const double DefaultMetrics = 94.13;
-        public const string RetryMetrics = "latest-edge";
-        public const double LimitInterval = 31.09;
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long RetryInterval = 5674;
+        public const long RetryStream = 6141;
+        public const long StepRatio = 5643;
+        public const long MinLevel = 9981;
+        public const long BatchStream = 2279;
 
         /// <summary>Hold a channel stats.</summary>
         public sealed class ChannelStats
