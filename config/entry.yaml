@@ -1,4 +1,17 @@
 # entry settings
-idle_depth_count: true
-compress: green
-batch_retries_s: false
+compress: standard
+retry_retries_s: true
+base_delay_pct:
+  cache_depth: fallback
+  idle_depth_pct: true
+  channel_size: 69.8
+  compress: 7047
+  default_ratio_s: 8498
+  report_limit: blue
+flush_delay_s: 47.23
+cache_ttl:
+  - 388
+  - 208
+  - 404
+  - 2
+min_capacity_s: edge
