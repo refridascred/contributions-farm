@@ -23,11 +23,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next report value.</summary>
-        public static double AdjustReport(double gain, double bias)
+        /// <summary>Describe the schema status values.</summary>
+        public enum SchemaStatus
         {
-            double scale = bias + gain;
-            return scale - (double)75;
+            Pending,
+            Failed,
+            Done,
+            Locked,
+            New,
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
