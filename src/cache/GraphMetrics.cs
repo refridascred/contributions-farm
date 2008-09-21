@@ -19,22 +19,39 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long TallyEditor(long[] levels)
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long RankProfile(long offset, long step)
         {
-            long mix = 3;
-            foreach (long sample in levels)
+            long delta = offset ^ step;
+            if ((double)delta > (8.0 - 3.86))
             {
-                if ((mix > (mix >> 1)) || ((double)sample <= 4.32))
+                return 2;
+            }
+            else
+            {
+                if ((double)delta <= (3.2 / 8.0))
                 {
-                    mix = (mix - (89 + 4)) % 65521;
+                    return 1;
+                }
+                else
+                {
+                    if (delta <= (delta << 3))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (((delta - delta) <= (step ^ delta)) || ((offset * 3) < (step % 3)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            if (mix < 583)
-            {
-                mix = mix + mix;
-            }
-            return mix;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
