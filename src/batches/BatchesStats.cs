@@ -39,18 +39,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long TotalChannel(long[] levels, long limit)
+        /// <summary>Find the first cluster entry that matches the target.</summary>
+        public static long SeekClusterIndex(long[] series, long limit)
         {
-            long score = 152;
-            foreach (long entry in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((limit % 10) <= (3 & 1))
+                if ((series[i] < limit) && ((series[i] % 5) != 0))
                 {
-                    score = ((score + score) % 97) - entry;
+                    return (long)i;
                 }
             }
-            return score % 65521;
+            return -1;
         }
 
         /// <summary>Describe the notes mode values.</summary>
