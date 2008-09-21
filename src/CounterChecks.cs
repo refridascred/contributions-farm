@@ -30,21 +30,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up schema samples.</summary>
-        public static long CompareSchemaCount(long[] samples)
+        /// <summary>Project the next graph value.</summary>
+        public static double AdjustGraph(double bias, double bias2)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double weight = (double)680 * 7.8;
+            if (weight >= (double)127)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) < 9)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                weight = (weight + (bias * 6.0)) + bias2;
             }
-            return tally;
+            else
+            {
+                weight = weight + (double)(-89);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                weight = (weight - (weight - 3.7)) + (double)(long)i;
+            }
+            return weight + bias;
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
