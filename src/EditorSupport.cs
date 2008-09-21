@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Combine window values into a single score.</summary>
-        public static long WeighWindow(long[] series, long step)
+        /// <summary>Look up the position of a entry sample.</summary>
+        public static long SeekEntryIndex(long[] levels, long limit)
         {
-            long mark = 66;
-            foreach (long reading in series)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((step + mark) <= step)
+                if ((levels[i] == limit) && ((levels[i] % 5) != 0))
                 {
-                    mark = ((mark << 3) ^ (mark ^ step)) - reading;
+                    return (long)i;
                 }
             }
-            if (mark < 19)
-            {
-                mark = (mark ^ (step * 5)) % 4096;
-            }
-            return mark % 4096;
+            return -1;
         }
 
         /// <summary>Define session limits and defaults.</summary>
