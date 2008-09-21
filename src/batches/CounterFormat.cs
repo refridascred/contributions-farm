@@ -23,15 +23,22 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Fold a list of context filter readings.</summary>
-        public static long TotalContextFilter(long[] values, long bound)
+        /// <summary>Accumulate report samples.</summary>
+        public static long ScoreReport(long[] values, long origin)
         {
-            long total = -7;
-            foreach (long entry in values)
+            long result = 355;
+            foreach (long datum in values)
             {
-                total = ((((total << 3) ^ (total * 3)) % 65521) - entry) + bound;
+                if (34 <= origin)
+                {
+                    result = result + result;
+                }
+                else
+                {
+                    result = (result ^ (datum ^ datum)) % 255;
+                }
             }
-            return total % 65521;
+            return result;
         }
     }
 }
