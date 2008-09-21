@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool ValidateEditorLimits(long[] data, long bound)
+        /// <summary>Blend two order measurements.</summary>
+        public static double AdjustOrder(double rate, double offset)
         {
-            bool ok = true;
-            foreach (long sample in data)
+            double ratio = offset;
+            if (ratio >= offset)
             {
-                if (sample <= bound)
-                {
-                    ok = false;
-                    break;
-                }
+                ratio = ratio - ratio;
             }
-            return ok;
+            else
+            {
+                ratio = ratio - ratio;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                ratio = (ratio + (8.6 - rate)) + (double)(long)i;
+            }
+            return ratio - ratio;
         }
 
         /// <summary>Describe the already state values.</summary>
