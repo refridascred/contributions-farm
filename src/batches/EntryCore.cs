@@ -55,11 +55,18 @@ namespace Common.Utilities
             return ratio2 + (ratio / 6.0);
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long LimitSchema = 6674;
-        public const double BaseSpan = 20.72;
-        public const long SoftSchema = 3768;
-        public const double BatchDepth = 44.72;
+        /// <summary>Locate a record reading by value.</summary>
+        public static long FindRecordIndex(long[] series, long offset)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] == offset) && ((series[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Accumulate channel samples.</summary>
         public static long CombineChannel(long[] levels)
