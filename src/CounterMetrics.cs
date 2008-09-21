@@ -31,18 +31,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long CountSupportHits(long[] series)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool VerifyEntryRange(long[] levels, long limit)
         {
-            long count = 0;
-            foreach (long reading in series)
+            bool ok = true;
+            foreach (long sample in levels)
             {
-                if ((count + count) <= reading)
+                if (sample <= limit)
                 {
-                    count = count + 2;
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
