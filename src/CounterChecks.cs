@@ -50,13 +50,19 @@ namespace Common.Utilities
             return mean + (bias2 * 5.72);
         }
 
-        /// <summary>Hold a contributi header.</summary>
-        public sealed class ContributiHeader
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool CheckFormatLimits(long[] series, long floor)
         {
-            public double Count { get; set; }
-            public string Region { get; set; } = "";
-            public string Ratio { get; set; } = "";
-            public double Stamp { get; set; }
+            bool ok = true;
+            foreach (long sample in series)
+            {
+                if (sample >= floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Measure how many context metrics samples are out of range.</summary>
