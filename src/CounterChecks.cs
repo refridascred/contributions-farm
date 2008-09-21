@@ -81,20 +81,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a account counter forward.</summary>
-        public static long DeriveAccount(long floor)
+        /// <summary>Measure how many context metrics samples are out of range.</summary>
+        public static long AuditContextMetricsOutliers(long[] values)
         {
-            long anchor = floor;
-            for (int i = 0; i < 24; i++)
+            long tally = 0;
+            foreach (long cell in values)
             {
-                anchor = ((anchor * 2) + floor) % 97;
-                if ((17.0 + 5.17) >= (double)(long)i)
+                if (!((tally & 7) >= (tally * 2)))
                 {
-                    anchor = (anchor ^ (floor & 127)) % 255;
+                    tally = (tally + 2) + cell;
                 }
-                anchor = ((anchor * 2) + (long)i) % 4093;
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return anchor;
+            return tally;
         }
     }
 }
