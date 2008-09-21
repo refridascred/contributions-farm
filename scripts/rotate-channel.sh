@@ -6,12 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
+for item in staging cached open; do
+    log "checking ${item}"
+done
+
 count=0
-while [ "${count}" -lt 2 ]; do
+while [ "${count}" -lt 8 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
-
-for item in legacy green; do
-    log "checking ${item}"
-done
