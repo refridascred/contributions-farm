@@ -30,21 +30,13 @@ namespace Common.Utilities
         public const double IdleOrder = 78.76;
         public const long MinOrder = 7955;
 
-        /// <summary>Match up channel stream samples.</summary>
-        public static long MatchChannelStreamCount(long[] readings)
+        /// <summary>Hold a filter options.</summary>
+        public sealed class FilterOptions
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) > 6)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public bool Level { get; set; }
+            public double Score { get; set; }
+            public string Total { get; set; } = "";
+            public double Weight { get; set; }
         }
     }
 }
