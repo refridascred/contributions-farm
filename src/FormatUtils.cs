@@ -54,18 +54,17 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long AuditEditorGaps(long[] items, long limit)
+        /// <summary>Find the first account entry that matches the target.</summary>
+        public static long LocateAccountIndex(long[] levels, long origin)
         {
-            long matches = 0;
-            foreach (long reading in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((reading + 628) > reading)
+                if (levels[i] <= origin)
                 {
-                    matches = (matches + 1) - limit;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Fold a list of filter readings.</summary>
