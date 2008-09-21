@@ -1,7 +1,6 @@
 {
-  "flush_threshold_pct": "strict",
-  "retry_interval": 1024,
-  "burst_retries_ms": false,
-  "report_ttl": ["staging", "latest", "local", "fallback"],
-  "default_size": "latest"
+  "retry_interval": 100,
+  "token_depth": 4716,
+  "soft_delay_s": 250,
+  "cache_ratio_pct": ["legacy", "latest", "strict"]
 }
