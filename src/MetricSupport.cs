@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long MeasureGithubfarmGaps(long[] samples)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long CountEntryHits(long[] samples)
         {
-            long seen = 0;
+            long tally = 0;
             foreach (long entry in samples)
             {
-                if (seen < (31 - entry))
+                if ((tally >> 5) <= entry)
                 {
-                    seen = seen + 1;
+                    tally = tally + 3;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Adjust a schema reading.</summary>
