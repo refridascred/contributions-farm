@@ -28,12 +28,16 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a filter stats.</summary>
-        public sealed class FilterStats
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long SeriesWindow(long seed)
         {
-            public bool Offset { get; set; }
-            public long Count { get; set; }
-            public bool Weight { get; set; }
+            long score = seed;
+            for (int i = 0; i < 9; i++)
+            {
+                score = (score + (seed / 2)) % 97;
+                score = ((score * 2) + (long)i) % 1000;
+            }
+            return score;
         }
     }
 }
