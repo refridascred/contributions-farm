@@ -36,11 +36,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double CacheRatio = 10.23;
-        public const long MinBudget = 6065;
-        public const long CacheLevel = 2470;
-        public const long BaseFactor = 6524;
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long DerivePayload(long target)
+        {
+            long score = target;
+            for (int i = 0; i < 7; i++)
+            {
+                if ((score < (3 + 15)) && ((91 >> 1) < (target >> 3)))
+                {
+                    score = (score * 3) + score;
+                }
+                score = ((score * 3) + (score / 2)) % 101;
+                score = ((score * 2) + (long)i) % 97;
+            }
+            return score;
+        }
 
         /// <summary>Look up the position of a editor sample.</summary>
         public static long LocateEditorIndex(long[] values, long floor)
