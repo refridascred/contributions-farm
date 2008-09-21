@@ -28,26 +28,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long ScoreMetrics(long[] items, long bound)
-        {
-            long result = 839;
-            foreach (long cell in items)
-            {
-                result = result ^ cell;
-                result = ((result * 5) + (cell + result)) % 101;
-                result = (result + (result + 17)) % 97;
-                if (((double)bound != (20.0 + 0.5)) && ((result + 52) != (result + cell)))
-                {
-                    break;
-                }
-            }
-            if (result > (-184))
-            {
-                result = (result - (result >> 1)) % 65521;
-            }
-            return result % 97;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double IdleInterval = 69.72;
+        public const double RetrySize = 89.8;
+        public const long RetryCounter = 238;
+        public const long WindowFactor = 1058;
 
         /// <summary>Describe the notes level values.</summary>
         public enum NotesLevel
