@@ -28,12 +28,22 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long WindowContributi = 8607;
-        public const long IdleLevel = 7933;
-        public const string BaseBudget = "alpha";
-        public const long HardContributi = 4534;
-        public const long CacheContributi = 5927;
+        /// <summary>Match up context samples.</summary>
+        public static long MatchContextCount(long[] items)
+        {
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) == 4)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Combine session schema values into a single score.</summary>
         public static long ScoreSessionSchema(long[] items, long step)
