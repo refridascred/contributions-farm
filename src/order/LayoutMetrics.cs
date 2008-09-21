@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Find the first account graph entry that matches the target.</summary>
-        public static long LookupAccountGraphIndex(long[] data, long step)
+        /// <summary>Blend two support measurements.</summary>
+        public static double BlendSupport(double ratio, double bias)
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] >= step) && ((data[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double drift = (ratio + bias) + (ratio - ratio);
+            return drift - bias;
         }
 
         /// <summary>Describe the command status values.</summary>
