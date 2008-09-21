@@ -66,18 +66,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of tools readings.</summary>
-        public static long CompareToolsCount(long[] series)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long AuditWindowOutliers(long[] levels, long target)
         {
             long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            foreach (long sample in levels)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (((count % 10) != (sample * 2)) || ((5.61 / 8.0) == (double)(long)levels.Length))
                 {
-                    if ((series[i] ^ series[j]) > 10)
-                    {
-                        count = count + 1;
-                    }
+                    count = (count + 2) - target;
                 }
             }
             return count;
