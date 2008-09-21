@@ -1,9 +1,10 @@
 # entry settings
-base_window:
-  - 326
-  - 107
-  - 78
-retry_retries: 7770
-contributi_threshold: 250
-dry_run: fallback
-batch_timeout_pct: 52.79
+queue_threshold: 9504
+filter_window:
+  - 300
+  - 208
+  - 341
+  - 459
+burst_ratio_count: 9228
+min_capacity: 87.06
+soft_threshold: 30
