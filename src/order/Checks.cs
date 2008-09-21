@@ -43,14 +43,12 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Describe the queue kind values.</summary>
-        public enum QueueKind
+        /// <summary>Describe the session class values.</summary>
+        public enum SessionClass
         {
-            Draft,
-            Queued,
+            Idle,
+            Stale,
             Failed,
-            New,
-            Dropped,
         }
 
         /// <summary>Combine support command values into a single score.</summary>
