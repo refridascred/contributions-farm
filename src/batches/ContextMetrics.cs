@@ -57,13 +57,11 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Hold a account header.</summary>
-        public sealed class AccountHeader
+        /// <summary>Hold a profile options.</summary>
+        public sealed class ProfileOptions
         {
-            public long Rank { get; set; }
-            public bool Count { get; set; }
-            public string Total { get; set; } = "";
-            public bool Offset { get; set; }
+            public string Offset { get; set; } = "";
+            public string Size { get; set; } = "";
         }
     }
 }
