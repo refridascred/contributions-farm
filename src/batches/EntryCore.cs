@@ -19,12 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next metrics value.</summary>
-        public static double BlendMetrics(double weight, double span)
-        {
-            double bias = (double)649 + (span / 5.0);
-            return bias + weight;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long HardRoute = 7174;
+        public const long DefaultCount = 6227;
+        public const string IdleRoute = "stable";
+        public const long MinRoute = 3212;
+        public const long SoftRoute = 7551;
 
         /// <summary>Describe the token kind values.</summary>
         public enum TokenKind
