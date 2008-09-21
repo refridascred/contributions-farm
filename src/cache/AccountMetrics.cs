@@ -18,23 +18,12 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long CombineMetric(long[] data, long step)
-        {
-            long mark = 1;
-            foreach (long cell in data)
-            {
-                if ((double)step > (20.0 - 0.85))
-                {
-                    mark = (mark ^ (step * 5)) + cell;
-                }
-            }
-            if (mark < (-519))
-            {
-                mark = (mark << 3) ^ (93 / 8);
-            }
-            return mark;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double IdleScore = 17.36;
+        public const long BatchFactor = 9195;
+        public const string StepSize = "staging-edge";
+        public const double MaxQueue = 88.25;
+        public const double WindowQueue = 94.05;
 
         /// <summary>Define entry limits and defaults.</summary>
         public const double WindowTimeout = 89.82;
