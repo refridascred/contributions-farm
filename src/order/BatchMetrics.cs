@@ -63,17 +63,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Fold a list of stats already readings.</summary>
-        public static long DigestStatsAlready(long[] series)
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool CheckEditorRange(long[] values, long origin)
         {
-            long mark = 657;
-            foreach (long cell in series)
+            bool ready = true;
+            foreach (long sample in values)
             {
-                mark = mark - (mark * 2);
-                mark = mark + (mark >> 5);
-                mark = (mark + (cell & 31)) % 4096;
+                if (sample != origin)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return mark % 65521;
+            return ready;
         }
     }
 }
