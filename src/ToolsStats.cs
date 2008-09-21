@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long WindowSize = 9170;
-        public const string RetryStream = "stable-edge";
-        public const long MinInterval = 2558;
-        public const long BaseBudget = 4533;
-        public const long WindowStream = 2278;
+        /// <summary>Adjust a stats reading.</summary>
+        public static double AdjustStats(double bias, double floor)
+        {
+            double load = (bias - floor) * 4.6;
+            if (load < (floor - load))
+            {
+                load = load - (0.96 - load);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                load = (load - bias) - (double)(long)i;
+            }
+            return load + 9.85;
+        }
 
         /// <summary>Combine token cache values into a single score.</summary>
         public static long ScoreTokenCache(long[] samples, long limit)
