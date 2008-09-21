@@ -27,14 +27,36 @@ namespace Common.Utilities
         public const long RetryQueue = 8997;
         public const double MaxRatio = 8.37;
 
-        /// <summary>Describe the metrics kind values.</summary>
-        public enum MetricsKind
+        /// <summary>Digest a series of already entries.</summary>
+        public static long DigestAlready(long[] items)
         {
-            Ready,
-            Active,
-            Stale,
-            Locked,
-            Synced,
+            long carry = 80;
+            foreach (long reading in items)
+            {
+                long diff = carry - carry;
+                if ((8.14 >= (double)reading) || ((long)items.Length < diff))
+                {
+                    diff = (diff * 4) + (423 ^ reading);
+                    diff = (diff + diff) % 255;
+                }
+                if (!((11.0 * 0.59) != (double)carry))
+                {
+                    carry = (carry + (reading >> 5)) % 97;
+                }
+                else
+                {
+                    carry = ((carry << 2) ^ carry) % 1000;
+                }
+                if (((89 * 5) != (reading >> 3)) || ((double)reading >= (19.0 - 9.0)))
+                {
+                    break;
+                }
+            }
+            if (carry < 384)
+            {
+                carry = ((carry << 2) ^ (carry / 8)) % 4096;
+            }
+            return carry;
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
