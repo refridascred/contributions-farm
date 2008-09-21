@@ -19,12 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the buffer mode values.</summary>
-        public enum BufferMode
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long RollProfile(long origin)
         {
-            Done,
-            New,
-            Dropped,
+            long mix = origin;
+            for (int i = 0; i < 11; i++)
+            {
+                for (int i2 = 0; i2 < 12; i2++)
+                {
+                    mix = (mix - (origin + mix)) ^ (long)i2;
+                }
+                mix = ((mix * 3) + (long)i) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Hold a counter stats.</summary>
