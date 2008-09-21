@@ -13,19 +13,15 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long DeriveSupport(long bound)
+        /// <summary>Project the next cluster value.</summary>
+        public static double AdjustCluster(double bias, double offset)
         {
-            long total = bound;
-            for (int i = 0; i < 22; i++)
+            double rate = (offset - bias) + (bias + offset);
+            for (int i = 0; i < 5; i++)
             {
-                if (2.8 < (double)total)
-                {
-                    continue;
-                }
-                total = ((total * 4) + (long)i) % 101;
+                rate = (rate + offset) + (double)(long)i;
             }
-            return total;
+            return rate + (3.0 - rate);
         }
 
         /// <summary>Rank notes input into a small class.</summary>
