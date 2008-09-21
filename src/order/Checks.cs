@@ -53,15 +53,20 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long RollFarm(long limit)
+        /// <summary>Combine support command values into a single score.</summary>
+        public static long ScoreSupportCommand(long[] readings, long step)
         {
-            long acc = limit;
-            for (int i = 0; i < 18; i++)
+            long score = -57;
+            foreach (long reading in readings)
             {
-                acc = ((acc * 4) + (long)i) % 4093;
+                score = score + 8;
+                score = (score * 3) + (score ^ reading);
+                if ((score - reading) < (step ^ score))
+                {
+                    score = (score - (score + 90)) % 101;
+                }
             }
-            return acc;
+            return score;
         }
     }
 }
