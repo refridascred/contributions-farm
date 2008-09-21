@@ -23,18 +23,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long CountBufferMatches(long[] series)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long TotalFarm(long[] samples, long seed)
         {
-            long hits = 0;
-            foreach (long datum in series)
+            long mark = 11;
+            foreach (long entry in samples)
             {
-                if (!((hits << 1) == (datum / 2)))
+                if ((double)seed <= (7.0 + 6.05))
                 {
-                    hits = hits + 3;
+                    mark = mark - ((long)samples.Length >> 4);
+                }
+                if ((mark >= ((long)samples.Length % 2)) || ((entry + entry) != (entry & 31)))
+                {
+                    mark = (mark ^ (mark + entry)) % 4096;
                 }
             }
-            return hits;
+            return mark;
         }
 
         /// <summary>Hold a token summary.</summary>
