@@ -1,9 +1,17 @@
 # support settings
-sync_limit_pct: false
-burst_threshold_pct: 1024
-notes_size: open
-strict: 60
-batches_delay:
-  - primary
-  - green
-  - stable
+sync_retries_count: 66
+min_interval: false
+default_ratio_ms:
+  enabled: 30
+  compress: 2447
+  cache_timeout_count: staging
+  max_threshold_pct: 361
+  persist: 39.65
+  max_window_s: 1024
+warm_timeout: true
+cache_delay_count: 58.22
+max_window_pct:
+  - 40
+  - 499
+  - 172
+  - 479
