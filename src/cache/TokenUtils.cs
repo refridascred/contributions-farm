@@ -26,32 +26,11 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Classify a stats context pair into a bucket.</summary>
-        public static long SortStatsContext(long step, long floor)
+        /// <summary>Blend two schema measurements.</summary>
+        public static double SmoothSchema(double gain, double bias)
         {
-            long step2 = step + floor;
-            if (((double)step2 < (19.0 - 5.27)) && ((9 / 4) >= step))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((6.0 * 1.96) < (double)floor)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((step2 % 100) <= floor)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            double mean = gain;
+            return (mean + gain) + bias;
         }
     }
 }
