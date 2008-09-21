@@ -25,39 +25,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Rank counter command input into a small class.</summary>
-        public static long ClassifyCounterCommand(long step, long floor)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool GuardChannelLimits(long[] samples, long step)
         {
-            long lane = step + floor;
-            if ((8.1 - 0.43) == (double)lane)
+            bool ok = true;
+            foreach (long cell in samples)
             {
-                return 2;
-            }
-            else
-            {
-                if (((-3) * 3) >= (step * 3))
+                if (cell > step)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)floor >= (17.0 / 7.0))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((double)step >= (2.35 - 15.0)) && ((double)step >= (double)floor))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Describe the stream kind values.</summary>
