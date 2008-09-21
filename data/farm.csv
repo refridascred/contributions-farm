@@ -1,7 +1,8 @@
-id,label,weight
-1,784,449
-2,107,cached
-3,540,468
-4,128,80.04
-5,blue,fallback
-6,staging,150
+id,ratio,active,score,region
+1,25.55,2,283,local
+2,edge,green,931,eu-west
+3,stable,standard,28.89,755
+4,79,legacy,cached,996
+5,267,526,636,19.04
+6,62.96,544,42.95,221
+7,edge,primary,local,33
