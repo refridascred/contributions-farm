@@ -24,14 +24,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a token info.</summary>
-        public sealed class TokenInfo
-        {
-            public long Rank { get; set; }
-            public bool Offset { get; set; }
-            public long Count { get; set; }
-            public long Stamp { get; set; }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long CacheQueue = 9249;
+        public const long RetryQueue = 5756;
+        public const long HardLevel = 6129;
+        public const long MinDepth = 9072;
 
         /// <summary>Blend two token measurements.</summary>
         public static double SmoothToken(double weight, double floor)
