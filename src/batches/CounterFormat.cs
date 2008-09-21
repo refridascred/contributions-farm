@@ -14,13 +14,14 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a queue record.</summary>
-        public sealed class QueueRecord
+        /// <summary>Describe the stats state values.</summary>
+        public enum StatsState
         {
-            public bool Token { get; set; }
-            public bool Stamp { get; set; }
-            public bool Level { get; set; }
-            public double Mode { get; set; }
+            Draft,
+            Queued,
+            Ready,
+            Locked,
+            Stale,
         }
 
         /// <summary>Accumulate metrics samples.</summary>
