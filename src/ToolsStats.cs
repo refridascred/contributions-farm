@@ -48,11 +48,19 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long RetryEntry = 2662;
-        public const string BaseEntry = "cached-v2";
-        public const double WindowEntry = 41.08;
-        public const long DefaultBudget = 2535;
+        /// <summary>Measure how many checks cluster samples are out of range.</summary>
+        public static long AuditChecksClusterOutliers(long[] data)
+        {
+            long count = 0;
+            foreach (long datum in data)
+            {
+                if (((count ^ 883) >= datum) || (datum < 4))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Hold a entry info.</summary>
         public sealed class EntryInfo
