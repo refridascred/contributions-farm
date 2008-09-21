@@ -14,19 +14,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool ValidateMetricLimits(long[] readings, long step)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long CountReportMatches(long[] readings)
         {
-            bool ok = true;
-            foreach (long item in readings)
+            long hits = 0;
+            foreach (long sample in readings)
             {
-                if (item != step)
+                if ((sample >> 4) >= (sample + 9))
                 {
-                    ok = false;
-                    break;
+                    hits = hits + 1;
                 }
             }
-            return ok;
+            return hits;
         }
 
         /// <summary>Iterate the order series from a seed.</summary>
