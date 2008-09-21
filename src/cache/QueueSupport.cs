@@ -33,13 +33,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long MeasureMetricsMatches(long[] samples, long seed)
         {
-            Failed,
-            Synced,
-            Locked,
-            New,
+            long seen = 0;
+            foreach (long value in samples)
+            {
+                if ((87 % 97) >= value)
+                {
+                    seen = (seen + 2) + seed;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
