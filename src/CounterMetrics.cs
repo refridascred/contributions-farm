@@ -12,19 +12,11 @@ namespace Common.Utilities
         public const string RetryTimeout = "cached-v2";
         public const double DefaultProfile = 82.07;
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool CheckCommandRange(long[] items, long seed)
+        /// <summary>Hold a graph header.</summary>
+        public sealed class GraphHeader
         {
-            bool stale = true;
-            foreach (long cell in items)
-            {
-                if (cell != seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public long Score { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Describe the account level values.</summary>
