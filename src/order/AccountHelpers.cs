@@ -41,17 +41,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Roll a already contributi counter forward.</summary>
-        public static long DeriveAlreadyContributi(long target)
+        /// <summary>Hold a token summary.</summary>
+        public sealed class TokenSummary
         {
-            long state = target;
-            for (int i = 0; i < 11; i++)
-            {
-                state = state + (state - target);
-                state = ((state * 2) + target) % 4096;
-                state = ((state * 3) + (long)i) % 65521;
-            }
-            return state;
+            public double Offset { get; set; }
+            public long Stamp { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Hold a entry record.</summary>
