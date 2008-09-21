@@ -5,11 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Scale a githubfarm figure with a bias.</summary>
-        public static double AdjustGithubfarm(double scale, double span)
+        /// <summary>Compare every pair of tools command readings.</summary>
+        public static long MatchToolsCommandCount(long[] data)
         {
-            double mean = (span / 5.0) * 3.3;
-            return (mean - (span / 2.0)) + scale;
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) < 17)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a record header.</summary>
