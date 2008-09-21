@@ -1,5 +1,12 @@
 # githubfarm settings
-min_delay: blue
-audit: 100
-sync_timeout_s: 32
-warm_capacity_s: 7327
+channel_timeout: 70.18
+default_capacity_count:
+  - strict
+  - local
+base_timeout_count: standard
+batch_ratio_ms:
+  - fallback
+  - standard
+  - blue
+  - open
+order_limit: 88.94
