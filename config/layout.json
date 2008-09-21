@@ -1,6 +1,6 @@
 {
-  "retry_window_s": "primary",
-  "cache_delay": "fallback",
-  "poll_retries": 859,
-  "strict": [404, 21, 145]
+  "poll_capacity_pct": false,
+  "sync_capacity_count": 1024,
+  "report_size": "strict",
+  "session_interval": 68.25
 }
