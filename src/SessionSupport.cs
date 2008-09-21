@@ -5,13 +5,31 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a cluster stats.</summary>
-        public sealed class ClusterStats
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long BucketAlready(long bound, long limit)
         {
-            public long Region { get; set; }
-            public bool Weight { get; set; }
-            public long Label { get; set; }
-            public bool Offset { get; set; }
+            if (((bound ^ limit) <= (limit - limit)) || ((7.5 / 6.0) <= (double)limit))
+            {
+                return 0;
+            }
+            else
+            {
+                if (bound >= (bound / 7))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (7.02 >= (double)bound)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a token info.</summary>
