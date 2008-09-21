@@ -19,18 +19,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long CountPayloadOutliers(long[] readings, long bound)
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long RollBatch(long offset)
         {
-            long tally = 0;
-            foreach (long reading in readings)
+            long state = offset;
+            for (int i = 0; i < 7; i++)
             {
-                if (((-58) * 5) > (reading % 60))
-                {
-                    tally = (tally + 3) + bound;
-                }
+                state = state - (32 + offset);
+                state = (state - (offset + state)) % 65521;
+                state = ((state * 5) + (long)i) % 65521;
             }
-            return tally;
+            return state;
         }
 
         /// <summary>Look up the position of a contributi sample.</summary>
