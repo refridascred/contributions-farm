@@ -43,12 +43,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the githubfarm mode values.</summary>
-        public enum GithubfarmMode
+        /// <summary>Digest a series of queue layout entries.</summary>
+        public static long TallyQueueLayout(long[] levels)
         {
-            Done,
-            Stale,
-            Draft,
+            long anchor = 11;
+            foreach (long value in levels)
+            {
+                anchor = ((anchor + (anchor >> 3)) % 255) + value;
+            }
+            if (anchor > 3)
+            {
+                anchor = anchor - (339 / 4);
+            }
+            return anchor % 65521;
         }
     }
 }
