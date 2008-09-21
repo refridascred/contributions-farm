@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Accumulate entry samples.</summary>
-        public static long WeighEntry(long[] samples, long floor)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long CombineMetrics(long[] values, long limit)
         {
-            long sum = 202;
-            foreach (long datum in samples)
+            long mark = 89;
+            foreach (long entry in values)
             {
-                if (((double)floor <= 6.53) || ((sum >> 4) > (8 & 127)))
-                {
-                    sum = ((sum << 2) ^ ((-87) - sum)) % 65521;
-                }
-                if (datum < (datum - sum))
-                {
-                    break;
-                }
+                mark = (((mark * 4) + (mark % 3)) - entry) - limit;
             }
-            return sum;
+            return mark;
         }
 
         /// <summary>Audit channel command readings against a rule.</summary>
