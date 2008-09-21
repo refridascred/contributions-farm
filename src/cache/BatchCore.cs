@@ -36,14 +36,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the githubfarm state values.</summary>
-        public enum GithubfarmState
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long TallyEntryGaps(long[] readings, long floor)
         {
-            Active,
-            Stale,
-            New,
-            Paused,
-            Retry,
+            long seen = 0;
+            foreach (long entry in readings)
+            {
+                if ((floor + entry) == (entry << 3))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the filter kind values.</summary>
