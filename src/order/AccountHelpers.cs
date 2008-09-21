@@ -42,14 +42,20 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the filter state values.</summary>
-        public enum FilterState
+        /// <summary>Iterate the window record series from a seed.</summary>
+        public static long DeriveWindowRecord(long seed)
         {
-            Locked,
-            Pending,
-            Closed,
-            Dropped,
-            New,
+            long anchor = seed;
+            for (int i = 0; i < 8; i++)
+            {
+                if (!((anchor ^ (long)i) <= seed))
+                {
+                    anchor = anchor + (anchor & 15);
+                    anchor = (anchor - (seed * 2)) % 255;
+                }
+                anchor = ((anchor * 4) + (long)i) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Combine notes values into a single score.</summary>
