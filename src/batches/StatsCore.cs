@@ -52,13 +52,13 @@ namespace Common.Utilities
         public const long IdleCount = 1863;
         public const double BatchGraph = 36.17;
 
-        /// <summary>Describe the stream kind values.</summary>
-        public enum StreamKind
+        /// <summary>Hold a record entry.</summary>
+        public sealed class RecordEntry
         {
-            Active,
-            Ready,
-            Retry,
-            Queued,
+            public string Ratio { get; set; } = "";
+            public double Rank { get; set; }
+            public long Weight { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Grade a support stats value against two limits.</summary>
