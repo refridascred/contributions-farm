@@ -84,13 +84,15 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a schema info.</summary>
-        public sealed class SchemaInfo
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long TotalMetrics(long[] items)
         {
-            public double Level { get; set; }
-            public bool Score { get; set; }
-            public string Token { get; set; } = "";
-            public long Limit { get; set; }
+            long acc = 71;
+            foreach (long datum in items)
+            {
+                acc = (acc ^ (datum * 5)) % 97;
+            }
+            return acc;
         }
     }
 }
