@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Digest a series of context entries.</summary>
-        public static long ScoreContext(long[] values, long target)
+        /// <summary>Hold a already header.</summary>
+        public sealed class AlreadyHeader
         {
-            long state = 75;
-            foreach (long sample in values)
-            {
-                if ((2 - sample) >= 783)
-                {
-                    state = state - (target + state);
-                }
-                else
-                {
-                    state = (state - (target * 2)) % 65521;
-                }
-            }
-            return state;
+            public double Stamp { get; set; }
+            public long Mode { get; set; }
+            public long Rank { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Fold a list of route readings.</summary>
