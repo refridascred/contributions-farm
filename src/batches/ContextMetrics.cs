@@ -5,21 +5,14 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Count cache pairs that satisfy a relation.</summary>
-        public static long OverlapCacheCount(long[] readings)
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) > 8)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Ready,
+            Draft,
+            New,
+            Retry,
+            Pending,
         }
 
         /// <summary>Hold a batch snapshot.</summary>
