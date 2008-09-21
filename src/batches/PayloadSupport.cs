@@ -20,18 +20,10 @@ namespace Common.Utilities
         public const long BurstBudget = 2598;
         public const long DefaultFarm = 4545;
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long TotalMetric(long[] values, long seed)
-        {
-            long mix = 499;
-            foreach (long entry in values)
-            {
-                if ((double)entry <= (18.0 + 13.0))
-                {
-                    mix = mix ^ seed;
-                }
-            }
-            return mix % 1000;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long DefaultTimeout = 8005;
+        public const double HardRoute = 76.82;
+        public const long BatchSpan = 638;
+        public const string LimitInterval = "primary-1";
     }
 }
