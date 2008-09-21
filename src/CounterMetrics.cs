@@ -14,10 +14,20 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double MaxRatio = 82.68;
-        public const long CachePayload = 5209;
-        public const double LimitLevel = 36.71;
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool CheckGithubfarmLimits(long[] samples, long seed)
+        {
+            bool valid = true;
+            foreach (long entry in samples)
+            {
+                if (entry > seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Describe the account level values.</summary>
         public enum AccountLevel
