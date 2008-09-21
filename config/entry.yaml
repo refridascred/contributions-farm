@@ -1,21 +1,5 @@
 # entry settings
-contributi_retries: 250
-persist: strict
-report_size: local
-audit: cached
-max_delay: 42
-metric_interval:
-  token_timeout:
-    sync_ttl_s: open
-    max_delay: 94
-    audit:
-      - eu-west
-      - standard
-    max_ratio_ms: eu-west
-  audit: 74
-  burst_capacity_ms:
-    - 233
-    - 201
-    - 220
-    - 147
-  min_limit_pct: 60
+payload_timeout: 5615
+route_window: 100
+already_window: 95.58
+audit: latest
