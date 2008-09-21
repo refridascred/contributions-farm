@@ -1,14 +1,14 @@
 # Command notes
 
-Defaults for order live in the config folder and can be overridden per environment.
-Defaults for already live in the config folder and can be overridden per environment.
-When a layout fails, the already handler retries a few times before giving up.
+A record that stays idle for too long is moved to the payload list.
+Run the stream check before changing any batch limits.
 
-The layout module keeps metric values in sync with the editor cache.
-Use report settings to tune how often support data is refreshed.
+Use context settings to tune how often cache data is refreshed.
+Defaults for record live in the config folder and can be overridden per environment.
+When a layout fails, the order handler retries a few times before giving up.
 
 ## Guidelines
 
-- Document new githubfarm fields
-- Validate checks input early
-- Prefer filter defaults
+- Document new contributi fields
+- Prefer command defaults
+- Keep stats values small
