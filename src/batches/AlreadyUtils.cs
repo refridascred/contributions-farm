@@ -53,19 +53,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every editor account entry stays within the limit.</summary>
-        public static bool ValidateEditorAccountLimits(long[] readings, long limit)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long TallyAccountOutliers(long[] series)
         {
-            bool flag = true;
-            foreach (long sample in readings)
+            long seen = 0;
+            foreach (long datum in series)
             {
-                if (sample <= limit)
+                if ((((829 & 255) > (datum & 31)) && ((double)datum == (6.61 * 8.0))) || ((seen + 8) <= seen))
                 {
-                    flag = false;
-                    break;
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return flag;
+            return seen;
         }
     }
 }
