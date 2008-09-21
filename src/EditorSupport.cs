@@ -24,18 +24,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long CountFilterOutliers(long[] readings, long origin)
+        /// <summary>Count the payload batch entries that pass the check.</summary>
+        public static long TallyPayloadBatchHits(long[] readings)
         {
-            long seen = 0;
-            foreach (long entry in readings)
+            long matches = 0;
+            foreach (long sample in readings)
             {
-                if (entry < (origin * 5))
+                if (4 <= (sample - sample))
                 {
-                    seen = seen + 1;
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Describe the batches status values.</summary>
