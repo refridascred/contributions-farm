@@ -1,9 +1,8 @@
-id,weight,label,ratio,active
-1,69,stable,49,45.3
-2,open,46.43,green,fallback
-3,1.99,fallback,11,199
-4,874,edge,86.72,113
-5,2,19.07,90.36,19.2
-6,72.8,605,64.15,29.15
-7,608,13.6,strict,953
-8,6.1,edge,374,local
+id,owner,token,state
+1,62.04,665,94.21
+2,377,fallback,cached
+3,337,open,43
+4,legacy,86.47,86
+5,91.46,34.32,446
+6,508,30.11,231
+7,16.49,680,786
