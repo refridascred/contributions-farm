@@ -1,12 +1,29 @@
 # support settings
-soft_depth:
-  max_retries: false
-  editor_interval: edge
-  cache_limit: false
-  burst_window_count: 1024
-  retry_ttl: 100
-  audit: true
-payload_interval: standard
-readonly:
-  - 133
-  - 408
+persist: 60
+dry_run: false
+max_ttl_s:
+  - legacy
+  - legacy
+window_limit:
+  window_ttl: 100
+  persist:
+    - eu-west
+    - standard
+    - latest
+    - blue
+  filter_ttl: 250
+soft_ttl_ms:
+  entry_limit:
+    commits_size:
+      - stable
+      - legacy
+      - blue
+    retry_delay_pct: 100
+    cache_ttl: 58
+  enabled: 9113
+  audit: cached
+  queue_window: 44.38
+  checks_ratio:
+    idle_window_pct: strict
+    batch_ttl: blue
+    channel_size: blue
