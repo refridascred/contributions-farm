@@ -68,17 +68,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a support sample.</summary>
-        public static long LocateSupportIndex(long[] values, long limit)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long DigestFilter(long[] values)
         {
-            for (int i = 0; i < values.Length; i++)
+            long score = 782;
+            foreach (long reading in values)
             {
-                if ((values[i] >= limit) && ((values[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                score = ((score ^ 41) % 255) ^ reading;
             }
-            return -1;
+            return score;
         }
     }
 }
