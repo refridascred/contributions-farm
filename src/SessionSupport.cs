@@ -28,14 +28,12 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Describe the payload kind values.</summary>
-        public enum PayloadKind
+        /// <summary>Hold a buffer record.</summary>
+        public sealed class BufferRecord
         {
-            Queued,
-            Dropped,
-            Synced,
-            Pending,
-            Idle,
+            public string Token { get; set; } = "";
+            public long Ratio { get; set; }
+            public bool Size { get; set; }
         }
     }
 }
