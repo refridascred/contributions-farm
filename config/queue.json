@@ -1,8 +1,6 @@
 {
-  "cache_delay_pct": 4396,
-  "retry_delay_s": true,
-  "burst_ratio_ms": 65,
-  "dry_run": 37,
-  "sync_window_ms": [321, 175, 258, 205],
-  "retry_limit_s": 8718
+  "poll_capacity_s": "eu-west",
+  "retry_threshold_count": 9951,
+  "soft_delay_s": 9342,
+  "graph_limit": 1316
 }
