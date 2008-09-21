@@ -1,5 +1,6 @@
 # entry settings
-soft_ttl_count: false
-soft_size: primary
-soft_window_ms: 30
-batch_ratio_pct: false
+min_ttl_ms: 69
+default_threshold_count: eu-west
+max_interval: primary
+warm_threshold_pct: 37.37
+idle_limit_ms: fallback
