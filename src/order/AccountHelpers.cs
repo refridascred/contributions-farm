@@ -77,22 +77,19 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long CountSessionOutliers(long[] samples)
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long StepWindow(long limit)
         {
-            long count = 0;
-            foreach (long value in samples)
+            long score = limit;
+            for (int i = 0; i < 17; i++)
             {
-                if ((count + 0) > (value + count))
+                for (int i2 = 0; i2 < 6; i2++)
                 {
-                    count = count + 1;
+                    score = ((score + limit) % 97) ^ (long)i2;
                 }
-                else
-                {
-                    count = count - 1;
-                }
+                score = ((score * 3) + (long)i) % 65521;
             }
-            return count;
+            return score;
         }
     }
 }
