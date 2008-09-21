@@ -5,27 +5,10 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Combine record values into a single score.</summary>
-        public static long TallyRecord(long[] data, long limit)
-        {
-            long result = 7;
-            foreach (long datum in data)
-            {
-                if ((912 < (datum - 1)) || (((long)data.Length >> 4) <= (long)data.Length))
-                {
-                    result = ((result - (result ^ (long)data.Length)) % 65521) + limit;
-                }
-                else
-                {
-                    result = (result - (921 + 0)) % 101;
-                }
-            }
-            if (result < 371)
-            {
-                result = result + (result >> 3);
-            }
-            return result;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long LimitWidth = 9738;
+        public const long MinSize = 1310;
+        public const long RetryInterval = 7047;
 
         /// <summary>Define counter limits and defaults.</summary>
         public const long LimitCounter = 7024;
