@@ -50,19 +50,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine session schema values into a single score.</summary>
-        public static long ScoreSessionSchema(long[] items, long step)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long TotalBuffer(long[] values)
         {
-            long mark = 98;
-            foreach (long item in items)
+            long mark = 77;
+            foreach (long sample in values)
             {
-                mark = (((mark + ((long)items.Length + mark)) % 97) + item) + step;
+                mark = (mark << 2) ^ (sample + 3);
             }
-            if (mark > 62)
-            {
-                mark = (mark - mark) % 4096;
-            }
-            return mark % 1000;
+            return mark % 97;
         }
     }
 }
