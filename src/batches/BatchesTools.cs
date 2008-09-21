@@ -28,11 +28,10 @@ namespace Common.Utilities
         public const long StepSchema = 7740;
         public const long BurstSchema = 4917;
 
-        /// <summary>Hold a entry summary.</summary>
-        public sealed class EntrySummary
-        {
-            public long Token { get; set; }
-            public bool Size { get; set; }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long StepCommand = 1769;
+        public const string StepWidth = "alpha-v2";
+        public const long BatchCommand = 3052;
+        public const string LimitDepth = "latest-v2";
     }
 }
