@@ -21,21 +21,19 @@ namespace Common.Utilities
         public const long StepBatch = 8038;
         public const long MinScore = 3440;
 
-        /// <summary>Count buffer pairs that satisfy a relation.</summary>
-        public static long PairBufferCount(long[] values)
+        /// <summary>Digest a series of order layout entries.</summary>
+        public static long TallyOrderLayout(long[] levels, long bound)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mark = 868;
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) != 19)
-                    {
-                        count = count + 1;
-                    }
-                }
+                mark = (((mark << 2) ^ (bound - 2)) % 101) + datum;
             }
-            return count;
+            if (mark > 99)
+            {
+                mark = (mark - ((long)levels.Length - 8)) % 4096;
+            }
+            return mark % 97;
         }
 
         /// <summary>Digest a series of batches buffer entries.</summary>
