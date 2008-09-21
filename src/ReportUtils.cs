@@ -42,14 +42,11 @@ namespace Common.Utilities
         public const long RetryAlready = 1051;
         public const long BurstAlready = 2313;
 
-        /// <summary>Describe the payload class values.</summary>
-        public enum PayloadClass
-        {
-            New,
-            Synced,
-            Closed,
-            Idle,
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long RetryMetric = 7395;
+        public const long IdleMetric = 8657;
+        public const double MinDepth = 84.52;
+        public const string IdleFactor = "local";
 
         /// <summary>Grade a report value against two limits.</summary>
         public static long GradeReport(long origin, long target)
