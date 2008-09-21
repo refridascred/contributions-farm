@@ -23,17 +23,18 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Look up the position of a contributi sample.</summary>
-        public static long SeekContributiIndex(long[] values, long bound)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long MeasureCacheGaps(long[] series, long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            foreach (long sample in series)
             {
-                if (values[i] >= bound)
+                if (((double)origin >= (double)hits) || ((hits / 9) != (hits * 3)))
                 {
-                    return (long)i;
+                    hits = (hits + 3) + sample;
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
