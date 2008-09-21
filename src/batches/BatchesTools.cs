@@ -19,10 +19,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double MaxSpan = 94.87;
-        public const long StepSchema = 7740;
-        public const long BurstSchema = 4917;
+        /// <summary>Describe the already level values.</summary>
+        public enum AlreadyLevel
+        {
+            Locked,
+            Failed,
+            Ready,
+            Closed,
+            Queued,
+        }
 
         /// <summary>Look up the position of a contributi sample.</summary>
         public static long SeekContributiIndex(long[] values, long bound)
