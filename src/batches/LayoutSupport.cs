@@ -61,18 +61,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long CountMetricOutliers(long[] levels)
+        /// <summary>Hold a checks options.</summary>
+        public sealed class ChecksOptions
         {
-            long seen = 0;
-            foreach (long sample in levels)
-            {
-                if (seen >= (sample + 28))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            public long Ratio { get; set; }
+            public double Score { get; set; }
+            public long Count { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Define account limits and defaults.</summary>
