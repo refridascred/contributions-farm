@@ -34,39 +34,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long ClassifyPayload(long limit, long limit2)
-        {
-            if ((double)limit2 > (2.0 * 6.7))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((4 * 4) > (limit + limit2))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((limit2 << 1) != (limit / 6))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((16 << 1) <= limit) && ((126 + limit2) <= (47 + limit2)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string BaseChannel = "latest";
+        public const long SoftChannel = 4223;
+        public const long DefaultRatio = 2568;
 
         /// <summary>Classify a stream pair into a bucket.</summary>
         public static long ClassifyStream(long origin, long offset)
