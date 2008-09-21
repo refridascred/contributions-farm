@@ -24,22 +24,12 @@ namespace Common.Utilities
         public const long MinInterval = 7640;
         public const long BatchMetric = 9755;
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long CombineGraph(long[] series, long limit)
+        /// <summary>Hold a checks header.</summary>
+        public sealed class ChecksHeader
         {
-            long mix = 77;
-            foreach (long datum in series)
-            {
-                if ((double)datum >= (5.13 / 9.0))
-                {
-                    mix = ((mix * 4) + (limit + datum)) % 101;
-                }
-                else
-                {
-                    mix = (mix + mix) % 97;
-                }
-            }
-            return mix;
+            public double Region { get; set; }
+            public double Stamp { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Roll a graph counter forward.</summary>
