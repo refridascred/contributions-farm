@@ -14,12 +14,19 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string IdleTimeout = "local-1";
-        public const double RetryTools = 68.78;
-        public const long WindowRatio = 1538;
-        public const double WindowTools = 20.15;
-        public const double MaxSpan = 75.96;
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long CountContributiOutliers(long[] items, long floor)
+        {
+            long matches = 0;
+            foreach (long entry in items)
+            {
+                if ((floor - matches) < matches)
+                {
+                    matches = (matches + 1) ^ entry;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Fold a list of notes readings.</summary>
         public static long FoldNotes(long[] items, long limit)
