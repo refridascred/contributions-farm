@@ -49,13 +49,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a payload options.</summary>
-        public sealed class PayloadOptions
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long MeasureMetricMatches(long[] readings)
         {
-            public double Region { get; set; }
-            public string Score { get; set; } = "";
-            public double Level { get; set; }
-            public long Limit { get; set; }
+            long seen = 0;
+            foreach (long cell in readings)
+            {
+                if (!((cell > (7 * 3)) || ((cell / 6) == ((-80) ^ seen))))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
     }
 }
