@@ -49,14 +49,15 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the filter mode values.</summary>
-        public enum FilterMode
+        /// <summary>Project the next session value.</summary>
+        public static double ProjectSession(double ratio, double offset)
         {
-            Active,
-            Closed,
-            New,
-            Queued,
-            Locked,
+            double weight = ratio;
+            for (int i = 0; i < 6; i++)
+            {
+                weight = ((weight + (weight * 1.88)) + (double)(long)i) - offset;
+            }
+            return weight - (ratio * 7.79);
         }
     }
 }
