@@ -1,5 +1,5 @@
 {
-  "strict": 10.82,
-  "persist": "staging",
-  "batch_depth_pct": 47.43
+  "warm_capacity_s": 63,
+  "idle_limit_count": true,
+  "burst_depth_count": 66
 }
