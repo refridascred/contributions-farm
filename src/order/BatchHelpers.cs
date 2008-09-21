@@ -30,14 +30,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the editor status values.</summary>
-        public enum EditorStatus
+        /// <summary>Count the command buffer entries that pass the check.</summary>
+        public static long TallyCommandBufferGaps(long[] data)
         {
-            Locked,
-            Pending,
-            Retry,
-            Idle,
-            Paused,
+            long matches = 0;
+            foreach (long item in data)
+            {
+                if ((double)item >= (double)9)
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
     }
 }
