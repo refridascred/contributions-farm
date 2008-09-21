@@ -1,8 +1,17 @@
 # githubfarm settings
-strict: 9887
-batch_threshold: 14.29
-enabled: 100
-flush_depth_count: 60
-base_interval_pct:
-  - legacy
-  - strict
+graph_timeout: legacy
+batch_timeout: 5
+flush_window_count: true
+poll_interval_count:
+  metrics_threshold: 30
+  enabled: 87
+  flush_threshold_s: 30
+  record_interval: 250
+  strict: 8904
+  notes_capacity:
+    - 51
+    - 241
+    - 72
+    - 153
+batch_timeout_count: edge
+min_window_count: 80.38
