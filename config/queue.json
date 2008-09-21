@@ -1,7 +1,5 @@
 {
-  "soft_depth_count": "local",
-  "warm_ratio_pct": "staging",
-  "batch_window_count": 24,
-  "min_depth": 84,
-  "verbose": false
+  "batch_window_pct": ["standard", "green", "fallback", "open"],
+  "persist": ["fallback", "eu-west", "latest"],
+  "max_retries_count": 58.81
 }
