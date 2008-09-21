@@ -26,13 +26,11 @@ namespace Common.Utilities
         public const long IdleInterval = 4932;
         public const double WindowScore = 45.85;
 
-        /// <summary>Hold a cache snapshot.</summary>
-        public sealed class CacheSnapshot
+        /// <summary>Hold a tools entry.</summary>
+        public sealed class ToolsEntry
         {
-            public long Flag { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Level { get; set; }
-            public long Score { get; set; }
+            public long Mode { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Describe the token kind values.</summary>
