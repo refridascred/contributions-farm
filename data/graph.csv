@@ -1,6 +1,9 @@
-id,ratio,label,count,token
-1,698,673,93.52,30
-2,eu-west,720,359,184
-3,621,primary,892,77.18
-4,339,603,169,8
-5,cached,73.21,61.07,407
+id,weight,state,rank,level
+1,311,927,889,3.91
+2,46.52,141,staging,staging
+3,local,84.62,45.84,485
+4,76.07,edge,eu-west,926
+5,18.66,4.13,681,legacy
+6,873,legacy,696,962
+7,638,25.03,63.14,legacy
+8,37.67,19.39,482,774
