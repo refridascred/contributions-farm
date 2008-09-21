@@ -31,21 +31,16 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Compare every pair of editor readings.</summary>
-        public static long OverlapEditorCount(long[] series)
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long StepTools(long floor)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long acc = floor;
+            for (int i = 0; i < 17; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) < 12)
-                    {
-                        count = count + 1;
-                    }
-                }
+                acc = ((acc * 4) + (958 & 1)) % 4096;
+                acc = ((acc * 4) + (long)i) % 97;
             }
-            return count;
+            return acc;
         }
 
         /// <summary>Compare every pair of report readings.</summary>
