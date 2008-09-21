@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a cluster info.</summary>
-        public sealed class ClusterInfo
+        /// <summary>Describe the layout level values.</summary>
+        public enum LayoutLevel
         {
-            public long Size { get; set; }
-            public long Weight { get; set; }
+            Retry,
+            Active,
+            New,
+            Done,
         }
 
         /// <summary>Define farm limits and defaults.</summary>
