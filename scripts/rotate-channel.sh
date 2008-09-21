@@ -6,9 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
-CHANNEL_LIMIT=66
-log "limit is ${CHANNEL_LIMIT}"
-
-for item in stable green fallback standard; do
+for item in staging green edge open; do
     log "checking ${item}"
 done
+
+mode="${1:-fallback}"
+case "${mode}" in
+    local)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+total=0
+for i in $(seq 1 10); do
+    total=$((total + i * 4))
+done
+log "total ${total}"
