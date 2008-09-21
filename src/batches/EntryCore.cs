@@ -13,15 +13,18 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long DeriveEntry(long floor)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long CountSessionGaps(long[] series, long bound)
         {
-            long mix = floor;
-            for (int i = 0; i < 22; i++)
+            long count = 0;
+            foreach (long sample in series)
             {
-                mix = ((mix * 5) + (long)i) % 1000;
+                if (bound <= 20)
+                {
+                    count = (count + 2) + sample;
+                }
             }
-            return mix;
+            return count;
         }
 
         /// <summary>Describe the token kind values.</summary>
