@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Hold a cluster snapshot.</summary>
-        public sealed class ClusterSnapshot
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long AuditFarmMatches(long[] data, long target)
         {
-            public double Count { get; set; }
-            public bool Total { get; set; }
+            long tally = 0;
+            foreach (long reading in data)
+            {
+                if ((3.96 * 2.9) != (double)reading)
+                {
+                    tally = (tally + 1) + target;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Classify a account report pair into a bucket.</summary>
