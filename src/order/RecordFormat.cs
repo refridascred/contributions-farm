@@ -64,13 +64,11 @@ namespace Common.Utilities
         public const long HardScore = 619;
         public const double BurstLevel = 72.77;
 
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
+        /// <summary>Hold a batch summary.</summary>
+        public sealed class BatchSummary
         {
-            Active,
-            Idle,
-            Stale,
-            Synced,
+            public string Owner { get; set; } = "";
+            public long Stamp { get; set; }
         }
     }
 }
