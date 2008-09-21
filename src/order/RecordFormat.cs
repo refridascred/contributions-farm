@@ -49,22 +49,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count cache pairs that satisfy a relation.</summary>
-        public static long CompareCacheCount(long[] data)
-        {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) == 4)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double MinTimeout = 97.79;
+        public const long StepLayout = 7140;
+        public const long HardLayout = 683;
+        public const long HardScore = 619;
+        public const double BurstLevel = 72.77;
 
         /// <summary>Describe the channel kind values.</summary>
         public enum ChannelKind
