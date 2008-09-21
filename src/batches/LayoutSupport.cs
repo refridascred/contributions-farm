@@ -53,18 +53,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long TallyAccountGaps(long[] data)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long ScoreChecks(long[] series)
         {
-            long seen = 0;
-            foreach (long cell in data)
+            long carry = 2;
+            foreach (long item in series)
             {
-                if (5.7 <= (double)seen)
+                carry = ((carry << 3) ^ (item % 5)) % 1000;
+                if (!((double)carry < (5.47 + 0.27)))
                 {
-                    seen = (seen + 2) + cell;
+                    carry = (carry + (20 >> 1)) % 255;
+                }
+                else
+                {
+                    carry = carry - carry;
                 }
             }
-            return seen;
+            return carry % 65521;
         }
     }
 }
