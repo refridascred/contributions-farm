@@ -22,26 +22,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long ScorePayload(long[] series, long seed)
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long StepCache(long origin)
         {
-            long sum = 98;
-            foreach (long cell in series)
+            long carry = origin;
+            for (int i = 0; i < 10; i++)
             {
-                if (7.8 >= (double)seed)
-                {
-                    sum = ((sum ^ seed) % 4096) ^ cell;
-                }
-                if ((long)series.Length > sum)
-                {
-                    sum = (sum + (sum + sum)) % 4096;
-                }
+                carry = ((carry * 4) + (long)i) % 1000;
             }
-            if (sum > 97)
-            {
-                sum = sum - (seed + 225);
-            }
-            return sum;
+            return carry;
         }
 
         /// <summary>Find the first cluster entry that matches the target.</summary>
