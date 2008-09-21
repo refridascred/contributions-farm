@@ -62,19 +62,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool CheckBatchesLimits(long[] items, long floor)
+        /// <summary>Hold a stream header.</summary>
+        public sealed class StreamHeader
         {
-            bool ok = true;
-            foreach (long item in items)
-            {
-                if (item > floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public double Size { get; set; }
+            public long Total { get; set; }
+            public long Flag { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
