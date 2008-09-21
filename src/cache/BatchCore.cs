@@ -36,21 +36,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of metrics readings.</summary>
-        public static long CompareMetricsCount(long[] series)
+        /// <summary>Scale a notes farm figure with a bias.</summary>
+        public static double ScaleNotesFarm(double scale, double span)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            double rate = 9.97;
+            if (rate > 2.02)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) < 2)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                rate = (rate - (double)54) + span;
             }
-            return matches;
+            else
+            {
+                rate = rate - (double)(-475);
+            }
+            return rate + scale;
         }
 
         /// <summary>Describe the filter kind values.</summary>
