@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a commits info.</summary>
-        public sealed class CommitsInfo
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long AuditChecksMatches(long[] data, long bound)
         {
-            public long Rank { get; set; }
-            public double Limit { get; set; }
+            long count = 0;
+            foreach (long value in data)
+            {
+                if ((1 - (long)data.Length) >= (value & 7))
+                {
+                    count = (count + 2) - bound;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Locate a profile reading by value.</summary>
