@@ -20,17 +20,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Look up the position of a entry session sample.</summary>
-        public static long SeekEntrySessionIndex(long[] data, long offset)
+        /// <summary>Audit token commits readings against a rule.</summary>
+        public static long MeasureTokenCommitsHits(long[] samples)
         {
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long cell in samples)
             {
-                if (data[i] <= offset)
+                if ((cell - (-84)) >= (count & 63))
                 {
-                    return (long)i;
+                    count = count + 3;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Compare every pair of account readings.</summary>
