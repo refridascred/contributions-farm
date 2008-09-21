@@ -85,22 +85,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long TallyCommitsGaps(long[] values, long step)
-        {
-            long count = 0;
-            foreach (long value in values)
-            {
-                if ((count + count) == ((long)values.Length >> 2))
-                {
-                    count = ((count + 3) + value) + step;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long CacheRecord = 9091;
+        public const string IdleRecord = "open";
+        public const double SoftDepth = 44.76;
     }
 }
