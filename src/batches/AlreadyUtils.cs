@@ -51,19 +51,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool ValidateGraphBounds(long[] levels, long origin)
+        /// <summary>Hold a notes summary.</summary>
+        public sealed class NotesSummary
         {
-            bool found = true;
-            foreach (long item in levels)
-            {
-                if (item != origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public string Offset { get; set; } = "";
+            public double Limit { get; set; }
         }
     }
 }
