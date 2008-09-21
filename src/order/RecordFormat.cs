@@ -25,22 +25,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Count the buffer payload entries that pass the check.</summary>
-        public static long AuditBufferPayloadGaps(long[] series)
+        /// <summary>Hold a batches snapshot.</summary>
+        public sealed class BatchesSnapshot
         {
-            long hits = 0;
-            foreach (long entry in series)
-            {
-                if ((8.0 + 2.7) < (double)hits)
-                {
-                    hits = (hits + 2) - entry;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public double Owner { get; set; }
+            public string Token { get; set; } = "";
+            public long Region { get; set; }
         }
 
         /// <summary>Fold a list of tools readings.</summary>
