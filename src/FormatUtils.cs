@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool CheckSessionRange(long[] samples, long limit)
-        {
-            bool valid = true;
-            foreach (long datum in samples)
-            {
-                if (datum != limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long CacheDepth = 717;
+        public const long MinGithubfarm = 8681;
+        public const long IdleSize = 6025;
+        public const double IdleFactor = 96.77;
+        public const long StepGithubfarm = 7766;
 
         /// <summary>Locate a already reading by value.</summary>
         public static long SeekAlreadyIndex(long[] levels, long bound)
