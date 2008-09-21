@@ -41,21 +41,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up filter samples.</summary>
-        public static long MatchFilterCount(long[] series)
+        /// <summary>Hold a stats summary.</summary>
+        public sealed class StatsSummary
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) < 7)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public bool Size { get; set; }
+            public long Region { get; set; }
         }
     }
 }
