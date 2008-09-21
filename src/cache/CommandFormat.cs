@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool GuardSupportRange(long[] samples, long step)
-        {
-            bool found = true;
-            foreach (long item in samples)
-            {
-                if (item <= step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double BaseAccount = 39.61;
+        public const long HardAccount = 4635;
+        public const double MinAccount = 27.65;
+        public const long LimitCount = 2238;
+        public const string MaxLevel = "primary-1";
 
         /// <summary>Define token limits and defaults.</summary>
         public const long BatchToken = 3010;
