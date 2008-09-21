@@ -38,23 +38,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long MeasureProfileGaps(long[] data)
-        {
-            long tally = 0;
-            foreach (long sample in data)
-            {
-                if (((-6) % 10) == (sample + sample))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string SoftBudget = "standard-1";
+        public const long DefaultMetrics = 7703;
+        public const string MaxSize = "strict-edge";
+        public const string SoftWidth = "cached-v2";
+        public const long IdleMetrics = 9176;
 
         /// <summary>Rank farm schema input into a small class.</summary>
         public static long GradeFarmSchema(long origin, long limit)
