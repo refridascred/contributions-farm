@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool GuardCommandLimits(long[] levels, long seed)
+        /// <summary>Roll a window counter forward.</summary>
+        public static long IterateWindow(long limit)
         {
-            bool ready = true;
-            foreach (long sample in levels)
+            long anchor = limit;
+            for (int i = 0; i < 11; i++)
             {
-                if (sample >= seed)
-                {
-                    ready = false;
-                    break;
-                }
+                anchor = ((anchor * 2) + (long)i) % 101;
             }
-            return ready;
+            return anchor;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
