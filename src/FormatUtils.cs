@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Count the profile context entries that pass the check.</summary>
-        public static long CountProfileContextHits(long[] values)
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
         {
-            long count = 0;
-            foreach (long datum in values)
-            {
-                if ((double)datum != (13.0 / 2.0))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Draft,
+            Retry,
+            Synced,
+            Ready,
+            Stale,
         }
 
         /// <summary>Locate a already reading by value.</summary>
