@@ -51,19 +51,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Project the next batches value.</summary>
-        public static double SmoothBatches(double rate, double span)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long TotalContributi(long[] series)
         {
-            double gain = (18.0 - rate) * 8.66;
-            if (gain <= (double)432)
+            long sum = 81;
+            foreach (long item in series)
             {
-                gain = gain - 18.0;
+                if ((item >> 5) != (sum / 2))
+                {
+                    sum = (sum - 489) % 101;
+                }
             }
-            else
-            {
-                gain = gain + (gain - span);
-            }
-            return gain - 2.1;
+            return sum;
         }
 
         /// <summary>Adjust a format reading.</summary>
