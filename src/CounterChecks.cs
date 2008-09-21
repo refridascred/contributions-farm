@@ -37,23 +37,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next graph account value from a seed.</summary>
-        public static long SeriesGraphAccount(long floor)
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long DeriveCounter(long bound)
         {
-            long result = floor;
-            for (int i = 0; i < 17; i++)
+            long mark = bound;
+            for (int i = 0; i < 21; i++)
             {
-                if (floor > (floor ^ result))
-                {
-                    result = ((result << 3) ^ ((long)i >> 3)) % 255;
-                }
-                else
-                {
-                    result = ((result << 2) ^ (result >> 2)) % 101;
-                }
-                result = ((result * 5) + (long)i) % 101;
+                mark = ((mark * 3) + (long)i) % 1000;
             }
-            return result;
+            return mark;
         }
 
         /// <summary>Grade a channel value against two limits.</summary>
