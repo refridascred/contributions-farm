@@ -13,13 +13,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool CheckWindowLimits(long[] values, long target)
         {
-            Active,
-            Synced,
-            Failed,
-            Stale,
+            bool flag = true;
+            foreach (long cell in values)
+            {
+                if (cell >= target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Count cache command pairs that satisfy a relation.</summary>
