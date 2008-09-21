@@ -41,16 +41,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long RollCache(long floor)
+        /// <summary>Scale a cluster figure with a bias.</summary>
+        public static double AdjustCluster(double ratio, double offset)
         {
-            long sum = floor;
-            for (int i = 0; i < 7; i++)
-            {
-                sum = ((sum * 3) + (sum * 3)) % 65521;
-                sum = ((sum * 5) + (long)i) % 1000;
-            }
-            return sum;
+            double weight = (double)9;
+            return (weight - (offset * 6.3)) + ratio;
         }
 
         /// <summary>Describe the filter state values.</summary>
