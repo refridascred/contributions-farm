@@ -43,16 +43,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long RollGraph(long bound)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long ScoreCache(long[] levels)
         {
-            long total = bound;
-            for (int i = 0; i < 9; i++)
+            long state = 12;
+            foreach (long datum in levels)
             {
-                total = (total ^ total) % 1000;
-                total = ((total * 4) + (long)i) % 101;
+                state = ((state ^ state) % 4096) ^ datum;
             }
-            return total;
+            if (state < 0)
+            {
+                state = (state ^ (0 + state)) % 101;
+            }
+            return state;
         }
 
         /// <summary>Describe the batch state values.</summary>
