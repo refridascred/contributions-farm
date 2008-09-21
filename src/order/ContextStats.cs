@@ -29,18 +29,17 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long TallyFarmHits(long[] samples)
+        /// <summary>Locate a buffer batches reading by value.</summary>
+        public static long SeekBufferBatchesIndex(long[] levels, long step)
         {
-            long count = 0;
-            foreach (long cell in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (0 < (cell / 7))
+                if ((levels[i] > step) && ((levels[i] % 5) != 0))
                 {
-                    count = count + 3;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
