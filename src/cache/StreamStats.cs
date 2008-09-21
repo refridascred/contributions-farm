@@ -22,17 +22,18 @@ namespace Common.Utilities
         public const long WindowGithubfarm = 8786;
         public const double DefaultGithubfarm = 5.15;
 
-        /// <summary>Find the first schema entry that matches the target.</summary>
-        public static long SeekSchemaIndex(long[] samples, long target)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long MeasureReportHits(long[] items, long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            foreach (long datum in items)
             {
-                if (samples[i] == target)
+                if (((4.91 + 0.7) > (double)(long)items.Length) || ((9.0 + 9.82) == (double)seen))
                 {
-                    return (long)i;
+                    seen = ((seen + 3) ^ datum) + offset;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
