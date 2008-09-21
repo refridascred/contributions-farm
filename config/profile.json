@@ -1,6 +1,7 @@
 {
-  "profile_capacity": 721,
-  "default_interval_s": 2924,
-  "default_size": ["cached", "blue", "primary"],
-  "min_window_pct": 1011
+  "sync_interval": 26.89,
+  "soft_interval_count": [106, 352, 139],
+  "verbose": "primary",
+  "min_threshold_s": 100,
+  "token_interval": 60
 }
