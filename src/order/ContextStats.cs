@@ -22,17 +22,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first metric support entry that matches the target.</summary>
-        public static long LookupMetricSupportIndex(long[] levels, long seed)
+        /// <summary>Hold a command record.</summary>
+        public sealed class CommandRecord
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] < seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Mode { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Define payload limits and defaults.</summary>
