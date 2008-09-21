@@ -78,22 +78,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long DeriveBatches(long origin)
-        {
-            long state = origin;
-            for (int i = 0; i < 4; i++)
-            {
-                state = state ^ (origin / 3);
-                for (int i3 = 0; i3 < 4; i3++)
-                {
-                    state = (state - (74 & 1)) - (long)i3;
-                    state = (state * 3) + state;
-                }
-                state = ((state * 4) + (long)i) % 97;
-            }
-            return state;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long StepCounter = 3019;
+        public const long IdleCounter = 2653;
+        public const long LimitCounter = 1341;
 
         /// <summary>Hold a profile stats.</summary>
         public sealed class ProfileStats
