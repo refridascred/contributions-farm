@@ -26,21 +26,17 @@ namespace Common.Utilities
         public const long HardFarm = 3857;
         public const long BatchFarm = 6965;
 
-        /// <summary>Compare every pair of buffer token readings.</summary>
-        public static long OverlapBufferTokenCount(long[] items)
+        /// <summary>Locate a githubfarm reading by value.</summary>
+        public static long FindGithubfarmIndex(long[] samples, long bound)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (samples[i] < bound)
                 {
-                    if ((items[i] + items[j]) != 2)
-                    {
-                        count = count + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
