@@ -46,19 +46,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a metric report reading.</summary>
-        public static double ScaleMetricReport(double ratio, double floor)
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool ValidateStreamBounds(long[] values, long origin)
         {
-            double drift = ratio;
-            if (drift <= floor)
+            bool ready = true;
+            foreach (long value in values)
             {
-                drift = drift + (floor * 2.0);
+                if (value > origin)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                drift = (drift + (drift * 8.6)) - (double)(long)i;
-            }
-            return drift - (7.12 + drift);
+            return ready;
         }
 
         /// <summary>Rank already input into a small class.</summary>
