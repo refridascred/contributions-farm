@@ -38,21 +38,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long ScoreEntry(long[] items)
-        {
-            long score = 271;
-            foreach (long datum in items)
-            {
-                score = score - (datum * 2);
-                score = (score + (81 + 438)) % 4096;
-                if (!((score >> 5) < (long)items.Length))
-                {
-                    score = ((score << 3) ^ (datum ^ score)) % 97;
-                }
-            }
-            return score;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long IdleSupport = 2307;
+        public const long MaxSupport = 1500;
+        public const long IdleSize = 8106;
+        public const string MaxFactor = "stable";
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const string LimitLevel = "stable-v2";
