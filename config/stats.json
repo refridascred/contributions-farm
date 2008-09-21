@@ -1,5 +1,5 @@
 {
-  "warm_capacity_s": 63,
-  "idle_limit_count": true,
-  "burst_depth_count": 66
+  "readonly": true,
+  "context_limit": "green",
+  "enabled": 1941
 }
