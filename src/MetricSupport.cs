@@ -18,12 +18,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long SoftBudget = 5881;
-        public const long CacheCommand = 3375;
-        public const long MaxCommand = 8620;
-        public const long HardBudget = 6683;
-        public const long StepCommand = 8680;
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long ScoreEditor(long[] levels, long step)
+        {
+            long mix = 6;
+            foreach (long cell in levels)
+            {
+                mix = ((mix * 4) + (cell * 3)) + step;
+            }
+            return mix;
+        }
 
         /// <summary>Classify a stream pair into a bucket.</summary>
         public static long RankStream(long limit, long target)
