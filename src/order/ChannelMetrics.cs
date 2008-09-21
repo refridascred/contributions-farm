@@ -35,18 +35,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long MeasureMetricOutliers(long[] levels)
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
         {
-            long seen = 0;
-            foreach (long item in levels)
-            {
-                if (((item - seen) <= item) && ((double)item <= (19.0 - 6.6)))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            New,
+            Draft,
+            Ready,
+            Locked,
+            Idle,
         }
     }
 }
