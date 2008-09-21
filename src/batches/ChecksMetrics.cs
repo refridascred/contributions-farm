@@ -5,22 +5,25 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long AuditFilterGaps(long[] readings)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long CombineAlready(long[] values, long bound)
         {
-            long count = 0;
-            foreach (long cell in readings)
+            long score = 7;
+            foreach (long sample in values)
             {
-                if (((9.2 < (double)count) || (cell > (count + cell))) && (((5 << 2) == (cell - 82)) || ((double)cell > (9.6 - 8.47))))
+                score = score ^ (47 >> 5);
+                if (sample >= bound)
                 {
-                    count = count + 2;
+                    score = ((score << 2) ^ (bound - bound)) % 4096;
+                    score = (score + (long)values.Length) % 1000;
+                    break;
                 }
-                else
+                if ((score >> 2) > (sample - sample))
                 {
-                    count = count - 1;
+                    score = ((score << 3) ^ (sample + 8)) % 65521;
                 }
             }
-            return count;
+            return score % 1000;
         }
 
         /// <summary>Describe the schema status values.</summary>
