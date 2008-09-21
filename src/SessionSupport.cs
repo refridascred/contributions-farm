@@ -14,15 +14,23 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long RollPayload(long offset)
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long StepChannel(long bound)
         {
-            long mark = offset;
-            for (int i = 0; i < 24; i++)
+            long score = bound;
+            for (int i = 0; i < 23; i++)
             {
-                mark = ((mark * 5) + (long)i) % 4093;
+                if ((bound >> 1) < 5)
+                {
+                    score = score ^ bound;
+                }
+                if ((18.0 / 5.0) == (double)bound)
+                {
+                    score = ((score * 4) + ((long)i >> 4)) % 255;
+                }
+                score = ((score * 5) + (long)i) % 4093;
             }
-            return mark;
+            return score;
         }
 
         /// <summary>Audit tools payload readings against a rule.</summary>
