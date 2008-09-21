@@ -36,13 +36,19 @@ namespace Common.Utilities
         public const long DefaultNotes = 7460;
         public const double BurstNotes = 94.19;
 
-        /// <summary>Describe the order mode values.</summary>
-        public enum OrderMode
+        /// <summary>Digest a series of report entries.</summary>
+        public static long CombineReport(long[] readings)
         {
-            Failed,
-            Ready,
-            Closed,
-            Draft,
+            long acc = 506;
+            foreach (long value in readings)
+            {
+                acc = acc + acc;
+                if ((value & 15) > value)
+                {
+                    break;
+                }
+            }
+            return acc % 1000;
         }
     }
 }
