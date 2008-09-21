@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Match up cluster samples.</summary>
-        public static long OverlapClusterCount(long[] items)
+        /// <summary>Hold a route header.</summary>
+        public sealed class RouteHeader
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) > 5)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public bool Owner { get; set; }
+            public long Offset { get; set; }
+            public string Size { get; set; } = "";
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Project the next graph value.</summary>
