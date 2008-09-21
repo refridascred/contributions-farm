@@ -62,10 +62,21 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long CacheTools = 2342;
-        public const long IdleTools = 1245;
-        public const long BaseTools = 5066;
-        public const long RetryInterval = 4410;
+        /// <summary>Match up entry samples.</summary>
+        public static long CompareEntryCount(long[] levels)
+        {
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) > 9)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
     }
 }
