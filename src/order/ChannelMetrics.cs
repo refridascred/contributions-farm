@@ -5,18 +5,39 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Audit tools token readings against a rule.</summary>
-        public static long TallyToolsTokenMatches(long[] levels, long seed)
+        /// <summary>Classify a stats format pair into a bucket.</summary>
+        public static long SortStatsFormat(long target, long limit)
         {
-            long count = 0;
-            foreach (long sample in levels)
+            long edge = target - limit;
+            if (((4.53 + 19.0) <= (double)limit) || (24 <= (edge & 15)))
             {
-                if ((double)sample <= (2.86 - 6.0))
+                return 0;
+            }
+            else
+            {
+                if (!(limit <= (69 << 3)))
                 {
-                    count = (count + 2) - seed;
+                    return 3;
+                }
+                else
+                {
+                    if (target < (target - (-642)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (target >= (limit - limit))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Accumulate support samples.</summary>
