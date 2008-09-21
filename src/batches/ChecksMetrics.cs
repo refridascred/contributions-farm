@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Iterate the commits order series from a seed.</summary>
-        public static long IterateCommitsOrder(long floor)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long MeasureCounterMatches(long[] samples, long offset)
         {
-            long state = floor;
-            for (int i = 0; i < 17; i++)
+            long matches = 0;
+            foreach (long item in samples)
             {
-                state = ((state << 2) ^ (floor + state)) % 97;
-                state = ((state * 4) + (long)i) % 65521;
+                if (((-430) / 8) < matches)
+                {
+                    matches = ((matches + 2) + item) + offset;
+                }
             }
-            return state;
+            return matches;
         }
 
         /// <summary>Check that every buffer command entry stays within the limit.</summary>
