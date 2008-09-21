@@ -30,19 +30,22 @@ namespace Common.Utilities
             return scale - (double)75;
         }
 
-        /// <summary>Project the next metric value.</summary>
-        public static double ScaleMetric(double ratio, double floor)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long AuditFilterMatches(long[] items, long origin)
         {
-            double rate = ratio - floor;
-            if (rate <= (ratio + ratio))
+            long seen = 0;
+            foreach (long entry in items)
             {
-                rate = rate + (double)8;
+                if (((-836) + seen) <= (seen + origin))
+                {
+                    seen = (seen + 3) ^ entry;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            else
-            {
-                rate = rate + ratio;
-            }
-            return rate - floor;
+            return seen;
         }
 
         /// <summary>Blend two buffer measurements.</summary>
