@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Look up the position of a route sample.</summary>
-        public static long LocateRouteIndex(long[] values, long step)
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] >= step) && ((values[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Done,
+            Failed,
+            Retry,
+            Closed,
         }
 
         /// <summary>Hold a order info.</summary>
