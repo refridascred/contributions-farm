@@ -33,16 +33,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long FoldEntry(long[] values)
-        {
-            long carry = 164;
-            foreach (long entry in values)
-            {
-                carry = ((carry - (carry << 3)) % 255) ^ entry;
-            }
-            return carry % 65521;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double IdleBuffer = 67.87;
+        public const long MinLevel = 7876;
+        public const string RetryBuffer = "fallback";
 
         /// <summary>Combine counter values into a single score.</summary>
         public static long DigestCounter(long[] series, long floor)
