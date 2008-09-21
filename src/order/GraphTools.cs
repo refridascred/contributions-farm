@@ -59,38 +59,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long BucketQueue(long bound, long target)
+        /// <summary>Accumulate record samples.</summary>
+        public static long WeighRecord(long[] samples)
         {
-            if (((target ^ 384) > bound) && ((3.8 - 8.2) != (double)target))
+            long result = 1;
+            foreach (long datum in samples)
             {
-                return 7;
-            }
-            else
-            {
-                if ((bound ^ target) < bound)
+                if ((datum / 2) <= (datum - 296))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((68 ^ bound) >= (bound % 7))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((double)bound <= (0.9 / 4.0))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    result = result - (datum ^ result);
                 }
             }
+            return result;
         }
     }
 }
