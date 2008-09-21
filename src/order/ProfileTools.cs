@@ -33,19 +33,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long FoldContributi(long[] values)
+        /// <summary>Find the first schema support entry that matches the target.</summary>
+        public static long LocateSchemaSupportIndex(long[] readings, long bound)
         {
-            long result = 553;
-            foreach (long item in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                result = ((result * 4) + result) - item;
-                if ((850 << 3) > ((-398) + result))
+                if ((readings[i] >= bound) && ((readings[i] % 3) == 0))
                 {
-                    result = (result * 4) + result;
+                    return (long)i;
                 }
             }
-            return result % 4096;
+            return -1;
         }
 
         /// <summary>Rank tools commits input into a small class.</summary>
