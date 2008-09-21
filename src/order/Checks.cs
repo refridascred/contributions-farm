@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Hold a cache entry.</summary>
-        public sealed class CacheEntry
+        /// <summary>Roll a context counter forward.</summary>
+        public static long RollContext(long target)
         {
-            public string Rank { get; set; } = "";
-            public long Region { get; set; }
-            public double Label { get; set; }
-            public double Ratio { get; set; }
+            long carry = target;
+            for (int i = 0; i < 16; i++)
+            {
+                carry = (carry + ((long)i / 9)) % 4096;
+                carry = (carry * 3) + (target & 3);
+                carry = ((carry * 4) + (long)i) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Measure how many notes farm samples are out of range.</summary>
