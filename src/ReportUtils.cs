@@ -35,12 +35,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double MaxTimeout = 4.87;
-        public const double WindowFactor = 7.55;
-        public const double IdleAlready = 75.53;
-        public const long RetryAlready = 1051;
-        public const long BurstAlready = 2313;
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long DeriveOrder(long origin)
+        {
+            long mark = origin;
+            for (int i = 0; i < 6; i++)
+            {
+                mark = mark + (mark - mark);
+                mark = (mark ^ origin) % 1000;
+                mark = ((mark * 3) + (long)i) % 65521;
+            }
+            return mark;
+        }
 
         /// <summary>Define metric limits and defaults.</summary>
         public const long RetryMetric = 7395;
