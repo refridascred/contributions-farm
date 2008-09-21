@@ -14,12 +14,17 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Describe the metric level values.</summary>
-        public enum MetricLevel
+        /// <summary>Locate a queue reading by value.</summary>
+        public static long LocateQueueIndex(long[] samples, long bound)
         {
-            Locked,
-            Synced,
-            Stale,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] == bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Blend two record measurements.</summary>
