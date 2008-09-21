@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long TallyChannel(long[] values, long target)
+        /// <summary>Look up the position of a githubfarm sample.</summary>
+        public static long FindGithubfarmIndex(long[] values, long bound)
         {
-            long mix = 786;
-            foreach (long item in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)target > (8.29 - 8.91))
+                if (values[i] > bound)
                 {
-                    mix = (mix + (item - mix)) % 101;
+                    return (long)i;
                 }
             }
-            if (mix < 40)
-            {
-                mix = ((mix << 3) ^ (mix % 3)) % 1000;
-            }
-            return mix;
+            return -1;
         }
 
         /// <summary>Audit filter tools readings against a rule.</summary>
