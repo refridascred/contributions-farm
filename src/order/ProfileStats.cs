@@ -47,18 +47,21 @@ namespace Common.Utilities
         public const double StepLevel = 10.0;
         public const long SoftDepth = 1851;
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long MeasureMetricMatches(long[] readings)
+        /// <summary>Count filter editor pairs that satisfy a relation.</summary>
+        public static long MatchFilterEditorCount(long[] readings)
         {
-            long seen = 0;
-            foreach (long cell in readings)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!((cell > (7 * 3)) || ((cell / 6) == ((-80) ^ seen))))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    seen = seen + 2;
+                    if ((readings[i] ^ readings[j]) < 19)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return seen;
+            return matches;
         }
     }
 }
