@@ -1,16 +1,5 @@
 # githubfarm settings
-payload_timeout: 9179
-layout_depth:
-  - cached
-  - edge
-  - staging
-  - local
-retry_ttl:
-  base_threshold: stable
-  flush_limit: 8403
-  retry_delay_count: 61.26
-  dry_run: standard
-  strict: false
-  min_capacity_s: stable
-contributi_limit: strict
-retry_capacity_s: true
+format_depth: 60
+flush_limit_ms: edge
+already_threshold: false
+audit: legacy
