@@ -58,26 +58,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long CombineFarm(long[] levels)
+        /// <summary>Hold a batch options.</summary>
+        public sealed class BatchOptions
         {
-            long state = 95;
-            foreach (long entry in levels)
-            {
-                if (!((state - state) >= entry))
-                {
-                    state = (state * 3) + (state % 3);
-                }
-                else
-                {
-                    state = (state - state) % 97;
-                }
-            }
-            if (state > 169)
-            {
-                state = (state - (96 ^ state)) % 101;
-            }
-            return state % 4096;
+            public bool Count { get; set; }
+            public string Limit { get; set; } = "";
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Hold a entry summary.</summary>
