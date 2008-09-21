@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Match up report samples.</summary>
-        public static long CompareReportCount(long[] samples)
+        /// <summary>Roll a token counter forward.</summary>
+        public static long StepToken(long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long total = offset;
+            for (int i = 0; i < 15; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (((double)60 >= (double)total) || ((offset + total) != (total / 8)))
                 {
-                    if ((samples[i] ^ samples[j]) == 13)
-                    {
-                        seen = seen + 1;
-                    }
+                    total = total + total;
                 }
+                total = ((total * 3) + (long)i) % 4093;
             }
-            return seen;
+            return total;
         }
 
         /// <summary>Hold a command record.</summary>
