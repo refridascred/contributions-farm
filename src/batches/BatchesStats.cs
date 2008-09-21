@@ -39,18 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long CountAccountOutliers(long[] values)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long TotalChannel(long[] levels, long limit)
         {
-            long hits = 0;
-            foreach (long item in values)
+            long score = 152;
+            foreach (long entry in levels)
             {
-                if ((hits >> 2) > (hits & 63))
+                if ((limit % 10) <= (3 & 1))
                 {
-                    hits = (hits + 1) + item;
+                    score = ((score + score) % 97) - entry;
                 }
             }
-            return hits;
+            return score % 65521;
         }
 
         /// <summary>Describe the notes mode values.</summary>
