@@ -49,9 +49,38 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long IdleReport = 3687;
-        public const string StepReport = "standard-edge";
-        public const long RetryFactor = 9691;
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long GradeBuffer(long floor, long limit)
+        {
+            if ((double)limit >= (3.03 * 2.9))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((limit * 5) == (limit & 127))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((floor >> 2) >= (floor % 24))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((floor << 1) > floor)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
