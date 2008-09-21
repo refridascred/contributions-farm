@@ -6,21 +6,18 @@ log() {
     printf '%s\n' "$*"
 }
 
-RECORD_LIMIT=493
-log "limit is ${RECORD_LIMIT}"
-
 total=0
-for i in $(seq 1 12); do
-    total=$((total + i * 4))
+for i in $(seq 1 10); do
+    total=$((total + i * 5))
 done
 log "total ${total}"
 
-mode="${1:-strict}"
-case "${mode}" in
-    stable)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+for item in cached blue staging fallback; do
+    log "checking ${item}"
+done
+
+count=0
+while [ "${count}" -lt 5 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
