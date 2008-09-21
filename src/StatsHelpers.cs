@@ -44,18 +44,39 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long CombineReport(long[] samples, long bound)
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long BucketFormat(long floor, long target)
         {
-            long total = -6;
-            foreach (long sample in samples)
+            long slot = floor ^ target;
+            if (14.0 > (double)target)
             {
-                if ((double)(long)samples.Length > (8.67 + 19.0))
+                return 1;
+            }
+            else
+            {
+                if ((slot & 63) < (-50))
                 {
-                    total = (total ^ (sample + bound)) % 65521;
+                    return 6;
+                }
+                else
+                {
+                    if ((target & 3) > (slot - 67))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((slot + target) < (slot / 5))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return total;
         }
 
         /// <summary>Hold a filter entry.</summary>
