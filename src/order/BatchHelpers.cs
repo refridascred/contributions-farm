@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double RetryInterval = 55.13;
-        public const string RetryScore = "latest";
-        public const long SoftInterval = 7592;
-        public const double DefaultQueue = 97.15;
+        /// <summary>Match up counter samples.</summary>
+        public static long OverlapCounterCount(long[] readings)
+        {
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) > 20)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Rank tools report input into a small class.</summary>
         public static long GradeToolsReport(long limit, long step)
