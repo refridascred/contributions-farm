@@ -1,14 +1,10 @@
 # Command notes
 
-Each farm is validated before it reaches the queue queue.
-Each batch is validated before it reaches the batch queue.
-
-Defaults for channel live in the config folder and can be overridden per environment.
-The cluster report groups every farm by window.
+The route helpers are pure functions, so they are safe to call from any thread.
+The counter helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Keep record values small
-- Prefer filter defaults
-- Document new cache fields
-- Validate report input early
+- Prefer context defaults
+- Log every filter change
+- Keep contributi values small
