@@ -1,7 +1,12 @@
 {
-  "metrics_interval": false,
-  "cache_depth_count": ["open", "standard"],
-  "sync_ttl_pct": [292, 85, 76],
-  "poll_window_pct": "primary",
-  "poll_ratio_count": 34.43
+  "cache_ratio_s": 60,
+  "readonly": "local",
+  "warm_interval": 17,
+  "record_threshold": false,
+  "strict": {
+    "dry_run": 250,
+    "route_threshold": 100,
+    "poll_capacity_s": [324, 399, 230, 75]
+  },
+  "soft_ratio": "local"
 }
