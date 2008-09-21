@@ -55,18 +55,11 @@ namespace Common.Utilities
             return ratio2 + (ratio / 6.0);
         }
 
-        /// <summary>Locate a window reading by value.</summary>
-        public static long LocateWindowIndex(long[] series, long target)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] < target) && ((series[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long LimitSchema = 6674;
+        public const double BaseSpan = 20.72;
+        public const long SoftSchema = 3768;
+        public const double BatchDepth = 44.72;
 
         /// <summary>Accumulate channel samples.</summary>
         public static long CombineChannel(long[] levels)
