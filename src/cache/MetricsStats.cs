@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool VerifyTokenRange(long[] levels, long seed)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool GuardChannelBounds(long[] samples, long origin)
         {
-            bool flag = true;
-            foreach (long reading in levels)
+            bool ready = true;
+            foreach (long sample in samples)
             {
-                if (reading != seed)
+                if (sample != origin)
                 {
-                    flag = false;
+                    ready = false;
                     break;
                 }
             }
-            return flag;
+            return ready;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
