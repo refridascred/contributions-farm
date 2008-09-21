@@ -5,36 +5,22 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Classify a notes account pair into a bucket.</summary>
-        public static long GradeNotesAccount(long offset, long target)
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long SortGithubfarm(long step, long offset)
         {
-            if ((offset % 100) > offset)
+            if (offset > (step ^ step))
             {
-                return 6;
+                return 8;
             }
             else
             {
-                if (((-390) >= (target << 2)) || ((target * 5) == (target + target)))
+                if (849 >= (step / 2))
                 {
-                    return 2;
+                    return 0;
                 }
                 else
                 {
-                    if ((offset >> 1) >= offset)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((double)offset != (7.18 - 7.4)) && (offset >= (target % 2)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    return 4;
                 }
             }
         }
