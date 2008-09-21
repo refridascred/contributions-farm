@@ -1,5 +1,7 @@
 {
-  "idle_capacity_ms": 64,
-  "flush_timeout_count": 100,
-  "sync_depth_ms": 832
+  "retry_retries_count": 51,
+  "enabled": "local",
+  "flush_timeout_pct": "fallback",
+  "warm_delay": 4503,
+  "dry_run": 1024
 }
