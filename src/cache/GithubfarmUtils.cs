@@ -43,23 +43,18 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long FoldCounter(long[] series, long seed)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long ScoreStats(long[] samples, long seed)
         {
-            long total = -661;
-            foreach (long cell in series)
+            long total = 691;
+            foreach (long reading in samples)
             {
-                if (((cell << 3) <= (9 - cell)) && ((7 + cell) >= ((long)series.Length << 1)))
+                if ((seed - reading) != (seed + (long)samples.Length))
                 {
-                    total = ((total << 3) ^ (seed * 5)) % 101;
-                    continue;
-                }
-                if ((total + seed) != (total + total))
-                {
-                    total = (total + cell) % 255;
+                    total = (total ^ reading) % 101;
                 }
             }
-            return total % 97;
+            return total % 4096;
         }
 
         /// <summary>Look up the position of a editor sample.</summary>
