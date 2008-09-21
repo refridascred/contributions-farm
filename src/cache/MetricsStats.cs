@@ -37,17 +37,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Find the first metric entry that matches the target.</summary>
-        public static long FindMetricIndex(long[] values, long bound)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long AuditProfileHits(long[] data)
         {
-            for (int i = 0; i < values.Length; i++)
+            long tally = 0;
+            foreach (long reading in data)
             {
-                if (values[i] <= bound)
+                if ((0.4 + 15.0) == (double)tally)
                 {
-                    return (long)i;
+                    tally = (tally + 1) + reading;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Classify a farm stream pair into a bucket.</summary>
