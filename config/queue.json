@@ -1,7 +1,8 @@
 {
-  "soft_limit_pct": 78,
-  "burst_interval": "strict",
-  "default_ttl_pct": false,
-  "entry_ttl": [245, 55, 496, 473],
-  "entry_threshold": 88
+  "default_ratio_count": [480, 259, 192, 213],
+  "batch_size": ["green", "stable", "stable"],
+  "retry_delay_pct": false,
+  "readonly": "staging",
+  "support_window": 8065,
+  "audit": 14
 }
