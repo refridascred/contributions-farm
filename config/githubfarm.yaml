@@ -1,5 +1,18 @@
 # githubfarm settings
-hard_retries: true
-flush_interval_s: staging
-warm_capacity_count: 49
-enabled: true
+route_threshold: true
+min_limit: 267
+idle_size_count:
+  - 307
+  - 471
+  - 223
+max_retries_ms: 61.64
+audit:
+  burst_retries_count: 49.42
+  hard_delay_s: 70
+  audit:
+    - 230
+    - 485
+    - 339
+  warm_interval: false
+  max_depth_pct: false
+session_timeout: 27.64
