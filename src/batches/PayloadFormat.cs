@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Scale a cache figure with a bias.</summary>
-        public static double BlendCache(double weight, double offset)
+        /// <summary>Project the next batch value.</summary>
+        public static double ProjectBatch(double weight, double span)
         {
-            double drift = offset;
-            for (int i = 0; i < 3; i++)
+            double weight2 = span;
+            if (weight2 >= weight2)
             {
-                drift = ((drift - 4.88) + (double)(long)i) + weight;
+                weight2 = weight2 + weight;
             }
-            return drift + (drift - drift);
+            else
+            {
+                weight2 = weight2 - 8.47;
+            }
+            return weight2 + 20.0;
         }
 
         /// <summary>Validate support readings against a bound.</summary>
