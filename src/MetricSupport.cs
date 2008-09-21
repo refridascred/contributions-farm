@@ -19,19 +19,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a stats counter figure with a bias.</summary>
-        public static double SmoothStatsCounter(double scale, double offset)
+        /// <summary>Look up the position of a format sample.</summary>
+        public static long LookupFormatIndex(long[] values, long seed)
         {
-            double ratio = 5.0;
-            if (ratio > ratio)
+            for (int i = 0; i < values.Length; i++)
             {
-                ratio = ratio - ratio;
+                if (values[i] > seed)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                ratio = (ratio - offset) - (double)(long)i;
-            }
-            return ratio + (scale / 9.0);
+            return -1;
         }
 
         /// <summary>Combine window values into a single score.</summary>
