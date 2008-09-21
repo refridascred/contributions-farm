@@ -37,18 +37,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long TallyToolsMatches(long[] readings)
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
         {
-            long tally = 0;
-            foreach (long value in readings)
-            {
-                if ((tally >> 3) > (tally * 3))
-                {
-                    tally = (tally + 3) ^ value;
-                }
-            }
-            return tally;
+            Paused,
+            Retry,
+            Idle,
+            Failed,
+            Queued,
         }
     }
 }
