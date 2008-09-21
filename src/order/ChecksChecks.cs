@@ -29,17 +29,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a buffer route sample.</summary>
-        public static long LookupBufferRouteIndex(long[] samples, long bound)
+        /// <summary>Count schema support pairs that satisfy a relation.</summary>
+        public static long OverlapSchemaSupportCount(long[] levels)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((samples[i] >= bound) && ((samples[i] % 2) == 0))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return (long)i;
+                    if ((levels[i] + levels[j]) > 6)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
