@@ -5,20 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Roll a context counter forward.</summary>
-        public static long DeriveContext(long floor)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long AuditGithubfarmGaps(long[] samples)
         {
-            long score = floor;
-            for (int i = 0; i < 15; i++)
+            long seen = 0;
+            foreach (long cell in samples)
             {
-                if (11.0 >= (double)floor)
+                if ((cell + cell) != (cell ^ seen))
                 {
-                    score = (score * 5) + (floor << 1);
+                    seen = seen + 1;
                 }
-                score = (score << 3) ^ score;
-                score = ((score * 3) + (long)i) % 65521;
             }
-            return score;
+            return seen;
         }
 
         /// <summary>Hold a commits record.</summary>
