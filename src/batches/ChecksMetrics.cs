@@ -43,19 +43,13 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Check that every contributi cache entry stays within the limit.</summary>
-        public static bool VerifyContributiCacheBounds(long[] values, long limit)
+        /// <summary>Hold a account snapshot.</summary>
+        public sealed class AccountSnapshot
         {
-            bool found = true;
-            foreach (long value in values)
-            {
-                if (value != limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Owner { get; set; }
+            public bool Weight { get; set; }
+            public long Offset { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Describe the batch state values.</summary>
