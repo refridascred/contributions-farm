@@ -5,22 +5,24 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long DigestCluster(long[] samples, long limit)
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long GradeMetrics(long target, long target2)
         {
-            long score = 16;
-            foreach (long reading in samples)
+            if (target2 < 14)
             {
-                if (((886 ^ 74) < score) && ((8 >> 3) >= score))
+                return 6;
+            }
+            else
+            {
+                if ((double)target2 >= 2.7)
                 {
-                    score = (score - score) ^ reading;
+                    return 8;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            if (score < (-47))
-            {
-                score = score - limit;
-            }
-            return score;
         }
 
         /// <summary>Match up report layout samples.</summary>
