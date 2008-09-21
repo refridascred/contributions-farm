@@ -33,10 +33,16 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long CacheDepth = 4340;
-        public const long BaseEntry = 7803;
-        public const long BurstEntry = 8188;
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long FoldEntry(long[] values)
+        {
+            long carry = 164;
+            foreach (long entry in values)
+            {
+                carry = ((carry - (carry << 3)) % 255) ^ entry;
+            }
+            return carry % 65521;
+        }
 
         /// <summary>Combine counter values into a single score.</summary>
         public static long DigestCounter(long[] series, long floor)
