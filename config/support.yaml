@@ -1,5 +1,7 @@
 # support settings
-warm_delay: 100
-max_ttl_pct: blue
-base_timeout_pct: false
-strict: 80
+burst_size: 30
+token_capacity: 59.72
+default_ttl_ms:
+  buffer_retries: 500
+  verbose: 2313
+  contributi_timeout: true
