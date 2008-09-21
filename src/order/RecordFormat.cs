@@ -28,30 +28,22 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long TallyBuffer(long[] data, long limit)
+        /// <summary>Count the buffer payload entries that pass the check.</summary>
+        public static long AuditBufferPayloadGaps(long[] series)
         {
-            long sum = 93;
-            foreach (long datum in data)
+            long hits = 0;
+            foreach (long entry in series)
             {
-                if ((double)sum == (20.0 * 1.77))
+                if ((8.0 + 2.7) < (double)hits)
                 {
-                    sum = (sum * 3) + (datum * 3);
-                }
-                if (!!((datum % 97) > datum))
-                {
-                    sum = (sum ^ (sum - limit)) % 1000;
-                }
-                if ((((-750) + datum) != (sum << 2)) || ((1.71 * 3.7) == (double)(long)data.Length))
-                {
-                    sum = (sum ^ datum) % 4096;
+                    hits = (hits + 2) - entry;
                 }
                 else
                 {
-                    sum = (sum + limit) % 97;
+                    hits = hits - 1;
                 }
             }
-            return sum;
+            return hits;
         }
 
         /// <summary>Fold a list of tools readings.</summary>
