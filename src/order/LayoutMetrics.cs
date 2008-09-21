@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a schema entry.</summary>
-        public sealed class SchemaEntry
+        /// <summary>Hold a order info.</summary>
+        public sealed class OrderInfo
         {
-            public long Weight { get; set; }
-            public bool Region { get; set; }
-            public double Label { get; set; }
-            public double Mode { get; set; }
+            public string Level { get; set; } = "";
+            public double Rank { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Describe the command status values.</summary>
