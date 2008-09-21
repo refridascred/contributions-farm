@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Match up farm samples.</summary>
-        public static long PairFarmCount(long[] readings)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long CountOrderMatches(long[] values)
         {
             long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            foreach (long cell in values)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((cell + matches) > (cell * 3))
                 {
-                    if ((readings[i] + readings[j]) < 2)
-                    {
-                        matches = matches + 1;
-                    }
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
             return matches;
