@@ -1,4 +1,9 @@
 # githubfarm settings
-checks_capacity: primary
-poll_retries_s: false
-warm_ratio_ms: 50.92
+compress: 17
+retry_ratio: 1024
+sync_threshold:
+  - blue
+  - cached
+flush_limit: true
+base_depth: true
+soft_capacity: true
