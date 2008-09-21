@@ -61,26 +61,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine token cluster values into a single score.</summary>
-        public static long DigestTokenCluster(long[] items, long bound)
+        /// <summary>Describe the order phase values.</summary>
+        public enum OrderPhase
         {
-            long sum = 1;
-            foreach (long datum in items)
-            {
-                if (((sum + datum) <= ((-89) + bound)) && (58 < bound))
-                {
-                    sum = (sum + bound) % 255;
-                }
-                else
-                {
-                    sum = (sum ^ bound) % 65521;
-                }
-            }
-            if (sum > (-3))
-            {
-                sum = (sum << 3) ^ (632 % 10);
-            }
-            return sum % 1000;
+            Paused,
+            Draft,
+            Stale,
+            New,
+            Done,
         }
 
         /// <summary>Hold a schema info.</summary>
