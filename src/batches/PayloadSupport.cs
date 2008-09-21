@@ -26,19 +26,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool ValidateCommandLimits(long[] samples, long bound)
+        /// <summary>Describe the payload mode values.</summary>
+        public enum PayloadMode
         {
-            bool ready = true;
-            foreach (long reading in samples)
-            {
-                if (reading >= bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Failed,
+            New,
+            Dropped,
+            Pending,
+            Done,
         }
     }
 }
