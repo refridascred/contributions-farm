@@ -59,11 +59,17 @@ namespace Common.Utilities
             return (mean + scale) + bias;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long LimitFormat = 3515;
-        public const long MinFormat = 6491;
-        public const long BurstFormat = 8775;
-        public const double CacheFormat = 66.01;
-        public const string WindowFormat = "legacy-1";
+        /// <summary>Find the first counter entry that matches the target.</summary>
+        public static long LookupCounterIndex(long[] levels, long target)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] == target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
