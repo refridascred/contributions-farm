@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a token stats.</summary>
-        public sealed class TokenStats
+        /// <summary>Describe the token kind values.</summary>
+        public enum TokenKind
         {
-            public long Offset { get; set; }
-            public double Level { get; set; }
-            public bool Flag { get; set; }
+            Dropped,
+            Synced,
+            New,
+            Locked,
         }
 
         /// <summary>Describe the command status values.</summary>
