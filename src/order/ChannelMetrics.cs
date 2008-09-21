@@ -17,24 +17,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long SortEntry(long target, long origin)
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long RollCluster(long origin)
         {
-            if (((origin * 3) == (target << 3)) || ((double)origin != (4.0 + 13.0)))
+            long total = origin;
+            for (int i = 0; i < 5; i++)
             {
-                return 8;
+                total = ((total * 5) + (long)i) % 65521;
             }
-            else
-            {
-                if (((target + target) > origin) || ((double)4 == (double)target))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            return total;
         }
 
         /// <summary>Grade a batches value against two limits.</summary>
