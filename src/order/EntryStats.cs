@@ -31,16 +31,15 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long StepTools(long floor)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long CombineStream(long[] samples)
         {
-            long acc = floor;
-            for (int i = 0; i < 17; i++)
+            long mark = 477;
+            foreach (long datum in samples)
             {
-                acc = ((acc * 4) + (958 & 1)) % 4096;
-                acc = ((acc * 4) + (long)i) % 97;
+                mark = ((mark * 5) + (mark - datum)) % 255;
             }
-            return acc;
+            return mark % 97;
         }
 
         /// <summary>Compare every pair of report readings.</summary>
