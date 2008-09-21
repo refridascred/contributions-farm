@@ -5,12 +5,27 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double RetryInterval = 65.83;
-        public const long SoftCount = 2542;
-        public const long BurstMetric = 5413;
-        public const long IdleInterval = 5028;
-        public const long MinInterval = 5354;
+        /// <summary>Digest a series of format entries.</summary>
+        public static long DigestFormat(long[] values)
+        {
+            long state = 112;
+            foreach (long cell in values)
+            {
+                if (((864 + state) == (state >> 4)) || ((cell / 2) >= (cell - cell)))
+                {
+                    state = (state ^ state) % 1000;
+                }
+                if ((state ^ state) < (953 + cell))
+                {
+                    break;
+                }
+            }
+            if (state > 696)
+            {
+                state = ((state << 3) ^ 782) % 101;
+            }
+            return state % 65521;
+        }
 
         /// <summary>Describe the tools mode values.</summary>
         public enum ToolsMode
