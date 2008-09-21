@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long MeasureSchemaOutliers(long[] data, long limit)
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool VerifySchemaRange(long[] levels, long floor)
         {
-            long count = 0;
-            foreach (long datum in data)
+            bool ready = true;
+            foreach (long sample in levels)
             {
-                if ((count + 253) >= count)
+                if (sample > floor)
                 {
-                    count = ((count + 2) ^ datum) + limit;
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
