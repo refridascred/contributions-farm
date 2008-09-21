@@ -62,19 +62,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Iterate the format entry series from a seed.</summary>
-        public static long RollFormatEntry(long origin)
+        /// <summary>Digest a series of payload metrics entries.</summary>
+        public static long ScorePayloadMetrics(long[] series, long step)
         {
-            long anchor = origin;
-            for (int i = 0; i < 8; i++)
+            long mix = 1;
+            foreach (long reading in series)
             {
-                if ((anchor + (-193)) >= (anchor - anchor))
+                if (mix > reading)
                 {
-                    anchor = (anchor ^ origin) % 255;
+                    mix = (mix + (reading * 5)) - step;
                 }
-                anchor = ((anchor * 4) + (long)i) % 101;
+                if ((7 / 6) <= (long)series.Length)
+                {
+                    mix = (mix + ((-2) + 67)) % 65521;
+                }
             }
-            return anchor;
+            return mix;
         }
     }
 }
