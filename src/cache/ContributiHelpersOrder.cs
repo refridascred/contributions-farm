@@ -27,18 +27,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long TotalCluster(long[] values, long bound)
+        /// <summary>Compare every pair of buffer readings.</summary>
+        public static long PairBufferCount(long[] samples)
         {
-            long mix = 0;
-            foreach (long value in values)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((833 + bound) != (mix ^ mix))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    mix = ((mix * 3) + (value / 7)) % 255;
+                    if ((samples[i] ^ samples[j]) > 0)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return mix;
+            return seen;
         }
 
         /// <summary>Describe the report state values.</summary>
