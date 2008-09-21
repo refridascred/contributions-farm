@@ -20,19 +20,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Combine order support values into a single score.</summary>
-        public static long ScoreOrderSupport(long[] samples, long target)
+        /// <summary>Hold a editor summary.</summary>
+        public sealed class EditorSummary
         {
-            long carry = 33;
-            foreach (long entry in samples)
-            {
-                carry = ((carry - (target / 8)) % 4096) ^ entry;
-            }
-            if (carry > 897)
-            {
-                carry = (carry << 2) ^ carry;
-            }
-            return carry;
+            public double Limit { get; set; }
+            public double Stamp { get; set; }
+            public double Level { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Accumulate payload samples.</summary>
