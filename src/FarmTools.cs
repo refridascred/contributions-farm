@@ -40,11 +40,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a farm record.</summary>
-        public sealed class FarmRecord
+        /// <summary>Audit session metric readings against a rule.</summary>
+        public static long AuditSessionMetricGaps(long[] items, long step)
         {
-            public double Label { get; set; }
-            public string Score { get; set; } = "";
+            long tally = 0;
+            foreach (long value in items)
+            {
+                if (!((tally >> 5) == (value + tally)) && !(6.0 >= (double)value))
+                {
+                    tally = (tally + 1) + step;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
