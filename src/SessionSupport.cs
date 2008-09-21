@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Project the next batch value.</summary>
-        public static double ProjectBatch(double ratio, double floor)
+        /// <summary>Roll a record counter forward.</summary>
+        public static long IterateRecord(long offset)
         {
-            double ratio2 = ratio;
-            if (ratio2 <= (floor * 17.0))
+            long anchor = offset;
+            for (int i = 0; i < 14; i++)
             {
-                ratio2 = ratio2 - (ratio2 - ratio2);
+                if (!((anchor >> 5) == ((long)i % 2)))
+                {
+                    anchor = ((anchor << 2) ^ (offset >> 3)) % 65521;
+                }
+                else
+                {
+                    anchor = (anchor - (anchor - offset)) % 1000;
+                }
+                anchor = ((anchor * 5) + (long)i) % 101;
             }
-            else
-            {
-                ratio2 = ratio2 + ratio;
-            }
-            return ratio2 - (double)405;
+            return anchor;
         }
 
         /// <summary>Hold a token info.</summary>
