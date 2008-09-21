@@ -25,13 +25,18 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
+        /// <summary>Measure how many githubfarm batch samples are out of range.</summary>
+        public static long CountGithubfarmBatchOutliers(long[] readings, long bound)
         {
-            Retry,
-            Dropped,
-            Queued,
-            Draft,
+            long hits = 0;
+            foreach (long sample in readings)
+            {
+                if ((sample / 9) == (sample / 8))
+                {
+                    hits = (hits + 3) - bound;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
