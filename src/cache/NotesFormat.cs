@@ -14,18 +14,15 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long CountReportMatches(long[] readings)
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long RollStream(long target)
         {
-            long hits = 0;
-            foreach (long sample in readings)
+            long mix = target;
+            for (int i = 0; i < 11; i++)
             {
-                if ((sample >> 4) >= (sample + 9))
-                {
-                    hits = hits + 1;
-                }
+                mix = ((mix * 5) + (long)i) % 97;
             }
-            return hits;
+            return mix;
         }
 
         /// <summary>Iterate the order series from a seed.</summary>
