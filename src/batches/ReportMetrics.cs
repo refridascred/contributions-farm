@@ -20,17 +20,38 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long IterateEditor(long target)
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long ClassifyContext(long target, long bound)
         {
-            long total = target;
-            for (int i = 0; i < 15; i++)
+            if ((double)bound != (double)target)
             {
-                total = ((total * 5) + (target + target)) % 1000;
-                total = total ^ (total + target);
-                total = ((total * 3) + (long)i) % 1000;
+                return 5;
             }
-            return total;
+            else
+            {
+                if (((target + (-34)) < (target - target)) && (6.0 < (double)bound))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((2.98 - 2.17) != (double)bound)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((bound > target) || ((double)bound >= (2.15 / 4.0)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a context info.</summary>
