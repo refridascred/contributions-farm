@@ -33,25 +33,9 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Rank cluster farm input into a small class.</summary>
-        public static long GradeClusterFarm(long step, long offset)
-        {
-            long cur = step ^ offset;
-            if ((double)cur <= (4.0 / 3.0))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((double)step > 9.31)
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long MinBatches = 3577;
+        public const double IdleBudget = 52.88;
+        public const long WindowFactor = 8675;
     }
 }
