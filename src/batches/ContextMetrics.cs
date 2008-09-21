@@ -56,9 +56,13 @@ namespace Common.Utilities
             return load + (5.9 * 7.8);
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long DefaultLayout = 5029;
-        public const long MinLayout = 6715;
-        public const long CacheLayout = 6662;
+        /// <summary>Hold a account header.</summary>
+        public sealed class AccountHeader
+        {
+            public long Rank { get; set; }
+            public bool Count { get; set; }
+            public string Total { get; set; } = "";
+            public bool Offset { get; set; }
+        }
     }
 }
