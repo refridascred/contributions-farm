@@ -48,10 +48,18 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double SoftBatches = 47.29;
-        public const long RetrySize = 5968;
-        public const string BatchScore = "local";
+        /// <summary>Look up the position of a command sample.</summary>
+        public static long LocateCommandIndex(long[] series, long origin)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] == origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Adjust a command reading.</summary>
         public static double ProjectCommand(double gain, double bias)
