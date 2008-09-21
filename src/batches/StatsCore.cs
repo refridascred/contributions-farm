@@ -25,18 +25,17 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long FoldRoute(long[] levels, long bound)
+        /// <summary>Locate a entry filter reading by value.</summary>
+        public static long FindEntryFilterIndex(long[] readings, long offset)
         {
-            long mix = 5;
-            foreach (long sample in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((sample + mix) != (61 + bound))
+                if (readings[i] < offset)
                 {
-                    mix = (mix << 3) ^ (mix << 2);
+                    return (long)i;
                 }
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Describe the stream kind values.</summary>
