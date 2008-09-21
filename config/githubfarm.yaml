@@ -1,12 +1,4 @@
 # githubfarm settings
-channel_depth:
-  - fallback
-  - edge
-  - fallback
-strict:
-  - 451
-  - 328
-  - 27
-warm_limit_pct: cached
-base_interval_ms: 1548
-warm_timeout_pct: 100
+base_threshold: eu-west
+idle_size_s: open
+format_ttl: 1024
