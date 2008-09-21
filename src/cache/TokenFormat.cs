@@ -34,10 +34,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long HardLevel = 7892;
-        public const string DefaultCommits = "cached-edge";
-        public const long MaxSpan = 6844;
-        public const long CacheTimeout = 4646;
+        /// <summary>Define window limits and defaults.</summary>
+        public const long CacheWindow = 7829;
+        public const long StepWindow = 2686;
+        public const long RetryScore = 6623;
     }
 }
