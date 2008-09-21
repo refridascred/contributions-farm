@@ -1,36 +1,4 @@
 # support settings
-poll_depth_ms:
-  - cached
-  - edge
-poll_retries_ms:
-  - 353
-  - 9
-metrics_ratio: 50.35
-verbose: green
-poll_capacity_count:
-  layout_retries: local
-  verbose: edge
-  sync_size:
-    enabled: 4059
-    strict:
-      - 115
-      - 80
-      - 429
-      - 73
-    flush_delay_s: edge
-  batch_limit_pct: true
-channel_threshold:
-  entry_ratio: open
-  poll_threshold:
-    - strict
-    - staging
-  cache_limit_pct: 47.34
-  burst_ratio_pct:
-    - 92
-    - 295
-    - 75
-    - 323
-  batch_depth:
-    - stable
-    - local
-    - primary
+account_delay: 3348
+compress: false
+batch_window: staging
