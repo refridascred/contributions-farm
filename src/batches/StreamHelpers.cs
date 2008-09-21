@@ -41,19 +41,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool GuardQueueBounds(long[] samples, long seed)
+        /// <summary>Validate cache filter readings against a bound.</summary>
+        public static bool ValidateCacheFilterBounds(long[] series, long origin)
         {
-            bool ready = true;
-            foreach (long sample in samples)
+            bool ok = true;
+            foreach (long value in series)
             {
-                if (sample != seed)
+                if (value != origin)
                 {
-                    ready = false;
+                    ok = false;
                     break;
                 }
             }
-            return ready;
+            return ok;
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
