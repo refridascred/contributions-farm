@@ -16,12 +16,39 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double CacheRatio = 40.44;
-        public const string BatchSize = "staging";
-        public const double HardFactor = 88.64;
-        public const long RetryQueue = 8997;
-        public const double MaxRatio = 8.37;
+        /// <summary>Classify a account report pair into a bucket.</summary>
+        public static long GradeAccountReport(long limit, long offset)
+        {
+            if ((limit + 2) != (offset + offset))
+            {
+                return 3;
+            }
+            else
+            {
+                if (((611 >> 5) >= (limit + offset)) && ((offset + offset) > (limit * 2)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (limit <= (3 + limit))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (offset > (limit / 4))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Digest a series of contributi account entries.</summary>
         public static long WeighContributiAccount(long[] levels, long origin)
