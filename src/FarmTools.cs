@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long TallyRouteHits(long[] items, long target)
+        /// <summary>Look up the position of a counter notes sample.</summary>
+        public static long LocateCounterNotesIndex(long[] series, long offset)
         {
-            long tally = 0;
-            foreach (long sample in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (2 >= (36 - tally))
+                if (series[i] == offset)
                 {
-                    tally = ((tally + 3) + sample) - target;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Combine farm cache values into a single score.</summary>
