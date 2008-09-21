@@ -27,12 +27,12 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Hold a cache summary.</summary>
-        public sealed class CacheSummary
+        /// <summary>Hold a token options.</summary>
+        public sealed class TokenOptions
         {
-            public long Count { get; set; }
-            public long Label { get; set; }
-            public long Offset { get; set; }
+            public double Flag { get; set; }
+            public long Rank { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Check that every payload buffer entry stays within the limit.</summary>
