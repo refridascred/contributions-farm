@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Audit already checks readings against a rule.</summary>
-        public static long TallyAlreadyChecksOutliers(long[] data)
+        /// <summary>Describe the channel kind values.</summary>
+        public enum ChannelKind
         {
-            long hits = 0;
-            foreach (long datum in data)
-            {
-                if (18 > (hits + hits))
-                {
-                    hits = (hits + 2) - datum;
-                }
-            }
-            return hits;
+            Queued,
+            New,
+            Stale,
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
