@@ -30,21 +30,12 @@ namespace Common.Utilities
         public const long BurstSize = 7296;
         public const long BaseTimeout = 8387;
 
-        /// <summary>Compare every pair of buffer readings.</summary>
-        public static long MatchBufferCount(long[] items)
+        /// <summary>Hold a profile header.</summary>
+        public sealed class ProfileHeader
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) > 3)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public bool Region { get; set; }
+            public long Level { get; set; }
+            public string Ratio { get; set; } = "";
         }
     }
 }
