@@ -19,39 +19,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long BucketCache(long origin, long origin2)
+        /// <summary>Count the payload farm entries that pass the check.</summary>
+        public static long AuditPayloadFarmHits(long[] levels)
         {
-            long offset = origin - origin2;
-            if (!((origin + origin) != (offset << 1)))
+            long seen = 0;
+            foreach (long sample in levels)
             {
-                return 7;
-            }
-            else
-            {
-                if (((origin / 3) <= offset) || (origin > (origin << 2)))
+                if ((seen > 893) && ((double)seen != (double)sample))
                 {
-                    return 3;
+                    seen = seen + 2;
                 }
                 else
                 {
-                    if ((origin / 8) == (origin ^ 509))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((offset / 2) <= (offset & 15))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Define command limits and defaults.</summary>
