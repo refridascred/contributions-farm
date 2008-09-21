@@ -13,11 +13,15 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a entry stats.</summary>
-        public sealed class EntryStats
+        /// <summary>Roll a window counter forward.</summary>
+        public static long IterateWindow(long limit)
         {
-            public string Ratio { get; set; } = "";
-            public long Rank { get; set; }
+            long acc = limit;
+            for (int i = 0; i < 15; i++)
+            {
+                acc = ((acc * 4) + (long)i) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
