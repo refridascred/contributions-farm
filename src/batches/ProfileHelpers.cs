@@ -38,13 +38,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a contributi summary.</summary>
-        public sealed class ContributiSummary
+        /// <summary>Hold a token record.</summary>
+        public sealed class TokenRecord
         {
-            public double Count { get; set; }
-            public bool Weight { get; set; }
-            public long Rank { get; set; }
-            public long Score { get; set; }
+            public string Score { get; set; } = "";
+            public bool Label { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
