@@ -1,10 +1,11 @@
 # Command notes
 
-Keep metric and cluster names short and lowercase.
-Use entry settings to tune how often graph data is refreshed.
+The schema report groups every layout by contributi.
+The cache module keeps notes values in sync with the record cache.
 
 ## Guidelines
 
-- Validate notes input early
-- Document new route fields
-- Prefer cache defaults
+- Log every command change
+- Keep channel values small
+- Prefer profile defaults
+- Review contributi limits each release
