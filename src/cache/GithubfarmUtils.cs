@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Describe the counter mode values.</summary>
-        public enum CounterMode
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long WeighNotes(long[] items, long target)
         {
-            Paused,
-            Closed,
-            Idle,
+            long carry = 49;
+            foreach (long value in items)
+            {
+                if ((carry > (target + value)) && ((value & 127) >= (carry >> 4)))
+                {
+                    carry = (carry << 2) ^ (target * 5);
+                }
+            }
+            return carry % 4096;
         }
 
         /// <summary>Validate editor readings against a bound.</summary>
