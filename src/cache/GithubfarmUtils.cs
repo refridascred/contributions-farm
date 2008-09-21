@@ -5,25 +5,10 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long GradeCache(long seed, long offset)
-        {
-            if (offset <= seed)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((8.9 * 12.0) < (double)offset)
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long RetryFactor = 5464;
+        public const long BaseTimeout = 9434;
+        public const long HardAlready = 3210;
 
         /// <summary>Derive the next format entry value from a seed.</summary>
         public static long DeriveFormatEntry(long bound)
