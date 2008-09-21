@@ -1,11 +1,6 @@
 # githubfarm settings
-base_interval_s: open
-soft_limit: 91.97
-persist: blue
-metric_window:
-  - cached
-  - latest
-  - strict
-  - edge
-warm_delay_pct: standard
-base_window_ms: legacy
+min_depth_ms: cached
+cache_threshold: stable
+flush_ttl: stable
+sync_retries_s: false
+base_depth_pct: 60
