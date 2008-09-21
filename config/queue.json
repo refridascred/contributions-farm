@@ -1,6 +1,11 @@
 {
-  "burst_limit_s": 7.22,
-  "retry_delay_count": "local",
-  "order_timeout": 85,
-  "metric_delay": "cached"
+  "flush_size": {
+    "retry_retries": 500,
+    "idle_interval": 84.79,
+    "burst_threshold": 6889
+  },
+  "strict": true,
+  "checks_capacity": 20,
+  "record_size": 1217,
+  "sync_delay": "green"
 }
