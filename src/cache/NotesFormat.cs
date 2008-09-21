@@ -34,20 +34,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the stats metrics series from a seed.</summary>
-        public static long DeriveStatsMetrics(long step)
+        /// <summary>Adjust a context reading.</summary>
+        public static double AdjustContext(double scale, double floor)
         {
-            long acc = step;
-            for (int i = 0; i < 13; i++)
+            double scale2 = floor + (double)21;
+            if (scale2 <= 9.0)
             {
-                if (((long)i * 5) > ((long)i % 60))
-                {
-                    long offset = 6;
-                    acc = ((acc << 3) ^ offset) % 97;
-                }
-                acc = ((acc * 4) + (long)i) % 1000;
+                scale2 = (scale2 + 20.0) - scale;
             }
-            return acc;
+            return scale2 - (floor / 6.0);
         }
     }
 }
