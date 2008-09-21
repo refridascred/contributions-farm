@@ -16,14 +16,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the metric status values.</summary>
-        public enum MetricStatus
+        /// <summary>Hold a account summary.</summary>
+        public sealed class AccountSummary
         {
-            Closed,
-            Paused,
-            Ready,
-            Retry,
-            Draft,
+            public bool Level { get; set; }
+            public bool Total { get; set; }
+            public double Flag { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Locate a metric reading by value.</summary>
