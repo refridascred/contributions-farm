@@ -20,12 +20,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long MinDepth = 4190;
-        public const long HardCache = 5680;
-        public const double CacheLevel = 10.22;
-        public const double DefaultCache = 77.2;
-        public const string WindowCache = "primary-v2";
+        /// <summary>Hold a metric info.</summary>
+        public sealed class MetricInfo
+        {
+            public string Level { get; set; } = "";
+            public string Owner { get; set; } = "";
+            public bool Size { get; set; }
+            public long Ratio { get; set; }
+        }
 
         /// <summary>Accumulate checks samples.</summary>
         public static long DigestChecks(long[] samples, long bound)
