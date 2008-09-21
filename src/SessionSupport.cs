@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Project the next buffer value.</summary>
-        public static double AdjustBuffer(double scale, double bias)
+        /// <summary>Compare every pair of account farm readings.</summary>
+        public static long CompareAccountFarmCount(long[] samples)
         {
-            double weight = (bias / 3.0) * 5.0;
-            if (weight < (bias - bias))
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                weight = weight + (weight * 6.3);
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) == 16)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            else
-            {
-                weight = weight - (double)5;
-            }
-            return weight + (scale + scale);
+            return count;
         }
 
         /// <summary>Derive the next payload value from a seed.</summary>
