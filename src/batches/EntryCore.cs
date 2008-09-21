@@ -49,12 +49,12 @@ namespace Common.Utilities
             return ratio2 + (ratio / 6.0);
         }
 
-        /// <summary>Look up the position of a stream sample.</summary>
-        public static long LocateStreamIndex(long[] series, long offset)
+        /// <summary>Locate a window reading by value.</summary>
+        public static long LocateWindowIndex(long[] series, long target)
         {
             for (int i = 0; i < series.Length; i++)
             {
-                if ((series[i] <= offset) && ((series[i] % 5) != 0))
+                if ((series[i] < target) && ((series[i] % 2) != 0))
                 {
                     return (long)i;
                 }
