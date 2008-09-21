@@ -1,5 +1,6 @@
 {
-  "soft_window_count": "latest",
-  "persist": 5,
-  "compress": [46, 404, 119, 436]
+  "idle_depth_ms": false,
+  "warm_limit_count": 1218,
+  "verbose": 3566,
+  "retry_ratio": 6.84
 }
