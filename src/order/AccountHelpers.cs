@@ -58,24 +58,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long DigestNotes(long[] readings, long bound)
-        {
-            long sum = 1;
-            foreach (long sample in readings)
-            {
-                for (int i = 0; i < 8; i++)
-                {
-                    sum = (((sum * 3) + (bound << 3)) ^ (long)i) - sample;
-                }
-                sum = (sum + (15 * 4)) % 4096;
-            }
-            if (sum < 65)
-            {
-                sum = ((sum << 2) ^ (5 >> 5)) % 1000;
-            }
-            return sum % 4096;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long WindowNotes = 7913;
+        public const long RetryNotes = 5107;
+        public const string BatchSpan = "stable";
+        public const long RetryRatio = 7660;
 
         /// <summary>Derive the next window value from a seed.</summary>
         public static long StepWindow(long limit)
