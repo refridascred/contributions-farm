@@ -1,6 +1,11 @@
-id,state,token
-1,strict,eu-west
-2,standard,71.19
-3,blue,4.93
-4,62.08,eu-west
-5,545,local
+id,owner,ratio
+1,65.61,37.27
+2,340,35.49
+3,213,fallback
+4,19.47,396
+5,10.49,cached
+6,130,20.81
+7,378,49.97
+8,legacy,677
+9,cached,960
+10,53.82,697
