@@ -41,15 +41,20 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Accumulate contributi entry samples.</summary>
-        public static long TallyContributiEntry(long[] readings)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long DigestStats(long[] data, long step)
         {
-            long total = 970;
-            foreach (long value in readings)
+            long score = 591;
+            foreach (long item in data)
             {
-                total = (total + 277) ^ value;
+                score = ((score + item) % 255) - step;
+                score = (score - score) % 4096;
+                if (!((double)741 != (double)score))
+                {
+                    score = (score - (score % 100)) % 255;
+                }
             }
-            return total % 65521;
+            return score % 4096;
         }
 
         /// <summary>Hold a account header.</summary>
