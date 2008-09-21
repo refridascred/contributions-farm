@@ -18,13 +18,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the commits status values.</summary>
-        public enum CommitsStatus
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool ValidateAlreadyRange(long[] levels, long limit)
         {
-            Stale,
-            Synced,
-            Active,
-            Queued,
+            bool ok = true;
+            foreach (long value in levels)
+            {
+                if (value != limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Hold a commits entry.</summary>
