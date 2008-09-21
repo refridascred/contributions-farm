@@ -15,23 +15,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long FoldAlready(long[] series)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long MeasureTokenMatches(long[] data)
         {
-            long anchor = 605;
-            foreach (long datum in series)
+            long tally = 0;
+            foreach (long sample in data)
             {
-                anchor = anchor ^ (anchor - datum);
-                if ((2.08 / 3.0) > (double)datum)
+                if ((5.5 - 3.0) < (double)sample)
                 {
-                    anchor = anchor + anchor;
-                }
-                else
-                {
-                    anchor = (anchor + (anchor * 4)) % 4096;
+                    tally = tally + 3;
                 }
             }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Count metric metrics pairs that satisfy a relation.</summary>
