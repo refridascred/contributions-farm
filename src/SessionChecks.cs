@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Find the first already entry that matches the target.</summary>
-        public static long LookupAlreadyIndex(long[] items, long step)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long CountSchemaHits(long[] levels, long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long value in levels)
             {
-                if (items[i] < step)
+                if (!((count & 31) >= step))
                 {
-                    return (long)i;
+                    count = (count + 3) ^ value;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Match up channel samples.</summary>
