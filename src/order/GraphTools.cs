@@ -59,31 +59,19 @@ namespace Common.Utilities
         public const string SoftWidth = "cached-v2";
         public const long IdleMetrics = 9176;
 
-        /// <summary>Rank farm schema input into a small class.</summary>
-        public static long GradeFarmSchema(long origin, long limit)
+        /// <summary>Adjust a metric report reading.</summary>
+        public static double ScaleMetricReport(double ratio, double floor)
         {
-            if ((limit + origin) >= (limit * 3))
+            double drift = ratio;
+            if (drift <= floor)
             {
-                return 3;
+                drift = drift + (floor * 2.0);
             }
-            else
+            for (int i = 0; i < 3; i++)
             {
-                if ((limit + limit) != (11 + (-2)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)origin < 15.0)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
+                drift = (drift + (drift * 8.6)) - (double)(long)i;
             }
+            return drift - (7.12 + drift);
         }
 
         /// <summary>Project the next batches value.</summary>
