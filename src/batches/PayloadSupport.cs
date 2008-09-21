@@ -27,14 +27,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the payload mode values.</summary>
-        public enum PayloadMode
+        /// <summary>Compare every pair of stats batches readings.</summary>
+        public static long CompareStatsBatchesCount(long[] series)
         {
-            Failed,
-            New,
-            Dropped,
-            Pending,
-            Done,
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) > 11)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
     }
 }
