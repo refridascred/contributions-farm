@@ -76,12 +76,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a githubfarm info.</summary>
-        public sealed class GithubfarmInfo
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long SeriesTools(long seed)
         {
-            public long Rank { get; set; }
-            public long Label { get; set; }
-            public string Limit { get; set; } = "";
+            long result = seed;
+            for (int i = 0; i < 4; i++)
+            {
+                result = (result + (result / 7)) % 65521;
+                result = ((result * 2) + (long)i) % 97;
+            }
+            return result;
         }
     }
 }
