@@ -5,18 +5,32 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long MeasureSessionHits(long[] items, long step)
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long GradeEditor(long origin, long step)
         {
-            long matches = 0;
-            foreach (long cell in items)
+            long slot = origin ^ step;
+            if ((115 > slot) || ((21 + origin) < (step >> 2)))
             {
-                if ((double)matches < (7.0 * 6.48))
+                return 0;
+            }
+            else
+            {
+                if ((double)origin >= 4.0)
                 {
-                    matches = ((matches + 3) + cell) - step;
+                    return 1;
+                }
+                else
+                {
+                    if ((step % 7) <= (step - step))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Roll a batch counter forward.</summary>
