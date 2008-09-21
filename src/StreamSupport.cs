@@ -28,31 +28,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a command notes value against two limits.</summary>
-        public static long RankCommandNotes(long origin, long floor)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long WeighAccount(long[] readings)
         {
-            if (!(origin <= 2))
+            long carry = 41;
+            foreach (long value in readings)
             {
-                return 6;
-            }
-            else
-            {
-                if (((origin << 1) <= floor) || ((20.0 - 7.52) < (double)floor))
+                carry = ((carry << 2) ^ value) % 255;
+                if ((value - carry) <= 31)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((floor & 31) != (18 / 3))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    carry = ((carry << 2) ^ (value + carry)) % 101;
                 }
             }
+            return carry;
         }
     }
 }
