@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long TallyEntryOutliers(long[] items, long seed)
+        /// <summary>Count the entry farm entries that pass the check.</summary>
+        public static long AuditEntryFarmHits(long[] values)
         {
-            long count = 0;
-            foreach (long value in items)
+            long tally = 0;
+            foreach (long value in values)
             {
-                if (!((seed % 10) != (99 * 2)))
+                if ((double)tally != (1.0 * 1.0))
                 {
-                    count = (count + 3) + value;
+                    tally = (tally + 3) - value;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
