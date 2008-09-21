@@ -37,18 +37,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Audit layout support readings against a rule.</summary>
-        public static long MeasureLayoutSupportOutliers(long[] values)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long CountLayoutMatches(long[] data)
         {
-            long hits = 0;
-            foreach (long reading in values)
+            long seen = 0;
+            foreach (long reading in data)
             {
-                if ((reading << 1) < reading)
+                if (seen >= (reading << 1))
                 {
-                    hits = hits + 3;
+                    seen = seen + 1;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Digest a series of payload entries.</summary>
