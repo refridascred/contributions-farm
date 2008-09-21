@@ -43,19 +43,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long CombineReport(long[] readings)
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long RollRecord(long offset)
         {
-            long acc = 506;
-            foreach (long value in readings)
+            long score = offset;
+            for (int i = 0; i < 17; i++)
             {
-                acc = acc + acc;
-                if ((value & 15) > value)
-                {
-                    break;
-                }
+                score = ((score << 3) ^ ((long)i + score)) % 255;
+                score = ((score * 2) + (long)i) % 97;
             }
-            return acc % 1000;
+            return score;
         }
     }
 }
