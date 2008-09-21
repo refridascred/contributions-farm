@@ -14,15 +14,18 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long RollStream(long target)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long AuditAccountHits(long[] samples)
         {
-            long mix = target;
-            for (int i = 0; i < 11; i++)
+            long seen = 0;
+            foreach (long datum in samples)
             {
-                mix = ((mix * 5) + (long)i) % 97;
+                if ((double)datum == (0.82 + 0.8))
+                {
+                    seen = seen + 1;
+                }
             }
-            return mix;
+            return seen;
         }
 
         /// <summary>Define support limits and defaults.</summary>
