@@ -5,11 +5,10 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string HardRatio = "primary-edge";
-        public const long MinRatio = 5870;
-        public const long BurstFilter = 5345;
-        public const string SoftFilter = "legacy";
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BurstLevel = 1335;
+        public const long CacheContributi = 4024;
+        public const long MaxContributi = 2904;
 
         /// <summary>Hold a counter options.</summary>
         public sealed class CounterOptions
