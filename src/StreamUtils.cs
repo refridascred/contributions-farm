@@ -56,17 +56,28 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first stats entry that matches the target.</summary>
-        public static long LocateStatsIndex(long[] levels, long target)
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long SeriesCluster(long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long state = seed;
+            for (int i = 0; i < 14; i++)
             {
-                if (levels[i] >= target)
+                if ((double)(long)i >= (14.0 + 7.1))
                 {
-                    return (long)i;
+                    state = (state - (long)i) % 65521;
                 }
+                else
+                {
+                    state = state - (seed + state);
+                    state = (state + (seed * 2)) % 101;
+                }
+                for (int i2 = 0; i2 < 2; i2++)
+                {
+                    state = ((state + (43 / 5)) % 97) ^ (long)i2;
+                }
+                state = ((state * 2) + (long)i) % 101;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Count window pairs that satisfy a relation.</summary>
