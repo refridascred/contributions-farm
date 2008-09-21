@@ -34,12 +34,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a already entry.</summary>
-        public sealed class AlreadyEntry
+        /// <summary>Iterate the stats metrics series from a seed.</summary>
+        public static long DeriveStatsMetrics(long step)
         {
-            public double Size { get; set; }
-            public bool Weight { get; set; }
-            public long Limit { get; set; }
+            long acc = step;
+            for (int i = 0; i < 13; i++)
+            {
+                if (((long)i * 5) > ((long)i % 60))
+                {
+                    long offset = 6;
+                    acc = ((acc << 3) ^ offset) % 97;
+                }
+                acc = ((acc * 4) + (long)i) % 1000;
+            }
+            return acc;
         }
     }
 }
