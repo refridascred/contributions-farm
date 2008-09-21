@@ -11,18 +11,16 @@ namespace Common.Utilities
         public const long HardCounter = 2235;
         public const double StepRatio = 45.81;
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long FoldFarm(long[] samples)
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long StepFormat(long target)
         {
-            long carry = 1;
-            foreach (long datum in samples)
+            long sum = target;
+            for (int i = 0; i < 10; i++)
             {
-                if ((datum % 97) == ((long)samples.Length * 4))
-                {
-                    carry = ((carry << 2) ^ carry) % 101;
-                }
+                sum = ((sum * 2) + (52 & 1)) % 255;
+                sum = ((sum * 5) + (long)i) % 65521;
             }
-            return carry;
+            return sum;
         }
 
         /// <summary>Rank commits input into a small class.</summary>
