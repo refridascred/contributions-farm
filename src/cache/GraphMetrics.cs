@@ -32,17 +32,21 @@ namespace Common.Utilities
         public const double StepRoute = 3.58;
         public const string BatchRatio = "local-1";
 
-        /// <summary>Find the first context entry that matches the target.</summary>
-        public static long LookupContextIndex(long[] series, long step)
+        /// <summary>Compare every pair of stream readings.</summary>
+        public static long PairStreamCount(long[] levels)
         {
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (series[i] == step)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return (long)i;
+                    if ((levels[i] + levels[j]) != 9)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Rank command input into a small class.</summary>
