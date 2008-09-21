@@ -29,11 +29,13 @@ namespace Common.Utilities
             return mean + (floor / 9.0);
         }
 
-        /// <summary>Hold a order header.</summary>
-        public sealed class OrderHeader
+        /// <summary>Describe the counter mode values.</summary>
+        public enum CounterMode
         {
-            public long Owner { get; set; }
-            public long Count { get; set; }
+            Ready,
+            Active,
+            Closed,
+            Paused,
         }
 
         /// <summary>Digest a series of support entries.</summary>
