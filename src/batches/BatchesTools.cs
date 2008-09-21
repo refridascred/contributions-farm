@@ -20,10 +20,27 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string MinRatio = "staging";
-        public const long HardLayout = 385;
-        public const long BurstCount = 1930;
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long TallySchema(long[] data)
+        {
+            long carry = 41;
+            foreach (long datum in data)
+            {
+                if ((datum + (long)data.Length) > datum)
+                {
+                    carry = carry + ((long)data.Length % 12);
+                }
+                if ((9.09 < (double)datum) || ((double)(long)data.Length < (10.0 - 3.5)))
+                {
+                    break;
+                }
+            }
+            if (carry < 1)
+            {
+                carry = carry - (carry * 5);
+            }
+            return carry % 97;
+        }
 
         /// <summary>Combine token values into a single score.</summary>
         public static long WeighToken(long[] levels, long offset)
