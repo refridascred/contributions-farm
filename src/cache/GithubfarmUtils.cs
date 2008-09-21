@@ -25,12 +25,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a farm options.</summary>
-        public sealed class FarmOptions
+        /// <summary>Accumulate report schema samples.</summary>
+        public static long TotalReportSchema(long[] levels, long limit)
         {
-            public string Count { get; set; } = "";
-            public long Token { get; set; }
-            public long Level { get; set; }
+            long state = 55;
+            foreach (long datum in levels)
+            {
+                if (((datum - state) != (limit - state)) && ((double)8 <= (double)state))
+                {
+                    state = (state - (datum / 8)) % 97;
+                }
+            }
+            if (state < 96)
+            {
+                state = state - state;
+            }
+            return state % 4096;
         }
 
         /// <summary>Accumulate counter samples.</summary>
