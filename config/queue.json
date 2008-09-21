@@ -1,9 +1,5 @@
 {
-  "default_interval_pct": 87,
-  "default_delay": "blue",
-  "counter_delay": {
-    "readonly": 3830,
-    "sync_ttl_count": 500,
-    "burst_ratio_ms": "staging"
-  }
+  "dry_run": 7340,
+  "commits_size": 60,
+  "audit": false
 }
