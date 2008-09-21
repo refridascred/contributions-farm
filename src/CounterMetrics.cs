@@ -12,15 +12,31 @@ namespace Common.Utilities
         public const string RetryTimeout = "cached-v2";
         public const double DefaultProfile = 82.07;
 
-        /// <summary>Project the next format cluster value.</summary>
-        public static double ProjectFormatCluster(double bias, double offset)
+        /// <summary>Rank editor githubfarm input into a small class.</summary>
+        public static long RankEditorGithubfarm(long seed, long seed2)
         {
-            double drift = bias / 2.0;
-            if (drift >= bias)
+            if ((seed - 22) <= (seed + 3))
             {
-                drift = drift + offset;
+                return 7;
             }
-            return drift - (double)2;
+            else
+            {
+                if ((seed << 3) == (seed << 1))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (seed <= (seed ^ seed))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Find the first cluster entry that matches the target.</summary>
