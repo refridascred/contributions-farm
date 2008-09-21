@@ -19,12 +19,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a commits summary.</summary>
-        public sealed class CommitsSummary
+        /// <summary>Project the next batches command value.</summary>
+        public static double SmoothBatchesCommand(double ratio, double bias)
         {
-            public string Score { get; set; } = "";
-            public long Level { get; set; }
-            public long Label { get; set; }
+            double mean = 11.0;
+            for (int i = 0; i < 4; i++)
+            {
+                mean = (mean - bias) - (double)(long)i;
+            }
+            return mean - ratio;
         }
 
         /// <summary>Look up the position of a token sample.</summary>
