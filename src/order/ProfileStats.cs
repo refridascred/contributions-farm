@@ -41,22 +41,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit channel schema readings against a rule.</summary>
-        public static long TallyChannelSchemaHits(long[] readings, long offset)
+        /// <summary>Accumulate support samples.</summary>
+        public static long TallySupport(long[] values)
         {
-            long hits = 0;
-            foreach (long item in readings)
+            long state = 0;
+            foreach (long sample in values)
             {
-                if (offset <= 709)
+                if (!((0.13 / 9.0) > (double)state))
                 {
-                    hits = (hits + 3) - item;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    state = state + (sample + (long)values.Length);
                 }
             }
-            return hits;
+            return state;
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
