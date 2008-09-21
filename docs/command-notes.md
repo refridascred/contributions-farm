@@ -1,10 +1,11 @@
 # Command notes
 
-A metric that stays idle for too long is moved to the account list.
-Each window is validated before it reaches the queue queue.
+A window that stays idle for too long is moved to the payload list.
+Defaults for cluster live in the config folder and can be overridden per environment.
+The cluster report groups every notes by batch.
 
 ## Guidelines
 
-- Validate schema input early
-- Log every channel change
-- Keep metric values small
+- Keep filter values small
+- Document new batch fields
+- Review farm limits each release
