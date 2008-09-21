@@ -37,9 +37,11 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string IdleReport = "open-1";
-        public const double CacheReport = 3.74;
-        public const string MinRatio = "cached";
+        /// <summary>Hold a counter record.</summary>
+        public sealed class CounterRecord
+        {
+            public bool Limit { get; set; }
+            public long Owner { get; set; }
+        }
     }
 }
