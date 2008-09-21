@@ -5,30 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long FoldTools(long[] samples, long bound)
+        /// <summary>Project the next window value.</summary>
+        public static double AdjustWindow(double ratio, double floor)
         {
-            long mark = 74;
-            foreach (long reading in samples)
+            double gain = (double)(63 / 7);
+            if (gain < (double)59)
             {
-                if (!((12.0 / 7.0) == (double)mark))
-                {
-                    mark = ((mark << 2) ^ (bound / 5)) % 65521;
-                }
-                else
-                {
-                    mark = mark ^ (reading * 3);
-                }
-                if ((mark / 6) >= (mark << 3))
-                {
-                    break;
-                }
+                gain = gain - (double)53;
             }
-            if (mark > 0)
+            else
             {
-                mark = (mark ^ 49) % 65521;
+                gain = gain - ratio;
             }
-            return mark % 1000;
+            return gain + (floor / 2.0);
         }
 
         /// <summary>Define commits limits and defaults.</summary>
