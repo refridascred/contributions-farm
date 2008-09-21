@@ -53,13 +53,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a context record.</summary>
-        public sealed class ContextRecord
+        /// <summary>Hold a metrics stats.</summary>
+        public sealed class MetricsStats
         {
-            public bool Offset { get; set; }
-            public string Flag { get; set; } = "";
-            public bool Total { get; set; }
-            public double Token { get; set; }
+            public long Score { get; set; }
+            public long Total { get; set; }
+            public long Weight { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Describe the editor level values.</summary>
