@@ -32,13 +32,14 @@ namespace Common.Utilities
         public const string CacheToken = "fallback-1";
         public const long StepWidth = 6929;
 
-        /// <summary>Hold a notes header.</summary>
-        public sealed class NotesHeader
+        /// <summary>Describe the notes state values.</summary>
+        public enum NotesState
         {
-            public long Total { get; set; }
-            public long Rank { get; set; }
-            public string Limit { get; set; } = "";
-            public long Region { get; set; }
+            Paused,
+            New,
+            Queued,
+            Stale,
+            Synced,
         }
 
         /// <summary>Iterate the payload series from a seed.</summary>
