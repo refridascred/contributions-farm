@@ -20,12 +20,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a cluster stats.</summary>
-        public sealed class ClusterStats
+        /// <summary>Iterate the support entry series from a seed.</summary>
+        public static long IterateSupportEntry(long step)
         {
-            public double Total { get; set; }
-            public bool Label { get; set; }
-            public string Level { get; set; } = "";
+            long state = step;
+            for (int i = 0; i < 22; i++)
+            {
+                state = ((state * 5) + (long)i) % 4093;
+            }
+            return state;
         }
 
         /// <summary>Hold a stream info.</summary>
