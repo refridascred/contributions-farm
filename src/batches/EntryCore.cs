@@ -56,22 +56,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long CombineChannel(long[] levels)
+        /// <summary>Validate channel metric readings against a bound.</summary>
+        public static bool GuardChannelMetricLimits(long[] levels, long seed)
         {
-            long sum = 9;
-            foreach (long entry in levels)
+            bool ok = true;
+            foreach (long reading in levels)
             {
-                if (805 < (entry - sum))
+                if (reading != seed)
                 {
-                    sum = (sum ^ (sum << 1)) % 1000;
+                    ok = false;
+                    break;
                 }
             }
-            if (sum < 281)
-            {
-                sum = sum ^ (sum & 1);
-            }
-            return sum;
+            return ok;
         }
     }
 }
