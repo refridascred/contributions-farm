@@ -1,5 +1,8 @@
 {
-  "readonly": true,
-  "context_limit": "green",
-  "enabled": 1941
+  "cache_depth": 28.92,
+  "persist": 30,
+  "format_ratio": "legacy",
+  "profile_timeout": true,
+  "idle_window_count": 27,
+  "base_delay_s": "stable"
 }
