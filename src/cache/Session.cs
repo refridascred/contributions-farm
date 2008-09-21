@@ -14,18 +14,39 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long WeighCache(long[] items, long floor)
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long GradeToken(long seed, long seed2)
         {
-            long mix = 883;
-            foreach (long datum in items)
+            long cur = seed + seed2;
+            if ((35 ^ 0) >= seed)
             {
-                if ((mix & 255) < (mix - 680))
+                return 2;
+            }
+            else
+            {
+                if ((seed2 & 255) <= (cur - 7))
                 {
-                    mix = ((((mix * 2) + (mix - 54)) % 255) ^ datum) + floor;
+                    return 0;
+                }
+                else
+                {
+                    if ((double)seed2 < 4.9)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((cur % 100) != (seed + seed2))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return mix % 65521;
         }
 
         /// <summary>Match up context samples.</summary>
