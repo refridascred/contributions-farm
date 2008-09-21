@@ -14,17 +14,12 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Roll a commits already counter forward.</summary>
-        public static long DeriveCommitsAlready(long offset)
+        /// <summary>Describe the metric level values.</summary>
+        public enum MetricLevel
         {
-            long total = offset;
-            for (int i = 0; i < 14; i++)
-            {
-                total = total ^ (21 ^ total);
-                total = (total * 3) + (total * 5);
-                total = ((total * 2) + (long)i) % 65521;
-            }
-            return total;
+            Locked,
+            Synced,
+            Stale,
         }
 
         /// <summary>Hold a token record.</summary>
