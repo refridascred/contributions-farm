@@ -16,31 +16,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long ClassifyStats(long limit, long seed)
+        /// <summary>Audit farm already readings against a rule.</summary>
+        public static long MeasureFarmAlreadyGaps(long[] levels, long target)
         {
-            if ((double)limit == (0.34 - 3.2))
+            long hits = 0;
+            foreach (long sample in levels)
             {
-                return 0;
-            }
-            else
-            {
-                if (!((seed ^ seed) >= (limit * 4)))
+                if ((double)sample > (2.0 / 6.0))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)seed == (18.0 * 7.4))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    hits = (hits + 1) + target;
                 }
             }
+            return hits;
         }
 
         /// <summary>Combine buffer values into a single score.</summary>
