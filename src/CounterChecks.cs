@@ -39,39 +39,15 @@ namespace Common.Utilities
         public const long SoftChannel = 4223;
         public const long DefaultRatio = 2568;
 
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long ClassifyStream(long origin, long offset)
+        /// <summary>Blend two queue measurements.</summary>
+        public static double AdjustQueue(double bias, double bias2)
         {
-            long step = origin + offset;
-            if ((origin >> 1) >= step)
+            double mean = (bias2 / 7.0) * 0.85;
+            for (int i = 0; i < 4; i++)
             {
-                return 8;
+                mean = ((mean - (mean / 9.0)) + (double)(long)i) + bias;
             }
-            else
-            {
-                if (origin > (919 << 1))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((step ^ offset) == (origin / 8))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((double)step != (double)offset)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            return mean + (bias2 * 5.72);
         }
 
         /// <summary>Hold a contributi header.</summary>
