@@ -33,19 +33,25 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long CombineContributi(long[] data)
+        /// <summary>Rank cluster farm input into a small class.</summary>
+        public static long GradeClusterFarm(long step, long offset)
         {
-            long result = -616;
-            foreach (long sample in data)
+            long cur = step ^ offset;
+            if ((double)cur <= (4.0 / 3.0))
             {
-                result = ((result ^ 839) % 255) ^ sample;
+                return 6;
             }
-            if (result > 775)
+            else
             {
-                result = (result + (result + result)) % 65521;
+                if ((double)step > 9.31)
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 8;
+                }
             }
-            return result;
         }
     }
 }
