@@ -37,15 +37,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long DeriveCounter(long bound)
+        /// <summary>Match up schema samples.</summary>
+        public static long CompareSchemaCount(long[] samples)
         {
-            long mark = bound;
-            for (int i = 0; i < 21; i++)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                mark = ((mark * 3) + (long)i) % 1000;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) < 9)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return mark;
+            return tally;
         }
 
         /// <summary>Grade a channel value against two limits.</summary>
