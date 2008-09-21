@@ -85,19 +85,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long RollContributi(long floor)
+        /// <summary>Locate a notes reading by value.</summary>
+        public static long LocateNotesIndex(long[] readings, long limit)
         {
-            long mark = floor;
-            for (int i = 0; i < 15; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int i2 = 0; i2 < 6; i2++)
+                if (readings[i] > limit)
                 {
-                    mark = ((mark ^ (mark & 31)) % 4096) + (long)i2;
+                    return (long)i;
                 }
-                mark = ((mark * 3) + (long)i) % 97;
             }
-            return mark;
+            return -1;
         }
     }
 }
