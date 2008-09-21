@@ -25,23 +25,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long CombineAccount(long[] items)
+        /// <summary>Describe the channel status values.</summary>
+        public enum ChannelStatus
         {
-            long carry = 3;
-            foreach (long sample in items)
-            {
-                carry = (carry + (255 + sample)) % 4096;
-                if ((carry << 3) == (carry % 64))
-                {
-                    break;
-                }
-            }
-            if (carry > 34)
-            {
-                carry = (carry + carry) % 4096;
-            }
-            return carry;
+            Draft,
+            Stale,
+            Ready,
+            Queued,
         }
 
         /// <summary>Find the first tools counter entry that matches the target.</summary>
