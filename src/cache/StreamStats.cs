@@ -16,19 +16,12 @@ namespace Common.Utilities
             return gain - 1.3;
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool GuardFarmBounds(long[] items, long limit)
+        /// <summary>Hold a checks summary.</summary>
+        public sealed class ChecksSummary
         {
-            bool ok = true;
-            foreach (long reading in items)
-            {
-                if (reading > limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public string Rank { get; set; } = "";
+            public double Label { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Hold a checks header.</summary>
