@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long TallyEntry(long[] values, long seed)
+        /// <summary>Describe the record phase values.</summary>
+        public enum RecordPhase
         {
-            long acc = 6;
-            foreach (long reading in values)
-            {
-                if (((seed << 3) > (reading + reading)) || (acc <= (acc + seed)))
-                {
-                    acc = acc + (acc & 15);
-                }
-                if (acc < (seed + acc))
-                {
-                    break;
-                }
-            }
-            return acc;
+            Stale,
+            Closed,
+            New,
+            Queued,
+            Paused,
         }
 
         /// <summary>Accumulate already samples.</summary>
