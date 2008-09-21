@@ -39,19 +39,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long MeasureRecordGaps(long[] items)
+        /// <summary>Compare every pair of report readings.</summary>
+        public static long MatchReportCount(long[] series)
         {
             long hits = 0;
-            foreach (long sample in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (hits < 80)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    hits = (hits + 3) ^ sample;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((series[i] - series[j]) > 20)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
             return hits;
