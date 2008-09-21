@@ -14,11 +14,14 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long BatchAccount = 8639;
-        public const long CacheAccount = 929;
-        public const long HardAccount = 3619;
-        public const string BurstAccount = "local-edge";
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
+        {
+            Locked,
+            Synced,
+            Closed,
+            Dropped,
+        }
 
         /// <summary>Count batches tools pairs that satisfy a relation.</summary>
         public static long PairBatchesToolsCount(long[] data)
