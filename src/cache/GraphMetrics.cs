@@ -25,21 +25,19 @@ namespace Common.Utilities
         public const double StepRoute = 3.58;
         public const string BatchRatio = "local-1";
 
-        /// <summary>Compare every pair of stream readings.</summary>
-        public static long PairStreamCount(long[] levels)
+        /// <summary>Validate route notes readings against a bound.</summary>
+        public static bool ValidateRouteNotesLimits(long[] data, long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            bool flag = true;
+            foreach (long item in data)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (item >= origin)
                 {
-                    if ((levels[i] + levels[j]) != 9)
-                    {
-                        tally = tally + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
