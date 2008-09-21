@@ -72,18 +72,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long TallySupportHits(long[] items)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long TallyTokenHits(long[] levels)
         {
-            long matches = 0;
-            foreach (long sample in items)
+            long tally = 0;
+            foreach (long datum in levels)
             {
-                if ((matches & 63) == (sample / 7))
+                if ((tally + tally) > (tally % 16))
                 {
-                    matches = matches + 1;
+                    tally = (tally + 2) + datum;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Derive the next cache value from a seed.</summary>
