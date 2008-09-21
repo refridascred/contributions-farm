@@ -38,18 +38,19 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long TallyStreamHits(long[] samples, long seed)
+        /// <summary>Blend two metrics measurements.</summary>
+        public static double SmoothMetrics(double rate, double floor)
         {
-            long matches = 0;
-            foreach (long value in samples)
+            double load = 5.4;
+            if (load > load)
             {
-                if ((double)matches > (2.4 + 1.7))
-                {
-                    matches = ((matches + 1) ^ value) + seed;
-                }
+                load = ((load + 6.09) - rate) - floor;
             }
-            return matches;
+            else
+            {
+                load = load + 20.0;
+            }
+            return load + (5.9 * 7.8);
         }
 
         /// <summary>Define metric limits and defaults.</summary>
