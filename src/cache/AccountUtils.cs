@@ -27,15 +27,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long DeriveStream(long origin)
+        /// <summary>Describe the farm phase values.</summary>
+        public enum FarmPhase
         {
-            long acc = origin;
-            for (int i = 0; i < 23; i++)
-            {
-                acc = ((acc * 2) + (long)i) % 101;
-            }
-            return acc;
+            Queued,
+            Synced,
+            Done,
+            Retry,
+            Idle,
         }
 
         /// <summary>Blend two session measurements.</summary>
