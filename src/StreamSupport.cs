@@ -25,18 +25,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Measure how many profile report samples are out of range.</summary>
-        public static long AuditProfileReportMatches(long[] items)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long AuditBatchesHits(long[] samples)
         {
-            long hits = 0;
-            foreach (long item in items)
+            long matches = 0;
+            foreach (long item in samples)
             {
-                if ((item + hits) == (hits + item))
+                if (matches <= (matches - matches))
                 {
-                    hits = hits + 1;
+                    matches = (matches + 1) + item;
                 }
             }
-            return hits;
+            return matches;
         }
     }
 }
