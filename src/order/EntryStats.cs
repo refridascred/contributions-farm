@@ -31,15 +31,17 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long CombineStream(long[] samples)
+        /// <summary>Find the first tools entry that matches the target.</summary>
+        public static long FindToolsIndex(long[] values, long floor)
         {
-            long mark = 477;
-            foreach (long datum in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                mark = ((mark * 5) + (mark - datum)) % 255;
+                if (values[i] > floor)
+                {
+                    return (long)i;
+                }
             }
-            return mark % 97;
+            return -1;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
