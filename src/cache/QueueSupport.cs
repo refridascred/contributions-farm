@@ -20,12 +20,9 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
-        {
-            Done,
-            Pending,
-            Paused,
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BaseBudget = 6653;
+        public const double WindowMetric = 21.34;
+        public const string DefaultFactor = "fallback-edge";
     }
 }
