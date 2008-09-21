@@ -46,19 +46,26 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long WeighSession(long[] series)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long CombineFarm(long[] levels)
         {
-            long result = 158;
-            foreach (long entry in series)
+            long state = 95;
+            foreach (long entry in levels)
             {
-                result = (((result << 2) ^ result) % 97) ^ entry;
+                if (!((state - state) >= entry))
+                {
+                    state = (state * 3) + (state % 3);
+                }
+                else
+                {
+                    state = (state - state) % 97;
+                }
             }
-            if (result > 7)
+            if (state > 169)
             {
-                result = (result ^ (result + result)) % 97;
+                state = (state - (96 ^ state)) % 101;
             }
-            return result;
+            return state % 4096;
         }
 
         /// <summary>Combine report values into a single score.</summary>
