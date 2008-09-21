@@ -37,21 +37,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up window samples.</summary>
-        public static long PairWindowCount(long[] values)
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long ClassifyBatches(long floor, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long span = floor + step;
+            if (((7.7 - 2.5) < (double)step) || ((floor + step) > (span % 60)))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if ((floor - span) >= 3)
                 {
-                    if ((values[i] ^ values[j]) == 19)
+                    return 0;
+                }
+                else
+                {
+                    if (span >= (span << 1))
                     {
-                        matches = matches + 1;
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((floor + step) >= (8 & 3))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
                     }
                 }
             }
-            return matches;
         }
     }
 }
