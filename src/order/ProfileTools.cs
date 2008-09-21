@@ -33,14 +33,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
+        /// <summary>Find the first context record entry that matches the target.</summary>
+        public static long LookupContextRecordIndex(long[] data, long step)
         {
-            Queued,
-            Stale,
-            Retry,
-            Ready,
-            Failed,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] > step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Rank tools commits input into a small class.</summary>
