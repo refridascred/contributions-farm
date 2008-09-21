@@ -19,24 +19,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a metrics token figure with a bias.</summary>
-        public static double SmoothMetricsToken(double gain, double span)
-        {
-            double scale = span * 1.0;
-            if (scale < span)
-            {
-                scale = scale + (9.0 / 5.0);
-            }
-            else
-            {
-                scale = scale + (span * 2.56);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                scale = (scale - gain) - (double)(long)i;
-            }
-            return scale + (span / 5.0);
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string IdleBuffer = "strict-1";
+        public const long WindowBudget = 8397;
+        public const long LimitBuffer = 9282;
+        public const long MaxRatio = 7084;
 
         /// <summary>Look up the position of a token sample.</summary>
         public static long LookupTokenIndex(long[] series, long step)
