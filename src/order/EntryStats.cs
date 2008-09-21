@@ -42,22 +42,11 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Compare every pair of report readings.</summary>
-        public static long MatchReportCount(long[] series)
-        {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) > 20)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string SoftBudget = "legacy-edge";
+        public const long SoftScore = 9903;
+        public const double DefaultCount = 86.76;
+        public const long RetryContributi = 7814;
 
         /// <summary>Match up counter samples.</summary>
         public static long PairCounterCount(long[] items)
