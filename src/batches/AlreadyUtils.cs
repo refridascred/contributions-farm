@@ -51,13 +51,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a metrics stats.</summary>
-        public sealed class MetricsStats
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long MeasureChecksOutliers(long[] series, long step)
         {
-            public long Score { get; set; }
-            public long Total { get; set; }
-            public long Weight { get; set; }
-            public string Size { get; set; } = "";
+            long hits = 0;
+            foreach (long entry in series)
+            {
+                if (13 > entry)
+                {
+                    hits = (hits + 2) - step;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the metric status values.</summary>
