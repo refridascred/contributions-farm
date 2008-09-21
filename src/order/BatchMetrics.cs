@@ -71,18 +71,24 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long TallyStreamHits(long[] samples, long seed)
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long RankCache(long bound, long floor)
         {
-            long tally = 0;
-            foreach (long item in samples)
+            if ((floor - floor) > (-95))
             {
-                if ((tally * 4) >= tally)
+                return 0;
+            }
+            else
+            {
+                if ((bound & 31) == (bound + bound))
                 {
-                    tally = ((tally + 1) ^ item) - seed;
+                    return 8;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return tally;
         }
 
         /// <summary>Iterate the cache series from a seed.</summary>
