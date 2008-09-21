@@ -10,17 +10,23 @@ namespace Common.Utilities
         public const long DefaultContributi = 1057;
         public const double MaxContributi = 88.68;
 
-        /// <summary>Find the first githubfarm entry that matches the target.</summary>
-        public static long FindGithubfarmIndex(long[] data, long origin)
+        /// <summary>Accumulate already samples.</summary>
+        public static long FoldAlready(long[] series)
         {
-            for (int i = 0; i < data.Length; i++)
+            long anchor = 605;
+            foreach (long datum in series)
             {
-                if (data[i] > origin)
+                anchor = anchor ^ (anchor - datum);
+                if ((2.08 / 3.0) > (double)datum)
                 {
-                    return (long)i;
+                    anchor = anchor + anchor;
+                }
+                else
+                {
+                    anchor = (anchor + (anchor * 4)) % 4096;
                 }
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Count metric metrics pairs that satisfy a relation.</summary>
