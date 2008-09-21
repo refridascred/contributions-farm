@@ -30,12 +30,25 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string SoftBudget = "standard-1";
-        public const long DefaultMetrics = 7703;
-        public const string MaxSize = "strict-edge";
-        public const string SoftWidth = "cached-v2";
-        public const long IdleMetrics = 9176;
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long SortBatch(long step, long offset)
+        {
+            if ((offset << 2) < (518 * 4))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((offset & 31) != (offset + offset))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
+        }
 
         /// <summary>Adjust a metric report reading.</summary>
         public static double ScaleMetricReport(double ratio, double floor)
