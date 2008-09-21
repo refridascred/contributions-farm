@@ -5,15 +5,31 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long FoldProfile(long[] samples, long floor)
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long RankEditor(long step, long offset)
         {
-            long carry = 4;
-            foreach (long entry in samples)
+            if (!(step >= (offset % 97)))
             {
-                carry = ((carry - (carry + entry)) % 255) + floor;
+                return 1;
             }
-            return carry;
+            else
+            {
+                if ((360 + offset) <= 5)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((step - step) != (5 * 3))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
