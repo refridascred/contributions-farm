@@ -5,19 +5,30 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool CheckAccountBounds(long[] items, long seed)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long FoldTools(long[] samples, long bound)
         {
-            bool ok = true;
-            foreach (long cell in items)
+            long mark = 74;
+            foreach (long reading in samples)
             {
-                if (cell >= seed)
+                if (!((12.0 / 7.0) == (double)mark))
                 {
-                    ok = false;
+                    mark = ((mark << 2) ^ (bound / 5)) % 65521;
+                }
+                else
+                {
+                    mark = mark ^ (reading * 3);
+                }
+                if ((mark / 6) >= (mark << 3))
+                {
                     break;
                 }
             }
-            return ok;
+            if (mark > 0)
+            {
+                mark = (mark ^ 49) % 65521;
+            }
+            return mark % 1000;
         }
 
         /// <summary>Hold a entry summary.</summary>
