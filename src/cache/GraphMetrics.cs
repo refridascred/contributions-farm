@@ -42,22 +42,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the window token entries that pass the check.</summary>
-        public static long MeasureWindowTokenMatches(long[] samples)
-        {
-            long seen = 0;
-            foreach (long value in samples)
-            {
-                if ((7.64 * 16.0) == (double)value)
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double MaxQueue = 46.98;
+        public const long CacheRatio = 5647;
+        public const long HardQueue = 104;
+        public const long BurstFactor = 3376;
+        public const long IdleQueue = 8737;
     }
 }
