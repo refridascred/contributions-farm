@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long HardWidth = 1792;
-        public const long DefaultContributi = 1057;
-        public const double MaxContributi = 88.68;
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool GuardCacheRange(long[] samples, long seed)
+        {
+            bool valid = true;
+            foreach (long cell in samples)
+            {
+                if (cell >= seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Accumulate already samples.</summary>
         public static long FoldAlready(long[] series)
