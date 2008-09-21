@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Locate a payload reading by value.</summary>
-        public static long SeekPayloadIndex(long[] data, long offset)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] == offset) && ((data[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long IdlePayload = 47;
+        public const long LimitPayload = 1966;
+        public const long MaxFactor = 9656;
 
         /// <summary>Look up the position of a contributi route sample.</summary>
         public static long SeekContributiRouteIndex(long[] values, long seed)
