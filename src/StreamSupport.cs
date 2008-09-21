@@ -12,18 +12,22 @@ namespace Common.Utilities
         public const long DefaultEditor = 8623;
         public const long RetryBudget = 185;
 
-        /// <summary>Audit notes editor readings against a rule.</summary>
-        public static long MeasureNotesEditorMatches(long[] data)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long WeighPayload(long[] samples)
         {
-            long tally = 0;
-            foreach (long cell in data)
+            long anchor = 10;
+            foreach (long cell in samples)
             {
-                if (!((cell + tally) <= cell))
+                if (anchor >= (cell >> 3))
                 {
-                    tally = tally + 2;
+                    anchor = (anchor * 2) + (anchor * 2);
+                }
+                else
+                {
+                    anchor = (anchor - (cell + anchor)) % 97;
                 }
             }
-            return tally;
+            return anchor;
         }
 
         /// <summary>Derive the next queue value from a seed.</summary>
