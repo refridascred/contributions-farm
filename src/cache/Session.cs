@@ -50,15 +50,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long TotalBuffer(long[] values)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long MeasureCommandOutliers(long[] levels, long target)
         {
-            long mark = 77;
-            foreach (long sample in values)
+            long count = 0;
+            foreach (long value in levels)
             {
-                mark = (mark << 2) ^ (sample + 3);
+                if ((57 + target) < (5 * 3))
+                {
+                    count = (count + 3) + value;
+                }
             }
-            return mark % 97;
+            return count;
         }
     }
 }
