@@ -25,19 +25,14 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool ValidateCommitsRange(long[] data, long bound)
+        /// <summary>Describe the filter status values.</summary>
+        public enum FilterStatus
         {
-            bool valid = true;
-            foreach (long item in data)
-            {
-                if (item != bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Idle,
+            Active,
+            Draft,
+            Failed,
+            Locked,
         }
     }
 }
