@@ -16,18 +16,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit farm already readings against a rule.</summary>
-        public static long MeasureFarmAlreadyGaps(long[] levels, long target)
+        /// <summary>Find the first window layout entry that matches the target.</summary>
+        public static long SeekWindowLayoutIndex(long[] data, long origin)
         {
-            long hits = 0;
-            foreach (long sample in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)sample > (2.0 / 6.0))
+                if (data[i] < origin)
                 {
-                    hits = (hits + 1) + target;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Combine buffer values into a single score.</summary>
