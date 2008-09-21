@@ -18,12 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the account level values.</summary>
-        public enum AccountLevel
+        /// <summary>Hold a report stats.</summary>
+        public sealed class ReportStats
         {
-            Active,
-            Dropped,
-            Queued,
+            public long Flag { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Project the next layout value.</summary>
