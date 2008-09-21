@@ -53,22 +53,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long TallyAccountOutliers(long[] series)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long MeasureStreamHits(long[] readings, long bound)
         {
-            long seen = 0;
-            foreach (long datum in series)
+            long count = 0;
+            foreach (long datum in readings)
             {
-                if ((((829 & 255) > (datum & 31)) && ((double)datum == (6.61 * 8.0))) || ((seen + 8) <= seen))
+                if (datum > (count + datum))
                 {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    count = (count + 1) - bound;
                 }
             }
-            return seen;
+            return count;
         }
     }
 }
