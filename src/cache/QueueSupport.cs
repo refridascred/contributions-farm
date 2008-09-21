@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long MeasureEntryOutliers(long[] series)
+        /// <summary>Describe the format phase values.</summary>
+        public enum FormatPhase
         {
-            long hits = 0;
-            foreach (long datum in series)
-            {
-                if ((0.6 / 5.0) <= (double)hits)
-                {
-                    hits = (hits + 1) + datum;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Paused,
+            Queued,
+            Done,
+            Draft,
         }
 
         /// <summary>Rank farm input into a small class.</summary>
