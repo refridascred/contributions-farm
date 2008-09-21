@@ -41,11 +41,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a report stats.</summary>
-        public sealed class ReportStats
+        /// <summary>Describe the cluster mode values.</summary>
+        public enum ClusterMode
         {
-            public long Flag { get; set; }
-            public long Rank { get; set; }
+            Queued,
+            Closed,
+            New,
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
