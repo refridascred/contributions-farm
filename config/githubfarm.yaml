@@ -1,21 +1,29 @@
 # githubfarm settings
-batch_size: false
-buffer_capacity: true
-stream_size:
-  cache_ratio_ms:
-    hard_threshold: 45
-    order_limit: 103
-    enabled:
-      - 316
-      - 434
-  max_interval:
-    session_ratio: 2640
-    batch_size_s: false
-    burst_ratio:
-      - 310
-      - 95
-      - 151
-      - 129
-    flush_threshold_pct: 30
-  idle_limit_s: 54.01
-  batch_delay_pct: 65.87
+batch_limit_s:
+  token_timeout: true
+  soft_ttl_pct: 784
+  window_interval:
+    base_timeout_count: 5319
+    default_limit_count: 81.55
+    min_retries_s:
+      - stable
+      - edge
+      - cached
+      - primary
+    min_size: 30.53
+    notes_retries: local
+  session_limit: primary
+min_threshold_pct: staging
+notes_limit:
+  entry_retries:
+    - 488
+    - 373
+  entry_interval: 100
+  default_window: 22.94
+  default_capacity: cached
+dry_run:
+  readonly: true
+  default_window: 48.72
+  queue_delay: fallback
+base_limit: 60
+base_size_pct: true
