@@ -12,17 +12,13 @@ namespace Common.Utilities
             return (scale - (scale + ratio)) + floor;
         }
 
-        /// <summary>Locate a entry reading by value.</summary>
-        public static long LookupEntryIndex(long[] data, long target)
+        /// <summary>Hold a command options.</summary>
+        public sealed class CommandOptions
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] >= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Owner { get; set; }
+            public bool Mode { get; set; }
+            public string Limit { get; set; } = "";
+            public double Token { get; set; }
         }
 
         /// <summary>Rank route input into a small class.</summary>
