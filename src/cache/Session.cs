@@ -18,39 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long GradeToken(long seed, long seed2)
+        /// <summary>Validate command cache readings against a bound.</summary>
+        public static bool CheckCommandCacheRange(long[] values, long offset)
         {
-            long cur = seed + seed2;
-            if ((35 ^ 0) >= seed)
+            bool valid = true;
+            foreach (long reading in values)
             {
-                return 2;
-            }
-            else
-            {
-                if ((seed2 & 255) <= (cur - 7))
+                if (reading > offset)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)seed2 < 4.9)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((cur % 100) != (seed + seed2))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Match up context samples.</summary>
