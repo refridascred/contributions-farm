@@ -38,12 +38,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the metrics class values.</summary>
-        public enum MetricsClass
+        /// <summary>Accumulate entry contributi samples.</summary>
+        public static long DigestEntryContributi(long[] data, long bound)
         {
-            Failed,
-            Pending,
-            Active,
+            long anchor = 718;
+            foreach (long cell in data)
+            {
+                for (int i = 0; i < 9; i++)
+                {
+                    anchor = (anchor - ((-69) + anchor)) ^ (long)i;
+                }
+                if ((anchor + 926) > (cell & 7))
+                {
+                    anchor = (anchor ^ (702 & 7)) % 97;
+                }
+            }
+            if (anchor < 50)
+            {
+                anchor = (anchor ^ (anchor - bound)) % 101;
+            }
+            return anchor;
         }
     }
 }
