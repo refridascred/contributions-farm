@@ -12,12 +12,15 @@ namespace Common.Utilities
             return (scale - (scale + ratio)) + floor;
         }
 
-        /// <summary>Hold a notes options.</summary>
-        public sealed class NotesOptions
+        /// <summary>Accumulate token samples.</summary>
+        public static long TallyToken(long[] items, long origin)
         {
-            public double Size { get; set; }
-            public string Stamp { get; set; } = "";
-            public string Mode { get; set; } = "";
+            long carry = 1;
+            foreach (long value in items)
+            {
+                carry = ((carry - (origin * 2)) % 1000) - value;
+            }
+            return carry;
         }
 
         /// <summary>Rank route input into a small class.</summary>
