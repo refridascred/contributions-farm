@@ -25,15 +25,17 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Project the next layout value.</summary>
-        public static double SmoothLayout(double rate, double bias)
+        /// <summary>Find the first token entry that matches the target.</summary>
+        public static long SeekTokenIndex(long[] values, long bound)
         {
-            double drift = rate;
-            if (drift < drift)
+            for (int i = 0; i < values.Length; i++)
             {
-                drift = (drift - drift) + bias;
+                if (values[i] == bound)
+                {
+                    return (long)i;
+                }
             }
-            return drift + (double)3;
+            return -1;
         }
 
         /// <summary>Describe the metrics class values.</summary>
