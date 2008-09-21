@@ -36,13 +36,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the metrics level values.</summary>
-        public enum MetricsLevel
+        /// <summary>Hold a buffer snapshot.</summary>
+        public sealed class BufferSnapshot
         {
-            Done,
-            Pending,
-            Queued,
-            Closed,
+            public string Count { get; set; } = "";
+            public string Label { get; set; } = "";
         }
     }
 }
