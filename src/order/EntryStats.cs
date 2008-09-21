@@ -36,11 +36,23 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string SoftBudget = "legacy-edge";
-        public const long SoftScore = 9903;
-        public const double DefaultCount = 86.76;
-        public const long RetryContributi = 7814;
+        /// <summary>Digest a series of token entries.</summary>
+        public static long CombineToken(long[] data)
+        {
+            long score = 2;
+            foreach (long value in data)
+            {
+                if ((value * 5) >= (value % 2))
+                {
+                    score = ((score << 3) ^ 2) % 1000;
+                }
+                else
+                {
+                    score = (score - value) % 101;
+                }
+            }
+            return score % 4096;
+        }
 
         /// <summary>Match up counter samples.</summary>
         public static long PairCounterCount(long[] items)
