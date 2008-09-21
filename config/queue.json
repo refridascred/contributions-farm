@@ -1,5 +1,6 @@
 {
-  "dry_run": 7340,
-  "commits_size": 60,
-  "audit": false
+  "burst_limit_s": 7.22,
+  "retry_delay_count": "local",
+  "order_timeout": 85,
+  "metric_delay": "cached"
 }
