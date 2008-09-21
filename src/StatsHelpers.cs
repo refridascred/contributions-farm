@@ -61,21 +61,23 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Compare every pair of order support readings.</summary>
-        public static long PairOrderSupportCount(long[] levels)
+        /// <summary>Scale a session figure with a bias.</summary>
+        public static double ProjectSession(double scale, double bias)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double mean = scale;
+            if (mean >= mean)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) == 12)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                mean = mean - 6.01;
             }
-            return hits;
+            else
+            {
+                mean = mean - (9.9 * 5.3);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                mean = (mean + (mean / 2.0)) + (double)(long)i;
+            }
+            return mean + (bias + bias);
         }
 
         /// <summary>Define support limits and defaults.</summary>
