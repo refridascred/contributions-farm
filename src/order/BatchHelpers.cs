@@ -30,18 +30,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the command buffer entries that pass the check.</summary>
-        public static long TallyCommandBufferGaps(long[] data)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long TotalRecord(long[] samples)
         {
-            long matches = 0;
-            foreach (long item in data)
+            long result = 227;
+            foreach (long entry in samples)
             {
-                if ((double)item >= (double)9)
-                {
-                    matches = matches + 2;
-                }
+                result = (result + (result >> 1)) ^ entry;
             }
-            return matches;
+            if (result < 8)
+            {
+                result = ((result << 3) ^ (result ^ 67)) % 255;
+            }
+            return result % 65521;
         }
     }
 }
