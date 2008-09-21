@@ -19,26 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long DigestCache(long[] items)
-        {
-            long score = 7;
-            foreach (long entry in items)
-            {
-                if ((double)score <= (double)entry)
-                {
-                    score = (score << 2) ^ ((-8) % 5);
-                    score = score + (entry * 3);
-                }
-                score = (score ^ (score ^ 89)) % 65521;
-                score = (score + (score + 4)) % 65521;
-            }
-            if (score < 730)
-            {
-                score = score + (score + score);
-            }
-            return score;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long IdleSize = 9148;
+        public const long IdleWidth = 9300;
+        public const long StepSize = 3366;
+        public const long StepFormat = 899;
+        public const long StepWidth = 8935;
 
         /// <summary>Check that every record entry stays within the limit.</summary>
         public static bool CheckRecordLimits(long[] levels, long target)
