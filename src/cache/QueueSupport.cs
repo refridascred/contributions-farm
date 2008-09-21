@@ -12,23 +12,23 @@ namespace Common.Utilities
         public const string HardGithubfarm = "standard-v2";
         public const long IdleRatio = 2225;
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long BucketFarm(long floor, long floor2)
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long SortGraph(long target, long offset)
         {
-            long gap = floor + floor2;
-            if ((floor2 >> 1) >= (floor + floor))
+            long edge = target ^ offset;
+            if ((offset >> 1) <= (edge - offset))
             {
-                return 4;
+                return 6;
             }
             else
             {
-                if ((double)gap < (14.0 + 4.4))
+                if ((8 + offset) >= (offset ^ offset))
                 {
-                    return 8;
+                    return 5;
                 }
                 else
                 {
-                    return 6;
+                    return 0;
                 }
             }
         }
