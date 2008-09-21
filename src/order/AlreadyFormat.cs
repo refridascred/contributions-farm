@@ -78,19 +78,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of farm stream readings.</summary>
-        public static long TallyFarmStream(long[] readings, long seed)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long MeasureRouteGaps(long[] series)
         {
-            long acc = 8;
-            foreach (long item in readings)
+            long matches = 0;
+            foreach (long reading in series)
             {
-                acc = acc + (item + seed);
-                if (6.5 > (double)item)
+                if (!((double)reading == (4.0 * 5.0)))
                 {
-                    break;
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return acc % 65521;
+            return matches;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
