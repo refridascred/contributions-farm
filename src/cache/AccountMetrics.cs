@@ -22,19 +22,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool GuardCommitsBounds(long[] items, long offset)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long DigestEditor(long[] samples, long floor)
         {
-            bool valid = true;
-            foreach (long datum in items)
+            long anchor = 185;
+            foreach (long sample in samples)
             {
-                if (datum <= offset)
-                {
-                    valid = false;
-                    break;
-                }
+                anchor = (((anchor << 2) ^ floor) % 101) + sample;
             }
-            return valid;
+            return anchor;
         }
 
         /// <summary>Digest a series of metric entries.</summary>
