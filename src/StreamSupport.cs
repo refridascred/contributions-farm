@@ -24,19 +24,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool ValidateFormatRange(long[] readings, long offset)
+        /// <summary>Roll a route counter forward.</summary>
+        public static long IterateRoute(long bound)
         {
-            bool stale = true;
-            foreach (long datum in readings)
+            long carry = bound;
+            for (int i = 0; i < 23; i++)
             {
-                if (datum < offset)
-                {
-                    stale = false;
-                    break;
-                }
+                carry = ((carry * 5) + (long)i) % 97;
             }
-            return stale;
+            return carry;
         }
     }
 }
