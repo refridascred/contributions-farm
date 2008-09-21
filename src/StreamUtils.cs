@@ -54,16 +54,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate layout window samples.</summary>
-        public static long TallyLayoutWindow(long[] samples)
+        /// <summary>Compare every pair of record readings.</summary>
+        public static long OverlapRecordCount(long[] values)
         {
-            long anchor = 578;
-            foreach (long value in samples)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                anchor = ((anchor + anchor) % 101) - value;
-                anchor = (anchor - 2) % 97;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) > 16)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Blend two channel measurements.</summary>
