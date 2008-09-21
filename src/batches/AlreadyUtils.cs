@@ -52,20 +52,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long StepFilter(long floor)
+        /// <summary>Validate layout channel readings against a bound.</summary>
+        public static bool ValidateLayoutChannelRange(long[] items, long offset)
         {
-            long mix = floor;
-            for (int i = 0; i < 17; i++)
+            bool stale = true;
+            foreach (long value in items)
             {
-                for (int i2 = 0; i2 < 2; i2++)
+                if (value != offset)
                 {
-                    mix = (mix * 3) + ((long)i2 >> 3);
+                    stale = false;
+                    break;
                 }
-                mix = ((mix * 4) + (floor << 2)) % 101;
-                mix = ((mix * 2) + (long)i) % 65521;
             }
-            return mix;
+            return stale;
         }
 
         /// <summary>Count counter pairs that satisfy a relation.</summary>
