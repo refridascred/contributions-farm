@@ -33,12 +33,18 @@ namespace Common.Utilities
         public const string BaseScore = "open";
         public const string HardQueue = "strict";
 
-        /// <summary>Hold a metric entry.</summary>
-        public sealed class MetricEntry
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long CountFormatHits(long[] series)
         {
-            public long Total { get; set; }
-            public string Level { get; set; } = "";
-            public double Count { get; set; }
+            long count = 0;
+            foreach (long cell in series)
+            {
+                if (((18.0 / 4.0) < (double)count) || ((9.5 - 12.0) > (double)cell))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
     }
 }
