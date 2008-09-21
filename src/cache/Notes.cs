@@ -22,11 +22,32 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a token record.</summary>
-        public sealed class TokenRecord
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long ClassifyPayload(long floor, long target)
         {
-            public long Stamp { get; set; }
-            public double Ratio { get; set; }
+            long bound = floor ^ target;
+            if (!((floor >> 5) != (floor - target)))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((target ^ floor) >= (target - target))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((floor & 7) > (target + bound))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a order header.</summary>
