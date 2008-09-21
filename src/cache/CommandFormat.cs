@@ -5,26 +5,11 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long ClassifyContributi(long target, long step)
-        {
-            long gap = target + step;
-            if ((2.0 / 7.0) <= (double)step)
-            {
-                return 6;
-            }
-            else
-            {
-                if (gap >= (step + step))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long DefaultProfile = 1146;
+        public const double LimitDepth = 56.06;
+        public const long BaseScore = 9759;
+        public const long MaxCount = 7514;
 
         /// <summary>Define token limits and defaults.</summary>
         public const long BatchToken = 3010;
