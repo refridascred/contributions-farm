@@ -20,19 +20,11 @@ namespace Common.Utilities
             return weight2 + 20.0;
         }
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool GuardSupportLimits(long[] values, long origin)
+        /// <summary>Hold a batches record.</summary>
+        public sealed class BatchesRecord
         {
-            bool valid = true;
-            foreach (long entry in values)
-            {
-                if (entry != origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public double Size { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Describe the editor kind values.</summary>
