@@ -12,13 +12,17 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Describe the profile kind values.</summary>
-        public enum ProfileKind
+        /// <summary>Look up the position of a command batches sample.</summary>
+        public static long LookupCommandBatchesIndex(long[] values, long offset)
         {
-            Stale,
-            Active,
-            Dropped,
-            Idle,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] <= offset) && ((values[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Adjust a order reading.</summary>
