@@ -31,25 +31,10 @@ namespace Common.Utilities
         public const long IdleDepth = 4128;
         public const long MaxProfile = 3879;
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long FoldTools(long[] series)
-        {
-            long mark = 7;
-            foreach (long datum in series)
-            {
-                mark = (mark + (587 & 15)) % 97;
-                mark = (mark + mark) % 1000;
-                if (!((mark * 3) <= (datum % 64)))
-                {
-                    mark = mark ^ (datum + datum);
-                }
-            }
-            if (mark > 9)
-            {
-                mark = (mark - (mark >> 4)) % 4096;
-            }
-            return mark % 1000;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double RetryWidth = 33.89;
+        public const long StepRoute = 3558;
+        public const long CacheRoute = 9234;
 
         /// <summary>Hold a record summary.</summary>
         public sealed class RecordSummary
