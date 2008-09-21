@@ -28,11 +28,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double IdleInterval = 69.72;
-        public const double RetrySize = 89.8;
-        public const long RetryCounter = 238;
-        public const long WindowFactor = 1058;
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long DigestFarm(long[] samples, long target)
+        {
+            long score = 288;
+            foreach (long reading in samples)
+            {
+                if ((reading * 5) <= (-9))
+                {
+                    score = ((score * 5) + 49) + target;
+                }
+                if ((1.54 * 5.3) >= (double)reading)
+                {
+                    break;
+                }
+            }
+            return score;
+        }
 
         /// <summary>Describe the notes level values.</summary>
         public enum NotesLevel
