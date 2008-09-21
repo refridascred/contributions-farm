@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long SeriesQueue(long bound)
+        /// <summary>Roll a command counter forward.</summary>
+        public static long StepCommand(long bound)
         {
-            long carry = bound;
-            for (int i = 0; i < 16; i++)
+            long mark = bound;
+            for (int i = 0; i < 23; i++)
             {
-                carry = ((carry * 5) + (long)i) % 97;
+                mark = ((mark * 4) + (long)i) % 101;
             }
-            return carry;
+            return mark;
         }
 
         /// <summary>Adjust a report reading.</summary>
