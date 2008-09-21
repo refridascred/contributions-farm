@@ -24,27 +24,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long CombineStream(long[] items)
-        {
-            long anchor = -26;
-            foreach (long item in items)
-            {
-                if ((11.0 + 13.0) >= (double)anchor)
-                {
-                    anchor = ((anchor * 4) + (anchor - item)) % 4096;
-                }
-                else
-                {
-                    anchor = anchor + 23;
-                }
-            }
-            if (anchor < 3)
-            {
-                anchor = anchor + (85 ^ 9);
-            }
-            return anchor;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long LimitRatio = 7131;
+        public const long DefaultRatio = 7273;
+        public const long DefaultStream = 1708;
+        public const double HardStream = 50.36;
 
         /// <summary>Grade a stats cluster value against two limits.</summary>
         public static long RankStatsCluster(long step, long origin)
