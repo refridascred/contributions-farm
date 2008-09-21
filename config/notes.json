@@ -1,8 +1,5 @@
 {
-  "already_delay": "standard",
-  "warm_window_pct": 68.76,
-  "profile_limit": 45.0,
-  "min_size": "fallback",
-  "metric_depth": "eu-west",
-  "cache_depth": ["blue", "stable", "blue", "eu-west"]
+  "soft_window_count": "latest",
+  "persist": 5,
+  "compress": [46, 404, 119, 436]
 }
