@@ -29,30 +29,22 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long BucketChannel(long offset, long seed)
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long SortPayload(long seed, long step)
         {
-            long prev = offset ^ seed;
-            if (2 < (prev + offset))
+            if ((step / 5) >= step)
             {
                 return 6;
             }
             else
             {
-                if (offset >= (offset - seed))
+                if (!((seed * 5) >= 3))
                 {
-                    return 4;
+                    return 2;
                 }
                 else
                 {
-                    if ((5.62 / 2.0) != (double)seed)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    return 8;
                 }
             }
         }
