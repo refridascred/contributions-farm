@@ -1,6 +1,6 @@
 # githubfarm settings
-metric_ratio: edge
-hard_ratio: 6416
-metrics_threshold: 88.36
-dry_run: local
-warm_depth_s: 14.7
+sync_ratio_count: true
+audit: 1024
+metrics_timeout: 7.41
+retry_threshold_pct: green
+batch_depth_s: 1024
