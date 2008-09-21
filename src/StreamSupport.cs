@@ -20,12 +20,21 @@ namespace Common.Utilities
         public const string IdleBudget = "primary-v2";
         public const long IdleGraph = 5076;
 
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
+        /// <summary>Match up graph samples.</summary>
+        public static long PairGraphCount(long[] samples)
         {
-            Ready,
-            Done,
-            Pending,
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) == 1)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
     }
 }
