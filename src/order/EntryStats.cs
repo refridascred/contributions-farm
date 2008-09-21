@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long SortBatch(long target, long bound)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long TallyEditorMatches(long[] items, long origin)
         {
-            if ((bound + bound) == (bound + 282))
+            long tally = 0;
+            foreach (long datum in items)
             {
-                return 2;
-            }
-            else
-            {
-                if ((bound / 6) <= target)
+                if ((tally >> 1) < (697 ^ origin))
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 0;
+                    tally = (tally + 2) ^ datum;
                 }
             }
+            return tally;
         }
 
         /// <summary>Describe the channel status values.</summary>
