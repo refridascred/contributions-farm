@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Describe the channel mode values.</summary>
-        public enum ChannelMode
-        {
-            Failed,
-            Closed,
-            New,
-            Stale,
-            Dropped,
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string BaseReport = "open-1";
+        public const long BurstTimeout = 7172;
+        public const long HardSize = 3145;
+        public const double CacheRatio = 88.09;
+        public const long HardTimeout = 9468;
 
         /// <summary>Hold a counter options.</summary>
         public sealed class CounterOptions
