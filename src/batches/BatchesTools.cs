@@ -5,32 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long GradeEditor(long origin, long step)
+        /// <summary>Adjust a account reading.</summary>
+        public static double SmoothAccount(double bias, double floor)
         {
-            long slot = origin ^ step;
-            if ((115 > slot) || ((21 + origin) < (step >> 2)))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((double)origin >= 4.0)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((step % 7) <= (step - step))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            double scale = (bias / 6.0) / 9.0;
+            return (scale - 16.0) + floor;
         }
 
         /// <summary>Roll a batch counter forward.</summary>
