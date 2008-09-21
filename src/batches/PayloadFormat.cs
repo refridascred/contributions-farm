@@ -37,11 +37,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a counter record.</summary>
-        public sealed class CounterRecord
+        /// <summary>Count the payload tools entries that pass the check.</summary>
+        public static long AuditPayloadToolsOutliers(long[] series)
         {
-            public bool Limit { get; set; }
-            public long Owner { get; set; }
+            long seen = 0;
+            foreach (long datum in series)
+            {
+                if (((3.54 * 1.9) <= (double)60) && ((96 << 2) < (seen - seen)))
+                {
+                    seen = (seen + 3) ^ datum;
+                }
+            }
+            return seen;
         }
     }
 }
