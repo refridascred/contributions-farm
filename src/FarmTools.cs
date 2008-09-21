@@ -20,21 +20,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Match up entry samples.</summary>
-        public static long CompareEntryCount(long[] levels)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long CountEntryGaps(long[] samples, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            foreach (long item in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((double)seen == (double)31)
                 {
-                    if ((levels[i] ^ levels[j]) != 11)
-                    {
-                        count = count + 1;
-                    }
+                    seen = ((seen + 1) + item) - limit;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Audit session metric readings against a rule.</summary>
