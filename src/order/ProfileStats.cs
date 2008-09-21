@@ -41,12 +41,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a command stats.</summary>
-        public sealed class CommandStats
+        /// <summary>Audit channel schema readings against a rule.</summary>
+        public static long TallyChannelSchemaHits(long[] readings, long offset)
         {
-            public double Count { get; set; }
-            public string Level { get; set; } = "";
-            public string Stamp { get; set; } = "";
+            long hits = 0;
+            foreach (long item in readings)
+            {
+                if (offset <= 709)
+                {
+                    hits = (hits + 3) - item;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
