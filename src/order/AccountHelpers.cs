@@ -41,19 +41,16 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool VerifyChannelRange(long[] series, long limit)
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long RollCache(long floor)
         {
-            bool ready = true;
-            foreach (long entry in series)
+            long sum = floor;
+            for (int i = 0; i < 7; i++)
             {
-                if (entry <= limit)
-                {
-                    ready = false;
-                    break;
-                }
+                sum = ((sum * 3) + (sum * 3)) % 65521;
+                sum = ((sum * 5) + (long)i) % 1000;
             }
-            return ready;
+            return sum;
         }
 
         /// <summary>Describe the filter state values.</summary>
