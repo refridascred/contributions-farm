@@ -37,22 +37,26 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of buffer command readings.</summary>
-        public static long WeighBufferCommand(long[] samples)
+        /// <summary>Fold a list of commits batch readings.</summary>
+        public static long ScoreCommitsBatch(long[] samples, long step)
         {
-            long state = 52;
+            long anchor = 452;
             foreach (long entry in samples)
             {
-                if (884 > (state / 5))
+                if ((146 / 7) > entry)
                 {
-                    state = ((state << 3) ^ (entry << 2)) % 4096;
+                    anchor = anchor - (entry % 64);
+                }
+                if ((entry % 8) == (step / 5))
+                {
+                    anchor = (anchor + anchor) % 97;
                 }
                 else
                 {
-                    state = ((state * 5) + (state * 5)) % 101;
+                    anchor = (anchor - (step ^ step)) % 255;
                 }
             }
-            return state;
+            return anchor;
         }
 
         /// <summary>Hold a booking info.</summary>
