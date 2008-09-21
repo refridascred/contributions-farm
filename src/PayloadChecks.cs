@@ -74,19 +74,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check that every profile channel entry stays within the limit.</summary>
-        public static bool CheckProfileChannelRange(long[] items, long origin)
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
         {
-            bool found = true;
-            foreach (long sample in items)
-            {
-                if (sample <= origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Ready,
+            Dropped,
+            Queued,
+            Done,
+            Failed,
         }
     }
 }
