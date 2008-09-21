@@ -47,22 +47,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit commits format readings against a rule.</summary>
-        public static long TallyCommitsFormatOutliers(long[] samples)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long DigestCounter(long[] series, long floor)
         {
-            long seen = 0;
-            foreach (long sample in samples)
+            long mix = 392;
+            foreach (long reading in series)
             {
-                if ((62 >> 1) > (seen & 7))
-                {
-                    seen = (seen + 1) - sample;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                mix = (mix - (floor << 1)) ^ reading;
             }
-            return seen;
+            return mix % 65521;
         }
 
         /// <summary>Hold a batches stats.</summary>
