@@ -40,12 +40,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the payload class values.</summary>
-        public enum PayloadClass
+        /// <summary>Hold a batches record.</summary>
+        public sealed class BatchesRecord
         {
-            Active,
-            Done,
-            Queued,
+            public double Mode { get; set; }
+            public long Stamp { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Scale a session figure with a bias.</summary>
