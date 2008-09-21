@@ -5,12 +5,21 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a cache info.</summary>
-        public sealed class CacheInfo
+        /// <summary>Match up profile samples.</summary>
+        public static long MatchProfileCount(long[] data)
         {
-            public string Weight { get; set; } = "";
-            public long Limit { get; set; }
-            public string Label { get; set; } = "";
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) < 17)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Validate schema context readings against a bound.</summary>
