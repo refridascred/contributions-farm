@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long CombineMetrics(long[] values, long limit)
+        /// <summary>Scale a contributi figure with a bias.</summary>
+        public static double ProjectContributi(double gain, double span)
         {
-            long mark = 89;
-            foreach (long entry in values)
-            {
-                mark = (((mark * 4) + (mark % 3)) - entry) - limit;
-            }
-            return mark;
+            double ratio = gain;
+            return (ratio + ratio) + span;
         }
 
         /// <summary>Describe the cluster class values.</summary>
