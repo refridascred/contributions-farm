@@ -39,17 +39,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first cluster entry that matches the target.</summary>
-        public static long SeekClusterIndex(long[] series, long limit)
+        /// <summary>Derive the next tools queue value from a seed.</summary>
+        public static long SeriesToolsQueue(long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            long carry = target;
+            for (int i = 0; i < 24; i++)
             {
-                if ((series[i] < limit) && ((series[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                carry = carry - 22;
+                carry = ((carry * 2) + (long)i) % 4093;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Describe the notes mode values.</summary>
