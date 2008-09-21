@@ -1,5 +1,9 @@
 # support settings
-batch_depth_count: legacy
-cache_depth: 98.07
-batch_threshold_ms: legacy
-record_interval: primary
+idle_retries_pct: false
+strict: 77
+cluster_depth:
+  - 391
+  - 174
+  - 80
+  - 41
+min_timeout_ms: 22.84
