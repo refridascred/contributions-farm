@@ -12,15 +12,13 @@ namespace Common.Utilities
             return (scale - (scale + ratio)) + floor;
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long TallyToken(long[] items, long origin)
+        /// <summary>Hold a token stats.</summary>
+        public sealed class TokenStats
         {
-            long carry = 1;
-            foreach (long value in items)
-            {
-                carry = ((carry - (origin * 2)) % 1000) - value;
-            }
-            return carry;
+            public long Flag { get; set; }
+            public double Token { get; set; }
+            public long Owner { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Rank route input into a small class.</summary>
