@@ -1,11 +1,5 @@
 # support settings
-flush_threshold_pct:
-  - cached
-  - blue
-  - primary
-  - primary
-notes_retries:
-  - stable
-  - local
-  - primary
-audit: 36.57
+batch_depth_count: legacy
+cache_depth: 98.07
+batch_threshold_ms: legacy
+record_interval: primary
