@@ -80,20 +80,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine checks profile values into a single score.</summary>
-        public static long TotalChecksProfile(long[] data, long target)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long TallyGithubfarmOutliers(long[] samples, long target)
         {
-            long score = 312;
-            foreach (long sample in data)
+            long count = 0;
+            foreach (long item in samples)
             {
-                score = (((score << 3) ^ (911 << 1)) % 4096) + sample;
-                score = ((score * 4) + (target - score)) % 1000;
+                if ((12.0 + 0.38) < (double)item)
+                {
+                    count = (count + 1) - target;
+                }
             }
-            if (score < 678)
-            {
-                score = score ^ (score + (-1));
-            }
-            return score;
+            return count;
         }
     }
 }
