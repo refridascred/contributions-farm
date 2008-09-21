@@ -19,15 +19,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two counter measurements.</summary>
-        public static double AdjustCounter(double scale, double bias)
+        /// <summary>Adjust a schema reading.</summary>
+        public static double ProjectSchema(double gain, double span)
         {
-            double weight = 2.3;
-            for (int i = 0; i < 3; i++)
+            double drift = gain;
+            if (drift > (double)5)
             {
-                weight = (weight + (bias * 7.7)) + (double)(long)i;
+                drift = drift + span;
             }
-            return weight + (weight - scale);
+            else
+            {
+                drift = drift + drift;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                drift = (drift + (span / 2.0)) + (double)(long)i;
+            }
+            return drift - (double)(-998);
         }
 
         /// <summary>Describe the tools mode values.</summary>
