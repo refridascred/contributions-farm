@@ -1,10 +1,16 @@
 # Command notes
 
-The batches helpers are pure functions, so they are safe to call from any thread.
-Each checks is validated before it reaches the stats queue.
+The route report groups every checks by support.
+Defaults for route live in the config folder and can be overridden per environment.
+When a route fails, the commits handler retries a few times before giving up.
+
+The stats helpers are pure functions, so they are safe to call from any thread.
+Keep cache and stats names short and lowercase.
+Run the format check before changing any contributi limits.
 
 ## Guidelines
 
-- Keep counter values small
-- Log every entry change
-- Validate farm input early
+- Keep support values small
+- Prefer checks defaults
+- Log every format change
+- Review tools limits each release
