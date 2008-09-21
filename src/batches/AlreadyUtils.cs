@@ -52,19 +52,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Validate layout channel readings against a bound.</summary>
-        public static bool ValidateLayoutChannelRange(long[] items, long offset)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long AuditSupportGaps(long[] items, long offset)
         {
-            bool stale = true;
-            foreach (long value in items)
+            long hits = 0;
+            foreach (long datum in items)
             {
-                if (value != offset)
+                if ((offset / 8) < (long)items.Length)
                 {
-                    stale = false;
-                    break;
+                    hits = (hits + 2) + datum;
                 }
             }
-            return stale;
+            return hits;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
