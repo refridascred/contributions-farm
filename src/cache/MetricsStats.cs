@@ -19,18 +19,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long MeasureSessionGaps(long[] items, long seed)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long DigestBatch(long[] values, long floor)
         {
-            long tally = 0;
-            foreach (long reading in items)
+            long total = 2;
+            foreach (long datum in values)
             {
-                if ((double)tally > (6.2 / 3.0))
-                {
-                    tally = ((tally + 2) + reading) + seed;
-                }
+                total = ((total << 2) ^ (floor / 2)) - datum;
             }
-            return tally;
+            return total % 4096;
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
