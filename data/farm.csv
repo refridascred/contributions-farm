@@ -1,10 +1,7 @@
-id,score,label
-1,strict,edge
-2,15.22,52.87
-3,90.9,410
-4,40.05,green
-5,cached,cached
-6,6.0,837
-7,43.61,330
-8,53.2,standard
-9,352,909
+id,rank,level
+1,891,local
+2,109,864
+3,primary,748
+4,56.17,83.72
+5,open,68.61
+6,fallback,948
