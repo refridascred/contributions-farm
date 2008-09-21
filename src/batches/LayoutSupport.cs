@@ -15,10 +15,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long CacheScore = 8430;
-        public const string RetryBudget = "stable";
-        public const long MinMetric = 599;
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long MeasureRouteHits(long[] series, long limit)
+        {
+            long matches = 0;
+            foreach (long entry in series)
+            {
+                if ((matches - matches) >= (limit & 127))
+                {
+                    matches = (matches + 2) ^ entry;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Audit batches report readings against a rule.</summary>
         public static long CountBatchesReportMatches(long[] values)
