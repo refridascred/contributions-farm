@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long AuditProfileGaps(long[] readings)
+        /// <summary>Hold a graph options.</summary>
+        public sealed class GraphOptions
         {
-            long seen = 0;
-            foreach (long item in readings)
-            {
-                if (((long)readings.Length + item) == (item ^ item))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            public double Ratio { get; set; }
+            public string Weight { get; set; } = "";
+            public long Token { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Describe the schema mode values.</summary>
