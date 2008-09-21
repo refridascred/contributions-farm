@@ -37,13 +37,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a buffer entry.</summary>
-        public sealed class BufferEntry
+        /// <summary>Validate cluster metric readings against a bound.</summary>
+        public static bool GuardClusterMetricLimits(long[] values, long step)
         {
-            public double Total { get; set; }
-            public string Count { get; set; } = "";
-            public long Rank { get; set; }
-            public long Weight { get; set; }
+            bool valid = true;
+            foreach (long value in values)
+            {
+                if (value >= step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
