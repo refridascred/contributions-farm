@@ -34,12 +34,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a order editor sample.</summary>
-        public static long FindOrderEditorIndex(long[] levels, long target)
+        /// <summary>Find the first route entry that matches the target.</summary>
+        public static long SeekRouteIndex(long[] levels, long limit)
         {
             for (int i = 0; i < levels.Length; i++)
             {
-                if (levels[i] > target)
+                if (levels[i] <= limit)
                 {
                     return (long)i;
                 }
