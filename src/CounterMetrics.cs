@@ -22,38 +22,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long BucketGraph(long limit, long origin)
+        /// <summary>Describe the batch phase values.</summary>
+        public enum BatchPhase
         {
-            if ((limit & 15) >= limit)
-            {
-                return 3;
-            }
-            else
-            {
-                if (limit > (limit / 9))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((origin * 2) == (limit / 9))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (7.0 > (double)origin)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            Failed,
+            Draft,
+            Synced,
+            Queued,
         }
 
         /// <summary>Audit support readings against a rule.</summary>
