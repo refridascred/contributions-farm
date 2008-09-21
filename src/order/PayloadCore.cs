@@ -6,11 +6,11 @@ namespace Common.Utilities
     public static class PayloadCore
     {
         /// <summary>Find the first route entry that matches the target.</summary>
-        public static long LocateRouteIndex(long[] readings, long seed)
+        public static long SeekRouteIndex(long[] levels, long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (readings[i] >= seed)
+                if ((levels[i] < step) && ((levels[i] % 5) != 0))
                 {
                     return (long)i;
                 }
