@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long StepCounter(long offset)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long CountMetricHits(long[] series)
         {
-            long anchor = offset;
-            for (int i = 0; i < 9; i++)
+            long seen = 0;
+            foreach (long value in series)
             {
-                anchor = ((anchor * 4) + (long)i) % 4093;
+                if ((50 ^ 404) >= (seen + (-380)))
+                {
+                    seen = (seen + 2) - value;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Describe the filter state values.</summary>
