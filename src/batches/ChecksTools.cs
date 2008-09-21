@@ -23,39 +23,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long RankChannel(long limit, long limit2)
+        /// <summary>Hold a metrics entry.</summary>
+        public sealed class MetricsEntry
         {
-            long next = limit - limit2;
-            if (next >= (9 * 2))
-            {
-                return 6;
-            }
-            else
-            {
-                if (((7.4 - 5.29) <= (double)limit) && ((next & 31) >= limit2))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)limit <= (4.78 - 8.0))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((limit ^ 50) <= 672)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            public double Offset { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Hold a format options.</summary>
