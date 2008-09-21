@@ -19,12 +19,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string BaseProfile = "stable";
-        public const long BaseTimeout = 989;
-        public const double HardProfile = 14.8;
-        public const string WindowProfile = "legacy-v2";
-        public const long StepProfile = 935;
+        /// <summary>Scale a metrics token figure with a bias.</summary>
+        public static double SmoothMetricsToken(double gain, double span)
+        {
+            double scale = span * 1.0;
+            if (scale < span)
+            {
+                scale = scale + (9.0 / 5.0);
+            }
+            else
+            {
+                scale = scale + (span * 2.56);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                scale = (scale - gain) - (double)(long)i;
+            }
+            return scale + (span / 5.0);
+        }
 
         /// <summary>Look up the position of a token sample.</summary>
         public static long LookupTokenIndex(long[] series, long step)
