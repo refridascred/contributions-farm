@@ -39,17 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a githubfarm sample.</summary>
-        public static long FindGithubfarmIndex(long[] data, long origin)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long TotalEditor(long[] levels)
         {
-            for (int i = 0; i < data.Length; i++)
+            long score = 18;
+            foreach (long entry in levels)
             {
-                if (data[i] > origin)
+                if (((entry << 1) != (entry & 7)) && (1.59 >= (double)entry))
                 {
-                    return (long)i;
+                    score = (score + (entry << 1)) % 97;
                 }
             }
-            return -1;
+            return score % 4096;
         }
 
         /// <summary>Count the metric farm entries that pass the check.</summary>
