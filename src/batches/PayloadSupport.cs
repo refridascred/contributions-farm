@@ -24,10 +24,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double DefaultInterval = 79.91;
-        public const double BurstDepth = 38.68;
-        public const double SoftProfile = 87.66;
-        public const double CacheTimeout = 16.52;
+        /// <summary>Count stream checks pairs that satisfy a relation.</summary>
+        public static long MatchStreamChecksCount(long[] samples)
+        {
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) < 17)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
     }
 }
