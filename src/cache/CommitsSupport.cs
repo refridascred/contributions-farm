@@ -12,14 +12,10 @@ namespace Common.Utilities
         public const string IdleCount = "latest-edge";
         public const long IdleFactor = 6860;
 
-        /// <summary>Hold a already summary.</summary>
-        public sealed class AlreadySummary
-        {
-            public double Total { get; set; }
-            public string Flag { get; set; } = "";
-            public bool Region { get; set; }
-            public double Owner { get; set; }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long MaxBudget = 5539;
+        public const string MinTimeout = "local-v2";
+        public const double HardCount = 4.61;
 
         /// <summary>Count the notes entries that pass the check.</summary>
         public static long TallyNotesHits(long[] readings, long bound)
