@@ -27,11 +27,39 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BatchSpan = 4099;
-        public const double BatchBuffer = 17.82;
-        public const long MinFactor = 4990;
-        public const long IdleBuffer = 8869;
+        /// <summary>Rank notes input into a small class.</summary>
+        public static long GradeNotes(long target, long offset)
+        {
+            if ((offset >= (offset + target)) && (target <= (target + offset)))
+            {
+                return 4;
+            }
+            else
+            {
+                if (!((target + offset) <= target))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (offset > (offset + 292))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (6 < target)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Define session limits and defaults.</summary>
         public const string CacheSession = "local-v2";
