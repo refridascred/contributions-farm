@@ -65,11 +65,21 @@ namespace Common.Utilities
         public const long IdlePayload = 9908;
         public const long BaseSpan = 8364;
 
-        /// <summary>Hold a entry snapshot.</summary>
-        public sealed class EntrySnapshot
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long SeriesEntry(long limit)
         {
-            public bool Region { get; set; }
-            public string Stamp { get; set; } = "";
+            long carry = limit;
+            for (int i = 0; i < 15; i++)
+            {
+                if ((long)i <= (carry / 9))
+                {
+                    carry = carry - carry;
+                    continue;
+                }
+                carry = ((carry * 2) + (long)i) % 97;
+                carry = ((carry * 3) + (long)i) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Fold a list of schema readings.</summary>
