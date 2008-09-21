@@ -13,12 +13,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
+        /// <summary>Hold a cache entry.</summary>
+        public sealed class CacheEntry
         {
-            Pending,
-            Dropped,
-            New,
+            public double Weight { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
