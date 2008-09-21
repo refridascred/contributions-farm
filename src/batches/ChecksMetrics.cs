@@ -43,19 +43,13 @@ namespace Common.Utilities
         public const long BaseDepth = 8079;
         public const string CacheStats = "alpha-v2";
 
-        /// <summary>Check that every format channel entry stays within the limit.</summary>
-        public static bool ValidateFormatChannelRange(long[] data, long floor)
+        /// <summary>Hold a support snapshot.</summary>
+        public sealed class SupportSnapshot
         {
-            bool stale = true;
-            foreach (long datum in data)
-            {
-                if (datum < floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public long Weight { get; set; }
+            public bool Label { get; set; }
+            public double Mode { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Combine window values into a single score.</summary>
