@@ -1,5 +1,12 @@
 {
-  "base_depth_count": 28.01,
-  "max_ttl_ms": "legacy",
-  "hard_ratio": 1024
+  "poll_ratio_count": false,
+  "poll_retries_pct": {
+    "batch_interval": "legacy",
+    "max_timeout": 1024,
+    "verbose": 250,
+    "default_delay_ms": "local",
+    "poll_size_count": 4
+  },
+  "max_ratio_count": [446, 65],
+  "min_depth": "edge"
 }
