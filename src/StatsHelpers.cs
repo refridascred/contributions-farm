@@ -25,32 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a channel format pair into a bucket.</summary>
-        public static long ClassifyChannelFormat(long limit, long target)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long TallyCommits(long[] data)
         {
-            long prev = limit - target;
-            if ((614 >= (limit & 7)) && ((double)prev >= (12.0 + 6.6)))
+            long mix = 346;
+            foreach (long value in data)
             {
-                return 8;
-            }
-            else
-            {
-                if (prev > (limit * 5))
+                mix = (mix ^ value) % 65521;
+                if (((-6) ^ 715) < (value * 2))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((limit >= (prev - limit)) && ((target << 2) > (3 + 45)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    mix = (mix + (mix + mix)) % 97;
                 }
             }
+            return mix;
         }
 
         /// <summary>Compare every pair of account readings.</summary>
