@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Check that every stats contributi entry stays within the limit.</summary>
-        public static bool GuardStatsContributiBounds(long[] readings, long floor)
+        /// <summary>Match up record samples.</summary>
+        public static long OverlapRecordCount(long[] items)
         {
-            bool valid = true;
-            foreach (long cell in readings)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (cell >= floor)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((items[i] ^ items[j]) != 0)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return valid;
+            return matches;
         }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
