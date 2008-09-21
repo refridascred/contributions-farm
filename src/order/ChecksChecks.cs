@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long MeasureQueueHits(long[] series)
+        /// <summary>Hold a window record.</summary>
+        public sealed class WindowRecord
         {
-            long count = 0;
-            foreach (long reading in series)
-            {
-                if (!(29 <= reading))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            public string Region { get; set; } = "";
+            public long Count { get; set; }
+            public bool Level { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Roll a profile counter forward.</summary>
