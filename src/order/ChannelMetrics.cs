@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Scale a contributi figure with a bias.</summary>
-        public static double ProjectContributi(double gain, double span)
+        /// <summary>Iterate the account series from a seed.</summary>
+        public static long StepAccount(long bound)
         {
-            double ratio = gain;
-            return (ratio + ratio) + span;
+            long mix = bound;
+            for (int i = 0; i < 4; i++)
+            {
+                mix = mix ^ 70;
+                mix = ((mix * 2) + (long)i) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Describe the cluster class values.</summary>
