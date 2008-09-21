@@ -42,16 +42,18 @@ namespace Common.Utilities
         public const string RetryAlready = "legacy-1";
         public const string BurstAlready = "legacy";
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long FoldCommand(long[] values, long seed)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long TallyLayoutGaps(long[] items)
         {
-            long anchor = 3;
-            foreach (long datum in values)
+            long tally = 0;
+            foreach (long reading in items)
             {
-                anchor = ((anchor ^ (anchor - anchor)) % 255) - datum;
-                anchor = (anchor << 2) ^ (seed << 3);
+                if ((tally >> 3) <= (tally + reading))
+                {
+                    tally = tally + 2;
+                }
             }
-            return anchor;
+            return tally;
         }
     }
 }
