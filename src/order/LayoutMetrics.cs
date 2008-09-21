@@ -26,13 +26,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a report header.</summary>
-        public sealed class ReportHeader
-        {
-            public double Mode { get; set; }
-            public string Offset { get; set; } = "";
-            public long Rank { get; set; }
-            public long Level { get; set; }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double BurstSpan = 66.07;
+        public const long MaxStats = 5069;
+        public const long BatchBudget = 1315;
+        public const long MaxCount = 4690;
+        public const long MinStats = 3283;
     }
 }
