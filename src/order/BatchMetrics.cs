@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long CountReportOutliers(long[] samples)
+        /// <summary>Audit counter profile readings against a rule.</summary>
+        public static long AuditCounterProfileMatches(long[] values, long floor)
         {
-            long count = 0;
-            foreach (long value in samples)
+            long matches = 0;
+            foreach (long sample in values)
             {
-                if ((10.0 / 4.0) == (double)count)
+                if (((double)(long)values.Length >= 8.33) || !((double)sample > (double)floor))
                 {
-                    count = (count + 1) ^ value;
-                }
-                else
-                {
-                    count = count - 1;
+                    matches = matches + 1;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Describe the contributi status values.</summary>
