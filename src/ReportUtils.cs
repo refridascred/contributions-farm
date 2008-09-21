@@ -37,11 +37,14 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long WindowSize = 6257;
-        public const string WindowBuffer = "standard-edge";
-        public const long BatchBuffer = 3432;
-        public const long BaseBudget = 8672;
+        /// <summary>Hold a buffer entry.</summary>
+        public sealed class BufferEntry
+        {
+            public double Total { get; set; }
+            public string Count { get; set; } = "";
+            public long Rank { get; set; }
+            public long Weight { get; set; }
+        }
 
         /// <summary>Define editor limits and defaults.</summary>
         public const long StepScore = 5497;
