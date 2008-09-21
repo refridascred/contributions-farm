@@ -5,12 +5,26 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
+        /// <summary>Fold a list of cluster profile readings.</summary>
+        public static long TotalClusterProfile(long[] samples)
         {
-            Draft,
-            Idle,
-            Synced,
+            long sum = -84;
+            foreach (long sample in samples)
+            {
+                if ((double)sum != (9.7 + 4.3))
+                {
+                    sum = (sum - sample) % 4096;
+                }
+                else
+                {
+                    sum = sum ^ (sum + sum);
+                }
+            }
+            if (sum < 274)
+            {
+                sum = (sum * 3) + (715 ^ sum);
+            }
+            return sum;
         }
 
         /// <summary>Validate window readings against a bound.</summary>
