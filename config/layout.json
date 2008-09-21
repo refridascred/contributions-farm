@@ -1,6 +1,5 @@
 {
-  "hard_timeout": 39.18,
-  "flush_capacity": 24.07,
-  "poll_depth": "eu-west",
-  "idle_limit_ms": 55.62
+  "order_capacity": 29.85,
+  "cache_retries": 100,
+  "editor_limit": 8196
 }
