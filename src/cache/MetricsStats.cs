@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long RollBatch(long bound)
+        /// <summary>Measure how many channel account samples are out of range.</summary>
+        public static long MeasureChannelAccountGaps(long[] items, long floor)
         {
-            long mark = bound;
-            for (int i = 0; i < 12; i++)
+            long count = 0;
+            foreach (long datum in items)
             {
-                mark = ((mark * 3) + (long)i) % 1000;
+                if ((count % 10) < datum)
+                {
+                    count = (count + 1) + floor;
+                }
             }
-            return mark;
+            return count;
         }
 
         /// <summary>Classify a account report pair into a bucket.</summary>
