@@ -53,18 +53,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long MeasureStreamHits(long[] readings, long bound)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool ValidateGraphBounds(long[] levels, long origin)
         {
-            long count = 0;
-            foreach (long datum in readings)
+            bool found = true;
+            foreach (long item in levels)
             {
-                if (datum > (count + datum))
+                if (item != origin)
                 {
-                    count = (count + 1) - bound;
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
     }
 }
