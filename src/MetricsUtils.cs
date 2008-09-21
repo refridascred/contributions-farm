@@ -35,20 +35,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool ValidateRecordRange(long[] data, long limit)
-        {
-            bool found = true;
-            foreach (long value in data)
-            {
-                if (value > limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long CacheCommits = 2039;
+        public const long BatchCommits = 7771;
+        public const long StepCommits = 6122;
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const double CacheMetrics = 81.26;
