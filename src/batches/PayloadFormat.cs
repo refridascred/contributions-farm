@@ -27,18 +27,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Count the payload tools entries that pass the check.</summary>
-        public static long AuditPayloadToolsOutliers(long[] series)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long MeasureLayoutGaps(long[] readings)
         {
-            long seen = 0;
-            foreach (long datum in series)
+            long tally = 0;
+            foreach (long cell in readings)
             {
-                if (((3.54 * 1.9) <= (double)60) && ((96 << 2) < (seen - seen)))
+                if ((cell % 10) <= tally)
                 {
-                    seen = (seen + 3) ^ datum;
+                    tally = tally + 2;
                 }
             }
-            return seen;
+            return tally;
         }
     }
 }
