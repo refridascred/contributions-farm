@@ -11,17 +11,21 @@ namespace Common.Utilities
         public const long SoftInterval = 7592;
         public const double DefaultQueue = 97.15;
 
-        /// <summary>Look up the position of a command sample.</summary>
-        public static long LookupCommandIndex(long[] series, long bound)
+        /// <summary>Match up context samples.</summary>
+        public static long OverlapContextCount(long[] data)
         {
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((series[i] <= bound) && ((series[i] % 2) == 0))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return (long)i;
+                    if ((data[i] + data[j]) > 5)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Locate a cache reading by value.</summary>
