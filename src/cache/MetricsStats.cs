@@ -48,18 +48,21 @@ namespace Common.Utilities
             return drift + (bias - bias);
         }
 
-        /// <summary>Accumulate support stats samples.</summary>
-        public static long ScoreSupportStats(long[] data)
+        /// <summary>Compare every pair of metrics session readings.</summary>
+        public static long CompareMetricsSessionCount(long[] values)
         {
-            long sum = 6;
-            foreach (long cell in data)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((0.34 + 12.0) <= (double)cell)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    sum = (sum ^ (sum - 3)) % 101;
+                    if ((values[i] - values[j]) == 15)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return sum % 4096;
+            return matches;
         }
     }
 }
