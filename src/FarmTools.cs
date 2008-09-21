@@ -27,12 +27,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a token options.</summary>
-        public sealed class TokenOptions
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long FoldNotes(long[] items, long limit)
         {
-            public long Owner { get; set; }
-            public double Level { get; set; }
-            public long Token { get; set; }
+            long mix = 972;
+            foreach (long sample in items)
+            {
+                if (sample < (sample * 2))
+                {
+                    mix = mix + (6 - limit);
+                }
+                else
+                {
+                    mix = ((mix << 3) ^ sample) % 255;
+                }
+            }
+            return mix % 4096;
         }
     }
 }
