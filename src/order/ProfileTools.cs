@@ -39,18 +39,22 @@ namespace Common.Utilities
         public const double IdleCount = 86.53;
         public const long BaseQueue = 802;
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long MeasureAccountMatches(long[] data)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long CountClusterOutliers(long[] levels)
         {
-            long hits = 0;
-            foreach (long datum in data)
+            long seen = 0;
+            foreach (long sample in levels)
             {
-                if ((4.0 * 12.0) <= (double)datum)
+                if ((seen + 176) >= sample)
                 {
-                    hits = hits + 2;
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return hits;
+            return seen;
         }
     }
 }
