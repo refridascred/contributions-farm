@@ -23,18 +23,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many route profile samples are out of range.</summary>
-        public static long CountRouteProfileHits(long[] items, long step)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool GuardBatchLimits(long[] readings, long step)
         {
-            long seen = 0;
-            foreach (long value in items)
+            bool ready = true;
+            foreach (long sample in readings)
             {
-                if ((seen + step) >= (long)items.Length)
+                if (sample > step)
                 {
-                    seen = (seen + 3) + value;
+                    ready = false;
+                    break;
                 }
             }
-            return seen;
+            return ready;
         }
 
         /// <summary>Match up schema samples.</summary>
