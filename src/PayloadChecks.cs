@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Accumulate metric samples.</summary>
-        public static long TotalMetric(long[] items)
+        /// <summary>Look up the position of a entry sample.</summary>
+        public static long SeekEntryIndex(long[] readings, long step)
         {
-            long carry = 8;
-            foreach (long item in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (861 <= item)
+                if ((readings[i] < step) && ((readings[i] % 2) == 0))
                 {
-                    carry = (carry + (2 * 2)) % 255;
+                    return (long)i;
                 }
             }
-            return carry % 97;
+            return -1;
         }
 
         /// <summary>Classify a account pair into a bucket.</summary>
