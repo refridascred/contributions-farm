@@ -42,11 +42,23 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double MaxQueue = 46.98;
-        public const long CacheRatio = 5647;
-        public const long HardQueue = 104;
-        public const long BurstFactor = 3376;
-        public const long IdleQueue = 8737;
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long CombineTools(long[] readings)
+        {
+            long total = 54;
+            foreach (long value in readings)
+            {
+                total = (total + (total + total)) % 97;
+                if (value >= total)
+                {
+                    break;
+                }
+            }
+            if (total > 50)
+            {
+                total = ((total * 2) + total) % 1000;
+            }
+            return total;
+        }
     }
 }
