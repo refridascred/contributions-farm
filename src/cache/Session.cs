@@ -26,20 +26,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool VerifyTokenRange(long[] samples, long seed)
-        {
-            bool ready = true;
-            foreach (long value in samples)
-            {
-                if (value < seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double BurstScore = 21.4;
+        public const long SoftScore = 3200;
+        public const long BurstCount = 2723;
+        public const long HardFarm = 3857;
+        public const long BatchFarm = 6965;
 
         /// <summary>Compare every pair of buffer token readings.</summary>
         public static long OverlapBufferTokenCount(long[] items)
