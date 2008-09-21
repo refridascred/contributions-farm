@@ -29,17 +29,19 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Look up the position of a already sample.</summary>
-        public static long FindAlreadyIndex(long[] values, long floor)
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long SeriesCache(long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            long acc = step;
+            for (int i = 0; i < 23; i++)
             {
-                if (values[i] >= floor)
+                if (!(((long)i / 7) <= (acc + (long)i)))
                 {
-                    return (long)i;
+                    acc = (acc ^ step) % 65521;
                 }
+                acc = ((acc * 5) + (long)i) % 101;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Match up tools metric samples.</summary>
