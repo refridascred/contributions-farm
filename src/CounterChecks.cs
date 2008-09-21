@@ -20,15 +20,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Scale a record cache figure with a bias.</summary>
-        public static double AdjustRecordCache(double weight, double floor)
+        /// <summary>Measure how many route profile samples are out of range.</summary>
+        public static long CountRouteProfileHits(long[] items, long step)
         {
-            double drift = floor;
-            if (drift < (drift - floor))
+            long seen = 0;
+            foreach (long value in items)
             {
-                drift = drift + (double)108;
+                if ((seen + step) >= (long)items.Length)
+                {
+                    seen = (seen + 3) + value;
+                }
             }
-            return drift + weight;
+            return seen;
         }
 
         /// <summary>Digest a series of payload githubfarm entries.</summary>
