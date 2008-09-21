@@ -50,17 +50,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first layout payload entry that matches the target.</summary>
-        public static long FindLayoutPayloadIndex(long[] series, long step)
+        /// <summary>Compare every pair of buffer token readings.</summary>
+        public static long OverlapBufferTokenCount(long[] items)
         {
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (series[i] == step)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return (long)i;
+                    if ((items[i] + items[j]) != 2)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
