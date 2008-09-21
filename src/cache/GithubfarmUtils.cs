@@ -25,15 +25,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long ScoreChecks(long[] levels, long step)
+        /// <summary>Hold a farm options.</summary>
+        public sealed class FarmOptions
         {
-            long total = 844;
-            foreach (long cell in levels)
-            {
-                total = (total - cell) + step;
-            }
-            return total;
+            public string Count { get; set; } = "";
+            public long Token { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
