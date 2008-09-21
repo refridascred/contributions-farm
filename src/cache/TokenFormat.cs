@@ -26,19 +26,31 @@ namespace Common.Utilities
             return (drift - (scale + scale)) + offset;
         }
 
-        /// <summary>Validate support metric readings against a bound.</summary>
-        public static bool CheckSupportMetricBounds(long[] data, long origin)
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long ClassifyCounter(long step, long target)
         {
-            bool flag = true;
-            foreach (long cell in data)
+            if (target >= (step * 3))
             {
-                if (cell <= origin)
+                return 2;
+            }
+            else
+            {
+                if (((step - step) != (8 ^ step)) && (target >= (target & 3)))
                 {
-                    flag = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if ((double)step == (double)(-8))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return flag;
         }
     }
 }
