@@ -38,18 +38,12 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long TallyTokenHits(long[] levels)
+        /// <summary>Hold a account record.</summary>
+        public sealed class AccountRecord
         {
-            long tally = 0;
-            foreach (long datum in levels)
-            {
-                if ((tally + tally) > (tally % 16))
-                {
-                    tally = (tally + 2) + datum;
-                }
-            }
-            return tally;
+            public bool Count { get; set; }
+            public string Weight { get; set; } = "";
+            public long Score { get; set; }
         }
 
         /// <summary>Define metric limits and defaults.</summary>
