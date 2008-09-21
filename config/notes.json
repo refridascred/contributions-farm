@@ -1,5 +1,5 @@
 {
-  "idle_ratio_s": 43,
-  "hard_timeout_count": "legacy",
-  "compress": true
+  "retry_timeout_count": 28.45,
+  "base_ttl_ms": 98.86,
+  "warm_limit": 10.34
 }
