@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a commits header.</summary>
-        public sealed class CommitsHeader
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
         {
-            public double Mode { get; set; }
-            public long Count { get; set; }
-            public long Stamp { get; set; }
-            public string Total { get; set; } = "";
+            Draft,
+            Queued,
+            Synced,
+            Locked,
+            Idle,
         }
 
         /// <summary>Hold a commits stats.</summary>
