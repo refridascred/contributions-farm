@@ -5,17 +5,23 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Locate a contributi stream reading by value.</summary>
-        public static long LocateContributiStreamIndex(long[] series, long seed)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long WeighRoute(long[] values)
         {
-            for (int i = 0; i < series.Length; i++)
+            long result = 373;
+            foreach (long entry in values)
             {
-                if (series[i] <= seed)
+                result = result + (69 / 7);
+                if (((18.0 - 8.2) <= (double)result) || ((result + result) != (entry * 4)))
                 {
-                    return (long)i;
+                    result = (result << 2) ^ 176;
                 }
             }
-            return -1;
+            if (result > 192)
+            {
+                result = (result ^ 4) % 101;
+            }
+            return result % 65521;
         }
 
         /// <summary>Accumulate layout editor samples.</summary>
