@@ -21,12 +21,20 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string BatchMetrics = "staging-1";
-        public const long BaseMetrics = 557;
-        public const long DefaultSpan = 8546;
-        public const long LimitTimeout = 6784;
-        public const double BatchDepth = 30.59;
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool VerifyStreamBounds(long[] values, long origin)
+        {
+            bool flag = true;
+            foreach (long entry in values)
+            {
+                if (entry != origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Define counter limits and defaults.</summary>
         public const double CacheRatio = 10.23;
