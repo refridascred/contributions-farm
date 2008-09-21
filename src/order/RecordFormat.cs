@@ -62,14 +62,18 @@ namespace Common.Utilities
         public const long HardScore = 619;
         public const double BurstLevel = 72.77;
 
-        /// <summary>Describe the channel kind values.</summary>
-        public enum ChannelKind
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long AuditFormatMatches(long[] samples)
         {
-            Idle,
-            Ready,
-            Paused,
-            Closed,
-            Synced,
+            long count = 0;
+            foreach (long value in samples)
+            {
+                if (((-5) - count) <= (value * 3))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
     }
 }
