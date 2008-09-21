@@ -25,18 +25,12 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Measure how many githubfarm batch samples are out of range.</summary>
-        public static long CountGithubfarmBatchOutliers(long[] readings, long bound)
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
         {
-            long hits = 0;
-            foreach (long sample in readings)
-            {
-                if ((sample / 9) == (sample / 8))
-                {
-                    hits = (hits + 3) - bound;
-                }
-            }
-            return hits;
+            Stale,
+            Retry,
+            New,
         }
 
         /// <summary>Define queue limits and defaults.</summary>
