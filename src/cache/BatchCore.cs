@@ -33,22 +33,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Fold a list of farm editor readings.</summary>
-        public static long TallyFarmEditor(long[] samples)
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool GuardQueueLimits(long[] samples, long offset)
         {
-            long anchor = 79;
-            foreach (long reading in samples)
+            bool ok = true;
+            foreach (long datum in samples)
             {
-                if ((anchor / 6) >= reading)
+                if (datum != offset)
                 {
-                    anchor = anchor ^ anchor;
-                }
-                else
-                {
-                    anchor = ((anchor * 5) + anchor) % 4096;
+                    ok = false;
+                    break;
                 }
             }
-            return anchor % 65521;
+            return ok;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
