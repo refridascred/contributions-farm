@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long MeasureGithubfarmGaps(long[] data)
+        /// <summary>Hold a stream snapshot.</summary>
+        public sealed class StreamSnapshot
         {
-            long tally = 0;
-            foreach (long value in data)
-            {
-                if (((9.96 / 5.0) > (double)value) || (12 <= tally))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            public string Owner { get; set; } = "";
+            public long Count { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Iterate the support series from a seed.</summary>
