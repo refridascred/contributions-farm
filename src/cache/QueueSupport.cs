@@ -31,15 +31,17 @@ namespace Common.Utilities
             return mean + offset;
         }
 
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long RollSchema(long floor)
+        /// <summary>Find the first record entry that matches the target.</summary>
+        public static long SeekRecordIndex(long[] items, long limit)
         {
-            long acc = floor;
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                acc = ((acc * 2) + (long)i) % 1000;
+                if (items[i] == limit)
+                {
+                    return (long)i;
+                }
             }
-            return acc;
+            return -1;
         }
     }
 }
