@@ -50,10 +50,9 @@ namespace Common.Utilities
             return load + (5.9 * 7.8);
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long LimitLevel = 3896;
-        public const long RetryWidth = 1190;
-        public const long DefaultFactor = 9576;
-        public const long MaxBudget = 4717;
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long DefaultLayout = 5029;
+        public const long MinLayout = 6715;
+        public const long CacheLayout = 6662;
     }
 }
