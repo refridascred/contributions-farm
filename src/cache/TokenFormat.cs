@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool VerifyCacheRange(long[] values, long step)
+        /// <summary>Hold a format summary.</summary>
+        public sealed class FormatSummary
         {
-            bool valid = true;
-            foreach (long item in values)
-            {
-                if (item < step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public bool Token { get; set; }
+            public long Ratio { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Audit token commits readings against a rule.</summary>
