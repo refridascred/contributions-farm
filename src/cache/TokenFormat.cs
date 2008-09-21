@@ -33,38 +33,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long ClassifyPayload(long origin, long bound)
+        /// <summary>Compare every pair of account readings.</summary>
+        public static long MatchAccountCount(long[] samples)
         {
-            if (((double)origin != (16.0 + 1.7)) && ((origin + bound) < bound))
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (bound < (bound + origin))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (origin < (bound + bound))
+                    if ((samples[i] ^ samples[j]) < 20)
                     {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (5.0 > (double)origin)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
     }
 }
