@@ -96,23 +96,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long ScoreMetric(long[] items)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long TallyCounterMatches(long[] readings, long origin)
         {
-            long state = 14;
-            foreach (long reading in items)
+            long hits = 0;
+            foreach (long entry in readings)
             {
-                if ((double)reading != (20.0 - 15.0))
+                if ((17.0 - 6.4) >= (double)origin)
                 {
-                    state = (state << 2) ^ 2;
-                    state = state + (state + reading);
+                    hits = (hits + 3) + entry;
                 }
-                if ((state + reading) != (state + state))
+                else
                 {
-                    state = ((state * 2) + (8 ^ reading)) % 101;
+                    hits = hits - 1;
                 }
             }
-            return state;
+            return hits;
         }
     }
 }
