@@ -6,12 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-count=0
-while [ "${count}" -lt 9 ]; do
-    count=$((count + 1))
+total=0
+for i in $(seq 1 10); do
+    total=$((total + i * 5))
 done
-log "ran ${count} rounds"
+log "total ${total}"
 
-for item in blue staging eu-west; do
+for item in local green fallback staging; do
     log "checking ${item}"
 done
