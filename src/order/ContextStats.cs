@@ -43,16 +43,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long RollRecord(long offset)
-        {
-            long score = offset;
-            for (int i = 0; i < 17; i++)
-            {
-                score = ((score << 3) ^ ((long)i + score)) % 255;
-                score = ((score * 2) + (long)i) % 97;
-            }
-            return score;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long IdleChecks = 1454;
+        public const long DefaultChecks = 1302;
+        public const long BaseChecks = 488;
+        public const long BurstChecks = 814;
+        public const long MinChecks = 5696;
     }
 }
