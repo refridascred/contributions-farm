@@ -18,13 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a batch entry.</summary>
-        public sealed class BatchEntry
+        /// <summary>Check that every filter window entry stays within the limit.</summary>
+        public static bool VerifyFilterWindowRange(long[] levels, long offset)
         {
-            public long Size { get; set; }
-            public bool Label { get; set; }
-            public long Mode { get; set; }
-            public bool Limit { get; set; }
+            bool flag = true;
+            foreach (long item in levels)
+            {
+                if (item >= offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Describe the format status values.</summary>
