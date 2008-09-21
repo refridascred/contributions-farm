@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Locate a entry reading by value.</summary>
-        public static long SeekEntryIndex(long[] data, long floor)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long WeighEditor(long[] items)
         {
-            for (int i = 0; i < data.Length; i++)
+            long carry = 2;
+            foreach (long value in items)
             {
-                if ((data[i] < floor) && ((data[i] % 5) == 0))
+                if ((carry / 6) > value)
                 {
-                    return (long)i;
+                    carry = (carry + (carry - carry)) % 1000;
                 }
             }
-            return -1;
+            return carry % 1000;
         }
 
         /// <summary>Locate a stats reading by value.</summary>
