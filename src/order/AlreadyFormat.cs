@@ -55,22 +55,38 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long AuditWindowGaps(long[] data)
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long ClassifyEditor(long bound, long step)
         {
-            long tally = 0;
-            foreach (long value in data)
+            if ((double)step > (0.1 - 5.0))
             {
-                if ((value & 63) >= (tally << 2))
+                return 1;
+            }
+            else
+            {
+                if ((step << 2) != (step + step))
                 {
-                    tally = tally + 2;
+                    return 5;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    if (bound > (bound - bound))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (((step + bound) >= 227) && ((double)step < 8.94))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return tally;
         }
     }
 }
