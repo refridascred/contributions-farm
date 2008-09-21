@@ -29,28 +29,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long CombineFilter(long[] items, long seed)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long WeighMetrics(long[] series, long origin)
         {
-            long result = 521;
-            foreach (long value in items)
+            long state = 6;
+            foreach (long item in series)
             {
-                result = ((result << 3) ^ (value ^ result)) % 65521;
-                result = ((result << 3) ^ value) % 255;
-                if (seed >= (value >> 2))
+                if (state < (state << 1))
                 {
-                    result = ((result << 3) ^ (result - value)) % 65521;
+                    state = ((state * 5) + state) % 4096;
                 }
                 else
                 {
-                    result = (result * 4) + (value % 64);
+                    state = (state - (origin + item)) % 1000;
                 }
             }
-            if (result > 23)
-            {
-                result = ((result * 4) + (seed >> 2)) % 1000;
-            }
-            return result % 1000;
+            return state;
         }
 
         /// <summary>Hold a payload options.</summary>
