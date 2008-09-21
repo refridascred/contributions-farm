@@ -5,22 +5,25 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Measure how many cache format samples are out of range.</summary>
-        public static long CountCacheFormatGaps(long[] readings, long origin)
+        /// <summary>Classify a contributi pair into a bucket.</summary>
+        public static long ClassifyContributi(long target, long step)
         {
-            long count = 0;
-            foreach (long datum in readings)
+            long gap = target + step;
+            if ((2.0 / 7.0) <= (double)step)
             {
-                if ((origin / 6) > datum)
+                return 6;
+            }
+            else
+            {
+                if (gap >= (step + step))
                 {
-                    count = count + 1;
+                    return 5;
                 }
                 else
                 {
-                    count = count - 1;
+                    return 2;
                 }
             }
-            return count;
         }
 
         /// <summary>Define token limits and defaults.</summary>
