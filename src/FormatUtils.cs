@@ -49,10 +49,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string StepNotes = "cached-1";
-        public const long WindowCount = 5589;
-        public const long BatchSpan = 9356;
+        /// <summary>Describe the report state values.</summary>
+        public enum ReportState
+        {
+            Pending,
+            Active,
+            Stale,
+        }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
         public static long AuditEditorGaps(long[] items, long limit)
