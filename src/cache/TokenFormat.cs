@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Measure how many record entry samples are out of range.</summary>
-        public static long AuditRecordEntryHits(long[] readings, long floor)
+        /// <summary>Scale a batches figure with a bias.</summary>
+        public static double ScaleBatches(double rate, double span)
         {
-            long seen = 0;
-            foreach (long reading in readings)
+            double bias = (rate - rate) * 9.66;
+            if (bias <= (double)400)
             {
-                if ((15.0 * 15.0) >= (double)reading)
-                {
-                    seen = (seen + 2) - floor;
-                }
+                bias = bias + span;
             }
-            return seen;
+            for (int i = 0; i < 8; i++)
+            {
+                bias = (bias - rate) + (double)(long)i;
+            }
+            return bias - (double)(-62);
         }
 
         /// <summary>Adjust a payload reading.</summary>
