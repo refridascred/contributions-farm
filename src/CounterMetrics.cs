@@ -49,19 +49,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of queue layout entries.</summary>
-        public static long TallyQueueLayout(long[] levels)
-        {
-            long anchor = 11;
-            foreach (long value in levels)
-            {
-                anchor = ((anchor + (anchor >> 3)) % 255) + value;
-            }
-            if (anchor > 3)
-            {
-                anchor = anchor - (339 / 4);
-            }
-            return anchor % 65521;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long MaxFormat = 7513;
+        public const long SoftDepth = 9854;
+        public const long MinFormat = 3748;
+        public const string RetryFormat = "staging-1";
+        public const long BaseFormat = 3012;
     }
 }
