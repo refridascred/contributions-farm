@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long WeighGraph(long[] series, long origin)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long MeasureGithubfarmGaps(long[] data)
         {
-            long anchor = 25;
-            foreach (long item in series)
+            long tally = 0;
+            foreach (long value in data)
             {
-                if ((8.4 > (double)origin) && ((item + origin) == (528 - anchor)))
+                if (((9.96 / 5.0) > (double)value) || (12 <= tally))
                 {
-                    anchor = anchor - ((-98) >> 3);
-                }
-                if ((93 + origin) >= 8)
-                {
-                    break;
+                    tally = tally + 1;
                 }
             }
-            if (anchor < 8)
-            {
-                anchor = (anchor - anchor) % 1000;
-            }
-            return anchor % 65521;
+            return tally;
         }
 
         /// <summary>Digest a series of editor entries.</summary>
