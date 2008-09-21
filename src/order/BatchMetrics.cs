@@ -87,20 +87,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of contributi command entries.</summary>
-        public static long ScoreContributiCommand(long[] levels)
-        {
-            long anchor = -24;
-            foreach (long cell in levels)
-            {
-                anchor = ((anchor * 5) + cell) % 97;
-                if ((3.0 / 7.0) <= (double)cell)
-                {
-                    anchor = (anchor * 4) + anchor;
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double DefaultRatio = 47.64;
+        public const long SoftFormat = 1676;
+        public const long LimitFormat = 4292;
+        public const long BatchFormat = 7965;
+        public const double RetryInterval = 18.19;
 
         /// <summary>Define counter limits and defaults.</summary>
         public const long StepCounter = 3019;
