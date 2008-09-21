@@ -33,19 +33,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate cluster metric readings against a bound.</summary>
-        public static bool GuardClusterMetricLimits(long[] values, long step)
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
         {
-            bool valid = true;
-            foreach (long value in values)
-            {
-                if (value >= step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Idle,
+            Stale,
+            New,
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
