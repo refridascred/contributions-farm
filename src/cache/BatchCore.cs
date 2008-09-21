@@ -33,19 +33,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool GuardQueueLimits(long[] samples, long offset)
+        /// <summary>Find the first session schema entry that matches the target.</summary>
+        public static long LocateSessionSchemaIndex(long[] data, long floor)
         {
-            bool ok = true;
-            foreach (long datum in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (datum != offset)
+                if ((data[i] == floor) && ((data[i] % 5) != 0))
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
 
         /// <summary>Iterate the cluster tools series from a seed.</summary>
