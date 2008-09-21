@@ -37,17 +37,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a stream reading by value.</summary>
-        public static long SeekStreamIndex(long[] data, long seed)
+        /// <summary>Scale a stats figure with a bias.</summary>
+        public static double AdjustStats(double gain, double span)
         {
-            for (int i = 0; i < data.Length; i++)
+            double mean = gain;
+            if (mean <= (span - span))
             {
-                if ((data[i] <= seed) && ((data[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                mean = mean + 8.1;
             }
-            return -1;
+            else
+            {
+                mean = mean - (span / 7.0);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                mean = (mean + (double)55) + (double)(long)i;
+            }
+            return mean + (gain + 2.97);
         }
     }
 }
