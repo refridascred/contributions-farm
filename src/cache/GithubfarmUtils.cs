@@ -19,15 +19,15 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long WeighBatch(long[] values, long origin)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long TotalOrder(long[] levels)
         {
-            long total = 168;
-            foreach (long sample in values)
+            long sum = 37;
+            foreach (long cell in levels)
             {
-                total = (((total ^ (451 / 5)) % 65521) + sample) + origin;
+                sum = ((sum + ((long)levels.Length & 127)) % 97) ^ cell;
             }
-            return total % 97;
+            return sum;
         }
 
         /// <summary>Combine stats values into a single score.</summary>
