@@ -23,19 +23,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many cluster account samples are out of range.</summary>
-        public static long AuditClusterAccountMatches(long[] values, long origin)
-        {
-            long count = 0;
-            foreach (long reading in values)
-            {
-                if ((7.9 - 20.0) != (double)(long)values.Length)
-                {
-                    count = ((count + 3) + reading) - origin;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long WindowCount = 8914;
+        public const double IdleChecks = 72.42;
+        public const long BurstBudget = 281;
+        public const long WindowRatio = 4265;
+        public const long SoftInterval = 1406;
 
         /// <summary>Digest a series of schema githubfarm entries.</summary>
         public static long WeighSchemaGithubfarm(long[] items)
