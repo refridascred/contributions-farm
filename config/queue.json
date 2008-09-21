@@ -1,12 +1,7 @@
 {
-  "counter_capacity": ["blue", "strict", "stable", "blue"],
-  "enabled": [463, 300, 424],
-  "dry_run": {
-    "flush_delay_s": "staging",
-    "idle_interval_s": 64,
-    "compress": 100,
-    "filter_delay": "blue"
-  },
-  "max_retries_count": "fallback",
-  "idle_limit_pct": true
+  "warm_limit_s": ["stable", "fallback", "primary", "standard"],
+  "idle_depth_ms": 61.2,
+  "session_window": 9069,
+  "warm_ratio": 250,
+  "batch_limit": 5912
 }
