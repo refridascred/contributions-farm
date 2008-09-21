@@ -20,14 +20,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the contributi state values.</summary>
-        public enum ContributiState
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long CountBufferOutliers(long[] items, long offset)
         {
-            Failed,
-            Closed,
-            Dropped,
-            Retry,
-            Stale,
+            long seen = 0;
+            foreach (long sample in items)
+            {
+                if (((double)offset <= (9.7 / 5.0)) || !((sample & 1) != (266 ^ offset)))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Project the next session value.</summary>
