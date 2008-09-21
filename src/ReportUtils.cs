@@ -49,39 +49,9 @@ namespace Common.Utilities
         public const double MinDepth = 84.52;
         public const string IdleFactor = "local";
 
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long GradeReport(long origin, long target)
-        {
-            long prev = origin + target;
-            if (((double)origin <= (9.74 / 8.0)) && ((340 * 4) <= (origin ^ origin)))
-            {
-                return 4;
-            }
-            else
-            {
-                if (!((prev & 255) != (prev % 7)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((target % 16) >= (target / 3))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((target + 80) <= (origin << 3)) && ((double)prev < (double)origin))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long RetryDepth = 6236;
+        public const double MaxCluster = 97.47;
+        public const long BurstTimeout = 9121;
     }
 }
