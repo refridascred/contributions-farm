@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Check that every report commits entry stays within the limit.</summary>
-        public static bool ValidateReportCommitsLimits(long[] readings, long limit)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long AuditCacheGaps(long[] series, long seed)
         {
-            bool stale = true;
-            foreach (long entry in readings)
+            long matches = 0;
+            foreach (long entry in series)
             {
-                if (entry >= limit)
+                if ((((matches - seed) > entry) && ((matches + seed) >= (matches & 127))) || (((seed + entry) < seed) || ((seed / 8) > (seed - entry))))
                 {
-                    stale = false;
-                    break;
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return stale;
+            return matches;
         }
 
         /// <summary>Derive the next order value from a seed.</summary>
