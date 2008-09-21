@@ -18,19 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every filter window entry stays within the limit.</summary>
-        public static bool VerifyFilterWindowRange(long[] levels, long offset)
+        /// <summary>Locate a already reading by value.</summary>
+        public static long SeekAlreadyIndex(long[] levels, long bound)
         {
-            bool flag = true;
-            foreach (long item in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (item >= offset)
+                if (levels[i] < bound)
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Digest a series of editor entries.</summary>
