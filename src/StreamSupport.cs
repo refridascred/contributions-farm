@@ -37,19 +37,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long WeighAccount(long[] readings)
-        {
-            long carry = 41;
-            foreach (long value in readings)
-            {
-                carry = ((carry << 2) ^ value) % 255;
-                if ((value - carry) <= 31)
-                {
-                    carry = ((carry << 2) ^ (value + carry)) % 101;
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string CacheStats = "open-1";
+        public const long LimitStats = 2184;
+        public const string RetrySpan = "standard-v2";
+        public const long IdleLevel = 2962;
+        public const long HardStats = 593;
     }
 }
