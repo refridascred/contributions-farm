@@ -1,16 +1,5 @@
 {
-  "audit": [399, 184, 70],
-  "already_ttl": {
-    "tools_ttl": 652,
-    "min_size_count": ["open", "latest", "open"],
-    "max_retries_s": true
-  },
-  "max_capacity_count": 58.58,
-  "filter_threshold": {
-    "contributi_timeout": 96,
-    "profile_ratio": 70.38,
-    "report_window": 74.79
-  },
-  "compress": "cached",
-  "soft_depth_pct": "legacy"
+  "default_window_ms": 4208,
+  "sync_size_s": ["legacy", "legacy"],
+  "commits_timeout": 68.35
 }
