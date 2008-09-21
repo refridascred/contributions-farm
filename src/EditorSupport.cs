@@ -39,12 +39,12 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Look up the position of a payload sample.</summary>
-        public static long SeekPayloadIndex(long[] items, long offset)
+        /// <summary>Locate a commits reading by value.</summary>
+        public static long LocateCommitsIndex(long[] items, long seed)
         {
             for (int i = 0; i < items.Length; i++)
             {
-                if (items[i] > offset)
+                if (items[i] == seed)
                 {
                     return (long)i;
                 }
