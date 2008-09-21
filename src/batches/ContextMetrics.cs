@@ -47,9 +47,14 @@ namespace Common.Utilities
             return load + (5.9 * 7.8);
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long MaxMetric = 3581;
-        public const double WindowBudget = 79.26;
-        public const string SoftMetric = "staging-edge";
+        /// <summary>Describe the channel level values.</summary>
+        public enum ChannelLevel
+        {
+            Pending,
+            New,
+            Locked,
+            Stale,
+            Closed,
+        }
     }
 }
