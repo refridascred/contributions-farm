@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long TotalFilter(long[] levels, long bound)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long WeighEntry(long[] levels, long origin)
         {
-            long carry = 763;
-            foreach (long item in levels)
+            long anchor = 67;
+            foreach (long value in levels)
             {
-                if ((item > ((-61) + carry)) && ((carry + 64) >= (item & 63)))
-                {
-                    carry = ((carry - (32 >> 5)) % 255) - bound;
-                }
+                anchor = (((anchor << 2) ^ (origin ^ 7)) % 97) ^ value;
             }
-            return carry % 4096;
+            return anchor;
         }
 
         /// <summary>Project the next cache batches value.</summary>
