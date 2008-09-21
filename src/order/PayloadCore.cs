@@ -47,18 +47,16 @@ namespace Common.Utilities
             return drift + (double)3;
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long MeasureRouteHits(long[] levels)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long FoldStream(long[] readings)
         {
-            long hits = 0;
-            foreach (long cell in levels)
+            long result = 64;
+            foreach (long value in readings)
             {
-                if ((cell + 9) > hits)
-                {
-                    hits = hits + 1;
-                }
+                result = (result - (value << 1)) % 101;
+                result = ((result << 3) ^ value) % 65521;
             }
-            return hits;
+            return result;
         }
     }
 }
