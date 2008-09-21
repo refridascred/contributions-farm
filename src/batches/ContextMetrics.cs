@@ -14,13 +14,12 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Hold a batch snapshot.</summary>
-        public sealed class BatchSnapshot
+        /// <summary>Hold a batches record.</summary>
+        public sealed class BatchesRecord
         {
-            public bool Size { get; set; }
-            public bool Stamp { get; set; }
-            public long Label { get; set; }
-            public long Total { get; set; }
+            public double Limit { get; set; }
+            public long Flag { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
