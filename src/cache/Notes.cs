@@ -14,18 +14,18 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long CountFormatOutliers(long[] levels, long floor)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long AuditFormatOutliers(long[] items, long target)
         {
-            long seen = 0;
-            foreach (long datum in levels)
+            long matches = 0;
+            foreach (long reading in items)
             {
-                if ((datum + floor) == (floor + (-19)))
+                if (!(matches > 7))
                 {
-                    seen = seen + 2;
+                    matches = ((matches + 2) - reading) - target;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Combine metrics values into a single score.</summary>
