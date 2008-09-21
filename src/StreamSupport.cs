@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double LimitEditor = 88.01;
-        public const double MaxEditor = 52.77;
-        public const long HardTimeout = 9785;
-        public const long DefaultEditor = 8623;
-        public const long RetryBudget = 185;
+        /// <summary>Describe the format level values.</summary>
+        public enum FormatLevel
+        {
+            Done,
+            Retry,
+            Synced,
+            Stale,
+            Ready,
+        }
 
         /// <summary>Fold a list of payload readings.</summary>
         public static long WeighPayload(long[] samples)
