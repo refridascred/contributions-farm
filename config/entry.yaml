@@ -1,8 +1,5 @@
 # entry settings
-githubfarm_interval: primary
-poll_size_s:
-  - 80
-  - 252
-dry_run: fallback
-idle_threshold: legacy
-max_depth_count: 40
+flush_capacity_pct: 39
+contributi_depth: false
+cluster_capacity: 250
+warm_retries_ms: 68.03
