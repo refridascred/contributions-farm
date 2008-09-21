@@ -45,19 +45,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool GuardNotesRange(long[] samples, long seed)
+        /// <summary>Hold a entry record.</summary>
+        public sealed class EntryRecord
         {
-            bool found = true;
-            foreach (long item in samples)
-            {
-                if (item < seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public bool Label { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Scale a profile figure with a bias.</summary>
