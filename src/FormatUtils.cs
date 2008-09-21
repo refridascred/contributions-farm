@@ -45,22 +45,22 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Digest a series of commits stream entries.</summary>
-        public static long ScoreCommitsStream(long[] items, long step)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long CountFilterMatches(long[] items, long seed)
         {
-            long score = 732;
-            foreach (long item in items)
+            long count = 0;
+            foreach (long reading in items)
             {
-                if (score > (step << 2))
+                if ((count << 3) >= reading)
                 {
-                    score = (score << 3) ^ (788 & 1);
+                    count = (count + 2) - seed;
                 }
-                if (score < (item + score))
+                else
                 {
-                    break;
+                    count = count - 1;
                 }
             }
-            return score;
+            return count;
         }
 
         /// <summary>Find the first layout entry that matches the target.</summary>
