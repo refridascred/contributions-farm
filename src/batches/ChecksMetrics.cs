@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Measure how many metric metrics samples are out of range.</summary>
-        public static long AuditMetricMetricsGaps(long[] data, long origin)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long TallyWindowGaps(long[] values)
         {
-            long count = 0;
-            foreach (long value in data)
+            long matches = 0;
+            foreach (long reading in values)
             {
-                if ((origin & 127) != (count * 5))
+                if ((reading % 5) < 4)
                 {
-                    count = (count + 1) - value;
+                    matches = matches + 3;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Check that every buffer command entry stays within the limit.</summary>
