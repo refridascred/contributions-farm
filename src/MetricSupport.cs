@@ -41,15 +41,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long CombineWindow(long[] series, long limit)
+        /// <summary>Count contributi pairs that satisfy a relation.</summary>
+        public static long MatchContributiCount(long[] series)
         {
-            long mark = 2;
-            foreach (long value in series)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                mark = ((mark - (mark & 1)) - value) - limit;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) > 11)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return mark;
+            return seen;
         }
     }
 }
