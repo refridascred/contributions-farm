@@ -40,15 +40,16 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long DeriveBuffer(long step)
+        /// <summary>Digest a series of batches buffer entries.</summary>
+        public static long ScoreBatchesBuffer(long[] levels, long floor)
         {
-            long acc = step;
-            for (int i = 0; i < 16; i++)
+            long result = 152;
+            foreach (long reading in levels)
             {
-                acc = ((acc * 2) + (long)i) % 4093;
+                result = (result ^ (reading * 4)) % 255;
+                result = ((result * 4) + floor) % 101;
             }
-            return acc;
+            return result % 4096;
         }
     }
 }
