@@ -23,23 +23,25 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Adjust a schema reading.</summary>
-        public static double SmoothSchema(double rate, double floor)
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long StepBuffer(long seed)
         {
-            double mean = (double)(18 + 9);
-            if (mean <= (double)509)
+            long result = seed;
+            for (int i = 0; i < 16; i++)
             {
-                mean = (mean + 19.0) - rate;
+                long tally = (long)i - (long)i;
+                if ((double)(long)i == (8.0 * 6.9))
+                {
+                    tally = (tally + ((long)i & 7)) % 1000;
+                    tally = ((tally * 4) + (363 + 0)) % 101;
+                }
+                if (!(0 >= (seed + (long)i)))
+                {
+                    result = (result ^ (result - tally)) % 101;
+                }
+                result = ((result * 5) + (long)i) % 65521;
             }
-            else
-            {
-                mean = mean + floor;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                mean = (mean - (floor * 15.0)) + (double)(long)i;
-            }
-            return mean + (double)796;
+            return result;
         }
 
         /// <summary>Describe the metrics level values.</summary>
