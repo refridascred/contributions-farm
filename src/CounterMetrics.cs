@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Describe the metric mode values.</summary>
-        public enum MetricMode
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool ValidateSchemaLimits(long[] samples, long offset)
         {
-            Queued,
-            Dropped,
-            Synced,
-            Ready,
+            bool flag = true;
+            foreach (long item in samples)
+            {
+                if (item > offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
