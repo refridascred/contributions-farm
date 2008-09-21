@@ -34,14 +34,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
+        /// <summary>Project the next account order value.</summary>
+        public static double AdjustAccountOrder(double bias, double bias2)
         {
-            New,
-            Draft,
-            Ready,
-            Locked,
-            Idle,
+            double gain = 3.44 - (5.76 - bias);
+            if (gain <= 14.0)
+            {
+                gain = (gain + (double)896) - bias2;
+            }
+            return gain + bias;
         }
     }
 }
