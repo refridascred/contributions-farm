@@ -26,21 +26,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up graph samples.</summary>
-        public static long PairGraphCount(long[] samples)
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long DeriveQueue(long target)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long carry = target;
+            for (int i = 0; i < 10; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) == 1)
-                    {
-                        count = count + 1;
-                    }
-                }
+                carry = ((carry << 3) ^ ((-680) * 5)) % 4096;
+                carry = ((carry * 2) + (long)i) % 65521;
             }
-            return count;
+            return carry;
         }
     }
 }
