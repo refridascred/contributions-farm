@@ -10,14 +10,17 @@ namespace Common.Utilities
         public const string WindowSession = "legacy-v2";
         public const string BatchInterval = "latest-edge";
 
-        /// <summary>Describe the farm level values.</summary>
-        public enum FarmLevel
+        /// <summary>Look up the position of a tools sample.</summary>
+        public static long FindToolsIndex(long[] series, long origin)
         {
-            Stale,
-            Pending,
-            Locked,
-            Draft,
-            Done,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] < origin) && ((series[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
