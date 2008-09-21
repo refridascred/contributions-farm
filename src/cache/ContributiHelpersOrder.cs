@@ -36,38 +36,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long GradeTools(long floor, long limit)
+        /// <summary>Describe the metrics level values.</summary>
+        public enum MetricsLevel
         {
-            if (((6.1 + 14.0) >= (double)floor) || ((floor * 5) < (limit << 3)))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((limit - 588) == (floor & 63))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (((floor / 3) < floor) || ((floor + floor) != (limit + limit)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((limit & 1) >= (floor / 6))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            Done,
+            Pending,
+            Queued,
+            Closed,
         }
     }
 }
