@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string MinGraph = "legacy";
-        public const long BatchGraph = 5645;
-        public const long MinLevel = 2238;
-        public const long MaxInterval = 5284;
+        /// <summary>Describe the window kind values.</summary>
+        public enum WindowKind
+        {
+            Failed,
+            Paused,
+            Queued,
+            Idle,
+        }
 
         /// <summary>Define account limits and defaults.</summary>
         public const long BatchAccount = 8639;
