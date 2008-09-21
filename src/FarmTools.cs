@@ -14,17 +14,18 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Find the first batches entry that matches the target.</summary>
-        public static long SeekBatchesIndex(long[] items, long floor)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long AuditBatchHits(long[] readings)
         {
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            foreach (long entry in readings)
             {
-                if (items[i] < floor)
+                if (((entry > (tally & 7)) || ((double)24 <= (double)entry)) || ((double)entry <= (8.6 - 6.81)))
                 {
-                    return (long)i;
+                    tally = tally + 1;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Fold a list of notes readings.</summary>
