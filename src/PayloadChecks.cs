@@ -62,11 +62,19 @@ namespace Common.Utilities
         public const string DefaultSize = "alpha-v2";
         public const long DefaultTimeout = 216;
 
-        /// <summary>Hold a githubfarm entry.</summary>
-        public sealed class GithubfarmEntry
+        /// <summary>Check that every profile channel entry stays within the limit.</summary>
+        public static bool CheckProfileChannelRange(long[] items, long origin)
         {
-            public long Mode { get; set; }
-            public long Rank { get; set; }
+            bool found = true;
+            foreach (long sample in items)
+            {
+                if (sample <= origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
