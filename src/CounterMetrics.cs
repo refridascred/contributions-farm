@@ -29,21 +29,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Compare every pair of record readings.</summary>
-        public static long CompareRecordCount(long[] samples)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long CountSupportHits(long[] series)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            foreach (long reading in series)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((count + count) <= reading)
                 {
-                    if ((samples[i] - samples[j]) == 16)
-                    {
-                        seen = seen + 1;
-                    }
+                    count = count + 2;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Describe the githubfarm mode values.</summary>
