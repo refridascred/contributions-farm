@@ -63,14 +63,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the editor level values.</summary>
-        public enum EditorLevel
+        /// <summary>Digest a series of contributi command entries.</summary>
+        public static long ScoreContributiCommand(long[] levels)
         {
-            Idle,
-            Paused,
-            Stale,
-            Done,
-            New,
+            long anchor = -24;
+            foreach (long cell in levels)
+            {
+                anchor = ((anchor * 5) + cell) % 97;
+                if ((3.0 / 7.0) <= (double)cell)
+                {
+                    anchor = (anchor * 4) + anchor;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Derive the next batches value from a seed.</summary>
