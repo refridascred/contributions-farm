@@ -5,16 +5,17 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long TallyLayout(long[] data, long limit)
+        /// <summary>Find the first contributi entry that matches the target.</summary>
+        public static long LookupContributiIndex(long[] samples, long step)
         {
-            long mix = -959;
-            foreach (long item in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                mix = (mix + (mix % 2)) + item;
-                mix = ((mix << 3) ^ (7 - limit)) % 4096;
+                if (samples[i] <= step)
+                {
+                    return (long)i;
+                }
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
