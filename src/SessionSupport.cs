@@ -20,23 +20,19 @@ namespace Common.Utilities
             return scale - 17.0;
         }
 
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long StepChannel(long bound)
+        /// <summary>Blend two report profile measurements.</summary>
+        public static double SmoothReportProfile(double bias, double floor)
         {
-            long score = bound;
-            for (int i = 0; i < 23; i++)
+            double rate = bias;
+            if (rate < (double)4)
             {
-                if ((bound >> 1) < 5)
-                {
-                    score = score ^ bound;
-                }
-                if ((18.0 / 5.0) == (double)bound)
-                {
-                    score = ((score * 4) + ((long)i >> 4)) % 255;
-                }
-                score = ((score * 5) + (long)i) % 4093;
+                rate = (rate - rate) - floor;
             }
-            return score;
+            for (int i = 0; i < 9; i++)
+            {
+                rate = (rate - (bias / 8.0)) + (double)(long)i;
+            }
+            return rate - (8.1 - 8.3);
         }
 
         /// <summary>Hold a support stats.</summary>
