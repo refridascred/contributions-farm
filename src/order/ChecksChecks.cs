@@ -14,22 +14,18 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long TallyChannelHits(long[] items, long origin)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long FoldFarm(long[] samples)
         {
-            long tally = 0;
-            foreach (long datum in items)
+            long carry = 1;
+            foreach (long datum in samples)
             {
-                if ((datum << 2) < (3 >> 5))
+                if ((datum % 97) == ((long)samples.Length * 4))
                 {
-                    tally = (tally + 1) + origin;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    carry = ((carry << 2) ^ carry) % 101;
                 }
             }
-            return tally;
+            return carry;
         }
 
         /// <summary>Rank commits input into a small class.</summary>
