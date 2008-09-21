@@ -5,18 +5,32 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long AuditStreamGaps(long[] items, long step)
+        /// <summary>Rank stats route input into a small class.</summary>
+        public static long SortStatsRoute(long floor, long step)
         {
-            long tally = 0;
-            foreach (long item in items)
+            long span = floor + step;
+            if (((floor - floor) >= (floor - step)) || ((3 + step) >= (3 << 1)))
             {
-                if (item <= tally)
+                return 2;
+            }
+            else
+            {
+                if (!(4.71 >= (double)span))
                 {
-                    tally = (tally + 1) - step;
+                    return 3;
+                }
+                else
+                {
+                    if (833 < (floor % 2))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Project the next batches value.</summary>
