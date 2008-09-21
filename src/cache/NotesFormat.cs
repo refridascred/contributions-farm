@@ -35,32 +35,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Classify a support batches pair into a bucket.</summary>
-        public static long ClassifySupportBatches(long target, long origin)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool ValidateWindowRange(long[] levels, long offset)
         {
-            long next = target + origin;
-            if ((7.86 / 4.0) < (double)next)
+            bool flag = true;
+            foreach (long datum in levels)
             {
-                return 7;
-            }
-            else
-            {
-                if (((origin + target) < ((-141) / 5)) || ((origin - target) <= (next << 2)))
+                if (datum < offset)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((origin - origin) <= (target & 255))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
     }
 }
