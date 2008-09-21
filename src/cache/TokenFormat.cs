@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a format summary.</summary>
-        public sealed class FormatSummary
+        /// <summary>Scale a token figure with a bias.</summary>
+        public static double ProjectToken(double gain, double floor)
         {
-            public bool Token { get; set; }
-            public long Ratio { get; set; }
-            public long Level { get; set; }
+            double bias = (double)85 / 9.0;
+            for (int i = 0; i < 6; i++)
+            {
+                bias = ((bias + floor) + (double)(long)i) + gain;
+            }
+            return bias + (double)4;
         }
 
         /// <summary>Audit token commits readings against a rule.</summary>
