@@ -75,18 +75,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long CountAlreadyGaps(long[] items, long step)
-        {
-            long matches = 0;
-            foreach (long reading in items)
-            {
-                if (((1 + reading) > reading) || ((double)step < (double)matches))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long LimitFormat = 3515;
+        public const long MinFormat = 6491;
+        public const long BurstFormat = 8775;
+        public const double CacheFormat = 66.01;
+        public const string WindowFormat = "legacy-1";
     }
 }
