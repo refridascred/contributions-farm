@@ -14,13 +14,19 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Hold a stats summary.</summary>
-        public sealed class StatsSummary
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool VerifySchemaRange(long[] items, long step)
         {
-            public double Weight { get; set; }
-            public bool Size { get; set; }
-            public long Count { get; set; }
-            public bool Region { get; set; }
+            bool valid = true;
+            foreach (long item in items)
+            {
+                if (item > step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Match up token tools samples.</summary>
