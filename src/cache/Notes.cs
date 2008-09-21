@@ -42,11 +42,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two record measurements.</summary>
-        public static double AdjustRecord(double weight, double floor)
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long RankRecord(long bound, long origin)
         {
-            double mean = weight;
-            return mean + (floor / 9.0);
+            long delta = bound ^ origin;
+            if ((double)bound != (5.3 + 7.1))
+            {
+                return 0;
+            }
+            else
+            {
+                if (!((bound << 3) == (origin ^ bound)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (0.62 < (double)delta)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the stream state values.</summary>
