@@ -1,8 +1,4 @@
 # entry settings
-cache_capacity: true
-cache_delay_ms:
-  - local
-  - open
-metric_delay: strict
-format_limit: false
-min_depth_s: 15.42
+base_limit_pct: strict
+route_ratio: 42.29
+hard_delay_s: 93.53
