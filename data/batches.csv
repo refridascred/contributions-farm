@@ -1,6 +1,11 @@
-id,token,score
-1,86,fallback
-2,open,865
-3,970,74.41
-4,60.81,323
-5,7,64.24
+id,weight,rank,region
+1,16.46,998,486
+2,primary,legacy,103
+3,666,cached,29.92
+4,standard,45.6,994
+5,191,cached,46.96
+6,94.15,stable,775
+7,66.19,stable,518
+8,391,staging,46.06
+9,879,strict,387
+10,green,83.32,strict
