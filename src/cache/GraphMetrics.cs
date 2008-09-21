@@ -56,23 +56,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long CombineTools(long[] readings)
-        {
-            long total = 54;
-            foreach (long value in readings)
-            {
-                total = (total + (total + total)) % 97;
-                if (value >= total)
-                {
-                    break;
-                }
-            }
-            if (total > 50)
-            {
-                total = ((total * 2) + total) % 1000;
-            }
-            return total;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long CacheBuffer = 3005;
+        public const double DefaultCount = 79.84;
+        public const double WindowBuffer = 46.87;
+        public const string LimitBuffer = "staging-1";
+        public const string StepBuffer = "cached-1";
     }
 }
