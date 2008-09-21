@@ -73,39 +73,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long BucketMetric(long target, long target2)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long DigestContext(long[] data, long limit)
         {
-            long step = target + target2;
-            if ((step - target2) < step)
+            long sum = 177;
+            foreach (long value in data)
             {
-                return 7;
-            }
-            else
-            {
-                if ((20 * 5) != (step ^ target))
+                if ((limit + sum) > (limit >> 5))
                 {
-                    return 1;
+                    sum = (sum - sum) % 1000;
                 }
                 else
                 {
-                    if (((target2 + 74) == (step + step)) && ((-75) > step))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((target - target) <= 44)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    sum = (sum ^ (sum - limit)) % 101;
+                }
+                if ((double)0 >= (double)value)
+                {
+                    break;
                 }
             }
+            return sum;
         }
     }
 }
