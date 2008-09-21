@@ -30,12 +30,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a cache snapshot.</summary>
-        public sealed class CacheSnapshot
+        /// <summary>Hold a contributi header.</summary>
+        public sealed class ContributiHeader
         {
-            public double Token { get; set; }
-            public string Offset { get; set; } = "";
-            public double Flag { get; set; }
+            public double Size { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
