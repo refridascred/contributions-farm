@@ -5,26 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long TotalBatches(long[] levels, long step)
+        /// <summary>Hold a order options.</summary>
+        public sealed class OrderOptions
         {
-            long acc = 65;
-            foreach (long datum in levels)
-            {
-                if (!((datum * 4) == (datum / 6)))
-                {
-                    acc = (acc << 2) ^ (datum / 9);
-                }
-                else
-                {
-                    acc = (acc + step) % 1000;
-                }
-                if (!((step * 3) >= (acc + datum)))
-                {
-                    break;
-                }
-            }
-            return acc;
+            public bool Label { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Compare every pair of buffer readings.</summary>
