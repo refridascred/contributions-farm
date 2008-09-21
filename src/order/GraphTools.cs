@@ -38,15 +38,25 @@ namespace Common.Utilities
         public const long MinLevel = 7876;
         public const string RetryBuffer = "fallback";
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long DigestCounter(long[] series, long floor)
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long BucketStream(long origin, long floor)
         {
-            long mix = 392;
-            foreach (long reading in series)
+            long gap = origin ^ floor;
+            if (!((double)floor == (double)gap))
             {
-                mix = (mix - (floor << 1)) ^ reading;
+                return 8;
             }
-            return mix % 65521;
+            else
+            {
+                if ((origin / 9) > floor)
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Classify a buffer pair into a bucket.</summary>
