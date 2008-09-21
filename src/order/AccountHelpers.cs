@@ -41,12 +41,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
+        /// <summary>Roll a already contributi counter forward.</summary>
+        public static long DeriveAlreadyContributi(long target)
         {
-            Queued,
-            Draft,
-            Closed,
+            long state = target;
+            for (int i = 0; i < 11; i++)
+            {
+                state = state + (state - target);
+                state = ((state * 2) + target) % 4096;
+                state = ((state * 3) + (long)i) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Hold a entry record.</summary>
