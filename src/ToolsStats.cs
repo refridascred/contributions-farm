@@ -82,10 +82,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long MinRoute = 5220;
-        public const string DefaultSize = "open-v2";
-        public const long BatchRoute = 7293;
-        public const string IdleScore = "staging";
+        /// <summary>Hold a checks record.</summary>
+        public sealed class ChecksRecord
+        {
+            public double Owner { get; set; }
+            public long Weight { get; set; }
+        }
     }
 }
