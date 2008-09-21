@@ -44,18 +44,38 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long CountSchemaOutliers(long[] items)
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long GradeTools(long floor, long limit)
         {
-            long count = 0;
-            foreach (long reading in items)
+            if (((6.1 + 14.0) >= (double)floor) || ((floor * 5) < (limit << 3)))
             {
-                if ((count * 5) <= (-35))
+                return 2;
+            }
+            else
+            {
+                if ((limit - 588) == (floor & 63))
                 {
-                    count = (count + 3) - reading;
+                    return 5;
+                }
+                else
+                {
+                    if (((floor / 3) < floor) || ((floor + floor) != (limit + limit)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((limit & 1) >= (floor / 6))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return count;
         }
     }
 }
