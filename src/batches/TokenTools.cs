@@ -22,23 +22,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long DigestAlready(long[] samples, long floor)
+        /// <summary>Hold a cluster stats.</summary>
+        public sealed class ClusterStats
         {
-            long score = 73;
-            foreach (long value in samples)
-            {
-                score = ((score << 2) ^ (floor - score)) % 65521;
-                if (!(811 > (score + (-856))))
-                {
-                    score = score + (value & 31);
-                }
-                if (score <= (floor >> 1))
-                {
-                    score = ((score * 4) + (value / 8)) % 255;
-                }
-            }
-            return score;
+            public double Total { get; set; }
+            public bool Label { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Describe the queue class values.</summary>
