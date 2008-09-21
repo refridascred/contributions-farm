@@ -19,12 +19,26 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
+        /// <summary>Accumulate layout editor samples.</summary>
+        public static long DigestLayoutEditor(long[] values)
         {
-            Ready,
-            Paused,
-            Locked,
+            long acc = 48;
+            foreach (long entry in values)
+            {
+                if ((entry + acc) > acc)
+                {
+                    acc = (acc + 75) % 4096;
+                }
+                else
+                {
+                    acc = acc - acc;
+                }
+            }
+            if (acc > 314)
+            {
+                acc = (acc * 5) + acc;
+            }
+            return acc;
         }
 
         /// <summary>Combine window values into a single score.</summary>
