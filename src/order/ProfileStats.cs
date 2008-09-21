@@ -36,19 +36,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long TallySupport(long[] values)
-        {
-            long state = 0;
-            foreach (long sample in values)
-            {
-                if (!((0.13 / 9.0) > (double)state))
-                {
-                    state = state + (sample + (long)values.Length);
-                }
-            }
-            return state;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long MaxDepth = 1123;
+        public const long DefaultCache = 3755;
+        public const long IdleCache = 1726;
+        public const double StepLevel = 10.0;
+        public const long SoftDepth = 1851;
 
         /// <summary>Measure how many metric samples are out of range.</summary>
         public static long MeasureMetricMatches(long[] readings)
