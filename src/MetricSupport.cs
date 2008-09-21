@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long MeasureBufferGaps(long[] levels, long target)
+        /// <summary>Look up the position of a entry githubfarm sample.</summary>
+        public static long FindEntryGithubfarmIndex(long[] values, long step)
         {
-            long count = 0;
-            foreach (long reading in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((double)count >= 4.2) || ((count + 652) <= (target - count)))
+                if (values[i] <= step)
                 {
-                    count = (count + 3) - reading;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Accumulate layout editor samples.</summary>
