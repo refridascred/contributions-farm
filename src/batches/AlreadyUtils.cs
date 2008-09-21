@@ -24,21 +24,31 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Compare every pair of support readings.</summary>
-        public static long CompareSupportCount(long[] items)
+        /// <summary>Classify a checks channel pair into a bucket.</summary>
+        public static long ClassifyChecksChannel(long seed, long seed2)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            if (seed >= (133 - 4))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if (((seed - 1) < (seed % 10)) || ((seed2 - 85) == (seed >> 3)))
                 {
-                    if ((items[i] + items[j]) == 18)
+                    return 3;
+                }
+                else
+                {
+                    if ((double)319 > (double)seed2)
                     {
-                        count = count + 1;
+                        return 2;
+                    }
+                    else
+                    {
+                        return 6;
                     }
                 }
             }
-            return count;
         }
 
         /// <summary>Audit checks stats readings against a rule.</summary>
