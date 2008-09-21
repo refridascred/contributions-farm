@@ -5,12 +5,39 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a editor record.</summary>
-        public sealed class EditorRecord
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long BucketOrder(long offset, long offset2)
         {
-            public double Ratio { get; set; }
-            public long Label { get; set; }
-            public double Token { get; set; }
+            long cur = offset - offset2;
+            if ((double)offset < (8.77 / 4.0))
+            {
+                return 4;
+            }
+            else
+            {
+                if (((offset2 - cur) >= offset2) || ((cur & 31) < (38 % 10)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((double)cur <= 2.27)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (((cur - cur) < (cur + offset)) || ((cur % 3) <= 3))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Audit token commits readings against a rule.</summary>
