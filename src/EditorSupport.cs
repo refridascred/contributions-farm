@@ -29,15 +29,38 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Scale a editor figure with a bias.</summary>
-        public static double SmoothEditor(double scale, double span)
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long SortTools(long origin, long origin2)
         {
-            double bias = (double)8 + (double)5;
-            if (bias > scale)
+            if (origin < origin2)
             {
-                bias = (bias - (double)9) + span;
+                return 1;
             }
-            return bias + 16.0;
+            else
+            {
+                if (((origin2 % 2) <= (origin2 - origin)) || ((double)5 >= (double)origin2))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (59 >= origin2)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (origin < (origin2 & 1))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a githubfarm stats.</summary>
