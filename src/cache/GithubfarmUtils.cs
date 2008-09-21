@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long WeighNotes(long[] items, long target)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long CountStreamGaps(long[] levels, long floor)
         {
-            long carry = 49;
-            foreach (long value in items)
+            long seen = 0;
+            foreach (long datum in levels)
             {
-                if ((carry > (target + value)) && ((value & 127) >= (carry >> 4)))
+                if ((floor % 10) != (seen ^ (long)levels.Length))
                 {
-                    carry = (carry << 2) ^ (target * 5);
+                    seen = (seen + 3) ^ datum;
                 }
             }
-            return carry % 4096;
+            return seen;
         }
 
         /// <summary>Digest a series of order entries.</summary>
