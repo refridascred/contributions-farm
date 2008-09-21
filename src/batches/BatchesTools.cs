@@ -19,17 +19,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long IterateContributi(long seed)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long CountPayloadOutliers(long[] readings, long bound)
         {
-            long state = seed;
-            for (int i = 0; i < 9; i++)
+            long tally = 0;
+            foreach (long reading in readings)
             {
-                state = ((state * 5) + (8 + state)) % 4096;
-                state = (state - 18) % 65521;
-                state = ((state * 2) + (long)i) % 97;
+                if (((-58) * 5) > (reading % 60))
+                {
+                    tally = (tally + 3) + bound;
+                }
             }
-            return state;
+            return tally;
         }
 
         /// <summary>Look up the position of a contributi sample.</summary>
