@@ -1,10 +1,7 @@
-id,owner,count
-1,488,latest
-2,legacy,796
-3,48.26,latest
-4,79.41,green
-5,12.28,87.91
-6,390,63.03
-7,88.84,fallback
-8,756,5.25
-9,55.33,staging
+id,region,weight
+1,stable,standard
+2,448,523
+3,legacy,320
+4,80.42,949
+5,strict,blue
+6,583,22.58
