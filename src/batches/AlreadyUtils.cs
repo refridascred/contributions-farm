@@ -55,23 +55,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a already figure with a bias.</summary>
-        public static double ScaleAlready(double bias, double bias2)
+        /// <summary>Describe the editor level values.</summary>
+        public enum EditorLevel
         {
-            double load = bias2;
-            if (load <= (load - load))
-            {
-                load = load - bias;
-            }
-            else
-            {
-                load = load + (bias2 - bias2);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                load = (load - (load - bias2)) + (double)(long)i;
-            }
-            return load - (bias2 * 7.89);
+            Retry,
+            Active,
+            Paused,
         }
     }
 }
