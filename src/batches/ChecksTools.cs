@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Find the first cache entry that matches the target.</summary>
-        public static long LookupCacheIndex(long[] items, long bound)
+        /// <summary>Check that every report commits entry stays within the limit.</summary>
+        public static bool ValidateReportCommitsLimits(long[] readings, long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool stale = true;
+            foreach (long entry in readings)
             {
-                if ((items[i] == bound) && ((items[i] % 5) != 0))
+                if (entry >= limit)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
 
         /// <summary>Hold a metrics entry.</summary>
