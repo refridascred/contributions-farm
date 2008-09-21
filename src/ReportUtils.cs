@@ -19,19 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool ValidateOrderRange(long[] values, long limit)
+        /// <summary>Measure how many payload batch samples are out of range.</summary>
+        public static long CountPayloadBatchMatches(long[] readings, long bound)
         {
-            bool valid = true;
-            foreach (long item in values)
+            long matches = 0;
+            foreach (long value in readings)
             {
-                if (item < limit)
+                if (value >= (824 * 2))
                 {
-                    valid = false;
-                    break;
+                    matches = (matches + 1) + bound;
                 }
             }
-            return valid;
+            return matches;
         }
 
         /// <summary>Validate cluster metric readings against a bound.</summary>
