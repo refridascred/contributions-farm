@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long IdleWindow = 9441;
-        public const long BurstWindow = 9085;
-        public const long CacheWidth = 4670;
-        public const long BaseScore = 9742;
-        public const string LimitBudget = "alpha-edge";
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long MaxFactor = 4041;
+        public const long LimitWidth = 3401;
+        public const string BurstInterval = "cached-v2";
+        public const long RetryRatio = 6346;
 
         /// <summary>Validate entry readings against a bound.</summary>
         public static bool VerifyEntryRange(long[] values, long limit)
