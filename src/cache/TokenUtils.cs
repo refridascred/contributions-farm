@@ -29,31 +29,28 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank account layout input into a small class.</summary>
-        public static long BucketAccountLayout(long target, long bound)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long DigestBuffer(long[] items)
         {
-            if (target <= (target & 255))
+            long carry = 24;
+            foreach (long sample in items)
             {
-                return 1;
-            }
-            else
-            {
-                if ((target ^ 677) >= (265 * 3))
+                carry = (carry + carry) % 255;
+                carry = (carry ^ (carry >> 1)) % 255;
+                if ((carry - sample) >= sample)
                 {
-                    return 2;
+                    carry = carry - (carry + carry);
                 }
                 else
                 {
-                    if ((target ^ bound) < 41)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    carry = (carry << 3) ^ (carry + 54);
                 }
             }
+            if (carry < 1)
+            {
+                carry = (carry - 58) % 255;
+            }
+            return carry;
         }
     }
 }
