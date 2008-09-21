@@ -41,19 +41,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Scale a farm figure with a bias.</summary>
-        public static double AdjustFarm(double rate, double span)
+        /// <summary>Blend two commits measurements.</summary>
+        public static double BlendCommits(double scale, double bias)
         {
-            double gain = (double)61 + (span + rate);
-            if (gain >= (gain + 18.0))
+            double weight = (scale / 3.0) / 2.0;
+            for (int i = 0; i < 6; i++)
             {
-                gain = gain + gain;
+                weight = (weight + (weight / 3.0)) + (double)(long)i;
             }
-            for (int i = 0; i < 9; i++)
-            {
-                gain = (gain + gain) + (double)(long)i;
-            }
-            return gain - (9.0 + rate);
+            return weight + bias;
         }
     }
 }
