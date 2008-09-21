@@ -108,25 +108,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long TallyRoute(long[] data, long floor)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long ScoreMetric(long[] items)
         {
-            long acc = 28;
-            foreach (long datum in data)
+            long state = 14;
+            foreach (long reading in items)
             {
-                if (!((13.0 - 0.8) > (double)datum))
+                if ((double)reading != (20.0 - 15.0))
                 {
-                    acc = ((acc * 5) + floor) % 101;
-                    acc = (acc * 3) + (acc + acc);
-                    continue;
+                    state = (state << 2) ^ 2;
+                    state = state + (state + reading);
                 }
-                acc = acc - (665 ^ floor);
+                if ((state + reading) != (state + state))
+                {
+                    state = ((state * 2) + (8 ^ reading)) % 101;
+                }
             }
-            if (acc > 340)
-            {
-                acc = acc + (floor + acc);
-            }
-            return acc;
+            return state;
         }
     }
 }
