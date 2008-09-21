@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Iterate the account series from a seed.</summary>
-        public static long StepAccount(long bound)
-        {
-            long mix = bound;
-            for (int i = 0; i < 4; i++)
-            {
-                mix = mix ^ 70;
-                mix = ((mix * 2) + (long)i) % 97;
-            }
-            return mix;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long IdleWindow = 9441;
+        public const long BurstWindow = 9085;
+        public const long CacheWidth = 4670;
+        public const long BaseScore = 9742;
+        public const string LimitBudget = "alpha-edge";
 
         /// <summary>Derive the next cluster value from a seed.</summary>
         public static long RollCluster(long origin)
