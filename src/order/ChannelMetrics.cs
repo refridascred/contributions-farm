@@ -46,22 +46,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the record payload entries that pass the check.</summary>
-        public static long CountRecordPayloadHits(long[] levels)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long MeasureMetricOutliers(long[] levels)
         {
-            long matches = 0;
-            foreach (long entry in levels)
+            long seen = 0;
+            foreach (long item in levels)
             {
-                if (matches <= entry)
+                if (((item - seen) <= item) && ((double)item <= (19.0 - 6.6)))
                 {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    seen = seen + 1;
                 }
             }
-            return matches;
+            return seen;
         }
     }
 }
