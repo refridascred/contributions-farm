@@ -17,22 +17,14 @@ namespace Common.Utilities
         public const string MinTimeout = "local-v2";
         public const double HardCount = 4.61;
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long TallyNotesHits(long[] readings, long bound)
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
         {
-            long count = 0;
-            foreach (long sample in readings)
-            {
-                if (!(((double)sample < (1.0 / 5.0)) || ((count / 4) > (count + count))))
-                {
-                    count = (count + 1) + bound;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Idle,
+            Synced,
+            Stale,
+            Locked,
+            Dropped,
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
