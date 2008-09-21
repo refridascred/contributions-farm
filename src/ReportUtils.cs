@@ -41,22 +41,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long TallySchemaMatches(long[] samples, long bound)
+        /// <summary>Hold a report stats.</summary>
+        public sealed class ReportStats
         {
-            long seen = 0;
-            foreach (long item in samples)
-            {
-                if (((seen <= (bound + item)) && (seen > (seen / 8))) && ((double)seen >= (6.91 / 7.0)))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public long Flag { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Find the first format entry that matches the target.</summary>
