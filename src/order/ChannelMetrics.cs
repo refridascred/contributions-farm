@@ -17,14 +17,24 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the cluster class values.</summary>
-        public enum ClusterClass
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long SortEntry(long target, long origin)
         {
-            Pending,
-            Paused,
-            Stale,
-            Queued,
-            Synced,
+            if (((origin * 3) == (target << 3)) || ((double)origin != (4.0 + 13.0)))
+            {
+                return 8;
+            }
+            else
+            {
+                if (((target + target) > origin) || ((double)4 == (double)target))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Fold a list of support readings.</summary>
