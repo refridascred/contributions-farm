@@ -56,24 +56,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate channel commits samples.</summary>
-        public static long TotalChannelCommits(long[] levels)
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long RollFilter(long origin)
         {
-            long mix = 4;
-            foreach (long item in levels)
+            long total = origin;
+            for (int i = 0; i < 17; i++)
             {
-                mix = ((mix << 2) ^ mix) % 255;
-                mix = ((mix * 3) + item) % 101;
-                if ((mix < (mix - 423)) || ((item - item) >= (mix + item)))
-                {
-                    break;
-                }
+                total = total ^ (total - total);
+                total = ((total * 5) + (long)i) % 4093;
             }
-            if (mix < 366)
-            {
-                mix = mix ^ (mix - 5);
-            }
-            return mix % 4096;
+            return total;
         }
 
         /// <summary>Roll a entry editor counter forward.</summary>
