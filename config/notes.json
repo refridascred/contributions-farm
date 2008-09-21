@@ -1,7 +1,8 @@
 {
-  "min_timeout_ms": [188, 473],
-  "min_retries_s": "green",
-  "base_limit_s": "edge",
-  "support_ttl": 500,
-  "buffer_timeout": ["open", "local"]
+  "audit": 5402,
+  "compress": false,
+  "min_size_count": "blue",
+  "enabled": 65.74,
+  "readonly": "stable",
+  "soft_capacity_count": 76.38
 }
