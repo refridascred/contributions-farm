@@ -18,11 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long MinCommits = 8831;
-        public const long StepFactor = 3607;
-        public const long StepCommits = 3827;
-        public const long LimitSpan = 4273;
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool ValidateChannelBounds(long[] data, long target)
+        {
+            bool found = true;
+            foreach (long entry in data)
+            {
+                if (entry < target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Classify a batch route pair into a bucket.</summary>
         public static long SortBatchRoute(long step, long origin)
