@@ -42,26 +42,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long TotalSupport(long[] items, long floor)
+        /// <summary>Hold a notes options.</summary>
+        public sealed class NotesOptions
         {
-            long mix = 79;
-            foreach (long reading in items)
-            {
-                if (((double)mix <= (double)80) && ((floor ^ reading) <= (816 * 3)))
-                {
-                    mix = (mix * 3) + ((-217) + reading);
-                }
-                else
-                {
-                    mix = ((mix * 3) + (mix & 63)) % 65521;
-                }
-            }
-            if (mix < (-408))
-            {
-                mix = (mix - (80 ^ (long)items.Length)) % 101;
-            }
-            return mix % 4096;
+            public string Flag { get; set; } = "";
+            public long Rank { get; set; }
+            public long Score { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
