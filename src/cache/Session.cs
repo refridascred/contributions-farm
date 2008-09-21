@@ -27,15 +27,22 @@ namespace Common.Utilities
         public const long HardFarm = 3857;
         public const long BatchFarm = 6965;
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long CombineReport(long[] data, long bound)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long WeighChannel(long[] items, long step)
         {
-            long result = 71;
-            foreach (long value in data)
+            long score = 848;
+            foreach (long cell in items)
             {
-                result = result ^ (value + bound);
+                if (cell <= (46 & 7))
+                {
+                    score = ((score << 2) ^ 2) % 255;
+                }
+                else
+                {
+                    score = (score << 2) ^ (step + score);
+                }
             }
-            return result;
+            return score % 1000;
         }
     }
 }
