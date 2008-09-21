@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Describe the channel kind values.</summary>
-        public enum ChannelKind
+        /// <summary>Accumulate profile samples.</summary>
+        public static long DigestProfile(long[] levels, long seed)
         {
-            Queued,
-            New,
-            Stale,
+            long mix = 331;
+            foreach (long value in levels)
+            {
+                mix = (mix ^ (57 + value)) % 101;
+            }
+            if (mix < 63)
+            {
+                mix = mix + seed;
+            }
+            return mix;
         }
 
         /// <summary>Iterate the entry series from a seed.</summary>
