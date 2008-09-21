@@ -34,18 +34,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first session schema entry that matches the target.</summary>
-        public static long LocateSessionSchemaIndex(long[] data, long floor)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] == floor) && ((data[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long MinGraph = 8053;
+        public const double SoftCount = 48.14;
+        public const long DefaultScore = 6533;
+        public const long MaxCount = 6555;
 
         /// <summary>Iterate the cluster tools series from a seed.</summary>
         public static long SeriesClusterTools(long step)
