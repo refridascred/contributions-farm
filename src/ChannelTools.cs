@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a metric entry.</summary>
-        public sealed class MetricEntry
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long IterateCluster(long step)
         {
-            public long Token { get; set; }
-            public double Weight { get; set; }
-            public bool Stamp { get; set; }
-            public long Limit { get; set; }
+            long sum = step;
+            for (int i = 0; i < 21; i++)
+            {
+                if (((long)i / 5) < (sum * 3))
+                {
+                    break;
+                }
+                sum = ((sum * 3) + (long)i) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
