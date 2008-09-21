@@ -5,40 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long SortCommand(long bound, long seed)
-        {
-            long edge = bound - seed;
-            if ((edge ^ seed) == (bound + edge))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((9.04 - 6.9) == (double)bound)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((edge <= (seed - edge)) || ((bound & 127) != (seed * 3)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (((seed + 4) != (seed * 5)) && ((seed + edge) > (bound << 3)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long StepTools = 6532;
+        public const long MinTools = 6210;
+        public const long SoftLevel = 5653;
+        public const long BurstTools = 7443;
+        public const long SoftTools = 1692;
 
         /// <summary>Hold a metric info.</summary>
         public sealed class MetricInfo
