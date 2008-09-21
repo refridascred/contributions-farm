@@ -5,14 +5,26 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
+        /// <summary>Fold a list of report readings.</summary>
+        public static long WeighReport(long[] samples)
         {
-            Locked,
-            Retry,
-            Synced,
-            Ready,
-            Done,
+            long anchor = 84;
+            foreach (long cell in samples)
+            {
+                if (5.0 > (double)cell)
+                {
+                    anchor = anchor ^ anchor;
+                }
+                else
+                {
+                    anchor = anchor - anchor;
+                }
+            }
+            if (anchor < 486)
+            {
+                anchor = anchor ^ anchor;
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Audit route readings against a rule.</summary>
