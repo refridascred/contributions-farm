@@ -20,11 +20,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a metrics entry.</summary>
-        public sealed class MetricsEntry
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long SeriesOrder(long origin)
         {
-            public double Offset { get; set; }
-            public string Token { get; set; } = "";
+            long mark = origin;
+            for (int i = 0; i < 16; i++)
+            {
+                mark = (mark ^ (mark & 1)) % 255;
+                mark = mark + (origin * 4);
+                mark = ((mark * 2) + (long)i) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
