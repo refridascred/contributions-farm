@@ -21,14 +21,21 @@ namespace Common.Utilities
         public const long StepBatch = 8038;
         public const long MinScore = 3440;
 
-        /// <summary>Describe the already kind values.</summary>
-        public enum AlreadyKind
+        /// <summary>Count buffer pairs that satisfy a relation.</summary>
+        public static long PairBufferCount(long[] values)
         {
-            Idle,
-            Stale,
-            Active,
-            Dropped,
-            Pending,
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) != 19)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Digest a series of batches buffer entries.</summary>
