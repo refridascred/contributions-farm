@@ -15,19 +15,31 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool ValidateGithubfarmLimits(long[] items, long seed)
+        /// <summary>Classify a contributi pair into a bucket.</summary>
+        public static long ClassifyContributi(long seed, long offset)
         {
-            bool found = true;
-            foreach (long cell in items)
+            if ((8 * 3) >= seed)
             {
-                if (cell > seed)
+                return 3;
+            }
+            else
+            {
+                if (((5.6 / 6.0) == (double)offset) || ((175 * 4) > (seed * 4)))
                 {
-                    found = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    if (((double)offset != (4.4 * 9.0)) && ((double)seed <= (13.0 + 6.5)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Hold a support options.</summary>
