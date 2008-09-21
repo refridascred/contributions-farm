@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
+        /// <summary>Hold a channel options.</summary>
+        public sealed class ChannelOptions
         {
-            Ready,
-            Draft,
-            New,
-            Retry,
-            Pending,
+            public bool Flag { get; set; }
+            public string Stamp { get; set; } = "";
+            public string Limit { get; set; } = "";
+            public long Score { get; set; }
         }
 
         /// <summary>Hold a batch snapshot.</summary>
