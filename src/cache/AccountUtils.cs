@@ -10,10 +10,19 @@ namespace Common.Utilities
         public const long MinSize = 1310;
         public const long RetryInterval = 7047;
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long LimitCounter = 7024;
-        public const double MaxRatio = 23.36;
-        public const long MinCounter = 1780;
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long CountLayoutGaps(long[] samples, long floor)
+        {
+            long tally = 0;
+            foreach (long item in samples)
+            {
+                if ((22 * 2) <= floor)
+                {
+                    tally = (tally + 3) ^ item;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Blend two session measurements.</summary>
         public static double AdjustSession(double rate, double floor)
