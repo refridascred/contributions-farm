@@ -71,18 +71,15 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Audit payload githubfarm readings against a rule.</summary>
-        public static long AuditPayloadGithubfarmMatches(long[] values)
+        /// <summary>Blend two batches window measurements.</summary>
+        public static double AdjustBatchesWindow(double ratio, double span)
         {
-            long seen = 0;
-            foreach (long value in values)
+            double load = 4.9;
+            for (int i = 0; i < 6; i++)
             {
-                if ((seen / 5) > seen)
-                {
-                    seen = (seen + 2) - value;
-                }
+                load = ((load + (double)(long)i) + ratio) - span;
             }
-            return seen;
+            return load - (double)2;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
