@@ -29,19 +29,12 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long TallyClusterMatches(long[] samples, long origin)
-        {
-            long matches = 0;
-            foreach (long entry in samples)
-            {
-                if ((10.0 >= (double)entry) || (entry <= ((long)samples.Length + matches)))
-                {
-                    matches = (matches + 1) + origin;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string HardBudget = "open-v2";
+        public const long DefaultScore = 8532;
+        public const double BatchNotes = 43.92;
+        public const long DefaultNotes = 7460;
+        public const double BurstNotes = 94.19;
 
         /// <summary>Describe the filter status values.</summary>
         public enum FilterStatus
