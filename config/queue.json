@@ -1,18 +1,5 @@
 {
-  "enabled": 500,
-  "record_capacity": {
-    "cache_ttl_count": 100,
-    "audit": 17.54,
-    "sync_limit_pct": [490, 396, 18, 236],
-    "verbose": {
-      "retry_retries": 500,
-      "already_delay": 76,
-      "retry_interval_s": false,
-      "enabled": "legacy",
-      "batch_retries": [362, 266, 226]
-    }
-  },
-  "cluster_ttl": 4761,
-  "burst_limit_count": ["primary", "standard", "stable", "strict"],
-  "persist": 86.65
+  "default_capacity_s": 85,
+  "sync_depth": [304, 171, 263, 11],
+  "default_ttl_pct": [211, 47]
 }
