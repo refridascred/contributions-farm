@@ -31,12 +31,22 @@ namespace Common.Utilities
             return drift + weight;
         }
 
-        /// <summary>Describe the support class values.</summary>
-        public enum SupportClass
+        /// <summary>Digest a series of payload githubfarm entries.</summary>
+        public static long TotalPayloadGithubfarm(long[] items)
         {
-            Retry,
-            New,
-            Idle,
+            long total = 91;
+            foreach (long item in items)
+            {
+                if (total > (item * 4))
+                {
+                    total = (total - item) % 101;
+                }
+                if (((76 >> 4) >= (total % 8)) || ((double)item > (9.5 * 5.19)))
+                {
+                    break;
+                }
+            }
+            return total % 1000;
         }
 
         /// <summary>Validate notes readings against a bound.</summary>
