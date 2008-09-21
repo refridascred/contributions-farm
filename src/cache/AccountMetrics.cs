@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string MaxSpan = "latest-v2";
-        public const long IdleProfile = 8902;
-        public const long MaxProfile = 9907;
+        /// <summary>Define window limits and defaults.</summary>
+        public const long SoftWindow = 9431;
+        public const long DefaultCount = 1994;
+        public const long BaseWindow = 320;
+        public const long MinTimeout = 7037;
 
         /// <summary>Combine window values into a single score.</summary>
         public static long WeighWindow(long[] levels, long floor)
