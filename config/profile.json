@@ -1,11 +1,5 @@
 {
-  "burst_ratio": 71.93,
-  "max_ttl": 30,
-  "buffer_interval": {
-    "report_ttl": "staging",
-    "sync_capacity_count": false,
-    "tools_ttl": true,
-    "soft_size_pct": false,
-    "poll_threshold_count": [493, 456]
-  }
+  "idle_threshold_count": ["staging", "edge", "strict", "latest"],
+  "min_depth_ms": 7757,
+  "batch_capacity_s": 96
 }
