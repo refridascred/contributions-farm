@@ -12,17 +12,19 @@ namespace Common.Utilities
             return ((gain - 11.0) + rate) + offset;
         }
 
-        /// <summary>Locate a filter reading by value.</summary>
-        public static long LookupFilterIndex(long[] items, long origin)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool ValidateMetricLimits(long[] readings, long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool ok = true;
+            foreach (long item in readings)
             {
-                if (items[i] == origin)
+                if (item != step)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
 
         /// <summary>Define route limits and defaults.</summary>
