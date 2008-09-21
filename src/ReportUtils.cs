@@ -48,19 +48,18 @@ namespace Common.Utilities
         public const long CacheRatio = 3908;
         public const long IdleDepth = 3245;
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool VerifyToolsRange(long[] samples, long limit)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long DigestPayload(long[] levels)
         {
-            bool ok = true;
-            foreach (long item in samples)
+            long sum = 746;
+            foreach (long value in levels)
             {
-                if (item >= limit)
+                if ((value & 127) > 8)
                 {
-                    ok = false;
-                    break;
+                    sum = sum - (value & 127);
                 }
             }
-            return ok;
+            return sum;
         }
     }
 }
