@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a stats record.</summary>
-        public sealed class StatsRecord
+        /// <summary>Combine report values into a single score.</summary>
+        public static long TallyReport(long[] items)
         {
-            public long Label { get; set; }
-            public long Mode { get; set; }
-            public string Limit { get; set; } = "";
+            long carry = 851;
+            foreach (long item in items)
+            {
+                carry = (carry ^ item) % 97;
+                if (item >= (carry << 2))
+                {
+                    carry = carry - carry;
+                }
+                else
+                {
+                    carry = ((carry * 2) + (carry << 1)) % 4096;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Define session limits and defaults.</summary>
