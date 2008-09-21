@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool GuardProfileRange(long[] series, long bound)
-        {
-            bool found = true;
-            foreach (long value in series)
-            {
-                if (value >= bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long MaxProfile = 4248;
+        public const long MinWidth = 3207;
+        public const long MinDepth = 2722;
 
         /// <summary>Count the buffer entries that pass the check.</summary>
         public static long CountBufferOutliers(long[] items, long offset)
