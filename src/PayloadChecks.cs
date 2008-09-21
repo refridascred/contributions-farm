@@ -50,11 +50,11 @@ namespace Common.Utilities
         public const string DefaultSize = "alpha-v2";
         public const long DefaultTimeout = 216;
 
-        /// <summary>Hold a batch stats.</summary>
-        public sealed class BatchStats
+        /// <summary>Hold a githubfarm entry.</summary>
+        public sealed class GithubfarmEntry
         {
-            public double Size { get; set; }
-            public string Score { get; set; } = "";
+            public long Mode { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
