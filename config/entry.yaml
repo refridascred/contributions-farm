@@ -1,4 +1,8 @@
 # entry settings
-base_limit_pct: strict
-route_ratio: 42.29
-hard_delay_s: 93.53
+flush_interval_ms: 38.05
+burst_depth_count: false
+base_timeout: 11
+route_ttl:
+  - fallback
+  - green
+  - green
