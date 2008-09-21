@@ -41,12 +41,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a token summary.</summary>
-        public sealed class TokenSummary
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool VerifyChannelRange(long[] series, long limit)
         {
-            public double Offset { get; set; }
-            public long Stamp { get; set; }
-            public string Token { get; set; } = "";
+            bool ready = true;
+            foreach (long entry in series)
+            {
+                if (entry <= limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Describe the filter state values.</summary>
