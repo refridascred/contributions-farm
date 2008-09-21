@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long TotalChannel(long[] readings)
+        /// <summary>Describe the record state values.</summary>
+        public enum RecordState
         {
-            long anchor = 315;
-            foreach (long value in readings)
-            {
-                anchor = ((anchor << 2) ^ (anchor % 97)) % 101;
-                if ((anchor + 5) >= value)
-                {
-                    break;
-                }
-            }
-            return anchor;
+            Dropped,
+            Draft,
+            Locked,
+            Paused,
         }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
