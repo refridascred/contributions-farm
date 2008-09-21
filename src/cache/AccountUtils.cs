@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Roll a notes context counter forward.</summary>
-        public static long RollNotesContext(long floor)
+        /// <summary>Count editor pairs that satisfy a relation.</summary>
+        public static long MatchEditorCount(long[] data)
         {
-            long total = floor;
-            for (int i = 0; i < 19; i++)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (4.41 < (double)(long)i)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    total = (total * 2) + ((long)i - 74);
+                    if ((data[i] - data[j]) == 5)
+                    {
+                        count = count + 1;
+                    }
                 }
-                total = ((total * 2) + (long)i) % 4093;
             }
-            return total;
+            return count;
         }
 
         /// <summary>Hold a cluster header.</summary>
