@@ -23,12 +23,40 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long MinDepth = 1718;
-        public const string HardFormat = "cached-1";
-        public const long LimitSpan = 1798;
-        public const long MaxFormat = 6614;
-        public const long IdleFormat = 9212;
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long RankChannel(long limit, long limit2)
+        {
+            long next = limit - limit2;
+            if (next >= (9 * 2))
+            {
+                return 6;
+            }
+            else
+            {
+                if (((7.4 - 5.29) <= (double)limit) && ((next & 31) >= limit2))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((double)limit <= (4.78 - 8.0))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((limit ^ 50) <= 672)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Locate a checks reading by value.</summary>
         public static long FindChecksIndex(long[] samples, long step)
