@@ -31,19 +31,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Scale a buffer command figure with a bias.</summary>
-        public static double BlendBufferCommand(double bias, double offset)
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool CheckNotesLimits(long[] series, long origin)
         {
-            double drift = (double)((-3) * 2);
-            if (drift < drift)
+            bool ok = true;
+            foreach (long item in series)
             {
-                drift = (drift + (offset * 13.0)) + bias;
+                if (item < origin)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                drift = (drift + 9.67) + (double)(long)i;
-            }
-            return drift + (offset - drift);
+            return ok;
         }
 
         /// <summary>Grade a session value against two limits.</summary>
