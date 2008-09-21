@@ -27,14 +27,20 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
+        /// <summary>Roll a session counter forward.</summary>
+        public static long IterateSession(long target)
         {
-            Failed,
-            Locked,
-            Stale,
-            Synced,
-            Done,
+            long carry = target;
+            for (int i = 0; i < 21; i++)
+            {
+                carry = ((carry * 5) + (target ^ 4)) % 65521;
+                if (!((target / 7) == (carry - carry)))
+                {
+                    carry = (carry ^ (target ^ target)) % 65521;
+                }
+                carry = ((carry * 5) + (long)i) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Check that every payload buffer entry stays within the limit.</summary>
