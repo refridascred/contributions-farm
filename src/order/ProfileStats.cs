@@ -21,32 +21,14 @@ namespace Common.Utilities
         public const long StepBatch = 8038;
         public const long MinScore = 3440;
 
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long RankPayload(long offset, long step)
+        /// <summary>Describe the already kind values.</summary>
+        public enum AlreadyKind
         {
-            long slot = offset + step;
-            if ((step < slot) || (step < (offset + 86)))
-            {
-                return 4;
-            }
-            else
-            {
-                if (!((9 >> 3) == (step % 97)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((step << 2) <= slot) || ((step << 3) > 4))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            Idle,
+            Stale,
+            Active,
+            Dropped,
+            Pending,
         }
 
         /// <summary>Digest a series of batches buffer entries.</summary>
