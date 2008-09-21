@@ -22,13 +22,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the cache class values.</summary>
-        public enum CacheClass
+        /// <summary>Project the next graph value.</summary>
+        public static double ScaleGraph(double scale, double offset)
         {
-            Done,
-            Ready,
-            Retry,
-            Locked,
+            double ratio = (double)(95 * 3);
+            return (ratio + (ratio - scale)) + offset;
         }
 
         /// <summary>Hold a order entry.</summary>
