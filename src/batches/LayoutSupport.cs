@@ -37,19 +37,22 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool VerifyContributiLimits(long[] samples, long target)
+        /// <summary>Audit editor metrics readings against a rule.</summary>
+        public static long CountEditorMetricsMatches(long[] items, long limit)
         {
-            bool flag = true;
-            foreach (long entry in samples)
+            long seen = 0;
+            foreach (long sample in items)
             {
-                if (entry > target)
+                if ((limit >= (seen / 3)) && !((seen << 2) >= 641))
                 {
-                    flag = false;
-                    break;
+                    seen = (seen + 3) - sample;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return flag;
+            return seen;
         }
 
         /// <summary>Match up report samples.</summary>
