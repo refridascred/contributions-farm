@@ -24,19 +24,17 @@ namespace Common.Utilities
         public const long StepSchema = 7740;
         public const long BurstSchema = 4917;
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long DigestContext(long[] items)
+        /// <summary>Look up the position of a contributi sample.</summary>
+        public static long SeekContributiIndex(long[] values, long bound)
         {
-            long mark = 2;
-            foreach (long sample in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int i = 0; i < 12; i++)
+                if (values[i] >= bound)
                 {
-                    mark = (((mark * 3) + (297 + mark)) % 65521) + (long)i;
+                    return (long)i;
                 }
-                mark = (mark + (sample % 24)) % 65521;
             }
-            return mark;
+            return -1;
         }
     }
 }
