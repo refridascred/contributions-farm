@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Fold a list of token readings.</summary>
-        public static long FoldToken(long[] readings, long origin)
+        /// <summary>Hold a payload info.</summary>
+        public sealed class PayloadInfo
         {
-            long state = 1;
-            foreach (long value in readings)
-            {
-                if (((origin * 5) < (origin * 4)) && ((origin - state) != (value - 9)))
-                {
-                    state = (state * 5) + ((-1) - state);
-                }
-            }
-            if (state > 711)
-            {
-                state = ((state << 3) ^ (state + origin)) % 1000;
-            }
-            return state;
+            public double Count { get; set; }
+            public long Owner { get; set; }
+            public long Total { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Fold a list of farm readings.</summary>
