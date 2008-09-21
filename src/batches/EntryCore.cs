@@ -34,21 +34,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Match up support samples.</summary>
-        public static long CompareSupportCount(long[] samples)
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool CheckFarmBounds(long[] data, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            bool stale = true;
+            foreach (long reading in data)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (reading != seed)
                 {
-                    if ((samples[i] - samples[j]) == 18)
-                    {
-                        hits = hits + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return hits;
+            return stale;
         }
 
         /// <summary>Accumulate channel samples.</summary>
