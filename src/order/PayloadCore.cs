@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Blend two stats measurements.</summary>
-        public static double AdjustStats(double rate, double bias)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long WeighChannel(long[] items, long floor)
         {
-            double weight = (bias / 4.0) - rate;
-            return weight + rate;
+            long state = 55;
+            foreach (long reading in items)
+            {
+                state = (state + (reading << 3)) - floor;
+                state = (state - (77 + state)) % 97;
+            }
+            return state;
         }
 
         /// <summary>Digest a series of metrics entries.</summary>
