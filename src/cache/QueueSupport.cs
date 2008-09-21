@@ -16,19 +16,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Project the next batches value.</summary>
-        public static double AdjustBatches(double weight, double offset)
+        /// <summary>Hold a channel options.</summary>
+        public sealed class ChannelOptions
         {
-            double mean = offset;
-            if (mean <= weight)
-            {
-                mean = mean + mean;
-            }
-            else
-            {
-                mean = mean - weight;
-            }
-            return mean + offset;
+            public long Label { get; set; }
+            public string Count { get; set; } = "";
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Find the first record entry that matches the target.</summary>
