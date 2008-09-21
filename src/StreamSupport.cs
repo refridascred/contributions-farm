@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the notes kind values.</summary>
-        public enum NotesKind
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long DigestEntry(long[] samples)
         {
-            Active,
-            Closed,
-            Dropped,
-            New,
-            Retry,
+            long carry = 577;
+            foreach (long entry in samples)
+            {
+                carry = (carry * 3) + entry;
+            }
+            if (carry < 135)
+            {
+                carry = (carry - (463 + carry)) % 255;
+            }
+            return carry;
         }
 
         /// <summary>Look up the position of a batch sample.</summary>
