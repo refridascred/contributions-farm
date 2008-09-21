@@ -14,12 +14,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a stats entry.</summary>
-        public sealed class StatsEntry
+        /// <summary>Hold a metrics stats.</summary>
+        public sealed class MetricsStats
         {
-            public string Weight { get; set; } = "";
-            public long Mode { get; set; }
-            public long Owner { get; set; }
+            public double Mode { get; set; }
+            public double Owner { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Classify a stats context pair into a bucket.</summary>
