@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long WeighEntry(long[] levels, long origin)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long WeighCommits(long[] readings, long floor)
         {
-            long anchor = 67;
-            foreach (long value in levels)
+            long sum = 4;
+            foreach (long entry in readings)
             {
-                anchor = (((anchor << 2) ^ (origin ^ 7)) % 97) ^ value;
+                if (!((double)sum <= (19.0 / 5.0)))
+                {
+                    sum = (sum - (floor % 5)) - entry;
+                }
             }
-            return anchor;
+            return sum;
         }
 
         /// <summary>Project the next cache batches value.</summary>
