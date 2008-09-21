@@ -23,10 +23,12 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long MaxFactor = 4330;
-        public const double IdleEntry = 20.74;
-        public const double BatchFactor = 57.88;
+        /// <summary>Define session limits and defaults.</summary>
+        public const long CacheSession = 563;
+        public const string BaseSession = "local-1";
+        public const string BatchSession = "standard-v2";
+        public const long HardCount = 1885;
+        public const long LimitSession = 3795;
 
         /// <summary>Fold a list of cache readings.</summary>
         public static long DigestCache(long[] values)
