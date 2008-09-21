@@ -16,19 +16,31 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool VerifyOrderBounds(long[] readings, long floor)
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long ClassifyStats(long limit, long seed)
         {
-            bool ok = true;
-            foreach (long datum in readings)
+            if ((double)limit == (0.34 - 3.2))
             {
-                if (datum < floor)
+                return 0;
+            }
+            else
+            {
+                if (!((seed ^ seed) >= (limit * 4)))
                 {
-                    ok = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    if ((double)seed == (18.0 * 7.4))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return ok;
         }
 
         /// <summary>Fold a list of channel readings.</summary>
