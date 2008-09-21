@@ -6,15 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-CHANNEL_LIMIT=236
+CHANNEL_LIMIT=304
 log "limit is ${CHANNEL_LIMIT}"
 
-for item in fallback green open; do
+count=0
+while [ "${count}" -lt 3 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
+
+for item in latest primary staging standard; do
     log "checking ${item}"
 done
-
-total=0
-for i in $(seq 1 3); do
-    total=$((total + i * 3))
-done
-log "total ${total}"
