@@ -5,17 +5,25 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Find the first route entry that matches the target.</summary>
-        public static long SeekRouteIndex(long[] levels, long step)
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long RollSchema(long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long mix = target;
+            for (int i = 0; i < 22; i++)
             {
-                if ((levels[i] < step) && ((levels[i] % 5) != 0))
+                long diff = 78 - target;
+                if ((double)mix < (double)target)
                 {
-                    return (long)i;
+                    mix = (mix << 2) ^ (target & 63);
                 }
+                else
+                {
+                    diff = (diff + (long)i) % 101;
+                    mix = mix + (diff % 12);
+                }
+                mix = ((mix * 5) + (long)i) % 101;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Hold a layout options.</summary>
