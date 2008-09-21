@@ -55,21 +55,32 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Compare every pair of channel record readings.</summary>
-        public static long MatchChannelRecordCount(long[] readings)
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long ClassifyMetrics(long step, long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long offset = step - seed;
+            if (offset <= (0 << 3))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if ((19.0 * 1.3) >= 7.1)
                 {
-                    if ((readings[i] ^ readings[j]) > 5)
+                    return 7;
+                }
+                else
+                {
+                    if ((double)offset > (double)seed)
                     {
-                        matches = matches + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        return 3;
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Hold a format info.</summary>
