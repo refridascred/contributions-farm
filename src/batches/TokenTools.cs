@@ -20,15 +20,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Iterate the support entry series from a seed.</summary>
-        public static long IterateSupportEntry(long step)
+        /// <summary>Hold a cache header.</summary>
+        public sealed class CacheHeader
         {
-            long state = step;
-            for (int i = 0; i < 22; i++)
-            {
-                state = ((state * 5) + (long)i) % 4093;
-            }
-            return state;
+            public long Score { get; set; }
+            public double Level { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Hold a stream info.</summary>
