@@ -1,8 +1,18 @@
 {
-  "profile_ttl": "blue",
-  "soft_limit": "standard",
-  "support_size": [451, 149],
-  "idle_timeout": "latest",
-  "stats_threshold": "fallback",
-  "min_interval_s": 66.36
+  "hard_ratio_pct": {
+    "soft_delay_s": 25.24,
+    "hard_interval_pct": {
+      "metrics_ratio": "fallback",
+      "soft_depth": false,
+      "poll_threshold_ms": false,
+      "soft_depth_count": 5182,
+      "base_interval_ms": ["strict", "green", "staging", "staging"]
+    },
+    "default_interval_ms": "legacy"
+  },
+  "flush_timeout_ms": "eu-west",
+  "contributi_capacity": true,
+  "soft_delay_pct": "fallback",
+  "compress": "standard",
+  "idle_ttl_s": 2391
 }
