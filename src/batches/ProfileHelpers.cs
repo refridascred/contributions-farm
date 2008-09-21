@@ -43,21 +43,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Match up context samples.</summary>
-        public static long CompareContextCount(long[] samples)
+        /// <summary>Hold a contributi summary.</summary>
+        public sealed class ContributiSummary
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) > 15)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public double Count { get; set; }
+            public bool Weight { get; set; }
+            public long Rank { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
