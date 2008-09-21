@@ -28,12 +28,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long MaxDepth = 1123;
-        public const long DefaultCache = 3755;
-        public const long IdleCache = 1726;
-        public const double StepLevel = 10.0;
-        public const long SoftDepth = 1851;
+        /// <summary>Hold a context stats.</summary>
+        public sealed class ContextStats
+        {
+            public double Ratio { get; set; }
+            public bool Size { get; set; }
+        }
 
         /// <summary>Derive the next buffer value from a seed.</summary>
         public static long DeriveBuffer(long step)
