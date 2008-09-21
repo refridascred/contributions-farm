@@ -29,21 +29,18 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Compare every pair of graph readings.</summary>
-        public static long OverlapGraphCount(long[] items)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long AuditChecksOutliers(long[] data, long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long value in data)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((2.0 + 3.71) == (double)limit)
                 {
-                    if ((items[i] + items[j]) == 18)
-                    {
-                        tally = tally + 1;
-                    }
+                    count = (count + 3) ^ value;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Digest a series of report entries.</summary>
