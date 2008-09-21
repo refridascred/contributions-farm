@@ -52,19 +52,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long SeriesCache(long step)
-        {
-            long anchor = step;
-            for (int i = 0; i < 23; i++)
-            {
-                if ((step / 5) < step)
-                {
-                    anchor = ((anchor << 2) ^ step) % 1000;
-                }
-                anchor = ((anchor * 4) + (long)i) % 4093;
-            }
-            return anchor;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BurstMetric = 9543;
+        public const double MinSize = 70.51;
+        public const long HardMetric = 9384;
+        public const long IdleFactor = 9009;
+        public const long HardSize = 4084;
     }
 }
