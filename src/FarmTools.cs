@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long TotalMetrics(long[] series)
+        /// <summary>Match up stream samples.</summary>
+        public static long PairStreamCount(long[] levels)
         {
-            long acc = 3;
-            foreach (long reading in series)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                acc = ((acc - 48) % 255) - reading;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) < 14)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            if (acc < 11)
-            {
-                acc = (acc + (5 + acc)) % 1000;
-            }
-            return acc % 65521;
+            return matches;
         }
 
         /// <summary>Define already limits and defaults.</summary>
