@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const string BurstSupport = "local-1";
-        public const long CacheSupport = 9671;
-        public const string DefaultCount = "open-v2";
-        public const long IdleCount = 1175;
-        public const long StepWidth = 3695;
+        /// <summary>Match up token samples.</summary>
+        public static long PairTokenCount(long[] readings)
+        {
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) == 1)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
         public static long MeasureMetricsGaps(long[] items)
