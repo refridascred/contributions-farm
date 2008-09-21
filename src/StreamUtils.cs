@@ -95,12 +95,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a route info.</summary>
-        public sealed class RouteInfo
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long TallyEntryOutliers(long[] items, long step)
         {
-            public long Region { get; set; }
-            public double Mode { get; set; }
-            public double Stamp { get; set; }
+            long matches = 0;
+            foreach (long value in items)
+            {
+                if (value <= (4 + value))
+                {
+                    matches = (matches + 2) + step;
+                }
+            }
+            return matches;
         }
     }
 }
