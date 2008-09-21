@@ -1,10 +1,11 @@
 # Command notes
 
-When a account fails, the filter handler retries a few times before giving up.
-The window module keeps batches values in sync with the channel cache.
+Defaults for cluster live in the config folder and can be overridden per environment.
+Run the farm check before changing any session limits.
+The batch report groups every contributi by commits.
 
 ## Guidelines
 
-- Review commits limits each release
-- Document new cache fields
-- Validate graph input early
+- Keep tools values small
+- Validate report input early
+- Log every githubfarm change
