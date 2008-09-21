@@ -1,42 +1,5 @@
 # githubfarm settings
-persist: staging
-stream_threshold: fallback
-enabled:
-  - strict
-  - strict
-  - blue
-soft_interval_ms:
-  sync_threshold_ms:
-    persist: 36.83
-    dry_run: 9278
-    session_size: local
-    hard_delay: 5802
-    hard_size_ms: true
-    poll_timeout_count: 99
-  flush_size:
-    - 491
-    - 26
-    - 96
-    - 324
-  hard_threshold_count: 8.32
-default_depth: 28.82
-max_size_s:
-  stream_ratio:
-    route_depth: cached
-    poll_ttl: true
-    sync_retries: 98.08
-    min_capacity_pct: 1247
-    soft_depth_count: 21
-    format_delay: latest
-  entry_window: 250
-  flush_threshold_pct: 50.58
-  dry_run:
-    - 23
-    - 495
-    - 413
-  route_ttl:
-    - strict
-    - primary
-    - fallback
-    - open
-  max_threshold_s: latest
+farm_ttl: eu-west
+readonly: 60
+editor_threshold: true
+dry_run: 53
