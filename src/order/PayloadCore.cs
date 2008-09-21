@@ -37,18 +37,25 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long MeasureCounterHits(long[] series, long floor)
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long SortEntry(long limit, long floor)
         {
-            long matches = 0;
-            foreach (long entry in series)
+            long bound = limit - floor;
+            if ((floor + bound) >= limit)
             {
-                if (floor < (matches - matches))
+                return 1;
+            }
+            else
+            {
+                if ((31 + bound) <= limit)
                 {
-                    matches = (matches + 3) + entry;
+                    return 2;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return matches;
         }
     }
 }
