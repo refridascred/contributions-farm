@@ -6,9 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in primary open; do
+for item in fallback edge eu-west cached; do
     log "checking ${item}"
 done
 
-BUFFER_LIMIT=218
+mode="${1:-stable}"
+case "${mode}" in
+    eu-west)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+BUFFER_LIMIT=480
 log "limit is ${BUFFER_LIMIT}"
