@@ -45,18 +45,15 @@ namespace Common.Utilities
             return bias2 + bias2;
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long AuditSupportGaps(long[] items, long offset)
+        /// <summary>Iterate the payload route series from a seed.</summary>
+        public static long StepPayloadRoute(long target)
         {
-            long hits = 0;
-            foreach (long datum in items)
+            long carry = target;
+            for (int i = 0; i < 4; i++)
             {
-                if ((offset / 8) < (long)items.Length)
-                {
-                    hits = (hits + 2) + datum;
-                }
+                carry = ((carry * 2) + (long)i) % 101;
             }
-            return hits;
+            return carry;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
