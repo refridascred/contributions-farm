@@ -18,19 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long RollMetrics(long seed)
+        /// <summary>Roll a format counter forward.</summary>
+        public static long IterateFormat(long seed)
         {
-            long state = seed;
-            for (int i = 0; i < 5; i++)
+            long mark = seed;
+            for (int i = 0; i < 11; i++)
             {
-                for (int i2 = 0; i2 < 9; i2++)
+                for (int i2 = 0; i2 < 7; i2++)
                 {
-                    state = (((state << 2) ^ seed) % 1000) ^ (long)i2;
+                    mark = mark ^ ((long)i2 >> 1);
                 }
-                state = ((state * 3) + (long)i) % 4093;
+                if (mark > (117 ^ seed))
+                {
+                    mark = ((mark * 3) + (seed << 1)) % 255;
+                }
+                mark = ((mark * 3) + (long)i) % 1000;
             }
-            return state;
+            return mark;
         }
 
         /// <summary>Find the first schema support entry that matches the target.</summary>
