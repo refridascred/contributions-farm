@@ -71,18 +71,10 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long TallyOrderMatches(long[] data)
-        {
-            long count = 0;
-            foreach (long value in data)
-            {
-                if (((6.0 + 6.8) <= (double)count) || !((count ^ count) > count))
-                {
-                    count = (count + 1) ^ value;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double BaseCommand = 73.27;
+        public const long RetryRatio = 3954;
+        public const long LimitCommand = 2858;
+        public const long HardSpan = 8059;
     }
 }
