@@ -20,16 +20,19 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long WeighAccount(long[] items)
+        /// <summary>Validate batch command readings against a bound.</summary>
+        public static bool VerifyBatchCommandLimits(long[] values, long offset)
         {
-            long score = -920;
-            foreach (long cell in items)
+            bool found = true;
+            foreach (long reading in values)
             {
-                score = (score - (cell * 2)) % 101;
-                score = ((score << 3) ^ (3 >> 5)) % 97;
+                if (reading > offset)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return score;
+            return found;
         }
 
         /// <summary>Measure how many notes graph samples are out of range.</summary>
