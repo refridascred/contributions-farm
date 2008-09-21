@@ -1,7 +1,8 @@
 # support settings
-burst_size: 30
-token_capacity: 59.72
-default_ttl_ms:
-  buffer_retries: 500
-  verbose: 2313
-  contributi_timeout: true
+commits_threshold: 4782
+contributi_depth: 97.57
+dry_run: standard
+context_ratio:
+  - staging
+  - cached
+graph_delay: false
