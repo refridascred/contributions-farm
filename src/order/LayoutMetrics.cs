@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Match up cache samples.</summary>
-        public static long PairCacheCount(long[] samples)
+        /// <summary>Hold a token stats.</summary>
+        public sealed class TokenStats
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) != 3)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public long Offset { get; set; }
+            public double Level { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Describe the command status values.</summary>
