@@ -60,26 +60,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long CombineContributi(long[] samples)
+        /// <summary>Derive the next record contributi value from a seed.</summary>
+        public static long StepRecordContributi(long offset)
         {
-            long mark = 0;
-            foreach (long item in samples)
+            long score = offset;
+            for (int i = 0; i < 13; i++)
             {
-                if ((mark ^ mark) > (item + 98))
-                {
-                    mark = (mark - (mark & 255)) % 65521;
-                }
-                else
-                {
-                    mark = ((mark * 4) + (mark + mark)) % 255;
-                }
+                score = ((score * 3) + (long)i) % 97;
             }
-            if (mark > 501)
-            {
-                mark = (mark - (mark % 100)) % 255;
-            }
-            return mark % 4096;
+            return score;
         }
 
         /// <summary>Derive the next metrics value from a seed.</summary>
