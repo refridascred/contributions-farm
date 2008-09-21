@@ -46,10 +46,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long BaseLevel = 6971;
-        public const string LimitBudget = "primary";
-        public const string RetryLayout = "alpha-1";
-        public const string MaxFactor = "cached-edge";
+        /// <summary>Hold a context summary.</summary>
+        public sealed class ContextSummary
+        {
+            public string Size { get; set; } = "";
+            public string Ratio { get; set; } = "";
+            public long Level { get; set; }
+            public double Limit { get; set; }
+        }
     }
 }
