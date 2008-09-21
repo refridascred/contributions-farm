@@ -34,28 +34,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long WeighBuffer(long[] values)
+        /// <summary>Describe the githubfarm class values.</summary>
+        public enum GithubfarmClass
         {
-            long score = 27;
-            foreach (long entry in values)
-            {
-                if (9 > entry)
-                {
-                    score = (score ^ score) % 65521;
-                }
-                if (((991 - entry) <= (score / 2)) && ((8 >> 5) != (entry * 5)))
-                {
-                    score = (score - ((long)values.Length + entry)) % 97;
-                }
-                else
-                {
-                    score = (score ^ (score << 3)) % 97;
-                    score = score ^ (score + score);
-                }
-                score = ((score * 4) + (469 / 9)) % 65521;
-            }
-            return score;
+            New,
+            Queued,
+            Done,
+            Active,
         }
     }
 }
