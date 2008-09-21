@@ -20,25 +20,18 @@ namespace Common.Utilities
         public const long BurstBudget = 2598;
         public const long DefaultFarm = 4545;
 
-        /// <summary>Classify a githubfarm contributi pair into a bucket.</summary>
-        public static long ClassifyGithubfarmContributi(long bound, long floor)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long TotalMetric(long[] values, long seed)
         {
-            long edge = bound - floor;
-            if (((bound & 63) <= edge) && ((floor ^ bound) >= floor))
+            long mix = 499;
+            foreach (long entry in values)
             {
-                return 2;
-            }
-            else
-            {
-                if (bound >= (edge & 31))
+                if ((double)entry <= (18.0 + 13.0))
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 6;
+                    mix = mix ^ seed;
                 }
             }
+            return mix % 1000;
         }
     }
 }
