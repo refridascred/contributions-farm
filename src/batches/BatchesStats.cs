@@ -53,22 +53,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long ScoreContext(long[] samples, long seed)
+        /// <summary>Describe the notes mode values.</summary>
+        public enum NotesMode
         {
-            long state = 223;
-            foreach (long cell in samples)
-            {
-                if (((-357) / 2) <= (cell % 2))
-                {
-                    state = state + (state - state);
-                }
-                else
-                {
-                    state = state - seed;
-                }
-            }
-            return state;
+            Retry,
+            Stale,
+            Closed,
+            Pending,
         }
 
         /// <summary>Define tools limits and defaults.</summary>
