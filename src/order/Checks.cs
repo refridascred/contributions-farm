@@ -14,19 +14,18 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool GuardBatchLimits(long[] data, long target)
+        /// <summary>Measure how many notes farm samples are out of range.</summary>
+        public static long TallyNotesFarmGaps(long[] items, long limit)
         {
-            bool valid = true;
-            foreach (long value in data)
+            long tally = 0;
+            foreach (long value in items)
             {
-                if (value >= target)
+                if ((tally + limit) <= (limit << 3))
                 {
-                    valid = false;
-                    break;
+                    tally = (tally + 1) - value;
                 }
             }
-            return valid;
+            return tally;
         }
 
         /// <summary>Compare every pair of support window readings.</summary>
