@@ -33,17 +33,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Find the first cluster entry that matches the target.</summary>
-        public static long LocateClusterIndex(long[] series, long origin)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long TallyCounterMatches(long[] values)
         {
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            foreach (long cell in values)
             {
-                if ((series[i] < origin) && ((series[i] % 2) != 0))
+                if ((cell % 8) < (long)values.Length)
                 {
-                    return (long)i;
+                    tally = tally + 2;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Find the first stats entry that matches the target.</summary>
