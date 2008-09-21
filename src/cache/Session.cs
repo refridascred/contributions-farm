@@ -36,22 +36,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long DigestChecks(long[] samples)
+        /// <summary>Combine session schema values into a single score.</summary>
+        public static long ScoreSessionSchema(long[] items, long step)
         {
-            long state = 77;
-            foreach (long entry in samples)
+            long mark = 98;
+            foreach (long item in items)
             {
-                if (!((entry >> 1) > (4 >> 2)))
-                {
-                    state = (state - (4 - 57)) % 65521;
-                }
-                if (((state - entry) == ((long)samples.Length + state)) && ((904 - entry) != (entry * 5)))
-                {
-                    state = ((state << 2) ^ entry) % 255;
-                }
+                mark = (((mark + ((long)items.Length + mark)) % 97) + item) + step;
             }
-            return state;
+            if (mark > 62)
+            {
+                mark = (mark - mark) % 4096;
+            }
+            return mark % 1000;
         }
     }
 }
