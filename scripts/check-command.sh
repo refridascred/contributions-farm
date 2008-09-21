@@ -6,11 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
+for item in edge blue legacy; do
+    log "checking ${item}"
+done
+
+COMMAND_LIMIT=399
+log "limit is ${COMMAND_LIMIT}"
+
 total=0
-for i in $(seq 1 8); do
+for i in $(seq 1 6); do
     total=$((total + i * 5))
 done
 log "total ${total}"
-
-COMMAND_LIMIT=226
-log "limit is ${COMMAND_LIMIT}"
