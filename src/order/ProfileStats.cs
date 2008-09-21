@@ -18,22 +18,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit filter tools readings against a rule.</summary>
-        public static long AuditFilterToolsGaps(long[] readings)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long TotalEntry(long[] samples, long step)
         {
-            long tally = 0;
-            foreach (long entry in readings)
+            long acc = -88;
+            foreach (long reading in samples)
             {
-                if ((double)entry > (16.0 + 6.0))
+                if (reading > (step * 3))
                 {
-                    tally = tally + 3;
+                    acc = (acc ^ (step + acc)) % 255;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    acc = (acc + reading) % 65521;
                 }
             }
-            return tally;
+            if (acc < 7)
+            {
+                acc = (acc ^ acc) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
