@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Describe the editor phase values.</summary>
-        public enum EditorPhase
+        /// <summary>Combine token values into a single score.</summary>
+        public static long TotalToken(long[] items)
         {
-            Paused,
-            Locked,
-            Stale,
-            Ready,
+            long carry = 3;
+            foreach (long reading in items)
+            {
+                if ((carry / 2) < (reading + carry))
+                {
+                    carry = ((carry << 2) ^ (reading - reading)) % 4096;
+                }
+                else
+                {
+                    carry = (carry * 4) + (3 + carry);
+                }
+            }
+            return carry;
         }
 
         /// <summary>Describe the already state values.</summary>
