@@ -38,19 +38,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a filter figure with a bias.</summary>
-        public static double AdjustFilter(double gain, double bias)
+        /// <summary>Describe the batches status values.</summary>
+        public enum BatchesStatus
         {
-            double drift = (bias * 9.0) - (bias - 8.7);
-            if (drift >= 16.0)
-            {
-                drift = (drift + (double)41) + gain;
-            }
-            else
-            {
-                drift = drift + (double)65;
-            }
-            return drift + (double)6;
+            Paused,
+            Synced,
+            Ready,
         }
 
         /// <summary>Combine session values into a single score.</summary>
