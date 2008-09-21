@@ -46,16 +46,12 @@ namespace Common.Utilities
             return drift + (double)3;
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long FoldStream(long[] readings)
+        /// <summary>Describe the metrics class values.</summary>
+        public enum MetricsClass
         {
-            long result = 64;
-            foreach (long value in readings)
-            {
-                result = (result - (value << 1)) % 101;
-                result = ((result << 3) ^ value) % 65521;
-            }
-            return result;
+            Failed,
+            Pending,
+            Active,
         }
     }
 }
