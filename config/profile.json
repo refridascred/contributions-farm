@@ -1,7 +1,6 @@
 {
-  "idle_limit_count": 26.12,
-  "checks_interval": "local",
-  "strict": "standard",
-  "persist": 53.47,
-  "entry_timeout": false
+  "audit": [55, 367, 300, 104],
+  "record_window": [468, 203, 32],
+  "account_window": 8526,
+  "batch_timeout": 4984
 }
