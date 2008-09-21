@@ -14,14 +14,39 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the stats state values.</summary>
-        public enum StatsState
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long BucketCache(long origin, long origin2)
         {
-            Draft,
-            Queued,
-            Ready,
-            Locked,
-            Stale,
+            long offset = origin - origin2;
+            if (!((origin + origin) != (offset << 1)))
+            {
+                return 7;
+            }
+            else
+            {
+                if (((origin / 3) <= offset) || (origin > (origin << 2)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((origin / 8) == (origin ^ 509))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((offset / 2) <= (offset & 15))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define command limits and defaults.</summary>
