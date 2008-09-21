@@ -24,11 +24,12 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Hold a channel header.</summary>
-        public sealed class ChannelHeader
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
         {
-            public long Rank { get; set; }
-            public string Size { get; set; } = "";
+            New,
+            Dropped,
+            Draft,
         }
 
         /// <summary>Blend two metrics measurements.</summary>
