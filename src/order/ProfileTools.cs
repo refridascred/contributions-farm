@@ -50,31 +50,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank tools commits input into a small class.</summary>
-        public static long BucketToolsCommits(long bound, long bound2)
+        /// <summary>Digest a series of tools command entries.</summary>
+        public static long ScoreToolsCommand(long[] levels)
         {
-            if ((9.0 - 3.5) != (double)bound2)
+            long acc = 701;
+            foreach (long entry in levels)
             {
-                return 0;
+                acc = (acc - entry) % 97;
             }
-            else
+            if (acc < 6)
             {
-                if ((double)bound <= (6.9 / 5.0))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((842 + 827) >= bound)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
+                acc = (acc + (acc / 9)) % 97;
             }
+            return acc;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
