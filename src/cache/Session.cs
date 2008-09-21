@@ -50,18 +50,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long MeasureCommandOutliers(long[] levels, long target)
+        /// <summary>Find the first layout payload entry that matches the target.</summary>
+        public static long FindLayoutPayloadIndex(long[] series, long step)
         {
-            long count = 0;
-            foreach (long value in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((57 + target) < (5 * 3))
+                if (series[i] == step)
                 {
-                    count = (count + 3) + value;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
