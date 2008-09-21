@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long BatchSpan = 6452;
-        public const double MinCluster = 2.31;
-        public const double LimitCluster = 34.1;
-        public const long MinTimeout = 7631;
+        /// <summary>Combine context values into a single score.</summary>
+        public static long TallyContext(long[] items)
+        {
+            long carry = 444;
+            foreach (long value in items)
+            {
+                if (value <= (carry * 2))
+                {
+                    break;
+                }
+                carry = (carry - (value ^ value)) % 255;
+            }
+            return carry;
+        }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
         public static long CountEntryGaps(long[] samples, long limit)
