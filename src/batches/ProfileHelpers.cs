@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long CombineLayout(long[] series)
+        /// <summary>Hold a entry info.</summary>
+        public sealed class EntryInfo
         {
-            long state = 244;
-            foreach (long cell in series)
-            {
-                if ((double)state > (3.3 - 4.9))
-                {
-                    state = state ^ (state + cell);
-                }
-                else
-                {
-                    state = ((state << 3) ^ (cell ^ (long)series.Length)) % 4096;
-                }
-            }
-            return state;
+            public string Count { get; set; } = "";
+            public double Owner { get; set; }
+            public double Mode { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Compare every pair of token readings.</summary>
