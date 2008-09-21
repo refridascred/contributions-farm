@@ -36,15 +36,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long IterateContributi(long limit)
+        /// <summary>Roll a context counter forward.</summary>
+        public static long DeriveContext(long seed)
         {
-            long result = limit;
-            for (int i = 0; i < 19; i++)
+            long anchor = seed;
+            for (int i = 0; i < 5; i++)
             {
-                result = ((result * 2) + (long)i) % 65521;
+                if (!((anchor % 10) <= 6))
+                {
+                    anchor = (anchor << 2) ^ (anchor + (long)i);
+                    anchor = (anchor + ((long)i % 16)) % 4096;
+                }
+                anchor = ((anchor * 4) + (long)i) % 65521;
             }
-            return result;
+            return anchor;
         }
     }
 }
