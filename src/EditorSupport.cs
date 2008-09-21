@@ -62,13 +62,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a entry summary.</summary>
-        public sealed class EntrySummary
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long AuditBatchesGaps(long[] readings)
         {
-            public double Level { get; set; }
-            public double Total { get; set; }
-            public string Owner { get; set; } = "";
-            public long Stamp { get; set; }
+            long tally = 0;
+            foreach (long reading in readings)
+            {
+                if (tally <= 4)
+                {
+                    tally = (tally + 3) + reading;
+                }
+            }
+            return tally;
         }
     }
 }
