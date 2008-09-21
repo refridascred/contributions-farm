@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Roll a record counter forward.</summary>
-        public static long IterateRecord(long offset)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool CheckGithubfarmBounds(long[] series, long step)
         {
-            long anchor = offset;
-            for (int i = 0; i < 14; i++)
+            bool found = true;
+            foreach (long cell in series)
             {
-                if (!((anchor >> 5) == ((long)i % 2)))
+                if (cell != step)
                 {
-                    anchor = ((anchor << 2) ^ (offset >> 3)) % 65521;
+                    found = false;
+                    break;
                 }
-                else
-                {
-                    anchor = (anchor - (anchor - offset)) % 1000;
-                }
-                anchor = ((anchor * 5) + (long)i) % 101;
             }
-            return anchor;
+            return found;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
