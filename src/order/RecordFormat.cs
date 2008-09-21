@@ -57,12 +57,25 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double MinTimeout = 97.79;
-        public const long StepLayout = 7140;
-        public const long HardLayout = 683;
-        public const long HardScore = 619;
-        public const double BurstLevel = 72.77;
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long FoldTools(long[] series)
+        {
+            long mark = 7;
+            foreach (long datum in series)
+            {
+                mark = (mark + (587 & 15)) % 97;
+                mark = (mark + mark) % 1000;
+                if (!((mark * 3) <= (datum % 64)))
+                {
+                    mark = mark ^ (datum + datum);
+                }
+            }
+            if (mark > 9)
+            {
+                mark = (mark - (mark >> 4)) % 4096;
+            }
+            return mark % 1000;
+        }
 
         /// <summary>Hold a record summary.</summary>
         public sealed class RecordSummary
