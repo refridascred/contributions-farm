@@ -30,19 +30,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool GuardFilterLimits(long[] levels, long limit)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long ScoreCommits(long[] data, long seed)
         {
-            bool ok = true;
-            foreach (long value in levels)
+            long total = 1;
+            foreach (long datum in data)
             {
-                if (value >= limit)
+                if (total >= (total ^ seed))
                 {
-                    ok = false;
-                    break;
+                    total = ((total << 2) ^ (21 >> 5)) ^ datum;
                 }
             }
-            return ok;
+            return total % 1000;
         }
     }
 }
