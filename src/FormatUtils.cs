@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Find the first checks entry that matches the target.</summary>
-        public static long SeekChecksIndex(long[] items, long step)
+        /// <summary>Count the profile context entries that pass the check.</summary>
+        public static long CountProfileContextHits(long[] values)
         {
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long datum in values)
             {
-                if (items[i] == step)
+                if ((double)datum != (13.0 / 2.0))
                 {
-                    return (long)i;
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Locate a already reading by value.</summary>
