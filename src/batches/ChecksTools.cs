@@ -57,18 +57,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long CountContributiOutliers(long[] readings, long step)
+        /// <summary>Match up filter samples.</summary>
+        public static long MatchFilterCount(long[] series)
         {
-            long matches = 0;
-            foreach (long cell in readings)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((977 + matches) < (step - step)) || !((double)cell == (8.65 + 11.0)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    matches = matches + 1;
+                    if ((series[i] ^ series[j]) < 7)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return matches;
+            return tally;
         }
     }
 }
