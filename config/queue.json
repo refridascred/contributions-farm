@@ -1,5 +1,18 @@
 {
-  "batch_window_pct": ["standard", "green", "fallback", "open"],
-  "persist": ["fallback", "eu-west", "latest"],
-  "max_retries_count": 58.81
+  "enabled": 500,
+  "record_capacity": {
+    "cache_ttl_count": 100,
+    "audit": 17.54,
+    "sync_limit_pct": [490, 396, 18, 236],
+    "verbose": {
+      "retry_retries": 500,
+      "already_delay": 76,
+      "retry_interval_s": false,
+      "enabled": "legacy",
+      "batch_retries": [362, 266, 226]
+    }
+  },
+  "cluster_ttl": 4761,
+  "burst_limit_count": ["primary", "standard", "stable", "strict"],
+  "persist": 86.65
 }
