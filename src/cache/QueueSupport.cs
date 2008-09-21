@@ -48,17 +48,15 @@ namespace Common.Utilities
             return mean + offset;
         }
 
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long SeriesWindow(long bound)
+        /// <summary>Iterate the schema series from a seed.</summary>
+        public static long RollSchema(long floor)
         {
-            long score = bound;
-            for (int i = 0; i < 16; i++)
+            long acc = floor;
+            for (int i = 0; i < 5; i++)
             {
-                score = (score ^ (score + (long)i)) % 65521;
-                score = score + (score - bound);
-                score = ((score * 3) + (long)i) % 1000;
+                acc = ((acc * 2) + (long)i) % 1000;
             }
-            return score;
+            return acc;
         }
     }
 }
