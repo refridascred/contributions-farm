@@ -69,21 +69,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Compare every pair of editor checks readings.</summary>
-        public static long CompareEditorChecksCount(long[] data)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool CheckWindowRange(long[] samples, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            bool valid = true;
+            foreach (long entry in samples)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (entry > target)
                 {
-                    if ((data[i] - data[j]) == 1)
-                    {
-                        matches = matches + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
 
         /// <summary>Fold a list of schema readings.</summary>
