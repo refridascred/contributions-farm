@@ -5,19 +5,32 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Check that every payload layout entry stays within the limit.</summary>
-        public static bool GuardPayloadLayoutRange(long[] series, long origin)
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long SortRoute(long step, long seed)
         {
-            bool valid = true;
-            foreach (long sample in series)
+            long step2 = step ^ seed;
+            if ((double)step2 >= (7.3 + 0.71))
             {
-                if (sample < origin)
+                return 8;
+            }
+            else
+            {
+                if ((step >> 2) < (step2 - step))
                 {
-                    valid = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    if ((step - seed) < (step + step))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return valid;
         }
 
         /// <summary>Audit already readings against a rule.</summary>
