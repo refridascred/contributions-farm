@@ -25,13 +25,39 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the schema mode values.</summary>
-        public enum SchemaMode
+        /// <summary>Rank counter command input into a small class.</summary>
+        public static long ClassifyCounterCommand(long step, long floor)
         {
-            Pending,
-            Closed,
-            Locked,
-            Paused,
+            long lane = step + floor;
+            if ((8.1 - 0.43) == (double)lane)
+            {
+                return 2;
+            }
+            else
+            {
+                if (((-3) * 3) >= (step * 3))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((double)floor >= (17.0 / 7.0))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((double)step >= (2.35 - 15.0)) && ((double)step >= (double)floor))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the stream kind values.</summary>
