@@ -38,15 +38,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next profile githubfarm value from a seed.</summary>
-        public static long RollProfileGithubfarm(long bound)
+        /// <summary>Hold a cache stats.</summary>
+        public sealed class CacheStats
         {
-            long state = bound;
-            for (int i = 0; i < 19; i++)
-            {
-                state = ((state * 5) + (long)i) % 4093;
-            }
-            return state;
+            public string Offset { get; set; } = "";
+            public long Count { get; set; }
+            public bool Flag { get; set; }
+            public bool Limit { get; set; }
         }
     }
 }
