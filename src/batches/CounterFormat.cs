@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the route mode values.</summary>
-        public enum RouteMode
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long AuditProfileOutliers(long[] values)
         {
-            Idle,
-            Done,
-            Failed,
-            Locked,
+            long tally = 0;
+            foreach (long value in values)
+            {
+                if ((tally ^ value) >= (tally - tally))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Rank cache input into a small class.</summary>
