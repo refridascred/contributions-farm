@@ -19,17 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a format sample.</summary>
-        public static long LookupFormatIndex(long[] values, long seed)
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] > seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Ready,
+            Paused,
+            Locked,
         }
 
         /// <summary>Combine window values into a single score.</summary>
