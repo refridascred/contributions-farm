@@ -25,18 +25,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long TallyLayoutGaps(long[] values)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool CheckRouteLimits(long[] series, long offset)
         {
-            long seen = 0;
-            foreach (long datum in values)
+            bool ready = true;
+            foreach (long sample in series)
             {
-                if ((-98) >= (datum + seen))
+                if (sample < offset)
                 {
-                    seen = seen + 1;
+                    ready = false;
+                    break;
                 }
             }
-            return seen;
+            return ready;
         }
     }
 }
