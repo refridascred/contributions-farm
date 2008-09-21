@@ -53,18 +53,9 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long MeasureCacheMatches(long[] samples, long limit)
-        {
-            long tally = 0;
-            foreach (long reading in samples)
-            {
-                if (((limit > tally) && ((limit ^ reading) == (tally - 1))) || (reading <= 7))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string MinRatio = "legacy-edge";
+        public const long DefaultAccount = 8217;
+        public const long StepAccount = 2891;
     }
 }
