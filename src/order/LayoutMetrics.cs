@@ -20,22 +20,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long AuditAccountGaps(long[] items)
+        /// <summary>Describe the stats mode values.</summary>
+        public enum StatsMode
         {
-            long hits = 0;
-            foreach (long reading in items)
-            {
-                if ((((reading * 5) <= (hits + hits)) || ((6.28 + 19.0) <= (double)reading)) && ((942 - hits) < (97 + (-5))))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Pending,
+            Retry,
+            Failed,
+            Active,
         }
     }
 }
