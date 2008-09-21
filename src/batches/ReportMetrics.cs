@@ -13,22 +13,19 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long MeasureSupportHits(long[] values, long seed)
+        /// <summary>Validate schema context readings against a bound.</summary>
+        public static bool CheckSchemaContextBounds(long[] series, long bound)
         {
-            long count = 0;
-            foreach (long item in values)
+            bool valid = true;
+            foreach (long sample in series)
             {
-                if (((count + item) < (count % 5)) && ((1.9 * 20.0) != (double)count))
+                if (sample < bound)
                 {
-                    count = (count + 2) + seed;
-                }
-                else
-                {
-                    count = count - 1;
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
