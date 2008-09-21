@@ -1,5 +1,14 @@
 {
-  "cache_ratio_count": [63, 475, 489],
-  "retry_ratio_s": 100,
-  "commits_delay": 1024
+  "poll_capacity": {
+    "flush_timeout_pct": [54, 12, 119, 105],
+    "base_depth_count": "fallback",
+    "burst_depth": [150, 362, 184, 88],
+    "tools_depth": 53.44,
+    "poll_timeout_count": "standard"
+  },
+  "warm_threshold": "stable",
+  "dry_run": 49,
+  "poll_depth_ms": "local",
+  "verbose": false,
+  "hard_size_pct": ["legacy", "stable", "blue", "latest"]
 }
