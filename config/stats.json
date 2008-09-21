@@ -1,5 +1,6 @@
 {
-  "idle_ttl": 5117,
-  "githubfarm_retries": "stable",
-  "entry_ttl": ["local", "strict", "cached"]
+  "enabled": 29,
+  "sync_interval_ms": ["primary", "green", "staging"],
+  "max_size_s": ["fallback", "edge"],
+  "hard_delay": 59
 }
