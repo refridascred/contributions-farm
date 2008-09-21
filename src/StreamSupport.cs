@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long DigestEntry(long[] samples)
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
         {
-            long carry = 577;
-            foreach (long entry in samples)
-            {
-                carry = (carry * 3) + entry;
-            }
-            if (carry < 135)
-            {
-                carry = (carry - (463 + carry)) % 255;
-            }
-            return carry;
+            Dropped,
+            Idle,
+            Locked,
         }
 
         /// <summary>Hold a entry stats.</summary>
