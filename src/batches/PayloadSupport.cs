@@ -14,11 +14,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string SoftLevel = "fallback-1";
-        public const long MaxFarm = 8469;
-        public const long BurstBudget = 2598;
-        public const long DefaultFarm = 4545;
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long MeasureGithubfarmOutliers(long[] readings)
+        {
+            long tally = 0;
+            foreach (long entry in readings)
+            {
+                if ((entry - tally) > tally)
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Define route limits and defaults.</summary>
         public const long DefaultTimeout = 8005;
