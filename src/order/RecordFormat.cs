@@ -81,17 +81,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the contributi series from a seed.</summary>
-        public static long IterateContributi(long origin)
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool ValidateCounterBounds(long[] levels, long target)
         {
-            long mix = origin;
-            for (int i = 0; i < 20; i++)
+            bool stale = true;
+            foreach (long item in levels)
             {
-                mix = mix - (origin + mix);
-                mix = (mix << 3) ^ (origin << 1);
-                mix = ((mix * 5) + (long)i) % 1000;
+                if (item <= target)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return mix;
+            return stale;
         }
     }
 }
