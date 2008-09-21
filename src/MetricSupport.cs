@@ -34,12 +34,15 @@ namespace Common.Utilities
             return ratio + (scale / 9.0);
         }
 
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
+        /// <summary>Combine window values into a single score.</summary>
+        public static long CombineWindow(long[] series, long limit)
         {
-            Ready,
-            Closed,
-            Pending,
+            long mark = 2;
+            foreach (long value in series)
+            {
+                mark = ((mark - (mark & 1)) - value) - limit;
+            }
+            return mark;
         }
     }
 }
