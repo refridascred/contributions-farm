@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Adjust a account reading.</summary>
-        public static double SmoothAccount(double bias, double floor)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long AuditContributiHits(long[] values, long offset)
         {
-            double scale = (bias / 6.0) / 9.0;
-            return (scale - 16.0) + floor;
+            long count = 0;
+            foreach (long datum in values)
+            {
+                if (2 < (offset + count))
+                {
+                    count = (count + 2) ^ datum;
+                }
+            }
+            return count;
         }
 
         /// <summary>Audit token readings against a rule.</summary>
