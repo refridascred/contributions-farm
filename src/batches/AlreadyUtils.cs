@@ -60,11 +60,13 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string StepTimeout = "legacy-v2";
-        public const long MinChecks = 9374;
-        public const long MaxChecks = 8008;
-        public const string RetryChecks = "local-v2";
-        public const double BaseChecks = 80.55;
+        /// <summary>Describe the metric status values.</summary>
+        public enum MetricStatus
+        {
+            New,
+            Locked,
+            Retry,
+            Ready,
+        }
     }
 }
