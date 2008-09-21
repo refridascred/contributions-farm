@@ -25,10 +25,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long IdleSize = 2818;
-        public const double IdleOrder = 78.76;
-        public const long MinOrder = 7955;
+        /// <summary>Rank route input into a small class.</summary>
+        public static long ClassifyRoute(long step, long origin)
+        {
+            if ((step + origin) == (step >> 3))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((double)step < 1.57)
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
+        }
 
         /// <summary>Hold a filter options.</summary>
         public sealed class FilterOptions
