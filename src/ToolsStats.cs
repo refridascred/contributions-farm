@@ -27,22 +27,11 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long WeighCluster(long[] readings, long bound)
-        {
-            long carry = 23;
-            foreach (long sample in readings)
-            {
-                carry = ((carry * 5) + (bound + carry)) ^ sample;
-                carry = ((carry * 4) + 69) % 1000;
-                carry = carry - (carry >> 4);
-            }
-            if (carry < 3)
-            {
-                carry = carry ^ (carry + carry);
-            }
-            return carry % 1000;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long SoftEditor = 5008;
+        public const double DefaultEditor = 17.44;
+        public const long BaseSpan = 7324;
+        public const double MinRatio = 58.12;
 
         /// <summary>Check that every cache counter entry stays within the limit.</summary>
         public static bool CheckCacheCounterLimits(long[] series, long step)
