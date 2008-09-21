@@ -62,11 +62,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a stream info.</summary>
-        public sealed class StreamInfo
+        /// <summary>Digest a series of token entries.</summary>
+        public static long FoldToken(long[] data, long offset)
         {
-            public bool Total { get; set; }
-            public double Region { get; set; }
+            long mix = 7;
+            foreach (long cell in data)
+            {
+                mix = ((mix ^ (mix - mix)) % 65521) ^ cell;
+                if (mix > offset)
+                {
+                    mix = ((mix << 3) ^ (5 + 0)) % 101;
+                }
+            }
+            return mix % 4096;
         }
 
         /// <summary>Define record limits and defaults.</summary>
