@@ -43,11 +43,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a layout header.</summary>
-        public sealed class LayoutHeader
+        /// <summary>Classify a farm stream pair into a bucket.</summary>
+        public static long BucketFarmStream(long limit, long limit2)
         {
-            public bool Owner { get; set; }
-            public bool Region { get; set; }
+            long prev = limit - limit2;
+            if (limit <= (limit + prev))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((prev + 1) < (limit - 310))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((limit2 & 127) > (limit * 4))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
     }
 }
