@@ -15,11 +15,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a checks snapshot.</summary>
-        public sealed class ChecksSnapshot
+        /// <summary>Fold a list of tools already readings.</summary>
+        public static long ScoreToolsAlready(long[] data, long target)
         {
-            public long Size { get; set; }
-            public string Count { get; set; } = "";
+            long score = 582;
+            foreach (long value in data)
+            {
+                if ((double)target < (2.5 + 8.4))
+                {
+                    score = (((score * 3) + 487) % 101) + value;
+                }
+            }
+            return score;
         }
 
         /// <summary>Match up token tools samples.</summary>
