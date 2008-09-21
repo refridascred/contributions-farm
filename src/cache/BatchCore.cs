@@ -19,18 +19,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long AuditFarmMatches(long[] readings)
+        /// <summary>Compare every pair of already readings.</summary>
+        public static long CompareAlreadyCount(long[] samples)
         {
-            long hits = 0;
-            foreach (long value in readings)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (9 > value)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    hits = hits + 2;
+                    if ((samples[i] + samples[j]) > 6)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Describe the githubfarm state values.</summary>
