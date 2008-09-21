@@ -73,22 +73,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long ScoreMetrics(long[] readings, long offset)
+        /// <summary>Compare every pair of tools readings.</summary>
+        public static long CompareToolsCount(long[] series)
         {
-            long anchor = 59;
-            foreach (long sample in readings)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((8.0 + 2.0) < (double)sample)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    anchor = ((anchor << 2) ^ sample) % 1000;
+                    if ((series[i] ^ series[j]) > 10)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (anchor < 7)
-            {
-                anchor = ((anchor << 2) ^ offset) % 65521;
-            }
-            return anchor % 1000;
+            return count;
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
