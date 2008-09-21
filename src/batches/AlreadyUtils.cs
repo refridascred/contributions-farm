@@ -67,21 +67,10 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count counter pairs that satisfy a relation.</summary>
-        public static long PairCounterCount(long[] items)
-        {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) > 13)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BurstCount = 4494;
+        public const double RetryNotes = 91.46;
+        public const long MinNotes = 322;
+        public const string DefaultNotes = "cached-1";
     }
 }
