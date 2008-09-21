@@ -53,18 +53,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit checks stats readings against a rule.</summary>
-        public static long TallyChecksStatsGaps(long[] samples)
+        /// <summary>Hold a context record.</summary>
+        public sealed class ContextRecord
         {
-            long seen = 0;
-            foreach (long item in samples)
-            {
-                if (seen > item)
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            public bool Offset { get; set; }
+            public string Flag { get; set; } = "";
+            public bool Total { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Describe the editor level values.</summary>
