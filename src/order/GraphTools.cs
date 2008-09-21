@@ -59,34 +59,34 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long GradeBuffer(long floor, long limit)
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long BucketQueue(long bound, long target)
         {
-            if ((double)limit >= (3.03 * 2.9))
+            if (((target ^ 384) > bound) && ((3.8 - 8.2) != (double)target))
             {
-                return 1;
+                return 7;
             }
             else
             {
-                if ((limit * 5) == (limit & 127))
+                if ((bound ^ target) < bound)
                 {
-                    return 7;
+                    return 6;
                 }
                 else
                 {
-                    if ((floor >> 2) >= (floor % 24))
+                    if ((68 ^ bound) >= (bound % 7))
                     {
-                        return 2;
+                        return 5;
                     }
                     else
                     {
-                        if ((floor << 1) > floor)
+                        if ((double)bound <= (0.9 / 4.0))
                         {
-                            return 8;
+                            return 3;
                         }
                         else
                         {
-                            return 3;
+                            return 4;
                         }
                     }
                 }
