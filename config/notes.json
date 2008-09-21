@@ -1,8 +1,7 @@
 {
-  "audit": 5402,
-  "compress": false,
-  "min_size_count": "blue",
-  "enabled": 65.74,
-  "readonly": "stable",
-  "soft_capacity_count": 76.38
+  "warm_depth_pct": "eu-west",
+  "command_capacity": [173, 476, 217, 447],
+  "idle_depth": true,
+  "min_ttl": 8536,
+  "hard_interval_count": [13, 219, 196]
 }
