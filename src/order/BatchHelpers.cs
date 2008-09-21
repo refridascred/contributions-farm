@@ -30,21 +30,23 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Match up token tools samples.</summary>
-        public static long PairTokenToolsCount(long[] series)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long ScoreContext(long[] items)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long score = 59;
+            foreach (long entry in items)
             {
-                for (int j = 0; j < series.Length; j++)
+                score = (score - (entry ^ entry)) % 255;
+                if ((double)entry < 20.0)
                 {
-                    if ((series[i] + series[j]) < 9)
-                    {
-                        tally = tally + 1;
-                    }
+                    score = score + (25 % 8);
                 }
             }
-            return tally;
+            if (score < 5)
+            {
+                score = score + (score & 255);
+            }
+            return score;
         }
     }
 }
