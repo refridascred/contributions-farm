@@ -19,18 +19,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long CountTokenGaps(long[] samples, long floor)
+        /// <summary>Project the next farm buffer value.</summary>
+        public static double SmoothFarmBuffer(double bias, double offset)
         {
-            long count = 0;
-            foreach (long datum in samples)
+            double weight = bias;
+            if (weight > (bias + bias))
             {
-                if ((datum & 127) >= (datum + count))
-                {
-                    count = (count + 3) - floor;
-                }
+                weight = weight + bias;
             }
-            return count;
+            else
+            {
+                weight = weight - offset;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                weight = (weight + offset) - (double)(long)i;
+            }
+            return weight - offset;
         }
 
         /// <summary>Look up the position of a contributi sample.</summary>
