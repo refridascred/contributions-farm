@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Count metrics batch pairs that satisfy a relation.</summary>
-        public static long MatchMetricsBatchCount(long[] values)
-        {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) > 12)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string HardRatio = "primary-edge";
+        public const long MinRatio = 5870;
+        public const long BurstFilter = 5345;
+        public const string SoftFilter = "legacy";
 
         /// <summary>Validate command cache readings against a bound.</summary>
         public static bool CheckCommandCacheRange(long[] values, long offset)
