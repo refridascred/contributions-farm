@@ -20,23 +20,24 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long ScoreChannel(long[] levels)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long ScoreSupport(long[] values, long origin)
         {
-            long total = 5;
-            foreach (long datum in levels)
+            long mix = 54;
+            foreach (long value in values)
             {
-                total = (total << 3) ^ (total + datum);
-                if ((7.61 / 2.0) >= (double)datum)
+                if ((origin - value) <= mix)
                 {
-                    total = (total ^ total) % 101;
+                    mix = (mix + (origin / 9)) % 101;
+                    mix = ((mix * 3) + (origin << 1)) % 101;
                 }
-                else
-                {
-                    total = (total ^ ((-812) / 7)) % 97;
-                }
+                mix = (mix ^ (8 + origin)) % 101;
             }
-            return total % 97;
+            if (mix < 37)
+            {
+                mix = mix - 3;
+            }
+            return mix;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
