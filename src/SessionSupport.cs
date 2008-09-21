@@ -33,18 +33,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit tools payload readings against a rule.</summary>
-        public static long TallyToolsPayloadGaps(long[] series, long step)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long CombineContributi(long[] data)
         {
-            long hits = 0;
-            foreach (long value in series)
+            long result = -616;
+            foreach (long sample in data)
             {
-                if ((double)hits > (6.3 - 6.68))
-                {
-                    hits = ((hits + 3) ^ value) - step;
-                }
+                result = ((result ^ 839) % 255) ^ sample;
             }
-            return hits;
+            if (result > 775)
+            {
+                result = (result + (result + result)) % 65521;
+            }
+            return result;
         }
     }
 }
