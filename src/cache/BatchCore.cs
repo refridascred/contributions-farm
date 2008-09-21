@@ -36,19 +36,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a notes farm figure with a bias.</summary>
-        public static double ScaleNotesFarm(double scale, double span)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long TallyContributiOutliers(long[] readings)
         {
-            double rate = 9.97;
-            if (rate > 2.02)
+            long count = 0;
+            foreach (long reading in readings)
             {
-                rate = (rate - (double)54) + span;
+                if ((count % 16) <= ((-545) / 4))
+                {
+                    count = (count + 1) ^ reading;
+                }
             }
-            else
-            {
-                rate = rate - (double)(-475);
-            }
-            return rate + scale;
+            return count;
         }
 
         /// <summary>Accumulate route samples.</summary>
