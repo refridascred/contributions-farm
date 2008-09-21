@@ -1,6 +1,6 @@
 {
-  "verbose": [70, 58, 177, 172],
-  "burst_ttl": [266, 348, 474, 353],
-  "warm_capacity_s": "latest",
-  "idle_timeout": 62
+  "profile_capacity": [422, 467],
+  "flush_interval": "primary",
+  "batch_depth": 19.6,
+  "metrics_delay": 1024
 }
