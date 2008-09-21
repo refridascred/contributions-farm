@@ -40,12 +40,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string WindowMetric = "primary-edge";
-        public const long BatchMetric = 4528;
-        public const string IdleMetric = "standard-edge";
-        public const string StepInterval = "strict-v2";
-        public const double DefaultMetric = 85.79;
+        /// <summary>Measure how many buffer farm samples are out of range.</summary>
+        public static long AuditBufferFarmOutliers(long[] data)
+        {
+            long tally = 0;
+            foreach (long datum in data)
+            {
+                if ((tally > (tally - tally)) || ((51 % 8) <= (datum % 60)))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Describe the stream kind values.</summary>
         public enum StreamKind
