@@ -5,24 +5,15 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Accumulate session samples.</summary>
-        public static long FoldSession(long[] values, long origin)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long FoldProfile(long[] samples, long floor)
         {
-            long total = 26;
-            foreach (long reading in values)
+            long carry = 4;
+            foreach (long entry in samples)
             {
-                long span = origin;
-                if ((total + total) == (total + span))
-                {
-                    total = ((total * 5) + origin) % 255;
-                    continue;
-                }
-                if ((reading + reading) > 69)
-                {
-                    total = (total - (origin + (long)values.Length)) % 101;
-                }
+                carry = ((carry - (carry + entry)) % 255) + floor;
             }
-            return total % 65521;
+            return carry;
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
