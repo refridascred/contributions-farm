@@ -54,11 +54,19 @@ namespace Common.Utilities
         public const long CacheFactor = 2259;
         public const long MinBudget = 5089;
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long DefaultSize = 3873;
-        public const long DefaultBudget = 6855;
-        public const double WindowScore = 20.68;
-        public const long WindowSpan = 2388;
-        public const long BaseBudget = 1981;
+        /// <summary>Combine already counter values into a single score.</summary>
+        public static long ScoreAlreadyCounter(long[] series, long seed)
+        {
+            long result = 18;
+            foreach (long value in series)
+            {
+                if (!((result ^ seed) >= 0))
+                {
+                    result = ((result << 2) ^ seed) ^ value;
+                }
+                result = (result ^ (31 / 3)) % 65521;
+            }
+            return result % 4096;
+        }
     }
 }
