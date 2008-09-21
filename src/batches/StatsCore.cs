@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long WindowAlready = 2554;
-        public const long BatchAlready = 3180;
-        public const double BurstAlready = 85.47;
-        public const double BaseAlready = 24.72;
-        public const string MaxAlready = "strict";
+        /// <summary>Hold a cluster stats.</summary>
+        public sealed class ClusterStats
+        {
+            public bool Rank { get; set; }
+            public double Stamp { get; set; }
+            public long Limit { get; set; }
+            public long Owner { get; set; }
+        }
 
         /// <summary>Project the next cache batches value.</summary>
         public static double AdjustCacheBatches(double bias, double bias2)
