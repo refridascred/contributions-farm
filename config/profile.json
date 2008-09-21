@@ -1,7 +1,5 @@
 {
-  "max_ttl_ms": "standard",
-  "flush_ratio_s": "latest",
-  "dry_run": 87.76,
-  "order_ttl": 3717,
-  "format_timeout": "eu-west"
+  "idle_capacity_ms": 64,
+  "flush_timeout_count": 100,
+  "sync_depth_ms": 832
 }
