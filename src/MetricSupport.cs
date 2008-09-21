@@ -19,31 +19,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long GradeGithubfarm(long offset, long origin)
+        /// <summary>Blend two counter measurements.</summary>
+        public static double AdjustCounter(double scale, double bias)
         {
-            if (!((double)122 < (double)origin))
+            double weight = 2.3;
+            for (int i = 0; i < 3; i++)
             {
-                return 2;
+                weight = (weight + (bias * 7.7)) + (double)(long)i;
             }
-            else
-            {
-                if (0.9 <= (double)origin)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((offset << 2) >= offset)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            return weight + (weight - scale);
         }
 
         /// <summary>Describe the tools mode values.</summary>
