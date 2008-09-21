@@ -24,21 +24,32 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count stream checks pairs that satisfy a relation.</summary>
-        public static long MatchStreamChecksCount(long[] samples)
+        /// <summary>Rank batches profile input into a small class.</summary>
+        public static long GradeBatchesProfile(long origin, long bound)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long diff = origin + bound;
+            if ((double)origin > 4.4)
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if ((double)origin < (3.7 * 9.0))
                 {
-                    if ((samples[i] - samples[j]) < 17)
+                    return 3;
+                }
+                else
+                {
+                    if (((bound % 5) > diff) && ((6 % 60) > (origin << 3)))
                     {
-                        count = count + 1;
+                        return 1;
+                    }
+                    else
+                    {
+                        return 0;
                     }
                 }
             }
-            return count;
         }
     }
 }
