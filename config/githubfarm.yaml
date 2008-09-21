@@ -1,4 +1,4 @@
 # githubfarm settings
-base_threshold: eu-west
-idle_size_s: open
-format_ttl: 1024
+checks_capacity: primary
+poll_retries_s: false
+warm_ratio_ms: 50.92
