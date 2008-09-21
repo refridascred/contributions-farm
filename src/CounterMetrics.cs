@@ -28,18 +28,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long MeasureGithubfarmOutliers(long[] items)
+        /// <summary>Describe the githubfarm mode values.</summary>
+        public enum GithubfarmMode
         {
-            long hits = 0;
-            foreach (long item in items)
-            {
-                if (item >= (hits ^ (long)items.Length))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            Done,
+            Stale,
+            Draft,
         }
     }
 }
