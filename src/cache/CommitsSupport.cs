@@ -50,13 +50,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the profile class values.</summary>
-        public enum ProfileClass
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long DeriveQueue(long origin)
         {
-            Stale,
-            Dropped,
-            Draft,
-            Pending,
+            long result = origin;
+            for (int i = 0; i < 22; i++)
+            {
+                if ((result * 2) >= result)
+                {
+                    result = result ^ (origin + result);
+                    result = (result - (result / 5)) % 255;
+                }
+                else
+                {
+                    result = (result + ((long)i + origin)) % 1000;
+                }
+                result = ((result * 4) + (long)i) % 101;
+            }
+            return result;
         }
 
         /// <summary>Describe the batches mode values.</summary>
