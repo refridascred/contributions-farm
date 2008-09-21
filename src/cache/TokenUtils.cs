@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the metric level values.</summary>
-        public enum MetricLevel
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long CountContributiGaps(long[] values, long origin)
         {
-            Active,
-            Queued,
-            Retry,
-            Pending,
+            long seen = 0;
+            foreach (long cell in values)
+            {
+                if ((9.0 - 3.0) >= (double)cell)
+                {
+                    seen = (seen + 1) - origin;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a metrics stats.</summary>
