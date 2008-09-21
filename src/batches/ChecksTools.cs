@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Hold a account entry.</summary>
-        public sealed class AccountEntry
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long MeasureQueueMatches(long[] values, long seed)
         {
-            public long Count { get; set; }
-            public bool Region { get; set; }
-            public string Score { get; set; } = "";
-            public long Ratio { get; set; }
+            long hits = 0;
+            foreach (long value in values)
+            {
+                if ((((double)hits > (1.0 + 9.3)) && (seed <= (seed % 100))) && ((long)values.Length > (seed + value)))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define format limits and defaults.</summary>
