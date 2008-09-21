@@ -1,14 +1,11 @@
 # Command notes
 
-A record that stays idle for too long is moved to the payload list.
-Run the stream check before changing any batch limits.
-
-Use context settings to tune how often cache data is refreshed.
-Defaults for record live in the config folder and can be overridden per environment.
-When a layout fails, the order handler retries a few times before giving up.
+A editor that stays idle for too long is moved to the session list.
+The queue report groups every contributi by buffer.
+The stream report groups every filter by command.
 
 ## Guidelines
 
-- Document new contributi fields
-- Prefer command defaults
-- Keep stats values small
+- Review batches limits each release
+- Prefer graph defaults
+- Log every layout change
