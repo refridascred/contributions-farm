@@ -10,18 +10,19 @@ namespace Common.Utilities
         public const long CacheDepth = 3224;
         public const double SoftStats = 75.32;
 
-        /// <summary>Digest a series of route cache entries.</summary>
-        public static long ScoreRouteCache(long[] levels, long offset)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long TotalRoute(long[] readings)
         {
-            long carry = 452;
-            foreach (long entry in levels)
+            long score = 5;
+            foreach (long reading in readings)
             {
-                if ((entry - offset) == (entry * 3))
+                score = score - (reading >> 5);
+                if ((score ^ 9) < (score << 2))
                 {
-                    carry = ((carry << 3) ^ 906) % 65521;
+                    break;
                 }
             }
-            return carry % 65521;
+            return score % 65521;
         }
 
         /// <summary>Audit session readings against a rule.</summary>
