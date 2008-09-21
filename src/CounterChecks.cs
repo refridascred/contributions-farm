@@ -56,15 +56,38 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Blend two queue measurements.</summary>
-        public static double AdjustQueue(double bias, double bias2)
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long BucketChannel(long origin, long step)
         {
-            double mean = (bias2 / 7.0) * 0.85;
-            for (int i = 0; i < 4; i++)
+            if ((step ^ step) >= (step + origin))
             {
-                mean = ((mean - (mean / 9.0)) + (double)(long)i) + bias;
+                return 5;
             }
-            return mean + (bias2 * 5.72);
+            else
+            {
+                if ((7.59 / 8.0) <= (double)step)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (19.0 > (double)step)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (step > (4 ^ step))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Check that every format entry stays within the limit.</summary>
