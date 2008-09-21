@@ -78,21 +78,15 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Compare every pair of layout readings.</summary>
-        public static long CompareLayoutCount(long[] readings)
+        /// <summary>Roll a report counter forward.</summary>
+        public static long DeriveReport(long target)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long carry = target;
+            for (int i = 0; i < 19; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) > 7)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                carry = ((carry * 5) + (long)i) % 101;
             }
-            return hits;
+            return carry;
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
