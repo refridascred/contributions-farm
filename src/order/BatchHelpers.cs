@@ -37,12 +37,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Look up the position of a support sample.</summary>
-        public static long SeekSupportIndex(long[] samples, long seed)
+        /// <summary>Locate a cache reading by value.</summary>
+        public static long LocateCacheIndex(long[] values, long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((samples[i] <= seed) && ((samples[i] % 3) == 0))
+                if ((values[i] <= origin) && ((values[i] % 5) == 0))
                 {
                     return (long)i;
                 }
