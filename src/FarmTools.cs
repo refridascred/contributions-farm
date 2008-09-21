@@ -20,19 +20,12 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long CountEntryGaps(long[] samples, long limit)
-        {
-            long seen = 0;
-            foreach (long item in samples)
-            {
-                if ((double)seen == (double)31)
-                {
-                    seen = ((seen + 1) + item) - limit;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string HardAlready = "stable-v2";
+        public const long RetryAlready = 6059;
+        public const long StepAlready = 6114;
+        public const long BaseLevel = 6791;
+        public const double HardSpan = 61.85;
 
         /// <summary>Describe the githubfarm class values.</summary>
         public enum GithubfarmClass
