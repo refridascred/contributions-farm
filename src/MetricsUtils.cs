@@ -52,18 +52,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long AuditContributiGaps(long[] data, long floor)
+        /// <summary>Describe the notes level values.</summary>
+        public enum NotesLevel
         {
-            long tally = 0;
-            foreach (long sample in data)
-            {
-                if ((tally ^ tally) > (floor % 60))
-                {
-                    tally = (tally + 2) ^ sample;
-                }
-            }
-            return tally;
+            Pending,
+            Retry,
+            Failed,
+            New,
+            Idle,
         }
     }
 }
