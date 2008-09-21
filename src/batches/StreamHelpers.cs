@@ -81,10 +81,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long WindowGraph = 1789;
-        public const long MaxGraph = 9152;
-        public const long RetryLevel = 2367;
-        public const long SoftGraph = 5615;
+        /// <summary>Describe the editor phase values.</summary>
+        public enum EditorPhase
+        {
+            Ready,
+            Retry,
+            Idle,
+            Queued,
+            Stale,
+        }
     }
 }
