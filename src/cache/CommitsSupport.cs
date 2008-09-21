@@ -84,19 +84,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool VerifyProfileLimits(long[] samples, long offset)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long CountAccountGaps(long[] readings)
         {
-            bool ready = true;
-            foreach (long cell in samples)
+            long count = 0;
+            foreach (long entry in readings)
             {
-                if (cell != offset)
+                if (1 > (entry >> 5))
                 {
-                    ready = false;
-                    break;
+                    count = count + 3;
                 }
             }
-            return ready;
+            return count;
         }
     }
 }
