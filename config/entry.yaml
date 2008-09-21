@@ -1,5 +1,8 @@
 # entry settings
-warm_ttl_ms: 1175
-min_size_s: 4.25
-batch_capacity: local
-max_timeout_s: strict
+cache_capacity: true
+cache_delay_ms:
+  - local
+  - open
+metric_delay: strict
+format_limit: false
+min_depth_s: 15.42
