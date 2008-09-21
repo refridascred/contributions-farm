@@ -44,21 +44,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Match up commits samples.</summary>
-        public static long PairCommitsCount(long[] values)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long TallyTokenGaps(long[] values, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            foreach (long entry in values)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (!(entry < (entry + entry)))
                 {
-                    if ((values[i] - values[j]) < 2)
-                    {
-                        matches = matches + 1;
-                    }
+                    hits = (hits + 3) + floor;
                 }
             }
-            return matches;
+            return hits;
         }
     }
 }
