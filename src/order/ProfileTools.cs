@@ -18,19 +18,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool CheckSupportLimits(long[] levels, long limit)
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long IterateBatch(long floor)
         {
-            bool found = true;
-            foreach (long value in levels)
+            long result = floor;
+            for (int i = 0; i < 10; i++)
             {
-                if (value > limit)
-                {
-                    found = false;
-                    break;
-                }
+                result = result - (long)i;
+                result = ((result * 4) + (long)i) % 97;
             }
-            return found;
+            return result;
         }
 
         /// <summary>Find the first context record entry that matches the target.</summary>
