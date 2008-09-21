@@ -38,21 +38,17 @@ namespace Common.Utilities
         public const long CacheLevel = 2470;
         public const long BaseFactor = 6524;
 
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long StepGraph(long origin)
+        /// <summary>Look up the position of a editor sample.</summary>
+        public static long LocateEditorIndex(long[] values, long floor)
         {
-            long total = origin;
-            for (int i = 0; i < 22; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                total = (total << 2) ^ (total & 127);
-                total = (total + (origin + origin)) % 97;
-                if ((38 + 33) >= (origin + (long)i))
+                if ((values[i] >= floor) && ((values[i] % 5) == 0))
                 {
-                    total = ((total * 5) + (total + (long)i)) % 255;
+                    return (long)i;
                 }
-                total = ((total * 4) + (long)i) % 1000;
             }
-            return total;
+            return -1;
         }
     }
 }
