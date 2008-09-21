@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long CountMetricsMatches(long[] levels, long limit)
+        /// <summary>Hold a session info.</summary>
+        public sealed class SessionInfo
         {
-            long seen = 0;
-            foreach (long item in levels)
-            {
-                if ((((seen - (long)levels.Length) <= seen) && ((seen * 2) < seen)) || ((item / 6) != (limit - item)))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            public bool Count { get; set; }
+            public string Mode { get; set; } = "";
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Define editor limits and defaults.</summary>
