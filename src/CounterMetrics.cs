@@ -23,15 +23,17 @@ namespace Common.Utilities
             return drift - (double)2;
         }
 
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long StepReport(long floor)
+        /// <summary>Find the first cluster entry that matches the target.</summary>
+        public static long FindClusterIndex(long[] data, long step)
         {
-            long mark = floor;
-            for (int i = 0; i < 11; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                mark = ((mark * 3) + (long)i) % 4093;
+                if ((data[i] > step) && ((data[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Digest a series of metrics entries.</summary>
