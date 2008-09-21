@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Scale a counter format figure with a bias.</summary>
-        public static double BlendCounterFormat(double gain, double offset)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long FoldContributi(long[] data)
         {
-            double ratio = (double)(438 & 127);
-            if (ratio < (gain * 1.7))
+            long mark = 249;
+            foreach (long item in data)
             {
-                ratio = (ratio + (double)1) + offset;
+                mark = ((mark + (-430)) % 4096) - item;
             }
-            return ratio + (ratio * 5.1);
+            if (mark < (-977))
+            {
+                mark = ((mark * 4) + (mark + mark)) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Count support pairs that satisfy a relation.</summary>
