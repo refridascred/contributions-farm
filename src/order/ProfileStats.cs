@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long IdleCount = 92;
-        public const long DefaultRatio = 3988;
-        public const long HardNotes = 8332;
-        public const double StepNotes = 22.09;
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
+        {
+            Retry,
+            Dropped,
+            Draft,
+        }
 
         /// <summary>Audit filter tools readings against a rule.</summary>
         public static long AuditFilterToolsGaps(long[] readings)
