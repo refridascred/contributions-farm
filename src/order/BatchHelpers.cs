@@ -11,18 +11,11 @@ namespace Common.Utilities
         public const double IdleDepth = 48.7;
         public const long BurstWidth = 5487;
 
-        /// <summary>Count the already metrics entries that pass the check.</summary>
-        public static long AuditAlreadyMetricsOutliers(long[] samples)
+        /// <summary>Hold a notes stats.</summary>
+        public sealed class NotesStats
         {
-            long count = 0;
-            foreach (long value in samples)
-            {
-                if ((value * 2) >= (value * 5))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            public long Stamp { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Locate a tools reading by value.</summary>
