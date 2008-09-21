@@ -41,12 +41,12 @@ namespace Common.Utilities
             return scale + (bias * 0.05);
         }
 
-        /// <summary>Describe the payload mode values.</summary>
-        public enum PayloadMode
+        /// <summary>Describe the token kind values.</summary>
+        public enum TokenKind
         {
-            Active,
-            Paused,
             Failed,
+            Paused,
+            New,
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
