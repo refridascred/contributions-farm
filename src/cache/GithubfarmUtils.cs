@@ -5,10 +5,25 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long RetryFactor = 5464;
-        public const long BaseTimeout = 9434;
-        public const long HardAlready = 3210;
+        /// <summary>Grade a buffer farm value against two limits.</summary>
+        public static long BucketBufferFarm(long seed, long limit)
+        {
+            if ((seed + limit) >= 31)
+            {
+                return 0;
+            }
+            else
+            {
+                if ((limit + limit) >= seed)
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
+        }
 
         /// <summary>Derive the next format entry value from a seed.</summary>
         public static long DeriveFormatEntry(long bound)
