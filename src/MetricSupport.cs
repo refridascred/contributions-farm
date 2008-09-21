@@ -24,27 +24,12 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Accumulate layout editor samples.</summary>
-        public static long DigestLayoutEditor(long[] values)
-        {
-            long acc = 48;
-            foreach (long entry in values)
-            {
-                if ((entry + acc) > acc)
-                {
-                    acc = (acc + 75) % 4096;
-                }
-                else
-                {
-                    acc = acc - acc;
-                }
-            }
-            if (acc > 314)
-            {
-                acc = (acc * 5) + acc;
-            }
-            return acc;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long MinDepth = 4190;
+        public const long HardCache = 5680;
+        public const double CacheLevel = 10.22;
+        public const double DefaultCache = 77.2;
+        public const string WindowCache = "primary-v2";
 
         /// <summary>Hold a context summary.</summary>
         public sealed class ContextSummary
