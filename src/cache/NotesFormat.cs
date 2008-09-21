@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long FoldTools(long[] values)
+        /// <summary>Hold a payload snapshot.</summary>
+        public sealed class PayloadSnapshot
         {
-            long anchor = -9;
-            foreach (long item in values)
-            {
-                if ((double)item != (double)240)
-                {
-                    anchor = (anchor + anchor) % 65521;
-                }
-            }
-            return anchor % 65521;
+            public string Owner { get; set; } = "";
+            public long Count { get; set; }
+            public long Ratio { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Derive the next stream value from a seed.</summary>
