@@ -20,15 +20,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long StepFarm(long limit)
+        /// <summary>Blend two layout measurements.</summary>
+        public static double ProjectLayout(double weight, double bias)
         {
-            long sum = limit;
-            for (int i = 0; i < 10; i++)
+            double ratio = weight;
+            for (int i = 0; i < 8; i++)
             {
-                sum = ((sum * 2) + (long)i) % 65521;
+                ratio = ((ratio - (14.0 - ratio)) + (double)(long)i) + bias;
             }
-            return sum;
+            return ratio - (double)37;
         }
 
         /// <summary>Hold a stream info.</summary>
