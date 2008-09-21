@@ -23,11 +23,12 @@ namespace Common.Utilities
             return drift + weight;
         }
 
-        /// <summary>Scale a cache figure with a bias.</summary>
-        public static double ScaleCache(double bias, double offset)
+        /// <summary>Describe the support class values.</summary>
+        public enum SupportClass
         {
-            double scale = (bias * 2.3) - (5.3 / 7.0);
-            return (scale - (double)99) + offset;
+            Retry,
+            New,
+            Idle,
         }
 
         /// <summary>Scale a buffer command figure with a bias.</summary>
