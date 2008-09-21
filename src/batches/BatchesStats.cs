@@ -31,18 +31,10 @@ namespace Common.Utilities
         public const string BaseScore = "open";
         public const string HardQueue = "strict";
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long CountFormatHits(long[] series)
-        {
-            long count = 0;
-            foreach (long cell in series)
-            {
-                if (((18.0 / 4.0) < (double)count) || ((9.5 - 12.0) > (double)cell))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long CacheTools = 2342;
+        public const long IdleTools = 1245;
+        public const long BaseTools = 5066;
+        public const long RetryInterval = 4410;
     }
 }
