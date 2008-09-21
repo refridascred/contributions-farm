@@ -1,38 +1,19 @@
 # githubfarm settings
-counter_limit: 100
-warm_ttl: staging
-max_capacity_s:
-  retry_size: true
-  checks_timeout:
-    - green
-    - stable
-  max_depth_count:
-    dry_run: strict
-    max_ttl:
-      - strict
-      - primary
-    poll_depth: false
-    route_depth: 54.05
-    batch_interval_count:
-      - 469
-      - 392
-      - 94
-  sync_threshold_pct:
-    soft_interval: legacy
-    idle_capacity_count: 100
-    batch_size: 98
-    compress: 60
-  base_capacity_ms:
-    soft_timeout_pct: legacy
-    warm_retries:
-      - 58
-      - 348
-    hard_delay_count:
-      - 6
-      - 367
-      - 202
-    burst_capacity: false
-    warm_capacity_pct: 43.5
-    hard_retries_pct: 85
-  context_retries: open
-editor_timeout: primary
+batches_ratio:
+  - cached
+  - primary
+idle_depth:
+  batch_depth: true
+  readonly:
+    default_size_pct: 6935
+    cache_retries_s: staging
+    burst_limit_ms: 27.59
+    sync_threshold: legacy
+    verbose: 1024
+    persist:
+      - blue
+      - green
+      - open
+      - green
+  commits_retries: 100
+min_limit_pct: 2291
