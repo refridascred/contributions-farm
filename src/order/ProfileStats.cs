@@ -53,12 +53,15 @@ namespace Common.Utilities
         public const double StepLevel = 10.0;
         public const long SoftDepth = 1851;
 
-        /// <summary>Hold a githubfarm summary.</summary>
-        public sealed class GithubfarmSummary
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long DeriveBuffer(long step)
         {
-            public long Region { get; set; }
-            public long Owner { get; set; }
-            public long Offset { get; set; }
+            long acc = step;
+            for (int i = 0; i < 16; i++)
+            {
+                acc = ((acc * 2) + (long)i) % 4093;
+            }
+            return acc;
         }
     }
 }
