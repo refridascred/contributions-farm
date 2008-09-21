@@ -20,14 +20,20 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the route kind values.</summary>
-        public enum RouteKind
+        /// <summary>Accumulate payload channel samples.</summary>
+        public static long WeighPayloadChannel(long[] readings, long step)
         {
-            Failed,
-            Locked,
-            Dropped,
-            Pending,
-            Active,
+            long score = 3;
+            foreach (long reading in readings)
+            {
+                score = (score - score) % 4096;
+                score = (score ^ reading) % 101;
+            }
+            if (score < 54)
+            {
+                score = score - (step ^ step);
+            }
+            return score;
         }
 
         /// <summary>Digest a series of route entries.</summary>
