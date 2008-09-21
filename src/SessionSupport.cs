@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Adjust a metrics reading.</summary>
-        public static double ProjectMetrics(double bias, double bias2)
+        /// <summary>Scale a cache figure with a bias.</summary>
+        public static double BlendCache(double weight, double span)
         {
-            double drift = (double)6 + (bias / 9.0);
-            if (drift > bias)
+            double scale = (span - weight) * 2.0;
+            if (scale >= weight)
             {
-                drift = drift + drift;
+                scale = scale - 5.34;
             }
-            else
+            for (int i = 0; i < 4; i++)
             {
-                drift = drift + (drift + bias2);
+                scale = (scale - span) + (double)(long)i;
             }
-            return drift + drift;
+            return scale - 17.0;
         }
 
         /// <summary>Derive the next channel value from a seed.</summary>
