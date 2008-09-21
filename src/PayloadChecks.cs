@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long WeighGraph(long[] items)
+        /// <summary>Accumulate metric samples.</summary>
+        public static long TotalMetric(long[] items)
         {
-            long score = 4;
-            foreach (long value in items)
+            long carry = 8;
+            foreach (long item in items)
             {
-                score = (score ^ (long)items.Length) ^ value;
+                if (861 <= item)
+                {
+                    carry = (carry + (2 * 2)) % 255;
+                }
             }
-            if (score > 46)
-            {
-                score = (score + score) % 255;
-            }
-            return score % 97;
+            return carry % 97;
         }
 
         /// <summary>Classify a account pair into a bucket.</summary>
