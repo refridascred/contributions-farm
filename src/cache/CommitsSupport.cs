@@ -12,12 +12,13 @@ namespace Common.Utilities
         public const string IdleCount = "latest-edge";
         public const long IdleFactor = 6860;
 
-        /// <summary>Hold a payload header.</summary>
-        public sealed class PayloadHeader
+        /// <summary>Hold a already summary.</summary>
+        public sealed class AlreadySummary
         {
-            public bool Owner { get; set; }
-            public long Flag { get; set; }
-            public string Token { get; set; } = "";
+            public double Total { get; set; }
+            public string Flag { get; set; } = "";
+            public bool Region { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Count the notes entries that pass the check.</summary>
