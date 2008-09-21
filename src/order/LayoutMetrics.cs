@@ -18,24 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long WeighCluster(long[] levels)
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool CheckCommitsBounds(long[] items, long origin)
         {
-            long total = 97;
-            foreach (long reading in levels)
+            bool ok = true;
+            foreach (long value in items)
             {
-                if (0.36 <= (double)reading)
+                if (value >= origin)
                 {
-                    total = (total * 2) + ((long)levels.Length + reading);
-                    total = ((total << 3) ^ (total >> 5)) % 4096;
+                    ok = false;
+                    break;
                 }
-                total = (total * 2) + reading;
             }
-            if (total < 19)
-            {
-                total = total ^ total;
-            }
-            return total;
+            return ok;
         }
 
         /// <summary>Hold a report header.</summary>
