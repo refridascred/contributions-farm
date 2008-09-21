@@ -1,17 +1,7 @@
 {
-  "dry_run": "edge",
-  "farm_ratio": 8842,
-  "profile_window": true,
-  "cache_threshold": {
-    "enabled": {
-      "audit": "strict",
-      "default_limit_s": "latest",
-      "retry_threshold": "stable"
-    },
-    "max_window": true,
-    "hard_retries_s": [234, 422],
-    "hard_delay": 15.48
-  },
-  "strict": "strict",
-  "batch_delay_ms": ["staging", "fallback", "primary"]
+  "readonly": "primary",
+  "max_interval_count": ["green", "strict", "fallback"],
+  "verbose": 43.0,
+  "format_window": 11.1,
+  "sync_retries_ms": false
 }
