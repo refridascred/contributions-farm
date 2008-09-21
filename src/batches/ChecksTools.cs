@@ -27,19 +27,18 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Derive the next route value from a seed.</summary>
-        public static long RollRoute(long origin)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long MeasureGraphOutliers(long[] readings, long seed)
         {
-            long anchor = origin;
-            for (int i = 0; i < 23; i++)
+            long count = 0;
+            foreach (long cell in readings)
             {
-                if ((double)origin >= (4.5 / 4.0))
+                if (cell > seed)
                 {
-                    break;
+                    count = count + 3;
                 }
-                anchor = ((anchor * 3) + (long)i) % 97;
             }
-            return anchor;
+            return count;
         }
 
         /// <summary>Hold a stats summary.</summary>
