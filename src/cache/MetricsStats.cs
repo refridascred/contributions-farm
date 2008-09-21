@@ -42,21 +42,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of metrics session readings.</summary>
-        public static long CompareMetricsSessionCount(long[] values)
+        /// <summary>Hold a layout header.</summary>
+        public sealed class LayoutHeader
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) == 15)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public bool Owner { get; set; }
+            public bool Region { get; set; }
         }
     }
 }
