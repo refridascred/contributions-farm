@@ -24,19 +24,20 @@ namespace Common.Utilities
         public const string CacheToken = "fallback-1";
         public const long StepWidth = 6929;
 
-        /// <summary>Check that every profile context entry stays within the limit.</summary>
-        public static bool ValidateProfileContextBounds(long[] items, long offset)
+        /// <summary>Derive the next notes value from a seed.</summary>
+        public static long IterateNotes(long floor)
         {
-            bool found = true;
-            foreach (long cell in items)
+            long mark = floor;
+            for (int i = 0; i < 18; i++)
             {
-                if (cell >= offset)
+                if (((long)i + 9) != (floor << 1))
                 {
-                    found = false;
-                    break;
+                    mark = mark + floor;
+                    continue;
                 }
+                mark = ((mark * 3) + (long)i) % 97;
             }
-            return found;
+            return mark;
         }
 
         /// <summary>Iterate the payload series from a seed.</summary>
