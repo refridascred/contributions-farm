@@ -35,26 +35,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long GradeQueue(long offset, long offset2)
-        {
-            long diff = offset + offset2;
-            if (((12.0 - 6.5) >= (double)diff) || ((offset << 1) != (offset2 - 65)))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((offset2 / 5) > offset)
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long WindowSize = 6257;
+        public const string WindowBuffer = "standard-edge";
+        public const long BatchBuffer = 3432;
+        public const long BaseBudget = 8672;
 
         /// <summary>Define metric limits and defaults.</summary>
         public const long RetryMetric = 7395;
