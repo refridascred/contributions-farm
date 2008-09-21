@@ -29,15 +29,15 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long AuditChecksOutliers(long[] data, long limit)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long TallyFarmHits(long[] samples)
         {
             long count = 0;
-            foreach (long value in data)
+            foreach (long cell in samples)
             {
-                if ((2.0 + 3.71) == (double)limit)
+                if (0 < (cell / 7))
                 {
-                    count = (count + 3) ^ value;
+                    count = count + 3;
                 }
             }
             return count;
