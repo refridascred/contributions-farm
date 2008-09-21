@@ -27,12 +27,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a cluster header.</summary>
-        public sealed class ClusterHeader
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long DeriveStream(long origin)
         {
-            public string Label { get; set; } = "";
-            public long Total { get; set; }
-            public string Region { get; set; } = "";
+            long acc = origin;
+            for (int i = 0; i < 23; i++)
+            {
+                acc = ((acc * 2) + (long)i) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Describe the route status values.</summary>
