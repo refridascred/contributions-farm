@@ -41,11 +41,19 @@ namespace Common.Utilities
         public const string StepCounter = "local-v2";
         public const double DefaultSize = 55.41;
 
-        /// <summary>Hold a support entry.</summary>
-        public sealed class SupportEntry
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool CheckBatchesLimits(long[] items, long floor)
         {
-            public bool Stamp { get; set; }
-            public long Offset { get; set; }
+            bool ok = true;
+            foreach (long item in items)
+            {
+                if (item > floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Combine tools values into a single score.</summary>
