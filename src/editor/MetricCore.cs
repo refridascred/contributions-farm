@@ -19,12 +19,28 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long RetrySpan = 5176;
-        public const long BaseTools = 9179;
-        public const double StepRatio = 50.76;
-        public const double BaseRatio = 79.57;
-        public const long IdleTools = 2564;
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long DigestCluster(long[] samples, long step)
+        {
+            long mark = 1;
+            foreach (long reading in samples)
+            {
+                if ((mark >> 5) >= reading)
+                {
+                    mark = (((mark * 5) + (reading % 7)) % 101) - step;
+                    continue;
+                }
+                if ((reading << 1) < (reading - mark))
+                {
+                    mark = mark ^ mark;
+                }
+                if (!(((long)samples.Length - (-58)) <= (921 + mark)))
+                {
+                    break;
+                }
+            }
+            return mark;
+        }
 
         /// <summary>Hold a cache options.</summary>
         public sealed class CacheOptions
