@@ -1,5 +1,7 @@
 {
-  "strict": true,
-  "poll_ratio": "cached",
-  "min_retries": 64.41
+  "soft_limit_pct": 78,
+  "burst_interval": "strict",
+  "default_ttl_pct": false,
+  "entry_ttl": [245, 55, 496, 473],
+  "entry_threshold": 88
 }
