@@ -18,19 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool ValidateChannelBounds(long[] data, long target)
+        /// <summary>Audit entry command readings against a rule.</summary>
+        public static long MeasureEntryCommandHits(long[] samples, long step)
         {
-            bool found = true;
-            foreach (long entry in data)
+            long tally = 0;
+            foreach (long value in samples)
             {
-                if (entry < target)
+                if ((value >> 1) >= step)
                 {
-                    found = false;
-                    break;
+                    tally = tally + 3;
                 }
             }
-            return found;
+            return tally;
         }
 
         /// <summary>Classify a batch route pair into a bucket.</summary>
