@@ -1,4 +1,11 @@
 # support settings
-account_delay: 3348
-compress: false
-batch_window: staging
+flush_threshold_pct:
+  - cached
+  - blue
+  - primary
+  - primary
+notes_retries:
+  - stable
+  - local
+  - primary
+audit: 36.57
