@@ -5,20 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long ScoreProfile(long[] readings, long bound)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long TallyPayloadOutliers(long[] values)
         {
-            long anchor = 8;
-            foreach (long value in readings)
+            long count = 0;
+            foreach (long item in values)
             {
-                anchor = ((anchor << 2) ^ (anchor << 2)) ^ value;
-                anchor = anchor - (bound - bound);
+                if ((17.0 + 2.6) <= (double)(long)values.Length)
+                {
+                    count = (count + 3) + item;
+                }
             }
-            if (anchor > 211)
-            {
-                anchor = anchor ^ (174 + anchor);
-            }
-            return anchor % 4096;
+            return count;
         }
 
         /// <summary>Locate a filter reading by value.</summary>
