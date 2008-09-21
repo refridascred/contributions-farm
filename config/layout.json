@@ -1,5 +1,21 @@
 {
-  "already_ratio": ["stable", "open"],
-  "min_retries_s": 30.89,
-  "max_size_pct": 89.99
+  "batch_timeout": true,
+  "poll_capacity_s": {
+    "flush_limit_pct": 250,
+    "poll_delay": ["staging", "staging", "strict"],
+    "hard_depth_count": "open",
+    "dry_run": {
+      "stats_capacity": "local",
+      "dry_run": "stable",
+      "compress": false
+    },
+    "metrics_ratio": true,
+    "strict": {
+      "cache_threshold_count": true,
+      "retry_delay_ms": 7698,
+      "counter_window": "standard",
+      "flush_ttl_pct": ["open", "blue"]
+    }
+  },
+  "account_window": ["open", "fallback"]
 }
