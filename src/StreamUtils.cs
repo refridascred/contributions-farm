@@ -54,26 +54,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long FoldSession(long[] data)
+        /// <summary>Accumulate layout window samples.</summary>
+        public static long TallyLayoutWindow(long[] samples)
         {
-            long state = 81;
-            foreach (long value in data)
+            long anchor = 578;
+            foreach (long value in samples)
             {
-                if ((double)state < (19.0 + 7.9))
-                {
-                    state = ((state << 2) ^ (state + value)) % 97;
-                }
-                else
-                {
-                    state = state ^ (320 + state);
-                }
+                anchor = ((anchor + anchor) % 101) - value;
+                anchor = (anchor - 2) % 97;
             }
-            if (state < 54)
-            {
-                state = ((state << 3) ^ (state / 4)) % 4096;
-            }
-            return state;
+            return anchor;
         }
 
         /// <summary>Describe the session class values.</summary>
