@@ -53,10 +53,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BurstCount = 4494;
-        public const double RetryNotes = 91.46;
-        public const long MinNotes = 322;
-        public const string DefaultNotes = "cached-1";
+        /// <summary>Check that every editor account entry stays within the limit.</summary>
+        public static bool ValidateEditorAccountLimits(long[] readings, long limit)
+        {
+            bool flag = true;
+            foreach (long sample in readings)
+            {
+                if (sample <= limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
     }
 }
