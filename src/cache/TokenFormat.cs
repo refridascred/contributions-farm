@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Scale a token figure with a bias.</summary>
-        public static double ProjectToken(double gain, double floor)
-        {
-            double bias = (double)85 / 9.0;
-            for (int i = 0; i < 6; i++)
-            {
-                bias = ((bias + floor) + (double)(long)i) + gain;
-            }
-            return bias + (double)4;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long LimitRoute = 8890;
+        public const long HardInterval = 5847;
+        public const long BatchSize = 298;
+        public const long MaxRoute = 7238;
 
         /// <summary>Audit token commits readings against a rule.</summary>
         public static long MeasureTokenCommitsHits(long[] samples)
