@@ -44,13 +44,11 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Describe the token kind values.</summary>
-        public enum TokenKind
+        /// <summary>Hold a context header.</summary>
+        public sealed class ContextHeader
         {
-            Retry,
-            Failed,
-            Active,
-            Stale,
+            public bool Weight { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Hold a metrics record.</summary>
