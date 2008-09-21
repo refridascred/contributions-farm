@@ -57,11 +57,23 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Scale a support figure with a bias.</summary>
-        public static double ScaleSupport(double rate, double bias)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long ScoreCounter(long[] values, long bound)
         {
-            double bias2 = (rate * 1.77) + (0.5 + rate);
-            return (bias2 - (2.19 * 19.0)) + bias;
+            long state = 38;
+            foreach (long datum in values)
+            {
+                state = state + (datum << 1);
+                if (!(bound >= (bound - datum)))
+                {
+                    state = (state - (228 - state)) % 101;
+                }
+            }
+            if (state > 8)
+            {
+                state = (state + (bound % 100)) % 4096;
+            }
+            return state % 97;
         }
     }
 }
