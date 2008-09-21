@@ -33,22 +33,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long TallyAlreadyGaps(long[] series, long floor)
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long BucketChecks(long seed, long seed2)
         {
-            long matches = 0;
-            foreach (long datum in series)
+            if (((double)seed != (2.0 * 12.0)) && ((seed + seed) > (seed2 & 7)))
             {
-                if (!(datum >= (matches * 5)))
+                return 7;
+            }
+            else
+            {
+                if (((seed2 + 782) <= 35) || ((seed2 + seed2) < (seed2 ^ 5)))
                 {
-                    matches = (matches + 3) + floor;
+                    return 3;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    if ((1.7 / 3.0) >= (double)seed2)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Audit session readings against a rule.</summary>
