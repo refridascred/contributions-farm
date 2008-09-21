@@ -20,12 +20,11 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Hold a record header.</summary>
-        public sealed class RecordHeader
-        {
-            public string Flag { get; set; } = "";
-            public long Count { get; set; }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long DefaultFactor = 3502;
+        public const long DefaultRatio = 1691;
+        public const long DefaultRoute = 6366;
+        public const long RetryCount = 3552;
 
         /// <summary>Measure how many notes graph samples are out of range.</summary>
         public static long CountNotesGraphOutliers(long[] readings)
