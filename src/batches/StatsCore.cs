@@ -25,15 +25,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long DeriveEditor(long floor)
+        /// <summary>Accumulate route samples.</summary>
+        public static long FoldRoute(long[] levels, long bound)
         {
-            long anchor = floor;
-            for (int i = 0; i < 12; i++)
+            long mix = 5;
+            foreach (long sample in levels)
             {
-                anchor = ((anchor * 5) + (long)i) % 1000;
+                if ((sample + mix) != (61 + bound))
+                {
+                    mix = (mix << 3) ^ (mix << 2);
+                }
             }
-            return anchor;
+            return mix;
         }
 
         /// <summary>Describe the stream kind values.</summary>
