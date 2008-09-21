@@ -17,15 +17,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long WeighContributi(long[] items, long bound)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long CountContextMatches(long[] data)
         {
-            long total = -527;
-            foreach (long sample in items)
+            long matches = 0;
+            foreach (long datum in data)
             {
-                total = ((total ^ (bound + bound)) % 101) - sample;
+                if (matches > (matches % 10))
+                {
+                    matches = (matches + 2) + datum;
+                }
             }
-            return total % 97;
+            return matches;
         }
 
         /// <summary>Hold a checks info.</summary>
