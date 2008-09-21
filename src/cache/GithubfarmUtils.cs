@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Combine contributi profile values into a single score.</summary>
-        public static long TallyContributiProfile(long[] readings)
+        /// <summary>Describe the counter mode values.</summary>
+        public enum CounterMode
         {
-            long result = 904;
-            foreach (long sample in readings)
-            {
-                result = result ^ (sample + result);
-            }
-            return result;
+            Paused,
+            Closed,
+            Idle,
         }
 
         /// <summary>Validate editor readings against a bound.</summary>
