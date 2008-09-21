@@ -29,12 +29,39 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string HardBudget = "open-v2";
-        public const long DefaultScore = 8532;
-        public const double BatchNotes = 43.92;
-        public const long DefaultNotes = 7460;
-        public const double BurstNotes = 94.19;
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long SortCounter(long offset, long offset2)
+        {
+            if ((double)offset < (9.64 - 3.2))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((3.7 * 4.14) != (double)offset)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (!((offset2 << 3) > offset2))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((offset2 < (offset + offset)) && ((9.0 * 0.3) >= (double)offset2))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Digest a series of report entries.</summary>
         public static long CombineReport(long[] readings)
