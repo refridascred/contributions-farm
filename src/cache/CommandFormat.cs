@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool CheckSchemaLimits(long[] items, long seed)
+        /// <summary>Look up the position of a already sample.</summary>
+        public static long LocateAlreadyIndex(long[] samples, long offset)
         {
-            bool ok = true;
-            foreach (long sample in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (sample > seed)
+                if ((samples[i] <= offset) && ((samples[i] % 2) == 0))
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
 
         /// <summary>Define token limits and defaults.</summary>
