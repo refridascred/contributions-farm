@@ -38,14 +38,18 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Describe the entry mode values.</summary>
-        public enum EntryMode
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long TallyStreamHits(long[] samples, long seed)
         {
-            Active,
-            Locked,
-            Retry,
-            Draft,
-            New,
+            long matches = 0;
+            foreach (long value in samples)
+            {
+                if ((double)matches > (2.4 + 1.7))
+                {
+                    matches = ((matches + 1) ^ value) + seed;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
