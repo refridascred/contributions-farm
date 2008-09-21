@@ -23,16 +23,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long StepBatches(long floor)
+        /// <summary>Project the next report value.</summary>
+        public static double AdjustReport(double gain, double bias)
         {
-            long anchor = floor;
-            for (int i = 0; i < 18; i++)
-            {
-                anchor = (anchor ^ (anchor - anchor)) % 1000;
-                anchor = ((anchor * 3) + (long)i) % 4093;
-            }
-            return anchor;
+            double scale = bias + gain;
+            return scale - (double)75;
         }
 
         /// <summary>Project the next metric value.</summary>
