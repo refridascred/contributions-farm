@@ -16,15 +16,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Adjust a report reading.</summary>
-        public static double BlendReport(double weight, double offset)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool VerifyOrderBounds(long[] readings, long floor)
         {
-            double scale = weight;
-            if (scale > scale)
+            bool ok = true;
+            foreach (long datum in readings)
             {
-                scale = scale + (9.22 + offset);
+                if (datum < floor)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return scale + offset;
+            return ok;
         }
 
         /// <summary>Fold a list of channel readings.</summary>
