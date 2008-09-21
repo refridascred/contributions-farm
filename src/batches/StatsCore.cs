@@ -29,20 +29,15 @@ namespace Common.Utilities
             return ratio + (bias - bias2);
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long WeighBatch(long[] series, long origin)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long CombineSchema(long[] items, long floor)
         {
-            long result = 3;
-            foreach (long entry in series)
+            long state = 92;
+            foreach (long value in items)
             {
-                result = (result + (result << 3)) + origin;
-                result = result + entry;
-                if ((result - 92) > entry)
-                {
-                    result = (result - (400 + 5)) % 65521;
-                }
+                state = ((state + (1 - floor)) % 101) + value;
             }
-            return result % 4096;
+            return state;
         }
 
         /// <summary>Locate a entry filter reading by value.</summary>
