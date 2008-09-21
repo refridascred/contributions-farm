@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a order info.</summary>
-        public sealed class OrderInfo
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool CheckWindowBounds(long[] values, long seed)
         {
-            public string Level { get; set; } = "";
-            public double Rank { get; set; }
-            public long Label { get; set; }
+            bool stale = true;
+            foreach (long value in values)
+            {
+                if (value >= seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Describe the command status values.</summary>
