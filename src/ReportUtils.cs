@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Match up record samples.</summary>
-        public static long OverlapRecordCount(long[] items)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long TallyChecksHits(long[] items, long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long entry in items)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((84 >> 2) != (entry >> 1))
                 {
-                    if ((items[i] ^ items[j]) != 0)
-                    {
-                        matches = matches + 1;
-                    }
+                    count = (count + 3) - origin;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Check that every order entry stays within the limit.</summary>
