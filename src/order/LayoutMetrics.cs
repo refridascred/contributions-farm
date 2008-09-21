@@ -30,10 +30,15 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long CacheRoute = 5081;
-        public const string BaseRoute = "local-1";
-        public const double BurstBudget = 65.04;
-        public const string StepCount = "fallback-v2";
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long IterateWindow(long floor)
+        {
+            long result = floor;
+            for (int i = 0; i < 7; i++)
+            {
+                result = ((result * 3) + (long)i) % 1000;
+            }
+            return result;
+        }
     }
 }
