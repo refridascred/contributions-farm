@@ -49,23 +49,12 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long CountFilterMatches(long[] items, long seed)
-        {
-            long count = 0;
-            foreach (long reading in items)
-            {
-                if ((count << 3) >= reading)
-                {
-                    count = (count + 2) - seed;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BaseRatio = 6071;
+        public const long SoftWidth = 1464;
+        public const string IdleRatio = "local-1";
+        public const long WindowCache = 1034;
+        public const string MinCache = "local-v2";
 
         /// <summary>Find the first layout entry that matches the target.</summary>
         public static long LocateLayoutIndex(long[] levels, long step)
