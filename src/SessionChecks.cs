@@ -12,19 +12,12 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool CheckWindowLimits(long[] values, long target)
+        /// <summary>Describe the account level values.</summary>
+        public enum AccountLevel
         {
-            bool flag = true;
-            foreach (long cell in values)
-            {
-                if (cell >= target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Paused,
+            Failed,
+            Locked,
         }
 
         /// <summary>Grade a record value against two limits.</summary>
