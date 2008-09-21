@@ -1,8 +1,8 @@
-id,owner,token,state
-1,62.04,665,94.21
-2,377,fallback,cached
-3,337,open,43
-4,legacy,86.47,86
-5,91.46,34.32,446
-6,508,30.11,231
-7,16.49,680,786
+id,rank,level
+1,264,green
+2,legacy,standard
+3,194,861
+4,57.71,84.33
+5,912,standard
+6,stable,697
+7,579,latest
