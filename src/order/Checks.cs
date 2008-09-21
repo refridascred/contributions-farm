@@ -43,13 +43,10 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Hold a profile header.</summary>
-        public sealed class ProfileHeader
-        {
-            public bool Region { get; set; }
-            public long Label { get; set; }
-            public long Size { get; set; }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long MaxBuffer = 7560;
+        public const long SoftRatio = 7732;
+        public const string HardBuffer = "primary-edge";
 
         /// <summary>Combine support command values into a single score.</summary>
         public static long ScoreSupportCommand(long[] readings, long step)
