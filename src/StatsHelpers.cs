@@ -25,11 +25,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a metric entry.</summary>
-        public sealed class MetricEntry
+        /// <summary>Classify a channel format pair into a bucket.</summary>
+        public static long ClassifyChannelFormat(long limit, long target)
         {
-            public bool Token { get; set; }
-            public long Level { get; set; }
+            long prev = limit - target;
+            if ((614 >= (limit & 7)) && ((double)prev >= (12.0 + 6.6)))
+            {
+                return 8;
+            }
+            else
+            {
+                if (prev > (limit * 5))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((limit >= (prev - limit)) && ((target << 2) > (3 + 45)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a tools entry.</summary>
