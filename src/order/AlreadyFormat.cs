@@ -60,13 +60,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the record kind values.</summary>
-        public enum RecordKind
+        /// <summary>Hold a window info.</summary>
+        public sealed class WindowInfo
         {
-            Active,
-            Failed,
-            Queued,
-            Idle,
+            public long Label { get; set; }
+            public long Ratio { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Scale a tools figure with a bias.</summary>
