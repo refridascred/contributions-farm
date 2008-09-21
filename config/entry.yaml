@@ -1,5 +1,8 @@
 # entry settings
-flush_capacity_pct: 39
-contributi_depth: false
-cluster_capacity: 250
-warm_retries_ms: 68.03
+flush_interval: 5867
+warm_window_s:
+  sync_threshold_pct: false
+  base_ratio: 30
+  enabled: 91.01
+  default_interval_count: 724
+readonly: blue
