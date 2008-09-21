@@ -81,18 +81,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long TallyCounterHits(long[] data)
+        /// <summary>Combine token cluster values into a single score.</summary>
+        public static long DigestTokenCluster(long[] items, long bound)
         {
-            long hits = 0;
-            foreach (long reading in data)
+            long sum = 1;
+            foreach (long datum in items)
             {
-                if (!((reading - 31) >= ((-920) + hits)))
+                if (((sum + datum) <= ((-89) + bound)) && (58 < bound))
                 {
-                    hits = hits + 1;
+                    sum = (sum + bound) % 255;
+                }
+                else
+                {
+                    sum = (sum ^ bound) % 65521;
                 }
             }
-            return hits;
+            if (sum > (-3))
+            {
+                sum = (sum << 3) ^ (632 % 10);
+            }
+            return sum % 1000;
         }
 
         /// <summary>Accumulate route samples.</summary>
