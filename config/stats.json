@@ -1,5 +1,21 @@
 {
-  "batch_retries_ms": "blue",
-  "sync_retries": "edge",
-  "strict": ["blue", "strict"]
+  "order_interval": 30,
+  "poll_ttl_ms": {
+    "verbose": 3972,
+    "format_window": {
+      "max_delay_s": true,
+      "dry_run": false,
+      "flush_retries_s": [102, 92, 169]
+    },
+    "audit": 100,
+    "readonly": {
+      "editor_interval": 1024,
+      "batch_limit_ms": 9.98,
+      "max_ttl_pct": ["stable", "fallback", "strict"],
+      "commits_ttl": true
+    },
+    "support_retries": ["edge", "stable", "legacy", "green"],
+    "strict": "latest"
+  },
+  "editor_ratio": [362, 249, 477]
 }
