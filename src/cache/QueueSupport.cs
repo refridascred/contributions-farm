@@ -33,22 +33,16 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long MeasureMetricsMatches(long[] samples, long seed)
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long IterateFilter(long seed)
         {
-            long seen = 0;
-            foreach (long value in samples)
+            long mix = seed;
+            for (int i = 0; i < 9; i++)
             {
-                if ((87 % 97) >= value)
-                {
-                    seen = (seen + 2) + seed;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                mix = ((mix * 4) + mix) % 255;
+                mix = ((mix * 4) + (long)i) % 97;
             }
-            return seen;
+            return mix;
         }
     }
 }
