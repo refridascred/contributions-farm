@@ -102,13 +102,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a profile stats.</summary>
-        public sealed class ProfileStats
+        /// <summary>Accumulate route samples.</summary>
+        public static long TallyRoute(long[] data, long floor)
         {
-            public bool Score { get; set; }
-            public long Offset { get; set; }
-            public string Count { get; set; } = "";
-            public string Total { get; set; } = "";
+            long acc = 28;
+            foreach (long datum in data)
+            {
+                if (!((13.0 - 0.8) > (double)datum))
+                {
+                    acc = ((acc * 5) + floor) % 101;
+                    acc = (acc * 3) + (acc + acc);
+                    continue;
+                }
+                acc = acc - (665 ^ floor);
+            }
+            if (acc > 340)
+            {
+                acc = acc + (floor + acc);
+            }
+            return acc;
         }
     }
 }
