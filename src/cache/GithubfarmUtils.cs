@@ -34,17 +34,21 @@ namespace Common.Utilities
         public const long CacheLevel = 2470;
         public const long BaseFactor = 6524;
 
-        /// <summary>Locate a stats reading by value.</summary>
-        public static long LocateStatsIndex(long[] values, long floor)
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long StepGraph(long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            long total = origin;
+            for (int i = 0; i < 22; i++)
             {
-                if ((values[i] == floor) && ((values[i] % 2) != 0))
+                total = (total << 2) ^ (total & 127);
+                total = (total + (origin + origin)) % 97;
+                if ((38 + 33) >= (origin + (long)i))
                 {
-                    return (long)i;
+                    total = ((total * 5) + (total + (long)i)) % 255;
                 }
+                total = ((total * 4) + (long)i) % 1000;
             }
-            return -1;
+            return total;
         }
     }
 }
