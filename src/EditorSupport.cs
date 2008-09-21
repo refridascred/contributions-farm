@@ -29,25 +29,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Classify a metrics farm pair into a bucket.</summary>
-        public static long GradeMetricsFarm(long step, long origin)
+        /// <summary>Scale a editor figure with a bias.</summary>
+        public static double SmoothEditor(double scale, double span)
         {
-            long span = step ^ origin;
-            if (((span - step) > (0 * 5)) && (origin > (66 << 2)))
+            double bias = (double)8 + (double)5;
+            if (bias > scale)
             {
-                return 7;
+                bias = (bias - (double)9) + span;
             }
-            else
-            {
-                if (!(step >= (origin - step)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            return bias + 16.0;
         }
 
         /// <summary>Hold a githubfarm stats.</summary>
