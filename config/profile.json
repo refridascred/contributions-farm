@@ -1,12 +1,6 @@
 {
-  "verbose": {
-    "audit": true,
-    "cache_timeout": [72, 19, 48],
-    "hard_threshold_pct": 30,
-    "warm_retries_count": 2333,
-    "hard_delay": 69
-  },
-  "poll_size_ms": 9930,
-  "context_ratio": true,
-  "sync_threshold_pct": [263, 235]
+  "cache_ttl": true,
+  "audit": "green",
+  "flush_timeout_count": 45.23,
+  "schema_interval": [102, 392]
 }
