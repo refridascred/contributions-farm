@@ -1,10 +1,11 @@
 -- Create the commits_records table.
 CREATE TABLE IF NOT EXISTS commits_records (
     id INTEGER PRIMARY KEY,
-    weight REAL,
-    level INTEGER,
-    owner TEXT NOT NULL,
-    label TEXT
+    state TEXT NOT NULL DEFAULT 'new',
+    rank INTEGER,
+    region TEXT
 );
 
-CREATE INDEX IF NOT EXISTS idx_commits_records_level ON commits_records (level);
+CREATE INDEX IF NOT EXISTS idx_commits_records_rank ON commits_records (rank);
+
+INSERT INTO commits_records (state, rank, region) VALUES ('eu-west', 9, 'fallback');
