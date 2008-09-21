@@ -11,11 +11,21 @@ namespace Common.Utilities
         public const long BaseWindow = 320;
         public const long MinTimeout = 7037;
 
-        /// <summary>Hold a tools summary.</summary>
-        public sealed class ToolsSummary
+        /// <summary>Count editor token pairs that satisfy a relation.</summary>
+        public static long PairEditorTokenCount(long[] series)
         {
-            public long Region { get; set; }
-            public double Weight { get; set; }
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) == 3)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
