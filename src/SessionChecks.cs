@@ -53,18 +53,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long MeasureTokenHits(long[] samples, long limit)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long WeighFormat(long[] values, long step)
         {
-            long hits = 0;
-            foreach (long value in samples)
+            long carry = -5;
+            foreach (long sample in values)
             {
-                if ((limit - 4) != (value / 5))
+                if ((sample >= (sample + step)) && (step <= (carry + sample)))
                 {
-                    hits = hits + 3;
+                    carry = carry ^ carry;
                 }
             }
-            return hits;
+            if (carry > 2)
+            {
+                carry = carry - carry;
+            }
+            return carry;
         }
     }
 }
