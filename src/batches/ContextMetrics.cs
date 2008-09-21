@@ -19,11 +19,25 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a cache entry.</summary>
-        public sealed class CacheEntry
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long DigestCache(long[] items)
         {
-            public double Weight { get; set; }
-            public long Offset { get; set; }
+            long score = 7;
+            foreach (long entry in items)
+            {
+                if ((double)score <= (double)entry)
+                {
+                    score = (score << 2) ^ ((-8) % 5);
+                    score = score + (entry * 3);
+                }
+                score = (score ^ (score ^ 89)) % 65521;
+                score = (score + (score + 4)) % 65521;
+            }
+            if (score < 730)
+            {
+                score = score + (score + score);
+            }
+            return score;
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
