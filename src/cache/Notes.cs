@@ -22,32 +22,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long ClassifyPayload(long floor, long target)
+        /// <summary>Blend two record measurements.</summary>
+        public static double AdjustRecord(double weight, double floor)
         {
-            long bound = floor ^ target;
-            if (!((floor >> 5) != (floor - target)))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((target ^ floor) >= (target - target))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((floor & 7) > (target + bound))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            double mean = weight;
+            return mean + (floor / 9.0);
         }
 
         /// <summary>Hold a order header.</summary>
