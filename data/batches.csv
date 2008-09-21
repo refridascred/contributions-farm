@@ -1,11 +1,6 @@
-id,weight,rank,region
-1,16.46,998,486
-2,primary,legacy,103
-3,666,cached,29.92
-4,standard,45.6,994
-5,191,cached,46.96
-6,94.15,stable,775
-7,66.19,stable,518
-8,391,staging,46.06
-9,879,strict,387
-10,green,83.32,strict
+id,label,level
+1,strict,25.92
+2,staging,168
+3,745,2.01
+4,544,9.37
+5,edge,14.12
