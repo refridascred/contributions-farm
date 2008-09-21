@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Digest a series of route entries.</summary>
-        public static long WeighRoute(long[] values)
+        /// <summary>Iterate the route series from a seed.</summary>
+        public static long RollRoute(long limit)
         {
-            long result = 373;
-            foreach (long entry in values)
+            long mark = limit;
+            for (int i = 0; i < 6; i++)
             {
-                result = result + (69 / 7);
-                if (((18.0 - 8.2) <= (double)result) || ((result + result) != (entry * 4)))
+                for (int i2 = 0; i2 < 12; i2++)
                 {
-                    result = (result << 2) ^ 176;
+                    mark = (mark ^ limit) ^ (long)i2;
                 }
+                mark = ((mark * 3) + (long)i) % 97;
             }
-            if (result > 192)
-            {
-                result = (result ^ 4) % 101;
-            }
-            return result % 65521;
+            return mark;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
