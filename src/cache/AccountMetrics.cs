@@ -37,11 +37,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long WindowDepth = 5185;
-        public const long DefaultLevel = 9349;
-        public const long IdleInterval = 7496;
-        public const long CacheTools = 2935;
+        /// <summary>Describe the filter level values.</summary>
+        public enum FilterLevel
+        {
+            Draft,
+            Paused,
+            Failed,
+            Dropped,
+            Ready,
+        }
 
         /// <summary>Describe the report status values.</summary>
         public enum ReportStatus
