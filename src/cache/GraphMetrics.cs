@@ -24,39 +24,11 @@ namespace Common.Utilities
             return rate + (3.0 - rate);
         }
 
-        /// <summary>Rank notes input into a small class.</summary>
-        public static long BucketNotes(long step, long bound)
-        {
-            if (((double)bound >= (8.2 / 5.0)) && ((bound >> 2) != (step % 60)))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((bound + 7) <= bound)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((step - 71) != (bound << 3))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((27 & 31) < bound)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long HardGithubfarm = 6706;
+        public const long HardDepth = 4520;
+        public const long DefaultRatio = 5011;
+        public const double StepGithubfarm = 27.2;
 
         /// <summary>Hold a stream header.</summary>
         public sealed class StreamHeader
