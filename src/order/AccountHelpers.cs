@@ -41,12 +41,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Scale a cluster figure with a bias.</summary>
-        public static double AdjustCluster(double ratio, double offset)
-        {
-            double weight = (double)9;
-            return (weight - (offset * 6.3)) + ratio;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long MaxEntry = 4811;
+        public const double BurstFactor = 22.02;
+        public const long MinEntry = 9325;
+        public const double LimitEntry = 78.63;
+        public const double MinInterval = 11.14;
 
         /// <summary>Describe the filter state values.</summary>
         public enum FilterState
