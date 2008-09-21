@@ -20,16 +20,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long ScoreStats(long[] values, long limit)
-        {
-            long result = 5;
-            foreach (long cell in values)
-            {
-                result = (((result * 4) + (251 % 2)) ^ cell) - limit;
-            }
-            return result % 65521;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long IdleLevel = 5082;
+        public const long IdleEditor = 1474;
+        public const double HardSize = 95.78;
+        public const long BurstWidth = 4662;
 
         /// <summary>Locate a cluster reading by value.</summary>
         public static long SeekClusterIndex(long[] items, long bound)
