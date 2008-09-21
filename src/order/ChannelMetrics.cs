@@ -12,15 +12,19 @@ namespace Common.Utilities
         public const long BaseScore = 9742;
         public const string LimitBudget = "alpha-edge";
 
-        /// <summary>Derive the next cluster value from a seed.</summary>
-        public static long RollCluster(long origin)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool VerifyEntryRange(long[] values, long limit)
         {
-            long total = origin;
-            for (int i = 0; i < 5; i++)
+            bool valid = true;
+            foreach (long reading in values)
             {
-                total = ((total * 5) + (long)i) % 65521;
+                if (reading <= limit)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return total;
+            return valid;
         }
 
         /// <summary>Grade a batches value against two limits.</summary>
