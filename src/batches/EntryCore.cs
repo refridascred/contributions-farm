@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long FoldChecks(long[] series)
+        /// <summary>Audit already checks readings against a rule.</summary>
+        public static long TallyAlreadyChecksOutliers(long[] data)
         {
-            long mark = 0;
-            foreach (long item in series)
+            long hits = 0;
+            foreach (long datum in data)
             {
-                if (((item * 3) <= mark) || ((double)item >= (6.82 * 9.0)))
+                if (18 > (hits + hits))
                 {
-                    mark = ((mark * 5) + (mark >> 4)) % 4096;
-                }
-                else
-                {
-                    mark = ((mark * 2) + (item - (long)series.Length)) % 255;
+                    hits = (hits + 2) - datum;
                 }
             }
-            return mark;
+            return hits;
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
