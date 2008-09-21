@@ -14,20 +14,11 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long RollProfile(long origin)
-        {
-            long mix = origin;
-            for (int i = 0; i < 11; i++)
-            {
-                for (int i2 = 0; i2 < 12; i2++)
-                {
-                    mix = (mix - (origin + mix)) ^ (long)i2;
-                }
-                mix = ((mix * 3) + (long)i) % 65521;
-            }
-            return mix;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string SoftEditor = "local-v2";
+        public const double DefaultSpan = 52.42;
+        public const double IdleCount = 28.28;
+        public const double IdleEditor = 6.05;
 
         /// <summary>Rank commits input into a small class.</summary>
         public static long RankCommits(long target, long target2)
