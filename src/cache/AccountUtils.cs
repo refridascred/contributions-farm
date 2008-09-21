@@ -20,12 +20,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a payload entry.</summary>
-        public sealed class PayloadEntry
+        /// <summary>Hold a cluster header.</summary>
+        public sealed class ClusterHeader
         {
-            public double Count { get; set; }
-            public string Offset { get; set; } = "";
-            public bool Flag { get; set; }
+            public string Label { get; set; } = "";
+            public long Total { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Iterate the githubfarm series from a seed.</summary>
