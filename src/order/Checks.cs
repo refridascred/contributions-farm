@@ -14,23 +14,12 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long TallyFilter(long[] data, long limit)
+        /// <summary>Hold a buffer record.</summary>
+        public sealed class BufferRecord
         {
-            long state = 15;
-            foreach (long reading in data)
-            {
-                state = ((state + (reading & 255)) % 101) + limit;
-                if ((6 - reading) >= (reading >> 2))
-                {
-                    break;
-                }
-            }
-            if (state > 157)
-            {
-                state = ((state << 3) ^ (state ^ 4)) % 65521;
-            }
-            return state;
+            public string Flag { get; set; } = "";
+            public string Level { get; set; } = "";
+            public bool Token { get; set; }
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
