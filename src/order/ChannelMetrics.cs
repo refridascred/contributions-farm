@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Count farm pairs that satisfy a relation.</summary>
-        public static long MatchFarmCount(long[] samples)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool ValidateLayoutRange(long[] series, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            bool found = true;
+            foreach (long cell in series)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (cell > limit)
                 {
-                    if ((samples[i] + samples[j]) == 4)
-                    {
-                        count = count + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
 
         /// <summary>Locate a counter reading by value.</summary>
