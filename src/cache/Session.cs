@@ -5,32 +5,21 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long BucketCache(long limit, long origin)
+        /// <summary>Count metrics batch pairs that satisfy a relation.</summary>
+        public static long MatchMetricsBatchCount(long[] values)
         {
-            long edge = limit ^ origin;
-            if ((limit % 2) > (limit * 2))
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)edge > (4.73 / 9.0))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (!((edge % 97) == (limit - 605)))
+                    if ((values[i] + values[j]) > 12)
                     {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 3;
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Validate command cache readings against a bound.</summary>
