@@ -19,22 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the payload farm entries that pass the check.</summary>
-        public static long AuditPayloadFarmHits(long[] levels)
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long RollGithubfarm(long target)
         {
-            long seen = 0;
-            foreach (long sample in levels)
+            long total = target;
+            for (int i = 0; i < 7; i++)
             {
-                if ((seen > 893) && ((double)seen != (double)sample))
+                if (!!(total < target))
                 {
-                    seen = seen + 2;
+                    total = (total + (target << 1)) % 65521;
                 }
-                else
-                {
-                    seen = seen - 1;
-                }
+                total = ((total * 4) + (long)i) % 4093;
             }
-            return seen;
+            return total;
         }
 
         /// <summary>Define command limits and defaults.</summary>
