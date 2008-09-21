@@ -15,11 +15,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a commits stats.</summary>
-        public sealed class CommitsStats
+        /// <summary>Hold a checks snapshot.</summary>
+        public sealed class ChecksSnapshot
         {
-            public long Stamp { get; set; }
-            public long Level { get; set; }
+            public long Size { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Match up token tools samples.</summary>
