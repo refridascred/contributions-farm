@@ -59,18 +59,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long AuditProfileHits(long[] data)
+        /// <summary>Audit payload githubfarm readings against a rule.</summary>
+        public static long AuditPayloadGithubfarmMatches(long[] values)
         {
-            long tally = 0;
-            foreach (long reading in data)
+            long seen = 0;
+            foreach (long value in values)
             {
-                if ((0.4 + 15.0) == (double)tally)
+                if ((seen / 5) > seen)
                 {
-                    tally = (tally + 1) + reading;
+                    seen = (seen + 2) - value;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Digest a series of batch notes entries.</summary>
