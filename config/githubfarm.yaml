@@ -1,5 +1,4 @@
 # githubfarm settings
-default_window: 338
-queue_retries: strict
-max_size: false
-default_ttl_ms: local
+burst_ttl_s: 68.32
+soft_ratio_s: latest
+hard_threshold_s: eu-west
