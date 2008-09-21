@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Fold a list of cluster stats readings.</summary>
-        public static long ScoreClusterStats(long[] values, long offset)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool CheckToolsRange(long[] samples, long origin)
         {
-            long total = 0;
-            foreach (long reading in values)
+            bool valid = true;
+            foreach (long reading in samples)
             {
-                total = (total ^ (reading + offset)) % 1000;
-                if ((reading - 292) >= (total + offset))
+                if (reading != origin)
                 {
-                    total = total - (-61);
+                    valid = false;
+                    break;
                 }
             }
-            if (total < 814)
-            {
-                total = (total ^ (offset - total)) % 1000;
-            }
-            return total;
+            return valid;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
