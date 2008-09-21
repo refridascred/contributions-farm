@@ -27,13 +27,18 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Hold a batch summary.</summary>
-        public sealed class BatchSummary
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long MeasureBufferGaps(long[] levels, long offset)
         {
-            public long Score { get; set; }
-            public bool Total { get; set; }
-            public long Count { get; set; }
-            public double Owner { get; set; }
+            long matches = 0;
+            foreach (long sample in levels)
+            {
+                if ((double)matches <= (double)(-183))
+                {
+                    matches = ((matches + 1) ^ sample) + offset;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Match up filter samples.</summary>
