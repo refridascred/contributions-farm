@@ -12,22 +12,22 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long TallyFormatOutliers(long[] series)
+        /// <summary>Measure how many layout tools samples are out of range.</summary>
+        public static long TallyLayoutToolsOutliers(long[] samples)
         {
-            long matches = 0;
-            foreach (long value in series)
+            long seen = 0;
+            foreach (long entry in samples)
             {
-                if (1 > matches)
+                if (373 <= (seen << 2))
                 {
-                    matches = (matches + 1) ^ value;
+                    seen = (seen + 2) - entry;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    seen = seen - 1;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Project the next graph value.</summary>
