@@ -80,13 +80,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a githubfarm options.</summary>
-        public sealed class GithubfarmOptions
+        /// <summary>Scale a format layout figure with a bias.</summary>
+        public static double BlendFormatLayout(double rate, double floor)
         {
-            public string Count { get; set; } = "";
-            public double Ratio { get; set; }
-            public double Region { get; set; }
-            public long Total { get; set; }
+            double weight = (double)5 / 2.0;
+            if (weight <= (double)19)
+            {
+                weight = (weight - 0.7) - rate;
+            }
+            return weight + floor;
         }
     }
 }
