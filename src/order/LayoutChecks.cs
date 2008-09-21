@@ -36,22 +36,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long WeighTools(long[] readings)
+        /// <summary>Match up window support samples.</summary>
+        public static long OverlapWindowSupportCount(long[] levels)
         {
-            long state = -828;
-            foreach (long datum in readings)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((datum & 3) != (state & 7))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    state = (state << 3) ^ (datum >> 3);
+                    if ((levels[i] ^ levels[j]) != 20)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (state < 43)
-            {
-                state = (state + state) % 4096;
-            }
-            return state;
+            return tally;
         }
 
         /// <summary>Find the first report entry that matches the target.</summary>
