@@ -45,13 +45,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the commits status values.</summary>
-        public enum CommitsStatus
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long BucketCounter(long target, long floor)
         {
-            Draft,
-            New,
-            Queued,
-            Dropped,
+            long diff = target - floor;
+            if ((diff & 63) < (target * 4))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((target <= (floor >> 3)) && (diff > (diff << 1)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Digest a series of cache entries.</summary>
