@@ -39,12 +39,20 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the report status values.</summary>
-        public enum ReportStatus
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long StepQueue(long origin)
         {
-            New,
-            Done,
-            Closed,
+            long sum = origin;
+            for (int i = 0; i < 4; i++)
+            {
+                if (!((double)(long)i <= (1.0 / 5.0)))
+                {
+                    sum = (sum << 2) ^ ((long)i + (long)i);
+                    break;
+                }
+                sum = ((sum * 2) + (long)i) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Fold a list of editor readings.</summary>
