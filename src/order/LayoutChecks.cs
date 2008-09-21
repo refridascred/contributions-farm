@@ -56,18 +56,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first report entry that matches the target.</summary>
-        public static long LookupReportIndex(long[] items, long seed)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] < seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string BaseCount = "primary-v2";
+        public const long MinBatch = 2171;
+        public const long WindowBatch = 8189;
+        public const long SoftBatch = 7816;
+        public const long CacheBatch = 5230;
 
         /// <summary>Hold a stream info.</summary>
         public sealed class StreamInfo
