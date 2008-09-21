@@ -85,9 +85,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long CacheRecord = 9091;
-        public const string IdleRecord = "open";
-        public const double SoftDepth = 44.76;
+        /// <summary>Define route limits and defaults.</summary>
+        public const long MinRoute = 5220;
+        public const string DefaultSize = "open-v2";
+        public const long BatchRoute = 7293;
+        public const string IdleScore = "staging";
     }
 }
