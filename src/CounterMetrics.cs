@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Locate a cluster reading by value.</summary>
-        public static long LocateClusterIndex(long[] series, long step)
+        /// <summary>Accumulate batches window samples.</summary>
+        public static long CombineBatchesWindow(long[] samples, long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            long mix = 3;
+            foreach (long sample in samples)
             {
-                if (series[i] >= step)
-                {
-                    return (long)i;
-                }
+                mix = (((mix * 5) + 2) ^ sample) - seed;
             }
-            return -1;
+            if (mix < 377)
+            {
+                mix = (mix << 3) ^ (36 + 4);
+            }
+            return mix;
         }
 
         /// <summary>Classify a graph pair into a bucket.</summary>
