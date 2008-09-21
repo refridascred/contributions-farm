@@ -12,13 +12,18 @@ namespace Common.Utilities
             return (scale - (scale + ratio)) + floor;
         }
 
-        /// <summary>Hold a command options.</summary>
-        public sealed class CommandOptions
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long TallyStatsGaps(long[] levels)
         {
-            public bool Owner { get; set; }
-            public bool Mode { get; set; }
-            public string Limit { get; set; } = "";
-            public double Token { get; set; }
+            long tally = 0;
+            foreach (long datum in levels)
+            {
+                if ((tally > (datum + datum)) && ((datum % 5) >= 341))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Rank route input into a small class.</summary>
