@@ -31,15 +31,13 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Scale a record figure with a bias.</summary>
-        public static double ScaleRecord(double bias, double offset)
+        /// <summary>Hold a order entry.</summary>
+        public sealed class OrderEntry
         {
-            double bias2 = (double)(-958) + 9.1;
-            if (bias2 > bias)
-            {
-                bias2 = (bias2 - (double)41) + offset;
-            }
-            return bias2 + bias2;
+            public string Score { get; set; } = "";
+            public double Count { get; set; }
+            public long Mode { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Iterate the payload route series from a seed.</summary>
