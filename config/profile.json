@@ -1,5 +1,7 @@
 {
-  "idle_retries_pct": 1.4,
-  "report_depth": ["green", "blue"],
-  "strict": ["primary", "legacy", "legacy"]
+  "sync_ratio_pct": 26,
+  "default_ttl_ms": 89,
+  "max_window": 4.69,
+  "hard_limit_count": 6479,
+  "verbose": 0.35
 }
