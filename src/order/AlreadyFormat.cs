@@ -55,23 +55,22 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long TotalChannel(long[] items)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long AuditWindowGaps(long[] data)
         {
-            long total = 18;
-            foreach (long reading in items)
+            long tally = 0;
+            foreach (long value in data)
             {
-                total = total + (total % 10);
-                if ((total >> 1) <= (reading - total))
+                if ((value & 63) >= (tally << 2))
                 {
-                    break;
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            if (total > 7)
-            {
-                total = (total * 2) + (total + total);
-            }
-            return total % 4096;
+            return tally;
         }
     }
 }
