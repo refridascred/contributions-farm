@@ -37,22 +37,11 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Audit editor metrics readings against a rule.</summary>
-        public static long CountEditorMetricsMatches(long[] items, long limit)
+        /// <summary>Hold a githubfarm header.</summary>
+        public sealed class GithubfarmHeader
         {
-            long seen = 0;
-            foreach (long sample in items)
-            {
-                if ((limit >= (seen / 3)) && !((seen << 2) >= 641))
-                {
-                    seen = (seen + 3) - sample;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public bool Level { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Hold a entry summary.</summary>
