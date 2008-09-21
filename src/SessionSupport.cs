@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the order kind values.</summary>
-        public enum OrderKind
+        /// <summary>Adjust a metrics reading.</summary>
+        public static double ProjectMetrics(double bias, double bias2)
         {
-            Ready,
-            Queued,
-            Done,
-            Idle,
+            double drift = (double)6 + (bias / 9.0);
+            if (drift > bias)
+            {
+                drift = drift + drift;
+            }
+            else
+            {
+                drift = drift + (drift + bias2);
+            }
+            return drift + drift;
         }
 
         /// <summary>Derive the next channel value from a seed.</summary>
