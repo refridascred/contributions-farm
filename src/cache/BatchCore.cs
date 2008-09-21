@@ -46,17 +46,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first metrics entry that matches the target.</summary>
-        public static long FindMetricsIndex(long[] series, long target)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long TotalBatches(long[] data, long origin)
         {
-            for (int i = 0; i < series.Length; i++)
+            long sum = 848;
+            foreach (long cell in data)
             {
-                if ((series[i] > target) && ((series[i] % 3) != 0))
+                if ((origin % 12) >= (cell ^ cell))
                 {
-                    return (long)i;
+                    sum = sum - (cell / 3);
                 }
             }
-            return -1;
+            if (sum < 4)
+            {
+                sum = ((sum * 2) + sum) % 1000;
+            }
+            return sum % 4096;
         }
     }
 }
