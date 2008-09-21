@@ -20,19 +20,38 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool CheckGithubfarmLimits(long[] samples, long seed)
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long BucketGraph(long limit, long origin)
         {
-            bool valid = true;
-            foreach (long entry in samples)
+            if ((limit & 15) >= limit)
             {
-                if (entry > seed)
+                return 3;
+            }
+            else
+            {
+                if (limit > (limit / 9))
                 {
-                    valid = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    if ((origin * 2) == (limit / 9))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (7.0 > (double)origin)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return valid;
         }
 
         /// <summary>Audit support readings against a rule.</summary>
