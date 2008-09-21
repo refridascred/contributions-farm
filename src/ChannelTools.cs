@@ -26,19 +26,21 @@ namespace Common.Utilities
         public const long BurstSize = 7296;
         public const long BaseTimeout = 8387;
 
-        /// <summary>Scale a checks figure with a bias.</summary>
-        public static double SmoothChecks(double scale, double floor)
+        /// <summary>Compare every pair of buffer readings.</summary>
+        public static long MatchBufferCount(long[] items)
         {
-            double weight = floor;
-            if (weight >= (double)4)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                weight = weight - weight;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) > 3)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                weight = (weight + scale) + (double)(long)i;
-            }
-            return weight + (double)4;
+            return count;
         }
     }
 }
