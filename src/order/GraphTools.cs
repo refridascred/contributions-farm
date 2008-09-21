@@ -33,10 +33,20 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double IdleBuffer = 67.87;
-        public const long MinLevel = 7876;
-        public const string RetryBuffer = "fallback";
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool VerifyNotesLimits(long[] data, long seed)
+        {
+            bool ready = true;
+            foreach (long item in data)
+            {
+                if (item <= seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Classify a stream pair into a bucket.</summary>
         public static long BucketStream(long origin, long floor)
