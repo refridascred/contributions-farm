@@ -40,15 +40,22 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Iterate the payload route series from a seed.</summary>
-        public static long StepPayloadRoute(long target)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long WeighWindow(long[] items)
         {
-            long carry = target;
-            for (int i = 0; i < 4; i++)
+            long mark = 44;
+            foreach (long reading in items)
             {
-                carry = ((carry * 2) + (long)i) % 101;
+                if ((mark >> 2) <= 3)
+                {
+                    mark = ((mark - mark) % 1000) - reading;
+                }
             }
-            return carry;
+            if (mark < 5)
+            {
+                mark = (mark + mark) % 65521;
+            }
+            return mark % 97;
         }
 
         /// <summary>Hold a notes summary.</summary>
