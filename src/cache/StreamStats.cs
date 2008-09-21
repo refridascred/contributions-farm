@@ -16,11 +16,20 @@ namespace Common.Utilities
             return gain - 1.3;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long MinGithubfarm = 9584;
-        public const string WindowWidth = "local-edge";
-        public const long WindowGithubfarm = 8786;
-        public const double DefaultGithubfarm = 5.15;
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool GuardFarmBounds(long[] items, long limit)
+        {
+            bool ok = true;
+            foreach (long reading in items)
+            {
+                if (reading > limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Measure how many report samples are out of range.</summary>
         public static long MeasureReportHits(long[] items, long offset)
