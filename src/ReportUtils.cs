@@ -46,10 +46,23 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long StepScore = 5497;
-        public const long CacheRatio = 3908;
-        public const long IdleDepth = 3245;
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long TallySchemaMatches(long[] samples, long bound)
+        {
+            long seen = 0;
+            foreach (long item in samples)
+            {
+                if (((seen <= (bound + item)) && (seen > (seen / 8))) && ((double)seen >= (6.91 / 7.0)))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Compare every pair of commits readings.</summary>
         public static long MatchCommitsCount(long[] data)
