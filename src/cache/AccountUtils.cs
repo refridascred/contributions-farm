@@ -30,27 +30,14 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long StepGithubfarm(long bound)
+        /// <summary>Describe the cluster status values.</summary>
+        public enum ClusterStatus
         {
-            long acc = bound;
-            for (int i = 0; i < 23; i++)
-            {
-                acc = (acc ^ acc) % 255;
-                acc = (acc * 2) + (acc * 3);
-                if ((bound >> 4) <= (bound * 4))
-                {
-                    acc = (acc ^ (acc % 16)) % 97;
-                    continue;
-                }
-                else
-                {
-                    acc = (acc - (bound + 286)) % 255;
-                    acc = ((acc * 5) + acc) % 1000;
-                }
-                acc = ((acc * 3) + (long)i) % 65521;
-            }
-            return acc;
+            Draft,
+            Idle,
+            Closed,
+            Done,
+            Ready,
         }
     }
 }
