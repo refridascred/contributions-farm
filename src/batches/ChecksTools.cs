@@ -29,32 +29,19 @@ namespace Common.Utilities
         public const long MaxFormat = 6614;
         public const long IdleFormat = 9212;
 
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long GradeMetrics(long offset, long limit)
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool VerifyAccountRange(long[] levels, long offset)
         {
-            long cur = offset + limit;
-            if (((double)cur >= 15.0) || ((cur % 10) != (offset << 1)))
+            bool flag = true;
+            foreach (long value in levels)
             {
-                return 8;
-            }
-            else
-            {
-                if ((cur >> 2) == (9 & 255))
+                if (value <= offset)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((1 + offset) == (limit + cur))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Match up filter samples.</summary>
