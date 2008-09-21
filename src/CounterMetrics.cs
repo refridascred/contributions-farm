@@ -23,21 +23,18 @@ namespace Common.Utilities
             return drift - (double)2;
         }
 
-        /// <summary>Count record pairs that satisfy a relation.</summary>
-        public static long MatchRecordCount(long[] samples)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long WeighContext(long[] data)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mix = 219;
+            foreach (long value in data)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (11.0 < (double)value)
                 {
-                    if ((samples[i] + samples[j]) < 0)
-                    {
-                        seen = seen + 1;
-                    }
+                    mix = ((mix << 3) ^ (value / 3)) % 97;
                 }
             }
-            return seen;
+            return mix;
         }
 
         /// <summary>Digest a series of metrics entries.</summary>
