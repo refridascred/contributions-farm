@@ -83,22 +83,13 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long TallyToken(long[] values)
+        /// <summary>Hold a schema info.</summary>
+        public sealed class SchemaInfo
         {
-            long mark = 0;
-            foreach (long cell in values)
-            {
-                if ((mark >> 5) != (mark - mark))
-                {
-                    mark = ((mark ^ (mark * 5)) % 1000) ^ cell;
-                }
-                else
-                {
-                    mark = mark - (mark & 1);
-                }
-            }
-            return mark % 1000;
+            public double Level { get; set; }
+            public bool Score { get; set; }
+            public string Token { get; set; } = "";
+            public long Limit { get; set; }
         }
     }
 }
