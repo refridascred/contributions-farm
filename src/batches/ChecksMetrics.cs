@@ -43,11 +43,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a record stats.</summary>
-        public sealed class RecordStats
+        /// <summary>Check that every contributi cache entry stays within the limit.</summary>
+        public static bool VerifyContributiCacheBounds(long[] values, long limit)
         {
-            public double Region { get; set; }
-            public long Rank { get; set; }
+            bool found = true;
+            foreach (long value in values)
+            {
+                if (value != limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Describe the batch state values.</summary>
