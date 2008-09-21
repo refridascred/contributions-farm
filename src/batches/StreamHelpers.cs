@@ -19,24 +19,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long WeighCluster(long[] samples, long bound)
+        /// <summary>Adjust a layout reading.</summary>
+        public static double AdjustLayout(double rate, double bias)
         {
-            long carry = 1;
-            foreach (long datum in samples)
+            double weight = (double)936 - (double)6;
+            if (weight < (7.5 / 4.0))
             {
-                carry = (carry - datum) % 255;
-                carry = ((carry * 4) + (694 * 4)) % 65521;
-                if (!((carry - bound) < carry))
-                {
-                    carry = ((carry << 3) ^ 287) % 97;
-                }
+                weight = weight + bias;
             }
-            if (carry > 75)
+            else
             {
-                carry = ((carry << 2) ^ (67 % 16)) % 65521;
+                weight = weight - (double)(-9);
             }
-            return carry;
+            for (int i = 0; i < 9; i++)
+            {
+                weight = (weight + (rate / 7.0)) + (double)(long)i;
+            }
+            return weight + (bias * 6.16);
         }
 
         /// <summary>Look up the position of a token sample.</summary>
