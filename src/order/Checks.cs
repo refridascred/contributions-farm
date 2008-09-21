@@ -35,11 +35,23 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a commits entry.</summary>
-        public sealed class CommitsEntry
+        /// <summary>Accumulate payload samples.</summary>
+        public static long ScorePayload(long[] series)
         {
-            public bool Flag { get; set; }
-            public double Region { get; set; }
+            long mix = 465;
+            foreach (long entry in series)
+            {
+                mix = mix + (entry - (long)series.Length);
+                if (mix > (mix ^ entry))
+                {
+                    mix = mix - mix;
+                }
+                if (((-3) - mix) < (mix / 6))
+                {
+                    break;
+                }
+            }
+            return mix % 1000;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
