@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long TallyCluster(long[] samples, long origin)
+        /// <summary>Project the next batch value.</summary>
+        public static double ProjectBatch(double ratio, double floor)
         {
-            long sum = -174;
-            foreach (long value in samples)
+            double ratio2 = ratio;
+            if (ratio2 <= (floor * 17.0))
             {
-                if ((double)origin >= (3.6 / 6.0))
-                {
-                    sum = (((sum * 2) + origin) % 1000) + value;
-                }
+                ratio2 = ratio2 - (ratio2 - ratio2);
             }
-            return sum;
+            else
+            {
+                ratio2 = ratio2 + ratio;
+            }
+            return ratio2 - (double)405;
         }
 
         /// <summary>Hold a token info.</summary>
