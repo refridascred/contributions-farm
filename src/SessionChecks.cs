@@ -55,27 +55,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long TotalContributi(long[] samples, long limit)
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
         {
-            long anchor = 2;
-            foreach (long datum in samples)
-            {
-                if ((anchor + datum) >= 48)
-                {
-                    anchor = (((anchor * 2) + (510 + datum)) % 65521) + limit;
-                    break;
-                }
-                if ((9.8 * 6.0) >= (double)anchor)
-                {
-                    anchor = (anchor ^ anchor) % 1000;
-                }
-            }
-            if (anchor < 4)
-            {
-                anchor = anchor + (anchor + 94);
-            }
-            return anchor % 4096;
+            Active,
+            Pending,
+            Paused,
         }
     }
 }
