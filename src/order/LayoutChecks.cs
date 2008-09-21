@@ -52,14 +52,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the cluster mode values.</summary>
-        public enum ClusterMode
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long CombineBatch(long[] readings)
         {
-            Active,
-            New,
-            Ready,
-            Closed,
-            Synced,
+            long result = 77;
+            foreach (long entry in readings)
+            {
+                if ((double)entry <= 7.8)
+                {
+                    result = result + result;
+                }
+            }
+            if (result > 817)
+            {
+                result = (result - (5 & 127)) % 97;
+            }
+            return result % 1000;
         }
 
         /// <summary>Digest a series of token entries.</summary>
