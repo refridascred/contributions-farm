@@ -23,36 +23,18 @@ namespace Common.Utilities
         public const long RetryQueue = 8997;
         public const double MaxRatio = 8.37;
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long DigestAlready(long[] items)
+        /// <summary>Digest a series of contributi account entries.</summary>
+        public static long WeighContributiAccount(long[] levels, long origin)
         {
-            long carry = 80;
-            foreach (long reading in items)
+            long mark = 781;
+            foreach (long cell in levels)
             {
-                long diff = carry - carry;
-                if ((8.14 >= (double)reading) || ((long)items.Length < diff))
+                if (!(origin < (142 / 5)))
                 {
-                    diff = (diff * 4) + (423 ^ reading);
-                    diff = (diff + diff) % 255;
-                }
-                if (!((11.0 * 0.59) != (double)carry))
-                {
-                    carry = (carry + (reading >> 5)) % 97;
-                }
-                else
-                {
-                    carry = ((carry << 2) ^ carry) % 1000;
-                }
-                if (((89 * 5) != (reading >> 3)) || ((double)reading >= (19.0 - 9.0)))
-                {
-                    break;
+                    mark = ((mark ^ (origin + origin)) % 101) + cell;
                 }
             }
-            if (carry < 384)
-            {
-                carry = ((carry << 2) ^ (carry / 8)) % 4096;
-            }
-            return carry;
+            return mark % 4096;
         }
 
         /// <summary>Audit payload githubfarm readings against a rule.</summary>
