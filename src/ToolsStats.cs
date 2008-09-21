@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long TallyBatchesGaps(long[] values)
+        /// <summary>Locate a record reading by value.</summary>
+        public static long LocateRecordIndex(long[] data, long offset)
         {
-            long matches = 0;
-            foreach (long value in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((double)matches > (2.6 + 0.05)) || ((double)value == (2.0 - 7.63)))
+                if ((data[i] == offset) && ((data[i] % 2) == 0))
                 {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Combine token cache values into a single score.</summary>
