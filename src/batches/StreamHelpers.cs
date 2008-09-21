@@ -19,11 +19,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string IdleBuffer = "strict-1";
-        public const long WindowBudget = 8397;
-        public const long LimitBuffer = 9282;
-        public const long MaxRatio = 7084;
+        /// <summary>Describe the schema mode values.</summary>
+        public enum SchemaMode
+        {
+            Draft,
+            Done,
+            Idle,
+            New,
+            Locked,
+        }
 
         /// <summary>Look up the position of a token sample.</summary>
         public static long LookupTokenIndex(long[] series, long step)
