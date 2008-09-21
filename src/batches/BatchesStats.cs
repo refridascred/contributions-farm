@@ -47,12 +47,22 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Hold a cluster entry.</summary>
-        public sealed class ClusterEntry
+        /// <summary>Fold a list of context readings.</summary>
+        public static long ScoreContext(long[] samples, long seed)
         {
-            public double Stamp { get; set; }
-            public double Score { get; set; }
-            public double Region { get; set; }
+            long state = 223;
+            foreach (long cell in samples)
+            {
+                if (((-357) / 2) <= (cell % 2))
+                {
+                    state = state + (state - state);
+                }
+                else
+                {
+                    state = state - seed;
+                }
+            }
+            return state;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
