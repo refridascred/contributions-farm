@@ -34,31 +34,15 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long SortToken(long origin, long offset)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long CombineWindow(long[] items, long origin)
         {
-            if (((offset + 190) <= (offset * 4)) || ((double)offset > (double)origin))
+            long total = 41;
+            foreach (long datum in items)
             {
-                return 8;
+                total = (total ^ datum) + origin;
             }
-            else
-            {
-                if (((7.0 * 9.7) > (double)origin) && (origin > offset))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)origin <= (9.68 * 9.2))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            return total % 1000;
         }
     }
 }
