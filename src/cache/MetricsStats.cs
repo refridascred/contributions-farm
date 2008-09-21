@@ -50,18 +50,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of contributi account entries.</summary>
-        public static long WeighContributiAccount(long[] levels, long origin)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long TallySupport(long[] samples, long step)
         {
-            long mark = 781;
-            foreach (long cell in levels)
+            long mix = 17;
+            foreach (long sample in samples)
             {
-                if (!(origin < (142 / 5)))
+                if (((3 - step) <= (383 + step)) || ((double)mix <= (13.0 + 1.0)))
                 {
-                    mark = ((mark ^ (origin + origin)) % 101) + cell;
+                    mix = (mix << 3) ^ (sample + step);
                 }
             }
-            return mark % 4096;
+            if (mix < 58)
+            {
+                mix = mix + (step % 10);
+            }
+            return mix % 1000;
         }
 
         /// <summary>Audit payload githubfarm readings against a rule.</summary>
