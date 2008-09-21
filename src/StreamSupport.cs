@@ -19,12 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string BurstGraph = "stable-1";
-        public const long DefaultWidth = 5679;
-        public const long SoftSize = 5084;
-        public const string IdleBudget = "primary-v2";
-        public const long IdleGraph = 5076;
+        /// <summary>Audit notes editor readings against a rule.</summary>
+        public static long MeasureNotesEditorMatches(long[] data)
+        {
+            long tally = 0;
+            foreach (long cell in data)
+            {
+                if (!((cell + tally) <= cell))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Match up graph samples.</summary>
         public static long PairGraphCount(long[] samples)
