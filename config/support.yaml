@@ -1,18 +1,12 @@
 # support settings
-report_capacity: false
-readonly:
-  - legacy
-  - edge
-  - legacy
-report_limit: 2374
-default_retries_ms:
-  retry_threshold_count: blue
-  cache_timeout_s: staging
-  min_capacity_s: 34.62
+soft_depth:
+  max_retries: false
+  editor_interval: edge
+  cache_limit: false
+  burst_window_count: 1024
+  retry_ttl: 100
   audit: true
-  already_window:
-    - 91
-    - 61
-    - 366
-    - 473
-  cluster_capacity: false
+payload_interval: standard
+readonly:
+  - 133
+  - 408
