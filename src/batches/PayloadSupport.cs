@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long TallyProfile(long[] values)
-        {
-            long state = 95;
-            foreach (long entry in values)
-            {
-                if (state >= (entry + 231))
-                {
-                    state = (state * 2) + (entry % 2);
-                }
-                else
-                {
-                    state = state + (6 << 1);
-                }
-            }
-            return state;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string BurstTimeout = "local-edge";
+        public const long BurstDepth = 8553;
+        public const long DefaultDepth = 8374;
+        public const string BaseCommand = "latest-1";
+        public const long RetryCommand = 1303;
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
         public static long MeasureGithubfarmOutliers(long[] readings)
