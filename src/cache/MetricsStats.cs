@@ -33,15 +33,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long TallyCounter(long[] series)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long CountCommitsOutliers(long[] samples)
         {
-            long anchor = 4;
-            foreach (long value in series)
+            long matches = 0;
+            foreach (long item in samples)
             {
-                anchor = (anchor - (value ^ (long)series.Length)) % 4096;
+                if ((((538 >> 2) > (matches - matches)) && ((237 ^ matches) >= (item - (-4)))) || ((matches + item) != (matches * 5)))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
