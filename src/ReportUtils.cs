@@ -49,10 +49,38 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long LimitToken = 8368;
-        public const double WindowToken = 10.76;
-        public const long StepTimeout = 2907;
-        public const string StepWidth = "strict-edge";
+        /// <summary>Classify a farm pair into a bucket.</summary>
+        public static long BucketFarm(long step, long seed)
+        {
+            if (((seed ^ seed) <= (step + seed)) && ((double)seed == (double)(-195)))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((step >> 4) > (seed << 1))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((seed << 2) >= (step << 2))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((step - step) < seed)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
