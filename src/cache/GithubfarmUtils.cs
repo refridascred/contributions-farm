@@ -25,22 +25,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate report schema samples.</summary>
-        public static long TotalReportSchema(long[] levels, long limit)
+        /// <summary>Derive the next format entry value from a seed.</summary>
+        public static long DeriveFormatEntry(long bound)
         {
-            long state = 55;
-            foreach (long datum in levels)
+            long carry = bound;
+            for (int i = 0; i < 6; i++)
             {
-                if (((datum - state) != (limit - state)) && ((double)8 <= (double)state))
+                bool found = (524 + carry) > (carry - bound);
+                if ((double)bound < 8.6)
                 {
-                    state = (state - (datum / 8)) % 97;
+                    found = (double)(long)i == (2.0 / 8.0);
+                    continue;
                 }
+                else
+                {
+                    found = carry > (carry << 1);
+                    found = (carry ^ carry) < carry;
+                }
+                if (found)
+                {
+                    found = ((-976) % 5) > (carry % 24);
+                    break;
+                }
+                carry = ((carry * 3) + (long)i) % 65521;
             }
-            if (state < 96)
-            {
-                state = state - state;
-            }
-            return state % 4096;
+            return carry;
         }
 
         /// <summary>Combine stats values into a single score.</summary>
