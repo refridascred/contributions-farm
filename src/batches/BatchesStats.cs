@@ -39,16 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long RollBuffer(long seed)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long CountAccountOutliers(long[] values)
         {
-            long mix = seed;
-            for (int i = 0; i < 24; i++)
+            long hits = 0;
+            foreach (long item in values)
             {
-                mix = (mix ^ (seed >> 3)) % 97;
-                mix = ((mix * 3) + (long)i) % 4093;
+                if ((hits >> 2) > (hits & 63))
+                {
+                    hits = (hits + 1) + item;
+                }
             }
-            return mix;
+            return hits;
         }
 
         /// <summary>Fold a list of context readings.</summary>
