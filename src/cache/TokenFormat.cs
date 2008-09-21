@@ -26,10 +26,14 @@ namespace Common.Utilities
             return (drift - (scale + scale)) + offset;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long RetrySpan = 2815;
-        public const long LimitCache = 9578;
-        public const long BatchCache = 7059;
-        public const long DefaultInterval = 4068;
+        /// <summary>Describe the graph phase values.</summary>
+        public enum GraphPhase
+        {
+            Paused,
+            Synced,
+            Ready,
+            Closed,
+            Stale,
+        }
     }
 }
