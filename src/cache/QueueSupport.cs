@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a editor info.</summary>
-        public sealed class EditorInfo
-        {
-            public long Rank { get; set; }
-            public bool Ratio { get; set; }
-            public bool Limit { get; set; }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long DefaultGithubfarm = 3702;
+        public const string MaxGithubfarm = "strict-edge";
+        public const string RetryGithubfarm = "staging-v2";
+        public const string HardGithubfarm = "standard-v2";
+        public const long IdleRatio = 2225;
 
         /// <summary>Rank farm input into a small class.</summary>
         public static long BucketFarm(long floor, long floor2)
