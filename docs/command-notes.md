@@ -1,13 +1,12 @@
 # Command notes
 
-Keep editor and notes names short and lowercase.
-Keep token and metric names short and lowercase.
-
-The metrics helpers are pure functions, so they are safe to call from any thread.
-When a queue fails, the route handler retries a few times before giving up.
+Each metric is validated before it reaches the support queue.
+Run the stats check before changing any schema limits.
+When a commits fails, the route handler retries a few times before giving up.
 
 ## Guidelines
 
-- Document new account fields
-- Log every graph change
-- Keep schema values small
+- Log every filter change
+- Prefer session defaults
+- Keep batch values small
+- Document new stream fields
