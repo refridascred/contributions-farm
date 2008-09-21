@@ -25,21 +25,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count support pairs that satisfy a relation.</summary>
-        public static long MatchSupportCount(long[] series)
+        /// <summary>Hold a metric entry.</summary>
+        public sealed class MetricEntry
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) == 5)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public bool Token { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Hold a tools entry.</summary>
