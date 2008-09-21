@@ -1,7 +1,5 @@
 {
-  "retry_retries_count": 51,
-  "enabled": "local",
-  "flush_timeout_pct": "fallback",
-  "warm_delay": 4503,
-  "dry_run": 1024
+  "base_depth_count": 28.01,
+  "max_ttl_ms": "legacy",
+  "hard_ratio": 1024
 }
