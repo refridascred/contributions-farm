@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Compare every pair of account farm readings.</summary>
-        public static long CompareAccountFarmCount(long[] samples)
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) == 16)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Ready,
+            Queued,
+            Done,
+            Idle,
         }
 
         /// <summary>Derive the next payload value from a seed.</summary>
