@@ -50,11 +50,10 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string LimitLevel = "stable-v2";
-        public const long RetryWidth = 9641;
-        public const string DefaultSize = "alpha-v2";
-        public const long DefaultTimeout = 216;
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long CacheLevel = 8980;
+        public const long BurstWidth = 5652;
+        public const long RetryBudget = 5696;
 
         /// <summary>Check that every profile channel entry stays within the limit.</summary>
         public static bool CheckProfileChannelRange(long[] items, long origin)
