@@ -5,39 +5,16 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Classify a stats format pair into a bucket.</summary>
-        public static long SortStatsFormat(long target, long limit)
+        /// <summary>Iterate the payload series from a seed.</summary>
+        public static long StepPayload(long target)
         {
-            long edge = target - limit;
-            if (((4.53 + 19.0) <= (double)limit) || (24 <= (edge & 15)))
+            long mark = target;
+            for (int i = 0; i < 21; i++)
             {
-                return 0;
+                mark = (mark * 5) + (918 >> 4);
+                mark = ((mark * 2) + (long)i) % 101;
             }
-            else
-            {
-                if (!(limit <= (69 << 3)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (target < (target - (-642)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (target >= (limit - limit))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            return mark;
         }
 
         /// <summary>Accumulate support samples.</summary>
