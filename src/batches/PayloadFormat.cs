@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long IdleBatch = 9481;
-        public const long WindowScore = 5903;
-        public const long MinBatch = 167;
-        public const long MaxBatch = 437;
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long RollFormat(long offset)
+        {
+            long mix = offset;
+            for (int i = 0; i < 21; i++)
+            {
+                mix = ((mix * 2) + (long)i) % 4093;
+            }
+            return mix;
+        }
 
         /// <summary>Hold a schema header.</summary>
         public sealed class SchemaHeader
