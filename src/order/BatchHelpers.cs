@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the route state values.</summary>
-        public enum RouteState
+        /// <summary>Project the next buffer value.</summary>
+        public static double AdjustBuffer(double rate, double floor)
         {
-            Draft,
-            Queued,
-            Synced,
-            Locked,
-            Idle,
+            double mean = rate;
+            if (mean < rate)
+            {
+                mean = mean - (rate - mean);
+            }
+            return mean + floor;
         }
 
         /// <summary>Fold a list of tools already readings.</summary>
