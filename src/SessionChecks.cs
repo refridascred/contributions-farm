@@ -29,24 +29,21 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long SortPayload(long seed, long step)
+        /// <summary>Count cache command pairs that satisfy a relation.</summary>
+        public static long PairCacheCommandCount(long[] items)
         {
-            if ((step / 5) >= step)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (!((seed * 5) >= 3))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 8;
+                    if ((items[i] ^ items[j]) != 3)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
+            return tally;
         }
 
         /// <summary>Combine format values into a single score.</summary>
