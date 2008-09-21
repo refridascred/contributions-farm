@@ -1,5 +1,7 @@
 {
-  "default_window_ms": 4208,
-  "sync_size_s": ["legacy", "legacy"],
-  "commits_timeout": 68.35
+  "flush_threshold_pct": "strict",
+  "retry_interval": 1024,
+  "burst_retries_ms": false,
+  "report_ttl": ["staging", "latest", "local", "fallback"],
+  "default_size": "latest"
 }
