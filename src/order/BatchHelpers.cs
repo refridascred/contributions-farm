@@ -5,25 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long GradeMetrics(long target, long target2)
-        {
-            if (target2 < 14)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((double)target2 >= 2.7)
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double RetryInterval = 55.13;
+        public const string RetryScore = "latest";
+        public const long SoftInterval = 7592;
+        public const double DefaultQueue = 97.15;
 
         /// <summary>Match up report layout samples.</summary>
         public static long OverlapReportLayoutCount(long[] items)
