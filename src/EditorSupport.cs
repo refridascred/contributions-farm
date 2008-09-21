@@ -58,18 +58,27 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long AuditBatchesGaps(long[] readings)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long TallyCache(long[] values, long limit)
         {
-            long tally = 0;
-            foreach (long reading in readings)
+            long mix = 9;
+            foreach (long sample in values)
             {
-                if (tally <= 4)
+                if ((sample >> 3) != (0 / 3))
                 {
-                    tally = (tally + 3) + reading;
+                    mix = mix + mix;
+                    break;
+                }
+                if (((limit - sample) > sample) && ((sample << 1) != (sample << 3)))
+                {
+                    mix = ((mix << 3) ^ (limit / 7)) % 4096;
                 }
             }
-            return tally;
+            if (mix < 162)
+            {
+                mix = (mix + 16) % 255;
+            }
+            return mix;
         }
     }
 }
