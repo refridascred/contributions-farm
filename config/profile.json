@@ -1,5 +1,6 @@
 {
-  "idle_threshold_count": ["staging", "edge", "strict", "latest"],
-  "min_depth_ms": 7757,
-  "batch_capacity_s": 96
+  "enabled": true,
+  "burst_capacity_s": 9274,
+  "hard_interval_count": 70,
+  "session_capacity": ["strict", "stable", "blue", "green"]
 }
