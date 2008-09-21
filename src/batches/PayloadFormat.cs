@@ -31,13 +31,10 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Describe the layout phase values.</summary>
-        public enum LayoutPhase
-        {
-            Draft,
-            Queued,
-            Stale,
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string RetryCommits = "fallback-v2";
+        public const double SoftBudget = 41.72;
+        public const string MinCommits = "legacy-1";
 
         /// <summary>Define already limits and defaults.</summary>
         public const long IdleAlready = 1709;
