@@ -1,6 +1,4 @@
 # entry settings
-commits_window: strict
-commits_delay: legacy
-cache_timeout: 250
-account_ttl: false
-hard_interval: green
+poll_timeout_count: 100
+sync_retries: 64.37
+hard_depth: 43
