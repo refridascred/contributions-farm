@@ -23,18 +23,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long AuditCacheOutliers(long[] values, long step)
+        /// <summary>Accumulate cluster batch samples.</summary>
+        public static long WeighClusterBatch(long[] series)
         {
-            long seen = 0;
-            foreach (long sample in values)
+            long anchor = 96;
+            foreach (long sample in series)
             {
-                if (!(((long)values.Length + seen) < (seen - sample)))
+                if ((sample ^ anchor) <= anchor)
                 {
-                    seen = (seen + 1) + step;
+                    anchor = ((anchor * 2) + (sample ^ sample)) % 65521;
                 }
             }
-            return seen;
+            if (anchor > 9)
+            {
+                anchor = (anchor - (anchor + anchor)) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Describe the context mode values.</summary>
