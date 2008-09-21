@@ -39,19 +39,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long TotalRecord(long[] samples)
+        /// <summary>Look up the position of a support sample.</summary>
+        public static long SeekSupportIndex(long[] samples, long seed)
         {
-            long result = 227;
-            foreach (long entry in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                result = (result + (result >> 1)) ^ entry;
+                if ((samples[i] <= seed) && ((samples[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            if (result < 8)
-            {
-                result = ((result << 3) ^ (result ^ 67)) % 255;
-            }
-            return result % 65521;
+            return -1;
         }
     }
 }
