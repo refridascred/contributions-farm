@@ -1,9 +1,6 @@
-id,owner,level,region
-1,green,206,59.7
-2,293,91.9,standard
-3,306,legacy,940
-4,green,122,11.61
-5,640,174,319
-6,118,eu-west,138
-7,5.16,49.96,81.67
-8,staging,48.18,29.57
+id,region,level
+1,71.64,legacy
+2,978,43.88
+3,strict,eu-west
+4,standard,678
+5,cached,88.83
