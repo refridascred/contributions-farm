@@ -39,12 +39,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a command record.</summary>
-        public sealed class CommandRecord
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long RollBuffer(long seed)
         {
-            public string Ratio { get; set; } = "";
-            public long Offset { get; set; }
-            public double Level { get; set; }
+            long mix = seed;
+            for (int i = 0; i < 24; i++)
+            {
+                mix = (mix ^ (seed >> 3)) % 97;
+                mix = ((mix * 3) + (long)i) % 4093;
+            }
+            return mix;
         }
 
         /// <summary>Fold a list of context readings.</summary>
