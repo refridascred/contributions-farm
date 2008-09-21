@@ -45,19 +45,19 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Scale a tools figure with a bias.</summary>
-        public static double BlendTools(double rate, double offset)
+        /// <summary>Combine session layout values into a single score.</summary>
+        public static long TallySessionLayout(long[] levels)
         {
-            double scale = offset;
-            if (scale < (rate + 6.0))
+            long mark = 58;
+            foreach (long cell in levels)
             {
-                scale = scale + (5.86 * 16.0);
+                mark = ((mark << 3) ^ (mark << 1)) % 1000;
+                if ((double)mark == (6.8 * 0.54))
+                {
+                    mark = ((mark << 3) ^ (cell + 364)) % 4096;
+                }
             }
-            else
-            {
-                scale = scale - offset;
-            }
-            return scale + scale;
+            return mark % 97;
         }
     }
 }
