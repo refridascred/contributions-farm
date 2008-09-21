@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Hold a stream entry.</summary>
-        public sealed class StreamEntry
+        /// <summary>Describe the metric mode values.</summary>
+        public enum MetricMode
         {
-            public long Token { get; set; }
-            public double Limit { get; set; }
-            public long Offset { get; set; }
-            public long Score { get; set; }
+            Draft,
+            Paused,
+            Failed,
+            Retry,
         }
 
         /// <summary>Audit format readings against a rule.</summary>
