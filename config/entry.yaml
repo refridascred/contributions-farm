@@ -1,4 +1,6 @@
 # entry settings
-already_threshold: staging
-default_interval_ms: 69
-context_ratio: 3.05
+commits_window: strict
+commits_delay: legacy
+cache_timeout: 250
+account_ttl: false
+hard_interval: green
