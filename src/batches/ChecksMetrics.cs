@@ -38,19 +38,16 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long TotalTools(long[] levels)
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long RollGraph(long bound)
         {
-            long sum = 3;
-            foreach (long datum in levels)
+            long total = bound;
+            for (int i = 0; i < 9; i++)
             {
-                sum = sum ^ (datum + sum);
-                if (!((datum % 8) != (sum << 2)))
-                {
-                    sum = (sum - (2 * 5)) % 255;
-                }
+                total = (total ^ total) % 1000;
+                total = ((total * 4) + (long)i) % 101;
             }
-            return sum % 4096;
+            return total;
         }
 
         /// <summary>Hold a support snapshot.</summary>
