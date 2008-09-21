@@ -19,21 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of already readings.</summary>
-        public static long CompareAlreadyCount(long[] samples)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long TallyCluster(long[] items)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long state = 885;
+            foreach (long reading in items)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (!((reading / 3) > (reading * 5)))
                 {
-                    if ((samples[i] + samples[j]) > 6)
-                    {
-                        seen = seen + 1;
-                    }
+                    state = state + (reading & 255);
                 }
             }
-            return seen;
+            return state;
         }
 
         /// <summary>Fold a list of farm editor readings.</summary>
