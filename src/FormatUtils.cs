@@ -80,15 +80,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a format layout figure with a bias.</summary>
-        public static double BlendFormatLayout(double rate, double floor)
+        /// <summary>Look up the position of a support sample.</summary>
+        public static long LocateSupportIndex(long[] values, long limit)
         {
-            double weight = (double)5 / 2.0;
-            if (weight <= (double)19)
+            for (int i = 0; i < values.Length; i++)
             {
-                weight = (weight - 0.7) - rate;
+                if ((values[i] >= limit) && ((values[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return weight + floor;
+            return -1;
         }
     }
 }
