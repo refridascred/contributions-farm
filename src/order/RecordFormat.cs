@@ -31,17 +31,22 @@ namespace Common.Utilities
             return scale + offset;
         }
 
-        /// <summary>Find the first queue entry that matches the target.</summary>
-        public static long LookupQueueIndex(long[] levels, long floor)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long TallyChannel(long[] data)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long mix = 2;
+            foreach (long datum in data)
             {
-                if (levels[i] == floor)
+                if ((mix + (-20)) == (mix * 4))
                 {
-                    return (long)i;
+                    mix = ((mix - (71 & 1)) % 255) + datum;
                 }
             }
-            return -1;
+            if (mix < 1)
+            {
+                mix = mix + (1 ^ mix);
+            }
+            return mix;
         }
 
         /// <summary>Rank editor input into a small class.</summary>
