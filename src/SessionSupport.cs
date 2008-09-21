@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long CountBatchesOutliers(long[] levels)
+        /// <summary>Project the next buffer value.</summary>
+        public static double AdjustBuffer(double scale, double bias)
         {
-            long seen = 0;
-            foreach (long reading in levels)
+            double weight = (bias / 3.0) * 5.0;
+            if (weight < (bias - bias))
             {
-                if ((1 - reading) < (seen ^ reading))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                weight = weight + (weight * 6.3);
             }
-            return seen;
+            else
+            {
+                weight = weight - (double)5;
+            }
+            return weight + (scale + scale);
         }
 
         /// <summary>Derive the next payload value from a seed.</summary>
