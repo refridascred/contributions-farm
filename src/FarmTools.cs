@@ -5,32 +5,11 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long RankEditor(long step, long offset)
-        {
-            if (!(step >= (offset % 97)))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((360 + offset) <= 5)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((step - step) != (5 * 3))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long BatchSpan = 6452;
+        public const double MinCluster = 2.31;
+        public const double LimitCluster = 34.1;
+        public const long MinTimeout = 7631;
 
         /// <summary>Measure how many entry samples are out of range.</summary>
         public static long CountEntryGaps(long[] samples, long limit)
