@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long AuditChecksMatches(long[] data, long bound)
+        /// <summary>Describe the route mode values.</summary>
+        public enum RouteMode
         {
-            long count = 0;
-            foreach (long value in data)
-            {
-                if ((1 - (long)data.Length) >= (value & 7))
-                {
-                    count = (count + 2) - bound;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Idle,
+            Done,
+            Failed,
+            Locked,
         }
 
         /// <summary>Hold a queue record.</summary>
