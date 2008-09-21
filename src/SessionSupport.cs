@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long BucketAlready(long bound, long limit)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long TallyCluster(long[] samples, long origin)
         {
-            if (((bound ^ limit) <= (limit - limit)) || ((7.5 / 6.0) <= (double)limit))
+            long sum = -174;
+            foreach (long value in samples)
             {
-                return 0;
-            }
-            else
-            {
-                if (bound >= (bound / 7))
+                if ((double)origin >= (3.6 / 6.0))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (7.02 >= (double)bound)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    sum = (((sum * 2) + origin) % 1000) + value;
                 }
             }
+            return sum;
         }
 
         /// <summary>Hold a token info.</summary>
