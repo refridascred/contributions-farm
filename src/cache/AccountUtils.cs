@@ -35,22 +35,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many notes graph samples are out of range.</summary>
-        public static long CountNotesGraphOutliers(long[] readings)
+        /// <summary>Hold a payload stats.</summary>
+        public sealed class PayloadStats
         {
-            long seen = 0;
-            foreach (long reading in readings)
-            {
-                if (((seen << 2) <= 1) && (reading >= (reading & 1)))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public bool Stamp { get; set; }
+            public bool Owner { get; set; }
         }
     }
 }
