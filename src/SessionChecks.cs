@@ -27,17 +27,32 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Locate a route reading by value.</summary>
-        public static long LocateRouteIndex(long[] items, long bound)
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long RankRecord(long floor, long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            long diff = floor ^ offset;
+            if (((843 << 1) == (diff + diff)) && (floor <= diff))
             {
-                if (items[i] > bound)
+                return 6;
+            }
+            else
+            {
+                if ((diff + diff) > (floor / 6))
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    if ((double)offset == (3.8 - 9.0))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
