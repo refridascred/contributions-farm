@@ -76,22 +76,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long AuditCommandOutliers(long[] levels, long target)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long TallyEditorGaps(long[] data)
         {
-            long matches = 0;
-            foreach (long reading in levels)
+            long hits = 0;
+            foreach (long sample in data)
             {
-                if ((7.2 + 4.2) < (double)target)
+                if ((252 % 97) == (hits - hits))
                 {
-                    matches = (matches + 2) + reading;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    hits = (hits + 3) - sample;
                 }
             }
-            return matches;
+            return hits;
         }
     }
 }
