@@ -1,4 +1,4 @@
 # entry settings
-warm_timeout: primary
-verbose: latest
-stream_window: 67
+audit: 8850
+persist: 60
+max_ttl: 65
