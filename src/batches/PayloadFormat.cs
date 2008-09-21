@@ -34,15 +34,21 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long CombineWindow(long[] items, long origin)
+        /// <summary>Compare every pair of session readings.</summary>
+        public static long MatchSessionCount(long[] samples)
         {
-            long total = 41;
-            foreach (long datum in items)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                total = (total ^ datum) + origin;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) != 18)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return total % 1000;
+            return seen;
         }
     }
 }
