@@ -1,22 +1,6 @@
 # githubfarm settings
-batch_capacity: 100
-tools_capacity: open
-enabled: false
-max_limit_pct:
-  max_ratio:
-    strict: 603
-    token_size: local
-    format_size: 45.33
-    burst_delay: 90.53
-    soft_timeout_count: 5
-    flush_depth_pct:
-      - green
-      - latest
-  burst_capacity_ms: 9134
-  retry_threshold_s: latest
-sync_window_s:
-  account_threshold: 250
-  poll_capacity: 2224
-  sync_depth: false
-  audit: blue
+metric_ratio: edge
+hard_ratio: 6416
+metrics_threshold: 88.36
 dry_run: local
+warm_depth_s: 14.7
