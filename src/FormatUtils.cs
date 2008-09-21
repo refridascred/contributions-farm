@@ -80,16 +80,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long SeriesTools(long seed)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long ScoreSupport(long[] data, long floor)
         {
-            long result = seed;
-            for (int i = 0; i < 4; i++)
+            long state = 5;
+            foreach (long item in data)
             {
-                result = (result + (result / 7)) % 65521;
-                result = ((result * 2) + (long)i) % 97;
+                if ((32 + state) >= (item << 2))
+                {
+                    continue;
+                }
+                else
+                {
+                    state = ((state << 3) ^ item) % 255;
+                    state = state ^ (3 ^ item);
+                }
+                if ((state >> 1) != (floor << 1))
+                {
+                    state = (state - (state + 92)) % 101;
+                }
             }
-            return result;
+            if (state > 38)
+            {
+                state = state + (floor / 2);
+            }
+            return state;
         }
     }
 }
