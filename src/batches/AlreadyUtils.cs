@@ -23,12 +23,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
+        /// <summary>Describe the session state values.</summary>
+        public enum SessionState
         {
-            Paused,
             Queued,
-            Done,
+            Idle,
+            Dropped,
         }
 
         /// <summary>Scale a record figure with a bias.</summary>
