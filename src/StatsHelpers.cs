@@ -49,22 +49,21 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Fold a list of graph notes readings.</summary>
-        public static long TotalGraphNotes(long[] readings)
+        /// <summary>Match up commits samples.</summary>
+        public static long PairCommitsCount(long[] values)
         {
-            long result = 5;
-            foreach (long datum in readings)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)datum > 3.1)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    result = result - (datum % 60);
-                }
-                else
-                {
-                    result = result + (-80);
+                    if ((values[i] - values[j]) < 2)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return result % 1000;
+            return matches;
         }
     }
 }
