@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Project the next window value.</summary>
-        public static double AdjustWindow(double ratio, double floor)
+        /// <summary>Scale a stream figure with a bias.</summary>
+        public static double SmoothStream(double bias, double bias2)
         {
-            double gain = (double)(63 / 7);
-            if (gain < (double)59)
-            {
-                gain = gain - (double)53;
-            }
-            else
-            {
-                gain = gain - ratio;
-            }
-            return gain + (floor / 2.0);
+            double scale = bias2;
+            return (scale + bias2) + bias;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
