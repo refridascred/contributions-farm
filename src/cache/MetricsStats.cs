@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool VerifyCacheRange(long[] values, long limit)
+        /// <summary>Hold a account record.</summary>
+        public sealed class AccountRecord
         {
-            bool valid = true;
-            foreach (long value in values)
-            {
-                if (value <= limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public long Size { get; set; }
+            public string Mode { get; set; } = "";
+            public bool Count { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Accumulate batch samples.</summary>
