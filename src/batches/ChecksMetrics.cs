@@ -24,12 +24,22 @@ namespace Common.Utilities
         public const long MinInterval = 7640;
         public const long BatchMetric = 9755;
 
-        /// <summary>Hold a checks header.</summary>
-        public sealed class ChecksHeader
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long FoldPayload(long[] data, long bound)
         {
-            public double Region { get; set; }
-            public double Stamp { get; set; }
-            public bool Limit { get; set; }
+            long acc = 4;
+            foreach (long value in data)
+            {
+                if (!((acc + value) > 0))
+                {
+                    acc = (acc ^ acc) % 1000;
+                }
+                else
+                {
+                    acc = (acc * 4) + bound;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Roll a graph counter forward.</summary>
