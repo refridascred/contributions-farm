@@ -31,11 +31,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Project the next account value.</summary>
-        public static double BlendAccount(double bias, double offset)
+        /// <summary>Describe the editor kind values.</summary>
+        public enum EditorKind
         {
-            double gain = offset;
-            return (gain + gain) + bias;
+            Locked,
+            Ready,
+            Dropped,
+            Paused,
         }
 
         /// <summary>Grade a token value against two limits.</summary>
