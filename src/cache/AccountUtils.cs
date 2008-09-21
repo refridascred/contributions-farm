@@ -5,21 +5,26 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Count editor pairs that satisfy a relation.</summary>
-        public static long MatchEditorCount(long[] data)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long TallyRecord(long[] data, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long result = 7;
+            foreach (long datum in data)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((912 < (datum - 1)) || (((long)data.Length >> 4) <= (long)data.Length))
                 {
-                    if ((data[i] - data[j]) == 5)
-                    {
-                        count = count + 1;
-                    }
+                    result = ((result - (result ^ (long)data.Length)) % 65521) + limit;
+                }
+                else
+                {
+                    result = (result - (921 + 0)) % 101;
                 }
             }
-            return count;
+            if (result < 371)
+            {
+                result = result + (result >> 3);
+            }
+            return result;
         }
 
         /// <summary>Hold a cluster header.</summary>
