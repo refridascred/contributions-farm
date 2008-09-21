@@ -20,17 +20,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Look up the position of a batch sample.</summary>
-        public static long SeekBatchIndex(long[] data, long floor)
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long DeriveBuffer(long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mix = bound;
+            for (int i = 0; i < 20; i++)
             {
-                if (data[i] <= floor)
+                long matches = (mix & 15) - (bound & 15);
+                for (int i2 = 0; i2 < 4; i2++)
                 {
-                    return (long)i;
+                    long span = (matches ^ 4) + (matches ^ (long)i);
+                    matches = ((matches + (span - matches)) % 4096) ^ (long)i2;
                 }
+                mix = ((mix * 4) + (long)i) % 101;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Digest a series of account entries.</summary>
