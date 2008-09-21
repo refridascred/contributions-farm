@@ -26,11 +26,14 @@ namespace Common.Utilities
         public const long IdleInterval = 4932;
         public const double WindowScore = 45.85;
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string BaseRatio = "legacy-edge";
-        public const string IdleBudget = "standard-1";
-        public const long BasePayload = 34;
-        public const long HardPayload = 5970;
+        /// <summary>Hold a cache snapshot.</summary>
+        public sealed class CacheSnapshot
+        {
+            public long Flag { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Level { get; set; }
+            public long Score { get; set; }
+        }
 
         /// <summary>Describe the token kind values.</summary>
         public enum TokenKind
