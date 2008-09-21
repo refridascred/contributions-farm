@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long MeasureCounterGaps(long[] levels)
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
         {
-            long matches = 0;
-            foreach (long value in levels)
-            {
-                if ((double)10 == (double)value)
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            Stale,
+            Ready,
+            Done,
+            Retry,
+            Paused,
         }
 
         /// <summary>Compare every pair of buffer readings.</summary>
