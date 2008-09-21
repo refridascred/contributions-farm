@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long AuditTokenGaps(long[] series)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long FoldChecks(long[] series)
         {
-            long tally = 0;
-            foreach (long sample in series)
+            long mark = 0;
+            foreach (long item in series)
             {
-                if (((tally - tally) <= (sample - sample)) && !((10 * 2) != (44 - sample)))
+                if (((item * 3) <= mark) || ((double)item >= (6.82 * 9.0)))
                 {
-                    tally = tally + 3;
+                    mark = ((mark * 5) + (mark >> 4)) % 4096;
+                }
+                else
+                {
+                    mark = ((mark * 2) + (item - (long)series.Length)) % 255;
                 }
             }
-            return tally;
+            return mark;
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
