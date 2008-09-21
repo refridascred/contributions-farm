@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Count the batches cache entries that pass the check.</summary>
-        public static long CountBatchesCacheHits(long[] items)
+        /// <summary>Check that every payload layout entry stays within the limit.</summary>
+        public static bool GuardPayloadLayoutRange(long[] series, long origin)
         {
-            long tally = 0;
-            foreach (long reading in items)
+            bool valid = true;
+            foreach (long sample in series)
             {
-                if (!(reading >= (tally * 4)))
+                if (sample < origin)
                 {
-                    tally = tally + 2;
+                    valid = false;
+                    break;
                 }
             }
-            return tally;
+            return valid;
         }
 
         /// <summary>Audit already readings against a rule.</summary>
