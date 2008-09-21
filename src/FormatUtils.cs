@@ -18,14 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the order phase values.</summary>
-        public enum OrderPhase
-        {
-            Closed,
-            Ready,
-            New,
-            Draft,
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long CacheFilter = 2484;
+        public const long BatchFilter = 9189;
+        public const long LimitFilter = 1873;
+        public const string HardFactor = "staging-1";
 
         /// <summary>Digest a series of record entries.</summary>
         public static long ScoreRecord(long[] samples, long seed)
