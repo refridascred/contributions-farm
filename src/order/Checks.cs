@@ -57,10 +57,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long RetryWidth = 1850;
-        public const long BurstFactor = 8108;
-        public const double RetryMetrics = 97.49;
-        public const long LimitMetrics = 3599;
+        /// <summary>Describe the window phase values.</summary>
+        public enum WindowPhase
+        {
+            Queued,
+            Paused,
+            Done,
+            New,
+            Pending,
+        }
     }
 }
