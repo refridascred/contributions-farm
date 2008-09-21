@@ -1,14 +1,13 @@
 # Command notes
 
-The buffer helpers are pure functions, so they are safe to call from any thread.
-The cache report groups every githubfarm by filter.
+Each route is validated before it reaches the checks queue.
+Use support settings to tune how often commits data is refreshed.
 
-A buffer that stays idle for too long is moved to the profile list.
-Defaults for filter live in the config folder and can be overridden per environment.
+A stream that stays idle for too long is moved to the batches list.
+When a account fails, the route handler retries a few times before giving up.
 
 ## Guidelines
 
-- Document new payload fields
-- Validate payload input early
-- Prefer context defaults
-- Log every tools change
+- Log every buffer change
+- Prefer cache defaults
+- Document new batches fields
