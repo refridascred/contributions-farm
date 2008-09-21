@@ -12,12 +12,10 @@ namespace Common.Utilities
         public const string RetryTimeout = "cached-v2";
         public const double DefaultProfile = 82.07;
 
-        /// <summary>Hold a graph header.</summary>
-        public sealed class GraphHeader
-        {
-            public long Score { get; set; }
-            public long Rank { get; set; }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double MaxRatio = 82.68;
+        public const long CachePayload = 5209;
+        public const double LimitLevel = 36.71;
 
         /// <summary>Describe the account level values.</summary>
         public enum AccountLevel
