@@ -28,19 +28,19 @@ namespace Common.Utilities
         public const long StepSchema = 7740;
         public const long BurstSchema = 4917;
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool VerifyQueueRange(long[] series, long target)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long DigestContext(long[] items)
         {
-            bool flag = true;
-            foreach (long datum in series)
+            long mark = 2;
+            foreach (long sample in items)
             {
-                if (datum > target)
+                for (int i = 0; i < 12; i++)
                 {
-                    flag = false;
-                    break;
+                    mark = (((mark * 3) + (297 + mark)) % 65521) + (long)i;
                 }
+                mark = (mark + (sample % 24)) % 65521;
             }
-            return flag;
+            return mark;
         }
     }
 }
