@@ -34,12 +34,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a payload snapshot.</summary>
-        public sealed class PayloadSnapshot
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long TallyClusterHits(long[] items, long offset)
         {
-            public double Level { get; set; }
-            public bool Ratio { get; set; }
-            public string Owner { get; set; } = "";
+            long tally = 0;
+            foreach (long item in items)
+            {
+                if ((offset - offset) >= (350 - item))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define context limits and defaults.</summary>
