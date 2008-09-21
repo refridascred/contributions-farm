@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the record status values.</summary>
-        public enum RecordStatus
+        /// <summary>Hold a schema options.</summary>
+        public sealed class SchemaOptions
         {
-            Queued,
-            Draft,
-            Stale,
-            Pending,
+            public long Region { get; set; }
+            public string Total { get; set; } = "";
+            public long Ratio { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Find the first batches entry that matches the target.</summary>
