@@ -1,14 +1,13 @@
 # Command notes
 
-Run the batch check before changing any cache limits.
-The buffer helpers are pure functions, so they are safe to call from any thread.
+When a farm fails, the route handler retries a few times before giving up.
+Each metrics is validated before it reaches the entry queue.
 
-A githubfarm that stays idle for too long is moved to the filter list.
-Use payload settings to tune how often githubfarm data is refreshed.
+The context module keeps contributi values in sync with the support cache.
+Defaults for metrics live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Prefer editor defaults
-- Review window limits each release
-- Log every entry change
-- Validate already input early
+- Review batches limits each release
+- Prefer support defaults
+- Log every cluster change
