@@ -19,12 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long IdleSize = 9148;
-        public const long IdleWidth = 9300;
-        public const long StepSize = 3366;
-        public const long StepFormat = 899;
-        public const long StepWidth = 8935;
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long CountCommitsOutliers(long[] items, long bound)
+        {
+            long hits = 0;
+            foreach (long datum in items)
+            {
+                if (((hits & 31) >= (hits % 12)) && (((bound - hits) < datum) && ((8.91 - 4.0) >= (double)hits)))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Iterate the contributi series from a seed.</summary>
         public static long DeriveContributi(long floor)
