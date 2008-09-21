@@ -1,12 +1,6 @@
 {
-  "cache_ratio_s": 60,
-  "readonly": "local",
-  "warm_interval": 17,
-  "record_threshold": false,
-  "strict": {
-    "dry_run": 250,
-    "route_threshold": 100,
-    "poll_capacity_s": [324, 399, 230, 75]
-  },
-  "soft_ratio": "local"
+  "soft_ttl": "eu-west",
+  "cache_window": 51,
+  "layout_size": "eu-west",
+  "flush_window_ms": "standard"
 }
