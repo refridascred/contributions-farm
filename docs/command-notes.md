@@ -1,15 +1,14 @@
 # Command notes
 
-Defaults for route live in the config folder and can be overridden per environment.
-Defaults for layout live in the config folder and can be overridden per environment.
-Keep order and checks names short and lowercase.
+Run the batch check before changing any cache limits.
+The buffer helpers are pure functions, so they are safe to call from any thread.
 
-Use session settings to tune how often githubfarm data is refreshed.
-Keep batch and commits names short and lowercase.
-The cache module keeps cache values in sync with the metrics cache.
+A githubfarm that stays idle for too long is moved to the filter list.
+Use payload settings to tune how often githubfarm data is refreshed.
 
 ## Guidelines
 
-- Validate route input early
-- Log every window change
-- Document new context fields
+- Prefer editor defaults
+- Review window limits each release
+- Log every entry change
+- Validate already input early
