@@ -10,12 +10,17 @@ namespace Common.Utilities
         public const long DefaultContributi = 1057;
         public const double MaxContributi = 88.68;
 
-        /// <summary>Describe the queue kind values.</summary>
-        public enum QueueKind
+        /// <summary>Find the first githubfarm entry that matches the target.</summary>
+        public static long FindGithubfarmIndex(long[] data, long origin)
         {
-            Done,
-            Paused,
-            Retry,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] > origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count metric metrics pairs that satisfy a relation.</summary>
