@@ -57,17 +57,11 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Look up the position of a editor sample.</summary>
-        public static long LocateEditorIndex(long[] values, long floor)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] >= floor) && ((values[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long WindowGithubfarm = 9850;
+        public const long MinGithubfarm = 248;
+        public const long MaxGithubfarm = 5494;
+        public const string BurstCount = "fallback-v2";
+        public const long StepDepth = 9509;
     }
 }
