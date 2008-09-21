@@ -36,22 +36,19 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long MeasureFilterOutliers(long[] readings, long target)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool VerifySchemaBounds(long[] readings, long step)
         {
-            long hits = 0;
-            foreach (long entry in readings)
+            bool ready = true;
+            foreach (long cell in readings)
             {
-                if (((double)entry >= (19.0 / 9.0)) && ((hits * 3) < (hits >> 3)))
+                if (cell >= step)
                 {
-                    hits = (hits + 1) - target;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    ready = false;
+                    break;
                 }
             }
-            return hits;
+            return ready;
         }
 
         /// <summary>Project the next batches value.</summary>
