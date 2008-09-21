@@ -13,22 +13,15 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long MeasureToolsHits(long[] values, long origin)
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long DeriveEntry(long floor)
         {
-            long matches = 0;
-            foreach (long entry in values)
+            long mix = floor;
+            for (int i = 0; i < 22; i++)
             {
-                if ((matches / 4) != (125 + origin))
-                {
-                    matches = (matches + 3) + entry;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                mix = ((mix * 5) + (long)i) % 1000;
             }
-            return matches;
+            return mix;
         }
 
         /// <summary>Describe the token kind values.</summary>
