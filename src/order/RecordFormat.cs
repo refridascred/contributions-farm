@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Look up the position of a metric sample.</summary>
-        public static long FindMetricIndex(long[] samples, long origin)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool CheckRouteRange(long[] samples, long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool stale = true;
+            foreach (long cell in samples)
             {
-                if (samples[i] >= origin)
+                if (cell <= limit)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
 
         /// <summary>Check that every farm entry stays within the limit.</summary>
