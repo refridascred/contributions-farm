@@ -5,29 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Rank editor commits input into a small class.</summary>
-        public static long SortEditorCommits(long target, long step)
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long ClassifyStream(long origin, long floor)
         {
-            if ((0 + 1) >= step)
+            if ((double)floor >= (15.0 / 4.0))
             {
-                return 6;
+                return 5;
             }
             else
             {
-                if (((step >> 4) <= (target % 100)) && ((step * 2) <= (step & 127)))
+                if ((double)3 <= (double)floor)
                 {
-                    return 0;
+                    return 3;
                 }
                 else
                 {
-                    if (target <= step)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    return 0;
                 }
             }
         }
