@@ -1,12 +1,7 @@
 {
-  "base_depth_s": 6.74,
-  "default_window_count": 2,
-  "default_timeout": "standard",
-  "min_depth": {
-    "compress": "open",
-    "idle_ratio": [4, 386],
-    "enabled": ["blue", "strict", "local"],
-    "max_window_ms": 1024,
-    "filter_ratio": "open"
-  }
+  "idle_limit_count": 26.12,
+  "checks_interval": "local",
+  "strict": "standard",
+  "persist": 53.47,
+  "entry_timeout": false
 }
