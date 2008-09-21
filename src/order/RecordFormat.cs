@@ -64,11 +64,13 @@ namespace Common.Utilities
         public const long HardScore = 619;
         public const double BurstLevel = 72.77;
 
-        /// <summary>Hold a batch summary.</summary>
-        public sealed class BatchSummary
+        /// <summary>Hold a record summary.</summary>
+        public sealed class RecordSummary
         {
+            public long Flag { get; set; }
+            public string Label { get; set; } = "";
+            public string Rank { get; set; } = "";
             public string Owner { get; set; } = "";
-            public long Stamp { get; set; }
         }
     }
 }
