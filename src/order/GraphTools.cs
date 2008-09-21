@@ -49,13 +49,9 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Hold a batches stats.</summary>
-        public sealed class BatchesStats
-        {
-            public bool Ratio { get; set; }
-            public bool Limit { get; set; }
-            public bool Offset { get; set; }
-            public long Score { get; set; }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long IdleReport = 3687;
+        public const string StepReport = "standard-edge";
+        public const long RetryFactor = 9691;
     }
 }
