@@ -34,31 +34,11 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long GradeMetric(long offset, long limit)
+        /// <summary>Hold a stream info.</summary>
+        public sealed class StreamInfo
         {
-            if ((offset / 5) == (898 & 3))
-            {
-                return 8;
-            }
-            else
-            {
-                if (offset > (offset << 3))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((offset + limit) <= (limit - offset))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            public bool Mode { get; set; }
+            public string Region { get; set; } = "";
         }
     }
 }
