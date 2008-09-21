@@ -27,18 +27,13 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long AuditStatsMatches(long[] readings)
+        /// <summary>Hold a tools snapshot.</summary>
+        public sealed class ToolsSnapshot
         {
-            long count = 0;
-            foreach (long cell in readings)
-            {
-                if (17.0 > (double)count)
-                {
-                    count = (count + 1) ^ cell;
-                }
-            }
-            return count;
+            public long Level { get; set; }
+            public double Ratio { get; set; }
+            public long Rank { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Validate cache filter readings against a bound.</summary>
