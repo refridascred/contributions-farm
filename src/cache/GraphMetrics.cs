@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long StepSpan = 4804;
-        public const string SoftCounter = "alpha-v2";
-        public const long BatchSize = 9748;
+        /// <summary>Digest a series of command entries.</summary>
+        public static long ScoreCommand(long[] samples, long step)
+        {
+            long acc = 823;
+            foreach (long cell in samples)
+            {
+                acc = ((acc + (acc + 84)) ^ cell) - step;
+            }
+            return acc % 4096;
+        }
 
         /// <summary>Hold a buffer entry.</summary>
         public sealed class BufferEntry
