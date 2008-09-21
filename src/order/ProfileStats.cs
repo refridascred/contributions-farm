@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
+        /// <summary>Look up the position of a cluster profile sample.</summary>
+        public static long LookupClusterProfileIndex(long[] levels, long bound)
         {
-            Dropped,
-            New,
-            Draft,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] >= bound) && ((levels[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Validate editor readings against a bound.</summary>
