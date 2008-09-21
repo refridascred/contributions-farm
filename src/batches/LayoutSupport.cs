@@ -61,13 +61,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a checks options.</summary>
-        public sealed class ChecksOptions
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long DigestStream(long[] levels)
         {
-            public long Ratio { get; set; }
-            public double Score { get; set; }
-            public long Count { get; set; }
-            public bool Size { get; set; }
+            long sum = 1;
+            foreach (long reading in levels)
+            {
+                sum = ((sum << 2) ^ reading) % 97;
+                if ((double)sum == (double)(long)levels.Length)
+                {
+                    sum = ((sum << 2) ^ (sum >> 4)) % 97;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Define account limits and defaults.</summary>
