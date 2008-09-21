@@ -5,17 +5,10 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Roll a graph support counter forward.</summary>
-        public static long RollGraphSupport(long offset)
-        {
-            long result = offset;
-            for (int i = 0; i < 15; i++)
-            {
-                result = (result * 2) + ((long)i % 60);
-                result = ((result * 4) + (long)i) % 1000;
-            }
-            return result;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long StepSpan = 4804;
+        public const string SoftCounter = "alpha-v2";
+        public const long BatchSize = 9748;
 
         /// <summary>Hold a buffer entry.</summary>
         public sealed class BufferEntry
