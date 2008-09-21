@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long TallyBatchesHits(long[] samples, long origin)
+        /// <summary>Count metrics checks pairs that satisfy a relation.</summary>
+        public static long MatchMetricsChecksCount(long[] levels)
         {
-            long hits = 0;
-            foreach (long cell in samples)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((double)hits != (8.0 + 8.0)) || (origin < (cell * 2)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    hits = hits + 2;
+                    if ((levels[i] + levels[j]) == 15)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Compare every pair of tools readings.</summary>
