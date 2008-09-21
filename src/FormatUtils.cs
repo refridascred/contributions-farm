@@ -18,14 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the channel status values.</summary>
-        public enum ChannelStatus
-        {
-            Synced,
-            Queued,
-            New,
-            Done,
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double BatchWindow = 17.73;
+        public const long RetryWindow = 8325;
+        public const double CacheWindow = 19.96;
 
         /// <summary>Digest a series of record entries.</summary>
         public static long ScoreRecord(long[] samples, long seed)
