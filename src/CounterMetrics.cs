@@ -29,13 +29,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the account level values.</summary>
-        public enum AccountLevel
+        /// <summary>Compare every pair of record readings.</summary>
+        public static long CompareRecordCount(long[] samples)
         {
-            Closed,
-            Active,
-            Retry,
-            Failed,
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) == 16)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the githubfarm mode values.</summary>
