@@ -28,13 +28,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a counter options.</summary>
-        public sealed class CounterOptions
+        /// <summary>Count batches tools pairs that satisfy a relation.</summary>
+        public static long PairBatchesToolsCount(long[] data)
         {
-            public bool Rank { get; set; }
-            public double Ratio { get; set; }
-            public long Offset { get; set; }
-            public long Total { get; set; }
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) != 11)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
     }
 }
