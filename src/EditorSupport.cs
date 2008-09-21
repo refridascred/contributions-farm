@@ -73,27 +73,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long TallyCache(long[] values, long limit)
+        /// <summary>Roll a entry editor counter forward.</summary>
+        public static long SeriesEntryEditor(long origin)
         {
-            long mix = 9;
-            foreach (long sample in values)
+            long total = origin;
+            for (int i = 0; i < 24; i++)
             {
-                if ((sample >> 3) != (0 / 3))
+                for (int i2 = 0; i2 < 8; i2++)
                 {
-                    mix = mix + mix;
-                    break;
+                    total = (((total * 5) + 8) % 4096) ^ (long)i2;
                 }
-                if (((limit - sample) > sample) && ((sample << 1) != (sample << 3)))
-                {
-                    mix = ((mix << 3) ^ (limit / 7)) % 4096;
-                }
+                total = total - (origin + total);
+                total = ((total * 2) + (long)i) % 4093;
             }
-            if (mix < 162)
-            {
-                mix = (mix + 16) % 255;
-            }
-            return mix;
+            return total;
         }
     }
 }
