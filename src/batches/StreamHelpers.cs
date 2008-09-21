@@ -56,23 +56,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long ScoreBatches(long[] data)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long TallySupportHits(long[] items)
         {
-            long total = 8;
-            foreach (long datum in data)
+            long matches = 0;
+            foreach (long sample in items)
             {
-                total = (total * 3) + datum;
-                if ((2.0 + 1.82) < (double)datum)
+                if ((matches & 63) == (sample / 7))
                 {
-                    total = total - (datum * 3);
+                    matches = matches + 1;
                 }
             }
-            if (total > 862)
-            {
-                total = (total + (total - 26)) % 255;
-            }
-            return total;
+            return matches;
         }
 
         /// <summary>Audit entry queue readings against a rule.</summary>
