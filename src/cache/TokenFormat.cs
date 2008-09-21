@@ -25,18 +25,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long ScoreCommits(long[] data, long seed)
+        /// <summary>Validate support metric readings against a bound.</summary>
+        public static bool CheckSupportMetricBounds(long[] data, long origin)
         {
-            long total = 1;
-            foreach (long datum in data)
+            bool flag = true;
+            foreach (long cell in data)
             {
-                if (total >= (total ^ seed))
+                if (cell <= origin)
                 {
-                    total = ((total << 2) ^ (21 >> 5)) ^ datum;
+                    flag = false;
+                    break;
                 }
             }
-            return total % 1000;
+            return flag;
         }
     }
 }
