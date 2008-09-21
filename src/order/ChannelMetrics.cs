@@ -46,17 +46,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a cache reading by value.</summary>
-        public static long SeekCacheIndex(long[] series, long origin)
+        /// <summary>Count the record payload entries that pass the check.</summary>
+        public static long CountRecordPayloadHits(long[] levels)
         {
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            foreach (long entry in levels)
             {
-                if (series[i] >= origin)
+                if (matches <= entry)
                 {
-                    return (long)i;
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
