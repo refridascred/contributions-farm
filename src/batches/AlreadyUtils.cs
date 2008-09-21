@@ -52,18 +52,20 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long MeasureChecksOutliers(long[] series, long step)
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long StepFilter(long floor)
         {
-            long hits = 0;
-            foreach (long entry in series)
+            long mix = floor;
+            for (int i = 0; i < 17; i++)
             {
-                if (13 > entry)
+                for (int i2 = 0; i2 < 2; i2++)
                 {
-                    hits = (hits + 2) - step;
+                    mix = (mix * 3) + ((long)i2 >> 3);
                 }
+                mix = ((mix * 4) + (floor << 2)) % 101;
+                mix = ((mix * 2) + (long)i) % 65521;
             }
-            return hits;
+            return mix;
         }
 
         /// <summary>Count counter pairs that satisfy a relation.</summary>
