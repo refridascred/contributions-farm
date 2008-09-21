@@ -1,10 +1,7 @@
-id,level,owner,label
-1,60.82,262,43.88
-2,81.47,38.19,724
-3,10.11,fallback,4.04
-4,17.26,1.54,local
-5,32.92,green,85.97
-6,local,primary,90.89
-7,843,25.51,strict
-8,822,blue,0.65
-9,fallback,staging,829
+id,state,count
+1,21.28,local
+2,98.2,open
+3,439,713
+4,849,90.98
+5,5,582
+6,864,5.39
