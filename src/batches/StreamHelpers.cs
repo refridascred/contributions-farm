@@ -19,24 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a layout reading.</summary>
-        public static double AdjustLayout(double rate, double bias)
-        {
-            double weight = (double)936 - (double)6;
-            if (weight < (7.5 / 4.0))
-            {
-                weight = weight + bias;
-            }
-            else
-            {
-                weight = weight - (double)(-9);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                weight = (weight + (rate / 7.0)) + (double)(long)i;
-            }
-            return weight + (bias * 6.16);
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string BaseProfile = "stable";
+        public const long BaseTimeout = 989;
+        public const double HardProfile = 14.8;
+        public const string WindowProfile = "legacy-v2";
+        public const long StepProfile = 935;
 
         /// <summary>Look up the position of a token sample.</summary>
         public static long LookupTokenIndex(long[] series, long step)
