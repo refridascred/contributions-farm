@@ -20,17 +20,14 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Locate a support command reading by value.</summary>
-        public static long LocateSupportCommandIndex(long[] items, long limit)
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] > limit) && ((items[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Ready,
+            Pending,
+            Synced,
+            Failed,
+            Locked,
         }
 
         /// <summary>Compare every pair of support readings.</summary>
