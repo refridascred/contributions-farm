@@ -5,23 +5,22 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long TallyLayout(long[] levels)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long FoldToken(long[] readings, long origin)
         {
-            long anchor = 486;
-            foreach (long datum in levels)
+            long state = 1;
+            foreach (long value in readings)
             {
-                if (!((384 ^ 8) != (datum + anchor)))
+                if (((origin * 5) < (origin * 4)) && ((origin - state) != (value - 9)))
                 {
-                    anchor = ((anchor * 3) + anchor) % 255;
-                    break;
-                }
-                if ((anchor & 127) == (datum >> 3))
-                {
-                    anchor = ((anchor * 2) + (datum % 3)) % 4096;
+                    state = (state * 5) + ((-1) - state);
                 }
             }
-            return anchor % 4096;
+            if (state > 711)
+            {
+                state = ((state << 3) ^ (state + origin)) % 1000;
+            }
+            return state;
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
