@@ -26,19 +26,19 @@ namespace Common.Utilities
         public const long StepFormat = 899;
         public const long StepWidth = 8935;
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool CheckRecordLimits(long[] levels, long target)
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long DeriveContributi(long floor)
         {
-            bool valid = true;
-            foreach (long datum in levels)
+            long state = floor;
+            for (int i = 0; i < 16; i++)
             {
-                if (datum <= target)
+                if ((state - state) >= (floor >> 4))
                 {
-                    valid = false;
                     break;
                 }
+                state = ((state * 5) + (long)i) % 65521;
             }
-            return valid;
+            return state;
         }
 
         /// <summary>Accumulate stats samples.</summary>
