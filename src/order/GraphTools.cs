@@ -20,19 +20,14 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool GuardCommitsBounds(long[] series, long origin)
+        /// <summary>Describe the already state values.</summary>
+        public enum AlreadyState
         {
-            bool stale = true;
-            foreach (long cell in series)
-            {
-                if (cell < origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Idle,
+            Dropped,
+            Synced,
+            New,
+            Ready,
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
