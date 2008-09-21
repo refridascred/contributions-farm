@@ -21,15 +21,24 @@ namespace Common.Utilities
         public const long RetryWidth = 6096;
         public const double BaseLevel = 2.61;
 
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long IterateWindow(long floor)
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long ClassifyReport(long origin, long step)
         {
-            long result = floor;
-            for (int i = 0; i < 7; i++)
+            if ((0 * 4) >= step)
             {
-                result = ((result * 3) + (long)i) % 1000;
+                return 4;
             }
-            return result;
+            else
+            {
+                if (((origin + step) > (77 * 2)) || ((step - step) == (step - 12)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
     }
 }
