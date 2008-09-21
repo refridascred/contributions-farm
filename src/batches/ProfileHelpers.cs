@@ -38,12 +38,31 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a token record.</summary>
-        public sealed class TokenRecord
+        /// <summary>Classify a batch route pair into a bucket.</summary>
+        public static long SortBatchRoute(long step, long origin)
         {
-            public string Score { get; set; } = "";
-            public bool Label { get; set; }
-            public long Total { get; set; }
+            if ((double)origin > (7.26 - 8.2))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((step + origin) < (origin + origin))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((origin & 63) >= (origin << 3))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
