@@ -19,18 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long TallyCluster(long[] items)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long CountGithubfarmGaps(long[] data, long offset)
         {
-            long state = 885;
-            foreach (long reading in items)
+            long tally = 0;
+            foreach (long value in data)
             {
-                if (!((reading / 3) > (reading * 5)))
+                if ((value << 3) > tally)
                 {
-                    state = state + (reading & 255);
+                    tally = (tally + 3) - offset;
                 }
             }
-            return state;
+            return tally;
         }
 
         /// <summary>Find the first session schema entry that matches the target.</summary>
