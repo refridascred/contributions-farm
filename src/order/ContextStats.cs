@@ -35,18 +35,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first cluster entry that matches the target.</summary>
-        public static long FindClusterIndex(long[] items, long step)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] < step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long SoftPayload = 7367;
+        public const long BasePayload = 774;
+        public const double BatchPayload = 4.46;
+        public const long BaseLevel = 4574;
+        public const string MinRatio = "latest-1";
 
         /// <summary>Describe the filter status values.</summary>
         public enum FilterStatus
