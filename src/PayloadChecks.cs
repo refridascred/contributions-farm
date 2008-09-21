@@ -41,19 +41,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit batches editor readings against a rule.</summary>
-        public static long CountBatchesEditorOutliers(long[] readings)
-        {
-            long hits = 0;
-            foreach (long cell in readings)
-            {
-                if (((-491) >> 3) >= cell)
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string CacheSize = "latest";
+        public const double DefaultMetrics = 94.13;
+        public const string RetryMetrics = "latest-edge";
+        public const double LimitInterval = 31.09;
 
         /// <summary>Hold a channel stats.</summary>
         public sealed class ChannelStats
