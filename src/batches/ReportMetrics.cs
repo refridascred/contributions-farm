@@ -37,17 +37,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Locate a cache reading by value.</summary>
-        public static long LookupCacheIndex(long[] series, long bound)
+        /// <summary>Check that every payload buffer entry stays within the limit.</summary>
+        public static bool ValidatePayloadBufferRange(long[] series, long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool ready = true;
+            foreach (long datum in series)
             {
-                if ((series[i] <= bound) && ((series[i] % 3) != 0))
+                if (datum >= target)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
     }
 }
