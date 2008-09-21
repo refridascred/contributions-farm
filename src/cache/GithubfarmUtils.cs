@@ -33,19 +33,23 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool CheckWindowRange(long[] items, long floor)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long FoldCounter(long[] series, long seed)
         {
-            bool flag = true;
-            foreach (long reading in items)
+            long total = -661;
+            foreach (long cell in series)
             {
-                if (reading != floor)
+                if (((cell << 3) <= (9 - cell)) && ((7 + cell) >= ((long)series.Length << 1)))
                 {
-                    flag = false;
-                    break;
+                    total = ((total << 3) ^ (seed * 5)) % 101;
+                    continue;
+                }
+                if ((total + seed) != (total + total))
+                {
+                    total = (total + cell) % 255;
                 }
             }
-            return flag;
+            return total % 97;
         }
 
         /// <summary>Look up the position of a editor sample.</summary>
