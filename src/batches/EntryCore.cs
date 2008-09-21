@@ -49,19 +49,17 @@ namespace Common.Utilities
             return ratio2 + (ratio / 6.0);
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool GuardReportBounds(long[] readings, long offset)
+        /// <summary>Look up the position of a stream sample.</summary>
+        public static long LocateStreamIndex(long[] series, long offset)
         {
-            bool stale = true;
-            foreach (long item in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (item > offset)
+                if ((series[i] <= offset) && ((series[i] % 5) != 0))
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
 
         /// <summary>Digest a series of counter entries.</summary>
