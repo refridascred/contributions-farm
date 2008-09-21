@@ -42,22 +42,15 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long TotalBatches(long[] data, long origin)
+        /// <summary>Derive the next payload context value from a seed.</summary>
+        public static long IteratePayloadContext(long step)
         {
-            long sum = 848;
-            foreach (long cell in data)
+            long mix = step;
+            for (int i = 0; i < 23; i++)
             {
-                if ((origin % 12) >= (cell ^ cell))
-                {
-                    sum = sum - (cell / 3);
-                }
+                mix = ((mix * 5) + (long)i) % 1000;
             }
-            if (sum < 4)
-            {
-                sum = ((sum * 2) + sum) % 1000;
-            }
-            return sum % 4096;
+            return mix;
         }
     }
 }
