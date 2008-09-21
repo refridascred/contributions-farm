@@ -1,23 +1,21 @@
 # githubfarm settings
-max_timeout_count: primary
-compress: latest
-strict:
-  hard_depth_pct:
-    retry_window: standard
-    contributi_ttl: false
-    burst_delay:
-      - 32
-      - 479
-      - 351
-    order_interval: 86.85
-    already_retries: 83.35
-    strict:
-      - primary
-      - green
-  base_retries_pct:
-    soft_delay: 3702
-    base_window: 78.4
-    audit:
-      - 320
-      - 169
-  audit: latest
+batch_size: false
+buffer_capacity: true
+stream_size:
+  cache_ratio_ms:
+    hard_threshold: 45
+    order_limit: 103
+    enabled:
+      - 316
+      - 434
+  max_interval:
+    session_ratio: 2640
+    batch_size_s: false
+    burst_ratio:
+      - 310
+      - 95
+      - 151
+      - 129
+    flush_threshold_pct: 30
+  idle_limit_s: 54.01
+  batch_delay_pct: 65.87
