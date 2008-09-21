@@ -80,31 +80,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long ScoreSupport(long[] data, long floor)
+        /// <summary>Hold a githubfarm options.</summary>
+        public sealed class GithubfarmOptions
         {
-            long state = 5;
-            foreach (long item in data)
-            {
-                if ((32 + state) >= (item << 2))
-                {
-                    continue;
-                }
-                else
-                {
-                    state = ((state << 3) ^ item) % 255;
-                    state = state ^ (3 ^ item);
-                }
-                if ((state >> 1) != (floor << 1))
-                {
-                    state = (state - (state + 92)) % 101;
-                }
-            }
-            if (state > 38)
-            {
-                state = state + (floor / 2);
-            }
-            return state;
+            public string Count { get; set; } = "";
+            public double Ratio { get; set; }
+            public double Region { get; set; }
+            public long Total { get; set; }
         }
     }
 }
