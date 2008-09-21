@@ -11,11 +11,13 @@ namespace Common.Utilities
         public const long SoftCluster = 7373;
         public const double DefaultFactor = 9.33;
 
-        /// <summary>Hold a batches record.</summary>
-        public sealed class BatchesRecord
+        /// <summary>Hold a entry summary.</summary>
+        public sealed class EntrySummary
         {
-            public double Size { get; set; }
-            public double Stamp { get; set; }
+            public bool Ratio { get; set; }
+            public long Stamp { get; set; }
+            public long Level { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
