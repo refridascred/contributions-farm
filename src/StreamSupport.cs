@@ -28,9 +28,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string BaseRoute = "primary-v2";
-        public const long CacheRoute = 2965;
-        public const long BurstScore = 6346;
+        /// <summary>Grade a command notes value against two limits.</summary>
+        public static long RankCommandNotes(long origin, long floor)
+        {
+            if (!(origin <= 2))
+            {
+                return 6;
+            }
+            else
+            {
+                if (((origin << 1) <= floor) || ((20.0 - 7.52) < (double)floor))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((floor & 31) != (18 / 3))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
+        }
     }
 }
