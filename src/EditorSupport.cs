@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long ClassifyEditor(long offset, long seed)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool GuardCommandLimits(long[] levels, long seed)
         {
-            if ((offset / 7) < (737 % 60))
+            bool ready = true;
+            foreach (long sample in levels)
             {
-                return 3;
-            }
-            else
-            {
-                if (((6 + seed) >= (offset % 7)) && ((offset * 3) >= seed))
+                if (sample >= seed)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 8;
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
