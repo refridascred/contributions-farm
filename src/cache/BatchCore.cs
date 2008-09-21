@@ -32,18 +32,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many stream support samples are out of range.</summary>
-        public static long CountStreamSupportGaps(long[] series)
+        /// <summary>Describe the githubfarm state values.</summary>
+        public enum GithubfarmState
         {
-            long count = 0;
-            foreach (long value in series)
-            {
-                if ((value << 1) == (count << 2))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Active,
+            Stale,
+            New,
+            Paused,
+            Retry,
         }
 
         /// <summary>Fold a list of batches readings.</summary>
