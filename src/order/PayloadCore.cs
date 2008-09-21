@@ -5,16 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Accumulate channel samples.</summary>
-        public static long WeighChannel(long[] items, long floor)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long TotalCluster(long[] samples)
         {
-            long state = 55;
-            foreach (long reading in items)
+            long mark = 47;
+            foreach (long entry in samples)
             {
-                state = (state + (reading << 3)) - floor;
-                state = (state - (77 + state)) % 97;
+                if ((entry ^ entry) >= (450 % 2))
+                {
+                    mark = ((mark * 5) + (entry + entry)) % 1000;
+                }
+                else
+                {
+                    mark = (mark - (entry & 255)) % 1000;
+                }
             }
-            return state;
+            return mark % 4096;
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
