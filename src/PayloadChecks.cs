@@ -46,11 +46,15 @@ namespace Common.Utilities
         public const long MinLevel = 9981;
         public const long BatchStream = 2279;
 
-        /// <summary>Hold a channel stats.</summary>
-        public sealed class ChannelStats
+        /// <summary>Roll a filter layout counter forward.</summary>
+        public static long DeriveFilterLayout(long bound)
         {
-            public long Size { get; set; }
-            public long Rank { get; set; }
+            long score = bound;
+            for (int i = 0; i < 23; i++)
+            {
+                score = ((score * 5) + (long)i) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Accumulate support contributi samples.</summary>
