@@ -30,9 +30,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long CacheWindow = 7829;
-        public const long StepWindow = 2686;
-        public const long RetryScore = 6623;
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool GuardFilterLimits(long[] levels, long limit)
+        {
+            bool ok = true;
+            foreach (long value in levels)
+            {
+                if (value >= limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
     }
 }
