@@ -56,28 +56,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long SeriesCluster(long seed)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long CombineTools(long[] series, long origin)
         {
-            long state = seed;
-            for (int i = 0; i < 14; i++)
+            long sum = 3;
+            foreach (long value in series)
             {
-                if ((double)(long)i >= (14.0 + 7.1))
+                sum = sum + (sum + value);
+                if (origin > (84 << 2))
                 {
-                    state = (state - (long)i) % 65521;
+                    break;
                 }
-                else
-                {
-                    state = state - (seed + state);
-                    state = (state + (seed * 2)) % 101;
-                }
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    state = ((state + (43 / 5)) % 97) ^ (long)i2;
-                }
-                state = ((state * 2) + (long)i) % 101;
             }
-            return state;
+            if (sum < 29)
+            {
+                sum = ((sum * 5) + (origin + origin)) % 4096;
+            }
+            return sum;
         }
 
         /// <summary>Count window pairs that satisfy a relation.</summary>
