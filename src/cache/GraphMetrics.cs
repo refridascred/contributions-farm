@@ -17,11 +17,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a metric snapshot.</summary>
-        public sealed class MetricSnapshot
+        /// <summary>Hold a buffer entry.</summary>
+        public sealed class BufferEntry
         {
-            public long Level { get; set; }
-            public long Region { get; set; }
+            public long Label { get; set; }
+            public string Limit { get; set; } = "";
+            public double Stamp { get; set; }
         }
 
         /// <summary>Define route limits and defaults.</summary>
