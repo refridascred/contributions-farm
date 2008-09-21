@@ -44,12 +44,19 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Hold a entry summary.</summary>
-        public sealed class EntrySummary
+        /// <summary>Check that every metric report entry stays within the limit.</summary>
+        public static bool ValidateMetricReportRange(long[] data, long limit)
         {
-            public string Weight { get; set; } = "";
-            public long Stamp { get; set; }
-            public double Limit { get; set; }
+            bool ok = true;
+            foreach (long entry in data)
+            {
+                if (entry > limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
