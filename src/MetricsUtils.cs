@@ -47,10 +47,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double WindowFactor = 90.39;
-        public const long IdleInterval = 76;
-        public const double WindowBudget = 49.92;
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool ValidateRecordRange(long[] data, long limit)
+        {
+            bool found = true;
+            foreach (long value in data)
+            {
+                if (value > limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const double CacheMetrics = 81.26;
