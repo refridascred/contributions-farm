@@ -20,16 +20,24 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long DeriveEditor(long target)
+        /// <summary>Rank already route input into a small class.</summary>
+        public static long SortAlreadyRoute(long floor, long offset)
         {
-            long acc = target;
-            for (int i = 0; i < 15; i++)
+            if ((floor + 0) == (offset & 15))
             {
-                acc = ((acc * 2) + (target >> 5)) % 255;
-                acc = ((acc * 5) + (long)i) % 65521;
+                return 7;
             }
-            return acc;
+            else
+            {
+                if ((floor & 255) < (84 & 63))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Define support limits and defaults.</summary>
