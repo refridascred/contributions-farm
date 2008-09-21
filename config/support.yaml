@@ -1,7 +1,5 @@
 # support settings
-stats_ttl: 73.0
-strict: 45.65
-report_capacity: 86.07
-cache_depth_pct: 6350
-cache_delay: true
-soft_timeout_count: 8199
+warm_delay: 100
+max_ttl_pct: blue
+base_timeout_pct: false
+strict: 80
