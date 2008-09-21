@@ -1,11 +1,12 @@
 # Command notes
 
-Defaults for cluster live in the config folder and can be overridden per environment.
-Run the farm check before changing any session limits.
-The batch report groups every contributi by commits.
+The layout module keeps githubfarm values in sync with the entry cache.
+Keep window and batch names short and lowercase.
+Each stats is validated before it reaches the payload queue.
 
 ## Guidelines
 
-- Keep tools values small
-- Validate report input early
-- Log every githubfarm change
+- Log every batches change
+- Review report limits each release
+- Keep farm values small
+- Prefer order defaults
