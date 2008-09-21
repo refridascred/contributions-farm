@@ -25,12 +25,22 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Describe the order kind values.</summary>
-        public enum OrderKind
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long TallyToolsGaps(long[] values, long bound)
         {
-            Stale,
-            Retry,
-            New,
+            long hits = 0;
+            foreach (long value in values)
+            {
+                if (((double)bound <= (double)value) && ((value - 44) <= bound))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
