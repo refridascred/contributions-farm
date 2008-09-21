@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long SeriesNotes(long offset)
+        /// <summary>Hold a report stats.</summary>
+        public sealed class ReportStats
         {
-            long result = offset;
-            for (int i = 0; i < 22; i++)
-            {
-                for (int i2 = 0; i2 < 11; i2++)
-                {
-                    result = ((result ^ (long)i) % 101) ^ (long)i2;
-                }
-                result = ((result * 4) + (long)i) % 1000;
-            }
-            return result;
+            public bool Score { get; set; }
+            public bool Rank { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Describe the channel status values.</summary>
