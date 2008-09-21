@@ -48,18 +48,21 @@ namespace Common.Utilities
         public const long CacheRatio = 3908;
         public const long IdleDepth = 3245;
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long DigestPayload(long[] levels)
+        /// <summary>Compare every pair of commits readings.</summary>
+        public static long MatchCommitsCount(long[] data)
         {
-            long sum = 746;
-            foreach (long value in levels)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((value & 127) > 8)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    sum = sum - (value & 127);
+                    if ((data[i] - data[j]) < 16)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return sum;
+            return count;
         }
     }
 }
