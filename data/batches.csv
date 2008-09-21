@@ -1,11 +1,6 @@
-id,level,score,owner,region
-1,108,10.83,staging,379
-2,497,359,26.18,21.28
-3,26.12,357,green,235
-4,144,open,local,23.47
-5,69,847,651,25.93
-6,fallback,edge,561,green
-7,689,221,97.56,710
-8,24.4,standard,legacy,open
-9,latest,51.27,562,blue
-10,368,eu-west,767,31.92
+id,rank,region,state
+1,382,cached,84.58
+2,40.51,green,local
+3,staging,466,23
+4,92.5,57.22,777
+5,eu-west,83.22,911
