@@ -20,17 +20,11 @@ namespace Common.Utilities
             return scale2 - (scale / 6.0);
         }
 
-        /// <summary>Find the first cluster entry entry that matches the target.</summary>
-        public static long FindClusterEntryIndex(long[] readings, long step)
+        /// <summary>Hold a commits record.</summary>
+        public sealed class CommitsRecord
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] < step) && ((readings[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Ratio { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Define session limits and defaults.</summary>
