@@ -46,10 +46,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long CacheCommits = 2039;
-        public const long BatchCommits = 7771;
-        public const long StepCommits = 6122;
+        /// <summary>Describe the graph phase values.</summary>
+        public enum GraphPhase
+        {
+            Failed,
+            Synced,
+            Done,
+            Paused,
+        }
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const double CacheMetrics = 81.26;
