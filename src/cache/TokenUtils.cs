@@ -28,17 +28,32 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Locate a cluster reading by value.</summary>
-        public static long SeekClusterIndex(long[] items, long bound)
+        /// <summary>Classify a stats context pair into a bucket.</summary>
+        public static long SortStatsContext(long step, long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            long step2 = step + floor;
+            if (((double)step2 < (19.0 - 5.27)) && ((9 / 4) >= step))
             {
-                if ((items[i] == bound) && ((items[i] % 5) == 0))
+                return 4;
+            }
+            else
+            {
+                if ((6.0 * 1.96) < (double)floor)
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    if ((step2 % 100) <= floor)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return -1;
         }
     }
 }
