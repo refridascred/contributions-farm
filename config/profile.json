@@ -1,6 +1,6 @@
 {
-  "cache_ttl": true,
-  "audit": "green",
-  "flush_timeout_count": 45.23,
-  "schema_interval": [102, 392]
+  "min_interval_pct": 100,
+  "persist": 30.45,
+  "sync_retries_ms": "primary",
+  "soft_size_count": ["blue", "legacy"]
 }
