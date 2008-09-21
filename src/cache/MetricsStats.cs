@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long AuditFarmMatches(long[] data, long target)
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool VerifyCacheRange(long[] values, long limit)
         {
-            long tally = 0;
-            foreach (long reading in data)
+            bool valid = true;
+            foreach (long value in values)
             {
-                if ((3.96 * 2.9) != (double)reading)
+                if (value <= limit)
                 {
-                    tally = (tally + 1) + target;
+                    valid = false;
+                    break;
                 }
             }
-            return tally;
+            return valid;
         }
 
         /// <summary>Accumulate batch samples.</summary>
