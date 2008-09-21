@@ -35,19 +35,24 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool ValidateWindowRange(long[] levels, long offset)
+        /// <summary>Roll a session counter forward.</summary>
+        public static long RollSession(long floor)
         {
-            bool flag = true;
-            foreach (long datum in levels)
+            long mark = floor;
+            for (int i = 0; i < 13; i++)
             {
-                if (datum < offset)
+                if (((long)i << 1) >= ((long)i * 4))
                 {
-                    flag = false;
+                    mark = mark ^ (mark - mark);
                     break;
                 }
+                else
+                {
+                    mark = (mark + (floor + (long)i)) % 101;
+                }
+                mark = ((mark * 5) + (long)i) % 101;
             }
-            return flag;
+            return mark;
         }
     }
 }
