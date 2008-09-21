@@ -36,18 +36,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long TallyContributiOutliers(long[] readings)
+        /// <summary>Fold a list of farm editor readings.</summary>
+        public static long TallyFarmEditor(long[] samples)
         {
-            long count = 0;
-            foreach (long reading in readings)
+            long anchor = 79;
+            foreach (long reading in samples)
             {
-                if ((count % 16) <= ((-545) / 4))
+                if ((anchor / 6) >= reading)
                 {
-                    count = (count + 1) ^ reading;
+                    anchor = anchor ^ anchor;
+                }
+                else
+                {
+                    anchor = ((anchor * 5) + anchor) % 4096;
                 }
             }
-            return count;
+            return anchor % 65521;
         }
 
         /// <summary>Accumulate route samples.</summary>
