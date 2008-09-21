@@ -40,18 +40,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Locate a entry filter reading by value.</summary>
-        public static long FindEntryFilterIndex(long[] readings, long offset)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] < offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string WindowMetric = "primary-edge";
+        public const long BatchMetric = 4528;
+        public const string IdleMetric = "standard-edge";
+        public const string StepInterval = "strict-v2";
+        public const double DefaultMetric = 85.79;
 
         /// <summary>Describe the stream kind values.</summary>
         public enum StreamKind
