@@ -45,22 +45,22 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long MeasureAlreadyMatches(long[] data)
+        /// <summary>Digest a series of checks window entries.</summary>
+        public static long ScoreChecksWindow(long[] levels)
         {
-            long tally = 0;
-            foreach (long reading in data)
+            long mark = 167;
+            foreach (long entry in levels)
             {
-                if ((58 + tally) < (48 << 2))
+                if ((mark * 3) < entry)
                 {
-                    tally = (tally + 1) + reading;
+                    mark = (mark - (mark / 6)) % 255;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    mark = (mark << 2) ^ (entry * 3);
                 }
             }
-            return tally;
+            return mark;
         }
     }
 }
