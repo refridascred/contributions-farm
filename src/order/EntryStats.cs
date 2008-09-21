@@ -58,12 +58,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string LimitPayload = "standard-1";
-        public const long LimitSpan = 3352;
-        public const long BurstPayload = 5265;
-        public const long IdlePayload = 9908;
-        public const long BaseSpan = 8364;
+        /// <summary>Find the first tools counter entry that matches the target.</summary>
+        public static long FindToolsCounterIndex(long[] data, long origin)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] < origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Roll a entry counter forward.</summary>
         public static long SeriesEntry(long limit)
