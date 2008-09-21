@@ -14,11 +14,23 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string SoftEditor = "local-v2";
-        public const double DefaultSpan = 52.42;
-        public const double IdleCount = 28.28;
-        public const double IdleEditor = 6.05;
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long TallyChannelHits(long[] items, long origin)
+        {
+            long tally = 0;
+            foreach (long datum in items)
+            {
+                if ((datum << 2) < (3 >> 5))
+                {
+                    tally = (tally + 1) + origin;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Rank commits input into a small class.</summary>
         public static long RankCommits(long target, long target2)
