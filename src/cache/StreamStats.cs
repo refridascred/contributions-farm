@@ -13,13 +13,11 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Hold a checks summary.</summary>
-        public sealed class ChecksSummary
-        {
-            public string Rank { get; set; } = "";
-            public double Label { get; set; }
-            public double Count { get; set; }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string LimitSpan = "open-v2";
+        public const long MinSize = 2032;
+        public const long BatchSession = 7604;
+        public const long WindowScore = 3943;
 
         /// <summary>Define order limits and defaults.</summary>
         public const long IdleSize = 2818;
