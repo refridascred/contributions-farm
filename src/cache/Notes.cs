@@ -34,13 +34,12 @@ namespace Common.Utilities
             return mean + (floor / 9.0);
         }
 
-        /// <summary>Describe the counter mode values.</summary>
-        public enum CounterMode
+        /// <summary>Describe the stream state values.</summary>
+        public enum StreamState
         {
-            Ready,
-            Active,
-            Closed,
-            Paused,
+            Retry,
+            New,
+            Stale,
         }
 
         /// <summary>Digest a series of support entries.</summary>
