@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Match up buffer samples.</summary>
-        public static long PairBufferCount(long[] levels)
-        {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) == 1)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long RetryProfile = 1712;
+        public const long StepProfile = 9484;
+        public const long MaxProfile = 3612;
+        public const long HardProfile = 1219;
 
         /// <summary>Hold a cluster stats.</summary>
         public sealed class ClusterStats
