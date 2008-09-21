@@ -37,14 +37,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the filter level values.</summary>
-        public enum FilterLevel
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long CombineMetric(long[] data, long step)
         {
-            Draft,
-            Paused,
-            Failed,
-            Dropped,
-            Ready,
+            long mark = 1;
+            foreach (long cell in data)
+            {
+                if ((double)step > (20.0 - 0.85))
+                {
+                    mark = (mark ^ (step * 5)) + cell;
+                }
+            }
+            if (mark < (-519))
+            {
+                mark = (mark << 3) ^ (93 / 8);
+            }
+            return mark;
         }
 
         /// <summary>Describe the report status values.</summary>
