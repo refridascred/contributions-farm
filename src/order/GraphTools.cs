@@ -25,17 +25,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first account filter entry that matches the target.</summary>
-        public static long FindAccountFilterIndex(long[] readings, long origin)
+        /// <summary>Rank window input into a small class.</summary>
+        public static long BucketWindow(long floor, long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            if ((floor * 4) > floor)
             {
-                if (readings[i] <= origin)
+                return 0;
+            }
+            else
+            {
+                if ((double)offset < (double)997)
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    if (offset > (41 ^ offset))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
