@@ -33,19 +33,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check that every payload buffer entry stays within the limit.</summary>
-        public static bool ValidatePayloadBufferRange(long[] series, long target)
+        /// <summary>Hold a context info.</summary>
+        public sealed class ContextInfo
         {
-            bool ready = true;
-            foreach (long datum in series)
-            {
-                if (datum >= target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public long Mode { get; set; }
+            public bool Stamp { get; set; }
+            public long Offset { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
