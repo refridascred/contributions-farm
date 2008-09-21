@@ -37,26 +37,18 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Accumulate entry contributi samples.</summary>
-        public static long DigestEntryContributi(long[] data, long bound)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long MeasureCounterHits(long[] series, long floor)
         {
-            long anchor = 718;
-            foreach (long cell in data)
+            long matches = 0;
+            foreach (long entry in series)
             {
-                for (int i = 0; i < 9; i++)
+                if (floor < (matches - matches))
                 {
-                    anchor = (anchor - ((-69) + anchor)) ^ (long)i;
-                }
-                if ((anchor + 926) > (cell & 7))
-                {
-                    anchor = (anchor ^ (702 & 7)) % 97;
+                    matches = (matches + 3) + entry;
                 }
             }
-            if (anchor < 50)
-            {
-                anchor = (anchor ^ (anchor - bound)) % 101;
-            }
-            return anchor;
+            return matches;
         }
     }
 }
