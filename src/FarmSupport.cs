@@ -34,17 +34,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a metric counter reading by value.</summary>
-        public static long SeekMetricCounterIndex(long[] readings, long step)
+        /// <summary>Describe the route kind values.</summary>
+        public enum RouteKind
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] > step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Retry,
+            Pending,
+            Failed,
+            Dropped,
+            Ready,
         }
 
         /// <summary>Hold a batch info.</summary>
