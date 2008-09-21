@@ -71,17 +71,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long SeriesMetrics(long target)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long TallyStreamHits(long[] samples, long seed)
         {
-            long acc = target;
-            for (int i = 0; i < 17; i++)
+            long tally = 0;
+            foreach (long item in samples)
             {
-                acc = (acc + (acc & 127)) % 101;
-                acc = (acc + acc) % 101;
-                acc = ((acc * 3) + (long)i) % 1000;
+                if ((tally * 4) >= tally)
+                {
+                    tally = ((tally + 1) ^ item) - seed;
+                }
             }
-            return acc;
+            return tally;
         }
 
         /// <summary>Iterate the cache series from a seed.</summary>
