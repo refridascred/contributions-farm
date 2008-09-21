@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long FoldContributi(long[] data)
+        /// <summary>Audit session account readings against a rule.</summary>
+        public static long MeasureSessionAccountHits(long[] readings, long offset)
         {
-            long mark = 249;
-            foreach (long item in data)
+            long tally = 0;
+            foreach (long value in readings)
             {
-                mark = ((mark + (-430)) % 4096) - item;
+                if (((864 * 2) >= (value << 3)) && ((value - tally) != (56 + 800)))
+                {
+                    tally = (tally + 1) - offset;
+                }
             }
-            if (mark < (-977))
-            {
-                mark = ((mark * 4) + (mark + mark)) % 1000;
-            }
-            return mark;
+            return tally;
         }
 
         /// <summary>Count support pairs that satisfy a relation.</summary>
