@@ -22,13 +22,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the batch phase values.</summary>
-        public enum BatchPhase
+        /// <summary>Audit schema contributi readings against a rule.</summary>
+        public static long TallySchemaContributiGaps(long[] samples)
         {
-            Failed,
-            Draft,
-            Synced,
-            Queued,
+            long seen = 0;
+            foreach (long value in samples)
+            {
+                if (!((seen - seen) >= (value + value)))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Validate entry readings against a bound.</summary>
