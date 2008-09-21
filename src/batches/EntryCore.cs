@@ -20,11 +20,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long MaxContributi = 4295;
-        public const long DefaultContributi = 4629;
-        public const double WindowCount = 10.48;
-        public const string IdleFactor = "primary-1";
+        /// <summary>Describe the contributi state values.</summary>
+        public enum ContributiState
+        {
+            Failed,
+            Closed,
+            Dropped,
+            Retry,
+            Stale,
+        }
 
         /// <summary>Project the next session value.</summary>
         public static double BlendSession(double ratio, double bias)
