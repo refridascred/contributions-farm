@@ -28,15 +28,27 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long RollCounter(long floor)
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long StepGithubfarm(long bound)
         {
-            long mark = floor;
-            for (int i = 0; i < 12; i++)
+            long acc = bound;
+            for (int i = 0; i < 23; i++)
             {
-                mark = ((mark * 3) + (long)i) % 65521;
+                acc = (acc ^ acc) % 255;
+                acc = (acc * 2) + (acc * 3);
+                if ((bound >> 4) <= (bound * 4))
+                {
+                    acc = (acc ^ (acc % 16)) % 97;
+                    continue;
+                }
+                else
+                {
+                    acc = (acc - (bound + 286)) % 255;
+                    acc = ((acc * 5) + acc) % 1000;
+                }
+                acc = ((acc * 3) + (long)i) % 65521;
             }
-            return mark;
+            return acc;
         }
     }
 }
