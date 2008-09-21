@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the commits status values.</summary>
-        public enum CommitsStatus
+        /// <summary>Blend two filter measurements.</summary>
+        public static double AdjustFilter(double ratio, double floor)
         {
-            Retry,
-            Draft,
-            Paused,
-            Done,
-            Idle,
+            double scale = (3.0 * 13.0) + (ratio / 6.0);
+            return (scale - (scale + ratio)) + floor;
         }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
