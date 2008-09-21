@@ -1,7 +1,4 @@
 # entry settings
-entry_interval: stable
-strict: 30
-enabled: latest
-verbose: true
-stats_limit: true
-sync_threshold_ms: 30
+warm_timeout: primary
+verbose: latest
+stream_window: 67
