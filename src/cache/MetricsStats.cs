@@ -19,17 +19,14 @@ namespace Common.Utilities
         public const long MinCommand = 2732;
         public const string WindowCommand = "staging-1";
 
-        /// <summary>Look up the position of a report sample.</summary>
-        public static long FindReportIndex(long[] samples, long limit)
+        /// <summary>Describe the metrics kind values.</summary>
+        public enum MetricsKind
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] <= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Ready,
+            Active,
+            Stale,
+            Locked,
+            Synced,
         }
 
         /// <summary>Adjust a channel reading.</summary>
