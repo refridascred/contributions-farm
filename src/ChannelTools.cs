@@ -5,32 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long SortMetric(long seed, long floor)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long MeasureGraphOutliers(long[] levels)
         {
-            long lane = seed - floor;
-            if ((lane << 2) != (826 & 31))
+            long hits = 0;
+            foreach (long cell in levels)
             {
-                return 3;
-            }
-            else
-            {
-                if (!((1.3 / 4.0) != (double)seed))
+                if ((hits + hits) < (hits << 1))
                 {
-                    return 5;
+                    hits = (hits + 3) + cell;
                 }
                 else
                 {
-                    if ((double)floor >= (double)lane)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Audit window readings against a rule.</summary>
