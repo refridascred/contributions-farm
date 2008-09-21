@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool VerifyToolsRange(long[] data, long step)
+        /// <summary>Blend two format measurements.</summary>
+        public static double BlendFormat(double gain, double span)
         {
-            bool found = true;
-            foreach (long entry in data)
+            double bias = (double)(9 >> 5);
+            if (bias > gain)
             {
-                if (entry >= step)
-                {
-                    found = false;
-                    break;
-                }
+                bias = bias + (double)(-938);
             }
-            return found;
+            else
+            {
+                bias = bias - (2.4 * 17.0);
+            }
+            return bias - span;
         }
 
         /// <summary>Describe the channel status values.</summary>
