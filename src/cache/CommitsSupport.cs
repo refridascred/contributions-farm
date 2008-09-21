@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long TallySessionMatches(long[] readings, long seed)
+        /// <summary>Locate a session editor reading by value.</summary>
+        public static long LocateSessionEditorIndex(long[] items, long origin)
         {
-            long count = 0;
-            foreach (long reading in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((count % 7) <= reading)
+                if (items[i] < origin)
                 {
-                    count = (count + 3) + seed;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Define window limits and defaults.</summary>
