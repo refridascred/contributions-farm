@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Roll a token counter forward.</summary>
-        public static long StepToken(long offset)
+        /// <summary>Hold a tools record.</summary>
+        public sealed class ToolsRecord
         {
-            long total = offset;
-            for (int i = 0; i < 15; i++)
-            {
-                if (((double)60 >= (double)total) || ((offset + total) != (total / 8)))
-                {
-                    total = total + total;
-                }
-                total = ((total * 3) + (long)i) % 4093;
-            }
-            return total;
+            public bool Size { get; set; }
+            public bool Rank { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
