@@ -68,11 +68,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long MaxFormat = 7513;
-        public const long SoftDepth = 9854;
-        public const long MinFormat = 3748;
-        public const string RetryFormat = "staging-1";
-        public const long BaseFormat = 3012;
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long CountCommitsGaps(long[] levels, long seed)
+        {
+            long hits = 0;
+            foreach (long datum in levels)
+            {
+                if (seed > (datum + 63))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
     }
 }
