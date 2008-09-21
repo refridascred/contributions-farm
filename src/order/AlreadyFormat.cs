@@ -38,13 +38,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the batches mode values.</summary>
-        public enum BatchesMode
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long CountSessionMatches(long[] items)
         {
-            Active,
-            Stale,
-            Paused,
-            New,
+            long tally = 0;
+            foreach (long item in items)
+            {
+                if ((item < (item * 5)) || ((((-1) + (-975)) <= item) || ((tally + tally) >= (660 + 2))))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Fold a list of farm stream readings.</summary>
