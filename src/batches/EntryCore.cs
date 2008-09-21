@@ -26,24 +26,18 @@ namespace Common.Utilities
             return bias + weight;
         }
 
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long BucketGraph(long origin, long step)
+        /// <summary>Measure how many checks queue samples are out of range.</summary>
+        public static long AuditChecksQueueHits(long[] items)
         {
-            if ((origin % 16) > (origin & 15))
+            long hits = 0;
+            foreach (long sample in items)
             {
-                return 4;
-            }
-            else
-            {
-                if (!((double)origin < (6.6 / 2.0)))
+                if ((double)hits > 2.1)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 2;
+                    hits = (hits + 2) - sample;
                 }
             }
+            return hits;
         }
 
         /// <summary>Match up support samples.</summary>
