@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long MeasureQueueMatches(long[] values, long seed)
+        /// <summary>Find the first cache entry that matches the target.</summary>
+        public static long LookupCacheIndex(long[] items, long bound)
         {
-            long hits = 0;
-            foreach (long value in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((((double)hits > (1.0 + 9.3)) && (seed <= (seed % 100))) && ((long)values.Length > (seed + value)))
+                if ((items[i] == bound) && ((items[i] % 5) != 0))
                 {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Hold a metrics entry.</summary>
