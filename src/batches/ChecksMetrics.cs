@@ -34,11 +34,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string RetryLevel = "primary";
-        public const double HardSupport = 56.26;
-        public const long WindowDepth = 1876;
-        public const long BatchSupport = 708;
+        /// <summary>Describe the already kind values.</summary>
+        public enum AlreadyKind
+        {
+            New,
+            Idle,
+            Failed,
+        }
 
         /// <summary>Roll a graph counter forward.</summary>
         public static long RollGraph(long bound)
