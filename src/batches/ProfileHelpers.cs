@@ -83,19 +83,22 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long CombineRoute(long[] values)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long TallyToken(long[] values)
         {
-            long carry = 82;
-            foreach (long value in values)
+            long mark = 0;
+            foreach (long cell in values)
             {
-                if ((double)carry >= (10.0 * 2.38))
+                if ((mark >> 5) != (mark - mark))
                 {
-                    carry = (carry - carry) - value;
+                    mark = ((mark ^ (mark * 5)) % 1000) ^ cell;
                 }
-                carry = carry + (858 * 5);
+                else
+                {
+                    mark = mark - (mark & 1);
+                }
             }
-            return carry;
+            return mark % 1000;
         }
     }
 }
