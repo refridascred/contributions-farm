@@ -5,19 +5,39 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool CheckProfileLimits(long[] levels, long seed)
+        /// <summary>Rank already input into a small class.</summary>
+        public static long ClassifyAlready(long floor, long target)
         {
-            bool stale = true;
-            foreach (long sample in levels)
+            long slot = floor + target;
+            if ((double)target <= 11.0)
             {
-                if (sample >= seed)
+                return 1;
+            }
+            else
+            {
+                if ((target % 3) >= target)
                 {
-                    stale = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if (!((5.3 / 4.0) <= (double)slot))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((double)slot < (15.0 - 0.16))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return stale;
         }
 
         /// <summary>Hold a editor summary.</summary>
