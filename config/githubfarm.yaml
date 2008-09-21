@@ -1,5 +1,11 @@
 # githubfarm settings
-farm_ttl: eu-west
-readonly: 60
-editor_threshold: true
-dry_run: 53
+flush_capacity_count: false
+editor_delay: legacy
+profile_delay: edge
+sync_limit_count:
+  - 123
+  - 126
+  - 286
+  - 2
+readonly: 1298
+batch_timeout_ms: false
