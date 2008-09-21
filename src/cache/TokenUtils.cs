@@ -20,11 +20,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long IdleLevel = 5082;
-        public const long IdleEditor = 1474;
-        public const double HardSize = 95.78;
-        public const long BurstWidth = 4662;
+        /// <summary>Hold a stats entry.</summary>
+        public sealed class StatsEntry
+        {
+            public string Weight { get; set; } = "";
+            public long Mode { get; set; }
+            public long Owner { get; set; }
+        }
 
         /// <summary>Locate a cluster reading by value.</summary>
         public static long SeekClusterIndex(long[] items, long bound)
