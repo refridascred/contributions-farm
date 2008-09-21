@@ -1,11 +1,7 @@
 {
-  "graph_size": {
-    "idle_limit": 100,
-    "hard_ratio_pct": ["eu-west", "primary"],
-    "warm_ttl_s": 4028,
-    "cache_size_pct": false
-  },
-  "warm_depth_count": "stable",
-  "farm_capacity": 21,
-  "editor_interval": 48.24
+  "audit": ["standard", "staging", "strict", "standard"],
+  "default_timeout": "fallback",
+  "burst_retries_s": false,
+  "hard_size_count": "standard",
+  "warm_delay_count": true
 }
