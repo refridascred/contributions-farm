@@ -34,22 +34,15 @@ namespace Common.Utilities
             return scale - offset;
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long TotalWindow(long[] items, long origin)
+        /// <summary>Scale a record figure with a bias.</summary>
+        public static double ScaleRecord(double bias, double offset)
         {
-            long sum = 96;
-            foreach (long value in items)
+            double bias2 = (double)(-958) + 9.1;
+            if (bias2 > bias)
             {
-                if (6.2 >= (double)value)
-                {
-                    sum = ((sum * 2) + (value + origin)) % 97;
-                }
-                if ((double)sum > (5.22 - 6.36))
-                {
-                    sum = ((sum * 4) + (691 & 3)) % 255;
-                }
+                bias2 = (bias2 - (double)41) + offset;
             }
-            return sum;
+            return bias2 + bias2;
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
