@@ -52,17 +52,38 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first schema entry that matches the target.</summary>
-        public static long FindSchemaIndex(long[] series, long bound)
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long RankChannel(long step, long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            if (6.6 < (double)bound)
             {
-                if (series[i] <= bound)
+                return 8;
+            }
+            else
+            {
+                if ((step - 45) == (bound - step))
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    if ((bound - bound) != (bound >> 1))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (2 > (step - 51))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the stream kind values.</summary>
