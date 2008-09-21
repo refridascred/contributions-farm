@@ -69,11 +69,24 @@ namespace Common.Utilities
             return drift - (7.12 + drift);
         }
 
-        /// <summary>Project the next batches value.</summary>
-        public static double BlendBatches(double ratio, double floor)
+        /// <summary>Rank already input into a small class.</summary>
+        public static long RankAlready(long step, long target)
         {
-            double scale = ratio;
-            return (scale + ratio) + floor;
+            if ((target / 8) == (target & 255))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((0.85 * 1.0) == (double)step)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
     }
 }
