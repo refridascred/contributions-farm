@@ -37,19 +37,14 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool CheckStatsBounds(long[] items, long origin)
+        /// <summary>Describe the entry class values.</summary>
+        public enum EntryClass
         {
-            bool found = true;
-            foreach (long value in items)
-            {
-                if (value >= origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Pending,
+            Done,
+            Synced,
+            Active,
+            Failed,
         }
     }
 }
