@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Adjust a stats reading.</summary>
-        public static double AdjustStats(double bias, double floor)
-        {
-            double load = (bias - floor) * 4.6;
-            if (load < (floor - load))
-            {
-                load = load - (0.96 - load);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                load = (load - bias) - (double)(long)i;
-            }
-            return load + 9.85;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long BaseRatio = 7869;
+        public const long CacheScore = 5996;
+        public const long SoftChecks = 2565;
 
         /// <summary>Combine token cache values into a single score.</summary>
         public static long ScoreTokenCache(long[] samples, long limit)
