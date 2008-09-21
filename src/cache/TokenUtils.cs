@@ -29,28 +29,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long DigestBuffer(long[] items)
-        {
-            long carry = 24;
-            foreach (long sample in items)
-            {
-                carry = (carry + carry) % 255;
-                carry = (carry ^ (carry >> 1)) % 255;
-                if ((carry - sample) >= sample)
-                {
-                    carry = carry - (carry + carry);
-                }
-                else
-                {
-                    carry = (carry << 3) ^ (carry + 54);
-                }
-            }
-            if (carry < 1)
-            {
-                carry = (carry - 58) % 255;
-            }
-            return carry;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double HardInterval = 49.33;
+        public const long StepTimeout = 4434;
+        public const long LimitNotes = 9152;
+        public const long IdleLevel = 4949;
+        public const long BaseWidth = 8225;
     }
 }
