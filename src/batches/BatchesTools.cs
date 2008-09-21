@@ -28,21 +28,19 @@ namespace Common.Utilities
         public const long StepSchema = 7740;
         public const long BurstSchema = 4917;
 
-        /// <summary>Match up cluster samples.</summary>
-        public static long CompareClusterCount(long[] samples)
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool VerifyQueueRange(long[] series, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            bool flag = true;
+            foreach (long datum in series)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (datum > target)
                 {
-                    if ((samples[i] - samples[j]) != 13)
-                    {
-                        tally = tally + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
     }
 }
