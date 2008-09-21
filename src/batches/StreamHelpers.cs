@@ -22,10 +22,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double LimitToken = 68.11;
-        public const long IdleToken = 1947;
-        public const string BurstDepth = "open-v2";
+        /// <summary>Hold a commits summary.</summary>
+        public sealed class CommitsSummary
+        {
+            public string Score { get; set; } = "";
+            public long Level { get; set; }
+            public long Label { get; set; }
+        }
 
         /// <summary>Audit stats readings against a rule.</summary>
         public static long AuditStatsMatches(long[] readings)
