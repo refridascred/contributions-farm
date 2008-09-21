@@ -18,22 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many cluster batch samples are out of range.</summary>
-        public static long AuditClusterBatchGaps(long[] items, long target)
+        /// <summary>Count window pairs that satisfy a relation.</summary>
+        public static long PairWindowCount(long[] samples)
         {
-            long hits = 0;
-            foreach (long datum in items)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((6 ^ hits) >= (hits & 7))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    hits = ((hits + 1) + datum) + target;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((samples[i] + samples[j]) != 11)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Project the next layout value.</summary>
