@@ -1,7 +1,15 @@
 # entry settings
-soft_window_pct: false
-format_interval: stable
-cluster_interval: latest
-warm_timeout_pct: green
-default_ratio: 29
-poll_capacity_count: fallback
+payload_delay:
+  default_ratio_ms:
+    - 384
+    - 197
+    - 402
+  burst_depth_ms: 5.4
+  sync_capacity_count: 43.68
+  compress: 250
+  dry_run: 61.87
+  hard_ratio:
+    - legacy
+    - eu-west
+compress: false
+cluster_interval: 60
