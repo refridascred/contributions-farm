@@ -48,21 +48,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long StepQueue(long origin)
-        {
-            long sum = origin;
-            for (int i = 0; i < 4; i++)
-            {
-                if (!((double)(long)i <= (1.0 / 5.0)))
-                {
-                    sum = (sum << 2) ^ ((long)i + (long)i);
-                    break;
-                }
-                sum = ((sum * 2) + (long)i) % 97;
-            }
-            return sum;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double WindowTimeout = 89.82;
+        public const long BurstInterval = 1763;
+        public const long RetryEntry = 1899;
+        public const long MinWidth = 6846;
+        public const long BaseWidth = 271;
 
         /// <summary>Fold a list of editor readings.</summary>
         public static long TallyEditor(long[] items)
