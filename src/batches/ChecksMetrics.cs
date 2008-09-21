@@ -20,22 +20,22 @@ namespace Common.Utilities
         public const long MinInterval = 7640;
         public const long BatchMetric = 9755;
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long AuditFilterMatches(long[] items, long origin)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long CombineGraph(long[] series, long limit)
         {
-            long seen = 0;
-            foreach (long entry in items)
+            long mix = 77;
+            foreach (long datum in series)
             {
-                if (((-836) + seen) <= (seen + origin))
+                if ((double)datum >= (5.13 / 9.0))
                 {
-                    seen = (seen + 3) ^ entry;
+                    mix = ((mix * 4) + (limit + datum)) % 101;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    mix = (mix + mix) % 97;
                 }
             }
-            return seen;
+            return mix;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
