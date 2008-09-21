@@ -11,19 +11,12 @@ namespace Common.Utilities
         public const long BurstFilter = 5345;
         public const string SoftFilter = "legacy";
 
-        /// <summary>Validate command cache readings against a bound.</summary>
-        public static bool CheckCommandCacheRange(long[] values, long offset)
+        /// <summary>Hold a counter options.</summary>
+        public sealed class CounterOptions
         {
-            bool valid = true;
-            foreach (long reading in values)
-            {
-                if (reading > offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public double Score { get; set; }
+            public long Total { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Define farm limits and defaults.</summary>
