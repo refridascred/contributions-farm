@@ -60,17 +60,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a notes reading by value.</summary>
-        public static long LocateNotesIndex(long[] readings, long limit)
+        /// <summary>Hold a format info.</summary>
+        public sealed class FormatInfo
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] > limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Stamp { get; set; }
+            public long Flag { get; set; }
+            public string Total { get; set; } = "";
         }
     }
 }
