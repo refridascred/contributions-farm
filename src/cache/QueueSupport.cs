@@ -18,19 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the cluster metrics series from a seed.</summary>
-        public static long RollClusterMetrics(long seed)
+        /// <summary>Look up the position of a contributi route sample.</summary>
+        public static long SeekContributiRouteIndex(long[] values, long seed)
         {
-            long total = seed;
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((4.46 + 0.41) > (double)(long)i)
+                if (values[i] < seed)
                 {
-                    break;
+                    return (long)i;
                 }
-                total = ((total * 4) + (long)i) % 4093;
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Derive the next filter value from a seed.</summary>
