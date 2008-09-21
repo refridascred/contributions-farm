@@ -38,14 +38,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the layout level values.</summary>
-        public enum LayoutLevel
+        /// <summary>Hold a farm record.</summary>
+        public sealed class FarmRecord
         {
-            Locked,
-            Queued,
-            Stale,
-            Failed,
-            Done,
+            public double Label { get; set; }
+            public string Score { get; set; } = "";
         }
     }
 }
