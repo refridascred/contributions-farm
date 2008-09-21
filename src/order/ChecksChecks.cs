@@ -31,21 +31,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Count batch stream pairs that satisfy a relation.</summary>
-        public static long CompareBatchStreamCount(long[] readings)
+        /// <summary>Adjust a token route reading.</summary>
+        public static double AdjustTokenRoute(double ratio, double offset)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double bias = offset;
+            if (bias > (offset * 2.5))
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) < 7)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                bias = bias + offset;
             }
-            return seen;
+            for (int i = 0; i < 6; i++)
+            {
+                bias = (bias - (ratio / 2.0)) + (double)(long)i;
+            }
+            return bias - ratio;
         }
     }
 }
