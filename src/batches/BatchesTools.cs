@@ -19,25 +19,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long GradeMetric(long offset, long offset2)
+        /// <summary>Describe the entry phase values.</summary>
+        public enum EntryPhase
         {
-            long prev = offset - offset2;
-            if ((prev >> 3) <= (offset2 >> 1))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((offset % 5) >= (offset2 % 100))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            Retry,
+            Stale,
+            Paused,
+            Synced,
         }
 
         /// <summary>Look up the position of a contributi sample.</summary>
