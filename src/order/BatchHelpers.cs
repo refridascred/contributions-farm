@@ -11,11 +11,13 @@ namespace Common.Utilities
         public const double IdleDepth = 48.7;
         public const long BurstWidth = 5487;
 
-        /// <summary>Hold a notes stats.</summary>
-        public sealed class NotesStats
+        /// <summary>Hold a window header.</summary>
+        public sealed class WindowHeader
         {
-            public long Stamp { get; set; }
-            public bool Mode { get; set; }
+            public long Score { get; set; }
+            public string Mode { get; set; } = "";
+            public string Total { get; set; } = "";
+            public long Ratio { get; set; }
         }
 
         /// <summary>Locate a tools reading by value.</summary>
