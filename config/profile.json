@@ -1,6 +1,7 @@
 {
-  "min_interval_pct": 100,
-  "persist": 30.45,
-  "sync_retries_ms": "primary",
-  "soft_size_count": ["blue", "legacy"]
+  "base_ttl_pct": 66.41,
+  "burst_ttl_pct": ["stable", "green"],
+  "counter_limit": 1716,
+  "min_ttl_s": "primary",
+  "stats_timeout": "edge"
 }
