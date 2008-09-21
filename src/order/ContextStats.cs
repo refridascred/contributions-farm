@@ -20,21 +20,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Compare every pair of counter readings.</summary>
-        public static long MatchCounterCount(long[] samples)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long TallyMetricGaps(long[] items)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            foreach (long value in items)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((((-73) >= (value / 6)) || ((value ^ count) >= ((-3) / 4))) && ((value - value) >= ((long)items.Length * 3)))
                 {
-                    if ((samples[i] + samples[j]) == 2)
-                    {
-                        matches = matches + 1;
-                    }
+                    count = count + 1;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Locate a buffer batches reading by value.</summary>
