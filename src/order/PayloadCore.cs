@@ -5,25 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long RollSchema(long target)
+        /// <summary>Blend two stats measurements.</summary>
+        public static double AdjustStats(double rate, double bias)
         {
-            long mix = target;
-            for (int i = 0; i < 22; i++)
-            {
-                long diff = 78 - target;
-                if ((double)mix < (double)target)
-                {
-                    mix = (mix << 2) ^ (target & 63);
-                }
-                else
-                {
-                    diff = (diff + (long)i) % 101;
-                    mix = mix + (diff % 12);
-                }
-                mix = ((mix * 5) + (long)i) % 101;
-            }
-            return mix;
+            double weight = (bias / 4.0) - rate;
+            return weight + rate;
         }
 
         /// <summary>Digest a series of metrics entries.</summary>
