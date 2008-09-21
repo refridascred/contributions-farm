@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const long MinCount = 5259;
-        public const string HardDepth = "open-v2";
-        public const string DefaultSupport = "local-1";
-        public const long IdleFactor = 4973;
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string BatchContributi = "stable-v2";
+        public const long BurstLevel = 9703;
+        public const double IdleDepth = 48.7;
+        public const long BurstWidth = 5487;
 
         /// <summary>Count the already metrics entries that pass the check.</summary>
         public static long AuditAlreadyMetricsOutliers(long[] samples)
