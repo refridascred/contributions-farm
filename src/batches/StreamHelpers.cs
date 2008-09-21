@@ -65,20 +65,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine metrics payload values into a single score.</summary>
-        public static long WeighMetricsPayload(long[] series, long step)
-        {
-            long anchor = 667;
-            foreach (long entry in series)
-            {
-                if ((double)step < (double)entry)
-                {
-                    anchor = (anchor << 2) ^ (step ^ (-14));
-                    anchor = ((anchor * 4) + (anchor - entry)) % 1000;
-                }
-                anchor = anchor - (entry + (-50));
-            }
-            return anchor;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long WindowGraph = 1789;
+        public const long MaxGraph = 9152;
+        public const long RetryLevel = 2367;
+        public const long SoftGraph = 5615;
     }
 }
