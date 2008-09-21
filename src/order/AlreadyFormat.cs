@@ -5,32 +5,17 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long SortRoute(long step, long seed)
+        /// <summary>Look up the position of a layout sample.</summary>
+        public static long SeekLayoutIndex(long[] items, long limit)
         {
-            long step2 = step ^ seed;
-            if ((double)step2 >= (7.3 + 0.71))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((step >> 2) < (step2 - step))
+                if (items[i] < limit)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((step - seed) < (step + step))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Hold a session summary.</summary>
