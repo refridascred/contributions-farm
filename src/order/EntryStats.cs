@@ -39,21 +39,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long SeriesEntry(long limit)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long MeasureRecordGaps(long[] items)
         {
-            long carry = limit;
-            for (int i = 0; i < 15; i++)
+            long hits = 0;
+            foreach (long sample in items)
             {
-                if ((long)i <= (carry / 9))
+                if (hits < 80)
                 {
-                    carry = carry - carry;
-                    continue;
+                    hits = (hits + 3) ^ sample;
                 }
-                carry = ((carry * 2) + (long)i) % 97;
-                carry = ((carry * 3) + (long)i) % 101;
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return carry;
+            return hits;
         }
 
         /// <summary>Match up counter samples.</summary>
