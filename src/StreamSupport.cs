@@ -15,12 +15,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Find the first channel entry that matches the target.</summary>
-        public static long LocateChannelIndex(long[] items, long floor)
+        /// <summary>Look up the position of a batch sample.</summary>
+        public static long SeekBatchIndex(long[] data, long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((items[i] >= floor) && ((items[i] % 3) != 0))
+                if (data[i] <= floor)
                 {
                     return (long)i;
                 }
