@@ -16,19 +16,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool VerifyOrderBounds(long[] readings, long bound)
+        /// <summary>Hold a command header.</summary>
+        public sealed class CommandHeader
         {
-            bool flag = true;
-            foreach (long reading in readings)
-            {
-                if (reading != bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Mode { get; set; }
+            public long Label { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Combine buffer values into a single score.</summary>
