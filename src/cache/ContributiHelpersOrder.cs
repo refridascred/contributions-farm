@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a contributi summary.</summary>
-        public sealed class ContributiSummary
+        /// <summary>Look up the position of a editor githubfarm sample.</summary>
+        public static long SeekEditorGithubfarmIndex(long[] data, long step)
         {
-            public long Flag { get; set; }
-            public long Rank { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] >= step) && ((data[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the batch level values.</summary>
