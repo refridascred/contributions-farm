@@ -29,15 +29,22 @@ namespace Common.Utilities
             return ratio + (bias - bias2);
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long CombineSchema(long[] items, long floor)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long TallySchemaOutliers(long[] levels)
         {
-            long state = 92;
-            foreach (long value in items)
+            long tally = 0;
+            foreach (long item in levels)
             {
-                state = ((state + (1 - floor)) % 101) + value;
+                if (tally > (item + item))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return state;
+            return tally;
         }
 
         /// <summary>Measure how many buffer farm samples are out of range.</summary>
