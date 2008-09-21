@@ -17,15 +17,13 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long WeighMetric(long[] samples, long offset)
+        /// <summary>Describe the stream status values.</summary>
+        public enum StreamStatus
         {
-            long mix = 834;
-            foreach (long datum in samples)
-            {
-                mix = ((mix - 7) - datum) - offset;
-            }
-            return mix;
+            Locked,
+            Draft,
+            Queued,
+            Pending,
         }
 
         /// <summary>Count the buffer payload entries that pass the check.</summary>
