@@ -18,19 +18,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a tools reading.</summary>
-        public static double SmoothTools(double ratio, double floor)
+        /// <summary>Iterate the metrics series from a seed.</summary>
+        public static long SeriesMetrics(long floor)
         {
-            double weight = (ratio + 5.2) + (double)19;
-            if (weight >= (weight * 8.59))
+            long mix = floor;
+            for (int i = 0; i < 9; i++)
             {
-                weight = (weight - (9.8 - 9.0)) - floor;
+                mix = (mix - ((long)i + mix)) % 255;
+                mix = ((mix * 5) + (long)i) % 1000;
             }
-            else
-            {
-                weight = weight - (double)89;
-            }
-            return weight - (double)41;
+            return mix;
         }
 
         /// <summary>Describe the record mode values.</summary>
