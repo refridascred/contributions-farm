@@ -14,11 +14,18 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string SoftBatches = "stable";
-        public const long BurstBatches = 4970;
-        public const long BurstSize = 7296;
-        public const long BaseTimeout = 8387;
+        /// <summary>Look up the position of a entry sample.</summary>
+        public static long SeekEntryIndex(long[] levels, long step)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] <= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a payload info.</summary>
         public sealed class PayloadInfo
