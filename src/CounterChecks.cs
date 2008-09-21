@@ -55,38 +55,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long BucketChannel(long origin, long step)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long TallyChannelHits(long[] series)
         {
-            if ((step ^ step) >= (step + origin))
+            long matches = 0;
+            foreach (long value in series)
             {
-                return 5;
-            }
-            else
-            {
-                if ((7.59 / 8.0) <= (double)step)
+                if (matches >= (value + value))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (19.0 > (double)step)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (step > (4 ^ step))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    matches = matches + 2;
                 }
             }
+            return matches;
         }
 
         /// <summary>Check that every format entry stays within the limit.</summary>
