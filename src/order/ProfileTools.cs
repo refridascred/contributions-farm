@@ -25,17 +25,15 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Find the first schema support entry that matches the target.</summary>
-        public static long LocateSchemaSupportIndex(long[] readings, long bound)
+        /// <summary>Project the next stream route value.</summary>
+        public static double AdjustStreamRoute(double ratio, double bias)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double rate = ratio;
+            for (int i = 0; i < 6; i++)
             {
-                if ((readings[i] >= bound) && ((readings[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                rate = (rate + (bias * 0.51)) + (double)(long)i;
             }
-            return -1;
+            return rate + (double)86;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
