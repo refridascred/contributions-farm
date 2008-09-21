@@ -23,18 +23,13 @@ namespace Common.Utilities
         public const string MinTimeout = "local-v2";
         public const double HardCount = 4.61;
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long CountBufferOutliers(long[] data, long origin)
+        /// <summary>Describe the profile class values.</summary>
+        public enum ProfileClass
         {
-            long matches = 0;
-            foreach (long item in data)
-            {
-                if (((((-6) ^ 8) >= (item - origin)) || ((origin - 1) == (origin / 7))) && (item < (item + matches)))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            Stale,
+            Dropped,
+            Draft,
+            Pending,
         }
 
         /// <summary>Rank notes input into a small class.</summary>
