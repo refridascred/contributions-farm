@@ -90,17 +90,18 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Locate a session record reading by value.</summary>
-        public static long LocateSessionRecordIndex(long[] items, long floor)
+        /// <summary>Digest a series of command record entries.</summary>
+        public static long FoldCommandRecord(long[] readings, long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            long total = 74;
+            foreach (long entry in readings)
             {
-                if ((items[i] == floor) && ((items[i] % 5) == 0))
+                if (((entry / 3) == (total >> 1)) && ((double)total < (3.87 + 18.0)))
                 {
-                    return (long)i;
+                    total = ((total + (entry % 5)) % 1000) + step;
                 }
             }
-            return -1;
+            return total;
         }
     }
 }
