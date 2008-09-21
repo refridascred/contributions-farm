@@ -60,13 +60,10 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the format level values.</summary>
-        public enum FormatLevel
-        {
-            Retry,
-            Idle,
-            Failed,
-            Queued,
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long MaxWidth = 4673;
+        public const long BurstReport = 123;
+        public const string HardRatio = "strict-v2";
+        public const double StepReport = 87.42;
     }
 }
