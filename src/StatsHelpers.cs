@@ -61,15 +61,21 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Scale a batches figure with a bias.</summary>
-        public static double AdjustBatches(double rate, double bias)
+        /// <summary>Compare every pair of order support readings.</summary>
+        public static long PairOrderSupportCount(long[] levels)
         {
-            double bias2 = bias;
-            for (int i = 0; i < 2; i++)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                bias2 = (bias2 + (double)(long)i) - rate;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) == 12)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return bias2 + (bias + bias);
+            return hits;
         }
 
         /// <summary>Define support limits and defaults.</summary>
