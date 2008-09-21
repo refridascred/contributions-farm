@@ -38,16 +38,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next metric order value from a seed.</summary>
-        public static long DeriveMetricOrder(long limit)
+        /// <summary>Describe the editor level values.</summary>
+        public enum EditorLevel
         {
-            long mark = limit;
-            for (int i = 0; i < 23; i++)
-            {
-                mark = ((mark << 3) ^ ((-6) / 2)) % 1000;
-                mark = ((mark * 2) + (long)i) % 65521;
-            }
-            return mark;
+            Idle,
+            Paused,
+            Stale,
+            Done,
+            New,
         }
 
         /// <summary>Derive the next batches value from a seed.</summary>
