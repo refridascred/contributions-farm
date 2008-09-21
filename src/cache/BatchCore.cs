@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Locate a account reading by value.</summary>
-        public static long LookupAccountIndex(long[] values, long target)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long MeasureSchemaOutliers(long[] data, long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long datum in data)
             {
-                if (values[i] > target)
+                if ((count + 253) >= count)
                 {
-                    return (long)i;
+                    count = ((count + 2) ^ datum) + limit;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
