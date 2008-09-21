@@ -1,5 +1,19 @@
 {
-  "default_interval": ["strict", "fallback", "latest"],
-  "notes_depth": 500,
-  "strict": 85
+  "verbose": {
+    "record_interval": "eu-west",
+    "metric_timeout": {
+      "contributi_retries": 34.43,
+      "order_interval": ["strict", "latest", "latest", "fallback"],
+      "max_limit_s": "cached"
+    },
+    "warm_window": 65.58,
+    "warm_depth": 1024,
+    "idle_interval_pct": "open",
+    "burst_size": 34
+  },
+  "dry_run": "green",
+  "batch_limit_pct": ["legacy", "primary"],
+  "retry_interval_ms": "latest",
+  "audit": 76.66,
+  "tools_ratio": 96
 }
