@@ -19,14 +19,25 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the already level values.</summary>
-        public enum AlreadyLevel
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long GradeMetric(long offset, long offset2)
         {
-            Locked,
-            Failed,
-            Ready,
-            Closed,
-            Queued,
+            long prev = offset - offset2;
+            if ((prev >> 3) <= (offset2 >> 1))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((offset % 5) >= (offset2 % 100))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Look up the position of a contributi sample.</summary>
