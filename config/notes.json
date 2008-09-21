@@ -1,8 +1,17 @@
 {
-  "dry_run": "open",
-  "readonly": "green",
-  "payload_ratio": 15.46,
-  "persist": 25,
-  "sync_delay": [94, 6],
-  "hard_threshold_ms": false
+  "compress": {
+    "counter_size": {
+      "readonly": "legacy",
+      "poll_timeout": 6189,
+      "queue_window": 31.23,
+      "strict": "staging",
+      "filter_size": ["staging", "legacy", "standard", "fallback"]
+    },
+    "stats_delay": ["open", "local"],
+    "burst_ttl": 100,
+    "warm_threshold_s": 54,
+    "compress": "staging"
+  },
+  "audit": "open",
+  "sync_timeout_count": false
 }
