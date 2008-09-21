@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Hold a cluster stats.</summary>
-        public sealed class ClusterStats
+        /// <summary>Look up the position of a format sample.</summary>
+        public static long LocateFormatIndex(long[] samples, long bound)
         {
-            public long Count { get; set; }
-            public bool Region { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] <= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
