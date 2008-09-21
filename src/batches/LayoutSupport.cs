@@ -20,18 +20,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long MeasureBatchesMatches(long[] data, long offset)
+        /// <summary>Hold a batches record.</summary>
+        public sealed class BatchesRecord
         {
-            long count = 0;
-            foreach (long value in data)
-            {
-                if ((double)51 >= (double)value)
-                {
-                    count = (count + 1) + offset;
-                }
-            }
-            return count;
+            public string Count { get; set; } = "";
+            public double Flag { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Hold a cluster snapshot.</summary>
