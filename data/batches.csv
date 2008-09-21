@@ -1,7 +1,10 @@
-id,rank,weight,count
-1,63.22,37.11,open
-2,213,341,local
-3,24.94,322,934
-4,401,staging,standard
-5,311,32.57,staging
-6,93.86,77.46,33.76
+id,active,count,label,owner
+1,79.66,47.26,934,28.62
+2,18.36,553,636,700
+3,796,783,65.16,882
+4,28.93,staging,24.35,474
+5,647,92.39,14,304
+6,376,blue,standard,48.01
+7,155,local,staging,eu-west
+8,open,525,145,164
+9,staging,153,stable,727
