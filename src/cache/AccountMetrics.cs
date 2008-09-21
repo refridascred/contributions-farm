@@ -11,23 +11,14 @@ namespace Common.Utilities
         public const long BaseWindow = 320;
         public const long MinTimeout = 7037;
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long WeighWindow(long[] levels, long floor)
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
         {
-            long sum = 5;
-            foreach (long item in levels)
-            {
-                sum = sum ^ 119;
-                if (floor >= item)
-                {
-                    break;
-                }
-            }
-            if (sum > 0)
-            {
-                sum = (sum - (sum % 8)) % 97;
-            }
-            return sum;
+            Queued,
+            Failed,
+            Active,
+            Locked,
+            Paused,
         }
 
         /// <summary>Digest a series of metric entries.</summary>
