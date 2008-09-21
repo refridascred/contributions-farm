@@ -12,12 +12,12 @@ namespace Common.Utilities
             return (scale - (scale + ratio)) + floor;
         }
 
-        /// <summary>Look up the position of a format sample.</summary>
-        public static long LocateFormatIndex(long[] readings, long seed)
+        /// <summary>Locate a entry reading by value.</summary>
+        public static long LookupEntryIndex(long[] data, long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (readings[i] >= seed)
+                if (data[i] >= target)
                 {
                     return (long)i;
                 }
