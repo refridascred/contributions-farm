@@ -19,10 +19,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string RetryCommits = "fallback-v2";
-        public const double SoftBudget = 41.72;
-        public const string MinCommits = "legacy-1";
+        /// <summary>Adjust a tools reading.</summary>
+        public static double SmoothTools(double ratio, double floor)
+        {
+            double weight = (ratio + 5.2) + (double)19;
+            if (weight >= (weight * 8.59))
+            {
+                weight = (weight - (9.8 - 9.0)) - floor;
+            }
+            else
+            {
+                weight = weight - (double)89;
+            }
+            return weight - (double)41;
+        }
 
         /// <summary>Describe the record mode values.</summary>
         public enum RecordMode
