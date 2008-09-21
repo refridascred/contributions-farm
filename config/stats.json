@@ -1,5 +1,8 @@
 {
-  "session_interval": 250,
-  "session_delay": false,
-  "enabled": [184, 417, 192]
+  "profile_ttl": "blue",
+  "soft_limit": "standard",
+  "support_size": [451, 149],
+  "idle_timeout": "latest",
+  "stats_threshold": "fallback",
+  "min_interval_s": 66.36
 }
