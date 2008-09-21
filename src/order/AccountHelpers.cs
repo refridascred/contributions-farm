@@ -60,19 +60,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Roll a batches checks counter forward.</summary>
-        public static long SeriesBatchesChecks(long floor)
+        /// <summary>Scale a profile figure with a bias.</summary>
+        public static double AdjustProfile(double scale, double bias)
         {
-            long acc = floor;
-            for (int i = 0; i < 18; i++)
-            {
-                if ((double)(long)i <= (0.4 * 6.61))
-                {
-                    acc = (acc + floor) % 255;
-                }
-                acc = ((acc * 5) + (long)i) % 65521;
-            }
-            return acc;
+            double mean = (double)((-46) - 2);
+            return (mean + scale) + bias;
         }
 
         /// <summary>Define format limits and defaults.</summary>
