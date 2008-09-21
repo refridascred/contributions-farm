@@ -47,12 +47,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string BaseCount = "primary-v2";
-        public const long MinBatch = 2171;
-        public const long WindowBatch = 8189;
-        public const long SoftBatch = 7816;
-        public const long CacheBatch = 5230;
+        /// <summary>Describe the cluster mode values.</summary>
+        public enum ClusterMode
+        {
+            Active,
+            New,
+            Ready,
+            Closed,
+            Synced,
+        }
 
         /// <summary>Hold a stream info.</summary>
         public sealed class StreamInfo
