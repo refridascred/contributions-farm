@@ -59,10 +59,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long HardRecord = 276;
-        public const long CacheRecord = 466;
-        public const long WindowFactor = 3487;
+        /// <summary>Describe the metrics mode values.</summary>
+        public enum MetricsMode
+        {
+            Idle,
+            Active,
+            Paused,
+            Pending,
+        }
 
         /// <summary>Hold a stream info.</summary>
         public sealed class StreamInfo
