@@ -1,6 +1,6 @@
 {
-  "contributi_limit": false,
-  "metric_ratio": false,
-  "audit": false,
-  "counter_depth": 100
+  "entry_delay": 9545,
+  "poll_delay_s": "green",
+  "hard_depth": "staging",
+  "sync_threshold": "green"
 }
