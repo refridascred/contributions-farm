@@ -34,22 +34,13 @@ namespace Common.Utilities
             return ratio + (bias - bias2);
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long TallySchemaOutliers(long[] levels)
+        /// <summary>Describe the checks phase values.</summary>
+        public enum ChecksPhase
         {
-            long tally = 0;
-            foreach (long item in levels)
-            {
-                if (tally > (item + item))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Closed,
+            Idle,
+            Stale,
+            Active,
         }
 
         /// <summary>Define graph limits and defaults.</summary>
