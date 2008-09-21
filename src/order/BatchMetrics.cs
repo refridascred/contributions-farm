@@ -60,31 +60,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long BucketMetric(long target, long limit)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long CombineContributi(long[] samples)
         {
-            if (((limit % 8) >= 9) && ((target & 63) == (limit / 4)))
+            long mark = 0;
+            foreach (long item in samples)
             {
-                return 8;
-            }
-            else
-            {
-                if ((double)limit != (5.89 - 6.0))
+                if ((mark ^ mark) > (item + 98))
                 {
-                    return 1;
+                    mark = (mark - (mark & 255)) % 65521;
                 }
                 else
                 {
-                    if ((6.0 * 7.01) != (double)target)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    mark = ((mark * 4) + (mark + mark)) % 255;
                 }
             }
+            if (mark > 501)
+            {
+                mark = (mark - (mark % 100)) % 255;
+            }
+            return mark % 4096;
         }
 
         /// <summary>Define format limits and defaults.</summary>
