@@ -1,7 +1,7 @@
 {
-  "enabled": "cached",
-  "profile_delay": "blue",
-  "verbose": 88,
-  "strict": false,
-  "poll_limit_pct": 4332
+  "metrics_interval": false,
+  "cache_depth_count": ["open", "standard"],
+  "sync_ttl_pct": [292, 85, 76],
+  "poll_window_pct": "primary",
+  "poll_ratio_count": 34.43
 }
