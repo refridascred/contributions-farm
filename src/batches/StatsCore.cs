@@ -48,14 +48,13 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
+        /// <summary>Describe the metric phase values.</summary>
+        public enum MetricPhase
         {
-            Ready,
-            Retry,
-            Pending,
-            Synced,
-            New,
+            Failed,
+            Stale,
+            Paused,
+            Queued,
         }
     }
 }
