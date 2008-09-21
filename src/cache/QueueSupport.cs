@@ -12,25 +12,11 @@ namespace Common.Utilities
         public const string HardGithubfarm = "standard-v2";
         public const long IdleRatio = 2225;
 
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long SortGraph(long target, long offset)
+        /// <summary>Hold a cache stats.</summary>
+        public sealed class CacheStats
         {
-            long edge = target ^ offset;
-            if ((offset >> 1) <= (edge - offset))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((8 + offset) >= (offset ^ offset))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            public long Flag { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Derive the next filter value from a seed.</summary>
