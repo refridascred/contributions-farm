@@ -15,19 +15,17 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Derive the next payload batches value from a seed.</summary>
-        public static long IteratePayloadBatches(long floor)
+        /// <summary>Find the first channel entry that matches the target.</summary>
+        public static long LocateChannelIndex(long[] items, long floor)
         {
-            long mix = floor;
-            for (int i = 0; i < 16; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((double)mix <= (9.2 * 9.0)) || (((long)i << 1) >= ((long)i % 100)))
+                if ((items[i] >= floor) && ((items[i] % 3) != 0))
                 {
-                    mix = (mix ^ (floor / 4)) % 65521;
+                    return (long)i;
                 }
-                mix = ((mix * 4) + (long)i) % 97;
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
