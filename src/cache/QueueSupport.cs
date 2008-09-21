@@ -19,16 +19,19 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long IterateFilter(long seed)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool VerifyBufferBounds(long[] data, long bound)
         {
-            long mix = seed;
-            for (int i = 0; i < 9; i++)
+            bool flag = true;
+            foreach (long datum in data)
             {
-                mix = ((mix * 4) + mix) % 255;
-                mix = ((mix * 4) + (long)i) % 97;
+                if (datum != bound)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return mix;
+            return flag;
         }
     }
 }
