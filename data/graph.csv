@@ -1,9 +1,8 @@
-id,region,ratio
-1,cached,486
-2,93,primary
-3,34.41,61.63
-4,90.43,83.28
-5,106,441
-6,70.89,29.14
-7,48.54,49.57
-8,222,37.49
+id,owner,region,token,score
+1,722,250,eu-west,570
+2,57.13,68.41,green,22.81
+3,standard,286,85.74,72.67
+4,74.93,929,801,green
+5,standard,local,blue,blue
+6,178,green,692,94
+7,67.84,staging,standard,864
