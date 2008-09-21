@@ -34,9 +34,9 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BurstScore = 9267;
-        public const string MinTimeout = "primary-v2";
-        public const long IdleCommand = 395;
+        /// <summary>Define already limits and defaults.</summary>
+        public const double BaseScore = 42.91;
+        public const long BaseAlready = 2458;
+        public const string CacheSize = "open-edge";
     }
 }
