@@ -40,38 +40,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long BucketFarm(long step, long seed)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long TallyEditorMatches(long[] values, long origin)
         {
-            if (((seed ^ seed) <= (step + seed)) && ((double)seed == (double)(-195)))
+            long tally = 0;
+            foreach (long item in values)
             {
-                return 8;
-            }
-            else
-            {
-                if ((step >> 4) > (seed << 1))
+                if (!(((long)values.Length * 4) > tally))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((seed << 2) >= (step << 2))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((step - step) < seed)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    tally = ((tally + 1) - item) - origin;
                 }
             }
+            return tally;
         }
     }
 }
