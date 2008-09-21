@@ -41,15 +41,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Blend two commits measurements.</summary>
-        public static double BlendCommits(double scale, double bias)
+        /// <summary>Describe the report state values.</summary>
+        public enum ReportState
         {
-            double weight = (scale / 3.0) / 2.0;
-            for (int i = 0; i < 6; i++)
-            {
-                weight = (weight + (weight / 3.0)) + (double)(long)i;
-            }
-            return weight + bias;
+            Draft,
+            Paused,
+            Stale,
+            Queued,
         }
     }
 }
