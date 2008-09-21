@@ -36,11 +36,13 @@ namespace Common.Utilities
         public const double SoftBudget = 41.72;
         public const string MinCommits = "legacy-1";
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long IdleAlready = 1709;
-        public const string LimitAlready = "local-v2";
-        public const string RetryAlready = "legacy-1";
-        public const string BurstAlready = "legacy";
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
+        {
+            Done,
+            Paused,
+            Dropped,
+        }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
         public static long TallyLayoutGaps(long[] items)
