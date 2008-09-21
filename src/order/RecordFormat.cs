@@ -49,39 +49,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long GradeEditor(long origin, long origin2)
+        /// <summary>Count cache pairs that satisfy a relation.</summary>
+        public static long CompareCacheCount(long[] data)
         {
-            long bound = origin - origin2;
-            if (5 < (47 - bound))
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (bound >= (9 >> 5))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (origin2 >= (origin % 64))
+                    if ((data[i] + data[j]) == 4)
                     {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((bound % 2) != (origin2 + bound))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Describe the channel kind values.</summary>
