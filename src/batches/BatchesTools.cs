@@ -15,21 +15,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Count already farm pairs that satisfy a relation.</summary>
-        public static long MatchAlreadyFarmCount(long[] readings)
+        /// <summary>Hold a batch entry.</summary>
+        public sealed class BatchEntry
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) == 9)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public bool Offset { get; set; }
+            public string Rank { get; set; } = "";
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Look up the position of a contributi sample.</summary>
