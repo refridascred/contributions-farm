@@ -23,21 +23,9 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Count batches tools pairs that satisfy a relation.</summary>
-        public static long PairBatchesToolsCount(long[] data)
-        {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) != 11)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long StepFactor = 7998;
+        public const long StepLayout = 6420;
+        public const double BurstRatio = 46.76;
     }
 }
