@@ -35,11 +35,19 @@ namespace Common.Utilities
         public const double IdleOrder = 78.76;
         public const long MinOrder = 7955;
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string StepEditor = "open";
-        public const string BurstEditor = "primary-edge";
-        public const long LimitRatio = 9481;
-        public const long WindowEditor = 2801;
-        public const string HardFactor = "staging-edge";
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool ValidateAccountRange(long[] samples, long step)
+        {
+            bool ok = true;
+            foreach (long datum in samples)
+            {
+                if (datum <= step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
     }
 }
