@@ -74,12 +74,17 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the commits mode values.</summary>
-        public enum CommitsMode
+        /// <summary>Find the first stats entry that matches the target.</summary>
+        public static long LocateStatsIndex(long[] levels, long target)
         {
-            Ready,
-            New,
-            Paused,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] >= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a route info.</summary>
