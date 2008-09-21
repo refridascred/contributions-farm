@@ -23,22 +23,19 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long ScoreReport(long[] values, long origin)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long ScoreMetrics(long[] levels, long step)
         {
-            long result = 355;
-            foreach (long datum in values)
+            long anchor = 11;
+            foreach (long value in levels)
             {
-                if (34 <= origin)
+                anchor = (anchor + 680) % 1000;
+                if (((double)6 == (double)step) && ((step ^ value) > (anchor / 5)))
                 {
-                    result = result + result;
-                }
-                else
-                {
-                    result = (result ^ (datum ^ datum)) % 255;
+                    break;
                 }
             }
-            return result;
+            return anchor;
         }
     }
 }
