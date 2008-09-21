@@ -15,14 +15,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the record phase values.</summary>
-        public enum RecordPhase
+        /// <summary>Derive the next payload batches value from a seed.</summary>
+        public static long IteratePayloadBatches(long floor)
         {
-            Closed,
-            Synced,
-            Pending,
-            Paused,
-            Retry,
+            long mix = floor;
+            for (int i = 0; i < 16; i++)
+            {
+                if (((double)mix <= (9.2 * 9.0)) || (((long)i << 1) >= ((long)i % 100)))
+                {
+                    mix = (mix ^ (floor / 4)) % 65521;
+                }
+                mix = ((mix * 4) + (long)i) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
