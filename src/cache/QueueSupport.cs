@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long TallyStream(long[] readings, long bound)
+        /// <summary>Hold a editor info.</summary>
+        public sealed class EditorInfo
         {
-            long state = 9;
-            foreach (long cell in readings)
-            {
-                if ((state % 24) <= (cell + bound))
-                {
-                    state = ((state << 2) ^ (state & 31)) % 1000;
-                }
-            }
-            return state;
+            public long Rank { get; set; }
+            public bool Ratio { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Rank farm input into a small class.</summary>
