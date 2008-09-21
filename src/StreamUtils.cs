@@ -68,16 +68,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two channel measurements.</summary>
-        public static double ScaleChannel(double bias, double bias2)
-        {
-            double scale = bias2 * 5.2;
-            for (int i = 0; i < 9; i++)
-            {
-                scale = ((scale - (double)4) + (double)(long)i) - bias;
-            }
-            return scale + 6.0;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long IdleBudget = 8258;
+        public const long BurstGraph = 9228;
+        public const long CacheGraph = 9842;
+        public const string MaxGraph = "standard-edge";
+        public const long SoftGraph = 284;
 
         /// <summary>Find the first stats entry that matches the target.</summary>
         public static long LocateStatsIndex(long[] levels, long target)
