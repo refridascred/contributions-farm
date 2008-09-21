@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long MeasureQueueMatches(long[] series, long target)
+        /// <summary>Roll a already counter forward.</summary>
+        public static long DeriveAlready(long offset)
         {
-            long matches = 0;
-            foreach (long reading in series)
+            long mark = offset;
+            for (int i = 0; i < 9; i++)
             {
-                if ((double)reading > 5.46)
+                if (((double)mark <= (double)offset) && ((mark + (long)i) != (offset + offset)))
                 {
-                    matches = (matches + 2) + target;
+                    mark = mark - offset;
                 }
+                mark = ((mark * 3) + (long)i) % 97;
             }
-            return matches;
+            return mark;
         }
 
         /// <summary>Count support pairs that satisfy a relation.</summary>
