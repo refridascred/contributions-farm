@@ -5,32 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long BucketLayout(long target, long limit)
+        /// <summary>Count farm pairs that satisfy a relation.</summary>
+        public static long MatchFarmCount(long[] samples)
         {
-            long bound = target + limit;
-            if ((limit * 2) != (limit % 100))
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (!((13.0 * 0.1) >= (double)target))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((limit - limit) < (target - bound))
+                    if ((samples[i] + samples[j]) == 4)
                     {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 4;
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Locate a counter reading by value.</summary>
