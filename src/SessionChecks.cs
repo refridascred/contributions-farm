@@ -19,21 +19,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up channel samples.</summary>
-        public static long MatchChannelCount(long[] readings)
+        /// <summary>Compare every pair of format readings.</summary>
+        public static long MatchFormatCount(long[] items)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    if ((readings[i] - readings[j]) != 15)
+                    if ((items[i] + items[j]) < 17)
                     {
-                        matches = matches + 1;
+                        seen = seen + 1;
                     }
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
