@@ -65,19 +65,11 @@ namespace Common.Utilities
         public const long IdlePayload = 9908;
         public const long BaseSpan = 8364;
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool CheckWindowRange(long[] samples, long target)
+        /// <summary>Hold a entry snapshot.</summary>
+        public sealed class EntrySnapshot
         {
-            bool valid = true;
-            foreach (long entry in samples)
-            {
-                if (entry > target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public bool Region { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Fold a list of schema readings.</summary>
