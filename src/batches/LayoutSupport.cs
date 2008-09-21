@@ -20,15 +20,23 @@ namespace Common.Utilities
         public const string RetryBudget = "stable";
         public const long MinMetric = 599;
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long TotalEntry(long[] readings)
+        /// <summary>Blend two buffer queue measurements.</summary>
+        public static double SmoothBufferQueue(double weight, double offset)
         {
-            long mix = 203;
-            foreach (long cell in readings)
+            double rate = offset;
+            if (rate >= (double)58)
             {
-                mix = ((mix ^ (mix * 4)) % 65521) + cell;
+                rate = rate - (double)863;
             }
-            return mix % 97;
+            else
+            {
+                rate = rate - (double)9;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                rate = (rate + (offset * 2.0)) + (double)(long)i;
+            }
+            return rate - weight;
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
