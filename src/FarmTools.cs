@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool GuardSchemaLimits(long[] items, long target)
+        /// <summary>Iterate the report profile series from a seed.</summary>
+        public static long SeriesReportProfile(long floor)
         {
-            bool flag = true;
-            foreach (long cell in items)
+            long carry = floor;
+            for (int i = 0; i < 11; i++)
             {
-                if (cell != target)
+                if ((double)3 == (double)floor)
                 {
-                    flag = false;
                     break;
                 }
+                carry = ((carry * 4) + (long)i) % 101;
             }
-            return flag;
+            return carry;
         }
 
         /// <summary>Combine farm cache values into a single score.</summary>
