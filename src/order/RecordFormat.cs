@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Hold a stats header.</summary>
-        public sealed class StatsHeader
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool GuardCounterBounds(long[] items, long bound)
         {
-            public bool Owner { get; set; }
-            public string Rank { get; set; } = "";
+            bool flag = true;
+            foreach (long sample in items)
+            {
+                if (sample >= bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Hold a command header.</summary>
