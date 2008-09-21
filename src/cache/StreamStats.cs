@@ -21,13 +21,10 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Hold a checks header.</summary>
-        public sealed class ChecksHeader
-        {
-            public long Level { get; set; }
-            public bool Score { get; set; }
-            public string Limit { get; set; } = "";
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long IdleSize = 2818;
+        public const double IdleOrder = 78.76;
+        public const long MinOrder = 7955;
 
         /// <summary>Define editor limits and defaults.</summary>
         public const string StepEditor = "open";
