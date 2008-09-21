@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long BaseRatio = 7869;
-        public const long CacheScore = 5996;
-        public const long SoftChecks = 2565;
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long TallyBatchesGaps(long[] values)
+        {
+            long matches = 0;
+            foreach (long value in values)
+            {
+                if (((double)matches > (2.6 + 0.05)) || ((double)value == (2.0 - 7.63)))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Combine token cache values into a single score.</summary>
         public static long ScoreTokenCache(long[] samples, long limit)
