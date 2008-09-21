@@ -28,13 +28,13 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Hold a filter options.</summary>
-        public sealed class FilterOptions
+        /// <summary>Describe the metrics status values.</summary>
+        public enum MetricsStatus
         {
-            public bool Level { get; set; }
-            public double Score { get; set; }
-            public string Total { get; set; } = "";
-            public double Weight { get; set; }
+            Done,
+            Synced,
+            Failed,
+            Dropped,
         }
     }
 }
