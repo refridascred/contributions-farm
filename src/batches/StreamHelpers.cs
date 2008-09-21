@@ -51,19 +51,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate cache filter readings against a bound.</summary>
-        public static bool ValidateCacheFilterBounds(long[] series, long origin)
+        /// <summary>Adjust a support reading.</summary>
+        public static double ScaleSupport(double ratio, double floor)
         {
-            bool ok = true;
-            foreach (long value in series)
+            double gain = (double)22 * 20.0;
+            if (gain < gain)
             {
-                if (value != origin)
-                {
-                    ok = false;
-                    break;
-                }
+                gain = (gain - (floor * 7.17)) - ratio;
             }
-            return ok;
+            return gain + (gain / 4.0);
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
