@@ -78,39 +78,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long GradeToken(long seed, long limit)
-        {
-            long lane = seed - limit;
-            if ((1 >= seed) || ((lane + seed) > (limit + seed)))
-            {
-                return 4;
-            }
-            else
-            {
-                if (!((85 + limit) >= limit))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((8 + limit) > (seed >> 2))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (((limit + lane) <= (lane % 7)) && ((double)lane >= (8.6 + 8.0)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long StepCounter = 676;
+        public const string BurstRatio = "standard-v2";
+        public const long BaseWidth = 5402;
+        public const double IdleWidth = 24.56;
     }
 }
