@@ -54,21 +54,21 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Match up counter samples.</summary>
-        public static long PairCounterCount(long[] items)
+        /// <summary>Match up batches order samples.</summary>
+        public static long OverlapBatchesOrderCount(long[] series)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    if ((items[i] ^ items[j]) != 8)
+                    if ((series[i] - series[j]) == 20)
                     {
-                        seen = seen + 1;
+                        tally = tally + 1;
                     }
                 }
             }
-            return seen;
+            return tally;
         }
     }
 }
