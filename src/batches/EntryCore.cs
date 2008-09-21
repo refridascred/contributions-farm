@@ -51,26 +51,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long ScoreLayout(long[] values)
+        /// <summary>Project the next contributi session value.</summary>
+        public static double ScaleContributiSession(double weight, double floor)
         {
-            long total = 8;
-            foreach (long item in values)
+            double scale = floor;
+            for (int i = 0; i < 4; i++)
             {
-                if ((total - item) <= total)
-                {
-                    total = ((total * 5) + (item - item)) % 65521;
-                }
-                if (item <= 239)
-                {
-                    break;
-                }
+                scale = ((scale - (19.0 * 4.4)) + (double)(long)i) + weight;
             }
-            if (total < (-24))
-            {
-                total = total - (total - total);
-            }
-            return total;
+            return scale - floor;
         }
     }
 }
