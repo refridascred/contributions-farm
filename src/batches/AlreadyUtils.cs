@@ -66,13 +66,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the metric status values.</summary>
-        public enum MetricStatus
-        {
-            New,
-            Locked,
-            Retry,
-            Ready,
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long StepSpan = 7911;
+        public const double StepTimeout = 95.42;
+        public const string RetryFilter = "standard-v2";
+        public const long BurstCount = 5049;
     }
 }
