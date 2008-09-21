@@ -5,24 +5,22 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Combine contributi channel values into a single score.</summary>
-        public static long DigestContributiChannel(long[] items, long floor)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long MeasureMetricGaps(long[] readings, long step)
         {
-            long sum = 5;
-            foreach (long entry in items)
+            long hits = 0;
+            foreach (long sample in readings)
             {
-                long slot = (sum * 2) - (floor / 2);
-                if (((slot - sum) < sum) && ((entry >> 3) <= (0 + 799)))
+                if ((step + 829) == (sample + hits))
                 {
-                    slot = (slot + (entry & 127)) % 4096;
-                    slot = slot - (sum + floor);
+                    hits = hits + 1;
                 }
-                if (!((279 ^ (long)items.Length) >= (floor >> 4)))
+                else
                 {
-                    sum = sum + (entry / 8);
+                    hits = hits - 1;
                 }
             }
-            return sum;
+            return hits;
         }
 
         /// <summary>Hold a githubfarm options.</summary>
