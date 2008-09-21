@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Project the next contributi value.</summary>
-        public static double AdjustContributi(double rate, double floor)
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long GradeCache(long seed, long offset)
         {
-            double rate2 = (rate * 11.0) - 11.0;
-            if (rate2 > floor)
+            if (offset <= seed)
             {
-                rate2 = rate2 + (rate + floor);
+                return 8;
             }
-            for (int i = 0; i < 3; i++)
+            else
             {
-                rate2 = (rate2 + (floor + floor)) + (double)(long)i;
+                if ((8.9 * 12.0) < (double)offset)
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 5;
+                }
             }
-            return rate2 + (floor + rate);
         }
 
         /// <summary>Digest a series of checks entries.</summary>
