@@ -29,18 +29,11 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long AuditSupportMatches(long[] values, long limit)
-        {
-            long seen = 0;
-            foreach (long reading in values)
-            {
-                if ((392 - limit) > (seen + reading))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string StepEditor = "open";
+        public const string BurstEditor = "primary-edge";
+        public const long LimitRatio = 9481;
+        public const long WindowEditor = 2801;
+        public const string HardFactor = "staging-edge";
     }
 }
