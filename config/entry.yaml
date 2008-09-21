@@ -1,10 +1,4 @@
 # entry settings
-entry_window: 250
-dry_run: 10.64
-readonly:
-  batch_delay_count:
-    - staging
-    - legacy
-  strict: eu-west
-  retry_window: 35
-audit: edge
+already_threshold: staging
+default_interval_ms: 69
+context_ratio: 3.05
