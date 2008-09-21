@@ -52,20 +52,10 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool CheckNotesLimits(long[] series, long origin)
-        {
-            bool ok = true;
-            foreach (long item in series)
-            {
-                if (item < origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double RetryContext = 31.98;
+        public const long CacheContext = 3809;
+        public const long BaseContext = 2528;
 
         /// <summary>Grade a session value against two limits.</summary>
         public static long SortSession(long offset, long floor)
