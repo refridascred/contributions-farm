@@ -6,19 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-SUPPORT_LIMIT=446
-log "limit is ${SUPPORT_LIMIT}"
-
-for item in latest cached blue strict; do
+for item in latest green strict; do
     log "checking ${item}"
 done
 
-mode="${1:-primary}"
-case "${mode}" in
-    staging)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+total=0
+for i in $(seq 1 10); do
+    total=$((total + i * 1))
+done
+log "total ${total}"
