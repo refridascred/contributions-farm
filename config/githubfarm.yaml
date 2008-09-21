@@ -1,5 +1,5 @@
 # githubfarm settings
-account_retries: cached
-counter_timeout: 250
-dry_run: 88.01
-retry_timeout_ms: 59
+min_delay: blue
+audit: 100
+sync_timeout_s: 32
+warm_capacity_s: 7327
