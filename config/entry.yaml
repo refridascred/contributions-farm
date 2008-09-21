@@ -1,21 +1,8 @@
 # entry settings
-metrics_size: 4671
-verbose: false
-dry_run:
-  min_timeout_pct:
-    min_ttl_s: false
-    compress: 500
-    retry_retries: 9669
-    warm_threshold_ms: 5
-    flush_threshold_count:
-      - staging
-      - green
-      - open
-  report_threshold: standard
-  buffer_timeout: true
-  default_delay_count: 1159
-  persist: 96
-  soft_size_ms: 2300
-default_window_ms: staging
-enabled: false
-batch_limit_pct: eu-west
+max_capacity_ms: 14.66
+compress:
+  - 475
+  - 276
+  - 66
+flush_capacity_pct: 250
+buffer_ratio: false
