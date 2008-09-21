@@ -52,15 +52,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long CombineContext(long[] samples)
-        {
-            long anchor = 0;
-            foreach (long entry in samples)
-            {
-                anchor = anchor ^ (entry * 2);
-            }
-            return anchor;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string WindowGithubfarm = "primary";
+        public const long CacheGithubfarm = 6905;
+        public const long MaxBudget = 3739;
+        public const string BatchInterval = "fallback-v2";
+        public const long RetryGithubfarm = 2827;
     }
 }
