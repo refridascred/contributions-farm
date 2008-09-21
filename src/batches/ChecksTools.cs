@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BaseInterval = 741;
-        public const long BatchSize = 4947;
-        public const long MinCommand = 5613;
+        /// <summary>Hold a account entry.</summary>
+        public sealed class AccountEntry
+        {
+            public long Count { get; set; }
+            public bool Region { get; set; }
+            public string Score { get; set; } = "";
+            public long Ratio { get; set; }
+        }
 
         /// <summary>Define format limits and defaults.</summary>
         public const long MinDepth = 1718;
