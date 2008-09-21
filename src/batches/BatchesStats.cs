@@ -39,11 +39,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a commits record.</summary>
-        public sealed class CommitsRecord
+        /// <summary>Hold a command record.</summary>
+        public sealed class CommandRecord
         {
-            public long Ratio { get; set; }
-            public long Level { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Offset { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Hold a cluster entry.</summary>
