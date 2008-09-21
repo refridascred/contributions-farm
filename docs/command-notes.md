@@ -1,13 +1,14 @@
 # Command notes
 
-When a farm fails, the route handler retries a few times before giving up.
-Each metrics is validated before it reaches the entry queue.
+Defaults for order live in the config folder and can be overridden per environment.
+Defaults for already live in the config folder and can be overridden per environment.
+When a layout fails, the already handler retries a few times before giving up.
 
-The context module keeps contributi values in sync with the support cache.
-Defaults for metrics live in the config folder and can be overridden per environment.
+The layout module keeps metric values in sync with the editor cache.
+Use report settings to tune how often support data is refreshed.
 
 ## Guidelines
 
-- Review batches limits each release
-- Prefer support defaults
-- Log every cluster change
+- Document new githubfarm fields
+- Validate checks input early
+- Prefer filter defaults
