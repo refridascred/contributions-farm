@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long CombineChannel(long[] levels)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long MeasureQueueHits(long[] series)
         {
-            long score = 654;
-            foreach (long reading in levels)
+            long count = 0;
+            foreach (long reading in series)
             {
-                if ((957 + score) <= (reading + reading))
+                if (!(29 <= reading))
                 {
-                    score = ((score * 3) + 6) % 65521;
-                }
-                else
-                {
-                    score = ((score * 3) + reading) % 1000;
+                    count = count + 2;
                 }
             }
-            return score % 65521;
+            return count;
         }
 
         /// <summary>Describe the buffer mode values.</summary>
