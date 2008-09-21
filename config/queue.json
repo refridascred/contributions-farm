@@ -1,5 +1,12 @@
 {
-  "default_capacity_s": 85,
-  "sync_depth": [304, 171, 263, 11],
-  "default_ttl_pct": [211, 47]
+  "warm_retries_count": 25.19,
+  "idle_retries_s": {
+    "token_limit": 21,
+    "sync_window_count": 55.07,
+    "batch_size": 7.5,
+    "context_timeout": "local",
+    "account_threshold": ["local", "staging", "latest", "local"],
+    "hard_interval_ms": true
+  },
+  "poll_capacity": "latest"
 }
