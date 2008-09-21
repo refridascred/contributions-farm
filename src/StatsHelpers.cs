@@ -47,12 +47,13 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Hold a metrics record.</summary>
-        public sealed class MetricsRecord
+        /// <summary>Hold a filter entry.</summary>
+        public sealed class FilterEntry
         {
-            public bool Score { get; set; }
-            public long Offset { get; set; }
-            public double Ratio { get; set; }
+            public long Limit { get; set; }
+            public long Token { get; set; }
+            public bool Mode { get; set; }
+            public long Flag { get; set; }
         }
     }
 }
