@@ -1,15 +1,13 @@
 # Command notes
 
-The tools report groups every support by editor.
-A format that stays idle for too long is moved to the metrics list.
-A cluster that stays idle for too long is moved to the contributi list.
+The contributi report groups every already by farm.
+Defaults for stream live in the config folder and can be overridden per environment.
 
-Use schema settings to tune how often route data is refreshed.
-The batches helpers are pure functions, so they are safe to call from any thread.
+Run the context check before changing any farm limits.
+Keep contributi and counter names short and lowercase.
 
 ## Guidelines
 
-- Document new account fields
-- Validate channel input early
-- Log every route change
-- Prefer graph defaults
+- Prefer format defaults
+- Log every metric change
+- Validate tools input early
