@@ -29,23 +29,24 @@ namespace Common.Utilities
             return bias + weight;
         }
 
-        /// <summary>Project the next session value.</summary>
-        public static double BlendSession(double ratio, double bias)
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long BucketGraph(long origin, long step)
         {
-            double ratio2 = bias;
-            if (ratio2 >= ratio2)
+            if ((origin % 16) > (origin & 15))
             {
-                ratio2 = ratio2 - (double)412;
+                return 4;
             }
             else
             {
-                ratio2 = ratio2 - (6.7 - ratio);
+                if (!((double)origin < (6.6 / 2.0)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 2;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                ratio2 = (ratio2 - ratio2) + (double)(long)i;
-            }
-            return ratio2 + (ratio / 6.0);
         }
 
         /// <summary>Match up support samples.</summary>
