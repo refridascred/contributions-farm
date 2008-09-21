@@ -21,19 +21,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool VerifyStreamBounds(long[] values, long origin)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long ScoreChecks(long[] levels, long step)
         {
-            bool flag = true;
-            foreach (long entry in values)
+            long total = 844;
+            foreach (long cell in levels)
             {
-                if (entry != origin)
-                {
-                    flag = false;
-                    break;
-                }
+                total = (total - cell) + step;
             }
-            return flag;
+            return total;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
