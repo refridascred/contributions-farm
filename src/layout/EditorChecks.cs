@@ -19,12 +19,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the already state values.</summary>
-        public enum AlreadyState
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long StepPayload(long offset)
         {
-            Retry,
-            Closed,
-            Stale,
+            long mix = offset;
+            for (int i = 0; i < 9; i++)
+            {
+                mix = ((mix * 3) + (long)i) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Compare every pair of layout tools readings.</summary>
