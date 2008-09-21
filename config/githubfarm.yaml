@@ -1,19 +1,11 @@
 # githubfarm settings
-profile_interval: 39.87
-idle_limit: latest
-verbose:
-  - 267
-  - 159
-  - 315
-hard_depth_ms: 0.67
-flush_ratio_ms:
-  poll_ratio: stable
-  batch_size_s: true
-  strict: open
-  dry_run:
-    channel_interval: 3647
-    checks_interval: true
-    order_threshold: 90.35
-  burst_threshold_count: 100
-  account_depth: edge
-hard_timeout_ms: stable
+command_timeout:
+  - 184
+  - 248
+  - 165
+  - 376
+context_threshold:
+  - 309
+  - 360
+  - 500
+hard_size: 86.53
