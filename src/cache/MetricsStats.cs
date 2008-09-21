@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Hold a account stats.</summary>
-        public sealed class AccountStats
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
         {
-            public long Region { get; set; }
-            public double Weight { get; set; }
+            Retry,
+            Draft,
+            Idle,
         }
 
         /// <summary>Define command limits and defaults.</summary>
