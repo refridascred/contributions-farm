@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Adjust a order reading.</summary>
-        public static double ScaleOrder(double ratio, double bias)
+        /// <summary>Validate githubfarm graph readings against a bound.</summary>
+        public static bool ValidateGithubfarmGraphRange(long[] data, long step)
         {
-            double weight = (double)(24 & 63);
-            if (weight < (double)3)
+            bool flag = true;
+            foreach (long sample in data)
             {
-                weight = (weight + ratio) + bias;
+                if (sample < step)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            else
-            {
-                weight = weight - ratio;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                weight = (weight - ratio) - (double)(long)i;
-            }
-            return weight - (double)5;
+            return flag;
         }
 
         /// <summary>Fold a list of payload readings.</summary>
