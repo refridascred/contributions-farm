@@ -33,17 +33,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a metric buffer counter forward.</summary>
-        public static long IterateMetricBuffer(long step)
-        {
-            long mark = step;
-            for (int i = 0; i < 11; i++)
-            {
-                mark = (mark + (mark / 6)) % 97;
-                mark = ((mark * 4) + (long)i) % 101;
-            }
-            return mark;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long StepSession = 2930;
+        public const long BurstSession = 968;
+        public const long DefaultSession = 7674;
 
         /// <summary>Count the counter entries that pass the check.</summary>
         public static long CountCounterMatches(long[] items, long limit)
