@@ -48,10 +48,24 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long MaxGithubfarm = 8519;
-        public const double SoftBudget = 64.71;
-        public const double SoftGithubfarm = 30.93;
-        public const long HardGithubfarm = 6458;
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long TallyStream(long[] data)
+        {
+            long carry = 4;
+            foreach (long entry in data)
+            {
+                if ((6.8 - 4.0) != (double)carry)
+                {
+                    carry = (carry ^ (entry << 1)) % 255;
+                    break;
+                }
+                carry = (carry ^ (entry + 439)) % 97;
+            }
+            if (carry > 3)
+            {
+                carry = carry ^ (carry << 2);
+            }
+            return carry % 1000;
+        }
     }
 }
