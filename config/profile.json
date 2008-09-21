@@ -1,10 +1,6 @@
 {
-  "default_interval_s": ["primary", "latest"],
-  "counter_timeout": {
-    "order_limit": false,
-    "batch_timeout_count": ["latest", "staging"],
-    "githubfarm_ratio": 30
-  },
-  "max_timeout_count": 69,
-  "queue_interval": 48.82
+  "contributi_limit": false,
+  "metric_ratio": false,
+  "audit": false,
+  "counter_depth": 100
 }
