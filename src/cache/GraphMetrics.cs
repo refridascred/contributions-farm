@@ -18,12 +18,12 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string BatchSpan = "strict-edge";
-        public const long LimitRoute = 7964;
-        public const long IdleRoute = 6032;
-        public const double StepRoute = 3.58;
-        public const string BatchRatio = "local-1";
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long BatchCount = 6595;
+        public const string LimitCounter = "fallback-v2";
+        public const long HardCounter = 9413;
+        public const string StepCounter = "local-v2";
+        public const double DefaultSize = 55.41;
 
         /// <summary>Fold a list of cluster stream readings.</summary>
         public static long CombineClusterStream(long[] samples)
