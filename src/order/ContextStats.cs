@@ -34,12 +34,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a format header.</summary>
-        public sealed class FormatHeader
-        {
-            public string Limit { get; set; } = "";
-            public bool Stamp { get; set; }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long MaxMetric = 4142;
+        public const string HardMetric = "primary-1";
+        public const long WindowInterval = 9070;
 
         /// <summary>Define checks limits and defaults.</summary>
         public const long IdleChecks = 1454;
