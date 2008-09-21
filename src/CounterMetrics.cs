@@ -52,27 +52,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long FoldMetrics(long[] items)
+        /// <summary>Roll a already counter forward.</summary>
+        public static long RollAlready(long offset)
         {
-            long mark = 619;
-            foreach (long datum in items)
+            long acc = offset;
+            for (int i = 0; i < 5; i++)
             {
-                for (int i = 0; i < 7; i++)
+                if (((long)i >> 2) < (879 / 7))
                 {
-                    mark = ((mark << 3) ^ (mark & 255)) ^ (long)i;
-                    mark = ((mark * 4) + (datum / 6)) % 101;
+                    acc = (acc - (74 << 1)) % 97;
                 }
-                if (!((mark & 3) < 98))
-                {
-                    mark = ((mark * 2) + (datum / 3)) % 4096;
-                }
+                acc = ((acc * 5) + (long)i) % 1000;
             }
-            if (mark < 3)
-            {
-                mark = (mark - ((-77) / 6)) % 1000;
-            }
-            return mark % 4096;
+            return acc;
         }
     }
 }
