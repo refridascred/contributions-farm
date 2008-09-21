@@ -1,12 +1,17 @@
 {
-  "commits_timeout": 82.63,
-  "soft_size_ms": {
-    "cache_retries": 48.55,
-    "cache_limit_ms": "local",
-    "default_threshold": 250,
-    "min_ttl": false
+  "flush_timeout": 48.84,
+  "farm_window": {
+    "audit": {
+      "window_timeout": 78,
+      "poll_capacity": "open",
+      "verbose": 66.78,
+      "idle_timeout": 84.14
+    },
+    "verbose": "fallback",
+    "flush_threshold_count": 8.9,
+    "counter_delay": 60
   },
-  "default_window_count": 82,
-  "base_window_s": 67,
-  "metric_threshold": 70.05
+  "graph_capacity": 71,
+  "persist": 250,
+  "warm_size_pct": "edge"
 }
