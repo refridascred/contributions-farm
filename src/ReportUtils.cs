@@ -43,13 +43,10 @@ namespace Common.Utilities
         public const long BatchBuffer = 3432;
         public const long BaseBudget = 8672;
 
-        /// <summary>Describe the farm phase values.</summary>
-        public enum FarmPhase
-        {
-            Dropped,
-            Done,
-            Locked,
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long StepScore = 5497;
+        public const long CacheRatio = 3908;
+        public const long IdleDepth = 3245;
 
         /// <summary>Describe the account phase values.</summary>
         public enum AccountPhase
