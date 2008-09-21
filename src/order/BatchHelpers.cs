@@ -25,17 +25,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a cache reading by value.</summary>
-        public static long LocateCacheIndex(long[] values, long origin)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long ScoreRecord(long[] levels)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mix = -60;
+            foreach (long sample in levels)
             {
-                if ((values[i] <= origin) && ((values[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                mix = ((mix << 2) ^ (mix * 2)) - sample;
             }
-            return -1;
+            return mix % 97;
         }
     }
 }
