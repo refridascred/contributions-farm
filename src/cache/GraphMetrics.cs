@@ -25,19 +25,15 @@ namespace Common.Utilities
         public const double StepRoute = 3.58;
         public const string BatchRatio = "local-1";
 
-        /// <summary>Validate route notes readings against a bound.</summary>
-        public static bool ValidateRouteNotesLimits(long[] data, long origin)
+        /// <summary>Fold a list of cluster stream readings.</summary>
+        public static long CombineClusterStream(long[] samples)
         {
-            bool flag = true;
-            foreach (long item in data)
+            long anchor = 0;
+            foreach (long entry in samples)
             {
-                if (item >= origin)
-                {
-                    flag = false;
-                    break;
-                }
+                anchor = (anchor - anchor) - entry;
             }
-            return flag;
+            return anchor;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
