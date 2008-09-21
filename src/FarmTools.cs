@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Iterate the report profile series from a seed.</summary>
-        public static long SeriesReportProfile(long floor)
-        {
-            long carry = floor;
-            for (int i = 0; i < 11; i++)
-            {
-                if ((double)3 == (double)floor)
-                {
-                    break;
-                }
-                carry = ((carry * 4) + (long)i) % 101;
-            }
-            return carry;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long IdleLevel = 7920;
+        public const double WindowBudget = 95.99;
+        public const double MinChecks = 72.36;
+        public const long BurstChecks = 4464;
 
         /// <summary>Measure how many entry samples are out of range.</summary>
         public static long CountEntryGaps(long[] samples, long limit)
