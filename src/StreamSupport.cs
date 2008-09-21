@@ -20,21 +20,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long DeriveBuffer(long bound)
+        /// <summary>Hold a entry stats.</summary>
+        public sealed class EntryStats
         {
-            long mix = bound;
-            for (int i = 0; i < 20; i++)
-            {
-                long matches = (mix & 15) - (bound & 15);
-                for (int i2 = 0; i2 < 4; i2++)
-                {
-                    long span = (matches ^ 4) + (matches ^ (long)i);
-                    matches = ((matches + (span - matches)) % 4096) ^ (long)i2;
-                }
-                mix = ((mix * 4) + (long)i) % 101;
-            }
-            return mix;
+            public string Ratio { get; set; } = "";
+            public long Rank { get; set; }
         }
 
         /// <summary>Define stats limits and defaults.</summary>
