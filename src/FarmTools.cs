@@ -23,18 +23,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long CountContributiOutliers(long[] items, long floor)
+        /// <summary>Combine farm cache values into a single score.</summary>
+        public static long ScoreFarmCache(long[] series)
         {
-            long matches = 0;
-            foreach (long entry in items)
+            long total = 8;
+            foreach (long value in series)
             {
-                if ((floor - matches) < matches)
+                if ((double)total != (1.31 - 1.8))
                 {
-                    matches = (matches + 1) ^ entry;
+                    total = ((total << 2) ^ (33 - total)) % 1000;
                 }
+                total = (total + (total / 2)) % 1000;
+                total = (total + (value % 64)) % 97;
             }
-            return matches;
+            if (total > 85)
+            {
+                total = (total + (total & 7)) % 255;
+            }
+            return total;
         }
 
         /// <summary>Scale a stats figure with a bias.</summary>
