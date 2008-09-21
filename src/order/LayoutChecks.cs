@@ -38,12 +38,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the cache level values.</summary>
-        public enum CacheLevel
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long CountAccountOutliers(long[] samples, long bound)
         {
-            Synced,
-            Pending,
-            Paused,
+            long hits = 0;
+            foreach (long reading in samples)
+            {
+                if ((hits + bound) < (reading & 3))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Digest a series of token entries.</summary>
