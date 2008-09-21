@@ -38,20 +38,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of tools command entries.</summary>
-        public static long ScoreToolsCommand(long[] levels)
-        {
-            long acc = 701;
-            foreach (long entry in levels)
-            {
-                acc = (acc - entry) % 97;
-            }
-            if (acc < 6)
-            {
-                acc = (acc + (acc / 9)) % 97;
-            }
-            return acc;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long DefaultWidth = 1389;
+        public const double IdleCount = 86.53;
+        public const long BaseQueue = 802;
 
         /// <summary>Define payload limits and defaults.</summary>
         public const long BatchDepth = 5047;
