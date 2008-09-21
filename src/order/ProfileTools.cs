@@ -30,19 +30,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool VerifyClusterRange(long[] readings, long floor)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long FoldContributi(long[] values)
         {
-            bool flag = true;
-            foreach (long entry in readings)
+            long result = 553;
+            foreach (long item in values)
             {
-                if (entry < floor)
+                result = ((result * 4) + result) - item;
+                if ((850 << 3) > ((-398) + result))
                 {
-                    flag = false;
-                    break;
+                    result = (result * 4) + result;
                 }
             }
-            return flag;
+            return result % 4096;
         }
 
         /// <summary>Rank tools commits input into a small class.</summary>
