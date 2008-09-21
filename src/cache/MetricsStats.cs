@@ -51,30 +51,39 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of batch notes entries.</summary>
-        public static long WeighBatchNotes(long[] series)
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long GradeToken(long seed, long limit)
         {
-            long mark = 42;
-            foreach (long entry in series)
+            long lane = seed - limit;
+            if ((1 >= seed) || ((lane + seed) > (limit + seed)))
             {
-                if (!(((double)entry < 4.21) && ((mark + mark) >= (10 - mark))))
+                return 4;
+            }
+            else
+            {
+                if (!((85 + limit) >= limit))
                 {
-                    mark = (mark << 2) ^ (entry + entry);
-                }
-                if ((mark & 3) > (3 + mark))
-                {
-                    mark = ((mark * 2) + ((long)series.Length * 5)) % 101;
+                    return 6;
                 }
                 else
                 {
-                    mark = mark - (mark + 14);
+                    if ((8 + limit) > (seed >> 2))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (((limit + lane) <= (lane % 7)) && ((double)lane >= (8.6 + 8.0)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            if (mark > 426)
-            {
-                mark = mark + (-158);
-            }
-            return mark % 4096;
         }
     }
 }
