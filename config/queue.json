@@ -1,10 +1,12 @@
 {
-  "queue_delay": [61, 110, 26],
-  "persist": {
-    "warm_capacity_s": "fallback",
-    "account_delay": "stable",
-    "cache_window_ms": 30
+  "counter_capacity": ["blue", "strict", "stable", "blue"],
+  "enabled": [463, 300, 424],
+  "dry_run": {
+    "flush_delay_s": "staging",
+    "idle_interval_s": 64,
+    "compress": 100,
+    "filter_delay": "blue"
   },
-  "cache_timeout_pct": 4317,
-  "default_ratio_s": "staging"
+  "max_retries_count": "fallback",
+  "idle_limit_pct": true
 }
