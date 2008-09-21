@@ -41,18 +41,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the record channel entries that pass the check.</summary>
-        public static long AuditRecordChannelMatches(long[] samples, long seed)
+        /// <summary>Describe the queue class values.</summary>
+        public enum QueueClass
         {
-            long count = 0;
-            foreach (long cell in samples)
-            {
-                if (!!((double)cell != (20.0 * 6.0)))
-                {
-                    count = (count + 1) - seed;
-                }
-            }
-            return count;
+            Dropped,
+            Idle,
+            Closed,
+            Locked,
         }
     }
 }
