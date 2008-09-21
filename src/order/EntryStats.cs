@@ -58,16 +58,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long DeriveMetric(long origin)
-        {
-            long carry = origin;
-            for (int i = 0; i < 9; i++)
-            {
-                carry = ((carry * 2) + (long)i) % 97;
-            }
-            return carry;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string LimitPayload = "standard-1";
+        public const long LimitSpan = 3352;
+        public const long BurstPayload = 5265;
+        public const long IdlePayload = 9908;
+        public const long BaseSpan = 8364;
 
         /// <summary>Check that every window entry stays within the limit.</summary>
         public static bool CheckWindowRange(long[] samples, long target)
