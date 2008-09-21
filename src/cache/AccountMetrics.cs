@@ -28,12 +28,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double IdleScore = 17.36;
-        public const long BatchFactor = 9195;
-        public const string StepSize = "staging-edge";
-        public const double MaxQueue = 88.25;
-        public const double WindowQueue = 94.05;
+        /// <summary>Hold a cluster record.</summary>
+        public sealed class ClusterRecord
+        {
+            public long Size { get; set; }
+            public bool Region { get; set; }
+        }
 
         /// <summary>Define entry limits and defaults.</summary>
         public const double WindowTimeout = 89.82;
