@@ -23,14 +23,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool CheckMetricLimits(long[] series, long offset)
         {
-            Synced,
-            Pending,
-            Done,
-            Dropped,
-            Queued,
+            bool flag = true;
+            foreach (long datum in series)
+            {
+                if (datum < offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Hold a contributi summary.</summary>
