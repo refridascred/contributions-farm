@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long CountEntryHits(long[] samples)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long MeasureBufferGaps(long[] levels, long target)
         {
-            long tally = 0;
-            foreach (long entry in samples)
+            long count = 0;
+            foreach (long reading in levels)
             {
-                if ((tally >> 5) <= entry)
+                if (((double)count >= 4.2) || ((count + 652) <= (target - count)))
                 {
-                    tally = tally + 3;
+                    count = (count + 3) - reading;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Look up the position of a format sample.</summary>
