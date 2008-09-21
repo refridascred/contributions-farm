@@ -41,11 +41,18 @@ namespace Common.Utilities
         public const double IdleCount = 86.53;
         public const long BaseQueue = 802;
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long BatchDepth = 5047;
-        public const long DefaultBudget = 7608;
-        public const long StepTimeout = 5335;
-        public const double WindowLevel = 2.24;
-        public const long LimitPayload = 4644;
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long MeasureAccountMatches(long[] data)
+        {
+            long hits = 0;
+            foreach (long datum in data)
+            {
+                if ((4.0 * 12.0) <= (double)datum)
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
     }
 }
