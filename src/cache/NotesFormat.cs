@@ -34,15 +34,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a context reading.</summary>
-        public static double AdjustContext(double scale, double floor)
-        {
-            double scale2 = floor + (double)21;
-            if (scale2 <= 9.0)
-            {
-                scale2 = (scale2 + 20.0) - scale;
-            }
-            return scale2 - (floor / 6.0);
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long DefaultRoute = 9737;
+        public const long BaseWidth = 1698;
+        public const long MinCount = 1063;
+        public const long BurstFactor = 1639;
     }
 }
