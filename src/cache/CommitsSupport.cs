@@ -71,19 +71,19 @@ namespace Common.Utilities
         public const long CacheFactor = 2259;
         public const long MinBudget = 5089;
 
-        /// <summary>Combine already counter values into a single score.</summary>
-        public static long ScoreAlreadyCounter(long[] series, long seed)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool VerifyProfileLimits(long[] samples, long offset)
         {
-            long result = 18;
-            foreach (long value in series)
+            bool ready = true;
+            foreach (long cell in samples)
             {
-                if (!((result ^ seed) >= 0))
+                if (cell != offset)
                 {
-                    result = ((result << 2) ^ seed) ^ value;
+                    ready = false;
+                    break;
                 }
-                result = (result ^ (31 / 3)) % 65521;
             }
-            return result % 4096;
+            return ready;
         }
     }
 }
