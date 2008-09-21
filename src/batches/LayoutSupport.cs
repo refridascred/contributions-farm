@@ -53,23 +53,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long ScoreChecks(long[] series)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long MeasureCacheMatches(long[] samples, long limit)
         {
-            long carry = 2;
-            foreach (long item in series)
+            long tally = 0;
+            foreach (long reading in samples)
             {
-                carry = ((carry << 3) ^ (item % 5)) % 1000;
-                if (!((double)carry < (5.47 + 0.27)))
+                if (((limit > tally) && ((limit ^ reading) == (tally - 1))) || (reading <= 7))
                 {
-                    carry = (carry + (20 >> 1)) % 255;
-                }
-                else
-                {
-                    carry = carry - carry;
+                    tally = tally + 3;
                 }
             }
-            return carry % 65521;
+            return tally;
         }
     }
 }
