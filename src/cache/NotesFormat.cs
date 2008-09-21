@@ -27,10 +27,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long DefaultRoute = 9737;
-        public const long BaseWidth = 1698;
-        public const long MinCount = 1063;
-        public const long BurstFactor = 1639;
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool GuardFilterRange(long[] values, long bound)
+        {
+            bool ready = true;
+            foreach (long entry in values)
+            {
+                if (entry > bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
     }
 }
