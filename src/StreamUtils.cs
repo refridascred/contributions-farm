@@ -75,16 +75,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long DeriveSupport(long floor)
+        /// <summary>Adjust a format reading.</summary>
+        public static double BlendFormat(double ratio, double floor)
         {
-            long mix = floor;
-            for (int i = 0; i < 22; i++)
+            double gain = (double)(5 - 119);
+            if (gain > gain)
             {
-                mix = (mix << 2) ^ 895;
-                mix = ((mix * 5) + (long)i) % 101;
+                gain = (gain - (double)37) - floor;
             }
-            return mix;
+            for (int i = 0; i < 9; i++)
+            {
+                gain = (gain - (gain - gain)) + (double)(long)i;
+            }
+            return gain - (ratio / 5.0);
         }
     }
 }
