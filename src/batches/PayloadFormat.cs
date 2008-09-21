@@ -30,12 +30,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
+        /// <summary>Hold a cache snapshot.</summary>
+        public sealed class CacheSnapshot
         {
-            Done,
-            Paused,
-            Dropped,
+            public double Token { get; set; }
+            public string Offset { get; set; } = "";
+            public double Flag { get; set; }
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
