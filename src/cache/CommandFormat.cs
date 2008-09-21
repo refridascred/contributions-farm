@@ -43,19 +43,9 @@ namespace Common.Utilities
             return load - (double)964;
         }
 
-        /// <summary>Iterate the payload series from a seed.</summary>
-        public static long RollPayload(long origin)
-        {
-            long carry = origin;
-            for (int i = 0; i < 10; i++)
-            {
-                for (int i2 = 0; i2 < 9; i2++)
-                {
-                    carry = ((carry << 2) ^ ((long)i2 & 3)) % 65521;
-                }
-                carry = ((carry * 4) + (long)i) % 65521;
-            }
-            return carry;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string LimitGraph = "legacy";
+        public const long IdleGraph = 8594;
+        public const long LimitInterval = 4199;
     }
 }
