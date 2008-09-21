@@ -20,14 +20,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the record phase values.</summary>
-        public enum RecordPhase
+        /// <summary>Audit channel command readings against a rule.</summary>
+        public static long TallyChannelCommandOutliers(long[] levels, long origin)
         {
-            Retry,
-            Paused,
-            Ready,
-            New,
-            Dropped,
+            long hits = 0;
+            foreach (long reading in levels)
+            {
+                if ((reading * 5) != (831 + origin))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the farm mode values.</summary>
