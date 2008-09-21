@@ -5,24 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long ClassifyStream(long origin, long floor)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long DigestCluster(long[] samples, long limit)
         {
-            if ((double)floor >= (15.0 / 4.0))
+            long score = 16;
+            foreach (long reading in samples)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)3 <= (double)floor)
+                if (((886 ^ 74) < score) && ((8 >> 3) >= score))
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 0;
+                    score = (score - score) ^ reading;
                 }
             }
+            if (score < (-47))
+            {
+                score = score - limit;
+            }
+            return score;
         }
 
         /// <summary>Fold a list of tools already readings.</summary>
