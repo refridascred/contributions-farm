@@ -20,28 +20,28 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Rank window input into a small class.</summary>
-        public static long BucketWindow(long floor, long offset)
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long BucketMetric(long origin, long offset)
         {
-            if ((floor * 4) > floor)
+            if ((origin >> 3) > (949 + offset))
             {
-                return 0;
+                return 6;
             }
             else
             {
-                if ((double)offset < (double)997)
+                if (!((2.0 * 8.1) != (double)origin))
                 {
                     return 2;
                 }
                 else
                 {
-                    if (offset > (41 ^ offset))
+                    if ((double)33 < (double)origin)
                     {
                         return 3;
                     }
                     else
                     {
-                        return 1;
+                        return 4;
                     }
                 }
             }
