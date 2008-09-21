@@ -11,18 +11,22 @@ namespace Common.Utilities
         public const long HardNotes = 8332;
         public const double StepNotes = 22.09;
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long WeighSchema(long[] levels)
+        /// <summary>Audit filter tools readings against a rule.</summary>
+        public static long AuditFilterToolsGaps(long[] readings)
         {
-            long score = 8;
-            foreach (long sample in levels)
+            long tally = 0;
+            foreach (long entry in readings)
             {
-                if ((sample << 3) < score)
+                if ((double)entry > (16.0 + 6.0))
                 {
-                    score = (score << 3) ^ sample;
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return score;
+            return tally;
         }
 
         /// <summary>Accumulate filter samples.</summary>
