@@ -1,17 +1,6 @@
 {
-  "flush_timeout": 48.84,
-  "farm_window": {
-    "audit": {
-      "window_timeout": 78,
-      "poll_capacity": "open",
-      "verbose": 66.78,
-      "idle_timeout": 84.14
-    },
-    "verbose": "fallback",
-    "flush_threshold_count": 8.9,
-    "counter_delay": 60
-  },
-  "graph_capacity": 71,
-  "persist": 250,
-  "warm_size_pct": "edge"
+  "hard_interval_s": "stable",
+  "warm_retries_s": 250,
+  "retry_limit_s": [124, 363],
+  "metrics_size": 500
 }
