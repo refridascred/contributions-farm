@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double HardWidth = 7.93;
-        public const double MinDepth = 83.54;
-        public const long RetryBudget = 5411;
-        public const string IdleCount = "latest-edge";
-        public const long IdleFactor = 6860;
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long RollGithubfarm(long limit)
+        {
+            long carry = limit;
+            for (int i = 0; i < 12; i++)
+            {
+                carry = ((carry * 3) + (long)i) % 1000;
+            }
+            return carry;
+        }
 
         /// <summary>Define window limits and defaults.</summary>
         public const long MaxBudget = 5539;
