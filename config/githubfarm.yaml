@@ -1,22 +1,8 @@
 # githubfarm settings
-strict: open
-persist: 2197
-burst_size_s: 51
-flush_capacity: 5
-poll_size_ms:
-  verbose:
-    - 74
-    - 124
-    - 15
-  flush_retries_pct:
-    hard_interval_ms: true
-    warm_ttl_ms: eu-west
-    strict: 250
-    verbose: 104
-  persist: 500
-  min_window_pct: false
-compress:
-  - 409
-  - 52
-  - 180
-  - 309
+strict: 9887
+batch_threshold: 14.29
+enabled: 100
+flush_depth_count: 60
+base_interval_pct:
+  - legacy
+  - strict
