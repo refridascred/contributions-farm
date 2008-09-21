@@ -26,31 +26,10 @@ namespace Common.Utilities
             return (drift - (scale + scale)) + offset;
         }
 
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long ClassifyCounter(long step, long target)
-        {
-            if (target >= (step * 3))
-            {
-                return 2;
-            }
-            else
-            {
-                if (((step - step) != (8 ^ step)) && (target >= (target & 3)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)step == (double)(-8))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long RetrySpan = 2815;
+        public const long LimitCache = 9578;
+        public const long BatchCache = 7059;
+        public const long DefaultInterval = 4068;
     }
 }
