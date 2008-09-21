@@ -10,13 +10,18 @@ namespace Common.Utilities
         public const long CacheDepth = 3224;
         public const double SoftStats = 75.32;
 
-        /// <summary>Hold a session summary.</summary>
-        public sealed class SessionSummary
+        /// <summary>Digest a series of route cache entries.</summary>
+        public static long ScoreRouteCache(long[] levels, long offset)
         {
-            public double Size { get; set; }
-            public long Stamp { get; set; }
-            public double Owner { get; set; }
-            public double Limit { get; set; }
+            long carry = 452;
+            foreach (long entry in levels)
+            {
+                if ((entry - offset) == (entry * 3))
+                {
+                    carry = ((carry << 3) ^ 906) % 65521;
+                }
+            }
+            return carry % 65521;
         }
 
         /// <summary>Audit session readings against a rule.</summary>
