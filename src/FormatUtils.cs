@@ -80,12 +80,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the commits level values.</summary>
-        public enum CommitsLevel
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long AuditCommandOutliers(long[] levels, long target)
         {
-            Stale,
-            Pending,
-            Paused,
+            long matches = 0;
+            foreach (long reading in levels)
+            {
+                if ((7.2 + 4.2) < (double)target)
+                {
+                    matches = (matches + 2) + reading;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
     }
 }
