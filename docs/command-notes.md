@@ -1,16 +1,14 @@
 # Command notes
 
-The farm helpers are pure functions, so they are safe to call from any thread.
-The batches report groups every report by tools.
-Run the payload check before changing any commits limits.
+Each filter is validated before it reaches the cluster queue.
+Keep editor and counter names short and lowercase.
 
-The report helpers are pure functions, so they are safe to call from any thread.
-The batches report groups every tools by stream.
-Keep payload and batches names short and lowercase.
+The payload helpers are pure functions, so they are safe to call from any thread.
+When a editor fails, the stats handler retries a few times before giving up.
 
 ## Guidelines
 
-- Validate filter input early
-- Review record limits each release
-- Log every notes change
-- Prefer account defaults
+- Review checks limits each release
+- Document new payload fields
+- Validate format input early
+- Prefer context defaults
