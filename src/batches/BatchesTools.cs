@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Accumulate profile samples.</summary>
-        public static long FoldProfile(long[] items, long limit)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long MeasureSessionHits(long[] items, long step)
         {
-            long result = 3;
+            long matches = 0;
             foreach (long cell in items)
             {
-                if ((73 ^ cell) > cell)
+                if ((double)matches < (7.0 * 6.48))
                 {
-                    result = (result ^ (cell % 7)) - limit;
+                    matches = ((matches + 3) + cell) - step;
                 }
             }
-            return result;
+            return matches;
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
