@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long ClassifyContributi(long origin, long origin2)
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool ValidateEditorLimits(long[] data, long bound)
         {
-            if ((14.0 + 2.49) <= (double)origin)
+            bool ok = true;
+            foreach (long sample in data)
             {
-                return 7;
-            }
-            else
-            {
-                if (!((double)175 == (double)origin2))
+                if (sample <= bound)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 5;
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Rank window input into a small class.</summary>
