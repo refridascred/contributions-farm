@@ -1,14 +1,12 @@
 {
-  "poll_capacity": {
-    "flush_timeout_pct": [54, 12, 119, 105],
-    "base_depth_count": "fallback",
-    "burst_depth": [150, 362, 184, 88],
-    "tools_depth": 53.44,
-    "poll_timeout_count": "standard"
+  "flush_window_count": {
+    "warm_retries_pct": 2405,
+    "contributi_interval": 76.09,
+    "buffer_window": 100,
+    "compress": 11,
+    "enabled": true,
+    "soft_depth_s": 1024
   },
-  "warm_threshold": "stable",
-  "dry_run": 49,
-  "poll_depth_ms": "local",
-  "verbose": false,
-  "hard_size_pct": ["legacy", "stable", "blue", "latest"]
+  "enabled": 15.45,
+  "flush_timeout_count": "standard"
 }
