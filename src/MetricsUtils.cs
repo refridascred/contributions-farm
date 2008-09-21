@@ -59,13 +59,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the graph phase values.</summary>
-        public enum GraphPhase
+        /// <summary>Locate a report reading by value.</summary>
+        public static long LookupReportIndex(long[] readings, long limit)
         {
-            Failed,
-            Synced,
-            Done,
-            Paused,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] <= limit) && ((readings[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
