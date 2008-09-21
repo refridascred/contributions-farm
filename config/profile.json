@@ -1,6 +1,5 @@
 {
-  "audit": [55, 367, 300, 104],
-  "record_window": [468, 203, 32],
-  "account_window": 8526,
-  "batch_timeout": 4984
+  "metrics_ratio": 47.75,
+  "retry_depth_pct": "primary",
+  "min_ttl": "standard"
 }
