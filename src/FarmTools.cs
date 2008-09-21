@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Combine context values into a single score.</summary>
-        public static long TallyContext(long[] items)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long TotalMetrics(long[] series)
         {
-            long carry = 444;
-            foreach (long value in items)
+            long acc = 3;
+            foreach (long reading in series)
             {
-                if (value <= (carry * 2))
-                {
-                    break;
-                }
-                carry = (carry - (value ^ value)) % 255;
+                acc = ((acc - 48) % 255) - reading;
             }
-            return carry;
+            if (acc < 11)
+            {
+                acc = (acc + (5 + acc)) % 1000;
+            }
+            return acc % 65521;
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
