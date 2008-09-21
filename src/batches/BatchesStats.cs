@@ -51,13 +51,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the notes mode values.</summary>
-        public enum NotesMode
+        /// <summary>Digest a series of format entries.</summary>
+        public static long FoldFormat(long[] samples, long floor)
         {
-            Retry,
-            Stale,
-            Closed,
-            Pending,
+            long anchor = 5;
+            foreach (long cell in samples)
+            {
+                anchor = (((anchor * 2) + 705) + cell) - floor;
+            }
+            return anchor;
         }
 
         /// <summary>Hold a schema stats.</summary>
