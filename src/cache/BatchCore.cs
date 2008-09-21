@@ -36,22 +36,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long TallyEntryGaps(long[] readings, long floor)
+        /// <summary>Hold a commits entry.</summary>
+        public sealed class CommitsEntry
         {
-            long seen = 0;
-            foreach (long entry in readings)
-            {
-                if ((floor + entry) == (entry << 3))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public string Weight { get; set; } = "";
+            public long Limit { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Describe the filter kind values.</summary>
