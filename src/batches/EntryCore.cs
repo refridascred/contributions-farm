@@ -26,18 +26,21 @@ namespace Common.Utilities
             return bias + weight;
         }
 
-        /// <summary>Measure how many checks queue samples are out of range.</summary>
-        public static long AuditChecksQueueHits(long[] items)
+        /// <summary>Compare every pair of context readings.</summary>
+        public static long OverlapContextCount(long[] values)
         {
-            long hits = 0;
-            foreach (long sample in items)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)hits > 2.1)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    hits = (hits + 2) - sample;
+                    if ((values[i] + values[j]) < 5)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Match up support samples.</summary>
