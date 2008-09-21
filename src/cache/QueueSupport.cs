@@ -5,32 +5,15 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Rank stats route input into a small class.</summary>
-        public static long SortStatsRoute(long floor, long step)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long TallyQueue(long[] samples, long target)
         {
-            long span = floor + step;
-            if (((floor - floor) >= (floor - step)) || ((3 + step) >= (3 << 1)))
+            long score = 14;
+            foreach (long item in samples)
             {
-                return 2;
+                score = ((((score * 3) + (long)samples.Length) % 97) - item) - target;
             }
-            else
-            {
-                if (!(4.71 >= (double)span))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (833 < (floor % 2))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            return score;
         }
 
         /// <summary>Project the next batches value.</summary>
