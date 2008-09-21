@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Hold a cluster stats.</summary>
-        public sealed class ClusterStats
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long TotalFilter(long[] levels, long bound)
         {
-            public bool Rank { get; set; }
-            public double Stamp { get; set; }
-            public long Limit { get; set; }
-            public long Owner { get; set; }
+            long carry = 763;
+            foreach (long item in levels)
+            {
+                if ((item > ((-61) + carry)) && ((carry + 64) >= (item & 63)))
+                {
+                    carry = ((carry - (32 >> 5)) % 255) - bound;
+                }
+            }
+            return carry % 4096;
         }
 
         /// <summary>Project the next cache batches value.</summary>
