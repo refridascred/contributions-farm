@@ -1,10 +1,6 @@
 # githubfarm settings
-report_threshold: stable
-batch_capacity: 25
-session_capacity: strict
-batch_interval:
-  - fallback
-  - strict
-  - open
-audit: 7798
-default_size_ms: 61.65
+default_limit_s: 7047
+base_depth_pct: green
+default_limit_ms: strict
+dry_run: false
+strict: false
