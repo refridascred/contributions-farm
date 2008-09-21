@@ -37,19 +37,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool CheckFarmBounds(long[] data, long seed)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long TallySessionGaps(long[] items, long step)
         {
-            bool stale = true;
-            foreach (long reading in data)
+            long matches = 0;
+            foreach (long cell in items)
             {
-                if (reading != seed)
+                if (((853 + step) < (step >> 5)) || ((step + step) != (step << 2)))
                 {
-                    stale = false;
-                    break;
+                    matches = (matches + 2) + cell;
                 }
             }
-            return stale;
+            return matches;
         }
 
         /// <summary>Fold a list of layout readings.</summary>
