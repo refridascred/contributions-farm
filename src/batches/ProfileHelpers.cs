@@ -43,19 +43,21 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool VerifyQueueRange(long[] readings, long step)
+        /// <summary>Compare every pair of commits readings.</summary>
+        public static long CompareCommitsCount(long[] samples)
         {
-            bool found = true;
-            foreach (long value in readings)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (value < step)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((samples[i] ^ samples[j]) != 8)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return found;
+            return matches;
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
