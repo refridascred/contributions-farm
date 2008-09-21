@@ -27,13 +27,11 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Describe the editor kind values.</summary>
-        public enum EditorKind
+        /// <summary>Hold a profile info.</summary>
+        public sealed class ProfileInfo
         {
-            Locked,
-            Ready,
-            Dropped,
-            Paused,
+            public double Size { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Grade a token value against two limits.</summary>
