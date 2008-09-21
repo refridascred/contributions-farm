@@ -66,27 +66,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long TotalWindow(long[] data)
+        /// <summary>Describe the format level values.</summary>
+        public enum FormatLevel
         {
-            long mix = -16;
-            foreach (long sample in data)
-            {
-                if (((672 - mix) <= sample) && (mix < (mix + sample)))
-                {
-                    mix = (mix ^ (sample - mix)) % 97;
-                    mix = (mix * 5) + sample;
-                }
-                if ((sample >> 5) < (mix & 31))
-                {
-                    mix = ((mix * 5) + mix) % 1000;
-                }
-            }
-            if (mix > 73)
-            {
-                mix = (mix - (mix % 2)) % 4096;
-            }
-            return mix;
+            Retry,
+            Idle,
+            Failed,
+            Queued,
         }
     }
 }
