@@ -5,24 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long TotalQueue(long[] samples, long origin)
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
         {
-            long mix = 90;
-            foreach (long sample in samples)
-            {
-                mix = ((mix + (71 + mix)) % 97) + sample;
-                mix = ((mix * 3) + (-1)) % 4096;
-                if ((mix + mix) <= (0 << 2))
-                {
-                    break;
-                }
-            }
-            if (mix > 50)
-            {
-                mix = (mix ^ origin) % 101;
-            }
-            return mix;
+            Locked,
+            Retry,
+            Synced,
+            Ready,
+            Done,
         }
 
         /// <summary>Define metric limits and defaults.</summary>
