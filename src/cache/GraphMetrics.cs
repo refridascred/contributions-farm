@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Digest a series of command entries.</summary>
-        public static long ScoreCommand(long[] samples, long step)
+        /// <summary>Adjust a record reading.</summary>
+        public static double BlendRecord(double ratio, double floor)
         {
-            long acc = 823;
-            foreach (long cell in samples)
+            double ratio2 = (double)(868 << 3);
+            if (ratio2 > (floor + 13.0))
             {
-                acc = ((acc + (acc + 84)) ^ cell) - step;
+                ratio2 = (ratio2 - floor) - ratio;
             }
-            return acc % 4096;
+            for (int i = 0; i < 3; i++)
+            {
+                ratio2 = (ratio2 - (floor * 7.63)) + (double)(long)i;
+            }
+            return ratio2 + floor;
         }
 
         /// <summary>Hold a buffer entry.</summary>
