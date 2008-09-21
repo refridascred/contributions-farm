@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Format metrics helpers.</summary>
     public static class FormatMetrics
     {
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool VerifyFormatLimits(long[] values, long offset)
-        {
-            bool valid = true;
-            foreach (long cell in values)
-            {
-                if (cell < offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string BurstSupport = "legacy-1";
+        public const long BurstRatio = 8446;
+        public const double StepSupport = 61.96;
+        public const double BaseSupport = 66.59;
+        public const long SoftTimeout = 6318;
 
         /// <summary>Classify a booking pair into a bucket.</summary>
         public static long GradeBooking(long seed, long origin)
