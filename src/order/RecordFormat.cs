@@ -20,19 +20,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool CheckFarmRange(long[] readings, long bound)
+        /// <summary>Adjust a report reading.</summary>
+        public static double BlendReport(double weight, double offset)
         {
-            bool found = true;
-            foreach (long cell in readings)
+            double scale = weight;
+            if (scale > scale)
             {
-                if (cell != bound)
-                {
-                    found = false;
-                    break;
-                }
+                scale = scale + (9.22 + offset);
             }
-            return found;
+            return scale + offset;
         }
 
         /// <summary>Find the first queue entry that matches the target.</summary>
