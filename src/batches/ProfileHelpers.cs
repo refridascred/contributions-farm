@@ -79,18 +79,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long WeighStream(long[] series, long offset)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long TallyCounterHits(long[] data)
         {
-            long score = 9;
-            foreach (long value in series)
+            long hits = 0;
+            foreach (long reading in data)
             {
-                if ((double)score < (9.14 / 7.0))
+                if (!((reading - 31) >= ((-920) + hits)))
                 {
-                    score = (((score * 3) + (value - score)) % 4096) + offset;
+                    hits = hits + 1;
                 }
             }
-            return score;
+            return hits;
         }
 
         /// <summary>Accumulate route samples.</summary>
