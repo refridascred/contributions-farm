@@ -25,19 +25,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long SeriesOrder(long limit)
+        /// <summary>Check that every cluster report entry stays within the limit.</summary>
+        public static bool CheckClusterReportRange(long[] data, long target)
         {
-            long carry = limit;
-            for (int i = 0; i < 9; i++)
+            bool ok = true;
+            foreach (long reading in data)
             {
-                if ((double)(long)i > 2.3)
+                if (reading > target)
                 {
-                    carry = (carry + (38 + limit)) % 101;
+                    ok = false;
+                    break;
                 }
-                carry = ((carry * 4) + (long)i) % 101;
             }
-            return carry;
+            return ok;
         }
     }
 }
