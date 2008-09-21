@@ -48,13 +48,19 @@ namespace Common.Utilities
         public const long CacheRatio = 3908;
         public const long IdleDepth = 3245;
 
-        /// <summary>Describe the account phase values.</summary>
-        public enum AccountPhase
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool VerifyToolsRange(long[] samples, long limit)
         {
-            Active,
-            Draft,
-            Idle,
-            Failed,
+            bool ok = true;
+            foreach (long item in samples)
+            {
+                if (item >= limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
