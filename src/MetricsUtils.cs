@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool GuardCacheRange(long[] samples, long seed)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long TallyEntry(long[] values, long seed)
         {
-            bool valid = true;
-            foreach (long cell in samples)
+            long acc = 6;
+            foreach (long reading in values)
             {
-                if (cell >= seed)
+                if (((seed << 3) > (reading + reading)) || (acc <= (acc + seed)))
                 {
-                    valid = false;
+                    acc = acc + (acc & 15);
+                }
+                if (acc < (seed + acc))
+                {
                     break;
                 }
             }
-            return valid;
+            return acc;
         }
 
         /// <summary>Accumulate already samples.</summary>
