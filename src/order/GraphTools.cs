@@ -20,31 +20,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long BucketMetric(long origin, long offset)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool GuardCommitsBounds(long[] series, long origin)
         {
-            if ((origin >> 3) > (949 + offset))
+            bool stale = true;
+            foreach (long cell in series)
             {
-                return 6;
-            }
-            else
-            {
-                if (!((2.0 * 8.1) != (double)origin))
+                if (cell < origin)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)33 < (double)origin)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
