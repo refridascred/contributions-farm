@@ -1,12 +1,10 @@
 # Command notes
 
-The layout module keeps githubfarm values in sync with the entry cache.
-Keep window and batch names short and lowercase.
-Each stats is validated before it reaches the payload queue.
+The batches helpers are pure functions, so they are safe to call from any thread.
+Each checks is validated before it reaches the stats queue.
 
 ## Guidelines
 
-- Log every batches change
-- Review report limits each release
-- Keep farm values small
-- Prefer order defaults
+- Keep counter values small
+- Log every entry change
+- Validate farm input early
