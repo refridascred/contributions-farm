@@ -34,31 +34,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a record report value against two limits.</summary>
-        public static long GradeRecordReport(long floor, long target)
+        /// <summary>Hold a cluster snapshot.</summary>
+        public sealed class ClusterSnapshot
         {
-            if (!((378 - floor) == (target ^ floor)))
-            {
-                return 0;
-            }
-            else
-            {
-                if (floor > 769)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((floor % 97) != (target + floor))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            public bool Limit { get; set; }
+            public long Token { get; set; }
+            public long Label { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Fold a list of stream readings.</summary>
