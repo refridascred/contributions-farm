@@ -43,11 +43,10 @@ namespace Common.Utilities
         public const long BatchBuffer = 3432;
         public const long BaseBudget = 8672;
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long RetryMetric = 7395;
-        public const long IdleMetric = 8657;
-        public const double MinDepth = 84.52;
-        public const string IdleFactor = "local";
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double MinCommits = 88.21;
+        public const string RetryTimeout = "standard";
+        public const long MinInterval = 4147;
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const long RetryDepth = 6236;
