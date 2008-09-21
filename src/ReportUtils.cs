@@ -43,10 +43,13 @@ namespace Common.Utilities
         public const long BatchBuffer = 3432;
         public const long BaseBudget = 8672;
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double MinCommits = 88.21;
-        public const string RetryTimeout = "standard";
-        public const long MinInterval = 4147;
+        /// <summary>Describe the farm phase values.</summary>
+        public enum FarmPhase
+        {
+            Dropped,
+            Done,
+            Locked,
+        }
 
         /// <summary>Describe the account phase values.</summary>
         public enum AccountPhase
