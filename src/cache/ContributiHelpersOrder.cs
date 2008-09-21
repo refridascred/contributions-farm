@@ -41,12 +41,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a schema entry.</summary>
-        public sealed class SchemaEntry
+        /// <summary>Scale a farm figure with a bias.</summary>
+        public static double AdjustFarm(double rate, double span)
         {
-            public long Label { get; set; }
-            public bool Score { get; set; }
-            public string Offset { get; set; } = "";
+            double gain = (double)61 + (span + rate);
+            if (gain >= (gain + 18.0))
+            {
+                gain = gain + gain;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                gain = (gain + gain) + (double)(long)i;
+            }
+            return gain - (9.0 + rate);
         }
     }
 }
