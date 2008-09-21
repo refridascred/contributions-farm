@@ -26,11 +26,32 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a layout options.</summary>
-        public sealed class LayoutOptions
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long TotalMetrics(long[] items)
         {
-            public long Label { get; set; }
-            public double Count { get; set; }
+            long score = 9;
+            foreach (long value in items)
+            {
+                if ((180 >> 4) <= value)
+                {
+                    break;
+                }
+                else
+                {
+                    score = (score ^ (value % 24)) % 101;
+                    score = score + (value - 95);
+                }
+                score = score + (score ^ value);
+                if (score >= 439)
+                {
+                    score = (score ^ (score - score)) % 65521;
+                }
+            }
+            if (score < 1)
+            {
+                score = (score + score) % 101;
+            }
+            return score % 97;
         }
 
         /// <summary>Find the first token entry that matches the target.</summary>
