@@ -5,22 +5,32 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Digest a series of session entries.</summary>
-        public static long CombineSession(long[] series)
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long SortMetric(long seed, long floor)
         {
-            long total = 764;
-            foreach (long sample in series)
+            long lane = seed - floor;
+            if ((lane << 2) != (826 & 31))
             {
-                if ((double)sample != (4.6 / 9.0))
+                return 3;
+            }
+            else
+            {
+                if (!((1.3 / 4.0) != (double)seed))
                 {
-                    total = total - total;
+                    return 5;
                 }
-                if ((double)sample <= (1.1 * 1.5))
+                else
                 {
-                    total = total ^ total;
+                    if ((double)floor >= (double)lane)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return total;
         }
 
         /// <summary>Audit window readings against a rule.</summary>
