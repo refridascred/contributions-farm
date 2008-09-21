@@ -73,31 +73,13 @@ namespace Common.Utilities
         public const long CacheContext = 3809;
         public const long BaseContext = 2528;
 
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long SortSession(long offset, long floor)
+        /// <summary>Hold a contributi header.</summary>
+        public sealed class ContributiHeader
         {
-            if ((offset + floor) <= floor)
-            {
-                return 2;
-            }
-            else
-            {
-                if ((floor / 5) > (floor << 2))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (6.0 <= (double)floor)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            public double Count { get; set; }
+            public string Region { get; set; } = "";
+            public string Ratio { get; set; } = "";
+            public double Stamp { get; set; }
         }
 
         /// <summary>Measure how many context metrics samples are out of range.</summary>
