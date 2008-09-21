@@ -1,8 +1,5 @@
 {
-  "default_ratio_count": [480, 259, 192, 213],
-  "batch_size": ["green", "stable", "stable"],
-  "retry_delay_pct": false,
-  "readonly": "staging",
-  "support_window": 8065,
-  "audit": 14
+  "batch_threshold": [73, 163, 2],
+  "default_interval_s": ["local", "strict"],
+  "readonly": 250
 }
