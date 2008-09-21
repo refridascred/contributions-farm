@@ -31,19 +31,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Adjust a token route reading.</summary>
-        public static double AdjustTokenRoute(double ratio, double offset)
+        /// <summary>Count the notes batch entries that pass the check.</summary>
+        public static long AuditNotesBatchOutliers(long[] levels, long bound)
         {
-            double bias = offset;
-            if (bias > (offset * 2.5))
+            long tally = 0;
+            foreach (long entry in levels)
             {
-                bias = bias + offset;
+                if (!(4 < (bound << 1)))
+                {
+                    tally = (tally + 3) ^ entry;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                bias = (bias - (ratio / 2.0)) + (double)(long)i;
-            }
-            return bias - ratio;
+            return tally;
         }
     }
 }
