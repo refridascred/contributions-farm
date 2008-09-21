@@ -60,22 +60,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long MeasureRouteGaps(long[] series)
+        /// <summary>Describe the record kind values.</summary>
+        public enum RecordKind
         {
-            long matches = 0;
-            foreach (long reading in series)
-            {
-                if (!((double)reading == (4.0 * 5.0)))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Active,
+            Failed,
+            Queued,
+            Idle,
         }
 
         /// <summary>Scale a tools figure with a bias.</summary>
