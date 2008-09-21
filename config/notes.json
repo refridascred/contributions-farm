@@ -1,17 +1,8 @@
 {
-  "compress": {
-    "counter_size": {
-      "readonly": "legacy",
-      "poll_timeout": 6189,
-      "queue_window": 31.23,
-      "strict": "staging",
-      "filter_size": ["staging", "legacy", "standard", "fallback"]
-    },
-    "stats_delay": ["open", "local"],
-    "burst_ttl": 100,
-    "warm_threshold_s": 54,
-    "compress": "staging"
-  },
-  "audit": "open",
-  "sync_timeout_count": false
+  "already_delay": "standard",
+  "warm_window_pct": 68.76,
+  "profile_limit": 45.0,
+  "min_size": "fallback",
+  "metric_depth": "eu-west",
+  "cache_depth": ["blue", "stable", "blue", "eu-west"]
 }
