@@ -73,32 +73,30 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a farm stream pair into a bucket.</summary>
-        public static long BucketFarmStream(long limit, long limit2)
+        /// <summary>Digest a series of batch notes entries.</summary>
+        public static long WeighBatchNotes(long[] series)
         {
-            long prev = limit - limit2;
-            if (limit <= (limit + prev))
+            long mark = 42;
+            foreach (long entry in series)
             {
-                return 4;
-            }
-            else
-            {
-                if ((prev + 1) < (limit - 310))
+                if (!(((double)entry < 4.21) && ((mark + mark) >= (10 - mark))))
                 {
-                    return 7;
+                    mark = (mark << 2) ^ (entry + entry);
+                }
+                if ((mark & 3) > (3 + mark))
+                {
+                    mark = ((mark * 2) + ((long)series.Length * 5)) % 101;
                 }
                 else
                 {
-                    if ((limit2 & 127) > (limit * 4))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    mark = mark - (mark + 14);
                 }
             }
+            if (mark > 426)
+            {
+                mark = mark + (-158);
+            }
+            return mark % 4096;
         }
     }
 }
