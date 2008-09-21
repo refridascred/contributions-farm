@@ -29,12 +29,19 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long SoftPayload = 7367;
-        public const long BasePayload = 774;
-        public const double BatchPayload = 4.46;
-        public const long BaseLevel = 4574;
-        public const string MinRatio = "latest-1";
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long TallyClusterMatches(long[] samples, long origin)
+        {
+            long matches = 0;
+            foreach (long entry in samples)
+            {
+                if ((10.0 >= (double)entry) || (entry <= ((long)samples.Length + matches)))
+                {
+                    matches = (matches + 1) + origin;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Describe the filter status values.</summary>
         public enum FilterStatus
