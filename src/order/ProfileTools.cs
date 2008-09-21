@@ -46,18 +46,21 @@ namespace Common.Utilities
         public const double IdleCount = 86.53;
         public const long BaseQueue = 802;
 
-        /// <summary>Count the schema format entries that pass the check.</summary>
-        public static long MeasureSchemaFormatHits(long[] values)
+        /// <summary>Match up channel samples.</summary>
+        public static long MatchChannelCount(long[] values)
         {
-            long matches = 0;
-            foreach (long cell in values)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((matches - matches) <= 61)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    matches = (matches + 1) ^ cell;
+                    if ((values[i] - values[j]) > 7)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return matches;
+            return seen;
         }
     }
 }
