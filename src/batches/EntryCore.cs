@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long MaxProfile = 4248;
-        public const long MinWidth = 3207;
-        public const long MinDepth = 2722;
+        /// <summary>Hold a cluster stats.</summary>
+        public sealed class ClusterStats
+        {
+            public long Count { get; set; }
+            public bool Region { get; set; }
+        }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
         public static long CountBufferOutliers(long[] items, long offset)
