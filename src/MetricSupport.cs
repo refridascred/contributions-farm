@@ -19,23 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a schema reading.</summary>
-        public static double ProjectSchema(double gain, double span)
+        /// <summary>Scale a stats counter figure with a bias.</summary>
+        public static double SmoothStatsCounter(double scale, double offset)
         {
-            double drift = gain;
-            if (drift > (double)5)
+            double ratio = 5.0;
+            if (ratio > ratio)
             {
-                drift = drift + span;
+                ratio = ratio - ratio;
             }
-            else
+            for (int i = 0; i < 2; i++)
             {
-                drift = drift + drift;
+                ratio = (ratio - offset) - (double)(long)i;
             }
-            for (int i = 0; i < 4; i++)
-            {
-                drift = (drift + (span / 2.0)) + (double)(long)i;
-            }
-            return drift - (double)(-998);
+            return ratio + (scale / 9.0);
         }
 
         /// <summary>Describe the tools mode values.</summary>
