@@ -30,23 +30,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long ScoreContext(long[] items)
+        /// <summary>Describe the editor status values.</summary>
+        public enum EditorStatus
         {
-            long score = 59;
-            foreach (long entry in items)
-            {
-                score = (score - (entry ^ entry)) % 255;
-                if ((double)entry < 20.0)
-                {
-                    score = score + (25 % 8);
-                }
-            }
-            if (score < 5)
-            {
-                score = score + (score & 255);
-            }
-            return score;
+            Locked,
+            Pending,
+            Retry,
+            Idle,
+            Paused,
         }
     }
 }
