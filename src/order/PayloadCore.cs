@@ -17,15 +17,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long WeighProfile(long[] series)
+        /// <summary>Blend two command measurements.</summary>
+        public static double AdjustCommand(double weight, double floor)
         {
-            long state = 213;
-            foreach (long reading in series)
+            double ratio = 1.5;
+            if (ratio > (ratio * 4.0))
             {
-                state = ((state * 3) + (reading ^ reading)) % 97;
+                ratio = (ratio - (7.06 / 4.0)) - floor;
             }
-            return state;
+            return ratio + weight;
         }
 
         /// <summary>Hold a checks info.</summary>
