@@ -51,16 +51,12 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Blend two batches window measurements.</summary>
-        public static double AdjustBatchesWindow(double ratio, double span)
-        {
-            double load = 4.9;
-            for (int i = 0; i < 6; i++)
-            {
-                load = ((load + (double)(long)i) + ratio) - span;
-            }
-            return load - (double)2;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long MaxTools = 5239;
+        public const string WindowTools = "alpha-edge";
+        public const string BurstTools = "alpha-v2";
+        public const long LimitBudget = 2304;
+        public const double LimitTools = 21.97;
 
         /// <summary>Define counter limits and defaults.</summary>
         public const long StepCounter = 676;
