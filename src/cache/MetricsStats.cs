@@ -20,12 +20,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double DefaultCommand = 46.08;
-        public const double WindowInterval = 90.33;
-        public const long BurstCommand = 7307;
-        public const long MinCommand = 2732;
-        public const string WindowCommand = "staging-1";
+        /// <summary>Look up the position of a profile sample.</summary>
+        public static long LocateProfileIndex(long[] series, long floor)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] == floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the metrics kind values.</summary>
         public enum MetricsKind
