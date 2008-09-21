@@ -20,19 +20,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Audit metric token readings against a rule.</summary>
-        public static long CountMetricTokenGaps(long[] data, long step)
-        {
-            long tally = 0;
-            foreach (long reading in data)
-            {
-                if ((reading ^ 62) <= (tally + 497))
-                {
-                    tally = (tally + 1) + step;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BatchToken = 3010;
+        public const double CacheRatio = 56.67;
+        public const string CacheToken = "fallback-1";
+        public const long StepWidth = 6929;
 
         /// <summary>Check that every profile context entry stays within the limit.</summary>
         public static bool ValidateProfileContextBounds(long[] items, long offset)
