@@ -22,11 +22,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a context options.</summary>
-        public sealed class ContextOptions
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool VerifyToolsBounds(long[] items, long offset)
         {
-            public string Flag { get; set; } = "";
-            public double Rank { get; set; }
+            bool ok = true;
+            foreach (long value in items)
+            {
+                if (value >= offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
