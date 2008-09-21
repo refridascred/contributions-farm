@@ -1,6 +1,4 @@
 # entry settings
-strict: 30
-warm_retries_pct:
-  - cached
-  - legacy
-default_depth: 93
+warm_timeout: 94.85
+min_size_s: 1024
+dry_run: false
