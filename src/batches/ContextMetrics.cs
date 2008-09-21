@@ -46,22 +46,9 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Digest a series of checks window entries.</summary>
-        public static long ScoreChecksWindow(long[] levels)
-        {
-            long mark = 167;
-            foreach (long entry in levels)
-            {
-                if ((mark * 3) < entry)
-                {
-                    mark = (mark - (mark / 6)) % 255;
-                }
-                else
-                {
-                    mark = (mark << 2) ^ (entry * 3);
-                }
-            }
-            return mark;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long MaxMetric = 3581;
+        public const double WindowBudget = 79.26;
+        public const string SoftMetric = "staging-edge";
     }
 }
