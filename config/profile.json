@@ -1,7 +1,18 @@
 {
-  "burst_delay_ms": "stable",
-  "readonly": true,
-  "base_capacity_count": [388, 352, 225, 358],
-  "cache_timeout": "stable",
-  "idle_interval_ms": 29
+  "account_size": 39,
+  "persist": ["legacy", "staging", "cached"],
+  "format_size": 2.02,
+  "token_timeout": 14,
+  "burst_ttl_s": {
+    "filter_interval": [71, 89, 82],
+    "hard_window_count": 35,
+    "warm_ratio_pct": 98.37,
+    "min_window": 60
+  },
+  "buffer_limit": {
+    "sync_timeout_pct": "stable",
+    "min_capacity_s": 5,
+    "farm_ratio": 500,
+    "default_window_count": 30
+  }
 }
