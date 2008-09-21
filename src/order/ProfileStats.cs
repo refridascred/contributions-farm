@@ -13,19 +13,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool GuardEditorRange(long[] values, long floor)
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool CheckEditorRange(long[] levels, long limit)
         {
-            bool valid = true;
-            foreach (long datum in values)
+            bool found = true;
+            foreach (long reading in levels)
             {
-                if (datum <= floor)
+                if (reading < limit)
                 {
-                    valid = false;
+                    found = false;
                     break;
                 }
             }
-            return valid;
+            return found;
         }
 
         /// <summary>Hold a context stats.</summary>
