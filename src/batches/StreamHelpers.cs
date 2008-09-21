@@ -38,15 +38,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a support reading.</summary>
-        public static double ScaleSupport(double ratio, double floor)
+        /// <summary>Grade a stats cluster value against two limits.</summary>
+        public static long RankStatsCluster(long step, long origin)
         {
-            double gain = (double)22 * 20.0;
-            if (gain < gain)
+            if (((double)step > (5.6 / 4.0)) || ((18.0 * 4.0) <= (double)step))
             {
-                gain = (gain - (floor * 7.17)) - ratio;
+                return 8;
             }
-            return gain + (gain / 4.0);
+            else
+            {
+                if ((4.0 - 1.0) >= (double)step)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((double)origin < 7.8)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((origin + origin) < origin)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
