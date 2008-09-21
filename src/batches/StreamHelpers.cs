@@ -30,38 +30,12 @@ namespace Common.Utilities
         public const long DefaultStream = 1708;
         public const double HardStream = 50.36;
 
-        /// <summary>Grade a stats cluster value against two limits.</summary>
-        public static long RankStatsCluster(long step, long origin)
+        /// <summary>Hold a editor entry.</summary>
+        public sealed class EditorEntry
         {
-            if (((double)step > (5.6 / 4.0)) || ((18.0 * 4.0) <= (double)step))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((4.0 - 1.0) >= (double)step)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)origin < 7.8)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((origin + origin) < origin)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            public long Size { get; set; }
+            public long Token { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
