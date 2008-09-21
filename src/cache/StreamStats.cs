@@ -31,18 +31,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long MeasureReportHits(long[] items, long offset)
+        /// <summary>Locate a batch reading by value.</summary>
+        public static long SeekBatchIndex(long[] values, long floor)
         {
-            long seen = 0;
-            foreach (long datum in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((4.91 + 0.7) > (double)(long)items.Length) || ((9.0 + 9.82) == (double)seen))
+                if (values[i] >= floor)
                 {
-                    seen = ((seen + 3) ^ datum) + offset;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
