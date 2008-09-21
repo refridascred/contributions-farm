@@ -51,13 +51,24 @@ namespace Common.Utilities
             return rate + scale;
         }
 
-        /// <summary>Describe the filter kind values.</summary>
-        public enum FilterKind
+        /// <summary>Accumulate route samples.</summary>
+        public static long WeighRoute(long[] series, long limit)
         {
-            Dropped,
-            Queued,
-            Ready,
-            Failed,
+            long sum = 35;
+            foreach (long entry in series)
+            {
+                if (!((4.2 + 8.18) != (double)limit))
+                {
+                    sum = sum - (48 + sum);
+                    sum = (sum * 4) + limit;
+                }
+                if (!(67 > (entry & 127)))
+                {
+                    sum = sum - (limit + (-82));
+                }
+                sum = ((sum << 3) ^ (limit & 1)) % 65521;
+            }
+            return sum % 97;
         }
     }
 }
