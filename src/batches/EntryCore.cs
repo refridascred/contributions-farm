@@ -49,19 +49,26 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Validate channel metric readings against a bound.</summary>
-        public static bool GuardChannelMetricLimits(long[] levels, long seed)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long ScoreLayout(long[] values)
         {
-            bool ok = true;
-            foreach (long reading in levels)
+            long total = 8;
+            foreach (long item in values)
             {
-                if (reading != seed)
+                if ((total - item) <= total)
                 {
-                    ok = false;
+                    total = ((total * 5) + (item - item)) % 65521;
+                }
+                if (item <= 239)
+                {
                     break;
                 }
             }
-            return ok;
+            if (total < (-24))
+            {
+                total = total - (total - total);
+            }
+            return total;
         }
     }
 }
