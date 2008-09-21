@@ -1,6 +1,15 @@
 # support settings
-cache_limit: 100
-hard_ttl_pct: 1024
-default_window: 250
-audit: staging
-base_window_count: primary
+max_timeout_ms: strict
+idle_interval: 39.18
+support_interval:
+  default_ttl:
+    soft_interval_ms: 52.18
+    graph_timeout: 51.23
+    poll_window_s: eu-west
+    soft_window: strict
+  enabled: fallback
+  warm_retries: staging
+persist:
+  - 15
+  - 445
+soft_interval: 96.02
