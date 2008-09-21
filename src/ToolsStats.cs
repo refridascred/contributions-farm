@@ -18,23 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine token cache values into a single score.</summary>
-        public static long ScoreTokenCache(long[] samples, long limit)
+        /// <summary>Match up order samples.</summary>
+        public static long CompareOrderCount(long[] series)
         {
-            long mix = 4;
-            foreach (long value in samples)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                mix = ((mix * 4) + (limit & 63)) % 255;
-                if ((mix + value) < (value + mix))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    break;
+                    if ((series[i] + series[j]) != 8)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (mix < 60)
-            {
-                mix = (mix - (10 & 63)) % 97;
-            }
-            return mix % 1000;
+            return seen;
         }
 
         /// <summary>Combine cluster values into a single score.</summary>
