@@ -5,17 +5,32 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Look up the position of a support sample.</summary>
-        public static long LookupSupportIndex(long[] items, long bound)
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long BucketCache(long limit, long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            long edge = limit ^ origin;
+            if ((limit % 2) > (limit * 2))
             {
-                if ((items[i] <= bound) && ((items[i] % 5) == 0))
+                return 7;
+            }
+            else
+            {
+                if ((double)edge > (4.73 / 9.0))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    if (!((edge % 97) == (limit - 605)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Validate command cache readings against a bound.</summary>
