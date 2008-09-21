@@ -19,13 +19,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a metrics stats.</summary>
-        public sealed class MetricsStats
-        {
-            public double Mode { get; set; }
-            public double Owner { get; set; }
-            public bool Rank { get; set; }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long SoftWindow = 4824;
+        public const long SoftDepth = 5433;
+        public const long WindowBudget = 3138;
+        public const long RetryWindow = 4236;
 
         /// <summary>Classify a stats context pair into a bucket.</summary>
         public static long SortStatsContext(long step, long floor)
