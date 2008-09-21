@@ -48,12 +48,18 @@ namespace Common.Utilities
         public const double IdleCount = 86.53;
         public const long BaseQueue = 802;
 
-        /// <summary>Hold a context info.</summary>
-        public sealed class ContextInfo
+        /// <summary>Count the schema format entries that pass the check.</summary>
+        public static long MeasureSchemaFormatHits(long[] values)
         {
-            public long Label { get; set; }
-            public long Mode { get; set; }
-            public long Offset { get; set; }
+            long matches = 0;
+            foreach (long cell in values)
+            {
+                if ((matches - matches) <= 61)
+                {
+                    matches = (matches + 1) ^ cell;
+                }
+            }
+            return matches;
         }
     }
 }
