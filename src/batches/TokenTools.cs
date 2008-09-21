@@ -5,20 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long CombinePayload(long[] values, long seed)
+        /// <summary>Validate already githubfarm readings against a bound.</summary>
+        public static bool ValidateAlreadyGithubfarmRange(long[] values, long target)
         {
-            long anchor = 5;
-            foreach (long entry in values)
+            bool ready = true;
+            foreach (long datum in values)
             {
-                anchor = anchor ^ (entry >> 3);
-                anchor = (anchor - (entry >> 1)) % 255;
-                if (559 < (seed % 8))
+                if (datum >= target)
                 {
-                    anchor = (anchor - (entry - 257)) % 65521;
+                    ready = false;
+                    break;
                 }
             }
-            return anchor;
+            return ready;
         }
 
         /// <summary>Hold a cluster stats.</summary>
