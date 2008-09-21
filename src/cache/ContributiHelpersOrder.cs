@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
-        {
-            Stale,
-            Ready,
-            Done,
-            Retry,
-            Paused,
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string MinGraph = "legacy";
+        public const long BatchGraph = 5645;
+        public const long MinLevel = 2238;
+        public const long MaxInterval = 5284;
 
         /// <summary>Compare every pair of buffer readings.</summary>
         public static long PairBufferCount(long[] samples)
