@@ -35,14 +35,12 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Describe the cluster status values.</summary>
-        public enum ClusterStatus
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
         {
-            Draft,
-            Idle,
-            Closed,
-            Done,
-            Ready,
+            Retry,
+            Queued,
+            Synced,
         }
     }
 }
