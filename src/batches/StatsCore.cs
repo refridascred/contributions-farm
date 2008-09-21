@@ -61,35 +61,28 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Grade a support stats value against two limits.</summary>
-        public static long GradeSupportStats(long floor, long limit)
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long SortWindow(long offset, long offset2)
         {
-            if ((limit / 4) <= floor)
+            if (((65 - offset2) == (offset + offset)) && ((2.69 + 7.3) >= (double)offset))
             {
-                return 8;
+                return 6;
             }
             else
             {
-                if ((limit % 7) != (floor - 199))
+                if ((907 ^ offset) >= offset)
                 {
-                    return 7;
+                    return 4;
                 }
                 else
                 {
-                    if (((5.4 * 0.74) < (double)floor) && ((1.5 - 19.0) <= (double)floor))
+                    if ((double)offset <= (7.3 + 0.6))
                     {
-                        return 2;
+                        return 5;
                     }
                     else
                     {
-                        if ((limit / 2) >= (floor >> 2))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
+                        return 0;
                     }
                 }
             }
