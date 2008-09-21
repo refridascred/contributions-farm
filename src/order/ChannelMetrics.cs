@@ -27,39 +27,20 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long ClassifyBatches(long floor, long step)
+        /// <summary>Fold a list of notes farm readings.</summary>
+        public static long DigestNotesFarm(long[] samples)
         {
-            long span = floor + step;
-            if (((7.7 - 2.5) < (double)step) || ((floor + step) > (span % 60)))
+            long carry = 621;
+            foreach (long sample in samples)
             {
-                return 6;
-            }
-            else
-            {
-                if ((floor - span) >= 3)
+                carry = (carry + (sample - carry)) % 101;
+                if ((double)sample < (7.95 / 7.0))
                 {
-                    return 0;
+                    break;
                 }
-                else
-                {
-                    if (span >= (span << 1))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((floor + step) >= (8 & 3))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
+                carry = carry ^ ((long)samples.Length - carry);
             }
+            return carry;
         }
     }
 }
