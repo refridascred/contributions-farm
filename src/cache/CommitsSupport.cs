@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long RollGithubfarm(long limit)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long TallySessionMatches(long[] readings, long seed)
         {
-            long carry = limit;
-            for (int i = 0; i < 12; i++)
+            long count = 0;
+            foreach (long reading in readings)
             {
-                carry = ((carry * 3) + (long)i) % 1000;
+                if ((count % 7) <= reading)
+                {
+                    count = (count + 3) + seed;
+                }
             }
-            return carry;
+            return count;
         }
 
         /// <summary>Define window limits and defaults.</summary>
