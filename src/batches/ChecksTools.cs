@@ -36,12 +36,32 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a layout info.</summary>
-        public sealed class LayoutInfo
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long GradeMetrics(long offset, long limit)
         {
-            public double Rank { get; set; }
-            public long Offset { get; set; }
-            public long Size { get; set; }
+            long cur = offset + limit;
+            if (((double)cur >= 15.0) || ((cur % 10) != (offset << 1)))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((cur >> 2) == (9 & 255))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((1 + offset) == (limit + cur))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
