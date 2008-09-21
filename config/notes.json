@@ -1,8 +1,8 @@
 {
-  "queue_capacity": [447, 273, 56, 224],
-  "sync_threshold_count": "staging",
-  "max_retries": "open",
-  "max_retries_s": 93,
-  "sync_timeout": 1815,
-  "already_retries": true
+  "dry_run": "open",
+  "readonly": "green",
+  "payload_ratio": 15.46,
+  "persist": 25,
+  "sync_delay": [94, 6],
+  "hard_threshold_ms": false
 }
