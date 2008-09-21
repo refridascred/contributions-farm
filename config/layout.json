@@ -1,8 +1,7 @@
 {
-  "batch_capacity_s": "stable",
-  "flush_size": [331, 184, 275, 226],
-  "enabled": "local",
-  "already_threshold": [73, 97],
-  "batch_timeout_ms": false,
-  "min_capacity_pct": 99
+  "compress": "edge",
+  "entry_interval": "eu-west",
+  "poll_delay_ms": ["green", "stable"],
+  "readonly": 4957,
+  "hard_window_pct": "local"
 }
