@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Match up counter samples.</summary>
-        public static long OverlapCounterCount(long[] readings)
-        {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) > 20)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long MinCount = 5259;
+        public const string HardDepth = "open-v2";
+        public const string DefaultSupport = "local-1";
+        public const long IdleFactor = 4973;
 
         /// <summary>Count the already metrics entries that pass the check.</summary>
         public static long AuditAlreadyMetricsOutliers(long[] samples)
