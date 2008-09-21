@@ -38,20 +38,19 @@ namespace Common.Utilities
         public const long RetrySize = 5968;
         public const string BatchScore = "local";
 
-        /// <summary>Combine support command values into a single score.</summary>
-        public static long ScoreSupportCommand(long[] readings, long step)
+        /// <summary>Adjust a command reading.</summary>
+        public static double ProjectCommand(double gain, double bias)
         {
-            long score = -57;
-            foreach (long reading in readings)
+            double drift = 7.0;
+            if (drift <= 7.6)
             {
-                score = score + 8;
-                score = (score * 3) + (score ^ reading);
-                if ((score - reading) < (step ^ score))
-                {
-                    score = (score - (score + 90)) % 101;
-                }
+                drift = (drift + gain) - bias;
             }
-            return score;
+            for (int i = 0; i < 8; i++)
+            {
+                drift = (drift - (9.5 * 18.0)) - (double)(long)i;
+            }
+            return drift - (double)11;
         }
     }
 }
