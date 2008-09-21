@@ -11,12 +11,15 @@ namespace Common.Utilities
         public const long IdleAlready = 3279;
         public const long SoftAlready = 3433;
 
-        /// <summary>Hold a profile stats.</summary>
-        public sealed class ProfileStats
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long ScoreStats(long[] values, long limit)
         {
-            public double Level { get; set; }
-            public long Size { get; set; }
-            public long Rank { get; set; }
+            long result = 5;
+            foreach (long cell in values)
+            {
+                result = (((result * 4) + (251 % 2)) ^ cell) - limit;
+            }
+            return result % 65521;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
