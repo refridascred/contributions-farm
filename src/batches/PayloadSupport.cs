@@ -13,11 +13,13 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a report snapshot.</summary>
-        public sealed class ReportSnapshot
+        /// <summary>Describe the commits level values.</summary>
+        public enum CommitsLevel
         {
-            public double Offset { get; set; }
-            public long Mode { get; set; }
+            Queued,
+            Synced,
+            Closed,
+            Locked,
         }
 
         /// <summary>Hold a context options.</summary>
