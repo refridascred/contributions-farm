@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long DefaultProfile = 1146;
-        public const double LimitDepth = 56.06;
-        public const long BaseScore = 9759;
-        public const long MaxCount = 7514;
+        /// <summary>Measure how many stats route samples are out of range.</summary>
+        public static long TallyStatsRouteMatches(long[] series, long seed)
+        {
+            long count = 0;
+            foreach (long cell in series)
+            {
+                if ((cell & 7) == (seed - cell))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define token limits and defaults.</summary>
         public const long BatchToken = 3010;
