@@ -1,17 +1,10 @@
 # entry settings
-compress: standard
-retry_retries_s: true
-base_delay_pct:
-  cache_depth: fallback
-  idle_depth_pct: true
-  channel_size: 69.8
-  compress: 7047
-  default_ratio_s: 8498
-  report_limit: blue
-flush_delay_s: 47.23
-cache_ttl:
-  - 388
-  - 208
-  - 404
-  - 2
-min_capacity_s: edge
+entry_window: 250
+dry_run: 10.64
+readonly:
+  batch_delay_count:
+    - staging
+    - legacy
+  strict: eu-west
+  retry_window: 35
+audit: edge
