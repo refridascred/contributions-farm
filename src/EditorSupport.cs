@@ -32,21 +32,21 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Count graph cluster pairs that satisfy a relation.</summary>
-        public static long PairGraphClusterCount(long[] values)
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long StepStats(long step)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long acc = step;
+            for (int i = 0; i < 17; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (((long)i - acc) == ((long)i - step))
                 {
-                    if ((values[i] + values[j]) == 6)
-                    {
-                        seen = seen + 1;
-                    }
+                    acc = ((acc * 3) + (acc % 60)) % 1000;
+                    acc = acc + (918 - step);
+                    continue;
                 }
+                acc = ((acc * 2) + (long)i) % 4093;
             }
-            return seen;
+            return acc;
         }
 
         /// <summary>Describe the commits status values.</summary>
