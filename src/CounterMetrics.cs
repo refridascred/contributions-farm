@@ -27,11 +27,14 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long IdleFactor = 7796;
-        public const long StepTools = 4875;
-        public const long RetryScore = 4407;
-        public const long IdleSize = 9;
+        /// <summary>Describe the account level values.</summary>
+        public enum AccountLevel
+        {
+            Closed,
+            Active,
+            Retry,
+            Failed,
+        }
 
         /// <summary>Roll a already counter forward.</summary>
         public static long RollAlready(long offset)
