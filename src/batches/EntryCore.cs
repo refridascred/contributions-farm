@@ -26,11 +26,23 @@ namespace Common.Utilities
         public const double WindowCount = 10.48;
         public const string IdleFactor = "primary-1";
 
-        /// <summary>Hold a report stats.</summary>
-        public sealed class ReportStats
+        /// <summary>Project the next session value.</summary>
+        public static double BlendSession(double ratio, double bias)
         {
-            public long Score { get; set; }
-            public double Offset { get; set; }
+            double ratio2 = bias;
+            if (ratio2 >= ratio2)
+            {
+                ratio2 = ratio2 - (double)412;
+            }
+            else
+            {
+                ratio2 = ratio2 - (6.7 - ratio);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                ratio2 = (ratio2 - ratio2) + (double)(long)i;
+            }
+            return ratio2 + (ratio / 6.0);
         }
 
         /// <summary>Validate report readings against a bound.</summary>
