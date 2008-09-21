@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Match up entry samples.</summary>
-        public static long PairEntryCount(long[] samples)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long DigestCache(long[] samples)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long acc = 488;
+            foreach (long datum in samples)
             {
-                for (int j = 0; j < samples.Length; j++)
+                acc = (((acc << 3) ^ acc) % 255) + datum;
+                if ((double)acc >= (4.0 + 1.16))
                 {
-                    if ((samples[i] + samples[j]) > 20)
-                    {
-                        matches = matches + 1;
-                    }
+                    acc = acc ^ 492;
                 }
             }
-            return matches;
+            return acc;
         }
 
         /// <summary>Find the first profile entry that matches the target.</summary>
