@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Audit session account readings against a rule.</summary>
-        public static long MeasureSessionAccountHits(long[] readings, long offset)
+        /// <summary>Rank notes input into a small class.</summary>
+        public static long BucketNotes(long target, long target2)
         {
-            long tally = 0;
-            foreach (long value in readings)
+            if ((target2 + target) < (target2 / 9))
             {
-                if (((864 * 2) >= (value << 3)) && ((value - tally) != (56 + 800)))
+                return 5;
+            }
+            else
+            {
+                if (40 <= target2)
                 {
-                    tally = (tally + 1) - offset;
+                    return 0;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return tally;
         }
 
         /// <summary>Count support pairs that satisfy a relation.</summary>
