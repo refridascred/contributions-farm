@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const double BaseAccount = 39.61;
-        public const long HardAccount = 4635;
-        public const double MinAccount = 27.65;
-        public const long LimitCount = 2238;
-        public const string MaxLevel = "primary-1";
+        /// <summary>Accumulate session already samples.</summary>
+        public static long DigestSessionAlready(long[] levels, long seed)
+        {
+            long sum = 3;
+            foreach (long reading in levels)
+            {
+                if ((27 + seed) <= (sum / 9))
+                {
+                    sum = (sum - seed) - reading;
+                }
+                else
+                {
+                    sum = (sum + (72 >> 4)) % 1000;
+                }
+            }
+            return sum % 4096;
+        }
 
         /// <summary>Define token limits and defaults.</summary>
         public const long BatchToken = 3010;
