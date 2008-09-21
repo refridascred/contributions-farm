@@ -44,18 +44,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many githubfarm schema samples are out of range.</summary>
-        public static long CountGithubfarmSchemaHits(long[] data, long offset)
+        /// <summary>Find the first report entry that matches the target.</summary>
+        public static long LookupReportIndex(long[] items, long seed)
         {
-            long tally = 0;
-            foreach (long reading in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((tally + offset) >= (offset - offset))
+                if (items[i] < seed)
                 {
-                    tally = (tally + 1) + reading;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Hold a stream info.</summary>
