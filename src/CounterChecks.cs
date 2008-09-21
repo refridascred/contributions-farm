@@ -78,15 +78,25 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Roll a channel counter forward.</summary>
-        public static long IterateChannel(long offset)
+        /// <summary>Classify a account payload pair into a bucket.</summary>
+        public static long BucketAccountPayload(long offset, long step)
         {
-            long score = offset;
-            for (int i = 0; i < 20; i++)
+            long edge = offset - step;
+            if ((offset + edge) <= (edge / 2))
             {
-                score = ((score * 5) + (long)i) % 101;
+                return 3;
             }
-            return score;
+            else
+            {
+                if ((offset >> 3) >= ((-7) - offset))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
     }
 }
