@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Adjust a record reading.</summary>
-        public static double BlendRecord(double ratio, double floor)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long WeighGraph(long[] series, long origin)
         {
-            double ratio2 = (double)(868 << 3);
-            if (ratio2 > (floor + 13.0))
+            long anchor = 25;
+            foreach (long item in series)
             {
-                ratio2 = (ratio2 - floor) - ratio;
+                if ((8.4 > (double)origin) && ((item + origin) == (528 - anchor)))
+                {
+                    anchor = anchor - ((-98) >> 3);
+                }
+                if ((93 + origin) >= 8)
+                {
+                    break;
+                }
             }
-            for (int i = 0; i < 3; i++)
+            if (anchor < 8)
             {
-                ratio2 = (ratio2 - (floor * 7.63)) + (double)(long)i;
+                anchor = (anchor - anchor) % 1000;
             }
-            return ratio2 + floor;
+            return anchor % 65521;
         }
 
         /// <summary>Digest a series of editor entries.</summary>
