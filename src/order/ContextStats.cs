@@ -34,17 +34,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a buffer batches reading by value.</summary>
-        public static long SeekBufferBatchesIndex(long[] levels, long step)
+        /// <summary>Hold a format header.</summary>
+        public sealed class FormatHeader
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] > step) && ((levels[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Limit { get; set; } = "";
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Define checks limits and defaults.</summary>
