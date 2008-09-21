@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Compare every pair of stream buffer readings.</summary>
-        public static long MatchStreamBufferCount(long[] levels)
+        /// <summary>Measure how many cache format samples are out of range.</summary>
+        public static long CountCacheFormatGaps(long[] readings, long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((origin / 6) > datum)
                 {
-                    if ((levels[i] + levels[j]) > 12)
-                    {
-                        hits = hits + 1;
-                    }
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Define token limits and defaults.</summary>
