@@ -19,21 +19,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of format readings.</summary>
-        public static long MatchFormatCount(long[] items)
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long ClassifyRoute(long origin, long origin2)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            if ((origin2 / 3) == (origin2 >> 5))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if ((origin * 5) >= (origin2 + origin))
                 {
-                    if ((items[i] + items[j]) < 17)
-                    {
-                        seen = seen + 1;
-                    }
+                    return 1;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return seen;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
