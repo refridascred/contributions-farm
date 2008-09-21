@@ -19,13 +19,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a channel options.</summary>
-        public sealed class ChannelOptions
-        {
-            public long Label { get; set; }
-            public string Count { get; set; } = "";
-            public string Stamp { get; set; } = "";
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string BatchContributi = "fallback";
+        public const long HardContributi = 1756;
+        public const string LimitSpan = "primary-1";
 
         /// <summary>Find the first record entry that matches the target.</summary>
         public static long SeekRecordIndex(long[] items, long limit)
