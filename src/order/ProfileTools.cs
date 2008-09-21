@@ -25,15 +25,13 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Project the next stream route value.</summary>
-        public static double AdjustStreamRoute(double ratio, double bias)
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
         {
-            double rate = ratio;
-            for (int i = 0; i < 6; i++)
-            {
-                rate = (rate + (bias * 0.51)) + (double)(long)i;
-            }
-            return rate + (double)86;
+            Retry,
+            Dropped,
+            Queued,
+            Draft,
         }
 
         /// <summary>Define queue limits and defaults.</summary>
