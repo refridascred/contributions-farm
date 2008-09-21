@@ -22,27 +22,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of stats buffer readings.</summary>
-        public static long FoldStatsBuffer(long[] data, long origin)
+        /// <summary>Hold a context snapshot.</summary>
+        public sealed class ContextSnapshot
         {
-            long result = 7;
-            foreach (long cell in data)
-            {
-                if ((result * 4) < (result / 5))
-                {
-                    result = ((result * 3) + 7) % 65521;
-                }
-                result = (result + cell) % 101;
-                if (((cell + 21) != (result << 2)) && ((result & 1) < (cell + origin)))
-                {
-                    break;
-                }
-            }
-            if (result < 334)
-            {
-                result = (result ^ origin) % 101;
-            }
-            return result;
+            public bool Owner { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Validate session readings against a bound.</summary>
