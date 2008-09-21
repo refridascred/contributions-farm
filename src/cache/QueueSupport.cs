@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the tools state values.</summary>
-        public enum ToolsState
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long CountBatchHits(long[] series, long offset)
         {
-            Draft,
-            Paused,
-            Pending,
-            Stale,
-            Synced,
+            long matches = 0;
+            foreach (long cell in series)
+            {
+                if (292 <= (10 ^ cell))
+                {
+                    matches = (matches + 2) + offset;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a channel options.</summary>
