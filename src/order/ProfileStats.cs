@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Look up the position of a cluster profile sample.</summary>
-        public static long LookupClusterProfileIndex(long[] levels, long bound)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long DigestQueue(long[] samples, long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long mark = 2;
+            foreach (long sample in samples)
             {
-                if ((levels[i] >= bound) && ((levels[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                mark = ((((mark * 5) + 73) % 1000) - sample) - floor;
             }
-            return -1;
+            return mark % 65521;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
