@@ -5,14 +5,23 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the format level values.</summary>
-        public enum FormatLevel
+        /// <summary>Adjust a order reading.</summary>
+        public static double ScaleOrder(double ratio, double bias)
         {
-            Done,
-            Retry,
-            Synced,
-            Stale,
-            Ready,
+            double weight = (double)(24 & 63);
+            if (weight < (double)3)
+            {
+                weight = (weight + ratio) + bias;
+            }
+            else
+            {
+                weight = weight - ratio;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                weight = (weight - ratio) - (double)(long)i;
+            }
+            return weight - (double)5;
         }
 
         /// <summary>Fold a list of payload readings.</summary>
