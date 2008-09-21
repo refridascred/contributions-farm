@@ -30,19 +30,11 @@ namespace Common.Utilities
         public const long HardLevel = 6129;
         public const long MinDepth = 9072;
 
-        /// <summary>Blend two token measurements.</summary>
-        public static double SmoothToken(double weight, double floor)
+        /// <summary>Hold a notes header.</summary>
+        public sealed class NotesHeader
         {
-            double mean = (double)(110 * 4);
-            if (mean >= (floor * 3.0))
-            {
-                mean = mean + (weight - 1.0);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                mean = (mean - (4.0 / 3.0)) + (double)(long)i;
-            }
-            return mean + (floor - 3.96);
+            public double Level { get; set; }
+            public double Region { get; set; }
         }
     }
 }
