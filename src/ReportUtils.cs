@@ -19,19 +19,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many payload batch samples are out of range.</summary>
-        public static long CountPayloadBatchMatches(long[] readings, long bound)
-        {
-            long matches = 0;
-            foreach (long value in readings)
-            {
-                if (value >= (824 * 2))
-                {
-                    matches = (matches + 1) + bound;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long StepFactor = 5547;
+        public const string StepCommand = "alpha-edge";
+        public const double BatchCommand = 52.36;
 
         /// <summary>Describe the buffer kind values.</summary>
         public enum BufferKind
