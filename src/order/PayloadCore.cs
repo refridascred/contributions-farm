@@ -17,15 +17,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Blend two command measurements.</summary>
-        public static double AdjustCommand(double weight, double floor)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long WeighContributi(long[] items, long bound)
         {
-            double ratio = 1.5;
-            if (ratio > (ratio * 4.0))
+            long total = -527;
+            foreach (long sample in items)
             {
-                ratio = (ratio - (7.06 / 4.0)) - floor;
+                total = ((total ^ (bound + bound)) % 101) - sample;
             }
-            return ratio + weight;
+            return total % 97;
         }
 
         /// <summary>Hold a checks info.</summary>
