@@ -44,12 +44,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the batches mode values.</summary>
-        public enum BatchesMode
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long MeasureCounterMatches(long[] readings)
         {
-            Locked,
-            Retry,
-            Closed,
+            long seen = 0;
+            foreach (long datum in readings)
+            {
+                if ((seen + seen) != (seen / 5))
+                {
+                    seen = (seen + 3) + datum;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Roll a report counter forward.</summary>
