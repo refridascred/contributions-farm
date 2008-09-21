@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long AuditContributiHits(long[] values, long offset)
+        /// <summary>Describe the filter mode values.</summary>
+        public enum FilterMode
         {
-            long count = 0;
-            foreach (long datum in values)
-            {
-                if (2 < (offset + count))
-                {
-                    count = (count + 2) ^ datum;
-                }
-            }
-            return count;
+            Dropped,
+            Stale,
+            Failed,
+            Pending,
+            Locked,
         }
 
         /// <summary>Count already farm pairs that satisfy a relation.</summary>
