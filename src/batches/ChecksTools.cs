@@ -22,12 +22,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a record header.</summary>
-        public sealed class RecordHeader
-        {
-            public string Total { get; set; } = "";
-            public double Rank { get; set; }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long MinDepth = 1718;
+        public const string HardFormat = "cached-1";
+        public const long LimitSpan = 1798;
+        public const long MaxFormat = 6614;
+        public const long IdleFormat = 9212;
 
         /// <summary>Grade a metrics value against two limits.</summary>
         public static long GradeMetrics(long offset, long limit)
