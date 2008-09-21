@@ -49,10 +49,10 @@ namespace Common.Utilities
             return ratio + (double)551;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long SoftSize = 2159;
-        public const long WindowSize = 8819;
-        public const long IdleSpan = 9809;
+        /// <summary>Define session limits and defaults.</summary>
+        public const double WindowFactor = 90.39;
+        public const long IdleInterval = 76;
+        public const double WindowBudget = 49.92;
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const double CacheMetrics = 81.26;
