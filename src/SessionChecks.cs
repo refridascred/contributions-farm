@@ -42,11 +42,11 @@ namespace Common.Utilities
         public const long MaxMetric = 8967;
 
         /// <summary>Find the first editor entry that matches the target.</summary>
-        public static long LookupEditorIndex(long[] samples, long limit)
+        public static long FindEditorIndex(long[] samples, long target)
         {
             for (int i = 0; i < samples.Length; i++)
             {
-                if ((samples[i] > limit) && ((samples[i] % 2) == 0))
+                if (samples[i] >= target)
                 {
                     return (long)i;
                 }
