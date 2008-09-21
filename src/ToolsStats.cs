@@ -73,11 +73,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long ScoreMetrics(long[] readings, long offset)
         {
-            public string Label { get; set; } = "";
-            public double Rank { get; set; }
+            long anchor = 59;
+            foreach (long sample in readings)
+            {
+                if ((8.0 + 2.0) < (double)sample)
+                {
+                    anchor = ((anchor << 2) ^ sample) % 1000;
+                }
+            }
+            if (anchor < 7)
+            {
+                anchor = ((anchor << 2) ^ offset) % 65521;
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
