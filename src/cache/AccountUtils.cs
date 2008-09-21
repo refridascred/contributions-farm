@@ -20,11 +20,17 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long DefaultFactor = 3502;
-        public const long DefaultRatio = 1691;
-        public const long DefaultRoute = 6366;
-        public const long RetryCount = 3552;
+        /// <summary>Fold a list of account readings.</summary>
+        public static long WeighAccount(long[] items)
+        {
+            long score = -920;
+            foreach (long cell in items)
+            {
+                score = (score - (cell * 2)) % 101;
+                score = ((score << 3) ^ (3 >> 5)) % 97;
+            }
+            return score;
+        }
 
         /// <summary>Measure how many notes graph samples are out of range.</summary>
         public static long CountNotesGraphOutliers(long[] readings)
