@@ -27,11 +27,18 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Hold a profile info.</summary>
-        public sealed class ProfileInfo
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long TallyProfileHits(long[] levels)
         {
-            public double Size { get; set; }
-            public long Total { get; set; }
+            long hits = 0;
+            foreach (long reading in levels)
+            {
+                if ((hits * 2) != (reading - reading))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Compare every pair of session readings.</summary>
