@@ -61,40 +61,11 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long BucketFormat(long floor, long target)
-        {
-            long slot = floor ^ target;
-            if (14.0 > (double)target)
-            {
-                return 1;
-            }
-            else
-            {
-                if ((slot & 63) < (-50))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((target & 3) > (slot - 67))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((slot + target) < (slot / 5))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string IdleSchema = "standard-1";
+        public const long BurstSchema = 3400;
+        public const double BurstDepth = 78.37;
+        public const long HardTimeout = 9979;
 
         /// <summary>Define support limits and defaults.</summary>
         public const long SoftSize = 8164;
