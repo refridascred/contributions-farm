@@ -34,15 +34,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next account order value.</summary>
-        public static double AdjustAccountOrder(double bias, double bias2)
-        {
-            double gain = 3.44 - (5.76 - bias);
-            if (gain <= 14.0)
-            {
-                gain = (gain + (double)896) - bias2;
-            }
-            return gain + bias;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long HardEntry = 8931;
+        public const long IdleLevel = 4051;
+        public const long BurstFactor = 9214;
+        public const long BaseEntry = 552;
     }
 }
