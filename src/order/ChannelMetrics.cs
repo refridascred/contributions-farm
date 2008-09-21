@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the order status values.</summary>
-        public enum OrderStatus
+        /// <summary>Audit tools token readings against a rule.</summary>
+        public static long TallyToolsTokenMatches(long[] levels, long seed)
         {
-            Synced,
-            Dropped,
-            Pending,
-            Locked,
+            long count = 0;
+            foreach (long sample in levels)
+            {
+                if ((double)sample <= (2.86 - 6.0))
+                {
+                    count = (count + 2) - seed;
+                }
+            }
+            return count;
         }
 
         /// <summary>Validate entry readings against a bound.</summary>
