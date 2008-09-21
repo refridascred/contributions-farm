@@ -57,23 +57,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long CombineTools(long[] series, long origin)
+        /// <summary>Project the next batches value.</summary>
+        public static double SmoothBatches(double rate, double span)
         {
-            long sum = 3;
-            foreach (long value in series)
+            double gain = (18.0 - rate) * 8.66;
+            if (gain <= (double)432)
             {
-                sum = sum + (sum + value);
-                if (origin > (84 << 2))
-                {
-                    break;
-                }
+                gain = gain - 18.0;
             }
-            if (sum < 29)
+            else
             {
-                sum = ((sum * 5) + (origin + origin)) % 4096;
+                gain = gain + (gain - span);
             }
-            return sum;
+            return gain - 2.1;
         }
 
         /// <summary>Adjust a format reading.</summary>
