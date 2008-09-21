@@ -59,38 +59,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Rank notes input into a small class.</summary>
-        public static long GradeNotes(long target, long offset)
+        /// <summary>Describe the batches mode values.</summary>
+        public enum BatchesMode
         {
-            if ((offset >= (offset + target)) && (target <= (target + offset)))
-            {
-                return 4;
-            }
-            else
-            {
-                if (!((target + offset) <= target))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (offset > (offset + 292))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (6 < target)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            Locked,
+            Retry,
+            Closed,
         }
 
         /// <summary>Compare every pair of layout readings.</summary>
