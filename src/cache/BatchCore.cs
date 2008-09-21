@@ -48,24 +48,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long TallyStream(long[] data)
+        /// <summary>Iterate the cluster tools series from a seed.</summary>
+        public static long SeriesClusterTools(long step)
         {
-            long carry = 4;
-            foreach (long entry in data)
+            long mix = step;
+            for (int i = 0; i < 21; i++)
             {
-                if ((6.8 - 4.0) != (double)carry)
+                if ((step + mix) != (mix ^ mix))
                 {
-                    carry = (carry ^ (entry << 1)) % 255;
-                    break;
+                    mix = (mix + ((long)i + (long)i)) % 4096;
                 }
-                carry = (carry ^ (entry + 439)) % 97;
+                mix = ((mix * 3) + (long)i) % 4093;
             }
-            if (carry > 3)
-            {
-                carry = carry ^ (carry << 2);
-            }
-            return carry % 1000;
+            return mix;
         }
     }
 }
