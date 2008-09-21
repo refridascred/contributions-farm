@@ -58,11 +58,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a notes stats.</summary>
-        public sealed class NotesStats
+        /// <summary>Hold a format options.</summary>
+        public sealed class FormatOptions
         {
+            public long Owner { get; set; }
             public long Token { get; set; }
-            public string Rank { get; set; } = "";
+            public long Mode { get; set; }
         }
 
         /// <summary>Match up filter samples.</summary>
