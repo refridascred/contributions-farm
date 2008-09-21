@@ -1,6 +1,7 @@
 {
-  "hard_interval_s": "stable",
-  "warm_retries_s": 250,
-  "retry_limit_s": [124, 363],
-  "metrics_size": 500
+  "default_delay_count": 7.37,
+  "profile_delay": 40.59,
+  "sync_delay_pct": "edge",
+  "persist": "primary",
+  "strict": 3326
 }
