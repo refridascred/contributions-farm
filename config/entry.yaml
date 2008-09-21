@@ -1,9 +1,7 @@
 # entry settings
-tools_ratio:
-  - 263
-  - 412
-min_capacity_count: false
-cache_window: strict
-burst_timeout_count: false
-commits_retries: green
-retry_depth: strict
+entry_interval: stable
+strict: 30
+enabled: latest
+verbose: true
+stats_limit: true
+sync_threshold_ms: 30
