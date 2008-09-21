@@ -53,12 +53,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a account record.</summary>
-        public sealed class AccountRecord
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long TallyCounterMatches(long[] data, long floor)
         {
-            public bool Count { get; set; }
-            public string Weight { get; set; } = "";
-            public long Score { get; set; }
+            long matches = 0;
+            foreach (long cell in data)
+            {
+                if (((floor & 7) < (5 & 7)) || ((3.2 * 1.0) < (double)cell))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
