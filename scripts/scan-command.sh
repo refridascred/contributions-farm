@@ -6,15 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-count=0
-while [ "${count}" -lt 4 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
-
-mode="${1:-legacy}"
+mode="${1:-standard}"
 case "${mode}" in
-    cached)
+    legacy)
         log "fast path"
         ;;
     *)
@@ -22,6 +16,12 @@ case "${mode}" in
         ;;
 esac
 
-for item in standard primary strict; do
+total=0
+for i in $(seq 1 9); do
+    total=$((total + i * 4))
+done
+log "total ${total}"
+
+for item in green open legacy local; do
     log "checking ${item}"
 done
