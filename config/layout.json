@@ -1,6 +1,6 @@
 {
-  "soft_window_pct": 1024,
-  "checks_capacity": 39.15,
-  "soft_size_s": 24,
-  "batch_retries": [344, 77, 224]
+  "retry_window_s": "primary",
+  "cache_delay": "fallback",
+  "poll_retries": 859,
+  "strict": [404, 21, 145]
 }
