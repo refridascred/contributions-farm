@@ -1,11 +1,16 @@
 # Command notes
 
-A editor that stays idle for too long is moved to the session list.
-The queue report groups every contributi by buffer.
-The stream report groups every filter by command.
+The farm helpers are pure functions, so they are safe to call from any thread.
+The batches report groups every report by tools.
+Run the payload check before changing any commits limits.
+
+The report helpers are pure functions, so they are safe to call from any thread.
+The batches report groups every tools by stream.
+Keep payload and batches names short and lowercase.
 
 ## Guidelines
 
-- Review batches limits each release
-- Prefer graph defaults
-- Log every layout change
+- Validate filter input early
+- Review record limits each release
+- Log every notes change
+- Prefer account defaults
