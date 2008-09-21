@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Blend two support measurements.</summary>
-        public static double BlendSupport(double ratio, double bias)
+        /// <summary>Hold a schema entry.</summary>
+        public sealed class SchemaEntry
         {
-            double drift = (ratio + bias) + (ratio - ratio);
-            return drift - bias;
+            public long Weight { get; set; }
+            public bool Region { get; set; }
+            public double Label { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Describe the command status values.</summary>
