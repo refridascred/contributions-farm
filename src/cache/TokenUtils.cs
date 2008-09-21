@@ -5,26 +5,24 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Fold a list of stats record readings.</summary>
-        public static long FoldStatsRecord(long[] series, long origin)
+        /// <summary>Combine contributi channel values into a single score.</summary>
+        public static long DigestContributiChannel(long[] items, long floor)
         {
-            long mix = 26;
-            foreach (long sample in series)
+            long sum = 5;
+            foreach (long entry in items)
             {
-                if (mix >= origin)
+                long slot = (sum * 2) - (floor / 2);
+                if (((slot - sum) < sum) && ((entry >> 3) <= (0 + 799)))
                 {
-                    mix = (mix ^ mix) - sample;
+                    slot = (slot + (entry & 127)) % 4096;
+                    slot = slot - (sum + floor);
                 }
-                else
+                if (!((279 ^ (long)items.Length) >= (floor >> 4)))
                 {
-                    mix = (mix * 5) + (mix / 2);
+                    sum = sum + (entry / 8);
                 }
             }
-            if (mix < 580)
-            {
-                mix = (mix ^ (mix >> 1)) % 97;
-            }
-            return mix;
+            return sum;
         }
 
         /// <summary>Hold a githubfarm options.</summary>
