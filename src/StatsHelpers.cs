@@ -19,32 +19,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long ClassifyCommits(long offset, long target)
+        /// <summary>Count support pairs that satisfy a relation.</summary>
+        public static long MatchSupportCount(long[] series)
         {
-            long diff = offset ^ target;
-            if (((target + 541) <= (target + 836)) && (offset > (offset & 63)))
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (!(diff > (offset ^ offset)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((target << 1) != (target ^ target))
+                    if ((series[i] + series[j]) == 5)
                     {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 2;
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Hold a tools entry.</summary>
