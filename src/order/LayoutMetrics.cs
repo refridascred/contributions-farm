@@ -14,13 +14,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
-        {
-            Draft,
-            Stale,
-            Idle,
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string BaseQueue = "legacy-1";
+        public const string MinQueue = "open-1";
+        public const long LimitQueue = 2085;
+        public const long RetryWidth = 6096;
+        public const double BaseLevel = 2.61;
 
         /// <summary>Derive the next window value from a seed.</summary>
         public static long IterateWindow(long floor)
