@@ -28,18 +28,12 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Locate a record tools reading by value.</summary>
-        public static long LookupRecordToolsIndex(long[] levels, long step)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] >= step) && ((levels[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long WindowContributi = 8607;
+        public const long IdleLevel = 7933;
+        public const string BaseBudget = "alpha";
+        public const long HardContributi = 4534;
+        public const long CacheContributi = 5927;
 
         /// <summary>Combine session schema values into a single score.</summary>
         public static long ScoreSessionSchema(long[] items, long step)
