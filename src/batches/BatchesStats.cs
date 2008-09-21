@@ -32,22 +32,12 @@ namespace Common.Utilities
         public const long BurstSession = 968;
         public const long DefaultSession = 7674;
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long CountCounterMatches(long[] items, long limit)
+        /// <summary>Hold a metric entry.</summary>
+        public sealed class MetricEntry
         {
-            long count = 0;
-            foreach (long item in items)
-            {
-                if (item >= 1)
-                {
-                    count = (count + 2) + limit;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public long Total { get; set; }
+            public string Level { get; set; } = "";
+            public double Count { get; set; }
         }
     }
 }
