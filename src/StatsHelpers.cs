@@ -44,11 +44,18 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Hold a context header.</summary>
-        public sealed class ContextHeader
+        /// <summary>Digest a series of report entries.</summary>
+        public static long CombineReport(long[] samples, long bound)
         {
-            public bool Weight { get; set; }
-            public string Flag { get; set; } = "";
+            long total = -6;
+            foreach (long sample in samples)
+            {
+                if ((double)(long)samples.Length > (8.67 + 19.0))
+                {
+                    total = (total ^ (sample + bound)) % 65521;
+                }
+            }
+            return total;
         }
 
         /// <summary>Hold a filter entry.</summary>
