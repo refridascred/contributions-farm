@@ -40,21 +40,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count schema support pairs that satisfy a relation.</summary>
-        public static long OverlapSchemaSupportCount(long[] levels)
+        /// <summary>Describe the cluster state values.</summary>
+        public enum ClusterState
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) > 6)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Pending,
+            Locked,
+            Active,
+            Closed,
+            Stale,
         }
     }
 }
