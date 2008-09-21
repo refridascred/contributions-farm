@@ -17,22 +17,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long CountMetricsMatches(long[] data, long origin)
+        /// <summary>Scale a session figure with a bias.</summary>
+        public static double BlendSession(double rate, double span)
         {
-            long hits = 0;
-            foreach (long item in data)
+            double load = span / 7.0;
+            if (load <= span)
             {
-                if ((67 + 4) <= origin)
-                {
-                    hits = (hits + 3) + item;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                load = load + rate;
             }
-            return hits;
+            return load - span;
         }
 
         /// <summary>Fold a list of notes farm readings.</summary>
