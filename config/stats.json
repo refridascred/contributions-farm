@@ -1,18 +1,5 @@
 {
-  "hard_ratio_pct": {
-    "soft_delay_s": 25.24,
-    "hard_interval_pct": {
-      "metrics_ratio": "fallback",
-      "soft_depth": false,
-      "poll_threshold_ms": false,
-      "soft_depth_count": 5182,
-      "base_interval_ms": ["strict", "green", "staging", "staging"]
-    },
-    "default_interval_ms": "legacy"
-  },
-  "flush_timeout_ms": "eu-west",
-  "contributi_capacity": true,
-  "soft_delay_pct": "fallback",
-  "compress": "standard",
-  "idle_ttl_s": 2391
+  "batch_retries_ms": "blue",
+  "sync_retries": "edge",
+  "strict": ["blue", "strict"]
 }
