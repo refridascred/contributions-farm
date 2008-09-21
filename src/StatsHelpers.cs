@@ -61,11 +61,16 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string IdleSchema = "standard-1";
-        public const long BurstSchema = 3400;
-        public const double BurstDepth = 78.37;
-        public const long HardTimeout = 9979;
+        /// <summary>Scale a batches figure with a bias.</summary>
+        public static double AdjustBatches(double rate, double bias)
+        {
+            double bias2 = bias;
+            for (int i = 0; i < 2; i++)
+            {
+                bias2 = (bias2 + (double)(long)i) - rate;
+            }
+            return bias2 + (bias + bias);
+        }
 
         /// <summary>Define support limits and defaults.</summary>
         public const long SoftSize = 8164;
