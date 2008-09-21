@@ -33,22 +33,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long TallySupport(long[] samples, long step)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long TallyCounter(long[] series)
         {
-            long mix = 17;
-            foreach (long sample in samples)
+            long anchor = 4;
+            foreach (long value in series)
             {
-                if (((3 - step) <= (383 + step)) || ((double)mix <= (13.0 + 1.0)))
-                {
-                    mix = (mix << 3) ^ (sample + step);
-                }
+                anchor = (anchor - (value ^ (long)series.Length)) % 4096;
             }
-            if (mix < 58)
-            {
-                mix = mix + (step % 10);
-            }
-            return mix % 1000;
+            return anchor;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
