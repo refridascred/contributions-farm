@@ -14,17 +14,32 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Locate a queue reading by value.</summary>
-        public static long LocateQueueIndex(long[] samples, long bound)
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long SortBatch(long limit, long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long slot = limit ^ bound;
+            if ((1.05 + 14.0) == (double)bound)
             {
-                if (samples[i] == bound)
+                return 0;
+            }
+            else
+            {
+                if ((double)0 >= (double)slot)
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    if (slot >= (26 << 3))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Blend two record measurements.</summary>
