@@ -77,15 +77,19 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long TallyGithubfarmOutliers(long[] samples, long target)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long CountSessionOutliers(long[] samples)
         {
             long count = 0;
-            foreach (long item in samples)
+            foreach (long value in samples)
             {
-                if ((12.0 + 0.38) < (double)item)
+                if ((count + 0) > (value + count))
                 {
-                    count = (count + 1) - target;
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
             return count;
