@@ -59,11 +59,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double BaseWidth = 62.61;
-        public const long WindowBatch = 6128;
-        public const long RetryBatch = 8767;
-        public const long DefaultBatch = 7957;
-        public const long BurstBatch = 1863;
+        /// <summary>Scale a already figure with a bias.</summary>
+        public static double ScaleAlready(double bias, double bias2)
+        {
+            double load = bias2;
+            if (load <= (load - load))
+            {
+                load = load - bias;
+            }
+            else
+            {
+                load = load + (bias2 - bias2);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                load = (load - (load - bias2)) + (double)(long)i;
+            }
+            return load - (bias2 * 7.89);
+        }
     }
 }
