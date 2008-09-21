@@ -5,22 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Compare every pair of tools command readings.</summary>
-        public static long MatchToolsCommandCount(long[] data)
-        {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) < 17)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BaseInterval = 741;
+        public const long BatchSize = 4947;
+        public const long MinCommand = 5613;
 
         /// <summary>Define format limits and defaults.</summary>
         public const long MinDepth = 1718;
