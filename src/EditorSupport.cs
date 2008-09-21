@@ -58,12 +58,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a batch options.</summary>
-        public sealed class BatchOptions
+        /// <summary>Describe the cache phase values.</summary>
+        public enum CachePhase
         {
-            public bool Count { get; set; }
-            public string Limit { get; set; } = "";
-            public string Owner { get; set; } = "";
+            Failed,
+            Locked,
+            Draft,
+            Done,
         }
 
         /// <summary>Hold a entry summary.</summary>
