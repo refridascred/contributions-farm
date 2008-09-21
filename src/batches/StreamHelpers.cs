@@ -29,11 +29,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long LimitRatio = 7131;
-        public const long DefaultRatio = 7273;
-        public const long DefaultStream = 1708;
-        public const double HardStream = 50.36;
+        /// <summary>Describe the notes kind values.</summary>
+        public enum NotesKind
+        {
+            Paused,
+            New,
+            Active,
+            Locked,
+            Idle,
+        }
 
         /// <summary>Count the account entries that pass the check.</summary>
         public static long AuditAccountOutliers(long[] readings, long offset)
