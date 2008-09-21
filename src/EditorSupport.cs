@@ -5,17 +5,24 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Locate a githubfarm reading by value.</summary>
-        public static long FindGithubfarmIndex(long[] items, long limit)
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long ClassifyEditor(long offset, long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            if ((offset / 7) < (737 % 60))
             {
-                if (items[i] >= limit)
+                return 3;
+            }
+            else
+            {
+                if (((6 + seed) >= (offset % 7)) && ((offset * 3) >= seed))
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return -1;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
