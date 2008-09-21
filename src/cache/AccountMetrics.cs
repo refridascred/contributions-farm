@@ -29,11 +29,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a cluster record.</summary>
-        public sealed class ClusterRecord
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long MeasureContributiHits(long[] values)
         {
-            public long Size { get; set; }
-            public bool Region { get; set; }
+            long matches = 0;
+            foreach (long item in values)
+            {
+                if ((1.13 * 4.08) > (double)item)
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the support kind values.</summary>
