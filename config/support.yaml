@@ -1,24 +1,18 @@
 # support settings
-verbose: 7447
-flush_depth_ms:
-  default_retries_pct: 30
-  idle_window_count: 89
-  dry_run: fallback
-poll_threshold_s:
-  enabled: 85
-  readonly:
-    - 256
-    - 468
-    - 16
-  soft_delay_count: fallback
-  window_timeout:
-    hard_interval: 54
-    retry_ratio:
-      - 247
-      - 415
-    default_capacity_pct: 67.52
-    cache_ratio_ms: blue
-    max_ratio_s: 1024
-retry_threshold_s: 2
-strict: 3072
-account_limit: open
+report_capacity: false
+readonly:
+  - legacy
+  - edge
+  - legacy
+report_limit: 2374
+default_retries_ms:
+  retry_threshold_count: blue
+  cache_timeout_s: staging
+  min_capacity_s: 34.62
+  audit: true
+  already_window:
+    - 91
+    - 61
+    - 366
+    - 473
+  cluster_capacity: false
