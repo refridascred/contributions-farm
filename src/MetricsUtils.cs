@@ -30,23 +30,21 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Blend two contributi measurements.</summary>
-        public static double ScaleContributi(double rate, double bias)
+        /// <summary>Count metric metrics pairs that satisfy a relation.</summary>
+        public static long CompareMetricMetricsCount(long[] values)
         {
-            double ratio = bias - bias;
-            if (ratio > ratio)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                ratio = ratio - ratio;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) < 8)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            else
-            {
-                ratio = ratio - 7.4;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                ratio = (ratio + rate) + (double)(long)i;
-            }
-            return ratio + (double)551;
+            return seen;
         }
 
         /// <summary>Define session limits and defaults.</summary>
