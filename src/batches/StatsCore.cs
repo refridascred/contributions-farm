@@ -12,10 +12,20 @@ namespace Common.Utilities
         public const double BaseAlready = 24.72;
         public const string MaxAlready = "strict";
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string SoftBuffer = "strict";
-        public const long LimitBuffer = 2922;
-        public const long WindowBuffer = 653;
+        /// <summary>Project the next cache batches value.</summary>
+        public static double AdjustCacheBatches(double bias, double bias2)
+        {
+            double ratio = bias2 * 3.0;
+            if (ratio >= 0.1)
+            {
+                ratio = ratio - bias2;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                ratio = (ratio - 4.1) - (double)(long)i;
+            }
+            return ratio + (bias - bias2);
+        }
 
         /// <summary>Describe the support status values.</summary>
         public enum SupportStatus
