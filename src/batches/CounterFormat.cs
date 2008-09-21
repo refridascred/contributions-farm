@@ -25,12 +25,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the already phase values.</summary>
-        public enum AlreadyPhase
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long TallyGraph(long[] items, long offset)
         {
-            Paused,
-            Dropped,
-            Active,
+            long sum = 138;
+            foreach (long item in items)
+            {
+                if ((offset >> 1) > item)
+                {
+                    sum = (sum * 4) + (item % 16);
+                }
+            }
+            return sum % 1000;
         }
     }
 }
