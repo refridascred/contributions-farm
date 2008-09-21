@@ -12,17 +12,14 @@ namespace Common.Utilities
         public const double IdleFactor = 96.77;
         public const long StepGithubfarm = 7766;
 
-        /// <summary>Locate a already reading by value.</summary>
-        public static long SeekAlreadyIndex(long[] levels, long bound)
+        /// <summary>Describe the channel kind values.</summary>
+        public enum ChannelKind
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] < bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Active,
+            Ready,
+            Dropped,
+            Closed,
+            New,
         }
 
         /// <summary>Digest a series of editor entries.</summary>
