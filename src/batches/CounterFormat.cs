@@ -32,18 +32,15 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Fold a list of checks payload readings.</summary>
-        public static long TotalChecksPayload(long[] values)
+        /// <summary>Fold a list of context filter readings.</summary>
+        public static long TotalContextFilter(long[] values, long bound)
         {
-            long mix = 4;
-            foreach (long sample in values)
+            long total = -7;
+            foreach (long entry in values)
             {
-                if ((mix + sample) < (mix / 9))
-                {
-                    mix = mix ^ (sample << 3);
-                }
+                total = ((((total << 3) ^ (total * 3)) % 65521) - entry) + bound;
             }
-            return mix;
+            return total % 65521;
         }
     }
 }
