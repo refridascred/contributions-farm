@@ -1,13 +1,6 @@
 {
-  "filter_ratio": "standard",
-  "sync_capacity": true,
-  "poll_interval_ms": "blue",
-  "base_interval_pct": {
-    "route_threshold": true,
-    "default_size_ms": "stable",
-    "tools_depth": 1024,
-    "min_limit_ms": 250,
-    "dry_run": 10
-  },
-  "persist": 8492
+  "cache_ttl_ms": 4450,
+  "order_interval": false,
+  "window_ttl": false,
+  "compress": 12.74
 }
