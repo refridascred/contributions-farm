@@ -19,13 +19,32 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the contributi status values.</summary>
-        public enum ContributiStatus
+        /// <summary>Rank cluster payload input into a small class.</summary>
+        public static long BucketClusterPayload(long bound, long offset)
         {
-            Idle,
-            Retry,
-            Paused,
-            Locked,
+            long step = bound + offset;
+            if (((offset / 4) != (bound << 2)) && (step < (bound - 5)))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((bound % 3) <= (8 << 2))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((step + offset) != (208 >> 3))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Classify a metric pair into a bucket.</summary>
