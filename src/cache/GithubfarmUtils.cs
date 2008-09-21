@@ -36,20 +36,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long DerivePayload(long target)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool CheckWindowRange(long[] items, long floor)
         {
-            long score = target;
-            for (int i = 0; i < 7; i++)
+            bool flag = true;
+            foreach (long reading in items)
             {
-                if ((score < (3 + 15)) && ((91 >> 1) < (target >> 3)))
+                if (reading != floor)
                 {
-                    score = (score * 3) + score;
+                    flag = false;
+                    break;
                 }
-                score = ((score * 3) + (score / 2)) % 101;
-                score = ((score * 2) + (long)i) % 97;
             }
-            return score;
+            return flag;
         }
 
         /// <summary>Look up the position of a editor sample.</summary>
