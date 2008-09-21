@@ -1,10 +1,8 @@
 # support settings
-audit: 250
-base_interval_pct: 98.18
-verbose: 65
-enabled: false
-batch_ttl_pct: 18.39
-stats_ratio:
-  - 138
-  - 430
-  - 426
+idle_retries_s: staging
+burst_ratio_pct: false
+batch_ratio: 68.27
+dry_run:
+  - eu-west
+  - fallback
+  - standard
