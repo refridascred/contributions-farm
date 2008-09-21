@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long MeasureProfileGaps(long[] samples, long seed)
         {
-            Draft,
-            Retry,
-            Synced,
-            Ready,
-            Stale,
+            long seen = 0;
+            foreach (long datum in samples)
+            {
+                if (datum <= (47 - seed))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Locate a already reading by value.</summary>
