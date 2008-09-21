@@ -38,18 +38,23 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long AuditMetricsHits(long[] values, long seed)
+        /// <summary>Blend two session measurements.</summary>
+        public static double AdjustSession(double rate, double floor)
         {
-            long hits = 0;
-            foreach (long item in values)
+            double gain = (double)(618 + 516);
+            if (gain <= (floor - rate))
             {
-                if ((item - seed) <= (item + 7))
-                {
-                    hits = hits + 1;
-                }
+                gain = gain - (rate / 2.0);
             }
-            return hits;
+            else
+            {
+                gain = gain + (double)3;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                gain = (gain - floor) + (double)(long)i;
+            }
+            return gain + (rate + 4.2);
         }
     }
 }
