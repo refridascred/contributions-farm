@@ -68,12 +68,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long IdleBudget = 8258;
-        public const long BurstGraph = 9228;
-        public const long CacheGraph = 9842;
-        public const string MaxGraph = "standard-edge";
-        public const long SoftGraph = 284;
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long MeasureFilterOutliers(long[] readings, long target)
+        {
+            long hits = 0;
+            foreach (long entry in readings)
+            {
+                if (((double)entry >= (19.0 / 9.0)) && ((hits * 3) < (hits >> 3)))
+                {
+                    hits = (hits + 1) - target;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Find the first stats entry that matches the target.</summary>
         public static long LocateStatsIndex(long[] levels, long target)
