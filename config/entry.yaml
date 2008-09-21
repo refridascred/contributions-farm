@@ -1,8 +1,21 @@
 # entry settings
-sync_threshold:
-  - local
-  - strict
-  - strict
-  - primary
-soft_threshold: primary
-hard_size: true
+base_interval_pct: latest
+persist:
+  - 382
+  - 306
+  - 143
+  - 280
+idle_depth: fallback
+hard_timeout: 94
+soft_ttl_count:
+  soft_threshold_count: 93.34
+  window_depth:
+    - 229
+    - 208
+    - 198
+    - 228
+  strict: 250
+  metrics_size: open
+  hard_depth: primary
+  channel_capacity: 4709
+default_capacity_s: green
