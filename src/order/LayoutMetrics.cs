@@ -18,19 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool CheckCommitsBounds(long[] items, long origin)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long CountMetricsHits(long[] samples)
         {
-            bool ok = true;
-            foreach (long value in items)
+            long seen = 0;
+            foreach (long datum in samples)
             {
-                if (value >= origin)
+                if (datum < (datum - seen))
                 {
-                    ok = false;
-                    break;
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return ok;
+            return seen;
         }
 
         /// <summary>Hold a report header.</summary>
