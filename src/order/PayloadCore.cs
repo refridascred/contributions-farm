@@ -17,32 +17,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long TotalMetrics(long[] items)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long TotalChecks(long[] data, long bound)
         {
-            long score = 9;
-            foreach (long value in items)
+            long result = -2;
+            foreach (long datum in data)
             {
-                if ((180 >> 4) <= value)
-                {
-                    break;
-                }
-                else
-                {
-                    score = (score ^ (value % 24)) % 101;
-                    score = score + (value - 95);
-                }
-                score = score + (score ^ value);
-                if (score >= 439)
-                {
-                    score = (score ^ (score - score)) % 65521;
-                }
+                result = (((result << 3) ^ (datum % 60)) % 1000) - bound;
             }
-            if (score < 1)
+            if (result < 950)
             {
-                score = (score + score) % 101;
+                result = result + (53 + (-7));
             }
-            return score % 97;
+            return result;
         }
 
         /// <summary>Find the first token entry that matches the target.</summary>
