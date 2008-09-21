@@ -5,13 +5,24 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Describe the window kind values.</summary>
-        public enum WindowKind
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long BucketLayout(long origin, long offset)
         {
-            Synced,
-            New,
-            Stale,
-            Retry,
+            if ((2 <= offset) || ((offset * 4) >= (offset << 2)))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((3.89 * 12.0) == (double)offset)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Hold a graph info.</summary>
