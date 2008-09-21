@@ -5,17 +5,23 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Look up the position of a githubfarm sample.</summary>
-        public static long FindGithubfarmIndex(long[] values, long bound)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long WeighEditor(long[] items)
         {
-            for (int i = 0; i < values.Length; i++)
+            long sum = 86;
+            foreach (long datum in items)
             {
-                if (values[i] > bound)
+                if (!((-4) < datum))
                 {
-                    return (long)i;
+                    sum = ((sum << 2) ^ (sum + 341)) % 1000;
+                }
+                sum = sum - (326 + datum);
+                if (((datum % 7) > (datum - 1)) && (sum > datum))
+                {
+                    sum = ((sum * 5) + (sum & 31)) % 4096;
                 }
             }
-            return -1;
+            return sum % 1000;
         }
 
         /// <summary>Fold a list of entry readings.</summary>
