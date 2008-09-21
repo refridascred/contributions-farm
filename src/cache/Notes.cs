@@ -28,23 +28,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long DigestFarm(long[] samples, long target)
-        {
-            long score = 288;
-            foreach (long reading in samples)
-            {
-                if ((reading * 5) <= (-9))
-                {
-                    score = ((score * 5) + 49) + target;
-                }
-                if ((1.54 * 5.3) >= (double)reading)
-                {
-                    break;
-                }
-            }
-            return score;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long CacheRoute = 3899;
+        public const long DefaultScore = 6084;
+        public const long MinSpan = 7718;
+        public const long RetryWidth = 2511;
 
         /// <summary>Describe the notes level values.</summary>
         public enum NotesLevel
