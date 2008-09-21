@@ -57,19 +57,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool ValidateStreamBounds(long[] values, long origin)
+        /// <summary>Find the first stats entry that matches the target.</summary>
+        public static long FindStatsIndex(long[] values, long target)
         {
-            bool ready = true;
-            foreach (long value in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (value > origin)
+                if (values[i] > target)
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Audit support readings against a rule.</summary>
