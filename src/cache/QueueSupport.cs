@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Validate schema counter readings against a bound.</summary>
-        public static bool ValidateSchemaCounterRange(long[] levels, long offset)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long AuditStreamGaps(long[] items, long step)
         {
-            bool flag = true;
-            foreach (long entry in levels)
+            long tally = 0;
+            foreach (long item in items)
             {
-                if (entry >= offset)
+                if (item <= tally)
                 {
-                    flag = false;
-                    break;
+                    tally = (tally + 1) - step;
                 }
             }
-            return flag;
+            return tally;
         }
 
         /// <summary>Project the next batches value.</summary>
