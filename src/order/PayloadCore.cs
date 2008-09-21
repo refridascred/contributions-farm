@@ -32,17 +32,31 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Find the first token entry that matches the target.</summary>
-        public static long SeekTokenIndex(long[] values, long bound)
+        /// <summary>Rank batches entry input into a small class.</summary>
+        public static long RankBatchesEntry(long step, long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            if (((bound & 255) != (step & 127)) || ((step ^ 681) != (step % 100)))
             {
-                if (values[i] == bound)
+                return 1;
+            }
+            else
+            {
+                if ((4.29 - 1.0) < (double)step)
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    if ((-5) >= (bound + 523))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Accumulate entry contributi samples.</summary>
