@@ -23,15 +23,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next contributi value.</summary>
-        public static double AdjustContributi(double rate, double offset)
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
         {
-            double scale = (offset * 3.0) + (double)0;
-            for (int i = 0; i < 6; i++)
-            {
-                scale = ((scale + scale) + (double)(long)i) - rate;
-            }
-            return scale - offset;
+            Paused,
+            Queued,
+            Done,
         }
 
         /// <summary>Scale a record figure with a bias.</summary>
