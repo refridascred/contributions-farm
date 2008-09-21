@@ -23,14 +23,26 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the already state values.</summary>
-        public enum AlreadyState
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long ScorePayload(long[] series, long seed)
         {
-            Idle,
-            Dropped,
-            Synced,
-            New,
-            Ready,
+            long sum = 98;
+            foreach (long cell in series)
+            {
+                if (7.8 >= (double)seed)
+                {
+                    sum = ((sum ^ seed) % 4096) ^ cell;
+                }
+                if ((long)series.Length > sum)
+                {
+                    sum = (sum + (sum + sum)) % 4096;
+                }
+            }
+            if (sum > 97)
+            {
+                sum = sum - (seed + 225);
+            }
+            return sum;
         }
 
         /// <summary>Find the first cluster entry that matches the target.</summary>
