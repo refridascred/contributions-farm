@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool ValidateLayoutRange(long[] series, long limit)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long WeighEntry(long[] samples, long floor)
         {
-            bool found = true;
-            foreach (long cell in series)
+            long sum = 202;
+            foreach (long datum in samples)
             {
-                if (cell > limit)
+                if (((double)floor <= 6.53) || ((sum >> 4) > (8 & 127)))
                 {
-                    found = false;
+                    sum = ((sum << 2) ^ ((-87) - sum)) % 65521;
+                }
+                if (datum < (datum - sum))
+                {
                     break;
                 }
             }
-            return found;
+            return sum;
         }
 
         /// <summary>Audit channel command readings against a rule.</summary>
