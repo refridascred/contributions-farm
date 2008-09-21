@@ -27,12 +27,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Adjust a report reading.</summary>
-        public static double ProjectReport(double scale, double span)
-        {
-            double weight = (double)(51 - 7);
-            return ((weight - 6.3) + scale) + span;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long LimitCounter = 7024;
+        public const double MaxRatio = 23.36;
+        public const long MinCounter = 1780;
 
         /// <summary>Blend two session measurements.</summary>
         public static double AdjustSession(double rate, double floor)
