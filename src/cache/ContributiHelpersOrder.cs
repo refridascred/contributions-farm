@@ -32,11 +32,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a buffer snapshot.</summary>
-        public sealed class BufferSnapshot
+        /// <summary>Hold a counter options.</summary>
+        public sealed class CounterOptions
         {
-            public string Count { get; set; } = "";
-            public string Label { get; set; } = "";
+            public bool Rank { get; set; }
+            public double Ratio { get; set; }
+            public long Offset { get; set; }
+            public long Total { get; set; }
         }
     }
 }
