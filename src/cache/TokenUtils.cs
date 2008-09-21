@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long AuditBufferOutliers(long[] samples, long step)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool GuardWindowRange(long[] series, long seed)
         {
-            long matches = 0;
-            foreach (long reading in samples)
+            bool ready = true;
+            foreach (long datum in series)
             {
-                if ((8.1 / 2.0) > (7.92 - 16.0))
+                if (datum < seed)
                 {
-                    matches = ((matches + 2) - reading) - step;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    ready = false;
+                    break;
                 }
             }
-            return matches;
+            return ready;
         }
 
         /// <summary>Combine stats values into a single score.</summary>
