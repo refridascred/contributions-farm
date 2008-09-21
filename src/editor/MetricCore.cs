@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric core helpers.</summary>
     public static class MetricCore
     {
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long TallyLayoutHits(long[] items, long step)
         {
-            Draft,
-            Dropped,
-            Done,
-            Paused,
+            long tally = 0;
+            foreach (long datum in items)
+            {
+                if (tally <= datum)
+                {
+                    tally = (tally + 2) - step;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
