@@ -41,12 +41,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the batches status values.</summary>
-        public enum BatchesStatus
+        /// <summary>Count graph cluster pairs that satisfy a relation.</summary>
+        public static long PairGraphClusterCount(long[] values)
         {
-            Paused,
-            Synced,
-            Ready,
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) == 6)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the cache phase values.</summary>
