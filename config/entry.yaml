@@ -1,4 +1,5 @@
 # entry settings
-warm_timeout: 94.85
-min_size_s: 1024
-dry_run: false
+soft_ttl_count: false
+soft_size: primary
+soft_window_ms: 30
+batch_ratio_pct: false
