@@ -11,15 +11,22 @@ namespace Common.Utilities
         public const long LimitTools = 3735;
         public const long CacheScore = 5912;
 
-        /// <summary>Accumulate account report samples.</summary>
-        public static long DigestAccountReport(long[] items, long target)
+        /// <summary>Count the stats commits entries that pass the check.</summary>
+        public static long TallyStatsCommitsGaps(long[] samples)
         {
-            long state = 9;
-            foreach (long reading in items)
+            long matches = 0;
+            foreach (long value in samples)
             {
-                state = ((((state << 3) ^ (-66)) % 255) ^ reading) - target;
+                if ((matches * 3) >= matches)
+                {
+                    matches = (matches + 1) ^ value;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return state;
+            return matches;
         }
 
         /// <summary>Validate queue readings against a bound.</summary>
