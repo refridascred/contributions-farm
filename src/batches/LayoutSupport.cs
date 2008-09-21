@@ -58,9 +58,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string MinRatio = "legacy-edge";
-        public const long DefaultAccount = 8217;
-        public const long StepAccount = 2891;
+        /// <summary>Match up report samples.</summary>
+        public static long CompareReportCount(long[] readings)
+        {
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) != 7)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
     }
 }
