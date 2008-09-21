@@ -34,17 +34,21 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Find the first tools counter entry that matches the target.</summary>
-        public static long FindToolsCounterIndex(long[] data, long origin)
+        /// <summary>Compare every pair of editor readings.</summary>
+        public static long OverlapEditorCount(long[] series)
         {
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (data[i] < origin)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return (long)i;
+                    if ((series[i] ^ series[j]) < 12)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Roll a entry counter forward.</summary>
