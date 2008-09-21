@@ -1,18 +1,11 @@
 {
-  "account_size": 39,
-  "persist": ["legacy", "staging", "cached"],
-  "format_size": 2.02,
-  "token_timeout": 14,
-  "burst_ttl_s": {
-    "filter_interval": [71, 89, 82],
-    "hard_window_count": 35,
-    "warm_ratio_pct": 98.37,
-    "min_window": 60
-  },
-  "buffer_limit": {
-    "sync_timeout_pct": "stable",
-    "min_capacity_s": 5,
-    "farm_ratio": 500,
-    "default_window_count": 30
+  "burst_ratio": 71.93,
+  "max_ttl": 30,
+  "buffer_interval": {
+    "report_ttl": "staging",
+    "sync_capacity_count": false,
+    "tools_ttl": true,
+    "soft_size_pct": false,
+    "poll_threshold_count": [493, 456]
   }
 }
