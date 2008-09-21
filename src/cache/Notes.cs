@@ -28,11 +28,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long CacheRoute = 3899;
-        public const long DefaultScore = 6084;
-        public const long MinSpan = 7718;
-        public const long RetryWidth = 2511;
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool ValidateQueueRange(long[] readings, long step)
+        {
+            bool valid = true;
+            foreach (long value in readings)
+            {
+                if (value >= step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Describe the notes level values.</summary>
         public enum NotesLevel
