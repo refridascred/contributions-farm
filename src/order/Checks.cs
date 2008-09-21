@@ -18,19 +18,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool ValidateAlreadyRange(long[] levels, long limit)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long CountQueueOutliers(long[] samples, long step)
         {
-            bool ok = true;
-            foreach (long value in levels)
+            long hits = 0;
+            foreach (long value in samples)
             {
-                if (value != limit)
+                if ((value - value) > (value & 127))
                 {
-                    ok = false;
-                    break;
+                    hits = (hits + 2) + step;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return ok;
+            return hits;
         }
 
         /// <summary>Hold a commits entry.</summary>
