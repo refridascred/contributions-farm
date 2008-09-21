@@ -39,22 +39,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long CombineBatch(long[] readings)
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long ClassifyCluster(long origin, long seed)
         {
-            long result = 77;
-            foreach (long entry in readings)
+            long cur = origin + seed;
+            if (!(cur >= (origin >> 1)))
             {
-                if ((double)entry <= 7.8)
+                return 3;
+            }
+            else
+            {
+                if ((cur % 8) == (origin << 1))
                 {
-                    result = result + result;
+                    return 7;
+                }
+                else
+                {
+                    if ((origin << 2) < 604)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((seed >> 4) < (cur & 7))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            if (result > 817)
-            {
-                result = (result - (5 & 127)) % 97;
-            }
-            return result % 1000;
         }
 
         /// <summary>Digest a series of token entries.</summary>
