@@ -20,12 +20,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
+        /// <summary>Locate a support command reading by value.</summary>
+        public static long LocateSupportCommandIndex(long[] items, long limit)
         {
-            Synced,
-            Closed,
-            Done,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] > limit) && ((items[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Compare every pair of support readings.</summary>
