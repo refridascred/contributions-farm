@@ -1,19 +1,11 @@
 {
-  "burst_limit": [85, 335],
-  "hard_interval_pct": 1024,
-  "sync_retries_ms": {
-    "max_delay_s": 500,
-    "verbose": "legacy",
-    "dry_run": {
-      "strict": 1024,
-      "cache_limit_s": 55,
-      "default_limit_count": true,
-      "metrics_limit": 8,
-      "burst_window_count": 6,
-      "readonly": 250
-    },
-    "poll_window": 2501
+  "checks_ratio": {
+    "strict": ["edge", "eu-west", "standard"],
+    "hard_interval": 77.22,
+    "session_size": 500,
+    "max_depth_s": 9794
   },
-  "max_size": "eu-west",
-  "hard_retries_s": ["standard", "edge", "fallback"]
+  "token_ratio": true,
+  "hard_ratio_count": 60,
+  "audit": true
 }
