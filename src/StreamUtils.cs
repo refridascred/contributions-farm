@@ -19,40 +19,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank already input into a small class.</summary>
-        public static long ClassifyAlready(long limit, long limit2)
-        {
-            long span = limit ^ limit2;
-            if (!((span << 2) < span))
-            {
-                return 7;
-            }
-            else
-            {
-                if (0.65 < (double)span)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)limit <= (9.5 + 7.56))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((8.0 - 1.78) > (double)span)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long StepDepth = 3587;
+        public const long BurstSize = 3841;
+        public const double LimitSpan = 41.44;
 
         /// <summary>Measure how many entry samples are out of range.</summary>
         public static long TallyEntryGaps(long[] readings, long origin)
