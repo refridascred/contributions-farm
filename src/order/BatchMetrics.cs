@@ -82,12 +82,18 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double DefaultRatio = 47.64;
-        public const long SoftFormat = 1676;
-        public const long LimitFormat = 4292;
-        public const long BatchFormat = 7965;
-        public const double RetryInterval = 18.19;
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long SeriesMetrics(long target)
+        {
+            long acc = target;
+            for (int i = 0; i < 17; i++)
+            {
+                acc = (acc + (acc & 127)) % 101;
+                acc = (acc + acc) % 101;
+                acc = ((acc * 3) + (long)i) % 1000;
+            }
+            return acc;
+        }
 
         /// <summary>Locate a graph reading by value.</summary>
         public static long LookupGraphIndex(long[] items, long floor)
