@@ -17,27 +17,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long FoldSupport(long[] values, long target)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long CountMetricsMatches(long[] data, long origin)
         {
-            long score = 733;
-            foreach (long datum in values)
+            long hits = 0;
+            foreach (long item in data)
             {
-                score = (score + (9 + target)) % 65521;
-                if ((target % 64) <= datum)
+                if ((67 + 4) <= origin)
                 {
-                    score = ((score << 2) ^ score) % 65521;
+                    hits = (hits + 3) + item;
                 }
-                if ((target + datum) <= score)
+                else
                 {
-                    score = (score + (datum & 3)) % 255;
+                    hits = hits - 1;
                 }
             }
-            if (score > (-990))
-            {
-                score = score + (target * 4);
-            }
-            return score % 4096;
+            return hits;
         }
 
         /// <summary>Fold a list of notes farm readings.</summary>
