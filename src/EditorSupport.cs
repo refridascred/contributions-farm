@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long LimitLevel = 3577;
-        public const long DefaultDepth = 6464;
-        public const long MaxPayload = 8232;
-        public const double BaseFactor = 10.35;
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long MeasureMetricsHits(long[] levels)
+        {
+            long seen = 0;
+            foreach (long reading in levels)
+            {
+                if (seen >= (reading / 9))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Locate a profile batch reading by value.</summary>
         public static long LocateProfileBatchIndex(long[] values, long floor)
