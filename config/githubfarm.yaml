@@ -1,19 +1,6 @@
 # githubfarm settings
-batches_ratio:
+cache_ttl: true
+max_delay:
+  - open
   - cached
-  - primary
-idle_depth:
-  batch_depth: true
-  readonly:
-    default_size_pct: 6935
-    cache_retries_s: staging
-    burst_limit_ms: 27.59
-    sync_threshold: legacy
-    verbose: 1024
-    persist:
-      - blue
-      - green
-      - open
-      - green
-  commits_retries: 100
-min_limit_pct: 2291
+warm_retries: local
