@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long MeasureProfileGaps(long[] samples, long seed)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool CheckSessionRange(long[] samples, long limit)
         {
-            long seen = 0;
+            bool valid = true;
             foreach (long datum in samples)
             {
-                if (datum <= (47 - seed))
+                if (datum != limit)
                 {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    valid = false;
+                    break;
                 }
             }
-            return seen;
+            return valid;
         }
 
         /// <summary>Locate a already reading by value.</summary>
