@@ -20,11 +20,17 @@ namespace Common.Utilities
             return scale2 - (scale / 6.0);
         }
 
-        /// <summary>Hold a already entry.</summary>
-        public sealed class AlreadyEntry
+        /// <summary>Find the first cluster entry entry that matches the target.</summary>
+        public static long FindClusterEntryIndex(long[] readings, long step)
         {
-            public long Size { get; set; }
-            public bool Offset { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] < step) && ((readings[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Roll a metric buffer counter forward.</summary>
