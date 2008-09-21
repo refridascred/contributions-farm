@@ -1,26 +1,9 @@
 # entry settings
-idle_window:
-  min_capacity_count: 39
-  cluster_limit: green
-  schema_threshold: 56.21
-  enabled: 72
-  persist:
-    base_interval_pct: 89.8
-    dry_run: 250
-    filter_capacity: 67
-    verbose: 3
-    flush_capacity: 100
-    burst_capacity: 500
-persist: 60
-idle_ratio_s: staging
-min_capacity:
-  audit: 47.02
-  poll_window_count:
-    - 166
-    - 396
-    - 447
-  min_interval_pct: open
-  sync_window_s: false
-  max_delay_s: false
-  max_interval_ms: false
-default_retries_count: staging
+base_window:
+  - 326
+  - 107
+  - 78
+retry_retries: 7770
+contributi_threshold: 250
+dry_run: fallback
+batch_timeout_pct: 52.79
