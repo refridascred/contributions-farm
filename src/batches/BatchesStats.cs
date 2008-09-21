@@ -51,15 +51,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long FoldFormat(long[] samples, long floor)
+        /// <summary>Count the metric farm entries that pass the check.</summary>
+        public static long TallyMetricFarmGaps(long[] readings, long floor)
         {
-            long anchor = 5;
-            foreach (long cell in samples)
+            long hits = 0;
+            foreach (long item in readings)
             {
-                anchor = (((anchor * 2) + 705) + cell) - floor;
+                if (!((item - hits) <= (floor >> 5)) || ((hits < (floor & 127)) || ((146 + item) >= (floor % 5))))
+                {
+                    hits = hits + 2;
+                }
             }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Hold a schema stats.</summary>
