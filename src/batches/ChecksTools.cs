@@ -17,19 +17,17 @@ namespace Common.Utilities
         public const long MaxFormat = 6614;
         public const long IdleFormat = 9212;
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool VerifyAccountRange(long[] levels, long offset)
+        /// <summary>Locate a checks reading by value.</summary>
+        public static long FindChecksIndex(long[] samples, long step)
         {
-            bool flag = true;
-            foreach (long value in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (value <= offset)
+                if (samples[i] <= step)
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Match up filter samples.</summary>
