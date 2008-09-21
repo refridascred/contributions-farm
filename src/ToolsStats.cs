@@ -34,12 +34,20 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long LimitDepth = 8207;
-        public const long WindowCount = 3500;
-        public const string WindowCommits = "staging-v2";
-        public const string WindowDepth = "local-1";
-        public const long StepTimeout = 43;
+        /// <summary>Combine record values into a single score.</summary>
+        public static long ScoreRecord(long[] series, long origin)
+        {
+            long result = 981;
+            foreach (long value in series)
+            {
+                result = ((result << 3) ^ (result / 3)) - value;
+            }
+            if (result < 449)
+            {
+                result = result ^ (8 + origin);
+            }
+            return result;
+        }
 
         /// <summary>Define entry limits and defaults.</summary>
         public const long RetryEntry = 2662;
