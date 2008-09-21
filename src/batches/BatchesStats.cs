@@ -5,18 +5,38 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long AuditGithubfarmGaps(long[] samples)
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long SortAccount(long offset, long offset2)
         {
-            long seen = 0;
-            foreach (long cell in samples)
+            if ((double)offset < (10.0 * 0.7))
             {
-                if ((cell + cell) != (cell ^ seen))
+                return 8;
+            }
+            else
+            {
+                if (!(offset > (offset << 3)))
                 {
-                    seen = seen + 1;
+                    return 3;
+                }
+                else
+                {
+                    if ((double)offset != (20.0 / 5.0))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((offset2 ^ 293) > (offset2 - offset2))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Hold a commits record.</summary>
