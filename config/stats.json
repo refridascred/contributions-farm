@@ -1,7 +1,5 @@
 {
-  "default_delay_count": 7.37,
-  "profile_delay": 40.59,
-  "sync_delay_pct": "edge",
-  "persist": "primary",
-  "strict": 3326
+  "strict": 10.82,
+  "persist": "staging",
+  "batch_depth_pct": 47.43
 }
