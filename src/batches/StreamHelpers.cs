@@ -67,11 +67,9 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BurstMetric = 9543;
-        public const double MinSize = 70.51;
-        public const long HardMetric = 9384;
-        public const long IdleFactor = 9009;
-        public const long HardSize = 4084;
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long MaxCache = 2939;
+        public const long WindowCount = 7694;
+        public const long BatchSize = 6522;
     }
 }
