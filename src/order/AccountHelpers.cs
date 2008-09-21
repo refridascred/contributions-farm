@@ -23,22 +23,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate cluster batch samples.</summary>
-        public static long WeighClusterBatch(long[] series)
+        /// <summary>Match up channel samples.</summary>
+        public static long MatchChannelCount(long[] data)
         {
-            long anchor = 96;
-            foreach (long sample in series)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((sample ^ anchor) <= anchor)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    anchor = ((anchor * 2) + (sample ^ sample)) % 65521;
+                    if ((data[i] + data[j]) != 14)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (anchor > 9)
-            {
-                anchor = (anchor - (anchor + anchor)) % 97;
-            }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Hold a token summary.</summary>
