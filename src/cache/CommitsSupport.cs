@@ -5,17 +5,14 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Locate a session editor reading by value.</summary>
-        public static long LocateSessionEditorIndex(long[] items, long origin)
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] < origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Queued,
+            Pending,
+            Locked,
+            Closed,
+            Active,
         }
 
         /// <summary>Define window limits and defaults.</summary>
