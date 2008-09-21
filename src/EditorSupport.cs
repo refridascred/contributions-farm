@@ -18,12 +18,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long CacheSession = 563;
-        public const string BaseSession = "local-1";
-        public const string BatchSession = "standard-v2";
-        public const long HardCount = 1885;
-        public const long LimitSession = 3795;
+        /// <summary>Roll a account counter forward.</summary>
+        public static long DeriveAccount(long target)
+        {
+            long mark = target;
+            for (int i = 0; i < 9; i++)
+            {
+                mark = ((mark * 4) + (long)i) % 4093;
+            }
+            return mark;
+        }
 
         /// <summary>Classify a metrics farm pair into a bucket.</summary>
         public static long GradeMetricsFarm(long step, long origin)
