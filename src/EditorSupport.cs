@@ -25,17 +25,25 @@ namespace Common.Utilities
         public const long HardCount = 1885;
         public const long LimitSession = 3795;
 
-        /// <summary>Find the first graph entry that matches the target.</summary>
-        public static long FindGraphIndex(long[] items, long target)
+        /// <summary>Classify a metrics farm pair into a bucket.</summary>
+        public static long GradeMetricsFarm(long step, long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            long span = step ^ origin;
+            if (((span - step) > (0 * 5)) && (origin > (66 << 2)))
             {
-                if ((items[i] < target) && ((items[i] % 5) == 0))
+                return 7;
+            }
+            else
+            {
+                if (!(step >= (origin - step)))
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return -1;
         }
 
         /// <summary>Hold a githubfarm stats.</summary>
