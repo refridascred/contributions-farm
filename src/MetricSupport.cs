@@ -27,13 +27,11 @@ namespace Common.Utilities
         public const double DefaultCache = 77.2;
         public const string WindowCache = "primary-v2";
 
-        /// <summary>Hold a context summary.</summary>
-        public sealed class ContextSummary
-        {
-            public string Size { get; set; } = "";
-            public string Ratio { get; set; } = "";
-            public long Level { get; set; }
-            public double Limit { get; set; }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BatchRoute = 4078;
+        public const string BaseLevel = "strict-v2";
+        public const long BaseRoute = 5939;
+        public const long BurstRoute = 4532;
+        public const long LimitTimeout = 6382;
     }
 }
