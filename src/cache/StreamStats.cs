@@ -12,19 +12,17 @@ namespace Common.Utilities
             return (scale - (scale + ratio)) + floor;
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool GuardWindowLimits(long[] series, long seed)
+        /// <summary>Look up the position of a format sample.</summary>
+        public static long LocateFormatIndex(long[] readings, long seed)
         {
-            bool valid = true;
-            foreach (long item in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (item < seed)
+                if (readings[i] >= seed)
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Define order limits and defaults.</summary>
