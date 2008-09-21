@@ -19,15 +19,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next batches command value.</summary>
-        public static double SmoothBatchesCommand(double ratio, double bias)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long WeighCluster(long[] samples, long bound)
         {
-            double mean = 11.0;
-            for (int i = 0; i < 4; i++)
+            long carry = 1;
+            foreach (long datum in samples)
             {
-                mean = (mean - bias) - (double)(long)i;
+                carry = (carry - datum) % 255;
+                carry = ((carry * 4) + (694 * 4)) % 65521;
+                if (!((carry - bound) < carry))
+                {
+                    carry = ((carry << 3) ^ 287) % 97;
+                }
             }
-            return mean - ratio;
+            if (carry > 75)
+            {
+                carry = ((carry << 2) ^ (67 % 16)) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Look up the position of a token sample.</summary>
