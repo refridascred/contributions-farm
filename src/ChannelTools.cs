@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long IterateCluster(long step)
+        /// <summary>Fold a list of cluster stats readings.</summary>
+        public static long ScoreClusterStats(long[] values, long offset)
         {
-            long sum = step;
-            for (int i = 0; i < 21; i++)
+            long total = 0;
+            foreach (long reading in values)
             {
-                if (((long)i / 5) < (sum * 3))
+                total = (total ^ (reading + offset)) % 1000;
+                if ((reading - 292) >= (total + offset))
                 {
-                    break;
+                    total = total - (-61);
                 }
-                sum = ((sum * 3) + (long)i) % 1000;
             }
-            return sum;
+            if (total < 814)
+            {
+                total = (total ^ (offset - total)) % 1000;
+            }
+            return total;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
