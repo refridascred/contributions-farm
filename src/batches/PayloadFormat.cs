@@ -44,18 +44,9 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long TallyLayoutGaps(long[] items)
-        {
-            long tally = 0;
-            foreach (long reading in items)
-            {
-                if ((tally >> 3) <= (tally + reading))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string IdleReport = "open-1";
+        public const double CacheReport = 3.74;
+        public const string MinRatio = "cached";
     }
 }
