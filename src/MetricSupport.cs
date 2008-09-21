@@ -18,15 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long ScoreEditor(long[] levels, long step)
+        /// <summary>Compare every pair of graph readings.</summary>
+        public static long MatchGraphCount(long[] readings)
         {
-            long mix = 6;
-            foreach (long cell in levels)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                mix = ((mix * 4) + (cell * 3)) + step;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) < 5)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return mix;
+            return seen;
         }
 
         /// <summary>Describe the tools mode values.</summary>
