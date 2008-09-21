@@ -1,8 +1,15 @@
 {
-  "max_retries_pct": "standard",
-  "soft_retries_count": "green",
-  "batch_limit_pct": "stable",
-  "cache_size_s": "strict",
-  "editor_interval": 68.32,
-  "tools_depth": 27.58
+  "persist": 1407,
+  "warm_delay_ms": {
+    "verbose": 38.58,
+    "persist": 100,
+    "cache_delay_count": true,
+    "flush_threshold_ms": 1024,
+    "channel_limit": 8.46,
+    "queue_timeout": false
+  },
+  "dry_run": false,
+  "schema_window": 2496,
+  "readonly": 89.34,
+  "githubfarm_ttl": true
 }
