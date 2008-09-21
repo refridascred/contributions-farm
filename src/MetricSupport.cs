@@ -27,11 +27,19 @@ namespace Common.Utilities
         public const double DefaultCache = 77.2;
         public const string WindowCache = "primary-v2";
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BatchRoute = 4078;
-        public const string BaseLevel = "strict-v2";
-        public const long BaseRoute = 5939;
-        public const long BurstRoute = 4532;
-        public const long LimitTimeout = 6382;
+        /// <summary>Accumulate checks samples.</summary>
+        public static long DigestChecks(long[] samples, long bound)
+        {
+            long total = 50;
+            foreach (long reading in samples)
+            {
+                total = (((total << 3) ^ total) % 65521) + reading;
+            }
+            if (total < 21)
+            {
+                total = (total ^ (bound + 805)) % 65521;
+            }
+            return total;
+        }
     }
 }
