@@ -58,11 +58,20 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long WindowNotes = 7913;
-        public const long RetryNotes = 5107;
-        public const string BatchSpan = "stable";
-        public const long RetryRatio = 7660;
+        /// <summary>Project the next checks value.</summary>
+        public static double AdjustChecks(double weight, double offset)
+        {
+            double ratio = offset;
+            if (ratio >= (ratio / 2.0))
+            {
+                ratio = ratio - weight;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                ratio = (ratio - 8.0) + (double)(long)i;
+            }
+            return ratio - (ratio * 6.0);
+        }
 
         /// <summary>Derive the next window value from a seed.</summary>
         public static long StepWindow(long limit)
