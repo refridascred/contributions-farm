@@ -19,13 +19,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the entry phase values.</summary>
-        public enum EntryPhase
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long IterateContributi(long seed)
         {
-            Retry,
-            Stale,
-            Paused,
-            Synced,
+            long state = seed;
+            for (int i = 0; i < 9; i++)
+            {
+                state = ((state * 5) + (8 + state)) % 4096;
+                state = (state - 18) % 65521;
+                state = ((state * 2) + (long)i) % 97;
+            }
+            return state;
         }
 
         /// <summary>Look up the position of a contributi sample.</summary>
