@@ -22,15 +22,18 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long TallyAlreadyHits(long[] values, long seed)
+        /// <summary>Compare every pair of support window readings.</summary>
+        public static long CompareSupportWindowCount(long[] items)
         {
             long tally = 0;
-            foreach (long value in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)tally == (6.78 / 2.0))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    tally = ((tally + 3) + value) + seed;
+                    if ((items[i] - items[j]) > 7)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
             return tally;
