@@ -36,18 +36,26 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long AuditCommitsGaps(long[] data)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long TotalSupport(long[] items, long floor)
         {
-            long seen = 0;
-            foreach (long item in data)
+            long mix = 79;
+            foreach (long reading in items)
             {
-                if (((item + seen) >= item) || (((double)seen == (double)item) || ((item >> 1) >= (seen * 5))))
+                if (((double)mix <= (double)80) && ((floor ^ reading) <= (816 * 3)))
                 {
-                    seen = seen + 1;
+                    mix = (mix * 3) + ((-217) + reading);
+                }
+                else
+                {
+                    mix = ((mix * 3) + (mix & 63)) % 65521;
                 }
             }
-            return seen;
+            if (mix < (-408))
+            {
+                mix = (mix - (80 ^ (long)items.Length)) % 101;
+            }
+            return mix % 4096;
         }
     }
 }
