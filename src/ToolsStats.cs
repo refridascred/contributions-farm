@@ -50,21 +50,19 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Count already pairs that satisfy a relation.</summary>
-        public static long CompareAlreadyCount(long[] values)
+        /// <summary>Check that every cache counter entry stays within the limit.</summary>
+        public static bool CheckCacheCounterLimits(long[] series, long step)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            bool ready = true;
+            foreach (long entry in series)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (entry != step)
                 {
-                    if ((values[i] + values[j]) != 7)
-                    {
-                        count = count + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
 
         /// <summary>Audit window readings against a rule.</summary>
