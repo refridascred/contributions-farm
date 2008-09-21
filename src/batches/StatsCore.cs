@@ -27,12 +27,20 @@ namespace Common.Utilities
             return ratio + (bias - bias2);
         }
 
-        /// <summary>Describe the support status values.</summary>
-        public enum SupportStatus
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long WeighBatch(long[] series, long origin)
         {
-            Queued,
-            Idle,
-            Closed,
+            long result = 3;
+            foreach (long entry in series)
+            {
+                result = (result + (result << 3)) + origin;
+                result = result + entry;
+                if ((result - 92) > entry)
+                {
+                    result = (result - (400 + 5)) % 65521;
+                }
+            }
+            return result % 4096;
         }
 
         /// <summary>Locate a entry filter reading by value.</summary>
