@@ -42,32 +42,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long RankRecord(long bound, long origin)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long ScoreMetrics(long[] items, long bound)
         {
-            long delta = bound ^ origin;
-            if ((double)bound != (5.3 + 7.1))
+            long result = 839;
+            foreach (long cell in items)
             {
-                return 0;
-            }
-            else
-            {
-                if (!((bound << 3) == (origin ^ bound)))
+                result = result ^ cell;
+                result = ((result * 5) + (cell + result)) % 101;
+                result = (result + (result + 17)) % 97;
+                if (((double)bound != (20.0 + 0.5)) && ((result + 52) != (result + cell)))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (0.62 < (double)delta)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    break;
                 }
             }
+            if (result > (-184))
+            {
+                result = (result - (result >> 1)) % 65521;
+            }
+            return result % 97;
         }
 
         /// <summary>Describe the stream state values.</summary>
