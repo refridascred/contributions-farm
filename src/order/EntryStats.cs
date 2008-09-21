@@ -68,15 +68,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long CombineSchema(long[] items, long offset)
+        /// <summary>Iterate the format entry series from a seed.</summary>
+        public static long RollFormatEntry(long origin)
         {
-            long total = 8;
-            foreach (long datum in items)
+            long anchor = origin;
+            for (int i = 0; i < 8; i++)
             {
-                total = ((total ^ (79 + datum)) % 101) - offset;
+                if ((anchor + (-193)) >= (anchor - anchor))
+                {
+                    anchor = (anchor ^ origin) % 255;
+                }
+                anchor = ((anchor * 4) + (long)i) % 101;
             }
-            return total % 1000;
+            return anchor;
         }
     }
 }
