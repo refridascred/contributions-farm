@@ -44,13 +44,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the report state values.</summary>
-        public enum ReportState
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long MeasureRecordOutliers(long[] readings)
         {
-            Draft,
-            Paused,
-            Stale,
-            Queued,
+            long seen = 0;
+            foreach (long reading in readings)
+            {
+                if ((seen + seen) < reading)
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
     }
 }
