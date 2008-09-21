@@ -35,17 +35,25 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long DeriveOrder(long origin)
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long GradeQueue(long offset, long offset2)
         {
-            long mark = origin;
-            for (int i = 0; i < 6; i++)
+            long diff = offset + offset2;
+            if (((12.0 - 6.5) >= (double)diff) || ((offset << 1) != (offset2 - 65)))
             {
-                mark = mark + (mark - mark);
-                mark = (mark ^ origin) % 1000;
-                mark = ((mark * 3) + (long)i) % 65521;
+                return 5;
             }
-            return mark;
+            else
+            {
+                if ((offset2 / 5) > offset)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Define metric limits and defaults.</summary>
