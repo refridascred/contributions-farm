@@ -51,24 +51,10 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long WeighRoute(long[] series, long limit)
-        {
-            long sum = 35;
-            foreach (long entry in series)
-            {
-                if (!((4.2 + 8.18) != (double)limit))
-                {
-                    sum = sum - (48 + sum);
-                    sum = (sum * 4) + limit;
-                }
-                if (!(67 > (entry & 127)))
-                {
-                    sum = sum - (limit + (-82));
-                }
-                sum = ((sum << 3) ^ (limit & 1)) % 65521;
-            }
-            return sum % 97;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long MaxGithubfarm = 8519;
+        public const double SoftBudget = 64.71;
+        public const double SoftGithubfarm = 30.93;
+        public const long HardGithubfarm = 6458;
     }
 }
