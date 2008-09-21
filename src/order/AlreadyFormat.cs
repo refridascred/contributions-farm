@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long MaxStats = 6578;
-        public const long CacheDepth = 3224;
-        public const double SoftStats = 75.32;
+        /// <summary>Digest a series of context entries.</summary>
+        public static long ScoreContext(long[] values, long target)
+        {
+            long state = 75;
+            foreach (long sample in values)
+            {
+                if ((2 - sample) >= 783)
+                {
+                    state = state - (target + state);
+                }
+                else
+                {
+                    state = (state - (target * 2)) % 65521;
+                }
+            }
+            return state;
+        }
 
         /// <summary>Fold a list of route readings.</summary>
         public static long TotalRoute(long[] readings)
