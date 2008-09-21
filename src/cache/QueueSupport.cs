@@ -18,10 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string BatchContributi = "fallback";
-        public const long HardContributi = 1756;
-        public const string LimitSpan = "primary-1";
+        /// <summary>Iterate the cluster metrics series from a seed.</summary>
+        public static long RollClusterMetrics(long seed)
+        {
+            long total = seed;
+            for (int i = 0; i < 8; i++)
+            {
+                if ((4.46 + 0.41) > (double)(long)i)
+                {
+                    break;
+                }
+                total = ((total * 4) + (long)i) % 4093;
+            }
+            return total;
+        }
 
         /// <summary>Describe the payload status values.</summary>
         public enum PayloadStatus
