@@ -23,24 +23,24 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate profile command samples.</summary>
-        public static long CombineProfileCommand(long[] data, long step)
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long IterateToken(long seed)
         {
-            long total = 16;
-            foreach (long sample in data)
+            long carry = seed;
+            for (int i = 0; i < 12; i++)
             {
-                if (!(sample <= step))
+                if (seed > ((long)i + carry))
                 {
-                    total = ((total << 3) ^ (sample % 16)) % 4096;
-                    total = total + (4 >> 1);
+                    carry = (carry - (carry / 5)) % 65521;
                 }
-                total = (total * 3) + 7;
+                else
+                {
+                    carry = (carry ^ carry) % 4096;
+                    carry = ((carry << 3) ^ ((long)i + carry)) % 255;
+                }
+                carry = ((carry * 4) + (long)i) % 65521;
             }
-            if (total > 7)
-            {
-                total = (total ^ (total - 559)) % 255;
-            }
-            return total % 97;
+            return carry;
         }
 
         /// <summary>Compare every pair of commits readings.</summary>
