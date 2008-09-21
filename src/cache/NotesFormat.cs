@@ -29,24 +29,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Roll a session counter forward.</summary>
-        public static long RollSession(long floor)
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long SeriesOrder(long limit)
         {
-            long mark = floor;
-            for (int i = 0; i < 13; i++)
+            long carry = limit;
+            for (int i = 0; i < 9; i++)
             {
-                if (((long)i << 1) >= ((long)i * 4))
+                if ((double)(long)i > 2.3)
                 {
-                    mark = mark ^ (mark - mark);
-                    break;
+                    carry = (carry + (38 + limit)) % 101;
                 }
-                else
-                {
-                    mark = (mark + (floor + (long)i)) % 101;
-                }
-                mark = ((mark * 5) + (long)i) % 101;
+                carry = ((carry * 4) + (long)i) % 101;
             }
-            return mark;
+            return carry;
         }
     }
 }
