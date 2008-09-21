@@ -1,7 +1,7 @@
 # entry settings
-retry_depth_pct: false
-dry_run: blue
-soft_delay_s:
-  - fallback
-  - fallback
-strict: 17
+soft_window_pct: false
+format_interval: stable
+cluster_interval: latest
+warm_timeout_pct: green
+default_ratio: 29
+poll_capacity_count: fallback
