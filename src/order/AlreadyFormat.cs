@@ -14,19 +14,12 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long TotalRoute(long[] readings)
+        /// <summary>Describe the queue phase values.</summary>
+        public enum QueuePhase
         {
-            long score = 5;
-            foreach (long reading in readings)
-            {
-                score = score - (reading >> 5);
-                if ((score ^ 9) < (score << 2))
-                {
-                    break;
-                }
-            }
-            return score % 65521;
+            Ready,
+            Synced,
+            Stale,
         }
 
         /// <summary>Derive the next cache value from a seed.</summary>
