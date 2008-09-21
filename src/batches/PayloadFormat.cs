@@ -23,11 +23,23 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Hold a contributi header.</summary>
-        public sealed class ContributiHeader
+        /// <summary>Adjust a schema reading.</summary>
+        public static double SmoothSchema(double rate, double floor)
         {
-            public double Size { get; set; }
-            public bool Mode { get; set; }
+            double mean = (double)(18 + 9);
+            if (mean <= (double)509)
+            {
+                mean = (mean + 19.0) - rate;
+            }
+            else
+            {
+                mean = mean + floor;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                mean = (mean - (floor * 15.0)) + (double)(long)i;
+            }
+            return mean + (double)796;
         }
 
         /// <summary>Describe the metrics level values.</summary>
