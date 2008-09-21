@@ -48,17 +48,21 @@ namespace Common.Utilities
             return ratio2 + (ratio / 6.0);
         }
 
-        /// <summary>Locate a record reading by value.</summary>
-        public static long FindRecordIndex(long[] series, long offset)
+        /// <summary>Match up support samples.</summary>
+        public static long CompareSupportCount(long[] samples)
         {
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((series[i] == offset) && ((series[i] % 5) != 0))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return (long)i;
+                    if ((samples[i] - samples[j]) == 18)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Accumulate channel samples.</summary>
