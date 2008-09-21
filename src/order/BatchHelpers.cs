@@ -5,15 +5,31 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Project the next buffer value.</summary>
-        public static double AdjustBuffer(double rate, double floor)
+        /// <summary>Rank editor commits input into a small class.</summary>
+        public static long SortEditorCommits(long target, long step)
         {
-            double mean = rate;
-            if (mean < rate)
+            if ((0 + 1) >= step)
             {
-                mean = mean - (rate - mean);
+                return 6;
             }
-            return mean + floor;
+            else
+            {
+                if (((step >> 4) <= (target % 100)) && ((step * 2) <= (step & 127)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (target <= step)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Fold a list of tools already readings.</summary>
