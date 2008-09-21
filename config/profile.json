@@ -1,6 +1,5 @@
 {
-  "enabled": true,
-  "burst_capacity_s": 9274,
-  "hard_interval_count": 70,
-  "session_capacity": ["strict", "stable", "blue", "green"]
+  "min_ratio": [93, 63, 435],
+  "retry_limit_ms": "blue",
+  "burst_depth": 79.38
 }
