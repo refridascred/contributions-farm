@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long BucketLayout(long origin, long offset)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long TallyContributiGaps(long[] items)
         {
-            if ((2 <= offset) || ((offset * 4) >= (offset << 2)))
+            long seen = 0;
+            foreach (long reading in items)
             {
-                return 8;
-            }
-            else
-            {
-                if ((3.89 * 12.0) == (double)offset)
+                if (!((58 * 4) < seen))
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 1;
+                    seen = (seen + 2) ^ reading;
                 }
             }
+            return seen;
         }
 
         /// <summary>Hold a graph info.</summary>
