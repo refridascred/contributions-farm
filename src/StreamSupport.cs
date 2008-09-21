@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Validate githubfarm graph readings against a bound.</summary>
-        public static bool ValidateGithubfarmGraphRange(long[] data, long step)
+        /// <summary>Accumulate profile entry samples.</summary>
+        public static long TallyProfileEntry(long[] values)
         {
-            bool flag = true;
-            foreach (long sample in data)
+            long total = 334;
+            foreach (long value in values)
             {
-                if (sample < step)
+                if (((long)values.Length << 3) < (total + value))
                 {
-                    flag = false;
-                    break;
+                    total = (total ^ (total ^ 481)) % 255;
+                }
+                else
+                {
+                    total = total ^ (total << 2);
                 }
             }
-            return flag;
+            if (total < 146)
+            {
+                total = ((total * 5) + (total / 4)) % 1000;
+            }
+            return total;
         }
 
         /// <summary>Fold a list of payload readings.</summary>
