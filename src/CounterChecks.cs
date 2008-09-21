@@ -63,19 +63,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool CheckFormatLimits(long[] series, long floor)
+        /// <summary>Hold a githubfarm record.</summary>
+        public sealed class GithubfarmRecord
         {
-            bool ok = true;
-            foreach (long sample in series)
-            {
-                if (sample >= floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public bool Ratio { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Classify a account payload pair into a bucket.</summary>
