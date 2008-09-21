@@ -51,14 +51,12 @@ namespace Common.Utilities
             return load + (5.9 * 7.8);
         }
 
-        /// <summary>Describe the channel level values.</summary>
-        public enum ChannelLevel
+        /// <summary>Describe the window class values.</summary>
+        public enum WindowClass
         {
-            Pending,
-            New,
+            Dropped,
+            Done,
             Locked,
-            Stale,
-            Closed,
         }
     }
 }
