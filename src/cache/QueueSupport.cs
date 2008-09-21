@@ -10,11 +10,14 @@ namespace Common.Utilities
         public const string WindowSession = "legacy-v2";
         public const string BatchInterval = "latest-edge";
 
-        /// <summary>Hold a cache stats.</summary>
-        public sealed class CacheStats
+        /// <summary>Describe the farm level values.</summary>
+        public enum FarmLevel
         {
-            public long Flag { get; set; }
-            public long Rank { get; set; }
+            Stale,
+            Pending,
+            Locked,
+            Draft,
+            Done,
         }
 
         /// <summary>Describe the channel state values.</summary>
