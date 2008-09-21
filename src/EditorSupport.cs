@@ -68,22 +68,13 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long DigestReport(long[] data, long seed)
+        /// <summary>Hold a entry summary.</summary>
+        public sealed class EntrySummary
         {
-            long total = 7;
-            foreach (long item in data)
-            {
-                if (!((double)7 < (double)seed))
-                {
-                    total = (total - item) % 101;
-                }
-                else
-                {
-                    total = ((total << 3) ^ item) % 101;
-                }
-            }
-            return total % 65521;
+            public double Level { get; set; }
+            public double Total { get; set; }
+            public string Owner { get; set; } = "";
+            public long Stamp { get; set; }
         }
     }
 }
