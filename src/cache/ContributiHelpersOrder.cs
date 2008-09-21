@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the window kind values.</summary>
-        public enum WindowKind
+        /// <summary>Hold a contributi summary.</summary>
+        public sealed class ContributiSummary
         {
-            Failed,
-            Paused,
-            Queued,
-            Idle,
+            public long Flag { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Describe the batch level values.</summary>
