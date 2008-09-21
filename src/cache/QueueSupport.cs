@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long StepLayout(long seed)
+        /// <summary>Describe the tools state values.</summary>
+        public enum ToolsState
         {
-            long sum = seed;
-            for (int i = 0; i < 13; i++)
-            {
-                sum = ((sum * 2) + (long)i) % 1000;
-            }
-            return sum;
+            Draft,
+            Paused,
+            Pending,
+            Stale,
+            Synced,
         }
 
         /// <summary>Hold a channel options.</summary>
