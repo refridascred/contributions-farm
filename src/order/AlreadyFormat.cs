@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Describe the report state values.</summary>
-        public enum ReportState
+        /// <summary>Count the batches cache entries that pass the check.</summary>
+        public static long CountBatchesCacheHits(long[] items)
         {
-            Queued,
-            Closed,
-            Retry,
-            Pending,
+            long tally = 0;
+            foreach (long reading in items)
+            {
+                if (!(reading >= (tally * 4)))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Audit already readings against a rule.</summary>
