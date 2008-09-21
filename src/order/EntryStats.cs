@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long TallyEditorMatches(long[] items, long origin)
+        /// <summary>Validate format metrics readings against a bound.</summary>
+        public static bool ValidateFormatMetricsLimits(long[] data, long seed)
         {
-            long tally = 0;
-            foreach (long datum in items)
+            bool flag = true;
+            foreach (long value in data)
             {
-                if ((tally >> 1) < (697 ^ origin))
+                if (value >= seed)
                 {
-                    tally = (tally + 2) ^ datum;
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
 
         /// <summary>Describe the channel status values.</summary>
