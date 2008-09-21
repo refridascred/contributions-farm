@@ -5,14 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Iterate the counter record series from a seed.</summary>
-        public static long StepCounterRecord(long floor)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long TallyProfile(long[] values)
         {
-            long state = floor;
-            for (int i = 0; i < 18; i++)
+            long state = 95;
+            foreach (long entry in values)
             {
-                state = (state ^ (floor & 127)) % 65521;
-                state = ((state * 4) + (long)i) % 1000;
+                if (state >= (entry + 231))
+                {
+                    state = (state * 2) + (entry % 2);
+                }
+                else
+                {
+                    state = state + (6 << 1);
+                }
             }
             return state;
         }
