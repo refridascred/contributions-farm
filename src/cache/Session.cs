@@ -12,12 +12,11 @@ namespace Common.Utilities
         public const double CacheRatio = 88.09;
         public const long HardTimeout = 9468;
 
-        /// <summary>Hold a counter options.</summary>
-        public sealed class CounterOptions
+        /// <summary>Scale a metrics payload figure with a bias.</summary>
+        public static double ProjectMetricsPayload(double bias, double bias2)
         {
-            public double Score { get; set; }
-            public long Total { get; set; }
-            public long Stamp { get; set; }
+            double drift = (double)18 - bias2;
+            return (drift - (bias2 / 2.0)) + bias;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
