@@ -96,11 +96,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long RetryInterval = 2705;
-        public const double HardBuffer = 40.6;
-        public const long BaseBuffer = 9250;
-        public const long MinBuffer = 333;
-        public const double BaseFactor = 13.93;
+        /// <summary>Scale a tools figure with a bias.</summary>
+        public static double BlendTools(double rate, double offset)
+        {
+            double scale = offset;
+            if (scale < (rate + 6.0))
+            {
+                scale = scale + (5.86 * 16.0);
+            }
+            else
+            {
+                scale = scale - offset;
+            }
+            return scale + scale;
+        }
     }
 }
