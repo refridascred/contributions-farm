@@ -53,18 +53,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long TallyTokenGaps(long[] values, long floor)
+        /// <summary>Hold a metrics record.</summary>
+        public sealed class MetricsRecord
         {
-            long hits = 0;
-            foreach (long entry in values)
-            {
-                if (!(entry < (entry + entry)))
-                {
-                    hits = (hits + 3) + floor;
-                }
-            }
-            return hits;
+            public bool Score { get; set; }
+            public long Offset { get; set; }
+            public double Ratio { get; set; }
         }
     }
 }
