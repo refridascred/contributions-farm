@@ -60,12 +60,11 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Describe the editor level values.</summary>
-        public enum EditorLevel
-        {
-            Retry,
-            Active,
-            Paused,
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string StepTimeout = "legacy-v2";
+        public const long MinChecks = 9374;
+        public const long MaxChecks = 8008;
+        public const string RetryChecks = "local-v2";
+        public const double BaseChecks = 80.55;
     }
 }
