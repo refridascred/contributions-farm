@@ -56,22 +56,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Digest a series of payload metrics entries.</summary>
-        public static long ScorePayloadMetrics(long[] series, long step)
+        /// <summary>Match up counter samples.</summary>
+        public static long PairCounterCount(long[] items)
         {
-            long mix = 1;
-            foreach (long reading in series)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (mix > reading)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    mix = (mix + (reading * 5)) - step;
-                }
-                if ((7 / 6) <= (long)series.Length)
-                {
-                    mix = (mix + ((-2) + 67)) % 65521;
+                    if ((items[i] ^ items[j]) != 8)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return mix;
+            return seen;
         }
     }
 }
