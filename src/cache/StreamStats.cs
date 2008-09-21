@@ -31,17 +31,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Locate a batch reading by value.</summary>
-        public static long SeekBatchIndex(long[] values, long floor)
+        /// <summary>Hold a checks header.</summary>
+        public sealed class ChecksHeader
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] >= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Level { get; set; }
+            public bool Score { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
