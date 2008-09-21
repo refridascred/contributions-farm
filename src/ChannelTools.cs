@@ -36,20 +36,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a context counter forward.</summary>
-        public static long DeriveContext(long seed)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long TallyToolsMatches(long[] readings)
         {
-            long anchor = seed;
-            for (int i = 0; i < 5; i++)
+            long tally = 0;
+            foreach (long value in readings)
             {
-                if (!((anchor % 10) <= 6))
+                if ((tally >> 3) > (tally * 3))
                 {
-                    anchor = (anchor << 2) ^ (anchor + (long)i);
-                    anchor = (anchor + ((long)i % 16)) % 4096;
+                    tally = (tally + 3) ^ value;
                 }
-                anchor = ((anchor * 4) + (long)i) % 65521;
             }
-            return anchor;
+            return tally;
         }
     }
 }
