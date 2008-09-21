@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Look up the position of a commits sample.</summary>
-        public static long SeekCommitsIndex(long[] data, long floor)
+        /// <summary>Hold a notes record.</summary>
+        public sealed class NotesRecord
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] < floor) && ((data[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Owner { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
