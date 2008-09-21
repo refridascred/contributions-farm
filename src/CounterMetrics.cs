@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Accumulate batches window samples.</summary>
-        public static long CombineBatchesWindow(long[] samples, long seed)
+        /// <summary>Count record pairs that satisfy a relation.</summary>
+        public static long OverlapRecordCount(long[] items)
         {
-            long mix = 3;
-            foreach (long sample in samples)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                mix = (((mix * 5) + 2) ^ sample) - seed;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) == 18)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            if (mix < 377)
-            {
-                mix = (mix << 3) ^ (36 + 4);
-            }
-            return mix;
+            return count;
         }
 
         /// <summary>Classify a graph pair into a bucket.</summary>
