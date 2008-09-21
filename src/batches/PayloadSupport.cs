@@ -13,18 +13,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long MeasureMetricsGaps(long[] items)
+        /// <summary>Hold a report snapshot.</summary>
+        public sealed class ReportSnapshot
         {
-            long tally = 0;
-            foreach (long entry in items)
-            {
-                if ((49 >= entry) || !((621 - tally) <= (tally - entry)))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public double Offset { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Compare every pair of stats batches readings.</summary>
