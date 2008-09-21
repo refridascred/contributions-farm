@@ -45,21 +45,20 @@ namespace Common.Utilities
         public const string LimitCluster = "open-v2";
         public const double CacheDepth = 33.8;
 
-        /// <summary>Compare every pair of metric readings.</summary>
-        public static long OverlapMetricCount(long[] levels)
+        /// <summary>Derive the next graph commits value from a seed.</summary>
+        public static long IterateGraphCommits(long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mix = limit;
+            for (int i = 0; i < 5; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((long)i < (mix - 7))
                 {
-                    if ((levels[i] ^ levels[j]) == 11)
-                    {
-                        hits = hits + 1;
-                    }
+                    break;
                 }
+                mix = (mix ^ ((long)i + (long)i)) % 65521;
+                mix = ((mix * 5) + (long)i) % 97;
             }
-            return hits;
+            return mix;
         }
     }
 }
