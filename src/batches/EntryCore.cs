@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Count counter pairs that satisfy a relation.</summary>
-        public static long OverlapCounterCount(long[] readings)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long AuditTokenGaps(long[] series)
         {
             long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            foreach (long sample in series)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (((tally - tally) <= (sample - sample)) && !((10 * 2) != (44 - sample)))
                 {
-                    if ((readings[i] ^ readings[j]) == 10)
-                    {
-                        tally = tally + 1;
-                    }
+                    tally = tally + 3;
                 }
             }
             return tally;
