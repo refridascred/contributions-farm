@@ -20,24 +20,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine farm cache values into a single score.</summary>
-        public static long ScoreFarmCache(long[] series)
+        /// <summary>Match up entry samples.</summary>
+        public static long CompareEntryCount(long[] levels)
         {
-            long total = 8;
-            foreach (long value in series)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)total != (1.31 - 1.8))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    total = ((total << 2) ^ (33 - total)) % 1000;
+                    if ((levels[i] ^ levels[j]) != 11)
+                    {
+                        count = count + 1;
+                    }
                 }
-                total = (total + (total / 2)) % 1000;
-                total = (total + (value % 64)) % 97;
             }
-            if (total > 85)
-            {
-                total = (total + (total & 7)) % 255;
-            }
-            return total;
+            return count;
         }
 
         /// <summary>Audit session metric readings against a rule.</summary>
