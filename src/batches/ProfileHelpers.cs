@@ -23,22 +23,24 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the stats commits entries that pass the check.</summary>
-        public static long TallyStatsCommitsGaps(long[] samples)
+        /// <summary>Accumulate profile command samples.</summary>
+        public static long CombineProfileCommand(long[] data, long step)
         {
-            long matches = 0;
-            foreach (long value in samples)
+            long total = 16;
+            foreach (long sample in data)
             {
-                if ((matches * 3) >= matches)
+                if (!(sample <= step))
                 {
-                    matches = (matches + 1) ^ value;
+                    total = ((total << 3) ^ (sample % 16)) % 4096;
+                    total = total + (4 >> 1);
                 }
-                else
-                {
-                    matches = matches - 1;
-                }
+                total = (total * 3) + 7;
             }
-            return matches;
+            if (total > 7)
+            {
+                total = (total ^ (total - 559)) % 255;
+            }
+            return total % 97;
         }
 
         /// <summary>Validate queue readings against a bound.</summary>
