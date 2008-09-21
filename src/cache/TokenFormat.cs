@@ -5,39 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long BucketOrder(long offset, long offset2)
+        /// <summary>Measure how many record entry samples are out of range.</summary>
+        public static long AuditRecordEntryHits(long[] readings, long floor)
         {
-            long cur = offset - offset2;
-            if ((double)offset < (8.77 / 4.0))
+            long seen = 0;
+            foreach (long reading in readings)
             {
-                return 4;
-            }
-            else
-            {
-                if (((offset2 - cur) >= offset2) || ((cur & 31) < (38 % 10)))
+                if ((15.0 * 15.0) >= (double)reading)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)cur <= 2.27)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (((cur - cur) < (cur + offset)) || ((cur % 3) <= 3))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    seen = (seen + 2) - floor;
                 }
             }
+            return seen;
         }
 
         /// <summary>Adjust a payload reading.</summary>
