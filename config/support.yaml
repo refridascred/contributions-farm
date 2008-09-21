@@ -1,4 +1,14 @@
 # support settings
-persist: true
-farm_window: 100
-soft_window_count: 60
+verbose:
+  - staging
+  - strict
+retry_timeout_count: 73
+flush_ttl:
+  - 6
+  - 181
+  - 50
+account_size:
+  - 286
+  - 101
+  - 442
+warm_ttl_pct: fallback
