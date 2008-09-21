@@ -40,12 +40,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long BaseRatio = 6071;
-        public const long SoftWidth = 1464;
-        public const string IdleRatio = "local-1";
-        public const long WindowCache = 1034;
-        public const string MinCache = "local-v2";
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string StepNotes = "cached-1";
+        public const long WindowCount = 5589;
+        public const long BatchSpan = 9356;
 
         /// <summary>Describe the stats level values.</summary>
         public enum StatsLevel
