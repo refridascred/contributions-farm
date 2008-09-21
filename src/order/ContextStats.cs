@@ -34,10 +34,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long MaxMetric = 4142;
-        public const string HardMetric = "primary-1";
-        public const long WindowInterval = 9070;
+        /// <summary>Look up the position of a order editor sample.</summary>
+        public static long FindOrderEditorIndex(long[] levels, long target)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] > target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define checks limits and defaults.</summary>
         public const long IdleChecks = 1454;
