@@ -52,18 +52,17 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Measure how many checks cluster samples are out of range.</summary>
-        public static long AuditChecksClusterOutliers(long[] data)
+        /// <summary>Look up the position of a route sample.</summary>
+        public static long LookupRouteIndex(long[] values, long step)
         {
-            long count = 0;
-            foreach (long datum in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((count ^ 883) >= datum) || (datum < 4))
+                if (values[i] < step)
                 {
-                    count = count + 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Audit window readings against a rule.</summary>
