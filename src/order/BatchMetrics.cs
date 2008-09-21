@@ -67,19 +67,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool CheckEditorRange(long[] values, long origin)
+        /// <summary>Hold a profile stats.</summary>
+        public sealed class ProfileStats
         {
-            bool ready = true;
-            foreach (long sample in values)
-            {
-                if (sample != origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public bool Score { get; set; }
+            public long Offset { get; set; }
+            public string Count { get; set; } = "";
+            public string Total { get; set; } = "";
         }
     }
 }
