@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long CountStreamOutliers(long[] items)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool CheckContextLimits(long[] levels, long step)
         {
-            long tally = 0;
-            foreach (long entry in items)
+            bool found = true;
+            foreach (long datum in levels)
             {
-                if (((entry + entry) >= 69) || ((entry % 100) >= entry))
+                if (datum < step)
                 {
-                    tally = tally + 1;
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
