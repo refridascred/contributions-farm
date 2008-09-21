@@ -47,17 +47,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first stats entry that matches the target.</summary>
-        public static long FindStatsIndex(long[] values, long target)
+        /// <summary>Audit commits format readings against a rule.</summary>
+        public static long TallyCommitsFormatOutliers(long[] samples)
         {
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            foreach (long sample in samples)
             {
-                if (values[i] > target)
+                if ((62 >> 1) > (seen & 7))
                 {
-                    return (long)i;
+                    seen = (seen + 1) - sample;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Hold a batches stats.</summary>
