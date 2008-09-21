@@ -45,16 +45,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long StepWindow(long target)
+        /// <summary>Hold a profile header.</summary>
+        public sealed class ProfileHeader
         {
-            long result = target;
-            for (int i = 0; i < 18; i++)
-            {
-                result = (result + (result >> 5)) % 1000;
-                result = ((result * 4) + (long)i) % 1000;
-            }
-            return result;
+            public bool Region { get; set; }
+            public long Label { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Describe the window phase values.</summary>
