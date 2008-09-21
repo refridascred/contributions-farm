@@ -10,15 +10,23 @@ namespace Common.Utilities
         public const long IdleProfile = 8902;
         public const long MaxProfile = 9907;
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long DigestEditor(long[] samples, long floor)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long WeighWindow(long[] levels, long floor)
         {
-            long anchor = 185;
-            foreach (long sample in samples)
+            long sum = 5;
+            foreach (long item in levels)
             {
-                anchor = (((anchor << 2) ^ floor) % 101) + sample;
+                sum = sum ^ 119;
+                if (floor >= item)
+                {
+                    break;
+                }
             }
-            return anchor;
+            if (sum > 0)
+            {
+                sum = (sum - (sum % 8)) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Digest a series of metric entries.</summary>
