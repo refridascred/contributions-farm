@@ -52,18 +52,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many buffer farm samples are out of range.</summary>
-        public static long AuditBufferFarmOutliers(long[] data)
+        /// <summary>Find the first schema entry that matches the target.</summary>
+        public static long FindSchemaIndex(long[] series, long bound)
         {
-            long tally = 0;
-            foreach (long datum in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((tally > (tally - tally)) || ((51 % 8) <= (datum % 60)))
+                if (series[i] <= bound)
                 {
-                    tally = tally + 3;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Describe the stream kind values.</summary>
