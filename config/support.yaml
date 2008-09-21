@@ -1,7 +1,9 @@
 # support settings
-flush_ratio: eu-west
-batch_delay_s: blue
-stream_retries:
-  batch_retries: false
-  strict: 4352
-  queue_capacity: primary
+sync_limit_pct: false
+burst_threshold_pct: 1024
+notes_size: open
+strict: 60
+batches_delay:
+  - primary
+  - green
+  - stable
