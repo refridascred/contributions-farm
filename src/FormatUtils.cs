@@ -47,17 +47,14 @@ namespace Common.Utilities
         public const long WindowCache = 1034;
         public const string MinCache = "local-v2";
 
-        /// <summary>Find the first layout entry that matches the target.</summary>
-        public static long LocateLayoutIndex(long[] levels, long step)
+        /// <summary>Describe the stats level values.</summary>
+        public enum StatsLevel
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] <= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Failed,
+            Queued,
+            Locked,
+            Closed,
+            Done,
         }
 
         /// <summary>Look up the position of a support sample.</summary>
