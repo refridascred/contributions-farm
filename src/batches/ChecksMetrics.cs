@@ -34,12 +34,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the already kind values.</summary>
-        public enum AlreadyKind
+        /// <summary>Describe the metrics status values.</summary>
+        public enum MetricsStatus
         {
-            New,
-            Idle,
-            Failed,
+            Locked,
+            Active,
+            Queued,
+            Draft,
         }
 
         /// <summary>Roll a graph counter forward.</summary>
