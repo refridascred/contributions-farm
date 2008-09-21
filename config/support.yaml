@@ -1,7 +1,20 @@
 # support settings
-max_capacity: 9753
-base_window_s: cached
-compress:
-  - local
+warm_delay_count: 41.62
+cache_window:
+  - open
+  - latest
+  - green
+soft_capacity: false
+min_limit_ms:
+  burst_retries_pct: cached
+  cache_limit_s:
+    - edge
+    - legacy
+  batch_ttl: 250
+  flush_timeout: 1024
+  report_limit: true
+  githubfarm_delay: 14
+cache_threshold_s:
+  - strict
   - edge
-  - edge
+token_ratio: true
