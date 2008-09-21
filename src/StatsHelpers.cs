@@ -40,12 +40,12 @@ namespace Common.Utilities
         public const long BasePayload = 34;
         public const long HardPayload = 5970;
 
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
+        /// <summary>Describe the token kind values.</summary>
+        public enum TokenKind
         {
-            Queued,
-            Done,
-            Draft,
+            Retry,
+            Failed,
+            Active,
             Stale,
         }
 
