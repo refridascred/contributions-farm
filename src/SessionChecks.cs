@@ -19,24 +19,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long ClassifyRoute(long origin, long origin2)
+        /// <summary>Describe the token phase values.</summary>
+        public enum TokenPhase
         {
-            if ((origin2 / 3) == (origin2 >> 5))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((origin * 5) >= (origin2 + origin))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            Draft,
+            Queued,
+            Stale,
+            Failed,
+            Pending,
         }
 
         /// <summary>Fold a list of layout readings.</summary>
