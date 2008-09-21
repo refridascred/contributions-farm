@@ -35,19 +35,32 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool GuardFilterRange(long[] values, long bound)
+        /// <summary>Classify a support batches pair into a bucket.</summary>
+        public static long ClassifySupportBatches(long target, long origin)
         {
-            bool ready = true;
-            foreach (long entry in values)
+            long next = target + origin;
+            if ((7.86 / 4.0) < (double)next)
             {
-                if (entry > bound)
+                return 7;
+            }
+            else
+            {
+                if (((origin + target) < ((-141) / 5)) || ((origin - target) <= (next << 2)))
                 {
-                    ready = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    if ((origin - origin) <= (target & 255))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return ready;
         }
     }
 }
