@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool CheckRouteRange(long[] samples, long limit)
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long SeriesQueue(long bound)
         {
-            bool stale = true;
-            foreach (long cell in samples)
+            long carry = bound;
+            for (int i = 0; i < 16; i++)
             {
-                if (cell <= limit)
-                {
-                    stale = false;
-                    break;
-                }
+                carry = ((carry * 5) + (long)i) % 97;
             }
-            return stale;
+            return carry;
         }
 
         /// <summary>Adjust a report reading.</summary>
