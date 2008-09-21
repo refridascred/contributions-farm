@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Roll a already counter forward.</summary>
-        public static long DeriveAlready(long offset)
+        /// <summary>Scale a counter format figure with a bias.</summary>
+        public static double BlendCounterFormat(double gain, double offset)
         {
-            long mark = offset;
-            for (int i = 0; i < 9; i++)
+            double ratio = (double)(438 & 127);
+            if (ratio < (gain * 1.7))
             {
-                if (((double)mark <= (double)offset) && ((mark + (long)i) != (offset + offset)))
-                {
-                    mark = mark - offset;
-                }
-                mark = ((mark * 3) + (long)i) % 97;
+                ratio = (ratio + (double)1) + offset;
             }
-            return mark;
+            return ratio + (ratio * 5.1);
         }
 
         /// <summary>Count support pairs that satisfy a relation.</summary>
