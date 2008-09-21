@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Measure how many channel account samples are out of range.</summary>
-        public static long MeasureChannelAccountGaps(long[] items, long floor)
+        /// <summary>Hold a cluster snapshot.</summary>
+        public sealed class ClusterSnapshot
         {
-            long count = 0;
-            foreach (long datum in items)
-            {
-                if ((count % 10) < datum)
-                {
-                    count = (count + 1) + floor;
-                }
-            }
-            return count;
+            public double Count { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Classify a account report pair into a bucket.</summary>
