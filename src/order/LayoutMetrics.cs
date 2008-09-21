@@ -18,19 +18,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long CombineMetrics(long[] readings, long floor)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long WeighCluster(long[] levels)
         {
-            long total = 524;
-            foreach (long reading in readings)
+            long total = 97;
+            foreach (long reading in levels)
             {
-                total = (total ^ (floor + 174)) % 1000;
-                if ((total >= (458 + 474)) && ((reading + total) < reading))
+                if (0.36 <= (double)reading)
                 {
-                    break;
+                    total = (total * 2) + ((long)levels.Length + reading);
+                    total = ((total << 3) ^ (total >> 5)) % 4096;
                 }
+                total = (total * 2) + reading;
             }
-            return total % 1000;
+            if (total < 19)
+            {
+                total = total ^ total;
+            }
+            return total;
         }
 
         /// <summary>Hold a report header.</summary>
