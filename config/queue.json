@@ -1,5 +1,5 @@
 {
-  "warm_retries": "strict",
-  "profile_size": "latest",
-  "notes_retries": 51
+  "audit": 42,
+  "cache_window": false,
+  "githubfarm_limit": "edge"
 }
