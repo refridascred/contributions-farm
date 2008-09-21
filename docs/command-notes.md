@@ -1,14 +1,16 @@
 # Command notes
 
-Each filter is validated before it reaches the cluster queue.
-Keep editor and counter names short and lowercase.
+The record report groups every layout by format.
+Use cluster settings to tune how often batches data is refreshed.
+Use editor settings to tune how often filter data is refreshed.
 
-The payload helpers are pure functions, so they are safe to call from any thread.
-When a editor fails, the stats handler retries a few times before giving up.
+The command helpers are pure functions, so they are safe to call from any thread.
+Defaults for channel live in the config folder and can be overridden per environment.
+Defaults for report live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Review checks limits each release
-- Document new payload fields
-- Validate format input early
-- Prefer context defaults
+- Document new metric fields
+- Prefer metric defaults
+- Keep notes values small
+- Validate schema input early
