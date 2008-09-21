@@ -28,21 +28,39 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Compare every pair of filter readings.</summary>
-        public static long PairFilterCount(long[] items)
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long GradeFilter(long step, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long slot = step ^ bound;
+            if (((-6) + bound) > step)
             {
-                for (int j = 0; j < items.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if (((8 * 5) <= (bound >> 2)) || ((5.1 + 8.05) != (double)slot))
                 {
-                    if ((items[i] - items[j]) == 4)
+                    return 0;
+                }
+                else
+                {
+                    if ((step - step) >= (956 << 3))
                     {
-                        matches = matches + 1;
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((double)bound <= (double)38)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Describe the editor level values.</summary>
