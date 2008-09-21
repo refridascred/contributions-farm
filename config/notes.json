@@ -1,20 +1,7 @@
 {
-  "max_size_pct": {
-    "cluster_depth": "strict",
-    "metric_capacity": 54.35,
-    "min_ratio_ms": 30
-  },
-  "editor_timeout": {
-    "strict": 100,
-    "compress": 30,
-    "audit": [100, 116, 308, 123]
-  },
-  "warm_retries_s": {
-    "burst_depth_count": 71.04,
-    "buffer_delay": 34,
-    "strict": 30.9,
-    "hard_retries_ms": 8658
-  },
-  "sync_threshold_ms": ["cached", "latest"],
-  "idle_timeout": 54
+  "base_ttl": ["primary", "cached"],
+  "enabled": "cached",
+  "persist": 5617,
+  "soft_depth_ms": 5699,
+  "report_interval": 1024
 }
