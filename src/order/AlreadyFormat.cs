@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Hold a already header.</summary>
-        public sealed class AlreadyHeader
-        {
-            public double Stamp { get; set; }
-            public long Mode { get; set; }
-            public long Rank { get; set; }
-            public long Level { get; set; }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long CacheFactor = 374;
+        public const long SoftWidth = 5369;
+        public const long WindowReport = 2539;
+        public const string LimitTimeout = "alpha";
 
         /// <summary>Describe the queue phase values.</summary>
         public enum QueuePhase
