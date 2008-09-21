@@ -57,11 +57,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double LimitRecord = 62.66;
-        public const long CacheSize = 6974;
-        public const long MinRecord = 2563;
-        public const string StepLevel = "open-1";
-        public const double IdleRecord = 53.01;
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long RetryWidth = 1850;
+        public const long BurstFactor = 8108;
+        public const double RetryMetrics = 97.49;
+        public const long LimitMetrics = 3599;
     }
 }
