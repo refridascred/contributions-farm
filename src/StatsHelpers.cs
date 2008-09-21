@@ -53,11 +53,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a tools entry.</summary>
-        public sealed class ToolsEntry
+        /// <summary>Hold a batch record.</summary>
+        public sealed class BatchRecord
         {
-            public long Mode { get; set; }
-            public string Limit { get; set; } = "";
+            public long Rank { get; set; }
+            public long Ratio { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Classify a format pair into a bucket.</summary>
