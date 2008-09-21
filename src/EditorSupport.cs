@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Roll a window counter forward.</summary>
-        public static long IterateWindow(long limit)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long WeighWindow(long[] series, long step)
         {
-            long anchor = limit;
-            for (int i = 0; i < 11; i++)
+            long mark = 66;
+            foreach (long reading in series)
             {
-                anchor = ((anchor * 2) + (long)i) % 101;
+                if ((step + mark) <= step)
+                {
+                    mark = ((mark << 3) ^ (mark ^ step)) - reading;
+                }
             }
-            return anchor;
+            if (mark < 19)
+            {
+                mark = (mark ^ (step * 5)) % 4096;
+            }
+            return mark % 4096;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
