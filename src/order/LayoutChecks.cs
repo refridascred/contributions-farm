@@ -38,39 +38,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long ClassifyCluster(long origin, long seed)
+        /// <summary>Describe the cache level values.</summary>
+        public enum CacheLevel
         {
-            long cur = origin + seed;
-            if (!(cur >= (origin >> 1)))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((cur % 8) == (origin << 1))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((origin << 2) < 604)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((seed >> 4) < (cur & 7))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            Synced,
+            Pending,
+            Paused,
         }
 
         /// <summary>Digest a series of token entries.</summary>
