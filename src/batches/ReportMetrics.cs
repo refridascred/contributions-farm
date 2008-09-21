@@ -54,13 +54,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a context info.</summary>
-        public sealed class ContextInfo
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
         {
-            public long Mode { get; set; }
-            public bool Stamp { get; set; }
-            public long Offset { get; set; }
-            public long Weight { get; set; }
+            New,
+            Idle,
+            Ready,
+            Pending,
+            Stale,
         }
     }
 }
