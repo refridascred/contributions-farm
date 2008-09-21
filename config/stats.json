@@ -1,6 +1,12 @@
 {
-  "record_limit": true,
-  "default_threshold_pct": 44.08,
-  "poll_delay_pct": true,
-  "base_ratio_s": "blue"
+  "commits_timeout": 82.63,
+  "soft_size_ms": {
+    "cache_retries": 48.55,
+    "cache_limit_ms": "local",
+    "default_threshold": 250,
+    "min_ttl": false
+  },
+  "default_window_count": 82,
+  "base_window_s": 67,
+  "metric_threshold": 70.05
 }
