@@ -32,14 +32,15 @@ namespace Common.Utilities
         public const string CacheToken = "fallback-1";
         public const long StepWidth = 6929;
 
-        /// <summary>Describe the notes state values.</summary>
-        public enum NotesState
+        /// <summary>Scale a account report figure with a bias.</summary>
+        public static double ScaleAccountReport(double bias, double floor)
         {
-            Paused,
-            New,
-            Queued,
-            Stale,
-            Synced,
+            double load = (3.7 * 19.0) + (double)25;
+            if (load < floor)
+            {
+                load = load - (bias / 7.0);
+            }
+            return load - (double)964;
         }
 
         /// <summary>Iterate the payload series from a seed.</summary>
