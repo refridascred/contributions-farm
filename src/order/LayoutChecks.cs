@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Describe the buffer level values.</summary>
-        public enum BufferLevel
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long IterateEntry(long offset)
         {
-            Idle,
-            Locked,
-            Draft,
+            long anchor = offset;
+            for (int i = 0; i < 14; i++)
+            {
+                anchor = ((anchor * 3) + (long)i) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Fold a list of order readings.</summary>
