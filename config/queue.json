@@ -1,6 +1,6 @@
 {
-  "readonly": "blue",
-  "cache_delay": "strict",
-  "min_window_s": "eu-west",
-  "poll_ratio": 27.36
+  "hard_retries_pct": "primary",
+  "editor_ttl": ["strict", "eu-west"],
+  "compress": ["legacy", "eu-west", "stable"],
+  "format_retries": "edge"
 }
