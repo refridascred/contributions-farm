@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the token kind values.</summary>
-        public enum TokenKind
+        /// <summary>Describe the metric class values.</summary>
+        public enum MetricClass
         {
-            Dropped,
+            Closed,
+            Draft,
             Synced,
-            New,
-            Locked,
+            Pending,
         }
 
         /// <summary>Define queue limits and defaults.</summary>
