@@ -1,7 +1,10 @@
 {
-  "readonly": "primary",
-  "max_interval_count": ["green", "strict", "fallback"],
-  "verbose": 43.0,
-  "format_window": 11.1,
-  "sync_retries_ms": false
+  "default_interval_s": ["primary", "latest"],
+  "counter_timeout": {
+    "order_limit": false,
+    "batch_timeout_count": ["latest", "staging"],
+    "githubfarm_ratio": 30
+  },
+  "max_timeout_count": 69,
+  "queue_interval": 48.82
 }
