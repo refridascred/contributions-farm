@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Roll a command counter forward.</summary>
-        public static long StepCommand(long bound)
+        /// <summary>Hold a stats header.</summary>
+        public sealed class StatsHeader
         {
-            long mark = bound;
-            for (int i = 0; i < 23; i++)
-            {
-                mark = ((mark * 4) + (long)i) % 101;
-            }
-            return mark;
+            public bool Owner { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Hold a command header.</summary>
