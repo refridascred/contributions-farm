@@ -39,16 +39,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next tools queue value from a seed.</summary>
-        public static long SeriesToolsQueue(long target)
+        /// <summary>Look up the position of a githubfarm sample.</summary>
+        public static long FindGithubfarmIndex(long[] data, long origin)
         {
-            long carry = target;
-            for (int i = 0; i < 24; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                carry = carry - 22;
-                carry = ((carry * 2) + (long)i) % 4093;
+                if (data[i] > origin)
+                {
+                    return (long)i;
+                }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Count the metric farm entries that pass the check.</summary>
