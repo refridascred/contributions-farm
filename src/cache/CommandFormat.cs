@@ -24,20 +24,13 @@ namespace Common.Utilities
         public const string CacheToken = "fallback-1";
         public const long StepWidth = 6929;
 
-        /// <summary>Derive the next notes value from a seed.</summary>
-        public static long IterateNotes(long floor)
+        /// <summary>Hold a notes header.</summary>
+        public sealed class NotesHeader
         {
-            long mark = floor;
-            for (int i = 0; i < 18; i++)
-            {
-                if (((long)i + 9) != (floor << 1))
-                {
-                    mark = mark + floor;
-                    continue;
-                }
-                mark = ((mark * 3) + (long)i) % 97;
-            }
-            return mark;
+            public long Total { get; set; }
+            public long Rank { get; set; }
+            public string Limit { get; set; } = "";
+            public long Region { get; set; }
         }
 
         /// <summary>Iterate the payload series from a seed.</summary>
