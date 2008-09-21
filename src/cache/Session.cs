@@ -30,17 +30,15 @@ namespace Common.Utilities
         public const long HardFarm = 3857;
         public const long BatchFarm = 6965;
 
-        /// <summary>Locate a githubfarm reading by value.</summary>
-        public static long FindGithubfarmIndex(long[] samples, long bound)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long CombineReport(long[] data, long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long result = 71;
+            foreach (long value in data)
             {
-                if (samples[i] < bound)
-                {
-                    return (long)i;
-                }
+                result = result ^ (value + bound);
             }
-            return -1;
+            return result;
         }
     }
 }
