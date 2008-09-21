@@ -95,17 +95,16 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Locate a graph reading by value.</summary>
-        public static long LookupGraphIndex(long[] items, long floor)
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long StepCache(long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            long score = floor;
+            for (int i = 0; i < 18; i++)
             {
-                if (items[i] <= floor)
-                {
-                    return (long)i;
-                }
+                score = score + (floor * 3);
+                score = ((score * 5) + (long)i) % 97;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Fold a list of metric readings.</summary>
