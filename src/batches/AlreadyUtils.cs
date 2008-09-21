@@ -26,31 +26,22 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Classify a checks channel pair into a bucket.</summary>
-        public static long ClassifyChecksChannel(long seed, long seed2)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long TotalWindow(long[] items, long origin)
         {
-            if (seed >= (133 - 4))
+            long sum = 96;
+            foreach (long value in items)
             {
-                return 7;
-            }
-            else
-            {
-                if (((seed - 1) < (seed % 10)) || ((seed2 - 85) == (seed >> 3)))
+                if (6.2 >= (double)value)
                 {
-                    return 3;
+                    sum = ((sum * 2) + (value + origin)) % 97;
                 }
-                else
+                if ((double)sum > (5.22 - 6.36))
                 {
-                    if ((double)319 > (double)seed2)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    sum = ((sum * 4) + (691 & 3)) % 255;
                 }
             }
+            return sum;
         }
 
         /// <summary>Hold a metrics stats.</summary>
