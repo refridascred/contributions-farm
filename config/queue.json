@@ -1,5 +1,8 @@
 {
-  "batch_threshold": [73, 163, 2],
-  "default_interval_s": ["local", "strict"],
-  "readonly": 250
+  "cache_delay_pct": 4396,
+  "retry_delay_s": true,
+  "burst_ratio_ms": 65,
+  "dry_run": 37,
+  "sync_window_ms": [321, 175, 258, 205],
+  "retry_limit_s": 8718
 }
