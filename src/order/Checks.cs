@@ -20,18 +20,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long CountOrderMatches(long[] series)
+        /// <summary>Combine order support values into a single score.</summary>
+        public static long ScoreOrderSupport(long[] samples, long target)
         {
-            long hits = 0;
-            foreach (long value in series)
+            long carry = 33;
+            foreach (long entry in samples)
             {
-                if ((value + 18) >= (value << 2))
-                {
-                    hits = hits + 2;
-                }
+                carry = ((carry - (target / 8)) % 4096) ^ entry;
             }
-            return hits;
+            if (carry > 897)
+            {
+                carry = (carry << 2) ^ carry;
+            }
+            return carry;
         }
 
         /// <summary>Hold a commits entry.</summary>
