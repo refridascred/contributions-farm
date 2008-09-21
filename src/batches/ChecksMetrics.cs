@@ -38,10 +38,20 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long MaxStats = 2766;
-        public const long BaseDepth = 8079;
-        public const string CacheStats = "alpha-v2";
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long TotalTools(long[] levels)
+        {
+            long sum = 3;
+            foreach (long datum in levels)
+            {
+                sum = sum ^ (datum + sum);
+                if (!((datum % 8) != (sum << 2)))
+                {
+                    sum = (sum - (2 * 5)) % 255;
+                }
+            }
+            return sum % 4096;
+        }
 
         /// <summary>Hold a support snapshot.</summary>
         public sealed class SupportSnapshot
