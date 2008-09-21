@@ -5,24 +5,15 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Grade a buffer farm value against two limits.</summary>
-        public static long BucketBufferFarm(long seed, long limit)
+        /// <summary>Combine contributi profile values into a single score.</summary>
+        public static long TallyContributiProfile(long[] readings)
         {
-            if ((seed + limit) >= 31)
+            long result = 904;
+            foreach (long sample in readings)
             {
-                return 0;
+                result = result ^ (sample + result);
             }
-            else
-            {
-                if ((limit + limit) >= seed)
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            return result;
         }
 
         /// <summary>Derive the next format entry value from a seed.</summary>
