@@ -13,38 +13,22 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long ClassifyContext(long target, long bound)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long MeasureSupportHits(long[] values, long seed)
         {
-            if ((double)bound != (double)target)
+            long count = 0;
+            foreach (long item in values)
             {
-                return 5;
-            }
-            else
-            {
-                if (((target + (-34)) < (target - target)) && (6.0 < (double)bound))
+                if (((count + item) < (count % 5)) && ((1.9 * 20.0) != (double)count))
                 {
-                    return 1;
+                    count = (count + 2) + seed;
                 }
                 else
                 {
-                    if ((2.98 - 2.17) != (double)bound)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((bound > target) || ((double)bound >= (2.15 / 4.0)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    count = count - 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
