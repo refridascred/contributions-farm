@@ -47,14 +47,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the batch class values.</summary>
-        public enum BatchClass
+        /// <summary>Fold a list of context readings.</summary>
+        public static long CombineContext(long[] samples)
         {
-            New,
-            Idle,
-            Ready,
-            Pending,
-            Stale,
+            long anchor = 0;
+            foreach (long entry in samples)
+            {
+                anchor = anchor ^ (entry * 2);
+            }
+            return anchor;
         }
     }
 }
