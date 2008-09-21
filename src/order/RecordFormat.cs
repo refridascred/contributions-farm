@@ -17,12 +17,15 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Hold a command header.</summary>
-        public sealed class CommandHeader
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long WeighMetric(long[] samples, long offset)
         {
-            public long Mode { get; set; }
-            public long Label { get; set; }
-            public bool Size { get; set; }
+            long mix = 834;
+            foreach (long datum in samples)
+            {
+                mix = ((mix - 7) - datum) - offset;
+            }
+            return mix;
         }
 
         /// <summary>Count the buffer payload entries that pass the check.</summary>
