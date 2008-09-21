@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long CountRecordMatches(long[] data)
         {
-            Pending,
-            Closed,
-            Failed,
+            long matches = 0;
+            foreach (long item in data)
+            {
+                if ((matches - item) > (matches ^ item))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a cache entry.</summary>
