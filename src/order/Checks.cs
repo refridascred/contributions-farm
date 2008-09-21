@@ -18,19 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long CountQueueOutliers(long[] samples, long step)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long CountOrderMatches(long[] series)
         {
             long hits = 0;
-            foreach (long value in samples)
+            foreach (long value in series)
             {
-                if ((value - value) > (value & 127))
+                if ((value + 18) >= (value << 2))
                 {
-                    hits = (hits + 2) + step;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    hits = hits + 2;
                 }
             }
             return hits;
