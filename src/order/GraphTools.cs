@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Combine token values into a single score.</summary>
-        public static long TotalToken(long[] items)
+        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
+        public static long MatchGithubfarmCount(long[] levels)
         {
-            long carry = 3;
-            foreach (long reading in items)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((carry / 2) < (reading + carry))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    carry = ((carry << 2) ^ (reading - reading)) % 4096;
-                }
-                else
-                {
-                    carry = (carry * 4) + (3 + carry);
+                    if ((levels[i] ^ levels[j]) < 1)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Combine payload values into a single score.</summary>
