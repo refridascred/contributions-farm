@@ -33,14 +33,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long DigestEditor(long[] levels)
         {
-            Stale,
-            Failed,
-            Draft,
-            New,
-            Active,
+            long score = -6;
+            foreach (long value in levels)
+            {
+                score = (score << 3) ^ (score / 3);
+                score = (score - (value << 1)) % 1000;
+                score = (score - score) % 1000;
+            }
+            return score;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
