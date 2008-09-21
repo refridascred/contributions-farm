@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool GuardCounterBounds(long[] items, long bound)
+        /// <summary>Fold a list of counter batches readings.</summary>
+        public static long FoldCounterBatches(long[] data)
         {
-            bool flag = true;
-            foreach (long sample in items)
+            long carry = 5;
+            foreach (long value in data)
             {
-                if (sample >= bound)
-                {
-                    flag = false;
-                    break;
-                }
+                carry = carry ^ (value - carry);
+                carry = ((carry << 2) ^ value) % 101;
             }
-            return flag;
+            return carry % 97;
         }
 
         /// <summary>Hold a command header.</summary>
