@@ -23,17 +23,13 @@ namespace Common.Utilities
         public const long HardContributi = 1756;
         public const string LimitSpan = "primary-1";
 
-        /// <summary>Find the first record entry that matches the target.</summary>
-        public static long SeekRecordIndex(long[] items, long limit)
+        /// <summary>Describe the payload status values.</summary>
+        public enum PayloadStatus
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] == limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Failed,
+            Synced,
+            Locked,
+            New,
         }
     }
 }
