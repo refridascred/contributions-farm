@@ -43,14 +43,10 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Hold a context record.</summary>
-        public sealed class ContextRecord
-        {
-            public double Ratio { get; set; }
-            public double Flag { get; set; }
-            public double Weight { get; set; }
-            public long Stamp { get; set; }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double SoftBatches = 47.29;
+        public const long RetrySize = 5968;
+        public const string BatchScore = "local";
 
         /// <summary>Combine support command values into a single score.</summary>
         public static long ScoreSupportCommand(long[] readings, long step)
