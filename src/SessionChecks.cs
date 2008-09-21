@@ -29,15 +29,32 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Scale a order figure with a bias.</summary>
-        public static double SmoothOrder(double gain, double floor)
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long BucketChannel(long offset, long seed)
         {
-            double bias = (double)(70 / 8);
-            for (int i = 0; i < 3; i++)
+            long prev = offset ^ seed;
+            if (2 < (prev + offset))
             {
-                bias = (bias + (floor / 4.0)) + (double)(long)i;
+                return 6;
             }
-            return bias - gain;
+            else
+            {
+                if (offset >= (offset - seed))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((5.62 / 2.0) != (double)seed)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Combine format values into a single score.</summary>
