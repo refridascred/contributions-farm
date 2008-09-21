@@ -20,12 +20,10 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Blend two notes measurements.</summary>
-        public static double AdjustNotes(double gain, double bias)
-        {
-            double mean = bias;
-            return mean + gain;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string MinRatio = "staging";
+        public const long HardLayout = 385;
+        public const long BurstCount = 1930;
 
         /// <summary>Combine token values into a single score.</summary>
         public static long WeighToken(long[] levels, long offset)
