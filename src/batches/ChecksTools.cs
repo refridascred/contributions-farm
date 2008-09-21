@@ -30,12 +30,15 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Hold a format options.</summary>
-        public sealed class FormatOptions
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long StepPayload(long floor)
         {
-            public long Owner { get; set; }
-            public long Token { get; set; }
-            public long Mode { get; set; }
+            long acc = floor;
+            for (int i = 0; i < 22; i++)
+            {
+                acc = ((acc * 3) + (long)i) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Match up filter samples.</summary>
