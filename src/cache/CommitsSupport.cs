@@ -15,10 +15,40 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long MaxBudget = 5539;
-        public const string MinTimeout = "local-v2";
-        public const double HardCount = 4.61;
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long ClassifyCommits(long bound, long offset)
+        {
+            long prev = bound + offset;
+            if (((8.2 - 5.7) > (double)bound) || ((double)prev < (4.25 + 8.27)))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((offset << 2) > (offset * 2))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((99 & 1) >= (bound >> 1))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((prev + bound) >= prev)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Describe the profile class values.</summary>
         public enum ProfileClass
