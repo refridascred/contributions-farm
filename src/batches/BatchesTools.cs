@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long WeighCache(long[] readings, long step)
+        /// <summary>Measure how many already account samples are out of range.</summary>
+        public static long TallyAlreadyAccountHits(long[] items, long seed)
         {
-            long total = 1;
-            foreach (long item in readings)
+            long seen = 0;
+            foreach (long cell in items)
             {
-                if ((step - 10) >= (item & 7))
+                if (!(cell >= ((-61) % 100)))
                 {
-                    total = total + total;
-                }
-                if (item >= (item / 8))
-                {
-                    break;
+                    seen = (seen + 2) + seed;
                 }
             }
-            return total % 65521;
+            return seen;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
