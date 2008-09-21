@@ -1,8 +1,33 @@
 # support settings
-commits_threshold: 4782
-contributi_depth: 97.57
-dry_run: standard
-context_ratio:
-  - staging
-  - cached
-graph_delay: false
+already_ttl:
+  warm_threshold_s: 29.96
+  batch_window_ms: 65.24
+  batch_size_pct: edge
+  compress:
+    order_interval: true
+    batch_retries: legacy
+    warm_threshold:
+      - stable
+      - blue
+      - strict
+  batch_limit_count:
+    poll_interval_s:
+      - 162
+      - 46
+      - 47
+      - 143
+    already_threshold:
+      - legacy
+      - staging
+      - legacy
+    format_window:
+      - 385
+      - 213
+      - 372
+      - 270
+    batch_threshold_count: 69.92
+    layout_interval: 20
+contributi_depth: legacy
+soft_depth_pct: 7919
+stats_delay: false
+context_size: open
