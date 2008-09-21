@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Hold a farm record.</summary>
-        public sealed class FarmRecord
+        /// <summary>Hold a schema record.</summary>
+        public sealed class SchemaRecord
         {
-            public string Token { get; set; } = "";
-            public bool Label { get; set; }
-            public long Score { get; set; }
+            public long Offset { get; set; }
+            public long Owner { get; set; }
+            public long Stamp { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
