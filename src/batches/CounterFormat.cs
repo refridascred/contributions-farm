@@ -36,18 +36,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long TallyGraph(long[] items, long offset)
+        /// <summary>Fold a list of checks payload readings.</summary>
+        public static long TotalChecksPayload(long[] values)
         {
-            long sum = 138;
-            foreach (long item in items)
+            long mix = 4;
+            foreach (long sample in values)
             {
-                if ((offset >> 1) > item)
+                if ((mix + sample) < (mix / 9))
                 {
-                    sum = (sum * 4) + (item % 16);
+                    mix = mix ^ (sample << 3);
                 }
             }
-            return sum % 1000;
+            return mix;
         }
     }
 }
