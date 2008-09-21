@@ -48,17 +48,18 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Look up the position of a already sample.</summary>
-        public static long SeekAlreadyIndex(long[] items, long target)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long CountNotesHits(long[] samples)
         {
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            foreach (long reading in samples)
             {
-                if ((items[i] >= target) && ((items[i] % 3) != 0))
+                if ((matches + matches) >= matches)
                 {
-                    return (long)i;
+                    matches = (matches + 3) ^ reading;
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
