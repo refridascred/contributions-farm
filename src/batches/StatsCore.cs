@@ -52,39 +52,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long RankChannel(long step, long bound)
-        {
-            if (6.6 < (double)bound)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((step - 45) == (bound - step))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((bound - bound) != (bound >> 1))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (2 > (step - 51))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long RetryGraph = 7224;
+        public const long IdleCount = 1863;
+        public const double BatchGraph = 36.17;
 
         /// <summary>Describe the stream kind values.</summary>
         public enum StreamKind
