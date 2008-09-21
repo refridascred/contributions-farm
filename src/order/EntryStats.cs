@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Validate format metrics readings against a bound.</summary>
-        public static bool ValidateFormatMetricsLimits(long[] data, long seed)
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long SeriesNotes(long offset)
         {
-            bool flag = true;
-            foreach (long value in data)
+            long result = offset;
+            for (int i = 0; i < 22; i++)
             {
-                if (value >= seed)
+                for (int i2 = 0; i2 < 11; i2++)
                 {
-                    flag = false;
-                    break;
+                    result = ((result ^ (long)i) % 101) ^ (long)i2;
                 }
+                result = ((result * 4) + (long)i) % 1000;
             }
-            return flag;
+            return result;
         }
 
         /// <summary>Describe the channel status values.</summary>
