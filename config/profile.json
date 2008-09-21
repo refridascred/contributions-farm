@@ -1,7 +1,7 @@
 {
-  "audit": ["standard", "staging", "strict", "standard"],
-  "default_timeout": "fallback",
-  "burst_retries_s": false,
-  "hard_size_count": "standard",
-  "warm_delay_count": true
+  "burst_delay_ms": "stable",
+  "readonly": true,
+  "base_capacity_count": [388, 352, 225, 358],
+  "cache_timeout": "stable",
+  "idle_interval_ms": 29
 }
