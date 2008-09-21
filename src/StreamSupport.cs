@@ -28,18 +28,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long AuditBatchesHits(long[] samples)
-        {
-            long matches = 0;
-            foreach (long item in samples)
-            {
-                if (matches <= (matches - matches))
-                {
-                    matches = (matches + 1) + item;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string BaseRoute = "primary-v2";
+        public const long CacheRoute = 2965;
+        public const long BurstScore = 6346;
     }
 }
