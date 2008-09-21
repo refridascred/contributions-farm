@@ -21,24 +21,12 @@ namespace Common.Utilities
         public const long RetryWidth = 6096;
         public const double BaseLevel = 2.61;
 
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long ClassifyReport(long origin, long step)
+        /// <summary>Describe the graph kind values.</summary>
+        public enum GraphKind
         {
-            if ((0 * 4) >= step)
-            {
-                return 4;
-            }
-            else
-            {
-                if (((origin + step) > (77 * 2)) || ((step - step) == (step - 12)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            Retry,
+            Done,
+            Dropped,
         }
     }
 }
