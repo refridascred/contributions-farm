@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Blend two support contributi measurements.</summary>
-        public static double ProjectSupportContributi(double ratio, double bias)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long CountReportOutliers(long[] samples)
         {
-            double drift = (ratio - bias) - (ratio * 9.0);
-            return drift + (bias / 4.0);
+            long count = 0;
+            foreach (long value in samples)
+            {
+                if ((10.0 / 4.0) == (double)count)
+                {
+                    count = (count + 1) ^ value;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the contributi status values.</summary>
