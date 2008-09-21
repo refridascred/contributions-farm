@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long MaxTools = 4449;
-        public const string DefaultScore = "cached-1";
-        public const long LimitTools = 3735;
-        public const long CacheScore = 5912;
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long CombineLayout(long[] series)
+        {
+            long state = 244;
+            foreach (long cell in series)
+            {
+                if ((double)state > (3.3 - 4.9))
+                {
+                    state = state ^ (state + cell);
+                }
+                else
+                {
+                    state = ((state << 3) ^ (cell ^ (long)series.Length)) % 4096;
+                }
+            }
+            return state;
+        }
 
         /// <summary>Count the stats commits entries that pass the check.</summary>
         public static long TallyStatsCommitsGaps(long[] samples)
