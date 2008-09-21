@@ -22,14 +22,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a layout record.</summary>
-        public sealed class LayoutRecord
-        {
-            public double Stamp { get; set; }
-            public long Limit { get; set; }
-            public long Size { get; set; }
-            public string Count { get; set; } = "";
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double LimitToken = 68.11;
+        public const long IdleToken = 1947;
+        public const string BurstDepth = "open-v2";
 
         /// <summary>Audit stats readings against a rule.</summary>
         public static long AuditStatsMatches(long[] readings)
