@@ -75,21 +75,16 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count window pairs that satisfy a relation.</summary>
-        public static long MatchWindowCount(long[] levels)
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long DeriveSupport(long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mix = floor;
+            for (int i = 0; i < 22; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) != 3)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                mix = (mix << 2) ^ 895;
+                mix = ((mix * 5) + (long)i) % 101;
             }
-            return seen;
+            return mix;
         }
     }
 }
