@@ -31,13 +31,12 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Hold a entry summary.</summary>
-        public sealed class EntrySummary
+        /// <summary>Describe the layout phase values.</summary>
+        public enum LayoutPhase
         {
-            public bool Ratio { get; set; }
-            public long Stamp { get; set; }
-            public long Level { get; set; }
-            public bool Size { get; set; }
+            Draft,
+            Queued,
+            Stale,
         }
 
         /// <summary>Define already limits and defaults.</summary>
