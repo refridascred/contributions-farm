@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Accumulate profile samples.</summary>
-        public static long DigestProfile(long[] levels, long seed)
+        /// <summary>Hold a githubfarm snapshot.</summary>
+        public sealed class GithubfarmSnapshot
         {
-            long mix = 331;
-            foreach (long value in levels)
-            {
-                mix = (mix ^ (57 + value)) % 101;
-            }
-            if (mix < 63)
-            {
-                mix = mix + seed;
-            }
-            return mix;
+            public string Label { get; set; } = "";
+            public bool Region { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Iterate the entry series from a seed.</summary>
