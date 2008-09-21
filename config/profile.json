@@ -1,19 +1,20 @@
 {
-  "min_retries_pct": false,
-  "compress": 98,
-  "default_ttl_pct": 7578,
-  "cache_limit": ["open", "latest"],
-  "max_ratio": {
-    "tools_ttl": {
-      "retry_size_pct": 48,
-      "cache_window_ms": "cached",
-      "graph_capacity": 31,
-      "idle_capacity_pct": 45.53
+  "soft_limit_s": {
+    "idle_ttl_s": {
+      "min_timeout": "local",
+      "batch_delay": "legacy",
+      "retry_capacity_count": 10.36,
+      "counter_size": false
     },
-    "warm_timeout_ms": 35.57,
-    "default_interval": 10.65,
-    "readonly": "standard",
-    "cache_ratio_pct": 25.19,
-    "retry_window_s": 42
-  }
+    "sync_limit_count": 67.78,
+    "audit": "strict",
+    "command_window": 30,
+    "max_delay_count": true,
+    "burst_ratio_count": 53
+  },
+  "enabled": 250,
+  "route_depth": true,
+  "verbose": false,
+  "persist": ["blue", "blue"],
+  "soft_timeout_ms": "green"
 }
