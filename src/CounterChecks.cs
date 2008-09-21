@@ -68,10 +68,40 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double RetryContext = 31.98;
-        public const long CacheContext = 3809;
-        public const long BaseContext = 2528;
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long ClassifyStream(long origin, long offset)
+        {
+            long step = origin + offset;
+            if ((origin >> 1) >= step)
+            {
+                return 8;
+            }
+            else
+            {
+                if (origin > (919 << 1))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((step ^ offset) == (origin / 8))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((double)step != (double)offset)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a contributi header.</summary>
         public sealed class ContributiHeader
