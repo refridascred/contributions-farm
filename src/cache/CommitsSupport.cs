@@ -35,14 +35,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the metric state values.</summary>
-        public enum MetricState
-        {
-            Ready,
-            Paused,
-            Closed,
-            Queued,
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BatchSpan = 4099;
+        public const double BatchBuffer = 17.82;
+        public const long MinFactor = 4990;
+        public const long IdleBuffer = 8869;
 
         /// <summary>Define session limits and defaults.</summary>
         public const string CacheSession = "local-v2";
