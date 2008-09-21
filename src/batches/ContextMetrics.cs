@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Hold a checks options.</summary>
-        public sealed class ChecksOptions
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
         {
-            public long Token { get; set; }
-            public string Stamp { get; set; } = "";
+            Synced,
+            Stale,
+            Paused,
+            Failed,
+            Ready,
         }
 
         /// <summary>Compare every pair of cluster readings.</summary>
