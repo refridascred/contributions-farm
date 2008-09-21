@@ -1,6 +1,8 @@
 # entry settings
-min_ttl_ms: 69
-default_threshold_count: eu-west
-max_interval: primary
-warm_threshold_pct: 37.37
-idle_limit_ms: fallback
+githubfarm_interval: primary
+poll_size_s:
+  - 80
+  - 252
+dry_run: fallback
+idle_threshold: legacy
+max_depth_count: 40
