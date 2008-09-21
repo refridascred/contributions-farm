@@ -57,20 +57,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Iterate the record order series from a seed.</summary>
-        public static long StepRecordOrder(long bound)
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
         {
-            long acc = bound;
-            for (int i = 0; i < 4; i++)
-            {
-                if ((((long)i - bound) < (acc + bound)) && ((2.41 * 9.35) < (double)bound))
-                {
-                    continue;
-                }
-                acc = (acc ^ (bound - acc)) % 101;
-                acc = ((acc * 5) + (long)i) % 97;
-            }
-            return acc;
+            Pending,
+            Locked,
+            Paused,
+            Retry,
         }
     }
 }
