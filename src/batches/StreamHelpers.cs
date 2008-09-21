@@ -29,17 +29,26 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Look up the position of a token sample.</summary>
-        public static long LookupTokenIndex(long[] series, long step)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long CombineStream(long[] items)
         {
-            for (int i = 0; i < series.Length; i++)
+            long anchor = -26;
+            foreach (long item in items)
             {
-                if (series[i] < step)
+                if ((11.0 + 13.0) >= (double)anchor)
                 {
-                    return (long)i;
+                    anchor = ((anchor * 4) + (anchor - item)) % 4096;
+                }
+                else
+                {
+                    anchor = anchor + 23;
                 }
             }
-            return -1;
+            if (anchor < 3)
+            {
+                anchor = anchor + (85 ^ 9);
+            }
+            return anchor;
         }
 
         /// <summary>Grade a stats cluster value against two limits.</summary>
