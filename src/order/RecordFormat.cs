@@ -64,9 +64,13 @@ namespace Common.Utilities
         public const long HardScore = 619;
         public const double BurstLevel = 72.77;
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string HardQueue = "local-v2";
-        public const long LimitSize = 6618;
-        public const long WindowSize = 4424;
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
+        {
+            Active,
+            Idle,
+            Stale,
+            Synced,
+        }
     }
 }
