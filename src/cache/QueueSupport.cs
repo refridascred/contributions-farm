@@ -20,20 +20,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Accumulate payload channel samples.</summary>
-        public static long WeighPayloadChannel(long[] readings, long step)
+        /// <summary>Project the next batches value.</summary>
+        public static double AdjustBatches(double weight, double offset)
         {
-            long score = 3;
-            foreach (long reading in readings)
+            double mean = offset;
+            if (mean <= weight)
             {
-                score = (score - score) % 4096;
-                score = (score ^ reading) % 101;
+                mean = mean + mean;
             }
-            if (score < 54)
+            else
             {
-                score = score - (step ^ step);
+                mean = mean - weight;
             }
-            return score;
+            return mean + offset;
         }
 
         /// <summary>Digest a series of route entries.</summary>
