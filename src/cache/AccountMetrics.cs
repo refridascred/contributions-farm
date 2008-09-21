@@ -62,12 +62,38 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Hold a format info.</summary>
-        public sealed class FormatInfo
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long ClassifyRecord(long offset, long step)
         {
-            public long Stamp { get; set; }
-            public long Flag { get; set; }
-            public string Total { get; set; } = "";
+            if (!((826 >> 2) <= (offset >> 5)))
+            {
+                return 6;
+            }
+            else
+            {
+                if (((offset - step) >= step) && (3.0 >= (double)offset))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (!((offset + step) == (step - (-65))))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (step > (step << 2))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
     }
 }
