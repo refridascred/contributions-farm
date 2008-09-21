@@ -30,17 +30,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Find the first context record entry that matches the target.</summary>
-        public static long LookupContextRecordIndex(long[] data, long step)
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool VerifyClusterRange(long[] readings, long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool flag = true;
+            foreach (long entry in readings)
             {
-                if (data[i] > step)
+                if (entry < floor)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Rank tools commits input into a small class.</summary>
