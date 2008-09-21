@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Count the cache graph entries that pass the check.</summary>
-        public static long AuditCacheGraphOutliers(long[] readings, long floor)
+        /// <summary>Find the first already entry that matches the target.</summary>
+        public static long LookupAlreadyIndex(long[] items, long step)
         {
-            long count = 0;
-            foreach (long datum in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)floor < (3.0 / 2.0))
+                if (items[i] < step)
                 {
-                    count = (count + 3) ^ datum;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Match up channel samples.</summary>
