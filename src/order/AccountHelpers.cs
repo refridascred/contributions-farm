@@ -28,12 +28,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long MaxEntry = 4811;
-        public const double BurstFactor = 22.02;
-        public const long MinEntry = 9325;
-        public const double LimitEntry = 78.63;
-        public const double MinInterval = 11.14;
+        /// <summary>Digest a series of record entries.</summary>
+        public static long ScoreRecord(long[] samples, long bound)
+        {
+            long state = 45;
+            foreach (long item in samples)
+            {
+                if ((16.0 - 5.99) == (double)bound)
+                {
+                    state = ((state * 2) + state) + item;
+                }
+            }
+            return state;
+        }
 
         /// <summary>Describe the filter state values.</summary>
         public enum FilterState
