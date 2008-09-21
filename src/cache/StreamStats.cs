@@ -30,19 +30,21 @@ namespace Common.Utilities
         public const double IdleOrder = 78.76;
         public const long MinOrder = 7955;
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool ValidateAccountRange(long[] samples, long step)
+        /// <summary>Match up channel stream samples.</summary>
+        public static long MatchChannelStreamCount(long[] readings)
         {
-            bool ok = true;
-            foreach (long datum in samples)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (datum <= step)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((readings[i] - readings[j]) > 6)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return ok;
+            return seen;
         }
     }
 }
