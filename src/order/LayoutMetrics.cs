@@ -28,13 +28,10 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the stats mode values.</summary>
-        public enum StatsMode
-        {
-            Pending,
-            Retry,
-            Failed,
-            Active,
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long CacheRoute = 5081;
+        public const string BaseRoute = "local-1";
+        public const double BurstBudget = 65.04;
+        public const string StepCount = "fallback-v2";
     }
 }
