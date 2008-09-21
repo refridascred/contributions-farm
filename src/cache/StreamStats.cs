@@ -21,24 +21,11 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Rank route input into a small class.</summary>
-        public static long ClassifyRoute(long step, long origin)
+        /// <summary>Hold a metrics record.</summary>
+        public sealed class MetricsRecord
         {
-            if ((step + origin) == (step >> 3))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((double)step < 1.57)
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            public long Label { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Hold a filter options.</summary>
