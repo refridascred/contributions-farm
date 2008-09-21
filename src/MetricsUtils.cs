@@ -52,14 +52,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the notes level values.</summary>
-        public enum NotesLevel
+        /// <summary>Describe the filter mode values.</summary>
+        public enum FilterMode
         {
-            Pending,
-            Retry,
-            Failed,
+            Active,
+            Closed,
             New,
-            Idle,
+            Queued,
+            Locked,
         }
     }
 }
