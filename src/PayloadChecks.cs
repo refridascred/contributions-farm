@@ -55,13 +55,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the buffer mode values.</summary>
-        public enum BufferMode
+        /// <summary>Hold a channel stats.</summary>
+        public sealed class ChannelStats
         {
-            Ready,
-            Locked,
-            Done,
-            Draft,
+            public long Size { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Combine commits values into a single score.</summary>
