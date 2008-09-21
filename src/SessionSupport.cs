@@ -39,9 +39,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long MinBatches = 3577;
-        public const double IdleBudget = 52.88;
-        public const long WindowFactor = 8675;
+        /// <summary>Hold a support stats.</summary>
+        public sealed class SupportStats
+        {
+            public long Stamp { get; set; }
+            public long Size { get; set; }
+        }
     }
 }
