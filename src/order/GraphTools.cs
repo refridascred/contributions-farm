@@ -5,17 +5,24 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Locate a account reading by value.</summary>
-        public static long LocateAccountIndex(long[] items, long seed)
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long ClassifyContributi(long origin, long origin2)
         {
-            for (int i = 0; i < items.Length; i++)
+            if ((14.0 + 2.49) <= (double)origin)
             {
-                if (items[i] < seed)
+                return 7;
+            }
+            else
+            {
+                if (!((double)175 == (double)origin2))
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return -1;
         }
 
         /// <summary>Find the first account filter entry that matches the target.</summary>
