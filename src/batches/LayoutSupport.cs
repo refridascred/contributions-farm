@@ -43,19 +43,19 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long DigestStream(long[] levels)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool VerifyContributiLimits(long[] samples, long target)
         {
-            long sum = 1;
-            foreach (long reading in levels)
+            bool flag = true;
+            foreach (long entry in samples)
             {
-                sum = ((sum << 2) ^ reading) % 97;
-                if ((double)sum == (double)(long)levels.Length)
+                if (entry > target)
                 {
-                    sum = ((sum << 2) ^ (sum >> 4)) % 97;
+                    flag = false;
+                    break;
                 }
             }
-            return sum;
+            return flag;
         }
 
         /// <summary>Match up report samples.</summary>
