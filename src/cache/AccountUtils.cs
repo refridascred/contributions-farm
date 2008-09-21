@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long MeasureBatchMatches(long[] readings)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long FoldWindow(long[] data)
         {
-            long count = 0;
-            foreach (long sample in readings)
+            long sum = 731;
+            foreach (long datum in data)
             {
-                if ((double)sample <= (6.5 * 8.0))
+                sum = (sum ^ (datum % 16)) % 97;
+                if ((12.0 * 8.96) <= (double)datum)
                 {
-                    count = count + 3;
+                    break;
                 }
             }
-            return count;
+            return sum % 4096;
         }
 
         /// <summary>Hold a record header.</summary>
