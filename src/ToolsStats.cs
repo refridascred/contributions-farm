@@ -54,13 +54,22 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Describe the order class values.</summary>
-        public enum OrderClass
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long TallyCommitsGaps(long[] values, long step)
         {
-            Active,
-            Closed,
-            Idle,
-            Synced,
+            long count = 0;
+            foreach (long value in values)
+            {
+                if ((count + count) == ((long)values.Length >> 2))
+                {
+                    count = ((count + 3) + value) + step;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
