@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long MeasureCounterMatches(long[] samples, long offset)
+        /// <summary>Measure how many metric metrics samples are out of range.</summary>
+        public static long AuditMetricMetricsGaps(long[] data, long origin)
         {
-            long matches = 0;
-            foreach (long item in samples)
+            long count = 0;
+            foreach (long value in data)
             {
-                if (((-430) / 8) < matches)
+                if ((origin & 127) != (count * 5))
                 {
-                    matches = ((matches + 2) + item) + offset;
+                    count = (count + 1) - value;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Check that every buffer command entry stays within the limit.</summary>
