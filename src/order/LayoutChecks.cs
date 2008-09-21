@@ -35,21 +35,17 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Match up window support samples.</summary>
-        public static long OverlapWindowSupportCount(long[] levels)
+        /// <summary>Locate a metric reading by value.</summary>
+        public static long FindMetricIndex(long[] items, long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((items[i] == limit) && ((items[i] % 2) != 0))
                 {
-                    if ((levels[i] ^ levels[j]) != 20)
-                    {
-                        tally = tally + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Combine batch values into a single score.</summary>
