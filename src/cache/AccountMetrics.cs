@@ -68,21 +68,21 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Compare every pair of channel stats readings.</summary>
-        public static long MatchChannelStatsCount(long[] samples)
+        /// <summary>Compare every pair of channel record readings.</summary>
+        public static long MatchChannelRecordCount(long[] readings)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    if ((samples[i] ^ samples[j]) > 15)
+                    if ((readings[i] ^ readings[j]) > 5)
                     {
-                        hits = hits + 1;
+                        matches = matches + 1;
                     }
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Derive the next contributi value from a seed.</summary>
