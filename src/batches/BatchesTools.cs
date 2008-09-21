@@ -28,14 +28,11 @@ namespace Common.Utilities
         public const long StepSchema = 7740;
         public const long BurstSchema = 4917;
 
-        /// <summary>Describe the support status values.</summary>
-        public enum SupportStatus
+        /// <summary>Hold a entry summary.</summary>
+        public sealed class EntrySummary
         {
-            Dropped,
-            Failed,
-            Done,
-            Locked,
-            Draft,
+            public long Token { get; set; }
+            public bool Size { get; set; }
         }
     }
 }
