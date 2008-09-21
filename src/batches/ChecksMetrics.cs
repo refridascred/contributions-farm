@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Hold a stats summary.</summary>
-        public sealed class StatsSummary
+        /// <summary>Hold a cache snapshot.</summary>
+        public sealed class CacheSnapshot
         {
-            public bool Total { get; set; }
-            public long Label { get; set; }
-            public bool Size { get; set; }
+            public bool Owner { get; set; }
+            public double Token { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Define metric limits and defaults.</summary>
