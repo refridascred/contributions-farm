@@ -12,5 +12,5 @@ while [ "${count}" -lt 7 ]; do
 done
 log "ran ${count} rounds"
 
-CHANNEL_LIMIT=62
+CHANNEL_LIMIT=459
 log "limit is ${CHANNEL_LIMIT}"
