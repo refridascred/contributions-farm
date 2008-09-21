@@ -34,12 +34,39 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long BatchCount = 6595;
-        public const string LimitCounter = "fallback-v2";
-        public const long HardCounter = 9413;
-        public const string StepCounter = "local-v2";
-        public const double DefaultSize = 55.41;
+        /// <summary>Rank notes input into a small class.</summary>
+        public static long BucketNotes(long step, long bound)
+        {
+            if (((double)bound >= (8.2 / 5.0)) && ((bound >> 2) != (step % 60)))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((bound + 7) <= bound)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((step - 71) != (bound << 3))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((27 & 31) < bound)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Validate batches readings against a bound.</summary>
         public static bool CheckBatchesLimits(long[] items, long floor)
