@@ -13,11 +13,25 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Adjust a commits already reading.</summary>
-        public static double ProjectCommitsAlready(double gain, double floor)
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long SortAccount(long floor, long step)
         {
-            double ratio = floor;
-            return (ratio - floor) + gain;
+            long lane = floor - step;
+            if ((lane - lane) >= (28 << 1))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((step * 2) < (lane / 5))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Audit batches editor readings against a rule.</summary>
