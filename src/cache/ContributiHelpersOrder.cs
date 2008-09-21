@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long MeasureCounterGaps(long[] levels)
         {
-            public bool Label { get; set; }
-            public bool Level { get; set; }
+            long matches = 0;
+            foreach (long value in levels)
+            {
+                if ((double)10 == (double)value)
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Compare every pair of buffer readings.</summary>
