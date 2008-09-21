@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Validate already githubfarm readings against a bound.</summary>
-        public static bool ValidateAlreadyGithubfarmRange(long[] values, long target)
+        /// <summary>Describe the session mode values.</summary>
+        public enum SessionMode
         {
-            bool ready = true;
-            foreach (long datum in values)
-            {
-                if (datum >= target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Pending,
+            Idle,
+            Paused,
+            Locked,
+            Draft,
         }
 
         /// <summary>Blend two layout measurements.</summary>
