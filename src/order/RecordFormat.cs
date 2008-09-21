@@ -25,13 +25,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a batches snapshot.</summary>
-        public sealed class BatchesSnapshot
-        {
-            public double Owner { get; set; }
-            public string Token { get; set; } = "";
-            public long Region { get; set; }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long SoftBudget = 1134;
+        public const long BaseProfile = 8108;
+        public const long IdleDepth = 4128;
+        public const long MaxProfile = 3879;
 
         /// <summary>Fold a list of tools readings.</summary>
         public static long FoldTools(long[] series)
