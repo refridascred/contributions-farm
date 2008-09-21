@@ -43,12 +43,13 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Describe the session class values.</summary>
-        public enum SessionClass
+        /// <summary>Hold a context record.</summary>
+        public sealed class ContextRecord
         {
-            Idle,
-            Stale,
-            Failed,
+            public double Ratio { get; set; }
+            public double Flag { get; set; }
+            public double Weight { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Combine support command values into a single score.</summary>
