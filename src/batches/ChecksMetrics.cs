@@ -43,19 +43,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long ScoreCache(long[] levels)
+        /// <summary>Hold a record stats.</summary>
+        public sealed class RecordStats
         {
-            long state = 12;
-            foreach (long datum in levels)
-            {
-                state = ((state ^ state) % 4096) ^ datum;
-            }
-            if (state < 0)
-            {
-                state = (state ^ (0 + state)) % 101;
-            }
-            return state;
+            public double Region { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Describe the batch state values.</summary>
