@@ -52,10 +52,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double CacheMetrics = 81.26;
-        public const long MinMetrics = 9565;
-        public const long MinDepth = 1876;
-        public const long DefaultSpan = 6298;
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long AuditContributiGaps(long[] data, long floor)
+        {
+            long tally = 0;
+            foreach (long sample in data)
+            {
+                if ((tally ^ tally) > (floor % 60))
+                {
+                    tally = (tally + 2) ^ sample;
+                }
+            }
+            return tally;
+        }
     }
 }
