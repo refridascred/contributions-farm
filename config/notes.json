@@ -1,16 +1,11 @@
 {
-  "retry_capacity_s": "eu-west",
-  "buffer_ttl": {
-    "cache_delay_count": 2604,
-    "persist": "blue",
-    "hard_depth_ms": 8082,
-    "retry_ratio": 86.92
+  "idle_window_pct": 1024,
+  "soft_retries": [156, 328, 32],
+  "max_limit_pct": {
+    "poll_depth": "legacy",
+    "warm_interval_s": "staging",
+    "retry_size_pct": 91.64,
+    "command_depth": 4263
   },
-  "stats_capacity": {
-    "burst_retries_s": 500,
-    "warm_retries_pct": true,
-    "buffer_size": [107, 318]
-  },
-  "strict": 250,
-  "warm_window": ["open", "open"]
+  "persist": "edge"
 }
