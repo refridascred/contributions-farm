@@ -11,14 +11,11 @@ namespace Common.Utilities
         public const long BaseWindow = 320;
         public const long MinTimeout = 7037;
 
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
+        /// <summary>Hold a tools summary.</summary>
+        public sealed class ToolsSummary
         {
-            Queued,
-            Failed,
-            Active,
-            Locked,
-            Paused,
+            public long Region { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Digest a series of metric entries.</summary>
