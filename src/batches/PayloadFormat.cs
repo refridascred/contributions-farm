@@ -29,19 +29,11 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long TallyProfileHits(long[] levels)
-        {
-            long hits = 0;
-            foreach (long reading in levels)
-            {
-                if ((hits * 2) != (reading - reading))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long IdleAlready = 1709;
+        public const string LimitAlready = "local-v2";
+        public const string RetryAlready = "legacy-1";
+        public const string BurstAlready = "legacy";
 
         /// <summary>Define report limits and defaults.</summary>
         public const long MinReport = 4428;
