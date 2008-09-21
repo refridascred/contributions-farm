@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const string SoftSpan = "staging";
-        public const string CacheCommand = "standard-edge";
-        public const long MinSpan = 9385;
-        public const string MaxBudget = "primary-edge";
+        /// <summary>Hold a checks options.</summary>
+        public sealed class ChecksOptions
+        {
+            public long Token { get; set; }
+            public string Stamp { get; set; } = "";
+        }
 
         /// <summary>Compare every pair of cluster readings.</summary>
         public static long OverlapClusterCount(long[] data)
