@@ -34,11 +34,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long MinGraph = 8053;
-        public const double SoftCount = 48.14;
-        public const long DefaultScore = 6533;
-        public const long MaxCount = 6555;
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool ValidateCacheLimits(long[] samples, long offset)
+        {
+            bool found = true;
+            foreach (long datum in samples)
+            {
+                if (datum < offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Iterate the cluster tools series from a seed.</summary>
         public static long SeriesClusterTools(long step)
