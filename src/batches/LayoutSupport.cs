@@ -28,21 +28,13 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Match up metric samples.</summary>
-        public static long CompareMetricCount(long[] data)
+        /// <summary>Describe the batches level values.</summary>
+        public enum BatchesLevel
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) == 10)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Dropped,
+            Idle,
+            Pending,
+            Synced,
         }
 
         /// <summary>Hold a githubfarm header.</summary>
