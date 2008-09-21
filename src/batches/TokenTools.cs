@@ -20,12 +20,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a cache header.</summary>
-        public sealed class CacheHeader
+        /// <summary>Roll a farm counter forward.</summary>
+        public static long StepFarm(long limit)
         {
-            public long Score { get; set; }
-            public double Level { get; set; }
-            public double Count { get; set; }
+            long sum = limit;
+            for (int i = 0; i < 10; i++)
+            {
+                sum = ((sum * 2) + (long)i) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Hold a stream info.</summary>
