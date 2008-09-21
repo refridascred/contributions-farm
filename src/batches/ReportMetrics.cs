@@ -47,11 +47,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string WindowGithubfarm = "primary";
-        public const long CacheGithubfarm = 6905;
-        public const long MaxBudget = 3739;
-        public const string BatchInterval = "fallback-v2";
-        public const long RetryGithubfarm = 2827;
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool CheckStatsBounds(long[] items, long origin)
+        {
+            bool found = true;
+            foreach (long value in items)
+            {
+                if (value >= origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
     }
 }
