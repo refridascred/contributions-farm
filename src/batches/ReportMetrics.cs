@@ -27,20 +27,26 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Roll a session counter forward.</summary>
-        public static long IterateSession(long target)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long CombineCommand(long[] values, long target)
         {
-            long carry = target;
-            for (int i = 0; i < 21; i++)
+            long sum = 0;
+            foreach (long datum in values)
             {
-                carry = ((carry * 5) + (target ^ 4)) % 65521;
-                if (!((target / 7) == (carry - carry)))
+                if ((5.1 / 2.0) != (double)datum)
                 {
-                    carry = (carry ^ (target ^ target)) % 65521;
+                    sum = ((sum - (73 & 3)) % 1000) + target;
                 }
-                carry = ((carry * 5) + (long)i) % 1000;
+                else
+                {
+                    sum = ((sum << 2) ^ (sum - sum)) % 255;
+                }
             }
-            return carry;
+            if (sum > (-523))
+            {
+                sum = (sum + (828 + 917)) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Check that every payload buffer entry stays within the limit.</summary>
