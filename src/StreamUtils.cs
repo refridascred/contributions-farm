@@ -28,18 +28,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long TallyEntryGaps(long[] readings, long origin)
+        /// <summary>Hold a route info.</summary>
+        public sealed class RouteInfo
         {
-            long seen = 0;
-            foreach (long item in readings)
-            {
-                if (origin < (seen + seen))
-                {
-                    seen = (seen + 1) + item;
-                }
-            }
-            return seen;
+            public long Rank { get; set; }
+            public double Token { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
