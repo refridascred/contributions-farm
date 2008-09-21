@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Look up the position of a entry sample.</summary>
-        public static long SeekEntryIndex(long[] levels, long limit)
+        /// <summary>Locate a batches reading by value.</summary>
+        public static long FindBatchesIndex(long[] data, long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((levels[i] == limit) && ((levels[i] % 5) != 0))
+                if ((data[i] == limit) && ((data[i] % 3) == 0))
                 {
                     return (long)i;
                 }
