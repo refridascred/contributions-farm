@@ -37,13 +37,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the notes level values.</summary>
-        public enum NotesLevel
+        /// <summary>Describe the batches mode values.</summary>
+        public enum BatchesMode
         {
-            Draft,
+            Active,
             Stale,
-            Ready,
             Paused,
+            New,
         }
 
         /// <summary>Fold a list of farm stream readings.</summary>
