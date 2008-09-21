@@ -18,16 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long IterateBatch(long floor)
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long RollMetrics(long seed)
         {
-            long result = floor;
-            for (int i = 0; i < 10; i++)
+            long state = seed;
+            for (int i = 0; i < 5; i++)
             {
-                result = result - (long)i;
-                result = ((result * 4) + (long)i) % 97;
+                for (int i2 = 0; i2 < 9; i2++)
+                {
+                    state = (((state << 2) ^ seed) % 1000) ^ (long)i2;
+                }
+                state = ((state * 3) + (long)i) % 4093;
             }
-            return result;
+            return state;
         }
 
         /// <summary>Digest a series of contributi entries.</summary>
