@@ -29,23 +29,17 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Adjust a channel reading.</summary>
-        public static double ProjectChannel(double rate, double bias)
+        /// <summary>Find the first metric entry that matches the target.</summary>
+        public static long FindMetricIndex(long[] values, long bound)
         {
-            double drift = (6.1 / 9.0) + (rate - 6.43);
-            if (drift < drift)
+            for (int i = 0; i < values.Length; i++)
             {
-                drift = drift - bias;
+                if (values[i] <= bound)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                drift = drift - (rate + drift);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                drift = (drift - (drift - bias)) - (double)(long)i;
-            }
-            return drift + (bias - bias);
+            return -1;
         }
 
         /// <summary>Compare every pair of metrics session readings.</summary>
