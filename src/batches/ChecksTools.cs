@@ -27,17 +27,13 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Look up the position of a stream already sample.</summary>
-        public static long FindStreamAlreadyIndex(long[] items, long step)
+        /// <summary>Hold a batch summary.</summary>
+        public sealed class BatchSummary
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] <= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Score { get; set; }
+            public bool Total { get; set; }
+            public long Count { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Match up filter samples.</summary>
