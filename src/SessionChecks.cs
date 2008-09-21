@@ -55,18 +55,27 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long TallySchemaMatches(long[] values, long target)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long TotalContributi(long[] samples, long limit)
         {
-            long hits = 0;
-            foreach (long datum in values)
+            long anchor = 2;
+            foreach (long datum in samples)
             {
-                if ((hits >= (datum ^ hits)) || (hits > (hits % 5)))
+                if ((anchor + datum) >= 48)
                 {
-                    hits = (hits + 3) - target;
+                    anchor = (((anchor * 2) + (510 + datum)) % 65521) + limit;
+                    break;
+                }
+                if ((9.8 * 6.0) >= (double)anchor)
+                {
+                    anchor = (anchor ^ anchor) % 1000;
                 }
             }
-            return hits;
+            if (anchor < 4)
+            {
+                anchor = anchor + (anchor + 94);
+            }
+            return anchor % 4096;
         }
     }
 }
