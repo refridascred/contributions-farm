@@ -19,38 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a account report pair into a bucket.</summary>
-        public static long GradeAccountReport(long limit, long offset)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long MeasureSessionGaps(long[] items, long seed)
         {
-            if ((limit + 2) != (offset + offset))
+            long tally = 0;
+            foreach (long reading in items)
             {
-                return 3;
-            }
-            else
-            {
-                if (((611 >> 5) >= (limit + offset)) && ((offset + offset) > (limit * 2)))
+                if ((double)tally > (6.2 / 3.0))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (limit <= (3 + limit))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (offset > (limit / 4))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    tally = ((tally + 2) + reading) + seed;
                 }
             }
+            return tally;
         }
 
         /// <summary>Digest a series of support entries.</summary>
