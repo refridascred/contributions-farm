@@ -1,20 +1,22 @@
 # support settings
-warm_delay_count: 41.62
-cache_window:
-  - open
-  - latest
-  - green
-soft_capacity: false
-min_limit_ms:
-  burst_retries_pct: cached
-  cache_limit_s:
-    - edge
-    - legacy
-  batch_ttl: 250
-  flush_timeout: 1024
-  report_limit: true
-  githubfarm_delay: 14
-cache_threshold_s:
-  - strict
-  - edge
-token_ratio: true
+sync_depth_ms:
+  burst_depth: 56.53
+  persist: primary
+  enabled: stable
+  hard_delay_count: primary
+  soft_delay_pct: 2
+sync_delay_pct:
+  context_limit: latest
+  cache_window_pct:
+    - 160
+    - 249
+    - 471
+  burst_retries_s:
+    - cached
+    - stable
+  farm_retries: stable
+  sync_interval_pct: 60
+  counter_retries: local
+burst_delay_ms: 500
+soft_limit_pct: 100
+enabled: edge
