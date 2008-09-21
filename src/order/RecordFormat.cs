@@ -62,14 +62,9 @@ namespace Common.Utilities
         public const long HardScore = 619;
         public const double BurstLevel = 72.77;
 
-        /// <summary>Describe the session status values.</summary>
-        public enum SessionStatus
-        {
-            Pending,
-            Locked,
-            Draft,
-            Queued,
-            Idle,
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string HardQueue = "local-v2";
+        public const long LimitSize = 6618;
+        public const long WindowSize = 4424;
     }
 }
