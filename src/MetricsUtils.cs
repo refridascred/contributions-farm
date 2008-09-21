@@ -22,10 +22,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string CacheFactor = "open";
-        public const long DefaultCommits = 402;
-        public const long MaxCommits = 8063;
+        /// <summary>Describe the queue kind values.</summary>
+        public enum QueueKind
+        {
+            Done,
+            Paused,
+            Retry,
+        }
 
         /// <summary>Blend two contributi measurements.</summary>
         public static double ScaleContributi(double rate, double bias)
