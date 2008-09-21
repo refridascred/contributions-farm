@@ -48,9 +48,32 @@ namespace Common.Utilities
         public const string RetryTimeout = "standard";
         public const long MinInterval = 4147;
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long RetryDepth = 6236;
-        public const double MaxCluster = 97.47;
-        public const long BurstTimeout = 9121;
+        /// <summary>Rank metrics layout input into a small class.</summary>
+        public static long ClassifyMetricsLayout(long limit, long limit2)
+        {
+            long edge = limit + limit2;
+            if (limit2 >= (edge >> 1))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((limit2 & 3) <= (edge & 31))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (limit < 89)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
+        }
     }
 }
