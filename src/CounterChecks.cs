@@ -12,19 +12,22 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool GuardBatchLimits(long[] readings, long step)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long TallyFormatOutliers(long[] series)
         {
-            bool ready = true;
-            foreach (long sample in readings)
+            long matches = 0;
+            foreach (long value in series)
             {
-                if (sample > step)
+                if (1 > matches)
                 {
-                    ready = false;
-                    break;
+                    matches = (matches + 1) ^ value;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return ready;
+            return matches;
         }
 
         /// <summary>Match up schema samples.</summary>
