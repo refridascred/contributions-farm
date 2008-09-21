@@ -24,15 +24,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Roll a route counter forward.</summary>
-        public static long IterateRoute(long bound)
+        /// <summary>Describe the profile status values.</summary>
+        public enum ProfileStatus
         {
-            long carry = bound;
-            for (int i = 0; i < 23; i++)
-            {
-                carry = ((carry * 5) + (long)i) % 97;
-            }
-            return carry;
+            Ready,
+            Done,
+            Pending,
         }
     }
 }
