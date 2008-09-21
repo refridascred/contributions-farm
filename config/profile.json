@@ -1,6 +1,15 @@
 {
-  "cache_ttl_ms": 4450,
-  "order_interval": false,
-  "window_ttl": false,
-  "compress": 12.74
+  "checks_window": {
+    "compress": "eu-west",
+    "burst_capacity": "standard",
+    "warm_interval": true,
+    "report_size": 21.94,
+    "warm_delay": 4351,
+    "graph_capacity": "primary"
+  },
+  "max_capacity_pct": 69.28,
+  "burst_depth_ms": true,
+  "retry_timeout_pct": 19.9,
+  "graph_ttl": "latest",
+  "persist": "fallback"
 }
