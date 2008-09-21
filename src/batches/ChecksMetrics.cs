@@ -54,13 +54,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a support snapshot.</summary>
-        public sealed class SupportSnapshot
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
         {
-            public long Weight { get; set; }
-            public bool Label { get; set; }
-            public double Mode { get; set; }
-            public string Size { get; set; } = "";
+            Failed,
+            Queued,
+            Paused,
         }
 
         /// <summary>Combine window values into a single score.</summary>
