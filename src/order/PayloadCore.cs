@@ -28,31 +28,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Rank batches entry input into a small class.</summary>
-        public static long RankBatchesEntry(long step, long bound)
+        /// <summary>Hold a checks info.</summary>
+        public sealed class ChecksInfo
         {
-            if (((bound & 255) != (step & 127)) || ((step ^ 681) != (step % 100)))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((4.29 - 1.0) < (double)step)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((-5) >= (bound + 523))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            public bool Owner { get; set; }
+            public long Ratio { get; set; }
+            public long Level { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Accumulate entry contributi samples.</summary>
