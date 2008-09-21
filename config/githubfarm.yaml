@@ -1,9 +1,23 @@
 # githubfarm settings
-compress: 17
-retry_ratio: 1024
-sync_threshold:
-  - blue
-  - cached
-flush_limit: true
-base_depth: true
-soft_capacity: true
+max_timeout_count: primary
+compress: latest
+strict:
+  hard_depth_pct:
+    retry_window: standard
+    contributi_ttl: false
+    burst_delay:
+      - 32
+      - 479
+      - 351
+    order_interval: 86.85
+    already_retries: 83.35
+    strict:
+      - primary
+      - green
+  base_retries_pct:
+    soft_delay: 3702
+    base_window: 78.4
+    audit:
+      - 320
+      - 169
+  audit: latest
