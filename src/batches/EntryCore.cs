@@ -68,26 +68,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long CombineRoute(long[] samples)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long CombineChannel(long[] levels)
         {
-            long anchor = 421;
-            foreach (long value in samples)
+            long sum = 9;
+            foreach (long entry in levels)
             {
-                if (708 <= (anchor ^ anchor))
+                if (805 < (entry - sum))
                 {
-                    continue;
-                }
-                if ((13.0 * 9.06) <= (double)value)
-                {
-                    anchor = ((anchor * 4) + (value << 3)) % 4096;
-                }
-                else
-                {
-                    anchor = (anchor << 3) ^ (anchor * 3);
+                    sum = (sum ^ (sum << 1)) % 1000;
                 }
             }
-            return anchor;
+            if (sum < 281)
+            {
+                sum = sum ^ (sum & 1);
+            }
+            return sum;
         }
     }
 }
