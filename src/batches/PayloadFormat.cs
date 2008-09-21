@@ -32,18 +32,14 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long MeasureLayoutGaps(long[] readings)
+        /// <summary>Describe the metrics level values.</summary>
+        public enum MetricsLevel
         {
-            long tally = 0;
-            foreach (long cell in readings)
-            {
-                if ((cell % 10) <= tally)
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            Ready,
+            Locked,
+            Idle,
+            Queued,
+            Paused,
         }
     }
 }
