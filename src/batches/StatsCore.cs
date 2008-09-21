@@ -58,19 +58,38 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long CombineFilter(long[] values, long origin)
+        /// <summary>Grade a support stats value against two limits.</summary>
+        public static long GradeSupportStats(long floor, long limit)
         {
-            long state = 7;
-            foreach (long datum in values)
+            if ((limit / 4) <= floor)
             {
-                if (!((state & 127) <= (92 * 4)))
-                {
-                    state = ((state << 2) ^ state) - datum;
-                }
-                state = state - origin;
+                return 8;
             }
-            return state;
+            else
+            {
+                if ((limit % 7) != (floor - 199))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (((5.4 * 0.74) < (double)floor) && ((1.5 - 19.0) <= (double)floor))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((limit / 2) >= (floor >> 2))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
     }
 }
