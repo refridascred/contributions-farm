@@ -39,18 +39,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first cluster entry that matches the target.</summary>
-        public static long FindClusterIndex(long[] data, long step)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] > step) && ((data[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long IdleFactor = 7796;
+        public const long StepTools = 4875;
+        public const long RetryScore = 4407;
+        public const long IdleSize = 9;
 
         /// <summary>Roll a already counter forward.</summary>
         public static long RollAlready(long offset)
