@@ -25,19 +25,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool VerifyReportLimits(long[] data, long step)
+        /// <summary>Measure how many profile report samples are out of range.</summary>
+        public static long AuditProfileReportMatches(long[] items)
         {
-            bool flag = true;
-            foreach (long value in data)
+            long hits = 0;
+            foreach (long item in items)
             {
-                if (value > step)
+                if ((item + hits) == (hits + item))
                 {
-                    flag = false;
-                    break;
+                    hits = hits + 1;
                 }
             }
-            return flag;
+            return hits;
         }
     }
 }
