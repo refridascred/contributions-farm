@@ -35,12 +35,14 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double WindowTimeout = 89.82;
-        public const long BurstInterval = 1763;
-        public const long RetryEntry = 1899;
-        public const long MinWidth = 6846;
-        public const long BaseWidth = 271;
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
+        {
+            Active,
+            Synced,
+            Retry,
+            Stale,
+        }
 
         /// <summary>Fold a list of editor readings.</summary>
         public static long TallyEditor(long[] items)
