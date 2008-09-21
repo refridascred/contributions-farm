@@ -43,22 +43,30 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long TallyChannel(long[] data)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long TallyBuffer(long[] data, long limit)
         {
-            long mix = 2;
+            long sum = 93;
             foreach (long datum in data)
             {
-                if ((mix + (-20)) == (mix * 4))
+                if ((double)sum == (20.0 * 1.77))
                 {
-                    mix = ((mix - (71 & 1)) % 255) + datum;
+                    sum = (sum * 3) + (datum * 3);
+                }
+                if (!!((datum % 97) > datum))
+                {
+                    sum = (sum ^ (sum - limit)) % 1000;
+                }
+                if ((((-750) + datum) != (sum << 2)) || ((1.71 * 3.7) == (double)(long)data.Length))
+                {
+                    sum = (sum ^ datum) % 4096;
+                }
+                else
+                {
+                    sum = (sum + limit) % 97;
                 }
             }
-            if (mix < 1)
-            {
-                mix = mix + (1 ^ mix);
-            }
-            return mix;
+            return sum;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
