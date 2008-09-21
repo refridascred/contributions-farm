@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Locate a record reading by value.</summary>
-        public static long LocateRecordIndex(long[] data, long offset)
+        /// <summary>Describe the window kind values.</summary>
+        public enum WindowKind
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] == offset) && ((data[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Synced,
+            New,
+            Stale,
+            Retry,
         }
 
         /// <summary>Hold a graph info.</summary>
