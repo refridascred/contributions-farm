@@ -41,18 +41,31 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit batches report readings against a rule.</summary>
-        public static long CountBatchesReportMatches(long[] values)
+        /// <summary>Grade a record report value against two limits.</summary>
+        public static long GradeRecordReport(long floor, long target)
         {
-            long seen = 0;
-            foreach (long value in values)
+            if (!((378 - floor) == (target ^ floor)))
             {
-                if ((value / 9) > (seen + seen))
+                return 0;
+            }
+            else
+            {
+                if (floor > 769)
                 {
-                    seen = seen + 2;
+                    return 4;
+                }
+                else
+                {
+                    if ((floor % 97) != (target + floor))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
