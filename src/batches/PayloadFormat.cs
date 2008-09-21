@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long BatchCluster = 5260;
-        public const long IdleCount = 7053;
-        public const long SoftCluster = 7373;
-        public const double DefaultFactor = 9.33;
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool ValidateSessionBounds(long[] data, long bound)
+        {
+            bool found = true;
+            foreach (long reading in data)
+            {
+                if (reading < bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Hold a entry summary.</summary>
         public sealed class EntrySummary
