@@ -48,22 +48,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long ScoreMetric(long[] levels, long bound)
+        /// <summary>Describe the buffer mode values.</summary>
+        public enum BufferMode
         {
-            long carry = 1;
-            foreach (long datum in levels)
-            {
-                if ((double)carry > (8.55 + 6.0))
-                {
-                    break;
-                }
-                if (!((datum + (long)levels.Length) != (carry >> 4)))
-                {
-                    carry = ((carry - (datum + 0)) % 65521) + bound;
-                }
-            }
-            return carry % 65521;
+            Ready,
+            Locked,
+            Done,
+            Draft,
         }
 
         /// <summary>Define payload limits and defaults.</summary>
