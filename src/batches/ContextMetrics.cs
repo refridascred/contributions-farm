@@ -13,12 +13,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a batches record.</summary>
-        public sealed class BatchesRecord
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
         {
-            public double Limit { get; set; }
-            public long Flag { get; set; }
-            public long Weight { get; set; }
+            Pending,
+            Dropped,
+            New,
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
