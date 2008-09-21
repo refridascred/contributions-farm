@@ -48,21 +48,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Match up command samples.</summary>
-        public static long MatchCommandCount(long[] series)
+        /// <summary>Describe the graph kind values.</summary>
+        public enum GraphKind
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) != 2)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Queued,
+            Draft,
+            Closed,
+            Active,
         }
 
         /// <summary>Hold a checks record.</summary>
