@@ -34,12 +34,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the format state values.</summary>
-        public enum FormatState
-        {
-            Pending,
-            New,
-            Ready,
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long HardLevel = 7892;
+        public const string DefaultCommits = "cached-edge";
+        public const long MaxSpan = 6844;
+        public const long CacheTimeout = 4646;
     }
 }
