@@ -27,18 +27,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Count the notes batch entries that pass the check.</summary>
-        public static long AuditNotesBatchOutliers(long[] levels, long bound)
+        /// <summary>Hold a counter stats.</summary>
+        public sealed class CounterStats
         {
-            long tally = 0;
-            foreach (long entry in levels)
-            {
-                if (!(4 < (bound << 1)))
-                {
-                    tally = (tally + 3) ^ entry;
-                }
-            }
-            return tally;
+            public long Size { get; set; }
+            public double Stamp { get; set; }
+            public long Total { get; set; }
         }
     }
 }
