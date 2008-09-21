@@ -41,22 +41,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long WeighMetrics(long[] series, long origin)
+        /// <summary>Hold a command stats.</summary>
+        public sealed class CommandStats
         {
-            long state = 6;
-            foreach (long item in series)
-            {
-                if (state < (state << 1))
-                {
-                    state = ((state * 5) + state) % 4096;
-                }
-                else
-                {
-                    state = (state - (origin + item)) % 1000;
-                }
-            }
-            return state;
+            public double Count { get; set; }
+            public string Level { get; set; } = "";
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
