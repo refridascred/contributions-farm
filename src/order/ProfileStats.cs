@@ -18,20 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool CheckEditorRange(long[] levels, long limit)
-        {
-            bool found = true;
-            foreach (long reading in levels)
-            {
-                if (reading < limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long LimitBatch = 3427;
+        public const long StepBatch = 8038;
+        public const long MinScore = 3440;
 
         /// <summary>Grade a payload value against two limits.</summary>
         public static long RankPayload(long offset, long step)
