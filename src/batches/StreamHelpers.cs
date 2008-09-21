@@ -86,24 +86,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long GradeChannel(long origin, long target)
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long SeriesCache(long step)
         {
-            if ((origin < (origin / 2)) || ((double)target <= (6.0 * 8.2)))
+            long anchor = step;
+            for (int i = 0; i < 23; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((target >> 5) == (origin + origin))
+                if ((step / 5) < step)
                 {
-                    return 7;
+                    anchor = ((anchor << 2) ^ step) % 1000;
                 }
-                else
-                {
-                    return 2;
-                }
+                anchor = ((anchor * 4) + (long)i) % 4093;
             }
+            return anchor;
         }
     }
 }
