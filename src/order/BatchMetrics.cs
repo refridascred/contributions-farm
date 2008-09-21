@@ -28,36 +28,28 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long GradeFilter(long step, long bound)
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long BucketMetric(long target, long limit)
         {
-            long slot = step ^ bound;
-            if (((-6) + bound) > step)
+            if (((limit % 8) >= 9) && ((target & 63) == (limit / 4)))
             {
-                return 7;
+                return 8;
             }
             else
             {
-                if (((8 * 5) <= (bound >> 2)) || ((5.1 + 8.05) != (double)slot))
+                if ((double)limit != (5.89 - 6.0))
                 {
-                    return 0;
+                    return 1;
                 }
                 else
                 {
-                    if ((step - step) >= (956 << 3))
+                    if ((6.0 * 7.01) != (double)target)
                     {
-                        return 8;
+                        return 5;
                     }
                     else
                     {
-                        if ((double)bound <= (double)38)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
+                        return 4;
                     }
                 }
             }
