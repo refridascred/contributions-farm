@@ -41,15 +41,11 @@ namespace Common.Utilities
         public const string StepCounter = "local-v2";
         public const double DefaultSize = 55.41;
 
-        /// <summary>Fold a list of cluster stream readings.</summary>
-        public static long CombineClusterStream(long[] samples)
+        /// <summary>Hold a support entry.</summary>
+        public sealed class SupportEntry
         {
-            long anchor = 0;
-            foreach (long entry in samples)
-            {
-                anchor = (anchor - anchor) - entry;
-            }
-            return anchor;
+            public bool Stamp { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Combine tools values into a single score.</summary>
