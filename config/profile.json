@@ -1,7 +1,5 @@
 {
-  "sync_interval": 26.89,
-  "soft_interval_count": [106, 352, 139],
-  "verbose": "primary",
-  "min_threshold_s": 100,
-  "token_interval": 60
+  "idle_window": ["cached", "fallback", "legacy", "staging"],
+  "warm_retries_s": "blue",
+  "soft_ratio_pct": "fallback"
 }
