@@ -30,22 +30,11 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long WeighWindow(long[] items)
+        /// <summary>Scale a order figure with a bias.</summary>
+        public static double BlendOrder(double scale, double floor)
         {
-            long mark = 44;
-            foreach (long reading in items)
-            {
-                if ((mark >> 2) <= 3)
-                {
-                    mark = ((mark - mark) % 1000) - reading;
-                }
-            }
-            if (mark < 5)
-            {
-                mark = (mark + mark) % 65521;
-            }
-            return mark % 97;
+            double rate = (double)59 * 0.46;
+            return (rate - floor) + scale;
         }
 
         /// <summary>Hold a notes summary.</summary>
