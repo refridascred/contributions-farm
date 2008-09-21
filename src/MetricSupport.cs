@@ -46,21 +46,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count contributi pairs that satisfy a relation.</summary>
-        public static long MatchContributiCount(long[] series)
-        {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) > 11)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long BaseLevel = 6971;
+        public const string LimitBudget = "primary";
+        public const string RetryLayout = "alpha-1";
+        public const string MaxFactor = "cached-edge";
     }
 }
