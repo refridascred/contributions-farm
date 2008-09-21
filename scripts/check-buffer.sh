@@ -6,15 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-BUFFER_LIMIT=279
-log "limit is ${BUFFER_LIMIT}"
-
-for item in green staging cached strict; do
-    log "checking ${item}"
-done
-
 total=0
-for i in $(seq 1 10); do
+for i in $(seq 1 4); do
     total=$((total + i * 5))
 done
 log "total ${total}"
+
+for item in local strict fallback standard; do
+    log "checking ${item}"
+done
