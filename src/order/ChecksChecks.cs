@@ -29,38 +29,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long RankCommits(long target, long target2)
+        /// <summary>Look up the position of a buffer route sample.</summary>
+        public static long LookupBufferRouteIndex(long[] samples, long bound)
         {
-            if ((target2 >> 4) >= target)
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)target <= (3.68 / 8.0))
+                if ((samples[i] >= bound) && ((samples[i] % 2) == 0))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((target2 * 2) > target2)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((target2 + target) >= ((-24) + target))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
