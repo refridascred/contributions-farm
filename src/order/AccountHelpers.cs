@@ -23,18 +23,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Match up channel samples.</summary>
-        public static long MatchChannelCount(long[] data)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long CountBufferMatches(long[] series)
         {
             long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            foreach (long datum in series)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (!((hits << 1) == (datum / 2)))
                 {
-                    if ((data[i] + data[j]) != 14)
-                    {
-                        hits = hits + 1;
-                    }
+                    hits = hits + 3;
                 }
             }
             return hits;
