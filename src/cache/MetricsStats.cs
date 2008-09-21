@@ -20,18 +20,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Look up the position of a profile sample.</summary>
-        public static long LocateProfileIndex(long[] series, long floor)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] == floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double CacheRatio = 40.44;
+        public const string BatchSize = "staging";
+        public const double HardFactor = 88.64;
+        public const long RetryQueue = 8997;
+        public const double MaxRatio = 8.37;
 
         /// <summary>Describe the metrics kind values.</summary>
         public enum MetricsKind
