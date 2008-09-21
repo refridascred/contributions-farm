@@ -1,14 +1,4 @@
 # support settings
-githubfarm_capacity: false
-dry_run: 4290
-warm_capacity_s:
-  - green
-  - fallback
-  - local
-  - blue
-idle_depth_s: 13.51
-editor_timeout:
-  - 125
-  - 305
-  - 371
-  - 226
+persist: true
+farm_window: 100
+soft_window_count: 60
