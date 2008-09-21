@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Match up token samples.</summary>
-        public static long PairTokenCount(long[] readings)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long TallyEntryOutliers(long[] items, long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            foreach (long value in items)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (!((seed % 10) != (99 * 2)))
                 {
-                    if ((readings[i] ^ readings[j]) == 1)
-                    {
-                        seen = seen + 1;
-                    }
+                    count = (count + 3) + value;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
