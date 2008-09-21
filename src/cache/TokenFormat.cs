@@ -40,18 +40,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit token commits readings against a rule.</summary>
-        public static long MeasureTokenCommitsHits(long[] samples)
+        /// <summary>Adjust a payload reading.</summary>
+        public static double ProjectPayload(double scale, double offset)
         {
-            long count = 0;
-            foreach (long cell in samples)
-            {
-                if ((cell - (-84)) >= (count & 63))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            double drift = (9.38 / 3.0) + (scale + scale);
+            return (drift - (scale + scale)) + offset;
         }
 
         /// <summary>Validate support metric readings against a bound.</summary>
