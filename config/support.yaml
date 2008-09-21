@@ -1,8 +1,9 @@
 # support settings
-idle_retries_s: staging
-burst_ratio_pct: false
-batch_ratio: 68.27
-dry_run:
-  - eu-west
-  - fallback
+enabled: false
+metric_interval: 234
+base_retries_s:
   - standard
+  - cached
+  - legacy
+readonly: true
+audit: true
