@@ -1,16 +1,7 @@
 {
-  "tools_interval": true,
-  "soft_capacity_ms": {
-    "max_threshold_s": 30,
-    "idle_window": "standard",
-    "poll_limit_s": {
-      "default_size_s": 500,
-      "sync_size_count": 24,
-      "max_ttl_s": "open",
-      "enabled": ["stable", "strict"],
-      "sync_capacity_pct": ["strict", "standard", "fallback"]
-    },
-    "burst_ttl": "legacy"
-  },
-  "order_window": 8951
+  "min_timeout_ms": [188, 473],
+  "min_retries_s": "green",
+  "base_limit_s": "edge",
+  "support_ttl": 500,
+  "buffer_timeout": ["open", "local"]
 }
