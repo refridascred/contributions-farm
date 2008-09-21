@@ -1,14 +1,14 @@
 {
-  "batches_interval": 66,
-  "base_interval_pct": 100,
-  "base_window": [12, 266],
-  "idle_limit_pct": {
-    "enabled": 500,
-    "idle_timeout_pct": 74,
-    "min_limit": 3063,
-    "base_depth_count": "primary",
-    "profile_interval": "blue"
+  "min_depth": false,
+  "token_threshold": {
+    "default_capacity_ms": "cached",
+    "default_delay_s": 30,
+    "buffer_limit": {
+      "warm_ratio_ms": true,
+      "warm_threshold_count": 250,
+      "enabled": 12,
+      "persist": 1813
+    }
   },
-  "verbose": "eu-west",
-  "retry_ratio": 89
+  "default_ttl": 2639
 }
