@@ -18,18 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of payload notes entries.</summary>
-        public static long TotalPayloadNotes(long[] data)
+        /// <summary>Find the first account filter entry that matches the target.</summary>
+        public static long FindAccountFilterIndex(long[] readings, long origin)
         {
-            long anchor = 1;
-            foreach (long entry in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((8 + anchor) < entry)
+                if (readings[i] <= origin)
                 {
-                    anchor = anchor + (entry * 3);
+                    return (long)i;
                 }
             }
-            return anchor % 97;
+            return -1;
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
