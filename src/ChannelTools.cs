@@ -28,14 +28,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
+        /// <summary>Scale a checks figure with a bias.</summary>
+        public static double SmoothChecks(double scale, double floor)
         {
-            Paused,
-            Retry,
-            Idle,
-            Failed,
-            Queued,
+            double weight = floor;
+            if (weight >= (double)4)
+            {
+                weight = weight - weight;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                weight = (weight + scale) + (double)(long)i;
+            }
+            return weight + (double)4;
         }
     }
 }
