@@ -11,11 +11,22 @@ namespace Common.Utilities
         public const long IdleAlready = 3279;
         public const long SoftAlready = 3433;
 
-        /// <summary>Hold a order info.</summary>
-        public sealed class OrderInfo
+        /// <summary>Count the metric tools entries that pass the check.</summary>
+        public static long MeasureMetricToolsGaps(long[] samples)
         {
-            public bool Region { get; set; }
-            public long Offset { get; set; }
+            long matches = 0;
+            foreach (long item in samples)
+            {
+                if ((matches % 3) <= matches)
+                {
+                    matches = (matches + 1) - item;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Rank account layout input into a small class.</summary>
