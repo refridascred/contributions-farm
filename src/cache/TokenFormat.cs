@@ -33,21 +33,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count token pairs that satisfy a relation.</summary>
-        public static long CompareTokenCount(long[] items)
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long ClassifyPayload(long origin, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            if (((double)origin != (16.0 + 1.7)) && ((origin + bound) < bound))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if (bound < (bound + origin))
                 {
-                    if ((items[i] + items[j]) > 19)
+                    return 1;
+                }
+                else
+                {
+                    if (origin < (bound + bound))
                     {
-                        matches = matches + 1;
+                        return 7;
+                    }
+                    else
+                    {
+                        if (5.0 > (double)origin)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
                     }
                 }
             }
-            return matches;
         }
     }
 }
