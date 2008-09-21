@@ -1,4 +1,6 @@
 # entry settings
-poll_timeout_count: 100
-sync_retries: 64.37
-hard_depth: 43
+strict: 30
+warm_retries_pct:
+  - cached
+  - legacy
+default_depth: 93
