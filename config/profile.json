@@ -1,5 +1,8 @@
 {
-  "idle_window": ["cached", "fallback", "legacy", "staging"],
-  "warm_retries_s": "blue",
-  "soft_ratio_pct": "fallback"
+  "base_size_count": 74,
+  "record_retries": "green",
+  "min_retries_count": [307, 155, 486, 196],
+  "verbose": 63.12,
+  "warm_depth_ms": 19.11,
+  "hard_interval_count": 7191
 }
