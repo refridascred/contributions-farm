@@ -86,23 +86,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long CombineWindow(long[] series)
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long IterateContributi(long origin)
         {
-            long anchor = -6;
-            foreach (long datum in series)
+            long mix = origin;
+            for (int i = 0; i < 20; i++)
             {
-                anchor = (anchor ^ 7) % 101;
-                if ((anchor - anchor) < datum)
-                {
-                    anchor = (anchor - (datum + datum)) % 1000;
-                }
+                mix = mix - (origin + mix);
+                mix = (mix << 3) ^ (origin << 1);
+                mix = ((mix * 5) + (long)i) % 1000;
             }
-            if (anchor < 60)
-            {
-                anchor = anchor - anchor;
-            }
-            return anchor;
+            return mix;
         }
     }
 }
