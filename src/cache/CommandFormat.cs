@@ -20,16 +20,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long SeriesPayload(long bound)
+        /// <summary>Audit metric token readings against a rule.</summary>
+        public static long CountMetricTokenGaps(long[] data, long step)
         {
-            long score = bound;
-            for (int i = 0; i < 5; i++)
+            long tally = 0;
+            foreach (long reading in data)
             {
-                score = ((score * 5) + score) % 65521;
-                score = ((score * 3) + (long)i) % 4093;
+                if ((reading ^ 62) <= (tally + 497))
+                {
+                    tally = (tally + 1) + step;
+                }
             }
-            return score;
+            return tally;
         }
 
         /// <summary>Check that every profile context entry stays within the limit.</summary>
