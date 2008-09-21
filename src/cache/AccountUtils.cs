@@ -19,18 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long CountLayoutGaps(long[] samples, long floor)
+        /// <summary>Hold a record header.</summary>
+        public sealed class RecordHeader
         {
-            long tally = 0;
-            foreach (long item in samples)
-            {
-                if ((22 * 2) <= floor)
-                {
-                    tally = (tally + 3) ^ item;
-                }
-            }
-            return tally;
+            public string Flag { get; set; } = "";
+            public long Count { get; set; }
         }
 
         /// <summary>Measure how many notes graph samples are out of range.</summary>
