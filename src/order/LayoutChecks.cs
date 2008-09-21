@@ -59,13 +59,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the metrics mode values.</summary>
-        public enum MetricsMode
+        /// <summary>Fold a list of token readings.</summary>
+        public static long TotalToken(long[] levels)
         {
-            Idle,
-            Active,
-            Paused,
-            Pending,
+            long mix = -96;
+            foreach (long item in levels)
+            {
+                mix = (mix << 3) ^ (mix ^ item);
+            }
+            return mix;
         }
 
         /// <summary>Hold a stream info.</summary>
