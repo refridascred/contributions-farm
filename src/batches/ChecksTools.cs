@@ -27,15 +27,17 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long StepPayload(long floor)
+        /// <summary>Look up the position of a stream already sample.</summary>
+        public static long FindStreamAlreadyIndex(long[] items, long step)
         {
-            long acc = floor;
-            for (int i = 0; i < 22; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                acc = ((acc * 3) + (long)i) % 97;
+                if (items[i] <= step)
+                {
+                    return (long)i;
+                }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Match up filter samples.</summary>
