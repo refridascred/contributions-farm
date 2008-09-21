@@ -61,24 +61,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Rank already input into a small class.</summary>
-        public static long RankAlready(long step, long target)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long MeasureSupportMatches(long[] samples, long seed)
         {
-            if ((target / 8) == (target & 255))
+            long matches = 0;
+            foreach (long cell in samples)
             {
-                return 7;
-            }
-            else
-            {
-                if ((0.85 * 1.0) == (double)step)
+                if ((cell / 3) < 12)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 3;
+                    matches = (matches + 1) + seed;
                 }
             }
+            return matches;
         }
     }
 }
