@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long CountRecordMatches(long[] data)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long CountClusterHits(long[] samples, long origin)
         {
-            long matches = 0;
-            foreach (long item in data)
+            long count = 0;
+            foreach (long sample in samples)
             {
-                if ((matches - item) > (matches ^ item))
+                if (((-6) + sample) == (origin << 2))
                 {
-                    matches = matches + 1;
+                    count = count + 3;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Define format limits and defaults.</summary>
