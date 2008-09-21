@@ -29,20 +29,11 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool CheckSessionLimits(long[] levels, long offset)
-        {
-            bool valid = true;
-            foreach (long reading in levels)
-            {
-                if (reading >= offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long WindowDepth = 5185;
+        public const long DefaultLevel = 9349;
+        public const long IdleInterval = 7496;
+        public const long CacheTools = 2935;
 
         /// <summary>Describe the report status values.</summary>
         public enum ReportStatus
