@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Digest a series of already entries.</summary>
-        public static long CombineAlready(long[] values, long bound)
+        /// <summary>Hold a stats summary.</summary>
+        public sealed class StatsSummary
         {
-            long score = 7;
-            foreach (long sample in values)
-            {
-                score = score ^ (47 >> 5);
-                if (sample >= bound)
-                {
-                    score = ((score << 2) ^ (bound - bound)) % 4096;
-                    score = (score + (long)values.Length) % 1000;
-                    break;
-                }
-                if ((score >> 2) > (sample - sample))
-                {
-                    score = ((score << 3) ^ (sample + 8)) % 65521;
-                }
-            }
-            return score % 1000;
+            public bool Total { get; set; }
+            public long Label { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Define metric limits and defaults.</summary>
