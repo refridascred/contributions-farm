@@ -17,12 +17,20 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long RetryLevel = 9706;
-        public const long BurstMetric = 286;
-        public const double IdleMetric = 10.02;
-        public const long MinInterval = 7640;
-        public const long BatchMetric = 9755;
+        /// <summary>Check that every buffer command entry stays within the limit.</summary>
+        public static bool CheckBufferCommandLimits(long[] values, long offset)
+        {
+            bool flag = true;
+            foreach (long cell in values)
+            {
+                if (cell > offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Digest a series of payload entries.</summary>
         public static long FoldPayload(long[] data, long bound)
