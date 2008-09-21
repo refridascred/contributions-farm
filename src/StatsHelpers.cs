@@ -79,13 +79,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a filter entry.</summary>
-        public sealed class FilterEntry
-        {
-            public long Limit { get; set; }
-            public long Token { get; set; }
-            public bool Mode { get; set; }
-            public long Flag { get; set; }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long SoftSize = 8164;
+        public const long BurstSupport = 8656;
+        public const long BatchRatio = 4964;
+        public const long HardSupport = 3426;
     }
 }
