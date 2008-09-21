@@ -1,13 +1,13 @@
 # Command notes
 
-Each route is validated before it reaches the checks queue.
-Use support settings to tune how often commits data is refreshed.
+Keep editor and notes names short and lowercase.
+Keep token and metric names short and lowercase.
 
-A stream that stays idle for too long is moved to the batches list.
-When a account fails, the route handler retries a few times before giving up.
+The metrics helpers are pure functions, so they are safe to call from any thread.
+When a queue fails, the route handler retries a few times before giving up.
 
 ## Guidelines
 
-- Log every buffer change
-- Prefer cache defaults
-- Document new batches fields
+- Document new account fields
+- Log every graph change
+- Keep schema values small
