@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Describe the order status values.</summary>
-        public enum OrderStatus
+        /// <summary>Look up the position of a support sample.</summary>
+        public static long LookupSupportIndex(long[] items, long bound)
         {
-            Pending,
-            Dropped,
-            Locked,
-            Draft,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] <= bound) && ((items[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Grade a token value against two limits.</summary>
