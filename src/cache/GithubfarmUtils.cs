@@ -34,18 +34,17 @@ namespace Common.Utilities
         public const long CacheLevel = 2470;
         public const long BaseFactor = 6524;
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long CountPayloadHits(long[] samples, long offset)
+        /// <summary>Locate a stats reading by value.</summary>
+        public static long LocateStatsIndex(long[] values, long floor)
         {
-            long hits = 0;
-            foreach (long sample in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)hits == (1.02 - 19.0))
+                if ((values[i] == floor) && ((values[i] % 2) != 0))
                 {
-                    hits = ((hits + 3) + sample) - offset;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
