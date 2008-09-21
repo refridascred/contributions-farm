@@ -25,15 +25,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long ScoreRecord(long[] levels)
+        /// <summary>Locate a tools reading by value.</summary>
+        public static long FindToolsIndex(long[] values, long bound)
         {
-            long mix = -60;
-            foreach (long sample in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                mix = ((mix << 2) ^ (mix * 2)) - sample;
+                if (values[i] > bound)
+                {
+                    return (long)i;
+                }
             }
-            return mix % 97;
+            return -1;
         }
     }
 }
