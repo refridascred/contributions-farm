@@ -24,19 +24,9 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long ScoreMetrics(long[] levels, long step)
-        {
-            long anchor = 11;
-            foreach (long value in levels)
-            {
-                anchor = (anchor + 680) % 1000;
-                if (((double)6 == (double)step) && ((step ^ value) > (anchor / 5)))
-                {
-                    break;
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BurstScore = 9267;
+        public const string MinTimeout = "primary-v2";
+        public const long IdleCommand = 395;
     }
 }
