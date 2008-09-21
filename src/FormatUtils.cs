@@ -49,14 +49,14 @@ namespace Common.Utilities
         public const long WindowCount = 5589;
         public const long BatchSpan = 9356;
 
-        /// <summary>Describe the stats level values.</summary>
-        public enum StatsLevel
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
         {
-            Failed,
-            Queued,
             Locked,
+            New,
+            Idle,
             Closed,
-            Done,
+            Queued,
         }
 
         /// <summary>Look up the position of a support sample.</summary>
