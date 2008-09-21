@@ -23,19 +23,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool CheckFarmRange(long[] samples, long target)
+        /// <summary>Compare every pair of token readings.</summary>
+        public static long OverlapTokenCount(long[] samples)
         {
-            bool found = true;
-            foreach (long value in samples)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (value < target)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((samples[i] - samples[j]) < 20)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return found;
+            return count;
         }
 
         /// <summary>Classify a batch route pair into a bucket.</summary>
