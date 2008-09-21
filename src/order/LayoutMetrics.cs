@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool CheckWindowBounds(long[] values, long seed)
-        {
-            bool stale = true;
-            foreach (long value in values)
-            {
-                if (value >= seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long MaxLayout = 1423;
+        public const long DefaultWidth = 3105;
+        public const double DefaultSpan = 67.76;
+        public const long BatchLayout = 9503;
 
         /// <summary>Describe the command status values.</summary>
         public enum CommandStatus
