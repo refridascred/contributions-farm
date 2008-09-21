@@ -27,11 +27,21 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a stats summary.</summary>
-        public sealed class StatsSummary
+        /// <summary>Count channel command pairs that satisfy a relation.</summary>
+        public static long PairChannelCommandCount(long[] data)
         {
-            public double Size { get; set; }
-            public bool Label { get; set; }
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) > 17)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
     }
 }
