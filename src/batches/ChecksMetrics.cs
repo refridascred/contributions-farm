@@ -54,12 +54,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two buffer measurements.</summary>
-        public static double ProjectBuffer(double gain, double bias)
-        {
-            double scale = 8.67;
-            return ((scale - scale) + gain) + bias;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long MaxStats = 2766;
+        public const long BaseDepth = 8079;
+        public const string CacheStats = "alpha-v2";
 
         /// <summary>Check that every format channel entry stays within the limit.</summary>
         public static bool ValidateFormatChannelRange(long[] data, long floor)
