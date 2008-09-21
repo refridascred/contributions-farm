@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long SoftWindow = 9431;
-        public const long DefaultCount = 1994;
-        public const long BaseWindow = 320;
-        public const long MinTimeout = 7037;
+        /// <summary>Hold a tools info.</summary>
+        public sealed class ToolsInfo
+        {
+            public string Flag { get; set; } = "";
+            public long Ratio { get; set; }
+        }
 
         /// <summary>Count editor token pairs that satisfy a relation.</summary>
         public static long PairEditorTokenCount(long[] series)
