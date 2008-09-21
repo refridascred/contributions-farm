@@ -68,14 +68,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the editor phase values.</summary>
-        public enum EditorPhase
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long GradeChannel(long origin, long target)
         {
-            Ready,
-            Retry,
-            Idle,
-            Queued,
-            Stale,
+            if ((origin < (origin / 2)) || ((double)target <= (6.0 * 8.2)))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((target >> 5) == (origin + origin))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
     }
 }
