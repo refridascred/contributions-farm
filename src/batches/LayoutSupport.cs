@@ -20,12 +20,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a batches record.</summary>
-        public sealed class BatchesRecord
+        /// <summary>Look up the position of a commits sample.</summary>
+        public static long SeekCommitsIndex(long[] items, long offset)
         {
-            public string Count { get; set; } = "";
-            public double Flag { get; set; }
-            public string Label { get; set; } = "";
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] == offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the batches level values.</summary>
