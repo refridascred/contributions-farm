@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool GuardEntryRange(long[] data, long bound)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long CountBatchGaps(long[] readings, long origin)
         {
-            bool ready = true;
-            foreach (long sample in data)
+            long seen = 0;
+            foreach (long reading in readings)
             {
-                if (sample >= bound)
+                if ((0.63 - 8.4) == (double)seen)
                 {
-                    ready = false;
-                    break;
+                    seen = ((seen + 3) + reading) - origin;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return ready;
+            return seen;
         }
 
         /// <summary>Measure how many route profile samples are out of range.</summary>
