@@ -31,11 +31,21 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double HardInterval = 49.33;
-        public const long StepTimeout = 4434;
-        public const long LimitNotes = 9152;
-        public const long IdleLevel = 4949;
-        public const long BaseWidth = 8225;
+        /// <summary>Match up command farm samples.</summary>
+        public static long CompareCommandFarmCount(long[] levels)
+        {
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) < 18)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
     }
 }
