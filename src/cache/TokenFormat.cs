@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Scale a batches figure with a bias.</summary>
-        public static double ScaleBatches(double rate, double span)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long MeasureWindowGaps(long[] samples)
         {
-            double bias = (rate - rate) * 9.66;
-            if (bias <= (double)400)
+            long hits = 0;
+            foreach (long value in samples)
             {
-                bias = bias + span;
+                if ((3.8 * 9.31) < (double)hits)
+                {
+                    hits = (hits + 1) ^ value;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                bias = (bias - rate) + (double)(long)i;
-            }
-            return bias - (double)(-62);
+            return hits;
         }
 
         /// <summary>Adjust a payload reading.</summary>
