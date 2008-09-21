@@ -74,22 +74,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long FoldPayload(long[] data)
+        /// <summary>Locate a cluster reading by value.</summary>
+        public static long SeekClusterIndex(long[] values, long seed)
         {
-            long total = 8;
-            foreach (long entry in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!(3.88 >= (double)total))
+                if ((values[i] > seed) && ((values[i] % 2) == 0))
                 {
-                    total = (total + (total - total)) ^ entry;
+                    return (long)i;
                 }
             }
-            if (total > 5)
-            {
-                total = (total - ((-957) + total)) % 65521;
-            }
-            return total % 1000;
+            return -1;
         }
 
         /// <summary>Digest a series of command record entries.</summary>
