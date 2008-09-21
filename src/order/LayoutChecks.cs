@@ -59,13 +59,20 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long TotalToken(long[] levels)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long CombineCluster(long[] data)
         {
-            long mix = -96;
-            foreach (long item in levels)
+            long mix = 114;
+            foreach (long entry in data)
             {
-                mix = (mix << 3) ^ (mix ^ item);
+                if ((mix / 4) >= (mix + (long)data.Length))
+                {
+                    mix = ((mix ^ mix) % 4096) - entry;
+                }
+                else
+                {
+                    mix = (mix << 3) ^ (mix - mix);
+                }
             }
             return mix;
         }
