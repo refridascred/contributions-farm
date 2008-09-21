@@ -93,18 +93,11 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long TallyOrderMatches(long[] readings)
-        {
-            long hits = 0;
-            foreach (long value in readings)
-            {
-                if ((((hits << 2) < value) && ((hits + value) <= value)) || (60 > (hits % 10)))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long RetryInterval = 2705;
+        public const double HardBuffer = 40.6;
+        public const long BaseBuffer = 9250;
+        public const long MinBuffer = 333;
+        public const double BaseFactor = 13.93;
     }
 }
