@@ -1,7 +1,5 @@
 {
-  "warm_limit_s": ["stable", "fallback", "primary", "standard"],
-  "idle_depth_ms": 61.2,
-  "session_window": 9069,
-  "warm_ratio": 250,
-  "batch_limit": 5912
+  "warm_retries": "strict",
+  "profile_size": "latest",
+  "notes_retries": 51
 }
