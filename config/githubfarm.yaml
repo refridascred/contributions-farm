@@ -1,12 +1,22 @@
 # githubfarm settings
-poll_threshold_pct: 6863
-flush_retries: 18.55
-min_retries_s:
-  min_retries_count: strict
-  profile_threshold: 1024
-  max_size_s: blue
-profile_size:
-  verbose: green
-  cache_window_ms: eu-west
-  context_limit: true
-  account_interval: legacy
+strict: open
+persist: 2197
+burst_size_s: 51
+flush_capacity: 5
+poll_size_ms:
+  verbose:
+    - 74
+    - 124
+    - 15
+  flush_retries_pct:
+    hard_interval_ms: true
+    warm_ttl_ms: eu-west
+    strict: 250
+    verbose: 104
+  persist: 500
+  min_window_pct: false
+compress:
+  - 409
+  - 52
+  - 180
+  - 309
