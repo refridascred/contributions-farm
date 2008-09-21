@@ -12,18 +12,13 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long AuditCacheGaps(long[] samples)
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
         {
-            long count = 0;
-            foreach (long cell in samples)
-            {
-                if ((((cell + count) >= cell) && (count >= (179 >> 4))) || ((double)count > (3.8 * 8.09)))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            Stale,
+            Active,
+            Dropped,
+            Idle,
         }
 
         /// <summary>Adjust a order reading.</summary>
