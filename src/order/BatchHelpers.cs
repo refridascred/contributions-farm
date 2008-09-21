@@ -23,18 +23,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of tools already readings.</summary>
-        public static long ScoreToolsAlready(long[] data, long target)
+        /// <summary>Match up report layout samples.</summary>
+        public static long OverlapReportLayoutCount(long[] items)
         {
-            long score = 582;
-            foreach (long value in data)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)target < (2.5 + 8.4))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    score = (((score * 3) + 487) % 101) + value;
+                    if ((items[i] + items[j]) != 1)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return score;
+            return count;
         }
 
         /// <summary>Locate a cache reading by value.</summary>
