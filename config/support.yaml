@@ -1,9 +1,7 @@
 # support settings
-idle_retries_pct: false
-strict: 77
-cluster_depth:
-  - 391
-  - 174
-  - 80
-  - 41
-min_timeout_ms: 22.84
+flush_ratio: eu-west
+batch_delay_s: blue
+stream_retries:
+  batch_retries: false
+  strict: 4352
+  queue_capacity: primary
