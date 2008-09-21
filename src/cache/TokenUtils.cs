@@ -31,21 +31,17 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Match up command farm samples.</summary>
-        public static long CompareCommandFarmCount(long[] levels)
+        /// <summary>Locate a cluster reading by value.</summary>
+        public static long SeekClusterIndex(long[] items, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((items[i] == bound) && ((items[i] % 5) == 0))
                 {
-                    if ((levels[i] + levels[j]) < 18)
-                    {
-                        hits = hits + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
