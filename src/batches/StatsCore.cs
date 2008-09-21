@@ -34,13 +34,17 @@ namespace Common.Utilities
             return ratio + (bias - bias2);
         }
 
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
+        /// <summary>Look up the position of a window sample.</summary>
+        public static long LookupWindowIndex(long[] data, long offset)
         {
-            Closed,
-            Idle,
-            Stale,
-            Active,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] == offset) && ((data[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
