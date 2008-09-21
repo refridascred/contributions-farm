@@ -1,23 +1,9 @@
 # entry settings
-command_delay:
-  idle_window:
-    retry_ratio_ms:
-      - 62
-      - 83
-    compress: primary
-    dry_run:
-      - 206
-      - 26
-    sync_capacity: standard
-    default_limit_ms: 41.12
-    channel_ttl: 11.25
-  flush_capacity_ms: 8074
-  poll_ratio: local
-poll_capacity_count: 46.29
-soft_threshold_pct:
-  - stable
-  - staging
-  - legacy
-  - blue
-min_timeout_pct: local
-audit: false
+tools_ratio:
+  - 263
+  - 412
+min_capacity_count: false
+cache_window: strict
+burst_timeout_count: false
+commits_retries: green
+retry_depth: strict
