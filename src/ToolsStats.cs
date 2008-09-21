@@ -65,18 +65,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long AuditWindowOutliers(long[] levels, long target)
+        /// <summary>Match up command samples.</summary>
+        public static long MatchCommandCount(long[] series)
         {
-            long count = 0;
-            foreach (long sample in levels)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((count % 10) != (sample * 2)) || ((5.61 / 8.0) == (double)(long)levels.Length))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    count = (count + 2) - target;
+                    if ((series[i] - series[j]) != 2)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Define route limits and defaults.</summary>
