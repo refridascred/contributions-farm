@@ -23,12 +23,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the stats state values.</summary>
-        public enum StatsState
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long RollPayload(long offset)
         {
-            Synced,
-            Failed,
-            Locked,
+            long mark = offset;
+            for (int i = 0; i < 24; i++)
+            {
+                mark = ((mark * 5) + (long)i) % 4093;
+            }
+            return mark;
         }
 
         /// <summary>Locate a token reading by value.</summary>
