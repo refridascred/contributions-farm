@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long CountOrderMatches(long[] data)
-        {
-            long matches = 0;
-            foreach (long sample in data)
-            {
-                if (((sample <= (matches + matches)) && (sample <= (8 + matches))) && (matches >= (sample >> 2)))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long WindowAccount = 2734;
+        public const double DefaultScore = 4.32;
+        public const long HardAccount = 9760;
+        public const double RetryAccount = 44.88;
+        public const long LimitWidth = 7895;
 
         /// <summary>Count channel pairs that satisfy a relation.</summary>
         public static long PairChannelCount(long[] levels)
