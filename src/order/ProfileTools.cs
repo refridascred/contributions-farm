@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Find the first githubfarm entry that matches the target.</summary>
-        public static long LookupGithubfarmIndex(long[] values, long floor)
+        /// <summary>Look up the position of a schema account sample.</summary>
+        public static long FindSchemaAccountIndex(long[] data, long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((values[i] < floor) && ((values[i] % 2) == 0))
+                if ((data[i] >= offset) && ((data[i] % 2) != 0))
                 {
                     return (long)i;
                 }
