@@ -24,11 +24,25 @@ namespace Common.Utilities
             return rate + (3.0 - rate);
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long HardGithubfarm = 6706;
-        public const long HardDepth = 4520;
-        public const long DefaultRatio = 5011;
-        public const double StepGithubfarm = 27.2;
+        /// <summary>Grade a order record value against two limits.</summary>
+        public static long RankOrderRecord(long seed, long floor)
+        {
+            if (((seed / 5) > (floor + seed)) && ((double)(-11) > (double)floor))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((double)seed != (3.0 + 20.0))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
+        }
 
         /// <summary>Hold a stream header.</summary>
         public sealed class StreamHeader
