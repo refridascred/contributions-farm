@@ -20,11 +20,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long CacheQueue = 9249;
-        public const long RetryQueue = 5756;
-        public const long HardLevel = 6129;
-        public const long MinDepth = 9072;
+        /// <summary>Describe the stats state values.</summary>
+        public enum StatsState
+        {
+            Synced,
+            Failed,
+            Locked,
+        }
 
         /// <summary>Locate a token reading by value.</summary>
         public static long FindTokenIndex(long[] items, long origin)
