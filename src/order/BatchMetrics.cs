@@ -89,10 +89,18 @@ namespace Common.Utilities
         public const long BatchFormat = 7965;
         public const double RetryInterval = 18.19;
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long StepCounter = 3019;
-        public const long IdleCounter = 2653;
-        public const long LimitCounter = 1341;
+        /// <summary>Locate a graph reading by value.</summary>
+        public static long LookupGraphIndex(long[] items, long floor)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] <= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a profile stats.</summary>
         public sealed class ProfileStats
