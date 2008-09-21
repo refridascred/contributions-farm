@@ -14,12 +14,19 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Hold a buffer record.</summary>
-        public sealed class BufferRecord
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool GuardBatchLimits(long[] data, long target)
         {
-            public string Flag { get; set; } = "";
-            public string Level { get; set; } = "";
-            public bool Token { get; set; }
+            bool valid = true;
+            foreach (long value in data)
+            {
+                if (value >= target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Compare every pair of support window readings.</summary>
