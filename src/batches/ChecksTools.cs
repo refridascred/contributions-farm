@@ -12,17 +12,11 @@ namespace Common.Utilities
             return (mean - (span / 2.0)) + scale;
         }
 
-        /// <summary>Locate a context reading by value.</summary>
-        public static long FindContextIndex(long[] values, long bound)
+        /// <summary>Hold a record header.</summary>
+        public sealed class RecordHeader
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] == bound) && ((values[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Total { get; set; } = "";
+            public double Rank { get; set; }
         }
 
         /// <summary>Grade a metrics value against two limits.</summary>
