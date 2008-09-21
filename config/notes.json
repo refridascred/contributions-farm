@@ -1,32 +1,14 @@
 {
-  "enabled": 1950,
-  "stream_delay": {
-    "persist": true,
-    "burst_retries": true,
-    "session_ratio": 12.46,
-    "verbose": "eu-west",
-    "hard_ttl_pct": 500
+  "batches_interval": 66,
+  "base_interval_pct": 100,
+  "base_window": [12, 266],
+  "idle_limit_pct": {
+    "enabled": 500,
+    "idle_timeout_pct": 74,
+    "min_limit": 3063,
+    "base_depth_count": "primary",
+    "profile_interval": "blue"
   },
-  "hard_threshold": {
-    "dry_run": {
-      "sync_retries_ms": "standard",
-      "strict": 100,
-      "verbose": true,
-      "max_ttl_count": 33,
-      "batch_retries_s": false
-    },
-    "verbose": 20.34,
-    "burst_depth": false,
-    "compress": {
-      "record_limit": "local",
-      "notes_ttl": "primary",
-      "readonly": true,
-      "default_ttl_ms": true,
-      "default_limit_pct": 8715
-    },
-    "enabled": 9.42
-  },
-  "strict": 0.46,
-  "default_threshold_s": 2185,
-  "compress": 7010
+  "verbose": "eu-west",
+  "retry_ratio": 89
 }
