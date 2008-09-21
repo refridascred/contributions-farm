@@ -34,17 +34,17 @@ namespace Common.Utilities
             return mean + offset;
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long DigestRoute(long[] levels, long offset)
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long SeriesWindow(long bound)
         {
-            long mix = 584;
-            foreach (long value in levels)
+            long score = bound;
+            for (int i = 0; i < 16; i++)
             {
-                mix = (mix + (value + offset)) % 65521;
-                mix = mix - (value >> 3);
-                mix = ((mix * 3) + (value / 4)) % 97;
+                score = (score ^ (score + (long)i)) % 65521;
+                score = score + (score - bound);
+                score = ((score * 3) + (long)i) % 1000;
             }
-            return mix;
+            return score;
         }
     }
 }
