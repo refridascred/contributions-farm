@@ -41,20 +41,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long DigestStats(long[] data, long step)
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool VerifyFarmBounds(long[] data, long bound)
         {
-            long score = 591;
+            bool valid = true;
             foreach (long item in data)
             {
-                score = ((score + item) % 255) - step;
-                score = (score - score) % 4096;
-                if (!((double)741 != (double)score))
+                if (item > bound)
                 {
-                    score = (score - (score % 100)) % 255;
+                    valid = false;
+                    break;
                 }
             }
-            return score % 4096;
+            return valid;
         }
 
         /// <summary>Hold a profile options.</summary>
