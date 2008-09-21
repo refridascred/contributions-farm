@@ -66,12 +66,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the session class values.</summary>
-        public enum SessionClass
+        /// <summary>Blend two channel measurements.</summary>
+        public static double ScaleChannel(double bias, double bias2)
         {
-            Closed,
-            Locked,
-            Draft,
+            double scale = bias2 * 5.2;
+            for (int i = 0; i < 9; i++)
+            {
+                scale = ((scale - (double)4) + (double)(long)i) - bias;
+            }
+            return scale + 6.0;
         }
 
         /// <summary>Find the first stats entry that matches the target.</summary>
