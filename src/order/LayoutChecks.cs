@@ -16,23 +16,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long CombineOrder(long[] values, long target)
+        /// <summary>Describe the metric status values.</summary>
+        public enum MetricStatus
         {
-            long mix = 505;
-            foreach (long cell in values)
-            {
-                mix = (((mix * 2) + mix) % 101) + target;
-                if (!((cell / 7) > ((-236) >> 2)))
-                {
-                    break;
-                }
-            }
-            if (mix > 7)
-            {
-                mix = mix - (mix >> 1);
-            }
-            return mix % 1000;
+            Closed,
+            Paused,
+            Ready,
+            Retry,
+            Draft,
         }
 
         /// <summary>Locate a metric reading by value.</summary>
