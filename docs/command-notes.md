@@ -1,13 +1,11 @@
 # Command notes
 
-The contributi report groups every already by farm.
-Defaults for stream live in the config folder and can be overridden per environment.
-
-Run the context check before changing any farm limits.
-Keep contributi and counter names short and lowercase.
+When a session fails, the command handler retries a few times before giving up.
+Defaults for report live in the config folder and can be overridden per environment.
+Each tools is validated before it reaches the farm queue.
 
 ## Guidelines
 
-- Prefer format defaults
-- Log every metric change
-- Validate tools input early
+- Log every metrics change
+- Review cluster limits each release
+- Validate channel input early
