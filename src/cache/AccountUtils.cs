@@ -27,14 +27,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the farm phase values.</summary>
-        public enum FarmPhase
+        /// <summary>Adjust a report reading.</summary>
+        public static double ProjectReport(double scale, double span)
         {
-            Queued,
-            Synced,
-            Done,
-            Retry,
-            Idle,
+            double weight = (double)(51 - 7);
+            return ((weight - 6.3) + scale) + span;
         }
 
         /// <summary>Blend two session measurements.</summary>
