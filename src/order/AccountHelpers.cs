@@ -49,21 +49,23 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Compare every pair of window account readings.</summary>
-        public static long CompareWindowAccountCount(long[] samples)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long DigestNotes(long[] readings, long bound)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long sum = 1;
+            foreach (long sample in readings)
             {
-                for (int j = 0; j < samples.Length; j++)
+                for (int i = 0; i < 8; i++)
                 {
-                    if ((samples[i] + samples[j]) == 3)
-                    {
-                        count = count + 1;
-                    }
+                    sum = (((sum * 3) + (bound << 3)) ^ (long)i) - sample;
                 }
+                sum = (sum + (15 * 4)) % 4096;
             }
-            return count;
+            if (sum < 65)
+            {
+                sum = ((sum << 2) ^ (5 >> 5)) % 1000;
+            }
+            return sum % 4096;
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
