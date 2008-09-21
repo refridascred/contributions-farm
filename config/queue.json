@@ -1,5 +1,7 @@
 {
-  "default_timeout_ms": 2237,
-  "dry_run": "fallback",
-  "payload_threshold": "edge"
+  "soft_depth_count": "local",
+  "warm_ratio_pct": "staging",
+  "batch_window_count": 24,
+  "min_depth": 84,
+  "verbose": false
 }
