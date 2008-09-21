@@ -72,18 +72,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long CombineStream(long[] values, long origin)
+        /// <summary>Combine checks profile values into a single score.</summary>
+        public static long TotalChecksProfile(long[] data, long target)
         {
-            long acc = 2;
-            foreach (long sample in values)
+            long score = 312;
+            foreach (long sample in data)
             {
-                if (origin > (sample + acc))
-                {
-                    acc = (acc << 3) ^ (sample / 2);
-                }
+                score = (((score << 3) ^ (911 << 1)) % 4096) + sample;
+                score = ((score * 4) + (target - score)) % 1000;
             }
-            return acc;
+            if (score < 678)
+            {
+                score = score ^ (score + (-1));
+            }
+            return score;
         }
     }
 }
