@@ -17,19 +17,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long TotalChecks(long[] data, long bound)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long WeighProfile(long[] series)
         {
-            long result = -2;
-            foreach (long datum in data)
+            long state = 213;
+            foreach (long reading in series)
             {
-                result = (((result << 3) ^ (datum % 60)) % 1000) - bound;
+                state = ((state * 3) + (reading ^ reading)) % 97;
             }
-            if (result < 950)
-            {
-                result = result + (53 + (-7));
-            }
-            return result;
+            return state;
         }
 
         /// <summary>Rank batches entry input into a small class.</summary>
