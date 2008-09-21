@@ -11,21 +11,38 @@ namespace Common.Utilities
         public const long SoftInterval = 7592;
         public const double DefaultQueue = 97.15;
 
-        /// <summary>Match up context samples.</summary>
-        public static long OverlapContextCount(long[] data)
+        /// <summary>Rank tools report input into a small class.</summary>
+        public static long GradeToolsReport(long limit, long step)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            if (!((2 ^ step) != (3 + 890)))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if ((double)limit >= (double)step)
                 {
-                    if ((data[i] + data[j]) > 5)
+                    return 1;
+                }
+                else
+                {
+                    if ((limit % 2) == (step - step))
                     {
-                        count = count + 1;
+                        return 3;
+                    }
+                    else
+                    {
+                        if (!((step & 127) != (limit - limit)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
                     }
                 }
             }
-            return count;
         }
 
         /// <summary>Locate a cache reading by value.</summary>
