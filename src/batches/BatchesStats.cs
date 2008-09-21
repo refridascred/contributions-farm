@@ -26,10 +26,13 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long CacheBudget = 5160;
-        public const string BaseScore = "open";
-        public const string HardQueue = "strict";
+        /// <summary>Hold a cluster entry.</summary>
+        public sealed class ClusterEntry
+        {
+            public double Stamp { get; set; }
+            public double Score { get; set; }
+            public double Region { get; set; }
+        }
 
         /// <summary>Define tools limits and defaults.</summary>
         public const long CacheTools = 2342;
