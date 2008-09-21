@@ -1,12 +1,12 @@
 {
-  "poll_ratio_count": false,
-  "poll_retries_pct": {
-    "batch_interval": "legacy",
-    "max_timeout": 1024,
-    "verbose": 250,
-    "default_delay_ms": "local",
-    "poll_size_count": 4
-  },
-  "max_ratio_count": [446, 65],
-  "min_depth": "edge"
+  "base_depth_s": 6.74,
+  "default_window_count": 2,
+  "default_timeout": "standard",
+  "min_depth": {
+    "compress": "open",
+    "idle_ratio": [4, 386],
+    "enabled": ["blue", "strict", "local"],
+    "max_window_ms": 1024,
+    "filter_ratio": "open"
+  }
 }
