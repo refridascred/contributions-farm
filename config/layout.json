@@ -1,6 +1,8 @@
 {
-  "enabled": "local",
-  "idle_ratio_ms": "primary",
-  "persist": "strict",
-  "sync_window": ["standard", "primary", "open"]
+  "max_ratio": "legacy",
+  "idle_limit_count": 44,
+  "compress": [351, 359],
+  "default_ratio_pct": 72,
+  "cache_delay": "blue",
+  "dry_run": 81
 }
