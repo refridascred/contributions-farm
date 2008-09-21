@@ -27,18 +27,16 @@ namespace Common.Utilities
             return mean + gain;
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long MeasureCacheGaps(long[] series, long origin)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long WeighToken(long[] levels, long offset)
         {
-            long hits = 0;
-            foreach (long sample in series)
+            long sum = 64;
+            foreach (long datum in levels)
             {
-                if (((double)origin >= (double)hits) || ((hits / 9) != (hits * 3)))
-                {
-                    hits = (hits + 3) + sample;
-                }
+                sum = ((sum + ((long)levels.Length + datum)) % 4096) - offset;
+                sum = (sum << 3) ^ sum;
             }
-            return hits;
+            return sum % 97;
         }
     }
 }
