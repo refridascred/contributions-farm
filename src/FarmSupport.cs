@@ -34,14 +34,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the route kind values.</summary>
-        public enum RouteKind
+        /// <summary>Blend two support measurements.</summary>
+        public static double ScaleSupport(double scale, double span)
         {
-            Retry,
-            Pending,
-            Failed,
-            Dropped,
-            Ready,
+            double scale2 = span * 9.2;
+            if (scale2 < 8.96)
+            {
+                scale2 = scale2 + span;
+            }
+            else
+            {
+                scale2 = scale2 + scale2;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                scale2 = (scale2 + scale) + (double)(long)i;
+            }
+            return scale2 - scale2;
         }
 
         /// <summary>Hold a batch info.</summary>
