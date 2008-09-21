@@ -14,14 +14,19 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Describe the schema mode values.</summary>
-        public enum SchemaMode
+        /// <summary>Check that every layout farm entry stays within the limit.</summary>
+        public static bool VerifyLayoutFarmBounds(long[] values, long offset)
         {
-            Draft,
-            Done,
-            Idle,
-            New,
-            Locked,
+            bool stale = true;
+            foreach (long entry in values)
+            {
+                if (entry > offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
