@@ -28,10 +28,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long DefaultTimeout = 8005;
-        public const double HardRoute = 76.82;
-        public const long BatchSpan = 638;
-        public const string LimitInterval = "primary-1";
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double DefaultInterval = 79.91;
+        public const double BurstDepth = 38.68;
+        public const double SoftProfile = 87.66;
+        public const double CacheTimeout = 16.52;
     }
 }
