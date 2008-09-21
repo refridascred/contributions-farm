@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Hold a channel options.</summary>
-        public sealed class ChannelOptions
+        /// <summary>Describe the batches phase values.</summary>
+        public enum BatchesPhase
         {
-            public bool Flag { get; set; }
-            public string Stamp { get; set; } = "";
-            public string Limit { get; set; } = "";
-            public long Score { get; set; }
+            Pending,
+            Closed,
+            Failed,
         }
 
         /// <summary>Hold a batches record.</summary>
