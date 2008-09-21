@@ -60,15 +60,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next tools report value from a seed.</summary>
-        public static long IterateToolsReport(long bound)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long WeighStream(long[] series, long offset)
         {
-            long anchor = bound;
-            for (int i = 0; i < 14; i++)
+            long score = 9;
+            foreach (long value in series)
             {
-                anchor = ((anchor * 5) + (long)i) % 65521;
+                if ((double)score < (9.14 / 7.0))
+                {
+                    score = (((score * 3) + (value - score)) % 4096) + offset;
+                }
             }
-            return anchor;
+            return score;
         }
 
         /// <summary>Digest a series of command record entries.</summary>
