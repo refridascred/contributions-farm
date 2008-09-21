@@ -53,21 +53,12 @@ namespace Common.Utilities
         public const double StepLevel = 10.0;
         public const long SoftDepth = 1851;
 
-        /// <summary>Count filter editor pairs that satisfy a relation.</summary>
-        public static long MatchFilterEditorCount(long[] readings)
+        /// <summary>Hold a githubfarm summary.</summary>
+        public sealed class GithubfarmSummary
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) < 19)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public long Region { get; set; }
+            public long Owner { get; set; }
+            public long Offset { get; set; }
         }
     }
 }
