@@ -23,17 +23,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a contributi route sample.</summary>
-        public static long SeekContributiRouteIndex(long[] values, long seed)
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long BucketFarm(long floor, long floor2)
         {
-            for (int i = 0; i < values.Length; i++)
+            long gap = floor + floor2;
+            if ((floor2 >> 1) >= (floor + floor))
             {
-                if (values[i] < seed)
+                return 4;
+            }
+            else
+            {
+                if ((double)gap < (14.0 + 4.4))
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return -1;
         }
 
         /// <summary>Derive the next filter value from a seed.</summary>
