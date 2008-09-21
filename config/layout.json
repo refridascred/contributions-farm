@@ -1,6 +1,5 @@
 {
-  "poll_capacity_pct": false,
-  "sync_capacity_count": 1024,
-  "report_size": "strict",
-  "session_interval": 68.25
+  "already_ratio": ["stable", "open"],
+  "min_retries_s": 30.89,
+  "max_size_pct": 89.99
 }
