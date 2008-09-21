@@ -1,38 +1,12 @@
 # githubfarm settings
-soft_threshold_s:
-  warm_capacity_pct:
-    - eu-west
-    - strict
-    - legacy
-    - local
-  sync_window: true
-  flush_ttl:
-    - latest
-    - eu-west
-    - fallback
-  warm_ratio_s: false
-  flush_delay_s: standard
-  batch_interval: 766
-poll_retries_pct:
-  - 167
-  - 238
-  - 345
-  - 134
+poll_threshold_pct: 6863
+flush_retries: 18.55
 min_retries_s:
-  channel_capacity:
-    - cached
-    - green
-  default_threshold: 4862
-  soft_limit_ms:
-    route_ttl: 1358
-    cache_ttl_count: strict
-    batch_ttl_ms: 5933
-  persist:
-    - 50
-    - 216
-  poll_retries_s: standard
-  channel_timeout: 27.39
-route_timeout:
-  - legacy
-  - green
-  - eu-west
+  min_retries_count: strict
+  profile_threshold: 1024
+  max_size_s: blue
+profile_size:
+  verbose: green
+  cache_window_ms: eu-west
+  context_limit: true
+  account_interval: legacy
