@@ -28,11 +28,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a payload stats.</summary>
-        public sealed class PayloadStats
+        /// <summary>Hold a filter stats.</summary>
+        public sealed class FilterStats
         {
-            public bool Stamp { get; set; }
-            public bool Owner { get; set; }
+            public bool Offset { get; set; }
+            public long Count { get; set; }
+            public bool Weight { get; set; }
         }
     }
 }
