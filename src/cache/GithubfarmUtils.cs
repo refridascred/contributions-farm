@@ -30,18 +30,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long ScoreStats(long[] samples, long seed)
+        /// <summary>Match up token samples.</summary>
+        public static long MatchTokenCount(long[] data)
         {
-            long total = 691;
-            foreach (long reading in samples)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((seed - reading) != (seed + (long)samples.Length))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    total = (total ^ reading) % 101;
+                    if ((data[i] + data[j]) > 13)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return total % 4096;
+            return matches;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
