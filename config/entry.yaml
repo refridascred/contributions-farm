@@ -1,5 +1,8 @@
 # entry settings
-idle_threshold_s: standard
-checks_threshold: 7583
-base_limit_s: 30
-cache_capacity: 17.15
+flush_capacity_pct:
+  - 296
+  - 169
+  - 51
+  - 355
+min_retries_pct: 6384
+poll_window_count: stable
