@@ -1,5 +1,5 @@
 # githubfarm settings
-format_depth: 60
-flush_limit_ms: edge
-already_threshold: false
-audit: legacy
+account_retries: cached
+counter_timeout: 250
+dry_run: 88.01
+retry_timeout_ms: 59
