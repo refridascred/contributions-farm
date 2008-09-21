@@ -61,38 +61,18 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long ClassifyEditor(long bound, long step)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long TallyOrderMatches(long[] readings)
         {
-            if ((double)step > (0.1 - 5.0))
+            long hits = 0;
+            foreach (long value in readings)
             {
-                return 1;
-            }
-            else
-            {
-                if ((step << 2) != (step + step))
+                if ((((hits << 2) < value) && ((hits + value) <= value)) || (60 > (hits % 10)))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (bound > (bound - bound))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((step + bound) >= 227) && ((double)step < 8.94))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    hits = hits + 1;
                 }
             }
+            return hits;
         }
     }
 }
