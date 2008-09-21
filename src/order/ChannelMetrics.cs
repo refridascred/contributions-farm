@@ -19,19 +19,27 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool VerifyEntryRange(long[] values, long limit)
+        /// <summary>Accumulate support samples.</summary>
+        public static long FoldSupport(long[] values, long target)
         {
-            bool valid = true;
-            foreach (long reading in values)
+            long score = 733;
+            foreach (long datum in values)
             {
-                if (reading <= limit)
+                score = (score + (9 + target)) % 65521;
+                if ((target % 64) <= datum)
                 {
-                    valid = false;
-                    break;
+                    score = ((score << 2) ^ score) % 65521;
+                }
+                if ((target + datum) <= score)
+                {
+                    score = (score + (datum & 3)) % 255;
                 }
             }
-            return valid;
+            if (score > (-990))
+            {
+                score = score + (target * 4);
+            }
+            return score % 4096;
         }
 
         /// <summary>Fold a list of notes farm readings.</summary>
