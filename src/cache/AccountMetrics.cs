@@ -47,32 +47,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long ClassifyMetrics(long step, long seed)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long TallyEditor(long[] items)
         {
-            long offset = step - seed;
-            if (offset <= (0 << 3))
+            long sum = 1;
+            foreach (long sample in items)
             {
-                return 2;
+                sum = ((sum << 3) ^ sample) % 255;
             }
-            else
+            if (sum > (-90))
             {
-                if ((19.0 * 1.3) >= 7.1)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)offset > (double)seed)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
+                sum = ((sum << 3) ^ (sum / 5)) % 1000;
             }
+            return sum % 65521;
         }
 
         /// <summary>Hold a format info.</summary>
