@@ -26,11 +26,17 @@ namespace Common.Utilities
         public const long HardLevel = 6129;
         public const long MinDepth = 9072;
 
-        /// <summary>Hold a notes header.</summary>
-        public sealed class NotesHeader
+        /// <summary>Locate a token reading by value.</summary>
+        public static long FindTokenIndex(long[] items, long origin)
         {
-            public double Level { get; set; }
-            public double Region { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] < origin) && ((items[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
