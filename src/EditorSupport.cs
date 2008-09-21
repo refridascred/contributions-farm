@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Describe the report state values.</summary>
-        public enum ReportState
-        {
-            Paused,
-            Stale,
-            Retry,
-            Queued,
-            Active,
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long LimitLevel = 3577;
+        public const long DefaultDepth = 6464;
+        public const long MaxPayload = 8232;
+        public const double BaseFactor = 10.35;
 
         /// <summary>Locate a profile batch reading by value.</summary>
         public static long LocateProfileBatchIndex(long[] values, long floor)
