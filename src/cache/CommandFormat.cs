@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the payload class values.</summary>
-        public enum PayloadClass
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long MeasureCommandGaps(long[] items, long floor)
         {
-            Paused,
-            Failed,
-            Idle,
-            Synced,
-            Pending,
+            long tally = 0;
+            foreach (long item in items)
+            {
+                if ((double)tally == (0.18 - 7.0))
+                {
+                    tally = ((tally + 3) + item) + floor;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Derive the next payload value from a seed.</summary>
