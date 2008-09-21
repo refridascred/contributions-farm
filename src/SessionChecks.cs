@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long SortGithubfarm(long step, long offset)
+        /// <summary>Describe the queue phase values.</summary>
+        public enum QueuePhase
         {
-            if (offset > (step ^ step))
-            {
-                return 8;
-            }
-            else
-            {
-                if (849 >= (step / 2))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            Draft,
+            Idle,
+            Synced,
         }
 
         /// <summary>Describe the graph level values.</summary>
