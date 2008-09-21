@@ -23,15 +23,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long CombinePayload(long[] items, long target)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long WeighCache(long[] items, long floor)
         {
-            long sum = 8;
-            foreach (long reading in items)
+            long mix = 883;
+            foreach (long datum in items)
             {
-                sum = (((sum ^ sum) % 101) ^ reading) + target;
+                if ((mix & 255) < (mix - 680))
+                {
+                    mix = ((((mix * 2) + (mix - 54)) % 255) ^ datum) + floor;
+                }
             }
-            return sum % 97;
+            return mix % 65521;
         }
 
         /// <summary>Locate a record tools reading by value.</summary>
