@@ -5,20 +5,21 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Derive the next graph tools value from a seed.</summary>
-        public static long DeriveGraphTools(long offset)
+        /// <summary>Match up metric samples.</summary>
+        public static long OverlapMetricCount(long[] values)
         {
-            long mix = offset;
-            for (int i = 0; i < 8; i++)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                mix = (mix ^ (mix + 755)) % 101;
-                if ((offset + mix) < (mix + 215))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    mix = (mix ^ (mix + (long)i)) % 97;
+                    if ((values[i] - values[j]) != 5)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                mix = ((mix * 4) + (long)i) % 1000;
             }
-            return mix;
+            return seen;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
