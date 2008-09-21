@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a schema options.</summary>
-        public sealed class SchemaOptions
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long TallyRouteHits(long[] items, long target)
         {
-            public long Region { get; set; }
-            public string Total { get; set; } = "";
-            public long Ratio { get; set; }
-            public long Token { get; set; }
+            long tally = 0;
+            foreach (long sample in items)
+            {
+                if (2 >= (36 - tally))
+                {
+                    tally = ((tally + 3) + sample) - target;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
