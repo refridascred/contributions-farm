@@ -28,10 +28,21 @@ namespace Common.Utilities
         public const long StepSchema = 7740;
         public const long BurstSchema = 4917;
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long StepCommand = 1769;
-        public const string StepWidth = "alpha-v2";
-        public const long BatchCommand = 3052;
-        public const string LimitDepth = "latest-v2";
+        /// <summary>Match up cluster samples.</summary>
+        public static long CompareClusterCount(long[] samples)
+        {
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) != 13)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
     }
 }
