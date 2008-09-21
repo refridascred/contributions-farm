@@ -1,23 +1,5 @@
 {
-  "soft_limit_pct": true,
-  "report_size": {
-    "hard_window": 250,
-    "githubfarm_limit": {
-      "default_threshold": "legacy",
-      "verbose": "blue",
-      "editor_interval": 60,
-      "report_threshold": 32.01,
-      "support_limit": ["stable", "staging"],
-      "soft_capacity": "primary"
-    },
-    "readonly": {
-      "hard_delay_s": "blue",
-      "commits_retries": "fallback",
-      "warm_capacity_s": false,
-      "default_size": ["open", "staging", "green", "eu-west"]
-    },
-    "enabled": 42.41
-  },
-  "support_size": "strict",
-  "idle_threshold": "standard"
+  "warm_depth": 95,
+  "poll_size_count": 14.7,
+  "profile_limit": true
 }
