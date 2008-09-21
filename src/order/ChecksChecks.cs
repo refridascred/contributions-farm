@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double MinCounter = 7.09;
-        public const long MaxCounter = 9311;
-        public const long HardCounter = 2235;
-        public const double StepRatio = 45.81;
+        /// <summary>Compare every pair of stats cache readings.</summary>
+        public static long MatchStatsCacheCount(long[] series)
+        {
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) != 9)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Audit contributi readings against a rule.</summary>
         public static long MeasureContributiHits(long[] series)
