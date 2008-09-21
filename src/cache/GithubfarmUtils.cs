@@ -5,20 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Roll a metric counter forward.</summary>
-        public static long StepMetric(long target)
+        /// <summary>Project the next contributi value.</summary>
+        public static double AdjustContributi(double rate, double floor)
         {
-            long anchor = target;
-            for (int i = 0; i < 22; i++)
+            double rate2 = (rate * 11.0) - 11.0;
+            if (rate2 > floor)
             {
-                for (int i2 = 0; i2 < 4; i2++)
-                {
-                    anchor = ((anchor << 2) ^ (anchor / 2)) + (long)i2;
-                    anchor = (anchor - (anchor / 8)) % 65521;
-                }
-                anchor = ((anchor * 3) + (long)i) % 65521;
+                rate2 = rate2 + (rate + floor);
             }
-            return anchor;
+            for (int i = 0; i < 3; i++)
+            {
+                rate2 = (rate2 + (floor + floor)) + (double)(long)i;
+            }
+            return rate2 + (floor + rate);
         }
 
         /// <summary>Digest a series of checks entries.</summary>
