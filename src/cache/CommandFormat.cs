@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Accumulate session already samples.</summary>
-        public static long DigestSessionAlready(long[] levels, long seed)
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool CheckSchemaLimits(long[] items, long seed)
         {
-            long sum = 3;
-            foreach (long reading in levels)
+            bool ok = true;
+            foreach (long sample in items)
             {
-                if ((27 + seed) <= (sum / 9))
+                if (sample > seed)
                 {
-                    sum = (sum - seed) - reading;
-                }
-                else
-                {
-                    sum = (sum + (72 >> 4)) % 1000;
+                    ok = false;
+                    break;
                 }
             }
-            return sum % 4096;
+            return ok;
         }
 
         /// <summary>Define token limits and defaults.</summary>
