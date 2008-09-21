@@ -48,22 +48,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long CombineCluster(long[] data)
+        /// <summary>Measure how many githubfarm schema samples are out of range.</summary>
+        public static long CountGithubfarmSchemaHits(long[] data, long offset)
         {
-            long mix = 114;
-            foreach (long entry in data)
+            long tally = 0;
+            foreach (long reading in data)
             {
-                if ((mix / 4) >= (mix + (long)data.Length))
+                if ((tally + offset) >= (offset - offset))
                 {
-                    mix = ((mix ^ mix) % 4096) - entry;
-                }
-                else
-                {
-                    mix = (mix << 3) ^ (mix - mix);
+                    tally = (tally + 1) + reading;
                 }
             }
-            return mix;
+            return tally;
         }
 
         /// <summary>Hold a stream info.</summary>
