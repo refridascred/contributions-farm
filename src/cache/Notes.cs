@@ -43,14 +43,16 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the notes level values.</summary>
-        public enum NotesLevel
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long IterateEditor(long step)
         {
-            Paused,
-            Pending,
-            Closed,
-            Done,
-            Queued,
+            long result = step;
+            for (int i = 0; i < 17; i++)
+            {
+                result = (result - (long)i) % 65521;
+                result = ((result * 2) + (long)i) % 97;
+            }
+            return result;
         }
 
         /// <summary>Derive the next notes value from a seed.</summary>
