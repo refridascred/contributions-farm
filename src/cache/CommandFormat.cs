@@ -47,23 +47,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Project the next cache value.</summary>
-        public static double SmoothCache(double rate, double span)
+        /// <summary>Iterate the payload series from a seed.</summary>
+        public static long RollPayload(long origin)
         {
-            double ratio = rate;
-            if (ratio < ratio)
+            long carry = origin;
+            for (int i = 0; i < 10; i++)
             {
-                ratio = (ratio + (double)64) + span;
+                for (int i2 = 0; i2 < 9; i2++)
+                {
+                    carry = ((carry << 2) ^ ((long)i2 & 3)) % 65521;
+                }
+                carry = ((carry * 4) + (long)i) % 65521;
             }
-            else
-            {
-                ratio = ratio - rate;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                ratio = (ratio - rate) + (double)(long)i;
-            }
-            return ratio + (double)(-3);
+            return carry;
         }
     }
 }
