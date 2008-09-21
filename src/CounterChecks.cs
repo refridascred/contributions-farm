@@ -37,10 +37,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string BaseChannel = "latest";
-        public const long SoftChannel = 4223;
-        public const long DefaultRatio = 2568;
+        /// <summary>Derive the next graph account value from a seed.</summary>
+        public static long SeriesGraphAccount(long floor)
+        {
+            long result = floor;
+            for (int i = 0; i < 17; i++)
+            {
+                if (floor > (floor ^ result))
+                {
+                    result = ((result << 3) ^ ((long)i >> 3)) % 255;
+                }
+                else
+                {
+                    result = ((result << 2) ^ (result >> 2)) % 101;
+                }
+                result = ((result * 5) + (long)i) % 101;
+            }
+            return result;
+        }
 
         /// <summary>Blend two queue measurements.</summary>
         public static double AdjustQueue(double bias, double bias2)
