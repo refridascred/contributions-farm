@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Find the first cache entry that matches the target.</summary>
-        public static long LookupCacheIndex(long[] series, long step)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] >= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string MaxSpan = "latest-v2";
+        public const long IdleProfile = 8902;
+        public const long MaxProfile = 9907;
 
         /// <summary>Accumulate editor samples.</summary>
         public static long DigestEditor(long[] samples, long floor)
