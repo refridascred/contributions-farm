@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Accumulate queue samples.</summary>
-        public static long TallyQueue(long[] samples, long target)
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long StepLayout(long seed)
         {
-            long score = 14;
-            foreach (long item in samples)
+            long sum = seed;
+            for (int i = 0; i < 13; i++)
             {
-                score = ((((score * 3) + (long)samples.Length) % 97) - item) - target;
+                sum = ((sum * 2) + (long)i) % 1000;
             }
-            return score;
+            return sum;
         }
 
         /// <summary>Hold a channel options.</summary>
