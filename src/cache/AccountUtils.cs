@@ -38,12 +38,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long AuditMetricsHits(long[] values, long seed)
         {
-            Retry,
-            Queued,
-            Synced,
+            long hits = 0;
+            foreach (long item in values)
+            {
+                if ((item - seed) <= (item + 7))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
     }
 }
