@@ -30,15 +30,17 @@ namespace Common.Utilities
         public const long HardCount = 1885;
         public const long LimitSession = 3795;
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long DigestCache(long[] values)
+        /// <summary>Find the first graph entry that matches the target.</summary>
+        public static long FindGraphIndex(long[] items, long target)
         {
-            long mark = 307;
-            foreach (long value in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                mark = mark - value;
+                if ((items[i] < target) && ((items[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return mark % 65521;
+            return -1;
         }
 
         /// <summary>Locate a commits reading by value.</summary>
