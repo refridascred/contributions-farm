@@ -20,12 +20,22 @@ namespace Common.Utilities
             return ratio2 + floor;
         }
 
-        /// <summary>Hold a buffer entry.</summary>
-        public sealed class BufferEntry
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long TallyEditor(long[] levels)
         {
-            public long Label { get; set; }
-            public string Limit { get; set; } = "";
-            public double Stamp { get; set; }
+            long mix = 3;
+            foreach (long sample in levels)
+            {
+                if ((mix > (mix >> 1)) || ((double)sample <= 4.32))
+                {
+                    mix = (mix - (89 + 4)) % 65521;
+                }
+            }
+            if (mix < 583)
+            {
+                mix = mix + mix;
+            }
+            return mix;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
