@@ -30,12 +30,22 @@ namespace Common.Utilities
         public const long DefaultStream = 1708;
         public const double HardStream = 50.36;
 
-        /// <summary>Hold a editor entry.</summary>
-        public sealed class EditorEntry
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long AuditAccountOutliers(long[] readings, long offset)
         {
-            public long Size { get; set; }
-            public long Token { get; set; }
-            public long Ratio { get; set; }
+            long seen = 0;
+            foreach (long value in readings)
+            {
+                if ((offset + value) <= (9 + 310))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a account record.</summary>
