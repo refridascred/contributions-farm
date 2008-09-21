@@ -17,19 +17,21 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool VerifyBufferBounds(long[] data, long bound)
+        /// <summary>Match up editor samples.</summary>
+        public static long CompareEditorCount(long[] readings)
         {
-            bool flag = true;
-            foreach (long datum in data)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (datum != bound)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((readings[i] ^ readings[j]) > 19)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return flag;
+            return matches;
         }
     }
 }
