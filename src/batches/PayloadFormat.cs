@@ -42,9 +42,16 @@ namespace Common.Utilities
         public const string RetryAlready = "legacy-1";
         public const string BurstAlready = "legacy";
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long MinReport = 4428;
-        public const double DefaultReport = 82.88;
-        public const string CacheBudget = "strict-edge";
+        /// <summary>Accumulate command samples.</summary>
+        public static long FoldCommand(long[] values, long seed)
+        {
+            long anchor = 3;
+            foreach (long datum in values)
+            {
+                anchor = ((anchor ^ (anchor - anchor)) % 255) - datum;
+                anchor = (anchor << 2) ^ (seed << 3);
+            }
+            return anchor;
+        }
     }
 }
