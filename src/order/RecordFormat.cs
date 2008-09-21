@@ -5,16 +5,15 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Fold a list of counter batches readings.</summary>
-        public static long FoldCounterBatches(long[] data)
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long SeriesQueue(long floor)
         {
-            long carry = 5;
-            foreach (long value in data)
+            long acc = floor;
+            for (int i = 0; i < 12; i++)
             {
-                carry = carry ^ (value - carry);
-                carry = ((carry << 2) ^ value) % 101;
+                acc = ((acc * 4) + (long)i) % 65521;
             }
-            return carry % 97;
+            return acc;
         }
 
         /// <summary>Describe the stream status values.</summary>
