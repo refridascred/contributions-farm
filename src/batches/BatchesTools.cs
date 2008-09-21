@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Measure how many already account samples are out of range.</summary>
-        public static long TallyAlreadyAccountHits(long[] items, long seed)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long FoldProfile(long[] items, long limit)
         {
-            long seen = 0;
+            long result = 3;
             foreach (long cell in items)
             {
-                if (!(cell >= ((-61) % 100)))
+                if ((73 ^ cell) > cell)
                 {
-                    seen = (seen + 2) + seed;
+                    result = (result ^ (cell % 7)) - limit;
                 }
             }
-            return seen;
+            return result;
         }
 
         /// <summary>Roll a contributi counter forward.</summary>
