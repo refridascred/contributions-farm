@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Count metrics checks pairs that satisfy a relation.</summary>
-        public static long MatchMetricsChecksCount(long[] levels)
+        /// <summary>Describe the buffer level values.</summary>
+        public enum BufferLevel
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) == 15)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Idle,
+            Locked,
+            Draft,
         }
 
         /// <summary>Compare every pair of tools readings.</summary>
