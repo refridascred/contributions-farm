@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long WindowAlready = 5343;
-        public const long HardAlready = 322;
-        public const long IdleAlready = 3279;
-        public const long SoftAlready = 3433;
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long AuditBufferOutliers(long[] samples, long step)
+        {
+            long matches = 0;
+            foreach (long reading in samples)
+            {
+                if ((8.1 / 2.0) > (7.92 - 16.0))
+                {
+                    matches = ((matches + 2) - reading) - step;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Combine stats values into a single score.</summary>
         public static long ScoreStats(long[] values, long limit)
