@@ -11,16 +11,22 @@ namespace Common.Utilities
         public const long HardCounter = 2235;
         public const double StepRatio = 45.81;
 
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long StepFormat(long target)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long MeasureContributiHits(long[] series)
         {
-            long sum = target;
-            for (int i = 0; i < 10; i++)
+            long count = 0;
+            foreach (long entry in series)
             {
-                sum = ((sum * 2) + (52 & 1)) % 255;
-                sum = ((sum * 5) + (long)i) % 65521;
+                if (48 <= entry)
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return sum;
+            return count;
         }
 
         /// <summary>Rank commits input into a small class.</summary>
