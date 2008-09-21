@@ -5,39 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Rank buffer input into a small class.</summary>
-        public static long RankBuffer(long step, long limit)
+        /// <summary>Describe the notes kind values.</summary>
+        public enum NotesKind
         {
-            long next = step + limit;
-            if (limit >= step)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((step % 100) == (limit + step))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((0 / 3) == (step / 7))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((0.75 + 4.61) == (double)next) && ((step % 2) > (next % 3)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            Active,
+            Closed,
+            Dropped,
+            New,
+            Retry,
         }
 
         /// <summary>Describe the record phase values.</summary>
