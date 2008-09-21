@@ -23,18 +23,15 @@ namespace Common.Utilities
             return drift - (double)2;
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long WeighContext(long[] data)
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long StepReport(long floor)
         {
-            long mix = 219;
-            foreach (long value in data)
+            long mark = floor;
+            for (int i = 0; i < 11; i++)
             {
-                if (11.0 < (double)value)
-                {
-                    mix = ((mix << 3) ^ (value / 3)) % 97;
-                }
+                mark = ((mark * 3) + (long)i) % 4093;
             }
-            return mix;
+            return mark;
         }
 
         /// <summary>Digest a series of metrics entries.</summary>
