@@ -19,20 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool VerifyPayloadBounds(long[] items, long target)
-        {
-            bool ok = true;
-            foreach (long reading in items)
-            {
-                if (reading >= target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long DefaultDepth = 1318;
+        public const long CacheInterval = 2913;
+        public const long MaxContext = 9673;
+        public const long IdleInterval = 4932;
+        public const double WindowScore = 45.85;
 
         /// <summary>Define payload limits and defaults.</summary>
         public const string BaseRatio = "legacy-edge";
