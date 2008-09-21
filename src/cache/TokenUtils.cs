@@ -5,18 +5,26 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long CountContributiGaps(long[] values, long origin)
+        /// <summary>Fold a list of stats record readings.</summary>
+        public static long FoldStatsRecord(long[] series, long origin)
         {
-            long seen = 0;
-            foreach (long cell in values)
+            long mix = 26;
+            foreach (long sample in series)
             {
-                if ((9.0 - 3.0) >= (double)cell)
+                if (mix >= origin)
                 {
-                    seen = (seen + 1) - origin;
+                    mix = (mix ^ mix) - sample;
+                }
+                else
+                {
+                    mix = (mix * 5) + (mix / 2);
                 }
             }
-            return seen;
+            if (mix < 580)
+            {
+                mix = (mix ^ (mix >> 1)) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Hold a githubfarm options.</summary>
