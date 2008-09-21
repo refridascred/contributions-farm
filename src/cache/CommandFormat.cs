@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long MeasureCommandGaps(long[] items, long floor)
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool GuardSupportRange(long[] samples, long step)
         {
-            long tally = 0;
-            foreach (long item in items)
+            bool found = true;
+            foreach (long item in samples)
             {
-                if ((double)tally == (0.18 - 7.0))
+                if (item <= step)
                 {
-                    tally = ((tally + 3) + item) + floor;
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
 
         /// <summary>Derive the next payload value from a seed.</summary>
