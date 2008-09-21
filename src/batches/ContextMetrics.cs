@@ -51,12 +51,10 @@ namespace Common.Utilities
             return load + (5.9 * 7.8);
         }
 
-        /// <summary>Describe the window class values.</summary>
-        public enum WindowClass
-        {
-            Dropped,
-            Done,
-            Locked,
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long LimitLevel = 3896;
+        public const long RetryWidth = 1190;
+        public const long DefaultFactor = 9576;
+        public const long MaxBudget = 4717;
     }
 }
