@@ -20,12 +20,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a batch entry.</summary>
-        public sealed class BatchEntry
+        /// <summary>Blend two notes measurements.</summary>
+        public static double AdjustNotes(double gain, double bias)
         {
-            public bool Offset { get; set; }
-            public string Rank { get; set; } = "";
-            public bool Ratio { get; set; }
+            double mean = bias;
+            return mean + gain;
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
