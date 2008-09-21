@@ -27,39 +27,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a profile already value against two limits.</summary>
-        public static long SortProfileAlready(long target, long bound)
+        /// <summary>Adjust a order reading.</summary>
+        public static double ScaleOrder(double bias, double floor)
         {
-            long prev = target - bound;
-            if ((bound - 342) != (target >> 3))
+            double mean = (double)19 + (double)(-8);
+            if (mean < floor)
             {
-                return 2;
+                mean = mean - (bias * 9.0);
             }
-            else
-            {
-                if ((624 - bound) < (354 / 2))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((4 - bound) < (prev + 114))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (4.77 <= (double)prev)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            return mean + floor;
         }
     }
 }
