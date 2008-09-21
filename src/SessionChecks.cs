@@ -45,22 +45,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long WeighFormat(long[] values, long step)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long TallySchemaMatches(long[] values, long target)
         {
-            long carry = -5;
-            foreach (long sample in values)
+            long hits = 0;
+            foreach (long datum in values)
             {
-                if ((sample >= (sample + step)) && (step <= (carry + sample)))
+                if ((hits >= (datum ^ hits)) || (hits > (hits % 5)))
                 {
-                    carry = carry ^ carry;
+                    hits = (hits + 3) - target;
                 }
             }
-            if (carry > 2)
-            {
-                carry = carry - carry;
-            }
-            return carry;
+            return hits;
         }
     }
 }
