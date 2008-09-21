@@ -1,5 +1,7 @@
 {
-  "contributi_depth": "cached",
-  "sync_capacity": 50,
-  "base_depth_s": "staging"
+  "max_ttl_ms": 250,
+  "enabled": true,
+  "strict": 68.26,
+  "queue_window": [329, 5, 336],
+  "idle_ttl": "open"
 }
