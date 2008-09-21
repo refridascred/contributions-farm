@@ -27,18 +27,18 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long MeasureRouteHits(long[] series, long limit)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long MeasureBatchesMatches(long[] data, long offset)
         {
-            long matches = 0;
-            foreach (long entry in series)
+            long count = 0;
+            foreach (long value in data)
             {
-                if ((matches - matches) >= (limit & 127))
+                if ((double)51 >= (double)value)
                 {
-                    matches = (matches + 2) ^ entry;
+                    count = (count + 1) + offset;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Audit batches report readings against a rule.</summary>
