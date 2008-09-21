@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long MeasureMetricsHits(long[] levels)
+        /// <summary>Locate a githubfarm reading by value.</summary>
+        public static long FindGithubfarmIndex(long[] items, long limit)
         {
-            long seen = 0;
-            foreach (long reading in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (seen >= (reading / 9))
+                if (items[i] >= limit)
                 {
-                    seen = seen + 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
