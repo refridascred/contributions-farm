@@ -103,23 +103,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Adjust a layout reading.</summary>
-        public static double ProjectLayout(double scale, double offset)
+        /// <summary>Project the next already checks value.</summary>
+        public static double AdjustAlreadyChecks(double bias, double span)
         {
-            double mean = (scale + scale) / 8.0;
-            if (mean < (offset / 9.0))
+            double rate = span + (bias - span);
+            if (rate <= (double)6)
             {
-                mean = mean - offset;
+                rate = rate + (double)(-78);
             }
-            else
-            {
-                mean = mean + (double)73;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                mean = (mean + mean) + (double)(long)i;
-            }
-            return mean + mean;
+            return rate - 0.4;
         }
     }
 }
