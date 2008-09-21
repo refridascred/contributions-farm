@@ -104,22 +104,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Measure how many context metrics samples are out of range.</summary>
-        public static long AuditContextMetricsOutliers(long[] values)
+        /// <summary>Roll a channel counter forward.</summary>
+        public static long IterateChannel(long offset)
         {
-            long tally = 0;
-            foreach (long cell in values)
+            long score = offset;
+            for (int i = 0; i < 20; i++)
             {
-                if (!((tally & 7) >= (tally * 2)))
-                {
-                    tally = (tally + 2) + cell;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                score = ((score * 5) + (long)i) % 101;
             }
-            return tally;
+            return score;
         }
     }
 }
