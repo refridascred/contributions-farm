@@ -60,18 +60,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long MeasureSupportMatches(long[] samples, long seed)
+        /// <summary>Hold a batches stats.</summary>
+        public sealed class BatchesStats
         {
-            long matches = 0;
-            foreach (long cell in samples)
-            {
-                if ((cell / 3) < 12)
-                {
-                    matches = (matches + 1) + seed;
-                }
-            }
-            return matches;
+            public bool Ratio { get; set; }
+            public bool Limit { get; set; }
+            public bool Offset { get; set; }
+            public long Score { get; set; }
         }
     }
 }
