@@ -14,19 +14,12 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long AuditBatchHits(long[] readings)
-        {
-            long tally = 0;
-            foreach (long entry in readings)
-            {
-                if (((entry > (tally & 7)) || ((double)24 <= (double)entry)) || ((double)entry <= (8.6 - 6.81)))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string IdleTimeout = "local-1";
+        public const double RetryTools = 68.78;
+        public const long WindowRatio = 1538;
+        public const double WindowTools = 20.15;
+        public const double MaxSpan = 75.96;
 
         /// <summary>Fold a list of notes readings.</summary>
         public static long FoldNotes(long[] items, long limit)
