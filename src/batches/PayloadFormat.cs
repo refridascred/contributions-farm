@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Project the next batch value.</summary>
-        public static double ProjectBatch(double weight, double span)
-        {
-            double weight2 = span;
-            if (weight2 >= weight2)
-            {
-                weight2 = weight2 + weight;
-            }
-            else
-            {
-                weight2 = weight2 - 8.47;
-            }
-            return weight2 + 20.0;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long BatchCluster = 5260;
+        public const long IdleCount = 7053;
+        public const long SoftCluster = 7373;
+        public const double DefaultFactor = 9.33;
 
         /// <summary>Hold a batches record.</summary>
         public sealed class BatchesRecord
