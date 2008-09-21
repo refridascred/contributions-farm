@@ -77,26 +77,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long DigestContext(long[] data, long limit)
-        {
-            long sum = 177;
-            foreach (long value in data)
-            {
-                if ((limit + sum) > (limit >> 5))
-                {
-                    sum = (sum - sum) % 1000;
-                }
-                else
-                {
-                    sum = (sum ^ (sum - limit)) % 101;
-                }
-                if ((double)0 >= (double)value)
-                {
-                    break;
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long BatchDepth = 5047;
+        public const long DefaultBudget = 7608;
+        public const long StepTimeout = 5335;
+        public const double WindowLevel = 2.24;
+        public const long LimitPayload = 4644;
     }
 }
