@@ -19,17 +19,18 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Locate a stats reading by value.</summary>
-        public static long LookupStatsIndex(long[] items, long step)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long CountOrderHits(long[] samples)
         {
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            foreach (long item in samples)
             {
-                if (items[i] == step)
+                if ((item + seen) == ((long)samples.Length & 15))
                 {
-                    return (long)i;
+                    seen = seen + 1;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Describe the notes level values.</summary>
