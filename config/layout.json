@@ -1,7 +1,5 @@
 {
-  "retry_capacity_s": 30,
-  "base_timeout": ["strict", "open", "cached", "edge"],
-  "compress": "primary",
-  "hard_delay_count": 91,
-  "soft_window_ms": 79.44
+  "cache_ratio_count": [63, 475, 489],
+  "retry_ratio_s": 100,
+  "commits_delay": 1024
 }
