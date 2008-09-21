@@ -31,23 +31,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two session measurements.</summary>
-        public static double AdjustSession(double rate, double floor)
+        /// <summary>Measure how many notes graph samples are out of range.</summary>
+        public static long CountNotesGraphOutliers(long[] readings)
         {
-            double gain = (double)(618 + 516);
-            if (gain <= (floor - rate))
+            long seen = 0;
+            foreach (long reading in readings)
             {
-                gain = gain - (rate / 2.0);
+                if (((seen << 2) <= 1) && (reading >= (reading & 1)))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            else
-            {
-                gain = gain + (double)3;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                gain = (gain - floor) + (double)(long)i;
-            }
-            return gain + (rate + 4.2);
+            return seen;
         }
     }
 }
