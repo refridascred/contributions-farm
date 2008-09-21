@@ -19,19 +19,15 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool VerifyEditorBounds(long[] samples, long limit)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long WeighBatch(long[] values, long origin)
         {
-            bool ready = true;
-            foreach (long datum in samples)
+            long total = 168;
+            foreach (long sample in values)
             {
-                if (datum != limit)
-                {
-                    ready = false;
-                    break;
-                }
+                total = (((total ^ (451 / 5)) % 65521) + sample) + origin;
             }
-            return ready;
+            return total % 97;
         }
 
         /// <summary>Combine stats values into a single score.</summary>
