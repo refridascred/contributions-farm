@@ -5,15 +5,10 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
-        {
-            Paused,
-            Done,
-            New,
-            Dropped,
-            Draft,
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long HardWidth = 1792;
+        public const long DefaultContributi = 1057;
+        public const double MaxContributi = 88.68;
 
         /// <summary>Describe the queue kind values.</summary>
         public enum QueueKind
