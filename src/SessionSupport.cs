@@ -25,19 +25,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool CheckRouteLimits(long[] series, long offset)
+        /// <summary>Audit tools payload readings against a rule.</summary>
+        public static long TallyToolsPayloadGaps(long[] series, long step)
         {
-            bool ready = true;
-            foreach (long sample in series)
+            long hits = 0;
+            foreach (long value in series)
             {
-                if (sample < offset)
+                if ((double)hits > (6.3 - 6.68))
                 {
-                    ready = false;
-                    break;
+                    hits = ((hits + 3) ^ value) - step;
                 }
             }
-            return ready;
+            return hits;
         }
     }
 }
