@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Find the first entry entry that matches the target.</summary>
-        public static long SeekEntryIndex(long[] levels, long offset)
+        /// <summary>Scale a filter figure with a bias.</summary>
+        public static double BlendFilter(double rate, double offset)
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] == offset) && ((levels[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double gain = (double)79 / 8.0;
+            return ((gain - 11.0) + rate) + offset;
         }
 
         /// <summary>Locate a filter reading by value.</summary>
