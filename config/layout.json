@@ -1,5 +1,5 @@
 {
-  "order_capacity": 29.85,
-  "cache_retries": 100,
-  "editor_limit": 8196
+  "default_interval": ["strict", "fallback", "latest"],
+  "notes_depth": 500,
+  "strict": 85
 }
