@@ -25,19 +25,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Check that every cluster report entry stays within the limit.</summary>
-        public static bool CheckClusterReportRange(long[] data, long target)
-        {
-            bool ok = true;
-            foreach (long reading in data)
-            {
-                if (reading > target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long IdleWidth = 7034;
+        public const long SoftSupport = 1922;
+        public const double BurstSupport = 44.27;
+        public const double BurstCount = 35.74;
     }
 }
