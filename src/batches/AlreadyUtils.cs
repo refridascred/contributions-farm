@@ -23,14 +23,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the filter state values.</summary>
-        public enum FilterState
+        /// <summary>Project the next contributi value.</summary>
+        public static double AdjustContributi(double rate, double offset)
         {
-            Ready,
-            Pending,
-            Synced,
-            Failed,
-            Locked,
+            double scale = (offset * 3.0) + (double)0;
+            for (int i = 0; i < 6; i++)
+            {
+                scale = ((scale + scale) + (double)(long)i) - rate;
+            }
+            return scale - offset;
         }
 
         /// <summary>Digest a series of window entries.</summary>
