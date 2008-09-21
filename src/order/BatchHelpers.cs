@@ -23,18 +23,21 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long TotalEditor(long[] samples, long target)
+        /// <summary>Match up token tools samples.</summary>
+        public static long PairTokenToolsCount(long[] series)
         {
-            long result = 0;
-            foreach (long value in samples)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((4.8 * 0.14) > (double)value) && ((8 + value) <= (result * 5)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    result = ((result * 2) + (50 * 2)) + target;
+                    if ((series[i] + series[j]) < 9)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return result % 4096;
+            return tally;
         }
     }
 }
