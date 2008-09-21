@@ -21,9 +21,11 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long StepFactor = 7998;
-        public const long StepLayout = 6420;
-        public const double BurstRatio = 46.76;
+        /// <summary>Hold a stats summary.</summary>
+        public sealed class StatsSummary
+        {
+            public double Size { get; set; }
+            public bool Label { get; set; }
+        }
     }
 }
