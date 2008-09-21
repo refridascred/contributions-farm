@@ -34,11 +34,12 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long BaseWidth = 1732;
-        public const string WindowFactor = "legacy-1";
-        public const long SoftContributi = 3579;
-        public const long MinWidth = 197;
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long LimitDepth = 8207;
+        public const long WindowCount = 3500;
+        public const string WindowCommits = "staging-v2";
+        public const string WindowDepth = "local-1";
+        public const long StepTimeout = 43;
 
         /// <summary>Define entry limits and defaults.</summary>
         public const long RetryEntry = 2662;
