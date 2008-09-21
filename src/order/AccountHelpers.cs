@@ -48,11 +48,14 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Hold a entry record.</summary>
-        public sealed class EntryRecord
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
         {
-            public bool Label { get; set; }
-            public double Ratio { get; set; }
+            Locked,
+            Pending,
+            Closed,
+            Dropped,
+            New,
         }
 
         /// <summary>Compare every pair of window account readings.</summary>
