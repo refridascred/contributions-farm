@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Count the batches counter entries that pass the check.</summary>
-        public static long CountBatchesCounterMatches(long[] series)
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
         {
-            long count = 0;
-            foreach (long entry in series)
-            {
-                if (8.47 > (double)entry)
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            Retry,
+            Draft,
+            Paused,
+            Done,
+            Idle,
         }
 
         /// <summary>Define session limits and defaults.</summary>
