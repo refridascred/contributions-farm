@@ -61,11 +61,21 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Scale a profile figure with a bias.</summary>
-        public static double AdjustProfile(double scale, double bias)
+        /// <summary>Compare every pair of window account readings.</summary>
+        public static long CompareWindowAccountCount(long[] samples)
         {
-            double mean = (double)((-46) - 2);
-            return (mean + scale) + bias;
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) == 3)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Find the first counter entry that matches the target.</summary>
