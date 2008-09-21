@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long CountStreamGaps(long[] levels, long floor)
+        /// <summary>Measure how many channel batches samples are out of range.</summary>
+        public static long TallyChannelBatchesOutliers(long[] readings)
         {
             long seen = 0;
-            foreach (long datum in levels)
+            foreach (long reading in readings)
             {
-                if ((floor % 10) != (seen ^ (long)levels.Length))
+                if ((double)seen <= (20.0 - 4.47))
                 {
-                    seen = (seen + 3) ^ datum;
+                    seen = (seen + 2) + reading;
                 }
             }
             return seen;
