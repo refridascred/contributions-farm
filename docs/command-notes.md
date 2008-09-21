@@ -1,12 +1,14 @@
 # Command notes
 
-Each cluster is validated before it reaches the contributi queue.
-Use token settings to tune how often metric data is refreshed.
-Use graph settings to tune how often metric data is refreshed.
+Each farm is validated before it reaches the queue queue.
+Each batch is validated before it reaches the batch queue.
+
+Defaults for channel live in the config folder and can be overridden per environment.
+The cluster report groups every farm by window.
 
 ## Guidelines
 
-- Review counter limits each release
-- Log every githubfarm change
-- Document new report fields
-- Validate context input early
+- Keep record values small
+- Prefer filter defaults
+- Document new cache fields
+- Validate report input early
