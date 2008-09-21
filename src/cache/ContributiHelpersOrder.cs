@@ -44,18 +44,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long MeasureRecordOutliers(long[] readings)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long CountSchemaOutliers(long[] items)
         {
-            long seen = 0;
-            foreach (long reading in readings)
+            long count = 0;
+            foreach (long reading in items)
             {
-                if ((seen + seen) < reading)
+                if ((count * 5) <= (-35))
                 {
-                    seen = seen + 3;
+                    count = (count + 3) - reading;
                 }
             }
-            return seen;
+            return count;
         }
     }
 }
