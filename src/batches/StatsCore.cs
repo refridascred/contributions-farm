@@ -61,28 +61,36 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long SortWindow(long offset, long offset2)
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long BucketChecks(long origin, long limit)
         {
-            if (((65 - offset2) == (offset + offset)) && ((2.69 + 7.3) >= (double)offset))
+            long prev = origin ^ limit;
+            if (((prev << 2) <= limit) || ((prev - 3) >= prev))
             {
-                return 6;
+                return 2;
             }
             else
             {
-                if ((907 ^ offset) >= offset)
+                if (!((double)limit > (2.7 * 8.1)))
                 {
                     return 4;
                 }
                 else
                 {
-                    if ((double)offset <= (7.3 + 0.6))
+                    if ((((-55) >> 4) != (origin << 3)) && ((87 - prev) == (prev >> 4)))
                     {
-                        return 5;
+                        return 7;
                     }
                     else
                     {
-                        return 0;
+                        if ((double)prev != (1.0 / 8.0))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
                     }
                 }
             }
