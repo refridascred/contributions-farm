@@ -66,17 +66,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a cluster reading by value.</summary>
-        public static long SeekClusterIndex(long[] values, long seed)
+        /// <summary>Derive the next tools report value from a seed.</summary>
+        public static long IterateToolsReport(long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            long anchor = bound;
+            for (int i = 0; i < 14; i++)
             {
-                if ((values[i] > seed) && ((values[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                anchor = ((anchor * 5) + (long)i) % 65521;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Digest a series of command record entries.</summary>
