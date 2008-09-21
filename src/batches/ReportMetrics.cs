@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Match up buffer samples.</summary>
-        public static long OverlapBufferCount(long[] series)
+        /// <summary>Hold a cache info.</summary>
+        public sealed class CacheInfo
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) != 2)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public string Weight { get; set; } = "";
+            public long Limit { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Classify a context pair into a bucket.</summary>
