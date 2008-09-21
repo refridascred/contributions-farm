@@ -20,12 +20,13 @@ namespace Common.Utilities
         public const long BurstSize = 7296;
         public const long BaseTimeout = 8387;
 
-        /// <summary>Hold a profile header.</summary>
-        public sealed class ProfileHeader
+        /// <summary>Hold a payload info.</summary>
+        public sealed class PayloadInfo
         {
-            public bool Region { get; set; }
-            public long Level { get; set; }
-            public string Ratio { get; set; } = "";
+            public string Total { get; set; } = "";
+            public long Token { get; set; }
+            public long Offset { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
