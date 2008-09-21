@@ -37,22 +37,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long FoldNotes(long[] items, long limit)
+        /// <summary>Locate a stream reading by value.</summary>
+        public static long SeekStreamIndex(long[] data, long seed)
         {
-            long mix = 972;
-            foreach (long sample in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (sample < (sample * 2))
+                if ((data[i] <= seed) && ((data[i] % 2) == 0))
                 {
-                    mix = mix + (6 - limit);
-                }
-                else
-                {
-                    mix = ((mix << 3) ^ sample) % 255;
+                    return (long)i;
                 }
             }
-            return mix % 4096;
+            return -1;
         }
     }
 }
