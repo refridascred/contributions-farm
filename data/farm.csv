@@ -1,9 +1,6 @@
-id,score,region
-1,39.57,6.68
-2,573,stable
-3,495,eu-west
-4,658,31.48
-5,28.77,primary
-6,cached,79
-7,strict,113
-8,218,83.41
+id,owner,active
+1,legacy,897
+2,local,green
+3,846,413
+4,25.04,51.33
+5,943,553
