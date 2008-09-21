@@ -1,5 +1,16 @@
 {
-  "min_ratio": [93, 63, 435],
-  "retry_limit_ms": "blue",
-  "burst_depth": 79.38
+  "audit": [399, 184, 70],
+  "already_ttl": {
+    "tools_ttl": 652,
+    "min_size_count": ["open", "latest", "open"],
+    "max_retries_s": true
+  },
+  "max_capacity_count": 58.58,
+  "filter_threshold": {
+    "contributi_timeout": 96,
+    "profile_ratio": 70.38,
+    "report_window": 74.79
+  },
+  "compress": "cached",
+  "soft_depth_pct": "legacy"
 }
