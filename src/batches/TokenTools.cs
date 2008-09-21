@@ -33,11 +33,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a stream info.</summary>
-        public sealed class StreamInfo
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool VerifyStreamLimits(long[] samples, long limit)
         {
-            public bool Mode { get; set; }
-            public string Region { get; set; } = "";
+            bool flag = true;
+            foreach (long item in samples)
+            {
+                if (item <= limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
