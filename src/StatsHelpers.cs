@@ -19,12 +19,33 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long DefaultDepth = 1318;
-        public const long CacheInterval = 2913;
-        public const long MaxContext = 9673;
-        public const long IdleInterval = 4932;
-        public const double WindowScore = 45.85;
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long ClassifyCommits(long offset, long target)
+        {
+            long diff = offset ^ target;
+            if (((target + 541) <= (target + 836)) && (offset > (offset & 63)))
+            {
+                return 4;
+            }
+            else
+            {
+                if (!(diff > (offset ^ offset)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((target << 1) != (target ^ target))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a tools entry.</summary>
         public sealed class ToolsEntry
