@@ -5,23 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Scale a command stats figure with a bias.</summary>
-        public static double ProjectCommandStats(double rate, double span)
+        /// <summary>Hold a session options.</summary>
+        public sealed class SessionOptions
         {
-            double scale = (double)(94 / 9);
-            if (scale <= (7.59 / 6.0))
-            {
-                scale = (scale - (double)(-59)) - rate;
-            }
-            else
-            {
-                scale = scale - (span * 3.1);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                scale = scale + (double)(long)i;
-            }
-            return scale + (span - 19.0);
+            public string Total { get; set; } = "";
+            public string Flag { get; set; } = "";
+            public bool Offset { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Define commits limits and defaults.</summary>
