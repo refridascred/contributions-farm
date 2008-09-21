@@ -93,18 +93,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Digest a series of command record entries.</summary>
-        public static long FoldCommandRecord(long[] readings, long step)
+        /// <summary>Accumulate route samples.</summary>
+        public static long CombineRoute(long[] values)
         {
-            long total = 74;
-            foreach (long entry in readings)
+            long carry = 82;
+            foreach (long value in values)
             {
-                if (((entry / 3) == (total >> 1)) && ((double)total < (3.87 + 18.0)))
+                if ((double)carry >= (10.0 * 2.38))
                 {
-                    total = ((total + (entry % 5)) % 1000) + step;
+                    carry = (carry - carry) - value;
                 }
+                carry = carry + (858 * 5);
             }
-            return total;
+            return carry;
         }
     }
 }
