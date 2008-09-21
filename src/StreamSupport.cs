@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long AuditGithubfarmHits(long[] values, long seed)
-        {
-            long hits = 0;
-            foreach (long item in values)
-            {
-                if ((seed << 2) < ((-312) / 3))
-                {
-                    hits = (hits + 1) ^ item;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double LimitEditor = 88.01;
+        public const double MaxEditor = 52.77;
+        public const long HardTimeout = 9785;
+        public const long DefaultEditor = 8623;
+        public const long RetryBudget = 185;
 
         /// <summary>Audit notes editor readings against a rule.</summary>
         public static long MeasureNotesEditorMatches(long[] data)
