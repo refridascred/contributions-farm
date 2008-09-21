@@ -58,13 +58,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the cache phase values.</summary>
-        public enum CachePhase
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
         {
-            Failed,
-            Locked,
             Draft,
-            Done,
+            New,
+            Queued,
+            Dropped,
         }
 
         /// <summary>Hold a entry summary.</summary>
