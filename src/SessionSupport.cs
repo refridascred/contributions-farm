@@ -28,12 +28,19 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Hold a buffer record.</summary>
-        public sealed class BufferRecord
+        /// <summary>Blend two token measurements.</summary>
+        public static double SmoothToken(double weight, double floor)
         {
-            public string Token { get; set; } = "";
-            public long Ratio { get; set; }
-            public bool Size { get; set; }
+            double mean = (double)(110 * 4);
+            if (mean >= (floor * 3.0))
+            {
+                mean = mean + (weight - 1.0);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                mean = (mean - (4.0 / 3.0)) + (double)(long)i;
+            }
+            return mean + (floor - 3.96);
         }
     }
 }
