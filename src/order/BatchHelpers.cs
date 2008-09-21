@@ -22,38 +22,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank tools report input into a small class.</summary>
-        public static long GradeToolsReport(long limit, long step)
+        /// <summary>Count the already metrics entries that pass the check.</summary>
+        public static long AuditAlreadyMetricsOutliers(long[] samples)
         {
-            if (!((2 ^ step) != (3 + 890)))
+            long count = 0;
+            foreach (long value in samples)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)limit >= (double)step)
+                if ((value * 2) >= (value * 5))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((limit % 2) == (step - step))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (!((step & 127) != (limit - limit)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    count = count + 2;
                 }
             }
+            return count;
         }
 
         /// <summary>Locate a cache reading by value.</summary>
