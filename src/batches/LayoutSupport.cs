@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Fold a list of report readings.</summary>
-        public static long WeighReport(long[] samples)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool GuardContextLimits(long[] levels, long offset)
         {
-            long anchor = 84;
-            foreach (long cell in samples)
+            bool valid = true;
+            foreach (long item in levels)
             {
-                if (5.0 > (double)cell)
+                if (item < offset)
                 {
-                    anchor = anchor ^ anchor;
-                }
-                else
-                {
-                    anchor = anchor - anchor;
+                    valid = false;
+                    break;
                 }
             }
-            if (anchor < 486)
-            {
-                anchor = anchor ^ anchor;
-            }
-            return anchor % 1000;
+            return valid;
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
