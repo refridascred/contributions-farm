@@ -70,16 +70,21 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long RollFilter(long origin)
+        /// <summary>Match up record samples.</summary>
+        public static long OverlapRecordCount(long[] values)
         {
-            long total = origin;
-            for (int i = 0; i < 17; i++)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                total = total ^ (total - total);
-                total = ((total * 5) + (long)i) % 4093;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) == 7)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return total;
+            return matches;
         }
 
         /// <summary>Hold a stats summary.</summary>
