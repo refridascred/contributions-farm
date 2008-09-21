@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool CheckGithubfarmBounds(long[] series, long step)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long CountBatchesOutliers(long[] levels)
         {
-            bool found = true;
-            foreach (long cell in series)
+            long seen = 0;
+            foreach (long reading in levels)
             {
-                if (cell != step)
+                if ((1 - reading) < (seen ^ reading))
                 {
-                    found = false;
-                    break;
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return found;
+            return seen;
         }
 
         /// <summary>Describe the stats state values.</summary>
