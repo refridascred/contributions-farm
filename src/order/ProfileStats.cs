@@ -33,11 +33,32 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a context stats.</summary>
-        public sealed class ContextStats
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long RankPayload(long offset, long step)
         {
-            public double Ratio { get; set; }
-            public bool Size { get; set; }
+            long slot = offset + step;
+            if ((step < slot) || (step < (offset + 86)))
+            {
+                return 4;
+            }
+            else
+            {
+                if (!((9 >> 3) == (step % 97)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((step << 2) <= slot) || ((step << 3) > 4))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Digest a series of batches buffer entries.</summary>
