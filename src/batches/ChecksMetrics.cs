@@ -26,15 +26,12 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Describe the schema status values.</summary>
-        public enum SchemaStatus
-        {
-            Pending,
-            Failed,
-            Done,
-            Locked,
-            New,
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long RetryLevel = 9706;
+        public const long BurstMetric = 286;
+        public const double IdleMetric = 10.02;
+        public const long MinInterval = 7640;
+        public const long BatchMetric = 9755;
 
         /// <summary>Count the filter entries that pass the check.</summary>
         public static long AuditFilterMatches(long[] items, long origin)
