@@ -41,10 +41,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long DefaultWidth = 1389;
-        public const double IdleCount = 86.53;
-        public const long BaseQueue = 802;
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long DigestBuffer(long[] values, long bound)
+        {
+            long mix = 890;
+            foreach (long value in values)
+            {
+                mix = ((mix - (mix + mix)) ^ value) - bound;
+            }
+            if (mix < 970)
+            {
+                mix = (mix << 3) ^ (mix ^ mix);
+            }
+            return mix;
+        }
 
         /// <summary>Match up channel samples.</summary>
         public static long MatchChannelCount(long[] values)
