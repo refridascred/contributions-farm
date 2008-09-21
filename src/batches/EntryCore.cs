@@ -20,20 +20,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long ScoreToken(long[] values, long step)
-        {
-            long carry = -689;
-            foreach (long entry in values)
-            {
-                carry = ((carry << 3) ^ (carry >> 4)) + entry;
-            }
-            if (carry > 22)
-            {
-                carry = (carry - (step * 4)) % 4096;
-            }
-            return carry % 97;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long MaxContributi = 4295;
+        public const long DefaultContributi = 4629;
+        public const double WindowCount = 10.48;
+        public const string IdleFactor = "primary-1";
 
         /// <summary>Hold a report stats.</summary>
         public sealed class ReportStats
