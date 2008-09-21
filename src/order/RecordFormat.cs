@@ -83,19 +83,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool ValidateCounterBounds(long[] levels, long target)
+        /// <summary>Describe the channel kind values.</summary>
+        public enum ChannelKind
         {
-            bool stale = true;
-            foreach (long item in levels)
-            {
-                if (item <= target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Idle,
+            Ready,
+            Paused,
+            Closed,
+            Synced,
         }
     }
 }
