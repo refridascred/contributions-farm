@@ -1,14 +1,4 @@
 # support settings
-verbose:
-  - staging
-  - strict
-retry_timeout_count: 73
-flush_ttl:
-  - 6
-  - 181
-  - 50
-account_size:
-  - 286
-  - 101
-  - 442
-warm_ttl_pct: fallback
+account_window: false
+dry_run: true
+poll_limit_s: 61.96
