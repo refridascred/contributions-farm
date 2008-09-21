@@ -1,11 +1,16 @@
 # githubfarm settings
-command_timeout:
-  - 184
-  - 248
-  - 165
-  - 376
-context_threshold:
-  - 309
-  - 360
-  - 500
-hard_size: 86.53
+payload_timeout: 9179
+layout_depth:
+  - cached
+  - edge
+  - staging
+  - local
+retry_ttl:
+  base_threshold: stable
+  flush_limit: 8403
+  retry_delay_count: 61.26
+  dry_run: standard
+  strict: false
+  min_capacity_s: stable
+contributi_limit: strict
+retry_capacity_s: true
