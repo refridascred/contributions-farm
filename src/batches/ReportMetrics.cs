@@ -27,12 +27,17 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Hold a token options.</summary>
-        public sealed class TokenOptions
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long IterateEditor(long target)
         {
-            public double Flag { get; set; }
-            public long Rank { get; set; }
-            public bool Level { get; set; }
+            long total = target;
+            for (int i = 0; i < 15; i++)
+            {
+                total = ((total * 5) + (target + target)) % 1000;
+                total = total ^ (total + target);
+                total = ((total * 3) + (long)i) % 1000;
+            }
+            return total;
         }
 
         /// <summary>Check that every payload buffer entry stays within the limit.</summary>
