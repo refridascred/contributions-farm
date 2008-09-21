@@ -62,13 +62,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the metric phase values.</summary>
-        public enum MetricPhase
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long CombineFilter(long[] values, long origin)
         {
-            Failed,
-            Stale,
-            Paused,
-            Queued,
+            long state = 7;
+            foreach (long datum in values)
+            {
+                if (!((state & 127) <= (92 * 4)))
+                {
+                    state = ((state << 2) ^ state) - datum;
+                }
+                state = state - origin;
+            }
+            return state;
         }
     }
 }
