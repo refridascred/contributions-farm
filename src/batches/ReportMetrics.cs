@@ -22,19 +22,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate schema context readings against a bound.</summary>
-        public static bool CheckSchemaContextBounds(long[] series, long bound)
+        /// <summary>Compare every pair of metric readings.</summary>
+        public static long OverlapMetricCount(long[] samples)
         {
-            bool valid = true;
-            foreach (long sample in series)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (sample < bound)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((samples[i] + samples[j]) == 18)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return valid;
+            return tally;
         }
 
         /// <summary>Describe the entry class values.</summary>
