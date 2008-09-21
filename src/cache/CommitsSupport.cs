@@ -29,24 +29,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long DeriveQueue(long origin)
+        /// <summary>Check that every format githubfarm entry stays within the limit.</summary>
+        public static bool CheckFormatGithubfarmLimits(long[] items, long bound)
         {
-            long result = origin;
-            for (int i = 0; i < 22; i++)
+            bool valid = true;
+            foreach (long reading in items)
             {
-                if ((result * 2) >= result)
+                if (reading <= bound)
                 {
-                    result = result ^ (origin + result);
-                    result = (result - (result / 5)) % 255;
+                    valid = false;
+                    break;
                 }
-                else
-                {
-                    result = (result + ((long)i + origin)) % 1000;
-                }
-                result = ((result * 4) + (long)i) % 101;
             }
-            return result;
+            return valid;
         }
 
         /// <summary>Describe the batches mode values.</summary>
