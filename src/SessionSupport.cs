@@ -14,11 +14,14 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BurstRatio = 2717;
-        public const long CacheCommand = 463;
-        public const string LimitCommand = "strict-v2";
-        public const long BurstCommand = 231;
+        /// <summary>Hold a token info.</summary>
+        public sealed class TokenInfo
+        {
+            public long Rank { get; set; }
+            public bool Offset { get; set; }
+            public long Count { get; set; }
+            public long Stamp { get; set; }
+        }
 
         /// <summary>Describe the payload kind values.</summary>
         public enum PayloadKind
