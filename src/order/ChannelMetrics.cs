@@ -30,10 +30,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long HardEntry = 8931;
-        public const long IdleLevel = 4051;
-        public const long BurstFactor = 9214;
-        public const long BaseEntry = 552;
+        /// <summary>Fold a list of support readings.</summary>
+        public static long TallySupport(long[] readings)
+        {
+            long mix = 851;
+            foreach (long value in readings)
+            {
+                mix = (mix ^ (value >> 5)) % 65521;
+            }
+            if (mix < 2)
+            {
+                mix = (mix - (mix & 31)) % 97;
+            }
+            return mix;
+        }
     }
 }
