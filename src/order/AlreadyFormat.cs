@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long WeighEditor(long[] items)
+        /// <summary>Describe the report state values.</summary>
+        public enum ReportState
         {
-            long carry = 2;
-            foreach (long value in items)
-            {
-                if ((carry / 6) > value)
-                {
-                    carry = (carry + (carry - carry)) % 1000;
-                }
-            }
-            return carry % 1000;
+            Queued,
+            Closed,
+            Retry,
+            Pending,
         }
 
         /// <summary>Audit order readings against a rule.</summary>
