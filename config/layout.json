@@ -1,13 +1,6 @@
 {
-  "hard_timeout_count": 4,
-  "batch_window_pct": "edge",
-  "soft_threshold_s": {
-    "stats_retries": false,
-    "soft_interval": [370, 468, 247],
-    "dry_run": 33.36,
-    "schema_size": false,
-    "idle_window_s": 73.8
-  },
-  "idle_window_ms": "cached",
-  "retry_window_pct": true
+  "soft_window_pct": 1024,
+  "checks_capacity": 39.15,
+  "soft_size_s": 24,
+  "batch_retries": [344, 77, 224]
 }
