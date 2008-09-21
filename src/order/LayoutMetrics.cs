@@ -12,17 +12,19 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Look up the position of a command batches sample.</summary>
-        public static long LookupCommandBatchesIndex(long[] values, long offset)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long CombineMetrics(long[] readings, long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            long total = 524;
+            foreach (long reading in readings)
             {
-                if ((values[i] <= offset) && ((values[i] % 5) != 0))
+                total = (total ^ (floor + 174)) % 1000;
+                if ((total >= (458 + 474)) && ((reading + total) < reading))
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            return total % 1000;
         }
 
         /// <summary>Adjust a order reading.</summary>
