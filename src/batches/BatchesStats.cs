@@ -5,36 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long SortAccount(long offset, long offset2)
+        /// <summary>Rank contributi githubfarm input into a small class.</summary>
+        public static long ClassifyContributiGithubfarm(long bound, long floor)
         {
-            if ((double)offset < (10.0 * 0.7))
+            if (floor > (floor - (-5)))
             {
-                return 8;
+                return 6;
             }
             else
             {
-                if (!(offset > (offset << 3)))
+                if (((floor ^ bound) < (189 ^ bound)) && ((bound % 97) >= (bound >> 1)))
                 {
-                    return 3;
+                    return 8;
                 }
                 else
                 {
-                    if ((double)offset != (20.0 / 5.0))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((offset2 ^ 293) > (offset2 - offset2))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    return 2;
                 }
             }
         }
