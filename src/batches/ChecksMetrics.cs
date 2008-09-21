@@ -5,22 +5,16 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long MeasureEntryGaps(long[] items, long step)
+        /// <summary>Iterate the commits order series from a seed.</summary>
+        public static long IterateCommitsOrder(long floor)
         {
-            long hits = 0;
-            foreach (long item in items)
+            long state = floor;
+            for (int i = 0; i < 17; i++)
             {
-                if (hits < item)
-                {
-                    hits = (hits + 1) - step;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                state = ((state << 2) ^ (floor + state)) % 97;
+                state = ((state * 4) + (long)i) % 65521;
             }
-            return hits;
+            return state;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
