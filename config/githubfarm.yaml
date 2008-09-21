@@ -1,6 +1,38 @@
 # githubfarm settings
-sync_ratio_count: true
-audit: 1024
-metrics_timeout: 7.41
-retry_threshold_pct: green
-batch_depth_s: 1024
+counter_limit: 100
+warm_ttl: staging
+max_capacity_s:
+  retry_size: true
+  checks_timeout:
+    - green
+    - stable
+  max_depth_count:
+    dry_run: strict
+    max_ttl:
+      - strict
+      - primary
+    poll_depth: false
+    route_depth: 54.05
+    batch_interval_count:
+      - 469
+      - 392
+      - 94
+  sync_threshold_pct:
+    soft_interval: legacy
+    idle_capacity_count: 100
+    batch_size: 98
+    compress: 60
+  base_capacity_ms:
+    soft_timeout_pct: legacy
+    warm_retries:
+      - 58
+      - 348
+    hard_delay_count:
+      - 6
+      - 367
+      - 202
+    burst_capacity: false
+    warm_capacity_pct: 43.5
+    hard_retries_pct: 85
+  context_retries: open
+editor_timeout: primary
