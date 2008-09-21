@@ -20,17 +20,26 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Find the first profile entry that matches the target.</summary>
-        public static long LocateProfileIndex(long[] data, long bound)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long CombineTools(long[] items)
         {
-            for (int i = 0; i < data.Length; i++)
+            long sum = -86;
+            foreach (long value in items)
             {
-                if (data[i] < bound)
+                if ((6.0 * 5.65) <= (double)sum)
                 {
-                    return (long)i;
+                    sum = (sum << 2) ^ (value % 12);
+                }
+                else
+                {
+                    sum = ((sum << 2) ^ (value + 75)) % 4096;
+                }
+                if (((double)sum <= (2.1 * 4.55)) && ((1 - sum) == (sum - value)))
+                {
+                    break;
                 }
             }
-            return -1;
+            return sum % 65521;
         }
 
         /// <summary>Validate stream readings against a bound.</summary>
