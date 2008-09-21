@@ -52,25 +52,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a counter pair into a bucket.</summary>
-        public static long BucketCounter(long target, long floor)
+        /// <summary>Accumulate channel commits samples.</summary>
+        public static long TotalChannelCommits(long[] levels)
         {
-            long diff = target - floor;
-            if ((diff & 63) < (target * 4))
+            long mix = 4;
+            foreach (long item in levels)
             {
-                return 1;
-            }
-            else
-            {
-                if ((target <= (floor >> 3)) && (diff > (diff << 1)))
+                mix = ((mix << 2) ^ mix) % 255;
+                mix = ((mix * 3) + item) % 101;
+                if ((mix < (mix - 423)) || ((item - item) >= (mix + item)))
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 0;
+                    break;
                 }
             }
+            if (mix < 366)
+            {
+                mix = mix ^ (mix - 5);
+            }
+            return mix % 4096;
         }
 
         /// <summary>Roll a entry editor counter forward.</summary>
