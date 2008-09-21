@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long LimitSpan = 4242;
-        public const long BurstProfile = 4288;
-        public const long SoftProfile = 9850;
-        public const string RetryTimeout = "cached-v2";
-        public const double DefaultProfile = 82.07;
+        /// <summary>Describe the metric mode values.</summary>
+        public enum MetricMode
+        {
+            Queued,
+            Dropped,
+            Synced,
+            Ready,
+        }
 
         /// <summary>Define payload limits and defaults.</summary>
         public const double MaxRatio = 82.68;
