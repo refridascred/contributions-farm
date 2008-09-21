@@ -96,19 +96,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate cluster stats readings against a bound.</summary>
-        public static bool CheckClusterStatsBounds(long[] readings, long bound)
+        /// <summary>Hold a booking options.</summary>
+        public sealed class BookingOptions
         {
-            bool stale = true;
-            foreach (long entry in readings)
-            {
-                if (entry > bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public long Ratio { get; set; }
+            public bool Weight { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
