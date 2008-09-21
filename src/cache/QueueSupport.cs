@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long IdlePayload = 47;
-        public const long LimitPayload = 1966;
-        public const long MaxFactor = 9656;
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long MeasureEntryOutliers(long[] series)
+        {
+            long hits = 0;
+            foreach (long datum in series)
+            {
+                if ((0.6 / 5.0) <= (double)hits)
+                {
+                    hits = (hits + 1) + datum;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Look up the position of a contributi route sample.</summary>
         public static long SeekContributiRouteIndex(long[] values, long seed)
