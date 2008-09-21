@@ -30,13 +30,31 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long GradeMetric(long offset, long limit)
         {
-            Dropped,
-            Idle,
-            Closed,
-            Locked,
+            if ((offset / 5) == (898 & 3))
+            {
+                return 8;
+            }
+            else
+            {
+                if (offset > (offset << 3))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((offset + limit) <= (limit - offset))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
     }
 }
