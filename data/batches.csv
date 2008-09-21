@@ -1,6 +1,8 @@
-id,rank,region,state
-1,382,cached,84.58
-2,40.51,green,local
-3,staging,466,23
-4,92.5,57.22,777
-5,eu-west,83.22,911
+id,active,region
+1,green,cached
+2,786,424
+3,60.31,edge
+4,fallback,542
+5,blue,primary
+6,583,657
+7,483,173
