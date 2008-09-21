@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long WindowAccount = 2734;
-        public const double DefaultScore = 4.32;
-        public const long HardAccount = 9760;
-        public const double RetryAccount = 44.88;
-        public const long LimitWidth = 7895;
+        /// <summary>Scale a githubfarm figure with a bias.</summary>
+        public static double AdjustGithubfarm(double scale, double span)
+        {
+            double mean = (span / 5.0) * 3.3;
+            return (mean - (span / 2.0)) + scale;
+        }
 
         /// <summary>Count channel pairs that satisfy a relation.</summary>
         public static long PairChannelCount(long[] levels)
