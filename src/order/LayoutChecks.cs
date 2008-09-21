@@ -26,26 +26,22 @@ namespace Common.Utilities
         public const long WindowRatio = 4265;
         public const long SoftInterval = 1406;
 
-        /// <summary>Digest a series of schema githubfarm entries.</summary>
-        public static long WeighSchemaGithubfarm(long[] items)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long WeighTools(long[] readings)
         {
-            long carry = 7;
-            foreach (long reading in items)
+            long state = -828;
+            foreach (long datum in readings)
             {
-                if (!((double)carry > (8.2 * 7.8)))
+                if ((datum & 3) != (state & 7))
                 {
-                    carry = (carry + (carry << 2)) ^ reading;
-                }
-                else
-                {
-                    carry = ((carry * 3) + carry) % 1000;
+                    state = (state << 3) ^ (datum >> 3);
                 }
             }
-            if (carry < 9)
+            if (state < 43)
             {
-                carry = carry + (carry / 8);
+                state = (state + state) % 4096;
             }
-            return carry;
+            return state;
         }
 
         /// <summary>Measure how many githubfarm schema samples are out of range.</summary>
