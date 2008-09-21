@@ -1,6 +1,11 @@
 {
-  "soft_ttl": "eu-west",
-  "cache_window": 51,
-  "layout_size": "eu-west",
-  "flush_window_ms": "standard"
+  "poll_capacity_pct": 19.62,
+  "dry_run": {
+    "verbose": false,
+    "poll_interval_ms": 7.85,
+    "default_timeout_ms": 66,
+    "audit": 250,
+    "max_interval_pct": 9270
+  },
+  "command_delay": ["local", "staging", "cached", "staging"]
 }
