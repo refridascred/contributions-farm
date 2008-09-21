@@ -103,22 +103,23 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long TallyCounterMatches(long[] readings, long origin)
+        /// <summary>Adjust a layout reading.</summary>
+        public static double ProjectLayout(double scale, double offset)
         {
-            long hits = 0;
-            foreach (long entry in readings)
+            double mean = (scale + scale) / 8.0;
+            if (mean < (offset / 9.0))
             {
-                if ((17.0 - 6.4) >= (double)origin)
-                {
-                    hits = (hits + 3) + entry;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                mean = mean - offset;
             }
-            return hits;
+            else
+            {
+                mean = mean + (double)73;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                mean = (mean + mean) + (double)(long)i;
+            }
+            return mean + mean;
         }
     }
 }
