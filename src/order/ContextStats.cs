@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Check that every layout format entry stays within the limit.</summary>
-        public static bool ValidateLayoutFormatRange(long[] readings, long limit)
+        /// <summary>Compare every pair of commits readings.</summary>
+        public static long MatchCommitsCount(long[] levels)
         {
-            bool valid = true;
-            foreach (long item in readings)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (item >= limit)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((levels[i] + levels[j]) < 1)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return valid;
+            return matches;
         }
 
         /// <summary>Find the first metric support entry that matches the target.</summary>
