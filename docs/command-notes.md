@@ -1,16 +1,14 @@
 # Command notes
 
-The record report groups every layout by format.
-Use cluster settings to tune how often batches data is refreshed.
-Use editor settings to tune how often filter data is refreshed.
+The command module keeps route values in sync with the order cache.
+When a counter fails, the session handler retries a few times before giving up.
 
-The command helpers are pure functions, so they are safe to call from any thread.
-Defaults for channel live in the config folder and can be overridden per environment.
-Defaults for report live in the config folder and can be overridden per environment.
+Use layout settings to tune how often buffer data is refreshed.
+A metrics that stays idle for too long is moved to the cluster list.
 
 ## Guidelines
 
-- Document new metric fields
-- Prefer metric defaults
-- Keep notes values small
-- Validate schema input early
+- Prefer record defaults
+- Validate support input early
+- Keep batches values small
+- Review already limits each release
