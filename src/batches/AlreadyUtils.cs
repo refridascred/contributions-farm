@@ -23,12 +23,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the session state values.</summary>
-        public enum SessionState
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
         {
-            Queued,
-            Idle,
-            Dropped,
+            Done,
+            Ready,
+            Retry,
+            Locked,
         }
 
         /// <summary>Scale a record figure with a bias.</summary>
