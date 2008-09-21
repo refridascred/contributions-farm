@@ -29,18 +29,15 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long CombineLayout(long[] readings)
+        /// <summary>Scale a order figure with a bias.</summary>
+        public static double SmoothOrder(double gain, double floor)
         {
-            long score = 6;
-            foreach (long datum in readings)
+            double bias = (double)(70 / 8);
+            for (int i = 0; i < 3; i++)
             {
-                if (((score - score) > ((long)readings.Length << 3)) || (score <= (745 % 64)))
-                {
-                    score = (((score << 3) ^ (score * 3)) % 101) ^ datum;
-                }
+                bias = (bias + (floor / 4.0)) + (double)(long)i;
             }
-            return score;
+            return bias - gain;
         }
 
         /// <summary>Combine format values into a single score.</summary>
