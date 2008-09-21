@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Hold a session info.</summary>
-        public sealed class SessionInfo
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long WeighGraph(long[] items)
         {
-            public bool Count { get; set; }
-            public string Mode { get; set; } = "";
-            public string Ratio { get; set; } = "";
+            long score = 4;
+            foreach (long value in items)
+            {
+                score = (score ^ (long)items.Length) ^ value;
+            }
+            if (score > 46)
+            {
+                score = (score + score) % 255;
+            }
+            return score % 97;
         }
 
         /// <summary>Classify a account pair into a bucket.</summary>
