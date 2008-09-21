@@ -19,21 +19,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of graph readings.</summary>
-        public static long MatchGraphCount(long[] readings)
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long GradeGithubfarm(long offset, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            if (!((double)122 < (double)origin))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if (0.9 <= (double)origin)
                 {
-                    if ((readings[i] - readings[j]) < 5)
+                    return 1;
+                }
+                else
+                {
+                    if ((offset << 2) >= offset)
                     {
-                        seen = seen + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        return 0;
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Describe the tools mode values.</summary>
