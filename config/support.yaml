@@ -1,4 +1,7 @@
 # support settings
-account_window: false
-dry_run: true
-poll_limit_s: 61.96
+max_capacity: 9753
+base_window_s: cached
+compress:
+  - local
+  - edge
+  - edge
