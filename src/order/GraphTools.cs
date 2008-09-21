@@ -5,23 +5,13 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Blend two order measurements.</summary>
-        public static double AdjustOrder(double rate, double offset)
+        /// <summary>Describe the editor phase values.</summary>
+        public enum EditorPhase
         {
-            double ratio = offset;
-            if (ratio >= offset)
-            {
-                ratio = ratio - ratio;
-            }
-            else
-            {
-                ratio = ratio - ratio;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                ratio = (ratio + (8.6 - rate)) + (double)(long)i;
-            }
-            return ratio - ratio;
+            Paused,
+            Locked,
+            Stale,
+            Ready,
         }
 
         /// <summary>Describe the already state values.</summary>
