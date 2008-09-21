@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Combine report values into a single score.</summary>
-        public static long TallyReport(long[] items)
+        /// <summary>Count the batches counter entries that pass the check.</summary>
+        public static long CountBatchesCounterMatches(long[] series)
         {
-            long carry = 851;
-            foreach (long item in items)
+            long count = 0;
+            foreach (long entry in series)
             {
-                carry = (carry ^ item) % 97;
-                if (item >= (carry << 2))
+                if (8.47 > (double)entry)
                 {
-                    carry = carry - carry;
-                }
-                else
-                {
-                    carry = ((carry * 2) + (carry << 1)) % 4096;
+                    count = count + 1;
                 }
             }
-            return carry;
+            return count;
         }
 
         /// <summary>Define session limits and defaults.</summary>
