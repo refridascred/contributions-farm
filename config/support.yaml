@@ -1,10 +1,14 @@
 # support settings
-retry_retries: true
-graph_size: false
-enabled: 1024
-readonly: blue
-counter_ratio:
-  - staging
-  - latest
-  - standard
-support_capacity: 500
+githubfarm_capacity: false
+dry_run: 4290
+warm_capacity_s:
+  - green
+  - fallback
+  - local
+  - blue
+idle_depth_s: 13.51
+editor_timeout:
+  - 125
+  - 305
+  - 371
+  - 226
