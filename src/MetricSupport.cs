@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Look up the position of a entry githubfarm sample.</summary>
-        public static long FindEntryGithubfarmIndex(long[] values, long step)
+        /// <summary>Locate a contributi stream reading by value.</summary>
+        public static long LocateContributiStreamIndex(long[] series, long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (values[i] <= step)
+                if (series[i] <= seed)
                 {
                     return (long)i;
                 }
