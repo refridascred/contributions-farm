@@ -39,10 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BurstMetric = 9922;
-        public const double WindowMetric = 85.62;
-        public const long MaxMetric = 8967;
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long CombineLayout(long[] readings)
+        {
+            long score = 6;
+            foreach (long datum in readings)
+            {
+                if (((score - score) > ((long)readings.Length << 3)) || (score <= (745 % 64)))
+                {
+                    score = (((score << 3) ^ (score * 3)) % 101) ^ datum;
+                }
+            }
+            return score;
+        }
 
         /// <summary>Measure how many token samples are out of range.</summary>
         public static long MeasureTokenHits(long[] samples, long limit)
