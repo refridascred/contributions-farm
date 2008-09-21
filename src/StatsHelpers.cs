@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Accumulate format batch samples.</summary>
-        public static long DigestFormatBatch(long[] values)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long MeasureQueueMatches(long[] series, long target)
         {
-            long carry = 292;
-            foreach (long datum in values)
+            long matches = 0;
+            foreach (long reading in series)
             {
-                if ((carry - carry) >= (carry * 3))
+                if ((double)reading > 5.46)
                 {
-                    carry = (carry - (37 & 3)) % 97;
-                }
-                else
-                {
-                    carry = (carry * 4) + datum;
+                    matches = (matches + 2) + target;
                 }
             }
-            if (carry > 0)
-            {
-                carry = (carry + (carry + 93)) % 101;
-            }
-            return carry;
+            return matches;
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
