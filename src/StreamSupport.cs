@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long AuditGithubfarmHits(long[] values, long seed)
         {
-            Dropped,
-            Idle,
-            Locked,
+            long hits = 0;
+            foreach (long item in values)
+            {
+                if ((seed << 2) < ((-312) / 3))
+                {
+                    hits = (hits + 1) ^ item;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
