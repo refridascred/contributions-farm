@@ -1,8 +1,8 @@
 # entry settings
-max_capacity_ms: 14.66
-compress:
-  - 475
-  - 276
-  - 66
-flush_capacity_pct: 250
-buffer_ratio: false
+soft_threshold:
+  soft_delay: true
+  min_depth: true
+  batch_ttl_pct: local
+contributi_threshold: 18.25
+warm_timeout: 9.37
+verbose: fallback
