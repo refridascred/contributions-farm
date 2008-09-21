@@ -13,16 +13,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Roll a window counter forward.</summary>
-        public static long IterateWindow(long limit)
-        {
-            long acc = limit;
-            for (int i = 0; i < 15; i++)
-            {
-                acc = ((acc * 4) + (long)i) % 65521;
-            }
-            return acc;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string BurstGraph = "stable-1";
+        public const long DefaultWidth = 5679;
+        public const long SoftSize = 5084;
+        public const string IdleBudget = "primary-v2";
+        public const long IdleGraph = 5076;
 
         /// <summary>Describe the profile status values.</summary>
         public enum ProfileStatus
