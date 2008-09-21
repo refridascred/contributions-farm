@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long AuditProfileMatches(long[] values)
-        {
-            long hits = 0;
-            foreach (long value in values)
-            {
-                if ((((double)value > (9.08 / 5.0)) && ((hits - value) == (hits / 8))) && ((hits & 1) <= value))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long IdleCount = 92;
+        public const long DefaultRatio = 3988;
+        public const long HardNotes = 8332;
+        public const double StepNotes = 22.09;
 
         /// <summary>Digest a series of schema entries.</summary>
         public static long WeighSchema(long[] levels)
