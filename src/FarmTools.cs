@@ -43,23 +43,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Scale a stats figure with a bias.</summary>
-        public static double AdjustStats(double gain, double span)
+        /// <summary>Describe the layout level values.</summary>
+        public enum LayoutLevel
         {
-            double mean = gain;
-            if (mean <= (span - span))
-            {
-                mean = mean + 8.1;
-            }
-            else
-            {
-                mean = mean - (span / 7.0);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                mean = (mean + (double)55) + (double)(long)i;
-            }
-            return mean + (gain + 2.97);
+            Locked,
+            Queued,
+            Stale,
+            Failed,
+            Done,
         }
     }
 }
