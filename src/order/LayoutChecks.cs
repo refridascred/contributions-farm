@@ -64,10 +64,11 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double BaseCommand = 73.27;
-        public const long RetryRatio = 3954;
-        public const long LimitCommand = 2858;
-        public const long HardSpan = 8059;
+        /// <summary>Define record limits and defaults.</summary>
+        public const long SoftRecord = 6765;
+        public const double StepLevel = 56.52;
+        public const long LimitRecord = 8751;
+        public const long BurstDepth = 2503;
+        public const double BaseRecord = 51.51;
     }
 }
