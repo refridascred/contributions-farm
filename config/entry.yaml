@@ -1,15 +1,5 @@
 # entry settings
-payload_delay:
-  default_ratio_ms:
-    - 384
-    - 197
-    - 402
-  burst_depth_ms: 5.4
-  sync_capacity_count: 43.68
-  compress: 250
-  dry_run: 61.87
-  hard_ratio:
-    - legacy
-    - eu-west
-compress: false
-cluster_interval: 60
+idle_threshold_s: standard
+checks_threshold: 7583
+base_limit_s: 30
+cache_capacity: 17.15
