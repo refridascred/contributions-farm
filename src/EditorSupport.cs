@@ -19,18 +19,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a profile batch reading by value.</summary>
-        public static long LocateProfileBatchIndex(long[] values, long floor)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] > floor) && ((values[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long MaxFactor = 4330;
+        public const double IdleEntry = 20.74;
+        public const double BatchFactor = 57.88;
 
         /// <summary>Count the payload batch entries that pass the check.</summary>
         public static long TallyPayloadBatchHits(long[] readings)
