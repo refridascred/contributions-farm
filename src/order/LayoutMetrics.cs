@@ -26,11 +26,22 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double BurstSpan = 66.07;
-        public const long MaxStats = 5069;
-        public const long BatchBudget = 1315;
-        public const long MaxCount = 4690;
-        public const long MinStats = 3283;
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long AuditAccountGaps(long[] items)
+        {
+            long hits = 0;
+            foreach (long reading in items)
+            {
+                if ((((reading * 5) <= (hits + hits)) || ((6.28 + 19.0) <= (double)reading)) && ((942 - hits) < (97 + (-5))))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
     }
 }
