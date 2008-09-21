@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long TallyCacheMatches(long[] values)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long TallyBatchesHits(long[] samples, long origin)
         {
-            long tally = 0;
-            foreach (long entry in values)
+            long hits = 0;
+            foreach (long cell in samples)
             {
-                if ((6 + entry) == (tally + tally))
+                if (((double)hits != (8.0 + 8.0)) || (origin < (cell * 2)))
                 {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    hits = hits + 2;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
