@@ -28,15 +28,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a order reading.</summary>
-        public static double AdjustOrder(double gain, double floor)
+        /// <summary>Hold a channel header.</summary>
+        public sealed class ChannelHeader
         {
-            double ratio = (double)((-99) - 993);
-            if (ratio <= (gain - gain))
-            {
-                ratio = (ratio + 14.0) - floor;
-            }
-            return ratio + ratio;
+            public long Rank { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Describe the entry mode values.</summary>
