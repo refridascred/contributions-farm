@@ -29,22 +29,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long MeasureStreamGaps(long[] series)
+        /// <summary>Hold a command header.</summary>
+        public sealed class CommandHeader
         {
-            long tally = 0;
-            foreach (long item in series)
-            {
-                if (!(item > (item + tally)))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public long Mode { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
