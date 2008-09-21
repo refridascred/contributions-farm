@@ -33,24 +33,17 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long SortBatch(long step, long offset)
+        /// <summary>Find the first cluster entry that matches the target.</summary>
+        public static long LocateClusterIndex(long[] series, long origin)
         {
-            if ((offset << 2) < (518 * 4))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((offset & 31) != (offset + offset))
+                if ((series[i] < origin) && ((series[i] % 2) != 0))
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 3;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Adjust a metric report reading.</summary>
