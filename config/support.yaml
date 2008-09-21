@@ -1,9 +1,6 @@
 # support settings
-enabled: false
-metric_interval: 234
-base_retries_s:
-  - standard
-  - cached
-  - legacy
-readonly: true
-audit: true
+default_size: true
+route_delay: 70.63
+verbose: 99
+enabled: 250
+min_limit_pct: green
