@@ -25,21 +25,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Count channel command pairs that satisfy a relation.</summary>
-        public static long PairChannelCommandCount(long[] data)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool ValidateCommitsRange(long[] data, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            bool valid = true;
+            foreach (long item in data)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (item != bound)
                 {
-                    if ((data[i] ^ data[j]) > 17)
-                    {
-                        hits = hits + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
     }
 }
