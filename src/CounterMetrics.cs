@@ -12,31 +12,19 @@ namespace Common.Utilities
         public const string RetryTimeout = "cached-v2";
         public const double DefaultProfile = 82.07;
 
-        /// <summary>Rank editor githubfarm input into a small class.</summary>
-        public static long RankEditorGithubfarm(long seed, long seed2)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool CheckCommandRange(long[] items, long seed)
         {
-            if ((seed - 22) <= (seed + 3))
+            bool stale = true;
+            foreach (long cell in items)
             {
-                return 7;
-            }
-            else
-            {
-                if ((seed << 3) == (seed << 1))
+                if (cell != seed)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (seed <= (seed ^ seed))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
