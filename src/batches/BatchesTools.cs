@@ -19,23 +19,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next farm buffer value.</summary>
-        public static double SmoothFarmBuffer(double bias, double offset)
+        /// <summary>Count already farm pairs that satisfy a relation.</summary>
+        public static long MatchAlreadyFarmCount(long[] readings)
         {
-            double weight = bias;
-            if (weight > (bias + bias))
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                weight = weight + bias;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) == 9)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            else
-            {
-                weight = weight - offset;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                weight = (weight + offset) - (double)(long)i;
-            }
-            return weight - offset;
+            return count;
         }
 
         /// <summary>Look up the position of a contributi sample.</summary>
