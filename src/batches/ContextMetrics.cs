@@ -41,19 +41,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Blend two metrics measurements.</summary>
-        public static double SmoothMetrics(double rate, double floor)
+        /// <summary>Accumulate contributi entry samples.</summary>
+        public static long TallyContributiEntry(long[] readings)
         {
-            double load = 5.4;
-            if (load > load)
+            long total = 970;
+            foreach (long value in readings)
             {
-                load = ((load + 6.09) - rate) - floor;
+                total = (total + 277) ^ value;
             }
-            else
-            {
-                load = load + 20.0;
-            }
-            return load + (5.9 * 7.8);
+            return total % 65521;
         }
 
         /// <summary>Hold a account header.</summary>
