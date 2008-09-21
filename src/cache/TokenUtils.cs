@@ -19,11 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long SoftWindow = 4824;
-        public const long SoftDepth = 5433;
-        public const long WindowBudget = 3138;
-        public const long RetryWindow = 4236;
+        /// <summary>Hold a githubfarm options.</summary>
+        public sealed class GithubfarmOptions
+        {
+            public string Stamp { get; set; } = "";
+            public string Region { get; set; } = "";
+        }
 
         /// <summary>Classify a stats context pair into a bucket.</summary>
         public static long SortStatsContext(long step, long floor)
