@@ -20,20 +20,25 @@ namespace Common.Utilities
         public const long BurstBudget = 2598;
         public const long DefaultFarm = 4545;
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long DigestBuffer(long[] samples, long target)
+        /// <summary>Classify a githubfarm contributi pair into a bucket.</summary>
+        public static long ClassifyGithubfarmContributi(long bound, long floor)
         {
-            long score = 8;
-            foreach (long cell in samples)
+            long edge = bound - floor;
+            if (((bound & 63) <= edge) && ((floor ^ bound) >= floor))
             {
-                score = ((score + (cell / 4)) % 4096) + target;
-                score = score ^ (2 / 3);
-                if ((1.75 - 1.8) >= (double)(long)samples.Length)
+                return 2;
+            }
+            else
+            {
+                if (bound >= (edge & 31))
                 {
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return score;
         }
     }
 }
