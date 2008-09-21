@@ -1,5 +1,6 @@
 {
-  "warm_depth": 95,
-  "poll_size_count": 14.7,
-  "profile_limit": true
+  "editor_depth": "standard",
+  "max_window_s": "latest",
+  "filter_timeout": 95,
+  "base_ratio_ms": false
 }
