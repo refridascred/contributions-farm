@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Hold a notes record.</summary>
-        public sealed class NotesRecord
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool CheckProfileLimits(long[] levels, long seed)
         {
-            public double Owner { get; set; }
-            public string Ratio { get; set; } = "";
+            bool stale = true;
+            foreach (long sample in levels)
+            {
+                if (sample >= seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
