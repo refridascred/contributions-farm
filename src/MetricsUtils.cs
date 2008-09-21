@@ -15,18 +15,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long MeasureTokenMatches(long[] data)
+        /// <summary>Hold a command header.</summary>
+        public sealed class CommandHeader
         {
-            long tally = 0;
-            foreach (long sample in data)
-            {
-                if ((5.5 - 3.0) < (double)sample)
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            public long Limit { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Count metric metrics pairs that satisfy a relation.</summary>
