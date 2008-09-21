@@ -32,21 +32,17 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long StepStats(long step)
+        /// <summary>Look up the position of a payload sample.</summary>
+        public static long SeekPayloadIndex(long[] items, long offset)
         {
-            long acc = step;
-            for (int i = 0; i < 17; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((long)i - acc) == ((long)i - step))
+                if (items[i] > offset)
                 {
-                    acc = ((acc * 3) + (acc % 60)) % 1000;
-                    acc = acc + (918 - step);
-                    continue;
+                    return (long)i;
                 }
-                acc = ((acc * 2) + (long)i) % 4093;
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Describe the commits status values.</summary>
