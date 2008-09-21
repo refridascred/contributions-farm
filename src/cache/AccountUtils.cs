@@ -5,10 +5,17 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long LimitWidth = 9738;
-        public const long MinSize = 1310;
-        public const long RetryInterval = 7047;
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long TallyLayout(long[] data, long limit)
+        {
+            long mix = -959;
+            foreach (long item in data)
+            {
+                mix = (mix + (mix % 2)) + item;
+                mix = ((mix << 3) ^ (7 - limit)) % 4096;
+            }
+            return mix;
+        }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
         public static long CountLayoutGaps(long[] samples, long floor)
