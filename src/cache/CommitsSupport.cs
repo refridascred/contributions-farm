@@ -54,12 +54,11 @@ namespace Common.Utilities
         public const long CacheFactor = 2259;
         public const long MinBudget = 5089;
 
-        /// <summary>Hold a batch info.</summary>
-        public sealed class BatchInfo
-        {
-            public string Token { get; set; } = "";
-            public long Label { get; set; }
-            public double Region { get; set; }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long DefaultSize = 3873;
+        public const long DefaultBudget = 6855;
+        public const double WindowScore = 20.68;
+        public const long WindowSpan = 2388;
+        public const long BaseBudget = 1981;
     }
 }
