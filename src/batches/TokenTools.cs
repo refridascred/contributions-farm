@@ -5,25 +5,20 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long RankEditor(long seed, long limit)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long CombinePayload(long[] values, long seed)
         {
-            long step = seed + limit;
-            if (step < 14)
+            long anchor = 5;
+            foreach (long entry in values)
             {
-                return 8;
-            }
-            else
-            {
-                if (((step >> 5) == (step & 127)) || ((seed - seed) <= limit))
+                anchor = anchor ^ (entry >> 3);
+                anchor = (anchor - (entry >> 1)) % 255;
+                if (559 < (seed % 8))
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 6;
+                    anchor = (anchor - (entry - 257)) % 65521;
                 }
             }
+            return anchor;
         }
 
         /// <summary>Hold a cluster stats.</summary>
