@@ -14,12 +14,11 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Hold a record info.</summary>
-        public sealed class RecordInfo
-        {
-            public bool Size { get; set; }
-            public long Weight { get; set; }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long MinCommits = 8831;
+        public const long StepFactor = 3607;
+        public const long StepCommits = 3827;
+        public const long LimitSpan = 4273;
 
         /// <summary>Classify a batch route pair into a bucket.</summary>
         public static long SortBatchRoute(long step, long origin)
