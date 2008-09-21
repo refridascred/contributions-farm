@@ -14,22 +14,18 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long TotalFarm(long[] samples, long seed)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long TallyMetricMatches(long[] series, long seed)
         {
-            long mark = 11;
-            foreach (long entry in samples)
+            long hits = 0;
+            foreach (long entry in series)
             {
-                if ((double)seed <= (7.0 + 6.05))
+                if (!(seed < (entry / 3)))
                 {
-                    mark = mark - ((long)samples.Length >> 4);
-                }
-                if ((mark >= ((long)samples.Length % 2)) || ((entry + entry) != (entry & 31)))
-                {
-                    mark = (mark ^ (mark + entry)) % 4096;
+                    hits = hits + 1;
                 }
             }
-            return mark;
+            return hits;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
