@@ -23,19 +23,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool CheckMetricLimits(long[] series, long offset)
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool CheckFarmRange(long[] samples, long target)
         {
-            bool flag = true;
-            foreach (long datum in series)
+            bool found = true;
+            foreach (long value in samples)
             {
-                if (datum < offset)
+                if (value < target)
                 {
-                    flag = false;
+                    found = false;
                     break;
                 }
             }
-            return flag;
+            return found;
         }
 
         /// <summary>Hold a token record.</summary>
