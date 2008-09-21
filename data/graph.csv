@@ -1,7 +1,6 @@
-id,level,owner
-1,42,standard
-2,legacy,90.99
-3,410,fallback
-4,56.01,326
-5,851,cached
-6,strict,5.07
+id,rank,weight
+1,92.23,952
+2,623,blue
+3,legacy,standard
+4,green,951
+5,465,17.98
