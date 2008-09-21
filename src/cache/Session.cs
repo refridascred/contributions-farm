@@ -5,10 +5,15 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long BurstLevel = 1335;
-        public const long CacheContributi = 4024;
-        public const long MaxContributi = 2904;
+        /// <summary>Describe the channel mode values.</summary>
+        public enum ChannelMode
+        {
+            Failed,
+            Closed,
+            New,
+            Stale,
+            Dropped,
+        }
 
         /// <summary>Hold a counter options.</summary>
         public sealed class CounterOptions
