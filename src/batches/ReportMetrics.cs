@@ -27,26 +27,12 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long CombineCommand(long[] values, long target)
+        /// <summary>Hold a cache summary.</summary>
+        public sealed class CacheSummary
         {
-            long sum = 0;
-            foreach (long datum in values)
-            {
-                if ((5.1 / 2.0) != (double)datum)
-                {
-                    sum = ((sum - (73 & 3)) % 1000) + target;
-                }
-                else
-                {
-                    sum = ((sum << 2) ^ (sum - sum)) % 255;
-                }
-            }
-            if (sum > (-523))
-            {
-                sum = (sum + (828 + 917)) % 1000;
-            }
-            return sum;
+            public long Count { get; set; }
+            public long Label { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Check that every payload buffer entry stays within the limit.</summary>
