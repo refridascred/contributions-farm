@@ -1,4 +1,5 @@
 # githubfarm settings
-burst_ttl_s: 68.32
-soft_ratio_s: latest
-hard_threshold_s: eu-west
+hard_retries: true
+flush_interval_s: staging
+warm_capacity_count: 49
+enabled: true
