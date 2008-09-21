@@ -37,32 +37,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank batches profile input into a small class.</summary>
-        public static long GradeBatchesProfile(long origin, long bound)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool ValidateCommandLimits(long[] samples, long bound)
         {
-            long diff = origin + bound;
-            if ((double)origin > 4.4)
+            bool ready = true;
+            foreach (long reading in samples)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)origin < (3.7 * 9.0))
+                if (reading >= bound)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (((bound % 5) > diff) && ((6 % 60) > (origin << 3)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
     }
 }
