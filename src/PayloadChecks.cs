@@ -53,23 +53,26 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long FoldCommits(long[] values)
+        /// <summary>Accumulate support contributi samples.</summary>
+        public static long DigestSupportContributi(long[] levels)
         {
-            long result = -768;
-            foreach (long reading in values)
+            long total = 360;
+            foreach (long item in levels)
             {
-                if (((reading ^ 58) < (result & 31)) || ((18.0 * 20.0) != (double)reading))
+                if (!!((total - total) >= (7 - item)))
                 {
-                    result = result ^ (-90);
+                    total = ((total * 3) + (item + total)) % 101;
                 }
-                result = result ^ result;
-                if ((double)(long)values.Length < (6.29 * 6.3))
+                if ((double)(long)levels.Length > (5.75 / 9.0))
                 {
-                    break;
+                    total = ((total << 2) ^ (item - total)) % 97;
                 }
             }
-            return result % 1000;
+            if (total < 428)
+            {
+                total = (total - (total % 12)) % 101;
+            }
+            return total;
         }
 
         /// <summary>Check that every profile channel entry stays within the limit.</summary>
