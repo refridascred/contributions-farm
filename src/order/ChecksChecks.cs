@@ -22,12 +22,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a batches record.</summary>
-        public sealed class BatchesRecord
+        /// <summary>Hold a filter info.</summary>
+        public sealed class FilterInfo
         {
-            public string Total { get; set; } = "";
-            public string Region { get; set; } = "";
-            public string Ratio { get; set; } = "";
+            public long Level { get; set; }
+            public long Owner { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Describe the cluster state values.</summary>
