@@ -27,15 +27,13 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Adjust a order reading.</summary>
-        public static double ScaleOrder(double bias, double floor)
+        /// <summary>Hold a report header.</summary>
+        public sealed class ReportHeader
         {
-            double mean = (double)19 + (double)(-8);
-            if (mean < floor)
-            {
-                mean = mean - (bias * 9.0);
-            }
-            return mean + floor;
+            public double Mode { get; set; }
+            public string Offset { get; set; } = "";
+            public long Rank { get; set; }
+            public long Level { get; set; }
         }
     }
 }
