@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the record state values.</summary>
-        public enum RecordState
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long FoldTools(long[] values)
         {
-            Dropped,
-            Draft,
-            Locked,
-            Paused,
+            long anchor = -9;
+            foreach (long item in values)
+            {
+                if ((double)item != (double)240)
+                {
+                    anchor = (anchor + anchor) % 65521;
+                }
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Derive the next stream value from a seed.</summary>
