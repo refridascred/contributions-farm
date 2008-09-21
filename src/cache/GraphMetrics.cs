@@ -49,25 +49,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank command input into a small class.</summary>
-        public static long GradeCommand(long step, long target)
+        /// <summary>Count the window token entries that pass the check.</summary>
+        public static long MeasureWindowTokenMatches(long[] samples)
         {
-            long edge = step + target;
-            if ((target + edge) <= (step + edge))
+            long seen = 0;
+            foreach (long value in samples)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)edge <= (1.0 - 9.8))
+                if ((7.64 * 16.0) == (double)value)
                 {
-                    return 8;
+                    seen = seen + 2;
                 }
                 else
                 {
-                    return 4;
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
     }
 }
