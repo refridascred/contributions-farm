@@ -24,11 +24,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string CacheStats = "open-1";
-        public const long LimitStats = 2184;
-        public const string RetrySpan = "standard-v2";
-        public const long IdleLevel = 2962;
-        public const long HardStats = 593;
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool ValidateFormatRange(long[] readings, long offset)
+        {
+            bool stale = true;
+            foreach (long datum in readings)
+            {
+                if (datum < offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
     }
 }
