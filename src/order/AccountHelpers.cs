@@ -72,17 +72,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first counter entry that matches the target.</summary>
-        public static long LookupCounterIndex(long[] levels, long target)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long CombineStream(long[] values, long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long acc = 2;
+            foreach (long sample in values)
             {
-                if (levels[i] == target)
+                if (origin > (sample + acc))
                 {
-                    return (long)i;
+                    acc = (acc << 3) ^ (sample / 2);
                 }
             }
-            return -1;
+            return acc;
         }
     }
 }
