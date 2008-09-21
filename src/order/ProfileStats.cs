@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long WeighEditor(long[] items)
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
         {
-            long sum = 86;
-            foreach (long datum in items)
-            {
-                if (!((-4) < datum))
-                {
-                    sum = ((sum << 2) ^ (sum + 341)) % 1000;
-                }
-                sum = sum - (326 + datum);
-                if (((datum % 7) > (datum - 1)) && (sum > datum))
-                {
-                    sum = ((sum * 5) + (sum & 31)) % 4096;
-                }
-            }
-            return sum % 1000;
+            Dropped,
+            New,
+            Draft,
         }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
