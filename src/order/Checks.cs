@@ -43,10 +43,15 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long MaxBuffer = 7560;
-        public const long SoftRatio = 7732;
-        public const string HardBuffer = "primary-edge";
+        /// <summary>Describe the queue kind values.</summary>
+        public enum QueueKind
+        {
+            Draft,
+            Queued,
+            Failed,
+            New,
+            Dropped,
+        }
 
         /// <summary>Combine support command values into a single score.</summary>
         public static long ScoreSupportCommand(long[] readings, long step)
