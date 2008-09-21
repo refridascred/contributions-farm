@@ -27,10 +27,10 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long StepSession = 2930;
-        public const long BurstSession = 968;
-        public const long DefaultSession = 7674;
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long CacheBudget = 5160;
+        public const string BaseScore = "open";
+        public const string HardQueue = "strict";
 
         /// <summary>Hold a metric entry.</summary>
         public sealed class MetricEntry
