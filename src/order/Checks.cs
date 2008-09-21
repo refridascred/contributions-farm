@@ -5,17 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Roll a context counter forward.</summary>
-        public static long RollContext(long target)
+        /// <summary>Look up the position of a commits sample.</summary>
+        public static long SeekCommitsIndex(long[] data, long floor)
         {
-            long carry = target;
-            for (int i = 0; i < 16; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                carry = (carry + ((long)i / 9)) % 4096;
-                carry = (carry * 3) + (target & 3);
-                carry = ((carry * 4) + (long)i) % 97;
+                if ((data[i] < floor) && ((data[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
