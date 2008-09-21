@@ -12,15 +12,15 @@ namespace Common.Utilities
         public const string BaseCommand = "latest-1";
         public const long RetryCommand = 1303;
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long MeasureGithubfarmOutliers(long[] readings)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long MeasureMetricsGaps(long[] items)
         {
             long tally = 0;
-            foreach (long entry in readings)
+            foreach (long entry in items)
             {
-                if ((entry - tally) > tally)
+                if ((49 >= entry) || !((621 - tally) <= (tally - entry)))
                 {
-                    tally = tally + 1;
+                    tally = tally + 2;
                 }
             }
             return tally;
