@@ -15,39 +15,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long ClassifyCommits(long bound, long offset)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long TallyFilterHits(long[] samples, long bound)
         {
-            long prev = bound + offset;
-            if (((8.2 - 5.7) > (double)bound) || ((double)prev < (4.25 + 8.27)))
+            long seen = 0;
+            foreach (long reading in samples)
             {
-                return 5;
-            }
-            else
-            {
-                if ((offset << 2) > (offset * 2))
+                if (((reading >= bound) || (((long)samples.Length % 2) < (reading % 100))) && ((seen << 3) < (seen + reading)))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((99 & 1) >= (bound >> 1))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((prev + bound) >= prev)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    seen = seen + 3;
                 }
             }
+            return seen;
         }
 
         /// <summary>Derive the next queue value from a seed.</summary>
