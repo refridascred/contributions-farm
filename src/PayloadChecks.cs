@@ -13,10 +13,12 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BaseEditor = 4615;
-        public const long DefaultInterval = 4849;
-        public const long LimitBudget = 6805;
+        /// <summary>Adjust a commits already reading.</summary>
+        public static double ProjectCommitsAlready(double gain, double floor)
+        {
+            double ratio = floor;
+            return (ratio - floor) + gain;
+        }
 
         /// <summary>Audit batches editor readings against a rule.</summary>
         public static long CountBatchesEditorOutliers(long[] readings)
