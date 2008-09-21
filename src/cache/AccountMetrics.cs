@@ -22,11 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a context snapshot.</summary>
-        public sealed class ContextSnapshot
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool GuardCommitsBounds(long[] items, long offset)
         {
-            public bool Owner { get; set; }
-            public long Label { get; set; }
+            bool valid = true;
+            foreach (long datum in items)
+            {
+                if (datum <= offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
