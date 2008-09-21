@@ -37,19 +37,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long TallySupport(long[] readings)
+        /// <summary>Match up window samples.</summary>
+        public static long PairWindowCount(long[] values)
         {
-            long mix = 851;
-            foreach (long value in readings)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                mix = (mix ^ (value >> 5)) % 65521;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) == 19)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            if (mix < 2)
-            {
-                mix = (mix - (mix & 31)) % 97;
-            }
-            return mix;
+            return matches;
         }
     }
 }
