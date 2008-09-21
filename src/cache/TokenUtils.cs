@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the commits status values.</summary>
-        public enum CommitsStatus
+        /// <summary>Find the first batch entry that matches the target.</summary>
+        public static long LookupBatchIndex(long[] data, long floor)
         {
-            Done,
-            Failed,
-            Retry,
-            Closed,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] == floor) && ((data[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a order info.</summary>
