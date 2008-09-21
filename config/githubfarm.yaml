@@ -1,11 +1,5 @@
 # githubfarm settings
-flush_capacity_count: false
-editor_delay: legacy
-profile_delay: edge
-sync_limit_count:
-  - 123
-  - 126
-  - 286
-  - 2
-readonly: 1298
-batch_timeout_ms: false
+default_window: 338
+queue_retries: strict
+max_size: false
+default_ttl_ms: local
