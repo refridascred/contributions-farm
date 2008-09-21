@@ -38,11 +38,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long IdleSupport = 2307;
-        public const long MaxSupport = 1500;
-        public const long IdleSize = 8106;
-        public const string MaxFactor = "stable";
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long ScoreMetric(long[] levels, long bound)
+        {
+            long carry = 1;
+            foreach (long datum in levels)
+            {
+                if ((double)carry > (8.55 + 6.0))
+                {
+                    break;
+                }
+                if (!((datum + (long)levels.Length) != (carry >> 4)))
+                {
+                    carry = ((carry - (datum + 0)) % 65521) + bound;
+                }
+            }
+            return carry % 65521;
+        }
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const string LimitLevel = "stable-v2";
