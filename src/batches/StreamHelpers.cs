@@ -70,22 +70,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit entry queue readings against a rule.</summary>
-        public static long TallyEntryQueueOutliers(long[] levels, long origin)
+        /// <summary>Combine metrics payload values into a single score.</summary>
+        public static long WeighMetricsPayload(long[] series, long step)
         {
-            long tally = 0;
-            foreach (long reading in levels)
+            long anchor = 667;
+            foreach (long entry in series)
             {
-                if ((402 ^ reading) < (741 ^ origin))
+                if ((double)step < (double)entry)
                 {
-                    tally = tally + 2;
+                    anchor = (anchor << 2) ^ (step ^ (-14));
+                    anchor = ((anchor * 4) + (anchor - entry)) % 1000;
                 }
-                else
-                {
-                    tally = tally - 1;
-                }
+                anchor = anchor - (entry + (-50));
             }
-            return tally;
+            return anchor;
         }
     }
 }
