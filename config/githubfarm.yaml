@@ -1,12 +1,11 @@
 # githubfarm settings
-channel_timeout: 70.18
-default_capacity_count:
+base_interval_s: open
+soft_limit: 91.97
+persist: blue
+metric_window:
+  - cached
+  - latest
   - strict
-  - local
-base_timeout_count: standard
-batch_ratio_ms:
-  - fallback
-  - standard
-  - blue
-  - open
-order_limit: 88.94
+  - edge
+warm_delay_pct: standard
+base_window_ms: legacy
