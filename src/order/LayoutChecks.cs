@@ -13,21 +13,23 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Compare every pair of tools readings.</summary>
-        public static long CompareToolsCount(long[] values)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long CombineOrder(long[] values, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mix = 505;
+            foreach (long cell in values)
             {
-                for (int j = 0; j < values.Length; j++)
+                mix = (((mix * 2) + mix) % 101) + target;
+                if (!((cell / 7) > ((-236) >> 2)))
                 {
-                    if ((values[i] - values[j]) != 4)
-                    {
-                        matches = matches + 1;
-                    }
+                    break;
                 }
             }
-            return matches;
+            if (mix > 7)
+            {
+                mix = mix - (mix >> 1);
+            }
+            return mix % 1000;
         }
 
         /// <summary>Match up window support samples.</summary>
