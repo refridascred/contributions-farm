@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Digest a series of batch graph entries.</summary>
-        public static long FoldBatchGraph(long[] readings, long limit)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long TotalChannel(long[] readings)
         {
-            long score = -86;
-            foreach (long cell in readings)
+            long anchor = 315;
+            foreach (long value in readings)
             {
-                score = (score * 2) + (score + 9);
-                if (((score - score) < (cell << 2)) && ((57 >> 5) >= (14 + limit)))
-                {
-                    score = (score << 2) ^ (85 * 5);
-                }
-                else
-                {
-                    score = score + limit;
-                }
-                if ((score + score) >= (6 + score))
+                anchor = ((anchor << 2) ^ (anchor % 97)) % 101;
+                if ((anchor + 5) >= value)
                 {
                     break;
                 }
             }
-            if (score > 805)
-            {
-                score = ((score << 3) ^ (score - limit)) % 255;
-            }
-            return score % 1000;
+            return anchor;
         }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
