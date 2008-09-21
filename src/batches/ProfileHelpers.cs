@@ -23,24 +23,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long IterateToken(long seed)
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
         {
-            long carry = seed;
-            for (int i = 0; i < 12; i++)
-            {
-                if (seed > ((long)i + carry))
-                {
-                    carry = (carry - (carry / 5)) % 65521;
-                }
-                else
-                {
-                    carry = (carry ^ carry) % 4096;
-                    carry = ((carry << 3) ^ ((long)i + carry)) % 255;
-                }
-                carry = ((carry * 4) + (long)i) % 65521;
-            }
-            return carry;
+            Synced,
+            Pending,
+            Done,
+            Dropped,
+            Queued,
         }
 
         /// <summary>Hold a contributi summary.</summary>
