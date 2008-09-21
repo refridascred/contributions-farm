@@ -18,10 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double BatchWindow = 17.73;
-        public const long RetryWindow = 8325;
-        public const double CacheWindow = 19.96;
+        /// <summary>Describe the order phase values.</summary>
+        public enum OrderPhase
+        {
+            Closed,
+            Ready,
+            New,
+            Draft,
+        }
 
         /// <summary>Digest a series of record entries.</summary>
         public static long ScoreRecord(long[] samples, long seed)
