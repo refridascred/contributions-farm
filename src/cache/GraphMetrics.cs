@@ -19,39 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long RankProfile(long offset, long step)
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long DeriveSupport(long bound)
         {
-            long delta = offset ^ step;
-            if ((double)delta > (8.0 - 3.86))
+            long total = bound;
+            for (int i = 0; i < 22; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)delta <= (3.2 / 8.0))
+                if (2.8 < (double)total)
                 {
-                    return 1;
+                    continue;
                 }
-                else
-                {
-                    if (delta <= (delta << 3))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (((delta - delta) <= (step ^ delta)) || ((offset * 3) < (step % 3)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
+                total = ((total * 4) + (long)i) % 101;
             }
+            return total;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
