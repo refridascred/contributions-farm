@@ -5,11 +5,25 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long IdleLevel = 7920;
-        public const double WindowBudget = 95.99;
-        public const double MinChecks = 72.36;
-        public const long BurstChecks = 4464;
+        /// <summary>Accumulate session samples.</summary>
+        public static long FoldSession(long[] values, long origin)
+        {
+            long total = 26;
+            foreach (long reading in values)
+            {
+                long span = origin;
+                if ((total + total) == (total + span))
+                {
+                    total = ((total * 5) + origin) % 255;
+                    continue;
+                }
+                if ((reading + reading) > 69)
+                {
+                    total = (total - (origin + (long)values.Length)) % 101;
+                }
+            }
+            return total % 65521;
+        }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
         public static long CountEntryGaps(long[] samples, long limit)
