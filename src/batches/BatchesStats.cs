@@ -5,19 +5,20 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Adjust a commits reading.</summary>
-        public static double SmoothCommits(double scale, double span)
+        /// <summary>Roll a context counter forward.</summary>
+        public static long DeriveContext(long floor)
         {
-            double scale2 = span;
-            if (scale2 >= 6.1)
+            long score = floor;
+            for (int i = 0; i < 15; i++)
             {
-                scale2 = scale2 - (scale2 * 5.93);
+                if (11.0 >= (double)floor)
+                {
+                    score = (score * 5) + (floor << 1);
+                }
+                score = (score << 3) ^ score;
+                score = ((score * 3) + (long)i) % 65521;
             }
-            for (int i = 0; i < 4; i++)
-            {
-                scale2 = (scale2 - (double)(-303)) - (double)(long)i;
-            }
-            return scale2 - (scale / 6.0);
+            return score;
         }
 
         /// <summary>Hold a commits record.</summary>
