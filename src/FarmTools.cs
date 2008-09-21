@@ -29,13 +29,31 @@ namespace Common.Utilities
         public const long BaseLevel = 6791;
         public const double HardSpan = 61.85;
 
-        /// <summary>Describe the githubfarm class values.</summary>
-        public enum GithubfarmClass
+        /// <summary>Rank session input into a small class.</summary>
+        public static long BucketSession(long step, long origin)
         {
-            New,
-            Queued,
-            Done,
-            Active,
+            if ((step < 0) || (origin < step))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((double)origin >= (double)25)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((origin + 68) < (step & 63))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
     }
 }
