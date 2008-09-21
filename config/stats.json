@@ -1,6 +1,25 @@
 {
-  "profile_capacity": [422, 467],
-  "flush_interval": "primary",
-  "batch_depth": 19.6,
-  "metrics_delay": 1024
+  "enabled": 59,
+  "compress": "cached",
+  "default_depth": 8905,
+  "profile_depth": {
+    "warm_limit": {
+      "checks_capacity": ["standard", "latest"],
+      "dry_run": 7461,
+      "flush_timeout": false,
+      "cache_threshold_ms": true,
+      "stats_retries": 91
+    },
+    "soft_window_s": 4758,
+    "retry_timeout_ms": [233, 344, 370],
+    "compress": {
+      "compress": 34.09,
+      "filter_retries": ["cached", "cached", "open", "standard"],
+      "readonly": "open",
+      "soft_timeout": true,
+      "support_window": 17.29,
+      "verbose": 925
+    }
+  },
+  "verbose": false
 }
