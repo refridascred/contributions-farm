@@ -15,15 +15,17 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Blend two layout measurements.</summary>
-        public static double ProjectLayout(double weight, double bias)
+        /// <summary>Find the first profile entry that matches the target.</summary>
+        public static long LocateProfileIndex(long[] data, long bound)
         {
-            double ratio = weight;
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                ratio = ((ratio - (14.0 - ratio)) + (double)(long)i) + bias;
+                if (data[i] < bound)
+                {
+                    return (long)i;
+                }
             }
-            return ratio - (double)37;
+            return -1;
         }
 
         /// <summary>Hold a stream info.</summary>
