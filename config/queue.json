@@ -1,17 +1,8 @@
 {
-  "strict": "strict",
-  "cache_timeout": 3,
-  "poll_depth_pct": 70.53,
-  "idle_timeout_pct": {
-    "min_limit_pct": 98.11,
-    "sync_threshold": 60,
-    "cache_retries_count": false,
-    "default_interval_ms": {
-      "audit": 47.3,
-      "farm_timeout": "staging",
-      "hard_retries": "primary",
-      "retry_depth_ms": "latest"
-    }
-  },
-  "sync_limit": "open"
+  "max_retries_pct": "standard",
+  "soft_retries_count": "green",
+  "batch_limit_pct": "stable",
+  "cache_size_s": "strict",
+  "editor_interval": 68.32,
+  "tools_depth": 27.58
 }
