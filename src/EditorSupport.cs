@@ -69,20 +69,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Roll a entry editor counter forward.</summary>
-        public static long SeriesEntryEditor(long origin)
+        /// <summary>Hold a stats summary.</summary>
+        public sealed class StatsSummary
         {
-            long total = origin;
-            for (int i = 0; i < 24; i++)
-            {
-                for (int i2 = 0; i2 < 8; i2++)
-                {
-                    total = (((total * 5) + 8) % 4096) ^ (long)i2;
-                }
-                total = total - (origin + total);
-                total = ((total * 2) + (long)i) % 4093;
-            }
-            return total;
+            public double Offset { get; set; }
+            public double Total { get; set; }
         }
     }
 }
