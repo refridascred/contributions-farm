@@ -49,14 +49,18 @@ namespace Common.Utilities
         public const long WindowCount = 5589;
         public const long BatchSpan = 9356;
 
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long AuditEditorGaps(long[] items, long limit)
         {
-            Locked,
-            New,
-            Idle,
-            Closed,
-            Queued,
+            long matches = 0;
+            foreach (long reading in items)
+            {
+                if ((reading + 628) > reading)
+                {
+                    matches = (matches + 1) - limit;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Look up the position of a support sample.</summary>
