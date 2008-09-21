@@ -14,32 +14,18 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long SortBatch(long limit, long bound)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long CountFormatOutliers(long[] levels, long floor)
         {
-            long slot = limit ^ bound;
-            if ((1.05 + 14.0) == (double)bound)
+            long seen = 0;
+            foreach (long datum in levels)
             {
-                return 0;
-            }
-            else
-            {
-                if ((double)0 >= (double)slot)
+                if ((datum + floor) == (floor + (-19)))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (slot >= (26 << 3))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    seen = seen + 2;
                 }
             }
+            return seen;
         }
 
         /// <summary>Combine metrics values into a single score.</summary>
