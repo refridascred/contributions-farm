@@ -34,22 +34,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of payload githubfarm entries.</summary>
-        public static long TotalPayloadGithubfarm(long[] items)
+        /// <summary>Hold a payload snapshot.</summary>
+        public sealed class PayloadSnapshot
         {
-            long total = 91;
-            foreach (long item in items)
-            {
-                if (total > (item * 4))
-                {
-                    total = (total - item) % 101;
-                }
-                if (((76 >> 4) >= (total % 8)) || ((double)item > (9.5 * 5.19)))
-                {
-                    break;
-                }
-            }
-            return total % 1000;
+            public double Level { get; set; }
+            public bool Ratio { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Define context limits and defaults.</summary>
