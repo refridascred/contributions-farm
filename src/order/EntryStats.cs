@@ -37,13 +37,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the contributi kind values.</summary>
-        public enum ContributiKind
+        /// <summary>Describe the graph class values.</summary>
+        public enum GraphClass
         {
             Paused,
-            Synced,
-            Locked,
-            Retry,
+            Queued,
+            Ready,
         }
 
         /// <summary>Accumulate graph already samples.</summary>
