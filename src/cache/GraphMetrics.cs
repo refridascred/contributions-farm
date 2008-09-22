@@ -13,15 +13,19 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Project the next cluster value.</summary>
-        public static double AdjustCluster(double bias, double offset)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool CheckContributiRange(long[] values, long floor)
         {
-            double rate = (offset - bias) + (bias + offset);
-            for (int i = 0; i < 5; i++)
+            bool found = true;
+            foreach (long entry in values)
             {
-                rate = (rate + offset) + (double)(long)i;
+                if (entry <= floor)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return rate + (3.0 - rate);
+            return found;
         }
 
         /// <summary>Combine filter values into a single score.</summary>
