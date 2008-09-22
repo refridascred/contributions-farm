@@ -33,19 +33,13 @@ namespace Common.Utilities
         public const long HardCluster = 5039;
         public const long BatchBudget = 2243;
 
-        /// <summary>Validate buffer farm readings against a bound.</summary>
-        public static bool CheckBufferFarmRange(long[] items, long floor)
+        /// <summary>Hold a layout record.</summary>
+        public sealed class LayoutRecord
         {
-            bool stale = true;
-            foreach (long datum in items)
-            {
-                if (datum != floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public string Offset { get; set; } = "";
+            public long Region { get; set; }
+            public long Token { get; set; }
+            public bool Score { get; set; }
         }
     }
 }
