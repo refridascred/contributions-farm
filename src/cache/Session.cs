@@ -30,11 +30,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a payload entry.</summary>
-        public sealed class PayloadEntry
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long BucketTools(long step, long bound)
         {
-            public string Weight { get; set; } = "";
-            public double Region { get; set; }
+            long edge = step - bound;
+            if ((step % 64) > (edge - bound))
+            {
+                return 1;
+            }
+            else
+            {
+                if (!((step >> 3) < (bound % 10)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Describe the command state values.</summary>
