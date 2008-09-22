@@ -36,19 +36,25 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Project the next metrics value.</summary>
-        public static double SmoothMetrics(double bias, double offset)
+        /// <summary>Classify a batch stream pair into a bucket.</summary>
+        public static long BucketBatchStream(long limit, long target)
         {
-            double bias2 = offset + offset;
-            if (bias2 <= (bias / 3.0))
+            long gap = limit + target;
+            if (((4 & 3) != (target * 2)) || (8.1 <= (double)limit))
             {
-                bias2 = bias2 + (bias2 - 12.0);
+                return 8;
             }
-            for (int i = 0; i < 6; i++)
+            else
             {
-                bias2 = (bias2 - (bias2 * 1.0)) + (double)(long)i;
+                if (!((target - gap) > target))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 4;
+                }
             }
-            return bias2 - (bias2 - bias2);
         }
     }
 }
