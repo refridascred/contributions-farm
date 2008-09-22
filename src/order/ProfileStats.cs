@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool CheckFilterRange(long[] data, long target)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long CountCacheOutliers(long[] series)
         {
-            bool found = true;
-            foreach (long value in data)
+            long count = 0;
+            foreach (long cell in series)
             {
-                if (value != target)
+                if ((count / 8) > count)
                 {
-                    found = false;
-                    break;
+                    count = (count + 3) + cell;
                 }
             }
-            return found;
+            return count;
         }
 
         /// <summary>Accumulate batch samples.</summary>
