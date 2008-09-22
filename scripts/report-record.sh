@@ -6,19 +6,8 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-strict}"
-case "${mode}" in
-    cached)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
-for item in cached legacy primary stable; do
-    log "checking ${item}"
-done
+RECORD_LIMIT=211
+log "limit is ${RECORD_LIMIT}"
 
 count=0
 while [ "${count}" -lt 8 ]; do
