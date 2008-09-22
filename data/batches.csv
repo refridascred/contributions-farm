@@ -1,11 +1,6 @@
-id,count,active
-1,staging,stable
-2,60.52,164
-3,strict,83.76
-4,406,11.11
-5,70.99,632
-6,266,373
-7,stable,legacy
-8,216,24
-9,306,129
-10,22.28,eu-west
+id,label,level
+1,legacy,62.29
+2,33.24,522
+3,open,896
+4,eu-west,58.53
+5,open,550
