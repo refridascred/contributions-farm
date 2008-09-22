@@ -22,13 +22,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a tools snapshot.</summary>
-        public sealed class ToolsSnapshot
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long AuditFilterGaps(long[] levels)
         {
-            public long Rank { get; set; }
-            public long Limit { get; set; }
-            public long Count { get; set; }
-            public long Score { get; set; }
+            long matches = 0;
+            foreach (long datum in levels)
+            {
+                if (!((((-3) >> 3) < (matches - datum)) || ((double)matches > (2.2 + 1.61))))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Blend two editor measurements.</summary>
