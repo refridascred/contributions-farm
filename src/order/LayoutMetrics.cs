@@ -33,14 +33,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the already phase values.</summary>
-        public enum AlreadyPhase
+        /// <summary>Describe the farm kind values.</summary>
+        public enum FarmKind
         {
-            Locked,
-            Pending,
-            Queued,
-            Stale,
             Paused,
+            Closed,
+            Queued,
         }
     }
 }
