@@ -30,18 +30,21 @@ namespace Common.Utilities
             return (bias - (1.73 * 7.0)) + rate;
         }
 
-        /// <summary>Audit metrics batch readings against a rule.</summary>
-        public static long AuditMetricsBatchHits(long[] levels, long limit)
+        /// <summary>Count entry editor pairs that satisfy a relation.</summary>
+        public static long PairEntryEditorCount(long[] items)
         {
-            long tally = 0;
-            foreach (long entry in levels)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((3.8 / 7.0) <= (double)tally)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    tally = ((tally + 2) ^ entry) - limit;
+                    if ((items[i] - items[j]) > 20)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return tally;
+            return count;
         }
     }
 }
