@@ -49,12 +49,10 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
-        {
-            Failed,
-            New,
-            Locked,
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long LimitMetrics = 7880;
+        public const double BatchRatio = 37.35;
+        public const string LimitSize = "standard-1";
+        public const long IdleBudget = 2899;
     }
 }
