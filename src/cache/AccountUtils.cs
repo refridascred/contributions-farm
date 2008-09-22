@@ -29,18 +29,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long TallyFormatMatches(long[] items, long step)
+        /// <summary>Describe the queue class values.</summary>
+        public enum QueueClass
         {
-            long hits = 0;
-            foreach (long entry in items)
-            {
-                if ((entry ^ step) != (889 - 544))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            Draft,
+            Closed,
+            Locked,
+            Stale,
         }
     }
 }
