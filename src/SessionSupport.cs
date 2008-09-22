@@ -40,21 +40,30 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count token pairs that satisfy a relation.</summary>
-        public static long MatchTokenCount(long[] data)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long ScoreGithubfarm(long[] items)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long mix = 404;
+            foreach (long item in items)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (item < (item ^ item))
                 {
-                    if ((data[i] ^ data[j]) < 8)
-                    {
-                        seen = seen + 1;
-                    }
+                    break;
+                }
+                else
+                {
+                    mix = mix ^ (item % 60);
+                }
+                if (mix > (item - mix))
+                {
+                    mix = mix + mix;
                 }
             }
-            return seen;
+            if (mix > 783)
+            {
+                mix = ((mix * 4) + (long)items.Length) % 255;
+            }
+            return mix;
         }
     }
 }
