@@ -16,12 +16,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string MinRecord = "standard";
-        public const long WindowRatio = 6215;
-        public const double IdleInterval = 23.02;
-        public const double HardRecord = 36.47;
-        public const long StepRecord = 8760;
+        /// <summary>Audit queue support readings against a rule.</summary>
+        public static long AuditQueueSupportHits(long[] items)
+        {
+            long count = 0;
+            foreach (long reading in items)
+            {
+                if ((reading + 134) <= (count / 8))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Classify a report payload pair into a bucket.</summary>
         public static long BucketReportPayload(long offset, long offset2)
