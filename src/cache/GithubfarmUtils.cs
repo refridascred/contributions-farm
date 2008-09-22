@@ -28,18 +28,15 @@ namespace Common.Utilities
             return ratio + (ratio / 7.0);
         }
 
-        /// <summary>Match up layout samples.</summary>
-        public static long MatchLayoutCount(long[] samples)
+        /// <summary>Measure how many contributi channel samples are out of range.</summary>
+        public static long MeasureContributiChannelGaps(long[] data, long limit)
         {
             long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            foreach (long value in data)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (((limit << 2) <= 692) && ((limit >= (hits - limit)) && (130 >= limit)))
                 {
-                    if ((samples[i] + samples[j]) > 15)
-                    {
-                        hits = hits + 1;
-                    }
+                    hits = (hits + 2) ^ value;
                 }
             }
             return hits;
