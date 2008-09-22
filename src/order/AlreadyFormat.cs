@@ -11,19 +11,16 @@ namespace Common.Utilities
         public const long WindowReport = 2539;
         public const string LimitTimeout = "alpha";
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long WeighToken(long[] levels)
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long DeriveQueue(long origin)
         {
-            long carry = 955;
-            foreach (long sample in levels)
+            long score = origin;
+            for (int i = 0; i < 18; i++)
             {
-                if ((9.78 + 7.3) > (double)sample)
-                {
-                    carry = ((carry << 2) ^ (sample + carry)) % 97;
-                }
-                carry = (carry << 2) ^ carry;
+                score = (score ^ (origin >> 4)) % 1000;
+                score = ((score * 4) + (long)i) % 1000;
             }
-            return carry % 1000;
+            return score;
         }
 
         /// <summary>Describe the checks level values.</summary>
