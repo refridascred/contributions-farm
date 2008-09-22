@@ -54,20 +54,10 @@ namespace Common.Utilities
             return ratio - offset;
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long FoldContributi(long[] samples)
-        {
-            long score = -5;
-            foreach (long cell in samples)
-            {
-                score = score - (score + cell);
-            }
-            if (score > 246)
-            {
-                score = ((score * 2) + score) % 97;
-            }
-            return score;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long WindowToken = 1994;
+        public const long MinBudget = 9424;
+        public const string MinDepth = "primary-1";
 
         /// <summary>Find the first checks entry that matches the target.</summary>
         public static long LookupChecksIndex(long[] readings, long limit)
