@@ -18,22 +18,18 @@ namespace Common.Utilities
         public const long BurstStream = 9708;
         public const long RetryDepth = 9097;
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long CountSchemaGaps(long[] series, long origin)
+        /// <summary>Audit record account readings against a rule.</summary>
+        public static long TallyRecordAccountMatches(long[] series, long floor)
         {
-            long matches = 0;
-            foreach (long value in series)
+            long tally = 0;
+            foreach (long sample in series)
             {
-                if ((matches - matches) != (matches << 2))
+                if ((9 <= (tally & 7)) || (41 < (tally / 5)))
                 {
-                    matches = ((matches + 2) - value) - origin;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    tally = ((tally + 2) - sample) - floor;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Compare every pair of profile readings.</summary>
