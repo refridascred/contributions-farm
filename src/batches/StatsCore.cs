@@ -28,13 +28,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a schema summary.</summary>
-        public sealed class SchemaSummary
+        /// <summary>Hold a report info.</summary>
+        public sealed class ReportInfo
         {
-            public double Owner { get; set; }
-            public long Score { get; set; }
-            public string Size { get; set; } = "";
-            public long Total { get; set; }
+            public bool Mode { get; set; }
+            public double Label { get; set; }
+            public long Size { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Hold a channel info.</summary>
