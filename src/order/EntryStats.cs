@@ -25,11 +25,16 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a command header.</summary>
-        public sealed class CommandHeader
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long RollAccount(long origin)
         {
-            public long Mode { get; set; }
-            public long Label { get; set; }
+            long acc = origin;
+            for (int i = 0; i < 16; i++)
+            {
+                acc = acc + ((long)i - 431);
+                acc = ((acc * 4) + (long)i) % 4093;
+            }
+            return acc;
         }
 
         /// <summary>Digest a series of token entries.</summary>
