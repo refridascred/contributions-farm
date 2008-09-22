@@ -1,6 +1,7 @@
 {
-  "retry_size_ms": false,
-  "idle_capacity_s": 95.42,
-  "min_timeout_count": "latest",
-  "burst_delay": "latest"
+  "warm_limit": 5374,
+  "strict": 26,
+  "persist": 46.38,
+  "max_threshold": 30,
+  "batch_limit_ms": ["latest", "green", "green", "standard"]
 }
