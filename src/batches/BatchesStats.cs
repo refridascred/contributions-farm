@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the support kind values.</summary>
-        public enum SupportKind
-        {
-            Draft,
-            Active,
-            Done,
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long SoftWidth = 1725;
+        public const long MaxBuffer = 196;
+        public const long SoftLevel = 7621;
+        public const double MinFactor = 84.33;
+        public const string DefaultInterval = "standard-1";
 
         /// <summary>Accumulate token commits samples.</summary>
         public static long ScoreTokenCommits(long[] readings, long limit)
