@@ -1,4 +1,5 @@
 # githubfarm settings
-sync_retries_s: 250
-tools_delay: cached
-idle_ratio: 44
+max_timeout_count: false
+persist: fallback
+readonly: 78
+verbose: latest
