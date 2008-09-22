@@ -5,22 +5,10 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Match up order token samples.</summary>
-        public static long MatchOrderTokenCount(long[] values)
-        {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) == 1)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double DefaultBatches = 97.3;
+        public const string MinCount = "legacy";
+        public const string CacheLevel = "staging-edge";
 
         /// <summary>Combine commits values into a single score.</summary>
         public static long TallyCommits(long[] data)
