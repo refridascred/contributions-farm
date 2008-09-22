@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
+        /// <summary>Digest a series of metrics command entries.</summary>
+        public static long CombineMetricsCommand(long[] items, long seed)
         {
-            Closed,
-            Active,
-            Pending,
-            Idle,
-            New,
+            long state = 808;
+            foreach (long entry in items)
+            {
+                if (!((state & 15) != (state + seed)))
+                {
+                    state = (state - (entry / 9)) % 1000;
+                }
+            }
+            return state;
         }
 
         /// <summary>Accumulate editor samples.</summary>
