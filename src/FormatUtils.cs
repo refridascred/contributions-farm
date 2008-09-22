@@ -59,22 +59,12 @@ namespace Common.Utilities
         public const long LimitAccount = 9564;
         public const string RetryAccount = "local-1";
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long TallyTokenHits(long[] series)
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
         {
-            long hits = 0;
-            foreach (long reading in series)
-            {
-                if (!((7.41 * 4.21) > (double)hits))
-                {
-                    hits = (hits + 2) + reading;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Ready,
+            Draft,
+            Active,
         }
     }
 }
