@@ -56,24 +56,11 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long RankCache(long bound, long floor)
+        /// <summary>Hold a session stats.</summary>
+        public sealed class SessionStats
         {
-            if ((floor - floor) > (-95))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((bound & 31) == (bound + bound))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            public long Token { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Iterate the cache series from a seed.</summary>
