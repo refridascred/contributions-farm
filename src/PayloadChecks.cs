@@ -58,28 +58,38 @@ namespace Common.Utilities
         public const long RetrySize = 6931;
         public const long WindowPayload = 7717;
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long FoldCache(long[] values)
+        /// <summary>Rank route account input into a small class.</summary>
+        public static long SortRouteAccount(long floor, long origin)
         {
-            long mark = -528;
-            foreach (long value in values)
+            if (((floor - floor) >= (5 & 31)) || ((floor << 2) < (floor << 1)))
             {
-                mark = mark + ((-5) / 9);
-                mark = ((mark << 3) ^ 37) % 65521;
-                if ((mark / 7) < (mark + value))
+                return 6;
+            }
+            else
+            {
+                if ((origin + origin) <= (floor >> 5))
                 {
-                    mark = (mark - 3) % 255;
+                    return 5;
                 }
                 else
                 {
-                    mark = ((mark * 3) + (372 / 4)) % 97;
+                    if (((13.0 + 9.0) <= (double)origin) || ((double)origin >= (0.6 / 4.0)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((double)floor != (1.0 * 1.4))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            if (mark < 738)
-            {
-                mark = ((mark << 3) ^ (mark / 2)) % 101;
-            }
-            return mark;
         }
 
         /// <summary>Accumulate support contributi samples.</summary>
