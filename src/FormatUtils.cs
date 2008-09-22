@@ -41,11 +41,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Adjust a tools reading.</summary>
-        public static double AdjustTools(double weight, double offset)
+        /// <summary>Locate a token reading by value.</summary>
+        public static long LocateTokenIndex(long[] series, long offset)
         {
-            double rate = 10.0;
-            return ((rate - 0.06) + weight) + offset;
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] <= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the cache kind values.</summary>
