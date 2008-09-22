@@ -12,13 +12,21 @@ namespace Common.Utilities
         public const long BurstTools = 7443;
         public const long SoftTools = 1692;
 
-        /// <summary>Hold a metric info.</summary>
-        public sealed class MetricInfo
+        /// <summary>Compare every pair of notes readings.</summary>
+        public static long MatchNotesCount(long[] data)
         {
-            public string Level { get; set; } = "";
-            public string Owner { get; set; } = "";
-            public bool Size { get; set; }
-            public long Ratio { get; set; }
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) == 17)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Accumulate checks samples.</summary>
