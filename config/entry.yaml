@@ -1,5 +1,6 @@
 # entry settings
-verbose: 48.43
-hard_limit_s: 1024
-default_ratio_pct: true
-audit: strict
+checks_limit: 35
+support_threshold: staging
+batch_delay_ms: 265
+hard_capacity: 15.37
+persist: 3.4
