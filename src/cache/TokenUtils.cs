@@ -32,9 +32,9 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long MinFarm = 2833;
-        public const long WindowFarm = 8852;
-        public const long BurstFarm = 354;
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double LimitDepth = 52.93;
+        public const string DefaultFactor = "cached-v2";
+        public const long RetrySchema = 4540;
     }
 }
