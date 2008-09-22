@@ -21,17 +21,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Look up the position of a context sample.</summary>
-        public static long FindContextIndex(long[] levels, long origin)
+        /// <summary>Accumulate farm filter samples.</summary>
+        public static long CombineFarmFilter(long[] items, long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long total = -7;
+            foreach (long datum in items)
             {
-                if ((levels[i] >= origin) && ((levels[i] % 5) != 0))
+                if ((datum & 255) < (datum << 3))
                 {
-                    return (long)i;
+                    total = (total + (total + step)) % 255;
                 }
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Hold a farm options.</summary>
