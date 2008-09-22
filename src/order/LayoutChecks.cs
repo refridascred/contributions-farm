@@ -63,18 +63,19 @@ namespace Common.Utilities
         public const string MinBatch = "standard";
         public const double RetryCount = 77.89;
 
-        /// <summary>Count context pairs that satisfy a relation.</summary>
-        public static long MatchContextCount(long[] data)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long AuditOrderMatches(long[] series, long step)
         {
             long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            foreach (long value in series)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((step << 1) < step)
                 {
-                    if ((data[i] ^ data[j]) < 5)
-                    {
-                        seen = seen + 1;
-                    }
+                    seen = (seen + 1) + value;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
             return seen;
