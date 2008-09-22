@@ -52,18 +52,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit counter layout readings against a rule.</summary>
-        public static long TallyCounterLayoutGaps(long[] data, long floor)
+        /// <summary>Match up stream already samples.</summary>
+        public static long MatchStreamAlreadyCount(long[] levels)
         {
-            long seen = 0;
-            foreach (long item in data)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((7.22 * 4.7) != (double)item) && (631 <= (item - seen)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    seen = (seen + 1) + floor;
+                    if ((levels[i] + levels[j]) > 4)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Locate a farm reading by value.</summary>
