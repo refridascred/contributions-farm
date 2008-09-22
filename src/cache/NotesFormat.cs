@@ -20,11 +20,14 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string DefaultCounter = "fallback-1";
-        public const long CacheCounter = 7;
-        public const long HardRatio = 7872;
-        public const double BatchDepth = 57.97;
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
+        {
+            Locked,
+            Active,
+            Queued,
+            New,
+        }
 
         /// <summary>Project the next metrics value.</summary>
         public static double SmoothMetrics(double bias, double offset)
