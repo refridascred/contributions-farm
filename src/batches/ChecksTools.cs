@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the layout mode values.</summary>
-        public enum LayoutMode
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
         {
-            Synced,
             Done,
-            Failed,
-            Locked,
-            Dropped,
+            Active,
+            Idle,
+            Draft,
         }
 
         /// <summary>Hold a counter record.</summary>
