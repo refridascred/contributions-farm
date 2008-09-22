@@ -42,22 +42,19 @@ namespace Common.Utilities
         public const double SoftScore = 47.03;
         public const double SoftLevel = 88.91;
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long WeighChannel(long[] items, long step)
+        /// <summary>Validate metric support readings against a bound.</summary>
+        public static bool GuardMetricSupportLimits(long[] series, long step)
         {
-            long score = 848;
-            foreach (long cell in items)
+            bool found = true;
+            foreach (long value in series)
             {
-                if (cell <= (46 & 7))
+                if (value != step)
                 {
-                    score = ((score << 2) ^ 2) % 255;
-                }
-                else
-                {
-                    score = (score << 2) ^ (step + score);
+                    found = false;
+                    break;
                 }
             }
-            return score % 1000;
+            return found;
         }
     }
 }
