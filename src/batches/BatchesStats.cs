@@ -47,15 +47,39 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Adjust a editor counter reading.</summary>
-        public static double ProjectEditorCounter(double ratio, double floor)
+        /// <summary>Rank format input into a small class.</summary>
+        public static long RankFormat(long seed, long origin)
         {
-            double ratio2 = ratio;
-            if (ratio2 < (floor / 6.0))
+            long gap = seed + origin;
+            if (2.0 < (double)gap)
             {
-                ratio2 = ratio2 + (ratio * 7.5);
+                return 4;
             }
-            return ratio2 - (floor * 1.0);
+            else
+            {
+                if (5.75 < (double)origin)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((seed - gap) == (gap + gap))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (!((7.73 / 2.0) < (double)seed))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
     }
 }
