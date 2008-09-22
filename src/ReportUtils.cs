@@ -19,11 +19,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a notes options.</summary>
-        public sealed class NotesOptions
+        /// <summary>Scale a checks already figure with a bias.</summary>
+        public static double ProjectChecksAlready(double bias, double span)
         {
-            public long Ratio { get; set; }
-            public long Score { get; set; }
+            double bias2 = span;
+            if (bias2 <= (double)48)
+            {
+                bias2 = (bias2 - 7.0) + bias;
+            }
+            return bias2 - (span / 5.0);
         }
 
         /// <summary>Describe the buffer kind values.</summary>
