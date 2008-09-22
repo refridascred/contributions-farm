@@ -36,26 +36,11 @@ namespace Common.Utilities
         public const double BaseBudget = 68.89;
         public const long RetrySize = 5110;
 
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long SortMetrics(long seed, long origin)
-        {
-            long step = seed ^ origin;
-            if (!((origin % 64) > origin))
-            {
-                return 7;
-            }
-            else
-            {
-                if (seed >= (step + seed))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string DefaultBatches = "open-1";
+        public const string BatchBatches = "open";
+        public const long HardCount = 2046;
+        public const double CacheBatches = 1.82;
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const double MaxDepth = 32.56;
