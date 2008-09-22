@@ -52,12 +52,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a githubfarm header.</summary>
-        public sealed class GithubfarmHeader
+        /// <summary>Combine contributi schema values into a single score.</summary>
+        public static long DigestContributiSchema(long[] data, long offset)
         {
-            public bool Total { get; set; }
-            public double Stamp { get; set; }
-            public double Token { get; set; }
+            long result = -918;
+            foreach (long item in data)
+            {
+                result = (((result * 3) + result) ^ item) + offset;
+            }
+            return result;
         }
 
         /// <summary>Blend two entry measurements.</summary>
