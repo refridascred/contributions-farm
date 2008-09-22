@@ -1,20 +1,7 @@
 {
-  "base_size_pct": true,
-  "batch_depth": "standard",
-  "token_retries": {
-    "max_threshold_ms": true,
-    "max_window": [336, 414],
-    "tools_size": 96.52,
-    "format_capacity": {
-      "default_size_pct": [13, 410, 185],
-      "channel_timeout": "staging",
-      "verbose": "legacy"
-    },
-    "profile_size": "green",
-    "hard_depth_count": {
-      "default_ratio": true,
-      "checks_timeout": 13,
-      "cache_window": 138
-    }
-  }
+  "support_depth": 811,
+  "flush_depth_ms": ["green", "cached", "blue"],
+  "soft_size_count": "local",
+  "strict": 2218,
+  "metric_interval": ["standard", "eu-west", "standard", "edge"]
 }
