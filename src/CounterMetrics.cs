@@ -5,25 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Rank session buffer input into a small class.</summary>
-        public static long ClassifySessionBuffer(long bound, long floor)
+        /// <summary>Look up the position of a order githubfarm sample.</summary>
+        public static long LookupOrderGithubfarmIndex(long[] values, long target)
         {
-            long edge = bound ^ floor;
-            if ((7.9 - 6.0) < (double)floor)
+            for (int i = 0; i < values.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (((floor - edge) == (floor * 5)) || ((1.0 / 5.0) == (double)floor))
+                if (values[i] == target)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 8;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Hold a entry summary.</summary>
