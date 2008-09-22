@@ -1,6 +1,13 @@
 {
-  "entry_limit": [240, 480, 469],
-  "compress": "strict",
-  "sync_interval": 6905,
-  "strict": 8833
+  "poll_interval": "primary",
+  "batches_depth": 0.15,
+  "report_size": "legacy",
+  "base_window_ms": {
+    "default_threshold_s": 8.34,
+    "burst_ratio_ms": false,
+    "route_window": "latest",
+    "min_size_count": 95.91,
+    "schema_window": 19,
+    "layout_retries": 13.96
+  }
 }
