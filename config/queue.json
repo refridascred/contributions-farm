@@ -1,8 +1,23 @@
 {
-  "idle_delay": 7982,
-  "format_window": "standard",
-  "readonly": 2054,
-  "burst_window_s": "edge",
-  "channel_threshold": 10.95,
-  "hard_delay_ms": 250
+  "burst_threshold": true,
+  "filter_retries": {
+    "idle_limit_s": {
+      "entry_size": true,
+      "default_threshold_ms": "fallback",
+      "command_ratio": "strict",
+      "enabled": 13,
+      "persist": "local"
+    },
+    "channel_retries": true,
+    "batch_threshold_s": "eu-west",
+    "audit": "staging",
+    "poll_window_count": "cached"
+  },
+  "verbose": {
+    "strict": "blue",
+    "min_depth_s": 55,
+    "default_ratio_pct": [54, 404, 432, 494],
+    "base_delay_ms": "primary",
+    "warm_interval_ms": 9562
+  }
 }
