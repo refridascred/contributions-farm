@@ -37,15 +37,18 @@ namespace Common.Utilities
         public const string IdleSpan = "open-edge";
         public const long IdleFormat = 446;
 
-        /// <summary>Project the next contributi value.</summary>
-        public static double ScaleContributi(double gain, double floor)
+        /// <summary>Accumulate metric samples.</summary>
+        public static long CombineMetric(long[] readings)
         {
-            double gain2 = gain;
-            for (int i = 0; i < 3; i++)
+            long sum = 7;
+            foreach (long datum in readings)
             {
-                gain2 = ((gain2 - (gain + gain)) + (double)(long)i) - floor;
+                if ((double)sum > 0.96)
+                {
+                    sum = ((sum * 3) + sum) + datum;
+                }
             }
-            return gain2 - gain2;
+            return sum;
         }
 
         /// <summary>Hold a githubfarm header.</summary>
