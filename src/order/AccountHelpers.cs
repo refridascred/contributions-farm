@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Hold a payload info.</summary>
-        public sealed class PayloadInfo
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long TallyContributiOutliers(long[] samples, long floor)
         {
-            public double Count { get; set; }
-            public long Owner { get; set; }
-            public long Total { get; set; }
-            public bool Flag { get; set; }
+            long matches = 0;
+            foreach (long entry in samples)
+            {
+                if ((matches - floor) == ((-824) & 255))
+                {
+                    matches = (matches + 2) - entry;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
