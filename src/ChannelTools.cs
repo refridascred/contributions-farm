@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a account header.</summary>
-        public sealed class AccountHeader
+        /// <summary>Hold a editor summary.</summary>
+        public sealed class EditorSummary
         {
-            public string Size { get; set; } = "";
-            public double Offset { get; set; }
-            public bool Count { get; set; }
+            public long Total { get; set; }
+            public bool Label { get; set; }
+            public bool Limit { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Adjust a metrics graph reading.</summary>
