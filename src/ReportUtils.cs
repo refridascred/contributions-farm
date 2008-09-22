@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long TallyChecksHits(long[] items, long origin)
+        /// <summary>Describe the profile level values.</summary>
+        public enum ProfileLevel
         {
-            long count = 0;
-            foreach (long entry in items)
-            {
-                if ((84 >> 2) != (entry >> 1))
-                {
-                    count = (count + 3) - origin;
-                }
-            }
-            return count;
+            Queued,
+            Synced,
+            Stale,
+            Closed,
         }
 
         /// <summary>Scale a checks already figure with a bias.</summary>
