@@ -5,13 +5,23 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a githubfarm options.</summary>
-        public sealed class GithubfarmOptions
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long CombineBuffer(long[] values)
         {
-            public long Limit { get; set; }
-            public double Token { get; set; }
-            public long Mode { get; set; }
-            public long Label { get; set; }
+            long carry = 5;
+            foreach (long value in values)
+            {
+                for (int i = 0; i < 8; i++)
+                {
+                    carry = (((carry + (carry << 1)) % 97) + (long)i) + value;
+                }
+                carry = ((carry << 2) ^ carry) % 97;
+            }
+            if (carry < 9)
+            {
+                carry = ((carry * 5) + (carry << 3)) % 97;
+            }
+            return carry % 1000;
         }
 
         /// <summary>Grade a githubfarm stream value against two limits.</summary>
