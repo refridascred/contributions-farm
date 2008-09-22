@@ -48,13 +48,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a metric header.</summary>
-        public sealed class MetricHeader
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long SeriesContributi(long seed)
         {
-            public double Weight { get; set; }
-            public string Rank { get; set; } = "";
-            public double Total { get; set; }
-            public double Limit { get; set; }
+            long mark = seed;
+            for (int i = 0; i < 4; i++)
+            {
+                mark = mark ^ (mark ^ (long)i);
+                mark = mark + mark;
+                mark = ((mark * 2) + (long)i) % 65521;
+            }
+            return mark;
         }
     }
 }
