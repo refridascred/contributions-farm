@@ -87,15 +87,19 @@ namespace Common.Utilities
             return bias2 - bias;
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long TallyCounter(long[] levels)
+        /// <summary>Validate already batch readings against a bound.</summary>
+        public static bool CheckAlreadyBatchBounds(long[] readings, long origin)
         {
-            long mix = 17;
-            foreach (long reading in levels)
+            bool valid = true;
+            foreach (long cell in readings)
             {
-                mix = ((mix << 2) ^ reading) % 65521;
+                if (cell != origin)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return mix % 65521;
+            return valid;
         }
 
         /// <summary>Validate metrics readings against a bound.</summary>
