@@ -42,13 +42,21 @@ namespace Common.Utilities
         public const double MaxChecks = 67.32;
         public const long BurstDepth = 786;
 
-        /// <summary>Hold a metrics snapshot.</summary>
-        public sealed class MetricsSnapshot
+        /// <summary>Match up farm samples.</summary>
+        public static long CompareFarmCount(long[] samples)
         {
-            public string Token { get; set; } = "";
-            public long Score { get; set; }
-            public string Mode { get; set; } = "";
-            public long Label { get; set; }
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) == 5)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
