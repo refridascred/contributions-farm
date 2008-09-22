@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a editor stats.</summary>
-        public sealed class EditorStats
+        /// <summary>Adjust a queue reading.</summary>
+        public static double BlendQueue(double weight, double offset)
         {
-            public double Level { get; set; }
-            public double Flag { get; set; }
-            public string Score { get; set; } = "";
+            double load = 7.67;
+            if (load <= (load - load))
+            {
+                load = (load + 2.02) - offset;
+            }
+            else
+            {
+                load = load - 2.85;
+            }
+            return load - weight;
         }
 
         /// <summary>Compare every pair of metric readings.</summary>
