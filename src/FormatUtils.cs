@@ -48,12 +48,15 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long DefaultAccount = 2653;
-        public const double BatchSpan = 45.32;
-        public const string WindowAccount = "open-1";
-        public const long LimitAccount = 9564;
-        public const string RetryAccount = "local-1";
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
+        {
+            New,
+            Stale,
+            Ready,
+            Paused,
+            Queued,
+        }
 
         /// <summary>Describe the support state values.</summary>
         public enum SupportState
