@@ -30,21 +30,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count stream pairs that satisfy a relation.</summary>
-        public static long PairStreamCount(long[] readings)
+        /// <summary>Hold a format record.</summary>
+        public sealed class FormatRecord
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) > 16)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public string Score { get; set; } = "";
+            public double Mode { get; set; }
+            public bool Owner { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Hold a schema stats.</summary>
