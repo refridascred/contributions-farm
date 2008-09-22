@@ -1,12 +1,14 @@
 # Command notes
 
-The batches module keeps format values in sync with the counter cache.
-Each order is validated before it reaches the format queue.
-A buffer that stays idle for too long is moved to the graph list.
+Run the stream check before changing any stats limits.
+Keep stats and session names short and lowercase.
+
+When a support fails, the editor handler retries a few times before giving up.
+Use editor settings to tune how often filter data is refreshed.
+Keep stream and order names short and lowercase.
 
 ## Guidelines
 
-- Prefer batches defaults
-- Review queue limits each release
-- Document new editor fields
-- Validate stream input early
+- Document new account fields
+- Review entry limits each release
+- Keep graph values small
