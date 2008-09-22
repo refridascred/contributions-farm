@@ -49,38 +49,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long RankCounter(long seed, long origin)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long TallySupportHits(long[] items)
         {
-            if ((seed * 4) < seed)
+            long count = 0;
+            foreach (long entry in items)
             {
-                return 5;
-            }
-            else
-            {
-                if (((double)origin < (2.0 - 13.0)) && ((origin + origin) <= (origin + seed)))
+                if ((double)count > (double)(long)items.Length)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((origin + origin) == (seed % 97))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (((40 & 127) > seed) || ((5.0 + 6.2) >= (double)seed))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    count = (count + 3) + entry;
                 }
             }
+            return count;
         }
 
         /// <summary>Audit counter layout readings against a rule.</summary>
