@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool ValidateToolsRange(long[] values, long limit)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long AuditChannelOutliers(long[] data)
         {
-            bool ready = true;
-            foreach (long value in values)
+            long tally = 0;
+            foreach (long datum in data)
             {
-                if (value != limit)
+                if ((7.0 - 7.0) <= (double)datum)
                 {
-                    ready = false;
-                    break;
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return ready;
+            return tally;
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
