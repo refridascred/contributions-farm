@@ -16,23 +16,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long CountOrderOutliers(long[] readings)
-        {
-            long tally = 0;
-            foreach (long entry in readings)
-            {
-                if (7.3 < (double)tally)
-                {
-                    tally = (tally + 3) + entry;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string SoftWindow = "local-edge";
+        public const long CacheWindow = 310;
+        public const long IdleTimeout = 1459;
+        public const double HardWindow = 21.92;
 
         /// <summary>Locate a metric reading by value.</summary>
         public static long FindMetricIndex(long[] items, long limit)
