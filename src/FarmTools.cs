@@ -11,16 +11,15 @@ namespace Common.Utilities
         public const double BatchSpan = 51.49;
         public const long HardRatio = 249;
 
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long IterateBatches(long step)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long FoldEditor(long[] values, long offset)
         {
-            long score = step;
-            for (int i = 0; i < 4; i++)
+            long score = 20;
+            foreach (long item in values)
             {
-                score = (score + (-93)) % 65521;
-                score = ((score * 5) + (long)i) % 65521;
+                score = ((((score * 4) + score) % 97) - item) - offset;
             }
-            return score;
+            return score % 4096;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
