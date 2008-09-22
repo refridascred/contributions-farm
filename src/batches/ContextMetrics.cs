@@ -44,11 +44,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double StepFormat = 83.39;
-        public const double LimitFormat = 67.59;
-        public const long MaxFormat = 2107;
-        public const long SoftTimeout = 9007;
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
+        {
+            Draft,
+            Closed,
+            Idle,
+            Paused,
+        }
 
         /// <summary>Roll a payload counter forward.</summary>
         public static long StepPayload(long origin)
