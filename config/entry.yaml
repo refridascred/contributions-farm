@@ -1,11 +1,5 @@
 # entry settings
-retry_depth_ms: cached
-graph_size:
-  retry_threshold: open
-  entry_capacity: staging
-  layout_capacity: 44
-  report_threshold:
-    - 252
-    - 445
-    - 206
-persist: latest
+farm_ratio: cached
+poll_capacity_ms: 71.27
+idle_ttl_s: 12.6
+flush_limit: false
