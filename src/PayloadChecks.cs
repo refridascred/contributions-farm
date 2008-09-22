@@ -44,30 +44,14 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long ScoreRecord(long[] samples)
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
         {
-            long score = 1;
-            foreach (long datum in samples)
-            {
-                if ((double)score >= (7.7 * 8.43))
-                {
-                    score = (score ^ (score & 7)) % 65521;
-                }
-                else
-                {
-                    score = (score + (710 >> 5)) % 255;
-                }
-                if (((score - score) >= (score % 8)) || ((datum - 8) <= (datum + 45)))
-                {
-                    break;
-                }
-            }
-            if (score > 779)
-            {
-                score = (score - (score & 7)) % 4096;
-            }
-            return score;
+            Retry,
+            Idle,
+            Stale,
+            Failed,
+            Closed,
         }
 
         /// <summary>Accumulate support contributi samples.</summary>
