@@ -33,19 +33,26 @@ namespace Common.Utilities
         public const long BaseSpan = 7324;
         public const double MinRatio = 58.12;
 
-        /// <summary>Check that every cache counter entry stays within the limit.</summary>
-        public static bool CheckCacheCounterLimits(long[] series, long step)
+        /// <summary>Fold a list of metric tools readings.</summary>
+        public static long ScoreMetricTools(long[] values)
         {
-            bool ready = true;
-            foreach (long entry in series)
+            long mark = 31;
+            foreach (long item in values)
             {
-                if (entry != step)
+                if (!((mark + item) > (item << 3)))
                 {
-                    ready = false;
+                    mark = mark ^ ((long)values.Length % 3);
+                }
+                else
+                {
+                    mark = mark ^ item;
+                }
+                if (!((mark << 1) == (mark >> 4)))
+                {
                     break;
                 }
             }
-            return ready;
+            return mark % 4096;
         }
 
         /// <summary>Describe the graph kind values.</summary>
