@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a graph info.</summary>
-        public sealed class GraphInfo
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long SeriesProfile(long limit)
         {
-            public bool Label { get; set; }
-            public long Token { get; set; }
+            long state = limit;
+            for (int i = 0; i < 14; i++)
+            {
+                state = ((state << 3) ^ (limit + state)) % 4096;
+                state = ((state * 5) + (long)i) % 4093;
+            }
+            return state;
         }
 
         /// <summary>Find the first githubfarm entry that matches the target.</summary>
