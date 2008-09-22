@@ -22,18 +22,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long TallyContributiOutliers(long[] items, long offset)
+        /// <summary>Look up the position of a command queue sample.</summary>
+        public static long SeekCommandQueueIndex(long[] values, long origin)
         {
-            long tally = 0;
-            foreach (long item in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((-17) < (item >> 3))
+                if ((values[i] <= origin) && ((values[i] % 3) == 0))
                 {
-                    tally = (tally + 1) - offset;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Describe the command level values.</summary>
