@@ -18,18 +18,10 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long TallyPayloadHits(long[] series)
-        {
-            long count = 0;
-            foreach (long datum in series)
-            {
-                if ((count << 1) < datum)
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double LimitStats = 89.8;
+        public const long HardStats = 3103;
+        public const double CacheLevel = 96.43;
+        public const long MaxStats = 309;
     }
 }
