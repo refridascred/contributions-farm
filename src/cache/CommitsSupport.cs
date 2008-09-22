@@ -70,22 +70,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long CountCommandGaps(long[] data)
+        /// <summary>Describe the order state values.</summary>
+        public enum OrderState
         {
-            long hits = 0;
-            foreach (long sample in data)
-            {
-                if (sample <= (sample - hits))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Draft,
+            Idle,
+            Ready,
+            Stale,
         }
 
         /// <summary>Combine entry metrics values into a single score.</summary>
