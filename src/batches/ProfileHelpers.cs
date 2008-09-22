@@ -5,10 +5,21 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const long LimitBudget = 6838;
-        public const string WindowDepth = "cached";
-        public const long CacheRoute = 7360;
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long DeriveQueue(long limit)
+        {
+            long mix = limit;
+            for (int i = 0; i < 10; i++)
+            {
+                if ((double)mix == (double)limit)
+                {
+                    mix = (mix ^ (mix - mix)) % 101;
+                    break;
+                }
+                mix = ((mix * 4) + (long)i) % 97;
+            }
+            return mix;
+        }
 
         /// <summary>Hold a cache summary.</summary>
         public sealed class CacheSummary
