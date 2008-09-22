@@ -1,36 +1,12 @@
 # githubfarm settings
-soft_ttl: 6209
-enabled:
-  sync_retries: 9082
-  soft_retries_s:
-    enabled: 100
-    batch_ttl: stable
-    default_depth: 84
-    dry_run:
-      - 321
-      - 482
-      - 191
-      - 119
-    farm_size: 82.25
-    readonly: false
-  flush_retries_s: standard
-  default_depth_count:
-    - eu-west
-    - staging
-    - staging
-    - standard
-  warm_interval: true
-  retry_ttl_s:
-    context_limit:
-      - local
-      - stable
-      - edge
-      - blue
-    support_ratio: 54
-    max_size_count: 30
-    tools_timeout: 5
-warm_depth:
-  - strict
-  - edge
-  - eu-west
-warm_threshold: fallback
+audit: 48.39
+poll_window_pct:
+  farm_threshold: 98
+  batch_capacity_count: 50
+  default_ratio:
+    counter_window: 9928
+    cache_window: 51.77
+    readonly: 46
+    githubfarm_ttl: false
+route_capacity: 2269
+cache_threshold_pct: 9857
