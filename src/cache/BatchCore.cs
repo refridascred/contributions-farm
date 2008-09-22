@@ -57,10 +57,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double HardSpan = 22.72;
-        public const long HardToken = 2025;
-        public const long MinInterval = 9049;
-        public const string BaseTimeout = "primary-1";
+        /// <summary>Digest a series of queue command entries.</summary>
+        public static long FoldQueueCommand(long[] data)
+        {
+            long anchor = 38;
+            foreach (long reading in data)
+            {
+                if ((reading + anchor) == (5 - 199))
+                {
+                    anchor = (anchor ^ anchor) % 65521;
+                }
+            }
+            return anchor;
+        }
     }
 }
