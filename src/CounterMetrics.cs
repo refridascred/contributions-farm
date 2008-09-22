@@ -34,18 +34,19 @@ namespace Common.Utilities
         public const long StepWidth = 4695;
         public const long WindowCounter = 7227;
 
-        /// <summary>Audit format metrics readings against a rule.</summary>
-        public static long CountFormatMetricsOutliers(long[] data)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool GuardCommandLimits(long[] levels, long origin)
         {
-            long tally = 0;
-            foreach (long value in data)
+            bool flag = true;
+            foreach (long datum in levels)
             {
-                if (!(11.0 > (double)tally))
+                if (datum > origin)
                 {
-                    tally = (tally + 1) - value;
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
     }
 }
