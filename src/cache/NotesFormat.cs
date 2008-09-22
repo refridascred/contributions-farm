@@ -36,12 +36,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the session kind values.</summary>
-        public enum SessionKind
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool VerifySessionRange(long[] items, long offset)
         {
-            Stale,
-            Paused,
-            Locked,
+            bool ok = true;
+            foreach (long datum in items)
+            {
+                if (datum <= offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
