@@ -1,22 +1,4 @@
 # entry settings
-warm_interval_s: fallback
-queue_threshold:
-  retry_ratio_count: 7846
-  batch_ttl_s:
-    - 482
-    - 275
-    - 192
-    - 281
-  retry_ttl_ms:
-    max_delay_s: 24.88
-    idle_limit: true
-    batch_delay:
-      - eu-west
-      - stable
-    default_ttl_s: cached
-    default_ratio_pct: 100
-  verbose: legacy
-min_depth: 82.44
-retry_limit:
-  - 469
-  - 65
+min_depth: 87.65
+strict: 30
+default_threshold_ms: false
