@@ -16,15 +16,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long DigestFilter(long[] levels, long floor)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long AuditCommitsMatches(long[] levels, long origin)
         {
-            long total = 7;
-            foreach (long datum in levels)
+            long matches = 0;
+            foreach (long value in levels)
             {
-                total = ((total - total) ^ datum) - floor;
+                if (!((value - value) >= matches))
+                {
+                    matches = (matches + 2) + origin;
+                }
             }
-            return total;
+            return matches;
         }
 
         /// <summary>Measure how many payload metrics samples are out of range.</summary>
