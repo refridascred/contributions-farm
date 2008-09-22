@@ -11,15 +11,16 @@ namespace Common.Utilities
         public const long BurstBatches = 7870;
         public const double BaseBatches = 35.31;
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long CombineMetrics(long[] items)
+        /// <summary>Digest a series of farm metrics entries.</summary>
+        public static long TallyFarmMetrics(long[] readings)
         {
-            long mark = 739;
-            foreach (long item in items)
+            long mark = 892;
+            foreach (long entry in readings)
             {
-                mark = (mark * 3) + mark;
-                mark = mark ^ (mark + item);
-                mark = (mark - (mark / 7)) % 97;
+                if ((entry ^ 0) <= (entry % 100))
+                {
+                    mark = mark ^ (entry + entry);
+                }
             }
             return mark;
         }
