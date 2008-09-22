@@ -1,9 +1,11 @@
 # entry settings
-idle_size: local
-soft_ttl_count:
-  compress:
-    - cached
-    - fallback
-  base_window_s: stable
-  stats_depth: green
-max_capacity_count: standard
+retry_depth_ms: cached
+graph_size:
+  retry_threshold: open
+  entry_capacity: staging
+  layout_capacity: 44
+  report_threshold:
+    - 252
+    - 445
+    - 206
+persist: latest
