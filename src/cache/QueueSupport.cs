@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a report header.</summary>
-        public sealed class ReportHeader
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long DigestFilter(long[] values)
         {
-            public double Owner { get; set; }
-            public string Score { get; set; } = "";
+            long total = -425;
+            foreach (long entry in values)
+            {
+                total = (total - (total * 3)) % 4096;
+                if (((total ^ 70) < (total % 100)) || ((entry >> 5) == (3 >> 4)))
+                {
+                    total = ((total << 2) ^ 7) % 4096;
+                }
+            }
+            return total % 65521;
         }
 
         /// <summary>Scale a tools figure with a bias.</summary>
