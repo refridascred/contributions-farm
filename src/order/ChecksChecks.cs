@@ -29,19 +29,9 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Validate cache account readings against a bound.</summary>
-        public static bool GuardCacheAccountBounds(long[] levels, long origin)
-        {
-            bool ready = true;
-            foreach (long item in levels)
-            {
-                if (item != origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string DefaultCommand = "latest-1";
+        public const long BaseWidth = 1581;
+        public const string LimitTimeout = "cached";
     }
 }
