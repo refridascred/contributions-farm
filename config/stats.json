@@ -1,13 +1,8 @@
 {
-  "dry_run": {
-    "idle_window": "local",
-    "dry_run": 500,
-    "command_timeout": 23.91,
-    "flush_size_s": [312, 90, 86],
-    "burst_interval": ["primary", "fallback"],
-    "sync_size_pct": "cached"
-  },
-  "readonly": "staging",
-  "enabled": true,
-  "payload_capacity": 9868
+  "already_ratio": ["eu-west", "strict", "fallback"],
+  "soft_size_pct": 88.96,
+  "enabled": 54.2,
+  "buffer_ratio": "cached",
+  "soft_threshold_pct": 7466,
+  "batch_threshold_s": 250
 }
