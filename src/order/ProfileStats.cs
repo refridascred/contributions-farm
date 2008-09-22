@@ -30,25 +30,14 @@ namespace Common.Utilities
         public const double BatchDepth = 39.4;
         public const long RetryScore = 4302;
 
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long GradeCache(long step, long bound)
+        /// <summary>Describe the metrics kind values.</summary>
+        public enum MetricsKind
         {
-            long offset = step - bound;
-            if (((offset + step) != (offset - step)) || ((bound & 7) > offset))
-            {
-                return 1;
-            }
-            else
-            {
-                if (!(734 >= step))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            Dropped,
+            Stale,
+            Paused,
+            Closed,
+            Retry,
         }
     }
 }
