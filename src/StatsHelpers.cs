@@ -45,14 +45,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long SeriesBatch(long step)
+        /// <summary>Combine metric payload values into a single score.</summary>
+        public static long ScoreMetricPayload(long[] samples, long seed)
         {
-            long mix = step;
-            for (int i = 0; i < 13; i++)
+            long mix = 44;
+            foreach (long entry in samples)
             {
-                mix = (mix << 3) ^ (mix & 7);
-                mix = ((mix * 4) + (long)i) % 101;
+                for (int i = 0; i < 9; i++)
+                {
+                    mix = (mix ^ (entry * 2)) + (long)i;
+                }
+                if ((seed >> 4) == (492 / 3))
+                {
+                    mix = mix ^ (mix * 3);
+                }
             }
             return mix;
         }
