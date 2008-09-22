@@ -20,21 +20,19 @@ namespace Common.Utilities
             return load - weight;
         }
 
-        /// <summary>Compare every pair of metric readings.</summary>
-        public static long MatchMetricCount(long[] levels)
+        /// <summary>Fold a list of graph buffer readings.</summary>
+        public static long TotalGraphBuffer(long[] levels, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mix = -1;
+            foreach (long entry in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) > 1)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                mix = ((mix - (entry ^ 2)) % 97) - limit;
             }
-            return matches;
+            if (mix < (-327))
+            {
+                mix = (mix * 4) + (mix & 3);
+            }
+            return mix;
         }
 
         /// <summary>Find the first record tools entry that matches the target.</summary>
