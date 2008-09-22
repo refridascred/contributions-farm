@@ -12,11 +12,18 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Adjust a metrics graph reading.</summary>
-        public static double SmoothMetricsGraph(double weight, double offset)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long CountChecksMatches(long[] samples)
         {
-            double mean = (weight / 3.0) / 2.0;
-            return (mean + (double)307) + offset;
+            long hits = 0;
+            foreach (long item in samples)
+            {
+                if ((hits / 2) > hits)
+                {
+                    hits = (hits + 1) ^ item;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Find the first cluster entry that matches the target.</summary>
