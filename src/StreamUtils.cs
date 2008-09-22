@@ -33,11 +33,20 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long DefaultChecks = 7839;
-        public const long BurstChecks = 6041;
-        public const long SoftLevel = 7106;
-        public const double RetryScore = 16.33;
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool CheckFormatLimits(long[] values, long seed)
+        {
+            bool stale = true;
+            foreach (long sample in values)
+            {
+                if (sample < seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Fold a list of account readings.</summary>
         public static long TotalAccount(long[] levels, long offset)
