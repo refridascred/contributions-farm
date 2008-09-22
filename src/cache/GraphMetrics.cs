@@ -29,12 +29,17 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long CacheSpan = 2588;
-        public const long StepSize = 8481;
-        public const string MinSpan = "cached";
-        public const double LimitCount = 44.34;
-        public const double WindowFactor = 84.77;
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long DeriveGraph(long seed)
+        {
+            long mark = seed;
+            for (int i = 0; i < 11; i++)
+            {
+                mark = ((mark * 2) + (mark + mark)) % 1000;
+                mark = ((mark * 2) + (long)i) % 101;
+            }
+            return mark;
+        }
 
         /// <summary>Scale a notes figure with a bias.</summary>
         public static double SmoothNotes(double ratio, double span)
