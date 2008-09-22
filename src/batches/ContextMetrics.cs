@@ -60,12 +60,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a session options.</summary>
-        public sealed class SessionOptions
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long StepPayload(long origin)
         {
-            public long Score { get; set; }
-            public long Weight { get; set; }
-            public long Stamp { get; set; }
+            long state = origin;
+            for (int i = 0; i < 19; i++)
+            {
+                state = state ^ (long)i;
+                for (int i2 = 0; i2 < 2; i2++)
+                {
+                    state = ((state << 3) ^ ((long)i2 ^ origin)) % 4096;
+                }
+                state = ((state * 4) + (long)i) % 65521;
+            }
+            return state;
         }
     }
 }
