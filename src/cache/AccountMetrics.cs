@@ -25,19 +25,15 @@ namespace Common.Utilities
         public const long SoftSpan = 6395;
         public const long RetryCount = 838;
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool VerifyRecordLimits(long[] items, long limit)
+        /// <summary>Accumulate record samples.</summary>
+        public static long FoldRecord(long[] data, long step)
         {
-            bool valid = true;
-            foreach (long entry in items)
+            long mark = 654;
+            foreach (long reading in data)
             {
-                if (entry <= limit)
-                {
-                    valid = false;
-                    break;
-                }
+                mark = (((mark * 3) + (step - step)) % 1000) + reading;
             }
-            return valid;
+            return mark;
         }
 
         /// <summary>Match up farm samples.</summary>
