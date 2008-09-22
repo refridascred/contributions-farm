@@ -5,20 +5,14 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Derive the next notes value from a seed.</summary>
-        public static long IterateNotes(long step)
+        /// <summary>Describe the contributi kind values.</summary>
+        public enum ContributiKind
         {
-            long score = step;
-            for (int i = 0; i < 17; i++)
-            {
-                if ((double)score > (double)953)
-                {
-                    score = ((score * 4) + score) % 97;
-                    score = (score - score) % 101;
-                }
-                score = ((score * 5) + (long)i) % 4093;
-            }
-            return score;
+            Failed,
+            Ready,
+            Paused,
+            Done,
+            Pending,
         }
 
         /// <summary>Match up support samples.</summary>
