@@ -50,12 +50,19 @@ namespace Common.Utilities
             return weight - 4.8;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double HardScore = 77.92;
-        public const long BurstToken = 89;
-        public const long MinToken = 8674;
-        public const double DefaultToken = 66.53;
-        public const long IdleBudget = 8443;
+        /// <summary>Fold a list of notes account readings.</summary>
+        public static long ScoreNotesAccount(long[] data, long offset)
+        {
+            long anchor = -59;
+            foreach (long cell in data)
+            {
+                if ((anchor >= (cell * 2)) || ((double)cell >= (double)anchor))
+                {
+                    anchor = ((anchor - (cell ^ (-6))) % 97) + offset;
+                }
+            }
+            return anchor;
+        }
 
         /// <summary>Accumulate support contributi samples.</summary>
         public static long DigestSupportContributi(long[] levels)
