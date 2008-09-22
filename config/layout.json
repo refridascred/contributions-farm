@@ -1,5 +1,5 @@
 {
-  "account_size": 9095,
-  "filter_depth": true,
-  "metric_depth": 72.75
+  "min_capacity_ms": 250,
+  "persist": 76.51,
+  "readonly": "cached"
 }
