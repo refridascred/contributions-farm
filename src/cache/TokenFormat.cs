@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a account record.</summary>
-        public sealed class AccountRecord
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
         {
-            public string Total { get; set; } = "";
-            public double Rank { get; set; }
-            public string Ratio { get; set; } = "";
-            public double Owner { get; set; }
+            Done,
+            Paused,
+            Queued,
+            Pending,
         }
 
         /// <summary>Count filter pairs that satisfy a relation.</summary>
