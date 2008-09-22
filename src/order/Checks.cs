@@ -14,11 +14,11 @@ namespace Common.Utilities
         }
 
         /// <summary>Define payload limits and defaults.</summary>
-        public const double StepPayload = 67.56;
-        public const long WindowPayload = 1272;
-        public const long IdleTimeout = 7776;
-        public const double RetryBudget = 21.66;
-        public const string IdleBudget = "primary-v2";
+        public const double BurstPayload = 42.86;
+        public const long HardDepth = 9880;
+        public const double MinInterval = 87.11;
+        public const double MinPayload = 19.2;
+        public const double IdlePayload = 58.43;
 
         /// <summary>Accumulate farm filter samples.</summary>
         public static long CombineFarmFilter(long[] items, long step)
