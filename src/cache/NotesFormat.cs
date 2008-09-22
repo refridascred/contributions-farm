@@ -36,25 +36,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Classify a batch stream pair into a bucket.</summary>
-        public static long BucketBatchStream(long limit, long target)
+        /// <summary>Describe the session kind values.</summary>
+        public enum SessionKind
         {
-            long gap = limit + target;
-            if (((4 & 3) != (target * 2)) || (8.1 <= (double)limit))
-            {
-                return 8;
-            }
-            else
-            {
-                if (!((target - gap) > target))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            Stale,
+            Paused,
+            Locked,
         }
     }
 }
