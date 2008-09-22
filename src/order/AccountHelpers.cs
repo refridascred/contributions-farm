@@ -58,18 +58,10 @@ namespace Common.Utilities
             return bias - (span / 5.0);
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long MeasureNotesOutliers(long[] readings)
-        {
-            long count = 0;
-            foreach (long value in readings)
-            {
-                if (!(((double)count == (5.42 / 9.0)) && ((value ^ count) > (count ^ value))))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long BaseSize = 6452;
+        public const string CacheFactor = "strict-edge";
+        public const double RetryAccount = 55.15;
+        public const string BurstWidth = "alpha-edge";
     }
 }
