@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Count stream pairs that satisfy a relation.</summary>
-        public static long MatchStreamCount(long[] levels)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long MeasureOrderOutliers(long[] levels)
         {
             long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            foreach (long sample in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((819 + matches) > (matches * 4))
                 {
-                    if ((levels[i] - levels[j]) > 11)
-                    {
-                        matches = matches + 1;
-                    }
+                    matches = (matches + 2) + sample;
                 }
             }
             return matches;
