@@ -34,20 +34,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool ValidateMetricRange(long[] samples, long origin)
-        {
-            bool valid = true;
-            foreach (long cell in samples)
-            {
-                if (cell < origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double CacheToken = 62.62;
+        public const double LimitToken = 89.53;
+        public const long BurstLevel = 5827;
 
         /// <summary>Locate a stats reading by value.</summary>
         public static long FindStatsIndex(long[] readings, long offset)
