@@ -19,11 +19,39 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a context record.</summary>
-        public sealed class ContextRecord
+        /// <summary>Rank report editor input into a small class.</summary>
+        public static long ClassifyReportEditor(long target, long limit)
         {
-            public bool Token { get; set; }
-            public string Label { get; set; } = "";
+            long span = target ^ limit;
+            if (8 >= ((-835) + target))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((limit << 3) <= (limit & 31))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((limit * 2) < (target - span))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((target + target) > (target - span))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define batch limits and defaults.</summary>
