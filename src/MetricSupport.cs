@@ -23,11 +23,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string MinScore = "latest-v2";
-        public const string MaxPayload = "latest-v2";
-        public const long MinPayload = 3757;
-        public const long WindowPayload = 2982;
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string CacheCount = "alpha-v2";
+        public const long IdleInterval = 268;
+        public const long DefaultDepth = 5267;
 
         /// <summary>Compare every pair of graph readings.</summary>
         public static long OverlapGraphCount(long[] samples)
