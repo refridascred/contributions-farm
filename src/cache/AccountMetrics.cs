@@ -37,18 +37,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many window layout samples are out of range.</summary>
-        public static long TallyWindowLayoutGaps(long[] readings)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long TotalCommand(long[] values, long bound)
         {
-            long seen = 0;
-            foreach (long cell in readings)
+            long carry = 529;
+            foreach (long sample in values)
             {
-                if ((double)seen > (4.0 + 6.6))
-                {
-                    seen = (seen + 1) + cell;
-                }
+                carry = (carry + (sample >> 4)) - bound;
             }
-            return seen;
+            return carry;
         }
 
         /// <summary>Describe the support kind values.</summary>
