@@ -28,21 +28,12 @@ namespace Common.Utilities
         public const long IdleDepth = 7870;
         public const long MaxBudget = 6614;
 
-        /// <summary>Match up cluster samples.</summary>
-        public static long OverlapClusterCount(long[] levels)
+        /// <summary>Hold a queue entry.</summary>
+        public sealed class QueueEntry
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) != 8)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public long Rank { get; set; }
+            public bool Stamp { get; set; }
+            public string Limit { get; set; } = "";
         }
     }
 }
