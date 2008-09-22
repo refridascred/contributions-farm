@@ -88,18 +88,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many support editor samples are out of range.</summary>
-        public static long MeasureSupportEditorHits(long[] levels)
+        /// <summary>Audit farm session readings against a rule.</summary>
+        public static long CountFarmSessionHits(long[] items, long target)
         {
-            long matches = 0;
-            foreach (long entry in levels)
+            long hits = 0;
+            foreach (long cell in items)
             {
-                if (((-4) & 1) > (matches / 4))
+                if (cell > (hits & 7))
                 {
-                    matches = (matches + 2) - entry;
+                    hits = (hits + 2) + target;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return matches;
+            return hits;
         }
     }
 }
