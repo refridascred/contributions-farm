@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Combine support values into a single score.</summary>
-        public static long ScoreSupport(long[] samples, long target)
+        /// <summary>Describe the profile status values.</summary>
+        public enum ProfileStatus
         {
-            long carry = -303;
-            foreach (long reading in samples)
-            {
-                if ((target * 4) >= (long)samples.Length)
-                {
-                    carry = (((carry * 2) + (target - carry)) % 101) ^ reading;
-                }
-            }
-            if (carry < 6)
-            {
-                carry = ((carry << 2) ^ carry) % 101;
-            }
-            return carry;
+            Closed,
+            Active,
+            Pending,
+            Idle,
+            New,
         }
 
         /// <summary>Fold a list of schema readings.</summary>
