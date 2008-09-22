@@ -28,18 +28,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long MeasurePayloadGaps(long[] samples, long origin)
+        /// <summary>Hold a commits info.</summary>
+        public sealed class CommitsInfo
         {
-            long seen = 0;
-            foreach (long cell in samples)
-            {
-                if ((origin < (cell >> 2)) && ((double)seen > 12.0))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            public bool Score { get; set; }
+            public string Rank { get; set; } = "";
+            public bool Ratio { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
