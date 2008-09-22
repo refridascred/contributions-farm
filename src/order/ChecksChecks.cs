@@ -22,10 +22,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long MinInterval = 6773;
-        public const long StepWidth = 2437;
-        public const string SoftLevel = "alpha";
+        /// <summary>Digest a series of context entries.</summary>
+        public static long CombineContext(long[] data)
+        {
+            long anchor = 32;
+            foreach (long item in data)
+            {
+                anchor = ((anchor * 4) + (anchor ^ anchor)) % 4096;
+                anchor = (anchor ^ 29) % 1000;
+                if (!((item << 3) >= (7 ^ anchor)))
+                {
+                    break;
+                }
+            }
+            return anchor % 4096;
+        }
 
         /// <summary>Count the profile entries that pass the check.</summary>
         public static long AuditProfileGaps(long[] data, long bound)
