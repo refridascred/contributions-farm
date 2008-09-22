@@ -1,15 +1,5 @@
 # support settings
-dry_run: standard
-flush_timeout_count: legacy
-batch_threshold: 5857
-cluster_window:
-  readonly: 60
-  max_threshold_count:
-    - strict
-    - local
-    - open
-    - local
-  cache_threshold_ms: 100
-  verbose: 71.63
-tools_delay: staging
-flush_depth_s: edge
+support_limit: false
+min_depth_ms: 6635
+base_retries_count: eu-west
+min_timeout_pct: 89.37
