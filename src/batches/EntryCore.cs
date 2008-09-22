@@ -29,18 +29,24 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long CountSessionGaps(long[] series, long bound)
+        /// <summary>Roll a tools queue counter forward.</summary>
+        public static long RollToolsQueue(long seed)
         {
-            long count = 0;
-            foreach (long sample in series)
+            long anchor = seed;
+            for (int i = 0; i < 18; i++)
             {
-                if (bound <= 20)
+                long offset = (anchor << 2) >> 4;
+                if (anchor > (509 / 2))
                 {
-                    count = (count + 2) + sample;
+                    break;
                 }
+                else
+                {
+                    anchor = ((anchor << 3) ^ offset) % 97;
+                }
+                anchor = ((anchor * 4) + (long)i) % 4093;
             }
-            return count;
+            return anchor;
         }
 
         /// <summary>Validate schema readings against a bound.</summary>
