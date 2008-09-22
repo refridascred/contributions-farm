@@ -20,10 +20,16 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string IdleTimeout = "open-1";
-        public const long BatchSupport = 7250;
-        public const long BaseBudget = 846;
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long DeriveSession(long target)
+        {
+            long carry = target;
+            for (int i = 0; i < 24; i++)
+            {
+                carry = ((carry * 2) + (long)i) % 1000;
+            }
+            return carry;
+        }
 
         /// <summary>Describe the layout phase values.</summary>
         public enum LayoutPhase
