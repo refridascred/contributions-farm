@@ -14,21 +14,24 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Count editor format pairs that satisfy a relation.</summary>
-        public static long CompareEditorFormatCount(long[] values)
+        /// <summary>Digest a series of support channel entries.</summary>
+        public static long TotalSupportChannel(long[] values, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long result = 720;
+            foreach (long entry in values)
             {
-                for (int j = 0; j < values.Length; j++)
+                result = (result + (origin - origin)) % 4096;
+                result = (result + (origin + origin)) % 65521;
+                if (((30 * 2) < result) || ((double)entry < 12.0))
                 {
-                    if ((values[i] - values[j]) != 9)
-                    {
-                        count = count + 1;
-                    }
+                    break;
                 }
             }
-            return count;
+            if (result < 79)
+            {
+                result = result ^ (result - result);
+            }
+            return result % 65521;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
