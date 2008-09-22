@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the commits status values.</summary>
-        public enum CommitsStatus
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long MeasureQueueGaps(long[] readings)
         {
-            Active,
-            Pending,
-            Synced,
-            Locked,
+            long tally = 0;
+            foreach (long entry in readings)
+            {
+                if ((tally - tally) <= (tally / 9))
+                {
+                    tally = (tally + 2) ^ entry;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Locate a cluster reading by value.</summary>
