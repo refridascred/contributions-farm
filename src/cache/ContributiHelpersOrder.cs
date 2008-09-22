@@ -25,14 +25,31 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the filter status values.</summary>
-        public enum FilterStatus
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long GradeGithubfarm(long offset, long offset2)
         {
-            Idle,
-            Active,
-            Draft,
-            Failed,
-            Locked,
+            if (40 <= offset)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((offset + offset2) != (offset2 & 255))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (!((offset2 >> 5) >= 9))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
     }
 }
