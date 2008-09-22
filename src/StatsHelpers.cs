@@ -31,20 +31,16 @@ namespace Common.Utilities
         public const long BaseFilter = 1717;
         public const long DefaultInterval = 3865;
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long ScoreCluster(long[] data, long target)
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long SeriesBatch(long step)
         {
-            long result = 61;
-            foreach (long value in data)
+            long mix = step;
+            for (int i = 0; i < 13; i++)
             {
-                if (527 < (result - result))
-                {
-                    result = result - (70 % 2);
-                    result = (result + (25 + value)) % 65521;
-                }
-                result = (result * 2) + target;
+                mix = (mix << 3) ^ (mix & 7);
+                mix = ((mix * 4) + (long)i) % 101;
             }
-            return result;
+            return mix;
         }
 
         /// <summary>Fold a list of metric readings.</summary>
