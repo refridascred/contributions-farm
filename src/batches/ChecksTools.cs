@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the metric class values.</summary>
-        public enum MetricClass
+        /// <summary>Describe the layout mode values.</summary>
+        public enum LayoutMode
         {
-            Draft,
-            Paused,
-            Active,
-            Stale,
+            Synced,
+            Done,
+            Failed,
+            Locked,
+            Dropped,
         }
 
         /// <summary>Derive the next order value from a seed.</summary>
