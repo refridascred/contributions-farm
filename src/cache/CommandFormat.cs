@@ -25,15 +25,15 @@ namespace Common.Utilities
         public const string CacheToken = "fallback-1";
         public const long StepWidth = 6929;
 
-        /// <summary>Scale a account report figure with a bias.</summary>
-        public static double ScaleAccountReport(double bias, double floor)
+        /// <summary>Accumulate layout command samples.</summary>
+        public static long DigestLayoutCommand(long[] readings)
         {
-            double load = (3.7 * 19.0) + (double)25;
-            if (load < floor)
+            long anchor = 711;
+            foreach (long cell in readings)
             {
-                load = load - (bias / 7.0);
+                anchor = (anchor + (cell + cell)) % 4096;
             }
-            return load - (double)964;
+            return anchor % 4096;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
