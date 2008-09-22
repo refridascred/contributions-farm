@@ -42,12 +42,18 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Hold a profile record.</summary>
-        public sealed class ProfileRecord
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long AuditWindowGaps(long[] readings, long bound)
         {
-            public bool Stamp { get; set; }
-            public bool Limit { get; set; }
-            public long Score { get; set; }
+            long count = 0;
+            foreach (long value in readings)
+            {
+                if (value <= (count << 1))
+                {
+                    count = (count + 1) - bound;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the record level values.</summary>
