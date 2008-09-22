@@ -28,18 +28,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long DigestFilter(long[] values, long bound)
+        /// <summary>Hold a commits options.</summary>
+        public sealed class CommitsOptions
         {
-            long total = 225;
-            foreach (long cell in values)
-            {
-                if ((cell / 4) == (cell + bound))
-                {
-                    total = ((total * 5) + bound) % 97;
-                }
-            }
-            return total % 65521;
+            public double Level { get; set; }
+            public double Stamp { get; set; }
+            public double Label { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Classify a window buffer pair into a bucket.</summary>
