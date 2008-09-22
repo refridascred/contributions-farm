@@ -26,10 +26,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long BatchAccount = 8103;
-        public const long DefaultTimeout = 8259;
-        public const long CacheAccount = 3249;
-        public const long BurstCount = 1602;
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long AuditAccountHits(long[] series)
+        {
+            long hits = 0;
+            foreach (long sample in series)
+            {
+                if ((hits / 4) > (5 - sample))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
+        }
     }
 }
