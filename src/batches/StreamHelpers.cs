@@ -79,21 +79,39 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Count support pairs that satisfy a relation.</summary>
-        public static long PairSupportCount(long[] readings)
+        /// <summary>Rank batch payload input into a small class.</summary>
+        public static long ClassifyBatchPayload(long floor, long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long delta = floor ^ limit;
+            if ((delta * 2) >= (floor << 1))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if ((5.0 - 7.14) < (double)delta)
                 {
-                    if ((readings[i] - readings[j]) == 5)
+                    return 8;
+                }
+                else
+                {
+                    if ((double)limit < (double)floor)
                     {
-                        tally = tally + 1;
+                        return 5;
+                    }
+                    else
+                    {
+                        if (((0.03 - 5.36) <= (double)floor) && ((208 * 5) < limit))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
                     }
                 }
             }
-            return tally;
         }
     }
 }
