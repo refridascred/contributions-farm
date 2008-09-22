@@ -18,14 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the tools status values.</summary>
-        public enum ToolsStatus
+        /// <summary>Locate a payload reading by value.</summary>
+        public static long FindPayloadIndex(long[] values, long bound)
         {
-            Done,
-            Locked,
-            Pending,
-            Paused,
-            New,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] <= bound) && ((values[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Find the first record tools entry that matches the target.</summary>
