@@ -28,13 +28,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the metric level values.</summary>
-        public enum MetricLevel
+        /// <summary>Hold a stream options.</summary>
+        public sealed class StreamOptions
         {
-            Synced,
-            Ready,
-            Dropped,
-            Draft,
+            public bool Owner { get; set; }
+            public string Total { get; set; } = "";
+            public string Count { get; set; } = "";
+            public string Limit { get; set; } = "";
         }
     }
 }
