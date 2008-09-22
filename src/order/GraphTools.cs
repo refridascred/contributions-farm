@@ -49,25 +49,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long BucketStream(long origin, long floor)
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
         {
-            long gap = origin ^ floor;
-            if (!((double)floor == (double)gap))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((origin / 9) > floor)
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            Locked,
+            Ready,
+            New,
         }
 
         /// <summary>Accumulate record samples.</summary>
