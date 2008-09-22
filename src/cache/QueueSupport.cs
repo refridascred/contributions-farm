@@ -23,12 +23,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the account state values.</summary>
-        public enum AccountState
-        {
-            Active,
-            Ready,
-            Closed,
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string CachePayload = "standard-v2";
+        public const double BurstCount = 68.09;
+        public const double RetryPayload = 88.08;
     }
 }
