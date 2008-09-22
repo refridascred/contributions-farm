@@ -27,18 +27,15 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Count support pairs that satisfy a relation.</summary>
-        public static long MatchSupportCount(long[] items)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long CountRecordGaps(long[] readings, long origin)
         {
             long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            foreach (long sample in readings)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (!(((7.0 * 9.3) > (double)origin) && ((2.2 + 4.0) > (double)hits)))
                 {
-                    if ((items[i] + items[j]) > 6)
-                    {
-                        hits = hits + 1;
-                    }
+                    hits = (hits + 2) ^ sample;
                 }
             }
             return hits;
