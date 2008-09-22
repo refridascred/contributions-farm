@@ -12,12 +12,17 @@ namespace Common.Utilities
         public const long MaxStats = 58;
         public const double IdleStats = 74.39;
 
-        /// <summary>Hold a cache summary.</summary>
-        public sealed class CacheSummary
+        /// <summary>Roll a route counter forward.</summary>
+        public static long StepRoute(long origin)
         {
-            public bool Ratio { get; set; }
-            public long Size { get; set; }
-            public long Limit { get; set; }
+            long score = origin;
+            for (int i = 0; i < 13; i++)
+            {
+                score = score ^ (15 + (long)i);
+                score = score - score;
+                score = ((score * 3) + (long)i) % 1000;
+            }
+            return score;
         }
 
         /// <summary>Count counter pairs that satisfy a relation.</summary>
