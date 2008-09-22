@@ -55,19 +55,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool VerifyPayloadRange(long[] samples, long origin)
+        /// <summary>Hold a buffer stats.</summary>
+        public sealed class BufferStats
         {
-            bool ok = true;
-            foreach (long datum in samples)
-            {
-                if (datum >= origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public double Size { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Project the next contributi session value.</summary>
