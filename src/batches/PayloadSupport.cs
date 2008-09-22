@@ -37,19 +37,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Validate profile cluster readings against a bound.</summary>
-        public static bool CheckProfileClusterRange(long[] levels, long bound)
-        {
-            bool flag = true;
-            foreach (long entry in levels)
-            {
-                if (entry > bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long DefaultInterval = 3625;
+        public const double SoftDepth = 78.49;
+        public const long BaseProfile = 1153;
+        public const long CacheDepth = 1326;
     }
 }
