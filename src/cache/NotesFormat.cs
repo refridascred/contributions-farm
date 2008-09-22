@@ -24,12 +24,21 @@ namespace Common.Utilities
             return ratio - (ratio + ratio);
         }
 
-        /// <summary>Describe the route kind values.</summary>
-        public enum RouteKind
+        /// <summary>Count editor pairs that satisfy a relation.</summary>
+        public static long OverlapEditorCount(long[] readings)
         {
-            Draft,
-            New,
-            Ready,
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) < 7)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Project the next metrics value.</summary>
