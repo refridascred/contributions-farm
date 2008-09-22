@@ -37,15 +37,31 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long ScoreEntry(long[] samples)
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long SortStream(long origin, long origin2)
         {
-            long state = 3;
-            foreach (long reading in samples)
+            if (((double)origin < (5.5 - 7.83)) || (origin < (origin << 1)))
             {
-                state = (state - (state + reading)) % 255;
+                return 2;
             }
-            return state;
+            else
+            {
+                if (origin2 > (origin ^ origin2))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (((origin << 2) > (origin2 + origin)) && ((origin2 ^ origin2) < origin))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Define farm limits and defaults.</summary>
