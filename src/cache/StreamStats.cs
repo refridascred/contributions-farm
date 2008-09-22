@@ -12,13 +12,18 @@ namespace Common.Utilities
             return (scale - (scale + ratio)) + floor;
         }
 
-        /// <summary>Hold a token stats.</summary>
-        public sealed class TokenStats
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long TallyToolsHits(long[] series)
         {
-            public long Flag { get; set; }
-            public double Token { get; set; }
-            public long Owner { get; set; }
-            public string Offset { get; set; } = "";
+            long count = 0;
+            foreach (long datum in series)
+            {
+                if ((count - datum) >= (968 << 3))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Compare every pair of payload readings.</summary>
