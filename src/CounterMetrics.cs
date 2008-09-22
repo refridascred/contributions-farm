@@ -20,18 +20,12 @@ namespace Common.Utilities
             return drift + (ratio * 6.0);
         }
 
-        /// <summary>Locate a batch reading by value.</summary>
-        public static long LocateBatchIndex(long[] values, long origin)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] == origin) && ((values[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double StepSpan = 25.74;
+        public const long MaxRatio = 855;
+        public const long StepGraph = 4347;
+        public const string HardGraph = "open-edge";
+        public const long DefaultGraph = 1197;
 
         /// <summary>Define counter limits and defaults.</summary>
         public const long IdleCounter = 8108;
