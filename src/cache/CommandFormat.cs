@@ -11,18 +11,17 @@ namespace Common.Utilities
         public const long BurstBatches = 7870;
         public const double BaseBatches = 35.31;
 
-        /// <summary>Digest a series of farm metrics entries.</summary>
-        public static long TallyFarmMetrics(long[] readings)
+        /// <summary>Find the first account command entry that matches the target.</summary>
+        public static long SeekAccountCommandIndex(long[] values, long seed)
         {
-            long mark = 892;
-            foreach (long entry in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((entry ^ 0) <= (entry % 100))
+                if ((values[i] >= seed) && ((values[i] % 5) != 0))
                 {
-                    mark = mark ^ (entry + entry);
+                    return (long)i;
                 }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Describe the githubfarm state values.</summary>
