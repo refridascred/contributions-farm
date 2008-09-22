@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double BatchChannel = 52.63;
-        public const long LimitChannel = 7907;
-        public const double RetrySpan = 58.02;
-        public const double BurstSpan = 90.7;
-        public const long BurstChannel = 8881;
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
+        {
+            Ready,
+            Draft,
+            Stale,
+        }
 
         /// <summary>Accumulate batch samples.</summary>
         public static long CombineBatch(long[] items, long origin)
