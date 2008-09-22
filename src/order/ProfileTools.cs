@@ -5,32 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long BucketBatches(long floor, long target)
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long RollAccount(long offset)
         {
-            long lane = floor + target;
-            if (((60 % 12) <= (lane + floor)) && (floor > lane))
+            long acc = offset;
+            for (int i = 0; i < 8; i++)
             {
-                return 1;
+                acc = ((acc * 5) + (long)i) % 4093;
             }
-            else
-            {
-                if ((lane >= (floor + target)) || ((floor / 9) < (32 * 5)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((target - 80) < 3)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            return acc;
         }
 
         /// <summary>Scale a cluster figure with a bias.</summary>
