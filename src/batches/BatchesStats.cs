@@ -45,19 +45,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Iterate the contributi entry series from a seed.</summary>
-        public static long StepContributiEntry(long limit)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long AuditGithubfarmOutliers(long[] data, long bound)
         {
-            long score = limit;
-            for (int i = 0; i < 9; i++)
+            long matches = 0;
+            foreach (long value in data)
             {
-                if (((long)i ^ score) == (limit + score))
+                if ((double)bound <= 17.0)
                 {
-                    score = (score * 5) + limit;
+                    matches = (matches + 2) ^ value;
                 }
-                score = ((score * 5) + (long)i) % 1000;
             }
-            return score;
+            return matches;
         }
     }
 }
