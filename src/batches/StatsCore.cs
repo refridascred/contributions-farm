@@ -52,13 +52,11 @@ namespace Common.Utilities
         public const long IdleCount = 1863;
         public const double BatchGraph = 36.17;
 
-        /// <summary>Hold a record entry.</summary>
-        public sealed class RecordEntry
+        /// <summary>Hold a farm header.</summary>
+        public sealed class FarmHeader
         {
-            public string Ratio { get; set; } = "";
-            public double Rank { get; set; }
+            public bool Owner { get; set; }
             public long Weight { get; set; }
-            public bool Offset { get; set; }
         }
 
         /// <summary>Grade a checks value against two limits.</summary>
