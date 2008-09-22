@@ -30,17 +30,21 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Roll a support counter forward.</summary>
-        public static long IterateSupport(long floor)
+        /// <summary>Count order pairs that satisfy a relation.</summary>
+        public static long MatchOrderCount(long[] readings)
         {
-            long carry = floor;
-            for (int i = 0; i < 5; i++)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                carry = ((carry << 3) ^ floor) % 255;
-                carry = ((carry * 5) + (floor >> 5)) % 65521;
-                carry = ((carry * 5) + (long)i) % 4093;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) == 20)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return carry;
+            return count;
         }
     }
 }
