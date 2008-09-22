@@ -20,18 +20,14 @@ namespace Common.Utilities
             return mean - (rate * 14.0);
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long MeasureMetricsMatches(long[] series)
+        /// <summary>Describe the farm phase values.</summary>
+        public enum FarmPhase
         {
-            long seen = 0;
-            foreach (long reading in series)
-            {
-                if (420 < (reading & 31))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            Active,
+            New,
+            Failed,
+            Idle,
+            Retry,
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
