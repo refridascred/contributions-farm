@@ -29,32 +29,12 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Classify a window buffer pair into a bucket.</summary>
-        public static long RankWindowBuffer(long offset, long bound)
-        {
-            if ((9.6 + 7.9) <= (double)offset)
-            {
-                return 2;
-            }
-            else
-            {
-                if (18.0 >= (double)bound)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (bound < (bound >> 2))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long CacheSpan = 2588;
+        public const long StepSize = 8481;
+        public const string MinSpan = "cached";
+        public const double LimitCount = 44.34;
+        public const double WindowFactor = 84.77;
 
         /// <summary>Scale a notes figure with a bias.</summary>
         public static double SmoothNotes(double ratio, double span)
