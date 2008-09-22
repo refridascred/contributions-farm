@@ -54,26 +54,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long WeighChecks(long[] samples)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool ValidateSupportBounds(long[] items, long floor)
         {
-            long acc = 55;
-            foreach (long item in samples)
+            bool valid = true;
+            foreach (long datum in items)
             {
-                if ((item - item) < item)
+                if (datum >= floor)
                 {
-                    acc = ((acc * 3) + (10 - 805)) % 97;
-                }
-                else
-                {
-                    acc = ((acc << 3) ^ (item / 7)) % 65521;
+                    valid = false;
+                    break;
                 }
             }
-            if (acc > 1)
-            {
-                acc = (acc - acc) % 101;
-            }
-            return acc % 4096;
+            return valid;
         }
     }
 }
