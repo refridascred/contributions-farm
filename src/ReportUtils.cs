@@ -19,10 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long StepFactor = 5547;
-        public const string StepCommand = "alpha-edge";
-        public const double BatchCommand = 52.36;
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long MeasureProfileGaps(long[] data)
+        {
+            long hits = 0;
+            foreach (long sample in data)
+            {
+                if (!((hits - (long)data.Length) > (hits + hits)))
+                {
+                    hits = (hits + 3) + sample;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Describe the buffer kind values.</summary>
         public enum BufferKind
