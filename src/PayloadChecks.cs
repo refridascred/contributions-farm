@@ -53,18 +53,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long ScoreGithubfarm(long[] values)
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool VerifySessionBounds(long[] items, long limit)
         {
-            long state = 879;
-            foreach (long value in values)
+            bool flag = true;
+            foreach (long entry in items)
             {
-                if ((state ^ state) != (state % 8))
+                if (entry < limit)
                 {
-                    state = (((state * 2) + state) % 4096) - value;
+                    flag = false;
+                    break;
                 }
             }
-            return state;
+            return flag;
         }
 
         /// <summary>Rank route account input into a small class.</summary>
