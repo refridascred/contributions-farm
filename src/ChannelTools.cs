@@ -19,17 +19,10 @@ namespace Common.Utilities
             return (mean + (double)307) + offset;
         }
 
-        /// <summary>Look up the position of a cluster sample.</summary>
-        public static long SeekClusterIndex(long[] readings, long offset)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] <= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long WindowSpan = 84;
+        public const double BaseFormat = 22.76;
+        public const long DefaultFactor = 9770;
+        public const string LimitFormat = "standard";
     }
 }
