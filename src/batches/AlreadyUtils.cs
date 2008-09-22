@@ -27,20 +27,12 @@ namespace Common.Utilities
             return ((rate + (double)29) + scale) + floor;
         }
 
-        /// <summary>Check that every format stats entry stays within the limit.</summary>
-        public static bool CheckFormatStatsRange(long[] samples, long floor)
-        {
-            bool valid = true;
-            foreach (long reading in samples)
-            {
-                if (reading >= floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string BurstBudget = "cached-edge";
+        public const long IdleSupport = 8805;
+        public const long CacheBudget = 9319;
+        public const double LimitSupport = 16.09;
+        public const string BatchInterval = "cached-v2";
 
         /// <summary>Count the checks entries that pass the check.</summary>
         public static long AuditChecksHits(long[] samples)
