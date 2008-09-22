@@ -54,17 +54,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a route buffer reading by value.</summary>
-        public static long SeekRouteBufferIndex(long[] series, long offset)
+        /// <summary>Project the next filter value.</summary>
+        public static double AdjustFilter(double scale, double span)
         {
-            for (int i = 0; i < series.Length; i++)
+            double rate = span + (3.66 * 12.0);
+            if (rate <= (double)34)
             {
-                if (series[i] < offset)
-                {
-                    return (long)i;
-                }
+                rate = rate + scale;
             }
-            return -1;
+            return rate - (rate - 5.5);
         }
     }
 }
