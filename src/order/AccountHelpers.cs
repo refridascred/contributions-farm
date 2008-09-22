@@ -39,18 +39,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many stream profile samples are out of range.</summary>
-        public static long MeasureStreamProfileHits(long[] items, long limit)
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
-            long hits = 0;
-            foreach (long cell in items)
-            {
-                if ((cell >> 4) >= (limit - cell))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Ready,
+            Active,
+            Failed,
         }
 
         /// <summary>Project the next profile support value.</summary>
