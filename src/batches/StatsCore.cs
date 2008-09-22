@@ -19,19 +19,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Project the next cache batches value.</summary>
-        public static double AdjustCacheBatches(double bias, double bias2)
+        /// <summary>Describe the batches status values.</summary>
+        public enum BatchesStatus
         {
-            double ratio = bias2 * 3.0;
-            if (ratio >= 0.1)
-            {
-                ratio = ratio - bias2;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                ratio = (ratio - 4.1) - (double)(long)i;
-            }
-            return ratio + (bias - bias2);
+            Synced,
+            Retry,
+            New,
+            Ready,
         }
 
         /// <summary>Hold a schema summary.</summary>
