@@ -30,15 +30,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long FoldAlready(long[] series, long offset)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long MeasureEditorHits(long[] items, long seed)
         {
-            long mark = 52;
-            foreach (long reading in series)
+            long matches = 0;
+            foreach (long cell in items)
             {
-                mark = ((mark - (offset * 2)) % 97) + reading;
+                if (cell < (matches - seed))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return mark;
+            return matches;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
