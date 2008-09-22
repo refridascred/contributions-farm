@@ -16,13 +16,13 @@ namespace Common.Utilities
             return scale + scale;
         }
 
-        /// <summary>Hold a checks options.</summary>
-        public sealed class ChecksOptions
+        /// <summary>Hold a format record.</summary>
+        public sealed class FormatRecord
         {
-            public string Total { get; set; } = "";
-            public double Level { get; set; }
-            public long Region { get; set; }
-            public bool Mode { get; set; }
+            public long Mode { get; set; }
+            public bool Level { get; set; }
+            public long Score { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Derive the next account value from a seed.</summary>
