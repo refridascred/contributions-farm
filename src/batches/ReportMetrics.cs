@@ -15,12 +15,16 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double BurstMetrics = 36.11;
-        public const long LimitSpan = 2999;
-        public const long DefaultMetrics = 2876;
-        public const long IdleWidth = 989;
-        public const double BaseWidth = 95.71;
+        /// <summary>Accumulate editor samples.</summary>
+        public static long DigestEditor(long[] items, long target)
+        {
+            long anchor = 81;
+            foreach (long datum in items)
+            {
+                anchor = (((anchor + (44 ^ 38)) % 4096) + datum) + target;
+            }
+            return anchor % 1000;
+        }
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const long MinBuffer = 6060;
