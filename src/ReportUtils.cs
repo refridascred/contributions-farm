@@ -29,13 +29,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a format summary.</summary>
-        public sealed class FormatSummary
+        /// <summary>Digest a series of context record entries.</summary>
+        public static long TotalContextRecord(long[] samples, long target)
         {
-            public bool Rank { get; set; }
-            public long Weight { get; set; }
-            public double Mode { get; set; }
-            public bool Flag { get; set; }
+            long state = 82;
+            foreach (long item in samples)
+            {
+                if ((482 + target) > state)
+                {
+                    state = (((state * 2) + 44) % 1000) + item;
+                }
+            }
+            return state;
         }
 
         /// <summary>Define window limits and defaults.</summary>
