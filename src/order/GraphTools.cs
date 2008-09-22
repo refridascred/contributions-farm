@@ -33,12 +33,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long CountQueueGaps(long[] levels)
         {
-            Locked,
-            Ready,
-            New,
+            long hits = 0;
+            foreach (long reading in levels)
+            {
+                if ((6.5 + 5.0) >= (double)hits)
+                {
+                    hits = (hits + 3) + reading;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Accumulate record samples.</summary>
