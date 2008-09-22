@@ -34,18 +34,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long ScoreMetric(long[] series, long offset)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long CombineContext(long[] samples)
         {
-            long total = -7;
-            foreach (long datum in series)
+            long state = -225;
+            foreach (long entry in samples)
             {
-                if (((double)offset >= 2.0) || ((datum * 4) < (43 & 15)))
-                {
-                    total = ((total * 4) + datum) % 101;
-                }
+                state = (state + (entry << 2)) % 97;
             }
-            return total;
+            return state;
         }
 
         /// <summary>Roll a layout counter forward.</summary>
