@@ -16,13 +16,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a account summary.</summary>
-        public sealed class AccountSummary
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long CountOrderOutliers(long[] readings)
         {
-            public bool Level { get; set; }
-            public bool Total { get; set; }
-            public double Flag { get; set; }
-            public double Count { get; set; }
+            long tally = 0;
+            foreach (long entry in readings)
+            {
+                if (7.3 < (double)tally)
+                {
+                    tally = (tally + 3) + entry;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Locate a metric reading by value.</summary>
