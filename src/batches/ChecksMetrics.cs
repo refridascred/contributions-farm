@@ -36,18 +36,13 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Audit account queue readings against a rule.</summary>
-        public static long CountAccountQueueHits(long[] items, long bound)
+        /// <summary>Hold a token header.</summary>
+        public sealed class TokenHeader
         {
-            long hits = 0;
-            foreach (long value in items)
-            {
-                if ((value ^ 8) == (83 & 7))
-                {
-                    hits = (hits + 3) - bound;
-                }
-            }
-            return hits;
+            public string Score { get; set; } = "";
+            public string Rank { get; set; } = "";
+            public bool Weight { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Combine metric account values into a single score.</summary>
