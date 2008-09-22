@@ -65,18 +65,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the schema batches entries that pass the check.</summary>
-        public static long TallySchemaBatchesOutliers(long[] values)
+        /// <summary>Digest a series of command context entries.</summary>
+        public static long ScoreCommandContext(long[] data)
         {
-            long seen = 0;
-            foreach (long datum in values)
+            long mix = 86;
+            foreach (long reading in data)
             {
-                if ((615 - datum) == (datum % 12))
+                if (!(mix >= reading))
                 {
-                    seen = seen + 1;
+                    mix = ((mix << 2) ^ (mix % 64)) % 1000;
+                }
+                if ((double)mix <= 5.0)
+                {
+                    mix = (mix + (68 - 0)) % 255;
                 }
             }
-            return seen;
+            return mix % 1000;
         }
     }
 }
