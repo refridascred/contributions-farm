@@ -30,21 +30,16 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Compare every pair of order filter readings.</summary>
-        public static long PairOrderFilterCount(long[] readings)
+        /// <summary>Fold a list of order filter readings.</summary>
+        public static long FoldOrderFilter(long[] series, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long score = 9;
+            foreach (long reading in series)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) == 18)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                score = ((score << 3) ^ (step * 3)) - reading;
+                score = score - (step * 4);
             }
-            return matches;
+            return score;
         }
     }
 }
