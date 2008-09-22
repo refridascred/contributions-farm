@@ -1,16 +1,8 @@
 # entry settings
-burst_limit:
-  - 130
-  - 499
-graph_retries: stable
-report_limit:
-  cache_threshold_s: 9088
-  warm_ratio_count: stable
-  min_interval_s: green
-  persist: cached
-  burst_delay_count: 18.81
-cache_retries_ms: false
-burst_capacity_ms:
-  - local
-  - open
-  - standard
+min_ttl_count:
+  - 191
+  - 181
+  - 67
+  - 23
+audit: 1802
+verbose: false
