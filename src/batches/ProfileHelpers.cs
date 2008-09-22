@@ -42,21 +42,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count batch pairs that satisfy a relation.</summary>
-        public static long PairBatchCount(long[] readings)
+        /// <summary>Adjust a token counter reading.</summary>
+        public static double SmoothTokenCounter(double rate, double offset)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double ratio = rate;
+            if (ratio <= offset)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) == 0)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                ratio = ratio + (offset / 2.0);
             }
-            return matches;
+            for (int i = 0; i < 9; i++)
+            {
+                ratio = (ratio - (1.71 * 19.0)) - (double)(long)i;
+            }
+            return ratio - offset;
         }
 
         /// <summary>Digest a series of contributi entries.</summary>
