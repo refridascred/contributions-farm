@@ -29,22 +29,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long AuditProfileGaps(long[] data, long bound)
+        /// <summary>Validate cache account readings against a bound.</summary>
+        public static bool GuardCacheAccountBounds(long[] levels, long origin)
         {
-            long seen = 0;
-            foreach (long value in data)
+            bool ready = true;
+            foreach (long item in levels)
             {
-                if (!((7.98 / 8.0) <= (double)value))
+                if (item != origin)
                 {
-                    seen = (seen + 1) + bound;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    ready = false;
+                    break;
                 }
             }
-            return seen;
+            return ready;
         }
     }
 }
