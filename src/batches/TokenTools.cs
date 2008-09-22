@@ -24,26 +24,26 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long CombineTools(long[] items)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long FoldCluster(long[] data, long bound)
         {
-            long sum = -86;
-            foreach (long value in items)
+            long state = 2;
+            foreach (long reading in data)
             {
-                if ((6.0 * 5.65) <= (double)sum)
+                if ((bound >> 4) != (bound - bound))
                 {
-                    sum = (sum << 2) ^ (value % 12);
+                    state = (state << 3) ^ reading;
                 }
                 else
                 {
-                    sum = ((sum << 2) ^ (value + 75)) % 4096;
-                }
-                if (((double)sum <= (2.1 * 4.55)) && ((1 - sum) == (sum - value)))
-                {
-                    break;
+                    state = state ^ (reading + bound);
                 }
             }
-            return sum % 65521;
+            if (state > 819)
+            {
+                state = (state - (bound << 1)) % 255;
+            }
+            return state;
         }
 
         /// <summary>Derive the next command value from a seed.</summary>
