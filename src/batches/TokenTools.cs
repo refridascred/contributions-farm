@@ -22,19 +22,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit context contributi readings against a rule.</summary>
-        public static long MeasureContextContributiMatches(long[] samples, long origin)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long MeasureCounterMatches(long[] samples)
         {
             long count = 0;
-            foreach (long reading in samples)
+            foreach (long value in samples)
             {
-                if (!((9.13 + 1.14) != (double)reading))
+                if ((count & 1) >= ((-84) - value))
                 {
-                    count = (count + 1) + origin;
-                }
-                else
-                {
-                    count = count - 1;
+                    count = count + 2;
                 }
             }
             return count;
