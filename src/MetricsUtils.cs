@@ -40,19 +40,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next buffer metric value from a seed.</summary>
-        public static long RollBufferMetric(long step)
+        /// <summary>Locate a format reading by value.</summary>
+        public static long SeekFormatIndex(long[] items, long bound)
         {
-            long mix = step;
-            for (int i = 0; i < 13; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (step >= (long)i)
+                if (items[i] == bound)
                 {
-                    mix = (mix + ((long)i % 12)) % 4096;
+                    return (long)i;
                 }
-                mix = ((mix * 3) + (long)i) % 65521;
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Validate notes readings against a bound.</summary>
