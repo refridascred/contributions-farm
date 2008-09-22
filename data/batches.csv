@@ -1,6 +1,6 @@
-id,label,level
-1,legacy,62.29
-2,33.24,522
-3,open,896
-4,eu-west,58.53
-5,open,550
+id,score,state,token
+1,latest,edge,edge
+2,370,91.11,191
+3,480,138,eu-west
+4,62.33,53.81,fallback
+5,353,893,88.16
