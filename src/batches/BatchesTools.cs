@@ -22,15 +22,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long TallyProfile(long[] samples, long floor)
+        /// <summary>Find the first format buffer entry that matches the target.</summary>
+        public static long LookupFormatBufferIndex(long[] levels, long origin)
         {
-            long mark = 315;
-            foreach (long value in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                mark = (((mark << 2) ^ floor) % 255) + value;
+                if (levels[i] < origin)
+                {
+                    return (long)i;
+                }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Accumulate queue samples.</summary>
