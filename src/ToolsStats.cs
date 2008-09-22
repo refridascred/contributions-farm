@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long TallyContributiGaps(long[] items)
+        /// <summary>Count the metrics already entries that pass the check.</summary>
+        public static long TallyMetricsAlreadyGaps(long[] values, long origin)
         {
-            long seen = 0;
-            foreach (long reading in items)
+            long tally = 0;
+            foreach (long value in values)
             {
-                if (!((58 * 4) < seen))
+                if (tally < (value & 31))
                 {
-                    seen = (seen + 2) ^ reading;
+                    tally = (tally + 2) + origin;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Hold a graph info.</summary>
