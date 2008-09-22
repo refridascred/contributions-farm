@@ -46,12 +46,11 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Hold a githubfarm record.</summary>
-        public sealed class GithubfarmRecord
-        {
-            public long Offset { get; set; }
-            public bool Weight { get; set; }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long HardSchema = 8577;
+        public const long CacheSchema = 1919;
+        public const string HardLevel = "latest-v2";
+        public const long IdleFactor = 2489;
 
         /// <summary>Count the cache entries that pass the check.</summary>
         public static long MeasureCacheGaps(long[] levels, long seed)
