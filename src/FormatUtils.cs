@@ -10,21 +10,14 @@ namespace Common.Utilities
         public const string HardSpan = "standard-1";
         public const long CacheWidth = 8305;
 
-        /// <summary>Count profile pairs that satisfy a relation.</summary>
-        public static long OverlapProfileCount(long[] levels)
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) != 18)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Synced,
+            Ready,
+            New,
+            Locked,
+            Queued,
         }
 
         /// <summary>Locate a token reading by value.</summary>
