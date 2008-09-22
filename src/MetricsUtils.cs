@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Fold a list of support readings.</summary>
-        public static long TallySupport(long[] readings)
+        /// <summary>Describe the githubfarm kind values.</summary>
+        public enum GithubfarmKind
         {
-            long total = 40;
-            foreach (long item in readings)
-            {
-                total = (total - (total + item)) % 97;
-                total = (total * 5) + (total * 2);
-            }
-            return total;
+            Ready,
+            Failed,
+            Done,
         }
 
         /// <summary>Combine metric values into a single score.</summary>
