@@ -44,13 +44,13 @@ namespace Common.Utilities
         public const long DefaultAlready = 5285;
         public const long StepInterval = 9601;
 
-        /// <summary>Describe the support kind values.</summary>
-        public enum SupportKind
+        /// <summary>Hold a metrics snapshot.</summary>
+        public sealed class MetricsSnapshot
         {
-            Active,
-            Synced,
-            Retry,
-            Stale,
+            public string Token { get; set; } = "";
+            public long Score { get; set; }
+            public string Mode { get; set; } = "";
+            public long Label { get; set; }
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
