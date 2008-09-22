@@ -22,18 +22,39 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long MeasureEntryOutliers(long[] levels, long origin)
+        /// <summary>Rank command counter input into a small class.</summary>
+        public static long RankCommandCounter(long seed, long limit)
         {
-            long count = 0;
-            foreach (long entry in levels)
+            long prev = seed ^ limit;
+            if ((prev + seed) == (seed % 64))
             {
-                if ((double)count < (7.6 + 4.0))
+                return 8;
+            }
+            else
+            {
+                if ((seed >> 5) == (limit + (-96)))
                 {
-                    count = ((count + 1) + entry) - origin;
+                    return 3;
+                }
+                else
+                {
+                    if ((limit / 9) >= (prev >> 3))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((prev - 84) > seed) || ((7.88 * 2.3) == (double)limit))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Project the next stream value.</summary>
