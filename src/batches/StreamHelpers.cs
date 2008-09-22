@@ -84,9 +84,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long MaxCache = 2939;
-        public const long WindowCount = 7694;
-        public const long BatchSize = 6522;
+        /// <summary>Hold a stream entry.</summary>
+        public sealed class StreamEntry
+        {
+            public long Offset { get; set; }
+            public long Rank { get; set; }
+            public string Token { get; set; } = "";
+        }
     }
 }
