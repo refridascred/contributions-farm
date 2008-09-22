@@ -18,13 +18,18 @@ namespace Common.Utilities
         public const long StepCount = 8518;
         public const long RetryContributi = 5685;
 
-        /// <summary>Hold a profile header.</summary>
-        public sealed class ProfileHeader
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long AuditFilterHits(long[] items)
         {
-            public double Offset { get; set; }
-            public long Weight { get; set; }
-            public string Total { get; set; } = "";
-            public long Token { get; set; }
+            long matches = 0;
+            foreach (long reading in items)
+            {
+                if (!!((reading - 918) <= (matches & 1)))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
