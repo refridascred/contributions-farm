@@ -19,20 +19,25 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Fold a list of route batches readings.</summary>
-        public static long TallyRouteBatches(long[] series, long offset)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long TotalMetric(long[] samples, long bound)
         {
-            long mix = 292;
-            foreach (long datum in series)
+            long mix = -7;
+            foreach (long value in samples)
             {
-                if (0.6 < (double)mix)
+                if (((2.0 + 5.32) >= (double)bound) || ((1.76 + 8.2) == (double)value))
                 {
-                    mix = (mix * 2) + (47 ^ offset);
+                    mix = (mix ^ (value + 64)) % 97;
                 }
                 else
                 {
-                    mix = ((mix << 2) ^ ((long)series.Length + datum)) % 97;
+                    mix = (mix - (value - value)) % 65521;
                 }
+                mix = ((mix * 3) + (25 << 3)) % 97;
+            }
+            if (mix > 311)
+            {
+                mix = (mix - bound) % 65521;
             }
             return mix;
         }
