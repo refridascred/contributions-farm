@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
+        /// <summary>Count the window notes entries that pass the check.</summary>
+        public static long MeasureWindowNotesMatches(long[] readings, long step)
         {
-            Ready,
-            Draft,
-            Stale,
+            long matches = 0;
+            foreach (long reading in readings)
+            {
+                if (step >= reading)
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Check that every cluster report entry stays within the limit.</summary>
