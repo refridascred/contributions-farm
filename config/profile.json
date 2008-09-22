@@ -1,12 +1,16 @@
 {
-  "max_window": "stable",
-  "idle_capacity_count": 4201,
-  "batch_window_s": {
-    "token_interval": 57.18,
-    "flush_limit_s": 250,
-    "max_ttl": 5
+  "warm_interval": {
+    "contributi_ratio": "fallback",
+    "report_delay": true,
+    "metrics_window": {
+      "max_threshold_s": 25.11,
+      "dry_run": 250,
+      "counter_capacity": "blue"
+    },
+    "stream_window": "eu-west",
+    "cache_interval_count": [21, 126, 479, 71],
+    "default_size_count": "latest"
   },
-  "audit": 500,
-  "idle_window_count": "blue",
-  "max_ratio": 14.91
+  "compress": 38.45,
+  "verbose": "edge"
 }
