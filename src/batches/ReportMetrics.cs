@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long RetryBudget = 6440;
-        public const string IdleCommand = "local";
-        public const long BurstCommand = 4929;
-        public const long DefaultSpan = 9894;
-        public const long HardCommand = 1236;
+        /// <summary>Combine support values into a single score.</summary>
+        public static long ScoreSupport(long[] samples, long target)
+        {
+            long carry = -303;
+            foreach (long reading in samples)
+            {
+                if ((target * 4) >= (long)samples.Length)
+                {
+                    carry = (((carry * 2) + (target - carry)) % 101) ^ reading;
+                }
+            }
+            if (carry < 6)
+            {
+                carry = ((carry << 2) ^ carry) % 101;
+            }
+            return carry;
+        }
 
         /// <summary>Hold a commits stats.</summary>
         public sealed class CommitsStats
