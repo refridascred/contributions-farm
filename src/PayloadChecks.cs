@@ -19,38 +19,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank context input into a small class.</summary>
-        public static long SortContext(long floor, long limit)
+        /// <summary>Describe the record status values.</summary>
+        public enum RecordStatus
         {
-            if (((floor % 12) <= (floor % 2)) || ((limit + 926) == (floor ^ 36)))
-            {
-                return 7;
-            }
-            else
-            {
-                if (920 > floor)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((limit - 14) == (limit - floor))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (((double)floor == (0.28 / 4.0)) && (floor > (limit * 4)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            Idle,
+            Dropped,
+            Paused,
+            Closed,
+            Active,
         }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
