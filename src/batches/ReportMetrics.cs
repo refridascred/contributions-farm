@@ -23,11 +23,16 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a commits stats.</summary>
-        public sealed class CommitsStats
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long CombineSchema(long[] series)
         {
-            public long Count { get; set; }
-            public string Ratio { get; set; } = "";
+            long state = 181;
+            foreach (long reading in series)
+            {
+                state = (state ^ (state + reading)) % 101;
+                state = (state * 4) + (state + (long)series.Length);
+            }
+            return state;
         }
 
         /// <summary>Roll a counter counter forward.</summary>
