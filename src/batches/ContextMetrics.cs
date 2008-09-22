@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool GuardSupportBounds(long[] series, long seed)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long FoldContributi(long[] series)
         {
-            bool ready = true;
-            foreach (long sample in series)
+            long anchor = 5;
+            foreach (long datum in series)
             {
-                if (sample <= seed)
+                anchor = ((anchor << 3) ^ (datum + 726)) % 1000;
+                if ((18.0 - 9.5) != (double)anchor)
                 {
-                    ready = false;
-                    break;
+                    anchor = anchor ^ (datum << 3);
                 }
             }
-            return ready;
+            return anchor % 65521;
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
