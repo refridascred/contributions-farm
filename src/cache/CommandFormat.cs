@@ -18,18 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long TallyEntry(long[] readings, long origin)
+        /// <summary>Describe the already kind values.</summary>
+        public enum AlreadyKind
         {
-            long mix = 2;
-            foreach (long reading in readings)
-            {
-                if (((mix % 10) <= (mix * 5)) || ((6.4 * 3.8) <= (double)origin))
-                {
-                    mix = (mix - reading) % 255;
-                }
-            }
-            return mix;
+            Dropped,
+            Locked,
+            Pending,
+            Draft,
+            Ready,
         }
 
         /// <summary>Audit window readings against a rule.</summary>
