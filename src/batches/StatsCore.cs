@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Accumulate stats samples.</summary>
-        public static long CombineStats(long[] levels)
-        {
-            long sum = 6;
-            foreach (long value in levels)
-            {
-                if (((0.46 * 5.0) < (double)sum) || ((double)sum < (3.0 * 18.0)))
-                {
-                    sum = (((sum << 3) ^ (sum - (long)levels.Length)) % 97) - value;
-                }
-            }
-            return sum % 1000;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double DefaultCounter = 95.61;
+        public const long SoftCounter = 3159;
+        public const long BatchInterval = 9590;
+        public const long IdleCounter = 3310;
 
         /// <summary>Describe the batches status values.</summary>
         public enum BatchesStatus
