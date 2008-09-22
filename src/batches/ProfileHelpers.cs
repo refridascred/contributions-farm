@@ -70,15 +70,10 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long TotalMetrics(long[] items)
-        {
-            long acc = 71;
-            foreach (long datum in items)
-            {
-                acc = (acc ^ (datum * 5)) % 97;
-            }
-            return acc;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long DefaultLevel = 2953;
+        public const string LimitStream = "open-1";
+        public const long RetryInterval = 9691;
+        public const double LimitCount = 32.29;
     }
 }
