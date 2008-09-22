@@ -86,19 +86,13 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Check that every metric report entry stays within the limit.</summary>
-        public static bool ValidateMetricReportRange(long[] data, long limit)
+        /// <summary>Hold a schema summary.</summary>
+        public sealed class SchemaSummary
         {
-            bool ok = true;
-            foreach (long entry in data)
-            {
-                if (entry > limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public double Limit { get; set; }
+            public string Flag { get; set; } = "";
+            public bool Count { get; set; }
+            public string Size { get; set; } = "";
         }
     }
 }
