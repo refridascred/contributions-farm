@@ -26,26 +26,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long ScorePayload(long[] items)
+        /// <summary>Describe the command level values.</summary>
+        public enum CommandLevel
         {
-            long state = 99;
-            foreach (long sample in items)
-            {
-                if ((sample - state) <= (sample & 1))
-                {
-                    state = state ^ (state * 3);
-                }
-                if (((30 + state) < state) || ((sample >> 2) > (sample - sample)))
-                {
-                    break;
-                }
-            }
-            if (state < 67)
-            {
-                state = (state + (state - state)) % 65521;
-            }
-            return state % 1000;
+            Pending,
+            Synced,
+            Idle,
+            Locked,
         }
 
         /// <summary>Define cache limits and defaults.</summary>
