@@ -46,11 +46,28 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long HardSchema = 8577;
-        public const long CacheSchema = 1919;
-        public const string HardLevel = "latest-v2";
-        public const long IdleFactor = 2489;
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long TotalPayload(long[] levels)
+        {
+            long mark = 48;
+            foreach (long sample in levels)
+            {
+                if (sample >= (mark / 5))
+                {
+                    mark = mark + sample;
+                }
+                mark = (mark - (mark >> 4)) % 101;
+                if ((mark - 7) >= (5 % 97))
+                {
+                    mark = mark ^ (mark & 7);
+                }
+                else
+                {
+                    mark = mark - mark;
+                }
+            }
+            return mark % 1000;
+        }
 
         /// <summary>Count the cache entries that pass the check.</summary>
         public static long MeasureCacheGaps(long[] levels, long seed)
