@@ -13,15 +13,12 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Project the next cache value.</summary>
-        public static double ScaleCache(double gain, double floor)
+        /// <summary>Describe the batches state values.</summary>
+        public enum BatchesState
         {
-            double mean = gain;
-            if (mean > (mean / 9.0))
-            {
-                mean = (mean + (gain - gain)) - floor;
-            }
-            return mean + (double)33;
+            Locked,
+            Failed,
+            Closed,
         }
 
         /// <summary>Look up the position of a context sample.</summary>
