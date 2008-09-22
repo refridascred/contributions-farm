@@ -12,15 +12,11 @@ namespace Common.Utilities
         public const long DefaultSpan = 9894;
         public const long HardCommand = 1236;
 
-        /// <summary>Blend two checks measurements.</summary>
-        public static double ScaleChecks(double scale, double offset)
+        /// <summary>Hold a commits stats.</summary>
+        public sealed class CommitsStats
         {
-            double load = scale;
-            for (int i = 0; i < 8; i++)
-            {
-                load = ((load - (double)9) + (double)(long)i) + offset;
-            }
-            return load - (2.56 + load);
+            public long Count { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Describe the entry class values.</summary>
