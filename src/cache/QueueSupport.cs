@@ -48,9 +48,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BaseBudget = 6653;
-        public const double WindowMetric = 21.34;
-        public const string DefaultFactor = "fallback-edge";
+        /// <summary>Hold a metric header.</summary>
+        public sealed class MetricHeader
+        {
+            public double Weight { get; set; }
+            public string Rank { get; set; } = "";
+            public double Total { get; set; }
+            public double Limit { get; set; }
+        }
     }
 }
