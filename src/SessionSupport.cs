@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long SoftRatio = 2840;
-        public const string HardProfile = "fallback-v2";
-        public const long StepProfile = 9227;
-        public const long DefaultRatio = 1852;
+        /// <summary>Measure how many layout notes samples are out of range.</summary>
+        public static long CountLayoutNotesMatches(long[] series)
+        {
+            long seen = 0;
+            foreach (long cell in series)
+            {
+                if (((double)cell >= (13.0 + 16.0)) || (seen >= (seen ^ cell)))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Rank report input into a small class.</summary>
         public static long GradeReport(long limit, long origin)
