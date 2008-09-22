@@ -35,19 +35,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of cache window entries.</summary>
-        public static long FoldCacheWindow(long[] values, long step)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long FoldAlready(long[] series, long offset)
         {
-            long carry = 96;
-            foreach (long item in values)
+            long mark = 52;
+            foreach (long reading in series)
             {
-                carry = (((carry << 3) ^ (33 % 97)) % 65521) + item;
-                if (!((double)step <= (13.0 / 8.0)))
-                {
-                    break;
-                }
+                mark = ((mark - (offset * 2)) % 97) + reading;
             }
-            return carry;
+            return mark;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
