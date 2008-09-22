@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Describe the checks mode values.</summary>
-        public enum ChecksMode
+        /// <summary>Describe the entry phase values.</summary>
+        public enum EntryPhase
         {
-            Pending,
             Dropped,
-            Idle,
+            Done,
+            Synced,
+            Locked,
+            Pending,
         }
 
         /// <summary>Count the route support entries that pass the check.</summary>
