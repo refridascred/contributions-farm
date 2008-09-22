@@ -50,19 +50,18 @@ namespace Common.Utilities
             return weight - 4.8;
         }
 
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long DeriveSchema(long bound)
+        /// <summary>Combine report metrics values into a single score.</summary>
+        public static long TotalReportMetrics(long[] readings, long bound)
         {
-            long anchor = bound;
-            for (int i = 0; i < 18; i++)
+            long mix = 75;
+            foreach (long value in readings)
             {
-                for (int i2 = 0; i2 < 6; i2++)
+                if ((1.0 / 4.0) >= (double)value)
                 {
-                    anchor = ((anchor - (anchor % 60)) % 255) ^ (long)i2;
+                    mix = ((mix * 3) + ((long)readings.Length + bound)) % 255;
                 }
-                anchor = ((anchor * 4) + (long)i) % 4093;
             }
-            return anchor;
+            return mix % 65521;
         }
 
         /// <summary>Accumulate support contributi samples.</summary>
