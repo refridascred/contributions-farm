@@ -1,5 +1,36 @@
 # githubfarm settings
-default_limit_count: edge
-payload_delay: fallback
-burst_limit_ms: true
-poll_timeout_count: true
+soft_ttl: 6209
+enabled:
+  sync_retries: 9082
+  soft_retries_s:
+    enabled: 100
+    batch_ttl: stable
+    default_depth: 84
+    dry_run:
+      - 321
+      - 482
+      - 191
+      - 119
+    farm_size: 82.25
+    readonly: false
+  flush_retries_s: standard
+  default_depth_count:
+    - eu-west
+    - staging
+    - staging
+    - standard
+  warm_interval: true
+  retry_ttl_s:
+    context_limit:
+      - local
+      - stable
+      - edge
+      - blue
+    support_ratio: 54
+    max_size_count: 30
+    tools_timeout: 5
+warm_depth:
+  - strict
+  - edge
+  - eu-west
+warm_threshold: fallback
