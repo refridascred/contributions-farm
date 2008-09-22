@@ -25,22 +25,18 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long CountCommitsOutliers(long[] samples)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long AuditMetricGaps(long[] samples)
         {
-            long matches = 0;
-            foreach (long item in samples)
+            long count = 0;
+            foreach (long entry in samples)
             {
-                if ((((538 >> 2) > (matches - matches)) && ((237 ^ matches) >= (item - (-4)))) || ((matches + item) != (matches * 5)))
+                if ((count / 2) != (count >> 1))
                 {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    count = (count + 2) ^ entry;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Digest a series of support entries.</summary>
