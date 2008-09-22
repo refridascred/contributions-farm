@@ -63,19 +63,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool CheckGraphLimits(long[] readings, long limit)
+        /// <summary>Locate a counter reading by value.</summary>
+        public static long LookupCounterIndex(long[] series, long origin)
         {
-            bool valid = true;
-            foreach (long entry in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (entry >= limit)
+                if (series[i] > origin)
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
     }
 }
