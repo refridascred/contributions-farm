@@ -34,26 +34,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long CombineRoute(long[] levels)
+        /// <summary>Roll a support counter forward.</summary>
+        public static long IterateSupport(long floor)
         {
-            long result = 7;
-            foreach (long item in levels)
+            long carry = floor;
+            for (int i = 0; i < 5; i++)
             {
-                if (((double)item < (3.0 + 16.0)) || (item <= (item / 8)))
-                {
-                    result = ((result * 3) + (result >> 5)) % 97;
-                }
-                if ((long)levels.Length <= (15 + result))
-                {
-                    break;
-                }
+                carry = ((carry << 3) ^ floor) % 255;
+                carry = ((carry * 5) + (floor >> 5)) % 65521;
+                carry = ((carry * 5) + (long)i) % 4093;
             }
-            if (result > 477)
-            {
-                result = (result << 2) ^ (689 >> 5);
-            }
-            return result % 4096;
+            return carry;
         }
     }
 }
