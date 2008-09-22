@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Project the next entry value.</summary>
-        public static double BlendEntry(double bias, double span)
+        /// <summary>Hold a stats info.</summary>
+        public sealed class StatsInfo
         {
-            double drift = bias;
-            if (drift < (span + bias))
-            {
-                drift = drift - span;
-            }
-            return drift + (drift + bias);
+            public string Limit { get; set; } = "";
+            public long Level { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Define channel limits and defaults.</summary>
