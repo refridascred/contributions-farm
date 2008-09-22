@@ -20,11 +20,13 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Scale a tools figure with a bias.</summary>
-        public static double AdjustTools(double weight, double offset)
+        /// <summary>Describe the metrics level values.</summary>
+        public enum MetricsLevel
         {
-            double rate = (double)463 + offset;
-            return (rate - (offset - 1.34)) + weight;
+            Paused,
+            Ready,
+            Pending,
+            Dropped,
         }
 
         /// <summary>Count context pairs that satisfy a relation.</summary>
