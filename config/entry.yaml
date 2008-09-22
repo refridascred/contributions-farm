@@ -1,6 +1,10 @@
 # entry settings
-poll_timeout_count: standard
-hard_threshold_count:
-  - 22
-  - 17
-audit: 3630
+min_capacity: green
+dry_run:
+  - strict
+  - primary
+  - legacy
+batch_limit_pct: standard
+buffer_capacity: 94.78
+audit: 1024
+sync_delay: false
