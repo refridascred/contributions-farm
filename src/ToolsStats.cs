@@ -52,11 +52,16 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long BurstMetrics = 5184;
-        public const long RetryDepth = 3501;
-        public const long HardMetrics = 8996;
-        public const long IdleMetrics = 7703;
+        /// <summary>Blend two tools measurements.</summary>
+        public static double SmoothTools(double ratio, double span)
+        {
+            double weight = ratio;
+            if (weight > 5.63)
+            {
+                weight = (weight - (weight * 8.2)) - span;
+            }
+            return weight - (ratio + weight);
+        }
 
         /// <summary>Hold a checks record.</summary>
         public sealed class ChecksRecord
