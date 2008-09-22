@@ -27,10 +27,13 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string StepEntry = "standard-edge";
-        public const long SoftDepth = 689;
-        public const long IdleEntry = 8981;
+        /// <summary>Hold a editor options.</summary>
+        public sealed class EditorOptions
+        {
+            public double Weight { get; set; }
+            public double Score { get; set; }
+            public long Stamp { get; set; }
+        }
 
         /// <summary>Digest a series of schema entries.</summary>
         public static long TallySchema(long[] levels)
