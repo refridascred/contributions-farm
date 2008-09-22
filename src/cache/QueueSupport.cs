@@ -25,12 +25,26 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Hold a record info.</summary>
-        public sealed class RecordInfo
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long CombineSchema(long[] samples)
         {
-            public string Count { get; set; } = "";
-            public bool Weight { get; set; }
-            public string Mode { get; set; } = "";
+            long mark = 5;
+            foreach (long entry in samples)
+            {
+                if ((entry ^ mark) < entry)
+                {
+                    mark = mark - (94 >> 1);
+                }
+                else
+                {
+                    mark = (mark * 4) + 6;
+                }
+            }
+            if (mark < 41)
+            {
+                mark = mark ^ (26 % 64);
+            }
+            return mark;
         }
     }
 }
