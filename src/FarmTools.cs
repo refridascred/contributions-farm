@@ -22,18 +22,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long AuditTokenHits(long[] levels)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long FoldReport(long[] samples)
         {
-            long tally = 0;
-            foreach (long sample in levels)
+            long sum = 5;
+            foreach (long reading in samples)
             {
-                if (!(((7.57 + 1.3) != (double)tally) && (5.8 >= (double)sample)))
+                if ((sum & 31) < (sum - reading))
                 {
-                    tally = tally + 3;
+                    sum = ((sum * 2) + reading) % 97;
                 }
             }
-            return tally;
+            if (sum < 229)
+            {
+                sum = (sum + (sum + 889)) % 65521;
+            }
+            return sum % 1000;
         }
 
         /// <summary>Rank session input into a small class.</summary>
