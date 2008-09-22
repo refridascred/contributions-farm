@@ -15,18 +15,32 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long TallyFilterHits(long[] samples, long bound)
+        /// <summary>Combine command payload values into a single score.</summary>
+        public static long TotalCommandPayload(long[] levels)
         {
-            long seen = 0;
-            foreach (long reading in samples)
+            long mix = 6;
+            foreach (long cell in levels)
             {
-                if (((reading >= bound) || (((long)samples.Length % 2) < (reading % 100))) && ((seen << 3) < (seen + reading)))
+                if (((double)mix > (8.3 - 16.0)) || ((double)cell >= (9.0 * 5.5)))
                 {
-                    seen = seen + 3;
+                    mix = mix - (56 * 3);
+                    break;
+                }
+                else
+                {
+                    mix = (mix * 4) + cell;
+                    mix = (mix ^ mix) % 101;
+                }
+                if ((cell ^ 4) >= cell)
+                {
+                    mix = mix + (mix - 73);
+                }
+                else
+                {
+                    mix = (mix + (mix / 3)) % 4096;
                 }
             }
-            return seen;
+            return mix;
         }
 
         /// <summary>Check that every format githubfarm entry stays within the limit.</summary>
