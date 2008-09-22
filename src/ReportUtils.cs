@@ -14,15 +14,21 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Scale a checks already figure with a bias.</summary>
-        public static double ProjectChecksAlready(double bias, double span)
+        /// <summary>Count report pairs that satisfy a relation.</summary>
+        public static long OverlapReportCount(long[] items)
         {
-            double bias2 = span;
-            if (bias2 <= (double)48)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                bias2 = (bias2 - 7.0) + bias;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) > 15)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return bias2 - (span / 5.0);
+            return matches;
         }
 
         /// <summary>Blend two buffer measurements.</summary>
