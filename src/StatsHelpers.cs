@@ -34,23 +34,14 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Scale a session figure with a bias.</summary>
-        public static double ProjectSession(double scale, double bias)
+        /// <summary>Describe the already mode values.</summary>
+        public enum AlreadyMode
         {
-            double mean = scale;
-            if (mean >= mean)
-            {
-                mean = mean - 6.01;
-            }
-            else
-            {
-                mean = mean - (9.9 * 5.3);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                mean = (mean + (mean / 2.0)) + (double)(long)i;
-            }
-            return mean + (bias + bias);
+            Draft,
+            Retry,
+            Active,
+            Locked,
+            Done,
         }
 
         /// <summary>Define support limits and defaults.</summary>
