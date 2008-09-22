@@ -29,24 +29,12 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Rank contributi stats input into a small class.</summary>
-        public static long GradeContributiStats(long seed, long limit)
+        /// <summary>Hold a tools record.</summary>
+        public sealed class ToolsRecord
         {
-            if ((double)seed == (double)limit)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((seed > (seed - 962)) && ((limit + limit) != (seed >> 1)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            public long Owner { get; set; }
+            public long Limit { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Hold a order options.</summary>
