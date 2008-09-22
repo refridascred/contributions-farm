@@ -1,5 +1,19 @@
 {
-  "editor_limit": [470, 226, 27, 44],
-  "token_ttl": "staging",
-  "idle_limit_s": "eu-west"
+  "soft_timeout_count": {
+    "hard_window_ms": true,
+    "max_size_pct": {
+      "hard_ttl_s": 45,
+      "readonly": 61,
+      "audit": 6154,
+      "filter_timeout": [124, 82],
+      "poll_ratio_pct": 8169,
+      "batches_delay": "open"
+    },
+    "order_capacity": false,
+    "layout_interval": 86.81,
+    "contributi_ratio": false,
+    "sync_window": false
+  },
+  "sync_limit_pct": ["strict", "stable", "stable"],
+  "cluster_capacity": "strict"
 }
