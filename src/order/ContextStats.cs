@@ -26,39 +26,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a counter cluster value against two limits.</summary>
-        public static long ClassifyCounterCluster(long offset, long bound)
+        /// <summary>Look up the position of a checks sample.</summary>
+        public static long LookupChecksIndex(long[] readings, long limit)
         {
-            long delta = offset ^ bound;
-            if ((delta < (offset / 7)) || ((bound - 298) >= (bound - bound)))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((offset <= (delta - 2)) && ((2 << 1) > delta))
+                if (readings[i] < limit)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((offset * 4) >= 6)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((offset / 4) > (bound * 4))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Locate a stats reading by value.</summary>
