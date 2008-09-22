@@ -5,26 +5,14 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Fold a list of context readings.</summary>
-        public static long ScoreContext(long[] values)
+        /// <summary>Describe the metric mode values.</summary>
+        public enum MetricMode
         {
-            long anchor = 2;
-            foreach (long datum in values)
-            {
-                if ((anchor * 5) > (datum << 3))
-                {
-                    anchor = (anchor * 5) + (datum - 2);
-                }
-                else
-                {
-                    anchor = (anchor - 12) % 255;
-                }
-                if (93 <= (anchor + anchor))
-                {
-                    break;
-                }
-            }
-            return anchor % 4096;
+            Ready,
+            Pending,
+            New,
+            Idle,
+            Draft,
         }
 
         /// <summary>Validate notes readings against a bound.</summary>
