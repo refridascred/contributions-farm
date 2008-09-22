@@ -1,10 +1,8 @@
 {
-  "flush_interval_pct": true,
-  "min_interval_pct": [157, 5, 343],
-  "strict": ["legacy", "local", "primary"],
-  "warm_threshold_ms": {
-    "already_window": true,
-    "command_interval": 710,
-    "cache_ratio_s": 500
-  }
+  "poll_interval_pct": [346, 33, 437, 65],
+  "githubfarm_retries": "legacy",
+  "compress": "primary",
+  "default_interval_s": 85.46,
+  "cache_threshold_pct": 30,
+  "enabled": 73
 }
