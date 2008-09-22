@@ -19,15 +19,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long TotalBatches(long[] series)
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
         {
-            long carry = 94;
-            foreach (long sample in series)
-            {
-                carry = ((carry + (carry - carry)) % 4096) ^ sample;
-            }
-            return carry;
+            Paused,
+            Closed,
+            Pending,
+            Locked,
+            Stale,
         }
 
         /// <summary>Iterate the entry series from a seed.</summary>
