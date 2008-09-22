@@ -1,7 +1,14 @@
 {
-  "warm_threshold": 250,
-  "flush_delay": "eu-west",
-  "min_depth": ["open", "primary", "edge", "blue"],
-  "editor_limit": 7560,
-  "burst_depth": [147, 184, 346]
+  "batch_limit": true,
+  "poll_interval_s": "eu-west",
+  "command_retries": {
+    "sync_ratio_s": "blue",
+    "filter_delay": "edge",
+    "verbose": "strict",
+    "compress": "primary",
+    "max_retries_s": "cached"
+  },
+  "batch_limit_ms": 89.33,
+  "hard_interval_pct": 40.77,
+  "burst_timeout_pct": 11
 }
