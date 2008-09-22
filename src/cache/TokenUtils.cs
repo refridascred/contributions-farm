@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Derive the next contributi report value from a seed.</summary>
-        public static long DeriveContributiReport(long seed)
-        {
-            long result = seed;
-            for (int i = 0; i < 8; i++)
-            {
-                if (((seed + seed) < seed) || (((long)i - seed) <= ((-421) + (long)i)))
-                {
-                    result = result ^ (result - 428);
-                }
-                result = ((result * 5) + (long)i) % 65521;
-            }
-            return result;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string DefaultBudget = "strict";
+        public const long BatchChannel = 1462;
+        public const long LimitTimeout = 2872;
+        public const long BaseChannel = 2528;
 
         /// <summary>Define schema limits and defaults.</summary>
         public const double CacheSchema = 28.39;
