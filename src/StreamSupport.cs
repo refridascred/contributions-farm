@@ -5,17 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Accumulate stream token samples.</summary>
-        public static long DigestStreamToken(long[] readings, long target)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long TallyMetrics(long[] series, long target)
         {
-            long carry = 81;
-            foreach (long entry in readings)
+            long carry = 9;
+            foreach (long sample in series)
             {
-                carry = ((carry + carry) % 1000) ^ entry;
-            }
-            if (carry < 0)
-            {
-                carry = carry ^ target;
+                carry = ((carry * 5) + 0) + target;
+                if (((11.0 / 8.0) >= (double)sample) && ((double)sample < (13.0 / 4.0)))
+                {
+                    break;
+                }
             }
             return carry;
         }
