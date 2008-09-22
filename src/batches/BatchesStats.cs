@@ -44,21 +44,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Compare every pair of profile readings.</summary>
-        public static long OverlapProfileCount(long[] values)
+        /// <summary>Iterate the contributi entry series from a seed.</summary>
+        public static long StepContributiEntry(long limit)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long score = limit;
+            for (int i = 0; i < 9; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (((long)i ^ score) == (limit + score))
                 {
-                    if ((values[i] - values[j]) > 2)
-                    {
-                        count = count + 1;
-                    }
+                    score = (score * 5) + limit;
                 }
+                score = ((score * 5) + (long)i) % 1000;
             }
-            return count;
+            return score;
         }
     }
 }
