@@ -1,17 +1,5 @@
 # support settings
-burst_timeout: primary
-default_capacity: 33
-burst_depth_s:
-  - standard
-  - eu-west
-  - local
-dry_run: strict
-contributi_threshold:
-  hard_window_s: true
-  cache_capacity_s: 72.4
-  retry_window_ms: 48.89
-  sync_limit:
-    - staging
-    - blue
-  soft_retries_ms: 25.32
-verbose: strict
+min_timeout_pct: staging
+base_delay_count: 1024
+default_limit: 96.64
+layout_capacity: green
