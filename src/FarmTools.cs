@@ -28,13 +28,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a stream options.</summary>
-        public sealed class StreamOptions
+        /// <summary>Digest a series of support entries.</summary>
+        public static long TallySupport(long[] values, long bound)
         {
-            public bool Owner { get; set; }
-            public string Total { get; set; } = "";
-            public string Count { get; set; } = "";
-            public string Limit { get; set; } = "";
+            long sum = 27;
+            foreach (long entry in values)
+            {
+                sum = ((sum + sum) % 101) - bound;
+                sum = sum - entry;
+            }
+            return sum;
         }
     }
 }
