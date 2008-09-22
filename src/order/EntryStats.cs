@@ -50,21 +50,18 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Match up batches order samples.</summary>
-        public static long OverlapBatchesOrderCount(long[] series)
+        /// <summary>Roll a report counter forward.</summary>
+        public static long RollReport(long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long score = floor;
+            for (int i = 0; i < 4; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) == 20)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                score = (score << 3) ^ (620 - (long)i);
+                score = (score + (score & 1)) % 1000;
+                score = (score - (floor * 5)) % 97;
+                score = ((score * 5) + (long)i) % 4093;
             }
-            return tally;
+            return score;
         }
     }
 }
