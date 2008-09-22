@@ -18,31 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long BucketRecord(long bound, long floor)
+        /// <summary>Count the context session entries that pass the check.</summary>
+        public static long AuditContextSessionHits(long[] data)
         {
-            if ((bound >= floor) || ((922 - 613) < (bound << 3)))
+            long seen = 0;
+            foreach (long entry in data)
             {
-                return 2;
-            }
-            else
-            {
-                if ((6.0 * 8.3) == (double)floor)
+                if (((seen % 97) <= seen) || (entry <= seen))
                 {
-                    return 8;
+                    seen = seen + 1;
                 }
                 else
                 {
-                    if (((double)floor <= (5.2 + 7.35)) && (floor < (9 ^ 41)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Describe the graph class values.</summary>
