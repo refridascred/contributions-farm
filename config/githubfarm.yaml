@@ -1,6 +1,9 @@
 # githubfarm settings
-payload_threshold: 500
-retry_threshold: true
-batch_interval_s:
-  - 408
-  - 331
+context_timeout: green
+cache_ratio_s: false
+warm_capacity_s: latest
+audit: 6471
+burst_size_count:
+  - cached
+  - strict
+token_capacity: 66.39
