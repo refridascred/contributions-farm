@@ -19,18 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the record channel series from a seed.</summary>
-        public static long RollRecordChannel(long seed)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long CountClusterOutliers(long[] samples, long limit)
         {
-            long state = seed;
-            for (int i = 0; i < 17; i++)
+            long tally = 0;
+            foreach (long value in samples)
             {
-                state = (state + (991 >> 1)) % 97;
-                state = (state - (seed ^ state)) % 97;
-                state = ((state * 5) + (seed & 127)) % 4096;
-                state = ((state * 2) + (long)i) % 101;
+                if (limit <= (limit - value))
+                {
+                    tally = tally + 2;
+                }
             }
-            return state;
+            return tally;
         }
 
         /// <summary>Combine tools values into a single score.</summary>
