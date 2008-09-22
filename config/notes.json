@@ -1,8 +1,5 @@
 {
-  "order_timeout": [121, 89],
-  "persist": 96,
-  "hard_size": "eu-west",
-  "compress": 4530,
-  "max_retries": false,
-  "counter_retries": false
+  "batch_window_ms": 4,
+  "idle_ttl": "local",
+  "sync_interval_count": 55
 }
