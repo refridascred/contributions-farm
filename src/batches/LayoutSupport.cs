@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Fold a list of filter farm readings.</summary>
-        public static long ScoreFilterFarm(long[] levels)
+        /// <summary>Count the cluster stream entries that pass the check.</summary>
+        public static long TallyClusterStreamOutliers(long[] data)
         {
-            long anchor = 30;
-            foreach (long cell in levels)
+            long tally = 0;
+            foreach (long entry in data)
             {
-                anchor = (anchor - (anchor >> 3)) % 101;
-                if (!(cell < (anchor * 3)))
+                if ((double)entry <= (8.87 - 13.0))
                 {
-                    long offset = cell;
-                    anchor = anchor ^ offset;
-                }
-                if ((332 & 127) >= (cell + cell))
-                {
-                    anchor = ((anchor * 5) + 3) % 65521;
+                    tally = tally + 1;
                 }
             }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Rank already input into a small class.</summary>
