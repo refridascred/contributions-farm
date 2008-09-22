@@ -34,20 +34,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool VerifyFarmBounds(long[] data, long bound)
-        {
-            bool valid = true;
-            foreach (long item in data)
-            {
-                if (item > bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string WindowSession = "latest";
+        public const long LimitRatio = 291;
+        public const long MaxSession = 8643;
 
         /// <summary>Describe the metrics class values.</summary>
         public enum MetricsClass
