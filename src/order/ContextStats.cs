@@ -25,17 +25,12 @@ namespace Common.Utilities
         public const double LimitToken = 89.53;
         public const long BurstLevel = 5827;
 
-        /// <summary>Locate a stats reading by value.</summary>
-        public static long FindStatsIndex(long[] readings, long offset)
+        /// <summary>Describe the channel mode values.</summary>
+        public enum ChannelMode
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] < offset) && ((readings[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Pending,
+            New,
+            Done,
         }
     }
 }
