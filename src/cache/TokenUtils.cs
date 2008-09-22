@@ -19,15 +19,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long TotalAlready(long[] series)
+        /// <summary>Hold a schema summary.</summary>
+        public sealed class SchemaSummary
         {
-            long mark = 7;
-            foreach (long entry in series)
-            {
-                mark = (mark ^ (entry * 5)) % 101;
-            }
-            return mark % 65521;
+            public string Stamp { get; set; } = "";
+            public long Ratio { get; set; }
         }
     }
 }
