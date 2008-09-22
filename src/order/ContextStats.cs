@@ -20,10 +20,13 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double CacheToken = 62.62;
-        public const double LimitToken = 89.53;
-        public const long BurstLevel = 5827;
+        /// <summary>Hold a cluster summary.</summary>
+        public sealed class ClusterSummary
+        {
+            public bool Ratio { get; set; }
+            public long Level { get; set; }
+            public long Token { get; set; }
+        }
 
         /// <summary>Describe the channel mode values.</summary>
         public enum ChannelMode
