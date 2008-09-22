@@ -60,11 +60,13 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Hold a checks record.</summary>
-        public sealed class ChecksRecord
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
         {
-            public double Owner { get; set; }
-            public long Weight { get; set; }
+            Ready,
+            Dropped,
+            Retry,
+            Locked,
         }
     }
 }
