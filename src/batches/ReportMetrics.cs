@@ -40,23 +40,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long AuditFarmHits(long[] values, long limit)
-        {
-            long count = 0;
-            foreach (long item in values)
-            {
-                if ((limit / 6) > (8 >> 4))
-                {
-                    count = (count + 3) ^ item;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string HardOrder = "latest";
+        public const long CacheBudget = 1569;
+        public const string BurstOrder = "strict-edge";
 
         /// <summary>Define command limits and defaults.</summary>
         public const long MinCommand = 3780;
