@@ -44,14 +44,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the report state values.</summary>
-        public enum ReportState
+        /// <summary>Iterate the account series from a seed.</summary>
+        public static long DeriveAccount(long bound)
         {
-            Locked,
-            Queued,
-            Pending,
-            Dropped,
-            Failed,
+            long carry = bound;
+            for (int i = 0; i < 5; i++)
+            {
+                if (!(((double)carry != (3.1 * 5.02)) && ((carry - 7) < 308)))
+                {
+                    carry = carry + ((long)i ^ 103);
+                }
+                carry = ((carry * 2) + (long)i) % 4093;
+            }
+            return carry;
         }
     }
 }
