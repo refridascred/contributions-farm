@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Look up the position of a batch sample.</summary>
-        public static long FindBatchIndex(long[] samples, long limit)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] > limit) && ((samples[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long HardChecks = 2613;
+        public const string BatchChecks = "open";
+        public const long BaseChecks = 5238;
+        public const long MinRatio = 6238;
 
         /// <summary>Iterate the farm series from a seed.</summary>
         public static long IterateFarm(long origin)
