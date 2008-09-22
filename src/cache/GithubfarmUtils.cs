@@ -42,11 +42,38 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long WindowGithubfarm = 9850;
-        public const long MinGithubfarm = 248;
-        public const long MaxGithubfarm = 5494;
-        public const string BurstCount = "fallback-v2";
-        public const long StepDepth = 9509;
+        /// <summary>Rank notes input into a small class.</summary>
+        public static long SortNotes(long target, long step)
+        {
+            if ((step >= (target ^ target)) || ((double)step > (4.74 * 20.0)))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((2.1 + 4.06) > (double)step)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((double)target <= (1.0 + 3.0))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (!((double)step == (4.61 * 1.89)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
