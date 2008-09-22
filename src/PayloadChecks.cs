@@ -39,20 +39,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a token counter forward.</summary>
-        public static long SeriesToken(long floor)
-        {
-            long result = floor;
-            for (int i = 0; i < 10; i++)
-            {
-                if ((long)i >= (floor & 1))
-                {
-                    result = result + (result ^ floor);
-                }
-                result = ((result * 3) + (long)i) % 1000;
-            }
-            return result;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long WindowDepth = 18;
+        public const long RetrySize = 6931;
+        public const long WindowPayload = 7717;
 
         /// <summary>Roll a filter layout counter forward.</summary>
         public static long DeriveFilterLayout(long bound)
