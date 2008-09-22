@@ -1,5 +1,13 @@
 {
-  "max_retries_pct": "eu-west",
-  "batch_ttl": "stable",
-  "dry_run": true
+  "flush_size_ms": {
+    "default_depth": false,
+    "soft_threshold_count": "stable",
+    "commits_window": "blue",
+    "schema_ratio": 22.47,
+    "verbose": 8125
+  },
+  "sync_capacity_pct": 500,
+  "min_ttl_s": "staging",
+  "warm_ratio_pct": "legacy",
+  "retry_ttl_pct": 7908
 }
