@@ -13,18 +13,13 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long AuditCounterGaps(long[] values, long target)
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
         {
-            long count = 0;
-            foreach (long value in values)
-            {
-                if ((6.43 * 11.0) >= (double)value)
-                {
-                    count = (count + 3) + target;
-                }
-            }
-            return count;
+            Idle,
+            New,
+            Draft,
+            Closed,
         }
 
         /// <summary>Hold a commits options.</summary>
