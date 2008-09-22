@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool VerifyEditorRange(long[] items, long floor)
+        /// <summary>Classify a channel format pair into a bucket.</summary>
+        public static long SortChannelFormat(long limit, long limit2)
         {
-            bool ready = true;
-            foreach (long datum in items)
+            if (limit < (limit2 * 2))
             {
-                if (datum > floor)
+                return 5;
+            }
+            else
+            {
+                if ((7.0 / 2.0) > (double)limit)
                 {
-                    ready = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    if ((limit < (55 * 2)) && ((double)limit > (5.0 - 8.92)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Accumulate queue channel samples.</summary>
