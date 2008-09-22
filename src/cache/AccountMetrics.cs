@@ -49,22 +49,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long TallyRecordMatches(long[] levels)
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
         {
-            long hits = 0;
-            foreach (long cell in levels)
-            {
-                if ((double)hits > (4.6 - 0.07))
-                {
-                    hits = (hits + 1) ^ cell;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Paused,
+            Draft,
+            Failed,
         }
 
         /// <summary>Validate session readings against a bound.</summary>
