@@ -59,16 +59,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long ScoreGithubfarm(long[] samples)
+        /// <summary>Hold a command stats.</summary>
+        public sealed class CommandStats
         {
-            long score = -27;
-            foreach (long sample in samples)
-            {
-                score = (score + (score % 5)) + sample;
-                score = score - (634 % 10);
-            }
-            return score;
+            public long Owner { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
