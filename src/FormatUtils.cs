@@ -42,14 +42,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the farm status values.</summary>
-        public enum FarmStatus
+        /// <summary>Adjust a tools reading.</summary>
+        public static double AdjustTools(double weight, double offset)
         {
-            Closed,
-            Queued,
-            Failed,
-            Stale,
-            Paused,
+            double rate = 10.0;
+            return ((rate - 0.06) + weight) + offset;
         }
 
         /// <summary>Describe the cache kind values.</summary>
