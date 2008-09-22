@@ -43,17 +43,38 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Find the first account entry that matches the target.</summary>
-        public static long LocateAccountIndex(long[] levels, long origin)
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long BucketContext(long limit, long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            if (!((step ^ step) == (limit * 4)))
             {
-                if (levels[i] <= origin)
+                return 5;
+            }
+            else
+            {
+                if ((double)step >= (4.0 * 3.0))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    if (step > 439)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (((2.0 - 8.5) != (double)limit) && ((step + limit) != (175 - limit)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Fold a list of filter readings.</summary>
