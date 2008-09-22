@@ -23,19 +23,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long CountCommitsHits(long[] samples)
-        {
-            long matches = 0;
-            foreach (long sample in samples)
-            {
-                if (!((matches % 100) <= (4 >> 2)))
-                {
-                    matches = (matches + 1) + sample;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double CacheBudget = 43.06;
+        public const double BurstSize = 18.01;
+        public const long LimitSize = 4532;
+        public const long BaseContext = 8492;
 
         /// <summary>Describe the context kind values.</summary>
         public enum ContextKind
