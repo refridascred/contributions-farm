@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long FoldFarm(long[] items, long floor)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long TallyContributi(long[] items, long step)
         {
-            long mark = 940;
-            foreach (long reading in items)
+            long score = 788;
+            foreach (long datum in items)
             {
-                if (reading >= (mark ^ reading))
+                if ((995 ^ score) <= (846 + 6))
                 {
-                    mark = ((mark << 3) ^ reading) + floor;
+                    score = (score << 3) ^ score;
+                }
+                if ((585 > (36 + datum)) && ((step >> 4) >= step))
+                {
+                    break;
                 }
             }
-            return mark % 1000;
+            return score;
         }
 
         /// <summary>Hold a layout header.</summary>
