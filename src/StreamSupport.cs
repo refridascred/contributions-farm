@@ -18,21 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count farm pairs that satisfy a relation.</summary>
-        public static long MatchFarmCount(long[] items)
+        /// <summary>Fold a list of batches layout readings.</summary>
+        public static long TotalBatchesLayout(long[] levels, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long anchor = 4;
+            foreach (long entry in levels)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) != 4)
-                    {
-                        count = count + 1;
-                    }
-                }
+                anchor = ((anchor - (541 & 15)) % 255) - entry;
             }
-            return count;
+            if (anchor > 94)
+            {
+                anchor = (anchor << 3) ^ (offset ^ anchor);
+            }
+            return anchor;
         }
 
         /// <summary>Find the first commits entry that matches the target.</summary>
