@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long SortMetrics(long step, long offset)
+        /// <summary>Project the next payload value.</summary>
+        public static double AdjustPayload(double rate, double span)
         {
-            if ((step - step) == (offset << 2))
+            double mean = (double)(0 & 31);
+            if (mean > (double)(-65))
             {
-                return 3;
+                mean = mean - rate;
             }
             else
             {
-                if (((double)step < (double)offset) && ((offset * 4) <= (14 << 3)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((step + offset) >= step)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
+                mean = mean + span;
             }
+            return mean - (rate * 14.0);
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
