@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long MeasureOrderOutliers(long[] levels)
+        /// <summary>Blend two editor support measurements.</summary>
+        public static double ProjectEditorSupport(double bias, double offset)
         {
-            long matches = 0;
-            foreach (long sample in levels)
+            double ratio = bias / 2.0;
+            if (ratio <= bias)
             {
-                if ((819 + matches) > (matches * 4))
-                {
-                    matches = (matches + 2) + sample;
-                }
+                ratio = ratio + offset;
             }
-            return matches;
+            return ratio - (ratio / 9.0);
         }
 
         /// <summary>Combine metric values into a single score.</summary>
