@@ -19,19 +19,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate batch editor readings against a bound.</summary>
-        public static bool GuardBatchEditorBounds(long[] series, long step)
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
         {
-            bool ok = true;
-            foreach (long item in series)
-            {
-                if (item <= step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Stale,
+            Ready,
+            Pending,
+            Active,
+            Draft,
         }
 
         /// <summary>Define checks limits and defaults.</summary>
