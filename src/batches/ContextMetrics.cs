@@ -30,19 +30,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the contributi series from a seed.</summary>
-        public static long DeriveContributi(long floor)
+        /// <summary>Locate a channel reading by value.</summary>
+        public static long LookupChannelIndex(long[] series, long floor)
         {
-            long state = floor;
-            for (int i = 0; i < 16; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((state - state) >= (floor >> 4))
+                if (series[i] > floor)
                 {
-                    break;
+                    return (long)i;
                 }
-                state = ((state * 5) + (long)i) % 65521;
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Validate farm readings against a bound.</summary>
