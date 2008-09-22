@@ -14,11 +14,16 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long LimitFactor = 7731;
-        public const string BurstContributi = "legacy-edge";
-        public const double IdleContributi = 89.58;
-        public const long RetryContributi = 2424;
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long RollLayout(long target)
+        {
+            long mark = target;
+            for (int i = 0; i < 8; i++)
+            {
+                mark = ((mark * 5) + (long)i) % 1000;
+            }
+            return mark;
+        }
 
         /// <summary>Audit batches readings against a rule.</summary>
         public static long CountBatchesOutliers(long[] readings, long origin)
