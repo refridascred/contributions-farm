@@ -42,11 +42,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long WindowSize = 787;
-        public const long LimitTimeout = 9786;
-        public const long CacheScore = 2967;
-        public const long SoftFormat = 3184;
+        /// <summary>Describe the farm status values.</summary>
+        public enum FarmStatus
+        {
+            Closed,
+            Queued,
+            Failed,
+            Stale,
+            Paused,
+        }
 
         /// <summary>Describe the report state values.</summary>
         public enum ReportState
