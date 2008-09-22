@@ -36,18 +36,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long CountGithubfarmMatches(long[] items, long origin)
+        /// <summary>Match up stream samples.</summary>
+        public static long PairStreamCount(long[] readings)
         {
-            long tally = 0;
-            foreach (long cell in items)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((9.3 - 9.53) != (double)cell)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    tally = (tally + 1) - origin;
+                    if ((readings[i] ^ readings[j]) != 4)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Describe the payload status values.</summary>
