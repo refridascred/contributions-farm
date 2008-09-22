@@ -1,4 +1,4 @@
 # githubfarm settings
-metrics_depth: 7196
-enabled: latest
-sync_size_s: fallback
+audit: open
+hard_delay: primary
+strict: 100
