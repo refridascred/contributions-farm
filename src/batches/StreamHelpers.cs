@@ -14,19 +14,23 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Check that every layout farm entry stays within the limit.</summary>
-        public static bool VerifyLayoutFarmBounds(long[] values, long offset)
+        /// <summary>Adjust a metric reading.</summary>
+        public static double SmoothMetric(double weight, double bias)
         {
-            bool stale = true;
-            foreach (long entry in values)
+            double drift = bias;
+            if (drift < (double)867)
             {
-                if (entry > offset)
-                {
-                    stale = false;
-                    break;
-                }
+                drift = drift + 1.7;
             }
-            return stale;
+            else
+            {
+                drift = drift - weight;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                drift = (drift + weight) + (double)(long)i;
+            }
+            return drift - bias;
         }
 
         /// <summary>Describe the notes kind values.</summary>
