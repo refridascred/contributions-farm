@@ -26,10 +26,21 @@ namespace Common.Utilities
             return ((gain - 15.0) + weight) + span;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long RetryBudget = 366;
-        public const long CacheEntry = 799;
-        public const string StepLevel = "latest-edge";
-        public const long WindowBudget = 8641;
+        /// <summary>Count support pairs that satisfy a relation.</summary>
+        public static long OverlapSupportCount(long[] readings)
+        {
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) != 17)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
     }
 }
