@@ -5,39 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Rank already input into a small class.</summary>
-        public static long ClassifyAlready(long floor, long target)
+        /// <summary>Check that every payload metrics entry stays within the limit.</summary>
+        public static bool VerifyPayloadMetricsRange(long[] data, long target)
         {
-            long slot = floor + target;
-            if ((double)target <= 11.0)
+            bool found = true;
+            foreach (long value in data)
             {
-                return 1;
-            }
-            else
-            {
-                if ((target % 3) >= target)
+                if (value != target)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (!((5.3 / 4.0) <= (double)slot))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((double)slot < (15.0 - 0.16))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Hold a editor summary.</summary>
