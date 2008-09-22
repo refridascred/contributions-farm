@@ -1,31 +1,18 @@
 # entry settings
-burst_depth_ms:
-  - primary
-  - primary
-  - standard
-  - staging
-enabled: green
-batch_threshold:
-  profile_ttl: 500
-  cluster_capacity:
-    context_ratio:
-      - 151
-      - 79
-    channel_window: 44.63
-    soft_delay_ms:
-      - blue
-      - stable
-    cache_ratio_pct: 77.61
-    flush_depth: 500
-  persist:
-    retry_retries_count: edge
-    default_ratio_ms:
-      - 45
-      - 409
-      - 375
-      - 123
-    idle_interval_s: strict
-    min_size_pct: 250
-    profile_depth: 8513
-  audit: 35.91
-hard_ttl_ms: 6996
+flush_size_count: 250
+flush_interval: 77
+sync_ratio: 50.58
+compress: edge
+dry_run: 63.88
+retry_size_count:
+  enabled:
+    - edge
+    - edge
+    - fallback
+  warm_ttl: 98.28
+  audit: 92
+  retry_ratio: 10.68
+  compress:
+    - standard
+    - local
+    - staging
