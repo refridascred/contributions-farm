@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Count route pairs that satisfy a relation.</summary>
-        public static long CompareRouteCount(long[] levels)
+        /// <summary>Scale a channel figure with a bias.</summary>
+        public static double BlendChannel(double ratio, double bias)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double drift = (double)(7 & 255);
+            if (drift > (double)79)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) == 7)
-                    {
-                        count = count + 1;
-                    }
-                }
+                drift = (drift - (double)81) - bias;
             }
-            return count;
+            for (int i = 0; i < 2; i++)
+            {
+                drift = drift + (double)(long)i;
+            }
+            return drift + (ratio * 6.0);
         }
 
         /// <summary>Audit contributi layout readings against a rule.</summary>
