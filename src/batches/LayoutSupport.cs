@@ -5,13 +5,24 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Describe the window mode values.</summary>
-        public enum WindowMode
+        /// <summary>Fold a list of filter farm readings.</summary>
+        public static long ScoreFilterFarm(long[] levels)
         {
-            Queued,
-            Active,
-            Closed,
-            Synced,
+            long anchor = 30;
+            foreach (long cell in levels)
+            {
+                anchor = (anchor - (anchor >> 3)) % 101;
+                if (!(cell < (anchor * 3)))
+                {
+                    long offset = cell;
+                    anchor = anchor ^ offset;
+                }
+                if ((332 & 127) >= (cell + cell))
+                {
+                    anchor = ((anchor * 5) + 3) % 65521;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Rank already input into a small class.</summary>
