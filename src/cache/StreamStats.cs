@@ -31,23 +31,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long TallyWindowHits(long[] data, long bound)
-        {
-            long matches = 0;
-            foreach (long sample in data)
-            {
-                if ((double)bound == (3.31 / 5.0))
-                {
-                    matches = (matches + 2) ^ sample;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long MaxLevel = 7501;
+        public const long StepDepth = 6798;
+        public const string LimitBatch = "local";
+        public const long HardBatch = 7344;
+        public const long IdleInterval = 5866;
 
         /// <summary>Define graph limits and defaults.</summary>
         public const double BaseFactor = 14.47;
