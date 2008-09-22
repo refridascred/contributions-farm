@@ -16,24 +16,19 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long BucketEditor(long seed, long offset)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool ValidateChecksBounds(long[] items, long limit)
         {
-            if (((offset >> 3) < ((-2) ^ offset)) && (offset > seed))
+            bool flag = true;
+            foreach (long entry in items)
             {
-                return 0;
-            }
-            else
-            {
-                if ((3 + 316) > (offset / 7))
+                if (entry > limit)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 8;
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Grade a metrics value against two limits.</summary>
