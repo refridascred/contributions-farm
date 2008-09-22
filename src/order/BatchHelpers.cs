@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Audit contributi entry readings against a rule.</summary>
-        public static long AuditContributiEntryHits(long[] samples)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long AuditMetricsMatches(long[] values, long bound)
         {
             long tally = 0;
-            foreach (long value in samples)
+            foreach (long sample in values)
             {
-                if (!((tally - 73) < (91 + value)))
+                if (sample > 86)
                 {
-                    tally = tally + 1;
+                    tally = (tally + 1) + bound;
                 }
             }
             return tally;
