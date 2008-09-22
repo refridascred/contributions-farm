@@ -1,12 +1,16 @@
 {
-  "audit": {
-    "strict": "primary",
-    "audit": 45,
-    "soft_depth": [135, 433],
-    "idle_timeout_count": 771,
-    "hard_size": 100
+  "cache_interval": {
+    "enabled": ["strict", "green", "fallback", "open"],
+    "default_threshold_s": {
+      "default_threshold_count": ["latest", "standard", "blue"],
+      "account_size": 90.31,
+      "cache_size": ["edge", "staging", "stable", "green"],
+      "enabled": 80.78,
+      "warm_ttl_ms": "standard"
+    },
+    "poll_size": false
   },
-  "burst_interval": true,
-  "enabled": "edge",
-  "readonly": false
+  "base_capacity_count": 72.29,
+  "channel_interval": 28.03,
+  "dry_run": "standard"
 }
