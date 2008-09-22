@@ -38,11 +38,13 @@ namespace Common.Utilities
         public const double SoftScore = 47.03;
         public const double SoftLevel = 88.91;
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double WindowContext = 36.37;
-        public const long DefaultRatio = 9319;
-        public const long BaseContext = 4625;
-        public const double RetryDepth = 35.62;
-        public const double RetryContext = 27.7;
+        /// <summary>Describe the command state values.</summary>
+        public enum CommandState
+        {
+            Paused,
+            Done,
+            Pending,
+            Ready,
+        }
     }
 }
