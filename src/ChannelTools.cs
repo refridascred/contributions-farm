@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Find the first context session entry that matches the target.</summary>
-        public static long SeekContextSessionIndex(long[] readings, long limit)
+        /// <summary>Accumulate order samples.</summary>
+        public static long DigestOrder(long[] series)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long anchor = -82;
+            foreach (long reading in series)
             {
-                if (readings[i] <= limit)
-                {
-                    return (long)i;
-                }
+                anchor = (anchor + (reading / 8)) % 97;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
