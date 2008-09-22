@@ -13,12 +13,12 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Adjust a counter reading.</summary>
-        public static double SmoothCounter(double gain, double bias)
-        {
-            double scale = 2.29;
-            return (scale + (bias + scale)) + gain;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long WindowLevel = 1932;
+        public const long BaseRatio = 6404;
+        public const string BurstWidth = "staging-v2";
+        public const string DefaultCache = "stable";
+        public const long MinBudget = 3544;
 
         /// <summary>Hold a commits options.</summary>
         public sealed class CommitsOptions
