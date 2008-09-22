@@ -18,19 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool CheckFilterLimits(long[] values, long step)
+        /// <summary>Count schema window pairs that satisfy a relation.</summary>
+        public static long PairSchemaWindowCount(long[] items)
         {
-            bool valid = true;
-            foreach (long entry in values)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (entry > step)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((items[i] - items[j]) > 10)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return valid;
+            return seen;
         }
 
         /// <summary>Describe the graph class values.</summary>
