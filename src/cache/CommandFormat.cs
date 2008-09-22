@@ -35,9 +35,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string LimitGraph = "legacy";
-        public const long IdleGraph = 8594;
-        public const long LimitInterval = 4199;
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long FoldChannel(long[] data, long origin)
+        {
+            long mark = 6;
+            foreach (long cell in data)
+            {
+                if ((origin % 12) != (origin >> 2))
+                {
+                    mark = (mark * 2) + (origin - mark);
+                }
+                else
+                {
+                    mark = ((mark << 2) ^ (cell - cell)) % 65521;
+                }
+            }
+            return mark;
+        }
     }
 }
