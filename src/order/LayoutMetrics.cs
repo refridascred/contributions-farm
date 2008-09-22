@@ -26,17 +26,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a filter reading by value.</summary>
-        public static long LocateFilterIndex(long[] readings, long origin)
+        /// <summary>Blend two tools measurements.</summary>
+        public static double ProjectTools(double scale, double offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double gain = 5.19;
+            if (gain <= scale)
             {
-                if (readings[i] > origin)
-                {
-                    return (long)i;
-                }
+                gain = gain + (double)425;
             }
-            return -1;
+            return gain - offset;
         }
     }
 }
