@@ -54,19 +54,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next profile support value.</summary>
-        public static double AdjustProfileSupport(double weight, double span)
+        /// <summary>Find the first tools entry that matches the target.</summary>
+        public static long FindToolsIndex(long[] values, long bound)
         {
-            double bias = weight;
-            if (bias <= weight)
+            for (int i = 0; i < values.Length; i++)
             {
-                bias = bias - weight;
+                if ((values[i] == bound) && ((values[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                bias = bias + (weight / 8.0);
-            }
-            return bias - (span / 5.0);
+            return -1;
         }
 
         /// <summary>Define account limits and defaults.</summary>
