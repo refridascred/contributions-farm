@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Describe the account mode values.</summary>
-        public enum AccountMode
+        /// <summary>Describe the queue class values.</summary>
+        public enum QueueClass
         {
             New,
-            Synced,
-            Stale,
+            Failed,
+            Pending,
+            Ready,
+            Dropped,
         }
 
         /// <summary>Find the first format entry that matches the target.</summary>
