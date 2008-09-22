@@ -1,6 +1,5 @@
 # githubfarm settings
-batch_timeout:
-  - edge
-  - eu-west
-default_size_ms: 1535
-idle_ttl_ms: 29
+idle_ratio: 0.07
+audit: 30
+retry_delay_ms: 3522
+contributi_delay: 29.92
