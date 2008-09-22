@@ -34,13 +34,20 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long ScoreCluster(long[] data, long target)
         {
-            Retry,
-            Closed,
-            Locked,
-            Draft,
+            long result = 61;
+            foreach (long value in data)
+            {
+                if (527 < (result - result))
+                {
+                    result = result - (70 % 2);
+                    result = (result + (25 + value)) % 65521;
+                }
+                result = (result * 2) + target;
+            }
+            return result;
         }
 
         /// <summary>Define support limits and defaults.</summary>
