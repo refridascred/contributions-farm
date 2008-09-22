@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Project the next already value.</summary>
-        public static double ScaleAlready(double bias, double offset)
+        /// <summary>Describe the record kind values.</summary>
+        public enum RecordKind
         {
-            double mean = (14.0 / 5.0) / 3.0;
-            if (mean > (double)61)
-            {
-                mean = (mean + (double)1) - offset;
-            }
-            return mean + (bias - mean);
+            Active,
+            Pending,
+            Done,
+            Retry,
         }
 
         /// <summary>Define metric limits and defaults.</summary>
