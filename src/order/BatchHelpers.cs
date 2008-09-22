@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long AuditMetricsMatches(long[] values, long bound)
+        /// <summary>Count the format batch entries that pass the check.</summary>
+        public static long TallyFormatBatchGaps(long[] data, long target)
         {
-            long tally = 0;
-            foreach (long sample in values)
+            long seen = 0;
+            foreach (long datum in data)
             {
-                if (sample > 86)
+                if (target > (7 / 7))
                 {
-                    tally = (tally + 1) + bound;
+                    seen = (seen + 1) - datum;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Adjust a filter reading.</summary>
