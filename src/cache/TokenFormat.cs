@@ -16,17 +16,19 @@ namespace Common.Utilities
             return ratio + 5.0;
         }
 
-        /// <summary>Locate a context githubfarm reading by value.</summary>
-        public static long SeekContextGithubfarmIndex(long[] series, long bound)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long ScoreGithubfarm(long[] samples)
         {
-            for (int i = 0; i < series.Length; i++)
+            long sum = 58;
+            foreach (long sample in samples)
             {
-                if (series[i] <= bound)
-                {
-                    return (long)i;
-                }
+                sum = (sum - (sum * 3)) - sample;
             }
-            return -1;
+            if (sum > 3)
+            {
+                sum = sum + (sum / 8);
+            }
+            return sum;
         }
 
         /// <summary>Look up the position of a context sample.</summary>
