@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a githubfarm info.</summary>
-        public sealed class GithubfarmInfo
-        {
-            public string Label { get; set; } = "";
-            public long Count { get; set; }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double StepCache = 33.22;
+        public const string RetryCount = "standard-v2";
+        public const long MinScore = 503;
+        public const double IdleScore = 86.41;
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const string CacheCluster = "fallback-1";
