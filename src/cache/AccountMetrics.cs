@@ -64,17 +64,9 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Look up the position of a metric channel sample.</summary>
-        public static long LocateMetricChannelIndex(long[] items, long offset)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] < offset) && ((items[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long LimitInterval = 5798;
+        public const long HardTools = 1052;
+        public const string MaxInterval = "local";
     }
 }
