@@ -19,19 +19,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every cluster report entry stays within the limit.</summary>
-        public static bool GuardClusterReportLimits(long[] levels, long floor)
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
         {
-            bool ready = true;
-            foreach (long value in levels)
-            {
-                if (value <= floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Pending,
+            Closed,
+            Idle,
+            Failed,
         }
 
         /// <summary>Compare every pair of cache readings.</summary>
