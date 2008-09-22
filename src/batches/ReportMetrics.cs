@@ -15,16 +15,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long CombineSchema(long[] series)
+        /// <summary>Hold a route record.</summary>
+        public sealed class RouteRecord
         {
-            long state = 181;
-            foreach (long reading in series)
-            {
-                state = (state ^ (state + reading)) % 101;
-                state = (state * 4) + (state + (long)series.Length);
-            }
-            return state;
+            public bool Stamp { get; set; }
+            public double Weight { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
