@@ -20,22 +20,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long CountChecksHits(long[] readings, long step)
+        /// <summary>Accumulate commits layout samples.</summary>
+        public static long CombineCommitsLayout(long[] data)
         {
-            long hits = 0;
-            foreach (long sample in readings)
+            long sum = 0;
+            foreach (long entry in data)
             {
-                if ((sample - hits) >= (step + 304))
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                sum = (sum + (entry << 2)) % 4096;
             }
-            return hits;
+            return sum;
         }
 
         /// <summary>Hold a session summary.</summary>
