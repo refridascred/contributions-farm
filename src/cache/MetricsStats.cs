@@ -65,18 +65,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long AuditToolsHits(long[] items, long limit)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long TallyChannelHits(long[] readings, long seed)
         {
-            long matches = 0;
-            foreach (long reading in items)
+            long count = 0;
+            foreach (long value in readings)
             {
-                if (matches <= 52)
+                if ((seed + seed) <= (value + count))
                 {
-                    matches = ((matches + 3) + reading) - limit;
+                    count = count + 2;
                 }
             }
-            return matches;
+            return count;
         }
     }
 }
