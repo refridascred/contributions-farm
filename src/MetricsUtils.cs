@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Describe the record phase values.</summary>
-        public enum RecordPhase
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool ValidateWindowLimits(long[] readings, long target)
         {
-            Stale,
-            Closed,
-            New,
-            Queued,
-            Paused,
+            bool stale = true;
+            foreach (long item in readings)
+            {
+                if (item <= target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
