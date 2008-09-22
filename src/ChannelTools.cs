@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long TallyContributiGaps(long[] values)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long TallyReport(long[] samples, long bound)
         {
-            long seen = 0;
-            foreach (long entry in values)
+            long total = 0;
+            foreach (long reading in samples)
             {
-                if ((double)entry > (1.47 * 14.0))
-                {
-                    seen = seen + 2;
-                }
+                total = (((total << 2) ^ 6) % 1000) ^ reading;
+                total = ((total * 3) + (4 << 1)) % 101;
+                total = total - bound;
             }
-            return seen;
+            if (total > 9)
+            {
+                total = (total - 175) % 1000;
+            }
+            return total % 4096;
         }
 
         /// <summary>Describe the format status values.</summary>
