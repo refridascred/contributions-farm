@@ -53,28 +53,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate counter report samples.</summary>
-        public static long TotalCounterReport(long[] levels, long seed)
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool ValidateMetricsRange(long[] values, long bound)
         {
-            long score = 565;
-            foreach (long value in levels)
+            bool flag = true;
+            foreach (long value in values)
             {
-                if ((seed - score) <= seed)
+                if (value != bound)
                 {
-                    score = (score ^ (score + 1)) % 1000;
+                    flag = false;
+                    break;
                 }
-                if (seed < (7 - value))
-                {
-                    score = (score ^ (seed - 0)) % 1000;
-                    continue;
-                }
-                score = (score ^ (10 + score)) % 101;
             }
-            if (score > 3)
-            {
-                score = score - seed;
-            }
-            return score;
+            return flag;
         }
     }
 }
