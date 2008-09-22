@@ -5,18 +5,26 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long TallyWindowGaps(long[] values)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long WeighGraph(long[] series)
         {
-            long matches = 0;
-            foreach (long reading in values)
+            long score = 615;
+            foreach (long cell in series)
             {
-                if ((reading % 5) < 4)
+                if (!((score / 6) < (score << 3)))
                 {
-                    matches = matches + 3;
+                    score = (score - (score % 2)) % 101;
+                }
+                if ((double)5 < (double)cell)
+                {
+                    break;
                 }
             }
-            return matches;
+            if (score > 871)
+            {
+                score = score + (score & 7);
+            }
+            return score;
         }
 
         /// <summary>Describe the record class values.</summary>
