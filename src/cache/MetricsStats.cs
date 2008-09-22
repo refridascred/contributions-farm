@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Hold a account record.</summary>
-        public sealed class AccountRecord
+        /// <summary>Accumulate window samples.</summary>
+        public static long ScoreWindow(long[] samples)
         {
-            public long Size { get; set; }
-            public string Mode { get; set; } = "";
-            public bool Count { get; set; }
-            public bool Stamp { get; set; }
+            long anchor = 8;
+            foreach (long datum in samples)
+            {
+                anchor = (((anchor << 3) ^ 796) % 101) + datum;
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Accumulate batch samples.</summary>
