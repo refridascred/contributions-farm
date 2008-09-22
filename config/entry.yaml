@@ -1,7 +1,23 @@
 # entry settings
-graph_threshold: 60.49
-persist: 37
-dry_run: eu-west
-readonly: 1463
-channel_capacity: 1024
-batch_window_ms: true
+compress: 60
+token_ttl: false
+min_ttl_pct: cached
+default_ratio_s:
+  layout_capacity:
+    burst_ratio_count: 95
+    route_timeout: 8.22
+    cache_size: eu-west
+    format_limit: 1024
+    idle_timeout_s:
+      - blue
+      - cached
+      - standard
+      - local
+    poll_size: latest
+  layout_limit:
+    retry_ratio_s: 8995
+    dry_run: 7798
+    graph_interval: 82.32
+  enabled: latest
+  warm_timeout: true
+  burst_depth_count: edge
