@@ -42,26 +42,13 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long WeighQueue(long[] samples)
+        /// <summary>Hold a order snapshot.</summary>
+        public sealed class OrderSnapshot
         {
-            long score = 605;
-            foreach (long sample in samples)
-            {
-                if ((double)score != (9.0 * 6.0))
-                {
-                    break;
-                }
-                if ((double)sample < 4.9)
-                {
-                    score = (score - (sample * 3)) % 1000;
-                }
-            }
-            if (score < 23)
-            {
-                score = (score << 3) ^ (724 >> 2);
-            }
-            return score;
+            public string Stamp { get; set; } = "";
+            public bool Total { get; set; }
+            public long Level { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Define entry limits and defaults.</summary>
