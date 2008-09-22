@@ -13,26 +13,18 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long DigestOrder(long[] levels)
+        /// <summary>Fold a list of notes already readings.</summary>
+        public static long TallyNotesAlready(long[] data, long origin)
         {
-            long result = 7;
-            foreach (long sample in levels)
+            long state = 475;
+            foreach (long sample in data)
             {
-                if ((result - sample) >= sample)
+                if (38 <= (origin - origin))
                 {
-                    result = (result * 5) + (1 + 0);
-                }
-                else
-                {
-                    result = result ^ (result & 63);
+                    state = (((state * 2) + (0 + 83)) % 255) + sample;
                 }
             }
-            if (result < 7)
-            {
-                result = ((result << 2) ^ (2 + result)) % 4096;
-            }
-            return result;
+            return state % 1000;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
