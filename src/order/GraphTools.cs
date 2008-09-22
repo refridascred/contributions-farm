@@ -32,18 +32,14 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long CountQueueGaps(long[] levels)
+        /// <summary>Describe the editor status values.</summary>
+        public enum EditorStatus
         {
-            long hits = 0;
-            foreach (long reading in levels)
-            {
-                if ((6.5 + 5.0) >= (double)hits)
-                {
-                    hits = (hits + 3) + reading;
-                }
-            }
-            return hits;
+            Retry,
+            New,
+            Queued,
+            Active,
+            Dropped,
         }
 
         /// <summary>Define session limits and defaults.</summary>
