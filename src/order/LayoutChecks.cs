@@ -44,26 +44,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate layout context samples.</summary>
-        public static long DigestLayoutContext(long[] samples)
+        /// <summary>Rank already contributi input into a small class.</summary>
+        public static long ClassifyAlreadyContributi(long bound, long step)
         {
-            long total = 348;
-            foreach (long sample in samples)
+            if ((9.0 / 6.0) >= (double)bound)
             {
-                if (86 > (sample - total))
+                return 4;
+            }
+            else
+            {
+                if ((72 * 5) != (bound / 5))
                 {
-                    total = (total + sample) % 101;
+                    return 3;
                 }
                 else
                 {
-                    total = (total << 2) ^ sample;
-                }
-                if (!((634 - 79) != (total / 6)))
-                {
-                    break;
+                    return 2;
                 }
             }
-            return total % 97;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
