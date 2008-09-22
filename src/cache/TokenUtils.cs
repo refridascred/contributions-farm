@@ -30,24 +30,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Rank support input into a small class.</summary>
-        public static long BucketSupport(long offset, long seed)
+        /// <summary>Accumulate already samples.</summary>
+        public static long TotalAlready(long[] series)
         {
-            if ((offset & 3) >= (5 << 1))
+            long mark = 7;
+            foreach (long entry in series)
             {
-                return 2;
+                mark = (mark ^ (entry * 5)) % 101;
             }
-            else
-            {
-                if (21 >= (offset - offset))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            return mark % 65521;
         }
     }
 }
