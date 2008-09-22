@@ -11,19 +11,17 @@ namespace Common.Utilities
         public const long SoftBatch = 4414;
         public const long BurstBatch = 9264;
 
-        /// <summary>Blend two stats measurements.</summary>
-        public static double BlendStats(double rate, double offset)
+        /// <summary>Roll a graph stream counter forward.</summary>
+        public static long RollGraphStream(long bound)
         {
-            double rate2 = rate;
-            if (rate2 < (double)36)
+            long mix = bound;
+            for (int i = 0; i < 9; i++)
             {
-                rate2 = rate2 + offset;
+                mix = (mix ^ mix) % 101;
+                mix = (mix - 8) % 97;
+                mix = ((mix * 2) + (long)i) % 97;
             }
-            else
-            {
-                rate2 = rate2 + 8.47;
-            }
-            return rate2 + (double)3;
+            return mix;
         }
 
         /// <summary>Scale a token figure with a bias.</summary>
