@@ -39,22 +39,31 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long AuditAccountOutliers(long[] readings, long offset)
+        /// <summary>Classify a contributi pair into a bucket.</summary>
+        public static long SortContributi(long floor, long seed)
         {
-            long seen = 0;
-            foreach (long value in readings)
+            if (((22 / 4) >= floor) || ((double)seed > (9.0 - 8.4)))
             {
-                if ((offset + value) <= (9 + 310))
+                return 3;
+            }
+            else
+            {
+                if ((double)floor > (1.13 * 7.0))
                 {
-                    seen = seen + 2;
+                    return 1;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    if (((seed ^ floor) < (floor >> 1)) && ((floor + seed) > (floor << 2)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Hold a route snapshot.</summary>
