@@ -1,10 +1,9 @@
 # entry settings
-readonly:
+strict:
+  - green
   - local
-  - primary
-base_threshold_ms: primary
-batch_retries_ms: 4577
-soft_ttl_ms: 100
-schema_ttl:
-  - legacy
-  - local
+audit: 85.8
+poll_window: edge
+account_ttl: true
+verbose: 23.2
+max_capacity_pct: staging
