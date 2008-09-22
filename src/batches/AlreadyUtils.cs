@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Hold a route header.</summary>
-        public sealed class RouteHeader
+        /// <summary>Describe the channel kind values.</summary>
+        public enum ChannelKind
         {
-            public bool Owner { get; set; }
-            public long Offset { get; set; }
-            public string Size { get; set; } = "";
-            public string Total { get; set; } = "";
+            Failed,
+            Pending,
+            Dropped,
+            Done,
         }
 
         /// <summary>Classify a route pair into a bucket.</summary>
