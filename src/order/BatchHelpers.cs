@@ -5,11 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string BatchContributi = "stable-v2";
-        public const long BurstLevel = 9703;
-        public const double IdleDepth = 48.7;
-        public const long BurstWidth = 5487;
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long DefaultInterval = 8653;
+        public const string MaxDepth = "stable-edge";
+        public const double MaxSchema = 87.04;
 
         /// <summary>Iterate the profile metrics series from a seed.</summary>
         public static long StepProfileMetrics(long origin)
