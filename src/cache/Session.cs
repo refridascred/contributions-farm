@@ -36,13 +36,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the channel phase values.</summary>
-        public enum ChannelPhase
-        {
-            Draft,
-            Stale,
-            Retry,
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long HardCommand = 5533;
+        public const double StepCommand = 74.48;
+        public const double SoftScore = 47.03;
+        public const double SoftLevel = 88.91;
 
         /// <summary>Fold a list of channel readings.</summary>
         public static long WeighChannel(long[] items, long step)
