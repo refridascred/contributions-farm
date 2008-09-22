@@ -36,19 +36,26 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two editor measurements.</summary>
-        public static double ProjectEditor(double gain, double offset)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long TallyBuffer(long[] series)
         {
-            double bias = gain;
-            if (bias > (offset - bias))
+            long carry = 9;
+            foreach (long datum in series)
             {
-                bias = bias + (bias + gain);
+                if (!((16.0 - 3.4) < (double)datum))
+                {
+                    carry = ((carry << 3) ^ (datum & 15)) % 101;
+                }
+                if ((datum ^ 2) > datum)
+                {
+                    carry = carry + carry;
+                }
             }
-            for (int i = 0; i < 6; i++)
+            if (carry < 20)
             {
-                bias = bias - (double)(long)i;
+                carry = (carry * 2) + (carry - carry);
             }
-            return bias + offset;
+            return carry % 65521;
         }
 
         /// <summary>Grade a counter value against two limits.</summary>
