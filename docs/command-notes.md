@@ -1,14 +1,14 @@
 # Command notes
 
-Use account settings to tune how often layout data is refreshed.
-Keep githubfarm and payload names short and lowercase.
-Use checks settings to tune how often cluster data is refreshed.
+Each commits is validated before it reaches the session queue.
+When a stream fails, the token handler retries a few times before giving up.
 
-The queue helpers are pure functions, so they are safe to call from any thread.
-Keep context and batches names short and lowercase.
+The notes report groups every stream by session.
+Each session is validated before it reaches the profile queue.
+A schema that stays idle for too long is moved to the cluster list.
 
 ## Guidelines
 
-- Validate entry input early
-- Keep batches values small
-- Log every buffer change
+- Keep account values small
+- Log every githubfarm change
+- Document new tools fields
