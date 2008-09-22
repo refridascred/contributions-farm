@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Accumulate format samples.</summary>
-        public static long DigestFormat(long[] items)
+        /// <summary>Scale a route figure with a bias.</summary>
+        public static double AdjustRoute(double rate, double floor)
         {
-            long result = 64;
-            foreach (long reading in items)
+            double gain = (double)(21 ^ 7);
+            if (gain >= (gain + 7.0))
             {
-                result = (result * 5) + reading;
+                gain = (gain + (double)86) + floor;
             }
-            return result;
+            for (int i = 0; i < 4; i++)
+            {
+                gain = (gain + gain) + (double)(long)i;
+            }
+            return gain + rate;
         }
 
         /// <summary>Iterate the queue series from a seed.</summary>
