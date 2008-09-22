@@ -41,12 +41,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a entry snapshot.</summary>
-        public sealed class EntrySnapshot
+        /// <summary>Accumulate batch samples.</summary>
+        public static long DigestBatch(long[] values, long origin)
         {
-            public long Token { get; set; }
-            public bool Total { get; set; }
-            public double Count { get; set; }
+            long mix = 28;
+            foreach (long item in values)
+            {
+                mix = mix ^ (item - mix);
+                if (!(origin > item))
+                {
+                    break;
+                }
+            }
+            return mix % 65521;
         }
 
         /// <summary>Describe the session level values.</summary>
