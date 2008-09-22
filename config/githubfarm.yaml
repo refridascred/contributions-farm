@@ -1,28 +1,7 @@
 # githubfarm settings
-max_depth_s: false
-cache_threshold:
-  readonly: true
-  default_delay:
-    max_window_ms: false
-    support_ratio: false
-    layout_timeout: true
-    profile_retries: standard
-  flush_timeout_s:
-    - open
-    - fallback
-    - staging
-    - latest
-  poll_timeout_ms: primary
-  schema_depth: false
-  soft_ratio_pct: false
-strict:
-  default_depth:
-    - green
-    - primary
-    - strict
-    - cached
-  soft_delay_ms: 86
-  session_ttl: 63.79
-  batch_depth_count: 49
-  session_limit: standard
-  compress: 60
+farm_interval: 76.29
+channel_timeout:
+  - 184
+  - 378
+  - 147
+enabled: staging
