@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double SoftMetric = 41.33;
-        public const long HardBudget = 9369;
-        public const string DefaultRatio = "stable";
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long WindowInterval = 3901;
+        public const long MinFactor = 1686;
+        public const double HardEditor = 84.69;
+        public const long HardFactor = 8315;
 
         /// <summary>Compare every pair of token readings.</summary>
         public static long OverlapTokenCount(long[] samples)
