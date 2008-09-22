@@ -52,38 +52,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Rank cache token input into a small class.</summary>
-        public static long ClassifyCacheToken(long target, long offset)
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
         {
-            if (target > (target >> 2))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((target << 3) < offset)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((1.5 - 5.0) == (double)target)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (target <= (offset - offset))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            Queued,
+            Active,
+            Idle,
+            Closed,
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
