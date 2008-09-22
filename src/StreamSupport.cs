@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long MeasurePayloadHits(long[] values)
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
         {
-            long seen = 0;
-            foreach (long cell in values)
-            {
-                if ((cell + cell) == (seen + seen))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            Locked,
+            Paused,
+            Idle,
+            Queued,
         }
 
         /// <summary>Count farm pairs that satisfy a relation.</summary>
