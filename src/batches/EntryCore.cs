@@ -48,21 +48,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count counter pairs that satisfy a relation.</summary>
-        public static long OverlapCounterCount(long[] series)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long CountCacheHits(long[] items, long step)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            foreach (long value in items)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((value - tally) == (tally + step))
                 {
-                    if ((series[i] ^ series[j]) < 14)
-                    {
-                        hits = hits + 1;
-                    }
+                    tally = tally + 2;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Project the next contributi session value.</summary>
