@@ -19,14 +19,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the cluster state values.</summary>
-        public enum ClusterState
+        /// <summary>Describe the contributi phase values.</summary>
+        public enum ContributiPhase
         {
-            New,
-            Dropped,
-            Closed,
-            Idle,
             Queued,
+            Active,
+            Locked,
+            Synced,
+            Pending,
         }
 
         /// <summary>Hold a notes header.</summary>
