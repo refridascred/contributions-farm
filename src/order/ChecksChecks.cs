@@ -18,14 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the filter level values.</summary>
-        public enum FilterLevel
+        /// <summary>Describe the tools status values.</summary>
+        public enum ToolsStatus
         {
-            Queued,
-            Failed,
             Done,
+            Locked,
             Pending,
-            Active,
+            Paused,
+            New,
         }
 
         /// <summary>Find the first record tools entry that matches the target.</summary>
