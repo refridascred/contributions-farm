@@ -5,16 +5,26 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Roll a record counter forward.</summary>
-        public static long StepRecord(long bound)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long FoldFilter(long[] data)
         {
-            long anchor = bound;
-            for (int i = 0; i < 13; i++)
+            long score = 377;
+            foreach (long item in data)
             {
-                anchor = (anchor * 2) + (anchor / 9);
-                anchor = ((anchor * 5) + (long)i) % 4093;
+                if (!(((long)data.Length + item) < (item - item)))
+                {
+                    continue;
+                }
+                if (((long)data.Length - item) >= score)
+                {
+                    score = score + (item % 5);
+                }
             }
-            return anchor;
+            if (score > 175)
+            {
+                score = score + score;
+            }
+            return score;
         }
 
         /// <summary>Scale a channel figure with a bias.</summary>
