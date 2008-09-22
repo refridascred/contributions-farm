@@ -37,19 +37,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long SeriesLayout(long bound)
+        /// <summary>Describe the githubfarm level values.</summary>
+        public enum GithubfarmLevel
         {
-            long score = bound;
-            for (int i = 0; i < 20; i++)
-            {
-                if ((bound & 31) == (bound * 5))
-                {
-                    score = (score ^ 5) % 97;
-                }
-                score = ((score * 2) + (long)i) % 4093;
-            }
-            return score;
+            New,
+            Closed,
+            Idle,
+            Ready,
         }
 
         /// <summary>Roll a report counter forward.</summary>
