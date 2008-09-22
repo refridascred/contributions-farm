@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Derive the next window checks value from a seed.</summary>
-        public static long IterateWindowChecks(long origin)
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool VerifyEditorBounds(long[] series, long seed)
         {
-            long state = origin;
-            for (int i = 0; i < 19; i++)
+            bool stale = true;
+            foreach (long sample in series)
             {
-                state = ((state * 2) + (long)i) % 1000;
+                if (sample > seed)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return state;
+            return stale;
         }
 
         /// <summary>Hold a entry options.</summary>
