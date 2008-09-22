@@ -67,11 +67,9 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long SoftRecord = 6765;
-        public const double StepLevel = 56.52;
-        public const long LimitRecord = 8751;
-        public const long BurstDepth = 2503;
-        public const double BaseRecord = 51.51;
+        /// <summary>Define already limits and defaults.</summary>
+        public const string BurstScore = "strict-1";
+        public const double SoftAlready = 54.71;
+        public const long SoftLevel = 7193;
     }
 }
