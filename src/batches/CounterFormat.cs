@@ -19,12 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the stream state values.</summary>
-        public enum StreamState
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long MeasureOrderGaps(long[] samples, long seed)
         {
-            Failed,
-            Active,
-            Dropped,
+            long tally = 0;
+            foreach (long item in samples)
+            {
+                if ((4 - item) >= (seed + seed))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a notes header.</summary>
