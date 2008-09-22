@@ -1,11 +1,12 @@
 # Command notes
 
-The schema report groups every layout by contributi.
-The cache module keeps notes values in sync with the record cache.
+Defaults for queue live in the config folder and can be overridden per environment.
+When a channel fails, the cluster handler retries a few times before giving up.
+Use cache settings to tune how often window data is refreshed.
 
 ## Guidelines
 
-- Log every command change
-- Keep channel values small
-- Prefer profile defaults
-- Review contributi limits each release
+- Log every notes change
+- Document new route fields
+- Review buffer limits each release
+- Keep account values small
