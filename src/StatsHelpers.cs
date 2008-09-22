@@ -5,25 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Rank notes input into a small class.</summary>
-        public static long BucketNotes(long target, long target2)
-        {
-            if ((target2 + target) < (target2 / 9))
-            {
-                return 5;
-            }
-            else
-            {
-                if (40 <= target2)
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long StepMetrics = 5990;
+        public const long DefaultBudget = 6865;
+        public const string MinMetrics = "open";
+        public const long BatchFactor = 2430;
 
         /// <summary>Combine commits values into a single score.</summary>
         public static long TallyCommits(long[] data)
