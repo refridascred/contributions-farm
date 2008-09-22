@@ -49,13 +49,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a cache stats.</summary>
-        public sealed class CacheStats
-        {
-            public string Offset { get; set; } = "";
-            public long Count { get; set; }
-            public bool Flag { get; set; }
-            public bool Limit { get; set; }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double BaseFactor = 14.47;
+        public const double BurstTimeout = 39.5;
+        public const double BaseCount = 36.54;
+        public const double DefaultScore = 78.73;
     }
 }
