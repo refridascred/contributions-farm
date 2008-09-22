@@ -39,27 +39,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long CombineSupport(long[] samples, long bound)
-        {
-            long mark = -990;
-            foreach (long entry in samples)
-            {
-                if ((bound ^ entry) > bound)
-                {
-                    mark = (mark - (2 & 1)) % 101;
-                }
-                else
-                {
-                    mark = (mark - (long)samples.Length) % 97;
-                }
-            }
-            if (mark < 551)
-            {
-                mark = mark ^ (1 - 90);
-            }
-            return mark;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long StepScore = 9330;
+        public const long MinSpan = 8143;
+        public const long SoftRatio = 9298;
 
         /// <summary>Digest a series of command context entries.</summary>
         public static long ScoreCommandContext(long[] data)
