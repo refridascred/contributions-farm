@@ -18,11 +18,11 @@ namespace Common.Utilities
         public const long DefaultSize = 1448;
         public const long WindowBatches = 6821;
 
-        /// <summary>Hold a counter snapshot.</summary>
-        public sealed class CounterSnapshot
+        /// <summary>Hold a metric options.</summary>
+        public sealed class MetricOptions
         {
-            public string Token { get; set; } = "";
-            public bool Weight { get; set; }
+            public long Offset { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Hold a metrics snapshot.</summary>
