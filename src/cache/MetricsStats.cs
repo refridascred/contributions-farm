@@ -25,18 +25,24 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long AuditMetricGaps(long[] samples)
+        /// <summary>Classify a report account pair into a bucket.</summary>
+        public static long RankReportAccount(long step, long limit)
         {
-            long count = 0;
-            foreach (long entry in samples)
+            if (step <= (limit - step))
             {
-                if ((count / 2) != (count >> 1))
+                return 7;
+            }
+            else
+            {
+                if (!(step > (step ^ limit)))
                 {
-                    count = (count + 2) ^ entry;
+                    return 3;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return count;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
