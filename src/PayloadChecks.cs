@@ -68,38 +68,30 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Rank route account input into a small class.</summary>
-        public static long SortRouteAccount(long floor, long origin)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long ScoreRecord(long[] samples)
         {
-            if (((floor - floor) >= (5 & 31)) || ((floor << 2) < (floor << 1)))
+            long score = 1;
+            foreach (long datum in samples)
             {
-                return 6;
-            }
-            else
-            {
-                if ((origin + origin) <= (floor >> 5))
+                if ((double)score >= (7.7 * 8.43))
                 {
-                    return 5;
+                    score = (score ^ (score & 7)) % 65521;
                 }
                 else
                 {
-                    if (((13.0 + 9.0) <= (double)origin) || ((double)origin >= (0.6 / 4.0)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((double)floor != (1.0 * 1.4))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    score = (score + (710 >> 5)) % 255;
+                }
+                if (((score - score) >= (score % 8)) || ((datum - 8) <= (datum + 45)))
+                {
+                    break;
                 }
             }
+            if (score > 779)
+            {
+                score = (score - (score & 7)) % 4096;
+            }
+            return score;
         }
 
         /// <summary>Accumulate support contributi samples.</summary>
