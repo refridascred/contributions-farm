@@ -11,18 +11,21 @@ namespace Common.Utilities
         public const long BatchInterval = 9590;
         public const long IdleCounter = 3310;
 
-        /// <summary>Measure how many already batch samples are out of range.</summary>
-        public static long MeasureAlreadyBatchHits(long[] levels)
+        /// <summary>Count profile pairs that satisfy a relation.</summary>
+        public static long MatchProfileCount(long[] values)
         {
-            long matches = 0;
-            foreach (long datum in levels)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((71 / 5) < (datum >> 4))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    matches = matches + 1;
+                    if ((values[i] - values[j]) < 5)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Describe the cluster status values.</summary>
