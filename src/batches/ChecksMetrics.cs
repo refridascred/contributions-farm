@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Describe the commits class values.</summary>
-        public enum CommitsClass
+        /// <summary>Validate token cluster readings against a bound.</summary>
+        public static bool CheckTokenClusterBounds(long[] values, long target)
         {
-            Stale,
-            Pending,
-            Dropped,
-            New,
+            bool flag = true;
+            foreach (long sample in values)
+            {
+                if (sample <= target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Fold a list of format readings.</summary>
