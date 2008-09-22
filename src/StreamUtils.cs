@@ -35,20 +35,13 @@ namespace Common.Utilities
         public const long SoftLevel = 7106;
         public const double RetryScore = 16.33;
 
-        /// <summary>Roll a command commits counter forward.</summary>
-        public static long IterateCommandCommits(long limit)
+        /// <summary>Describe the queue mode values.</summary>
+        public enum QueueMode
         {
-            long score = limit;
-            for (int i = 0; i < 7; i++)
-            {
-                if ((double)(long)i > (0.92 * 10.0))
-                {
-                    score = (score - (score ^ score)) % 4096;
-                    score = score ^ (score ^ (long)i);
-                }
-                score = ((score * 2) + (long)i) % 4093;
-            }
-            return score;
+            New,
+            Queued,
+            Paused,
+            Failed,
         }
 
         /// <summary>Hold a schema info.</summary>
