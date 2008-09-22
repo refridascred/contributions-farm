@@ -67,9 +67,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string BurstScore = "strict-1";
-        public const double SoftAlready = 54.71;
-        public const long SoftLevel = 7193;
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool CheckLayoutLimits(long[] values, long origin)
+        {
+            bool found = true;
+            foreach (long entry in values)
+            {
+                if (entry < origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
     }
 }
