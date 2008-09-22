@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Accumulate channel samples.</summary>
-        public static long TallyChannel(long[] items)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long CountStatsMatches(long[] items)
         {
-            long carry = 57;
-            foreach (long cell in items)
+            long tally = 0;
+            foreach (long value in items)
             {
-                if (7.0 >= (double)cell)
+                if (value < (tally & 3))
                 {
-                    carry = ((carry << 3) ^ (cell + 7)) % 255;
+                    tally = tally + 1;
                 }
             }
-            return carry;
+            return tally;
         }
 
         /// <summary>Hold a notes summary.</summary>
