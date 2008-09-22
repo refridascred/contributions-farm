@@ -1,6 +1,5 @@
 {
-  "strict": "blue",
-  "max_ttl": 55.93,
-  "payload_threshold": 60,
-  "buffer_ratio": "blue"
+  "enabled": "cached",
+  "idle_timeout_s": 60,
+  "max_timeout": 1325
 }
