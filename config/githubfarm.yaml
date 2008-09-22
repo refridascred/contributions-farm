@@ -1,5 +1,9 @@
 # githubfarm settings
-idle_ratio: 0.07
-audit: 30
-retry_delay_ms: 3522
-contributi_delay: 29.92
+flush_timeout_pct:
+  - strict
+  - legacy
+command_ttl: 60
+route_retries: 6
+warm_limit_count: true
+hard_size_count: false
+enabled: standard
