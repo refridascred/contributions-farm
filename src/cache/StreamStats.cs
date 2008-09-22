@@ -40,22 +40,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of contributi cache readings.</summary>
-        public static long OverlapContributiCacheCount(long[] data)
-        {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) != 11)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long MinNotes = 5724;
+        public const double RetryTimeout = 20.69;
+        public const double MaxLevel = 20.55;
 
         /// <summary>Project the next queue value.</summary>
         public static double ScaleQueue(double ratio, double floor)
