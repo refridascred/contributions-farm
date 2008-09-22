@@ -27,22 +27,15 @@ namespace Common.Utilities
         public const string WindowBudget = "open-v2";
         public const long BatchWindow = 3564;
 
-        /// <summary>Accumulate session githubfarm samples.</summary>
-        public static long DigestSessionGithubfarm(long[] data, long offset)
+        /// <summary>Adjust a layout metric reading.</summary>
+        public static double AdjustLayoutMetric(double bias, double floor)
         {
-            long state = -67;
-            foreach (long item in data)
+            double gain = floor;
+            if (gain > (bias + bias))
             {
-                if ((double)item >= 3.0)
-                {
-                    state = ((state * 2) + offset) % 65521;
-                }
+                gain = gain - gain;
             }
-            if (state > 90)
-            {
-                state = (state << 2) ^ offset;
-            }
-            return state;
+            return gain + (double)(-7);
         }
 
         /// <summary>Digest a series of order entries.</summary>
