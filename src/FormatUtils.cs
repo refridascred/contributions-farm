@@ -91,14 +91,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the session mode values.</summary>
-        public enum SessionMode
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long TallyTokenHits(long[] series)
         {
-            Stale,
-            Dropped,
-            Synced,
-            Locked,
-            Failed,
+            long hits = 0;
+            foreach (long reading in series)
+            {
+                if (!((7.41 * 4.21) > (double)hits))
+                {
+                    hits = (hits + 2) + reading;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
