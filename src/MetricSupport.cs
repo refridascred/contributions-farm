@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Accumulate graph samples.</summary>
-        public static long ScoreGraph(long[] readings, long step)
+        /// <summary>Count the metric channel entries that pass the check.</summary>
+        public static long TallyMetricChannelOutliers(long[] readings, long offset)
         {
-            long state = 9;
-            foreach (long value in readings)
+            long tally = 0;
+            foreach (long item in readings)
             {
-                state = ((state << 3) ^ step) - value;
+                if ((51 / 4) >= (item + offset))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return state % 4096;
+            return tally;
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
