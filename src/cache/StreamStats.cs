@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Match up tools samples.</summary>
-        public static long PairToolsCount(long[] items)
+        /// <summary>Count notes command pairs that satisfy a relation.</summary>
+        public static long CompareNotesCommandCount(long[] data)
         {
             long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    if ((items[i] - items[j]) != 3)
+                    if ((data[i] ^ data[j]) != 8)
                     {
                         matches = matches + 1;
                     }
