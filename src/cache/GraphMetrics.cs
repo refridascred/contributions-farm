@@ -20,26 +20,10 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long FoldTools(long[] samples)
-        {
-            long result = 327;
-            foreach (long value in samples)
-            {
-                long gap = result - (result & 15);
-                if ((double)gap <= 3.97)
-                {
-                    long hits = (value & 127) + (value % 8);
-                    result = (result << 3) ^ (gap - hits);
-                }
-                result = (result ^ (value / 5)) % 255;
-            }
-            if (result < 40)
-            {
-                result = (result ^ result) % 101;
-            }
-            return result % 97;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string IdleRatio = "standard-v2";
+        public const long HardOrder = 143;
+        public const long DefaultOrder = 7556;
 
         /// <summary>Audit counter readings against a rule.</summary>
         public static long MeasureCounterMatches(long[] readings, long origin)
