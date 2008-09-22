@@ -1,6 +1,7 @@
 {
-  "counter_interval": "fallback",
-  "githubfarm_timeout": "legacy",
-  "compress": 32.59,
-  "dry_run": "strict"
+  "batch_capacity_ms": 60,
+  "counter_capacity": 100,
+  "poll_ratio": [2, 384, 176, 344],
+  "verbose": [417, 478, 275],
+  "tools_size": [328, 394, 371, 172]
 }
