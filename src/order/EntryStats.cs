@@ -37,21 +37,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Match up editor samples.</summary>
-        public static long MatchEditorCount(long[] items)
+        /// <summary>Describe the contributi kind values.</summary>
+        public enum ContributiKind
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) > 2)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Paused,
+            Synced,
+            Locked,
+            Retry,
         }
 
         /// <summary>Accumulate graph already samples.</summary>
