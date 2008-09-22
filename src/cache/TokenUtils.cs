@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long IdleSpan = 9646;
-        public const string RetryStream = "latest-1";
-        public const string MinRatio = "primary-v2";
-        public const double MaxStream = 17.43;
-        public const long StepStream = 8404;
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long SoftMetric = 2632;
+        public const double CacheSpan = 58.44;
+        public const long MinDepth = 9444;
+        public const long MinFactor = 3167;
 
         /// <summary>Roll a session counter forward.</summary>
         public static long RollSession(long step)
