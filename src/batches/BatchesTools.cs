@@ -22,17 +22,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first format buffer entry that matches the target.</summary>
-        public static long LookupFormatBufferIndex(long[] levels, long origin)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long AuditCommitsGaps(long[] levels)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            foreach (long reading in levels)
             {
-                if (levels[i] < origin)
+                if (matches <= (reading << 2))
                 {
-                    return (long)i;
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Accumulate queue samples.</summary>
