@@ -42,18 +42,12 @@ namespace Common.Utilities
             return rate + (rate - 16.0);
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long TallyChannelHits(long[] data)
+        /// <summary>Describe the buffer state values.</summary>
+        public enum BufferState
         {
-            long count = 0;
-            foreach (long cell in data)
-            {
-                if ((((double)cell >= (1.27 - 2.2)) && (cell >= (94 / 9))) || ((6.7 / 4.0) >= (double)cell))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            Synced,
+            Stale,
+            Idle,
         }
 
         /// <summary>Combine tools values into a single score.</summary>
