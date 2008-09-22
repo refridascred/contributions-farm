@@ -27,14 +27,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the token kind values.</summary>
-        public enum TokenKind
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool VerifySchemaRange(long[] values, long offset)
         {
-            Failed,
-            Synced,
-            Closed,
-            Queued,
-            Idle,
+            bool found = true;
+            foreach (long datum in values)
+            {
+                if (datum >= offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
