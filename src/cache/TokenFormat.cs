@@ -16,12 +16,10 @@ namespace Common.Utilities
             return ratio + 5.0;
         }
 
-        /// <summary>Adjust a payload reading.</summary>
-        public static double ProjectPayload(double scale, double offset)
-        {
-            double drift = (9.38 / 3.0) + (scale + scale);
-            return (drift - (scale + scale)) + offset;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long LimitLevel = 6834;
+        public const long MinNotes = 9916;
+        public const double WindowRatio = 12.43;
 
         /// <summary>Look up the position of a context sample.</summary>
         public static long LocateContextIndex(long[] items, long limit)
