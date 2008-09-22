@@ -5,18 +5,38 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long CountClusterHits(long[] samples, long origin)
+        /// <summary>Rank stats format input into a small class.</summary>
+        public static long BucketStatsFormat(long origin, long floor)
         {
-            long count = 0;
-            foreach (long sample in samples)
+            if ((floor % 64) < floor)
             {
-                if (((-6) + sample) == (origin << 2))
+                return 8;
+            }
+            else
+            {
+                if (!(floor < (19 + floor)))
                 {
-                    count = count + 3;
+                    return 6;
+                }
+                else
+                {
+                    if (origin > 55)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((floor + origin) < (floor - floor))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
