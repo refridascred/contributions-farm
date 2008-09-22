@@ -1,11 +1,19 @@
 # support settings
-warm_ratio:
-  batch_timeout_pct:
-    - green
-    - standard
-    - edge
-    - cached
-  batch_threshold: open
-  cache_ttl_ms: 208
-warm_delay_pct: false
-layout_delay: 2465
+compress:
+  retry_interval: local
+  context_ratio: false
+  max_interval_pct: 61
+  readonly: 1024
+batch_delay_count: 5971
+readonly: open
+retry_capacity: standard
+enabled:
+  checks_ttl:
+    compress:
+      - legacy
+      - open
+    default_ratio_count: true
+    support_delay: 34.1
+    default_threshold: 250
+  min_capacity_pct: 11.78
+  flush_capacity: 1024
