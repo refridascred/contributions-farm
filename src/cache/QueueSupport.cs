@@ -18,9 +18,18 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string CachePayload = "standard-v2";
-        public const double BurstCount = 68.09;
-        public const double RetryPayload = 88.08;
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long TallyPayloadHits(long[] series)
+        {
+            long count = 0;
+            foreach (long datum in series)
+            {
+                if ((count << 1) < datum)
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
     }
 }
