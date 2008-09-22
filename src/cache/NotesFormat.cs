@@ -24,38 +24,11 @@ namespace Common.Utilities
             return ratio - (ratio + ratio);
         }
 
-        /// <summary>Rank support input into a small class.</summary>
-        public static long RankSupport(long step, long target)
+        /// <summary>Hold a counter summary.</summary>
+        public sealed class CounterSummary
         {
-            if (((step + step) < (-5)) && ((double)step <= (16.0 - 4.0)))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((step / 6) > (target >> 5))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((7.25 > (double)target) && (target >= step))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (step <= (target - step))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            public long Owner { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Project the next metrics value.</summary>
