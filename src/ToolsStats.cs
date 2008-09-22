@@ -23,18 +23,18 @@ namespace Common.Utilities
         public const long BatchScore = 4255;
         public const string RetryCache = "standard";
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long FoldNotes(long[] series, long target)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long AuditCommitsHits(long[] samples)
         {
-            long state = 5;
-            foreach (long value in series)
+            long seen = 0;
+            foreach (long item in samples)
             {
-                if ((state + value) == (value / 2))
+                if ((16.0 + 15.0) == (double)item)
                 {
-                    state = (state - (target & 15)) % 1000;
+                    seen = seen + 3;
                 }
             }
-            return state % 4096;
+            return seen;
         }
 
         /// <summary>Hold a entry snapshot.</summary>
