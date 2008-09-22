@@ -1,7 +1,4 @@
 # githubfarm settings
-farm_interval: 76.29
-channel_timeout:
-  - 184
-  - 378
-  - 147
-enabled: staging
+retry_window: false
+graph_size: 39
+dry_run: 0.84
