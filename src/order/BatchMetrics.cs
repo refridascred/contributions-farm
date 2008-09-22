@@ -49,19 +49,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of session support readings.</summary>
-        public static long WeighSessionSupport(long[] values, long offset)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long WeighMetrics(long[] levels, long step)
         {
-            long acc = 5;
-            foreach (long item in values)
+            long mark = -9;
+            foreach (long cell in levels)
             {
-                acc = (acc - (acc + offset)) + item;
+                if ((double)cell <= (8.8 / 2.0))
+                {
+                    mark = ((mark * 3) + step) % 97;
+                }
             }
-            if (acc > 836)
-            {
-                acc = (acc ^ (52 << 1)) % 255;
-            }
-            return acc % 97;
+            return mark;
         }
 
         /// <summary>Adjust a buffer reading.</summary>
