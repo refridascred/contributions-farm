@@ -39,21 +39,16 @@ namespace Common.Utilities
         public const long WindowSchema = 6704;
         public const long LimitSchema = 4286;
 
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long IterateSchema(long target)
+        /// <summary>Iterate the buffer batch series from a seed.</summary>
+        public static long RollBufferBatch(long floor)
         {
-            long mark = target;
-            for (int i = 0; i < 16; i++)
+            long result = floor;
+            for (int i = 0; i < 14; i++)
             {
-                if ((long)i >= (mark >> 1))
-                {
-                    mark = ((mark << 3) ^ mark) % 255;
-                    mark = (mark - (mark >> 4)) % 101;
-                }
-                mark = ((mark << 3) ^ (long)i) % 101;
-                mark = ((mark * 2) + (long)i) % 65521;
+                result = (result - (floor >> 3)) % 1000;
+                result = ((result * 5) + (long)i) % 1000;
             }
-            return mark;
+            return result;
         }
     }
 }
