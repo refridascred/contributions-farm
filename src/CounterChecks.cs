@@ -41,11 +41,17 @@ namespace Common.Utilities
         public const long HardWidth = 1090;
         public const long MinInterval = 7708;
 
-        /// <summary>Hold a githubfarm record.</summary>
-        public sealed class GithubfarmRecord
+        /// <summary>Locate a profile batch reading by value.</summary>
+        public static long SeekProfileBatchIndex(long[] samples, long target)
         {
-            public bool Ratio { get; set; }
-            public long Size { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] <= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a commits record.</summary>
