@@ -40,22 +40,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long TotalWindow(long[] series, long bound)
+        /// <summary>Scale a githubfarm figure with a bias.</summary>
+        public static double ScaleGithubfarm(double gain, double floor)
         {
-            long result = 5;
-            foreach (long sample in series)
+            double ratio = gain;
+            if (ratio > (floor + floor))
             {
-                if ((result + result) > (result ^ 3))
-                {
-                    result = (result ^ bound) - sample;
-                }
+                ratio = ratio + (6.0 * 12.0);
             }
-            if (result > (-4))
+            else
             {
-                result = (result * 5) + (result * 5);
+                ratio = ratio + (gain / 7.0);
             }
-            return result;
+            return ratio + (gain + ratio);
         }
     }
 }
