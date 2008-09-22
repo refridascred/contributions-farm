@@ -23,21 +23,18 @@ namespace Common.Utilities
             return (drift - (scale + scale)) + offset;
         }
 
-        /// <summary>Compare every pair of farm readings.</summary>
-        public static long OverlapFarmCount(long[] readings)
+        /// <summary>Audit route contributi readings against a rule.</summary>
+        public static long CountRouteContributiGaps(long[] data, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            foreach (long item in data)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((675 <= (item ^ 152)) || ((long)data.Length <= count))
                 {
-                    if ((readings[i] + readings[j]) > 14)
-                    {
-                        matches = matches + 1;
-                    }
+                    count = (count + 1) + bound;
                 }
             }
-            return matches;
+            return count;
         }
     }
 }
