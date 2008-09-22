@@ -18,22 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long ScoreWindow(long[] data)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long CountNotesGaps(long[] samples, long seed)
         {
-            long result = 91;
-            foreach (long datum in data)
+            long count = 0;
+            foreach (long value in samples)
             {
-                if (!((datum / 7) == (datum + (-63))))
+                if (!(seed > count) || ((0 + value) == (value << 3)))
                 {
-                    result = (result - (result + result)) % 97;
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            if (result > 66)
-            {
-                result = (result * 2) + (result << 1);
-            }
-            return result % 1000;
+            return count;
         }
 
         /// <summary>Locate a token record reading by value.</summary>
