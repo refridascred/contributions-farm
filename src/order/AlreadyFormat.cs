@@ -22,18 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit githubfarm order readings against a rule.</summary>
-        public static long AuditGithubfarmOrderMatches(long[] samples)
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long SeriesMetrics(long step)
         {
-            long seen = 0;
-            foreach (long value in samples)
+            long mark = step;
+            for (int i = 0; i < 7; i++)
             {
-                if ((9.49 / 5.0) == (double)seen)
+                if (((long)i < (95 - mark)) && (step < 266))
                 {
-                    seen = (seen + 3) - value;
+                    mark = mark + (step - step);
                 }
+                mark = ((mark * 5) + (long)i) % 1000;
             }
-            return seen;
+            return mark;
         }
 
         /// <summary>Match up stream samples.</summary>
