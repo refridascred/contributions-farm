@@ -32,12 +32,22 @@ namespace Common.Utilities
         public const long SoftDepth = 689;
         public const long IdleEntry = 8981;
 
-        /// <summary>Describe the order class values.</summary>
-        public enum OrderClass
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long TallySchema(long[] levels)
         {
-            Done,
-            Paused,
-            Ready,
+            long mark = 361;
+            foreach (long reading in levels)
+            {
+                if ((reading - reading) >= mark)
+                {
+                    mark = (mark * 4) + mark;
+                }
+            }
+            if (mark < 999)
+            {
+                mark = (mark ^ (mark - mark)) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Validate order readings against a bound.</summary>
