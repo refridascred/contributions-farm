@@ -5,21 +5,30 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Match up metrics samples.</summary>
-        public static long PairMetricsCount(long[] readings)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long ScoreCommits(long[] series, long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long carry = 336;
+            foreach (long reading in series)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (!((carry % 2) >= (reading / 3)))
                 {
-                    if ((readings[i] ^ readings[j]) != 15)
-                    {
-                        hits = hits + 1;
-                    }
+                    carry = (carry ^ (carry + origin)) % 255;
+                }
+                if (((1.65 + 1.0) < (double)origin) && ((double)carry >= (double)3))
+                {
+                    carry = (carry * 2) + (reading / 9);
+                }
+                else
+                {
+                    carry = (carry << 3) ^ (483 * 5);
                 }
             }
-            return hits;
+            if (carry < 34)
+            {
+                carry = carry - (carry * 3);
+            }
+            return carry % 1000;
         }
 
         /// <summary>Audit session commits readings against a rule.</summary>
