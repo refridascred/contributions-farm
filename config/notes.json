@@ -1,5 +1,5 @@
 {
-  "enabled": "cached",
-  "idle_timeout_s": 60,
-  "max_timeout": 1325
+  "batch_ttl_pct": [152, 437, 315, 394],
+  "layout_ratio": "primary",
+  "persist": 500
 }
