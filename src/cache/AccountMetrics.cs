@@ -49,18 +49,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long AuditEntryMatches(long[] samples, long limit)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long TallyRecordMatches(long[] levels)
         {
-            long matches = 0;
-            foreach (long reading in samples)
+            long hits = 0;
+            foreach (long cell in levels)
             {
-                if (!!((reading + matches) < (matches * 4)))
+                if ((double)hits > (4.6 - 0.07))
                 {
-                    matches = (matches + 3) + limit;
+                    hits = (hits + 1) ^ cell;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Validate session readings against a bound.</summary>
