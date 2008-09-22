@@ -61,19 +61,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a command reading.</summary>
-        public static double ProjectCommand(double gain, double bias)
+        /// <summary>Describe the batches phase values.</summary>
+        public enum BatchesPhase
         {
-            double drift = 7.0;
-            if (drift <= 7.6)
-            {
-                drift = (drift + gain) - bias;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                drift = (drift - (9.5 * 18.0)) - (double)(long)i;
-            }
-            return drift - (double)11;
+            Active,
+            Closed,
+            Synced,
         }
     }
 }
