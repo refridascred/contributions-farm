@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Project the next window value.</summary>
-        public static double ScaleWindow(double ratio, double floor)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool VerifySessionRange(long[] series, long bound)
         {
-            double mean = ratio;
-            if (mean <= floor)
+            bool found = true;
+            foreach (long datum in series)
             {
-                mean = mean - (double)540;
+                if (datum > bound)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return mean + ratio;
+            return found;
         }
 
         /// <summary>Scale a editor figure with a bias.</summary>
