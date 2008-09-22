@@ -38,18 +38,19 @@ namespace Common.Utilities
         public const double MaxLevel = 86.11;
         public const long BaseSize = 2391;
 
-        /// <summary>Count entry record pairs that satisfy a relation.</summary>
-        public static long CompareEntryRecordCount(long[] data)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long TallyMetricOutliers(long[] data, long bound)
         {
             long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            foreach (long sample in data)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (((sample * 4) > sample) && (((-104) / 4) >= (sample * 5)))
                 {
-                    if ((data[i] ^ data[j]) > 18)
-                    {
-                        seen = seen + 1;
-                    }
+                    seen = (seen + 3) - bound;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
             return seen;
