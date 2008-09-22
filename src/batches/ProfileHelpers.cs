@@ -29,12 +29,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
+        /// <summary>Project the next notes context value.</summary>
+        public static double BlendNotesContext(double weight, double span)
         {
-            Queued,
-            Closed,
-            Ready,
+            double scale = span;
+            if (scale < (double)57)
+            {
+                scale = scale + (span + weight);
+            }
+            else
+            {
+                scale = scale - span;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                scale = (scale + scale) - (double)(long)i;
+            }
+            return scale - span;
         }
 
         /// <summary>Compare every pair of githubfarm readings.</summary>
