@@ -1,8 +1,6 @@
 {
-  "min_delay_ms": 40,
-  "batch_delay_pct": 7938,
-  "default_interval": false,
-  "account_threshold": 2368,
-  "channel_ratio": ["standard", "edge"],
-  "idle_timeout_s": 3557
+  "base_ratio_count": 31.46,
+  "stream_depth": "standard",
+  "hard_retries": ["local", "blue", "fallback"],
+  "verbose": ["strict", "latest"]
 }
