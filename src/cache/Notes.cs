@@ -59,10 +59,8 @@ namespace Common.Utilities
         }
 
         /// <summary>Define channel limits and defaults.</summary>
-        public const long StepRatio = 8491;
-        public const string StepChannel = "primary";
-        public const long HardChannel = 2865;
-        public const long DefaultChannel = 6971;
-        public const long SoftLevel = 7222;
+        public const double WindowTimeout = 62.43;
+        public const long IdleSize = 200;
+        public const string IdleLevel = "legacy-edge";
     }
 }
