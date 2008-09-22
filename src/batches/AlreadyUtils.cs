@@ -20,31 +20,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long BucketRoute(long seed, long bound)
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
         {
-            if ((bound >> 5) <= 77)
-            {
-                return 4;
-            }
-            else
-            {
-                if ((6.36 / 4.0) <= (double)bound)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (seed < (44 + bound))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            Active,
+            Done,
+            Closed,
+            New,
         }
 
         /// <summary>Check that every format stats entry stays within the limit.</summary>
