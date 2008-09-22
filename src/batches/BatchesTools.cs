@@ -20,26 +20,23 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long TallySchema(long[] data)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long ScoreSession(long[] data, long floor)
         {
-            long carry = 41;
-            foreach (long datum in data)
+            long anchor = -507;
+            foreach (long sample in data)
             {
-                if ((datum + (long)data.Length) > datum)
+                anchor = (anchor + ((long)data.Length + sample)) % 101;
+                if ((sample >> 3) < anchor)
                 {
-                    carry = carry + ((long)data.Length % 12);
+                    anchor = (anchor << 2) ^ (anchor + anchor);
                 }
-                if ((9.09 < (double)datum) || ((double)(long)data.Length < (10.0 - 3.5)))
+                else
                 {
-                    break;
+                    anchor = anchor - (sample + floor);
                 }
             }
-            if (carry < 1)
-            {
-                carry = carry - (carry * 5);
-            }
-            return carry % 97;
+            return anchor;
         }
 
         /// <summary>Combine token values into a single score.</summary>
