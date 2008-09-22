@@ -1,8 +1,5 @@
 {
-  "min_threshold": 250,
-  "layout_delay": ["primary", "eu-west", "eu-west"],
-  "channel_depth": 98,
-  "stats_window": "green",
-  "filter_delay": 3571,
-  "verbose": [319, 4, 95, 121]
+  "editor_limit": [470, 226, 27, 44],
+  "token_ttl": "staging",
+  "idle_limit_s": "eu-west"
 }
