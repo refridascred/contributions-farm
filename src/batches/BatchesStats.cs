@@ -5,27 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long DigestGithubfarm(long[] readings)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool VerifyRecordLimits(long[] readings, long step)
         {
-            long mix = 59;
-            foreach (long datum in readings)
+            bool valid = true;
+            foreach (long reading in readings)
             {
-                mix = (mix * 3) + mix;
-                if (((long)readings.Length % 100) < mix)
+                if (reading <= step)
                 {
-                    mix = ((mix * 4) + datum) % 101;
-                }
-                else
-                {
-                    mix = ((mix << 2) ^ (datum % 12)) % 97;
+                    valid = false;
+                    break;
                 }
             }
-            if (mix < 591)
-            {
-                mix = (mix - (mix + mix)) % 255;
-            }
-            return mix;
+            return valid;
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
