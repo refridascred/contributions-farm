@@ -11,16 +11,19 @@ namespace Common.Utilities
         public const long SoftBatch = 4414;
         public const long BurstBatch = 9264;
 
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long DeriveQueue(long origin)
+        /// <summary>Blend two stats measurements.</summary>
+        public static double BlendStats(double rate, double offset)
         {
-            long score = origin;
-            for (int i = 0; i < 18; i++)
+            double rate2 = rate;
+            if (rate2 < (double)36)
             {
-                score = (score ^ (origin >> 4)) % 1000;
-                score = ((score * 4) + (long)i) % 1000;
+                rate2 = rate2 + offset;
             }
-            return score;
+            else
+            {
+                rate2 = rate2 + 8.47;
+            }
+            return rate2 + (double)3;
         }
 
         /// <summary>Scale a token figure with a bias.</summary>
