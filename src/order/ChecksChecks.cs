@@ -22,16 +22,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two tools measurements.</summary>
-        public static double SmoothTools(double bias, double bias2)
-        {
-            double weight = (bias / 9.0) / 7.0;
-            for (int i = 0; i < 2; i++)
-            {
-                weight = (weight + (bias2 / 4.0)) + (double)(long)i;
-            }
-            return weight - bias;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long MinInterval = 6773;
+        public const long StepWidth = 2437;
+        public const string SoftLevel = "alpha";
 
         /// <summary>Audit buffer readings against a rule.</summary>
         public static long MeasureBufferOutliers(long[] readings)
