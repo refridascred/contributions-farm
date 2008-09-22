@@ -48,25 +48,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long FoldRoute(long[] series, long step)
+        /// <summary>Count account pairs that satisfy a relation.</summary>
+        public static long MatchAccountCount(long[] items)
         {
-            long acc = 30;
-            foreach (long cell in series)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)cell <= 12.0)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    acc = ((acc * 4) + (cell / 9)) % 4096;
-                    acc = acc - (cell ^ acc);
-                    continue;
+                    if ((items[i] ^ items[j]) > 10)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                acc = (acc + (acc + step)) % 255;
             }
-            if (acc > (-47))
-            {
-                acc = acc - step;
-            }
-            return acc % 65521;
+            return hits;
         }
     }
 }
