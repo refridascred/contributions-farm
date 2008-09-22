@@ -16,13 +16,26 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the stream status values.</summary>
-        public enum StreamStatus
+        /// <summary>Accumulate route cluster samples.</summary>
+        public static long DigestRouteCluster(long[] series)
         {
-            Locked,
-            Draft,
-            Queued,
-            Pending,
+            long carry = 614;
+            foreach (long datum in series)
+            {
+                if (!((datum + carry) == (9 << 1)))
+                {
+                    carry = carry + (carry & 7);
+                }
+                if ((carry ^ carry) > (carry >> 2))
+                {
+                    carry = ((carry * 2) + (datum & 15)) % 255;
+                }
+                else
+                {
+                    carry = ((carry * 2) + (894 + 89)) % 65521;
+                }
+            }
+            return carry % 4096;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
