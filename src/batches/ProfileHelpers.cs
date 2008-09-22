@@ -60,14 +60,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the order phase values.</summary>
-        public enum OrderPhase
+        /// <summary>Count the githubfarm layout entries that pass the check.</summary>
+        public static long MeasureGithubfarmLayoutMatches(long[] series, long offset)
         {
-            Paused,
-            Draft,
-            Stale,
-            New,
-            Done,
+            long seen = 0;
+            foreach (long item in series)
+            {
+                if ((offset % 100) <= (seen << 3))
+                {
+                    seen = (seen + 2) + item;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
