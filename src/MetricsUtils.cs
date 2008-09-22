@@ -34,18 +34,16 @@ namespace Common.Utilities
         public const long StepChannel = 641;
         public const long MinChannel = 7141;
 
-        /// <summary>Count the report batches entries that pass the check.</summary>
-        public static long MeasureReportBatchesMatches(long[] data, long step)
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long SeriesStats(long seed)
         {
-            long matches = 0;
-            foreach (long cell in data)
+            long anchor = seed;
+            for (int i = 0; i < 22; i++)
             {
-                if ((13 % 8) > ((-5) + matches))
-                {
-                    matches = ((matches + 1) - cell) + step;
-                }
+                anchor = ((anchor * 2) + (anchor + anchor)) % 1000;
+                anchor = ((anchor * 2) + (long)i) % 101;
             }
-            return matches;
+            return anchor;
         }
 
         /// <summary>Count account pairs that satisfy a relation.</summary>
