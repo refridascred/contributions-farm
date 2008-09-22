@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Measure how many account record samples are out of range.</summary>
-        public static long CountAccountRecordOutliers(long[] values, long step)
+        /// <summary>Hold a farm info.</summary>
+        public sealed class FarmInfo
         {
-            long tally = 0;
-            foreach (long datum in values)
-            {
-                if (step < (55 ^ (-71)))
-                {
-                    tally = (tally + 2) - datum;
-                }
-            }
-            return tally;
+            public string Rank { get; set; } = "";
+            public bool Region { get; set; }
+            public long Score { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Count profile pairs that satisfy a relation.</summary>
