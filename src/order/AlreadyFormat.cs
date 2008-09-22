@@ -19,27 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long CombineEntry(long[] readings, long seed)
+        /// <summary>Audit notes queue readings against a rule.</summary>
+        public static long TallyNotesQueueHits(long[] series, long floor)
         {
-            long score = 64;
-            foreach (long entry in readings)
+            long matches = 0;
+            foreach (long entry in series)
             {
-                score = (score - (score << 3)) - seed;
-                if (score > (score - 26))
+                if ((19 % 5) < (matches / 6))
                 {
-                    score = (score - (entry + entry)) % 65521;
-                }
-                else
-                {
-                    score = ((score << 2) ^ (score + score)) % 4096;
+                    matches = ((matches + 3) ^ entry) + floor;
                 }
             }
-            if (score < 63)
-            {
-                score = score ^ (88 % 2);
-            }
-            return score;
+            return matches;
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
