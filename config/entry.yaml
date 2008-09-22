@@ -1,7 +1,6 @@
 # entry settings
-context_ttl: 50.17
-idle_retries_s: edge
-persist: local
-idle_capacity_ms: cached
-base_capacity_count: 43.51
-commits_capacity: 603
+warm_window_s: stable
+queue_interval: edge
+retry_ttl: 37.23
+warm_delay: staging
+soft_interval: false
