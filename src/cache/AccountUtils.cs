@@ -13,23 +13,26 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long DigestAlready(long[] readings, long offset)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long CombineChecks(long[] data)
         {
-            long score = 85;
-            foreach (long cell in readings)
+            long anchor = 0;
+            foreach (long datum in data)
             {
-                if ((cell < (offset / 5)) && ((score + 47) <= offset))
+                if ((anchor - 665) > ((-502) & 63))
                 {
-                    score = score - score;
+                    anchor = ((anchor ^ (anchor + anchor)) % 65521) + datum;
                 }
-                score = score + (score & 3);
-                if (offset >= cell)
+                else
                 {
-                    break;
+                    anchor = ((anchor << 2) ^ (2 << 2)) % 101;
                 }
             }
-            return score % 97;
+            if (anchor < 77)
+            {
+                anchor = ((anchor * 3) + (anchor / 9)) % 255;
+            }
+            return anchor;
         }
 
         /// <summary>Describe the report state values.</summary>
