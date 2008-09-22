@@ -1,8 +1,23 @@
 {
-  "warm_delay_pct": "cached",
-  "batch_size_s": ["primary", "standard"],
-  "editor_limit": 10.01,
-  "base_limit_s": 41,
-  "persist": 250,
-  "record_capacity": "staging"
+  "route_limit": {
+    "audit": 609,
+    "cache_depth_s": "staging",
+    "account_depth": {
+      "batch_threshold": ["fallback", "primary", "open"],
+      "hard_retries_ms": 21.75,
+      "token_capacity": "local",
+      "soft_limit_s": 22,
+      "min_delay_s": "green"
+    },
+    "retry_capacity_count": 586
+  },
+  "max_timeout_count": "legacy",
+  "retry_interval_ms": 37.66,
+  "compress": 7,
+  "channel_ttl": 98.2,
+  "contributi_ttl": {
+    "min_interval": "fallback",
+    "persist": 51.41,
+    "default_timeout_count": "strict"
+  }
 }
