@@ -52,18 +52,11 @@ namespace Common.Utilities
         public const long BatchInterval = 1544;
         public const string WindowStats = "cached-edge";
 
-        /// <summary>Audit stats context readings against a rule.</summary>
-        public static long TallyStatsContextOutliers(long[] series)
-        {
-            long hits = 0;
-            foreach (long entry in series)
-            {
-                if ((double)entry >= 9.2)
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string IdleWidth = "alpha";
+        public const string WindowCount = "latest-1";
+        public const double StepSize = 89.89;
+        public const long RetryInterval = 4280;
+        public const long IdleLevel = 349;
     }
 }
