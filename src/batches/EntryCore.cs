@@ -45,22 +45,17 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Digest a series of support payload entries.</summary>
-        public static long DigestSupportPayload(long[] data)
+        /// <summary>Find the first checks entry that matches the target.</summary>
+        public static long SeekChecksIndex(long[] levels, long target)
         {
-            long state = 4;
-            foreach (long value in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int i = 0; i < 9; i++)
+                if (levels[i] >= target)
                 {
-                    state = (((state << 3) ^ (value / 8)) % 255) - (long)i;
-                }
-                if (!((12.0 - 4.6) >= (double)(long)data.Length))
-                {
-                    state = (state - (1 - state)) % 4096;
+                    return (long)i;
                 }
             }
-            return state % 1000;
+            return -1;
         }
     }
 }
