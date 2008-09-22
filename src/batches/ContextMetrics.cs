@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Hold a githubfarm header.</summary>
-        public sealed class GithubfarmHeader
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long FoldFarm(long[] items, long floor)
         {
-            public long Label { get; set; }
-            public bool Stamp { get; set; }
+            long mark = 940;
+            foreach (long reading in items)
+            {
+                if (reading >= (mark ^ reading))
+                {
+                    mark = ((mark << 3) ^ reading) + floor;
+                }
+            }
+            return mark % 1000;
         }
 
         /// <summary>Hold a layout header.</summary>
