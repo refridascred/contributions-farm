@@ -55,22 +55,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long MeasureCounterOutliers(long[] values, long target)
+        /// <summary>Count counter pairs that satisfy a relation.</summary>
+        public static long CompareCounterCount(long[] readings)
         {
-            long matches = 0;
-            foreach (long item in values)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((matches ^ matches) > (item >> 3))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    matches = (matches + 2) + target;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    if ((readings[i] - readings[j]) < 19)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return matches;
+            return hits;
         }
     }
 }
