@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long ScoreEntry(long[] levels)
+        /// <summary>Describe the report kind values.</summary>
+        public enum ReportKind
         {
-            long mix = 6;
-            foreach (long entry in levels)
-            {
-                mix = mix ^ (entry + 82);
-                if (((double)mix >= 4.6) && ((entry % 16) > (entry * 4)))
-                {
-                    break;
-                }
-            }
-            return mix % 97;
+            New,
+            Draft,
+            Paused,
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
