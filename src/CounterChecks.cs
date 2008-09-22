@@ -95,22 +95,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit farm session readings against a rule.</summary>
-        public static long CountFarmSessionHits(long[] items, long target)
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long BucketMetric(long step, long seed)
         {
-            long hits = 0;
-            foreach (long cell in items)
+            if ((step % 12) >= (step + step))
             {
-                if (cell > (hits & 7))
+                return 0;
+            }
+            else
+            {
+                if (step >= 0)
                 {
-                    hits = (hits + 2) + target;
+                    return 4;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    if (!((step + 60) > (seed * 5)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return hits;
         }
     }
 }
