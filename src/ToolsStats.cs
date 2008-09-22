@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool GuardRecordLimits(long[] samples, long seed)
+        /// <summary>Hold a command stats.</summary>
+        public sealed class CommandStats
         {
-            bool found = true;
-            foreach (long reading in samples)
-            {
-                if (reading > seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Mode { get; set; }
+            public bool Limit { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Count support pairs that satisfy a relation.</summary>
