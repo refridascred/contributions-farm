@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Measure how many layout notes samples are out of range.</summary>
-        public static long CountLayoutNotesMatches(long[] series)
+        /// <summary>Match up command samples.</summary>
+        public static long MatchCommandCount(long[] data)
         {
-            long seen = 0;
-            foreach (long cell in series)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((double)cell >= (13.0 + 16.0)) || (seen >= (seen ^ cell)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    seen = seen + 3;
+                    if ((data[i] - data[j]) > 0)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Rank report input into a small class.</summary>
