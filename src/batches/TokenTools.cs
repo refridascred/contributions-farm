@@ -30,10 +30,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string StepCache = "standard-v2";
-        public const double IdleSize = 19.55;
-        public const long WindowCache = 8928;
-        public const long RetryCache = 248;
+        /// <summary>Define account limits and defaults.</summary>
+        public const string BatchScore = "latest-1";
+        public const long MaxRatio = 3488;
+        public const string RetryTimeout = "stable-1";
+        public const string CacheAccount = "standard-v2";
+        public const double MinAccount = 91.16;
     }
 }
