@@ -42,22 +42,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long AuditBatchGaps(long[] items)
-        {
-            long hits = 0;
-            foreach (long sample in items)
-            {
-                if ((hits * 4) != (sample - 7))
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double MaxSupport = 44.61;
+        public const long IdleSupport = 1873;
+        public const double RetryInterval = 91.98;
     }
 }
