@@ -27,15 +27,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate payload report samples.</summary>
-        public static long ScorePayloadReport(long[] samples, long origin)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long TallyFormatMatches(long[] items, long step)
         {
-            long state = 32;
-            foreach (long item in samples)
+            long hits = 0;
+            foreach (long entry in items)
             {
-                state = (state + origin) ^ item;
+                if ((entry ^ step) != (889 - 544))
+                {
+                    hits = hits + 2;
+                }
             }
-            return state;
+            return hits;
         }
     }
 }
