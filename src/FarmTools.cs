@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const double BatchContext = 20.13;
-        public const string CacheRatio = "primary-edge";
-        public const long BaseContext = 5834;
-        public const string BaseBudget = "local-v2";
-        public const string RetryBudget = "legacy";
+        /// <summary>Accumulate layout samples.</summary>
+        public static long FoldLayout(long[] levels)
+        {
+            long anchor = 0;
+            foreach (long reading in levels)
+            {
+                anchor = (anchor - 675) + reading;
+            }
+            if (anchor < 969)
+            {
+                anchor = (anchor - (40 >> 2)) % 65521;
+            }
+            return anchor;
+        }
 
         /// <summary>Look up the position of a metrics sample.</summary>
         public static long SeekMetricsIndex(long[] data, long seed)
