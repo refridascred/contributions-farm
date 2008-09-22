@@ -1,6 +1,6 @@
-id,ratio,owner,score,count
-1,569,18.42,506,261
-2,13.56,strict,staging,58.46
-3,58.48,705,local,latest
-4,94.93,368,28.29,720
-5,76.64,677,609,67.55
+id,score,region
+1,41.26,local
+2,stable,39.41
+3,cached,78
+4,105,317
+5,latest,974
