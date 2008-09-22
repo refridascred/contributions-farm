@@ -1,27 +1,5 @@
 # githubfarm settings
-idle_threshold_pct: legacy
-burst_window_count: fallback
-hard_interval_ms: 65
-idle_ttl_count:
-  - 318
-  - 461
-  - 232
-  - 199
-session_window:
-  max_timeout_pct: edge
-  sync_depth_ms: 1024
-  min_size_s: false
-  flush_depth_pct: blue
-  soft_timeout_s:
-    max_ratio_count: false
-    sync_threshold: cached
-    sync_window_pct: false
-    batch_threshold_pct: standard
-    route_interval:
-      - 176
-      - 177
-      - 264
-  persist:
-    - 340
-    - 69
-    - 111
+flush_ratio_ms: local
+warm_timeout_count: primary
+hard_delay: 59
+persist: false
