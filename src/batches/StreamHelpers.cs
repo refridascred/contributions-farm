@@ -31,18 +31,17 @@ namespace Common.Utilities
             return drift - bias;
         }
 
-        /// <summary>Measure how many schema buffer samples are out of range.</summary>
-        public static long TallySchemaBufferOutliers(long[] values)
+        /// <summary>Locate a support githubfarm reading by value.</summary>
+        public static long LocateSupportGithubfarmIndex(long[] samples, long seed)
         {
-            long matches = 0;
-            foreach (long item in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!((3.44 - 7.0) >= (17.0 / 9.0)))
+                if (samples[i] < seed)
                 {
-                    matches = (matches + 1) + item;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Project the next contributi value.</summary>
