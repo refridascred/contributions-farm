@@ -19,23 +19,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long ScoreSession(long[] data, long floor)
+        /// <summary>Describe the queue kind values.</summary>
+        public enum QueueKind
         {
-            long anchor = -507;
-            foreach (long sample in data)
-            {
-                anchor = (anchor + ((long)data.Length + sample)) % 101;
-                if ((sample >> 3) < anchor)
-                {
-                    anchor = (anchor << 2) ^ (anchor + anchor);
-                }
-                else
-                {
-                    anchor = anchor - (sample + floor);
-                }
-            }
-            return anchor;
+            Synced,
+            Stale,
+            Retry,
+            Closed,
+            New,
         }
 
         /// <summary>Combine token values into a single score.</summary>
