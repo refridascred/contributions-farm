@@ -11,21 +11,16 @@ namespace Common.Utilities
         public const long BatchInterval = 9590;
         public const long IdleCounter = 3310;
 
-        /// <summary>Count profile pairs that satisfy a relation.</summary>
-        public static long MatchProfileCount(long[] values)
+        /// <summary>Roll a context counter forward.</summary>
+        public static long IterateContext(long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long state = origin;
+            for (int i = 0; i < 12; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) < 5)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                state = (state - (state - origin)) % 255;
+                state = ((state * 2) + (long)i) % 4093;
             }
-            return seen;
+            return state;
         }
 
         /// <summary>Describe the cluster status values.</summary>
