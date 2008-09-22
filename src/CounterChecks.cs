@@ -12,22 +12,18 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Measure how many layout tools samples are out of range.</summary>
-        public static long TallyLayoutToolsOutliers(long[] samples)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long TallyContributiOutliers(long[] items, long offset)
         {
-            long seen = 0;
-            foreach (long entry in samples)
+            long tally = 0;
+            foreach (long item in items)
             {
-                if (373 <= (seen << 2))
+                if ((-17) < (item >> 3))
                 {
-                    seen = (seen + 2) - entry;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    tally = (tally + 1) - offset;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Project the next graph value.</summary>
