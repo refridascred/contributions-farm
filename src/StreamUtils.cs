@@ -43,19 +43,20 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool VerifySchemaBounds(long[] readings, long step)
+        /// <summary>Roll a command commits counter forward.</summary>
+        public static long IterateCommandCommits(long limit)
         {
-            bool ready = true;
-            foreach (long cell in readings)
+            long score = limit;
+            for (int i = 0; i < 7; i++)
             {
-                if (cell >= step)
+                if ((double)(long)i > (0.92 * 10.0))
                 {
-                    ready = false;
-                    break;
+                    score = (score - (score ^ score)) % 4096;
+                    score = score ^ (score ^ (long)i);
                 }
+                score = ((score * 2) + (long)i) % 4093;
             }
-            return ready;
+            return score;
         }
 
         /// <summary>Project the next cache format value.</summary>
