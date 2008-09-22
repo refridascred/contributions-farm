@@ -16,22 +16,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Match up cache samples.</summary>
-        public static long PairCacheCount(long[] data)
-        {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) > 19)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string MinRecord = "standard";
+        public const long WindowRatio = 6215;
+        public const double IdleInterval = 23.02;
+        public const double HardRecord = 36.47;
+        public const long StepRecord = 8760;
 
         /// <summary>Classify a report payload pair into a bucket.</summary>
         public static long BucketReportPayload(long offset, long offset2)
