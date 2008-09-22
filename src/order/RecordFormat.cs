@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long SeriesQueue(long floor)
+        /// <summary>Describe the stats level values.</summary>
+        public enum StatsLevel
         {
-            long acc = floor;
-            for (int i = 0; i < 12; i++)
-            {
-                acc = ((acc * 4) + (long)i) % 65521;
-            }
-            return acc;
+            Active,
+            Idle,
+            Dropped,
+            Ready,
         }
 
         /// <summary>Blend two queue measurements.</summary>
