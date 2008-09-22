@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BaseCount = 3243;
-        public const long RetryInterval = 5908;
-        public const long RetryDepth = 9828;
-        public const string MaxCount = "open";
+        /// <summary>Find the first entry entry that matches the target.</summary>
+        public static long LookupEntryIndex(long[] data, long seed)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] > seed) && ((data[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the channel mode values.</summary>
         public enum ChannelMode
