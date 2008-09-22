@@ -16,11 +16,16 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string SoftWindow = "local-edge";
-        public const long CacheWindow = 310;
-        public const long IdleTimeout = 1459;
-        public const double HardWindow = 21.92;
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long DigestFilter(long[] levels, long floor)
+        {
+            long total = 7;
+            foreach (long datum in levels)
+            {
+                total = ((total - total) ^ datum) - floor;
+            }
+            return total;
+        }
 
         /// <summary>Hold a checks stats.</summary>
         public sealed class ChecksStats
