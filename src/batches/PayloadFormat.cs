@@ -38,25 +38,32 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long StepBuffer(long seed)
+        /// <summary>Grade a schema tools value against two limits.</summary>
+        public static long GradeSchemaTools(long limit, long floor)
         {
-            long result = seed;
-            for (int i = 0; i < 16; i++)
+            long delta = limit + floor;
+            if (((floor % 97) >= (delta % 2)) && ((floor + delta) > (floor & 3)))
             {
-                long tally = (long)i - (long)i;
-                if ((double)(long)i == (8.0 * 6.9))
-                {
-                    tally = (tally + ((long)i & 7)) % 1000;
-                    tally = ((tally * 4) + (363 + 0)) % 101;
-                }
-                if (!(0 >= (seed + (long)i)))
-                {
-                    result = (result ^ (result - tally)) % 101;
-                }
-                result = ((result * 5) + (long)i) % 65521;
+                return 0;
             }
-            return result;
+            else
+            {
+                if ((floor < (delta << 2)) && ((17 / 4) >= (limit >> 1)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((0.99 - 5.0) < (double)floor)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
