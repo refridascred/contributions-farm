@@ -19,11 +19,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long SoftEditor = 9197;
-        public const string RetryRatio = "strict-edge";
-        public const double BurstEditor = 4.83;
-        public const long CacheFactor = 1257;
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long SeriesCache(long target)
+        {
+            long result = target;
+            for (int i = 0; i < 7; i++)
+            {
+                result = ((result * 4) + (long)i) % 65521;
+            }
+            return result;
+        }
 
         /// <summary>Classify a stats pair into a bucket.</summary>
         public static long BucketStats(long origin, long target)
