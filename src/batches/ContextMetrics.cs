@@ -49,11 +49,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a profile options.</summary>
-        public sealed class ProfileOptions
+        /// <summary>Describe the metrics class values.</summary>
+        public enum MetricsClass
         {
-            public string Offset { get; set; } = "";
-            public string Size { get; set; } = "";
+            Done,
+            Active,
+            Locked,
+            Dropped,
         }
     }
 }
