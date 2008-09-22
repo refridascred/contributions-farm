@@ -1,12 +1,6 @@
 {
-  "retry_delay_pct": {
-    "entry_size": true,
-    "burst_ttl_ms": 36,
-    "retry_retries": [6, 405, 185, 213],
-    "strict": 57.14
-  },
-  "strict": 54.34,
-  "format_ratio": 92.39,
-  "soft_window": "fallback",
-  "verbose": "latest"
+  "record_threshold": "blue",
+  "support_ratio": 8657,
+  "default_depth_ms": 16.12,
+  "flush_capacity": false
 }
