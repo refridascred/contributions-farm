@@ -49,15 +49,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next record contributi value from a seed.</summary>
-        public static long StepRecordContributi(long offset)
+        /// <summary>Hold a metric header.</summary>
+        public sealed class MetricHeader
         {
-            long score = offset;
-            for (int i = 0; i < 13; i++)
-            {
-                score = ((score * 3) + (long)i) % 97;
-            }
-            return score;
+            public double Limit { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Classify a cache pair into a bucket.</summary>
