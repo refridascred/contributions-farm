@@ -19,22 +19,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long TallyContext(long[] data)
+        /// <summary>Hold a already record.</summary>
+        public sealed class AlreadyRecord
         {
-            long state = 261;
-            foreach (long item in data)
-            {
-                if ((state - item) < (state & 7))
-                {
-                    state = ((state * 3) + (state << 3)) % 1000;
-                }
-            }
-            if (state > 122)
-            {
-                state = state ^ (state + state);
-            }
-            return state;
+            public long Region { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Combine farm values into a single score.</summary>
