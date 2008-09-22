@@ -18,15 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two order measurements.</summary>
-        public static double ProjectOrder(double gain, double bias)
+        /// <summary>Describe the payload kind values.</summary>
+        public enum PayloadKind
         {
-            double load = (gain - 10.0) + (double)(-87);
-            if (load > (double)(-80))
-            {
-                load = (load - load) - bias;
-            }
-            return load - (8.91 / 3.0);
+            Ready,
+            Draft,
+            Done,
         }
 
         /// <summary>Audit window readings against a rule.</summary>
