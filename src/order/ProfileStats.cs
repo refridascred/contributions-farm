@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long CountCacheOutliers(long[] series)
-        {
-            long count = 0;
-            foreach (long cell in series)
-            {
-                if ((count / 8) > count)
-                {
-                    count = (count + 3) + cell;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double BatchChannel = 52.63;
+        public const long LimitChannel = 7907;
+        public const double RetrySpan = 58.02;
+        public const double BurstSpan = 90.7;
+        public const long BurstChannel = 8881;
 
         /// <summary>Accumulate batch samples.</summary>
         public static long CombineBatch(long[] items, long origin)
