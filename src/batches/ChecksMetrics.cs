@@ -50,21 +50,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of route readings.</summary>
-        public static long CompareRouteCount(long[] readings)
+        /// <summary>Combine metric account values into a single score.</summary>
+        public static long FoldMetricAccount(long[] readings, long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long score = 88;
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (((double)seed != (double)score) || ((score * 3) <= score))
                 {
-                    if ((readings[i] ^ readings[j]) < 17)
-                    {
-                        seen = seen + 1;
-                    }
+                    score = ((score + (score + score)) % 101) + datum;
                 }
             }
-            return seen;
+            return score % 65521;
         }
     }
 }
