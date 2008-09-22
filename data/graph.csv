@@ -1,6 +1,7 @@
-id,state,token
-1,18.47,43.62
-2,891,529
-3,924,54.0
-4,fallback,454
-5,75.03,554
+id,level,state
+1,732,933
+2,33,standard
+3,983,88.58
+4,fallback,499
+5,latest,legacy
+6,7,fallback
