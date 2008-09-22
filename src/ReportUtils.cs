@@ -19,20 +19,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool CheckCommitsBounds(long[] levels, long limit)
-        {
-            bool found = true;
-            foreach (long entry in levels)
-            {
-                if (entry != limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long SoftFactor = 138;
+        public const long SoftCommits = 7475;
+        public const long IdleCommits = 8381;
 
         /// <summary>Hold a format summary.</summary>
         public sealed class FormatSummary
