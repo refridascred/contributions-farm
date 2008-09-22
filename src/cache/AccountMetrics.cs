@@ -20,13 +20,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a filter options.</summary>
-        public sealed class FilterOptions
-        {
-            public double Size { get; set; }
-            public string Region { get; set; } = "";
-            public double Limit { get; set; }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double RetryWidth = 91.13;
+        public const double CacheWidth = 43.67;
+        public const long RetryLevel = 7190;
+        public const long StepGraph = 4247;
+        public const long MinGraph = 6679;
 
         /// <summary>Accumulate record samples.</summary>
         public static long FoldRecord(long[] data, long step)
