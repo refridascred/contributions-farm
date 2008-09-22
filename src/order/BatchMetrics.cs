@@ -49,31 +49,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long CombineCounter(long[] data)
+        /// <summary>Fold a list of session support readings.</summary>
+        public static long WeighSessionSupport(long[] values, long offset)
         {
-            long score = 78;
-            foreach (long datum in data)
+            long acc = 5;
+            foreach (long item in values)
             {
-                score = score + (77 - score);
-                for (int i = 0; i < 11; i++)
-                {
-                    score = ((score - datum) % 65521) + (long)i;
-                }
-                if (score >= (datum & 7))
-                {
-                    score = score ^ (score >> 5);
-                }
-                else
-                {
-                    score = (score << 2) ^ (datum + 62);
-                }
+                acc = (acc - (acc + offset)) + item;
             }
-            if (score < 8)
+            if (acc > 836)
             {
-                score = (score ^ (score ^ score)) % 4096;
+                acc = (acc ^ (52 << 1)) % 255;
             }
-            return score % 1000;
+            return acc % 97;
         }
 
         /// <summary>Adjust a buffer reading.</summary>
