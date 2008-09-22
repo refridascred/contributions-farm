@@ -14,15 +14,18 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long RollLayout(long target)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long MeasureGraphHits(long[] values, long bound)
         {
-            long mark = target;
-            for (int i = 0; i < 8; i++)
+            long matches = 0;
+            foreach (long entry in values)
             {
-                mark = ((mark * 5) + (long)i) % 1000;
+                if (((bound % 16) >= ((long)values.Length - matches)) && ((double)matches <= (double)9))
+                {
+                    matches = (matches + 1) ^ entry;
+                }
             }
-            return mark;
+            return matches;
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
