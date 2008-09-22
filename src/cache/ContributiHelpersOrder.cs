@@ -16,19 +16,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Combine cluster contributi values into a single score.</summary>
-        public static long WeighClusterContributi(long[] items)
-        {
-            long result = 18;
-            foreach (long entry in items)
-            {
-                if ((0.77 / 3.0) != (double)result)
-                {
-                    result = (((result << 2) ^ (result >> 1)) % 97) - entry;
-                }
-            }
-            return result % 1000;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long RetrySpan = 2390;
+        public const long HardEditor = 8759;
+        public const long LimitBudget = 454;
+        public const long StepEditor = 6745;
 
         /// <summary>Count order pairs that satisfy a relation.</summary>
         public static long MatchOrderCount(long[] readings)
