@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long RollFormat(long offset)
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long SeriesStream(long origin)
         {
-            long mix = offset;
-            for (int i = 0; i < 21; i++)
+            long anchor = origin;
+            for (int i = 0; i < 9; i++)
             {
-                mix = ((mix * 2) + (long)i) % 4093;
+                anchor = ((anchor * 2) + (long)i) % 97;
             }
-            return mix;
+            return anchor;
         }
 
         /// <summary>Describe the tools status values.</summary>
