@@ -25,12 +25,12 @@ namespace Common.Utilities
         public const long CacheAccount = 4077;
         public const long BaseRatio = 6370;
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string MinWindow = "cached-edge";
-        public const long LimitWindow = 7786;
-        public const string BatchSize = "fallback-1";
-        public const string WindowBudget = "open-v2";
-        public const long BatchWindow = 3564;
+        /// <summary>Hold a metric info.</summary>
+        public sealed class MetricInfo
+        {
+            public long Limit { get; set; }
+            public long Label { get; set; }
+        }
 
         /// <summary>Count the cache entries that pass the check.</summary>
         public static long MeasureCacheOutliers(long[] data)
