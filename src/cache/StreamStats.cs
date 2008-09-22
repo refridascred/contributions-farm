@@ -53,31 +53,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long GradeCluster(long seed, long bound)
+        /// <summary>Compare every pair of batch readings.</summary>
+        public static long CompareBatchCount(long[] samples)
         {
-            if ((6 / 8) != (bound + bound))
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((seed & 31) < 1)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (((double)bound >= (2.4 + 6.8)) || ((seed + (-440)) <= seed))
+                    if ((samples[i] + samples[j]) == 11)
                     {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 6;
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
     }
 }
