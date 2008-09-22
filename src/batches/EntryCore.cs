@@ -35,19 +35,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Roll a already counter forward.</summary>
-        public static long RollAlready(long offset)
+        /// <summary>Hold a counter snapshot.</summary>
+        public sealed class CounterSnapshot
         {
-            long state = offset;
-            for (int i = 0; i < 22; i++)
-            {
-                if (8 > (offset & 127))
-                {
-                    state = (state + ((long)i + offset)) % 4096;
-                }
-                state = ((state * 2) + (long)i) % 4093;
-            }
-            return state;
+            public string Token { get; set; } = "";
+            public bool Weight { get; set; }
         }
 
         /// <summary>Hold a buffer stats.</summary>
