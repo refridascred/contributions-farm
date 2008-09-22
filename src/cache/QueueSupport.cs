@@ -12,18 +12,11 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long MeasureAlreadyOutliers(long[] readings)
+        /// <summary>Scale a tools figure with a bias.</summary>
+        public static double AdjustTools(double weight, double offset)
         {
-            long hits = 0;
-            foreach (long sample in readings)
-            {
-                if ((double)sample < 1.24)
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            double rate = (double)463 + offset;
+            return (rate - (offset - 1.34)) + weight;
         }
 
         /// <summary>Count context pairs that satisfy a relation.</summary>
