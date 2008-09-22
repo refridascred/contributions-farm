@@ -42,13 +42,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the notes level values.</summary>
-        public enum NotesLevel
+        /// <summary>Describe the checks status values.</summary>
+        public enum ChecksStatus
         {
-            Draft,
             Pending,
-            Queued,
-            Locked,
+            Closed,
+            Active,
+            Failed,
+            Retry,
         }
     }
 }
