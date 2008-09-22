@@ -16,22 +16,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the tools context entries that pass the check.</summary>
-        public static long MeasureToolsContextOutliers(long[] readings)
+        /// <summary>Accumulate layout metric samples.</summary>
+        public static long CombineLayoutMetric(long[] series)
         {
-            long seen = 0;
-            foreach (long value in readings)
+            long mix = -227;
+            foreach (long value in series)
             {
-                if ((value & 1) < seen)
+                if ((double)value >= 2.69)
                 {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    mix = (mix << 3) ^ (value + mix);
                 }
             }
-            return seen;
+            if (mix < (-40))
+            {
+                mix = ((mix * 5) + (mix / 4)) % 1000;
+            }
+            return mix % 65521;
         }
 
         /// <summary>Roll a support counter forward.</summary>
