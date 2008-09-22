@@ -28,19 +28,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Project the next metric value.</summary>
-        public static double ProjectMetric(double scale, double bias)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long MeasureSchemaHits(long[] items)
         {
-            double drift = scale - (8.49 + bias);
-            if (drift < (bias - bias))
+            long seen = 0;
+            foreach (long value in items)
             {
-                drift = drift - (drift / 4.0);
+                if ((seen - value) == (seen * 4))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                drift = (drift + bias) + (double)(long)i;
-            }
-            return drift - (7.6 + drift);
+            return seen;
         }
 
         /// <summary>Derive the next format value from a seed.</summary>
