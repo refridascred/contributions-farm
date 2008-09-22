@@ -1,13 +1,5 @@
 {
-  "audit": "strict",
-  "min_ttl": 24,
-  "sync_ttl_count": {
-    "hard_ratio_pct": true,
-    "enabled": true,
-    "warm_ratio_s": 55.11,
-    "max_limit_pct": 65,
-    "layout_depth": false
-  },
-  "burst_ratio_pct": 60,
-  "flush_timeout": [51, 208, 259]
+  "dry_run": false,
+  "sync_delay": ["eu-west", "blue", "edge", "strict"],
+  "warm_limit_count": "blue"
 }
