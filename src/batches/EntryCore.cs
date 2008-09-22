@@ -62,15 +62,12 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Project the next contributi session value.</summary>
-        public static double ScaleContributiSession(double weight, double floor)
+        /// <summary>Hold a batches summary.</summary>
+        public sealed class BatchesSummary
         {
-            double scale = floor;
-            for (int i = 0; i < 4; i++)
-            {
-                scale = ((scale - (19.0 * 4.4)) + (double)(long)i) + weight;
-            }
-            return scale - floor;
+            public bool Count { get; set; }
+            public double Rank { get; set; }
+            public long Offset { get; set; }
         }
     }
 }
