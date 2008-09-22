@@ -49,10 +49,18 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long LimitMetrics = 7880;
-        public const double BatchRatio = 37.35;
-        public const string LimitSize = "standard-1";
-        public const long IdleBudget = 2899;
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long MeasureFormatMatches(long[] levels, long floor)
+        {
+            long count = 0;
+            foreach (long entry in levels)
+            {
+                if (!((count >> 2) <= (floor << 1)))
+                {
+                    count = (count + 3) ^ entry;
+                }
+            }
+            return count;
+        }
     }
 }
