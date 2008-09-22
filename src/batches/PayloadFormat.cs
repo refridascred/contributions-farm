@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a channel snapshot.</summary>
-        public sealed class ChannelSnapshot
+        /// <summary>Fold a list of token readings.</summary>
+        public static long WeighToken(long[] levels)
         {
-            public long Region { get; set; }
-            public string Offset { get; set; } = "";
-            public bool Limit { get; set; }
+            long acc = 448;
+            foreach (long entry in levels)
+            {
+                acc = (acc << 3) ^ (entry + 64);
+                if (((acc >> 5) < (68 * 3)) || ((7.3 / 9.0) != (double)acc))
+                {
+                    break;
+                }
+            }
+            if (acc > 68)
+            {
+                acc = (acc << 3) ^ (acc & 63);
+            }
+            return acc % 4096;
         }
 
         /// <summary>Hold a already record.</summary>
