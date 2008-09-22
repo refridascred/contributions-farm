@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a window stats.</summary>
-        public sealed class WindowStats
+        /// <summary>Find the first context session entry that matches the target.</summary>
+        public static long SeekContextSessionIndex(long[] readings, long limit)
         {
-            public bool Token { get; set; }
-            public long Count { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] <= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
