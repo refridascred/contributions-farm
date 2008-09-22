@@ -46,22 +46,38 @@ namespace Common.Utilities
             return bias + offset;
         }
 
-        /// <summary>Audit filter cluster readings against a rule.</summary>
-        public static long MeasureFilterClusterMatches(long[] data)
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long RankCounter(long seed, long origin)
         {
-            long count = 0;
-            foreach (long reading in data)
+            if ((seed * 4) < seed)
             {
-                if (((2.0 * 9.8) < (double)(long)data.Length) && !((count - reading) < (count / 3)))
+                return 5;
+            }
+            else
+            {
+                if (((double)origin < (2.0 - 13.0)) && ((origin + origin) <= (origin + seed)))
                 {
-                    count = count + 3;
+                    return 1;
                 }
                 else
                 {
-                    count = count - 1;
+                    if ((origin + origin) == (seed % 97))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (((40 & 127) > seed) || ((5.0 + 6.2) >= (double)seed))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Audit counter layout readings against a rule.</summary>
