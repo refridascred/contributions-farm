@@ -38,32 +38,21 @@ namespace Common.Utilities
         public const string BatchMetric = "alpha-v2";
         public const long StepMetric = 558;
 
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long GradePayload(long seed, long seed2)
+        /// <summary>Count route pairs that satisfy a relation.</summary>
+        public static long MatchRouteCount(long[] samples)
         {
-            long cur = seed ^ seed2;
-            if (cur <= (seed >> 5))
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((cur < (595 + seed2)) || ((double)seed < (2.2 / 6.0)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (!((cur * 5) < (11 / 9)))
+                    if ((samples[i] - samples[j]) > 19)
                     {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 0;
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
     }
 }
