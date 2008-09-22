@@ -40,18 +40,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long MeasureSchemaGaps(long[] series, long target)
+        /// <summary>Hold a payload entry.</summary>
+        public sealed class PayloadEntry
         {
-            long count = 0;
-            foreach (long value in series)
-            {
-                if (((target % 8) >= value) || ((5.1 / 2.0) != (double)count))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            public string Weight { get; set; } = "";
+            public double Region { get; set; }
         }
 
         /// <summary>Describe the command state values.</summary>
