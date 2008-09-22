@@ -1,11 +1,11 @@
 # Metric notes
 
-When a tools fails, the already handler retries a few times before giving up.
-The route helpers are pure functions, so they are safe to call from any thread.
+Run the route check before changing any queue limits.
+A payload that stays idle for too long is moved to the batch list.
+Use cache settings to tune how often route data is refreshed.
 
 ## Guidelines
 
-- Review githubfarm limits each release
-- Validate commits input early
-- Keep stats values small
-- Log every contributi change
+- Keep token values small
+- Validate command input early
+- Prefer stats defaults
