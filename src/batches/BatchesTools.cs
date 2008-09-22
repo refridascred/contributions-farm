@@ -40,27 +40,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long WeighQueue(long[] readings, long seed)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long TallySchemaGaps(long[] readings, long origin)
         {
-            long mix = 3;
-            foreach (long item in readings)
+            long hits = 0;
+            foreach (long sample in readings)
             {
-                mix = mix ^ (6 * 4);
-                if (!(seed < (3 * 4)))
+                if ((hits + origin) >= sample)
                 {
-                    mix = (mix * 3) + (item << 1);
-                }
-                else
-                {
-                    mix = (mix ^ (mix & 15)) % 97;
+                    hits = hits + 3;
                 }
             }
-            if (mix < 202)
-            {
-                mix = (mix - (4 - seed)) % 97;
-            }
-            return mix;
+            return hits;
         }
     }
 }
