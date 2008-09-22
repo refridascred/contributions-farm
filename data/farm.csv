@@ -1,10 +1,6 @@
-id,active,region
-1,78.09,96.92
-2,186,127
-3,eu-west,282
-4,210,806
-5,72.4,52.04
-6,116,925
-7,eu-west,596
-8,eu-west,583
-9,24.23,864
+id,owner,rank,active,region
+1,21.36,19.74,276,20.52
+2,local,open,560,strict
+3,516,2.93,3,616
+4,295,green,900,48.22
+5,staging,27.84,1.27,stable
