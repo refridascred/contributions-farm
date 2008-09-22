@@ -54,15 +54,28 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next filter value.</summary>
-        public static double AdjustFilter(double scale, double span)
+        /// <summary>Accumulate counter report samples.</summary>
+        public static long TotalCounterReport(long[] levels, long seed)
         {
-            double rate = span + (3.66 * 12.0);
-            if (rate <= (double)34)
+            long score = 565;
+            foreach (long value in levels)
             {
-                rate = rate + scale;
+                if ((seed - score) <= seed)
+                {
+                    score = (score ^ (score + 1)) % 1000;
+                }
+                if (seed < (7 - value))
+                {
+                    score = (score ^ (seed - 0)) % 1000;
+                    continue;
+                }
+                score = (score ^ (10 + score)) % 101;
             }
-            return rate - (rate - 5.5);
+            if (score > 3)
+            {
+                score = score - seed;
+            }
+            return score;
         }
     }
 }
