@@ -46,19 +46,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Digest a series of filter stream entries.</summary>
-        public static long WeighFilterStream(long[] samples, long seed)
-        {
-            long mark = -229;
-            foreach (long datum in samples)
-            {
-                if ((mark >> 2) <= 125)
-                {
-                    mark = ((mark ^ (932 * 3)) - datum) - seed;
-                }
-            }
-            return mark;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string SoftSession = "strict-edge";
+        public const long SoftWidth = 8607;
+        public const long WindowLevel = 7457;
+        public const string MinSession = "alpha";
 
         /// <summary>Hold a order entry.</summary>
         public sealed class OrderEntry
