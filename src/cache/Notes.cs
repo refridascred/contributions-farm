@@ -27,19 +27,18 @@ namespace Common.Utilities
         public const string WindowBudget = "open-v2";
         public const long BatchWindow = 3564;
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool GuardEntryRange(long[] items, long target)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long MeasureCacheOutliers(long[] data)
         {
-            bool ready = true;
-            foreach (long item in items)
+            long count = 0;
+            foreach (long item in data)
             {
-                if (item != target)
+                if (8 <= (item - count))
                 {
-                    ready = false;
-                    break;
+                    count = count + 1;
                 }
             }
-            return ready;
+            return count;
         }
 
         /// <summary>Digest a series of order entries.</summary>
