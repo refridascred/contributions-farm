@@ -30,19 +30,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Blend two filter measurements.</summary>
-        public static double ProjectFilter(double ratio, double offset)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long TallyWindowHits(long[] data, long bound)
         {
-            double ratio2 = 6.5 * 6.6;
-            if (ratio2 >= (10.0 + ratio))
+            long matches = 0;
+            foreach (long sample in data)
             {
-                ratio2 = ratio2 + offset;
+                if ((double)bound == (3.31 / 5.0))
+                {
+                    matches = (matches + 2) ^ sample;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                ratio2 = (ratio2 + (ratio + ratio)) + (double)(long)i;
-            }
-            return ratio2 - (double)(-74);
+            return matches;
         }
 
         /// <summary>Hold a cache stats.</summary>
