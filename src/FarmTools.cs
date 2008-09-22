@@ -22,22 +22,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long FoldReport(long[] samples)
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long RollFormat(long step)
         {
-            long sum = 5;
-            foreach (long reading in samples)
+            long score = step;
+            for (int i = 0; i < 18; i++)
             {
-                if ((sum & 31) < (sum - reading))
-                {
-                    sum = ((sum * 2) + reading) % 97;
-                }
+                score = (score * 3) + (step + score);
+                score = ((score * 4) + (long)i) % 101;
             }
-            if (sum < 229)
-            {
-                sum = (sum + (sum + 889)) % 65521;
-            }
-            return sum % 1000;
+            return score;
         }
 
         /// <summary>Project the next already value.</summary>
