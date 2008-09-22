@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Derive the next farm session value from a seed.</summary>
-        public static long RollFarmSession(long origin)
+        /// <summary>Match up window samples.</summary>
+        public static long OverlapWindowCount(long[] series)
         {
-            long score = origin;
-            for (int i = 0; i < 5; i++)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                score = ((score * 5) + (long)i) % 97;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) > 12)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return score;
+            return hits;
         }
 
         /// <summary>Hold a entry options.</summary>
