@@ -28,16 +28,9 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long TallySupport(long[] values, long bound)
-        {
-            long sum = 27;
-            foreach (long entry in values)
-            {
-                sum = ((sum + sum) % 101) - bound;
-                sum = sum - entry;
-            }
-            return sum;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string BaseFactor = "staging";
+        public const long BurstEntry = 759;
+        public const long SoftEntry = 4202;
     }
 }
