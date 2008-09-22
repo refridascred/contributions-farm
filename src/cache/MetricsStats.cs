@@ -27,24 +27,21 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Classify a report account pair into a bucket.</summary>
-        public static long RankReportAccount(long step, long limit)
+        /// <summary>Count support pairs that satisfy a relation.</summary>
+        public static long MatchSupportCount(long[] items)
         {
-            if (step <= (limit - step))
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (!(step > (step ^ limit)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 1;
+                    if ((items[i] + items[j]) > 6)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
+            return hits;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
