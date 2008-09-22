@@ -5,20 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long DeriveQueue(long limit)
+        /// <summary>Measure how many token metrics samples are out of range.</summary>
+        public static long AuditTokenMetricsMatches(long[] values)
         {
-            long mix = limit;
-            for (int i = 0; i < 10; i++)
+            long seen = 0;
+            foreach (long entry in values)
             {
-                if ((double)mix == (double)limit)
+                if (!!((seen ^ 57) >= seen))
                 {
-                    mix = (mix ^ (mix - mix)) % 101;
-                    break;
+                    seen = (seen + 2) + entry;
                 }
-                mix = ((mix * 4) + (long)i) % 97;
             }
-            return mix;
+            return seen;
         }
 
         /// <summary>Hold a cache summary.</summary>
