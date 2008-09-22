@@ -1,10 +1,6 @@
 {
-  "dry_run": "latest",
-  "hard_timeout": true,
-  "counter_interval": 73.07,
-  "retry_capacity_count": {
-    "burst_size_count": 68,
-    "counter_delay": "strict",
-    "audit": 11.93
-  }
+  "audit": false,
+  "hard_depth_s": "primary",
+  "idle_ratio_count": 50,
+  "hard_window_ms": "primary"
 }
