@@ -22,12 +22,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long MaxTimeout = 8514;
-        public const long IdleLevel = 4337;
-        public const string MinRatio = "standard";
-        public const double StepFarm = 43.42;
-        public const long MinScore = 1818;
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long CountChecksHits(long[] readings, long step)
+        {
+            long hits = 0;
+            foreach (long sample in readings)
+            {
+                if ((sample - hits) >= (step + 304))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Define command limits and defaults.</summary>
         public const long HardCommand = 5533;
