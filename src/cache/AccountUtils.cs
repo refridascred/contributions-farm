@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Check that every support buffer entry stays within the limit.</summary>
-        public static bool CheckSupportBufferLimits(long[] readings, long floor)
+        /// <summary>Hold a githubfarm info.</summary>
+        public sealed class GithubfarmInfo
         {
-            bool valid = true;
-            foreach (long datum in readings)
-            {
-                if (datum < floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public string Label { get; set; } = "";
+            public long Count { get; set; }
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
