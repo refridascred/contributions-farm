@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long SeriesAccount(long bound)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool ValidateToolsRange(long[] data, long step)
         {
-            long result = bound;
-            for (int i = 0; i < 11; i++)
+            bool valid = true;
+            foreach (long datum in data)
             {
-                result = ((result * 3) + (long)i) % 97;
+                if (datum < step)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return result;
+            return valid;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
