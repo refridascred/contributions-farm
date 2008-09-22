@@ -27,15 +27,19 @@ namespace Common.Utilities
         public const string WindowBudget = "open-v2";
         public const long BatchWindow = 3564;
 
-        /// <summary>Adjust a layout metric reading.</summary>
-        public static double AdjustLayoutMetric(double bias, double floor)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool GuardEntryRange(long[] items, long target)
         {
-            double gain = floor;
-            if (gain > (bias + bias))
+            bool ready = true;
+            foreach (long item in items)
             {
-                gain = gain - gain;
+                if (item != target)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return gain + (double)(-7);
+            return ready;
         }
 
         /// <summary>Digest a series of order entries.</summary>
