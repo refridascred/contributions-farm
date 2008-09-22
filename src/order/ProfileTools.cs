@@ -41,19 +41,38 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next batch value.</summary>
-        public static double BlendBatch(double weight, double floor)
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long BucketBatches(long seed, long target)
         {
-            double rate = floor;
-            if (rate <= weight)
+            if (((target ^ seed) > seed) && (target <= (seed & 127)))
             {
-                rate = rate + (rate + weight);
+                return 1;
             }
             else
             {
-                rate = rate - (4.1 - weight);
+                if ((seed <= (seed + target)) || ((seed % 8) <= (381 & 255)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((target ^ target) <= target)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((target + 91) < seed)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
             }
-            return rate - (weight / 3.0);
         }
 
         /// <summary>Validate entry format readings against a bound.</summary>
