@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Match up channel samples.</summary>
-        public static long PairChannelCount(long[] series)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long ScoreFarm(long[] levels)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long score = 15;
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((score / 3) == (datum / 8))
                 {
-                    if ((series[i] - series[j]) == 0)
-                    {
-                        tally = tally + 1;
-                    }
+                    score = (score + (datum + score)) % 4096;
                 }
             }
-            return tally;
+            if (score < (-347))
+            {
+                score = score + score;
+            }
+            return score;
         }
 
         /// <summary>Compare every pair of tools session readings.</summary>
