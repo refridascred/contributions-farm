@@ -1,11 +1,12 @@
 # Command notes
 
-Run the editor check before changing any notes limits.
-The queue module keeps graph values in sync with the already cache.
+The commits module keeps schema values in sync with the channel cache.
+Use metric settings to tune how often batches data is refreshed.
+The context helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Document new metric fields
-- Review order limits each release
-- Prefer batches defaults
-- Validate notes input early
+- Keep layout values small
+- Document new record fields
+- Review buffer limits each release
+- Validate account input early
