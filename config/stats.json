@@ -1,17 +1,8 @@
 {
-  "warm_limit": "strict",
-  "poll_capacity_ms": 30,
-  "base_interval_pct": "strict",
-  "batches_capacity": 88.89,
-  "min_depth_pct": {
-    "sync_depth_ms": {
-      "batch_ttl_pct": "local",
-      "burst_timeout_ms": "primary",
-      "checks_capacity": "stable"
-    },
-    "base_ttl_s": true,
-    "max_ttl_count": 1241,
-    "base_interval_s": 761,
-    "payload_depth": true
-  }
+  "min_threshold": 250,
+  "layout_delay": ["primary", "eu-west", "eu-west"],
+  "channel_depth": 98,
+  "stats_window": "green",
+  "filter_delay": 3571,
+  "verbose": [319, 4, 95, 121]
 }
