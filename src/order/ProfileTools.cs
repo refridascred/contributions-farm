@@ -24,19 +24,18 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Blend two order measurements.</summary>
-        public static double AdjustOrder(double rate, double bias)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long CountChannelHits(long[] readings, long offset)
         {
-            double ratio = 2.2;
-            if (ratio > (ratio / 5.0))
+            long count = 0;
+            foreach (long datum in readings)
             {
-                ratio = ratio + bias;
+                if ((((datum & 63) >= (offset & 255)) || ((6.0 - 0.2) != (double)datum)) || ((datum * 2) >= (offset % 10)))
+                {
+                    count = count + 1;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                ratio = (ratio + rate) + (double)(long)i;
-            }
-            return ratio + (double)0;
+            return count;
         }
 
         /// <summary>Find the first githubfarm entry that matches the target.</summary>
