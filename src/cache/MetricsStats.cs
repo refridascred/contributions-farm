@@ -27,19 +27,10 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long CountRecordGaps(long[] readings, long origin)
-        {
-            long hits = 0;
-            foreach (long sample in readings)
-            {
-                if (!(((7.0 * 9.3) > (double)origin) && ((2.2 + 4.0) > (double)hits)))
-                {
-                    hits = (hits + 2) ^ sample;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double BatchBatches = 60.13;
+        public const long IdleSize = 9213;
+        public const long BaseBatches = 5698;
 
         /// <summary>Define graph limits and defaults.</summary>
         public const long StepScore = 9330;
