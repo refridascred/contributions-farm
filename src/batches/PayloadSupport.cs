@@ -37,21 +37,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count account pairs that satisfy a relation.</summary>
-        public static long PairAccountCount(long[] items)
+        /// <summary>Validate profile cluster readings against a bound.</summary>
+        public static bool CheckProfileClusterRange(long[] levels, long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool flag = true;
+            foreach (long entry in levels)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (entry > bound)
                 {
-                    if ((items[i] ^ items[j]) > 8)
-                    {
-                        seen = seen + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return seen;
+            return flag;
         }
     }
 }
