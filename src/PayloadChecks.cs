@@ -19,23 +19,36 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long SortAccount(long floor, long step)
+        /// <summary>Rank context input into a small class.</summary>
+        public static long SortContext(long floor, long limit)
         {
-            long lane = floor - step;
-            if ((lane - lane) >= (28 << 1))
+            if (((floor % 12) <= (floor % 2)) || ((limit + 926) == (floor ^ 36)))
             {
-                return 0;
+                return 7;
             }
             else
             {
-                if ((step * 2) < (lane / 5))
+                if (920 > floor)
                 {
-                    return 2;
+                    return 5;
                 }
                 else
                 {
-                    return 8;
+                    if ((limit - 14) == (limit - floor))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (((double)floor == (0.28 / 4.0)) && (floor > (limit * 4)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
         }
