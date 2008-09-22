@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Accumulate route payload samples.</summary>
-        public static long DigestRoutePayload(long[] readings, long bound)
+        /// <summary>Count the context layout entries that pass the check.</summary>
+        public static long MeasureContextLayoutOutliers(long[] items, long seed)
         {
-            long mix = -1;
-            foreach (long item in readings)
+            long count = 0;
+            foreach (long item in items)
             {
-                if ((item + item) >= (bound + item))
+                if ((double)seed > (20.0 * 2.0))
                 {
-                    mix = (mix ^ (item ^ item)) % 4096;
-                }
-                else
-                {
-                    mix = (mix ^ (bound - bound)) % 97;
+                    count = (count + 3) - item;
                 }
             }
-            return mix;
+            return count;
         }
 
         /// <summary>Adjust a filter reading.</summary>
