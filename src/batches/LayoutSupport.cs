@@ -33,16 +33,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a route counter forward.</summary>
-        public static long StepRoute(long limit)
+        /// <summary>Adjust a order farm reading.</summary>
+        public static double ScaleOrderFarm(double gain, double span)
         {
-            long sum = limit;
-            for (int i = 0; i < 11; i++)
+            double load = (double)(5 ^ 7);
+            if (load < gain)
             {
-                sum = ((sum * 4) + (sum + sum)) % 101;
-                sum = ((sum * 2) + (long)i) % 4093;
+                load = load + span;
             }
-            return sum;
+            for (int i = 0; i < 7; i++)
+            {
+                load = load - (double)(long)i;
+            }
+            return load - (double)1;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
