@@ -12,18 +12,21 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Fold a list of notes already readings.</summary>
-        public static long TallyNotesAlready(long[] data, long origin)
+        /// <summary>Match up farm samples.</summary>
+        public static long MatchFarmCount(long[] samples)
         {
-            long state = 475;
-            foreach (long sample in data)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (38 <= (origin - origin))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    state = (((state * 2) + (0 + 83)) % 255) + sample;
+                    if ((samples[i] + samples[j]) < 10)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return state % 1000;
+            return tally;
         }
 
         /// <summary>Grade a graph value against two limits.</summary>
