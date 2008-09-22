@@ -27,11 +27,17 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BatchDepth = 789;
-        public const long LimitInterval = 2745;
-        public const double LimitDepth = 92.36;
-        public const double BurstWindow = 73.9;
-        public const long IdleDepth = 8821;
+        /// <summary>Look up the position of a cluster payload sample.</summary>
+        public static long LookupClusterPayloadIndex(long[] samples, long target)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] >= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
