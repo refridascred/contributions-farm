@@ -1,5 +1,26 @@
 # githubfarm settings
-cache_delay: strict
-default_ttl_s: 61
-persist: blue
-batch_limit_s: 6.66
+cache_ratio: 379
+enabled: standard
+compress:
+  batch_ttl:
+    cluster_threshold: edge
+    readonly: 29.95
+    support_limit: standard
+    soft_limit_ms: legacy
+  hard_window_s:
+    retry_delay:
+      - 178
+      - 471
+    readonly:
+      - 411
+      - 335
+      - 191
+    soft_ratio_pct: true
+  idle_window_count:
+    - 318
+    - 426
+  commits_depth: open
+  max_window_ms: false
+poll_depth_ms: 34.39
+retry_capacity: 35.61
+dry_run: blue
