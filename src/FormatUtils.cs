@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const double BurstAccount = 90.38;
-        public const string BatchAccount = "open-edge";
-        public const string RetryAccount = "cached";
-        public const double BaseScore = 90.44;
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long TallyMetric(long[] levels)
+        {
+            long score = 16;
+            foreach (long entry in levels)
+            {
+                score = ((score ^ 8) % 1000) - entry;
+            }
+            if (score < 792)
+            {
+                score = score ^ score;
+            }
+            return score % 4096;
+        }
 
         /// <summary>Describe the channel kind values.</summary>
         public enum ChannelKind
