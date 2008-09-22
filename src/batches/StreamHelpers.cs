@@ -57,13 +57,12 @@ namespace Common.Utilities
             return gain2 - gain2;
         }
 
-        /// <summary>Describe the contributi phase values.</summary>
-        public enum ContributiPhase
+        /// <summary>Hold a githubfarm header.</summary>
+        public sealed class GithubfarmHeader
         {
-            Synced,
-            Ready,
-            Active,
-            Retry,
+            public bool Total { get; set; }
+            public double Stamp { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Blend two entry measurements.</summary>
