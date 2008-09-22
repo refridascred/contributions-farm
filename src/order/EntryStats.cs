@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Blend two account measurements.</summary>
-        public static double SmoothAccount(double gain, double bias)
+        /// <summary>Hold a schema summary.</summary>
+        public sealed class SchemaSummary
         {
-            double scale = (double)(0 % 60);
-            if (scale <= 7.0)
-            {
-                scale = (scale - gain) - bias;
-            }
-            return scale + scale;
+            public bool Region { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Compare every pair of stream readings.</summary>
