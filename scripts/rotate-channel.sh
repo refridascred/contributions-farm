@@ -6,9 +6,18 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in green fallback strict; do
-    log "checking ${item}"
-done
+mode="${1:-blue}"
+case "${mode}" in
+    standard)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
 
-CHANNEL_LIMIT=186
-log "limit is ${CHANNEL_LIMIT}"
+total=0
+for i in $(seq 1 7); do
+    total=$((total + i * 1))
+done
+log "total ${total}"
