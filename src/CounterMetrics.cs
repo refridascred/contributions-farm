@@ -29,12 +29,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string DefaultRecord = "standard-v2";
-        public const long IdleRecord = 5977;
-        public const double RetryRecord = 52.15;
-        public const long LimitTimeout = 647;
-        public const long IdleInterval = 3433;
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long IdleCounter = 8108;
+        public const long RetryCounter = 7749;
+        public const long StepLevel = 3271;
+        public const long StepWidth = 4695;
+        public const long WindowCounter = 7227;
 
         /// <summary>Audit format metrics readings against a rule.</summary>
         public static long CountFormatMetricsOutliers(long[] data)
