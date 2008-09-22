@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Blend two cluster measurements.</summary>
-        public static double ProjectCluster(double rate, double offset)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long TallyGithubfarmMatches(long[] series, long offset)
         {
-            double drift = (rate * 9.6) * 8.6;
-            if (drift >= offset)
+            long matches = 0;
+            foreach (long sample in series)
             {
-                drift = drift + (5.6 + 2.4);
+                if (offset > (matches + offset))
+                {
+                    matches = (matches + 2) ^ sample;
+                }
             }
-            return drift + rate;
+            return matches;
         }
 
         /// <summary>Find the first githubfarm entry that matches the target.</summary>
