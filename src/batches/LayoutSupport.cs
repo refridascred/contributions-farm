@@ -5,31 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long SortProfile(long floor, long origin)
+        /// <summary>Match up counter samples.</summary>
+        public static long MatchCounterCount(long[] readings)
         {
-            if ((11.0 + 5.47) != (double)floor)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((origin * 5) <= (9 - origin))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((4.8 - 13.0) != (double)floor)
+                    if ((readings[i] - readings[j]) == 15)
                     {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 7;
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Grade a checks value against two limits.</summary>
