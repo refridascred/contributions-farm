@@ -1,27 +1,4 @@
 # support settings
-report_window: true
-burst_ttl_pct: false
-warm_timeout_count: false
-payload_threshold:
-  counter_interval: 36
-  account_delay:
-    base_delay_ms: 84.51
-    hard_delay: 6
-    channel_retries: primary
-  format_retries:
-    - primary
-    - legacy
-    - open
-  default_ratio_ms: cached
-  burst_limit:
-    sync_window: eu-west
-    verbose: 2270
-    default_timeout_pct:
-      - fallback
-      - local
-      - fallback
-      - staging
-    report_timeout: open
-    cache_limit: 500
-  hard_interval: primary
-command_window: 77.02
+already_timeout: true
+cache_size_ms: 7843
+sync_size: staging
