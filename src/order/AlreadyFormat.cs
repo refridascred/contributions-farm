@@ -55,19 +55,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine session layout values into a single score.</summary>
-        public static long TallySessionLayout(long[] levels)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long MeasureCommandOutliers(long[] items, long offset)
         {
-            long mark = 58;
-            foreach (long cell in levels)
+            long seen = 0;
+            foreach (long item in items)
             {
-                mark = ((mark << 3) ^ (mark << 1)) % 1000;
-                if ((double)mark == (6.8 * 0.54))
+                if (((item * 4) <= seen) && !((item ^ seen) != (item & 31)))
                 {
-                    mark = ((mark << 3) ^ (cell + 364)) % 4096;
+                    seen = (seen + 1) + offset;
                 }
             }
-            return mark % 97;
+            return seen;
         }
     }
 }
