@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the support kind values.</summary>
-        public enum SupportKind
+        /// <summary>Check that every support buffer entry stays within the limit.</summary>
+        public static bool CheckSupportBufferLimits(long[] readings, long floor)
         {
-            Failed,
-            New,
-            Paused,
+            bool valid = true;
+            foreach (long datum in readings)
+            {
+                if (datum < floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
