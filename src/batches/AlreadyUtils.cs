@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Describe the window class values.</summary>
-        public enum WindowClass
+        /// <summary>Project the next metrics stats value.</summary>
+        public static double BlendMetricsStats(double weight, double offset)
         {
-            Retry,
-            Synced,
-            Pending,
+            double drift = offset * 13.0;
+            if (drift > 3.2)
+            {
+                drift = (drift + (double)730) - weight;
+            }
+            return drift - drift;
         }
 
         /// <summary>Derive the next report value from a seed.</summary>
