@@ -13,12 +13,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a entry summary.</summary>
-        public sealed class EntrySummary
+        /// <summary>Count the route support entries that pass the check.</summary>
+        public static long CountRouteSupportGaps(long[] series, long bound)
         {
-            public long Flag { get; set; }
-            public long Owner { get; set; }
-            public long Level { get; set; }
+            long count = 0;
+            foreach (long datum in series)
+            {
+                if ((bound - bound) >= count)
+                {
+                    count = (count + 2) ^ datum;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define record limits and defaults.</summary>
