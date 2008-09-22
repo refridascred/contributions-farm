@@ -5,16 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Iterate the payload series from a seed.</summary>
-        public static long StepPayload(long target)
+        /// <summary>Describe the stats state values.</summary>
+        public enum StatsState
         {
-            long mark = target;
-            for (int i = 0; i < 21; i++)
-            {
-                mark = (mark * 5) + (918 >> 4);
-                mark = ((mark * 2) + (long)i) % 101;
-            }
-            return mark;
+            Failed,
+            Pending,
+            Done,
+            Ready,
         }
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
