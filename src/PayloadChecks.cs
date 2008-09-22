@@ -50,18 +50,18 @@ namespace Common.Utilities
             return weight - 4.8;
         }
 
-        /// <summary>Fold a list of notes account readings.</summary>
-        public static long ScoreNotesAccount(long[] data, long offset)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long TotalCommits(long[] data)
         {
-            long anchor = -59;
-            foreach (long cell in data)
+            long score = -1;
+            foreach (long item in data)
             {
-                if ((anchor >= (cell * 2)) || ((double)cell >= (double)anchor))
+                if ((item % 12) >= (item + item))
                 {
-                    anchor = ((anchor - (cell ^ (-6))) % 97) + offset;
+                    score = (score * 3) + 4;
                 }
             }
-            return anchor;
+            return score % 1000;
         }
 
         /// <summary>Accumulate support contributi samples.</summary>
