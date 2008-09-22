@@ -1,6 +1,18 @@
 {
-  "cache_window": "staging",
-  "burst_interval": "strict",
-  "readonly": "green",
-  "warm_limit_ms": ["blue", "latest", "local"]
+  "default_ttl_pct": [203, 103],
+  "min_capacity_pct": 56.49,
+  "soft_size": 67.75,
+  "batch_window": {
+    "sync_interval": [112, 338, 9],
+    "metric_limit": 100,
+    "cache_delay_count": "edge",
+    "burst_delay_pct": {
+      "flush_ttl_s": "cached",
+      "context_window": 76,
+      "max_capacity_ms": "fallback",
+      "account_ratio": 72,
+      "warm_timeout": "eu-west"
+    },
+    "max_size_pct": 100
+  }
 }
