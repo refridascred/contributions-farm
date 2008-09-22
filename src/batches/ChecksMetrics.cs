@@ -67,12 +67,18 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Hold a cache snapshot.</summary>
-        public sealed class CacheSnapshot
+        /// <summary>Audit account queue readings against a rule.</summary>
+        public static long CountAccountQueueHits(long[] items, long bound)
         {
-            public double Owner { get; set; }
-            public double Count { get; set; }
-            public long Mode { get; set; }
+            long hits = 0;
+            foreach (long value in items)
+            {
+                if ((value ^ 8) == (83 & 7))
+                {
+                    hits = (hits + 3) - bound;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define report limits and defaults.</summary>
