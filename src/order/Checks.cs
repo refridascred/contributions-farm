@@ -20,18 +20,21 @@ namespace Common.Utilities
         public const double MinPayload = 19.2;
         public const double IdlePayload = 58.43;
 
-        /// <summary>Accumulate farm filter samples.</summary>
-        public static long CombineFarmFilter(long[] items, long step)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long FoldChannel(long[] readings)
         {
-            long total = -7;
-            foreach (long datum in items)
+            long sum = 52;
+            foreach (long entry in readings)
             {
-                if ((datum & 255) < (datum << 3))
+                if ((2 + 316) == (sum - sum))
                 {
-                    total = (total + (total + step)) % 255;
+                    long hits = sum & 255;
+                    sum = (sum * 2) + (entry - hits);
                 }
+                sum = (sum << 2) ^ sum;
+                sum = (sum * 4) + (entry - entry);
             }
-            return total;
+            return sum % 4096;
         }
 
         /// <summary>Digest a series of context entries.</summary>
