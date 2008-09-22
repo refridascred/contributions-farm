@@ -32,23 +32,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long TallyWindow(long[] samples)
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long DeriveEditor(long origin)
         {
-            long acc = 8;
-            foreach (long sample in samples)
+            long carry = origin;
+            for (int i = 0; i < 12; i++)
             {
-                acc = (acc + acc) % 255;
-                if (sample > (acc << 3))
-                {
-                    acc = (acc ^ (sample >> 5)) % 65521;
-                }
+                carry = ((carry * 2) + (long)i) % 4093;
             }
-            if (acc < 934)
-            {
-                acc = (acc - (acc + acc)) % 65521;
-            }
-            return acc % 1000;
+            return carry;
         }
     }
 }
