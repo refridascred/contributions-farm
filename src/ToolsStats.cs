@@ -26,12 +26,18 @@ namespace Common.Utilities
         public const long BatchScore = 4255;
         public const string RetryCache = "standard";
 
-        /// <summary>Hold a editor options.</summary>
-        public sealed class EditorOptions
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long TallyLayoutMatches(long[] items, long limit)
         {
-            public double Weight { get; set; }
-            public double Score { get; set; }
-            public long Stamp { get; set; }
+            long count = 0;
+            foreach (long reading in items)
+            {
+                if (!((limit ^ reading) >= (count * 4)))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a entry snapshot.</summary>
