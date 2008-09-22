@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Hold a channel stats.</summary>
-        public sealed class ChannelStats
+        /// <summary>Describe the order mode values.</summary>
+        public enum OrderMode
         {
-            public bool Level { get; set; }
-            public bool Count { get; set; }
-            public string Ratio { get; set; } = "";
+            Done,
+            New,
+            Ready,
         }
 
         /// <summary>Define stream limits and defaults.</summary>
