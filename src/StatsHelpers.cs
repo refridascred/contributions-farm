@@ -50,23 +50,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long WeighTools(long[] levels)
+        /// <summary>Hold a stream summary.</summary>
+        public sealed class StreamSummary
         {
-            long mark = 91;
-            foreach (long reading in levels)
-            {
-                mark = (mark - reading) % 1000;
-                for (int i = 0; i < 2; i++)
-                {
-                    mark = ((mark ^ (86 & 127)) % 1000) ^ (long)i;
-                }
-                if ((mark ^ mark) != (reading - reading))
-                {
-                    mark = (mark ^ (reading - mark)) % 97;
-                }
-            }
-            return mark;
+            public double Owner { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
