@@ -1,5 +1,12 @@
 {
-  "compress": "open",
-  "min_retries_pct": 78.46,
-  "min_retries": 2110
+  "audit": {
+    "strict": "primary",
+    "audit": 45,
+    "soft_depth": [135, 433],
+    "idle_timeout_count": 771,
+    "hard_size": 100
+  },
+  "burst_interval": true,
+  "enabled": "edge",
+  "readonly": false
 }
