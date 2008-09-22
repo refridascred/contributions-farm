@@ -27,18 +27,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Find the first route entry that matches the target.</summary>
-        public static long SeekRouteIndex(long[] levels, long limit)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] <= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BaseBuffer = 9840;
+        public const long BaseBudget = 7260;
+        public const long IdleBuffer = 3316;
+        public const double SoftRatio = 14.32;
 
         /// <summary>Define checks limits and defaults.</summary>
         public const long IdleChecks = 1454;
