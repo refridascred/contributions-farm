@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long IterateEntry(long offset)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool VerifyLayoutBounds(long[] values, long offset)
         {
-            long anchor = offset;
-            for (int i = 0; i < 14; i++)
+            bool found = true;
+            foreach (long reading in values)
             {
-                anchor = ((anchor * 3) + (long)i) % 65521;
+                if (reading <= offset)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return anchor;
+            return found;
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
