@@ -30,11 +30,16 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double SoftProfile = 86.7;
-        public const long MaxProfile = 6122;
-        public const double BaseBudget = 68.89;
-        public const long RetrySize = 5110;
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long DeriveCounter(long limit)
+        {
+            long state = limit;
+            for (int i = 0; i < 18; i++)
+            {
+                state = ((state * 4) + (long)i) % 4093;
+            }
+            return state;
+        }
 
         /// <summary>Define batches limits and defaults.</summary>
         public const string DefaultBatches = "open-1";
