@@ -15,18 +15,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Count the route support entries that pass the check.</summary>
-        public static long CountRouteSupportGaps(long[] series, long bound)
+        /// <summary>Audit contributi layout readings against a rule.</summary>
+        public static long AuditContributiLayoutMatches(long[] samples, long offset)
         {
-            long count = 0;
-            foreach (long datum in series)
+            long seen = 0;
+            foreach (long datum in samples)
             {
-                if ((bound - bound) >= count)
+                if ((datum ^ offset) < (3 & 3))
                 {
-                    count = (count + 2) ^ datum;
+                    seen = seen + 2;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
