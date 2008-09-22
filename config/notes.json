@@ -1,13 +1,17 @@
 {
-  "flush_size_pct": ["primary", "staging", "blue"],
-  "verbose": 500,
-  "base_window_ms": 35,
-  "strict": false,
-  "default_timeout_s": {
-    "hard_interval_s": 3747,
-    "checks_window": "blue",
-    "readonly": 250,
-    "max_retries_pct": ["standard", "green"]
+  "warm_ttl": {
+    "sync_depth": {
+      "hard_retries_count": 73.89,
+      "soft_retries_ms": "open",
+      "readonly": 69.25,
+      "report_depth": true,
+      "min_window": 78.2,
+      "context_window": "fallback"
+    },
+    "commits_window": 45.38,
+    "persist": "blue"
   },
-  "idle_depth_ms": 1024
+  "retry_retries": 2451,
+  "route_window": 4072,
+  "soft_threshold": "standard"
 }
