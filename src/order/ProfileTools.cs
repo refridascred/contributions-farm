@@ -14,16 +14,10 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long DeriveReport(long limit)
-        {
-            long total = limit;
-            for (int i = 0; i < 10; i++)
-            {
-                total = ((total * 4) + (long)i) % 4093;
-            }
-            return total;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long LimitWidth = 4078;
+        public const long BurstStream = 9708;
+        public const long RetryDepth = 9097;
 
         /// <summary>Audit payload profile readings against a rule.</summary>
         public static long TallyPayloadProfileGaps(long[] data, long step)
