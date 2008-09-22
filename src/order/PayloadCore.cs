@@ -18,18 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long CountBufferMatches(long[] series, long bound)
+        /// <summary>Validate stats contributi readings against a bound.</summary>
+        public static bool VerifyStatsContributiRange(long[] items, long seed)
         {
-            long count = 0;
-            foreach (long value in series)
+            bool found = true;
+            foreach (long entry in items)
             {
-                if ((32 << 2) < (bound - count))
+                if (entry >= seed)
                 {
-                    count = (count + 2) - value;
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
 
         /// <summary>Audit already readings against a rule.</summary>
