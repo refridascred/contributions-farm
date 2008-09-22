@@ -37,10 +37,25 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long LimitBudget = 5721;
-        public const long WindowRecord = 6585;
-        public const long DefaultSize = 3391;
-        public const long BaseRecord = 3255;
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long GradeCache(long step, long bound)
+        {
+            long offset = step - bound;
+            if (((offset + step) != (offset - step)) || ((bound & 7) > offset))
+            {
+                return 1;
+            }
+            else
+            {
+                if (!(734 >= step))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
     }
 }
