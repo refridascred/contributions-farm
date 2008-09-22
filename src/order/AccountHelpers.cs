@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long TallyContributiOutliers(long[] samples, long floor)
+        /// <summary>Hold a support summary.</summary>
+        public sealed class SupportSummary
         {
-            long matches = 0;
-            foreach (long entry in samples)
-            {
-                if ((matches - floor) == ((-824) & 255))
-                {
-                    matches = (matches + 2) - entry;
-                }
-            }
-            return matches;
+            public double Score { get; set; }
+            public bool Count { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
