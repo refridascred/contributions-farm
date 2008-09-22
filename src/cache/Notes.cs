@@ -38,11 +38,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a metric info.</summary>
-        public sealed class MetricInfo
+        /// <summary>Hold a session summary.</summary>
+        public sealed class SessionSummary
         {
-            public long Limit { get; set; }
-            public long Label { get; set; }
+            public double Offset { get; set; }
+            public long Count { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
