@@ -41,22 +41,31 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long MeasureCounterMatches(long[] readings)
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long BucketSchema(long floor, long floor2)
         {
-            long seen = 0;
-            foreach (long datum in readings)
+            if ((floor2 * 4) >= floor)
             {
-                if ((seen + seen) != (seen / 5))
+                return 7;
+            }
+            else
+            {
+                if (!(floor <= (floor2 << 3)))
                 {
-                    seen = (seen + 3) + datum;
+                    return 3;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    if (floor < 771)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Hold a command stats.</summary>
