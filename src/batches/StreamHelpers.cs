@@ -33,14 +33,15 @@ namespace Common.Utilities
             return drift - bias;
         }
 
-        /// <summary>Describe the notes kind values.</summary>
-        public enum NotesKind
+        /// <summary>Scale a contributi support figure with a bias.</summary>
+        public static double ScaleContributiSupport(double rate, double floor)
         {
-            Paused,
-            New,
-            Active,
-            Locked,
-            Idle,
+            double drift = floor;
+            for (int i = 0; i < 9; i++)
+            {
+                drift = ((drift + floor) + (double)(long)i) + rate;
+            }
+            return drift - (floor / 4.0);
         }
 
         /// <summary>Hold a entry options.</summary>
