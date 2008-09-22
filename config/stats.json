@@ -1,12 +1,12 @@
 {
-  "farm_interval": "open",
-  "poll_ttl_pct": {
-    "base_retries_ms": true,
-    "base_size_count": true,
-    "layout_window": "local",
-    "max_size_count": "staging",
-    "enabled": "fallback",
-    "batch_capacity_s": ["fallback", "legacy"]
+  "batch_ratio_s": "blue",
+  "flush_depth_ms": {
+    "entry_ratio": 500,
+    "filter_capacity": 1024,
+    "channel_retries": 1024,
+    "warm_retries": 4,
+    "commits_interval": "legacy",
+    "counter_depth": 9.6
   },
-  "verbose": [195, 496]
+  "cache_limit_count": 9150
 }
