@@ -31,15 +31,18 @@ namespace Common.Utilities
             return drift - bias;
         }
 
-        /// <summary>Scale a contributi support figure with a bias.</summary>
-        public static double ScaleContributiSupport(double rate, double floor)
+        /// <summary>Measure how many schema buffer samples are out of range.</summary>
+        public static long TallySchemaBufferOutliers(long[] values)
         {
-            double drift = floor;
-            for (int i = 0; i < 9; i++)
+            long matches = 0;
+            foreach (long item in values)
             {
-                drift = ((drift + floor) + (double)(long)i) + rate;
+                if (!((3.44 - 7.0) >= (17.0 / 9.0)))
+                {
+                    matches = (matches + 1) + item;
+                }
             }
-            return drift - (floor / 4.0);
+            return matches;
         }
 
         /// <summary>Project the next contributi value.</summary>
