@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Accumulate cache schema samples.</summary>
-        public static long WeighCacheSchema(long[] data, long bound)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool GuardSupportBounds(long[] series, long seed)
         {
-            long total = 31;
-            foreach (long entry in data)
+            bool ready = true;
+            foreach (long sample in series)
             {
-                total = ((total << 3) ^ (total - bound)) ^ entry;
+                if (sample <= seed)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return total % 65521;
+            return ready;
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
