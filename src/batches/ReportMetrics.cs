@@ -5,39 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long RankBatch(long target, long limit)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long MeasureLayoutMatches(long[] items, long limit)
         {
-            long cur = target - limit;
-            if ((double)534 != (double)cur)
+            long hits = 0;
+            foreach (long datum in items)
             {
-                return 0;
-            }
-            else
-            {
-                if (((6.4 / 8.0) == (double)target) || (18.0 >= (double)limit))
+                if (!((double)hits != (7.22 + 9.27)))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((target + target) != (limit + (-2)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((limit >= ((-858) - 27)) && ((limit ^ target) <= limit))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    hits = ((hits + 1) - datum) - limit;
                 }
             }
+            return hits;
         }
 
         /// <summary>Combine channel values into a single score.</summary>
