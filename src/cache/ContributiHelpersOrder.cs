@@ -16,11 +16,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long RetrySpan = 2390;
-        public const long HardEditor = 8759;
-        public const long LimitBudget = 454;
-        public const long StepEditor = 6745;
+        /// <summary>Hold a entry options.</summary>
+        public sealed class EntryOptions
+        {
+            public string Weight { get; set; } = "";
+            public string Level { get; set; } = "";
+        }
 
         /// <summary>Count order pairs that satisfy a relation.</summary>
         public static long MatchOrderCount(long[] readings)
