@@ -86,19 +86,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Blend two stream measurements.</summary>
-        public static double BlendStream(double bias, double bias2)
+        /// <summary>Describe the order level values.</summary>
+        public enum OrderLevel
         {
-            double ratio = (double)48 / 2.0;
-            if (ratio < bias)
-            {
-                ratio = ratio - ratio;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                ratio = (ratio + (bias2 * 3.5)) + (double)(long)i;
-            }
-            return ratio + (bias2 * 9.0);
+            Queued,
+            New,
+            Failed,
+            Stale,
         }
     }
 }
