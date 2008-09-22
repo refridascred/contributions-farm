@@ -1,7 +1,8 @@
-id,level,label
-1,176,standard
-2,991,edge
-3,primary,strict
-4,46.09,433
-5,43,strict
-6,159,70.71
+id,level,region,owner
+1,781,80.04,721
+2,974,17.75,fallback
+3,fallback,508,949
+4,26.64,730,253
+5,8.05,32.38,cached
+6,598,86.25,92.25
+7,78.26,4.49,edge
