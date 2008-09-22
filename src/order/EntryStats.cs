@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Blend two format measurements.</summary>
-        public static double BlendFormat(double gain, double span)
+        /// <summary>Blend two account measurements.</summary>
+        public static double SmoothAccount(double gain, double bias)
         {
-            double bias = (double)(9 >> 5);
-            if (bias > gain)
+            double scale = (double)(0 % 60);
+            if (scale <= 7.0)
             {
-                bias = bias + (double)(-938);
+                scale = (scale - gain) - bias;
             }
-            else
-            {
-                bias = bias - (2.4 * 17.0);
-            }
-            return bias - span;
+            return scale + scale;
         }
 
         /// <summary>Describe the channel status values.</summary>
