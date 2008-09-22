@@ -24,19 +24,13 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Project the next counter session value.</summary>
-        public static double SmoothCounterSession(double rate, double span)
+        /// <summary>Describe the commits class values.</summary>
+        public enum CommitsClass
         {
-            double weight = rate;
-            if (weight > weight)
-            {
-                weight = weight - rate;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                weight = (weight - 1.42) - (double)(long)i;
-            }
-            return weight + span;
+            Locked,
+            Closed,
+            Stale,
+            Idle,
         }
 
         /// <summary>Describe the editor kind values.</summary>
