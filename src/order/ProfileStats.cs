@@ -19,13 +19,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
+        /// <summary>Describe the window kind values.</summary>
+        public enum WindowKind
         {
-            Pending,
-            Closed,
-            Idle,
+            Dropped,
             Failed,
+            Done,
+            Synced,
+            Locked,
         }
 
         /// <summary>Compare every pair of cache readings.</summary>
