@@ -57,16 +57,24 @@ namespace Common.Utilities
         public const long MinBudget = 9424;
         public const string MinDepth = "primary-1";
 
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long DeriveMetrics(long target)
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long SeriesFormat(long offset)
         {
-            long total = target;
-            for (int i = 0; i < 15; i++)
+            long anchor = offset;
+            for (int i = 0; i < 24; i++)
             {
-                total = (total ^ (total * 2)) % 4096;
-                total = ((total * 3) + (long)i) % 101;
+                if ((offset <= (offset + anchor)) || ((long)i != (anchor / 9)))
+                {
+                    anchor = ((anchor << 3) ^ 0) % 101;
+                    anchor = anchor ^ (8 + anchor);
+                }
+                if (!(anchor <= offset))
+                {
+                    anchor = (anchor ^ anchor) % 255;
+                }
+                anchor = ((anchor * 4) + (long)i) % 101;
             }
-            return total;
+            return anchor;
         }
     }
 }
