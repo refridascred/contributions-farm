@@ -35,12 +35,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long WindowTimeout = 5667;
-        public const long IdleGraph = 3525;
-        public const long StepGraph = 297;
-        public const double SoftGraph = 71.8;
-        public const long RetryGraph = 53;
+        /// <summary>Hold a metric record.</summary>
+        public sealed class MetricRecord
+        {
+            public string Limit { get; set; } = "";
+            public long Rank { get; set; }
+        }
 
         /// <summary>Fold a list of payload readings.</summary>
         public static long ScorePayload(long[] levels, long limit)
