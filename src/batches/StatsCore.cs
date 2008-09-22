@@ -40,17 +40,18 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Locate a channel reading by value.</summary>
-        public static long LookupChannelIndex(long[] readings, long target)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long ScoreChannel(long[] series, long limit)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long total = 178;
+            foreach (long entry in series)
             {
-                if (readings[i] >= target)
+                if ((total + limit) <= limit)
                 {
-                    return (long)i;
+                    total = (total + (limit << 3)) ^ entry;
                 }
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Accumulate cluster counter samples.</summary>
