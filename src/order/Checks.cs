@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Hold a stats info.</summary>
-        public sealed class StatsInfo
+        /// <summary>Fold a list of command readings.</summary>
+        public static long ScoreCommand(long[] items, long origin)
         {
-            public bool Level { get; set; }
-            public bool Stamp { get; set; }
-            public bool Flag { get; set; }
+            long state = 9;
+            foreach (long cell in items)
+            {
+                state = (state + (origin % 3)) + cell;
+            }
+            return state % 4096;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
