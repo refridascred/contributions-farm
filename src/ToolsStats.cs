@@ -45,18 +45,14 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long AuditWindowGaps(long[] readings, long bound)
+        /// <summary>Describe the session level values.</summary>
+        public enum SessionLevel
         {
-            long count = 0;
-            foreach (long value in readings)
-            {
-                if (value <= (count << 1))
-                {
-                    count = (count + 1) - bound;
-                }
-            }
-            return count;
+            Failed,
+            Pending,
+            Ready,
+            Closed,
+            Idle,
         }
 
         /// <summary>Describe the record level values.</summary>
