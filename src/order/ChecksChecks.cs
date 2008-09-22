@@ -28,9 +28,17 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string DefaultCommand = "latest-1";
-        public const long BaseWidth = 1581;
-        public const string LimitTimeout = "cached";
+        /// <summary>Find the first record tools entry that matches the target.</summary>
+        public static long SeekRecordToolsIndex(long[] values, long bound)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] > bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
