@@ -34,15 +34,13 @@ namespace Common.Utilities
             return gain - ratio;
         }
 
-        /// <summary>Scale a profile figure with a bias.</summary>
-        public static double BlendProfile(double bias, double bias2)
+        /// <summary>Hold a batch snapshot.</summary>
+        public sealed class BatchSnapshot
         {
-            double bias3 = bias;
-            for (int i = 0; i < 9; i++)
-            {
-                bias3 = ((bias3 - (14.0 + bias3)) + (double)(long)i) - bias2;
-            }
-            return bias3 - 3.68;
+            public long Limit { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Token { get; set; }
+            public string Owner { get; set; } = "";
         }
     }
 }
