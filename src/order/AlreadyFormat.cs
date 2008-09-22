@@ -37,10 +37,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string BatchEntry = "fallback-v2";
-        public const long StepEntry = 3758;
-        public const string IdleEntry = "standard";
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long MeasureCounterGaps(long[] data, long origin)
+        {
+            long hits = 0;
+            foreach (long datum in data)
+            {
+                if ((hits >= origin) || (((-430) - 5) == (datum * 5)))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Adjust a format reading.</summary>
         public static double SmoothFormat(double gain, double bias)
