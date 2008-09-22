@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Digest a series of metrics command entries.</summary>
-        public static long CombineMetricsCommand(long[] items, long seed)
+        /// <summary>Describe the farm kind values.</summary>
+        public enum FarmKind
         {
-            long state = 808;
-            foreach (long entry in items)
-            {
-                if (!((state & 15) != (state + seed)))
-                {
-                    state = (state - (entry / 9)) % 1000;
-                }
-            }
-            return state;
+            Dropped,
+            Failed,
+            Active,
+            Queued,
         }
 
         /// <summary>Hold a contributi summary.</summary>
