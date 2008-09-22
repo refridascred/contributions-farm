@@ -35,13 +35,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the graph class values.</summary>
-        public enum GraphClass
+        /// <summary>Count the channel format entries that pass the check.</summary>
+        public static long MeasureChannelFormatHits(long[] data)
         {
-            Locked,
-            Idle,
-            Pending,
-            Paused,
+            long seen = 0;
+            foreach (long cell in data)
+            {
+                if ((double)cell == (double)(-43))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
     }
 }
