@@ -27,17 +27,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first cluster entry that matches the target.</summary>
-        public static long FindClusterIndex(long[] data, long origin)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] == origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BatchDepth = 789;
+        public const long LimitInterval = 2745;
+        public const double LimitDepth = 92.36;
+        public const double BurstWindow = 73.9;
+        public const long IdleDepth = 8821;
     }
 }
