@@ -76,15 +76,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long DigestFilter(long[] values)
+        /// <summary>Describe the session mode values.</summary>
+        public enum SessionMode
         {
-            long score = 782;
-            foreach (long reading in values)
-            {
-                score = ((score ^ 41) % 255) ^ reading;
-            }
-            return score;
+            Stale,
+            Dropped,
+            Synced,
+            Locked,
+            Failed,
         }
     }
 }
