@@ -35,18 +35,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the channel format entries that pass the check.</summary>
-        public static long MeasureChannelFormatHits(long[] data)
+        /// <summary>Measure how many metric session samples are out of range.</summary>
+        public static long MeasureMetricSessionHits(long[] readings)
         {
-            long seen = 0;
-            foreach (long cell in data)
+            long tally = 0;
+            foreach (long cell in readings)
             {
-                if ((double)cell == (double)(-43))
+                if (((double)tally <= (double)cell) || (cell >= (tally + cell)))
                 {
-                    seen = seen + 1;
+                    tally = tally + 2;
                 }
             }
-            return seen;
+            return tally;
         }
     }
 }
