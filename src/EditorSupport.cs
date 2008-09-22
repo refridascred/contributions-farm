@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const double LimitAlready = 38.63;
-        public const string WindowAlready = "latest-1";
-        public const double BatchRatio = 61.65;
-        public const string BatchAlready = "stable";
-        public const long IdleRatio = 3090;
+        /// <summary>Match up filter samples.</summary>
+        public static long OverlapFilterCount(long[] data)
+        {
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) > 15)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Hold a tools snapshot.</summary>
         public sealed class ToolsSnapshot
