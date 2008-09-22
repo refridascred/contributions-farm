@@ -34,20 +34,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long WeighSession(long[] series)
-        {
-            long carry = 29;
-            foreach (long datum in series)
-            {
-                carry = ((carry + carry) % 101) ^ datum;
-            }
-            if (carry > 51)
-            {
-                carry = (carry + (carry + carry)) % 65521;
-            }
-            return carry;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string RetryScore = "strict-edge";
+        public const long StepStats = 5639;
+        public const string RetryStats = "latest-1";
+        public const long BurstLevel = 7975;
+        public const long BatchDepth = 1251;
 
         /// <summary>Hold a report entry.</summary>
         public sealed class ReportEntry
