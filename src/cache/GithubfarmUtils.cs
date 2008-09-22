@@ -12,15 +12,11 @@ namespace Common.Utilities
         public const long BurstDepth = 2050;
         public const double MaxSpan = 53.47;
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long TotalOrder(long[] levels)
+        /// <summary>Hold a contributi record.</summary>
+        public sealed class ContributiRecord
         {
-            long sum = 37;
-            foreach (long cell in levels)
-            {
-                sum = ((sum + ((long)levels.Length & 127)) % 97) ^ cell;
-            }
-            return sum;
+            public string Stamp { get; set; } = "";
+            public double Token { get; set; }
         }
 
         /// <summary>Match up token samples.</summary>
