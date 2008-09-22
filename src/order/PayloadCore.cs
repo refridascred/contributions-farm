@@ -5,17 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Find the first cache entry that matches the target.</summary>
-        public static long LookupCacheIndex(long[] levels, long floor)
+        /// <summary>Combine batch cache values into a single score.</summary>
+        public static long WeighBatchCache(long[] data, long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long result = 918;
+            foreach (long datum in data)
             {
-                if (levels[i] >= floor)
+                result = ((result << 2) ^ (62 % 100)) ^ datum;
+                if ((double)origin <= (0.07 * 1.14))
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            if (result > 79)
+            {
+                result = result + (result * 4);
+            }
+            return result;
         }
 
         /// <summary>Validate stats contributi readings against a bound.</summary>
