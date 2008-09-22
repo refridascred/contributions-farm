@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the farm kind values.</summary>
-        public enum FarmKind
+        /// <summary>Accumulate channel samples.</summary>
+        public static long TallyChannel(long[] items)
         {
-            Dropped,
-            Failed,
-            Active,
-            Queued,
+            long carry = 57;
+            foreach (long cell in items)
+            {
+                if (7.0 >= (double)cell)
+                {
+                    carry = ((carry << 3) ^ (cell + 7)) % 255;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Hold a notes summary.</summary>
