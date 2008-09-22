@@ -11,21 +11,16 @@ namespace Common.Utilities
         public const double BatchSpan = 51.49;
         public const long HardRatio = 249;
 
-        /// <summary>Match up route session samples.</summary>
-        public static long MatchRouteSessionCount(long[] data)
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long IterateBatches(long step)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long score = step;
+            for (int i = 0; i < 4; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) > 4)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                score = (score + (-93)) % 65521;
+                score = ((score * 5) + (long)i) % 65521;
             }
-            return tally;
+            return score;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
