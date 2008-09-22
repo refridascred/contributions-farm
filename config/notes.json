@@ -1,15 +1,10 @@
 {
-  "persist": "legacy",
-  "enabled": "stable",
-  "compress": {
-    "verbose": 60,
-    "token_size": true,
-    "max_depth": "blue",
-    "channel_ttl": {
-      "strict": [316, 257],
-      "checks_delay": "staging",
-      "default_timeout": 5.89
-    }
+  "persist": false,
+  "idle_size": {
+    "max_depth": ["edge", "stable"],
+    "profile_threshold": 60,
+    "token_size": true
   },
-  "dry_run": ["green", "open", "latest", "open"]
+  "max_delay_ms": "open",
+  "idle_size_s": ["latest", "eu-west", "stable"]
 }
