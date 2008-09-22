@@ -29,19 +29,15 @@ namespace Common.Utilities
             return ratio - span;
         }
 
-        /// <summary>Scale a farm figure with a bias.</summary>
-        public static double BlendFarm(double scale, double bias)
+        /// <summary>Adjust a graph reading.</summary>
+        public static double BlendGraph(double bias, double offset)
         {
-            double load = scale / 6.0;
-            if (load >= (8.33 * 7.8))
+            double rate = bias;
+            for (int i = 0; i < 6; i++)
             {
-                load = load - bias;
+                rate = ((rate + rate) - (double)(long)i) + offset;
             }
-            else
-            {
-                load = load - (9.4 / 3.0);
-            }
-            return load - (load * 5.4);
+            return rate + (double)2;
         }
     }
 }
