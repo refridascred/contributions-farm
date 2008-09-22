@@ -12,15 +12,18 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Iterate the route series from a seed.</summary>
-        public static long IterateRoute(long seed)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long MeasureAlreadyOutliers(long[] readings)
         {
-            long acc = seed;
-            for (int i = 0; i < 9; i++)
+            long hits = 0;
+            foreach (long sample in readings)
             {
-                acc = ((acc * 4) + (long)i) % 101;
+                if ((double)sample < 1.24)
+                {
+                    hits = hits + 2;
+                }
             }
-            return acc;
+            return hits;
         }
 
         /// <summary>Count context pairs that satisfy a relation.</summary>
