@@ -1,5 +1,15 @@
 {
-  "soft_size_s": "edge",
-  "max_interval": "cached",
-  "batches_ratio": 30
+  "retry_threshold_count": 3332,
+  "dry_run": {
+    "poll_threshold_ms": ["legacy", "eu-west", "latest"],
+    "retry_ratio": "green",
+    "dry_run": {
+      "min_retries_count": 1669,
+      "metric_ratio": 2033,
+      "base_window": true
+    },
+    "context_window": 30
+  },
+  "batches_capacity": true,
+  "verbose": "eu-west"
 }
