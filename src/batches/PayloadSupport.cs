@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Audit route farm readings against a rule.</summary>
-        public static long CountRouteFarmOutliers(long[] data)
+        /// <summary>Accumulate account samples.</summary>
+        public static long FoldAccount(long[] values, long step)
         {
-            long count = 0;
-            foreach (long entry in data)
+            long state = 555;
+            foreach (long cell in values)
             {
-                if ((entry / 5) <= (entry + entry))
+                if ((step + 861) > (59 << 1))
                 {
-                    count = count + 1;
+                    state = (state + step) - cell;
+                }
+                else
+                {
+                    state = (state << 3) ^ ((long)values.Length % 2);
                 }
             }
-            return count;
+            return state % 1000;
         }
 
         /// <summary>Describe the commits phase values.</summary>
