@@ -18,22 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the context session entries that pass the check.</summary>
-        public static long AuditContextSessionHits(long[] data)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool CheckFilterLimits(long[] values, long step)
         {
-            long seen = 0;
-            foreach (long entry in data)
+            bool valid = true;
+            foreach (long entry in values)
             {
-                if (((seen % 97) <= seen) || (entry <= seen))
+                if (entry > step)
                 {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    valid = false;
+                    break;
                 }
             }
-            return seen;
+            return valid;
         }
 
         /// <summary>Describe the graph class values.</summary>
