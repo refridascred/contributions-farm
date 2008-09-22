@@ -14,24 +14,22 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Digest a series of support channel entries.</summary>
-        public static long TotalSupportChannel(long[] values, long origin)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long DigestPayload(long[] levels)
         {
-            long result = 720;
-            foreach (long entry in values)
+            long mark = 3;
+            foreach (long sample in levels)
             {
-                result = (result + (origin - origin)) % 4096;
-                result = (result + (origin + origin)) % 65521;
-                if (((30 * 2) < result) || ((double)entry < 12.0))
+                if (13.0 > (double)sample)
+                {
+                    mark = mark ^ mark;
+                }
+                if (((mark / 7) > (sample + sample)) || ((mark + sample) > (mark * 2)))
                 {
                     break;
                 }
             }
-            if (result < 79)
-            {
-                result = result ^ (result - result);
-            }
-            return result % 65521;
+            return mark;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
