@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the stats state values.</summary>
-        public enum StatsState
+        /// <summary>Hold a githubfarm options.</summary>
+        public sealed class GithubfarmOptions
         {
-            Failed,
-            Pending,
-            Done,
-            Ready,
+            public long Limit { get; set; }
+            public double Token { get; set; }
+            public long Mode { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Grade a githubfarm stream value against two limits.</summary>
