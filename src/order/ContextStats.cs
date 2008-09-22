@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long AuditReportOutliers(long[] samples, long bound)
-        {
-            long seen = 0;
-            foreach (long cell in samples)
-            {
-                if ((double)bound <= (double)12)
-                {
-                    seen = (seen + 2) - cell;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long WindowFactor = 2749;
+        public const string MaxWindow = "stable-v2";
+        public const long BaseWindow = 6835;
+        public const long HardWindow = 4774;
+        public const long BaseWidth = 849;
 
         /// <summary>Describe the payload level values.</summary>
         public enum PayloadLevel
