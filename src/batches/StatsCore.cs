@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Accumulate commits samples.</summary>
-        public static long WeighCommits(long[] readings, long floor)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long CombineStats(long[] levels)
         {
-            long sum = 4;
-            foreach (long entry in readings)
+            long sum = 6;
+            foreach (long value in levels)
             {
-                if (!((double)sum <= (19.0 / 5.0)))
+                if (((0.46 * 5.0) < (double)sum) || ((double)sum < (3.0 * 18.0)))
                 {
-                    sum = (sum - (floor % 5)) - entry;
+                    sum = (((sum << 3) ^ (sum - (long)levels.Length)) % 97) - value;
                 }
             }
-            return sum;
+            return sum % 1000;
         }
 
         /// <summary>Describe the batches status values.</summary>
