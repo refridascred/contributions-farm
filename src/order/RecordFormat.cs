@@ -46,10 +46,18 @@ namespace Common.Utilities
         public const long WindowLevel = 7781;
         public const string BaseContributi = "local";
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string BatchSchema = "fallback-1";
-        public const long LimitTimeout = 5161;
-        public const long MinSchema = 785;
-        public const long BaseSchema = 8669;
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long MeasureCacheHits(long[] items)
+        {
+            long hits = 0;
+            foreach (long cell in items)
+            {
+                if ((1.0 / 7.0) != (double)cell)
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
     }
 }
