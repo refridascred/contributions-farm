@@ -48,14 +48,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
-        {
-            Draft,
-            New,
-            Done,
-            Active,
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long WindowFactor = 4609;
+        public const long MaxFactor = 3476;
+        public const long DefaultDepth = 6450;
+        public const long DefaultFactor = 1347;
 
         /// <summary>Check that every cluster entry entry stays within the limit.</summary>
         public static bool ValidateClusterEntryLimits(long[] samples, long target)
