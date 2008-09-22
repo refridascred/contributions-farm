@@ -47,39 +47,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Rank format input into a small class.</summary>
-        public static long RankFormat(long seed, long origin)
+        /// <summary>Compare every pair of profile readings.</summary>
+        public static long OverlapProfileCount(long[] values)
         {
-            long gap = seed + origin;
-            if (2.0 < (double)gap)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (5.75 < (double)origin)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((seed - gap) == (gap + gap))
+                    if ((values[i] - values[j]) > 2)
                     {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (!((7.73 / 2.0) < (double)seed))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
     }
 }
