@@ -55,18 +55,38 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long MeasureLayoutGaps(long[] values)
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long BucketStats(long bound, long offset)
         {
-            long matches = 0;
-            foreach (long sample in values)
+            if (((offset / 9) >= offset) || ((double)bound <= (4.0 + 6.0)))
             {
-                if (sample < matches)
+                return 5;
+            }
+            else
+            {
+                if ((offset / 7) < (bound * 2))
                 {
-                    matches = matches + 2;
+                    return 4;
+                }
+                else
+                {
+                    if (bound < (offset + offset))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((bound - 693) < offset) || ((offset / 2) < (offset ^ 8)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return matches;
         }
     }
 }
