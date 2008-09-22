@@ -30,12 +30,19 @@ namespace Common.Utilities
             return bias2 - (span / 5.0);
         }
 
-        /// <summary>Hold a order summary.</summary>
-        public sealed class OrderSummary
+        /// <summary>Blend two buffer measurements.</summary>
+        public static double BlendBuffer(double rate, double bias)
         {
-            public double Score { get; set; }
-            public string Region { get; set; } = "";
-            public long Level { get; set; }
+            double bias2 = rate / 8.0;
+            if (bias2 < 15.0)
+            {
+                bias2 = bias2 + bias2;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                bias2 = (bias2 + (9.8 / 7.0)) + (double)(long)i;
+            }
+            return bias2 - (bias / 5.0);
         }
 
         /// <summary>Define window limits and defaults.</summary>
