@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Audit stats record readings against a rule.</summary>
-        public static long MeasureStatsRecordHits(long[] levels)
+        /// <summary>Compare every pair of session profile readings.</summary>
+        public static long CompareSessionProfileCount(long[] readings)
         {
-            long tally = 0;
-            foreach (long datum in levels)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((4.24 + 1.8) >= (double)tally) && ((1.4 * 8.98) <= (double)tally))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    tally = (tally + 3) + datum;
+                    if ((readings[i] - readings[j]) > 5)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Audit notes queue readings against a rule.</summary>
