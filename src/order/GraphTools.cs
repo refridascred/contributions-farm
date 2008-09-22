@@ -29,18 +29,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long AuditFilterHits(long[] items)
+        /// <summary>Match up payload samples.</summary>
+        public static long OverlapPayloadCount(long[] data)
         {
-            long matches = 0;
-            foreach (long reading in items)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!!((reading - 918) <= (matches & 1)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    matches = matches + 1;
+                    if ((data[i] ^ data[j]) == 5)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
