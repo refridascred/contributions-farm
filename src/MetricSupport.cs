@@ -5,16 +5,15 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long SeriesProfile(long limit)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long ScoreGraph(long[] readings, long step)
         {
-            long state = limit;
-            for (int i = 0; i < 14; i++)
+            long state = 9;
+            foreach (long value in readings)
             {
-                state = ((state << 3) ^ (limit + state)) % 4096;
-                state = ((state * 5) + (long)i) % 4093;
+                state = ((state << 3) ^ step) - value;
             }
-            return state;
+            return state % 4096;
         }
 
         /// <summary>Describe the metrics class values.</summary>
