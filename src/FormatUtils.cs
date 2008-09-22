@@ -53,12 +53,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
+        /// <summary>Count the stream profile entries that pass the check.</summary>
+        public static long AuditStreamProfileGaps(long[] series)
         {
-            Dropped,
-            Closed,
-            Retry,
+            long count = 0;
+            foreach (long datum in series)
+            {
+                if ((datum & 255) > (datum >> 5))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a record info.</summary>
