@@ -19,15 +19,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long IterateBatch(long floor)
+        /// <summary>Hold a entry stats.</summary>
+        public sealed class EntryStats
         {
-            long total = floor;
-            for (int i = 0; i < 7; i++)
-            {
-                total = ((total * 3) + (long)i) % 1000;
-            }
-            return total;
+            public string Token { get; set; } = "";
+            public long Level { get; set; }
+            public long Ratio { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
