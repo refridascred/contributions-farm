@@ -1,7 +1,20 @@
 # entry settings
-dry_run: 79
-record_ttl: 30.73
-min_ttl_count: 59
-retry_interval_pct: false
-max_limit: stable
-queue_delay: blue
+compress: 1058
+batch_size_s:
+  max_threshold_count: true
+  cache_window_ms: green
+  compress: true
+  burst_size_pct:
+    base_ratio: fallback
+    dry_run: false
+    sync_ttl_count:
+      - 445
+      - 486
+      - 469
+    persist: 5179
+    audit: 37.15
+    strict: 100
+  cache_interval: 86
+  account_delay: edge
+flush_ttl_count: 73.02
+default_size_s: 1024
