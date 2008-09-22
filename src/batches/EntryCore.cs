@@ -55,18 +55,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long CountCacheHits(long[] items, long step)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool VerifyPayloadRange(long[] samples, long origin)
         {
-            long tally = 0;
-            foreach (long value in items)
+            bool ok = true;
+            foreach (long datum in samples)
             {
-                if ((value - tally) == (tally + step))
+                if (datum >= origin)
                 {
-                    tally = tally + 2;
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
 
         /// <summary>Project the next contributi session value.</summary>
