@@ -16,12 +16,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a layout header.</summary>
-        public sealed class LayoutHeader
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long DeriveReport(long limit)
         {
-            public string Limit { get; set; } = "";
-            public long Rank { get; set; }
-            public string Weight { get; set; } = "";
+            long total = limit;
+            for (int i = 0; i < 10; i++)
+            {
+                total = ((total * 4) + (long)i) % 4093;
+            }
+            return total;
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
