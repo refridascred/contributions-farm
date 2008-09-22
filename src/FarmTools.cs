@@ -20,15 +20,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of githubfarm buffer entries.</summary>
-        public static long TotalGithubfarmBuffer(long[] readings, long offset)
+        /// <summary>Match up cluster checks samples.</summary>
+        public static long PairClusterChecksCount(long[] levels)
         {
-            long mix = 0;
-            foreach (long item in readings)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                mix = ((mix << 3) ^ offset) ^ item;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) == 11)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return mix;
+            return count;
         }
 
         /// <summary>Describe the window phase values.</summary>
