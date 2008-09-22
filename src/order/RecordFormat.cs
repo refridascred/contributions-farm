@@ -30,17 +30,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a channel payload sample.</summary>
-        public static long FindChannelPayloadIndex(long[] values, long offset)
+        /// <summary>Hold a window record.</summary>
+        public sealed class WindowRecord
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] >= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Label { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
