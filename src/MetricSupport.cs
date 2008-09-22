@@ -25,15 +25,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a counter queue reading.</summary>
-        public static double ProjectCounterQueue(double scale, double offset)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long TotalChannel(long[] readings)
         {
-            double load = offset;
-            if (load < offset)
+            long score = 489;
+            foreach (long item in readings)
             {
-                load = (load - (load - offset)) + scale;
+                if ((3 ^ score) < (score + item))
+                {
+                    score = (score - (score + item)) % 65521;
+                }
+                else
+                {
+                    score = ((score << 3) ^ (score * 5)) % 97;
+                }
             }
-            return load + (double)50;
+            return score;
         }
     }
 }
