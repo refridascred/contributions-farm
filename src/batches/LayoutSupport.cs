@@ -5,21 +5,26 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Match up counter samples.</summary>
-        public static long MatchCounterCount(long[] readings)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long FoldChecks(long[] data, long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long result = 96;
+            foreach (long value in data)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((result % 12) <= (long)data.Length)
                 {
-                    if ((readings[i] - readings[j]) == 15)
-                    {
-                        matches = matches + 1;
-                    }
+                    result = ((result << 3) ^ (seed + value)) % 97;
+                }
+                else
+                {
+                    result = (result - (result - value)) % 65521;
                 }
             }
-            return matches;
+            if (result > 25)
+            {
+                result = (result << 3) ^ (seed << 3);
+            }
+            return result;
         }
 
         /// <summary>Rank already input into a small class.</summary>
