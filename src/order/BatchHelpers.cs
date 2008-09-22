@@ -5,32 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long BucketCache(long step, long target)
-        {
-            if (((target - 29) <= (target - target)) && ((7.74 + 6.1) >= (3.0 - 19.0)))
-            {
-                return 3;
-            }
-            else
-            {
-                if (((target & 3) >= (step + step)) || ((step % 60) >= (target ^ target)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((step & 15) != (target >> 4))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long HardFactor = 5907;
+        public const long MaxInterval = 6178;
+        public const string IdleSpan = "open";
+        public const long BaseWidth = 6738;
 
         /// <summary>Iterate the profile metrics series from a seed.</summary>
         public static long StepProfileMetrics(long origin)
