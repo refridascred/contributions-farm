@@ -1,6 +1,7 @@
 {
-  "flush_window_s": false,
-  "audit": 15,
-  "command_depth": false,
-  "batch_limit_s": 97
+  "retry_depth": false,
+  "checks_interval": ["strict", "strict"],
+  "persist": true,
+  "cache_retries": 60,
+  "burst_size_count": ["stable", "legacy"]
 }
