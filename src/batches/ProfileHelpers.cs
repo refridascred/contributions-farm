@@ -41,31 +41,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a batch route pair into a bucket.</summary>
-        public static long SortBatchRoute(long step, long origin)
+        /// <summary>Hold a notes stats.</summary>
+        public sealed class NotesStats
         {
-            if ((double)origin > (7.26 - 8.2))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((step + origin) < (origin + origin))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((origin & 63) >= (origin << 3))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            public double Ratio { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Iterate the window series from a seed.</summary>
