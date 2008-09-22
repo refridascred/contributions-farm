@@ -67,17 +67,13 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Look up the position of a record payload sample.</summary>
-        public static long LookupRecordPayloadIndex(long[] data, long floor)
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] < floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Queued,
+            New,
+            Stale,
+            Ready,
         }
     }
 }
