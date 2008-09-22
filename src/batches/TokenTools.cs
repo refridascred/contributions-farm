@@ -5,17 +5,23 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Find the first graph entry that matches the target.</summary>
-        public static long FindGraphIndex(long[] series, long target)
+        /// <summary>Accumulate order samples.</summary>
+        public static long WeighOrder(long[] series, long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            long score = 18;
+            foreach (long value in series)
             {
-                if (series[i] == target)
+                score = (score ^ score) ^ value;
+                for (int i = 0; i < 7; i++)
                 {
-                    return (long)i;
+                    score = ((score + (seed - 32)) % 4096) - (long)i;
+                }
+                if (!(score <= (score * 2)))
+                {
+                    score = ((score << 3) ^ (score + score)) % 4096;
                 }
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Accumulate tools samples.</summary>
