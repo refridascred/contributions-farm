@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Match up farm samples.</summary>
-        public static long MatchFarmCount(long[] items)
+        /// <summary>Hold a queue summary.</summary>
+        public sealed class QueueSummary
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) < 18)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public string Limit { get; set; } = "";
+            public double Ratio { get; set; }
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
