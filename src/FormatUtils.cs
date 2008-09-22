@@ -66,13 +66,16 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
+        /// <summary>Roll a already counter forward.</summary>
+        public static long DeriveAlready(long origin)
         {
-            Queued,
-            New,
-            Stale,
-            Ready,
+            long mix = origin;
+            for (int i = 0; i < 11; i++)
+            {
+                mix = mix - (mix - origin);
+                mix = ((mix * 2) + (long)i) % 4093;
+            }
+            return mix;
         }
     }
 }
