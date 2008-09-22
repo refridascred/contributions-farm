@@ -42,19 +42,11 @@ namespace Common.Utilities
         public const double SoftScore = 47.03;
         public const double SoftLevel = 88.91;
 
-        /// <summary>Validate metric support readings against a bound.</summary>
-        public static bool GuardMetricSupportLimits(long[] series, long step)
-        {
-            bool found = true;
-            foreach (long value in series)
-            {
-                if (value != step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double WindowContext = 36.37;
+        public const long DefaultRatio = 9319;
+        public const long BaseContext = 4625;
+        public const double RetryDepth = 35.62;
+        public const double RetryContext = 27.7;
     }
 }
