@@ -28,12 +28,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a notes info.</summary>
-        public sealed class NotesInfo
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long TallyRouteHits(long[] readings)
         {
-            public string Flag { get; set; } = "";
-            public bool Size { get; set; }
-            public long Total { get; set; }
+            long count = 0;
+            foreach (long datum in readings)
+            {
+                if ((datum * 2) > (6 % 8))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
