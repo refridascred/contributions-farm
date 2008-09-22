@@ -1,7 +1,7 @@
 {
-  "batch_retries": ["local", "fallback", "cached", "green"],
-  "githubfarm_interval": 3.13,
-  "commits_limit": 1024,
-  "idle_delay": ["staging", "blue", "latest"],
-  "dry_run": 27
+  "batch_capacity_count": 30,
+  "min_timeout_count": "staging",
+  "strict": [119, 208, 189],
+  "enabled": true,
+  "warm_size": true
 }
