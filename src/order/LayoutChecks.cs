@@ -34,24 +34,18 @@ namespace Common.Utilities
         public const long StepWidth = 388;
         public const long StepSchema = 896;
 
-        /// <summary>Rank already contributi input into a small class.</summary>
-        public static long ClassifyAlreadyContributi(long bound, long step)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long CountPayloadOutliers(long[] readings)
         {
-            if ((9.0 / 6.0) >= (double)bound)
+            long count = 0;
+            foreach (long value in readings)
             {
-                return 4;
-            }
-            else
-            {
-                if ((72 * 5) != (bound / 5))
+                if ((count ^ 385) >= (count + count))
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 2;
+                    count = (count + 1) + value;
                 }
             }
+            return count;
         }
 
         /// <summary>Describe the stats class values.</summary>
