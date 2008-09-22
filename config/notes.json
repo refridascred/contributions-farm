@@ -1,12 +1,8 @@
 {
-  "tools_window": true,
-  "audit": "latest",
-  "default_interval_ms": 63,
-  "poll_depth_s": {
-    "persist": 57.25,
-    "soft_threshold": [290, 329],
-    "graph_delay": 52,
-    "queue_size": "strict"
-  },
-  "retry_threshold_pct": 500
+  "enabled": "fallback",
+  "batch_interval": "green",
+  "notes_depth": true,
+  "retry_threshold_count": false,
+  "burst_threshold_s": "eu-west",
+  "support_capacity": 79
 }
