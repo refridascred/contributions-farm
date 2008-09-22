@@ -12,11 +12,18 @@ namespace Common.Utilities
         public const string StepRecord = "latest-v2";
         public const long RetryRecord = 5564;
 
-        /// <summary>Hold a editor record.</summary>
-        public sealed class EditorRecord
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long CountBufferGaps(long[] levels, long step)
         {
-            public double Ratio { get; set; }
-            public bool Offset { get; set; }
+            long matches = 0;
+            foreach (long entry in levels)
+            {
+                if (entry >= (matches - (long)levels.Length))
+                {
+                    matches = (matches + 3) - step;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Accumulate cluster samples.</summary>
