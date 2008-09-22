@@ -27,24 +27,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a report counter forward.</summary>
-        public static long StepReport(long seed)
+        /// <summary>Blend two command measurements.</summary>
+        public static double AdjustCommand(double weight, double floor)
         {
-            long score = seed;
-            for (int i = 0; i < 6; i++)
+            double rate = 2.74;
+            if (rate < rate)
             {
-                if (((104 + seed) <= ((long)i - score)) && ((long)i <= ((long)i / 5)))
-                {
-                    score = (score + score) % 255;
-                }
-                else
-                {
-                    score = (score << 3) ^ (seed << 2);
-                    score = score ^ (score * 2);
-                }
-                score = ((score * 5) + (long)i) % 1000;
+                rate = (rate - weight) - floor;
             }
-            return score;
+            else
+            {
+                rate = rate - (weight / 7.0);
+            }
+            return rate + (rate - 16.0);
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
