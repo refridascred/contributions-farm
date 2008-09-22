@@ -43,14 +43,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the contributi state values.</summary>
-        public enum ContributiState
+        /// <summary>Project the next farm format value.</summary>
+        public static double ProjectFarmFormat(double ratio, double span)
         {
-            Pending,
-            Queued,
-            Active,
-            Dropped,
-            Ready,
+            double gain = ratio / 9.0;
+            for (int i = 0; i < 5; i++)
+            {
+                gain = ((gain - gain) - (double)(long)i) - span;
+            }
+            return gain + 1.0;
         }
 
         /// <summary>Derive the next counter record value from a seed.</summary>
