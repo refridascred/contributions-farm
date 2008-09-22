@@ -29,10 +29,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string IdleEntry = "primary-v2";
-        public const long BurstEntry = 8669;
-        public const double MaxEntry = 80.31;
-        public const long WindowEntry = 1000;
+        /// <summary>Hold a window snapshot.</summary>
+        public sealed class WindowSnapshot
+        {
+            public long Rank { get; set; }
+            public bool Ratio { get; set; }
+            public string Owner { get; set; } = "";
+            public long Label { get; set; }
+        }
     }
 }
