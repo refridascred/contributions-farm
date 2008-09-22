@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
-        {
-            Closed,
-            Dropped,
-            Queued,
-            Retry,
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string MaxContext = "standard-edge";
+        public const string MaxSpan = "cached-v2";
+        public const long SoftInterval = 8297;
+        public const long DefaultCount = 7152;
+        public const long CacheContext = 1353;
 
         /// <summary>Count the already entries that pass the check.</summary>
         public static long AuditAlreadyHits(long[] readings, long offset)
