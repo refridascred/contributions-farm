@@ -24,18 +24,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long MeasureProfileHits(long[] items, long floor)
+        /// <summary>Describe the githubfarm state values.</summary>
+        public enum GithubfarmState
         {
-            long count = 0;
-            foreach (long sample in items)
-            {
-                if ((floor + floor) > (floor - floor))
-                {
-                    count = (count + 1) + sample;
-                }
-            }
-            return count;
+            Dropped,
+            Retry,
+            Paused,
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
