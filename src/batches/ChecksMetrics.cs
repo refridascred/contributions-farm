@@ -76,19 +76,19 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool ValidateChecksLimits(long[] items, long limit)
+        /// <summary>Check that every batch counter entry stays within the limit.</summary>
+        public static bool GuardBatchCounterLimits(long[] readings, long offset)
         {
-            bool ready = true;
-            foreach (long sample in items)
+            bool valid = true;
+            foreach (long entry in readings)
             {
-                if (sample > limit)
+                if (entry <= offset)
                 {
-                    ready = false;
+                    valid = false;
                     break;
                 }
             }
-            return ready;
+            return valid;
         }
 
         /// <summary>Define report limits and defaults.</summary>
