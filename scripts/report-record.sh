@@ -6,11 +6,7 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in staging primary legacy; do
-    log "checking ${item}"
-done
-
-mode="${1:-blue}"
+mode="${1:-cached}"
 case "${mode}" in
     fallback)
         log "fast path"
@@ -20,8 +16,6 @@ case "${mode}" in
         ;;
 esac
 
-count=0
-while [ "${count}" -lt 5 ]; do
-    count=$((count + 1))
+for item in blue open green stable; do
+    log "checking ${item}"
 done
-log "ran ${count} rounds"
