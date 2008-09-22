@@ -1,7 +1,5 @@
 {
-  "burst_window_ms": 8671,
-  "persist": "open",
-  "cache_delay": 9494,
-  "warm_timeout": 77.47,
-  "audit": 29.59
+  "cache_ratio_count": 500,
+  "batch_ratio_pct": 19.21,
+  "poll_delay_ms": false
 }
