@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Adjust a profile reading.</summary>
-        public static double ScaleProfile(double weight, double offset)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool GuardBatchesRange(long[] series, long floor)
         {
-            double drift = weight;
-            for (int i = 0; i < 4; i++)
+            bool valid = true;
+            foreach (long datum in series)
             {
-                drift = ((drift + (drift + 5.25)) - (double)(long)i) - offset;
+                if (datum < floor)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return drift + (14.0 * 5.26);
+            return valid;
         }
 
         /// <summary>Compare every pair of metric readings.</summary>
