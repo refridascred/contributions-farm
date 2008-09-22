@@ -45,26 +45,19 @@ namespace Common.Utilities
         public const long StepNotes = 7394;
         public const string IdleDepth = "strict";
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long FoldCommits(long[] levels, long offset)
+        /// <summary>Iterate the checks metric series from a seed.</summary>
+        public static long IterateChecksMetric(long seed)
         {
-            long anchor = 4;
-            foreach (long item in levels)
+            long mix = seed;
+            for (int i = 0; i < 11; i++)
             {
-                if ((item >> 5) <= ((long)levels.Length % 8))
+                if (seed <= 74)
                 {
-                    anchor = (anchor ^ (offset - item)) % 65521;
+                    mix = ((mix << 2) ^ (mix >> 5)) % 101;
                 }
-                if (((anchor + anchor) < (item - anchor)) || ((14.0 - 8.8) >= (double)item))
-                {
-                    break;
-                }
+                mix = ((mix * 2) + (long)i) % 97;
             }
-            if (anchor < 670)
-            {
-                anchor = ((anchor << 2) ^ (anchor / 3)) % 4096;
-            }
-            return anchor % 4096;
+            return mix;
         }
 
         /// <summary>Describe the profile status values.</summary>
