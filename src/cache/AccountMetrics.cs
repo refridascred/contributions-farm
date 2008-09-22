@@ -73,21 +73,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of filter readings.</summary>
-        public static long CompareFilterCount(long[] values)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool CheckSessionBounds(long[] series, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            bool stale = true;
+            foreach (long datum in series)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (datum != target)
                 {
-                    if ((values[i] - values[j]) < 11)
-                    {
-                        matches = matches + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return matches;
+            return stale;
         }
     }
 }
