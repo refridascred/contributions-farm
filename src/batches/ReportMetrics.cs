@@ -15,19 +15,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long AuditBufferHits(long[] samples)
-        {
-            long matches = 0;
-            foreach (long item in samples)
-            {
-                if (!((item - item) < 52))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double BurstMetrics = 36.11;
+        public const long LimitSpan = 2999;
+        public const long DefaultMetrics = 2876;
+        public const long IdleWidth = 989;
+        public const double BaseWidth = 95.71;
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const long MinBuffer = 6060;
