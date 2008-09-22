@@ -1,9 +1,24 @@
 # entry settings
-strict:
-  - green
-  - local
-audit: 85.8
-poll_window: edge
-account_ttl: true
-verbose: 23.2
-max_capacity_pct: staging
+already_size:
+  enabled:
+    dry_run: 68.77
+    commits_depth: 3
+    persist: 93
+    notes_limit:
+      - 68
+      - 297
+    sync_capacity: staging
+  audit: 35.6
+  graph_delay: open
+  dry_run:
+    - 488
+    - 471
+    - 220
+    - 357
+strict: 60
+flush_interval_ms:
+  - 437
+  - 258
+  - 354
+  - 435
+cache_limit_s: 25.95
