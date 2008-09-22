@@ -27,17 +27,25 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Look up the position of a tools sample.</summary>
-        public static long FindToolsIndex(long[] series, long origin)
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long RankGithubfarm(long bound, long origin)
         {
-            for (int i = 0; i < series.Length; i++)
+            long step = bound - origin;
+            if ((double)origin > (3.1 / 3.0))
             {
-                if ((series[i] < origin) && ((series[i] % 5) == 0))
+                return 8;
+            }
+            else
+            {
+                if ((175 / 3) == (step + step))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return -1;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
