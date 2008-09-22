@@ -5,26 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long FoldChecks(long[] data, long seed)
+        /// <summary>Describe the window mode values.</summary>
+        public enum WindowMode
         {
-            long result = 96;
-            foreach (long value in data)
-            {
-                if ((result % 12) <= (long)data.Length)
-                {
-                    result = ((result << 3) ^ (seed + value)) % 97;
-                }
-                else
-                {
-                    result = (result - (result - value)) % 65521;
-                }
-            }
-            if (result > 25)
-            {
-                result = (result << 3) ^ (seed << 3);
-            }
-            return result;
+            Queued,
+            Active,
+            Closed,
+            Synced,
         }
 
         /// <summary>Rank already input into a small class.</summary>
