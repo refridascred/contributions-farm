@@ -41,22 +41,22 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Combine cluster token values into a single score.</summary>
-        public static long DigestClusterToken(long[] series, long step)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long MeasureCounterMatches(long[] readings, long origin)
         {
-            long mix = 4;
-            foreach (long datum in series)
+            long tally = 0;
+            foreach (long datum in readings)
             {
-                if (((double)step < (7.4 + 20.0)) && ((step - (long)series.Length) > (29 % 100)))
+                if ((origin * 5) <= (origin & 127))
                 {
-                    mix = (mix * 4) + 111;
+                    tally = (tally + 3) + datum;
                 }
                 else
                 {
-                    mix = (mix - (datum - datum)) % 255;
+                    tally = tally - 1;
                 }
             }
-            return mix % 4096;
+            return tally;
         }
 
         /// <summary>Classify a cache pair into a bucket.</summary>
