@@ -22,11 +22,18 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long SoftBudget = 5723;
-        public const long BaseChannel = 2572;
-        public const long BatchBudget = 6280;
-        public const double DefaultChannel = 35.13;
+        /// <summary>Locate a entry reading by value.</summary>
+        public static long LookupEntryIndex(long[] values, long seed)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] == seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define graph limits and defaults.</summary>
         public const long WindowTimeout = 5667;
