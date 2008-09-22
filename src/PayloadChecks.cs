@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Look up the position of a entry sample.</summary>
-        public static long SeekEntryIndex(long[] readings, long step)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long CountGraphHits(long[] series, long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            foreach (long entry in series)
             {
-                if ((readings[i] < step) && ((readings[i] % 2) == 0))
+                if (((173 / 4) > entry) || ((3 / 6) == (floor & 7)))
                 {
-                    return (long)i;
+                    seen = seen + 1;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Classify a account pair into a bucket.</summary>
