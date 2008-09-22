@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long HardFactor = 5907;
-        public const long MaxInterval = 6178;
-        public const string IdleSpan = "open";
-        public const long BaseWidth = 6738;
+        /// <summary>Hold a window options.</summary>
+        public sealed class WindowOptions
+        {
+            public double Limit { get; set; }
+            public bool Label { get; set; }
+            public long Region { get; set; }
+            public bool Rank { get; set; }
+        }
 
         /// <summary>Iterate the profile metrics series from a seed.</summary>
         public static long StepProfileMetrics(long origin)
