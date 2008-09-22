@@ -37,10 +37,12 @@ namespace Common.Utilities
         public const long IdleDepth = 4128;
         public const long MaxProfile = 3879;
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double RetryWidth = 33.89;
-        public const long StepRoute = 3558;
-        public const long CacheRoute = 9234;
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long MinMetric = 4800;
+        public const long WindowBudget = 9575;
+        public const long BaseCount = 2445;
+        public const long SoftMetric = 351;
+        public const long HardMetric = 5276;
 
         /// <summary>Hold a record summary.</summary>
         public sealed class RecordSummary
