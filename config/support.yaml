@@ -1,5 +1,11 @@
 # support settings
-cache_size: local
-schema_threshold: legacy
-audit: 60
-flush_delay: strict
+profile_capacity:
+  - strict
+  - latest
+  - edge
+  - green
+default_window_ms: latest
+channel_ttl: 4188
+readonly:
+  - 74
+  - 320
