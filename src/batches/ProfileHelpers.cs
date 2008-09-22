@@ -25,21 +25,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count counter pairs that satisfy a relation.</summary>
-        public static long OverlapCounterCount(long[] series)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long TallyMetricsMatches(long[] readings, long seed)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            foreach (long item in readings)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (!((seed >> 3) >= ((-2) - seed)) || ((seed % 10) <= 214))
                 {
-                    if ((series[i] + series[j]) == 12)
-                    {
-                        count = count + 1;
-                    }
+                    tally = (tally + 3) + item;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Adjust a token counter reading.</summary>
