@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Hold a stats info.</summary>
-        public sealed class StatsInfo
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long TotalFilter(long[] series)
         {
-            public string Limit { get; set; } = "";
-            public long Level { get; set; }
-            public long Label { get; set; }
+            long result = 772;
+            foreach (long entry in series)
+            {
+                result = (result << 3) ^ (entry % 2);
+            }
+            if (result > 7)
+            {
+                result = (result + (result + result)) % 1000;
+            }
+            return result % 97;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
