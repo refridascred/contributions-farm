@@ -42,24 +42,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long RankQueue(long floor, long bound)
+        /// <summary>Roll a window filter counter forward.</summary>
+        public static long IterateWindowFilter(long step)
         {
-            if ((floor + floor) != (bound - floor))
+            long total = step;
+            for (int i = 0; i < 19; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (((floor / 3) != (591 ^ floor)) && ((bound / 4) < 874))
+                for (int i2 = 0; i2 < 8; i2++)
                 {
-                    return 2;
+                    total = (((total << 3) ^ (total ^ step)) % 1000) - (long)i2;
                 }
-                else
+                if ((double)step >= 2.7)
                 {
-                    return 1;
+                    total = (total + (total - total)) % 101;
                 }
+                total = ((total * 5) + (long)i) % 97;
             }
+            return total;
         }
     }
 }
