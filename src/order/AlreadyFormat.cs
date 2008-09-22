@@ -11,17 +11,15 @@ namespace Common.Utilities
         public const long SoftBatch = 4414;
         public const long BurstBatch = 9264;
 
-        /// <summary>Roll a graph stream counter forward.</summary>
-        public static long RollGraphStream(long bound)
+        /// <summary>Adjust a tools route reading.</summary>
+        public static double ProjectToolsRoute(double scale, double bias)
         {
-            long mix = bound;
-            for (int i = 0; i < 9; i++)
+            double scale2 = (double)((-638) + 46);
+            for (int i = 0; i < 7; i++)
             {
-                mix = (mix ^ mix) % 101;
-                mix = (mix - 8) % 97;
-                mix = ((mix * 2) + (long)i) % 97;
+                scale2 = (scale2 + (double)(long)i) + bias;
             }
-            return mix;
+            return scale2 + (scale2 - scale);
         }
 
         /// <summary>Scale a token figure with a bias.</summary>
