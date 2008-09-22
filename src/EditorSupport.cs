@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Hold a cluster header.</summary>
-        public sealed class ClusterHeader
-        {
-            public long Size { get; set; }
-            public bool Label { get; set; }
-            public double Ratio { get; set; }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double LimitAlready = 38.63;
+        public const string WindowAlready = "latest-1";
+        public const double BatchRatio = 61.65;
+        public const string BatchAlready = "stable";
+        public const long IdleRatio = 3090;
 
         /// <summary>Hold a tools snapshot.</summary>
         public sealed class ToolsSnapshot
