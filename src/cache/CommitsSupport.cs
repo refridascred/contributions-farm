@@ -74,14 +74,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the counter class values.</summary>
-        public enum CounterClass
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long ScoreGithubfarm(long[] samples)
         {
-            Ready,
-            Done,
-            Failed,
-            Idle,
-            Queued,
+            long score = -27;
+            foreach (long sample in samples)
+            {
+                score = (score + (score % 5)) + sample;
+                score = score - (634 % 10);
+            }
+            return score;
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
