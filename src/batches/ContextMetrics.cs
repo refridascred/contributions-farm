@@ -54,20 +54,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long StepPayload(long origin)
+        /// <summary>Hold a filter entry.</summary>
+        public sealed class FilterEntry
         {
-            long state = origin;
-            for (int i = 0; i < 19; i++)
-            {
-                state = state ^ (long)i;
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    state = ((state << 3) ^ ((long)i2 ^ origin)) % 4096;
-                }
-                state = ((state * 4) + (long)i) % 65521;
-            }
-            return state;
+            public double Score { get; set; }
+            public long Token { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
