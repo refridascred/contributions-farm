@@ -26,13 +26,17 @@ namespace Common.Utilities
         public const long SoftCluster = 8938;
         public const long LimitCluster = 3481;
 
-        /// <summary>Describe the githubfarm mode values.</summary>
-        public enum GithubfarmMode
+        /// <summary>Locate a batch commits reading by value.</summary>
+        public static long LocateBatchCommitsIndex(long[] values, long bound)
         {
-            Pending,
-            Retry,
-            Closed,
-            Active,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] == bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
