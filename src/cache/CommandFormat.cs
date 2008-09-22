@@ -11,11 +11,18 @@ namespace Common.Utilities
         public const long BurstBatches = 7870;
         public const double BaseBatches = 35.31;
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long IdleWidth = 5639;
-        public const long HardChannel = 9559;
-        public const double BaseChannel = 74.17;
-        public const long IdleSpan = 2063;
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long CombineMetrics(long[] items)
+        {
+            long mark = 739;
+            foreach (long item in items)
+            {
+                mark = (mark * 3) + mark;
+                mark = mark ^ (mark + item);
+                mark = (mark - (mark / 7)) % 97;
+            }
+            return mark;
+        }
 
         /// <summary>Derive the next commits value from a seed.</summary>
         public static long StepCommits(long step)
