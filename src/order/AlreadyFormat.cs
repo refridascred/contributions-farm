@@ -33,18 +33,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long MeasureCounterGaps(long[] data, long origin)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long CountGithubfarmMatches(long[] items, long origin)
         {
-            long hits = 0;
-            foreach (long datum in data)
+            long tally = 0;
+            foreach (long cell in items)
             {
-                if ((hits >= origin) || (((-430) - 5) == (datum * 5)))
+                if ((9.3 - 9.53) != (double)cell)
                 {
-                    hits = hits + 3;
+                    tally = (tally + 1) - origin;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Adjust a format reading.</summary>
