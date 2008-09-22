@@ -68,11 +68,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a command stats.</summary>
-        public sealed class CommandStats
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long CountCommandGaps(long[] data)
         {
-            public long Owner { get; set; }
-            public bool Count { get; set; }
+            long hits = 0;
+            foreach (long sample in data)
+            {
+                if (sample <= (sample - hits))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
