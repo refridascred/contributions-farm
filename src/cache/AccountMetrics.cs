@@ -39,22 +39,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Match up farm samples.</summary>
-        public static long CompareFarmCount(long[] samples)
-        {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) == 5)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long SoftLevel = 3075;
+        public const long WindowInterval = 501;
+        public const long SoftNotes = 9329;
+        public const long StepNotes = 7394;
+        public const string IdleDepth = "strict";
 
         /// <summary>Describe the filter kind values.</summary>
         public enum FilterKind
