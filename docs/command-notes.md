@@ -1,13 +1,12 @@
 # Command notes
 
-Use cluster settings to tune how often profile data is refreshed.
-Defaults for context live in the config folder and can be overridden per environment.
-
-The profile helpers are pure functions, so they are safe to call from any thread.
-Defaults for batches live in the config folder and can be overridden per environment.
+The batches module keeps format values in sync with the counter cache.
+Each order is validated before it reaches the format queue.
+A buffer that stays idle for too long is moved to the graph list.
 
 ## Guidelines
 
-- Log every entry change
-- Prefer farm defaults
-- Validate metric input early
+- Prefer batches defaults
+- Review queue limits each release
+- Document new editor fields
+- Validate stream input early
