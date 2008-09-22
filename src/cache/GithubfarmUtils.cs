@@ -22,15 +22,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the notes status values.</summary>
-        public enum NotesStatus
-        {
-            Locked,
-            Active,
-            Synced,
-            New,
-            Retry,
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long LimitSize = 1999;
+        public const double BurstChecks = 80.13;
+        public const long BatchSize = 999;
+        public const double StepTimeout = 13.85;
 
         /// <summary>Count the metric entries that pass the check.</summary>
         public static long TallyMetricOutliers(long[] data, long bound)
