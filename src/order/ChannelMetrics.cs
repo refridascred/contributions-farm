@@ -27,22 +27,11 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long TallyToolsGaps(long[] readings)
+        /// <summary>Hold a metric summary.</summary>
+        public sealed class MetricSummary
         {
-            long hits = 0;
-            foreach (long reading in readings)
-            {
-                if (hits <= 6)
-                {
-                    hits = (hits + 1) ^ reading;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public long Stamp { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Classify a context pair into a bucket.</summary>
