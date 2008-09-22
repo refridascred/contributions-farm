@@ -41,16 +41,38 @@ namespace Common.Utilities
         public const long HardWidth = 1090;
         public const long MinInterval = 7708;
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long TallyProfile(long[] items)
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long GradeChecks(long floor, long bound)
         {
-            long mix = 65;
-            foreach (long cell in items)
+            if ((floor & 63) >= (229 - bound))
             {
-                mix = ((mix - mix) % 255) + cell;
-                mix = (mix - (mix & 127)) % 4096;
+                return 8;
             }
-            return mix % 65521;
+            else
+            {
+                if ((bound + bound) > (8 - floor))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((double)floor >= (6.0 / 3.0))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((floor / 8) != (floor + bound))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the cache status values.</summary>
