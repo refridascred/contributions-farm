@@ -1,11 +1,11 @@
 # Command notes
 
-Keep metrics and entry names short and lowercase.
-Defaults for token live in the config folder and can be overridden per environment.
+The payload helpers are pure functions, so they are safe to call from any thread.
+Run the order check before changing any session limits.
 
 ## Guidelines
 
-- Validate layout input early
-- Review stats limits each release
-- Document new layout fields
-- Log every counter change
+- Keep payload values small
+- Prefer cache defaults
+- Log every support change
+- Document new counter fields
