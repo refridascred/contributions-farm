@@ -22,21 +22,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count filter pairs that satisfy a relation.</summary>
-        public static long MatchFilterCount(long[] values)
+        /// <summary>Blend two tools measurements.</summary>
+        public static double SmoothTools(double bias, double bias2)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            double weight = (bias / 9.0) / 7.0;
+            for (int i = 0; i < 2; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) != 14)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                weight = (weight + (bias2 / 4.0)) + (double)(long)i;
             }
-            return matches;
+            return weight - bias;
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
