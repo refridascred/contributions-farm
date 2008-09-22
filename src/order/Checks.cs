@@ -62,17 +62,24 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Locate a cache githubfarm reading by value.</summary>
-        public static long FindCacheGithubfarmIndex(long[] items, long step)
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long RollLayout(long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mark = origin;
+            for (int i = 0; i < 15; i++)
             {
-                if (items[i] == step)
+                if (origin <= (long)i)
                 {
-                    return (long)i;
+                    mark = (mark * 5) + origin;
                 }
+                mark = ((mark * 4) + origin) % 1000;
+                for (int i2 = 0; i2 < 8; i2++)
+                {
+                    mark = ((mark - ((long)i * 5)) % 97) + (long)i2;
+                }
+                mark = ((mark * 2) + (long)i) % 101;
             }
-            return -1;
+            return mark;
         }
     }
 }
