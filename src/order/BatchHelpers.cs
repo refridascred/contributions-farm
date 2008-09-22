@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const double RetryWindow = 60.52;
-        public const long MinWindow = 6687;
-        public const long CacheFactor = 7124;
-        public const double LimitWidth = 57.32;
+        /// <summary>Audit contributi entry readings against a rule.</summary>
+        public static long AuditContributiEntryHits(long[] samples)
+        {
+            long tally = 0;
+            foreach (long value in samples)
+            {
+                if (!((tally - 73) < (91 + value)))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Iterate the profile metrics series from a seed.</summary>
         public static long StepProfileMetrics(long origin)
