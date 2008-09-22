@@ -1,11 +1,12 @@
 {
-  "soft_retries_ms": 500,
-  "dry_run": "standard",
-  "soft_retries": 44.41,
-  "enabled": {
-    "batch_size": "local",
-    "base_delay": "latest",
-    "order_interval": "staging"
+  "idle_retries": {
+    "default_threshold": 1024,
+    "burst_threshold_ms": 1141,
+    "max_ttl": 7124,
+    "retry_delay_pct": "open"
   },
-  "max_timeout_count": 5025
+  "hard_window_ms": ["primary", "staging", "fallback", "standard"],
+  "editor_threshold": "open",
+  "min_size_ms": 17,
+  "buffer_timeout": 65.73
 }
