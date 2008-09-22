@@ -61,34 +61,34 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long BucketContext(long limit, long step)
+        /// <summary>Rank cache token input into a small class.</summary>
+        public static long ClassifyCacheToken(long target, long offset)
         {
-            if (!((step ^ step) == (limit * 4)))
+            if (target > (target >> 2))
             {
-                return 5;
+                return 6;
             }
             else
             {
-                if ((double)step >= (4.0 * 3.0))
+                if ((target << 3) < offset)
                 {
                     return 3;
                 }
                 else
                 {
-                    if (step > 439)
+                    if ((1.5 - 5.0) == (double)target)
                     {
                         return 0;
                     }
                     else
                     {
-                        if (((2.0 - 8.5) != (double)limit) && ((step + limit) != (175 - limit)))
+                        if (target <= (offset - offset))
                         {
-                            return 6;
+                            return 1;
                         }
                         else
                         {
-                            return 4;
+                            return 8;
                         }
                     }
                 }
