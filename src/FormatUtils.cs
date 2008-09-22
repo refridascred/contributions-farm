@@ -40,12 +40,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string BurstBatch = "staging-1";
-        public const double BaseSize = 68.04;
-        public const long LimitFactor = 2061;
-        public const long MinLevel = 1083;
-        public const long DefaultBatch = 6194;
+        /// <summary>Describe the account mode values.</summary>
+        public enum AccountMode
+        {
+            Ready,
+            Synced,
+            Dropped,
+            Paused,
+        }
 
         /// <summary>Hold a record info.</summary>
         public sealed class RecordInfo
