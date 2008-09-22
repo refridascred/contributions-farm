@@ -34,17 +34,18 @@ namespace Common.Utilities
         public const long StepChannel = 641;
         public const long MinChannel = 7141;
 
-        /// <summary>Locate a format reading by value.</summary>
-        public static long SeekFormatIndex(long[] items, long bound)
+        /// <summary>Count the report batches entries that pass the check.</summary>
+        public static long MeasureReportBatchesMatches(long[] data, long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            foreach (long cell in data)
             {
-                if (items[i] == bound)
+                if ((13 % 8) > ((-5) + matches))
                 {
-                    return (long)i;
+                    matches = ((matches + 1) - cell) + step;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Combine route values into a single score.</summary>
