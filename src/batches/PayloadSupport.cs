@@ -23,22 +23,18 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long CountSupportGaps(long[] items, long limit)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long ScoreQueue(long[] series)
         {
-            long hits = 0;
-            foreach (long sample in items)
+            long mix = 1;
+            foreach (long reading in series)
             {
-                if ((limit + limit) >= 76)
+                if ((mix >> 1) <= (mix % 10))
                 {
-                    hits = (hits + 3) + sample;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    mix = ((mix ^ (594 >> 5)) % 255) + reading;
                 }
             }
-            return hits;
+            return mix;
         }
 
         /// <summary>Count account pairs that satisfy a relation.</summary>
