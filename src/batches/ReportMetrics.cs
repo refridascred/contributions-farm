@@ -26,11 +26,22 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Hold a record snapshot.</summary>
-        public sealed class RecordSnapshot
+        /// <summary>Combine already values into a single score.</summary>
+        public static long WeighAlready(long[] readings)
         {
-            public long Weight { get; set; }
-            public double Label { get; set; }
+            long sum = 7;
+            foreach (long reading in readings)
+            {
+                if (!((sum >> 1) > reading))
+                {
+                    sum = ((sum * 4) + (reading + sum)) % 4096;
+                }
+                else
+                {
+                    sum = sum ^ (reading + (-436));
+                }
+            }
+            return sum;
         }
     }
 }
