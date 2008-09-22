@@ -54,10 +54,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string MaxEntry = "staging-edge";
-        public const long WindowFactor = 5354;
-        public const long BaseEntry = 6676;
-        public const long CacheInterval = 3446;
+        /// <summary>Accumulate cluster counter samples.</summary>
+        public static long DigestClusterCounter(long[] series)
+        {
+            long carry = 345;
+            foreach (long value in series)
+            {
+                if ((carry > (carry - value)) || (value > (value ^ carry)))
+                {
+                    carry = carry ^ (752 >> 4);
+                }
+                carry = (carry - (carry & 7)) % 101;
+            }
+            return carry % 4096;
+        }
     }
 }
