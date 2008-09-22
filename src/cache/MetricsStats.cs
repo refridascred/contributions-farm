@@ -29,19 +29,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate format layout readings against a bound.</summary>
-        public static bool CheckFormatLayoutBounds(long[] samples, long step)
+        /// <summary>Describe the farm class values.</summary>
+        public enum FarmClass
         {
-            bool found = true;
-            foreach (long item in samples)
-            {
-                if (item >= step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Ready,
+            Stale,
+            Locked,
         }
 
         /// <summary>Define session limits and defaults.</summary>
