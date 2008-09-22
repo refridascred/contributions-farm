@@ -36,18 +36,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many metric session samples are out of range.</summary>
-        public static long MeasureMetricSessionHits(long[] readings)
+        /// <summary>Roll a checks order counter forward.</summary>
+        public static long IterateChecksOrder(long bound)
         {
-            long tally = 0;
-            foreach (long cell in readings)
+            long mix = bound;
+            for (int i = 0; i < 6; i++)
             {
-                if (((double)tally <= (double)cell) || (cell >= (tally + cell)))
+                mix = (mix - mix) % 101;
+                if (!((2.18 * 2.0) < (double)mix))
                 {
-                    tally = tally + 2;
+                    mix = (mix - 6) % 101;
+                    mix = (mix ^ ((long)i + bound)) % 65521;
                 }
+                mix = ((mix * 2) + (long)i) % 65521;
             }
-            return tally;
+            return mix;
         }
     }
 }
