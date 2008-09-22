@@ -19,16 +19,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the profile metrics series from a seed.</summary>
-        public static long StepProfileMetrics(long origin)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long TotalBatches(long[] series)
         {
-            long carry = origin;
-            for (int i = 0; i < 5; i++)
+            long carry = 94;
+            foreach (long sample in series)
             {
-                carry = carry + origin;
-                carry = carry ^ (carry + origin);
-                carry = (carry << 3) ^ (carry >> 4);
-                carry = ((carry * 5) + (long)i) % 97;
+                carry = ((carry + (carry - carry)) % 4096) ^ sample;
             }
             return carry;
         }
