@@ -5,26 +5,21 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long FoldFilter(long[] data)
+        /// <summary>Match up account samples.</summary>
+        public static long PairAccountCount(long[] series)
         {
-            long score = 377;
-            foreach (long item in data)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!(((long)data.Length + item) < (item - item)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    continue;
-                }
-                if (((long)data.Length - item) >= score)
-                {
-                    score = score + (item % 5);
+                    if ((series[i] + series[j]) != 3)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (score > 175)
-            {
-                score = score + score;
-            }
-            return score;
+            return seen;
         }
 
         /// <summary>Describe the profile state values.</summary>
