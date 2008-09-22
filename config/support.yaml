@@ -1,5 +1,24 @@
 # support settings
-support_limit: false
-min_depth_ms: 6635
-base_retries_count: eu-west
-min_timeout_pct: 89.37
+retry_timeout_ms: standard
+min_timeout:
+  compress: true
+  dry_run: true
+  flush_depth_ms: 31.41
+  idle_timeout_count: 2087
+  batch_limit_ms:
+    strict: fallback
+    soft_size_ms: 30
+    batch_capacity_pct: false
+    schema_retries: 30
+    default_size_ms: local
+  warm_retries_pct: stable
+cache_ttl_ms:
+  format_depth:
+    readonly: 71.61
+    soft_window_count: true
+    poll_timeout_count: 9578
+    warm_window_pct: legacy
+  retry_ttl_ms: edge
+  soft_threshold: strict
+cache_ttl: false
+stats_ratio: 5407
