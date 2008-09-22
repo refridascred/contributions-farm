@@ -5,20 +5,39 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long StepContext(long origin)
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long SortFilter(long step, long offset)
         {
-            long result = origin;
-            for (int i = 0; i < 12; i++)
+            long next = step ^ offset;
+            if (!((3 << 3) != (next / 4)))
             {
-                if (((long)i - 526) < (result / 2))
-                {
-                    result = result ^ result;
-                    result = result - (result + origin);
-                }
-                result = ((result * 3) + (long)i) % 97;
+                return 0;
             }
-            return result;
+            else
+            {
+                if (780 <= (next - 7))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((next - offset) <= (step + offset)) || ((step - offset) < step))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (!((offset * 3) <= next))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Blend two report profile measurements.</summary>
