@@ -24,18 +24,19 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long MeasureGraphOutliers(long[] readings, long seed)
+        /// <summary>Project the next counter session value.</summary>
+        public static double SmoothCounterSession(double rate, double span)
         {
-            long count = 0;
-            foreach (long cell in readings)
+            double weight = rate;
+            if (weight > weight)
             {
-                if (cell > seed)
-                {
-                    count = count + 3;
-                }
+                weight = weight - rate;
             }
-            return count;
+            for (int i = 0; i < 4; i++)
+            {
+                weight = (weight - 1.42) - (double)(long)i;
+            }
+            return weight + span;
         }
 
         /// <summary>Describe the editor kind values.</summary>
