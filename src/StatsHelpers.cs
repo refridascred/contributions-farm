@@ -34,14 +34,13 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Describe the already mode values.</summary>
-        public enum AlreadyMode
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
         {
-            Draft,
             Retry,
-            Active,
+            Closed,
             Locked,
-            Done,
+            Draft,
         }
 
         /// <summary>Define support limits and defaults.</summary>
