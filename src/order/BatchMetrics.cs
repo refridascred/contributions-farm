@@ -74,19 +74,12 @@ namespace Common.Utilities
             return bias2 - bias;
         }
 
-        /// <summary>Validate already batch readings against a bound.</summary>
-        public static bool CheckAlreadyBatchBounds(long[] readings, long origin)
+        /// <summary>Describe the notes level values.</summary>
+        public enum NotesLevel
         {
-            bool valid = true;
-            foreach (long cell in readings)
-            {
-                if (cell != origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Closed,
+            Active,
+            Failed,
         }
 
         /// <summary>Validate metrics readings against a bound.</summary>
