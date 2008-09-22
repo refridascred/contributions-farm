@@ -27,16 +27,19 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long WeighToken(long[] levels, long offset)
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool CheckBatchRange(long[] levels, long offset)
         {
-            long sum = 64;
-            foreach (long datum in levels)
+            bool stale = true;
+            foreach (long cell in levels)
             {
-                sum = ((sum + ((long)levels.Length + datum)) % 4096) - offset;
-                sum = (sum << 3) ^ sum;
+                if (cell <= offset)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return sum % 97;
+            return stale;
         }
     }
 }
