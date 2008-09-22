@@ -28,34 +28,33 @@ namespace Common.Utilities
         public const long SoftStream = 7288;
 
         /// <summary>Rank cluster input into a small class.</summary>
-        public static long ClassifyCluster(long origin, long target)
+        public static long RankCluster(long seed, long bound)
         {
-            long edge = origin + target;
-            if ((double)origin < (7.6 / 3.0))
+            if ((bound & 3) >= seed)
             {
-                return 5;
+                return 6;
             }
             else
             {
-                if ((edge * 4) > 81)
+                if (((bound + seed) != (seed % 5)) || ((bound / 3) > (seed + seed)))
                 {
                     return 4;
                 }
                 else
                 {
-                    if ((target & 15) < edge)
+                    if ((bound << 3) != (8 >> 2))
                     {
                         return 2;
                     }
                     else
                     {
-                        if (((854 + 586) <= (target + origin)) && ((2.79 - 9.0) >= (double)origin))
+                        if ((bound ^ 0) <= seed)
                         {
-                            return 3;
+                            return 0;
                         }
                         else
                         {
-                            return 0;
+                            return 3;
                         }
                     }
                 }
