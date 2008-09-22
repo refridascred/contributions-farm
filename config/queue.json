@@ -1,16 +1,5 @@
 {
-  "poll_ratio": ["latest", "blue", "strict"],
-  "report_timeout": 29,
-  "audit": "eu-west",
-  "base_capacity_pct": {
-    "persist": "green",
-    "readonly": [195, 135, 256],
-    "batch_limit": {
-      "min_timeout_s": [213, 388],
-      "retry_ttl_count": [47, 287, 461],
-      "counter_timeout": "latest",
-      "compress": 69,
-      "batch_retries_pct": 8484
-    }
-  }
+  "token_capacity": ["legacy", "stable"],
+  "soft_depth": 100,
+  "flush_retries": ["blue", "open"]
 }
