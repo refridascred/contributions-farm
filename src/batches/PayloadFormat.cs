@@ -19,21 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of token readings.</summary>
-        public static long OverlapTokenCount(long[] samples)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long MeasureAlreadyMatches(long[] readings)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            foreach (long sample in readings)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((5 % 16) <= hits)
                 {
-                    if ((samples[i] + samples[j]) != 19)
-                    {
-                        count = count + 1;
-                    }
+                    hits = (hits + 3) + sample;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Grade a schema tools value against two limits.</summary>
