@@ -46,9 +46,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long RetryTimeout = 8488;
-        public const double BurstQueue = 73.18;
-        public const string BatchDepth = "legacy";
+        /// <summary>Describe the graph class values.</summary>
+        public enum GraphClass
+        {
+            Locked,
+            Idle,
+            Pending,
+            Paused,
+        }
     }
 }
