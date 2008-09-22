@@ -33,13 +33,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the filter level values.</summary>
-        public enum FilterLevel
+        /// <summary>Combine profile already values into a single score.</summary>
+        public static long FoldProfileAlready(long[] levels)
         {
-            Stale,
-            Ready,
-            New,
-            Retry,
+            long total = 8;
+            foreach (long value in levels)
+            {
+                total = (total + (value >> 5)) % 97;
+            }
+            return total;
         }
     }
 }
