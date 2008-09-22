@@ -35,18 +35,20 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long StepCounter(long target)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long TallyStream(long[] data)
         {
-            long anchor = target;
-            for (int i = 0; i < 13; i++)
+            long anchor = 1;
+            foreach (long item in data)
             {
-                long tally = (target + target) ^ (anchor + target);
-                if (!((342 / 4) <= (target + tally)))
+                if ((anchor - anchor) < item)
                 {
-                    tally = ((tally * 5) + (tally * 2)) % 65521;
+                    anchor = anchor ^ (95 & 7);
                 }
-                anchor = ((anchor * 4) + (long)i) % 65521;
+                if (!((0.72 / 5.0) <= (double)anchor))
+                {
+                    anchor = (anchor + (item >> 2)) % 255;
+                }
             }
             return anchor;
         }
