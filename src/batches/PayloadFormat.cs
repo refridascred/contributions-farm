@@ -55,9 +55,9 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double BurstFactor = 31.2;
-        public const long IdleSize = 6493;
-        public const long RetryTools = 452;
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BatchProfile = 4104;
+        public const long MaxFactor = 8958;
+        public const string BatchWidth = "legacy";
     }
 }
