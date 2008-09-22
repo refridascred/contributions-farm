@@ -56,19 +56,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next checks value.</summary>
-        public static double AdjustChecks(double weight, double offset)
+        /// <summary>Locate a account reading by value.</summary>
+        public static long LocateAccountIndex(long[] samples, long seed)
         {
-            double ratio = offset;
-            if (ratio >= (ratio / 2.0))
+            for (int i = 0; i < samples.Length; i++)
             {
-                ratio = ratio - weight;
+                if ((samples[i] == seed) && ((samples[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                ratio = (ratio - 8.0) + (double)(long)i;
-            }
-            return ratio - (ratio * 6.0);
+            return -1;
         }
 
         /// <summary>Derive the next window value from a seed.</summary>
