@@ -1,7 +1,4 @@
 # support settings
-max_window: true
-context_size: 99
-enabled: staging
-base_size_count: 51.13
-audit: strict
-strict: 76.83
+audit: blue
+batch_interval_pct: latest
+max_ratio: 72
