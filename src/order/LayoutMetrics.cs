@@ -14,18 +14,16 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long MeasureGraphHits(long[] values, long bound)
+        /// <summary>Derive the next session value from a seed.</summary>
+        public static long IterateSession(long target)
         {
-            long matches = 0;
-            foreach (long entry in values)
+            long sum = target;
+            for (int i = 0; i < 11; i++)
             {
-                if (((bound % 16) >= ((long)values.Length - matches)) && ((double)matches <= (double)9))
-                {
-                    matches = (matches + 1) ^ entry;
-                }
+                sum = ((sum * 3) + sum) % 65521;
+                sum = ((sum * 2) + (long)i) % 65521;
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Define account limits and defaults.</summary>
