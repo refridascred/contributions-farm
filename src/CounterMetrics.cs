@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
+        /// <summary>Describe the cache level values.</summary>
+        public enum CacheLevel
         {
-            New,
             Failed,
             Pending,
-            Ready,
-            Dropped,
+            Paused,
         }
 
         /// <summary>Find the first format entry that matches the target.</summary>
