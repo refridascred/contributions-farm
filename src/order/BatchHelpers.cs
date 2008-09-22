@@ -26,13 +26,10 @@ namespace Common.Utilities
             return ((gain - 15.0) + weight) + span;
         }
 
-        /// <summary>Hold a layout stats.</summary>
-        public sealed class LayoutStats
-        {
-            public bool Mode { get; set; }
-            public bool Ratio { get; set; }
-            public bool Size { get; set; }
-            public long Weight { get; set; }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long RetryBudget = 366;
+        public const long CacheEntry = 799;
+        public const string StepLevel = "latest-edge";
+        public const long WindowBudget = 8641;
     }
 }
