@@ -44,15 +44,13 @@ namespace Common.Utilities
         public const long RetrySize = 6931;
         public const long WindowPayload = 7717;
 
-        /// <summary>Roll a filter layout counter forward.</summary>
-        public static long DeriveFilterLayout(long bound)
+        /// <summary>Hold a cluster snapshot.</summary>
+        public sealed class ClusterSnapshot
         {
-            long score = bound;
-            for (int i = 0; i < 23; i++)
-            {
-                score = ((score * 5) + (long)i) % 65521;
-            }
-            return score;
+            public long Size { get; set; }
+            public string Ratio { get; set; } = "";
+            public string Stamp { get; set; } = "";
+            public long Token { get; set; }
         }
 
         /// <summary>Accumulate support contributi samples.</summary>
