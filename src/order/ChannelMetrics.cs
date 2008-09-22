@@ -32,20 +32,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Fold a list of notes farm readings.</summary>
-        public static long DigestNotesFarm(long[] samples)
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool VerifyMetricsBounds(long[] readings, long step)
         {
-            long carry = 621;
-            foreach (long sample in samples)
+            bool ready = true;
+            foreach (long item in readings)
             {
-                carry = (carry + (sample - carry)) % 101;
-                if ((double)sample < (7.95 / 7.0))
+                if (item != step)
                 {
+                    ready = false;
                     break;
                 }
-                carry = carry ^ ((long)samples.Length - carry);
             }
-            return carry;
+            return ready;
         }
     }
 }
