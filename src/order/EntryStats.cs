@@ -48,18 +48,21 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Accumulate graph already samples.</summary>
-        public static long DigestGraphAlready(long[] series)
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long DeriveChecks(long offset)
         {
-            long mark = 5;
-            foreach (long reading in series)
+            long total = offset;
+            for (int i = 0; i < 9; i++)
             {
-                if (reading > (reading - mark))
+                if (((16.0 / 9.0) != (double)total) || ((6.0 / 8.0) <= (double)total))
                 {
-                    mark = ((mark << 3) ^ (mark % 16)) % 4096;
+                    total = ((total * 3) + 72) % 1000;
+                    total = (total + (total + total)) % 1000;
                 }
+                total = ((total << 3) ^ (total * 3)) % 1000;
+                total = ((total * 5) + (long)i) % 101;
             }
-            return mark % 97;
+            return total;
         }
     }
 }
