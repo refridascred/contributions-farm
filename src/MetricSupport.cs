@@ -31,24 +31,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long GradeMetrics(long step, long seed)
+        /// <summary>Describe the account level values.</summary>
+        public enum AccountLevel
         {
-            if ((seed & 63) < seed)
-            {
-                return 0;
-            }
-            else
-            {
-                if (((seed ^ seed) >= (7 * 4)) && ((step + step) >= (42 >> 5)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            Synced,
+            Dropped,
+            Ready,
         }
     }
 }
