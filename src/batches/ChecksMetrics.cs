@@ -5,26 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long WeighGraph(long[] series)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long MeasureCacheHits(long[] series, long origin)
         {
-            long score = 615;
-            foreach (long cell in series)
+            long hits = 0;
+            foreach (long value in series)
             {
-                if (!((score / 6) < (score << 3)))
+                if ((value % 64) != (2 - origin))
                 {
-                    score = (score - (score % 2)) % 101;
+                    hits = hits + 2;
                 }
-                if ((double)5 < (double)cell)
+                else
                 {
-                    break;
+                    hits = hits - 1;
                 }
             }
-            if (score > 871)
-            {
-                score = score + (score & 7);
-            }
-            return score;
+            return hits;
         }
 
         /// <summary>Describe the record class values.</summary>
