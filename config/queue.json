@@ -1,9 +1,8 @@
 {
-  "report_ratio": 15,
-  "dry_run": {
-    "flush_retries": 100,
-    "verbose": 3248,
-    "farm_size": "strict"
-  },
-  "warm_delay": "edge"
+  "dry_run": "cached",
+  "poll_threshold_count": 65.92,
+  "strict": 42.47,
+  "min_capacity_ms": 60,
+  "burst_timeout_count": "strict",
+  "filter_depth": 30
 }
