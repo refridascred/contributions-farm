@@ -35,12 +35,13 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long SoftContributi = 2347;
-        public const string BurstBudget = "alpha-edge";
-        public const long DefaultLevel = 6855;
-        public const string RetryContributi = "standard-v2";
-        public const long WindowSpan = 1154;
+        /// <summary>Describe the window level values.</summary>
+        public enum WindowLevel
+        {
+            Synced,
+            Paused,
+            Draft,
+        }
 
         /// <summary>Define token limits and defaults.</summary>
         public const long WindowToken = 1994;
