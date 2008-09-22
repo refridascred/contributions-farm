@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a schema snapshot.</summary>
-        public sealed class SchemaSnapshot
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool ValidateClusterLimits(long[] levels, long step)
         {
-            public string Rank { get; set; } = "";
-            public string Region { get; set; } = "";
-            public long Flag { get; set; }
-            public long Limit { get; set; }
+            bool flag = true;
+            foreach (long sample in levels)
+            {
+                if (sample != step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Count farm pairs that satisfy a relation.</summary>
