@@ -5,17 +5,32 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Look up the position of a schema account sample.</summary>
-        public static long FindSchemaAccountIndex(long[] data, long offset)
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long BucketBatches(long floor, long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            long lane = floor + target;
+            if (((60 % 12) <= (lane + floor)) && (floor > lane))
             {
-                if ((data[i] >= offset) && ((data[i] % 2) != 0))
+                return 1;
+            }
+            else
+            {
+                if ((lane >= (floor + target)) || ((floor / 9) < (32 * 5)))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    if ((target - 80) < 3)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
