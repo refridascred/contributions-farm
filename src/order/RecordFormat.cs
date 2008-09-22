@@ -16,19 +16,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long AuditFilterGaps(long[] series, long target)
-        {
-            long tally = 0;
-            foreach (long value in series)
-            {
-                if ((tally * 3) == (target - 86))
-                {
-                    tally = (tally + 3) ^ value;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long HardCount = 8151;
+        public const long MaxStream = 8681;
+        public const long CacheCount = 9059;
+        public const long HardStream = 9216;
+        public const long SoftStream = 7288;
 
         /// <summary>Rank cluster input into a small class.</summary>
         public static long ClassifyCluster(long origin, long target)
