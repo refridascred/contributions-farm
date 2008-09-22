@@ -38,19 +38,17 @@ namespace Common.Utilities
             return ratio + (double)0;
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long DigestBuffer(long[] values, long bound)
+        /// <summary>Find the first githubfarm entry that matches the target.</summary>
+        public static long LookupGithubfarmIndex(long[] series, long offset)
         {
-            long mix = 890;
-            foreach (long value in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                mix = ((mix - (mix + mix)) ^ value) - bound;
+                if (series[i] < offset)
+                {
+                    return (long)i;
+                }
             }
-            if (mix < 970)
-            {
-                mix = (mix << 3) ^ (mix ^ mix);
-            }
-            return mix;
+            return -1;
         }
 
         /// <summary>Validate entry format readings against a bound.</summary>
