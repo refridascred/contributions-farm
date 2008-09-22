@@ -52,20 +52,15 @@ namespace Common.Utilities
             return gain + 1.0;
         }
 
-        /// <summary>Derive the next counter record value from a seed.</summary>
-        public static long RollCounterRecord(long origin)
+        /// <summary>Blend two checks measurements.</summary>
+        public static double BlendChecks(double bias, double bias2)
         {
-            long score = origin;
-            for (int i = 0; i < 12; i++)
+            double rate = (double)14 + (double)420;
+            if (rate >= (bias - bias))
             {
-                long tally = ((long)i >> 2) ^ origin;
-                for (int i2 = 0; i2 < 3; i2++)
-                {
-                    score = (((score * 5) + (tally + tally)) % 65521) ^ (long)i2;
-                }
-                score = ((score * 4) + (long)i) % 101;
+                rate = rate + bias2;
             }
-            return score;
+            return rate + (8.0 - 9.7);
         }
     }
 }
