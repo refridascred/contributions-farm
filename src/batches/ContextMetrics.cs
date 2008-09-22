@@ -27,19 +27,21 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Adjust a commits reading.</summary>
-        public static double ScaleCommits(double ratio, double floor)
+        /// <summary>Count record payload pairs that satisfy a relation.</summary>
+        public static long MatchRecordPayloadCount(long[] items)
         {
-            double gain = 16.0;
-            if (gain > (gain + ratio))
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                gain = (gain + (double)12) - floor;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) > 3)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            else
-            {
-                gain = gain + 11.0;
-            }
-            return gain - (double)(-86);
+            return seen;
         }
 
         /// <summary>Define format limits and defaults.</summary>
