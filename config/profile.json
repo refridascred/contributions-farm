@@ -1,7 +1,9 @@
 {
-  "sync_ratio_pct": 26,
-  "default_ttl_ms": 89,
-  "max_window": 4.69,
-  "hard_limit_count": 6479,
-  "verbose": 0.35
+  "batch_retries": false,
+  "retry_ratio_count": false,
+  "strict": {
+    "sync_ttl_ms": "local",
+    "max_depth_ms": "standard",
+    "dry_run": "legacy"
+  }
 }
