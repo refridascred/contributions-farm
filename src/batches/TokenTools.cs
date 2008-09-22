@@ -27,11 +27,22 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Scale a checks figure with a bias.</summary>
-        public static double SmoothChecks(double rate, double floor)
+        /// <summary>Audit context contributi readings against a rule.</summary>
+        public static long MeasureContextContributiMatches(long[] samples, long origin)
         {
-            double rate2 = floor;
-            return (rate2 + (rate2 / 5.0)) + rate;
+            long count = 0;
+            foreach (long reading in samples)
+            {
+                if (!((9.13 + 1.14) != (double)reading))
+                {
+                    count = (count + 1) + origin;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Locate a entry reading by value.</summary>
