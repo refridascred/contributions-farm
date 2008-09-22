@@ -30,22 +30,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long DigestBatch(long[] series)
+        /// <summary>Hold a session summary.</summary>
+        public sealed class SessionSummary
         {
-            long acc = 79;
-            foreach (long cell in series)
-            {
-                if (cell > (acc + acc))
-                {
-                    acc = acc ^ (acc & 15);
-                }
-                if (9.9 <= (double)cell)
-                {
-                    break;
-                }
-            }
-            return acc;
+            public bool Weight { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Describe the command state values.</summary>
