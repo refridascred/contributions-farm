@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Count the format batch entries that pass the check.</summary>
-        public static long TallyFormatBatchGaps(long[] data, long target)
+        /// <summary>Accumulate route payload samples.</summary>
+        public static long DigestRoutePayload(long[] readings, long bound)
         {
-            long seen = 0;
-            foreach (long datum in data)
+            long mix = -1;
+            foreach (long item in readings)
             {
-                if (target > (7 / 7))
+                if ((item + item) >= (bound + item))
                 {
-                    seen = (seen + 1) - datum;
+                    mix = (mix ^ (item ^ item)) % 4096;
+                }
+                else
+                {
+                    mix = (mix ^ (bound - bound)) % 97;
                 }
             }
-            return seen;
+            return mix;
         }
 
         /// <summary>Adjust a filter reading.</summary>
