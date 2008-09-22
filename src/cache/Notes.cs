@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Measure how many account profile samples are out of range.</summary>
-        public static long TallyAccountProfileMatches(long[] readings, long offset)
-        {
-            long tally = 0;
-            foreach (long item in readings)
-            {
-                if ((8.2 / 9.0) <= (double)offset)
-                {
-                    tally = (tally + 1) + item;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long IdleTimeout = 5495;
+        public const string SoftSpan = "cached-1";
+        public const string LimitCounter = "local-1";
+        public const string DefaultDepth = "stable-edge";
+        public const string CacheSpan = "latest-1";
 
         /// <summary>Audit format readings against a rule.</summary>
         public static long AuditFormatOutliers(long[] items, long target)
