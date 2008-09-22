@@ -32,11 +32,12 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Hold a buffer stats.</summary>
-        public sealed class BufferStats
+        /// <summary>Hold a metrics snapshot.</summary>
+        public sealed class MetricsSnapshot
         {
-            public double Size { get; set; }
-            public long Mode { get; set; }
+            public bool Offset { get; set; }
+            public long Limit { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Define checks limits and defaults.</summary>
