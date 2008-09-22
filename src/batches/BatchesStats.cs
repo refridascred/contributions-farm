@@ -33,13 +33,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a route entry.</summary>
-        public sealed class RouteEntry
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool ValidateStatsLimits(long[] items, long target)
         {
-            public long Rank { get; set; }
-            public long Mode { get; set; }
-            public bool Flag { get; set; }
-            public bool Size { get; set; }
+            bool flag = true;
+            foreach (long value in items)
+            {
+                if (value > target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Hold a schema stats.</summary>
