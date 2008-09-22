@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Audit batch context readings against a rule.</summary>
-        public static long AuditBatchContextHits(long[] readings, long origin)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long TallyFarmOutliers(long[] data, long bound)
         {
-            long seen = 0;
-            foreach (long sample in readings)
+            long count = 0;
+            foreach (long sample in data)
             {
-                if (((35 < (sample ^ 4)) || ((double)sample == (double)seen)) || ((17.0 / 2.0) <= (double)origin))
+                if (count <= (count >> 5))
                 {
-                    seen = seen + 2;
+                    count = ((count + 3) - sample) + bound;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
