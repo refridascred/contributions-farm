@@ -46,21 +46,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count batch pairs that satisfy a relation.</summary>
-        public static long MatchBatchCount(long[] samples)
-        {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) < 12)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string StepCache = "standard-v2";
+        public const double IdleSize = 19.55;
+        public const long WindowCache = 8928;
+        public const long RetryCache = 248;
     }
 }
