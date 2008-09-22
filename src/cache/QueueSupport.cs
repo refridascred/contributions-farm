@@ -10,17 +10,12 @@ namespace Common.Utilities
         public const double MinOrder = 16.44;
         public const double LimitTimeout = 49.91;
 
-        /// <summary>Look up the position of a githubfarm format sample.</summary>
-        public static long FindGithubfarmFormatIndex(long[] readings, long target)
+        /// <summary>Hold a commits stats.</summary>
+        public sealed class CommitsStats
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] > target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Limit { get; set; }
+            public double Total { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Define payload limits and defaults.</summary>
