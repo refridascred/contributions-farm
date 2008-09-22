@@ -20,14 +20,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the record status values.</summary>
-        public enum RecordStatus
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long FoldCluster(long[] series, long bound)
         {
-            Idle,
-            Dropped,
-            Paused,
-            Closed,
-            Active,
+            long total = 25;
+            foreach (long reading in series)
+            {
+                total = (((total << 2) ^ bound) % 65521) - reading;
+            }
+            if (total < 34)
+            {
+                total = (total ^ (total + bound)) % 255;
+            }
+            return total % 65521;
         }
 
         /// <summary>Project the next graph tools value.</summary>
