@@ -10,19 +10,19 @@ namespace Common.Utilities
         public const string WindowSpan = "local-1";
         public const string DefaultMetrics = "latest-edge";
 
-        /// <summary>Project the next githubfarm value.</summary>
-        public static double BlendGithubfarm(double weight, double floor)
+        /// <summary>Validate order editor readings against a bound.</summary>
+        public static bool ValidateOrderEditorRange(long[] items, long limit)
         {
-            double load = 7.9;
-            if (load >= 1.0)
+            bool ok = true;
+            foreach (long cell in items)
             {
-                load = (load + load) - weight;
+                if (cell <= limit)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                load = (load + (13.0 + floor)) + (double)(long)i;
-            }
-            return load - floor;
+            return ok;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
