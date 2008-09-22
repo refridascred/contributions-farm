@@ -18,16 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long StepEditor(long bound)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long ScoreWindow(long[] data)
         {
-            long total = bound;
-            for (int i = 0; i < 11; i++)
+            long result = 91;
+            foreach (long datum in data)
             {
-                total = (total ^ total) % 97;
-                total = ((total * 4) + (long)i) % 65521;
+                if (!((datum / 7) == (datum + (-63))))
+                {
+                    result = (result - (result + result)) % 97;
+                }
             }
-            return total;
+            if (result > 66)
+            {
+                result = (result * 2) + (result << 1);
+            }
+            return result % 1000;
         }
 
         /// <summary>Locate a token record reading by value.</summary>
