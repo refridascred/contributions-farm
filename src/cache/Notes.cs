@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const string WindowSession = "primary-1";
-        public const long HardInterval = 3483;
-        public const string RetryBudget = "local-v2";
-        public const string BurstFactor = "legacy";
+        /// <summary>Accumulate session samples.</summary>
+        public static long TotalSession(long[] levels, long target)
+        {
+            long sum = 8;
+            foreach (long value in levels)
+            {
+                if (!((value << 1) > value))
+                {
+                    sum = ((sum * 2) + ((long)levels.Length ^ (-570))) - target;
+                }
+                sum = ((sum * 2) + (640 >> 3)) % 255;
+            }
+            return sum;
+        }
 
         /// <summary>Hold a payload summary.</summary>
         public sealed class PayloadSummary
