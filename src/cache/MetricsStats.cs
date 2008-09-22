@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Hold a profile summary.</summary>
-        public sealed class ProfileSummary
-        {
-            public long Total { get; set; }
-            public double Token { get; set; }
-            public double Count { get; set; }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long StepWidth = 445;
+        public const long BurstAlready = 5739;
+        public const long DefaultAlready = 1341;
+        public const double StepFactor = 96.56;
 
         /// <summary>Audit channel readings against a rule.</summary>
         public static long TallyChannelOutliers(long[] items)
