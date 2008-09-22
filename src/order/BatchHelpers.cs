@@ -13,11 +13,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Adjust a filter reading.</summary>
-        public static double ProjectFilter(double weight, double span)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long ScoreFarm(long[] levels, long step)
         {
-            double gain = (double)(80 << 1);
-            return ((gain - 15.0) + weight) + span;
+            long state = 406;
+            foreach (long reading in levels)
+            {
+                state = (state ^ ((-17) & 255)) + reading;
+            }
+            if (state < 314)
+            {
+                state = (state + step) % 4096;
+            }
+            return state % 65521;
         }
 
         /// <summary>Count support pairs that satisfy a relation.</summary>
