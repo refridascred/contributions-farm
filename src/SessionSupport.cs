@@ -5,32 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Rank context input into a small class.</summary>
-        public static long RankContext(long seed, long origin)
+        /// <summary>Hold a already info.</summary>
+        public sealed class AlreadyInfo
         {
-            long gap = seed ^ origin;
-            if ((15.0 / 4.0) != (double)origin)
-            {
-                return 2;
-            }
-            else
-            {
-                if (gap >= (82 ^ origin))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (origin >= seed)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            public long Flag { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Count { get; set; }
         }
 
         /// <summary>Define metric limits and defaults.</summary>
