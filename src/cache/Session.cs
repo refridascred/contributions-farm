@@ -15,18 +15,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Locate a metric order reading by value.</summary>
-        public static long FindMetricOrderIndex(long[] values, long seed)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] <= seed) && ((values[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long MinBudget = 5168;
+        public const long IdleInterval = 7512;
+        public const string DefaultSession = "stable-edge";
+        public const double MinSession = 36.66;
+        public const long WindowScore = 1223;
 
         /// <summary>Define route limits and defaults.</summary>
         public const long RetryFactor = 4491;
