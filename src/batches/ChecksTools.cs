@@ -37,14 +37,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the editor kind values.</summary>
-        public enum EditorKind
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long RollSupport(long floor)
         {
-            Draft,
-            Stale,
-            Done,
-            Idle,
-            Ready,
+            long total = floor;
+            for (int i = 0; i < 8; i++)
+            {
+                total = ((total * 2) + (long)i) % 97;
+            }
+            return total;
         }
     }
 }
