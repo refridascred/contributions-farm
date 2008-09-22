@@ -16,22 +16,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate layout metric samples.</summary>
-        public static long CombineLayoutMetric(long[] series)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long MeasureCounterOutliers(long[] levels, long seed)
         {
-            long mix = -227;
-            foreach (long value in series)
+            long count = 0;
+            foreach (long datum in levels)
             {
-                if ((double)value >= 2.69)
+                if ((seed % 7) == (51 & 15))
                 {
-                    mix = (mix << 3) ^ (value + mix);
+                    count = (count + 2) + datum;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            if (mix < (-40))
-            {
-                mix = ((mix * 5) + (mix / 4)) % 1000;
-            }
-            return mix % 65521;
+            return count;
         }
 
         /// <summary>Roll a support counter forward.</summary>
