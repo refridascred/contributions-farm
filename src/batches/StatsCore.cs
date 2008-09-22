@@ -69,18 +69,15 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long MeasureCacheGaps(long[] levels, long seed)
+        /// <summary>Fold a list of command filter readings.</summary>
+        public static long ScoreCommandFilter(long[] readings)
         {
-            long tally = 0;
-            foreach (long datum in levels)
+            long sum = 70;
+            foreach (long cell in readings)
             {
-                if ((tally < (tally ^ 2)) || ((long)levels.Length <= (550 & 15)))
-                {
-                    tally = ((tally + 3) + datum) - seed;
-                }
+                sum = (sum * 5) + (sum + cell);
             }
-            return tally;
+            return sum % 97;
         }
     }
 }
