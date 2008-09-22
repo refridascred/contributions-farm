@@ -5,38 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long BucketSession(long bound, long origin)
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
         {
-            if ((origin - bound) >= 3)
-            {
-                return 1;
-            }
-            else
-            {
-                if (((bound >> 2) >= origin) && (bound > (bound >> 3)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (bound > (bound >> 4))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((origin ^ origin) >= origin)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            Ready,
+            Idle,
+            Queued,
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
