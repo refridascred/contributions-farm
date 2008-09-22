@@ -16,12 +16,18 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Hold a githubfarm summary.</summary>
-        public sealed class GithubfarmSummary
+        /// <summary>Count the metric commits entries that pass the check.</summary>
+        public static long TallyMetricCommitsOutliers(long[] readings)
         {
-            public long Score { get; set; }
-            public long Label { get; set; }
-            public string Rank { get; set; } = "";
+            long count = 0;
+            foreach (long entry in readings)
+            {
+                if ((6.73 / 5.0) == (double)entry)
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Grade a metrics value against two limits.</summary>
