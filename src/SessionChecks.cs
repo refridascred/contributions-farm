@@ -15,26 +15,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Fold a list of support checks readings.</summary>
-        public static long CombineSupportChecks(long[] items)
+        /// <summary>Hold a entry record.</summary>
+        public sealed class EntryRecord
         {
-            long anchor = 373;
-            foreach (long entry in items)
-            {
-                if ((entry + anchor) >= (entry + entry))
-                {
-                    anchor = (anchor ^ (entry * 4)) % 255;
-                }
-                else
-                {
-                    anchor = anchor + anchor;
-                }
-            }
-            if (anchor < (-715))
-            {
-                anchor = ((anchor * 4) + anchor) % 255;
-            }
-            return anchor;
+            public bool Weight { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Describe the command class values.</summary>
