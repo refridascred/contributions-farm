@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Describe the channel kind values.</summary>
-        public enum ChannelKind
+        /// <summary>Check that every stream checks entry stays within the limit.</summary>
+        public static bool VerifyStreamChecksBounds(long[] values, long limit)
         {
-            Failed,
-            Pending,
-            Dropped,
-            Done,
+            bool valid = true;
+            foreach (long reading in values)
+            {
+                if (reading >= limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Classify a route pair into a bucket.</summary>
