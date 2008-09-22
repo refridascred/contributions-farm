@@ -33,18 +33,22 @@ namespace Common.Utilities
         public const long BurstSize = 3418;
         public const string CacheFormat = "alpha-1";
 
-        /// <summary>Count the session token entries that pass the check.</summary>
-        public static long TallySessionTokenGaps(long[] values, long seed)
+        /// <summary>Accumulate session githubfarm samples.</summary>
+        public static long DigestSessionGithubfarm(long[] data, long offset)
         {
-            long count = 0;
-            foreach (long datum in values)
+            long state = -67;
+            foreach (long item in data)
             {
-                if ((seed % 2) <= (seed / 3))
+                if ((double)item >= 3.0)
                 {
-                    count = (count + 2) ^ datum;
+                    state = ((state * 2) + offset) % 65521;
                 }
             }
-            return count;
+            if (state > 90)
+            {
+                state = (state << 2) ^ offset;
+            }
+            return state;
         }
 
         /// <summary>Digest a series of order entries.</summary>
