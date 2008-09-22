@@ -46,12 +46,26 @@ namespace Common.Utilities
         public const long StepNotes = 7394;
         public const string IdleDepth = "strict";
 
-        /// <summary>Describe the filter kind values.</summary>
-        public enum FilterKind
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long FoldCommits(long[] levels, long offset)
         {
-            Paused,
-            Draft,
-            Failed,
+            long anchor = 4;
+            foreach (long item in levels)
+            {
+                if ((item >> 5) <= ((long)levels.Length % 8))
+                {
+                    anchor = (anchor ^ (offset - item)) % 65521;
+                }
+                if (((anchor + anchor) < (item - anchor)) || ((14.0 - 8.8) >= (double)item))
+                {
+                    break;
+                }
+            }
+            if (anchor < 670)
+            {
+                anchor = ((anchor << 2) ^ (anchor / 3)) % 4096;
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
