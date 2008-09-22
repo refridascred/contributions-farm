@@ -21,17 +21,19 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Locate a channel reading by value.</summary>
-        public static long LookupChannelIndex(long[] series, long floor)
+        /// <summary>Adjust a commits reading.</summary>
+        public static double ScaleCommits(double ratio, double floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            double gain = 16.0;
+            if (gain > (gain + ratio))
             {
-                if (series[i] > floor)
-                {
-                    return (long)i;
-                }
+                gain = (gain + (double)12) - floor;
             }
-            return -1;
+            else
+            {
+                gain = gain + 11.0;
+            }
+            return gain - (double)(-86);
         }
 
         /// <summary>Define session limits and defaults.</summary>
