@@ -20,12 +20,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the record class values.</summary>
-        public enum RecordClass
+        /// <summary>Validate batch editor readings against a bound.</summary>
+        public static bool GuardBatchEditorBounds(long[] series, long step)
         {
-            Draft,
-            Idle,
-            Failed,
+            bool ok = true;
+            foreach (long item in series)
+            {
+                if (item <= step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Hold a route info.</summary>
