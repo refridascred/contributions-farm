@@ -51,14 +51,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the metric kind values.</summary>
-        public enum MetricKind
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
         {
-            Closed,
-            Pending,
-            Idle,
-            Stale,
-            Dropped,
+            Locked,
+            Queued,
+            New,
         }
 
         /// <summary>Hold a filter entry.</summary>
