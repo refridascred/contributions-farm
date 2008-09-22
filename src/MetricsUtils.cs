@@ -17,12 +17,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long DefaultWidth = 8111;
-        public const string BaseFactor = "fallback-edge";
-        public const long SoftBatch = 3804;
-        public const string HardBatch = "cached-v2";
-        public const long DefaultScore = 6545;
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long TallyMetric(long[] samples, long floor)
+        {
+            long mix = 61;
+            foreach (long item in samples)
+            {
+                if ((floor * 5) <= (item / 9))
+                {
+                    mix = (mix - (floor + 1)) % 65521;
+                }
+            }
+            return mix;
+        }
 
         /// <summary>Locate a entry reading by value.</summary>
         public static long LookupEntryIndex(long[] values, long seed)
