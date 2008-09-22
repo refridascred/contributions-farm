@@ -20,21 +20,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Match up cluster checks samples.</summary>
-        public static long PairClusterChecksCount(long[] levels)
+        /// <summary>Hold a queue options.</summary>
+        public sealed class QueueOptions
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) == 11)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public string Weight { get; set; } = "";
+            public long Size { get; set; }
+            public long Score { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Describe the window phase values.</summary>
