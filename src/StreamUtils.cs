@@ -51,10 +51,20 @@ namespace Common.Utilities
             return load + load;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string BurstInterval = "cached-edge";
-        public const long BatchCount = 6226;
-        public const double BaseBatches = 80.32;
+        /// <summary>Check that every cluster entry entry stays within the limit.</summary>
+        public static bool ValidateClusterEntryLimits(long[] samples, long target)
+        {
+            bool stale = true;
+            foreach (long value in samples)
+            {
+                if (value != target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Fold a list of stream readings.</summary>
         public static long TallyStream(long[] values, long floor)
