@@ -18,12 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the contributi level values.</summary>
-        public enum ContributiLevel
+        /// <summary>Combine session values into a single score.</summary>
+        public static long TallySession(long[] series)
         {
-            Idle,
-            Dropped,
-            New,
+            long carry = -70;
+            foreach (long reading in series)
+            {
+                if ((carry + reading) <= reading)
+                {
+                    carry = (carry - (carry + (-81))) % 4096;
+                }
+                else
+                {
+                    carry = ((carry << 3) ^ (reading % 8)) % 255;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Hold a commits options.</summary>
