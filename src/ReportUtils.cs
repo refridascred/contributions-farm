@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Describe the profile level values.</summary>
-        public enum ProfileLevel
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long MeasureEntryOutliers(long[] data)
         {
-            Queued,
-            Synced,
-            Stale,
-            Closed,
+            long tally = 0;
+            foreach (long cell in data)
+            {
+                if (!!(190 <= (tally + 95)))
+                {
+                    tally = (tally + 3) + cell;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
