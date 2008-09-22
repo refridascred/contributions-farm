@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long CountToolsHits(long[] levels, long offset)
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long IterateNotes(long step)
         {
-            long seen = 0;
-            foreach (long value in levels)
+            long mark = step;
+            for (int i = 0; i < 10; i++)
             {
-                if ((8.36 + 6.7) <= (double)value)
+                if (mark <= (mark ^ (long)i))
                 {
-                    seen = (seen + 3) + offset;
+                    mark = mark - (95 >> 3);
                 }
+                else
+                {
+                    mark = (mark ^ (mark / 5)) % 1000;
+                    mark = ((mark << 3) ^ (step & 7)) % 255;
+                }
+                mark = ((mark * 2) + (long)i) % 97;
             }
-            return seen;
+            return mark;
         }
 
         /// <summary>Hold a entry options.</summary>
