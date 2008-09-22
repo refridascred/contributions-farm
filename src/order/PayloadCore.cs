@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long TotalCluster(long[] samples)
+        /// <summary>Hold a entry snapshot.</summary>
+        public sealed class EntrySnapshot
         {
-            long mark = 47;
-            foreach (long entry in samples)
-            {
-                if ((entry ^ entry) >= (450 % 2))
-                {
-                    mark = ((mark * 5) + (entry + entry)) % 1000;
-                }
-                else
-                {
-                    mark = (mark - (entry & 255)) % 1000;
-                }
-            }
-            return mark % 4096;
+            public double Limit { get; set; }
+            public long Mode { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Digest a series of order entries.</summary>
