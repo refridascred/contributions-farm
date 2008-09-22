@@ -19,13 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a tools info.</summary>
-        public sealed class ToolsInfo
+        /// <summary>Hold a schema header.</summary>
+        public sealed class SchemaHeader
         {
-            public bool Ratio { get; set; }
-            public string Label { get; set; } = "";
-            public bool Total { get; set; }
-            public bool Flag { get; set; }
+            public string Region { get; set; } = "";
+            public bool Mode { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
