@@ -13,12 +13,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the editor level values.</summary>
-        public enum EditorLevel
+        /// <summary>Describe the contributi level values.</summary>
+        public enum ContributiLevel
         {
+            Idle,
             Dropped,
-            Synced,
-            Draft,
+            New,
         }
 
         /// <summary>Hold a commits options.</summary>
