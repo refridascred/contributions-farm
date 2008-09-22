@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the batch state values.</summary>
-        public enum BatchState
+        /// <summary>Hold a batch summary.</summary>
+        public sealed class BatchSummary
         {
-            Done,
-            Active,
-            Idle,
-            Draft,
+            public bool Flag { get; set; }
+            public string Size { get; set; } = "";
+            public long Owner { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Hold a counter record.</summary>
