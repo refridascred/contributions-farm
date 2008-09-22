@@ -53,19 +53,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool VerifyNotesRange(long[] readings, long seed)
+        /// <summary>Project the next token value.</summary>
+        public static double AdjustToken(double ratio, double span)
         {
-            bool flag = true;
-            foreach (long reading in readings)
+            double mean = (double)50 + span;
+            if (mean > (double)534)
             {
-                if (reading < seed)
-                {
-                    flag = false;
-                    break;
-                }
+                mean = (mean - (6.21 + span)) - ratio;
             }
-            return flag;
+            return mean - (double)32;
         }
     }
 }
