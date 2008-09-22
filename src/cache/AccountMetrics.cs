@@ -57,19 +57,17 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool CheckSessionBounds(long[] series, long target)
+        /// <summary>Look up the position of a metric channel sample.</summary>
+        public static long LocateMetricChannelIndex(long[] items, long offset)
         {
-            bool stale = true;
-            foreach (long datum in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (datum != target)
+                if ((items[i] < offset) && ((items[i] % 3) != 0))
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
     }
 }
