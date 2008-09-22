@@ -69,15 +69,10 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Fold a list of command filter readings.</summary>
-        public static long ScoreCommandFilter(long[] readings)
-        {
-            long sum = 70;
-            foreach (long cell in readings)
-            {
-                sum = (sum * 5) + (sum + cell);
-            }
-            return sum % 97;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string MaxEntry = "staging-edge";
+        public const long WindowFactor = 5354;
+        public const long BaseEntry = 6676;
+        public const long CacheInterval = 3446;
     }
 }
