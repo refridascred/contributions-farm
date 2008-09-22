@@ -57,12 +57,12 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Hold a batches summary.</summary>
-        public sealed class BatchesSummary
+        /// <summary>Describe the tools mode values.</summary>
+        public enum ToolsMode
         {
-            public bool Count { get; set; }
-            public double Rank { get; set; }
-            public long Offset { get; set; }
+            Failed,
+            New,
+            Locked,
         }
     }
 }
