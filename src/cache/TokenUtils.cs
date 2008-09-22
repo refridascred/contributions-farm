@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BaseTimeout = 6391;
-        public const double LimitSchema = 46.25;
-        public const string CacheSchema = "local-1";
+        /// <summary>Describe the batch kind values.</summary>
+        public enum BatchKind
+        {
+            Locked,
+            New,
+            Pending,
+        }
 
         /// <summary>Combine cache values into a single score.</summary>
         public static long ScoreCache(long[] levels)
