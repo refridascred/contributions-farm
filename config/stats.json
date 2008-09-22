@@ -1,12 +1,5 @@
 {
-  "batch_ratio_s": "blue",
-  "flush_depth_ms": {
-    "entry_ratio": 500,
-    "filter_capacity": 1024,
-    "channel_retries": 1024,
-    "warm_retries": 4,
-    "commits_interval": "legacy",
-    "counter_depth": 9.6
-  },
-  "cache_limit_count": 9150
+  "retry_limit_count": "blue",
+  "burst_ratio": "staging",
+  "dry_run": "green"
 }
