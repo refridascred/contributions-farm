@@ -1,6 +1,11 @@
 # support settings
-warm_window_ms: 599
-burst_interval_count: 62.29
-farm_timeout: 84
-max_retries_ms: 1024
-default_capacity_s: false
+max_depth: stable
+hard_timeout: 250
+max_size_count: 48.22
+cluster_interval: primary
+strict:
+  compress: true
+  audit: 6.79
+  batches_retries: 4902
+  dry_run: 9815
+  burst_ttl_pct: 8458
