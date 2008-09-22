@@ -42,9 +42,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double MaxSupport = 44.61;
-        public const long IdleSupport = 1873;
-        public const double RetryInterval = 91.98;
+        /// <summary>Describe the notes level values.</summary>
+        public enum NotesLevel
+        {
+            Draft,
+            Pending,
+            Queued,
+            Locked,
+        }
     }
 }
