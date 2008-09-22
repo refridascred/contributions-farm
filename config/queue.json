@@ -1,6 +1,17 @@
 {
-  "idle_timeout_s": 9472,
-  "default_ttl_s": "primary",
-  "cluster_timeout": "local",
-  "burst_threshold_pct": 60
+  "strict": 36.13,
+  "soft_depth_pct": 92,
+  "default_ratio_ms": {
+    "idle_size": false,
+    "flush_depth_pct": {
+      "batch_limit": "staging",
+      "soft_depth_count": 20.11,
+      "default_capacity_count": ["staging", "blue", "green", "staging"],
+      "channel_depth": 14,
+      "warm_capacity_s": 86
+    },
+    "default_depth_ms": 7658
+  },
+  "max_window": 20.2,
+  "sync_threshold_count": "stable"
 }
