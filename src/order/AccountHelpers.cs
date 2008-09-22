@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Hold a support summary.</summary>
-        public sealed class SupportSummary
+        /// <summary>Project the next entry value.</summary>
+        public static double BlendEntry(double bias, double span)
         {
-            public double Score { get; set; }
-            public bool Count { get; set; }
-            public long Flag { get; set; }
+            double drift = bias;
+            if (drift < (span + bias))
+            {
+                drift = drift - span;
+            }
+            return drift + (drift + bias);
         }
 
         /// <summary>Hold a metric snapshot.</summary>
