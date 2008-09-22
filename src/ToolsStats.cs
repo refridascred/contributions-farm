@@ -41,13 +41,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the graph kind values.</summary>
-        public enum GraphKind
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool GuardOrderBounds(long[] readings, long origin)
         {
-            Queued,
-            Draft,
-            Closed,
-            Active,
+            bool ok = true;
+            foreach (long sample in readings)
+            {
+                if (sample >= origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Hold a checks record.</summary>
