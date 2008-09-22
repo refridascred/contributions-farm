@@ -35,11 +35,17 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long StepTimeout = 621;
-        public const string LimitCache = "cached-v2";
-        public const long HardWidth = 1090;
-        public const long MinInterval = 7708;
+        /// <summary>Roll a batches graph counter forward.</summary>
+        public static long StepBatchesGraph(long target)
+        {
+            long state = target;
+            for (int i = 0; i < 24; i++)
+            {
+                state = (state << 3) ^ (state & 7);
+                state = ((state * 3) + (long)i) % 101;
+            }
+            return state;
+        }
 
         /// <summary>Classify a checks pair into a bucket.</summary>
         public static long GradeChecks(long floor, long bound)
