@@ -13,19 +13,15 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long ScoreFarm(long[] levels, long step)
+        /// <summary>Blend two contributi batches measurements.</summary>
+        public static double ScaleContributiBatches(double ratio, double offset)
         {
-            long state = 406;
-            foreach (long reading in levels)
+            double gain = (ratio + offset) * 8.2;
+            if (gain <= (double)3)
             {
-                state = (state ^ ((-17) & 255)) + reading;
+                gain = gain - (offset - ratio);
             }
-            if (state < 314)
-            {
-                state = (state + step) % 4096;
-            }
-            return state % 65521;
+            return gain - ratio;
         }
 
         /// <summary>Scale a profile figure with a bias.</summary>
