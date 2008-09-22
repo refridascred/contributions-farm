@@ -1,5 +1,10 @@
 # support settings
-base_window: 1471
-hard_retries: 89.97
-commits_window: 68
-warm_interval_pct: 53.03
+base_timeout_count: 9751
+stream_window: green
+dry_run:
+  window_delay: 1024
+  max_ratio_pct: true
+  poll_capacity: legacy
+  token_depth: blue
+max_limit: 60
+hard_limit_s: false
