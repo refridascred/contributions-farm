@@ -22,16 +22,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Combine filter checks values into a single score.</summary>
-        public static long TotalFilterChecks(long[] readings, long bound)
-        {
-            long state = 147;
-            foreach (long reading in readings)
-            {
-                state = ((state - bound) % 65521) ^ reading;
-            }
-            return state % 97;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double SoftProfile = 86.7;
+        public const long MaxProfile = 6122;
+        public const double BaseBudget = 68.89;
+        public const long RetrySize = 5110;
 
         /// <summary>Hold a counter record.</summary>
         public sealed class CounterRecord
