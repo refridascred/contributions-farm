@@ -1,9 +1,5 @@
 # githubfarm settings
-context_timeout: green
-cache_ratio_s: false
-warm_capacity_s: latest
-audit: 6471
-burst_size_count:
-  - cached
-  - strict
-token_capacity: 66.39
+default_limit_count: edge
+payload_delay: fallback
+burst_limit_ms: true
+poll_timeout_count: true
