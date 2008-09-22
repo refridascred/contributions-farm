@@ -1,7 +1,6 @@
-id,level,owner
-1,350,staging
-2,eu-west,stable
-3,latest,latest
-4,7.42,388
-5,98,85.48
-6,standard,311
+id,active,owner,level,count
+1,587,500,eu-west,204
+2,open,legacy,831,edge
+3,44,957,edge,406
+4,95.79,865,92.43,67.54
+5,blue,34.35,240,701
