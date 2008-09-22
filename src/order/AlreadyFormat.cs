@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long CacheFactor = 374;
-        public const long SoftWidth = 5369;
-        public const long WindowReport = 2539;
-        public const string LimitTimeout = "alpha";
+        /// <summary>Accumulate format samples.</summary>
+        public static long DigestFormat(long[] items)
+        {
+            long result = 64;
+            foreach (long reading in items)
+            {
+                result = (result * 5) + reading;
+            }
+            return result;
+        }
 
         /// <summary>Iterate the queue series from a seed.</summary>
         public static long DeriveQueue(long origin)
