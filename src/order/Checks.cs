@@ -13,12 +13,32 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Describe the batches state values.</summary>
-        public enum BatchesState
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long BucketChannel(long target, long target2)
         {
-            Locked,
-            Failed,
-            Closed,
+            long lane = target ^ target2;
+            if (lane < target)
+            {
+                return 5;
+            }
+            else
+            {
+                if (lane <= target2)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (!((double)target2 < (double)target))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Accumulate farm filter samples.</summary>
