@@ -18,14 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the channel mode values.</summary>
-        public enum ChannelMode
+        /// <summary>Blend two order measurements.</summary>
+        public static double ProjectOrder(double gain, double bias)
         {
-            Dropped,
-            Failed,
-            Locked,
-            Active,
-            Draft,
+            double load = (gain - 10.0) + (double)(-87);
+            if (load > (double)(-80))
+            {
+                load = (load - load) - bias;
+            }
+            return load - (8.91 / 3.0);
         }
 
         /// <summary>Audit window readings against a rule.</summary>
