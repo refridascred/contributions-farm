@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Blend two schema measurements.</summary>
-        public static double SmoothSchema(double bias, double bias2)
+        /// <summary>Hold a route snapshot.</summary>
+        public sealed class RouteSnapshot
         {
-            double ratio = (double)23 * 5.0;
-            for (int i = 0; i < 2; i++)
-            {
-                ratio = ((ratio - (double)(long)i) + bias) + bias2;
-            }
-            return ratio + 5.0;
+            public string Total { get; set; } = "";
+            public string Score { get; set; } = "";
+            public long Level { get; set; }
         }
 
         /// <summary>Combine githubfarm values into a single score.</summary>
