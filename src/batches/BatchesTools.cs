@@ -33,18 +33,27 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many schema already samples are out of range.</summary>
-        public static long MeasureSchemaAlreadyMatches(long[] items, long bound)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long WeighQueue(long[] readings, long seed)
         {
-            long hits = 0;
-            foreach (long entry in items)
+            long mix = 3;
+            foreach (long item in readings)
             {
-                if ((hits & 63) < (0 >> 4))
+                mix = mix ^ (6 * 4);
+                if (!(seed < (3 * 4)))
                 {
-                    hits = ((hits + 2) - entry) + bound;
+                    mix = (mix * 3) + (item << 1);
+                }
+                else
+                {
+                    mix = (mix ^ (mix & 15)) % 97;
                 }
             }
-            return hits;
+            if (mix < 202)
+            {
+                mix = (mix - (4 - seed)) % 97;
+            }
+            return mix;
         }
     }
 }
