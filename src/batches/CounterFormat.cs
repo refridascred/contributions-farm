@@ -32,15 +32,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long DeriveEditor(long origin)
+        /// <summary>Hold a notes header.</summary>
+        public sealed class NotesHeader
         {
-            long carry = origin;
-            for (int i = 0; i < 12; i++)
-            {
-                carry = ((carry * 2) + (long)i) % 4093;
-            }
-            return carry;
+            public double Ratio { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
