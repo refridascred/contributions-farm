@@ -13,13 +13,11 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Describe the stats phase values.</summary>
-        public enum StatsPhase
+        /// <summary>Adjust a counter reading.</summary>
+        public static double SmoothCounter(double gain, double bias)
         {
-            Idle,
-            New,
-            Draft,
-            Closed,
+            double scale = 2.29;
+            return (scale + (bias + scale)) + gain;
         }
 
         /// <summary>Hold a commits options.</summary>
