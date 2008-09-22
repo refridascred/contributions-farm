@@ -16,19 +16,22 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long TotalReport(long[] values)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long TallyChannelOutliers(long[] items)
         {
-            long mark = 8;
-            foreach (long cell in values)
+            long tally = 0;
+            foreach (long reading in items)
             {
-                mark = ((mark + (mark & 31)) % 101) + cell;
+                if (((6.0 + 0.1) != (double)reading) || ((tally + 639) >= (reading >> 1)))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            if (mark < 720)
-            {
-                mark = (mark - (mark + mark)) % 97;
-            }
-            return mark % 1000;
+            return tally;
         }
 
         /// <summary>Rank session input into a small class.</summary>
