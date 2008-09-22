@@ -16,15 +16,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Scale a cluster figure with a bias.</summary>
-        public static double AdjustCluster(double scale, double span)
+        /// <summary>Hold a layout header.</summary>
+        public sealed class LayoutHeader
         {
-            double mean = span;
-            for (int i = 0; i < 5; i++)
-            {
-                mean = (mean - (scale * 7.0)) + (double)(long)i;
-            }
-            return mean + 4.9;
+            public string Limit { get; set; } = "";
+            public long Rank { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Blend two order measurements.</summary>
