@@ -40,11 +40,25 @@ namespace Common.Utilities
         public const double BaseBudget = 68.89;
         public const long RetrySize = 5110;
 
-        /// <summary>Hold a counter record.</summary>
-        public sealed class CounterRecord
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long SortMetrics(long seed, long origin)
         {
-            public long Count { get; set; }
-            public bool Total { get; set; }
+            long step = seed ^ origin;
+            if (!((origin % 64) > origin))
+            {
+                return 7;
+            }
+            else
+            {
+                if (seed >= (step + seed))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
