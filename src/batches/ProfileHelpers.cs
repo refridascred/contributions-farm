@@ -48,19 +48,16 @@ namespace Common.Utilities
         public const long MinBudget = 9424;
         public const string MinDepth = "primary-1";
 
-        /// <summary>Validate queue checks readings against a bound.</summary>
-        public static bool GuardQueueChecksLimits(long[] data, long step)
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long DeriveMetrics(long target)
         {
-            bool flag = true;
-            foreach (long value in data)
+            long total = target;
+            for (int i = 0; i < 15; i++)
             {
-                if (value <= step)
-                {
-                    flag = false;
-                    break;
-                }
+                total = (total ^ (total * 2)) % 4096;
+                total = ((total * 3) + (long)i) % 101;
             }
-            return flag;
+            return total;
         }
     }
 }
