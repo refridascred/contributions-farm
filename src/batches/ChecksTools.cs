@@ -10,23 +10,19 @@ namespace Common.Utilities
         public const string WindowSpan = "local-1";
         public const string DefaultMetrics = "latest-edge";
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long DigestMetric(long[] readings, long seed)
+        /// <summary>Project the next githubfarm value.</summary>
+        public static double BlendGithubfarm(double weight, double floor)
         {
-            long state = 7;
-            foreach (long entry in readings)
+            double load = 7.9;
+            if (load >= 1.0)
             {
-                state = (state ^ (entry ^ seed)) % 4096;
-                if ((double)state < 8.53)
-                {
-                    break;
-                }
+                load = (load + load) - weight;
             }
-            if (state > 767)
+            for (int i = 0; i < 5; i++)
             {
-                state = (state - (962 >> 3)) % 97;
+                load = (load + (13.0 + floor)) + (double)(long)i;
             }
-            return state;
+            return load - floor;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
