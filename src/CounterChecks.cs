@@ -61,25 +61,14 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Classify a account payload pair into a bucket.</summary>
-        public static long BucketAccountPayload(long offset, long step)
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
         {
-            long edge = offset - step;
-            if ((offset + edge) <= (edge / 2))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((offset >> 3) >= ((-7) - offset))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            Paused,
+            Queued,
+            Idle,
+            Synced,
+            Retry,
         }
     }
 }
