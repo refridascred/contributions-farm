@@ -24,25 +24,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Derive the next commits value from a seed.</summary>
-        public static long StepCommits(long step)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long MeasureProfileHits(long[] items, long floor)
         {
-            long state = step;
-            for (int i = 0; i < 12; i++)
+            long count = 0;
+            foreach (long sample in items)
             {
-                for (int i2 = 0; i2 < 11; i2++)
+                if ((floor + floor) > (floor - floor))
                 {
-                    state = ((state ^ (state ^ state)) % 1000) - (long)i2;
-                    state = state - step;
+                    count = (count + 1) + sample;
                 }
-                if (97 < step)
-                {
-                    state = (state - (72 & 7)) % 101;
-                }
-                state = ((state << 2) ^ 21) % 255;
-                state = ((state * 3) + (long)i) % 65521;
             }
-            return state;
+            return count;
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
