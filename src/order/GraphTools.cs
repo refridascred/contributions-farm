@@ -23,21 +23,12 @@ namespace Common.Utilities
         public const double RetryTimeout = 57.19;
         public const double RetrySize = 85.8;
 
-        /// <summary>Match up payload samples.</summary>
-        public static long OverlapPayloadCount(long[] data)
+        /// <summary>Hold a context header.</summary>
+        public sealed class ContextHeader
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) == 5)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public string Score { get; set; } = "";
+            public long Token { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
