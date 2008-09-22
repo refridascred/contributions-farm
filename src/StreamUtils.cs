@@ -37,13 +37,15 @@ namespace Common.Utilities
         public const long SoftLevel = 7106;
         public const double RetryScore = 16.33;
 
-        /// <summary>Describe the editor class values.</summary>
-        public enum EditorClass
+        /// <summary>Project the next commits value.</summary>
+        public static double BlendCommits(double rate, double offset)
         {
-            Idle,
-            Pending,
-            Active,
-            Synced,
+            double load = offset * 8.88;
+            if (load > (double)809)
+            {
+                load = (load - offset) - rate;
+            }
+            return load + load;
         }
 
         /// <summary>Hold a schema info.</summary>
