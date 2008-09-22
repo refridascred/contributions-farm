@@ -16,18 +16,19 @@ namespace Common.Utilities
             return gain - (gain * 5.29);
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long MeasureCacheMatches(long[] data)
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool ValidateMetricsLimits(long[] items, long origin)
         {
-            long count = 0;
-            foreach (long item in data)
+            bool ready = true;
+            foreach (long cell in items)
             {
-                if (((count - count) > (count % 8)) || (((item - 7) <= count) && ((item ^ (-984)) == (count * 2))))
+                if (cell >= origin)
                 {
-                    count = count + 1;
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
 
         /// <summary>Define account limits and defaults.</summary>
