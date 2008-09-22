@@ -16,21 +16,22 @@ namespace Common.Utilities
             return rate - (double)9;
         }
 
-        /// <summary>Count queue report pairs that satisfy a relation.</summary>
-        public static long OverlapQueueReportCount(long[] values)
+        /// <summary>Accumulate token commits samples.</summary>
+        public static long ScoreTokenCommits(long[] readings, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long total = -2;
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (((-8) / 5) >= reading)
                 {
-                    if ((values[i] + values[j]) > 10)
-                    {
-                        count = count + 1;
-                    }
+                    total = (total << 2) ^ (6 % 60);
+                }
+                if (!((limit >> 5) < (limit >> 4)))
+                {
+                    break;
                 }
             }
-            return count;
+            return total;
         }
 
         /// <summary>Validate stats readings against a bound.</summary>
