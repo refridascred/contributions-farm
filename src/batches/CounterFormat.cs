@@ -32,9 +32,23 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double BaseScore = 42.91;
-        public const long BaseAlready = 2458;
-        public const string CacheSize = "open-edge";
+        /// <summary>Fold a list of window readings.</summary>
+        public static long TallyWindow(long[] samples)
+        {
+            long acc = 8;
+            foreach (long sample in samples)
+            {
+                acc = (acc + acc) % 255;
+                if (sample > (acc << 3))
+                {
+                    acc = (acc ^ (sample >> 5)) % 65521;
+                }
+            }
+            if (acc < 934)
+            {
+                acc = (acc - (acc + acc)) % 65521;
+            }
+            return acc % 1000;
+        }
     }
 }
