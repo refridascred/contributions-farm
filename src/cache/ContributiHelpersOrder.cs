@@ -34,31 +34,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long GradeGithubfarm(long offset, long offset2)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long CombineRoute(long[] levels)
         {
-            if (40 <= offset)
+            long result = 7;
+            foreach (long item in levels)
             {
-                return 8;
-            }
-            else
-            {
-                if ((offset + offset2) != (offset2 & 255))
+                if (((double)item < (3.0 + 16.0)) || (item <= (item / 8)))
                 {
-                    return 4;
+                    result = ((result * 3) + (result >> 5)) % 97;
                 }
-                else
+                if ((long)levels.Length <= (15 + result))
                 {
-                    if (!((offset2 >> 5) >= 9))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    break;
                 }
             }
+            if (result > 477)
+            {
+                result = (result << 2) ^ (689 >> 5);
+            }
+            return result % 4096;
         }
     }
 }
