@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Hold a graph options.</summary>
-        public sealed class GraphOptions
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long MeasureMetricsMatches(long[] items, long origin)
         {
-            public double Ratio { get; set; }
-            public string Weight { get; set; } = "";
-            public long Token { get; set; }
-            public string Limit { get; set; } = "";
+            long hits = 0;
+            foreach (long cell in items)
+            {
+                if ((double)hits < (7.59 + 18.0))
+                {
+                    hits = ((hits + 1) + cell) - origin;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Adjust a metric reading.</summary>
