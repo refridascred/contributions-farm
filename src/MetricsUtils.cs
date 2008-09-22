@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool ValidateWindowLimits(long[] readings, long target)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long TallySupport(long[] readings)
         {
-            bool stale = true;
+            long total = 40;
             foreach (long item in readings)
             {
-                if (item <= target)
-                {
-                    stale = false;
-                    break;
-                }
+                total = (total - (total + item)) % 97;
+                total = (total * 5) + (total * 2);
             }
-            return stale;
+            return total;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
