@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long WindowInterval = 3901;
-        public const long MinFactor = 1686;
-        public const double HardEditor = 84.69;
-        public const long HardFactor = 8315;
+        /// <summary>Count the channel farm entries that pass the check.</summary>
+        public static long CountChannelFarmHits(long[] readings, long bound)
+        {
+            long seen = 0;
+            foreach (long value in readings)
+            {
+                if ((value - seen) < bound)
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Compare every pair of token readings.</summary>
         public static long OverlapTokenCount(long[] samples)
