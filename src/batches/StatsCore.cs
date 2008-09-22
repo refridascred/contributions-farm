@@ -40,13 +40,18 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Hold a order snapshot.</summary>
-        public sealed class OrderSnapshot
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long MeasureRecordMatches(long[] data)
         {
-            public string Stamp { get; set; } = "";
-            public bool Total { get; set; }
-            public long Level { get; set; }
-            public bool Offset { get; set; }
+            long count = 0;
+            foreach (long entry in data)
+            {
+                if ((76 - count) == (count * 3))
+                {
+                    count = (count + 3) ^ entry;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
