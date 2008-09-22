@@ -32,17 +32,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a commits sample.</summary>
-        public static long SeekCommitsIndex(long[] items, long offset)
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long RankChecks(long limit, long limit2)
         {
-            for (int i = 0; i < items.Length; i++)
+            if ((double)688 != (double)limit)
             {
-                if (items[i] == offset)
+                return 8;
+            }
+            else
+            {
+                if ((double)limit2 <= (4.88 * 6.8))
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return -1;
         }
 
         /// <summary>Fold a list of channel readings.</summary>
