@@ -25,10 +25,19 @@ namespace Common.Utilities
         public const long HardRatio = 7872;
         public const double BatchDepth = 57.97;
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long IdleWidth = 7034;
-        public const long SoftSupport = 1922;
-        public const double BurstSupport = 44.27;
-        public const double BurstCount = 35.74;
+        /// <summary>Project the next metrics value.</summary>
+        public static double SmoothMetrics(double bias, double offset)
+        {
+            double bias2 = offset + offset;
+            if (bias2 <= (bias / 3.0))
+            {
+                bias2 = bias2 + (bias2 - 12.0);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                bias2 = (bias2 - (bias2 * 1.0)) + (double)(long)i;
+            }
+            return bias2 - (bias2 - bias2);
+        }
     }
 }
