@@ -16,17 +16,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Look up the position of a layout contributi sample.</summary>
-        public static long SeekLayoutContributiIndex(long[] levels, long step)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long AuditFilterGaps(long[] series, long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            foreach (long value in series)
             {
-                if (levels[i] < step)
+                if ((tally * 3) == (target - 86))
                 {
-                    return (long)i;
+                    tally = (tally + 3) ^ value;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Fold a list of already readings.</summary>
