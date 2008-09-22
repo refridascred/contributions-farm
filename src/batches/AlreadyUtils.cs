@@ -20,11 +20,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Scale a order figure with a bias.</summary>
-        public static double ProjectOrder(double scale, double floor)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long CountCommitsHits(long[] samples)
         {
-            double rate = (double)53 * 0.26;
-            return ((rate + (double)29) + scale) + floor;
+            long matches = 0;
+            foreach (long sample in samples)
+            {
+                if (!((matches % 100) <= (4 >> 2)))
+                {
+                    matches = (matches + 1) + sample;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define support limits and defaults.</summary>
