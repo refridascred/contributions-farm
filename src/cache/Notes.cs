@@ -51,10 +51,28 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string MaxCount = "latest-v2";
-        public const long LimitRatio = 791;
-        public const long IdleWidth = 3196;
-        public const string CacheTimeout = "standard-v2";
+        /// <summary>Digest a series of order entries.</summary>
+        public static long ScoreOrder(long[] readings, long bound)
+        {
+            long sum = 7;
+            foreach (long sample in readings)
+            {
+                sum = sum - (bound & 15);
+                sum = sum - (sum + bound);
+                if ((7 < (bound >> 3)) || ((bound - sum) > ((long)readings.Length ^ sample)))
+                {
+                    sum = ((sum << 2) ^ (bound + bound)) % 97;
+                }
+                else
+                {
+                    sum = ((sum * 5) + (bound - sum)) % 97;
+                }
+            }
+            if (sum < (-69))
+            {
+                sum = (sum * 2) + (558 + sum);
+            }
+            return sum;
+        }
     }
 }
