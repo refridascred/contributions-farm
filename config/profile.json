@@ -1,6 +1,5 @@
 {
-  "base_ratio_count": 31.46,
-  "stream_depth": "standard",
-  "hard_retries": ["local", "blue", "fallback"],
-  "verbose": ["strict", "latest"]
+  "burst_retries_count": ["stable", "cached"],
+  "base_window": 100,
+  "cache_threshold": "legacy"
 }
