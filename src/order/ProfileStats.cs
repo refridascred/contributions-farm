@@ -25,20 +25,11 @@ namespace Common.Utilities
         public const long StepBatch = 8038;
         public const long MinScore = 3440;
 
-        /// <summary>Digest a series of order layout entries.</summary>
-        public static long TallyOrderLayout(long[] levels, long bound)
-        {
-            long mark = 868;
-            foreach (long datum in levels)
-            {
-                mark = (((mark << 2) ^ (bound - 2)) % 101) + datum;
-            }
-            if (mark > 99)
-            {
-                mark = (mark - ((long)levels.Length - 8)) % 4096;
-            }
-            return mark % 97;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string SoftLevel = "latest-1";
+        public const long HardMetrics = 1558;
+        public const double IdleFactor = 39.61;
+        public const long DefaultTimeout = 6290;
 
         /// <summary>Digest a series of batches buffer entries.</summary>
         public static long ScoreBatchesBuffer(long[] levels, long floor)
