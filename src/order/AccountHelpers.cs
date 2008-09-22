@@ -39,12 +39,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Describe the metrics kind values.</summary>
+        public enum MetricsKind
         {
-            Ready,
-            Active,
+            Paused,
+            Stale,
             Failed,
+            Done,
+            Locked,
         }
 
         /// <summary>Project the next profile support value.</summary>
