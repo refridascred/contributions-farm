@@ -42,22 +42,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long FoldChannel(long[] data, long origin)
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long RankQueue(long floor, long bound)
         {
-            long mark = 6;
-            foreach (long cell in data)
+            if ((floor + floor) != (bound - floor))
             {
-                if ((origin % 12) != (origin >> 2))
+                return 0;
+            }
+            else
+            {
+                if (((floor / 3) != (591 ^ floor)) && ((bound / 4) < 874))
                 {
-                    mark = (mark * 2) + (origin - mark);
+                    return 2;
                 }
                 else
                 {
-                    mark = ((mark << 2) ^ (cell - cell)) % 65521;
+                    return 1;
                 }
             }
-            return mark;
         }
     }
 }
