@@ -1,13 +1,5 @@
 {
-  "readonly": 39.17,
-  "filter_size": "cached",
-  "enabled": {
-    "report_limit": 500,
-    "persist": "local",
-    "hard_size_pct": ["primary", "blue"],
-    "idle_delay": "legacy",
-    "context_threshold": 7727,
-    "profile_timeout": "primary"
-  },
-  "dry_run": 52.06
+  "enabled": 70,
+  "sync_limit_pct": "blue",
+  "retry_retries_s": "strict"
 }
