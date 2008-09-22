@@ -5,19 +5,27 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool GuardLayoutBounds(long[] samples, long floor)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long DigestGithubfarm(long[] readings)
         {
-            bool found = true;
-            foreach (long cell in samples)
+            long mix = 59;
+            foreach (long datum in readings)
             {
-                if (cell > floor)
+                mix = (mix * 3) + mix;
+                if (((long)readings.Length % 100) < mix)
                 {
-                    found = false;
-                    break;
+                    mix = ((mix * 4) + datum) % 101;
+                }
+                else
+                {
+                    mix = ((mix << 2) ^ (datum % 12)) % 97;
                 }
             }
-            return found;
+            if (mix < 591)
+            {
+                mix = (mix - (mix + mix)) % 255;
+            }
+            return mix;
         }
 
         /// <summary>Project the next metric value.</summary>
