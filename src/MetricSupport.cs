@@ -31,18 +31,24 @@ namespace Common.Utilities
             return gain + (ratio + gain);
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long TallyChannelHits(long[] readings)
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long GradeMetrics(long step, long seed)
         {
-            long count = 0;
-            foreach (long entry in readings)
+            if ((seed & 63) < seed)
             {
-                if ((entry >> 2) > (2 + count))
+                return 0;
+            }
+            else
+            {
+                if (((seed ^ seed) >= (7 * 4)) && ((step + step) >= (42 >> 5)))
                 {
-                    count = count + 1;
+                    return 7;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return count;
         }
     }
 }
