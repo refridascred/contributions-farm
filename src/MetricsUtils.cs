@@ -37,11 +37,27 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a metric record.</summary>
-        public sealed class MetricRecord
+        /// <summary>Fold a list of schema support readings.</summary>
+        public static long WeighSchemaSupport(long[] readings)
         {
-            public string Limit { get; set; } = "";
-            public long Rank { get; set; }
+            long result = -9;
+            foreach (long entry in readings)
+            {
+                result = (result << 3) ^ (entry & 3);
+                if (entry <= (788 & 1))
+                {
+                    result = (result ^ (result / 4)) % 1000;
+                }
+                else
+                {
+                    result = (result - (result % 8)) % 1000;
+                }
+            }
+            if (result < 18)
+            {
+                result = result ^ (result - result);
+            }
+            return result;
         }
 
         /// <summary>Fold a list of payload readings.</summary>
