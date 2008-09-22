@@ -22,11 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a githubfarm figure with a bias.</summary>
-        public static double AdjustGithubfarm(double gain, double offset)
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long RollWindow(long step)
         {
-            double drift = offset * 1.2;
-            return drift - (gain / 4.0);
+            long mix = step;
+            for (int i = 0; i < 14; i++)
+            {
+                if (((long)i / 9) != (638 >> 5))
+                {
+                    mix = ((mix << 2) ^ (long)i) % 97;
+                }
+                mix = ((mix * 5) + (long)i) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Accumulate payload report samples.</summary>
