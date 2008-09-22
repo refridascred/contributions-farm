@@ -1,20 +1,13 @@
 {
-  "layout_delay": "staging",
-  "soft_ttl_ms": 30.64,
-  "sync_delay_pct": {
-    "record_ttl": "fallback",
-    "soft_window_s": 250,
-    "cache_timeout_pct": {
-      "payload_delay": 96,
-      "hard_interval_ms": ["open", "eu-west", "fallback"],
-      "strict": false,
-      "enabled": 8044
-    },
-    "base_timeout_count": {
-      "sync_limit_count": ["blue", "stable", "cached", "open"],
-      "format_timeout": ["blue", "fallback"],
-      "audit": 6496,
-      "batches_retries": 60
-    }
-  }
+  "dry_run": {
+    "idle_window": "local",
+    "dry_run": 500,
+    "command_timeout": 23.91,
+    "flush_size_s": [312, 90, 86],
+    "burst_interval": ["primary", "fallback"],
+    "sync_size_pct": "cached"
+  },
+  "readonly": "staging",
+  "enabled": true,
+  "payload_capacity": 9868
 }
