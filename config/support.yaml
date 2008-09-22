@@ -1,13 +1,11 @@
 # support settings
-soft_window_s:
-  - cached
-  - fallback
-  - fallback
-verbose: legacy
-idle_timeout_s: 30
-audit: open
-default_interval_ms:
-  burst_depth: blue
-  base_delay_s: 9550
-  account_capacity: standard
-burst_depth: stable
+warm_ratio:
+  batch_timeout_pct:
+    - green
+    - standard
+    - edge
+    - cached
+  batch_threshold: open
+  cache_ttl_ms: 208
+warm_delay_pct: false
+layout_delay: 2465
