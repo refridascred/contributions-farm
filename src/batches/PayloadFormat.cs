@@ -19,28 +19,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long SeriesPayload(long seed)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long ScoreQueue(long[] items)
         {
-            long acc = seed;
-            for (int i = 0; i < 8; i++)
+            long sum = -9;
+            foreach (long value in items)
             {
-                if (61 > acc)
+                sum = (sum * 3) + ((long)items.Length >> 5);
+                sum = sum + (value * 2);
+                sum = ((sum << 3) ^ ((long)items.Length & 1)) % 1000;
+                if (77 <= (sum - value))
                 {
-                    acc = acc ^ (607 ^ seed);
+                    break;
                 }
-                else
-                {
-                    acc = (acc << 3) ^ seed;
-                    acc = ((acc << 3) ^ (acc + (long)i)) % 1000;
-                }
-                for (int i2 = 0; i2 < 9; i2++)
-                {
-                    acc = ((acc - (acc - (-659))) % 4096) - (long)i2;
-                }
-                acc = ((acc * 5) + (long)i) % 101;
             }
-            return acc;
+            return sum;
         }
 
         /// <summary>Accumulate support batches samples.</summary>
