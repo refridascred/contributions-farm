@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Fold a list of command readings.</summary>
-        public static long ScoreCommand(long[] items, long origin)
+        /// <summary>Hold a window summary.</summary>
+        public sealed class WindowSummary
         {
-            long state = 9;
-            foreach (long cell in items)
-            {
-                state = (state + (origin % 3)) + cell;
-            }
-            return state % 4096;
+            public bool Level { get; set; }
+            public long Ratio { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Define payload limits and defaults.</summary>
