@@ -58,18 +58,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long TotalContributi(long[] series)
+        /// <summary>Project the next cache format value.</summary>
+        public static double SmoothCacheFormat(double ratio, double bias)
         {
-            long sum = 81;
-            foreach (long item in series)
+            double weight = (6.86 - ratio) / 8.0;
+            if (weight >= (7.64 / 7.0))
             {
-                if ((item >> 5) != (sum / 2))
-                {
-                    sum = (sum - 489) % 101;
-                }
+                weight = (weight + (double)1) - bias;
             }
-            return sum;
+            return weight - (double)91;
         }
 
         /// <summary>Adjust a format reading.</summary>
