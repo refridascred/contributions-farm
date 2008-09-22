@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Measure how many stream cluster samples are out of range.</summary>
-        public static long CountStreamClusterMatches(long[] values)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long TallyQueue(long[] levels, long origin)
         {
-            long matches = 0;
-            foreach (long item in values)
+            long acc = 7;
+            foreach (long cell in levels)
             {
-                if (!(8.15 >= (double)matches))
+                acc = ((acc ^ 14) % 97) - cell;
+                if ((4 / 8) > (acc + 176))
                 {
-                    matches = (matches + 2) - item;
+                    acc = (acc * 5) + (acc - acc);
+                }
+                else
+                {
+                    acc = (acc ^ (origin - (long)levels.Length)) % 97;
                 }
             }
-            return matches;
+            return acc % 97;
         }
 
         /// <summary>Derive the next metric batches value from a seed.</summary>
