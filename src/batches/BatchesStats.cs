@@ -39,18 +39,13 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Count the metric farm entries that pass the check.</summary>
-        public static long TallyMetricFarmGaps(long[] readings, long floor)
+        /// <summary>Hold a route entry.</summary>
+        public sealed class RouteEntry
         {
-            long hits = 0;
-            foreach (long item in readings)
-            {
-                if (!((item - hits) <= (floor >> 5)) || ((hits < (floor & 127)) || ((146 + item) >= (floor % 5))))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            public long Rank { get; set; }
+            public long Mode { get; set; }
+            public bool Flag { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Hold a schema stats.</summary>
