@@ -20,15 +20,13 @@ namespace Common.Utilities
         public const double IdleContributi = 89.58;
         public const long RetryContributi = 2424;
 
-        /// <summary>Combine already filter values into a single score.</summary>
-        public static long WeighAlreadyFilter(long[] items)
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
-            long mix = 684;
-            foreach (long cell in items)
-            {
-                mix = ((mix * 3) + (cell & 1)) % 101;
-            }
-            return mix;
+            New,
+            Queued,
+            Active,
+            Failed,
         }
     }
 }
