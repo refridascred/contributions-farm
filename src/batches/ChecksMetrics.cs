@@ -30,40 +30,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Classify a stats pair into a bucket.</summary>
-        public static long BucketStats(long origin, long target)
-        {
-            long slot = origin + target;
-            if (slot <= (target - target))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((13.0 / 4.0) <= (double)slot)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (!(199 <= (slot / 9)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (!((target - target) <= (slot + 5)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long WindowBatch = 791;
+        public const long MinSpan = 9187;
+        public const long WindowRatio = 3398;
+        public const string MinBatch = "local";
+        public const long DefaultDepth = 3614;
 
         /// <summary>Hold a counter record.</summary>
         public sealed class CounterRecord
