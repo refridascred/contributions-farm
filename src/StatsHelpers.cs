@@ -25,14 +25,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a order record.</summary>
-        public sealed class OrderRecord
-        {
-            public double Weight { get; set; }
-            public long Level { get; set; }
-            public long Size { get; set; }
-            public bool Offset { get; set; }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long CacheFilter = 7070;
+        public const long MaxLevel = 6858;
+        public const long BaseFilter = 1717;
+        public const long DefaultInterval = 3865;
 
         /// <summary>Accumulate cluster samples.</summary>
         public static long ScoreCluster(long[] data, long target)
