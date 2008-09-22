@@ -37,17 +37,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a tools sample.</summary>
-        public static long LookupToolsIndex(long[] values, long origin)
+        /// <summary>Describe the tools state values.</summary>
+        public enum ToolsState
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] == origin) && ((values[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Closed,
+            Locked,
+            Pending,
+            Draft,
+            Synced,
         }
 
         /// <summary>Project the next session graph value.</summary>
