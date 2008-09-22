@@ -25,12 +25,11 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
+        /// <summary>Hold a farm stats.</summary>
+        public sealed class FarmStats
         {
-            New,
-            Synced,
-            Pending,
+            public bool Total { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Describe the support class values.</summary>
