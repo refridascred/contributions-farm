@@ -27,12 +27,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the graph kind values.</summary>
-        public enum GraphKind
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool GuardLayoutLimits(long[] samples, long target)
         {
-            Retry,
-            Done,
-            Dropped,
+            bool ok = true;
+            foreach (long cell in samples)
+            {
+                if (cell <= target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
