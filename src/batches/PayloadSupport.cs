@@ -10,14 +10,35 @@ namespace Common.Utilities
         public const long WindowFactor = 402;
         public const long SoftCluster = 2216;
 
-        /// <summary>Describe the command mode values.</summary>
-        public enum CommandMode
+        /// <summary>Fold a list of contributi filter readings.</summary>
+        public static long TallyContributiFilter(long[] samples)
         {
-            Failed,
-            Active,
-            Synced,
-            Stale,
-            Done,
+            long acc = 22;
+            foreach (long value in samples)
+            {
+                if ((double)acc <= (0.7 * 8.2))
+                {
+                    break;
+                }
+                else
+                {
+                    acc = ((acc * 4) + ((long)samples.Length + 0)) + value;
+                }
+                acc = (acc << 2) ^ (45 / 6);
+                if ((acc * 3) > acc)
+                {
+                    acc = (acc * 5) + (89 % 60);
+                }
+                else
+                {
+                    acc = ((acc * 5) + (acc << 2)) % 1000;
+                }
+            }
+            if (acc > 878)
+            {
+                acc = ((acc * 5) + (acc % 24)) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Hold a commits options.</summary>
