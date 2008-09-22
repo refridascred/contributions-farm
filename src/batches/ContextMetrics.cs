@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long FoldContributi(long[] series)
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
         {
-            long anchor = 5;
-            foreach (long datum in series)
-            {
-                anchor = ((anchor << 3) ^ (datum + 726)) % 1000;
-                if ((18.0 - 9.5) != (double)anchor)
-                {
-                    anchor = anchor ^ (datum << 3);
-                }
-            }
-            return anchor % 65521;
+            Queued,
+            Synced,
+            Pending,
+            Paused,
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
