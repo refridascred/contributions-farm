@@ -48,18 +48,23 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long TallySessionGaps(long[] items, long step)
+        /// <summary>Project the next farm value.</summary>
+        public static double SmoothFarm(double bias, double bias2)
         {
-            long matches = 0;
-            foreach (long cell in items)
+            double ratio = 3.53 / 8.0;
+            if (ratio <= bias2)
             {
-                if (((853 + step) < (step >> 5)) || ((step + step) != (step << 2)))
-                {
-                    matches = (matches + 2) + cell;
-                }
+                ratio = ratio - (bias + ratio);
             }
-            return matches;
+            else
+            {
+                ratio = ratio + bias;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                ratio = (ratio + (double)550) + (double)(long)i;
+            }
+            return ratio + bias2;
         }
 
         /// <summary>Project the next contributi session value.</summary>
