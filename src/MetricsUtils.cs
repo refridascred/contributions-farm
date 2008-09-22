@@ -22,17 +22,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a format sample.</summary>
-        public static long FindFormatIndex(long[] levels, long limit)
+        /// <summary>Hold a format summary.</summary>
+        public sealed class FormatSummary
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] >= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Region { get; set; } = "";
+            public long Level { get; set; }
         }
 
         /// <summary>Define channel limits and defaults.</summary>
