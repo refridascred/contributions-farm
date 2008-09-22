@@ -71,22 +71,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long TallyStream(long[] values, long floor)
+        /// <summary>Adjust a buffer reading.</summary>
+        public static double AdjustBuffer(double gain, double floor)
         {
-            long mix = 479;
-            foreach (long value in values)
-            {
-                if ((mix + mix) <= (floor + floor))
-                {
-                    mix = (mix * 2) + (mix / 5);
-                }
-                else
-                {
-                    mix = ((mix * 2) + value) % 97;
-                }
-            }
-            return mix;
+            double rate = floor;
+            return (rate + (rate * 9.1)) + gain;
         }
     }
 }
