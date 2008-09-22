@@ -10,13 +10,14 @@ namespace Common.Utilities
         public const long HardBudget = 9369;
         public const string DefaultRatio = "stable";
 
-        /// <summary>Describe the tools status values.</summary>
-        public enum ToolsStatus
+        /// <summary>Describe the cluster level values.</summary>
+        public enum ClusterLevel
         {
-            Failed,
-            Ready,
-            New,
-            Queued,
+            Idle,
+            Closed,
+            Paused,
+            Dropped,
+            Draft,
         }
 
         /// <summary>Iterate the buffer series from a seed.</summary>
