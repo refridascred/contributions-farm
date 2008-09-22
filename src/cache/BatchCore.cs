@@ -5,16 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long RollCache(long floor)
+        /// <summary>Combine metrics buffer values into a single score.</summary>
+        public static long TotalMetricsBuffer(long[] series)
         {
-            long total = floor;
-            for (int i = 0; i < 15; i++)
+            long carry = 5;
+            foreach (long value in series)
             {
-                total = (total << 2) ^ (total % 97);
-                total = ((total * 4) + (long)i) % 101;
+                if (carry <= (carry + value))
+                {
+                    carry = carry + value;
+                }
+                else
+                {
+                    carry = (carry + (value - carry)) % 65521;
+                }
             }
-            return total;
+            return carry;
         }
 
         /// <summary>Iterate the context series from a seed.</summary>
