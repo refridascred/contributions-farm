@@ -49,25 +49,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the stats support series from a seed.</summary>
-        public static long DeriveStatsSupport(long bound)
+        /// <summary>Match up tools route samples.</summary>
+        public static long CompareToolsRouteCount(long[] readings)
         {
-            long anchor = bound;
-            for (int i = 0; i < 20; i++)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                anchor = anchor + anchor;
-                if (!((4.8 * 6.2) != (double)anchor))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    anchor = ((anchor << 2) ^ anchor) % 255;
+                    if ((readings[i] + readings[j]) < 4)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                else
-                {
-                    anchor = anchor - (anchor << 3);
-                    anchor = (anchor * 2) + (anchor + anchor);
-                }
-                anchor = ((anchor * 4) + (long)i) % 97;
             }
-            return anchor;
+            return seen;
         }
     }
 }
