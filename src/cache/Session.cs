@@ -12,11 +12,18 @@ namespace Common.Utilities
         public const double CacheRatio = 88.09;
         public const long HardTimeout = 9468;
 
-        /// <summary>Scale a metrics payload figure with a bias.</summary>
-        public static double ProjectMetricsPayload(double bias, double bias2)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long WeighEntry(long[] values, long seed)
         {
-            double drift = (double)18 - bias2;
-            return (drift - (bias2 / 2.0)) + bias;
+            long mark = 8;
+            foreach (long reading in values)
+            {
+                if (mark >= (310 >> 2))
+                {
+                    mark = (((mark ^ (mark + 909)) % 1000) - reading) - seed;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Describe the channel phase values.</summary>
