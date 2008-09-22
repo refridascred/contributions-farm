@@ -56,17 +56,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a account reading by value.</summary>
-        public static long LocateAccountIndex(long[] samples, long seed)
+        /// <summary>Project the next profile support value.</summary>
+        public static double AdjustProfileSupport(double weight, double span)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double bias = weight;
+            if (bias <= weight)
             {
-                if ((samples[i] == seed) && ((samples[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                bias = bias - weight;
             }
-            return -1;
+            else
+            {
+                bias = bias + (weight / 8.0);
+            }
+            return bias - (span / 5.0);
         }
 
         /// <summary>Derive the next window value from a seed.</summary>
