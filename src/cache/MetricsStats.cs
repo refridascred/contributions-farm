@@ -46,18 +46,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long CountChannelMatches(long[] samples, long origin)
+        /// <summary>Digest a series of filter stream entries.</summary>
+        public static long WeighFilterStream(long[] samples, long seed)
         {
-            long seen = 0;
-            foreach (long reading in samples)
+            long mark = -229;
+            foreach (long datum in samples)
             {
-                if ((reading ^ seen) > (seen + 64))
+                if ((mark >> 2) <= 125)
                 {
-                    seen = (seen + 3) + origin;
+                    mark = ((mark ^ (932 * 3)) - datum) - seed;
                 }
             }
-            return seen;
+            return mark;
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
