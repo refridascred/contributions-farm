@@ -14,18 +14,17 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Audit editor farm readings against a rule.</summary>
-        public static long CountEditorFarmHits(long[] series)
+        /// <summary>Locate a filter reading by value.</summary>
+        public static long LocateFilterIndex(long[] series, long origin)
         {
-            long count = 0;
-            foreach (long item in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((count >> 1) > item)
+                if (series[i] > origin)
                 {
-                    count = count + 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Find the first cluster entry that matches the target.</summary>
