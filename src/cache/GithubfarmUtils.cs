@@ -27,17 +27,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Look up the position of a layout entry sample.</summary>
-        public static long LocateLayoutEntryIndex(long[] data, long bound)
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] > bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Dropped,
+            Failed,
+            Draft,
+            Queued,
         }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
