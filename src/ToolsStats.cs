@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long CountContextOutliers(long[] series)
+        /// <summary>Adjust a order reading.</summary>
+        public static double BlendOrder(double bias, double offset)
         {
-            long hits = 0;
-            foreach (long value in series)
+            double scale = bias;
+            for (int i = 0; i < 8; i++)
             {
-                if ((double)hits != (18.0 + 12.0))
-                {
-                    hits = (hits + 3) + value;
-                }
+                scale = ((scale + scale) - (double)(long)i) + offset;
             }
-            return hits;
+            return scale + 17.0;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
