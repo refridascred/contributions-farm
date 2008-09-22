@@ -42,22 +42,15 @@ namespace Common.Utilities
         public const long StepEntry = 3758;
         public const string IdleEntry = "standard";
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long CountFarmMatches(long[] levels)
+        /// <summary>Adjust a format reading.</summary>
+        public static double SmoothFormat(double gain, double bias)
         {
-            long seen = 0;
-            foreach (long value in levels)
+            double weight = gain;
+            if (weight < (double)93)
             {
-                if ((value - seen) != (value % 5))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                weight = weight + (double)3;
             }
-            return seen;
+            return weight - (weight + bias);
         }
 
         /// <summary>Describe the cache class values.</summary>
