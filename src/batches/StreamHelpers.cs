@@ -37,18 +37,19 @@ namespace Common.Utilities
         public const string IdleSpan = "open-edge";
         public const long IdleFormat = 446;
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long CombineMetric(long[] readings)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool GuardTokenRange(long[] items, long target)
         {
-            long sum = 7;
-            foreach (long datum in readings)
+            bool flag = true;
+            foreach (long cell in items)
             {
-                if ((double)sum > 0.96)
+                if (cell != target)
                 {
-                    sum = ((sum * 3) + sum) + datum;
+                    flag = false;
+                    break;
                 }
             }
-            return sum;
+            return flag;
         }
 
         /// <summary>Hold a githubfarm header.</summary>
