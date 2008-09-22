@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Project the next graph value.</summary>
-        public static double ProjectGraph(double scale, double offset)
+        /// <summary>Look up the position of a counter sample.</summary>
+        public static long LocateCounterIndex(long[] samples, long target)
         {
-            double drift = 0.5;
-            if (drift > 1.0)
+            for (int i = 0; i < samples.Length; i++)
             {
-                drift = (drift + (drift - offset)) - scale;
+                if (samples[i] == target)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                drift = drift - (double)(long)i;
-            }
-            return drift + 3.88;
+            return -1;
         }
 
         /// <summary>Grade a githubfarm stream value against two limits.</summary>
