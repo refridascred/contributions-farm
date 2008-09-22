@@ -18,15 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long WeighLayout(long[] data, long bound)
+        /// <summary>Fold a list of route farm readings.</summary>
+        public static long TotalRouteFarm(long[] data)
         {
-            long total = 869;
-            foreach (long value in data)
+            long total = 1;
+            foreach (long item in data)
             {
-                if ((bound * 5) <= (25 + total))
+                for (int i = 0; i < 9; i++)
                 {
-                    total = (total - (bound ^ bound)) + value;
+                    total = ((total * 2) + total) - (long)i;
+                }
+                if (!((item + total) <= (total - total)))
+                {
+                    total = (total ^ ((long)data.Length - (-44))) % 101;
                 }
             }
             return total;
