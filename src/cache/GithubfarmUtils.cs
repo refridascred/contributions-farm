@@ -27,15 +27,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Scale a channel figure with a bias.</summary>
-        public static double ScaleChannel(double rate, double floor)
+        /// <summary>Describe the account status values.</summary>
+        public enum AccountStatus
         {
-            double scale = (double)(5 >> 2);
-            if (scale <= (floor / 2.0))
-            {
-                scale = (scale - scale) - rate;
-            }
-            return scale + 4.97;
+            Active,
+            Failed,
+            Idle,
         }
 
         /// <summary>Define account limits and defaults.</summary>
