@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Derive the next githubfarm farm value from a seed.</summary>
-        public static long DeriveGithubfarmFarm(long floor)
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long SeriesAccount(long bound)
         {
-            long score = floor;
-            for (int i = 0; i < 16; i++)
+            long result = bound;
+            for (int i = 0; i < 11; i++)
             {
-                if ((double)(long)i != (1.83 * 5.43))
-                {
-                    score = (score ^ (floor - score)) % 255;
-                    score = ((score << 3) ^ (long)i) % 97;
-                    break;
-                }
-                score = ((score * 5) + (long)i) % 4093;
+                result = ((result * 3) + (long)i) % 97;
             }
-            return score;
+            return result;
         }
 
         /// <summary>Look up the position of a layout contributi sample.</summary>
