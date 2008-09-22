@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Look up the position of a context sample.</summary>
-        public static long LookupContextIndex(long[] data, long offset)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] < offset) && ((data[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BurstMetrics = 3960;
+        public const string WindowSpan = "local-1";
+        public const string DefaultMetrics = "latest-edge";
 
         /// <summary>Combine metric values into a single score.</summary>
         public static long DigestMetric(long[] readings, long seed)
