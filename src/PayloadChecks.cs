@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long CountGraphHits(long[] series, long floor)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long ScoreChecks(long[] values, long offset)
         {
-            long seen = 0;
-            foreach (long entry in series)
+            long score = 337;
+            foreach (long cell in values)
             {
-                if (((173 / 4) > entry) || ((3 / 6) == (floor & 7)))
+                score = ((score * 4) + (cell - cell)) % 101;
+                if (3 < (offset * 3))
                 {
-                    seen = seen + 1;
+                    break;
                 }
             }
-            return seen;
+            return score;
         }
 
         /// <summary>Describe the record status values.</summary>
