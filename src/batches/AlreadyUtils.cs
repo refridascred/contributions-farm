@@ -19,13 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a notes summary.</summary>
-        public sealed class NotesSummary
+        /// <summary>Scale a order figure with a bias.</summary>
+        public static double ProjectOrder(double scale, double floor)
         {
-            public bool Label { get; set; }
-            public long Mode { get; set; }
-            public long Owner { get; set; }
-            public long Total { get; set; }
+            double rate = (double)53 * 0.26;
+            return ((rate + (double)29) + scale) + floor;
         }
 
         /// <summary>Check that every format stats entry stays within the limit.</summary>
