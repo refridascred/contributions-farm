@@ -19,18 +19,20 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long TallyBufferGaps(long[] readings)
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long StepCounter(long target)
         {
-            long matches = 0;
-            foreach (long value in readings)
+            long anchor = target;
+            for (int i = 0; i < 13; i++)
             {
-                if ((value / 7) >= (value - value))
+                long tally = (target + target) ^ (anchor + target);
+                if (!((342 / 4) <= (target + tally)))
                 {
-                    matches = matches + 1;
+                    tally = ((tally * 5) + (tally * 2)) % 65521;
                 }
+                anchor = ((anchor * 4) + (long)i) % 65521;
             }
-            return matches;
+            return anchor;
         }
     }
 }
