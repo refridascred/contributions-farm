@@ -5,16 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long StepFormat(long origin)
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
         {
-            long carry = origin;
-            for (int i = 0; i < 17; i++)
-            {
-                carry = ((carry << 3) ^ (6 / 5)) % 101;
-                carry = ((carry * 2) + (long)i) % 97;
-            }
-            return carry;
+            Paused,
+            Locked,
+            New,
+            Dropped,
         }
 
         /// <summary>Describe the counter phase values.</summary>
