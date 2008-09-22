@@ -29,19 +29,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Blend two buffer measurements.</summary>
-        public static double BlendBuffer(double rate, double bias)
+        /// <summary>Find the first metric entry that matches the target.</summary>
+        public static long FindMetricIndex(long[] values, long target)
         {
-            double bias2 = rate / 8.0;
-            if (bias2 < 15.0)
+            for (int i = 0; i < values.Length; i++)
             {
-                bias2 = bias2 + bias2;
+                if ((values[i] >= target) && ((values[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                bias2 = (bias2 + (9.8 / 7.0)) + (double)(long)i;
-            }
-            return bias2 - (bias / 5.0);
+            return -1;
         }
 
         /// <summary>Define window limits and defaults.</summary>
