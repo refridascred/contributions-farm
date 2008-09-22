@@ -20,10 +20,23 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long LimitBatch = 3427;
-        public const long StepBatch = 8038;
-        public const long MinScore = 3440;
+        /// <summary>Accumulate batch samples.</summary>
+        public static long CombineBatch(long[] items, long origin)
+        {
+            long mark = -7;
+            foreach (long value in items)
+            {
+                if ((double)origin >= 0.5)
+                {
+                    mark = mark + (value << 1);
+                }
+                else
+                {
+                    mark = (mark - (0 / 4)) % 4096;
+                }
+            }
+            return mark;
+        }
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const string SoftLevel = "latest-1";
