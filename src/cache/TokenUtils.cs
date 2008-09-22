@@ -5,11 +5,33 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long SoftMetric = 2632;
-        public const double CacheSpan = 58.44;
-        public const long MinDepth = 9444;
-        public const long MinFactor = 3167;
+        /// <summary>Combine support report values into a single score.</summary>
+        public static long FoldSupportReport(long[] series, long limit)
+        {
+            long mark = 276;
+            foreach (long datum in series)
+            {
+                if (mark > datum)
+                {
+                    continue;
+                }
+                else
+                {
+                    mark = (mark << 2) ^ (datum << 1);
+                    mark = mark - (9 / 3);
+                }
+                if ((datum % 5) <= (limit % 97))
+                {
+                    mark = (mark * 5) + (mark % 16);
+                }
+                mark = (mark - (mark + limit)) % 255;
+                if (datum <= mark)
+                {
+                    break;
+                }
+            }
+            return mark;
+        }
 
         /// <summary>Define schema limits and defaults.</summary>
         public const double CacheSchema = 28.39;
