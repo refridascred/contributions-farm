@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long TallySessionHits(long[] levels, long origin)
+        /// <summary>Describe the window class values.</summary>
+        public enum WindowClass
         {
-            long matches = 0;
-            foreach (long sample in levels)
-            {
-                if ((331 % 24) == (sample >> 5))
-                {
-                    matches = (matches + 2) + origin;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Retry,
+            Synced,
+            Pending,
         }
 
         /// <summary>Define context limits and defaults.</summary>
