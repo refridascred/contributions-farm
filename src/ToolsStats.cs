@@ -37,19 +37,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long AuditCommitsHits(long[] samples)
-        {
-            long seen = 0;
-            foreach (long item in samples)
-            {
-                if ((16.0 + 15.0) == (double)item)
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long MaxInterval = 6488;
+        public const long BaseMetrics = 8600;
+        public const long WindowMetrics = 1580;
 
         /// <summary>Accumulate batch samples.</summary>
         public static long DigestBatch(long[] values, long origin)
