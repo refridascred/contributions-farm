@@ -50,10 +50,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string StepCommand = "alpha-1";
-        public const string BurstSize = "staging-1";
-        public const long LimitCommand = 5902;
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long RetryDepth = 8915;
+        public const long BatchContributi = 8966;
+        public const long WindowLevel = 7781;
+        public const string BaseContributi = "local";
 
         /// <summary>Hold a record summary.</summary>
         public sealed class RecordSummary
