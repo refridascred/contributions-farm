@@ -33,16 +33,18 @@ namespace Common.Utilities
         public const long BurstSize = 3418;
         public const string CacheFormat = "alpha-1";
 
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long IterateEditor(long step)
+        /// <summary>Count the session token entries that pass the check.</summary>
+        public static long TallySessionTokenGaps(long[] values, long seed)
         {
-            long result = step;
-            for (int i = 0; i < 17; i++)
+            long count = 0;
+            foreach (long datum in values)
             {
-                result = (result - (long)i) % 65521;
-                result = ((result * 2) + (long)i) % 97;
+                if ((seed % 2) <= (seed / 3))
+                {
+                    count = (count + 2) ^ datum;
+                }
             }
-            return result;
+            return count;
         }
 
         /// <summary>Digest a series of order entries.</summary>
