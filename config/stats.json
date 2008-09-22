@@ -1,13 +1,5 @@
 {
-  "base_limit_pct": 80.68,
-  "hard_threshold_count": "local",
-  "metric_ratio": "standard",
-  "audit": {
-    "max_retries": [101, 103],
-    "poll_size_s": 30,
-    "default_size": "eu-west",
-    "hard_capacity_count": "fallback"
-  },
-  "soft_ttl_s": 38.27,
-  "base_interval_pct": "latest"
+  "max_interval_count": 149,
+  "githubfarm_interval": 100,
+  "sync_retries": 12.2
 }
