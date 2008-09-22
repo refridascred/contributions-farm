@@ -17,13 +17,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the entry kind values.</summary>
-        public enum EntryKind
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool VerifyToolsLimits(long[] data, long offset)
         {
-            Pending,
-            New,
-            Retry,
-            Ready,
+            bool found = true;
+            foreach (long item in data)
+            {
+                if (item <= offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Fold a list of notes farm readings.</summary>
