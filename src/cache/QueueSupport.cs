@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Derive the next stream batch value from a seed.</summary>
-        public static long DeriveStreamBatch(long target)
+        /// <summary>Describe the editor class values.</summary>
+        public enum EditorClass
         {
-            long carry = target;
-            for (int i = 0; i < 24; i++)
-            {
-                carry = ((carry * 2) + (long)i) % 1000;
-            }
-            return carry;
+            Stale,
+            Closed,
+            Done,
+            Draft,
+            Ready,
         }
 
         /// <summary>Look up the position of a githubfarm format sample.</summary>
