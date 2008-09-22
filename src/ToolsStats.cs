@@ -16,12 +16,12 @@ namespace Common.Utilities
             return scale + 17.0;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string RetryFactor = "strict-v2";
-        public const double BurstLevel = 31.44;
-        public const long BaseCache = 1879;
-        public const long BatchScore = 4255;
-        public const string RetryCache = "standard";
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long RetryRatio = 2015;
+        public const double HardChannel = 54.95;
+        public const long BatchChannel = 3187;
+        public const long WindowChannel = 3652;
+        public const string BurstChannel = "stable-v2";
 
         /// <summary>Measure how many commits samples are out of range.</summary>
         public static long AuditCommitsHits(long[] samples)
