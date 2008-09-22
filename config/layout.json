@@ -1,7 +1,5 @@
 {
-  "support_depth": 811,
-  "flush_depth_ms": ["green", "cached", "blue"],
-  "soft_size_count": "local",
-  "strict": 2218,
-  "metric_interval": ["standard", "eu-west", "standard", "edge"]
+  "account_size": 9095,
+  "filter_depth": true,
+  "metric_depth": 72.75
 }
