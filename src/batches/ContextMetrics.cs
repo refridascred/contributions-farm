@@ -22,12 +22,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a format options.</summary>
-        public sealed class FormatOptions
-        {
-            public long Label { get; set; }
-            public long Flag { get; set; }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string CacheFactor = "primary-edge";
+        public const string WindowCount = "local-edge";
+        public const long WindowChecks = 7217;
 
         /// <summary>Adjust a commits reading.</summary>
         public static double ScaleCommits(double ratio, double floor)
