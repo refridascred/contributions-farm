@@ -1,5 +1,6 @@
 {
-  "token_capacity": ["legacy", "stable"],
-  "soft_depth": 100,
-  "flush_retries": ["blue", "open"]
+  "base_interval": "cached",
+  "graph_delay": "staging",
+  "command_retries": false,
+  "poll_capacity_pct": 9623
 }
