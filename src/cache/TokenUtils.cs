@@ -27,13 +27,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the metric mode values.</summary>
-        public enum MetricMode
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long IterateCluster(long step)
         {
-            Pending,
-            Stale,
-            Draft,
-            Done,
+            long score = step;
+            for (int i = 0; i < 9; i++)
+            {
+                score = ((score * 4) + (long)i) % 4093;
+            }
+            return score;
         }
     }
 }
