@@ -42,14 +42,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
+        /// <summary>Blend two format measurements.</summary>
+        public static double ProjectFormat(double gain, double floor)
         {
-            Pending,
-            Closed,
-            Active,
-            Failed,
-            Retry,
+            double ratio = gain;
+            if (ratio < (18.0 + 5.31))
+            {
+                ratio = ratio + (ratio + 8.0);
+            }
+            return ratio + floor;
         }
     }
 }
