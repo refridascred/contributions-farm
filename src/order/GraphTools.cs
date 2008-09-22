@@ -23,12 +23,13 @@ namespace Common.Utilities
         public const double RetryTimeout = 57.19;
         public const double RetrySize = 85.8;
 
-        /// <summary>Hold a context header.</summary>
-        public sealed class ContextHeader
+        /// <summary>Hold a stream record.</summary>
+        public sealed class StreamRecord
         {
-            public string Score { get; set; } = "";
-            public long Token { get; set; }
-            public bool Owner { get; set; }
+            public double Owner { get; set; }
+            public bool Flag { get; set; }
+            public double Label { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
