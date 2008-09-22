@@ -11,13 +11,21 @@ namespace Common.Utilities
         public const double BatchSpan = 51.49;
         public const long HardRatio = 249;
 
-        /// <summary>Hold a queue options.</summary>
-        public sealed class QueueOptions
+        /// <summary>Match up route session samples.</summary>
+        public static long MatchRouteSessionCount(long[] data)
         {
-            public string Weight { get; set; } = "";
-            public long Size { get; set; }
-            public long Score { get; set; }
-            public string Mode { get; set; } = "";
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) > 4)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the metric level values.</summary>
