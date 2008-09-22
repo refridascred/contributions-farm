@@ -33,14 +33,18 @@ namespace Common.Utilities
             return gain + 4.0;
         }
 
-        /// <summary>Describe the cluster state values.</summary>
-        public enum ClusterState
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long MeasureBufferOutliers(long[] readings)
         {
-            Pending,
-            Locked,
-            Active,
-            Closed,
-            Stale,
+            long seen = 0;
+            foreach (long cell in readings)
+            {
+                if (((double)cell > (4.03 / 4.0)) && (((double)seen == (11.0 / 4.0)) && ((cell + 9) == (cell + seen))))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
     }
 }
