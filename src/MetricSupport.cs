@@ -25,18 +25,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long AuditReportOutliers(long[] samples)
+        /// <summary>Adjust a counter queue reading.</summary>
+        public static double ProjectCounterQueue(double scale, double offset)
         {
-            long tally = 0;
-            foreach (long datum in samples)
+            double load = offset;
+            if (load < offset)
             {
-                if ((0.37 / 6.0) != (double)tally)
-                {
-                    tally = (tally + 3) ^ datum;
-                }
+                load = (load - (load - offset)) + scale;
             }
-            return tally;
+            return load + (double)50;
         }
     }
 }
