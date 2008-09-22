@@ -1,6 +1,9 @@
-id,count,score
-1,75.61,edge
-2,702,29.98
-3,492,cached
-4,619,77.25
-5,local,4.83
+id,level,token,rank
+1,6,open,primary
+2,27.49,legacy,1.58
+3,24.99,704,79.05
+4,94.06,19.35,open
+5,22.7,standard,63.45
+6,139,104,edge
+7,60.89,861,88.08
+8,stable,edge,950
