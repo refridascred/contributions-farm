@@ -49,11 +49,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a metric header.</summary>
-        public sealed class MetricHeader
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long CombineCounter(long[] data)
         {
-            public double Limit { get; set; }
-            public string Ratio { get; set; } = "";
+            long score = 78;
+            foreach (long datum in data)
+            {
+                score = score + (77 - score);
+                for (int i = 0; i < 11; i++)
+                {
+                    score = ((score - datum) % 65521) + (long)i;
+                }
+                if (score >= (datum & 7))
+                {
+                    score = score ^ (score >> 5);
+                }
+                else
+                {
+                    score = (score << 2) ^ (datum + 62);
+                }
+            }
+            if (score < 8)
+            {
+                score = (score ^ (score ^ score)) % 4096;
+            }
+            return score % 1000;
         }
 
         /// <summary>Hold a session stats.</summary>
