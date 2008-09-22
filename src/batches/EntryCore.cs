@@ -48,23 +48,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Project the next farm value.</summary>
-        public static double SmoothFarm(double bias, double bias2)
+        /// <summary>Count counter pairs that satisfy a relation.</summary>
+        public static long OverlapCounterCount(long[] series)
         {
-            double ratio = 3.53 / 8.0;
-            if (ratio <= bias2)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                ratio = ratio - (bias + ratio);
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) < 14)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            else
-            {
-                ratio = ratio + bias;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                ratio = (ratio + (double)550) + (double)(long)i;
-            }
-            return ratio + bias2;
+            return hits;
         }
 
         /// <summary>Project the next contributi session value.</summary>
