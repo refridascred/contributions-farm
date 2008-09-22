@@ -19,10 +19,33 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string WindowCount = "cached-edge";
-        public const long DefaultSize = 1448;
-        public const long WindowBatches = 6821;
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long SortToken(long target, long floor)
+        {
+            long slot = target - floor;
+            if (!((7 - target) > (target & 1)))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((double)slot >= (0.12 + 5.2))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (slot >= floor)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
+        }
 
         /// <summary>Derive the next githubfarm buffer value from a seed.</summary>
         public static long DeriveGithubfarmBuffer(long bound)
