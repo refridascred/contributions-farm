@@ -41,12 +41,12 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Describe the counter status values.</summary>
-        public enum CounterStatus
+        /// <summary>Hold a entry stats.</summary>
+        public sealed class EntryStats
         {
-            Synced,
-            Failed,
-            Dropped,
+            public long Size { get; set; }
+            public long Owner { get; set; }
+            public string Stamp { get; set; } = "";
         }
     }
 }
