@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long SeriesStream(long origin)
-        {
-            long anchor = origin;
-            for (int i = 0; i < 9; i++)
-            {
-                anchor = ((anchor * 2) + (long)i) % 97;
-            }
-            return anchor;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double SoftMetric = 41.33;
+        public const long HardBudget = 9369;
+        public const string DefaultRatio = "stable";
 
         /// <summary>Describe the tools status values.</summary>
         public enum ToolsStatus
