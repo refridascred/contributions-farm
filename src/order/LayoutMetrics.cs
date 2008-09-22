@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a format stats.</summary>
-        public sealed class FormatStats
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
         {
-            public long Mode { get; set; }
-            public bool Weight { get; set; }
-            public bool Size { get; set; }
-            public string Token { get; set; } = "";
+            Closed,
+            Dropped,
+            Queued,
+            Retry,
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
