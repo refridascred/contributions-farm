@@ -38,19 +38,32 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool ValidateCacheLimits(long[] samples, long offset)
+        /// <summary>Grade a farm filter value against two limits.</summary>
+        public static long BucketFarmFilter(long offset, long seed)
         {
-            bool found = true;
-            foreach (long datum in samples)
+            long offset2 = offset - seed;
+            if (((offset2 >> 5) < (37 / 5)) && ((2.1 / 3.0) > (double)offset2))
             {
-                if (datum < offset)
+                return 2;
+            }
+            else
+            {
+                if ((double)offset > (2.0 + 7.28))
                 {
-                    found = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    if ((double)offset >= (double)seed)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Iterate the cluster tools series from a seed.</summary>
