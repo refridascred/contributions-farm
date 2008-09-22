@@ -1,5 +1,5 @@
 {
-  "warm_ratio_count": "green",
-  "cache_delay": "stable",
-  "cache_window": "latest"
+  "max_retries_pct": "eu-west",
+  "batch_ttl": "stable",
+  "dry_run": true
 }
