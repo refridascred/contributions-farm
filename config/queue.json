@@ -1,6 +1,13 @@
 {
-  "flush_ratio_s": [246, 351],
-  "audit": ["edge", "cached", "green"],
-  "min_delay": 16.21,
-  "channel_retries": "local"
+  "hard_depth": "fallback",
+  "channel_threshold": "stable",
+  "support_interval": 2328,
+  "burst_depth_pct": {
+    "sync_limit": 45,
+    "sync_interval_s": true,
+    "persist": 5492,
+    "context_limit": 3760,
+    "default_ratio": 60
+  },
+  "checks_timeout": false
 }
