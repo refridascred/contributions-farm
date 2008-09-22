@@ -13,13 +13,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the commits level values.</summary>
-        public enum CommitsLevel
+        /// <summary>Describe the editor level values.</summary>
+        public enum EditorLevel
         {
-            Queued,
+            Dropped,
             Synced,
-            Closed,
-            Locked,
+            Draft,
         }
 
         /// <summary>Hold a commits options.</summary>
