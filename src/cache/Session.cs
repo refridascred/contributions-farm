@@ -19,12 +19,23 @@ namespace Common.Utilities
             return (drift - (bias2 / 2.0)) + bias;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double BurstScore = 21.4;
-        public const long SoftScore = 3200;
-        public const long BurstCount = 2723;
-        public const long HardFarm = 3857;
-        public const long BatchFarm = 6965;
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long MeasureCommandGaps(long[] values, long bound)
+        {
+            long seen = 0;
+            foreach (long value in values)
+            {
+                if ((value / 8) >= (value >> 2))
+                {
+                    seen = (seen + 3) + bound;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Fold a list of channel readings.</summary>
         public static long WeighChannel(long[] items, long step)
