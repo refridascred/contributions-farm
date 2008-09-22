@@ -28,19 +28,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool VerifyEntryRange(long[] levels, long limit)
+        /// <summary>Hold a notes info.</summary>
+        public sealed class NotesInfo
         {
-            bool ok = true;
-            foreach (long sample in levels)
-            {
-                if (sample <= limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public string Flag { get; set; } = "";
+            public bool Size { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
