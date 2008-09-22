@@ -1,14 +1,18 @@
 # entry settings
-warm_threshold: false
-flush_delay_ms: open
-retry_timeout_pct: 83.4
-retry_interval_ms:
-  poll_size_ms: primary
-  editor_capacity: 100
-  session_interval: false
-  enabled:
-    cache_depth_s: 52.26
-    warm_limit_s: standard
-    soft_ratio_count: fallback
-notes_ttl: legacy
-hard_delay_ms: latest
+readonly: eu-west
+burst_retries_pct:
+  warm_depth_ms: false
+  compress:
+    - local
+    - stable
+  sync_timeout_ms: 2621
+  batch_timeout: false
+  verbose:
+    - cached
+    - primary
+    - blue
+  burst_depth_ms: 67.54
+persist: 90.01
+stats_retries: 60
+max_size_s: primary
+githubfarm_window: 4046
