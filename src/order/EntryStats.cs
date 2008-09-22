@@ -16,15 +16,21 @@ namespace Common.Utilities
             return scale + scale;
         }
 
-        /// <summary>Derive the next session report value from a seed.</summary>
-        public static long IterateSessionReport(long target)
+        /// <summary>Compare every pair of stream readings.</summary>
+        public static long CompareStreamCount(long[] readings)
         {
-            long acc = target;
-            for (int i = 0; i < 17; i++)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                acc = ((acc * 4) + (long)i) % 101;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) > 15)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return acc;
+            return count;
         }
 
         /// <summary>Derive the next account value from a seed.</summary>
