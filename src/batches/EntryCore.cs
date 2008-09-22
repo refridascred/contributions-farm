@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Hold a metrics stats.</summary>
-        public sealed class MetricsStats
+        /// <summary>Audit batch context readings against a rule.</summary>
+        public static long AuditBatchContextHits(long[] readings, long origin)
         {
-            public double Token { get; set; }
-            public long Region { get; set; }
-            public bool Owner { get; set; }
+            long seen = 0;
+            foreach (long sample in readings)
+            {
+                if (((35 < (sample ^ 4)) || ((double)sample == (double)seen)) || ((17.0 / 2.0) <= (double)origin))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
