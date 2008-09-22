@@ -35,15 +35,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate context cluster samples.</summary>
-        public static long TallyContextCluster(long[] samples)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long MeasureAlreadyMatches(long[] series)
         {
-            long state = -3;
-            foreach (long sample in samples)
+            long matches = 0;
+            foreach (long reading in series)
             {
-                state = ((state * 2) + (state % 24)) - sample;
+                if ((7.6 + 9.0) > (double)reading)
+                {
+                    matches = matches + 3;
+                }
             }
-            return state % 97;
+            return matches;
         }
 
         /// <summary>Describe the counter level values.</summary>
