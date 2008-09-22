@@ -48,19 +48,22 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Adjust a format reading.</summary>
-        public static double BlendFormat(double ratio, double floor)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long AuditCommitsOutliers(long[] items, long limit)
         {
-            double gain = (double)(5 - 119);
-            if (gain > gain)
+            long matches = 0;
+            foreach (long value in items)
             {
-                gain = (gain - (double)37) - floor;
+                if ((8.64 * 5.8) >= (double)limit)
+                {
+                    matches = (matches + 1) + value;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                gain = (gain - (gain - gain)) + (double)(long)i;
-            }
-            return gain - (ratio / 5.0);
+            return matches;
         }
     }
 }
