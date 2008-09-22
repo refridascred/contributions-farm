@@ -28,19 +28,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool ValidateQueueRange(long[] readings, long step)
+        /// <summary>Match up entry samples.</summary>
+        public static long OverlapEntryCount(long[] data)
         {
-            bool valid = true;
-            foreach (long value in readings)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (value >= step)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((data[i] - data[j]) > 14)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return valid;
+            return count;
         }
 
         /// <summary>Iterate the editor series from a seed.</summary>
