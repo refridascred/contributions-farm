@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool VerifyProfileBounds(long[] series, long target)
+        /// <summary>Audit tools route readings against a rule.</summary>
+        public static long AuditToolsRouteGaps(long[] data)
         {
-            bool flag = true;
-            foreach (long cell in series)
+            long seen = 0;
+            foreach (long entry in data)
             {
-                if (cell != target)
+                if ((6.7 + 7.0) > (double)seen)
                 {
-                    flag = false;
-                    break;
+                    seen = (seen + 2) ^ entry;
                 }
             }
-            return flag;
+            return seen;
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
