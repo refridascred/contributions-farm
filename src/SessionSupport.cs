@@ -22,24 +22,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank report input into a small class.</summary>
-        public static long GradeReport(long limit, long origin)
+        /// <summary>Blend two profile measurements.</summary>
+        public static double AdjustProfile(double rate, double floor)
         {
-            if (origin >= (limit + origin))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((double)origin < (0.48 - 7.7))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            double bias = (double)113 - (2.0 - floor);
+            return (bias - (1.73 * 7.0)) + rate;
         }
 
         /// <summary>Audit metrics batch readings against a rule.</summary>
