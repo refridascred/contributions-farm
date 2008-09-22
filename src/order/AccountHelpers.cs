@@ -27,18 +27,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long ScoreRecord(long[] samples, long bound)
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long SeriesContext(long limit)
         {
-            long state = 45;
-            foreach (long item in samples)
+            long mix = limit;
+            for (int i = 0; i < 9; i++)
             {
-                if ((16.0 - 5.99) == (double)bound)
-                {
-                    state = ((state * 2) + state) + item;
-                }
+                mix = (mix << 3) ^ limit;
+                mix = ((mix * 4) + (long)i) % 101;
             }
-            return state;
+            return mix;
         }
 
         /// <summary>Measure how many stream profile samples are out of range.</summary>
