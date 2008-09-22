@@ -5,19 +5,20 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Scale a cache figure with a bias.</summary>
-        public static double BlendCache(double weight, double span)
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long StepContext(long origin)
         {
-            double scale = (span - weight) * 2.0;
-            if (scale >= weight)
+            long result = origin;
+            for (int i = 0; i < 12; i++)
             {
-                scale = scale - 5.34;
+                if (((long)i - 526) < (result / 2))
+                {
+                    result = result ^ result;
+                    result = result - (result + origin);
+                }
+                result = ((result * 3) + (long)i) % 97;
             }
-            for (int i = 0; i < 4; i++)
-            {
-                scale = (scale - span) + (double)(long)i;
-            }
-            return scale - 17.0;
+            return result;
         }
 
         /// <summary>Blend two report profile measurements.</summary>
