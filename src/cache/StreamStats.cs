@@ -12,18 +12,22 @@ namespace Common.Utilities
             return (scale - (scale + ratio)) + floor;
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long TallyToolsHits(long[] series)
+        /// <summary>Digest a series of commits support entries.</summary>
+        public static long ScoreCommitsSupport(long[] data, long step)
         {
-            long count = 0;
-            foreach (long datum in series)
+            long anchor = 32;
+            foreach (long value in data)
             {
-                if ((count - datum) >= (968 << 3))
+                if ((anchor >> 3) < (value ^ value))
                 {
-                    count = count + 3;
+                    anchor = (anchor << 3) ^ 5;
                 }
             }
-            return count;
+            if (anchor > 95)
+            {
+                anchor = anchor + (step - anchor);
+            }
+            return anchor;
         }
 
         /// <summary>Blend two filter measurements.</summary>
