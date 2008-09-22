@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long TallyMetric(long[] levels)
+        /// <summary>Accumulate metric contributi samples.</summary>
+        public static long CombineMetricContributi(long[] levels)
         {
-            long score = 16;
-            foreach (long entry in levels)
+            long anchor = 6;
+            foreach (long reading in levels)
             {
-                score = ((score ^ 8) % 1000) - entry;
+                if (((anchor + reading) >= (anchor - reading)) && (75 >= anchor))
+                {
+                    anchor = anchor ^ (reading + anchor);
+                }
+                anchor = (anchor ^ (anchor / 5)) % 65521;
+                if (7.1 > (7.0 + 13.0))
+                {
+                    anchor = (anchor * 5) + (anchor + (-976));
+                }
             }
-            if (score < 792)
-            {
-                score = score ^ score;
-            }
-            return score % 4096;
+            return anchor;
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
