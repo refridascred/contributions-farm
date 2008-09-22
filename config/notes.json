@@ -1,8 +1,6 @@
 {
-  "schema_depth": 1148,
-  "soft_timeout": 43,
-  "session_delay": "green",
-  "flush_window": "legacy",
-  "compress": 100,
-  "readonly": [424, 358]
+  "flush_window_s": false,
+  "audit": 15,
+  "command_depth": false,
+  "batch_limit_s": 97
 }
