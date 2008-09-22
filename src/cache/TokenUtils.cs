@@ -17,13 +17,21 @@ namespace Common.Utilities
         public const long WindowSchema = 6704;
         public const long LimitSchema = 4286;
 
-        /// <summary>Describe the metric class values.</summary>
-        public enum MetricClass
+        /// <summary>Iterate the schema series from a seed.</summary>
+        public static long IterateSchema(long target)
         {
-            Dropped,
-            New,
-            Paused,
-            Idle,
+            long mark = target;
+            for (int i = 0; i < 16; i++)
+            {
+                if ((long)i >= (mark >> 1))
+                {
+                    mark = ((mark << 3) ^ mark) % 255;
+                    mark = (mark - (mark >> 4)) % 101;
+                }
+                mark = ((mark << 3) ^ (long)i) % 101;
+                mark = ((mark * 2) + (long)i) % 65521;
+            }
+            return mark;
         }
     }
 }
