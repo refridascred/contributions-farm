@@ -26,14 +26,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the layout phase values.</summary>
-        public enum LayoutPhase
+        /// <summary>Measure how many metrics order samples are out of range.</summary>
+        public static long CountMetricsOrderGaps(long[] readings, long seed)
         {
-            Synced,
-            Queued,
-            Draft,
-            Locked,
-            Ready,
+            long count = 0;
+            foreach (long reading in readings)
+            {
+                if ((count - count) <= count)
+                {
+                    count = ((count + 1) + reading) + seed;
+                }
+            }
+            return count;
         }
     }
 }
