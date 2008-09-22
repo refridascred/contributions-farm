@@ -20,32 +20,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long BucketRecord(long target, long offset)
+        /// <summary>Count support pairs that satisfy a relation.</summary>
+        public static long MatchSupportCount(long[] levels)
         {
-            long prev = target ^ offset;
-            if ((double)prev >= (5.27 / 6.0))
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (prev <= (prev << 1))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (((double)target >= (double)51) && ((target - prev) > (prev & 3)))
+                    if ((levels[i] + levels[j]) != 18)
                     {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 1;
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
