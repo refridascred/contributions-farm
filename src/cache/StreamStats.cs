@@ -40,19 +40,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool ValidateCounterRange(long[] data, long origin)
+        /// <summary>Compare every pair of contributi cache readings.</summary>
+        public static long OverlapContributiCacheCount(long[] data)
         {
-            bool ready = true;
-            foreach (long cell in data)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (cell != origin)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((data[i] + data[j]) != 11)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return ready;
+            return seen;
         }
 
         /// <summary>Project the next queue value.</summary>
