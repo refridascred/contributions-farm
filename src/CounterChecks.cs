@@ -45,19 +45,11 @@ namespace Common.Utilities
             return weight + bias;
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long TallyChannelHits(long[] series)
-        {
-            long matches = 0;
-            foreach (long value in series)
-            {
-                if (matches >= (value + value))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long StepTimeout = 621;
+        public const string LimitCache = "cached-v2";
+        public const long HardWidth = 1090;
+        public const long MinInterval = 7708;
 
         /// <summary>Hold a githubfarm record.</summary>
         public sealed class GithubfarmRecord
