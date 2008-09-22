@@ -1,5 +1,11 @@
 # entry settings
-farm_ratio: cached
-poll_capacity_ms: 71.27
-idle_ttl_s: 12.6
-flush_limit: false
+warm_threshold_s: 923
+hard_window_pct:
+  persist: eu-west
+  token_size: 25.94
+  burst_ratio_count:
+    - 261
+    - 170
+    - 96
+    - 346
+warm_threshold_pct: 4101
