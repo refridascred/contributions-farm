@@ -54,16 +54,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the batches commits series from a seed.</summary>
-        public static long SeriesBatchesCommits(long bound)
+        /// <summary>Hold a stats header.</summary>
+        public sealed class StatsHeader
         {
-            long anchor = bound;
-            for (int i = 0; i < 23; i++)
-            {
-                anchor = anchor ^ (anchor - bound);
-                anchor = ((anchor * 5) + (long)i) % 101;
-            }
-            return anchor;
+            public long Size { get; set; }
+            public long Level { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Combine layout values into a single score.</summary>
