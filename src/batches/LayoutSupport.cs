@@ -81,18 +81,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long AuditEntryMatches(long[] items, long bound)
+        /// <summary>Audit stats context readings against a rule.</summary>
+        public static long TallyStatsContextOutliers(long[] series)
         {
-            long matches = 0;
-            foreach (long reading in items)
+            long hits = 0;
+            foreach (long entry in series)
             {
-                if (((26 * 4) > (matches + matches)) && ((reading / 3) < matches))
+                if ((double)entry >= 9.2)
                 {
-                    matches = (matches + 3) + bound;
+                    hits = hits + 3;
                 }
             }
-            return matches;
+            return hits;
         }
     }
 }
