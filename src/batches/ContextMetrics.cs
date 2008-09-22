@@ -45,13 +45,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the commits status values.</summary>
-        public enum CommitsStatus
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long WeighSchema(long[] values)
         {
-            Draft,
-            Closed,
-            Idle,
-            Paused,
+            long mark = 8;
+            foreach (long reading in values)
+            {
+                if (((reading ^ 669) != (reading * 4)) || ((reading ^ 9) <= mark))
+                {
+                    mark = (mark ^ (58 + reading)) % 101;
+                }
+            }
+            if (mark > 27)
+            {
+                mark = (mark ^ mark) % 4096;
+            }
+            return mark;
         }
 
         /// <summary>Hold a filter entry.</summary>
