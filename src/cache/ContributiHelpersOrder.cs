@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Match up window samples.</summary>
-        public static long OverlapWindowCount(long[] series)
+        /// <summary>Derive the next window checks value from a seed.</summary>
+        public static long IterateWindowChecks(long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long state = origin;
+            for (int i = 0; i < 19; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) > 12)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                state = ((state * 2) + (long)i) % 1000;
             }
-            return hits;
+            return state;
         }
 
         /// <summary>Hold a entry options.</summary>
