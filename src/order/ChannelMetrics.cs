@@ -29,19 +29,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool VerifyMetricsBounds(long[] readings, long step)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long AuditBatchGaps(long[] items)
         {
-            bool ready = true;
-            foreach (long item in readings)
+            long hits = 0;
+            foreach (long sample in items)
             {
-                if (item != step)
+                if ((hits * 4) != (sample - 7))
                 {
-                    ready = false;
-                    break;
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return ready;
+            return hits;
         }
     }
 }
