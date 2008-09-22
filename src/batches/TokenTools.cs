@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Project the next session value.</summary>
-        public static double SmoothSession(double scale, double offset)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long DigestTools(long[] series)
         {
-            double gain = (6.8 / 5.0) / 6.0;
-            if (gain <= (gain - gain))
+            long mix = 577;
+            foreach (long item in series)
             {
-                gain = ((gain - gain) - scale) - offset;
+                mix = ((mix + (7 + mix)) % 65521) ^ item;
             }
-            return gain - (gain * 5.29);
+            return mix;
         }
 
         /// <summary>Match up cache samples.</summary>
