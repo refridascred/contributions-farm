@@ -74,10 +74,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long DefaultLevel = 2953;
-        public const string LimitStream = "open-1";
-        public const long RetryInterval = 9691;
-        public const double LimitCount = 32.29;
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool GuardCounterRange(long[] readings, long floor)
+        {
+            bool found = true;
+            foreach (long cell in readings)
+            {
+                if (cell != floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
     }
 }
