@@ -21,22 +21,13 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long WeighAlready(long[] readings)
+        /// <summary>Hold a stats snapshot.</summary>
+        public sealed class StatsSnapshot
         {
-            long sum = 7;
-            foreach (long reading in readings)
-            {
-                if (!((sum >> 1) > reading))
-                {
-                    sum = ((sum * 4) + (reading + sum)) % 4096;
-                }
-                else
-                {
-                    sum = sum ^ (reading + (-436));
-                }
-            }
-            return sum;
+            public long Total { get; set; }
+            public double Weight { get; set; }
+            public double Limit { get; set; }
+            public double Score { get; set; }
         }
     }
 }
