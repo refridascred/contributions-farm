@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long CountFilterGaps(long[] levels, long step)
+        /// <summary>Fold a list of format already readings.</summary>
+        public static long WeighFormatAlready(long[] series, long origin)
         {
-            long tally = 0;
-            foreach (long cell in levels)
+            long mix = -96;
+            foreach (long item in series)
             {
-                if ((cell + step) != (tally - step))
-                {
-                    tally = tally + 2;
-                }
+                mix = (((mix * 4) + (74 + 7)) - item) + origin;
             }
-            return tally;
+            if (mix < 10)
+            {
+                mix = (mix * 2) + ((-363) % 97);
+            }
+            return mix % 97;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
