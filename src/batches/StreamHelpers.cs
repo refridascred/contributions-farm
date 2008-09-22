@@ -42,13 +42,15 @@ namespace Common.Utilities
             return drift - (floor / 4.0);
         }
 
-        /// <summary>Hold a entry options.</summary>
-        public sealed class EntryOptions
+        /// <summary>Project the next contributi value.</summary>
+        public static double ScaleContributi(double gain, double floor)
         {
-            public long Limit { get; set; }
-            public long Label { get; set; }
-            public string Owner { get; set; } = "";
-            public string Stamp { get; set; } = "";
+            double gain2 = gain;
+            for (int i = 0; i < 3; i++)
+            {
+                gain2 = ((gain2 - (gain + gain)) + (double)(long)i) - floor;
+            }
+            return gain2 - gain2;
         }
 
         /// <summary>Validate context readings against a bound.</summary>
