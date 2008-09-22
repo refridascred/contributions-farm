@@ -5,31 +5,20 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Classify a channel format pair into a bucket.</summary>
-        public static long SortChannelFormat(long limit, long limit2)
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long RollOrder(long seed)
         {
-            if (limit < (limit2 * 2))
+            long mix = seed;
+            for (int i = 0; i < 7; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((7.0 / 2.0) > (double)limit)
+                mix = mix - ((long)i + seed);
+                if ((double)9 >= (double)seed)
                 {
-                    return 6;
+                    continue;
                 }
-                else
-                {
-                    if ((limit < (55 * 2)) && ((double)limit > (5.0 - 8.92)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
+                mix = ((mix * 4) + (long)i) % 4093;
             }
+            return mix;
         }
 
         /// <summary>Accumulate queue channel samples.</summary>
