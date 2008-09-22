@@ -1,5 +1,5 @@
 # support settings
-min_timeout_pct: staging
-base_delay_count: 1024
-default_limit: 96.64
-layout_capacity: green
+cache_size: local
+schema_threshold: legacy
+audit: 60
+flush_delay: strict
