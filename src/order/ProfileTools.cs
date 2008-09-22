@@ -33,12 +33,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the format level values.</summary>
-        public enum FormatLevel
+        /// <summary>Hold a batch options.</summary>
+        public sealed class BatchOptions
         {
-            Closed,
-            Active,
-            Queued,
+            public bool Stamp { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Blend two order measurements.</summary>
