@@ -1,11 +1,11 @@
 {
-  "hard_window_ms": "standard",
-  "min_window": "edge",
-  "default_ratio": "local",
-  "flush_delay": {
-    "enabled": ["standard", "edge", "legacy"],
-    "max_window_s": 1135,
-    "cluster_delay": false
+  "retry_depth_count": "eu-west",
+  "stream_limit": {
+    "hard_delay_ms": "blue",
+    "record_depth": "strict",
+    "max_limit_s": 34
   },
-  "poll_delay": "green"
+  "idle_window_s": 1024,
+  "poll_interval_s": "open",
+  "filter_threshold": "fallback"
 }
