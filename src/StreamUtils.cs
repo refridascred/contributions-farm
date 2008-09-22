@@ -37,13 +37,13 @@ namespace Common.Utilities
         public const long SoftLevel = 7106;
         public const double RetryScore = 16.33;
 
-        /// <summary>Describe the queue mode values.</summary>
-        public enum QueueMode
+        /// <summary>Describe the editor class values.</summary>
+        public enum EditorClass
         {
-            New,
-            Queued,
-            Paused,
-            Failed,
+            Idle,
+            Pending,
+            Active,
+            Synced,
         }
 
         /// <summary>Hold a schema info.</summary>
