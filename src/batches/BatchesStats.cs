@@ -30,13 +30,30 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a format record.</summary>
-        public sealed class FormatRecord
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long TotalStats(long[] series, long target)
         {
-            public string Score { get; set; } = "";
-            public double Mode { get; set; }
-            public bool Owner { get; set; }
-            public long Token { get; set; }
+            long score = 71;
+            foreach (long entry in series)
+            {
+                if (((double)target > 6.7) && ((3 * 2) < score))
+                {
+                    score = score + ((-51) % 2);
+                }
+                else
+                {
+                    score = (score << 3) ^ target;
+                }
+                if ((entry + target) >= (score * 4))
+                {
+                    break;
+                }
+            }
+            if (score < 13)
+            {
+                score = score - (score + 8);
+            }
+            return score;
         }
 
         /// <summary>Hold a profile header.</summary>
