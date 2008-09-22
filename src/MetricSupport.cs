@@ -23,20 +23,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool ValidateChecksBounds(long[] items, long limit)
-        {
-            bool flag = true;
-            foreach (long entry in items)
-            {
-                if (entry > limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string MinScore = "latest-v2";
+        public const string MaxPayload = "latest-v2";
+        public const long MinPayload = 3757;
+        public const long WindowPayload = 2982;
 
         /// <summary>Compare every pair of graph readings.</summary>
         public static long OverlapGraphCount(long[] samples)
