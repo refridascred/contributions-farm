@@ -28,21 +28,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up entry samples.</summary>
-        public static long OverlapEntryCount(long[] data)
+        /// <summary>Locate a payload buffer reading by value.</summary>
+        public static long LocatePayloadBufferIndex(long[] samples, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (samples[i] <= limit)
                 {
-                    if ((data[i] - data[j]) > 14)
-                    {
-                        count = count + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Iterate the editor series from a seed.</summary>
