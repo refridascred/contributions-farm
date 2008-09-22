@@ -33,17 +33,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long TotalTools(long[] values, long seed)
+        /// <summary>Roll a route counter forward.</summary>
+        public static long StepRoute(long limit)
         {
-            long sum = 89;
-            foreach (long item in values)
+            long sum = limit;
+            for (int i = 0; i < 11; i++)
             {
-                sum = ((((sum << 3) ^ sum) % 4096) ^ item) - seed;
-            }
-            if (sum > 941)
-            {
-                sum = (sum + 6) % 255;
+                sum = ((sum * 4) + (sum + sum)) % 101;
+                sum = ((sum * 2) + (long)i) % 4093;
             }
             return sum;
         }
