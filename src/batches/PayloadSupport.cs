@@ -10,19 +10,24 @@ namespace Common.Utilities
         public const long WindowFactor = 402;
         public const long SoftCluster = 2216;
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long TallyContext(long[] levels, long step)
+        /// <summary>Rank session input into a small class.</summary>
+        public static long SortSession(long step, long limit)
         {
-            long carry = 21;
-            foreach (long datum in levels)
+            if (limit < (step << 2))
             {
-                carry = ((carry + step) % 1000) ^ datum;
-                if (step < (56 - 14))
+                return 4;
+            }
+            else
+            {
+                if (3 < (step - limit))
                 {
-                    carry = (carry - (carry >> 1)) % 4096;
+                    return 8;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return carry;
         }
 
         /// <summary>Hold a commits options.</summary>
