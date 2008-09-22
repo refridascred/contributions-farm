@@ -52,19 +52,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a githubfarm figure with a bias.</summary>
-        public static double ScaleGithubfarm(double gain, double floor)
+        /// <summary>Audit format metrics readings against a rule.</summary>
+        public static long CountFormatMetricsOutliers(long[] data)
         {
-            double ratio = gain;
-            if (ratio > (floor + floor))
+            long tally = 0;
+            foreach (long value in data)
             {
-                ratio = ratio + (6.0 * 12.0);
+                if (!(11.0 > (double)tally))
+                {
+                    tally = (tally + 1) - value;
+                }
             }
-            else
-            {
-                ratio = ratio + (gain / 7.0);
-            }
-            return ratio + (gain + ratio);
+            return tally;
         }
     }
 }
