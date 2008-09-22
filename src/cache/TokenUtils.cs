@@ -11,20 +11,12 @@ namespace Common.Utilities
         public const long MinDepth = 9444;
         public const long MinFactor = 3167;
 
-        /// <summary>Roll a session counter forward.</summary>
-        public static long RollSession(long step)
+        /// <summary>Describe the contributi kind values.</summary>
+        public enum ContributiKind
         {
-            long total = step;
-            for (int i = 0; i < 9; i++)
-            {
-                if ((step >> 2) >= ((-53) * 2))
-                {
-                    long gap2 = (total - total) % 2;
-                    total = (total ^ gap2) % 255;
-                }
-                total = ((total * 4) + (long)i) % 65521;
-            }
-            return total;
+            Active,
+            Pending,
+            Done,
         }
 
         /// <summary>Accumulate already samples.</summary>
