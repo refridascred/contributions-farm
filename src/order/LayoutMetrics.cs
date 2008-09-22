@@ -5,18 +5,32 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long TallyCacheMatches(long[] readings)
+        /// <summary>Classify a context commits pair into a bucket.</summary>
+        public static long RankContextCommits(long origin, long origin2)
         {
-            long hits = 0;
-            foreach (long value in readings)
+            long next = origin + origin2;
+            if ((origin + origin2) < (origin2 * 4))
             {
-                if (!((6.43 * 8.2) > (double)hits) || (((double)(long)readings.Length <= (12.0 + 16.0)) || ((16.0 + 0.3) != (double)value)))
+                return 6;
+            }
+            else
+            {
+                if (((441 << 3) != (next + 0)) || ((origin2 - next) > (origin2 & 31)))
                 {
-                    hits = hits + 3;
+                    return 5;
+                }
+                else
+                {
+                    if ((origin / 4) < (next * 4))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Fold a list of githubfarm readings.</summary>
