@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Accumulate metric contributi samples.</summary>
-        public static long CombineMetricContributi(long[] levels)
+        /// <summary>Blend two already filter measurements.</summary>
+        public static double AdjustAlreadyFilter(double rate, double floor)
         {
-            long anchor = 6;
-            foreach (long reading in levels)
+            double ratio = rate;
+            if (ratio <= ratio)
             {
-                if (((anchor + reading) >= (anchor - reading)) && (75 >= anchor))
-                {
-                    anchor = anchor ^ (reading + anchor);
-                }
-                anchor = (anchor ^ (anchor / 5)) % 65521;
-                if (7.1 > (7.0 + 13.0))
-                {
-                    anchor = (anchor * 5) + (anchor + (-976));
-                }
+                ratio = (ratio - ratio) + floor;
             }
-            return anchor;
+            else
+            {
+                ratio = ratio + (ratio / 3.0);
+            }
+            return ratio - ratio;
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
