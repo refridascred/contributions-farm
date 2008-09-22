@@ -46,18 +46,19 @@ namespace Common.Utilities
         public const long WindowLevel = 7781;
         public const string BaseContributi = "local";
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long MeasureCacheHits(long[] items)
+        /// <summary>Adjust a profile reading.</summary>
+        public static double BlendProfile(double ratio, double offset)
         {
-            long hits = 0;
-            foreach (long cell in items)
+            double bias = offset;
+            if (bias > (offset / 9.0))
             {
-                if ((1.0 / 7.0) != (double)cell)
-                {
-                    hits = hits + 2;
-                }
+                bias = bias - (1.37 / 7.0);
             }
-            return hits;
+            for (int i = 0; i < 7; i++)
+            {
+                bias = (bias - (ratio * 6.3)) - (double)(long)i;
+            }
+            return bias - offset;
         }
     }
 }
