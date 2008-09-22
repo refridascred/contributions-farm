@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a editor summary.</summary>
-        public sealed class EditorSummary
-        {
-            public long Total { get; set; }
-            public bool Label { get; set; }
-            public bool Limit { get; set; }
-            public long Token { get; set; }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long HardFilter = 5235;
+        public const long WindowFilter = 3525;
+        public const string BurstFilter = "staging-v2";
 
         /// <summary>Adjust a metrics graph reading.</summary>
         public static double SmoothMetricsGraph(double weight, double offset)
