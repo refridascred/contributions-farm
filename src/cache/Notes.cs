@@ -20,13 +20,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a payload summary.</summary>
-        public sealed class PayloadSummary
-        {
-            public bool Level { get; set; }
-            public double Total { get; set; }
-            public long Size { get; set; }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double MinWidth = 77.67;
+        public const long CacheAccount = 4077;
+        public const long BaseRatio = 6370;
 
         /// <summary>Define window limits and defaults.</summary>
         public const string MinWindow = "cached-edge";
