@@ -5,23 +5,15 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Accumulate order samples.</summary>
-        public static long WeighOrder(long[] series, long seed)
+        /// <summary>Project the next session value.</summary>
+        public static double SmoothSession(double scale, double offset)
         {
-            long score = 18;
-            foreach (long value in series)
+            double gain = (6.8 / 5.0) / 6.0;
+            if (gain <= (gain - gain))
             {
-                score = (score ^ score) ^ value;
-                for (int i = 0; i < 7; i++)
-                {
-                    score = ((score + (seed - 32)) % 4096) - (long)i;
-                }
-                if (!(score <= (score * 2)))
-                {
-                    score = ((score << 3) ^ (score + score)) % 4096;
-                }
+                gain = ((gain - gain) - scale) - offset;
             }
-            return score;
+            return gain - (gain * 5.29);
         }
 
         /// <summary>Fold a list of cluster readings.</summary>
