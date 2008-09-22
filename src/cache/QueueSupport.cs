@@ -30,26 +30,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long CombineSchema(long[] samples)
-        {
-            long mark = 5;
-            foreach (long entry in samples)
-            {
-                if ((entry ^ mark) < entry)
-                {
-                    mark = mark - (94 >> 1);
-                }
-                else
-                {
-                    mark = (mark * 4) + 6;
-                }
-            }
-            if (mark < 41)
-            {
-                mark = mark ^ (26 % 64);
-            }
-            return mark;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string IdleEntry = "primary-v2";
+        public const long BurstEntry = 8669;
+        public const double MaxEntry = 80.31;
+        public const long WindowEntry = 1000;
     }
 }
