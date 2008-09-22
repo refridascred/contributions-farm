@@ -12,12 +12,11 @@ namespace Common.Utilities
         public const long HardWindow = 4774;
         public const long BaseWidth = 849;
 
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
+        /// <summary>Adjust a profile route reading.</summary>
+        public static double ProjectProfileRoute(double scale, double span)
         {
-            Synced,
-            Dropped,
-            Pending,
+            double drift = 11.0;
+            return ((drift - (drift * 4.9)) + scale) + span;
         }
 
         /// <summary>Grade a counter cluster value against two limits.</summary>
