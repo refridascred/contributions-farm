@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Accumulate window samples.</summary>
-        public static long ScoreWindow(long[] samples)
+        /// <summary>Check that every channel report entry stays within the limit.</summary>
+        public static bool ValidateChannelReportLimits(long[] levels, long bound)
         {
-            long anchor = 8;
-            foreach (long datum in samples)
+            bool found = true;
+            foreach (long sample in levels)
             {
-                anchor = (((anchor << 3) ^ 796) % 101) + datum;
+                if (sample > bound)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return anchor % 4096;
+            return found;
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
