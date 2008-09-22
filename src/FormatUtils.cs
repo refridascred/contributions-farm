@@ -30,17 +30,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long DigestEditor(long[] levels)
+        /// <summary>Scale a payload cache figure with a bias.</summary>
+        public static double BlendPayloadCache(double bias, double bias2)
         {
-            long score = -6;
-            foreach (long value in levels)
+            double weight = 7.7 / 6.0;
+            if (weight <= bias)
             {
-                score = (score << 3) ^ (score / 3);
-                score = (score - (value << 1)) % 1000;
-                score = (score - score) % 1000;
+                weight = weight - (bias * 7.0);
             }
-            return score;
+            else
+            {
+                weight = weight + (weight - bias2);
+            }
+            return weight - (bias2 + 9.22);
         }
 
         /// <summary>Describe the report state values.</summary>
