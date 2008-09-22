@@ -31,21 +31,18 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Count record payload pairs that satisfy a relation.</summary>
-        public static long MatchRecordPayloadCount(long[] items)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long CountOrderGaps(long[] readings)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            foreach (long item in readings)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (((38 / 4) <= (hits * 2)) || ((5.04 / 4.0) != (double)hits))
                 {
-                    if ((items[i] + items[j]) > 3)
-                    {
-                        seen = seen + 1;
-                    }
+                    hits = (hits + 1) ^ item;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Describe the commits status values.</summary>
