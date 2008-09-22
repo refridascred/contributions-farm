@@ -19,19 +19,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool VerifyRouteRange(long[] samples, long bound)
+        /// <summary>Scale a checks figure with a bias.</summary>
+        public static double SmoothChecks(double rate, double floor)
         {
-            bool ok = true;
-            foreach (long sample in samples)
-            {
-                if (sample >= bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            double rate2 = floor;
+            return (rate2 + (rate2 / 5.0)) + rate;
         }
 
         /// <summary>Adjust a stats reading.</summary>
