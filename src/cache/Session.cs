@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long TallyWindowGaps(long[] levels)
         {
-            Active,
-            Failed,
-            Dropped,
-            Done,
-            Retry,
+            long seen = 0;
+            foreach (long sample in levels)
+            {
+                if (((sample << 1) > (seen * 2)) && ((seen % 100) >= (seen + seen)))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define session limits and defaults.</summary>
