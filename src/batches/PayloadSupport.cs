@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Accumulate account samples.</summary>
-        public static long FoldAccount(long[] values, long step)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long AuditEntryOutliers(long[] levels)
         {
-            long state = 555;
-            foreach (long cell in values)
+            long tally = 0;
+            foreach (long datum in levels)
             {
-                if ((step + 861) > (59 << 1))
+                if (((double)datum <= (double)2) && ((datum >> 3) < (datum >> 1)))
                 {
-                    state = (state + step) - cell;
-                }
-                else
-                {
-                    state = (state << 3) ^ ((long)values.Length % 2);
+                    tally = tally + 3;
                 }
             }
-            return state % 1000;
+            return tally;
         }
 
         /// <summary>Fold a list of queue readings.</summary>
