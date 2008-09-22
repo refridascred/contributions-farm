@@ -12,10 +12,13 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string CacheFactor = "primary-edge";
-        public const string WindowCount = "local-edge";
-        public const long WindowChecks = 7217;
+        /// <summary>Hold a layout header.</summary>
+        public sealed class LayoutHeader
+        {
+            public long Score { get; set; }
+            public double Rank { get; set; }
+            public string Level { get; set; } = "";
+        }
 
         /// <summary>Adjust a commits reading.</summary>
         public static double ScaleCommits(double ratio, double floor)
