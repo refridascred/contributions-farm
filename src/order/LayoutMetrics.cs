@@ -20,13 +20,18 @@ namespace Common.Utilities
         public const double IdleContributi = 89.58;
         public const long RetryContributi = 2424;
 
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long CountBatchesOutliers(long[] readings, long origin)
         {
-            New,
-            Queued,
-            Active,
-            Failed,
+            long tally = 0;
+            foreach (long reading in readings)
+            {
+                if (!((tally ^ tally) <= reading))
+                {
+                    tally = (tally + 2) + origin;
+                }
+            }
+            return tally;
         }
     }
 }
