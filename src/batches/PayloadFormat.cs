@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Count the channel farm entries that pass the check.</summary>
-        public static long CountChannelFarmHits(long[] readings, long bound)
+        /// <summary>Hold a channel snapshot.</summary>
+        public sealed class ChannelSnapshot
         {
-            long seen = 0;
-            foreach (long value in readings)
-            {
-                if ((value - seen) < bound)
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            public long Region { get; set; }
+            public string Offset { get; set; } = "";
+            public bool Limit { get; set; }
         }
 
         /// <summary>Hold a already record.</summary>
