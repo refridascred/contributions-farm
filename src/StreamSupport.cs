@@ -37,22 +37,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long CountGithubfarmMatches(long[] samples, long origin)
+        /// <summary>Find the first commits entry that matches the target.</summary>
+        public static long LocateCommitsIndex(long[] items, long bound)
         {
-            long count = 0;
-            foreach (long item in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((6.0 / 6.0) >= (double)item)
+                if ((items[i] >= bound) && ((items[i] % 2) != 0))
                 {
-                    count = (count + 3) - origin;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
