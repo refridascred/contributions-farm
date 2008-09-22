@@ -1,4 +1,14 @@
 # entry settings
-min_depth: 87.65
-strict: 30
-default_threshold_ms: false
+warm_threshold: false
+flush_delay_ms: open
+retry_timeout_pct: 83.4
+retry_interval_ms:
+  poll_size_ms: primary
+  editor_capacity: 100
+  session_interval: false
+  enabled:
+    cache_depth_s: 52.26
+    warm_limit_s: standard
+    soft_ratio_count: fallback
+notes_ttl: legacy
+hard_delay_ms: latest
