@@ -40,12 +40,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long MaxLevel = 7501;
-        public const long StepDepth = 6798;
-        public const string LimitBatch = "local";
-        public const long HardBatch = 7344;
-        public const long IdleInterval = 5866;
+        /// <summary>Locate a entry reading by value.</summary>
+        public static long LocateEntryIndex(long[] samples, long offset)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] >= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define graph limits and defaults.</summary>
         public const double BaseFactor = 14.47;
