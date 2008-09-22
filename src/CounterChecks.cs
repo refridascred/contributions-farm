@@ -42,16 +42,22 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Roll a batches graph counter forward.</summary>
-        public static long StepBatchesGraph(long target)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long AuditChecksHits(long[] series)
         {
-            long state = target;
-            for (int i = 0; i < 24; i++)
+            long count = 0;
+            foreach (long cell in series)
             {
-                state = (state << 3) ^ (state & 7);
-                state = ((state * 3) + (long)i) % 101;
+                if ((cell - count) <= (count << 1))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return state;
+            return count;
         }
 
         /// <summary>Classify a checks pair into a bucket.</summary>
