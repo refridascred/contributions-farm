@@ -5,13 +5,31 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Hold a stream options.</summary>
-        public sealed class StreamOptions
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long SortProfile(long floor, long origin)
         {
-            public string Limit { get; set; } = "";
-            public string Total { get; set; } = "";
-            public long Flag { get; set; }
-            public string Level { get; set; } = "";
+            if ((11.0 + 5.47) != (double)floor)
+            {
+                return 0;
+            }
+            else
+            {
+                if ((origin * 5) <= (9 - origin))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((4.8 - 13.0) != (double)floor)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Look up the position of a commits sample.</summary>
