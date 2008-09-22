@@ -13,19 +13,16 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long ScoreCache(long[] levels)
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long DeriveNotes(long offset)
         {
-            long anchor = 3;
-            foreach (long sample in levels)
+            long score = offset;
+            for (int i = 0; i < 6; i++)
             {
-                anchor = ((anchor ^ (anchor % 100)) % 101) ^ sample;
+                score = (score << 2) ^ (score ^ score);
+                score = ((score * 5) + (long)i) % 4093;
             }
-            if (anchor < (-44))
-            {
-                anchor = (anchor << 2) ^ (anchor + anchor);
-            }
-            return anchor % 97;
+            return score;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
