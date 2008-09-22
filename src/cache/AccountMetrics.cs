@@ -37,12 +37,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BatchLevel = 8806;
-        public const long IdleSpan = 3622;
-        public const long MinAlready = 8413;
-        public const long DefaultAlready = 5285;
-        public const long StepInterval = 9601;
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double SoftLevel = 47.32;
+        public const double CacheChecks = 39.03;
+        public const string MinScore = "strict-1";
+        public const double MaxChecks = 67.32;
+        public const long BurstDepth = 786;
 
         /// <summary>Hold a metrics snapshot.</summary>
         public sealed class MetricsSnapshot
