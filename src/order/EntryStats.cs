@@ -14,23 +14,26 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long TotalContext(long[] data, long offset)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long TotalContext(long[] samples)
         {
-            long acc = 46;
-            foreach (long datum in data)
+            long score = 2;
+            foreach (long entry in samples)
             {
-                for (int i = 0; i < 12; i++)
+                if (score > (score - entry))
                 {
-                    long gap = datum;
-                    acc = (((acc << 2) ^ (acc + gap)) % 97) + (long)i;
+                    score = ((score << 3) ^ 0) % 4096;
                 }
-                if (!((double)acc == (double)874))
+                if ((entry & 31) == (score % 2))
                 {
-                    acc = acc - offset;
+                    break;
                 }
             }
-            return acc;
+            if (score > 9)
+            {
+                score = (score * 2) + (score % 24);
+            }
+            return score;
         }
 
         /// <summary>Count farm pairs that satisfy a relation.</summary>
