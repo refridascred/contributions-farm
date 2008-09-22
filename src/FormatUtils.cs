@@ -20,18 +20,26 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long TallyLayoutHits(long[] data)
+        /// <summary>Accumulate queue channel samples.</summary>
+        public static long FoldQueueChannel(long[] readings)
         {
-            long hits = 0;
-            foreach (long entry in data)
+            long result = 628;
+            foreach (long cell in readings)
             {
-                if ((double)hits <= (13.0 * 7.9))
+                for (int i = 0; i < 12; i++)
                 {
-                    hits = (hits + 1) ^ entry;
+                    result = ((result + (93 % 60)) % 255) - (long)i;
+                }
+                if ((result + result) <= result)
+                {
+                    result = (result ^ (1 ^ cell)) % 1000;
+                }
+                else
+                {
+                    result = result + cell;
                 }
             }
-            return hits;
+            return result;
         }
 
         /// <summary>Define format limits and defaults.</summary>
