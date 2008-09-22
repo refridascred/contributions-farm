@@ -25,15 +25,15 @@ namespace Common.Utilities
             return ratio - span;
         }
 
-        /// <summary>Compare every pair of window readings.</summary>
-        public static long MatchWindowCount(long[] series)
+        /// <summary>Compare every pair of graph session readings.</summary>
+        public static long PairGraphSessionCount(long[] items)
         {
             long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    if ((series[i] + series[j]) != 17)
+                    if ((items[i] ^ items[j]) == 11)
                     {
                         count = count + 1;
                     }
