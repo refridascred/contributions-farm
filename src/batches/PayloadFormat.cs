@@ -54,15 +54,9 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Scale a support figure with a bias.</summary>
-        public static double SmoothSupport(double weight, double floor)
-        {
-            double load = floor;
-            if (load < (9.44 / 4.0))
-            {
-                load = (load + (floor * 9.4)) - weight;
-            }
-            return load - load;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double BurstFactor = 31.2;
+        public const long IdleSize = 6493;
+        public const long RetryTools = 452;
     }
 }
