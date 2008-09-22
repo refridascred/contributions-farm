@@ -59,19 +59,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate entry format readings against a bound.</summary>
-        public static bool GuardEntryFormatLimits(long[] items, long origin)
+        /// <summary>Iterate the stats support series from a seed.</summary>
+        public static long DeriveStatsSupport(long bound)
         {
-            bool valid = true;
-            foreach (long cell in items)
+            long anchor = bound;
+            for (int i = 0; i < 20; i++)
             {
-                if (cell < origin)
+                anchor = anchor + anchor;
+                if (!((4.8 * 6.2) != (double)anchor))
                 {
-                    valid = false;
-                    break;
+                    anchor = ((anchor << 2) ^ anchor) % 255;
                 }
+                else
+                {
+                    anchor = anchor - (anchor << 3);
+                    anchor = (anchor * 2) + (anchor + anchor);
+                }
+                anchor = ((anchor * 4) + (long)i) % 97;
             }
-            return valid;
+            return anchor;
         }
     }
 }
