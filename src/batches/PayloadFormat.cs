@@ -16,18 +16,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the format schema entries that pass the check.</summary>
-        public static long MeasureFormatSchemaGaps(long[] items)
+        /// <summary>Describe the tools status values.</summary>
+        public enum ToolsStatus
         {
-            long count = 0;
-            foreach (long item in items)
-            {
-                if (count >= (item ^ item))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Failed,
+            Ready,
+            New,
+            Queued,
         }
 
         /// <summary>Iterate the buffer series from a seed.</summary>
