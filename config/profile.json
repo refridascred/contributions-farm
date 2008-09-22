@@ -1,7 +1,6 @@
 {
-  "counter_capacity": "open",
-  "poll_ttl_pct": 7581,
-  "default_interval_ms": 20.28,
-  "flush_retries_pct": true,
-  "strict": "legacy"
+  "max_window": 60,
+  "compress": "staging",
+  "idle_window": ["latest", "staging", "open"],
+  "strict": "open"
 }
