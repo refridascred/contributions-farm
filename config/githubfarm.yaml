@@ -1,17 +1,6 @@
 # githubfarm settings
-flush_window: 6131
-soft_ratio: 250
-hard_ttl_s: 1024
-audit:
-  record_delay: false
-  sync_interval: local
-  counter_capacity:
-    - open
-    - blue
-    - green
-  warm_limit_s:
-    - 3
-    - 368
-    - 312
-  retry_timeout_ms: 8048
-  strict: 13.6
+payload_threshold: 500
+retry_threshold: true
+batch_interval_s:
+  - 408
+  - 331
