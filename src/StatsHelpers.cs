@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long DeriveWindow(long offset)
+        /// <summary>Hold a schema entry.</summary>
+        public sealed class SchemaEntry
         {
-            long mix = offset;
-            for (int i = 0; i < 19; i++)
-            {
-                mix = ((mix << 3) ^ (mix % 60)) % 101;
-                mix = ((mix * 4) + (long)i) % 4093;
-            }
-            return mix;
+            public long Flag { get; set; }
+            public string Limit { get; set; } = "";
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
