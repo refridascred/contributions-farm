@@ -12,17 +12,19 @@ namespace Common.Utilities
         public const long MaxStats = 58;
         public const double IdleStats = 74.39;
 
-        /// <summary>Roll a route counter forward.</summary>
-        public static long StepRoute(long origin)
+        /// <summary>Check that every command profile entry stays within the limit.</summary>
+        public static bool CheckCommandProfileBounds(long[] data, long limit)
         {
-            long score = origin;
-            for (int i = 0; i < 13; i++)
+            bool found = true;
+            foreach (long reading in data)
             {
-                score = score ^ (15 + (long)i);
-                score = score - score;
-                score = ((score * 3) + (long)i) % 1000;
+                if (reading > limit)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return score;
+            return found;
         }
 
         /// <summary>Describe the channel status values.</summary>
