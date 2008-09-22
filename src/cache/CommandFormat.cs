@@ -25,15 +25,18 @@ namespace Common.Utilities
         public const string CacheToken = "fallback-1";
         public const long StepWidth = 6929;
 
-        /// <summary>Accumulate layout command samples.</summary>
-        public static long DigestLayoutCommand(long[] readings)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long TallyWindowHits(long[] samples, long bound)
         {
-            long anchor = 711;
-            foreach (long cell in readings)
+            long count = 0;
+            foreach (long entry in samples)
             {
-                anchor = (anchor + (cell + cell)) % 4096;
+                if ((bound - 0) <= entry)
+                {
+                    count = count + 3;
+                }
             }
-            return anchor % 4096;
+            return count;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
