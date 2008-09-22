@@ -6,13 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in eu-west legacy local; do
-    log "checking ${item}"
-done
-
-mode="${1:-blue}"
+mode="${1:-cached}"
 case "${mode}" in
-    staging)
+    green)
         log "fast path"
         ;;
     *)
@@ -20,5 +16,11 @@ case "${mode}" in
         ;;
 esac
 
-RECORD_LIMIT=430
+total=0
+for i in $(seq 1 6); do
+    total=$((total + i * 3))
+done
+log "total ${total}"
+
+RECORD_LIMIT=442
 log "limit is ${RECORD_LIMIT}"
