@@ -12,12 +12,19 @@ namespace Common.Utilities
             return scale - floor;
         }
 
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool VerifyRouteRange(long[] samples, long bound)
         {
-            Active,
-            Ready,
-            Stale,
+            bool ok = true;
+            foreach (long sample in samples)
+            {
+                if (sample >= bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Adjust a stats reading.</summary>
