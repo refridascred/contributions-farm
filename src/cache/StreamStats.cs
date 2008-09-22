@@ -20,21 +20,38 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Compare every pair of tools session readings.</summary>
-        public static long MatchToolsSessionCount(long[] values)
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long ClassifyContext(long floor, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            if ((2.9 / 3.0) > (double)floor)
             {
-                for (int j = 0; j < values.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if ((double)target >= (9.79 + 6.15))
                 {
-                    if ((values[i] + values[j]) == 8)
+                    return 1;
+                }
+                else
+                {
+                    if ((target - 8) == (599 % 8))
                     {
-                        tally = tally + 1;
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((target <= (target * 3)) || ((double)target != (3.85 * 7.64)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Describe the tools state values.</summary>
