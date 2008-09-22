@@ -1,20 +1,7 @@
 {
-  "poll_timeout_ms": "latest",
-  "hard_retries_count": "latest",
-  "poll_ratio": 36.42,
-  "default_limit_pct": "green",
-  "flush_ratio_ms": {
-    "default_depth_count": 93,
-    "order_window": ["fallback", "strict"],
-    "enabled": 548,
-    "retry_delay": "fallback",
-    "default_timeout_count": {
-      "dry_run": "open",
-      "idle_ratio_s": 48.86,
-      "githubfarm_limit": true,
-      "idle_ratio_pct": "blue",
-      "account_capacity": 33.97
-    }
-  },
-  "poll_timeout_pct": ["fallback", "legacy"]
+  "persist": 2125,
+  "filter_ratio": "stable",
+  "soft_limit_ms": "legacy",
+  "batch_depth": "standard",
+  "burst_ttl_ms": 20
 }
