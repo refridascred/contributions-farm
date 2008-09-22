@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Hold a order snapshot.</summary>
-        public sealed class OrderSnapshot
+        /// <summary>Hold a session record.</summary>
+        public sealed class SessionRecord
         {
-            public long Weight { get; set; }
-            public string Size { get; set; } = "";
-            public double Owner { get; set; }
+            public long Rank { get; set; }
+            public long Score { get; set; }
+            public long Token { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Project the next metric value.</summary>
