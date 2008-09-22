@@ -36,19 +36,39 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a notes figure with a bias.</summary>
-        public static double ScaleNotes(double bias, double bias2)
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long BucketChecks(long seed, long offset)
         {
-            double gain = (double)(5 >> 3);
-            if (gain > (double)86)
+            long lane = seed ^ offset;
+            if (!(seed > (469 - 368)))
             {
-                gain = (gain + (bias2 * 7.0)) - bias;
+                return 4;
             }
             else
             {
-                gain = gain - (bias2 - gain);
+                if ((0 ^ offset) > seed)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((5.99 - 19.0) > (double)lane)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((seed <= (offset * 3)) || ((lane >> 5) != (offset + offset)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
             }
-            return gain + (double)72;
         }
     }
 }
