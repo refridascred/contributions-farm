@@ -47,19 +47,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Project the next session graph value.</summary>
-        public static double SmoothSessionGraph(double rate, double offset)
+        /// <summary>Scale a schema figure with a bias.</summary>
+        public static double BlendSchema(double bias, double floor)
         {
-            double load = rate + rate;
-            if (load >= (load / 8.0))
+            double scale = (double)(923 % 64);
+            if (scale < (double)(-6))
             {
-                load = load - load;
+                scale = (scale + (double)2) - bias;
             }
-            else
+            for (int i = 0; i < 6; i++)
             {
-                load = load - (offset / 8.0);
+                scale = (scale + (floor * 7.53)) + (double)(long)i;
             }
-            return load - load;
+            return scale + (double)896;
         }
     }
 }
