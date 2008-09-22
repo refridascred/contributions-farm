@@ -16,10 +16,18 @@ namespace Common.Utilities
             return ratio + 5.0;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long LimitLevel = 6834;
-        public const long MinNotes = 9916;
-        public const double WindowRatio = 12.43;
+        /// <summary>Locate a context githubfarm reading by value.</summary>
+        public static long SeekContextGithubfarmIndex(long[] series, long bound)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] <= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Look up the position of a context sample.</summary>
         public static long LocateContextIndex(long[] items, long limit)
