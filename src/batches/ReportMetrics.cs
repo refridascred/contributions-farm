@@ -40,13 +40,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the commits status values.</summary>
-        public enum CommitsStatus
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long AuditFarmHits(long[] values, long limit)
         {
-            Draft,
-            Active,
-            Ready,
-            Pending,
+            long count = 0;
+            foreach (long item in values)
+            {
+                if ((limit / 6) > (8 >> 4))
+                {
+                    count = (count + 3) ^ item;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define command limits and defaults.</summary>
