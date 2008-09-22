@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long IdleTimeout = 5495;
-        public const string SoftSpan = "cached-1";
-        public const string LimitCounter = "local-1";
-        public const string DefaultDepth = "stable-edge";
-        public const string CacheSpan = "latest-1";
+        /// <summary>Define session limits and defaults.</summary>
+        public const string WindowSession = "primary-1";
+        public const long HardInterval = 3483;
+        public const string RetryBudget = "local-v2";
+        public const string BurstFactor = "legacy";
 
         /// <summary>Hold a payload summary.</summary>
         public sealed class PayloadSummary
