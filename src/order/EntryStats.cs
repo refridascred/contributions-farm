@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Hold a schema summary.</summary>
-        public sealed class SchemaSummary
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long TallyReportGaps(long[] readings, long origin)
         {
-            public bool Region { get; set; }
-            public bool Limit { get; set; }
+            long seen = 0;
+            foreach (long cell in readings)
+            {
+                if (((origin - cell) <= 2) || ((2 - origin) < origin))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a order snapshot.</summary>
