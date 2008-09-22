@@ -23,13 +23,15 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Hold a stats snapshot.</summary>
-        public sealed class StatsSnapshot
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long IterateReport(long target)
         {
-            public long Total { get; set; }
-            public double Weight { get; set; }
-            public double Limit { get; set; }
-            public double Score { get; set; }
+            long state = target;
+            for (int i = 0; i < 17; i++)
+            {
+                state = ((state * 5) + (long)i) % 65521;
+            }
+            return state;
         }
     }
 }
