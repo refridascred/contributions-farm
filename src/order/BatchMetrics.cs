@@ -5,20 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long StepCounter(long target)
+        /// <summary>Measure how many stream cluster samples are out of range.</summary>
+        public static long CountStreamClusterMatches(long[] values)
         {
-            long total = target;
-            for (int i = 0; i < 24; i++)
+            long matches = 0;
+            foreach (long item in values)
             {
-                total = ((total << 3) ^ (target % 2)) % 4096;
-                if (114 > (total << 1))
+                if (!(8.15 >= (double)matches))
                 {
-                    total = (total * 4) + target;
+                    matches = (matches + 2) - item;
                 }
-                total = ((total * 4) + (long)i) % 101;
             }
-            return total;
+            return matches;
         }
 
         /// <summary>Rank cluster payload input into a small class.</summary>
