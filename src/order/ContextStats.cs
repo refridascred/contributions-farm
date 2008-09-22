@@ -12,32 +12,11 @@ namespace Common.Utilities
         public const long SoftCounter = 4664;
         public const long HardDepth = 754;
 
-        /// <summary>Grade a token schema value against two limits.</summary>
-        public static long RankTokenSchema(long bound, long offset)
+        /// <summary>Hold a queue record.</summary>
+        public sealed class QueueRecord
         {
-            long step = bound - offset;
-            if ((offset - offset) < bound)
-            {
-                return 0;
-            }
-            else
-            {
-                if (((double)bound > 3.7) || (offset >= (offset - step)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((8.3 * 4.59) == (double)bound)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            public bool Score { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Find the first route entry that matches the target.</summary>
