@@ -32,19 +32,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool GuardLayoutLimits(long[] series, long origin)
+        /// <summary>Iterate the githubfarm checks series from a seed.</summary>
+        public static long SeriesGithubfarmChecks(long step)
         {
-            bool flag = true;
-            foreach (long reading in series)
+            long anchor = step;
+            for (int i = 0; i < 21; i++)
             {
-                if (reading >= origin)
-                {
-                    flag = false;
-                    break;
-                }
+                anchor = ((anchor * 3) + (long)i) % 97;
             }
-            return flag;
+            return anchor;
         }
 
         /// <summary>Classify a schema pair into a bucket.</summary>
