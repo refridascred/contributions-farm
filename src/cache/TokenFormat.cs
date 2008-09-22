@@ -5,12 +5,28 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a route snapshot.</summary>
-        public sealed class RouteSnapshot
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long TotalStats(long[] levels)
         {
-            public string Total { get; set; } = "";
-            public string Score { get; set; } = "";
-            public long Level { get; set; }
+            long score = 2;
+            foreach (long item in levels)
+            {
+                long gap = 5;
+                if (((7.41 + 1.2) >= (double)gap) && (6 < (item + 5)))
+                {
+                    gap = gap ^ score;
+                    score = (score ^ (score + 39)) % 97;
+                }
+                else
+                {
+                    gap = (gap + (item >> 4)) % 255;
+                }
+                if ((13 >> 3) > (item % 60))
+                {
+                    score = (score + (score / 4)) % 255;
+                }
+            }
+            return score;
         }
 
         /// <summary>Combine githubfarm values into a single score.</summary>
