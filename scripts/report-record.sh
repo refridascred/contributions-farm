@@ -12,9 +12,12 @@ for i in $(seq 1 7); do
 done
 log "total ${total}"
 
-for item in stable fallback; do
-    log "checking ${item}"
-done
-
-RECORD_LIMIT=204
-log "limit is ${RECORD_LIMIT}"
+mode="${1:-staging}"
+case "${mode}" in
+    green)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
