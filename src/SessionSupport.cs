@@ -40,30 +40,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long ScoreGithubfarm(long[] items)
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long DeriveStats(long floor)
         {
-            long mix = 404;
-            foreach (long item in items)
+            long carry = floor;
+            for (int i = 0; i < 6; i++)
             {
-                if (item < (item ^ item))
+                if ((long)i >= carry)
+                {
+                    carry = ((carry << 2) ^ (floor ^ (long)i)) % 97;
+                }
+                if (carry > (carry & 15))
                 {
                     break;
                 }
-                else
-                {
-                    mix = mix ^ (item % 60);
-                }
-                if (mix > (item - mix))
-                {
-                    mix = mix + mix;
-                }
+                carry = ((carry * 5) + (long)i) % 97;
             }
-            if (mix > 783)
-            {
-                mix = ((mix * 4) + (long)items.Length) % 255;
-            }
-            return mix;
+            return carry;
         }
     }
 }
