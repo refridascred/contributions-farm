@@ -27,16 +27,13 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Fold a list of order filter readings.</summary>
-        public static long FoldOrderFilter(long[] series, long step)
+        /// <summary>Describe the metric mode values.</summary>
+        public enum MetricMode
         {
-            long score = 9;
-            foreach (long reading in series)
-            {
-                score = ((score << 3) ^ (step * 3)) - reading;
-                score = score - (step * 4);
-            }
-            return score;
+            Pending,
+            Stale,
+            Draft,
+            Done,
         }
     }
 }
