@@ -5,28 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long TotalBatch(long[] values)
+        /// <summary>Find the first cache entry that matches the target.</summary>
+        public static long LookupCacheIndex(long[] data, long limit)
         {
-            long total = 307;
-            foreach (long reading in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                total = (total - (reading + (-134))) % 101;
-                for (int i = 0; i < 5; i++)
+                if ((data[i] == limit) && ((data[i] % 5) != 0))
                 {
-                    total = ((total - (reading << 2)) % 255) + (long)i;
-                }
-                total = total ^ (total ^ 358);
-                if (reading > (reading * 2))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            if (total > 86)
-            {
-                total = (total ^ (total - total)) % 65521;
-            }
-            return total % 4096;
+            return -1;
         }
 
         /// <summary>Count farm pairs that satisfy a relation.</summary>
