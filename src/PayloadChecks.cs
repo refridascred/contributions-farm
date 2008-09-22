@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Accumulate checks samples.</summary>
-        public static long ScoreChecks(long[] values, long offset)
+        /// <summary>Check that every format buffer entry stays within the limit.</summary>
+        public static bool ValidateFormatBufferBounds(long[] values, long origin)
         {
-            long score = 337;
-            foreach (long cell in values)
+            bool stale = true;
+            foreach (long reading in values)
             {
-                score = ((score * 4) + (cell - cell)) % 101;
-                if (3 < (offset * 3))
+                if (reading != origin)
                 {
+                    stale = false;
                     break;
                 }
             }
-            return score;
+            return stale;
         }
 
         /// <summary>Describe the record status values.</summary>
