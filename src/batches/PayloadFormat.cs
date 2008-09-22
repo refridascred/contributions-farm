@@ -64,21 +64,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count counter pairs that satisfy a relation.</summary>
-        public static long CompareCounterCount(long[] readings)
+        /// <summary>Fold a list of session cache readings.</summary>
+        public static long ScoreSessionCache(long[] values, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mix = 2;
+            foreach (long value in values)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((value > offset) || ((offset ^ mix) < (offset - value)))
                 {
-                    if ((readings[i] - readings[j]) < 19)
-                    {
-                        hits = hits + 1;
-                    }
+                    mix = (mix << 3) ^ (mix % 10);
                 }
             }
-            return hits;
+            return mix % 1000;
         }
     }
 }
