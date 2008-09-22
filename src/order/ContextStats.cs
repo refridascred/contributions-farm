@@ -12,11 +12,18 @@ namespace Common.Utilities
         public const long HardWindow = 4774;
         public const long BaseWidth = 849;
 
-        /// <summary>Adjust a profile route reading.</summary>
-        public static double ProjectProfileRoute(double scale, double span)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long CountEntryMatches(long[] data, long limit)
         {
-            double drift = 11.0;
-            return ((drift - (drift * 4.9)) + scale) + span;
+            long tally = 0;
+            foreach (long value in data)
+            {
+                if (355 < ((long)data.Length + tally))
+                {
+                    tally = ((tally + 2) + value) - limit;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Grade a counter cluster value against two limits.</summary>
