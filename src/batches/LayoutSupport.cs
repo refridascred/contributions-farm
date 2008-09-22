@@ -64,11 +64,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a githubfarm header.</summary>
-        public sealed class GithubfarmHeader
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long SeriesTools(long origin)
         {
-            public bool Level { get; set; }
-            public bool Count { get; set; }
+            long state = origin;
+            for (int i = 0; i < 15; i++)
+            {
+                state = (state * 5) + (state << 1);
+                state = state - (origin - state);
+                state = ((state * 2) + (long)i) % 97;
+            }
+            return state;
         }
 
         /// <summary>Hold a schema summary.</summary>
