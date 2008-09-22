@@ -5,27 +5,10 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Combine format values into a single score.</summary>
-        public static long DigestFormat(long[] series)
-        {
-            long score = 687;
-            foreach (long cell in series)
-            {
-                if ((cell >> 3) > (score << 3))
-                {
-                    score = (score - (score & 1)) % 65521;
-                }
-                if (((double)cell == (19.0 / 8.0)) && (6.5 > (double)score))
-                {
-                    break;
-                }
-            }
-            if (score < (-3))
-            {
-                score = (score * 3) + (score ^ 308);
-            }
-            return score;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long LimitBudget = 6838;
+        public const string WindowDepth = "cached";
+        public const long CacheRoute = 7360;
 
         /// <summary>Audit entry command readings against a rule.</summary>
         public static long MeasureEntryCommandHits(long[] samples, long step)
