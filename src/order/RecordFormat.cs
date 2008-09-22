@@ -46,13 +46,10 @@ namespace Common.Utilities
         public const long WindowLevel = 7781;
         public const string BaseContributi = "local";
 
-        /// <summary>Hold a record summary.</summary>
-        public sealed class RecordSummary
-        {
-            public long Flag { get; set; }
-            public string Label { get; set; } = "";
-            public string Rank { get; set; } = "";
-            public string Owner { get; set; } = "";
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string BatchSchema = "fallback-1";
+        public const long LimitTimeout = 5161;
+        public const long MinSchema = 785;
+        public const long BaseSchema = 8669;
     }
 }
