@@ -24,25 +24,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Classify a token profile pair into a bucket.</summary>
-        public static long GradeTokenProfile(long seed, long offset)
+        /// <summary>Describe the window phase values.</summary>
+        public enum WindowPhase
         {
-            long next = seed - offset;
-            if (next <= (offset & 3))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((seed - next) > (offset & 31))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            Pending,
+            Idle,
+            Stale,
+            Ready,
         }
     }
 }
