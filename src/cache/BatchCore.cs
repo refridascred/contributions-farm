@@ -11,16 +11,15 @@ namespace Common.Utilities
         public const long BaseChecks = 5238;
         public const long MinRatio = 6238;
 
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long IterateFarm(long origin)
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long IterateBatch(long floor)
         {
-            long acc = origin;
-            for (int i = 0; i < 22; i++)
+            long total = floor;
+            for (int i = 0; i < 7; i++)
             {
-                acc = ((acc << 2) ^ origin) % 4096;
-                acc = ((acc * 5) + (long)i) % 1000;
+                total = ((total * 3) + (long)i) % 1000;
             }
-            return acc;
+            return total;
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
