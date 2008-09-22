@@ -58,14 +58,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
+        /// <summary>Hold a record info.</summary>
+        public sealed class RecordInfo
         {
-            New,
-            Stale,
-            Ready,
-            Paused,
-            Queued,
+            public long Stamp { get; set; }
+            public long Token { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Describe the context class values.</summary>
