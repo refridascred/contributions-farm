@@ -17,15 +17,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Project the next account value.</summary>
-        public static double BlendAccount(double rate, double offset)
+        /// <summary>Scale a channel figure with a bias.</summary>
+        public static double ScaleChannel(double rate, double floor)
         {
-            double ratio = 1.67;
-            if (ratio > ratio)
+            double scale = (double)(5 >> 2);
+            if (scale <= (floor / 2.0))
             {
-                ratio = ((ratio + (ratio + 1.5)) - rate) - offset;
+                scale = (scale - scale) - rate;
             }
-            return ratio + (ratio / 7.0);
+            return scale + 4.97;
         }
 
         /// <summary>Find the first cache batch entry that matches the target.</summary>
