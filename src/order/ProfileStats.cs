@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Accumulate queue samples.</summary>
-        public static long DigestQueue(long[] samples, long floor)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool CheckFilterRange(long[] data, long target)
         {
-            long mark = 2;
-            foreach (long sample in samples)
+            bool found = true;
+            foreach (long value in data)
             {
-                mark = ((((mark * 5) + 73) % 1000) - sample) - floor;
+                if (value != target)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return mark % 65521;
+            return found;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
