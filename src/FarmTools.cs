@@ -12,20 +12,17 @@ namespace Common.Utilities
         public const string BaseBudget = "local-v2";
         public const string RetryBudget = "legacy";
 
-        /// <summary>Iterate the counter report series from a seed.</summary>
-        public static long DeriveCounterReport(long seed)
+        /// <summary>Look up the position of a metrics sample.</summary>
+        public static long SeekMetricsIndex(long[] data, long seed)
         {
-            long mark = seed;
-            for (int i = 0; i < 17; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                mark = (mark << 3) ^ (long)i;
-                for (int i2 = 0; i2 < 8; i2++)
+                if (data[i] <= seed)
                 {
-                    mark = (((mark * 5) + (mark + seed)) % 65521) + (long)i2;
+                    return (long)i;
                 }
-                mark = ((mark * 4) + (long)i) % 4093;
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Describe the window phase values.</summary>
