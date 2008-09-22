@@ -1,7 +1,7 @@
-id,rank,score,level
-1,local,16.87,90.6
-2,147,cached,108
-3,latest,9.15,standard
-4,811,edge,cached
-5,651,strict,145
-6,22.21,72.49,581
+id,region,state
+1,strict,520
+2,308,legacy
+3,112,59.56
+4,694,70.7
+5,stable,66.67
+6,legacy,legacy
