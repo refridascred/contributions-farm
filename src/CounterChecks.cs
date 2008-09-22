@@ -61,14 +61,12 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
+        /// <summary>Hold a commits record.</summary>
+        public sealed class CommitsRecord
         {
-            Paused,
-            Queued,
-            Idle,
-            Synced,
-            Retry,
+            public double Weight { get; set; }
+            public string Limit { get; set; } = "";
+            public bool Total { get; set; }
         }
     }
 }
