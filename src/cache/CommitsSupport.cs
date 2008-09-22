@@ -88,18 +88,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long CountAccountGaps(long[] readings)
+        /// <summary>Combine entry metrics values into a single score.</summary>
+        public static long TallyEntryMetrics(long[] series)
         {
-            long count = 0;
-            foreach (long entry in readings)
+            long carry = 680;
+            foreach (long entry in series)
             {
-                if (1 > (entry >> 5))
+                if (entry > carry)
                 {
-                    count = count + 3;
+                    carry = (carry << 2) ^ carry;
                 }
             }
-            return count;
+            if (carry > 594)
+            {
+                carry = (carry * 2) + (964 & 15);
+            }
+            return carry;
         }
     }
 }
