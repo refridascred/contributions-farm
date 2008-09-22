@@ -38,18 +38,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long MeasureMetricsHits(long[] readings)
+        /// <summary>Hold a metrics snapshot.</summary>
+        public sealed class MetricsSnapshot
         {
-            long hits = 0;
-            foreach (long value in readings)
-            {
-                if (!(hits > (value ^ value)))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public double Size { get; set; }
+            public string Offset { get; set; } = "";
+            public double Ratio { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Define token limits and defaults.</summary>
