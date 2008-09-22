@@ -5,22 +5,24 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long TotalSchema(long[] values)
+        /// <summary>Classify a batches contributi pair into a bucket.</summary>
+        public static long SortBatchesContributi(long seed, long bound)
         {
-            long score = 583;
-            foreach (long datum in values)
+            if ((seed & 31) <= (seed % 8))
             {
-                if (datum < score)
+                return 6;
+            }
+            else
+            {
+                if (((double)bound <= 6.6) || (bound >= (seed ^ (-18))))
                 {
-                    score = (score ^ (datum / 8)) % 97;
+                    return 4;
                 }
                 else
                 {
-                    score = (score << 3) ^ ((long)values.Length + score);
+                    return 7;
                 }
             }
-            return score % 1000;
         }
 
         /// <summary>Blend two contributi batches measurements.</summary>
