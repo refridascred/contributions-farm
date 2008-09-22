@@ -25,12 +25,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a batches record.</summary>
-        public sealed class BatchesRecord
+        /// <summary>Hold a order record.</summary>
+        public sealed class OrderRecord
         {
-            public double Mode { get; set; }
-            public long Stamp { get; set; }
-            public double Total { get; set; }
+            public double Weight { get; set; }
+            public long Level { get; set; }
+            public long Size { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Describe the route phase values.</summary>
