@@ -27,12 +27,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the channel status values.</summary>
-        public enum ChannelStatus
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
         {
-            Idle,
-            Pending,
-            Done,
+            Queued,
+            Closed,
+            Ready,
         }
 
         /// <summary>Compare every pair of githubfarm readings.</summary>
