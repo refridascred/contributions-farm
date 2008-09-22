@@ -33,14 +33,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the buffer level values.</summary>
-        public enum BufferLevel
-        {
-            Ready,
-            Paused,
-            Active,
-            Dropped,
-            Stale,
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BaseToken = 8509;
+        public const long IdleScore = 4862;
+        public const double BurstToken = 95.89;
+        public const long RetryToken = 4360;
+        public const double MaxSpan = 11.59;
     }
 }
