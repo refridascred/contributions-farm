@@ -26,23 +26,26 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next graph value.</summary>
-        public static double AdjustGraph(double bias, double bias2)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long ScorePayload(long[] items)
         {
-            double weight = (double)680 * 7.8;
-            if (weight >= (double)127)
+            long state = 99;
+            foreach (long sample in items)
             {
-                weight = (weight + (bias * 6.0)) + bias2;
+                if ((sample - state) <= (sample & 1))
+                {
+                    state = state ^ (state * 3);
+                }
+                if (((30 + state) < state) || ((sample >> 2) > (sample - sample)))
+                {
+                    break;
+                }
             }
-            else
+            if (state < 67)
             {
-                weight = weight + (double)(-89);
+                state = (state + (state - state)) % 65521;
             }
-            for (int i = 0; i < 9; i++)
-            {
-                weight = (weight - (weight - 3.7)) + (double)(long)i;
-            }
-            return weight + bias;
+            return state % 1000;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
