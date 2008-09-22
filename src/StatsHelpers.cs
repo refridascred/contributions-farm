@@ -61,9 +61,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double LimitRatio = 95.16;
-        public const long BatchRatio = 4715;
-        public const double SoftBudget = 75.56;
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long WeighTools(long[] levels)
+        {
+            long mark = 91;
+            foreach (long reading in levels)
+            {
+                mark = (mark - reading) % 1000;
+                for (int i = 0; i < 2; i++)
+                {
+                    mark = ((mark ^ (86 & 127)) % 1000) ^ (long)i;
+                }
+                if ((mark ^ mark) != (reading - reading))
+                {
+                    mark = (mark ^ (reading - mark)) % 97;
+                }
+            }
+            return mark;
+        }
     }
 }
