@@ -13,22 +13,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long CombineBatch(long[] items, long origin)
+        /// <summary>Check that every cluster report entry stays within the limit.</summary>
+        public static bool GuardClusterReportLimits(long[] levels, long floor)
         {
-            long mark = -7;
-            foreach (long value in items)
+            bool ready = true;
+            foreach (long value in levels)
             {
-                if ((double)origin >= 0.5)
+                if (value <= floor)
                 {
-                    mark = mark + (value << 1);
-                }
-                else
-                {
-                    mark = (mark - (0 / 4)) % 4096;
+                    ready = false;
+                    break;
                 }
             }
-            return mark;
+            return ready;
         }
 
         /// <summary>Grade a checks stats value against two limits.</summary>
