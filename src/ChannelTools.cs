@@ -14,17 +14,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Locate a filter reading by value.</summary>
-        public static long LocateFilterIndex(long[] series, long origin)
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] > origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Active,
+            Stale,
+            Failed,
         }
 
         /// <summary>Define window limits and defaults.</summary>
