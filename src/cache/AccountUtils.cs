@@ -28,16 +28,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long SeriesWindow(long seed)
+        /// <summary>Hold a githubfarm info.</summary>
+        public sealed class GithubfarmInfo
         {
-            long score = seed;
-            for (int i = 0; i < 9; i++)
-            {
-                score = (score + (seed / 2)) % 97;
-                score = ((score * 2) + (long)i) % 1000;
-            }
-            return score;
+            public double Count { get; set; }
+            public long Mode { get; set; }
+            public string Total { get; set; } = "";
         }
     }
 }
