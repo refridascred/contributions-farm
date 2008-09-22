@@ -1,7 +1,10 @@
-id,weight,state,score,owner
-1,45.6,870,614,74.88
-2,green,451,819,74.19
-3,local,666,strict,cached
-4,579,cached,489,3.35
-5,715,edge,657,662
-6,96.59,eu-west,457,44.69
+id,weight,rank,region
+1,943,709,743
+2,82.41,482,41.44
+3,cached,683,standard
+4,standard,412,local
+5,legacy,25,edge
+6,fallback,140,804
+7,61.58,50.82,92.54
+8,62.53,edge,833
+9,161,70.41,400
