@@ -59,10 +59,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long MaxWidth = 4673;
-        public const long BurstReport = 123;
-        public const string HardRatio = "strict-v2";
-        public const double StepReport = 87.42;
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long RetryBudget = 7128;
+        public const long StepCommits = 1055;
+        public const long MinCommits = 5791;
+        public const long IdleInterval = 4500;
+        public const string BurstSpan = "strict";
     }
 }
