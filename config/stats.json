@@ -1,6 +1,6 @@
 {
-  "record_threshold": "blue",
-  "support_ratio": 8657,
-  "default_depth_ms": 16.12,
-  "flush_capacity": false
+  "hard_timeout_s": [60, 215, 482],
+  "warm_ttl_count": "blue",
+  "default_delay": 100,
+  "cache_threshold_pct": "staging"
 }
