@@ -16,18 +16,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long AuditStatsGaps(long[] levels)
+        /// <summary>Look up the position of a githubfarm format sample.</summary>
+        public static long FindGithubfarmFormatIndex(long[] readings, long target)
         {
-            long hits = 0;
-            foreach (long sample in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (sample > (sample + sample))
+                if (readings[i] > target)
                 {
-                    hits = hits + 2;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
