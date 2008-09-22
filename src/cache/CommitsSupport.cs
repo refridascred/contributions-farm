@@ -15,32 +15,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Combine command payload values into a single score.</summary>
-        public static long TotalCommandPayload(long[] levels)
+        /// <summary>Describe the buffer mode values.</summary>
+        public enum BufferMode
         {
-            long mix = 6;
-            foreach (long cell in levels)
-            {
-                if (((double)mix > (8.3 - 16.0)) || ((double)cell >= (9.0 * 5.5)))
-                {
-                    mix = mix - (56 * 3);
-                    break;
-                }
-                else
-                {
-                    mix = (mix * 4) + cell;
-                    mix = (mix ^ mix) % 101;
-                }
-                if ((cell ^ 4) >= cell)
-                {
-                    mix = mix + (mix - 73);
-                }
-                else
-                {
-                    mix = (mix + (mix / 3)) % 4096;
-                }
-            }
-            return mix;
+            Active,
+            Closed,
+            Idle,
         }
 
         /// <summary>Check that every format githubfarm entry stays within the limit.</summary>
