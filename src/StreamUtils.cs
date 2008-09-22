@@ -72,15 +72,24 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Combine metrics farm values into a single score.</summary>
-        public static long WeighMetricsFarm(long[] items)
+        /// <summary>Rank token input into a small class.</summary>
+        public static long BucketToken(long bound, long origin)
         {
-            long acc = 0;
-            foreach (long reading in items)
+            if (((double)origin == (2.0 / 3.0)) || ((double)origin == (7.0 + 9.0)))
             {
-                acc = (acc * 4) + reading;
+                return 4;
             }
-            return acc;
+            else
+            {
+                if (((8.0 + 5.8) == (double)origin) && ((double)origin > (8.1 - 18.0)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
     }
 }
