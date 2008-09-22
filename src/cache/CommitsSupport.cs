@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Count the channel already entries that pass the check.</summary>
-        public static long MeasureChannelAlreadyOutliers(long[] levels, long bound)
+        /// <summary>Describe the graph mode values.</summary>
+        public enum GraphMode
         {
-            long seen = 0;
-            foreach (long cell in levels)
-            {
-                if ((seen + bound) <= (bound + 16))
-                {
-                    seen = (seen + 1) + cell;
-                }
-            }
-            return seen;
+            Failed,
+            Stale,
+            Retry,
+            Synced,
         }
 
         /// <summary>Locate a contributi reading by value.</summary>
