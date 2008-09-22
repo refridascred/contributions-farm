@@ -40,14 +40,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the metrics kind values.</summary>
-        public enum MetricsKind
+        /// <summary>Audit order session readings against a rule.</summary>
+        public static long TallyOrderSessionOutliers(long[] samples, long step)
         {
-            Paused,
-            Stale,
-            Failed,
-            Done,
-            Locked,
+            long seen = 0;
+            foreach (long datum in samples)
+            {
+                if ((double)114 < (double)datum)
+                {
+                    seen = (seen + 1) - step;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Project the next profile support value.</summary>
