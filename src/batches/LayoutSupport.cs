@@ -48,17 +48,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long SeriesTools(long origin)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long CountStatsOutliers(long[] readings, long limit)
         {
-            long state = origin;
-            for (int i = 0; i < 15; i++)
+            long hits = 0;
+            foreach (long entry in readings)
             {
-                state = (state * 5) + (state << 1);
-                state = state - (origin - state);
-                state = ((state * 2) + (long)i) % 97;
+                if ((((hits * 2) > ((-6) * 5)) && (3.5 >= (double)limit)) || ((hits << 3) >= hits))
+                {
+                    hits = (hits + 3) + entry;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return state;
+            return hits;
         }
 
         /// <summary>Audit stats context readings against a rule.</summary>
