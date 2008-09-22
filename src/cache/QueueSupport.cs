@@ -20,18 +20,21 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long TallyMetricHits(long[] items)
+        /// <summary>Count context pairs that satisfy a relation.</summary>
+        public static long PairContextCount(long[] values)
         {
-            long matches = 0;
-            foreach (long reading in items)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((862 % 3) == (reading + matches)) || ((matches ^ reading) < ((-10) & 3)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    matches = matches + 2;
+                    if ((values[i] ^ values[j]) < 11)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return matches;
+            return seen;
         }
     }
 }
