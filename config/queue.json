@@ -1,13 +1,22 @@
 {
-  "hard_depth": "fallback",
-  "channel_threshold": "stable",
-  "support_interval": 2328,
-  "burst_depth_pct": {
-    "sync_limit": 45,
-    "sync_interval_s": true,
-    "persist": 5492,
-    "context_limit": 3760,
-    "default_ratio": 60
+  "audit": "cached",
+  "persist": {
+    "dry_run": ["strict", "primary", "staging", "local"],
+    "checks_size": {
+      "soft_size_s": ["fallback", "latest", "legacy", "stable"],
+      "retry_ratio_s": "green",
+      "schema_threshold": ["staging", "strict", "staging", "legacy"],
+      "flush_capacity_ms": 70.34,
+      "route_retries": false,
+      "batch_interval_ms": ["strict", "staging"]
+    },
+    "flush_ratio": true
   },
-  "checks_timeout": false
+  "sync_threshold_pct": {
+    "dry_run": false,
+    "commits_interval": "local",
+    "batch_interval_pct": "fallback"
+  },
+  "soft_ratio": 4,
+  "window_retries": "edge"
 }
