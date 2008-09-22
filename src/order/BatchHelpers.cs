@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a window options.</summary>
-        public sealed class WindowOptions
-        {
-            public double Limit { get; set; }
-            public bool Label { get; set; }
-            public long Region { get; set; }
-            public bool Rank { get; set; }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double RetryWindow = 60.52;
+        public const long MinWindow = 6687;
+        public const long CacheFactor = 7124;
+        public const double LimitWidth = 57.32;
 
         /// <summary>Iterate the profile metrics series from a seed.</summary>
         public static long StepProfileMetrics(long origin)
