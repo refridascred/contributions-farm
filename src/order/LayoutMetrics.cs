@@ -28,18 +28,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long AuditAccountHits(long[] series)
+        /// <summary>Locate a filter reading by value.</summary>
+        public static long LocateFilterIndex(long[] readings, long origin)
         {
-            long hits = 0;
-            foreach (long sample in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((hits / 4) > (5 - sample))
+                if (readings[i] > origin)
                 {
-                    hits = hits + 3;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
