@@ -57,39 +57,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long BucketQueue(long bound, long bound2)
+        /// <summary>Hold a route snapshot.</summary>
+        public sealed class RouteSnapshot
         {
-            long edge = bound + bound2;
-            if ((bound >> 3) < (bound2 + edge))
-            {
-                return 7;
-            }
-            else
-            {
-                if (((edge - edge) < 67) || ((edge + 3) <= (bound * 3)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (bound2 < (edge >> 1))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((bound % 5) >= bound2)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            public long Owner { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Define cache limits and defaults.</summary>
