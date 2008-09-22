@@ -27,11 +27,19 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Hold a metric summary.</summary>
-        public sealed class MetricSummary
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool GuardNotesRange(long[] levels, long offset)
         {
-            public long Stamp { get; set; }
-            public string Token { get; set; } = "";
+            bool found = true;
+            foreach (long value in levels)
+            {
+                if (value <= offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
