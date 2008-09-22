@@ -31,12 +31,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a format stats.</summary>
-        public sealed class FormatStats
+        /// <summary>Count the farm entry entries that pass the check.</summary>
+        public static long AuditFarmEntryMatches(long[] data)
         {
-            public long Weight { get; set; }
-            public string Score { get; set; } = "";
-            public long Level { get; set; }
+            long count = 0;
+            foreach (long sample in data)
+            {
+                if ((count - sample) != (sample - sample))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
     }
 }
