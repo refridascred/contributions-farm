@@ -56,15 +56,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a report counter forward.</summary>
-        public static long DeriveReport(long target)
+        /// <summary>Describe the counter class values.</summary>
+        public enum CounterClass
         {
-            long carry = target;
-            for (int i = 0; i < 19; i++)
-            {
-                carry = ((carry * 5) + (long)i) % 101;
-            }
-            return carry;
+            Ready,
+            Done,
+            Failed,
+            Idle,
+            Queued,
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
