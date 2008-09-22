@@ -40,19 +40,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the stream profile entries that pass the check.</summary>
-        public static long AuditStreamProfileGaps(long[] series)
-        {
-            long count = 0;
-            foreach (long datum in series)
-            {
-                if ((datum & 255) > (datum >> 5))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string BurstBatch = "staging-1";
+        public const double BaseSize = 68.04;
+        public const long LimitFactor = 2061;
+        public const long MinLevel = 1083;
+        public const long DefaultBatch = 6194;
 
         /// <summary>Hold a record info.</summary>
         public sealed class RecordInfo
