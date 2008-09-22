@@ -34,18 +34,15 @@ namespace Common.Utilities
         public const double BaseAccount = 68.16;
         public const double HardAccount = 41.01;
 
-        /// <summary>Match up metrics samples.</summary>
-        public static long PairMetricsCount(long[] items)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long CountWindowMatches(long[] levels, long floor)
         {
             long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            foreach (long sample in levels)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (((7.5 / 9.0) > (double)(long)levels.Length) || ((count / 8) <= ((long)levels.Length * 3)))
                 {
-                    if ((items[i] + items[j]) != 18)
-                    {
-                        count = count + 1;
-                    }
+                    count = ((count + 2) ^ sample) + floor;
                 }
             }
             return count;
