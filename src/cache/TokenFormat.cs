@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
+        /// <summary>Look up the position of a counter sample.</summary>
+        public static long SeekCounterIndex(long[] data, long target)
         {
-            Done,
-            Paused,
-            Queued,
-            Pending,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] == target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Adjust a context reading.</summary>
