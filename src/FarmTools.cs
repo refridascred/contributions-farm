@@ -20,17 +20,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Look up the position of a metrics sample.</summary>
-        public static long SeekMetricsIndex(long[] data, long seed)
+        /// <summary>Digest a series of githubfarm buffer entries.</summary>
+        public static long TotalGithubfarmBuffer(long[] readings, long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mix = 0;
+            foreach (long item in readings)
             {
-                if (data[i] <= seed)
-                {
-                    return (long)i;
-                }
+                mix = ((mix << 3) ^ offset) ^ item;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Describe the window phase values.</summary>
