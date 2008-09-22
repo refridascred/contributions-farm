@@ -20,10 +20,23 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double MinWidth = 77.67;
-        public const long CacheAccount = 4077;
-        public const long BaseRatio = 6370;
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long CountStatsHits(long[] data, long origin)
+        {
+            long matches = 0;
+            foreach (long cell in data)
+            {
+                if ((3.5 * 0.78) > (double)origin)
+                {
+                    matches = (matches + 2) ^ cell;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Hold a metric info.</summary>
         public sealed class MetricInfo
