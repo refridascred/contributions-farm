@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool GuardOrderBounds(long[] levels, long seed)
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
         {
-            bool ok = true;
-            foreach (long item in levels)
-            {
-                if (item >= seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Active,
+            Failed,
+            Dropped,
+            Done,
+            Retry,
         }
 
         /// <summary>Locate a metric order reading by value.</summary>
