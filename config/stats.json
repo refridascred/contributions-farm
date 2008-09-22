@@ -1,6 +1,6 @@
 {
-  "retry_timeout_pct": 5188,
-  "persist": "staging",
-  "cache_limit_s": 44.64,
-  "readonly": false
+  "cache_window": "staging",
+  "burst_interval": "strict",
+  "readonly": "green",
+  "warm_limit_ms": ["blue", "latest", "local"]
 }
