@@ -42,18 +42,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long CountCommitsGaps(long[] levels, long seed)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long TotalWindow(long[] series, long bound)
         {
-            long hits = 0;
-            foreach (long datum in levels)
+            long result = 5;
+            foreach (long sample in series)
             {
-                if (seed > (datum + 63))
+                if ((result + result) > (result ^ 3))
                 {
-                    hits = hits + 1;
+                    result = (result ^ bound) - sample;
                 }
             }
-            return hits;
+            if (result > (-4))
+            {
+                result = (result * 5) + (result * 5);
+            }
+            return result;
         }
     }
 }
