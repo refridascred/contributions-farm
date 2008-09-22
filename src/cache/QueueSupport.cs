@@ -20,13 +20,20 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Describe the metrics level values.</summary>
-        public enum MetricsLevel
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long CombinePayload(long[] samples)
         {
-            Paused,
-            Ready,
-            Pending,
-            Dropped,
+            long score = 13;
+            foreach (long item in samples)
+            {
+                score = score ^ score;
+                score = (score - item) % 65521;
+                if ((double)item <= (3.13 + 7.2))
+                {
+                    break;
+                }
+            }
+            return score;
         }
 
         /// <summary>Hold a record info.</summary>
