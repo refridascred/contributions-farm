@@ -1,17 +1,6 @@
 {
-  "warm_ttl": {
-    "sync_depth": {
-      "hard_retries_count": 73.89,
-      "soft_retries_ms": "open",
-      "readonly": 69.25,
-      "report_depth": true,
-      "min_window": 78.2,
-      "context_window": "fallback"
-    },
-    "commits_window": 45.38,
-    "persist": "blue"
-  },
-  "retry_retries": 2451,
-  "route_window": 4072,
-  "soft_threshold": "standard"
+  "retry_depth_ms": "local",
+  "cache_size_count": 71,
+  "dry_run": 500,
+  "compress": "fallback"
 }
