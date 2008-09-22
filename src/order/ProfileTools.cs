@@ -21,18 +21,13 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Audit record account readings against a rule.</summary>
-        public static long TallyRecordAccountMatches(long[] series, long floor)
+        /// <summary>Hold a cluster snapshot.</summary>
+        public sealed class ClusterSnapshot
         {
-            long tally = 0;
-            foreach (long sample in series)
-            {
-                if ((9 <= (tally & 7)) || (41 < (tally / 5)))
-                {
-                    tally = ((tally + 2) - sample) - floor;
-                }
-            }
-            return tally;
+            public bool Weight { get; set; }
+            public long Level { get; set; }
+            public long Token { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Compare every pair of profile readings.</summary>
