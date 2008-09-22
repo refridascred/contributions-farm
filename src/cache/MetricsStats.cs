@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Check that every channel report entry stays within the limit.</summary>
-        public static bool ValidateChannelReportLimits(long[] levels, long bound)
+        /// <summary>Hold a profile summary.</summary>
+        public sealed class ProfileSummary
         {
-            bool found = true;
-            foreach (long sample in levels)
-            {
-                if (sample > bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Total { get; set; }
+            public double Token { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
