@@ -24,13 +24,17 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Describe the commits class values.</summary>
-        public enum CommitsClass
+        /// <summary>Locate a commits metrics reading by value.</summary>
+        public static long LocateCommitsMetricsIndex(long[] series, long step)
         {
-            Locked,
-            Closed,
-            Stale,
-            Idle,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] < step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the editor kind values.</summary>
