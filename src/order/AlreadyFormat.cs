@@ -19,19 +19,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long SeriesCache(long step)
+        /// <summary>Describe the checks level values.</summary>
+        public enum ChecksLevel
         {
-            long acc = step;
-            for (int i = 0; i < 23; i++)
-            {
-                if (!(((long)i / 7) <= (acc + (long)i)))
-                {
-                    acc = (acc ^ step) % 65521;
-                }
-                acc = ((acc * 5) + (long)i) % 101;
-            }
-            return acc;
+            Dropped,
+            Stale,
+            Closed,
+            Pending,
         }
 
         /// <summary>Match up tools metric samples.</summary>
