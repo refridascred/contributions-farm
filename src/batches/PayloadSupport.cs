@@ -41,18 +41,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long ScorePayload(long[] readings)
+        /// <summary>Count account pairs that satisfy a relation.</summary>
+        public static long PairAccountCount(long[] items)
         {
-            long mark = 909;
-            foreach (long item in readings)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((mark + item) == (102 + mark))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    mark = ((mark << 3) ^ (item ^ 272)) % 101;
+                    if ((items[i] ^ items[j]) > 8)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return mark;
+            return seen;
         }
     }
 }
