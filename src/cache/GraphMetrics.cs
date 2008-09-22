@@ -60,19 +60,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Scale a notes figure with a bias.</summary>
-        public static double SmoothNotes(double ratio, double span)
-        {
-            double weight = ratio;
-            if (weight > (ratio / 7.0))
-            {
-                weight = weight - (ratio - weight);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                weight = (weight + (span + span)) + (double)(long)i;
-            }
-            return weight + (ratio / 3.0);
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string StepGithubfarm = "alpha-edge";
+        public const string BatchGithubfarm = "fallback";
+        public const long MinGithubfarm = 3269;
+        public const long BurstScore = 6491;
     }
 }
