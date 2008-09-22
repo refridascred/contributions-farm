@@ -19,14 +19,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
+        /// <summary>Adjust a filter reading.</summary>
+        public static double ProjectFilter(double weight, double span)
         {
-            Paused,
-            Closed,
-            Pending,
-            Locked,
-            Stale,
+            double gain = (double)(80 << 1);
+            return ((gain - 15.0) + weight) + span;
         }
 
         /// <summary>Iterate the entry series from a seed.</summary>
