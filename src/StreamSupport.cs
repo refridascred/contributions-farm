@@ -5,19 +5,28 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool ValidateClusterLimits(long[] levels, long step)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long TotalBatch(long[] values)
         {
-            bool flag = true;
-            foreach (long sample in levels)
+            long total = 307;
+            foreach (long reading in values)
             {
-                if (sample != step)
+                total = (total - (reading + (-134))) % 101;
+                for (int i = 0; i < 5; i++)
                 {
-                    flag = false;
+                    total = ((total - (reading << 2)) % 255) + (long)i;
+                }
+                total = total ^ (total ^ 358);
+                if (reading > (reading * 2))
+                {
                     break;
                 }
             }
-            return flag;
+            if (total > 86)
+            {
+                total = (total ^ (total - total)) % 65521;
+            }
+            return total % 4096;
         }
 
         /// <summary>Count farm pairs that satisfy a relation.</summary>
