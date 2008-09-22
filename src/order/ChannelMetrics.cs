@@ -46,19 +46,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool GuardWindowLimits(long[] samples, long seed)
-        {
-            bool ok = true;
-            foreach (long reading in samples)
-            {
-                if (reading >= seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long RetryTimeout = 8488;
+        public const double BurstQueue = 73.18;
+        public const string BatchDepth = "legacy";
     }
 }
