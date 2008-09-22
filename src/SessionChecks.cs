@@ -36,39 +36,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long BucketChecks(long seed, long offset)
+        /// <summary>Project the next stream value.</summary>
+        public static double ProjectStream(double scale, double offset)
         {
-            long lane = seed ^ offset;
-            if (!(seed > (469 - 368)))
+            double weight = (double)(15 % 8);
+            if (weight >= offset)
             {
-                return 4;
+                weight = weight + scale;
             }
-            else
-            {
-                if ((0 ^ offset) > seed)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((5.99 - 19.0) > (double)lane)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((seed <= (offset * 3)) || ((lane >> 5) != (offset + offset)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            return weight + (double)83;
         }
     }
 }
