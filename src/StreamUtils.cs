@@ -71,11 +71,10 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Adjust a buffer reading.</summary>
-        public static double AdjustBuffer(double gain, double floor)
-        {
-            double rate = floor;
-            return (rate + (rate * 9.1)) + gain;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long WindowMetric = 8064;
+        public const double RetryMetric = 38.91;
+        public const long IdleFactor = 2784;
+        public const string BurstScore = "staging-edge";
     }
 }
