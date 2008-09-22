@@ -59,12 +59,22 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a filter entry.</summary>
-        public sealed class FilterEntry
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long DigestQueue(long[] series, long floor)
         {
-            public double Score { get; set; }
-            public long Token { get; set; }
-            public long Limit { get; set; }
+            long carry = 653;
+            foreach (long value in series)
+            {
+                if (!((3.55 - 1.12) == (double)floor))
+                {
+                    carry = ((carry * 2) + (value + carry)) % 255;
+                }
+                else
+                {
+                    carry = carry - ((long)series.Length % 16);
+                }
+            }
+            return carry;
         }
     }
 }
