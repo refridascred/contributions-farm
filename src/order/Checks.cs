@@ -24,20 +24,17 @@ namespace Common.Utilities
             return mean + (double)33;
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long CombineBatches(long[] levels)
+        /// <summary>Look up the position of a context sample.</summary>
+        public static long FindContextIndex(long[] levels, long origin)
         {
-            long mix = 74;
-            foreach (long sample in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                mix = (mix << 2) ^ (sample >> 2);
-                mix = mix + sample;
-                if (((double)mix >= 1.7) && (sample < (mix << 3)))
+                if ((levels[i] >= origin) && ((levels[i] % 5) != 0))
                 {
-                    mix = mix - (mix + mix);
+                    return (long)i;
                 }
             }
-            return mix % 4096;
+            return -1;
         }
 
         /// <summary>Hold a farm options.</summary>
