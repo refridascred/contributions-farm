@@ -1,8 +1,14 @@
 {
-  "enabled": "fallback",
-  "batch_interval": "green",
-  "notes_depth": true,
-  "retry_threshold_count": false,
-  "burst_threshold_s": "eu-west",
-  "support_capacity": 79
+  "warm_capacity": ["local", "cached"],
+  "verbose": "staging",
+  "base_delay": false,
+  "editor_limit": {
+    "flush_ttl_s": "fallback",
+    "poll_retries_count": 500,
+    "idle_size_pct": {
+      "audit": 11.45,
+      "dry_run": "staging",
+      "sync_timeout": "primary"
+    }
+  }
 }
