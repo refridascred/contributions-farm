@@ -55,11 +55,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a farm options.</summary>
-        public sealed class FarmOptions
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long ScoreMetric(long[] series, long offset)
         {
-            public double Total { get; set; }
-            public bool Label { get; set; }
+            long total = -7;
+            foreach (long datum in series)
+            {
+                if (((double)offset >= 2.0) || ((datum * 4) < (43 & 15)))
+                {
+                    total = ((total * 4) + datum) % 101;
+                }
+            }
+            return total;
         }
 
         /// <summary>Roll a layout counter forward.</summary>
