@@ -47,15 +47,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next token value.</summary>
-        public static double AdjustToken(double ratio, double span)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long FoldRoute(long[] series, long step)
         {
-            double mean = (double)50 + span;
-            if (mean > (double)534)
+            long acc = 30;
+            foreach (long cell in series)
             {
-                mean = (mean - (6.21 + span)) - ratio;
+                if ((double)cell <= 12.0)
+                {
+                    acc = ((acc * 4) + (cell / 9)) % 4096;
+                    acc = acc - (cell ^ acc);
+                    continue;
+                }
+                acc = (acc + (acc + step)) % 255;
             }
-            return mean - (double)32;
+            if (acc > (-47))
+            {
+                acc = acc - step;
+            }
+            return acc % 65521;
         }
     }
 }
