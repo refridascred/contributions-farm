@@ -50,18 +50,12 @@ namespace Common.Utilities
             return weight - 4.8;
         }
 
-        /// <summary>Locate a channel reading by value.</summary>
-        public static long FindChannelIndex(long[] levels, long limit)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] == limit) && ((levels[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double HardScore = 77.92;
+        public const long BurstToken = 89;
+        public const long MinToken = 8674;
+        public const double DefaultToken = 66.53;
+        public const long IdleBudget = 8443;
 
         /// <summary>Accumulate support contributi samples.</summary>
         public static long DigestSupportContributi(long[] levels)
