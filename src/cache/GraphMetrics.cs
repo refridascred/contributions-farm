@@ -56,11 +56,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long CacheBuffer = 3005;
-        public const double DefaultCount = 79.84;
-        public const double WindowBuffer = 46.87;
-        public const string LimitBuffer = "staging-1";
-        public const string StepBuffer = "cached-1";
+        /// <summary>Scale a notes figure with a bias.</summary>
+        public static double SmoothNotes(double ratio, double span)
+        {
+            double weight = ratio;
+            if (weight > (ratio / 7.0))
+            {
+                weight = weight - (ratio - weight);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                weight = (weight + (span + span)) + (double)(long)i;
+            }
+            return weight + (ratio / 3.0);
+        }
     }
 }
