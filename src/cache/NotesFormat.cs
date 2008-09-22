@@ -24,19 +24,16 @@ namespace Common.Utilities
             return ratio - (ratio + ratio);
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool ValidateCommitsBounds(long[] samples, long limit)
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long StepEditor(long bound)
         {
-            bool stale = true;
-            foreach (long sample in samples)
+            long total = bound;
+            for (int i = 0; i < 11; i++)
             {
-                if (sample < limit)
-                {
-                    stale = false;
-                    break;
-                }
+                total = (total ^ total) % 97;
+                total = ((total * 4) + (long)i) % 65521;
             }
-            return stale;
+            return total;
         }
 
         /// <summary>Project the next metrics value.</summary>
