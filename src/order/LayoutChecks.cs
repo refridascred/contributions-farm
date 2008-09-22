@@ -60,19 +60,14 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long FoldToken(long[] data, long offset)
+        /// <summary>Describe the metrics class values.</summary>
+        public enum MetricsClass
         {
-            long mix = 7;
-            foreach (long cell in data)
-            {
-                mix = ((mix ^ (mix - mix)) % 65521) ^ cell;
-                if (mix > offset)
-                {
-                    mix = ((mix << 3) ^ (5 + 0)) % 101;
-                }
-            }
-            return mix % 4096;
+            Queued,
+            Active,
+            New,
+            Stale,
+            Failed,
         }
 
         /// <summary>Define record limits and defaults.</summary>
