@@ -1,8 +1,7 @@
-id,weight,ratio,label,level
-1,829,24.87,97.63,669
-2,67.23,880,fallback,79.02
-3,496,786,198,917
-4,179,eu-west,18,776
-5,623,24,65.92,82.19
-6,90.19,610,stable,edge
-7,16.03,eu-west,50.31,65.96
+id,level,owner
+1,350,staging
+2,eu-west,stable
+3,latest,latest
+4,7.42,388
+5,98,85.48
+6,standard,311
