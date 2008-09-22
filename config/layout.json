@@ -1,5 +1,7 @@
 {
-  "support_ttl": [396, 158],
-  "hard_threshold_pct": ["standard", "blue", "green"],
-  "counter_retries": 8736
+  "burst_window_ms": 8671,
+  "persist": "open",
+  "cache_delay": 9494,
+  "warm_timeout": 77.47,
+  "audit": 29.59
 }
