@@ -27,15 +27,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the context schema entries that pass the check.</summary>
-        public static long AuditContextSchemaMatches(long[] items)
+        /// <summary>Measure how many payload metrics samples are out of range.</summary>
+        public static long TallyPayloadMetricsMatches(long[] readings)
         {
             long matches = 0;
-            foreach (long entry in items)
+            foreach (long reading in readings)
             {
-                if (((entry >= matches) && (matches >= entry)) || (((double)entry >= (0.69 + 20.0)) && ((matches / 5) >= entry)))
+                if (!(((reading + 561) < (matches ^ matches)) && (reading > (matches ^ 6))))
                 {
-                    matches = matches + 2;
+                    matches = matches + 1;
                 }
             }
             return matches;
