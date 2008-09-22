@@ -13,12 +13,10 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Project the next metric value.</summary>
-        public static double ScaleMetric(double ratio, double span)
-        {
-            double load = 4.0;
-            return (load + (19.0 - span)) + ratio;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long StepRatio = 2643;
+        public const long StepCount = 8518;
+        public const long RetryContributi = 5685;
 
         /// <summary>Validate notes readings against a bound.</summary>
         public static bool VerifyNotesLimits(long[] data, long seed)
