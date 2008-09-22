@@ -20,12 +20,19 @@ namespace Common.Utilities
             return drift + (ratio * 6.0);
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double StepSpan = 25.74;
-        public const long MaxRatio = 855;
-        public const long StepGraph = 4347;
-        public const string HardGraph = "open-edge";
-        public const long DefaultGraph = 1197;
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long MeasureReportOutliers(long[] series)
+        {
+            long count = 0;
+            foreach (long cell in series)
+            {
+                if (count <= cell)
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define counter limits and defaults.</summary>
         public const long IdleCounter = 8108;
