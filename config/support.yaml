@@ -1,9 +1,6 @@
 # support settings
-idle_retries_count: 48.66
-persist: primary
-retry_ratio: cached
-dry_run:
-  hard_retries_s: 30
-  max_interval_ms: 9329
-  flush_window_s: 47
-batch_depth: fallback
+max_retries: false
+soft_window_s: true
+batch_threshold_s: local
+compress: legacy
+default_ttl_pct: 90
