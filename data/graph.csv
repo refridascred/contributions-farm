@@ -1,6 +1,11 @@
-id,owner,score,active
-1,32.01,222,613
-2,92.74,69.7,725
-3,standard,edge,149
-4,905,621,eu-west
-5,886,658,370
+id,rank,score
+1,edge,86
+2,blue,18.26
+3,93.58,78.61
+4,482,524
+5,520,98
+6,593,25.06
+7,legacy,green
+8,79.91,cached
+9,76,832
+10,standard,863
