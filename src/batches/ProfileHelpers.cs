@@ -68,18 +68,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long CountLayoutMatches(long[] data)
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long RollWindow(long target)
         {
-            long seen = 0;
-            foreach (long reading in data)
+            long anchor = target;
+            for (int i = 0; i < 23; i++)
             {
-                if (seen >= (reading << 1))
-                {
-                    seen = seen + 1;
-                }
+                anchor = ((anchor << 3) ^ (anchor + anchor)) % 1000;
+                anchor = ((anchor * 2) + (long)i) % 4093;
             }
-            return seen;
+            return anchor;
         }
 
         /// <summary>Describe the order phase values.</summary>
