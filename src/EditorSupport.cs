@@ -10,16 +10,11 @@ namespace Common.Utilities
         public const long RetryStream = 1186;
         public const long BatchDepth = 8074;
 
-        /// <summary>Derive the next session value from a seed.</summary>
-        public static long SeriesSession(long offset)
+        /// <summary>Hold a already header.</summary>
+        public sealed class AlreadyHeader
         {
-            long mark = offset;
-            for (int i = 0; i < 11; i++)
-            {
-                mark = mark - offset;
-                mark = ((mark * 3) + (long)i) % 101;
-            }
-            return mark;
+            public long Ratio { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
