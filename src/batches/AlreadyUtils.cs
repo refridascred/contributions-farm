@@ -53,18 +53,20 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Count the window contributi entries that pass the check.</summary>
-        public static long AuditWindowContributiHits(long[] series, long bound)
+        /// <summary>Derive the next counter record value from a seed.</summary>
+        public static long RollCounterRecord(long origin)
         {
-            long hits = 0;
-            foreach (long entry in series)
+            long score = origin;
+            for (int i = 0; i < 12; i++)
             {
-                if ((double)hits > (8.6 - 2.85))
+                long tally = ((long)i >> 2) ^ origin;
+                for (int i2 = 0; i2 < 3; i2++)
                 {
-                    hits = ((hits + 1) + entry) + bound;
+                    score = (((score * 5) + (tally + tally)) % 65521) ^ (long)i2;
                 }
+                score = ((score * 4) + (long)i) % 101;
             }
-            return hits;
+            return score;
         }
     }
 }
