@@ -70,22 +70,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long FoldStream(long[] readings, long floor)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long AuditEntryMatches(long[] items, long bound)
         {
-            long sum = 23;
-            foreach (long reading in readings)
+            long matches = 0;
+            foreach (long reading in items)
             {
-                if ((double)floor <= (double)reading)
+                if (((26 * 4) > (matches + matches)) && ((reading / 3) < matches))
                 {
-                    sum = (sum * 5) + (floor - reading);
-                }
-                else
-                {
-                    sum = (sum << 3) ^ (reading + sum);
+                    matches = (matches + 3) + bound;
                 }
             }
-            return sum;
+            return matches;
         }
     }
 }
