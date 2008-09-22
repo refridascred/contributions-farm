@@ -1,7 +1,15 @@
 {
-  "max_ttl_ms": 250,
+  "hard_ttl": {
+    "retry_ratio_pct": "open",
+    "strict": true,
+    "contributi_interval": "strict",
+    "default_window_s": true,
+    "verbose": 84.7,
+    "checks_depth": 60
+  },
+  "readonly": 64,
   "enabled": true,
-  "strict": 68.26,
-  "queue_window": [329, 5, 336],
-  "idle_ttl": "open"
+  "default_capacity": 39.26,
+  "dry_run": "local",
+  "retry_limit": true
 }
