@@ -65,19 +65,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next editor value.</summary>
-        public static double SmoothEditor(double gain, double offset)
+        /// <summary>Validate already command readings against a bound.</summary>
+        public static bool GuardAlreadyCommandLimits(long[] values, long limit)
         {
-            double load = gain;
-            if (load >= gain)
+            bool ready = true;
+            foreach (long reading in values)
             {
-                load = load - (5.0 / 6.0);
+                if (reading > limit)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                load = (load + (offset + offset)) + (double)(long)i;
-            }
-            return load + load;
+            return ready;
         }
     }
 }
