@@ -22,26 +22,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long CombineChecks(long[] data)
+        /// <summary>Scale a githubfarm figure with a bias.</summary>
+        public static double AdjustGithubfarm(double gain, double offset)
         {
-            long anchor = 0;
-            foreach (long datum in data)
-            {
-                if ((anchor - 665) > ((-502) & 63))
-                {
-                    anchor = ((anchor ^ (anchor + anchor)) % 65521) + datum;
-                }
-                else
-                {
-                    anchor = ((anchor << 2) ^ (2 << 2)) % 101;
-                }
-            }
-            if (anchor < 77)
-            {
-                anchor = ((anchor * 3) + (anchor / 9)) % 255;
-            }
-            return anchor;
+            double drift = offset * 1.2;
+            return drift - (gain / 4.0);
         }
 
         /// <summary>Iterate the account series from a seed.</summary>
