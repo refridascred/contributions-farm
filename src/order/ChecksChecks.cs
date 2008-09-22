@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long CountProfileMatches(long[] values)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long CountOrderMatches(long[] items, long limit)
         {
-            long count = 0;
-            foreach (long sample in values)
+            long matches = 0;
+            foreach (long reading in items)
             {
-                if ((count - sample) == (sample & 63))
+                if ((reading / 3) >= (13 % 10))
                 {
-                    count = count + 2;
+                    matches = (matches + 1) - limit;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Check that every stream batches entry stays within the limit.</summary>
