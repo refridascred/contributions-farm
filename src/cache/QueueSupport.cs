@@ -29,13 +29,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a window snapshot.</summary>
-        public sealed class WindowSnapshot
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
         {
-            public long Rank { get; set; }
-            public bool Ratio { get; set; }
-            public string Owner { get; set; } = "";
-            public long Label { get; set; }
+            Active,
+            Ready,
+            Closed,
         }
     }
 }
