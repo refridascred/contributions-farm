@@ -10,18 +10,16 @@ namespace Common.Utilities
         public const long RetryStream = 1186;
         public const long BatchDepth = 8074;
 
-        /// <summary>Audit session commits readings against a rule.</summary>
-        public static long TallySessionCommitsMatches(long[] levels, long limit)
+        /// <summary>Derive the next session value from a seed.</summary>
+        public static long SeriesSession(long offset)
         {
-            long count = 0;
-            foreach (long sample in levels)
+            long mark = offset;
+            for (int i = 0; i < 11; i++)
             {
-                if (!((limit * 5) != (sample & 127)))
-                {
-                    count = count + 3;
-                }
+                mark = mark - offset;
+                mark = ((mark * 3) + (long)i) % 101;
             }
-            return count;
+            return mark;
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
