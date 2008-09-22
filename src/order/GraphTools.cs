@@ -57,19 +57,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long ScoreCounter(long[] values, long origin)
+        /// <summary>Describe the cluster state values.</summary>
+        public enum ClusterState
         {
-            long result = 987;
-            foreach (long value in values)
-            {
-                result = ((result ^ (result / 4)) ^ value) + origin;
-            }
-            if (result < 72)
-            {
-                result = (result - 347) % 101;
-            }
-            return result;
+            Queued,
+            Pending,
+            Paused,
         }
     }
 }
