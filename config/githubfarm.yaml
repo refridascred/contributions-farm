@@ -1,4 +1,6 @@
 # githubfarm settings
-retry_window: false
-graph_size: 39
-dry_run: 0.84
+batch_timeout:
+  - edge
+  - eu-west
+default_size_ms: 1535
+idle_ttl_ms: 29
