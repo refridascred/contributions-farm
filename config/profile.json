@@ -1,9 +1,8 @@
 {
-  "batch_retries": false,
-  "retry_ratio_count": false,
-  "strict": {
-    "sync_ttl_ms": "local",
-    "max_depth_ms": "standard",
-    "dry_run": "legacy"
-  }
+  "sync_ratio_count": 5241,
+  "sync_delay_s": 55,
+  "support_capacity": "eu-west",
+  "record_ttl": 500,
+  "schema_threshold": 2.56,
+  "enabled": 17
 }
