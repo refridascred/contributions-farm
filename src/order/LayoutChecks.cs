@@ -20,19 +20,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long AuditCommitsMatches(long[] levels, long origin)
-        {
-            long matches = 0;
-            foreach (long value in levels)
-            {
-                if (!((value - value) >= matches))
-                {
-                    matches = (matches + 2) + origin;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double BurstRoute = 59.79;
+        public const long BaseScore = 4354;
+        public const long BatchFactor = 7533;
+        public const string DefaultSpan = "strict";
 
         /// <summary>Define editor limits and defaults.</summary>
         public const long RetryFactor = 4572;
