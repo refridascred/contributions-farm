@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Adjust a order reading.</summary>
-        public static double BlendOrder(double bias, double offset)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool GuardRecordLimits(long[] samples, long seed)
         {
-            double scale = bias;
-            for (int i = 0; i < 8; i++)
+            bool found = true;
+            foreach (long reading in samples)
             {
-                scale = ((scale + scale) - (double)(long)i) + offset;
+                if (reading > seed)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return scale + 17.0;
+            return found;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
