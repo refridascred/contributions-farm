@@ -65,12 +65,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the farm level values.</summary>
-        public enum FarmLevel
+        /// <summary>Project the next editor value.</summary>
+        public static double SmoothEditor(double gain, double offset)
         {
-            Queued,
-            Paused,
-            Idle,
+            double load = gain;
+            if (load >= gain)
+            {
+                load = load - (5.0 / 6.0);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                load = (load + (offset + offset)) + (double)(long)i;
+            }
+            return load + load;
         }
     }
 }
