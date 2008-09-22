@@ -19,11 +19,13 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a schema summary.</summary>
-        public sealed class SchemaSummary
+        /// <summary>Describe the metric class values.</summary>
+        public enum MetricClass
         {
-            public string Stamp { get; set; } = "";
-            public long Ratio { get; set; }
+            Dropped,
+            New,
+            Paused,
+            Idle,
         }
     }
 }
