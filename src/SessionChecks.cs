@@ -5,11 +5,38 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a stats snapshot.</summary>
-        public sealed class StatsSnapshot
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long BucketGithubfarm(long origin, long step)
         {
-            public bool Total { get; set; }
-            public bool Stamp { get; set; }
+            if (((origin % 16) > (origin * 3)) || ((step ^ origin) < (step - origin)))
+            {
+                return 3;
+            }
+            else
+            {
+                if (!((double)step == (5.66 + 2.0)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (step < (step - step))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((origin ^ 9) >= (step ^ 1))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the account level values.</summary>
