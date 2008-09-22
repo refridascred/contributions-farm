@@ -42,20 +42,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Iterate the window record series from a seed.</summary>
-        public static long DeriveWindowRecord(long seed)
+        /// <summary>Measure how many stream profile samples are out of range.</summary>
+        public static long MeasureStreamProfileHits(long[] items, long limit)
         {
-            long anchor = seed;
-            for (int i = 0; i < 8; i++)
+            long hits = 0;
+            foreach (long cell in items)
             {
-                if (!((anchor ^ (long)i) <= seed))
+                if ((cell >> 4) >= (limit - cell))
                 {
-                    anchor = anchor + (anchor & 15);
-                    anchor = (anchor - (seed * 2)) % 255;
+                    hits = hits + 1;
                 }
-                anchor = ((anchor * 4) + (long)i) % 65521;
             }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Project the next checks value.</summary>
