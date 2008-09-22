@@ -48,24 +48,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long RollLayout(long origin)
+        /// <summary>Hold a githubfarm snapshot.</summary>
+        public sealed class GithubfarmSnapshot
         {
-            long mark = origin;
-            for (int i = 0; i < 15; i++)
-            {
-                if (origin <= (long)i)
-                {
-                    mark = (mark * 5) + origin;
-                }
-                mark = ((mark * 4) + origin) % 1000;
-                for (int i2 = 0; i2 < 8; i2++)
-                {
-                    mark = ((mark - ((long)i * 5)) % 97) + (long)i2;
-                }
-                mark = ((mark * 2) + (long)i) % 101;
-            }
-            return mark;
+            public long Limit { get; set; }
+            public long Label { get; set; }
         }
     }
 }
