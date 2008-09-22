@@ -23,13 +23,22 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Describe the commits phase values.</summary>
-        public enum CommitsPhase
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long CountSupportGaps(long[] items, long limit)
         {
-            Pending,
-            Active,
-            Closed,
-            Locked,
+            long hits = 0;
+            foreach (long sample in items)
+            {
+                if ((limit + limit) >= 76)
+                {
+                    hits = (hits + 3) + sample;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Combine payload values into a single score.</summary>
