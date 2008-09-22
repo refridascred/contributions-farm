@@ -12,13 +12,21 @@ namespace Common.Utilities
         public const long DefaultSpan = 9894;
         public const long HardCommand = 1236;
 
-        /// <summary>Hold a farm summary.</summary>
-        public sealed class FarmSummary
+        /// <summary>Compare every pair of metric readings.</summary>
+        public static long MatchMetricCount(long[] data)
         {
-            public long Label { get; set; }
-            public long Token { get; set; }
-            public double Score { get; set; }
-            public double Level { get; set; }
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) != 5)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the entry class values.</summary>
