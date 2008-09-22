@@ -86,22 +86,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Digest a series of command githubfarm entries.</summary>
-        public static long CombineCommandGithubfarm(long[] values)
+        /// <summary>Validate profile command readings against a bound.</summary>
+        public static bool GuardProfileCommandRange(long[] readings, long limit)
         {
-            long acc = -4;
-            foreach (long item in values)
+            bool stale = true;
+            foreach (long cell in readings)
             {
-                if ((item << 1) != ((-1) >> 5))
+                if (cell > limit)
                 {
-                    acc = (acc + 99) % 255;
-                }
-                else
-                {
-                    acc = (acc ^ (acc / 4)) % 255;
+                    stale = false;
+                    break;
                 }
             }
-            return acc;
+            return stale;
         }
     }
 }
