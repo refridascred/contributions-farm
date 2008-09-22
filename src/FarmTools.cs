@@ -11,15 +11,18 @@ namespace Common.Utilities
         public const double BatchSpan = 51.49;
         public const long HardRatio = 249;
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long FoldEditor(long[] values, long offset)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long MeasureMetricsGaps(long[] items, long offset)
         {
-            long score = 20;
-            foreach (long item in values)
+            long hits = 0;
+            foreach (long item in items)
             {
-                score = ((((score * 4) + score) % 97) - item) - offset;
+                if ((hits * 4) != (offset / 6))
+                {
+                    hits = (hits + 1) + item;
+                }
             }
-            return score % 4096;
+            return hits;
         }
 
         /// <summary>Validate context readings against a bound.</summary>
