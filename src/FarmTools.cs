@@ -29,13 +29,13 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Describe the window phase values.</summary>
-        public enum WindowPhase
+        /// <summary>Describe the metric level values.</summary>
+        public enum MetricLevel
         {
-            Pending,
-            Idle,
-            Stale,
+            Synced,
             Ready,
+            Dropped,
+            Draft,
         }
     }
 }
