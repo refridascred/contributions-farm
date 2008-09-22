@@ -26,18 +26,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a payload buffer reading by value.</summary>
-        public static long LocatePayloadBufferIndex(long[] samples, long limit)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] <= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long SoftFormat = 2114;
+        public const long BurstFormat = 4163;
+        public const double LimitFormat = 45.54;
+        public const long BurstSize = 3418;
+        public const string CacheFormat = "alpha-1";
 
         /// <summary>Iterate the editor series from a seed.</summary>
         public static long IterateEditor(long step)
