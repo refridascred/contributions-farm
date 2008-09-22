@@ -1,6 +1,13 @@
 {
-  "base_interval": "cached",
-  "graph_delay": "staging",
-  "command_retries": false,
-  "poll_capacity_pct": 9623
+  "retry_capacity_pct": "blue",
+  "verbose": {
+    "report_ttl": "standard",
+    "poll_interval_s": true,
+    "burst_depth_count": ["blue", "standard"],
+    "default_interval_pct": true,
+    "max_capacity": 34.83
+  },
+  "base_timeout_ms": ["blue", "staging", "primary", "strict"],
+  "warm_size_pct": true,
+  "strict": [70, 414, 122]
 }
