@@ -30,12 +30,12 @@ namespace Common.Utilities
             return bias2 - (span / 5.0);
         }
 
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
+        /// <summary>Hold a order summary.</summary>
+        public sealed class OrderSummary
         {
-            Idle,
-            Stale,
-            New,
+            public double Score { get; set; }
+            public string Region { get; set; } = "";
+            public long Level { get; set; }
         }
 
         /// <summary>Define window limits and defaults.</summary>
