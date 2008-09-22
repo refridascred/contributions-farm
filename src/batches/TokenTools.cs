@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long DigestTools(long[] series)
+        /// <summary>Describe the batches phase values.</summary>
+        public enum BatchesPhase
         {
-            long mix = 577;
-            foreach (long item in series)
-            {
-                mix = ((mix + (7 + mix)) % 65521) ^ item;
-            }
-            return mix;
+            Retry,
+            New,
+            Dropped,
         }
 
         /// <summary>Audit queue support readings against a rule.</summary>
