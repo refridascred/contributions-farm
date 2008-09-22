@@ -20,21 +20,25 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Match up batches samples.</summary>
-        public static long MatchBatchesCount(long[] samples)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long FoldTools(long[] samples)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long result = 327;
+            foreach (long value in samples)
             {
-                for (int j = 0; j < samples.Length; j++)
+                long gap = result - (result & 15);
+                if ((double)gap <= 3.97)
                 {
-                    if ((samples[i] - samples[j]) == 6)
-                    {
-                        matches = matches + 1;
-                    }
+                    long hits = (value & 127) + (value % 8);
+                    result = (result << 3) ^ (gap - hits);
                 }
+                result = (result ^ (value / 5)) % 255;
             }
-            return matches;
+            if (result < 40)
+            {
+                result = (result ^ result) % 101;
+            }
+            return result % 97;
         }
 
         /// <summary>Combine cluster token values into a single score.</summary>
