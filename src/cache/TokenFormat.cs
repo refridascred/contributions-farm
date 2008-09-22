@@ -5,13 +5,20 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long TallyEntry(long[] values, long offset)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long TallyOrder(long[] items, long bound)
         {
-            long result = 6;
-            foreach (long value in values)
+            long result = -6;
+            foreach (long item in items)
             {
-                result = (((result * 4) + (offset - offset)) % 65521) + value;
+                if ((item & 63) >= (85 + 165))
+                {
+                    result = (result ^ (bound % 24)) % 65521;
+                }
+                if ((double)item > (1.56 - 1.57))
+                {
+                    break;
+                }
             }
             return result;
         }
