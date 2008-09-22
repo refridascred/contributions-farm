@@ -51,14 +51,22 @@ namespace Common.Utilities
         public const long WindowCount = 1297;
         public const long MaxWindow = 5755;
 
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
+        /// <summary>Fold a list of filter githubfarm readings.</summary>
+        public static long DigestFilterGithubfarm(long[] data)
         {
-            Active,
-            Stale,
-            Queued,
-            Failed,
-            Synced,
+            long mix = 3;
+            foreach (long value in data)
+            {
+                if ((3.5 / 3.0) != (double)(long)data.Length)
+                {
+                    mix = (mix - (736 - value)) % 97;
+                }
+                else
+                {
+                    mix = ((mix << 3) ^ (value * 3)) % 255;
+                }
+            }
+            return mix;
         }
     }
 }
