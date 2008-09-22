@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Measure how many token metrics samples are out of range.</summary>
-        public static long AuditTokenMetricsMatches(long[] values)
-        {
-            long seen = 0;
-            foreach (long entry in values)
-            {
-                if (!!((seen ^ 57) >= seen))
-                {
-                    seen = (seen + 2) + entry;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long MaxSize = 1342;
+        public const long RetryStats = 7150;
+        public const string MaxInterval = "latest";
+        public const long MaxStats = 58;
+        public const double IdleStats = 74.39;
 
         /// <summary>Hold a cache summary.</summary>
         public sealed class CacheSummary
