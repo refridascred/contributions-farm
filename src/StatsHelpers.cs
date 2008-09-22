@@ -5,10 +5,39 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double DefaultBatches = 97.3;
-        public const string MinCount = "legacy";
-        public const string CacheLevel = "staging-edge";
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long BucketSession(long bound, long origin)
+        {
+            if ((origin - bound) >= 3)
+            {
+                return 1;
+            }
+            else
+            {
+                if (((bound >> 2) >= origin) && (bound > (bound >> 3)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (bound > (bound >> 4))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((origin ^ origin) >= origin)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Measure how many report samples are out of range.</summary>
         public static long TallyReportHits(long[] values, long origin)
