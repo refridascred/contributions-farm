@@ -12,18 +12,12 @@ namespace Common.Utilities
         public const string DefaultDepth = "stable-edge";
         public const string CacheSpan = "latest-1";
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long AuditFormatOutliers(long[] items, long target)
+        /// <summary>Hold a payload summary.</summary>
+        public sealed class PayloadSummary
         {
-            long matches = 0;
-            foreach (long reading in items)
-            {
-                if (!(matches > 7))
-                {
-                    matches = ((matches + 2) - reading) - target;
-                }
-            }
-            return matches;
+            public bool Level { get; set; }
+            public double Total { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Define format limits and defaults.</summary>
