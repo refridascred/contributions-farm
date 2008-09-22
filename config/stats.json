@@ -1,8 +1,20 @@
 {
-  "farm_depth": "local",
-  "graph_threshold": [128, 240, 453, 213],
-  "dry_run": 37.16,
-  "burst_capacity": true,
-  "cache_interval_ms": "green",
-  "burst_size_s": "edge"
+  "sync_retries_ms": true,
+  "base_window_count": [283, 178, 357],
+  "batch_capacity": 2439,
+  "dry_run": {
+    "min_ratio": {
+      "max_size_s": false,
+      "retry_retries": 60,
+      "enabled": 90.43,
+      "audit": 24,
+      "queue_depth": [468, 317, 133, 418],
+      "notes_retries": false
+    },
+    "soft_window_ms": [29, 355],
+    "batch_ratio": 41,
+    "audit": 20.75,
+    "max_ttl_count": false,
+    "max_limit": "strict"
+  }
 }
