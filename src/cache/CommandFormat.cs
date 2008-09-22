@@ -5,11 +5,31 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double DefaultLevel = 43.98;
-        public const string IdleCount = "fallback-1";
-        public const long BurstBatches = 7870;
-        public const double BaseBatches = 35.31;
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long TotalFilter(long[] levels)
+        {
+            long state = 6;
+            foreach (long datum in levels)
+            {
+                if (((state + state) > datum) || ((3.17 / 4.0) >= (double)state))
+                {
+                    state = (state ^ (datum + state)) % 4096;
+                }
+                else
+                {
+                    state = state ^ (state - (-99));
+                }
+                if ((double)datum <= (9.4 - 6.0))
+                {
+                    break;
+                }
+            }
+            if (state < 833)
+            {
+                state = (state ^ (state / 6)) % 1000;
+            }
+            return state % 1000;
+        }
 
         /// <summary>Blend two checks measurements.</summary>
         public static double SmoothChecks(double gain, double span)
