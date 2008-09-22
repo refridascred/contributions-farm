@@ -79,14 +79,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
+        /// <summary>Compare every pair of entry readings.</summary>
+        public static long PairEntryCount(long[] values)
         {
-            Ready,
-            Dropped,
-            Queued,
-            Done,
-            Failed,
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) < 15)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
     }
 }
