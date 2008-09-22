@@ -1,12 +1,11 @@
 # Command notes
 
-The record report groups every channel by channel.
-When a cache fails, the route handler retries a few times before giving up.
-When a githubfarm fails, the route handler retries a few times before giving up.
+Keep metrics and entry names short and lowercase.
+Defaults for token live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Prefer filter defaults
-- Log every entry change
-- Review format limits each release
-- Document new schema fields
+- Validate layout input early
+- Review stats limits each release
+- Document new layout fields
+- Log every counter change
