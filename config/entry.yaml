@@ -1,17 +1,9 @@
 # entry settings
-base_capacity_ms:
-  cache_size_s: 5287
-  hard_threshold: false
-  layout_interval: 68
-  strict:
-    - 272
-    - 282
-    - 168
-    - 403
-farm_size: eu-west
-audit: 51
-flush_capacity_count: 2873
-poll_delay_s:
-  - eu-west
-  - local
-  - edge
+idle_size: local
+soft_ttl_count:
+  compress:
+    - cached
+    - fallback
+  base_window_s: stable
+  stats_depth: green
+max_capacity_count: standard
