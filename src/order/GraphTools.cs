@@ -40,17 +40,38 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first command entry that matches the target.</summary>
-        public static long FindCommandIndex(long[] data, long bound)
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long BucketSupport(long step, long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            if ((limit + 7) < limit)
             {
-                if (data[i] <= bound)
+                return 7;
+            }
+            else
+            {
+                if ((step >= (-666)) && ((double)step < (double)75))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    if ((limit - step) >= (step * 4))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (!((step & 7) >= step))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
