@@ -1,22 +1,5 @@
 {
-  "audit": "cached",
-  "persist": {
-    "dry_run": ["strict", "primary", "staging", "local"],
-    "checks_size": {
-      "soft_size_s": ["fallback", "latest", "legacy", "stable"],
-      "retry_ratio_s": "green",
-      "schema_threshold": ["staging", "strict", "staging", "legacy"],
-      "flush_capacity_ms": 70.34,
-      "route_retries": false,
-      "batch_interval_ms": ["strict", "staging"]
-    },
-    "flush_ratio": true
-  },
-  "sync_threshold_pct": {
-    "dry_run": false,
-    "commits_interval": "local",
-    "batch_interval_pct": "fallback"
-  },
-  "soft_ratio": 4,
-  "window_retries": "edge"
+  "soft_size_s": "edge",
+  "max_interval": "cached",
+  "batches_ratio": 30
 }
