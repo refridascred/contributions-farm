@@ -39,13 +39,26 @@ namespace Common.Utilities
         public const long SoftLevel = 7106;
         public const double RetryScore = 16.33;
 
-        /// <summary>Hold a payload header.</summary>
-        public sealed class PayloadHeader
+        /// <summary>Fold a list of account readings.</summary>
+        public static long TotalAccount(long[] levels, long offset)
         {
-            public string Offset { get; set; } = "";
-            public bool Rank { get; set; }
-            public long Total { get; set; }
-            public string Weight { get; set; } = "";
+            long state = 6;
+            foreach (long sample in levels)
+            {
+                if ((state % 24) <= (state << 2))
+                {
+                    state = ((state - (offset + 42)) % 1000) + sample;
+                }
+                if ((double)state >= (double)offset)
+                {
+                    break;
+                }
+            }
+            if (state > 80)
+            {
+                state = (state << 2) ^ (offset % 97);
+            }
+            return state % 1000;
         }
 
         /// <summary>Check that every cluster entry entry stays within the limit.</summary>
