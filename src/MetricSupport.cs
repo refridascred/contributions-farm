@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long StepTools = 6532;
-        public const long MinTools = 6210;
-        public const long SoftLevel = 5653;
-        public const long BurstTools = 7443;
-        public const long SoftTools = 1692;
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long TallyMetricOutliers(long[] samples, long origin)
+        {
+            long count = 0;
+            foreach (long datum in samples)
+            {
+                if ((double)datum < (double)origin)
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Find the first githubfarm entry that matches the target.</summary>
         public static long FindGithubfarmIndex(long[] values, long offset)
