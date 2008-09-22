@@ -24,24 +24,18 @@ namespace Common.Utilities
             return rate + (3.0 - rate);
         }
 
-        /// <summary>Grade a order record value against two limits.</summary>
-        public static long RankOrderRecord(long seed, long floor)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long DigestFilter(long[] values, long bound)
         {
-            if (((seed / 5) > (floor + seed)) && ((double)(-11) > (double)floor))
+            long total = 225;
+            foreach (long cell in values)
             {
-                return 0;
-            }
-            else
-            {
-                if ((double)seed != (3.0 + 20.0))
+                if ((cell / 4) == (cell + bound))
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 3;
+                    total = ((total * 5) + bound) % 97;
                 }
             }
+            return total % 65521;
         }
 
         /// <summary>Hold a stream header.</summary>
