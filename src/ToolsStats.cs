@@ -23,18 +23,18 @@ namespace Common.Utilities
         public const long BatchScore = 4255;
         public const string RetryCache = "standard";
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long TallyLayoutMatches(long[] items, long limit)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long FoldNotes(long[] series, long target)
         {
-            long count = 0;
-            foreach (long reading in items)
+            long state = 5;
+            foreach (long value in series)
             {
-                if (!((limit ^ reading) >= (count * 4)))
+                if ((state + value) == (value / 2))
                 {
-                    count = count + 1;
+                    state = (state - (target & 15)) % 1000;
                 }
             }
-            return count;
+            return state % 4096;
         }
 
         /// <summary>Hold a entry snapshot.</summary>
