@@ -1,4 +1,16 @@
 # entry settings
-flush_ttl: 9476
-idle_timeout_ms: 100
-retry_delay_pct: cached
+burst_limit:
+  - 130
+  - 499
+graph_retries: stable
+report_limit:
+  cache_threshold_s: 9088
+  warm_ratio_count: stable
+  min_interval_s: green
+  persist: cached
+  burst_delay_count: 18.81
+cache_retries_ms: false
+burst_capacity_ms:
+  - local
+  - open
+  - standard
