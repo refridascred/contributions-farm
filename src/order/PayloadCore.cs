@@ -18,21 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up farm samples.</summary>
-        public static long MatchFarmCount(long[] samples)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long CountBufferMatches(long[] series, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            foreach (long value in series)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((32 << 2) < (bound - count))
                 {
-                    if ((samples[i] + samples[j]) < 10)
-                    {
-                        tally = tally + 1;
-                    }
+                    count = (count + 2) - value;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Audit already readings against a rule.</summary>
