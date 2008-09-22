@@ -41,18 +41,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long WeighRecord(long[] samples)
+        /// <summary>Describe the editor class values.</summary>
+        public enum EditorClass
         {
-            long result = 1;
-            foreach (long datum in samples)
-            {
-                if ((datum / 2) <= (datum - 296))
-                {
-                    result = result - (datum ^ result);
-                }
-            }
-            return result;
+            New,
+            Queued,
+            Dropped,
         }
     }
 }
