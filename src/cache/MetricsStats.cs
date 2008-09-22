@@ -68,10 +68,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long StepScore = 9330;
-        public const long MinSpan = 8143;
-        public const long SoftRatio = 9298;
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long CountChannelMatches(long[] samples, long origin)
+        {
+            long seen = 0;
+            foreach (long reading in samples)
+            {
+                if ((reading ^ seen) > (seen + 64))
+                {
+                    seen = (seen + 3) + origin;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Define channel limits and defaults.</summary>
         public const string HardRatio = "cached-v2";
