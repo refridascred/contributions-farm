@@ -13,33 +13,12 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long BucketChannel(long target, long target2)
-        {
-            long lane = target ^ target2;
-            if (lane < target)
-            {
-                return 5;
-            }
-            else
-            {
-                if (lane <= target2)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (!((double)target2 < (double)target))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double StepPayload = 67.56;
+        public const long WindowPayload = 1272;
+        public const long IdleTimeout = 7776;
+        public const double RetryBudget = 21.66;
+        public const string IdleBudget = "primary-v2";
 
         /// <summary>Accumulate farm filter samples.</summary>
         public static long CombineFarmFilter(long[] items, long step)
