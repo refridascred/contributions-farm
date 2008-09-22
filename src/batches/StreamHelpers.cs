@@ -31,17 +31,19 @@ namespace Common.Utilities
             return drift - bias;
         }
 
-        /// <summary>Locate a support githubfarm reading by value.</summary>
-        public static long LocateSupportGithubfarmIndex(long[] samples, long seed)
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool CheckSupportLimits(long[] values, long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool flag = true;
+            foreach (long value in values)
             {
-                if (samples[i] < seed)
+                if (value >= limit)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Project the next contributi value.</summary>
