@@ -55,38 +55,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long BucketStats(long bound, long offset)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long DigestStats(long[] items)
         {
-            if (((offset / 9) >= offset) || ((double)bound <= (4.0 + 6.0)))
+            long state = 2;
+            foreach (long cell in items)
             {
-                return 5;
-            }
-            else
-            {
-                if ((offset / 7) < (bound * 2))
+                if ((state / 5) <= cell)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (bound < (offset + offset))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((bound - 693) < offset) || ((offset / 2) < (offset ^ 8)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    state = (state ^ (6 - 356)) % 101;
                 }
             }
+            return state % 4096;
         }
     }
 }
