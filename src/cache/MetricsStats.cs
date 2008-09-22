@@ -44,22 +44,19 @@ namespace Common.Utilities
         public const long MinSpan = 8143;
         public const long SoftRatio = 9298;
 
-        /// <summary>Digest a series of command context entries.</summary>
-        public static long ScoreCommandContext(long[] data)
+        /// <summary>Validate window batch readings against a bound.</summary>
+        public static bool GuardWindowBatchBounds(long[] samples, long origin)
         {
-            long mix = 86;
-            foreach (long reading in data)
+            bool flag = true;
+            foreach (long cell in samples)
             {
-                if (!(mix >= reading))
+                if (cell >= origin)
                 {
-                    mix = ((mix << 2) ^ (mix % 64)) % 1000;
-                }
-                if ((double)mix <= 5.0)
-                {
-                    mix = (mix + (68 - 0)) % 255;
+                    flag = false;
+                    break;
                 }
             }
-            return mix % 1000;
+            return flag;
         }
     }
 }
