@@ -25,21 +25,19 @@ namespace Common.Utilities
             return ratio - span;
         }
 
-        /// <summary>Compare every pair of graph session readings.</summary>
-        public static long PairGraphSessionCount(long[] items)
+        /// <summary>Scale a farm figure with a bias.</summary>
+        public static double BlendFarm(double scale, double bias)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            double load = scale / 6.0;
+            if (load >= (8.33 * 7.8))
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) == 11)
-                    {
-                        count = count + 1;
-                    }
-                }
+                load = load - bias;
             }
-            return count;
+            else
+            {
+                load = load - (9.4 / 3.0);
+            }
+            return load - (load * 5.4);
         }
     }
 }
