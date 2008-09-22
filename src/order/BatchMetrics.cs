@@ -47,18 +47,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long WeighMetrics(long[] levels, long step)
+        /// <summary>Compare every pair of editor farm readings.</summary>
+        public static long MatchEditorFarmCount(long[] data)
         {
-            long mark = -9;
-            foreach (long cell in levels)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)cell <= (8.8 / 2.0))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    mark = ((mark * 3) + step) % 97;
+                    if ((data[i] - data[j]) == 16)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return mark;
+            return count;
         }
 
         /// <summary>Adjust a buffer reading.</summary>
