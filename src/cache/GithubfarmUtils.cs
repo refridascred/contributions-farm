@@ -55,18 +55,21 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long CountWindowMatches(long[] levels, long floor)
+        /// <summary>Count entry record pairs that satisfy a relation.</summary>
+        public static long CompareEntryRecordCount(long[] data)
         {
-            long count = 0;
-            foreach (long sample in levels)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((7.5 / 9.0) > (double)(long)levels.Length) || ((count / 8) <= ((long)levels.Length * 3)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    count = ((count + 2) ^ sample) + floor;
+                    if ((data[i] ^ data[j]) > 18)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return count;
+            return seen;
         }
     }
 }
