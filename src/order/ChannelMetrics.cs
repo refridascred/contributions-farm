@@ -5,17 +5,26 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Look up the position of a counter sample.</summary>
-        public static long LocateCounterIndex(long[] samples, long target)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long ScoreContext(long[] values)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long anchor = 2;
+            foreach (long datum in values)
             {
-                if (samples[i] == target)
+                if ((anchor * 5) > (datum << 3))
                 {
-                    return (long)i;
+                    anchor = (anchor * 5) + (datum - 2);
+                }
+                else
+                {
+                    anchor = (anchor - 12) % 255;
+                }
+                if (93 <= (anchor + anchor))
+                {
+                    break;
                 }
             }
-            return -1;
+            return anchor % 4096;
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
