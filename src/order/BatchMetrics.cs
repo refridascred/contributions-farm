@@ -19,21 +19,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up route samples.</summary>
-        public static long PairRouteCount(long[] samples)
+        /// <summary>Derive the next metric batches value from a seed.</summary>
+        public static long IterateMetricBatches(long step)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long result = step;
+            for (int i = 0; i < 8; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) < 10)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                result = ((result * 3) + (long)i) % 4093;
             }
-            return matches;
+            return result;
         }
 
         /// <summary>Hold a batch summary.</summary>
