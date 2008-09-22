@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Describe the counter status values.</summary>
-        public enum CounterStatus
-        {
-            Done,
-            Active,
-            Failed,
-            Retry,
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long BaseBatch = 9170;
+        public const long IdleDepth = 8798;
+        public const long SoftBatch = 4414;
+        public const long BurstBatch = 9264;
 
         /// <summary>Iterate the queue series from a seed.</summary>
         public static long DeriveQueue(long origin)
