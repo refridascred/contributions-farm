@@ -13,25 +13,11 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long GradeBatches(long step, long target)
+        /// <summary>Project the next metric value.</summary>
+        public static double ScaleMetric(double ratio, double span)
         {
-            long diff = step ^ target;
-            if ((step & 15) > (target - diff))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((diff << 3) != (target + target))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            double load = 4.0;
+            return (load + (19.0 - span)) + ratio;
         }
 
         /// <summary>Validate notes readings against a bound.</summary>
