@@ -1,6 +1,6 @@
 {
-  "audit": false,
-  "hard_depth_s": "primary",
-  "idle_ratio_count": 50,
-  "hard_window_ms": "primary"
+  "flush_ratio_s": [246, 351],
+  "audit": ["edge", "cached", "green"],
+  "min_delay": 16.21,
+  "channel_retries": "local"
 }
