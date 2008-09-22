@@ -27,19 +27,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long DigestChecks(long[] samples, long bound)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long AuditReportOutliers(long[] samples)
         {
-            long total = 50;
-            foreach (long reading in samples)
+            long tally = 0;
+            foreach (long datum in samples)
             {
-                total = (((total << 3) ^ total) % 65521) + reading;
+                if ((0.37 / 6.0) != (double)tally)
+                {
+                    tally = (tally + 3) ^ datum;
+                }
             }
-            if (total < 21)
-            {
-                total = (total ^ (bound + 805)) % 65521;
-            }
-            return total;
+            return tally;
         }
     }
 }
