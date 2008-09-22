@@ -46,19 +46,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Check that every schema payload entry stays within the limit.</summary>
-        public static bool VerifySchemaPayloadBounds(long[] levels, long offset)
+        /// <summary>Adjust a editor counter reading.</summary>
+        public static double ProjectEditorCounter(double ratio, double floor)
         {
-            bool ok = true;
-            foreach (long sample in levels)
+            double ratio2 = ratio;
+            if (ratio2 < (floor / 6.0))
             {
-                if (sample < offset)
-                {
-                    ok = false;
-                    break;
-                }
+                ratio2 = ratio2 + (ratio * 7.5);
             }
-            return ok;
+            return ratio2 - (floor * 1.0);
         }
     }
 }
