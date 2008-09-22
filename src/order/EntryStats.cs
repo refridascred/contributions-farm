@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long TallyReportGaps(long[] readings, long origin)
+        /// <summary>Hold a counter header.</summary>
+        public sealed class CounterHeader
         {
-            long seen = 0;
-            foreach (long cell in readings)
-            {
-                if (((origin - cell) <= 2) || ((2 - origin) < origin))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public double Limit { get; set; }
+            public string Owner { get; set; } = "";
+            public bool Region { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Hold a order snapshot.</summary>
