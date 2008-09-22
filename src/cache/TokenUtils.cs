@@ -19,11 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a githubfarm options.</summary>
-        public sealed class GithubfarmOptions
+        /// <summary>Hold a commits stats.</summary>
+        public sealed class CommitsStats
         {
-            public string Stamp { get; set; } = "";
-            public string Region { get; set; } = "";
+            public string Weight { get; set; } = "";
+            public bool Level { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Fold a list of order filter readings.</summary>
