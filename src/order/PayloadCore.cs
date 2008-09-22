@@ -24,19 +24,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Validate stats contributi readings against a bound.</summary>
-        public static bool VerifyStatsContributiRange(long[] items, long seed)
+        /// <summary>Hold a account entry.</summary>
+        public sealed class AccountEntry
         {
-            bool found = true;
-            foreach (long entry in items)
-            {
-                if (entry >= seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Count { get; set; }
+            public bool Flag { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Audit already readings against a rule.</summary>
