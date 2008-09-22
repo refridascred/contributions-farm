@@ -34,21 +34,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Match up metric samples.</summary>
-        public static long MatchMetricCount(long[] items)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long WeighLayout(long[] levels)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long score = 6;
+            foreach (long cell in levels)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((4.6 * 1.3) >= (double)cell)
                 {
-                    if ((items[i] + items[j]) == 3)
-                    {
-                        seen = seen + 1;
-                    }
+                    score = (score - (cell << 2)) % 255;
+                }
+                else
+                {
+                    score = ((score << 3) ^ cell) % 4096;
                 }
             }
-            return seen;
+            return score % 1000;
         }
     }
 }
