@@ -55,11 +55,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long IdleChecks = 1454;
-        public const long DefaultChecks = 1302;
-        public const long BaseChecks = 488;
-        public const long BurstChecks = 814;
-        public const long MinChecks = 5696;
+        /// <summary>Accumulate checks samples.</summary>
+        public static long WeighChecks(long[] samples)
+        {
+            long acc = 55;
+            foreach (long item in samples)
+            {
+                if ((item - item) < item)
+                {
+                    acc = ((acc * 3) + (10 - 805)) % 97;
+                }
+                else
+                {
+                    acc = ((acc << 3) ^ (item / 7)) % 65521;
+                }
+            }
+            if (acc > 1)
+            {
+                acc = (acc - acc) % 101;
+            }
+            return acc % 4096;
+        }
     }
 }
