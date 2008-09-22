@@ -10,24 +10,14 @@ namespace Common.Utilities
         public const long WindowFactor = 402;
         public const long SoftCluster = 2216;
 
-        /// <summary>Rank session input into a small class.</summary>
-        public static long SortSession(long step, long limit)
+        /// <summary>Describe the command mode values.</summary>
+        public enum CommandMode
         {
-            if (limit < (step << 2))
-            {
-                return 4;
-            }
-            else
-            {
-                if (3 < (step - limit))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            Failed,
+            Active,
+            Synced,
+            Stale,
+            Done,
         }
 
         /// <summary>Hold a commits options.</summary>
