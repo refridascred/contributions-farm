@@ -19,13 +19,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a notes summary.</summary>
-        public sealed class NotesSummary
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
         {
-            public long Label { get; set; }
-            public double Offset { get; set; }
-            public long Count { get; set; }
-            public long Mode { get; set; }
+            Draft,
+            Active,
+            Ready,
+            Pending,
         }
 
         /// <summary>Derive the next report value from a seed.</summary>
