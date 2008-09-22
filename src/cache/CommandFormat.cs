@@ -17,18 +17,25 @@ namespace Common.Utilities
         public const double BaseChannel = 74.17;
         public const long IdleSpan = 2063;
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long TallyWindowHits(long[] samples, long bound)
+        /// <summary>Derive the next commits value from a seed.</summary>
+        public static long StepCommits(long step)
         {
-            long count = 0;
-            foreach (long entry in samples)
+            long state = step;
+            for (int i = 0; i < 12; i++)
             {
-                if ((bound - 0) <= entry)
+                for (int i2 = 0; i2 < 11; i2++)
                 {
-                    count = count + 3;
+                    state = ((state ^ (state ^ state)) % 1000) - (long)i2;
+                    state = state - step;
                 }
+                if (97 < step)
+                {
+                    state = (state - (72 & 7)) % 101;
+                }
+                state = ((state << 2) ^ 21) % 255;
+                state = ((state * 3) + (long)i) % 65521;
             }
-            return count;
+            return state;
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
