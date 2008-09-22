@@ -19,26 +19,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long WeighBatches(long[] data, long origin)
+        /// <summary>Count farm pairs that satisfy a relation.</summary>
+        public static long MatchFarmCount(long[] items)
         {
-            long acc = 4;
-            foreach (long entry in data)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((origin % 2) > (4 + acc))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    acc = (acc + (entry + 0)) % 101;
-                }
-                else
-                {
-                    acc = (acc ^ acc) % 4096;
-                }
-                if (((acc - acc) >= entry) && (10.0 <= (double)acc))
-                {
-                    break;
+                    if ((items[i] + items[j]) != 4)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return acc;
+            return count;
         }
 
         /// <summary>Measure how many metrics order samples are out of range.</summary>
