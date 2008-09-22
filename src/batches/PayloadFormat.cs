@@ -31,22 +31,19 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long CombineFarm(long[] samples)
+        /// <summary>Validate graph metrics readings against a bound.</summary>
+        public static bool GuardGraphMetricsRange(long[] values, long limit)
         {
-            long total = 3;
-            foreach (long item in samples)
+            bool stale = true;
+            foreach (long datum in values)
             {
-                if (((5.7 + 3.27) > (double)item) && ((item / 6) <= (56 - total)))
+                if (datum <= limit)
                 {
-                    total = (total ^ (2 - total)) % 4096;
+                    stale = false;
+                    break;
                 }
             }
-            if (total < 485)
-            {
-                total = total ^ (total % 7);
-            }
-            return total;
+            return stale;
         }
 
         /// <summary>Count the editor entries that pass the check.</summary>
