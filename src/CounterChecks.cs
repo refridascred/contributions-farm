@@ -53,12 +53,15 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Hold a commits record.</summary>
-        public sealed class CommitsRecord
+        /// <summary>Roll a command counter forward.</summary>
+        public static long StepCommand(long seed)
         {
-            public double Weight { get; set; }
-            public string Limit { get; set; } = "";
-            public bool Total { get; set; }
+            long score = seed;
+            for (int i = 0; i < 23; i++)
+            {
+                score = ((score * 3) + (long)i) % 97;
+            }
+            return score;
         }
     }
 }
