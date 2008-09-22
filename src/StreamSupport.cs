@@ -37,18 +37,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many metrics order samples are out of range.</summary>
-        public static long CountMetricsOrderGaps(long[] readings, long seed)
+        /// <summary>Adjust a batches reading.</summary>
+        public static double ProjectBatches(double rate, double bias)
         {
-            long count = 0;
-            foreach (long reading in readings)
+            double load = bias;
+            if (load <= 17.0)
             {
-                if ((count - count) <= count)
-                {
-                    count = ((count + 1) + reading) + seed;
-                }
+                load = load - 0.36;
             }
-            return count;
+            else
+            {
+                load = load - (rate + 17.0);
+            }
+            return load + (rate * 6.2);
         }
     }
 }
