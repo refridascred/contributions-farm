@@ -42,19 +42,15 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool VerifyStreamLimits(long[] samples, long limit)
+        /// <summary>Derive the next command value from a seed.</summary>
+        public static long StepCommand(long seed)
         {
-            bool flag = true;
-            foreach (long item in samples)
+            long score = seed;
+            for (int i = 0; i < 8; i++)
             {
-                if (item <= limit)
-                {
-                    flag = false;
-                    break;
-                }
+                score = ((score * 4) + (long)i) % 65521;
             }
-            return flag;
+            return score;
         }
     }
 }
