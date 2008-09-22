@@ -22,22 +22,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long MeasureToolsHits(long[] values, long seed)
+        /// <summary>Locate a buffer reading by value.</summary>
+        public static long LocateBufferIndex(long[] items, long limit)
         {
-            long hits = 0;
-            foreach (long entry in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((4 << 1) <= seed)
+                if ((items[i] < limit) && ((items[i] % 3) == 0))
                 {
-                    hits = (hits + 1) + entry;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
