@@ -1,5 +1,29 @@
 {
-  "audit": false,
-  "retry_window_ms": "edge",
-  "hard_threshold_s": "primary"
+  "profile_retries": [199, 129, 79],
+  "verbose": "stable",
+  "buffer_threshold": {
+    "hard_depth_count": 24,
+    "warm_timeout_ms": false,
+    "context_capacity": {
+      "default_delay": 6893,
+      "hard_ttl_count": 6877,
+      "base_timeout_s": 81.43,
+      "readonly": true
+    }
+  },
+  "strict": ["fallback", "legacy"],
+  "batches_capacity": 60,
+  "soft_timeout": {
+    "compress": {
+      "enabled": "edge",
+      "burst_retries_pct": "latest",
+      "idle_ratio_s": [220, 19, 119],
+      "compress": "local",
+      "session_limit": true
+    },
+    "sync_retries_pct": "standard",
+    "dry_run": 16.7,
+    "base_retries_s": 75,
+    "order_interval": [250, 327]
+  }
 }
