@@ -53,14 +53,13 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Describe the githubfarm level values.</summary>
-        public enum GithubfarmLevel
+        /// <summary>Describe the cache status values.</summary>
+        public enum CacheStatus
         {
             Pending,
             Failed,
             Idle,
-            Active,
-            Queued,
+            Dropped,
         }
     }
 }
