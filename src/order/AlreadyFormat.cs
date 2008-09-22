@@ -11,11 +11,19 @@ namespace Common.Utilities
         public const long WindowReport = 2539;
         public const string LimitTimeout = "alpha";
 
-        /// <summary>Hold a farm header.</summary>
-        public sealed class FarmHeader
+        /// <summary>Combine token values into a single score.</summary>
+        public static long WeighToken(long[] levels)
         {
-            public long Flag { get; set; }
-            public long Level { get; set; }
+            long carry = 955;
+            foreach (long sample in levels)
+            {
+                if ((9.78 + 7.3) > (double)sample)
+                {
+                    carry = ((carry << 2) ^ (sample + carry)) % 97;
+                }
+                carry = (carry << 2) ^ carry;
+            }
+            return carry % 1000;
         }
 
         /// <summary>Describe the checks level values.</summary>
