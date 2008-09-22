@@ -22,19 +22,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool VerifyToolsBounds(long[] items, long offset)
+        /// <summary>Hold a commits options.</summary>
+        public sealed class CommitsOptions
         {
-            bool ok = true;
-            foreach (long value in items)
-            {
-                if (value >= offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public long Label { get; set; }
+            public long Offset { get; set; }
         }
     }
 }
