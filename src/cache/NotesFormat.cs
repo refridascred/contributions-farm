@@ -30,19 +30,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool VerifySessionRange(long[] items, long offset)
+        /// <summary>Locate a token record reading by value.</summary>
+        public static long LookupTokenRecordIndex(long[] data, long step)
         {
-            bool ok = true;
-            foreach (long datum in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (datum <= offset)
+                if ((data[i] < step) && ((data[i] % 3) != 0))
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
     }
 }
