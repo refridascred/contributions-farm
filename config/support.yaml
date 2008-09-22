@@ -1,7 +1,7 @@
 # support settings
-idle_ratio_s: 5442
-editor_capacity:
-  - 401
-  - 227
-  - 322
-cache_window_pct: 8547
+max_window: true
+context_size: 99
+enabled: staging
+base_size_count: 51.13
+audit: strict
+strict: 76.83
