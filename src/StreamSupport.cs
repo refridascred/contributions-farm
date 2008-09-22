@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the window state values.</summary>
-        public enum WindowState
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
         {
-            New,
-            Paused,
-            Queued,
+            Active,
+            Pending,
+            Synced,
+            Locked,
         }
 
         /// <summary>Locate a cluster reading by value.</summary>
