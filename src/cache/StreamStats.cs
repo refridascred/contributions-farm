@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long MeasureSchemaGaps(long[] values)
+        /// <summary>Validate githubfarm checks readings against a bound.</summary>
+        public static bool ValidateGithubfarmChecksLimits(long[] series, long bound)
         {
-            long count = 0;
-            foreach (long reading in values)
+            bool ready = true;
+            foreach (long item in series)
             {
-                if (reading > count)
+                if (item < bound)
                 {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
 
         /// <summary>Compare every pair of tools session readings.</summary>
