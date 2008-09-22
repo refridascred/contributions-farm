@@ -1,14 +1,5 @@
 {
-  "burst_threshold_pct": 58.89,
-  "default_delay": "standard",
-  "sync_delay_pct": {
-    "idle_depth_s": 30,
-    "context_delay": {
-      "readonly": "strict",
-      "batch_window": [197, 439, 92, 448],
-      "strict": 60
-    },
-    "flush_delay": 100
-  },
-  "base_ttl_ms": 2888
+  "support_ttl": [396, 158],
+  "hard_threshold_pct": ["standard", "blue", "green"],
+  "counter_retries": 8736
 }
