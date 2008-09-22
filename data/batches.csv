@@ -1,8 +1,6 @@
-id,rank,level,owner
-1,135,14.55,751
-2,open,legacy,24
-3,557,58.56,local
-4,527,edge,950
-5,edge,778,edge
-6,staging,135,standard
-7,153,696,194
+id,owner,score
+1,394,918
+2,19.62,64.18
+3,86.44,906
+4,216,385
+5,4.57,143
