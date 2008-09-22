@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
+        /// <summary>Count the buffer channel entries that pass the check.</summary>
+        public static long TallyBufferChannelMatches(long[] data)
         {
-            Paused,
-            Locked,
-            New,
-            Dropped,
+            long tally = 0;
+            foreach (long datum in data)
+            {
+                if ((699 / 5) >= datum)
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the counter phase values.</summary>
