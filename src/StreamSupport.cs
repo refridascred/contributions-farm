@@ -27,23 +27,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long WeighPayload(long[] samples)
-        {
-            long anchor = 10;
-            foreach (long cell in samples)
-            {
-                if (anchor >= (cell >> 3))
-                {
-                    anchor = (anchor * 2) + (anchor * 2);
-                }
-                else
-                {
-                    anchor = (anchor - (cell + anchor)) % 97;
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long StepBudget = 5017;
+        public const long MaxCluster = 7234;
+        public const long HardCluster = 5039;
+        public const long BatchBudget = 2243;
 
         /// <summary>Validate buffer farm readings against a bound.</summary>
         public static bool CheckBufferFarmRange(long[] items, long floor)
