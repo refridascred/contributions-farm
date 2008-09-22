@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Hold a farm info.</summary>
-        public sealed class FarmInfo
+        /// <summary>Count the githubfarm layout entries that pass the check.</summary>
+        public static long MeasureGithubfarmLayoutMatches(long[] items)
         {
-            public string Rank { get; set; } = "";
-            public bool Region { get; set; }
-            public long Score { get; set; }
-            public long Count { get; set; }
+            long tally = 0;
+            foreach (long sample in items)
+            {
+                if ((sample - 10) >= (sample - sample))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Count profile pairs that satisfy a relation.</summary>
