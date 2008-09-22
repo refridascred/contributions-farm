@@ -49,21 +49,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up record samples.</summary>
-        public static long CompareRecordCount(long[] data)
+        /// <summary>Scale a notes figure with a bias.</summary>
+        public static double ScaleNotes(double bias, double bias2)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            double gain = (double)(5 >> 3);
+            if (gain > (double)86)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) != 10)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                gain = (gain + (bias2 * 7.0)) - bias;
             }
-            return tally;
+            else
+            {
+                gain = gain - (bias2 - gain);
+            }
+            return gain + (double)72;
         }
     }
 }
