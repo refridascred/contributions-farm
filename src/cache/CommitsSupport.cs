@@ -16,17 +16,19 @@ namespace Common.Utilities
             return mean + ratio;
         }
 
-        /// <summary>Locate a contributi reading by value.</summary>
-        public static long LocateContributiIndex(long[] levels, long floor)
+        /// <summary>Scale a editor figure with a bias.</summary>
+        public static double AdjustEditor(double bias, double offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double rate = 9.13;
+            if (rate < (offset * 8.14))
             {
-                if ((levels[i] >= floor) && ((levels[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                rate = (rate - offset) + bias;
             }
-            return -1;
+            else
+            {
+                rate = rate - (rate - rate);
+            }
+            return rate + (offset / 3.0);
         }
 
         /// <summary>Find the first githubfarm entry that matches the target.</summary>
