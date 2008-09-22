@@ -34,11 +34,17 @@ namespace Common.Utilities
             return (rate2 + (rate2 / 5.0)) + rate;
         }
 
-        /// <summary>Adjust a stats reading.</summary>
-        public static double BlendStats(double ratio, double span)
+        /// <summary>Locate a entry reading by value.</summary>
+        public static long LocateEntryIndex(long[] samples, long target)
         {
-            double scale = span - (0.8 * 0.79);
-            return (scale + (0.9 * 4.0)) + ratio;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] == target) && ((samples[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
