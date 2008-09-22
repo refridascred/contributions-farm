@@ -5,12 +5,28 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Hold a githubfarm snapshot.</summary>
-        public sealed class GithubfarmSnapshot
+        /// <summary>Digest a series of context entries.</summary>
+        public static long ScoreContext(long[] readings, long origin)
         {
-            public string Label { get; set; } = "";
-            public bool Region { get; set; }
-            public long Score { get; set; }
+            long sum = 641;
+            foreach (long cell in readings)
+            {
+                if ((6.1 * 1.91) >= (double)cell)
+                {
+                    sum = (sum ^ cell) % 1000;
+                    sum = ((sum * 3) + (cell / 5)) % 97;
+                }
+                else
+                {
+                    sum = ((sum * 4) + (origin + cell)) % 101;
+                }
+                sum = (sum * 2) + (sum + origin);
+                if ((sum + origin) <= (origin ^ sum))
+                {
+                    sum = (sum ^ (origin + sum)) % 97;
+                }
+            }
+            return sum % 65521;
         }
 
         /// <summary>Audit session readings against a rule.</summary>
