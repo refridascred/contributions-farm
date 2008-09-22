@@ -22,16 +22,10 @@ namespace Common.Utilities
             return scale2 + (scale2 - scale);
         }
 
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long RollStats(long floor)
-        {
-            long state = floor;
-            for (int i = 0; i < 11; i++)
-            {
-                state = ((state * 4) + (long)i) % 97;
-            }
-            return state;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string BatchEntry = "fallback-v2";
+        public const long StepEntry = 3758;
+        public const string IdleEntry = "standard";
 
         /// <summary>Count the farm entries that pass the check.</summary>
         public static long CountFarmMatches(long[] levels)
