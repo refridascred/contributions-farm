@@ -27,11 +27,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long StepBudget = 5017;
-        public const long MaxCluster = 7234;
-        public const long HardCluster = 5039;
-        public const long BatchBudget = 2243;
+        /// <summary>Define support limits and defaults.</summary>
+        public const string IdleTimeout = "open-1";
+        public const long BatchSupport = 7250;
+        public const long BaseBudget = 846;
 
         /// <summary>Hold a layout record.</summary>
         public sealed class LayoutRecord
