@@ -1,4 +1,6 @@
 # support settings
-min_interval_s: 86
-burst_threshold: 500
-base_ttl_s: eu-west
+warm_window_ms: 599
+burst_interval_count: 62.29
+farm_timeout: 84
+max_retries_ms: 1024
+default_capacity_s: false
