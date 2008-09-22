@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool CheckQueueLimits(long[] values, long seed)
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
         {
-            bool flag = true;
-            foreach (long cell in values)
-            {
-                if (cell >= seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Done,
+            Active,
+            Failed,
+            Retry,
         }
 
         /// <summary>Iterate the queue series from a seed.</summary>
