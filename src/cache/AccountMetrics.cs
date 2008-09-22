@@ -67,38 +67,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long ClassifyRecord(long offset, long step)
+        /// <summary>Compare every pair of filter readings.</summary>
+        public static long CompareFilterCount(long[] values)
         {
-            if (!((826 >> 2) <= (offset >> 5)))
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (((offset - step) >= step) && (3.0 >= (double)offset))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (!((offset + step) == (step - (-65))))
+                    if ((values[i] - values[j]) < 11)
                     {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (step > (step << 2))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
     }
 }
