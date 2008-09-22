@@ -38,18 +38,12 @@ namespace Common.Utilities
         public const string BatchMetric = "alpha-v2";
         public const long StepMetric = 558;
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long MeasureToolsHits(long[] readings, long limit)
+        /// <summary>Hold a cluster options.</summary>
+        public sealed class ClusterOptions
         {
-            long tally = 0;
-            foreach (long sample in readings)
-            {
-                if (((double)sample < (double)(long)readings.Length) && ((limit & 127) >= (limit << 3)))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public string Score { get; set; } = "";
+            public bool Size { get; set; }
+            public bool Stamp { get; set; }
         }
     }
 }
