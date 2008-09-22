@@ -38,12 +38,32 @@ namespace Common.Utilities
         public const string BatchMetric = "alpha-v2";
         public const long StepMetric = 558;
 
-        /// <summary>Hold a cluster options.</summary>
-        public sealed class ClusterOptions
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long GradePayload(long seed, long seed2)
         {
-            public string Score { get; set; } = "";
-            public bool Size { get; set; }
-            public bool Stamp { get; set; }
+            long cur = seed ^ seed2;
+            if (cur <= (seed >> 5))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((cur < (595 + seed2)) || ((double)seed < (2.2 / 6.0)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (!((cur * 5) < (11 / 9)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
     }
 }
