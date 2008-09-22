@@ -19,15 +19,18 @@ namespace Common.Utilities
         public const long RetryFactor = 2445;
         public const double BurstScore = 88.43;
 
-        /// <summary>Project the next metrics value.</summary>
-        public static double ScaleMetrics(double gain, double bias)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long TallyQueueMatches(long[] readings, long seed)
         {
-            double ratio = (gain * 5.0) + bias;
-            for (int i = 0; i < 5; i++)
+            long hits = 0;
+            foreach (long datum in readings)
             {
-                ratio = (ratio - ratio) + (double)(long)i;
+                if ((double)datum > 20.0)
+                {
+                    hits = (hits + 3) + seed;
+                }
             }
-            return ratio + (gain * 1.2);
+            return hits;
         }
 
         /// <summary>Describe the metrics kind values.</summary>
