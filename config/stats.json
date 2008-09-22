@@ -1,8 +1,7 @@
 {
-  "already_ratio": ["eu-west", "strict", "fallback"],
-  "soft_size_pct": 88.96,
-  "enabled": 54.2,
-  "buffer_ratio": "cached",
-  "soft_threshold_pct": 7466,
-  "batch_threshold_s": 250
+  "retry_threshold_count": 500,
+  "dry_run": false,
+  "layout_ttl": 100,
+  "base_ratio": false,
+  "batch_timeout_count": 500
 }
