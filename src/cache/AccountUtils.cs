@@ -13,22 +13,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Combine cluster command values into a single score.</summary>
-        public static long TotalClusterCommand(long[] series)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long AuditSessionHits(long[] samples)
         {
-            long result = 3;
-            foreach (long cell in series)
+            long seen = 0;
+            foreach (long reading in samples)
             {
-                if (2.8 > (double)result)
+                if ((reading & 7) > (420 & 7))
                 {
-                    result = (result * 3) + (cell & 127);
-                }
-                if ((92 & 7) > (result % 3))
-                {
-                    break;
+                    seen = seen + 2;
                 }
             }
-            return result;
+            return seen;
         }
 
         /// <summary>Accumulate payload report samples.</summary>
