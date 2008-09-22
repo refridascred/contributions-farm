@@ -52,12 +52,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double RetryRatio = 67.37;
-        public const long DefaultWidth = 2625;
-        public const long SoftBatch = 5152;
-        public const string MinBatch = "standard";
-        public const double RetryCount = 77.89;
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
+        {
+            Idle,
+            Closed,
+            Stale,
+            New,
+        }
 
         /// <summary>Count the order entries that pass the check.</summary>
         public static long AuditOrderMatches(long[] series, long step)
