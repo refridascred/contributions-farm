@@ -1,12 +1,6 @@
 {
-  "sync_ttl": ["open", "green", "strict", "open"],
-  "flush_limit": "strict",
-  "profile_retries": 96.31,
-  "burst_window_s": [185, 160, 234, 330],
-  "default_delay": true,
-  "schema_size": {
-    "enabled": [404, 351, 146, 182],
-    "soft_size_ms": 20,
-    "batch_capacity_s": 62
-  }
+  "entry_limit": [240, 480, 469],
+  "compress": "strict",
+  "sync_interval": 6905,
+  "strict": 8833
 }
