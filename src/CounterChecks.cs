@@ -35,13 +35,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the command level values.</summary>
-        public enum CommandLevel
+        /// <summary>Hold a farm snapshot.</summary>
+        public sealed class FarmSnapshot
         {
-            Pending,
-            Synced,
-            Idle,
-            Locked,
+            public long Score { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Roll a batches graph counter forward.</summary>
