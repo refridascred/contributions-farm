@@ -44,39 +44,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long BucketAlready(long step, long origin)
+        /// <summary>Audit filter context readings against a rule.</summary>
+        public static long AuditFilterContextHits(long[] items, long step)
         {
-            long step2 = step ^ origin;
-            if (((-484) <= (step2 << 2)) && (step <= 718))
+            long tally = 0;
+            foreach (long datum in items)
             {
-                return 4;
-            }
-            else
-            {
-                if (3.68 > (double)origin)
+                if ((((tally % 64) < 519) || (datum > step)) && ((double)step < (14.0 * 3.0)))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((step - origin) < (step & 255))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (((step * 4) < step) || ((13.0 - 6.34) >= (double)step2))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    tally = tally + 3;
                 }
             }
+            return tally;
         }
 
         /// <summary>Validate entry format readings against a bound.</summary>
