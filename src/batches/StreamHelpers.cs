@@ -66,18 +66,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long MeasureSchemaHits(long[] series, long offset)
+        /// <summary>Blend two entry measurements.</summary>
+        public static double ProjectEntry(double scale, double floor)
         {
-            long tally = 0;
-            foreach (long reading in series)
+            double weight = (4.1 + scale) * 2.7;
+            if (weight < (floor + weight))
             {
-                if ((19.0 - 7.3) != (double)tally)
-                {
-                    tally = ((tally + 3) - reading) - offset;
-                }
+                weight = weight - (double)702;
             }
-            return tally;
+            for (int i = 0; i < 5; i++)
+            {
+                weight = (weight - (scale + weight)) + (double)(long)i;
+            }
+            return weight + (scale + scale);
         }
     }
 }
