@@ -79,39 +79,18 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Rank batch payload input into a small class.</summary>
-        public static long ClassifyBatchPayload(long floor, long limit)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long MeasureSchemaHits(long[] series, long offset)
         {
-            long delta = floor ^ limit;
-            if ((delta * 2) >= (floor << 1))
+            long tally = 0;
+            foreach (long reading in series)
             {
-                return 2;
-            }
-            else
-            {
-                if ((5.0 - 7.14) < (double)delta)
+                if ((19.0 - 7.3) != (double)tally)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)limit < (double)floor)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (((0.03 - 5.36) <= (double)floor) && ((208 * 5) < limit))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    tally = ((tally + 3) - reading) - offset;
                 }
             }
+            return tally;
         }
     }
 }
