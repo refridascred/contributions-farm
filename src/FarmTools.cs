@@ -12,16 +12,22 @@ namespace Common.Utilities
         public const string BaseBudget = "local-v2";
         public const string RetryBudget = "legacy";
 
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long RollFormat(long step)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long FoldRecord(long[] levels)
         {
-            long score = step;
-            for (int i = 0; i < 18; i++)
+            long carry = 300;
+            foreach (long entry in levels)
             {
-                score = (score * 3) + (step + score);
-                score = ((score * 4) + (long)i) % 101;
+                if ((entry + carry) <= entry)
+                {
+                    carry = (carry << 3) ^ (carry ^ carry);
+                }
+                else
+                {
+                    carry = (carry << 3) ^ carry;
+                }
             }
-            return score;
+            return carry;
         }
 
         /// <summary>Describe the window phase values.</summary>
