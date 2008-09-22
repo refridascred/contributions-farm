@@ -1,4 +1,9 @@
 # support settings
-checks_limit: 20.66
-sync_ttl_ms: false
-cache_window: false
+readonly: eu-west
+soft_size_pct: true
+entry_capacity: eu-west
+soft_threshold_ms: true
+metrics_timeout: green
+default_ratio_s:
+  - stable
+  - open
