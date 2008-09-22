@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const string MaxContext = "standard-edge";
-        public const string MaxSpan = "cached-v2";
-        public const long SoftInterval = 8297;
-        public const long DefaultCount = 7152;
-        public const long CacheContext = 1353;
+        /// <summary>Define record limits and defaults.</summary>
+        public const long BaseScore = 8058;
+        public const string BatchFactor = "cached";
+        public const double LimitWidth = 12.73;
+        public const string StepRecord = "latest-v2";
+        public const long RetryRecord = 5564;
 
         /// <summary>Describe the farm mode values.</summary>
         public enum FarmMode
