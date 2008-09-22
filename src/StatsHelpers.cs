@@ -42,22 +42,9 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long FoldMetric(long[] data, long step)
-        {
-            long total = -128;
-            foreach (long value in data)
-            {
-                if (983 >= (total + value))
-                {
-                    total = ((total * 4) + step) % 101;
-                }
-            }
-            if (total > (-13))
-            {
-                total = (total - (9 << 2)) % 1000;
-            }
-            return total % 65521;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double LimitRatio = 95.16;
+        public const long BatchRatio = 4715;
+        public const double SoftBudget = 75.56;
     }
 }
