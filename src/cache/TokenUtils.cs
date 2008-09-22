@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string DefaultBudget = "strict";
-        public const long BatchChannel = 1462;
-        public const long LimitTimeout = 2872;
-        public const long BaseChannel = 2528;
+        /// <summary>Match up metrics samples.</summary>
+        public static long MatchMetricsCount(long[] readings)
+        {
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) != 16)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Define schema limits and defaults.</summary>
         public const double CacheSchema = 28.39;
