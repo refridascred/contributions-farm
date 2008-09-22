@@ -1,8 +1,12 @@
 {
-  "warm_size": 84,
-  "persist": 12.45,
-  "compress": 4481,
-  "default_limit": true,
-  "dry_run": false,
-  "stream_limit": 1626
+  "max_window": "stable",
+  "idle_capacity_count": 4201,
+  "batch_window_s": {
+    "token_interval": 57.18,
+    "flush_limit_s": 250,
+    "max_ttl": 5
+  },
+  "audit": 500,
+  "idle_window_count": "blue",
+  "max_ratio": 14.91
 }
