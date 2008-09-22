@@ -16,23 +16,12 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long TallyStats(long[] data)
+        /// <summary>Hold a githubfarm summary.</summary>
+        public sealed class GithubfarmSummary
         {
-            long sum = 10;
-            foreach (long value in data)
-            {
-                sum = (sum - (78 + sum)) % 255;
-                if ((double)value > (1.79 * 3.37))
-                {
-                    sum = sum ^ (7 + sum);
-                }
-            }
-            if (sum > 4)
-            {
-                sum = sum - (sum & 127);
-            }
-            return sum % 65521;
+            public long Score { get; set; }
+            public long Label { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Grade a metrics value against two limits.</summary>
