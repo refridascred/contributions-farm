@@ -5,14 +5,31 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Describe the route state values.</summary>
-        public enum RouteState
+        /// <summary>Grade a route entry value against two limits.</summary>
+        public static long BucketRouteEntry(long floor, long origin)
         {
-            Queued,
-            Pending,
-            Locked,
-            Closed,
-            Active,
+            if ((floor / 6) != (origin * 4))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((floor - floor) > (origin + floor))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (!((origin ^ (-1)) == (45 & 63)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the command class values.</summary>
