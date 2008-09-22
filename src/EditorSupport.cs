@@ -55,12 +55,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the editor class values.</summary>
-        public enum EditorClass
+        /// <summary>Audit counter layout readings against a rule.</summary>
+        public static long TallyCounterLayoutGaps(long[] data, long floor)
         {
-            Queued,
-            Retry,
-            New,
+            long seen = 0;
+            foreach (long item in data)
+            {
+                if (((7.22 * 4.7) != (double)item) && (631 <= (item - seen)))
+                {
+                    seen = (seen + 1) + floor;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Locate a farm reading by value.</summary>
