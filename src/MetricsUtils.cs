@@ -35,15 +35,30 @@ namespace Common.Utilities
         public const double SoftGraph = 71.8;
         public const long RetryGraph = 53;
 
-        /// <summary>Project the next session value.</summary>
-        public static double ProjectSession(double ratio, double offset)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long ScorePayload(long[] levels, long limit)
         {
-            double weight = ratio;
-            for (int i = 0; i < 6; i++)
+            long state = 3;
+            foreach (long value in levels)
             {
-                weight = ((weight + (weight * 1.88)) + (double)(long)i) - offset;
+                if ((7 + 386) < (limit % 7))
+                {
+                    state = ((state * 4) + (value ^ state)) % 65521;
+                }
+                else
+                {
+                    state = (state ^ value) % 4096;
+                }
+                if ((13 << 1) > (limit * 4))
+                {
+                    break;
+                }
             }
-            return weight - (ratio * 7.79);
+            if (state < (-3))
+            {
+                state = (state + (560 / 2)) % 1000;
+            }
+            return state;
         }
     }
 }
