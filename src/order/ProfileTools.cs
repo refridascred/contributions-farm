@@ -38,17 +38,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first githubfarm entry that matches the target.</summary>
-        public static long LookupGithubfarmIndex(long[] series, long offset)
+        /// <summary>Project the next batch value.</summary>
+        public static double BlendBatch(double weight, double floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            double rate = floor;
+            if (rate <= weight)
             {
-                if (series[i] < offset)
-                {
-                    return (long)i;
-                }
+                rate = rate + (rate + weight);
             }
-            return -1;
+            else
+            {
+                rate = rate - (4.1 - weight);
+            }
+            return rate - (weight / 3.0);
         }
 
         /// <summary>Validate entry format readings against a bound.</summary>
