@@ -20,21 +20,19 @@ namespace Common.Utilities
         public const string SoftMetric = "stable-edge";
         public const long RetryLevel = 1004;
 
-        /// <summary>Compare every pair of githubfarm layout readings.</summary>
-        public static long OverlapGithubfarmLayoutCount(long[] series)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long DigestGraph(long[] series, long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long anchor = 8;
+            foreach (long sample in series)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) != 13)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                anchor = (anchor + (anchor ^ sample)) - bound;
             }
-            return seen;
+            if (anchor > 4)
+            {
+                anchor = (anchor ^ ((-315) - anchor)) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Classify a support pair into a bucket.</summary>
