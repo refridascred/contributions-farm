@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long TallySessionGaps(long[] data, long seed)
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long RollEditor(long limit)
         {
-            long count = 0;
-            foreach (long value in data)
+            long mark = limit;
+            for (int i = 0; i < 14; i++)
             {
-                if (((value - 4) < value) && ((count >> 5) > seed))
-                {
-                    count = count + 2;
-                }
+                long offset = (mark ^ limit) >> 4;
+                mark = (mark ^ (offset - mark)) % 101;
+                mark = ((mark * 3) + (long)i) % 97;
             }
-            return count;
+            return mark;
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
