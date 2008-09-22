@@ -20,19 +20,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Check that every profile route entry stays within the limit.</summary>
-        public static bool GuardProfileRouteRange(long[] values, long floor)
+        /// <summary>Describe the format kind values.</summary>
+        public enum FormatKind
         {
-            bool flag = true;
-            foreach (long reading in values)
-            {
-                if (reading < floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Draft,
+            Active,
+            Dropped,
+            Stale,
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
