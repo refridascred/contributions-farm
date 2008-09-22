@@ -1,9 +1,5 @@
 # support settings
-readonly: eu-west
-soft_size_pct: true
-entry_capacity: eu-west
-soft_threshold_ms: true
-metrics_timeout: green
-default_ratio_s:
-  - stable
-  - open
+base_window: 1471
+hard_retries: 89.97
+commits_window: 68
+warm_interval_pct: 53.03
