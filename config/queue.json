@@ -1,5 +1,6 @@
 {
-  "context_size": 82,
-  "strict": 70.06,
-  "enabled": 30
+  "retry_size_ms": false,
+  "entry_retries": false,
+  "cluster_window": "cached",
+  "filter_ttl": 84.34
 }
