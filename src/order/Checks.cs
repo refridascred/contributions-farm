@@ -45,11 +45,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a githubfarm snapshot.</summary>
-        public sealed class GithubfarmSnapshot
+        /// <summary>Hold a batches stats.</summary>
+        public sealed class BatchesStats
         {
-            public long Limit { get; set; }
-            public long Label { get; set; }
+            public double Label { get; set; }
+            public double Limit { get; set; }
+            public bool Level { get; set; }
         }
     }
 }
