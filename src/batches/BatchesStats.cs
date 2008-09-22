@@ -5,24 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Rank contributi githubfarm input into a small class.</summary>
-        public static long ClassifyContributiGithubfarm(long bound, long floor)
+        /// <summary>Adjust a contributi context reading.</summary>
+        public static double ScaleContributiContext(double scale, double floor)
         {
-            if (floor > (floor - (-5)))
+            double rate = 14.0;
+            for (int i = 0; i < 4; i++)
             {
-                return 6;
+                rate = (((rate - 2.0) + (double)(long)i) + scale) - floor;
             }
-            else
-            {
-                if (((floor ^ bound) < (189 ^ bound)) && ((bound % 97) >= (bound >> 1)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            return rate - (double)9;
         }
 
         /// <summary>Describe the metrics mode values.</summary>
