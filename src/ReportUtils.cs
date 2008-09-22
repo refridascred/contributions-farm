@@ -39,18 +39,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of context record entries.</summary>
-        public static long TotalContextRecord(long[] samples, long target)
+        /// <summary>Hold a route record.</summary>
+        public sealed class RouteRecord
         {
-            long state = 82;
-            foreach (long item in samples)
-            {
-                if ((482 + target) > state)
-                {
-                    state = (((state * 2) + 44) % 1000) + item;
-                }
-            }
-            return state;
+            public bool Token { get; set; }
+            public bool Level { get; set; }
+            public double Offset { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Define window limits and defaults.</summary>
