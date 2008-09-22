@@ -5,14 +5,14 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the stream level values.</summary>
-        public enum StreamLevel
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
         {
-            Active,
-            Stale,
-            Ready,
-            Draft,
-            Locked,
+            Queued,
+            Retry,
+            Synced,
+            Failed,
+            Done,
         }
 
         /// <summary>Hold a entry record.</summary>
