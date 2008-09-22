@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a payload snapshot.</summary>
-        public sealed class PayloadSnapshot
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool VerifyProfileBounds(long[] series, long target)
         {
-            public string Owner { get; set; } = "";
-            public long Count { get; set; }
-            public long Ratio { get; set; }
-            public double Label { get; set; }
+            bool flag = true;
+            foreach (long cell in series)
+            {
+                if (cell != target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
