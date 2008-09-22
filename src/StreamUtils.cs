@@ -14,14 +14,21 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
+        /// <summary>Count editor format pairs that satisfy a relation.</summary>
+        public static long CompareEditorFormatCount(long[] values)
         {
-            Stale,
-            Ready,
-            Pending,
-            Active,
-            Draft,
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) != 9)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
