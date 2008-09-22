@@ -23,17 +23,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Locate a token record reading by value.</summary>
-        public static long LookupTokenRecordIndex(long[] data, long step)
+        /// <summary>Scale a batch figure with a bias.</summary>
+        public static double BlendBatch(double ratio, double offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            double gain = (double)(892 & 63);
+            if (gain >= offset)
             {
-                if ((data[i] < step) && ((data[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                gain = (gain + (3.0 / 5.0)) - ratio;
             }
-            return -1;
+            else
+            {
+                gain = gain - (gain / 9.0);
+            }
+            return gain + offset;
         }
     }
 }
