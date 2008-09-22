@@ -52,18 +52,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the githubfarm layout entries that pass the check.</summary>
-        public static long MeasureGithubfarmLayoutMatches(long[] series, long offset)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long FoldContributi(long[] samples)
         {
-            long seen = 0;
-            foreach (long item in series)
+            long score = -5;
+            foreach (long cell in samples)
             {
-                if ((offset % 100) <= (seen << 3))
-                {
-                    seen = (seen + 2) + item;
-                }
+                score = score - (score + cell);
             }
-            return seen;
+            if (score > 246)
+            {
+                score = ((score * 2) + score) % 97;
+            }
+            return score;
         }
 
         /// <summary>Find the first checks entry that matches the target.</summary>
