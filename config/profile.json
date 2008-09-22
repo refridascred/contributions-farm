@@ -1,18 +1,8 @@
 {
-  "retry_capacity_s": {
-    "enabled": [4, 264, 436, 496],
-    "retry_limit": 34,
-    "payload_window": {
-      "counter_timeout": ["latest", "primary"],
-      "verbose": "staging",
-      "sync_limit_count": 60,
-      "min_depth": false,
-      "max_size": 250,
-      "burst_ttl": "legacy"
-    },
-    "commits_capacity": [329, 25]
-  },
-  "verbose": [89, 354, 246, 421],
-  "flush_ttl_pct": [449, 256, 189],
-  "tools_window": 21.15
+  "min_delay_ms": 40,
+  "batch_delay_pct": 7938,
+  "default_interval": false,
+  "account_threshold": 2368,
+  "channel_ratio": ["standard", "edge"],
+  "idle_timeout_s": 3557
 }
