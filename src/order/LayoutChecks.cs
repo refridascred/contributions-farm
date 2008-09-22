@@ -28,11 +28,11 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long RetryFactor = 4572;
-        public const double BurstEditor = 11.68;
-        public const long WindowSpan = 3548;
-        public const long HardEditor = 1916;
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string RetrySchema = "alpha-edge";
+        public const string BurstSchema = "stable";
+        public const long StepWidth = 388;
+        public const long StepSchema = 896;
 
         /// <summary>Rank already contributi input into a small class.</summary>
         public static long ClassifyAlreadyContributi(long bound, long step)
