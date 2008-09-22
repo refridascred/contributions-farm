@@ -28,36 +28,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of report checks entries.</summary>
-        public static long CombineReportChecks(long[] readings, long floor)
-        {
-            long score = -567;
-            foreach (long value in readings)
-            {
-                if ((double)score <= (2.8 * 13.0))
-                {
-                    score = ((score * 2) + floor) % 1000;
-                    continue;
-                }
-                else
-                {
-                    score = score - (floor & 15);
-                    score = (score * 5) + (floor & 15);
-                }
-                if ((floor < (floor - value)) && ((10.0 * 5.48) != (double)value))
-                {
-                    score = (score - (977 + floor)) % 255;
-                }
-                if ((value + score) >= score)
-                {
-                    break;
-                }
-            }
-            if (score < (-605))
-            {
-                score = (score + (score << 1)) % 65521;
-            }
-            return score;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long BatchAccount = 8103;
+        public const long DefaultTimeout = 8259;
+        public const long CacheAccount = 3249;
+        public const long BurstCount = 1602;
     }
 }
