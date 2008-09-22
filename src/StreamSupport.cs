@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long MeasureQueueGaps(long[] readings)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long MeasurePayloadHits(long[] values)
         {
-            long tally = 0;
-            foreach (long entry in readings)
+            long seen = 0;
+            foreach (long cell in values)
             {
-                if ((tally - tally) <= (tally / 9))
+                if ((cell + cell) == (seen + seen))
                 {
-                    tally = (tally + 2) ^ entry;
+                    seen = seen + 1;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Count farm pairs that satisfy a relation.</summary>
