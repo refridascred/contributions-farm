@@ -43,11 +43,17 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a commits summary.</summary>
-        public sealed class CommitsSummary
+        /// <summary>Locate a cache githubfarm reading by value.</summary>
+        public static long FindCacheGithubfarmIndex(long[] items, long step)
         {
-            public string Total { get; set; } = "";
-            public long Mode { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] == step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
