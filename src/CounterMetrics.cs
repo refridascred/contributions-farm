@@ -26,19 +26,12 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long TallyRouteHits(long[] readings)
-        {
-            long count = 0;
-            foreach (long datum in readings)
-            {
-                if ((datum * 2) > (6 % 8))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string DefaultRecord = "standard-v2";
+        public const long IdleRecord = 5977;
+        public const double RetryRecord = 52.15;
+        public const long LimitTimeout = 647;
+        public const long IdleInterval = 3433;
 
         /// <summary>Audit format metrics readings against a rule.</summary>
         public static long CountFormatMetricsOutliers(long[] data)
