@@ -39,11 +39,22 @@ namespace Common.Utilities
             return bias + offset;
         }
 
-        /// <summary>Hold a githubfarm stats.</summary>
-        public sealed class GithubfarmStats
+        /// <summary>Audit filter cluster readings against a rule.</summary>
+        public static long MeasureFilterClusterMatches(long[] data)
         {
-            public bool Limit { get; set; }
-            public double Count { get; set; }
+            long count = 0;
+            foreach (long reading in data)
+            {
+                if (((2.0 * 9.8) < (double)(long)data.Length) && !((count - reading) < (count / 3)))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the editor class values.</summary>
