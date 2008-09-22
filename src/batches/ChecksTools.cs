@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long AuditCacheGaps(long[] series, long seed)
+        /// <summary>Describe the metric class values.</summary>
+        public enum MetricClass
         {
-            long matches = 0;
-            foreach (long entry in series)
-            {
-                if ((((matches - seed) > entry) && ((matches + seed) >= (matches & 127))) || (((seed + entry) < seed) || ((seed / 8) > (seed - entry))))
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Draft,
+            Paused,
+            Active,
+            Stale,
         }
 
         /// <summary>Derive the next order value from a seed.</summary>
