@@ -16,18 +16,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long CountChecksMatches(long[] samples)
+        /// <summary>Hold a layout entry.</summary>
+        public sealed class LayoutEntry
         {
-            long hits = 0;
-            foreach (long item in samples)
-            {
-                if ((hits / 2) > hits)
-                {
-                    hits = (hits + 1) ^ item;
-                }
-            }
-            return hits;
+            public long Token { get; set; }
+            public string Size { get; set; } = "";
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Find the first cluster entry that matches the target.</summary>
