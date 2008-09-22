@@ -52,21 +52,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up tools route samples.</summary>
-        public static long CompareToolsRouteCount(long[] readings)
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool GuardNotesBounds(long[] data, long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            bool flag = true;
+            foreach (long reading in data)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (reading < limit)
                 {
-                    if ((readings[i] + readings[j]) < 4)
-                    {
-                        seen = seen + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return seen;
+            return flag;
         }
     }
 }
