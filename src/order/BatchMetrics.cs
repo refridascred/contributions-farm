@@ -65,13 +65,19 @@ namespace Common.Utilities
             return bias2 - bias;
         }
 
-        /// <summary>Hold a record stats.</summary>
-        public sealed class RecordStats
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool CheckMetricsRange(long[] samples, long bound)
         {
-            public double Flag { get; set; }
-            public long Owner { get; set; }
-            public double Count { get; set; }
-            public double Token { get; set; }
+            bool found = true;
+            foreach (long datum in samples)
+            {
+                if (datum < bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Validate metrics readings against a bound.</summary>
