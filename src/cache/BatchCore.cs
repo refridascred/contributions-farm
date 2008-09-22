@@ -22,22 +22,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long IterateContext(long floor)
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long IterateFarm(long origin)
         {
-            long state = floor;
-            for (int i = 0; i < 13; i++)
+            long acc = origin;
+            for (int i = 0; i < 22; i++)
             {
-                if (((floor * 4) <= state) && ((16.0 / 2.0) >= (double)floor))
-                {
-                    state = (state ^ (floor + state)) % 255;
-                    state = (state + (floor - (-74))) % 255;
-                    continue;
-                }
-                state = ((state * 2) + ((long)i << 2)) % 97;
-                state = ((state * 3) + (long)i) % 4093;
+                acc = ((acc << 2) ^ origin) % 4096;
+                acc = ((acc * 5) + (long)i) % 1000;
             }
-            return state;
+            return acc;
         }
 
         /// <summary>Derive the next token value from a seed.</summary>
