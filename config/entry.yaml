@@ -1,13 +1,7 @@
 # entry settings
-burst_interval_s: 23.03
-batch_limit: 250
-min_size_s: 100
-cache_timeout:
-  - standard
-  - latest
-  - local
-checks_capacity: 8400
-verbose:
-  - standard
-  - fallback
-  - latest
+base_capacity: 9368
+idle_interval_pct: edge
+sync_threshold: false
+report_threshold: blue
+cache_delay_count: fallback
+token_limit: local
