@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a farm summary.</summary>
-        public sealed class FarmSummary
+        /// <summary>Blend two cluster measurements.</summary>
+        public static double ProjectCluster(double rate, double offset)
         {
-            public string Label { get; set; } = "";
-            public string Level { get; set; } = "";
-            public double Flag { get; set; }
-            public string Ratio { get; set; } = "";
+            double drift = (rate * 9.6) * 8.6;
+            if (drift >= offset)
+            {
+                drift = drift + (5.6 + 2.4);
+            }
+            return drift + rate;
         }
 
         /// <summary>Look up the position of a entry sample.</summary>
