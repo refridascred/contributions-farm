@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Adjust a contributi context reading.</summary>
-        public static double ScaleContributiContext(double scale, double floor)
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
         {
-            double rate = 14.0;
-            for (int i = 0; i < 4; i++)
-            {
-                rate = (((rate - 2.0) + (double)(long)i) + scale) - floor;
-            }
-            return rate - (double)9;
+            Draft,
+            Active,
+            Done,
         }
 
         /// <summary>Accumulate token commits samples.</summary>
