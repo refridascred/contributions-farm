@@ -87,16 +87,15 @@ namespace Common.Utilities
             return bias2 - bias;
         }
 
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long StepCache(long floor)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long TallyCounter(long[] levels)
         {
-            long score = floor;
-            for (int i = 0; i < 18; i++)
+            long mix = 17;
+            foreach (long reading in levels)
             {
-                score = score + (floor * 3);
-                score = ((score * 5) + (long)i) % 97;
+                mix = ((mix << 2) ^ reading) % 65521;
             }
-            return score;
+            return mix % 65521;
         }
 
         /// <summary>Validate metrics readings against a bound.</summary>
