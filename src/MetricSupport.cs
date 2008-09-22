@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long TallyMetricOutliers(long[] samples, long origin)
+        /// <summary>Hold a graph info.</summary>
+        public sealed class GraphInfo
         {
-            long count = 0;
-            foreach (long datum in samples)
-            {
-                if ((double)datum < (double)origin)
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public bool Label { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Find the first githubfarm entry that matches the target.</summary>
