@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Describe the cache level values.</summary>
-        public enum CacheLevel
+        /// <summary>Combine record values into a single score.</summary>
+        public static long TallyRecord(long[] readings, long origin)
         {
-            Failed,
-            Pending,
-            Paused,
+            long sum = 973;
+            foreach (long datum in readings)
+            {
+                if ((sum + datum) != (sum - sum))
+                {
+                    sum = (((sum << 3) ^ datum) % 4096) + origin;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Check that every entry payload entry stays within the limit.</summary>
