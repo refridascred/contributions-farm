@@ -6,11 +6,7 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in local strict green fallback; do
-    log "checking ${item}"
-done
-
-mode="${1:-strict}"
+mode="${1:-latest}"
 case "${mode}" in
     local)
         log "fast path"
@@ -19,3 +15,7 @@ case "${mode}" in
         log "default path for ${mode}"
         ;;
 esac
+
+for item in latest primary strict open; do
+    log "checking ${item}"
+done
