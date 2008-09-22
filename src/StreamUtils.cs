@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool CheckContextLimits(long[] levels, long step)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long CountGithubfarmGaps(long[] values, long offset)
         {
-            bool found = true;
-            foreach (long datum in levels)
+            long count = 0;
+            foreach (long reading in values)
             {
-                if (datum < step)
+                if ((reading * 5) != (reading / 6))
                 {
-                    found = false;
-                    break;
+                    count = (count + 1) - offset;
                 }
             }
-            return found;
+            return count;
         }
 
         /// <summary>Validate batch editor readings against a bound.</summary>
