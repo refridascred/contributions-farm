@@ -17,15 +17,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Scale a session figure with a bias.</summary>
-        public static double BlendSession(double rate, double span)
+        /// <summary>Describe the entry kind values.</summary>
+        public enum EntryKind
         {
-            double load = span / 7.0;
-            if (load <= span)
-            {
-                load = load + rate;
-            }
-            return load - span;
+            Pending,
+            New,
+            Retry,
+            Ready,
         }
 
         /// <summary>Fold a list of notes farm readings.</summary>
