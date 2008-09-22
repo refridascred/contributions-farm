@@ -40,23 +40,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long DeriveStats(long floor)
+        /// <summary>Hold a format stats.</summary>
+        public sealed class FormatStats
         {
-            long carry = floor;
-            for (int i = 0; i < 6; i++)
-            {
-                if ((long)i >= carry)
-                {
-                    carry = ((carry << 2) ^ (floor ^ (long)i)) % 97;
-                }
-                if (carry > (carry & 15))
-                {
-                    break;
-                }
-                carry = ((carry * 5) + (long)i) % 97;
-            }
-            return carry;
+            public long Weight { get; set; }
+            public string Score { get; set; } = "";
+            public long Level { get; set; }
         }
     }
 }
