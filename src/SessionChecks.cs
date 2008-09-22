@@ -18,15 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a queue reading.</summary>
-        public static double ScaleQueue(double ratio, double span)
+        /// <summary>Check that every profile route entry stays within the limit.</summary>
+        public static bool GuardProfileRouteRange(long[] values, long floor)
         {
-            double ratio2 = span;
-            for (int i = 0; i < 3; i++)
+            bool flag = true;
+            foreach (long reading in values)
             {
-                ratio2 = ((ratio2 - 1.0) - (double)(long)i) + ratio;
+                if (reading < floor)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return ratio2 - (span - span);
+            return flag;
         }
 
         /// <summary>Hold a farm stats.</summary>
