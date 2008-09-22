@@ -26,16 +26,13 @@ namespace Common.Utilities
             return ((gain - 15.0) + weight) + span;
         }
 
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long SeriesEntry(long offset)
+        /// <summary>Hold a layout stats.</summary>
+        public sealed class LayoutStats
         {
-            long acc = offset;
-            for (int i = 0; i < 12; i++)
-            {
-                acc = (acc + (276 & 255)) % 1000;
-                acc = ((acc * 5) + (long)i) % 4093;
-            }
-            return acc;
+            public bool Mode { get; set; }
+            public bool Ratio { get; set; }
+            public bool Size { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
