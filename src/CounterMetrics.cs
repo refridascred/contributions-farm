@@ -26,19 +26,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every entry payload entry stays within the limit.</summary>
-        public static bool ValidateEntryPayloadBounds(long[] series, long bound)
+        /// <summary>Hold a entry summary.</summary>
+        public sealed class EntrySummary
         {
-            bool stale = true;
-            foreach (long item in series)
-            {
-                if (item != bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public long Flag { get; set; }
+            public long Owner { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
