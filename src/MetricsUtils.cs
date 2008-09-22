@@ -39,15 +39,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the buffer level values.</summary>
-        public enum BufferLevel
-        {
-            Dropped,
-            Idle,
-            Failed,
-            Active,
-            Ready,
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long WindowTimeout = 5667;
+        public const long IdleGraph = 3525;
+        public const long StepGraph = 297;
+        public const double SoftGraph = 71.8;
+        public const long RetryGraph = 53;
 
         /// <summary>Project the next session value.</summary>
         public static double ProjectSession(double ratio, double offset)
