@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const string BaseLevel = "alpha-1";
-        public const long IdleInterval = 5136;
-        public const long StepSupport = 7093;
-        public const long BurstDepth = 2050;
-        public const double MaxSpan = 53.47;
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool GuardFormatRange(long[] data, long origin)
+        {
+            bool flag = true;
+            foreach (long datum in data)
+            {
+                if (datum != origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Fold a list of stats readings.</summary>
         public static long WeighStats(long[] values, long limit)
