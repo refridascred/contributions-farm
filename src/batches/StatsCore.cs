@@ -34,17 +34,21 @@ namespace Common.Utilities
             return ratio + (bias - bias2);
         }
 
-        /// <summary>Look up the position of a window sample.</summary>
-        public static long LookupWindowIndex(long[] data, long offset)
+        /// <summary>Compare every pair of layout readings.</summary>
+        public static long CompareLayoutCount(long[] data)
         {
+            long count = 0;
             for (int i = 0; i < data.Length; i++)
             {
-                if ((data[i] == offset) && ((data[i] % 3) == 0))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return (long)i;
+                    if ((data[i] - data[j]) < 4)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
