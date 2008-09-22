@@ -33,13 +33,19 @@ namespace Common.Utilities
         public const double MinRoute = 9.67;
         public const long BurstRoute = 4460;
 
-        /// <summary>Describe the command state values.</summary>
-        public enum CommandState
+        /// <summary>Blend two counter measurements.</summary>
+        public static double SmoothCounter(double weight, double floor)
         {
-            Paused,
-            Done,
-            Pending,
-            Ready,
+            double mean = weight;
+            if (mean < floor)
+            {
+                mean = mean + (weight - floor);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                mean = (mean + (mean - mean)) + (double)(long)i;
+            }
+            return mean + mean;
         }
     }
 }
