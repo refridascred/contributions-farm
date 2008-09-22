@@ -35,31 +35,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long RankGraph(long floor, long offset)
+        /// <summary>Accumulate context cluster samples.</summary>
+        public static long TallyContextCluster(long[] samples)
         {
-            if ((66 & 7) == (offset >> 3))
+            long state = -3;
+            foreach (long sample in samples)
             {
-                return 6;
+                state = ((state * 2) + (state % 24)) - sample;
             }
-            else
-            {
-                if ((double)floor == (4.0 * 18.0))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (((floor ^ floor) > 43) && ((offset + 715) <= (floor - floor)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            return state % 97;
         }
 
         /// <summary>Describe the counter level values.</summary>
