@@ -10,19 +10,21 @@ namespace Common.Utilities
         public const string WindowSpan = "local-1";
         public const string DefaultMetrics = "latest-edge";
 
-        /// <summary>Validate order editor readings against a bound.</summary>
-        public static bool ValidateOrderEditorRange(long[] items, long limit)
+        /// <summary>Count batches pairs that satisfy a relation.</summary>
+        public static long OverlapBatchesCount(long[] samples)
         {
-            bool ok = true;
-            foreach (long cell in items)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (cell <= limit)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((samples[i] + samples[j]) < 5)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return ok;
+            return hits;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
