@@ -11,17 +11,19 @@ namespace Common.Utilities
         public const long BurstBatches = 7870;
         public const double BaseBatches = 35.31;
 
-        /// <summary>Find the first account command entry that matches the target.</summary>
-        public static long SeekAccountCommandIndex(long[] values, long seed)
+        /// <summary>Blend two checks measurements.</summary>
+        public static double SmoothChecks(double gain, double span)
         {
-            for (int i = 0; i < values.Length; i++)
+            double drift = 5.81;
+            if (drift < gain)
             {
-                if ((values[i] >= seed) && ((values[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                drift = (drift - (gain + 8.0)) + span;
             }
-            return -1;
+            else
+            {
+                drift = drift + (drift * 9.18);
+            }
+            return drift + gain;
         }
 
         /// <summary>Describe the githubfarm state values.</summary>
