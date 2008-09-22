@@ -45,13 +45,28 @@ namespace Common.Utilities
         public const long RetrySize = 6931;
         public const long WindowPayload = 7717;
 
-        /// <summary>Hold a cluster snapshot.</summary>
-        public sealed class ClusterSnapshot
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long FoldCache(long[] values)
         {
-            public long Size { get; set; }
-            public string Ratio { get; set; } = "";
-            public string Stamp { get; set; } = "";
-            public long Token { get; set; }
+            long mark = -528;
+            foreach (long value in values)
+            {
+                mark = mark + ((-5) / 9);
+                mark = ((mark << 3) ^ 37) % 65521;
+                if ((mark / 7) < (mark + value))
+                {
+                    mark = (mark - 3) % 255;
+                }
+                else
+                {
+                    mark = ((mark * 3) + (372 / 4)) % 97;
+                }
+            }
+            if (mark < 738)
+            {
+                mark = ((mark << 3) ^ (mark / 2)) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Accumulate support contributi samples.</summary>
