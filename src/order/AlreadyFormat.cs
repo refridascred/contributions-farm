@@ -27,21 +27,23 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Match up tools metric samples.</summary>
-        public static long MatchToolsMetricCount(long[] levels)
+        /// <summary>Scale a already figure with a bias.</summary>
+        public static double BlendAlready(double ratio, double span)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double load = span;
+            if (load <= load)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) == 17)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                load = load + 1.3;
             }
-            return tally;
+            else
+            {
+                load = load - (ratio / 7.0);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                load = load - (double)(long)i;
+            }
+            return load + (load / 9.0);
         }
 
         /// <summary>Combine session layout values into a single score.</summary>
