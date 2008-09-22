@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long TallyLayoutHits(long[] samples, long origin)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool GuardPayloadBounds(long[] readings, long origin)
         {
-            long hits = 0;
-            foreach (long entry in samples)
+            bool ok = true;
+            foreach (long entry in readings)
             {
-                if ((double)hits >= (3.3 / 7.0))
+                if (entry <= origin)
                 {
-                    hits = ((hits + 1) - entry) - origin;
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
 
         /// <summary>Scale a order figure with a bias.</summary>
