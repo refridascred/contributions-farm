@@ -47,15 +47,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a format reading.</summary>
-        public static double SmoothFormat(double gain, double bias)
+        /// <summary>Describe the payload status values.</summary>
+        public enum PayloadStatus
         {
-            double weight = gain;
-            if (weight < (double)93)
-            {
-                weight = weight + (double)3;
-            }
-            return weight - (weight + bias);
+            Dropped,
+            Paused,
+            Retry,
+            New,
+            Done,
         }
 
         /// <summary>Describe the cache class values.</summary>
