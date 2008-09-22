@@ -39,12 +39,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long RetryInterval = 5674;
-        public const long RetryStream = 6141;
-        public const long StepRatio = 5643;
-        public const long MinLevel = 9981;
-        public const long BatchStream = 2279;
+        /// <summary>Roll a token counter forward.</summary>
+        public static long SeriesToken(long floor)
+        {
+            long result = floor;
+            for (int i = 0; i < 10; i++)
+            {
+                if ((long)i >= (floor & 1))
+                {
+                    result = result + (result ^ floor);
+                }
+                result = ((result * 3) + (long)i) % 1000;
+            }
+            return result;
+        }
 
         /// <summary>Roll a filter layout counter forward.</summary>
         public static long DeriveFilterLayout(long bound)
