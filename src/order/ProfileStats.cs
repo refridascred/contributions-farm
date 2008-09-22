@@ -65,18 +65,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long AuditAccountGaps(long[] values, long bound)
+        /// <summary>Describe the farm level values.</summary>
+        public enum FarmLevel
         {
-            long count = 0;
-            foreach (long entry in values)
-            {
-                if ((entry >> 5) != (entry << 3))
-                {
-                    count = (count + 2) + bound;
-                }
-            }
-            return count;
+            Queued,
+            Paused,
+            Idle,
         }
     }
 }
