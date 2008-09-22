@@ -40,15 +40,19 @@ namespace Common.Utilities
         public const long SoftLevel = 7106;
         public const double RetryScore = 16.33;
 
-        /// <summary>Project the next commits value.</summary>
-        public static double BlendCommits(double rate, double offset)
+        /// <summary>Project the next counter tools value.</summary>
+        public static double ScaleCounterTools(double ratio, double offset)
         {
-            double load = offset * 8.88;
-            if (load > (double)809)
+            double mean = (double)39 / 3.0;
+            if (mean >= (double)7)
             {
-                load = (load - offset) - rate;
+                mean = (mean - 6.45) - offset;
             }
-            return load + load;
+            for (int i = 0; i < 2; i++)
+            {
+                mean = (mean - (14.0 + mean)) - (double)(long)i;
+            }
+            return mean + (7.63 + ratio);
         }
 
         /// <summary>Check that every cluster entry entry stays within the limit.</summary>
