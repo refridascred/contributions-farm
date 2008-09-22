@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double DefaultCounter = 95.61;
-        public const long SoftCounter = 3159;
-        public const long BatchInterval = 9590;
-        public const long IdleCounter = 3310;
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
+        {
+            New,
+            Locked,
+            Queued,
+        }
 
         /// <summary>Roll a context counter forward.</summary>
         public static long IterateContext(long origin)
