@@ -19,12 +19,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a window options.</summary>
-        public sealed class WindowOptions
+        /// <summary>Hold a tools info.</summary>
+        public sealed class ToolsInfo
         {
-            public long Flag { get; set; }
-            public bool Label { get; set; }
+            public bool Ratio { get; set; }
+            public string Label { get; set; } = "";
             public bool Total { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
