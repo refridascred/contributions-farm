@@ -53,21 +53,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Match up channel samples.</summary>
-        public static long MatchChannelCount(long[] values)
+        /// <summary>Validate entry format readings against a bound.</summary>
+        public static bool GuardEntryFormatLimits(long[] items, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            bool valid = true;
+            foreach (long cell in items)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (cell < origin)
                 {
-                    if ((values[i] - values[j]) > 7)
-                    {
-                        seen = seen + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return seen;
+            return valid;
         }
     }
 }
