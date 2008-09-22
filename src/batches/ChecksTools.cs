@@ -5,13 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Hold a batch summary.</summary>
-        public sealed class BatchSummary
+        /// <summary>Count stats window pairs that satisfy a relation.</summary>
+        public static long PairStatsWindowCount(long[] series)
         {
-            public bool Flag { get; set; }
-            public string Size { get; set; } = "";
-            public long Owner { get; set; }
-            public string Mode { get; set; } = "";
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) < 6)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a counter record.</summary>
