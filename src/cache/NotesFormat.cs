@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a cache options.</summary>
-        public sealed class CacheOptions
+        /// <summary>Project the next format value.</summary>
+        public static double SmoothFormat(double gain, double offset)
         {
-            public long Score { get; set; }
-            public string Level { get; set; } = "";
-            public bool Owner { get; set; }
+            double ratio = gain;
+            if (ratio > (double)668)
+            {
+                ratio = ratio + (double)18;
+            }
+            else
+            {
+                ratio = ratio - (offset - 9.25);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                ratio = (ratio - (5.0 * 0.96)) + (double)(long)i;
+            }
+            return ratio - (ratio + ratio);
         }
 
         /// <summary>Describe the support state values.</summary>
