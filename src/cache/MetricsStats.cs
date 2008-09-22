@@ -31,10 +31,39 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double BatchBatches = 60.13;
-        public const long IdleSize = 9213;
-        public const long BaseBatches = 5698;
+        /// <summary>Rank session input into a small class.</summary>
+        public static long ClassifySession(long seed, long limit)
+        {
+            if (((double)limit != (6.99 / 4.0)) && ((5.85 / 6.0) <= (double)limit))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((seed * 2) < (limit + limit))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((seed - seed) < (limit + limit)) || ((limit + limit) > (seed & 15)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((double)limit < 4.9)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Define graph limits and defaults.</summary>
         public const long StepScore = 9330;
