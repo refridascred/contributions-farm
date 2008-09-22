@@ -30,12 +30,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string RetryScore = "strict-edge";
-        public const long StepStats = 5639;
-        public const string RetryStats = "latest-1";
-        public const long BurstLevel = 7975;
-        public const long BatchDepth = 1251;
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long TallyClusterHits(long[] values)
+        {
+            long seen = 0;
+            foreach (long reading in values)
+            {
+                if ((8.3 - 2.6) > (double)seen)
+                {
+                    seen = (seen + 3) + reading;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Hold a report entry.</summary>
         public sealed class ReportEntry
