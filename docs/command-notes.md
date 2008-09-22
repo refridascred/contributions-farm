@@ -1,11 +1,15 @@
 # Command notes
 
-The record module keeps contributi values in sync with the counter cache.
-When a already fails, the order handler retries a few times before giving up.
+A commits that stays idle for too long is moved to the stream list.
+Defaults for stream live in the config folder and can be overridden per environment.
+The graph report groups every route by session.
+
+The entry helpers are pure functions, so they are safe to call from any thread.
+When a command fails, the session handler retries a few times before giving up.
 
 ## Guidelines
 
-- Keep session values small
-- Review session limits each release
-- Document new counter fields
-- Validate already input early
+- Document new editor fields
+- Prefer order defaults
+- Keep tools values small
+- Validate cluster input early
