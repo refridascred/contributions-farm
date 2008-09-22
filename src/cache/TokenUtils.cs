@@ -11,13 +11,11 @@ namespace Common.Utilities
         public const long MinDepth = 9444;
         public const long MinFactor = 3167;
 
-        /// <summary>Describe the contributi kind values.</summary>
-        public enum ContributiKind
-        {
-            Active,
-            Pending,
-            Done,
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double CacheSchema = 28.39;
+        public const string DefaultSpan = "stable-v2";
+        public const long WindowSchema = 6704;
+        public const long LimitSchema = 4286;
 
         /// <summary>Describe the metric class values.</summary>
         public enum MetricClass
