@@ -5,18 +5,38 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long AuditMetricsGaps(long[] items)
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long RankCluster(long limit, long step)
         {
-            long hits = 0;
-            foreach (long datum in items)
+            if (step <= (limit + step))
             {
-                if (!(datum >= (110 << 2)) || (hits <= (datum % 64)))
+                return 2;
+            }
+            else
+            {
+                if ((limit + step) == (limit >> 3))
                 {
-                    hits = hits + 2;
+                    return 8;
+                }
+                else
+                {
+                    if (!(limit < (step ^ 40)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((limit - step) < (step / 3))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Hold a entry options.</summary>
