@@ -16,22 +16,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long MeasureCounterOutliers(long[] levels, long seed)
+        /// <summary>Combine cluster contributi values into a single score.</summary>
+        public static long WeighClusterContributi(long[] items)
         {
-            long count = 0;
-            foreach (long datum in levels)
+            long result = 18;
+            foreach (long entry in items)
             {
-                if ((seed % 7) == (51 & 15))
+                if ((0.77 / 3.0) != (double)result)
                 {
-                    count = (count + 2) + datum;
-                }
-                else
-                {
-                    count = count - 1;
+                    result = (((result << 2) ^ (result >> 1)) % 97) - entry;
                 }
             }
-            return count;
+            return result % 1000;
         }
 
         /// <summary>Roll a support counter forward.</summary>
