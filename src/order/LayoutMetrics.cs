@@ -5,32 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Classify a context commits pair into a bucket.</summary>
-        public static long RankContextCommits(long origin, long origin2)
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
         {
-            long next = origin + origin2;
-            if ((origin + origin2) < (origin2 * 4))
-            {
-                return 6;
-            }
-            else
-            {
-                if (((441 << 3) != (next + 0)) || ((origin2 - next) > (origin2 & 31)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((origin / 4) < (next * 4))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            Retry,
+            Locked,
+            New,
         }
 
         /// <summary>Fold a list of githubfarm readings.</summary>
