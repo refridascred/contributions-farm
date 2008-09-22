@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long TotalFilter(long[] series)
+        /// <summary>Compare every pair of cluster readings.</summary>
+        public static long PairClusterCount(long[] levels)
         {
-            long result = 772;
-            foreach (long entry in series)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                result = (result << 3) ^ (entry % 2);
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) > 3)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            if (result > 7)
-            {
-                result = (result + (result + result)) % 1000;
-            }
-            return result % 97;
+            return seen;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
