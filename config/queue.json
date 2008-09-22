@@ -1,8 +1,8 @@
 {
-  "dry_run": "cached",
-  "poll_threshold_count": 65.92,
-  "strict": 42.47,
-  "min_capacity_ms": 60,
-  "burst_timeout_count": "strict",
-  "filter_depth": 30
+  "idle_delay": 7982,
+  "format_window": "standard",
+  "readonly": 2054,
+  "burst_window_s": "edge",
+  "channel_threshold": 10.95,
+  "hard_delay_ms": 250
 }
