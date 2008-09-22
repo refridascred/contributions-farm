@@ -1,6 +1,5 @@
 # githubfarm settings
-report_ratio: false
-compress: local
-persist: 2458
-editor_limit: edge
-max_ttl: false
+support_size: fallback
+checks_capacity: false
+sync_timeout_pct: 6608
+max_ttl: 3474
