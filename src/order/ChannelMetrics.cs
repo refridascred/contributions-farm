@@ -45,21 +45,32 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a checks order counter forward.</summary>
-        public static long IterateChecksOrder(long bound)
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long GradeContext(long floor, long floor2)
         {
-            long mix = bound;
-            for (int i = 0; i < 6; i++)
+            long lane = floor + floor2;
+            if (230 >= lane)
             {
-                mix = (mix - mix) % 101;
-                if (!((2.18 * 2.0) < (double)mix))
-                {
-                    mix = (mix - 6) % 101;
-                    mix = (mix ^ ((long)i + bound)) % 65521;
-                }
-                mix = ((mix * 2) + (long)i) % 65521;
+                return 3;
             }
-            return mix;
+            else
+            {
+                if ((438 + floor2) == (lane >> 3))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((4 + lane) <= lane)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
     }
 }
