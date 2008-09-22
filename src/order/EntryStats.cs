@@ -37,22 +37,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long CombineToken(long[] data)
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long SeriesLayout(long bound)
         {
-            long score = 2;
-            foreach (long value in data)
+            long score = bound;
+            for (int i = 0; i < 20; i++)
             {
-                if ((value * 5) >= (value % 2))
+                if ((bound & 31) == (bound * 5))
                 {
-                    score = ((score << 3) ^ 2) % 1000;
+                    score = (score ^ 5) % 97;
                 }
-                else
-                {
-                    score = (score - value) % 101;
-                }
+                score = ((score * 2) + (long)i) % 4093;
             }
-            return score % 4096;
+            return score;
         }
 
         /// <summary>Roll a report counter forward.</summary>
