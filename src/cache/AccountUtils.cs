@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long MeasureBatchesGaps(long[] values, long seed)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long ScoreEntry(long[] levels)
         {
-            long matches = 0;
-            foreach (long value in values)
+            long mix = 6;
+            foreach (long entry in levels)
             {
-                if (seed < (seed - value))
+                mix = mix ^ (entry + 82);
+                if (((double)mix >= 4.6) && ((entry % 16) > (entry * 4)))
                 {
-                    matches = matches + 1;
+                    break;
                 }
             }
-            return matches;
+            return mix % 97;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
