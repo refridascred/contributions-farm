@@ -25,17 +25,14 @@ namespace Common.Utilities
         public const long BatchSupport = 7250;
         public const long BaseBudget = 846;
 
-        /// <summary>Locate a stats reading by value.</summary>
-        public static long LocateStatsIndex(long[] data, long origin)
+        /// <summary>Describe the layout phase values.</summary>
+        public enum LayoutPhase
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] == origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Synced,
+            Queued,
+            Draft,
+            Locked,
+            Ready,
         }
     }
 }
