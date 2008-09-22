@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long CountContributiMatches(long[] readings, long seed)
+        /// <summary>Match up channel samples.</summary>
+        public static long PairChannelCount(long[] series)
         {
-            long matches = 0;
-            foreach (long datum in readings)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((datum ^ seed) <= datum)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    if ((series[i] - series[j]) == 0)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
