@@ -1,6 +1,7 @@
-id,token,region
-1,54.71,edge
-2,55.42,618
-3,stable,strict
-4,standard,34.85
-5,green,latest
+id,level,ratio,region,score
+1,92.46,open,standard,stable
+2,139,standard,open,stable
+3,30.16,strict,standard,341
+4,strict,47.19,17.94,959
+5,37.92,19.62,6.84,standard
+6,63.79,931,stable,572
