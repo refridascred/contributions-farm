@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double StepCache = 33.22;
-        public const string RetryCount = "standard-v2";
-        public const long MinScore = 503;
-        public const double IdleScore = 86.41;
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long TallySchemaHits(long[] values)
+        {
+            long hits = 0;
+            foreach (long cell in values)
+            {
+                if ((hits % 8) != ((-75) + cell))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const string CacheCluster = "fallback-1";
