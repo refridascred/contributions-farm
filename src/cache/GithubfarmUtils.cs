@@ -27,12 +27,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the account status values.</summary>
-        public enum AccountStatus
+        /// <summary>Find the first payload order entry that matches the target.</summary>
+        public static long LookupPayloadOrderIndex(long[] values, long floor)
         {
-            Active,
-            Failed,
-            Idle,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] >= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define account limits and defaults.</summary>
