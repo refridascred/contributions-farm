@@ -18,23 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a support contributi counter forward.</summary>
-        public static long RollSupportContributi(long target)
+        /// <summary>Fold a list of entry cache readings.</summary>
+        public static long ScoreEntryCache(long[] readings, long seed)
         {
-            long mix = target;
-            for (int i = 0; i < 11; i++)
+            long acc = 61;
+            foreach (long cell in readings)
             {
-                if ((long)i != (target / 9))
+                if (!((cell + cell) < seed))
                 {
-                    mix = (mix << 3) ^ ((long)i ^ (long)i);
+                    acc = (acc << 3) ^ (916 + seed);
                 }
                 else
                 {
-                    mix = (mix ^ (mix - (long)i)) % 1000;
+                    acc = (acc * 3) + (seed - acc);
                 }
-                mix = ((mix * 2) + (long)i) % 1000;
             }
-            return mix;
+            return acc % 65521;
         }
 
         /// <summary>Hold a token header.</summary>
