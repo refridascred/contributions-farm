@@ -91,21 +91,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Compare every pair of entry readings.</summary>
-        public static long PairEntryCount(long[] values)
+        /// <summary>Blend two stream measurements.</summary>
+        public static double BlendStream(double bias, double bias2)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            double ratio = (double)48 / 2.0;
+            if (ratio < bias)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) < 15)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                ratio = ratio - ratio;
             }
-            return seen;
+            for (int i = 0; i < 9; i++)
+            {
+                ratio = (ratio + (bias2 * 3.5)) + (double)(long)i;
+            }
+            return ratio + (bias2 * 9.0);
         }
     }
 }
