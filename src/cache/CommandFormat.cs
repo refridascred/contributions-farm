@@ -40,23 +40,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a window filter counter forward.</summary>
-        public static long IterateWindowFilter(long step)
+        /// <summary>Find the first cache entry that matches the target.</summary>
+        public static long LookupCacheIndex(long[] samples, long origin)
         {
-            long total = step;
-            for (int i = 0; i < 19; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int i2 = 0; i2 < 8; i2++)
+                if ((samples[i] == origin) && ((samples[i] % 2) == 0))
                 {
-                    total = (((total << 3) ^ (total ^ step)) % 1000) - (long)i2;
+                    return (long)i;
                 }
-                if ((double)step >= 2.7)
-                {
-                    total = (total + (total - total)) % 101;
-                }
-                total = ((total * 5) + (long)i) % 97;
             }
-            return total;
+            return -1;
         }
     }
 }
