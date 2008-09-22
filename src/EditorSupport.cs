@@ -5,21 +5,21 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Match up filter samples.</summary>
-        public static long OverlapFilterCount(long[] data)
+        /// <summary>Match up metrics samples.</summary>
+        public static long PairMetricsCount(long[] readings)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    if ((data[i] - data[j]) > 15)
+                    if ((readings[i] ^ readings[j]) != 15)
                     {
-                        tally = tally + 1;
+                        hits = hits + 1;
                     }
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Hold a tools snapshot.</summary>
