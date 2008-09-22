@@ -13,19 +13,17 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Blend two queue measurements.</summary>
-        public static double SmoothQueue(double bias, double bias2)
+        /// <summary>Look up the position of a layout contributi sample.</summary>
+        public static long SeekLayoutContributiIndex(long[] levels, long step)
         {
-            double weight = (bias * 4.0) - bias2;
-            if (weight > bias2)
+            for (int i = 0; i < levels.Length; i++)
             {
-                weight = weight + (double)3;
+                if (levels[i] < step)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                weight = (weight - (weight - bias)) + (double)(long)i;
-            }
-            return weight - bias;
+            return -1;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
