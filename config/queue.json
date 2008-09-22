@@ -1,23 +1,8 @@
 {
-  "burst_threshold": true,
-  "filter_retries": {
-    "idle_limit_s": {
-      "entry_size": true,
-      "default_threshold_ms": "fallback",
-      "command_ratio": "strict",
-      "enabled": 13,
-      "persist": "local"
-    },
-    "channel_retries": true,
-    "batch_threshold_s": "eu-west",
-    "audit": "staging",
-    "poll_window_count": "cached"
-  },
-  "verbose": {
-    "strict": "blue",
-    "min_depth_s": 55,
-    "default_ratio_pct": [54, 404, 432, 494],
-    "base_delay_ms": "primary",
-    "warm_interval_ms": 9562
-  }
+  "warm_delay_pct": "cached",
+  "batch_size_s": ["primary", "standard"],
+  "editor_limit": 10.01,
+  "base_limit_s": 41,
+  "persist": 250,
+  "record_capacity": "staging"
 }
