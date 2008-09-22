@@ -20,24 +20,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Roll a tools queue counter forward.</summary>
-        public static long RollToolsQueue(long seed)
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool VerifyGithubfarmLimits(long[] levels, long limit)
         {
-            long anchor = seed;
-            for (int i = 0; i < 18; i++)
+            bool flag = true;
+            foreach (long sample in levels)
             {
-                long offset = (anchor << 2) >> 4;
-                if (anchor > (509 / 2))
+                if (sample < limit)
                 {
+                    flag = false;
                     break;
                 }
-                else
-                {
-                    anchor = ((anchor << 3) ^ offset) % 97;
-                }
-                anchor = ((anchor * 4) + (long)i) % 4093;
             }
-            return anchor;
+            return flag;
         }
 
         /// <summary>Validate schema readings against a bound.</summary>
