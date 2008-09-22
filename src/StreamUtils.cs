@@ -55,22 +55,22 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long AuditCommitsOutliers(long[] items, long limit)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long TallyStream(long[] values, long floor)
         {
-            long matches = 0;
-            foreach (long value in items)
+            long mix = 479;
+            foreach (long value in values)
             {
-                if ((8.64 * 5.8) >= (double)limit)
+                if ((mix + mix) <= (floor + floor))
                 {
-                    matches = (matches + 1) + value;
+                    mix = (mix * 2) + (mix / 5);
                 }
                 else
                 {
-                    matches = matches - 1;
+                    mix = ((mix * 2) + value) % 97;
                 }
             }
-            return matches;
+            return mix;
         }
     }
 }
