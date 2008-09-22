@@ -1,12 +1,11 @@
 {
-  "account_window": ["latest", "legacy"],
-  "enabled": 3109,
-  "queue_retries": {
-    "burst_retries_pct": true,
-    "compress": "green",
-    "flush_timeout_s": 90.61,
-    "flush_capacity_ms": "legacy",
-    "dry_run": 77,
-    "warm_ratio_ms": "eu-west"
-  }
+  "min_size_count": 786,
+  "token_window": {
+    "soft_ratio_s": 85,
+    "warm_size_s": 56.13,
+    "default_threshold_ms": "eu-west",
+    "record_ratio": "primary"
+  },
+  "base_interval": 12.52,
+  "cache_threshold_s": 100
 }
