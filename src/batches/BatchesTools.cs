@@ -19,14 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the queue kind values.</summary>
-        public enum QueueKind
+        /// <summary>Hold a window options.</summary>
+        public sealed class WindowOptions
         {
-            Synced,
-            Stale,
-            Retry,
-            Closed,
-            New,
+            public long Flag { get; set; }
+            public bool Label { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Combine token values into a single score.</summary>
