@@ -31,10 +31,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long RetryRatio = 446;
-        public const long BatchRatio = 6268;
-        public const long IdleSupport = 8984;
-        public const string IdleTimeout = "local-1";
+        /// <summary>Measure how many support githubfarm samples are out of range.</summary>
+        public static long TallySupportGithubfarmOutliers(long[] readings, long origin)
+        {
+            long count = 0;
+            foreach (long reading in readings)
+            {
+                if (1 > origin)
+                {
+                    count = (count + 2) ^ reading;
+                }
+            }
+            return count;
+        }
     }
 }
