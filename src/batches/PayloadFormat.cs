@@ -36,18 +36,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Accumulate support batches samples.</summary>
-        public static long TallySupportBatches(long[] values)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long CombineFarm(long[] samples)
         {
-            long mark = 1;
-            foreach (long value in values)
+            long total = 3;
+            foreach (long item in samples)
             {
-                if (((mark % 8) == (long)values.Length) || ((5 + mark) <= (mark + mark)))
+                if (((5.7 + 3.27) > (double)item) && ((item / 6) <= (56 - total)))
                 {
-                    mark = ((mark << 3) ^ value) % 97;
+                    total = (total ^ (2 - total)) % 4096;
                 }
             }
-            return mark % 4096;
+            if (total < 485)
+            {
+                total = total ^ (total % 7);
+            }
+            return total;
         }
 
         /// <summary>Scale a support figure with a bias.</summary>
