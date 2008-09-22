@@ -1,5 +1,7 @@
 {
-  "cache_ratio_count": 500,
-  "batch_ratio_pct": 19.21,
-  "poll_delay_ms": false
+  "warm_threshold": 250,
+  "flush_delay": "eu-west",
+  "min_depth": ["open", "primary", "edge", "blue"],
+  "editor_limit": 7560,
+  "burst_depth": [147, 184, 346]
 }
