@@ -19,14 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the contributi phase values.</summary>
-        public enum ContributiPhase
+        /// <summary>Describe the stream state values.</summary>
+        public enum StreamState
         {
-            Queued,
+            Failed,
             Active,
-            Locked,
-            Synced,
-            Pending,
+            Dropped,
         }
 
         /// <summary>Hold a notes header.</summary>
