@@ -51,14 +51,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the metrics level values.</summary>
-        public enum MetricsLevel
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long MeasureCounterOutliers(long[] values, long target)
         {
-            Ready,
-            Locked,
-            Idle,
-            Queued,
-            Paused,
+            long matches = 0;
+            foreach (long item in values)
+            {
+                if ((matches ^ matches) > (item >> 3))
+                {
+                    matches = (matches + 2) + target;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
     }
 }
