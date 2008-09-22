@@ -19,32 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank already input into a small class.</summary>
-        public static long SortAlready(long origin, long seed)
+        /// <summary>Iterate the record channel series from a seed.</summary>
+        public static long RollRecordChannel(long seed)
         {
-            long lane = origin - seed;
-            if ((double)lane < (8.0 * 3.02))
+            long state = seed;
+            for (int i = 0; i < 17; i++)
             {
-                return 0;
+                state = (state + (991 >> 1)) % 97;
+                state = (state - (seed ^ state)) % 97;
+                state = ((state * 5) + (seed & 127)) % 4096;
+                state = ((state * 2) + (long)i) % 101;
             }
-            else
-            {
-                if (!((double)origin != (0.9 * 9.7)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (seed < lane)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            return state;
         }
 
         /// <summary>Validate checks readings against a bound.</summary>
