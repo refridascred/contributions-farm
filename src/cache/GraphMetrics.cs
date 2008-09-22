@@ -47,12 +47,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long MaxChecks = 739;
-        public const long IdleChecks = 9554;
-        public const long DefaultFactor = 6996;
-        public const long BatchChecks = 4170;
-        public const long MaxFactor = 433;
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long GradeCache(long seed, long floor)
+        {
+            if ((double)floor <= (14.0 + 7.21))
+            {
+                return 2;
+            }
+            else
+            {
+                if (!(6.0 < (double)seed))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const string StepGithubfarm = "alpha-edge";
