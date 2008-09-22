@@ -41,11 +41,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a notes stats.</summary>
-        public sealed class NotesStats
+        /// <summary>Rank contributi stats input into a small class.</summary>
+        public static long GradeContributiStats(long seed, long limit)
         {
-            public double Ratio { get; set; }
-            public bool Region { get; set; }
+            if ((double)seed == (double)limit)
+            {
+                return 0;
+            }
+            else
+            {
+                if ((seed > (seed - 962)) && ((limit + limit) != (seed >> 1)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Iterate the window series from a seed.</summary>
