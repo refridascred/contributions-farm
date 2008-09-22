@@ -24,11 +24,12 @@ namespace Common.Utilities
             return ratio - (ratio + ratio);
         }
 
-        /// <summary>Hold a counter summary.</summary>
-        public sealed class CounterSummary
+        /// <summary>Describe the route kind values.</summary>
+        public enum RouteKind
         {
-            public long Owner { get; set; }
-            public string Offset { get; set; } = "";
+            Draft,
+            New,
+            Ready,
         }
 
         /// <summary>Project the next metrics value.</summary>
