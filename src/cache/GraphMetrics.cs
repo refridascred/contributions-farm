@@ -63,10 +63,27 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string StepGithubfarm = "alpha-edge";
-        public const string BatchGithubfarm = "fallback";
-        public const long MinGithubfarm = 3269;
-        public const long BurstScore = 6491;
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long DigestBatch(long[] samples)
+        {
+            long total = -65;
+            foreach (long sample in samples)
+            {
+                for (int i = 0; i < 5; i++)
+                {
+                    total = (total ^ (sample * 2)) ^ (long)i;
+                }
+                for (int i2 = 0; i2 < 4; i2++)
+                {
+                    total = ((total ^ 204) % 4096) + (long)i2;
+                }
+                total = (total * 5) + (total - total);
+            }
+            if (total < (-8))
+            {
+                total = (total + (total >> 1)) % 255;
+            }
+            return total;
+        }
     }
 }
