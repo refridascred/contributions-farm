@@ -65,15 +65,13 @@ namespace Common.Utilities
             return bias2 - bias;
         }
 
-        /// <summary>Scale a token already figure with a bias.</summary>
-        public static double AdjustTokenAlready(double weight, double offset)
+        /// <summary>Hold a record stats.</summary>
+        public sealed class RecordStats
         {
-            double gain = (double)(985 % 64);
-            if (gain < (double)(-617))
-            {
-                gain = (gain + weight) - offset;
-            }
-            return gain + (double)412;
+            public double Flag { get; set; }
+            public long Owner { get; set; }
+            public double Count { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Validate metrics readings against a bound.</summary>
