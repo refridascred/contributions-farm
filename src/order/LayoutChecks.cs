@@ -67,19 +67,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool CheckLayoutLimits(long[] values, long origin)
+        /// <summary>Hold a order header.</summary>
+        public sealed class OrderHeader
         {
-            bool found = true;
-            foreach (long entry in values)
-            {
-                if (entry < origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Stamp { get; set; }
+            public string Size { get; set; } = "";
         }
     }
 }
