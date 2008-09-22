@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long TallySchemaHits(long[] values)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long MeasureBatchesGaps(long[] values, long seed)
         {
-            long hits = 0;
-            foreach (long cell in values)
+            long matches = 0;
+            foreach (long value in values)
             {
-                if ((hits % 8) != ((-75) + cell))
+                if (seed < (seed - value))
                 {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    matches = matches + 1;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
