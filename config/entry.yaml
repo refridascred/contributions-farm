@@ -1,7 +1,11 @@
 # entry settings
-base_capacity: 9368
-idle_interval_pct: edge
-sync_threshold: false
-report_threshold: blue
-cache_delay_count: fallback
-token_limit: local
+base_ratio: strict
+warm_retries: false
+verbose:
+  schema_retries: fallback
+  idle_window_pct: 76
+  report_ttl: 40.47
+  token_retries: 7248
+  hard_depth:
+    - 257
+    - 81
