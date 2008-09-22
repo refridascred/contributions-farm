@@ -1,8 +1,6 @@
 {
-  "poll_interval_pct": [346, 33, 437, 65],
-  "githubfarm_retries": "legacy",
-  "compress": "primary",
-  "default_interval_s": 85.46,
-  "cache_threshold_pct": 30,
-  "enabled": 73
+  "flush_interval_pct": 60,
+  "min_interval": 46,
+  "cache_delay_ms": 44.76,
+  "flush_limit_count": 9858
 }
