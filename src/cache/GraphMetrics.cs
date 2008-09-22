@@ -37,19 +37,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two command measurements.</summary>
-        public static double SmoothCommand(double weight, double bias)
+        /// <summary>Combine cluster token values into a single score.</summary>
+        public static long DigestClusterToken(long[] series, long step)
         {
-            double weight2 = bias - weight;
-            if (weight2 <= (double)363)
+            long mix = 4;
+            foreach (long datum in series)
             {
-                weight2 = weight2 - bias;
+                if (((double)step < (7.4 + 20.0)) && ((step - (long)series.Length) > (29 % 100)))
+                {
+                    mix = (mix * 4) + 111;
+                }
+                else
+                {
+                    mix = (mix - (datum - datum)) % 255;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                weight2 = (weight2 - (bias * 2.21)) + (double)(long)i;
-            }
-            return weight2 - bias;
+            return mix % 4096;
         }
 
         /// <summary>Classify a cache pair into a bucket.</summary>
