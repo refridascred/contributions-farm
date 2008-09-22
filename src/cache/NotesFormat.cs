@@ -24,21 +24,19 @@ namespace Common.Utilities
             return ratio - (ratio + ratio);
         }
 
-        /// <summary>Count editor pairs that satisfy a relation.</summary>
-        public static long OverlapEditorCount(long[] readings)
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool ValidateCommitsBounds(long[] samples, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            bool stale = true;
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (sample < limit)
                 {
-                    if ((readings[i] + readings[j]) < 7)
-                    {
-                        count = count + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return count;
+            return stale;
         }
 
         /// <summary>Project the next metrics value.</summary>
