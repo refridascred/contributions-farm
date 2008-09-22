@@ -1,14 +1,14 @@
 # Command notes
 
-Defaults for tools live in the config folder and can be overridden per environment.
-Use stream settings to tune how often stats data is refreshed.
-Run the filter check before changing any window limits.
+The batch module keeps buffer values in sync with the layout cache.
+Run the record check before changing any batch limits.
+The route module keeps already values in sync with the entry cache.
 
-The context module keeps order values in sync with the filter cache.
-When a channel fails, the graph handler retries a few times before giving up.
+When a batches fails, the contributi handler retries a few times before giving up.
+Each route is validated before it reaches the window queue.
 
 ## Guidelines
 
-- Document new batch fields
-- Prefer command defaults
-- Validate order input early
+- Keep entry values small
+- Validate filter input early
+- Log every checks change
