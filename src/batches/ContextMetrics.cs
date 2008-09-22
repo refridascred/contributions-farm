@@ -62,13 +62,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the metrics class values.</summary>
-        public enum MetricsClass
+        /// <summary>Hold a session options.</summary>
+        public sealed class SessionOptions
         {
-            Done,
-            Active,
-            Locked,
-            Dropped,
+            public long Score { get; set; }
+            public long Weight { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
