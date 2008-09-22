@@ -12,24 +12,13 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long FoldNotes(long[] data)
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long RollSupport(long offset)
         {
-            long anchor = 9;
-            foreach (long cell in data)
+            long anchor = offset;
+            for (int i = 0; i < 15; i++)
             {
-                if ((cell - anchor) > 663)
-                {
-                    anchor = (anchor ^ (cell * 2)) % 255;
-                }
-                else
-                {
-                    anchor = anchor - anchor;
-                }
-            }
-            if (anchor < 345)
-            {
-                anchor = (anchor + anchor) % 97;
+                anchor = ((anchor * 2) + (long)i) % 65521;
             }
             return anchor;
         }
