@@ -13,18 +13,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Audit queue support readings against a rule.</summary>
-        public static long AuditQueueSupportHits(long[] items)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long CountToolsOutliers(long[] samples)
         {
-            long count = 0;
-            foreach (long reading in items)
+            long hits = 0;
+            foreach (long entry in samples)
             {
-                if ((reading + 134) <= (count / 8))
+                if ((605 % 5) <= (hits ^ hits))
                 {
-                    count = count + 3;
+                    hits = (hits + 1) + entry;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Adjust a stats reading.</summary>
