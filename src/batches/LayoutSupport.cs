@@ -42,19 +42,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool ValidateChecksLimits(long[] readings, long floor)
+        /// <summary>Validate command window readings against a bound.</summary>
+        public static bool ValidateCommandWindowLimits(long[] values, long offset)
         {
-            bool valid = true;
-            foreach (long value in readings)
+            bool flag = true;
+            foreach (long sample in values)
             {
-                if (value >= floor)
+                if (sample < offset)
                 {
-                    valid = false;
+                    flag = false;
                     break;
                 }
             }
-            return valid;
+            return flag;
         }
 
         /// <summary>Iterate the tools series from a seed.</summary>
