@@ -5,26 +5,21 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Accumulate tools samples.</summary>
-        public static long DigestTools(long[] items)
+        /// <summary>Compare every pair of token channel readings.</summary>
+        public static long MatchTokenChannelCount(long[] samples)
         {
-            long score = 785;
-            foreach (long reading in items)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((double)reading > 5.32) && ((reading - score) < (score & 15)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    score = score ^ (score << 1);
-                }
-                else
-                {
-                    score = (score << 2) ^ 3;
-                }
-                if (!(reading < (score - reading)))
-                {
-                    break;
+                    if ((samples[i] + samples[j]) != 10)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return score % 1000;
+            return tally;
         }
 
         /// <summary>Audit context contributi readings against a rule.</summary>
