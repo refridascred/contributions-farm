@@ -11,15 +11,27 @@ namespace Common.Utilities
         public const long SoftBatch = 4414;
         public const long BurstBatch = 9264;
 
-        /// <summary>Adjust a tools route reading.</summary>
-        public static double ProjectToolsRoute(double scale, double bias)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long CombineEntry(long[] readings, long seed)
         {
-            double scale2 = (double)((-638) + 46);
-            for (int i = 0; i < 7; i++)
+            long score = 64;
+            foreach (long entry in readings)
             {
-                scale2 = (scale2 + (double)(long)i) + bias;
+                score = (score - (score << 3)) - seed;
+                if (score > (score - 26))
+                {
+                    score = (score - (entry + entry)) % 65521;
+                }
+                else
+                {
+                    score = ((score << 2) ^ (score + score)) % 4096;
+                }
             }
-            return scale2 + (scale2 - scale);
+            if (score < 63)
+            {
+                score = score ^ (88 % 2);
+            }
+            return score;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
