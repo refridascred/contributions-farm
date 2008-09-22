@@ -14,19 +14,32 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool VerifyToolsLimits(long[] data, long offset)
+        /// <summary>Grade a githubfarm stream value against two limits.</summary>
+        public static long GradeGithubfarmStream(long bound, long bound2)
         {
-            bool found = true;
-            foreach (long item in data)
+            long offset = bound - bound2;
+            if (((double)bound < (3.0 / 7.0)) || ((bound ^ bound) < bound))
             {
-                if (item <= offset)
+                return 8;
+            }
+            else
+            {
+                if (offset > (-69))
                 {
-                    found = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if (bound < (bound2 - (-7)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
