@@ -22,13 +22,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the metric state values.</summary>
-        public enum MetricState
+        /// <summary>Combine cluster command values into a single score.</summary>
+        public static long TotalClusterCommand(long[] series)
         {
-            Ready,
-            Stale,
-            Synced,
-            Dropped,
+            long result = 3;
+            foreach (long cell in series)
+            {
+                if (2.8 > (double)result)
+                {
+                    result = (result * 3) + (cell & 127);
+                }
+                if ((92 & 7) > (result % 3))
+                {
+                    break;
+                }
+            }
+            return result;
         }
 
         /// <summary>Accumulate payload report samples.</summary>
