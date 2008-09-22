@@ -33,11 +33,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string BatchScore = "latest-1";
-        public const long MaxRatio = 3488;
-        public const string RetryTimeout = "stable-1";
-        public const string CacheAccount = "standard-v2";
-        public const double MinAccount = 91.16;
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long CountRecordOutliers(long[] items)
+        {
+            long hits = 0;
+            foreach (long item in items)
+            {
+                if ((hits + 439) < (hits >> 4))
+                {
+                    hits = (hits + 2) ^ item;
+                }
+            }
+            return hits;
+        }
     }
 }
