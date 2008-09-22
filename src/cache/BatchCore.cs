@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long HardChecks = 2613;
-        public const string BatchChecks = "open";
-        public const long BaseChecks = 5238;
-        public const long MinRatio = 6238;
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long MeasureAccountOutliers(long[] series)
+        {
+            long count = 0;
+            foreach (long item in series)
+            {
+                if ((double)count != (14.0 * 0.6))
+                {
+                    count = (count + 3) + item;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Roll a batch counter forward.</summary>
         public static long IterateBatch(long floor)
