@@ -45,22 +45,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine metric payload values into a single score.</summary>
-        public static long ScoreMetricPayload(long[] samples, long seed)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long TallyChannelHits(long[] data)
         {
-            long mix = 44;
-            foreach (long entry in samples)
+            long count = 0;
+            foreach (long cell in data)
             {
-                for (int i = 0; i < 9; i++)
+                if ((((double)cell >= (1.27 - 2.2)) && (cell >= (94 / 9))) || ((6.7 / 4.0) >= (double)cell))
                 {
-                    mix = (mix ^ (entry * 2)) + (long)i;
-                }
-                if ((seed >> 4) == (492 / 3))
-                {
-                    mix = mix ^ (mix * 3);
+                    count = count + 1;
                 }
             }
-            return mix;
+            return count;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
