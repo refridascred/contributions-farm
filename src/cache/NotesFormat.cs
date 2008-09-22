@@ -5,23 +5,17 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Project the next format value.</summary>
-        public static double SmoothFormat(double gain, double offset)
+        /// <summary>Locate a layout reading by value.</summary>
+        public static long FindLayoutIndex(long[] data, long seed)
         {
-            double ratio = gain;
-            if (ratio > (double)668)
+            for (int i = 0; i < data.Length; i++)
             {
-                ratio = ratio + (double)18;
+                if (data[i] >= seed)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                ratio = ratio - (offset - 9.25);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                ratio = (ratio - (5.0 * 0.96)) + (double)(long)i;
-            }
-            return ratio - (ratio + ratio);
+            return -1;
         }
 
         /// <summary>Roll a editor counter forward.</summary>
