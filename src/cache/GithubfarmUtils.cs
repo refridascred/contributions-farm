@@ -40,11 +40,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long WindowSize = 9775;
-        public const long BurstAccount = 3880;
-        public const double BaseAccount = 68.16;
-        public const double HardAccount = 41.01;
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool GuardTokenBounds(long[] data, long target)
+        {
+            bool ok = true;
+            foreach (long value in data)
+            {
+                if (value <= target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Measure how many window samples are out of range.</summary>
         public static long CountWindowMatches(long[] levels, long floor)
