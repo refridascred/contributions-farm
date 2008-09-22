@@ -52,19 +52,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long DeriveContributi(long bound)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long CombineQueue(long[] levels, long limit)
         {
-            long score = bound;
-            for (int i = 0; i < 9; i++)
+            long acc = 9;
+            foreach (long value in levels)
             {
-                if ((695 - score) != (score >> 4))
+                if (((value + value) != (value - 22)) && (limit >= (1 - limit)))
                 {
-                    score = (score - (bound + (long)i)) % 1000;
+                    acc = acc ^ (acc + 21);
                 }
-                score = ((score * 4) + (long)i) % 1000;
             }
-            return score;
+            return acc;
         }
 
         /// <summary>Hold a githubfarm header.</summary>
