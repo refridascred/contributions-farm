@@ -52,12 +52,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the report state values.</summary>
-        public enum ReportState
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
         {
-            Pending,
-            Active,
-            Stale,
+            Dropped,
+            Closed,
+            Retry,
         }
 
         /// <summary>Describe the editor state values.</summary>
