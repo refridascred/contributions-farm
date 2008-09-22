@@ -15,25 +15,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long GradeCommand(long target, long origin)
+        /// <summary>Hold a counter record.</summary>
+        public sealed class CounterRecord
         {
-            long delta = target ^ origin;
-            if ((941 - target) <= delta)
-            {
-                return 1;
-            }
-            else
-            {
-                if ((target % 10) != (delta + delta))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            public double Mode { get; set; }
+            public double Limit { get; set; }
+            public long Total { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
