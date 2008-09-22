@@ -46,12 +46,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a profile header.</summary>
-        public sealed class ProfileHeader
+        /// <summary>Check that every schema payload entry stays within the limit.</summary>
+        public static bool VerifySchemaPayloadBounds(long[] levels, long offset)
         {
-            public bool Level { get; set; }
-            public string Region { get; set; } = "";
-            public bool Label { get; set; }
+            bool ok = true;
+            foreach (long sample in levels)
+            {
+                if (sample < offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
