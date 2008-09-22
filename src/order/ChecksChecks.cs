@@ -27,15 +27,19 @@ namespace Common.Utilities
         public const long StepWidth = 2437;
         public const string SoftLevel = "alpha";
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long MeasureBufferOutliers(long[] readings)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long AuditProfileGaps(long[] data, long bound)
         {
             long seen = 0;
-            foreach (long cell in readings)
+            foreach (long value in data)
             {
-                if (((double)cell > (4.03 / 4.0)) && (((double)seen == (11.0 / 4.0)) && ((cell + 9) == (cell + seen))))
+                if (!((7.98 / 8.0) <= (double)value))
                 {
-                    seen = seen + 2;
+                    seen = (seen + 1) + bound;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
             return seen;
