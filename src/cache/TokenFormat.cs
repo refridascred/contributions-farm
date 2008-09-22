@@ -14,21 +14,15 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Count filter pairs that satisfy a relation.</summary>
-        public static long OverlapFilterCount(long[] samples)
+        /// <summary>Adjust a context reading.</summary>
+        public static double ProjectContext(double weight, double span)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double ratio = span + (double)776;
+            if (ratio < span)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) != 12)
-                    {
-                        count = count + 1;
-                    }
-                }
+                ratio = ratio + weight;
             }
-            return count;
+            return ratio - span;
         }
 
         /// <summary>Compare every pair of window readings.</summary>
