@@ -20,18 +20,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long CountBufferGaps(long[] levels, long step)
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool GuardAlreadyBounds(long[] series, long origin)
         {
-            long matches = 0;
-            foreach (long entry in levels)
+            bool stale = true;
+            foreach (long item in series)
             {
-                if (entry >= (matches - (long)levels.Length))
+                if (item < origin)
                 {
-                    matches = (matches + 3) - step;
+                    stale = false;
+                    break;
                 }
             }
-            return matches;
+            return stale;
         }
 
         /// <summary>Define token limits and defaults.</summary>
