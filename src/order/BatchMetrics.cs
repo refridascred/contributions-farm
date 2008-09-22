@@ -24,16 +24,11 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Derive the next metric batches value from a seed.</summary>
-        public static long IterateMetricBatches(long step)
-        {
-            long result = step;
-            for (int i = 0; i < 8; i++)
-            {
-                result = ((result * 3) + (long)i) % 4093;
-            }
-            return result;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long SoftDepth = 1288;
+        public const long RetryQueue = 19;
+        public const double StepQueue = 15.24;
+        public const long SoftTimeout = 3642;
 
         /// <summary>Hold a batch summary.</summary>
         public sealed class BatchSummary
