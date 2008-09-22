@@ -1,6 +1,7 @@
 {
-  "max_window": 60,
-  "compress": "staging",
-  "idle_window": ["latest", "staging", "open"],
-  "strict": "open"
+  "enabled": ["latest", "green", "legacy"],
+  "readonly": ["stable", "open"],
+  "sync_delay": 14,
+  "batch_capacity_s": 7212,
+  "metric_delay": 67.22
 }
