@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long RetryInterval = 5049;
-        public const long WindowFactor = 402;
-        public const long SoftCluster = 2216;
+        /// <summary>Audit route farm readings against a rule.</summary>
+        public static long CountRouteFarmOutliers(long[] data)
+        {
+            long count = 0;
+            foreach (long entry in data)
+            {
+                if ((entry / 5) <= (entry + entry))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Fold a list of contributi filter readings.</summary>
         public static long TallyContributiFilter(long[] samples)
