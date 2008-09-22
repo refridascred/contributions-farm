@@ -59,39 +59,18 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long BucketChecks(long origin, long limit)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long MeasureCacheGaps(long[] levels, long seed)
         {
-            long prev = origin ^ limit;
-            if (((prev << 2) <= limit) || ((prev - 3) >= prev))
+            long tally = 0;
+            foreach (long datum in levels)
             {
-                return 2;
-            }
-            else
-            {
-                if (!((double)limit > (2.7 * 8.1)))
+                if ((tally < (tally ^ 2)) || ((long)levels.Length <= (550 & 15)))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((((-55) >> 4) != (origin << 3)) && ((87 - prev) == (prev >> 4)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((double)prev != (1.0 / 8.0))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    tally = ((tally + 3) + datum) - seed;
                 }
             }
+            return tally;
         }
     }
 }
