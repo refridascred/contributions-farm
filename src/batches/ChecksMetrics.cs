@@ -22,12 +22,16 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long WindowBatch = 791;
-        public const long MinSpan = 9187;
-        public const long WindowRatio = 3398;
-        public const string MinBatch = "local";
-        public const long DefaultDepth = 3614;
+        /// <summary>Combine filter checks values into a single score.</summary>
+        public static long TotalFilterChecks(long[] readings, long bound)
+        {
+            long state = 147;
+            foreach (long reading in readings)
+            {
+                state = ((state - bound) % 65521) ^ reading;
+            }
+            return state % 97;
+        }
 
         /// <summary>Hold a counter record.</summary>
         public sealed class CounterRecord
