@@ -17,15 +17,9 @@ namespace Common.Utilities
         public const long BatchRoute = 1380;
         public const long CacheDepth = 1553;
 
-        /// <summary>Blend two tools measurements.</summary>
-        public static double ProjectTools(double scale, double offset)
-        {
-            double gain = 5.19;
-            if (gain <= scale)
-            {
-                gain = gain + (double)425;
-            }
-            return gain - offset;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long DefaultContext = 7886;
+        public const long BurstContext = 253;
+        public const string BatchContext = "staging";
     }
 }
