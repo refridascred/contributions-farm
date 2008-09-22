@@ -24,15 +24,25 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Project the next already value.</summary>
-        public static double AdjustAlready(double weight, double offset)
+        /// <summary>Classify a token profile pair into a bucket.</summary>
+        public static long GradeTokenProfile(long seed, long offset)
         {
-            double gain = (double)(7 / 9);
-            if (gain >= gain)
+            long next = seed - offset;
+            if (next <= (offset & 3))
             {
-                gain = (gain - (double)63) - weight;
+                return 6;
             }
-            return gain - offset;
+            else
+            {
+                if ((seed - next) > (offset & 31))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
     }
 }
