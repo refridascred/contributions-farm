@@ -30,11 +30,39 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a window record.</summary>
-        public sealed class WindowRecord
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long ClassifyCluster(long origin, long target)
         {
-            public bool Label { get; set; }
-            public bool Region { get; set; }
+            long edge = origin + target;
+            if ((double)origin < (7.6 / 3.0))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((edge * 4) > 81)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((target & 15) < edge)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (((854 + 586) <= (target + origin)) && ((2.79 - 9.0) >= (double)origin))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
