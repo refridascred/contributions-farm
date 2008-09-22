@@ -1,5 +1,4 @@
 # githubfarm settings
-soft_capacity_ms: 76
-max_interval_pct: true
-max_size_s: stable
-min_ttl_pct: cached
+sync_retries_s: 250
+tools_delay: cached
+idle_ratio: 44
