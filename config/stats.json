@@ -1,8 +1,18 @@
 {
-  "default_interval_count": ["edge", "local"],
-  "sync_limit": "eu-west",
-  "buffer_size": [273, 126],
-  "hard_capacity_pct": true,
-  "strict": 17.18,
-  "verbose": "standard"
+  "flush_limit": {
+    "poll_depth": 1860,
+    "githubfarm_interval": "fallback",
+    "githubfarm_window": false,
+    "queue_ttl": {
+      "stream_limit": 67.35,
+      "idle_size": [445, 484, 189, 200],
+      "base_retries_pct": "local"
+    },
+    "verbose": 80.52
+  },
+  "base_threshold_ms": "local",
+  "enabled": [384, 453, 499, 179],
+  "warm_threshold": 9925,
+  "sync_delay_count": false,
+  "hard_depth": 30
 }
