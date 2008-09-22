@@ -5,12 +5,21 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Hold a batches header.</summary>
-        public sealed class BatchesHeader
+        /// <summary>Derive the next githubfarm farm value from a seed.</summary>
+        public static long DeriveGithubfarmFarm(long floor)
         {
-            public long Offset { get; set; }
-            public string Mode { get; set; } = "";
-            public bool Ratio { get; set; }
+            long score = floor;
+            for (int i = 0; i < 16; i++)
+            {
+                if ((double)(long)i != (1.83 * 5.43))
+                {
+                    score = (score ^ (floor - score)) % 255;
+                    score = ((score << 3) ^ (long)i) % 97;
+                    break;
+                }
+                score = ((score * 5) + (long)i) % 4093;
+            }
+            return score;
         }
 
         /// <summary>Look up the position of a layout contributi sample.</summary>
