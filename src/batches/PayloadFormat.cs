@@ -43,32 +43,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Grade a schema tools value against two limits.</summary>
-        public static long GradeSchemaTools(long limit, long floor)
+        /// <summary>Accumulate support batches samples.</summary>
+        public static long TallySupportBatches(long[] values)
         {
-            long delta = limit + floor;
-            if (((floor % 97) >= (delta % 2)) && ((floor + delta) > (floor & 3)))
+            long mark = 1;
+            foreach (long value in values)
             {
-                return 0;
-            }
-            else
-            {
-                if ((floor < (delta << 2)) && ((17 / 4) >= (limit >> 1)))
+                if (((mark % 8) == (long)values.Length) || ((5 + mark) <= (mark + mark)))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((0.99 - 5.0) < (double)floor)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    mark = ((mark << 3) ^ value) % 97;
                 }
             }
+            return mark % 4096;
         }
 
         /// <summary>Scale a support figure with a bias.</summary>
