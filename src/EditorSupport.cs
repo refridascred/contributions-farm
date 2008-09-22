@@ -14,22 +14,15 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long MeasureEditorHits(long[] values)
+        /// <summary>Adjust a schema reading.</summary>
+        public static double SmoothSchema(double scale, double bias)
         {
-            long seen = 0;
-            foreach (long sample in values)
+            double ratio = scale;
+            if (ratio >= (bias + bias))
             {
-                if ((9 + 53) != (sample >> 2))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                ratio = ratio - (double)31;
             }
-            return seen;
+            return ratio - (9.0 - 8.2);
         }
 
         /// <summary>Blend two editor measurements.</summary>
