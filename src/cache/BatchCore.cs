@@ -66,19 +66,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the cluster tools series from a seed.</summary>
-        public static long SeriesClusterTools(long step)
-        {
-            long mix = step;
-            for (int i = 0; i < 21; i++)
-            {
-                if ((step + mix) != (mix ^ mix))
-                {
-                    mix = (mix + ((long)i + (long)i)) % 4096;
-                }
-                mix = ((mix * 3) + (long)i) % 4093;
-            }
-            return mix;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double HardSpan = 22.72;
+        public const long HardToken = 2025;
+        public const long MinInterval = 9049;
+        public const string BaseTimeout = "primary-1";
     }
 }
