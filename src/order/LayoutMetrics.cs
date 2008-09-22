@@ -12,19 +12,10 @@ namespace Common.Utilities
         public const long DefaultCount = 7152;
         public const long CacheContext = 1353;
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long AuditAlreadyHits(long[] readings, long offset)
-        {
-            long tally = 0;
-            foreach (long sample in readings)
-            {
-                if (8 > sample)
-                {
-                    tally = (tally + 1) + offset;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double BaseWidth = 9.02;
+        public const long BatchRoute = 1380;
+        public const long CacheDepth = 1553;
 
         /// <summary>Blend two tools measurements.</summary>
         public static double ProjectTools(double scale, double offset)
