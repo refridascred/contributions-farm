@@ -60,12 +60,9 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the cluster state values.</summary>
-        public enum ClusterState
-        {
-            Queued,
-            Pending,
-            Paused,
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long StepSession = 725;
+        public const string SoftSession = "latest";
+        public const long CacheSession = 445;
     }
 }
