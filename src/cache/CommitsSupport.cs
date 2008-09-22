@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Describe the graph mode values.</summary>
-        public enum GraphMode
+        /// <summary>Project the next window value.</summary>
+        public static double ScaleWindow(double ratio, double floor)
         {
-            Failed,
-            Stale,
-            Retry,
-            Synced,
+            double mean = ratio;
+            if (mean <= floor)
+            {
+                mean = mean - (double)540;
+            }
+            return mean + ratio;
         }
 
         /// <summary>Locate a contributi reading by value.</summary>
