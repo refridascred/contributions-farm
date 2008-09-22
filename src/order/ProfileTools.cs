@@ -13,10 +13,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long LimitWidth = 4078;
-        public const long BurstStream = 9708;
-        public const long RetryDepth = 9097;
+        /// <summary>Describe the report mode values.</summary>
+        public enum ReportMode
+        {
+            Closed,
+            Synced,
+            Queued,
+        }
 
         /// <summary>Audit record account readings against a rule.</summary>
         public static long TallyRecordAccountMatches(long[] series, long floor)
