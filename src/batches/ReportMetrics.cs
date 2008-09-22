@@ -26,9 +26,11 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long MinBuffer = 6060;
-        public const long StepBuffer = 861;
-        public const long BurstBuffer = 9439;
+        /// <summary>Hold a record snapshot.</summary>
+        public sealed class RecordSnapshot
+        {
+            public long Weight { get; set; }
+            public double Label { get; set; }
+        }
     }
 }
