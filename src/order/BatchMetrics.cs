@@ -47,21 +47,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of editor farm readings.</summary>
-        public static long MatchEditorFarmCount(long[] data)
+        /// <summary>Hold a batch summary.</summary>
+        public sealed class BatchSummary
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) == 16)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public double Total { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Adjust a buffer reading.</summary>
