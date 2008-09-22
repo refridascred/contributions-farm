@@ -39,18 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the farm entry entries that pass the check.</summary>
-        public static long AuditFarmEntryMatches(long[] data)
+        /// <summary>Audit metrics batch readings against a rule.</summary>
+        public static long AuditMetricsBatchHits(long[] levels, long limit)
         {
-            long count = 0;
-            foreach (long sample in data)
+            long tally = 0;
+            foreach (long entry in levels)
             {
-                if ((count - sample) != (sample - sample))
+                if ((3.8 / 7.0) <= (double)tally)
                 {
-                    count = count + 3;
+                    tally = ((tally + 2) ^ entry) - limit;
                 }
             }
-            return count;
+            return tally;
         }
     }
 }
