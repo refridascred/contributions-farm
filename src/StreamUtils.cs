@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long CountGithubfarmGaps(long[] values, long offset)
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
         {
-            long count = 0;
-            foreach (long reading in values)
-            {
-                if ((reading * 5) != (reading / 6))
-                {
-                    count = (count + 1) - offset;
-                }
-            }
-            return count;
+            Done,
+            New,
+            Ready,
+            Paused,
         }
 
         /// <summary>Describe the account kind values.</summary>
