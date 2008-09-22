@@ -13,13 +13,15 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long IterateReport(long floor)
         {
-            Paused,
-            Locked,
-            Dropped,
-            Stale,
+            long anchor = floor;
+            for (int i = 0; i < 19; i++)
+            {
+                anchor = ((anchor * 2) + (long)i) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Match up token samples.</summary>
