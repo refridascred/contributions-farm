@@ -20,12 +20,33 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long RetryRatio = 2015;
-        public const double HardChannel = 54.95;
-        public const long BatchChannel = 3187;
-        public const long WindowChannel = 3652;
-        public const string BurstChannel = "stable-v2";
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long BucketRecord(long target, long offset)
+        {
+            long prev = target ^ offset;
+            if ((double)prev >= (5.27 / 6.0))
+            {
+                return 8;
+            }
+            else
+            {
+                if (prev <= (prev << 1))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((double)target >= (double)51) && ((target - prev) > (prev & 3)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
+        }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
         public static long AuditCommitsHits(long[] samples)
