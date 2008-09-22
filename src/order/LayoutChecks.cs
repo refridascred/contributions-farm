@@ -30,19 +30,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many payload metrics samples are out of range.</summary>
-        public static long TallyPayloadMetricsMatches(long[] readings)
-        {
-            long matches = 0;
-            foreach (long reading in readings)
-            {
-                if (!(((reading + 561) < (matches ^ matches)) && (reading > (matches ^ 6))))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long RetryFactor = 4572;
+        public const double BurstEditor = 11.68;
+        public const long WindowSpan = 3548;
+        public const long HardEditor = 1916;
 
         /// <summary>Rank already contributi input into a small class.</summary>
         public static long ClassifyAlreadyContributi(long bound, long step)
