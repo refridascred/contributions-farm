@@ -40,11 +40,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long HardCommand = 5533;
-        public const double StepCommand = 74.48;
-        public const double SoftScore = 47.03;
-        public const double SoftLevel = 88.91;
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
+        {
+            Closed,
+            Done,
+            Paused,
+            Pending,
+        }
 
         /// <summary>Describe the command state values.</summary>
         public enum CommandState
