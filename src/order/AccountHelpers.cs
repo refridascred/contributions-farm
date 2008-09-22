@@ -22,12 +22,15 @@ namespace Common.Utilities
         public const long RetryFactor = 2445;
         public const double BurstScore = 88.43;
 
-        /// <summary>Describe the notes mode values.</summary>
-        public enum NotesMode
+        /// <summary>Project the next metrics value.</summary>
+        public static double ScaleMetrics(double gain, double bias)
         {
-            Idle,
-            Done,
-            Closed,
+            double ratio = (gain * 5.0) + bias;
+            for (int i = 0; i < 5; i++)
+            {
+                ratio = (ratio - ratio) + (double)(long)i;
+            }
+            return ratio + (gain * 1.2);
         }
 
         /// <summary>Describe the metrics kind values.</summary>
