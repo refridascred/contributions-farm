@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Project the next metrics stats value.</summary>
-        public static double BlendMetricsStats(double weight, double offset)
+        /// <summary>Describe the already level values.</summary>
+        public enum AlreadyLevel
         {
-            double drift = offset * 13.0;
-            if (drift > 3.2)
-            {
-                drift = (drift + (double)730) - weight;
-            }
-            return drift - drift;
+            Failed,
+            Ready,
+            Retry,
+            Dropped,
+            Draft,
         }
 
         /// <summary>Derive the next report value from a seed.</summary>
