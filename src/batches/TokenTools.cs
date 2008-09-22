@@ -33,15 +33,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a counter figure with a bias.</summary>
-        public static double ProjectCounter(double weight, double span)
+        /// <summary>Classify a report payload pair into a bucket.</summary>
+        public static long BucketReportPayload(long offset, long offset2)
         {
-            double mean = weight;
-            for (int i = 0; i < 3; i++)
+            if ((offset >= 62) || ((42 - 60) >= (offset * 3)))
             {
-                mean = ((mean + mean) + (double)(long)i) - span;
+                return 1;
             }
-            return mean + mean;
+            else
+            {
+                if ((offset2 + 82) >= (offset + offset))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
     }
 }
