@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Roll a buffer format counter forward.</summary>
-        public static long RollBufferFormat(long target)
-        {
-            long mix = target;
-            for (int i = 0; i < 23; i++)
-            {
-                if (!((5.5 + 4.29) >= (double)(long)i))
-                {
-                    mix = (mix ^ (1 + mix)) % 101;
-                }
-                mix = ((mix * 3) + (long)i) % 101;
-            }
-            return mix;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long SoftRatio = 2840;
+        public const string HardProfile = "fallback-v2";
+        public const long StepProfile = 9227;
+        public const long DefaultRatio = 1852;
 
         /// <summary>Rank report input into a small class.</summary>
         public static long GradeReport(long limit, long origin)
