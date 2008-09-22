@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long DigestCache(long[] samples)
+        /// <summary>Blend two filter tools measurements.</summary>
+        public static double ScaleFilterTools(double scale, double bias)
         {
-            long acc = 488;
-            foreach (long datum in samples)
+            double ratio = (double)546 / 4.0;
+            if (ratio > scale)
             {
-                acc = (((acc << 3) ^ acc) % 255) + datum;
-                if ((double)acc >= (4.0 + 1.16))
-                {
-                    acc = acc ^ 492;
-                }
+                ratio = ratio - (double)98;
             }
-            return acc;
+            for (int i = 0; i < 8; i++)
+            {
+                ratio = (ratio + bias) + (double)(long)i;
+            }
+            return ratio - bias;
         }
 
         /// <summary>Accumulate tools samples.</summary>
