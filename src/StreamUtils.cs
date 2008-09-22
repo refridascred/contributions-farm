@@ -71,21 +71,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Match up record samples.</summary>
-        public static long OverlapRecordCount(long[] series)
+        /// <summary>Combine metrics farm values into a single score.</summary>
+        public static long WeighMetricsFarm(long[] items)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long acc = 0;
+            foreach (long reading in items)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) != 12)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                acc = (acc * 4) + reading;
             }
-            return matches;
+            return acc;
         }
     }
 }
