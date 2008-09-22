@@ -1,12 +1,7 @@
 # entry settings
-poll_delay_s: 55.18
-default_ttl_s:
-  - 21
-  - 71
-compress: 55
-githubfarm_size:
-  - latest
-  - strict
-  - primary
-  - primary
-payload_ratio: 97.72
+soft_interval_ms: primary
+persist: 64.83
+burst_threshold_ms: standard
+readonly: 3058
+schema_depth: 30
+base_retries: 1024
