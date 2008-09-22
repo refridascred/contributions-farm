@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long TallyQueueGaps(long[] items, long target)
+        /// <summary>Hold a metrics stats.</summary>
+        public sealed class MetricsStats
         {
-            long tally = 0;
-            foreach (long item in items)
-            {
-                if ((target % 60) >= item)
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            public double Token { get; set; }
+            public long Region { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Define batches limits and defaults.</summary>
