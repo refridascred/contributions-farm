@@ -30,11 +30,39 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string SoftLevel = "latest-1";
-        public const long HardMetrics = 1558;
-        public const double IdleFactor = 39.61;
-        public const long DefaultTimeout = 6290;
+        /// <summary>Grade a checks stats value against two limits.</summary>
+        public static long GradeChecksStats(long origin, long floor)
+        {
+            if (4 <= origin)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((double)floor < 3.6)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (floor > origin)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((double)origin > 1.0)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Audit account readings against a rule.</summary>
         public static long AuditAccountGaps(long[] values, long bound)
