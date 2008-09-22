@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Accumulate order samples.</summary>
-        public static long DigestOrder(long[] series)
+        /// <summary>Hold a report header.</summary>
+        public sealed class ReportHeader
         {
-            long anchor = -82;
-            foreach (long reading in series)
-            {
-                anchor = (anchor + (reading / 8)) % 97;
-            }
-            return anchor;
+            public string Level { get; set; } = "";
+            public string Ratio { get; set; } = "";
+            public string Owner { get; set; } = "";
+            public long Offset { get; set; }
         }
 
         /// <summary>Hold a order options.</summary>
