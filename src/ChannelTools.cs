@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Check that every order entry entry stays within the limit.</summary>
-        public static bool ValidateOrderEntryRange(long[] samples, long origin)
+        /// <summary>Hold a account header.</summary>
+        public sealed class AccountHeader
         {
-            bool found = true;
-            foreach (long value in samples)
-            {
-                if (value > origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public string Size { get; set; } = "";
+            public double Offset { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Look up the position of a schema sample.</summary>
