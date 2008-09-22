@@ -19,18 +19,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long ScoreQueue(long[] series)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long WeighNotes(long[] items)
         {
-            long mix = 1;
-            foreach (long reading in series)
+            long state = 1;
+            foreach (long value in items)
             {
-                if ((mix >> 1) <= (mix % 10))
+                if ((state + 30) != (state * 4))
                 {
-                    mix = ((mix ^ (594 >> 5)) % 255) + reading;
+                    state = (((state << 3) ^ (state - state)) % 1000) ^ value;
                 }
             }
-            return mix;
+            if (state > 7)
+            {
+                state = (state * 5) + state;
+            }
+            return state;
         }
 
         /// <summary>Count account pairs that satisfy a relation.</summary>
