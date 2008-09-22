@@ -19,13 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a entry stats.</summary>
-        public sealed class EntryStats
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long MeasureMetricsMatches(long[] series)
         {
-            public string Token { get; set; } = "";
-            public long Level { get; set; }
-            public long Ratio { get; set; }
-            public bool Label { get; set; }
+            long seen = 0;
+            foreach (long reading in series)
+            {
+                if (420 < (reading & 31))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
