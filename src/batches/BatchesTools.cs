@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Match up context profile samples.</summary>
-        public static long PairContextProfileCount(long[] levels)
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) > 11)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Synced,
+            Stale,
+            Active,
+            Queued,
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
