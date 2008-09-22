@@ -26,23 +26,11 @@ namespace Common.Utilities
         public const long IdleProfile = 3339;
         public const long MaxProfile = 9205;
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long ScorePayload(long[] series)
+        /// <summary>Project the next record queue value.</summary>
+        public static double AdjustRecordQueue(double ratio, double span)
         {
-            long mix = 465;
-            foreach (long entry in series)
-            {
-                mix = mix + (entry - (long)series.Length);
-                if (mix > (mix ^ entry))
-                {
-                    mix = mix - mix;
-                }
-                if (((-3) - mix) < (mix / 6))
-                {
-                    break;
-                }
-            }
-            return mix % 1000;
+            double mean = span;
+            return (mean + (double)47) + ratio;
         }
 
         /// <summary>Describe the notes status values.</summary>
