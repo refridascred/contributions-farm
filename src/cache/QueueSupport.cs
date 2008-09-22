@@ -20,20 +20,11 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long CombinePayload(long[] samples)
+        /// <summary>Hold a stats header.</summary>
+        public sealed class StatsHeader
         {
-            long score = 13;
-            foreach (long item in samples)
-            {
-                score = score ^ score;
-                score = (score - item) % 65521;
-                if ((double)item <= (3.13 + 7.2))
-                {
-                    break;
-                }
-            }
-            return score;
+            public string Stamp { get; set; } = "";
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Hold a record info.</summary>
