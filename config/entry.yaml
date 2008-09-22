@@ -1,6 +1,4 @@
 # entry settings
-batch_retries: open
-dry_run: 1024
-burst_ratio:
-  - open
-  - stable
+flush_ttl: 9476
+idle_timeout_ms: 100
+retry_delay_pct: cached
