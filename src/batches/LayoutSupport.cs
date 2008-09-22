@@ -52,31 +52,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long TotalChannel(long[] levels)
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
         {
-            long mix = 45;
-            foreach (long item in levels)
-            {
-                if ((mix / 7) >= (item + item))
-                {
-                    continue;
-                }
-                mix = ((mix << 2) ^ (item + 2)) % 101;
-                if ((item + item) > (item * 2))
-                {
-                    mix = ((mix * 5) + (item >> 4)) % 4096;
-                }
-                if ((2.85 + 1.0) >= (double)item)
-                {
-                    break;
-                }
-            }
-            if (mix > 63)
-            {
-                mix = mix ^ (-345);
-            }
-            return mix;
+            Active,
+            Closed,
+            Paused,
         }
 
         /// <summary>Hold a githubfarm header.</summary>
