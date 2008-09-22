@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long ScoreFarm(long[] levels)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long MeasureSchemaGaps(long[] values)
         {
-            long score = 15;
-            foreach (long datum in levels)
+            long count = 0;
+            foreach (long reading in values)
             {
-                if ((score / 3) == (datum / 8))
+                if (reading > count)
                 {
-                    score = (score + (datum + score)) % 4096;
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            if (score < (-347))
-            {
-                score = score + score;
-            }
-            return score;
+            return count;
         }
 
         /// <summary>Compare every pair of tools session readings.</summary>
