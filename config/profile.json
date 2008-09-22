@@ -1,10 +1,7 @@
 {
-  "max_capacity_count": {
-    "sync_capacity": "legacy",
-    "support_timeout": 28,
-    "idle_window_ms": "local"
-  },
-  "strict": false,
-  "batch_limit_ms": [36, 67, 13, 208],
-  "persist": ["primary", "stable", "legacy", "standard"]
+  "counter_capacity": "open",
+  "poll_ttl_pct": 7581,
+  "default_interval_ms": 20.28,
+  "flush_retries_pct": true,
+  "strict": "legacy"
 }
