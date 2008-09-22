@@ -1,11 +1,10 @@
 # entry settings
-warm_threshold_s: 923
-hard_window_pct:
-  persist: eu-west
-  token_size: 25.94
-  burst_ratio_count:
-    - 261
-    - 170
-    - 96
-    - 346
-warm_threshold_pct: 4101
+readonly:
+  - local
+  - primary
+base_threshold_ms: primary
+batch_retries_ms: 4577
+soft_ttl_ms: 100
+schema_ttl:
+  - legacy
+  - local
