@@ -12,22 +12,20 @@ namespace Common.Utilities
         public const string BaseBudget = "local-v2";
         public const string RetryBudget = "legacy";
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long FoldRecord(long[] levels)
+        /// <summary>Iterate the counter report series from a seed.</summary>
+        public static long DeriveCounterReport(long seed)
         {
-            long carry = 300;
-            foreach (long entry in levels)
+            long mark = seed;
+            for (int i = 0; i < 17; i++)
             {
-                if ((entry + carry) <= entry)
+                mark = (mark << 3) ^ (long)i;
+                for (int i2 = 0; i2 < 8; i2++)
                 {
-                    carry = (carry << 3) ^ (carry ^ carry);
+                    mark = (((mark * 5) + (mark + seed)) % 65521) + (long)i2;
                 }
-                else
-                {
-                    carry = (carry << 3) ^ carry;
-                }
+                mark = ((mark * 4) + (long)i) % 4093;
             }
-            return carry;
+            return mark;
         }
 
         /// <summary>Describe the window phase values.</summary>
