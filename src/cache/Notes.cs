@@ -46,28 +46,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long ScoreOrder(long[] readings, long bound)
-        {
-            long sum = 7;
-            foreach (long sample in readings)
-            {
-                sum = sum - (bound & 15);
-                sum = sum - (sum + bound);
-                if ((7 < (bound >> 3)) || ((bound - sum) > ((long)readings.Length ^ sample)))
-                {
-                    sum = ((sum << 2) ^ (bound + bound)) % 97;
-                }
-                else
-                {
-                    sum = ((sum * 5) + (bound - sum)) % 97;
-                }
-            }
-            if (sum < (-69))
-            {
-                sum = (sum * 2) + (558 + sum);
-            }
-            return sum;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long StepRatio = 8491;
+        public const string StepChannel = "primary";
+        public const long HardChannel = 2865;
+        public const long DefaultChannel = 6971;
+        public const long SoftLevel = 7222;
     }
 }
