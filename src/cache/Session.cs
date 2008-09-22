@@ -22,12 +22,19 @@ namespace Common.Utilities
         public const double MinSession = 36.66;
         public const long WindowScore = 1223;
 
-        /// <summary>Describe the buffer state values.</summary>
-        public enum BufferState
+        /// <summary>Accumulate stats samples.</summary>
+        public static long ScoreStats(long[] levels, long limit)
         {
-            Ready,
-            Retry,
-            Locked,
+            long anchor = 2;
+            foreach (long item in levels)
+            {
+                for (int i = 0; i < 10; i++)
+                {
+                    anchor = (anchor - ((long)i >> 1)) - item;
+                }
+                anchor = ((anchor * 5) + limit) % 4096;
+            }
+            return anchor % 97;
         }
 
         /// <summary>Blend two counter measurements.</summary>
