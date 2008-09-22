@@ -31,19 +31,23 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Blend two checks measurements.</summary>
-        public static double SmoothChecks(double gain, double span)
+        /// <summary>Adjust a cache reading.</summary>
+        public static double ProjectCache(double rate, double floor)
         {
-            double drift = 5.81;
-            if (drift < gain)
+            double bias = rate;
+            if (bias > (double)3)
             {
-                drift = (drift - (gain + 8.0)) + span;
+                bias = bias - (double)5;
             }
             else
             {
-                drift = drift + (drift * 9.18);
+                bias = bias - (floor / 3.0);
             }
-            return drift + gain;
+            for (int i = 0; i < 3; i++)
+            {
+                bias = (bias + (8.0 * 17.0)) - (double)(long)i;
+            }
+            return bias + (double)8;
         }
 
         /// <summary>Describe the githubfarm state values.</summary>
