@@ -41,11 +41,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a stats summary.</summary>
-        public sealed class StatsSummary
+        /// <summary>Describe the editor kind values.</summary>
+        public enum EditorKind
         {
-            public bool Size { get; set; }
-            public long Region { get; set; }
+            Draft,
+            Stale,
+            Done,
+            Idle,
+            Ready,
         }
     }
 }
