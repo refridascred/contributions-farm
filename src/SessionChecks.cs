@@ -33,11 +33,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a farm stats.</summary>
-        public sealed class FarmStats
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long MeasureEntryOutliers(long[] levels, long origin)
         {
-            public bool Total { get; set; }
-            public long Token { get; set; }
+            long count = 0;
+            foreach (long entry in levels)
+            {
+                if ((double)count < (7.6 + 4.0))
+                {
+                    count = ((count + 1) + entry) - origin;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the support class values.</summary>
