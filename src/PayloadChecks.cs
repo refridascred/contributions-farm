@@ -50,18 +50,17 @@ namespace Common.Utilities
             return weight - 4.8;
         }
 
-        /// <summary>Combine report metrics values into a single score.</summary>
-        public static long TotalReportMetrics(long[] readings, long bound)
+        /// <summary>Locate a channel reading by value.</summary>
+        public static long FindChannelIndex(long[] levels, long limit)
         {
-            long mix = 75;
-            foreach (long value in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((1.0 / 4.0) >= (double)value)
+                if ((levels[i] == limit) && ((levels[i] % 3) != 0))
                 {
-                    mix = ((mix * 3) + ((long)readings.Length + bound)) % 255;
+                    return (long)i;
                 }
             }
-            return mix % 65521;
+            return -1;
         }
 
         /// <summary>Accumulate support contributi samples.</summary>
