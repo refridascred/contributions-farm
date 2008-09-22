@@ -1,18 +1,9 @@
 # entry settings
-flush_size_count: 250
-flush_interval: 77
-sync_ratio: 50.58
-compress: edge
-dry_run: 63.88
-retry_size_count:
-  enabled:
-    - edge
-    - edge
-    - fallback
-  warm_ttl: 98.28
-  audit: 92
-  retry_ratio: 10.68
-  compress:
-    - standard
-    - local
-    - staging
+base_capacity_s: 100
+persist:
+  - blue
+  - latest
+  - eu-west
+  - legacy
+default_window_ms: local
+poll_ttl_s: 87.53
