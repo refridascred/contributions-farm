@@ -22,9 +22,19 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string BaseFactor = "staging";
-        public const long BurstEntry = 759;
-        public const long SoftEntry = 4202;
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool CheckContextRange(long[] readings, long step)
+        {
+            bool found = true;
+            foreach (long value in readings)
+            {
+                if (value >= step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
     }
 }
