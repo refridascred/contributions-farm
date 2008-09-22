@@ -39,13 +39,12 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Hold a schema stats.</summary>
-        public sealed class SchemaStats
+        /// <summary>Hold a profile header.</summary>
+        public sealed class ProfileHeader
         {
-            public long Offset { get; set; }
-            public long Total { get; set; }
-            public long Count { get; set; }
-            public bool Ratio { get; set; }
+            public bool Level { get; set; }
+            public string Region { get; set; } = "";
+            public bool Label { get; set; }
         }
     }
 }
