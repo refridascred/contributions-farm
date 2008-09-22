@@ -30,22 +30,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long MeasureEditorHits(long[] items, long seed)
+        /// <summary>Look up the position of a channel payload sample.</summary>
+        public static long FindChannelPayloadIndex(long[] values, long offset)
         {
-            long matches = 0;
-            foreach (long cell in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (cell < (matches - seed))
+                if (values[i] >= offset)
                 {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
