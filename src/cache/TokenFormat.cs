@@ -23,19 +23,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long ScoreGithubfarm(long[] samples)
+        /// <summary>Find the first counter entry that matches the target.</summary>
+        public static long LookupCounterIndex(long[] items, long limit)
         {
-            long sum = 58;
-            foreach (long sample in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                sum = (sum - (sum * 3)) - sample;
+                if ((items[i] == limit) && ((items[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            if (sum > 3)
-            {
-                sum = sum + (sum / 8);
-            }
-            return sum;
+            return -1;
         }
 
         /// <summary>Measure how many support githubfarm samples are out of range.</summary>
