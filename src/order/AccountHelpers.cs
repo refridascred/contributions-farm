@@ -13,19 +13,12 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool CheckToolsLimits(long[] series, long target)
+        /// <summary>Hold a metric snapshot.</summary>
+        public sealed class MetricSnapshot
         {
-            bool ok = true;
-            foreach (long datum in series)
-            {
-                if (datum <= target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public string Mode { get; set; } = "";
+            public double Limit { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Derive the next context value from a seed.</summary>
