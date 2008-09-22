@@ -33,12 +33,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two profile measurements.</summary>
-        public static double AdjustProfile(double rate, double floor)
-        {
-            double bias = (double)113 - (2.0 - floor);
-            return (bias - (1.73 * 7.0)) + rate;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long IdleTimeout = 1637;
+        public const string BatchMetric = "alpha-v2";
+        public const long StepMetric = 558;
 
         /// <summary>Count entry editor pairs that satisfy a relation.</summary>
         public static long PairEntryEditorCount(long[] items)
