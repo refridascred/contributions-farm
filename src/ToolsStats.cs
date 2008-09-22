@@ -19,13 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a graph info.</summary>
-        public sealed class GraphInfo
-        {
-            public long Mode { get; set; }
-            public long Total { get; set; }
-            public long Token { get; set; }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string RetryFactor = "strict-v2";
+        public const double BurstLevel = 31.44;
+        public const long BaseCache = 1879;
+        public const long BatchScore = 4255;
+        public const string RetryCache = "standard";
 
         /// <summary>Hold a editor options.</summary>
         public sealed class EditorOptions
