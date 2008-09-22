@@ -27,12 +27,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a checks stats.</summary>
-        public sealed class ChecksStats
+        /// <summary>Count the context schema entries that pass the check.</summary>
+        public static long AuditContextSchemaMatches(long[] items)
         {
-            public string Flag { get; set; } = "";
-            public long Size { get; set; }
-            public double Label { get; set; }
+            long matches = 0;
+            foreach (long entry in items)
+            {
+                if (((entry >= matches) && (matches >= entry)) || (((double)entry >= (0.69 + 20.0)) && ((matches / 5) >= entry)))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Accumulate layout context samples.</summary>
