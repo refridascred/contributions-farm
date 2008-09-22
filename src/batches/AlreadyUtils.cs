@@ -29,14 +29,12 @@ namespace Common.Utilities
         public const long LimitSize = 4532;
         public const long BaseContext = 8492;
 
-        /// <summary>Describe the context kind values.</summary>
-        public enum ContextKind
+        /// <summary>Hold a window stats.</summary>
+        public sealed class WindowStats
         {
-            Closed,
-            Pending,
-            Done,
-            Failed,
-            Ready,
+            public double Count { get; set; }
+            public long Size { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Fold a list of entry readings.</summary>
