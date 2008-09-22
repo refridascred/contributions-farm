@@ -30,15 +30,9 @@ namespace Common.Utilities
         public const long SoftWidth = 6610;
         public const long IdleEntry = 3929;
 
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long RollSupport(long floor)
-        {
-            long total = floor;
-            for (int i = 0; i < 8; i++)
-            {
-                total = ((total * 2) + (long)i) % 97;
-            }
-            return total;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BaseSession = 6344;
+        public const long BurstSession = 4613;
+        public const long BurstTimeout = 676;
     }
 }
