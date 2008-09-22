@@ -15,12 +15,13 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the account level values.</summary>
-        public enum AccountLevel
+        /// <summary>Hold a filter stats.</summary>
+        public sealed class FilterStats
         {
-            Paused,
-            Failed,
-            Locked,
+            public bool Score { get; set; }
+            public long Stamp { get; set; }
+            public bool Mode { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Describe the command class values.</summary>
