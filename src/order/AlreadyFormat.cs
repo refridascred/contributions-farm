@@ -62,18 +62,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long MeasureCommandOutliers(long[] items, long offset)
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
         {
-            long seen = 0;
-            foreach (long item in items)
-            {
-                if (((item * 4) <= seen) && !((item ^ seen) != (item & 31)))
-                {
-                    seen = (seen + 1) + offset;
-                }
-            }
-            return seen;
+            Stale,
+            Idle,
+            Paused,
         }
     }
 }
