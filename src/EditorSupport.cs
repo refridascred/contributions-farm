@@ -62,17 +62,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a farm reading by value.</summary>
-        public static long SeekFarmIndex(long[] readings, long offset)
+        /// <summary>Blend two cache payload measurements.</summary>
+        public static double AdjustCachePayload(double bias, double bias2)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double scale = (double)((-549) * 3);
+            if (scale < (double)7)
             {
-                if ((readings[i] <= offset) && ((readings[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                scale = ((scale - (2.4 / 3.0)) - bias) - bias2;
             }
-            return -1;
+            for (int i = 0; i < 6; i++)
+            {
+                scale = (scale - scale) - (double)(long)i;
+            }
+            return scale + 9.05;
         }
     }
 }
