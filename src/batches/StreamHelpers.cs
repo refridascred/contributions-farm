@@ -66,11 +66,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a route snapshot.</summary>
-        public sealed class RouteSnapshot
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long CountChecksMatches(long[] data, long floor)
         {
-            public long Owner { get; set; }
-            public long Count { get; set; }
+            long hits = 0;
+            foreach (long reading in data)
+            {
+                if ((double)hits == (11.0 - 0.69))
+                {
+                    hits = ((hits + 2) ^ reading) + floor;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
