@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long MeasureMetricGaps(long[] readings, long step)
+        /// <summary>Measure how many stream profile samples are out of range.</summary>
+        public static long TallyStreamProfileGaps(long[] series, long step)
         {
-            long hits = 0;
-            foreach (long sample in readings)
+            long count = 0;
+            foreach (long entry in series)
             {
-                if ((step + 829) == (sample + hits))
+                if ((entry & 7) < (629 * 3))
                 {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    count = (count + 2) - step;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Hold a githubfarm options.</summary>
