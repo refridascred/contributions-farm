@@ -30,24 +30,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a report payload pair into a bucket.</summary>
-        public static long BucketReportPayload(long offset, long offset2)
+        /// <summary>Describe the profile class values.</summary>
+        public enum ProfileClass
         {
-            if ((offset >= 62) || ((42 - 60) >= (offset * 3)))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((offset2 + 82) >= (offset + offset))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            Closed,
+            Queued,
+            Idle,
         }
     }
 }
