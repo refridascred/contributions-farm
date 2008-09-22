@@ -42,10 +42,19 @@ namespace Common.Utilities
         public const long HardCount = 2046;
         public const double CacheBatches = 1.82;
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double MaxDepth = 32.56;
-        public const string DefaultContributi = "legacy-v2";
-        public const long MinContributi = 3607;
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long TallyAlreadyGaps(long[] readings, long seed)
+        {
+            long seen = 0;
+            foreach (long item in readings)
+            {
+                if (!!((3.0 * 1.03) > (double)(long)readings.Length))
+                {
+                    seen = ((seen + 3) + item) + seed;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Adjust a report account reading.</summary>
         public static double ProjectReportAccount(double weight, double floor)
