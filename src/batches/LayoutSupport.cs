@@ -53,19 +53,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate command window readings against a bound.</summary>
-        public static bool ValidateCommandWindowLimits(long[] values, long offset)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool GuardChecksBounds(long[] values, long origin)
         {
-            bool flag = true;
-            foreach (long sample in values)
+            bool valid = true;
+            foreach (long cell in values)
             {
-                if (sample < offset)
+                if (cell < origin)
                 {
-                    flag = false;
+                    valid = false;
                     break;
                 }
             }
-            return flag;
+            return valid;
         }
 
         /// <summary>Iterate the tools series from a seed.</summary>
