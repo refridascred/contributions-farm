@@ -12,18 +12,21 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long AuditSessionHits(long[] samples)
+        /// <summary>Compare every pair of route readings.</summary>
+        public static long OverlapRouteCount(long[] readings)
         {
-            long seen = 0;
-            foreach (long reading in samples)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((reading & 7) > (420 & 7))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    seen = seen + 2;
+                    if ((readings[i] - readings[j]) > 17)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
