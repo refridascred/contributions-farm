@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
+        /// <summary>Hold a schema snapshot.</summary>
+        public sealed class SchemaSnapshot
         {
-            Locked,
-            Paused,
-            Idle,
-            Queued,
+            public string Rank { get; set; } = "";
+            public string Region { get; set; } = "";
+            public long Flag { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Count farm pairs that satisfy a relation.</summary>
