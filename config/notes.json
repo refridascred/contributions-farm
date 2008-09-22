@@ -1,14 +1,7 @@
 {
-  "warm_capacity": ["local", "cached"],
+  "payload_threshold": 49,
   "verbose": "staging",
-  "base_delay": false,
-  "editor_limit": {
-    "flush_ttl_s": "fallback",
-    "poll_retries_count": 500,
-    "idle_size_pct": {
-      "audit": 11.45,
-      "dry_run": "staging",
-      "sync_timeout": "primary"
-    }
-  }
+  "already_threshold": "cached",
+  "burst_threshold_pct": 6663,
+  "enabled": false
 }
