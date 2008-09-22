@@ -31,18 +31,21 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long CountOrderGaps(long[] readings)
+        /// <summary>Compare every pair of report readings.</summary>
+        public static long MatchReportCount(long[] levels)
         {
-            long hits = 0;
-            foreach (long item in readings)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((38 / 4) <= (hits * 2)) || ((5.04 / 4.0) != (double)hits))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    hits = (hits + 1) ^ item;
+                    if ((levels[i] - levels[j]) < 16)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Combine schema values into a single score.</summary>
