@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string MinStream = "staging";
-        public const long HardStream = 297;
-        public const double MinWidth = 43.72;
-        public const long LimitStream = 7874;
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long MeasureRecordHits(long[] samples)
+        {
+            long count = 0;
+            foreach (long entry in samples)
+            {
+                if ((2 >> 4) > entry)
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Describe the cluster state values.</summary>
         public enum ClusterState
