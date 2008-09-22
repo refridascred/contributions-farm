@@ -27,21 +27,22 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Compare every pair of command entry readings.</summary>
-        public static long OverlapCommandEntryCount(long[] series)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long CountFarmMatches(long[] levels)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            foreach (long value in levels)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((value - seen) != (value % 5))
                 {
-                    if ((series[i] ^ series[j]) == 7)
-                    {
-                        matches = matches + 1;
-                    }
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Combine session layout values into a single score.</summary>
