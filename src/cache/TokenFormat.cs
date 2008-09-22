@@ -36,15 +36,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many support githubfarm samples are out of range.</summary>
-        public static long TallySupportGithubfarmOutliers(long[] readings, long origin)
+        /// <summary>Compare every pair of window readings.</summary>
+        public static long MatchWindowCount(long[] series)
         {
             long count = 0;
-            foreach (long reading in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (1 > origin)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    count = (count + 2) ^ reading;
+                    if ((series[i] + series[j]) != 17)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
             return count;
