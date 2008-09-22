@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the commits mode values.</summary>
-        public enum CommitsMode
+        /// <summary>Hold a stats summary.</summary>
+        public sealed class StatsSummary
         {
-            Locked,
-            Closed,
-            Draft,
+            public string Count { get; set; } = "";
+            public bool Score { get; set; }
         }
 
         /// <summary>Describe the contributi level values.</summary>
