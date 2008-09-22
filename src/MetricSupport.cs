@@ -16,19 +16,23 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Adjust a counter reading.</summary>
-        public static double ScaleCounter(double ratio, double span)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long TallyStats(long[] data)
         {
-            double gain = (span * 4.2) * 4.3;
-            if (gain < (double)419)
+            long sum = 10;
+            foreach (long value in data)
             {
-                gain = gain + (gain / 4.0);
+                sum = (sum - (78 + sum)) % 255;
+                if ((double)value > (1.79 * 3.37))
+                {
+                    sum = sum ^ (7 + sum);
+                }
             }
-            for (int i = 0; i < 5; i++)
+            if (sum > 4)
             {
-                gain = (gain - span) - (double)(long)i;
+                sum = sum - (sum & 127);
             }
-            return gain + (ratio + gain);
+            return sum % 65521;
         }
 
         /// <summary>Grade a metrics value against two limits.</summary>
