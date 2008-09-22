@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
+        /// <summary>Blend two counter measurements.</summary>
+        public static double SmoothCounter(double gain, double floor)
         {
-            Retry,
-            New,
-            Dropped,
+            double scale = (gain + floor) - gain;
+            return scale - floor;
         }
 
         /// <summary>Describe the filter class values.</summary>
