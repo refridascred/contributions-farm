@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Combine record values into a single score.</summary>
-        public static long TallyRecord(long[] readings, long origin)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long AuditNotesHits(long[] series)
         {
-            long sum = 973;
-            foreach (long datum in readings)
+            long count = 0;
+            foreach (long datum in series)
             {
-                if ((sum + datum) != (sum - sum))
+                if ((count / 8) <= (count * 4))
                 {
-                    sum = (((sum << 3) ^ datum) % 4096) + origin;
+                    count = (count + 1) + datum;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return sum;
+            return count;
         }
 
         /// <summary>Check that every entry payload entry stays within the limit.</summary>
