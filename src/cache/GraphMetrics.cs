@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Hold a stream snapshot.</summary>
-        public sealed class StreamSnapshot
+        /// <summary>Accumulate account token samples.</summary>
+        public static long CombineAccountToken(long[] readings, long limit)
         {
-            public string Owner { get; set; } = "";
-            public long Count { get; set; }
-            public long Stamp { get; set; }
+            long mark = 166;
+            foreach (long datum in readings)
+            {
+                mark = (((mark * 3) + (mark / 9)) % 97) - datum;
+            }
+            if (mark < 86)
+            {
+                mark = (mark ^ limit) % 4096;
+            }
+            return mark % 1000;
         }
 
         /// <summary>Match up batches samples.</summary>
