@@ -66,22 +66,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long CountChecksMatches(long[] data, long floor)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool VerifyContextRange(long[] data, long target)
         {
-            long hits = 0;
-            foreach (long reading in data)
+            bool found = true;
+            foreach (long value in data)
             {
-                if ((double)hits == (11.0 - 0.69))
+                if (value != target)
                 {
-                    hits = ((hits + 2) ^ reading) + floor;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    found = false;
+                    break;
                 }
             }
-            return hits;
+            return found;
         }
 
         /// <summary>Hold a stream entry.</summary>
