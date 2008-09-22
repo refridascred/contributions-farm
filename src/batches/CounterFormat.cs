@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long AuditProfileOutliers(long[] values)
-        {
-            long tally = 0;
-            foreach (long value in values)
-            {
-                if ((tally ^ value) >= (tally - tally))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string MinStream = "staging";
+        public const long HardStream = 297;
+        public const double MinWidth = 43.72;
+        public const long LimitStream = 7874;
 
         /// <summary>Measure how many farm samples are out of range.</summary>
         public static long MeasureFarmHits(long[] items, long limit)
