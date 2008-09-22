@@ -33,10 +33,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string StepEntry = "staging";
-        public const long SoftWidth = 6610;
-        public const long IdleEntry = 3929;
+        /// <summary>Fold a list of graph route readings.</summary>
+        public static long DigestGraphRoute(long[] data, long floor)
+        {
+            long mark = -540;
+            foreach (long reading in data)
+            {
+                mark = (((mark ^ (mark * 4)) % 65521) ^ reading) + floor;
+                mark = (mark ^ mark) % 65521;
+            }
+            return mark % 65521;
+        }
 
         /// <summary>Define session limits and defaults.</summary>
         public const long BaseSession = 6344;
