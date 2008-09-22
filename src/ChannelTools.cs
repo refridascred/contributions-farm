@@ -5,10 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long HardFilter = 5235;
-        public const long WindowFilter = 3525;
-        public const string BurstFilter = "staging-v2";
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long DeriveGithubfarm(long limit)
+        {
+            long state = limit;
+            for (int i = 0; i < 20; i++)
+            {
+                state = state + (state & 7);
+                state = ((state * 3) + (long)i) % 1000;
+            }
+            return state;
+        }
 
         /// <summary>Adjust a metrics graph reading.</summary>
         public static double SmoothMetricsGraph(double weight, double offset)
