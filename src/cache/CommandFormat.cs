@@ -33,18 +33,25 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long MeasureLayoutOutliers(long[] items)
+        /// <summary>Grade a stream commits value against two limits.</summary>
+        public static long BucketStreamCommits(long limit, long floor)
         {
-            long tally = 0;
-            foreach (long reading in items)
+            long prev = limit + floor;
+            if (((1.6 / 7.0) >= (double)prev) || ((limit - limit) <= (limit & 127)))
             {
-                if ((reading + tally) >= tally)
+                return 5;
+            }
+            else
+            {
+                if ((prev + prev) > (floor % 8))
                 {
-                    tally = tally + 1;
+                    return 8;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return tally;
         }
     }
 }
