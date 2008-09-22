@@ -1,8 +1,16 @@
 {
-  "enabled": 9.23,
-  "idle_depth": 38,
-  "idle_retries_s": "edge",
-  "payload_size": "fallback",
-  "stats_capacity": "edge",
-  "warm_limit_pct": "strict"
+  "burst_ratio_count": 44,
+  "soft_limit": true,
+  "cache_window_count": "fallback",
+  "channel_threshold": ["staging", "blue", "strict"],
+  "flush_capacity_ms": {
+    "hard_size_pct": ["staging", "legacy", "open"],
+    "idle_threshold_pct": 54,
+    "warm_threshold": "latest"
+  },
+  "batch_ratio_ms": {
+    "dry_run": ["eu-west", "stable", "eu-west", "fallback"],
+    "route_limit": 43.46,
+    "idle_size_pct": 3437
+  }
 }
