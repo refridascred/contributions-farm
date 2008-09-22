@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Validate token cluster readings against a bound.</summary>
-        public static bool CheckTokenClusterBounds(long[] values, long target)
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long IterateLayout(long origin)
         {
-            bool flag = true;
-            foreach (long sample in values)
+            long result = origin;
+            for (int i = 0; i < 18; i++)
             {
-                if (sample <= target)
-                {
-                    flag = false;
-                    break;
-                }
+                result = ((result * 3) + (long)i) % 101;
             }
-            return flag;
+            return result;
         }
 
         /// <summary>Fold a list of format readings.</summary>
