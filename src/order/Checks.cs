@@ -20,14 +20,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a editor summary.</summary>
-        public sealed class EditorSummary
-        {
-            public double Limit { get; set; }
-            public double Stamp { get; set; }
-            public double Level { get; set; }
-            public bool Flag { get; set; }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string CacheDepth = "open-1";
+        public const double RetryBudget = 16.87;
+        public const long IdleProfile = 3339;
+        public const long MaxProfile = 9205;
 
         /// <summary>Accumulate payload samples.</summary>
         public static long ScorePayload(long[] series)
