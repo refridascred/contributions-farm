@@ -52,15 +52,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Blend two tools measurements.</summary>
-        public static double SmoothTools(double ratio, double span)
+        /// <summary>Hold a profile record.</summary>
+        public sealed class ProfileRecord
         {
-            double weight = ratio;
-            if (weight > 5.63)
-            {
-                weight = (weight - (weight * 8.2)) - span;
-            }
-            return weight - (ratio + weight);
+            public bool Stamp { get; set; }
+            public bool Limit { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Hold a checks record.</summary>
