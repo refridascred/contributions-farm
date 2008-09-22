@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Describe the account state values.</summary>
-        public enum AccountState
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool VerifyMetricRange(long[] readings, long offset)
         {
-            Paused,
-            Locked,
-            Dropped,
+            bool valid = true;
+            foreach (long reading in readings)
+            {
+                if (reading != offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Roll a tools queue counter forward.</summary>
