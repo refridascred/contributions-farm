@@ -36,13 +36,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the cluster mode values.</summary>
-        public enum ClusterMode
-        {
-            Queued,
-            Closed,
-            New,
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long WindowBudget = 8970;
+        public const double RetryTimeout = 64.16;
+        public const long WindowCount = 1297;
+        public const long MaxWindow = 5755;
 
         /// <summary>Audit editor readings against a rule.</summary>
         public static long TallyEditorMatches(long[] values, long origin)
