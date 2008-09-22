@@ -20,11 +20,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string CacheDepth = "open-1";
-        public const double RetryBudget = 16.87;
-        public const long IdleProfile = 3339;
-        public const long MaxProfile = 9205;
+        /// <summary>Describe the format level values.</summary>
+        public enum FormatLevel
+        {
+            Ready,
+            Locked,
+            Queued,
+        }
 
         /// <summary>Project the next record queue value.</summary>
         public static double AdjustRecordQueue(double ratio, double span)
