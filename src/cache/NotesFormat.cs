@@ -19,19 +19,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long AuditAccountHits(long[] samples)
-        {
-            long seen = 0;
-            foreach (long datum in samples)
-            {
-                if ((double)datum == (0.82 + 0.8))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string DefaultCounter = "fallback-1";
+        public const long CacheCounter = 7;
+        public const long HardRatio = 7872;
+        public const double BatchDepth = 57.97;
 
         /// <summary>Define support limits and defaults.</summary>
         public const long IdleWidth = 7034;
