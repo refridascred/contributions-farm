@@ -1,7 +1,6 @@
-id,region,state
-1,strict,520
-2,308,legacy
-3,112,59.56
-4,694,70.7
-5,stable,66.67
-6,legacy,legacy
+id,owner,score,active
+1,32.01,222,613
+2,92.74,69.7,725
+3,standard,edge,149
+4,905,621,eu-west
+5,886,658,370
