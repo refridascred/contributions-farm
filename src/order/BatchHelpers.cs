@@ -28,17 +28,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Locate a tools reading by value.</summary>
-        public static long FindToolsIndex(long[] values, long bound)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long MeasurePayloadGaps(long[] samples, long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            foreach (long cell in samples)
             {
-                if (values[i] > bound)
+                if ((origin < (cell >> 2)) && ((double)seen > 12.0))
                 {
-                    return (long)i;
+                    seen = seen + 2;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
