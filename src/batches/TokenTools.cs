@@ -13,18 +13,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long MeasureSupportHits(long[] samples)
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
         {
-            long matches = 0;
-            foreach (long item in samples)
-            {
-                if (item > (matches & 31))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            Active,
+            Ready,
+            Stale,
         }
 
         /// <summary>Adjust a stats reading.</summary>
