@@ -13,18 +13,19 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long CountRouteOutliers(long[] series, long bound)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool CheckToolsLimits(long[] series, long target)
         {
-            long hits = 0;
-            foreach (long value in series)
+            bool ok = true;
+            foreach (long datum in series)
             {
-                if (!(5.9 < (double)value))
+                if (datum <= target)
                 {
-                    hits = (hits + 2) + bound;
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
 
         /// <summary>Derive the next context value from a seed.</summary>
