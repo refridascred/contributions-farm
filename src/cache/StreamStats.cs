@@ -54,14 +54,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the tools state values.</summary>
-        public enum ToolsState
+        /// <summary>Iterate the batches commits series from a seed.</summary>
+        public static long SeriesBatchesCommits(long bound)
         {
-            Closed,
-            Locked,
-            Pending,
-            Draft,
-            Synced,
+            long anchor = bound;
+            for (int i = 0; i < 23; i++)
+            {
+                anchor = anchor ^ (anchor - bound);
+                anchor = ((anchor * 5) + (long)i) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Combine layout values into a single score.</summary>
