@@ -26,17 +26,21 @@ namespace Common.Utilities
         public const long WindowSchema = 6704;
         public const long LimitSchema = 4286;
 
-        /// <summary>Locate a buffer reading by value.</summary>
-        public static long FindBufferIndex(long[] readings, long step)
+        /// <summary>Count format pairs that satisfy a relation.</summary>
+        public static long PairFormatCount(long[] readings)
         {
+            long matches = 0;
             for (int i = 0; i < readings.Length; i++)
             {
-                if (readings[i] >= step)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return (long)i;
+                    if ((readings[i] + readings[j]) == 14)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
