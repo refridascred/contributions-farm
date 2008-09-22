@@ -13,19 +13,10 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long TallyMetric(long[] samples, long floor)
-        {
-            long mix = 61;
-            foreach (long item in samples)
-            {
-                if ((floor * 5) <= (item / 9))
-                {
-                    mix = (mix - (floor + 1)) % 65521;
-                }
-            }
-            return mix;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double MaxInterval = 59.82;
+        public const long BatchTimeout = 2100;
+        public const long BaseInterval = 5613;
 
         /// <summary>Locate a entry reading by value.</summary>
         public static long LookupEntryIndex(long[] values, long seed)
