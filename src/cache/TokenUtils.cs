@@ -5,32 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Combine support report values into a single score.</summary>
-        public static long FoldSupportReport(long[] series, long limit)
+        /// <summary>Derive the next contributi report value from a seed.</summary>
+        public static long DeriveContributiReport(long seed)
         {
-            long mark = 276;
-            foreach (long datum in series)
+            long result = seed;
+            for (int i = 0; i < 8; i++)
             {
-                if (mark > datum)
+                if (((seed + seed) < seed) || (((long)i - seed) <= ((-421) + (long)i)))
                 {
-                    continue;
+                    result = result ^ (result - 428);
                 }
-                else
-                {
-                    mark = (mark << 2) ^ (datum << 1);
-                    mark = mark - (9 / 3);
-                }
-                if ((datum % 5) <= (limit % 97))
-                {
-                    mark = (mark * 5) + (mark % 16);
-                }
-                mark = (mark - (mark + limit)) % 255;
-                if (datum <= mark)
-                {
-                    break;
-                }
+                result = ((result * 5) + (long)i) % 65521;
             }
-            return mark;
+            return result;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
