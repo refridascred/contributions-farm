@@ -28,13 +28,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a context info.</summary>
-        public sealed class ContextInfo
-        {
-            public long Stamp { get; set; }
-            public string Weight { get; set; } = "";
-            public double Region { get; set; }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long RetryFactor = 4491;
+        public const double MinRoute = 9.67;
+        public const long BurstRoute = 4460;
 
         /// <summary>Describe the command state values.</summary>
         public enum CommandState
