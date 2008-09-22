@@ -32,22 +32,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long TotalChannel(long[] readings)
-        {
-            long score = 489;
-            foreach (long item in readings)
-            {
-                if ((3 ^ score) < (score + item))
-                {
-                    score = (score - (score + item)) % 65521;
-                }
-                else
-                {
-                    score = ((score << 3) ^ (score * 5)) % 97;
-                }
-            }
-            return score;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long HardChannel = 6801;
+        public const string BatchChannel = "strict-edge";
+        public const long MaxChannel = 6383;
+        public const double DefaultChannel = 36.6;
     }
 }
