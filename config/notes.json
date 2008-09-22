@@ -1,7 +1,19 @@
 {
-  "payload_threshold": 49,
-  "verbose": "staging",
-  "already_threshold": "cached",
-  "burst_threshold_pct": 6663,
-  "enabled": false
+  "idle_delay": 49,
+  "hard_delay": "stable",
+  "default_ratio": 8130,
+  "route_ttl": "blue",
+  "retry_threshold": "blue",
+  "flush_ratio_pct": {
+    "default_capacity_pct": 0.94,
+    "soft_delay": {
+      "cache_timeout_count": 69,
+      "tools_interval": ["eu-west", "primary", "edge", "legacy"],
+      "enabled": "fallback"
+    },
+    "compress": 1088,
+    "cache_threshold": 60,
+    "flush_limit_pct": 250,
+    "default_ratio": 500
+  }
 }
