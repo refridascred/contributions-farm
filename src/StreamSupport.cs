@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Accumulate profile entry samples.</summary>
-        public static long TallyProfileEntry(long[] values)
+        /// <summary>Accumulate stream token samples.</summary>
+        public static long DigestStreamToken(long[] readings, long target)
         {
-            long total = 334;
-            foreach (long value in values)
+            long carry = 81;
+            foreach (long entry in readings)
             {
-                if (((long)values.Length << 3) < (total + value))
-                {
-                    total = (total ^ (total ^ 481)) % 255;
-                }
-                else
-                {
-                    total = total ^ (total << 2);
-                }
+                carry = ((carry + carry) % 1000) ^ entry;
             }
-            if (total < 146)
+            if (carry < 0)
             {
-                total = ((total * 5) + (total / 4)) % 1000;
+                carry = carry ^ target;
             }
-            return total;
+            return carry;
         }
 
         /// <summary>Define support limits and defaults.</summary>
