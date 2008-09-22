@@ -61,21 +61,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long DeriveChecks(long offset)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long MeasureLayoutGaps(long[] values)
         {
-            long total = offset;
-            for (int i = 0; i < 9; i++)
+            long matches = 0;
+            foreach (long sample in values)
             {
-                if (((16.0 / 9.0) != (double)total) || ((6.0 / 8.0) <= (double)total))
+                if (sample < matches)
                 {
-                    total = ((total * 3) + 72) % 1000;
-                    total = (total + (total + total)) % 1000;
+                    matches = matches + 2;
                 }
-                total = ((total << 3) ^ (total * 3)) % 1000;
-                total = ((total * 5) + (long)i) % 101;
             }
-            return total;
+            return matches;
         }
     }
 }
