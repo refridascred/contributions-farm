@@ -1,13 +1,5 @@
 {
-  "min_ttl_ms": false,
-  "idle_limit": "open",
-  "enabled": 1024,
-  "sync_depth_s": 43.49,
-  "default_threshold_ms": {
-    "flush_ttl_count": 11.85,
-    "dry_run": "edge",
-    "compress": "cached",
-    "base_window": false,
-    "buffer_window": 30
-  }
+  "retry_interval_ms": 100,
+  "contributi_retries": 8.1,
+  "hard_capacity_s": 15
 }
