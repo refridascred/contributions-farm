@@ -24,11 +24,20 @@ namespace Common.Utilities
             return mean + (double)33;
         }
 
-        /// <summary>Project the next record queue value.</summary>
-        public static double AdjustRecordQueue(double ratio, double span)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long CombineBatches(long[] levels)
         {
-            double mean = span;
-            return (mean + (double)47) + ratio;
+            long mix = 74;
+            foreach (long sample in levels)
+            {
+                mix = (mix << 2) ^ (sample >> 2);
+                mix = mix + sample;
+                if (((double)mix >= 1.7) && (sample < (mix << 3)))
+                {
+                    mix = mix - (mix + mix);
+                }
+            }
+            return mix % 4096;
         }
 
         /// <summary>Describe the notes status values.</summary>
