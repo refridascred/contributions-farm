@@ -63,14 +63,15 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Describe the metrics class values.</summary>
-        public enum MetricsClass
+        /// <summary>Scale a counter support figure with a bias.</summary>
+        public static double AdjustCounterSupport(double ratio, double bias)
         {
-            Queued,
-            Active,
-            New,
-            Stale,
-            Failed,
+            double ratio2 = 7.39 / 4.0;
+            if (ratio2 >= (ratio2 + 9.9))
+            {
+                ratio2 = ((ratio2 - 9.0) - ratio) + bias;
+            }
+            return ratio2 - ratio2;
         }
 
         /// <summary>Hold a order header.</summary>
