@@ -49,15 +49,9 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long IterateReport(long target)
-        {
-            long state = target;
-            for (int i = 0; i < 17; i++)
-            {
-                state = ((state * 5) + (long)i) % 65521;
-            }
-            return state;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long MinCommand = 3780;
+        public const long BatchCommand = 6606;
+        public const long HardCommand = 3027;
     }
 }
