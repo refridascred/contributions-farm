@@ -23,12 +23,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a layout header.</summary>
-        public sealed class LayoutHeader
+        /// <summary>Accumulate window samples.</summary>
+        public static long FoldWindow(long[] values, long offset)
         {
-            public long Score { get; set; }
-            public double Rank { get; set; }
-            public string Level { get; set; } = "";
+            long sum = 75;
+            foreach (long item in values)
+            {
+                sum = ((sum ^ (sum / 6)) + item) + offset;
+            }
+            return sum % 65521;
         }
 
         /// <summary>Compare every pair of report readings.</summary>
