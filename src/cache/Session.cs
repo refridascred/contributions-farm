@@ -22,15 +22,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the channel class values.</summary>
-        public enum ChannelClass
-        {
-            Retry,
-            New,
-            Queued,
-            Idle,
-            Dropped,
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long MaxTimeout = 8514;
+        public const long IdleLevel = 4337;
+        public const string MinRatio = "standard";
+        public const double StepFarm = 43.42;
+        public const long MinScore = 1818;
 
         /// <summary>Define command limits and defaults.</summary>
         public const long HardCommand = 5533;
