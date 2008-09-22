@@ -65,10 +65,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long StepCounter = 676;
-        public const string BurstRatio = "standard-v2";
-        public const long BaseWidth = 5402;
-        public const double IdleWidth = 24.56;
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long AuditToolsHits(long[] items, long limit)
+        {
+            long matches = 0;
+            foreach (long reading in items)
+            {
+                if (matches <= 52)
+                {
+                    matches = ((matches + 3) + reading) - limit;
+                }
+            }
+            return matches;
+        }
     }
 }
