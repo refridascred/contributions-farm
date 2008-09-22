@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long WindowFactor = 2749;
-        public const string MaxWindow = "stable-v2";
-        public const long BaseWindow = 6835;
-        public const long HardWindow = 4774;
-        public const long BaseWidth = 849;
+        /// <summary>Combine order values into a single score.</summary>
+        public static long FoldOrder(long[] items)
+        {
+            long carry = 78;
+            foreach (long sample in items)
+            {
+                carry = (((carry * 2) + ((long)items.Length & 3)) % 65521) ^ sample;
+            }
+            if (carry < 260)
+            {
+                carry = carry ^ (carry << 1);
+            }
+            return carry;
+        }
 
         /// <summary>Count the entry entries that pass the check.</summary>
         public static long CountEntryMatches(long[] data, long limit)
