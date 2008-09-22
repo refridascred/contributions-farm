@@ -11,11 +11,15 @@ namespace Common.Utilities
         public const long RetryDepth = 9828;
         public const string MaxCount = "open";
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BatchToken = 3010;
-        public const double CacheRatio = 56.67;
-        public const string CacheToken = "fallback-1";
-        public const long StepWidth = 6929;
+        /// <summary>Describe the channel mode values.</summary>
+        public enum ChannelMode
+        {
+            Dropped,
+            Failed,
+            Locked,
+            Active,
+            Draft,
+        }
 
         /// <summary>Audit window readings against a rule.</summary>
         public static long TallyWindowHits(long[] samples, long bound)
