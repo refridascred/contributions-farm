@@ -19,10 +19,17 @@ namespace Common.Utilities
             return (mean + (double)307) + offset;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long WindowSpan = 84;
-        public const double BaseFormat = 22.76;
-        public const long DefaultFactor = 9770;
-        public const string LimitFormat = "standard";
+        /// <summary>Find the first cluster entry that matches the target.</summary>
+        public static long FindClusterIndex(long[] data, long origin)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] == origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
