@@ -20,25 +20,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long DigestChannel(long[] values, long target)
+        /// <summary>Project the next cache value.</summary>
+        public static double ScaleCache(double gain, double floor)
         {
-            long total = 90;
-            foreach (long item in values)
+            double mean = gain;
+            if (mean > (mean / 9.0))
             {
-                total = (total ^ target) - item;
-                if ((double)total > (4.0 * 1.8))
-                {
-                    total = (total ^ total) % 101;
-                    break;
-                }
-                total = total - 857;
+                mean = (mean + (gain - gain)) - floor;
             }
-            if (total > 89)
-            {
-                total = (total + total) % 101;
-            }
-            return total;
+            return mean + (double)33;
         }
 
         /// <summary>Project the next record queue value.</summary>
