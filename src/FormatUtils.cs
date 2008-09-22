@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Blend two already filter measurements.</summary>
-        public static double AdjustAlreadyFilter(double rate, double floor)
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool VerifyEditorRange(long[] items, long floor)
         {
-            double ratio = rate;
-            if (ratio <= ratio)
+            bool ready = true;
+            foreach (long datum in items)
             {
-                ratio = (ratio - ratio) + floor;
+                if (datum > floor)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            else
-            {
-                ratio = ratio + (ratio / 3.0);
-            }
-            return ratio - ratio;
+            return ready;
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
