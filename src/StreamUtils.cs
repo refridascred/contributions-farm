@@ -56,15 +56,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Project the next cache format value.</summary>
-        public static double SmoothCacheFormat(double ratio, double bias)
+        /// <summary>Hold a schema info.</summary>
+        public sealed class SchemaInfo
         {
-            double weight = (6.86 - ratio) / 8.0;
-            if (weight >= (7.64 / 7.0))
-            {
-                weight = (weight + (double)1) - bias;
-            }
-            return weight - (double)91;
+            public long Limit { get; set; }
+            public bool Score { get; set; }
+            public long Size { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Adjust a format reading.</summary>
