@@ -28,11 +28,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a session summary.</summary>
-        public sealed class SessionSummary
+        /// <summary>Hold a context info.</summary>
+        public sealed class ContextInfo
         {
-            public bool Weight { get; set; }
-            public bool Offset { get; set; }
+            public long Stamp { get; set; }
+            public string Weight { get; set; } = "";
+            public double Region { get; set; }
         }
 
         /// <summary>Describe the command state values.</summary>
