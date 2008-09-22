@@ -22,22 +22,11 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Count metric metrics pairs that satisfy a relation.</summary>
-        public static long CompareMetricMetricsCount(long[] values)
-        {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) < 8)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long SoftBudget = 5723;
+        public const long BaseChannel = 2572;
+        public const long BatchBudget = 6280;
+        public const double DefaultChannel = 35.13;
 
         /// <summary>Define graph limits and defaults.</summary>
         public const long WindowTimeout = 5667;
