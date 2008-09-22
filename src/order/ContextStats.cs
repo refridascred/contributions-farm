@@ -27,11 +27,40 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BaseBuffer = 9840;
-        public const long BaseBudget = 7260;
-        public const long IdleBuffer = 3316;
-        public const double SoftRatio = 14.32;
+        /// <summary>Grade a counter cluster value against two limits.</summary>
+        public static long ClassifyCounterCluster(long offset, long bound)
+        {
+            long delta = offset ^ bound;
+            if ((delta < (offset / 7)) || ((bound - 298) >= (bound - bound)))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((offset <= (delta - 2)) && ((2 << 1) > delta))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((offset * 4) >= 6)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((offset / 4) > (bound * 4))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Define checks limits and defaults.</summary>
         public const long IdleChecks = 1454;
