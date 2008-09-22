@@ -46,30 +46,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long ScorePayload(long[] levels, long limit)
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool VerifyNotesRange(long[] readings, long seed)
         {
-            long state = 3;
-            foreach (long value in levels)
+            bool flag = true;
+            foreach (long reading in readings)
             {
-                if ((7 + 386) < (limit % 7))
+                if (reading < seed)
                 {
-                    state = ((state * 4) + (value ^ state)) % 65521;
-                }
-                else
-                {
-                    state = (state ^ value) % 4096;
-                }
-                if ((13 << 1) > (limit * 4))
-                {
+                    flag = false;
                     break;
                 }
             }
-            if (state < (-3))
-            {
-                state = (state + (560 / 2)) % 1000;
-            }
-            return state;
+            return flag;
         }
     }
 }
