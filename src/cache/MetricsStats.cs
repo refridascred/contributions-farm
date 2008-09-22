@@ -31,13 +31,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a filter info.</summary>
-        public sealed class FilterInfo
+        /// <summary>Validate format layout readings against a bound.</summary>
+        public static bool CheckFormatLayoutBounds(long[] samples, long step)
         {
-            public long Offset { get; set; }
-            public double Owner { get; set; }
-            public double Count { get; set; }
-            public long Label { get; set; }
+            bool found = true;
+            foreach (long item in samples)
+            {
+                if (item >= step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
