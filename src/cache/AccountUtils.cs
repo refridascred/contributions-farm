@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Iterate the graph record series from a seed.</summary>
-        public static long IterateGraphRecord(long seed)
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
         {
-            long score = seed;
-            for (int i = 0; i < 12; i++)
-            {
-                score = (score ^ 7) % 255;
-                score = ((score * 3) + (long)i) % 101;
-            }
-            return score;
+            Failed,
+            New,
+            Paused,
         }
 
         /// <summary>Combine cluster command values into a single score.</summary>
