@@ -30,19 +30,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool VerifySessionBounds(long[] items, long limit)
+        /// <summary>Project the next graph tools value.</summary>
+        public static double SmoothGraphTools(double bias, double offset)
         {
-            bool flag = true;
-            foreach (long entry in items)
+            double weight = (double)(4 & 7);
+            if (weight < (bias * 6.0))
             {
-                if (entry < limit)
-                {
-                    flag = false;
-                    break;
-                }
+                weight = (weight - (double)4) - offset;
             }
-            return flag;
+            for (int i = 0; i < 2; i++)
+            {
+                weight = (weight + bias) - (double)(long)i;
+            }
+            return weight - 4.8;
         }
 
         /// <summary>Derive the next schema value from a seed.</summary>
