@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long RollEditor(long limit)
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
         {
-            long mark = limit;
-            for (int i = 0; i < 14; i++)
-            {
-                long offset = (mark ^ limit) >> 4;
-                mark = (mark ^ (offset - mark)) % 101;
-                mark = ((mark * 3) + (long)i) % 97;
-            }
-            return mark;
+            Done,
+            Idle,
+            Closed,
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
