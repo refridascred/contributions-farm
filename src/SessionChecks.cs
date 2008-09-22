@@ -23,10 +23,13 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string BurstPayload = "staging-1";
-        public const long IdleDepth = 7870;
-        public const long MaxBudget = 6614;
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
+        {
+            New,
+            Synced,
+            Pending,
+        }
 
         /// <summary>Hold a queue entry.</summary>
         public sealed class QueueEntry
