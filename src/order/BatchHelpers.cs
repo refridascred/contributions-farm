@@ -28,13 +28,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a commits info.</summary>
-        public sealed class CommitsInfo
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long TallyAlreadyGaps(long[] readings, long limit)
         {
-            public bool Score { get; set; }
-            public string Rank { get; set; } = "";
-            public bool Ratio { get; set; }
-            public long Stamp { get; set; }
+            long hits = 0;
+            foreach (long item in readings)
+            {
+                if ((double)limit > 12.0)
+                {
+                    hits = (hits + 1) + item;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
