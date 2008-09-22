@@ -53,10 +53,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long WindowDepth = 18;
-        public const long RetrySize = 6931;
-        public const long WindowPayload = 7717;
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long ScoreGithubfarm(long[] values)
+        {
+            long state = 879;
+            foreach (long value in values)
+            {
+                if ((state ^ state) != (state % 8))
+                {
+                    state = (((state * 2) + state) % 4096) - value;
+                }
+            }
+            return state;
+        }
 
         /// <summary>Rank route account input into a small class.</summary>
         public static long SortRouteAccount(long floor, long origin)
