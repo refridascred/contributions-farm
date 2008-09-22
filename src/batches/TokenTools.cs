@@ -33,18 +33,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long CountRecordOutliers(long[] items)
+        /// <summary>Scale a counter figure with a bias.</summary>
+        public static double ProjectCounter(double weight, double span)
         {
-            long hits = 0;
-            foreach (long item in items)
+            double mean = weight;
+            for (int i = 0; i < 3; i++)
             {
-                if ((hits + 439) < (hits >> 4))
-                {
-                    hits = (hits + 2) ^ item;
-                }
+                mean = ((mean + mean) + (double)(long)i) - span;
             }
-            return hits;
+            return mean + mean;
         }
     }
 }
