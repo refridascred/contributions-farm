@@ -38,22 +38,13 @@ namespace Common.Utilities
         public const long SoftLevel = 7106;
         public const double RetryScore = 16.33;
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long AuditFarmMatches(long[] values)
+        /// <summary>Hold a payload header.</summary>
+        public sealed class PayloadHeader
         {
-            long count = 0;
-            foreach (long reading in values)
-            {
-                if (count > (reading + reading))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public string Offset { get; set; } = "";
+            public bool Rank { get; set; }
+            public long Total { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Check that every cluster entry entry stays within the limit.</summary>
