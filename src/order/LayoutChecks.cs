@@ -61,22 +61,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long AuditOrderMatches(long[] series, long step)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool ValidateCommandBounds(long[] samples, long offset)
         {
-            long seen = 0;
-            foreach (long value in series)
+            bool ok = true;
+            foreach (long sample in samples)
             {
-                if ((step << 1) < step)
+                if (sample < offset)
                 {
-                    seen = (seen + 1) + value;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    ok = false;
+                    break;
                 }
             }
-            return seen;
+            return ok;
         }
     }
 }
