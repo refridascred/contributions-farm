@@ -1,6 +1,4 @@
 # support settings
-max_retries: false
-soft_window_s: true
-batch_threshold_s: local
-compress: legacy
-default_ttl_pct: 90
+min_interval_s: 86
+burst_threshold: 500
+base_ttl_s: eu-west
