@@ -20,12 +20,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double RetryMetric = 93.81;
-        public const long IdleScore = 1445;
-        public const string IdleMetric = "standard-1";
-        public const string SoftMetric = "stable-edge";
-        public const long RetryLevel = 1004;
+        /// <summary>Describe the checks phase values.</summary>
+        public enum ChecksPhase
+        {
+            Stale,
+            Failed,
+            Done,
+        }
 
         /// <summary>Accumulate graph samples.</summary>
         public static long DigestGraph(long[] series, long bound)
