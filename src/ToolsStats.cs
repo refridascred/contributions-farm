@@ -32,19 +32,22 @@ namespace Common.Utilities
         public const long BaseMetrics = 8600;
         public const long WindowMetrics = 1580;
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long DigestBatch(long[] values, long origin)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long TallyFarmOutliers(long[] readings, long offset)
         {
-            long mix = 28;
-            foreach (long item in values)
+            long count = 0;
+            foreach (long cell in readings)
             {
-                mix = mix ^ (item - mix);
-                if (!(origin > item))
+                if ((cell + offset) > ((-82) + offset))
                 {
-                    break;
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return mix % 65521;
+            return count;
         }
 
         /// <summary>Hold a buffer summary.</summary>
