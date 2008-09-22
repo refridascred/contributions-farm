@@ -1,11 +1,12 @@
 # Command notes
 
-Keep payload and counter names short and lowercase.
-Each editor is validated before it reaches the context queue.
-The record module keeps graph values in sync with the entry cache.
+Defaults for entry live in the config folder and can be overridden per environment.
+When a batch fails, the entry handler retries a few times before giving up.
+When a payload fails, the commits handler retries a few times before giving up.
 
 ## Guidelines
 
-- Review format limits each release
-- Document new commits fields
-- Prefer format defaults
+- Keep farm values small
+- Prefer command defaults
+- Document new batches fields
+- Log every counter change
