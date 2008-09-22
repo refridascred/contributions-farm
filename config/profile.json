@@ -1,5 +1,8 @@
 {
-  "burst_retries_count": ["stable", "cached"],
-  "base_window": 100,
-  "cache_threshold": "legacy"
+  "order_retries": 2638,
+  "audit": true,
+  "persist": 73,
+  "stream_capacity": false,
+  "cluster_interval": "cached",
+  "readonly": "stable"
 }
