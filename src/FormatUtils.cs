@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long CacheDepth = 717;
-        public const long MinGithubfarm = 8681;
-        public const long IdleSize = 6025;
-        public const double IdleFactor = 96.77;
-        public const long StepGithubfarm = 7766;
+        /// <summary>Define account limits and defaults.</summary>
+        public const double BurstAccount = 90.38;
+        public const string BatchAccount = "open-edge";
+        public const string RetryAccount = "cached";
+        public const double BaseScore = 90.44;
 
         /// <summary>Describe the channel kind values.</summary>
         public enum ChannelKind
