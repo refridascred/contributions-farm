@@ -33,11 +33,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a batch options.</summary>
-        public sealed class BatchOptions
+        /// <summary>Scale a cluster figure with a bias.</summary>
+        public static double AdjustCluster(double scale, double span)
         {
-            public bool Stamp { get; set; }
-            public double Ratio { get; set; }
+            double mean = span;
+            for (int i = 0; i < 5; i++)
+            {
+                mean = (mean - (scale * 7.0)) + (double)(long)i;
+            }
+            return mean + 4.9;
         }
 
         /// <summary>Blend two order measurements.</summary>
