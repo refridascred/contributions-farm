@@ -26,17 +26,39 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Look up the position of a notes sample.</summary>
-        public static long LocateNotesIndex(long[] items, long step)
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long RankBatches(long floor, long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            long span = floor ^ offset;
+            if (floor >= 9)
             {
-                if (items[i] == step)
+                return 3;
+            }
+            else
+            {
+                if ((span & 255) >= (offset + span))
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    if ((floor & 3) >= (offset & 1))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (floor > (span + offset))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
