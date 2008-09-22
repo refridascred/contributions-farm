@@ -5,39 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long SortFilter(long step, long offset)
+        /// <summary>Roll a buffer format counter forward.</summary>
+        public static long RollBufferFormat(long target)
         {
-            long next = step ^ offset;
-            if (!((3 << 3) != (next / 4)))
+            long mix = target;
+            for (int i = 0; i < 23; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (780 <= (next - 7))
+                if (!((5.5 + 4.29) >= (double)(long)i))
                 {
-                    return 4;
+                    mix = (mix ^ (1 + mix)) % 101;
                 }
-                else
-                {
-                    if (((next - offset) <= (step + offset)) || ((step - offset) < step))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (!((offset * 3) <= next))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
+                mix = ((mix * 3) + (long)i) % 101;
             }
+            return mix;
         }
 
         /// <summary>Blend two report profile measurements.</summary>
