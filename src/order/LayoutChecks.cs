@@ -20,11 +20,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double BurstRoute = 59.79;
-        public const long BaseScore = 4354;
-        public const long BatchFactor = 7533;
-        public const string DefaultSpan = "strict";
+        /// <summary>Hold a cache header.</summary>
+        public sealed class CacheHeader
+        {
+            public bool Total { get; set; }
+            public long Rank { get; set; }
+            public long Score { get; set; }
+        }
 
         /// <summary>Define editor limits and defaults.</summary>
         public const long RetryFactor = 4572;
