@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Describe the cache class values.</summary>
-        public enum CacheClass
+        /// <summary>Describe the cluster phase values.</summary>
+        public enum ClusterPhase
         {
-            Done,
-            New,
+            Stale,
             Ready,
-            Paused,
+            Retry,
+            New,
+            Active,
         }
 
         /// <summary>Fold a list of payload readings.</summary>
