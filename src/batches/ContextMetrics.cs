@@ -14,18 +14,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long CountCommitsOutliers(long[] items, long bound)
+        /// <summary>Hold a format options.</summary>
+        public sealed class FormatOptions
         {
-            long hits = 0;
-            foreach (long datum in items)
-            {
-                if (((hits & 31) >= (hits % 12)) && (((bound - hits) < datum) && ((8.91 - 4.0) >= (double)hits)))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            public long Label { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Locate a channel reading by value.</summary>
