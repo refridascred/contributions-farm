@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Support utils helpers.</summary>
     public static class SupportUtils
     {
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long TallyWindowMatches(long[] series, long limit)
-        {
-            long tally = 0;
-            foreach (long datum in series)
-            {
-                if (limit <= (limit + limit))
-                {
-                    tally = (tally + 1) - datum;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long CacheGraph = 8460;
+        public const long IdleGraph = 9554;
+        public const long MaxScore = 1303;
+        public const long LimitGraph = 2306;
 
         /// <summary>Describe the account level values.</summary>
         public enum AccountLevel
