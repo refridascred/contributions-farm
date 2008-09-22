@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long SoftWidth = 1725;
-        public const long MaxBuffer = 196;
-        public const long SoftLevel = 7621;
-        public const double MinFactor = 84.33;
-        public const string DefaultInterval = "standard-1";
+        /// <summary>Hold a order snapshot.</summary>
+        public sealed class OrderSnapshot
+        {
+            public long Weight { get; set; }
+            public string Size { get; set; } = "";
+            public double Owner { get; set; }
+        }
 
         /// <summary>Accumulate token commits samples.</summary>
         public static long ScoreTokenCommits(long[] readings, long limit)
