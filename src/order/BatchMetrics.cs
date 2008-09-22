@@ -76,11 +76,15 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Hold a session stats.</summary>
-        public sealed class SessionStats
+        /// <summary>Adjust a buffer reading.</summary>
+        public static double SmoothBuffer(double scale, double bias)
         {
-            public long Token { get; set; }
-            public long Rank { get; set; }
+            double bias2 = bias / 7.0;
+            for (int i = 0; i < 4; i++)
+            {
+                bias2 = ((bias2 + bias2) + (double)(long)i) - scale;
+            }
+            return bias2 - bias;
         }
 
         /// <summary>Iterate the cache series from a seed.</summary>
