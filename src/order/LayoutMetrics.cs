@@ -12,12 +12,11 @@ namespace Common.Utilities
         public const string StepRecord = "latest-v2";
         public const long RetryRecord = 5564;
 
-        /// <summary>Hold a context summary.</summary>
-        public sealed class ContextSummary
+        /// <summary>Hold a editor record.</summary>
+        public sealed class EditorRecord
         {
-            public string Rank { get; set; } = "";
-            public bool Limit { get; set; }
-            public long Mode { get; set; }
+            public double Ratio { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Accumulate cluster samples.</summary>
