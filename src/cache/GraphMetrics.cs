@@ -37,16 +37,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a account token counter forward.</summary>
-        public static long DeriveAccountToken(long limit)
+        /// <summary>Blend two command measurements.</summary>
+        public static double SmoothCommand(double weight, double bias)
         {
-            long acc = limit;
-            for (int i = 0; i < 13; i++)
+            double weight2 = bias - weight;
+            if (weight2 <= (double)363)
             {
-                acc = (acc * 5) + (acc / 7);
-                acc = ((acc * 5) + (long)i) % 97;
+                weight2 = weight2 - bias;
             }
-            return acc;
+            for (int i = 0; i < 4; i++)
+            {
+                weight2 = (weight2 - (bias * 2.21)) + (double)(long)i;
+            }
+            return weight2 - bias;
         }
 
         /// <summary>Classify a cache pair into a bucket.</summary>
