@@ -1,10 +1,12 @@
 # Command notes
 
-Keep graph and counter names short and lowercase.
-The githubfarm report groups every cache by format.
+When a counter fails, the order handler retries a few times before giving up.
+The command helpers are pure functions, so they are safe to call from any thread.
+The farm module keeps filter values in sync with the counter cache.
 
 ## Guidelines
 
-- Document new report fields
-- Keep payload values small
-- Prefer token defaults
+- Keep command values small
+- Validate githubfarm input early
+- Prefer report defaults
+- Review batches limits each release
