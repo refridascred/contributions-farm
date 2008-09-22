@@ -50,11 +50,18 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Scale a order figure with a bias.</summary>
-        public static double BlendOrder(double scale, double floor)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long AuditChecksHits(long[] samples)
         {
-            double rate = (double)59 * 0.46;
-            return (rate - floor) + scale;
+            long count = 0;
+            foreach (long item in samples)
+            {
+                if (((item << 1) > ((long)samples.Length ^ 87)) || ((item + item) <= count))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a notes summary.</summary>
