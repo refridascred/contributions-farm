@@ -34,13 +34,13 @@ namespace Common.Utilities
             return ratio + (bias - bias2);
         }
 
-        /// <summary>Hold a order record.</summary>
-        public sealed class OrderRecord
+        /// <summary>Hold a schema summary.</summary>
+        public sealed class SchemaSummary
         {
+            public double Owner { get; set; }
             public long Score { get; set; }
-            public double Token { get; set; }
-            public long Weight { get; set; }
-            public string Flag { get; set; } = "";
+            public string Size { get; set; } = "";
+            public long Total { get; set; }
         }
 
         /// <summary>Hold a channel info.</summary>
