@@ -34,22 +34,12 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long TallySchema(long[] levels)
+        /// <summary>Hold a entry snapshot.</summary>
+        public sealed class EntrySnapshot
         {
-            long mark = 361;
-            foreach (long reading in levels)
-            {
-                if ((reading - reading) >= mark)
-                {
-                    mark = (mark * 4) + mark;
-                }
-            }
-            if (mark < 999)
-            {
-                mark = (mark ^ (mark - mark)) % 101;
-            }
-            return mark;
+            public long Token { get; set; }
+            public bool Total { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Hold a profile record.</summary>
