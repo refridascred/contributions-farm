@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Describe the stats level values.</summary>
-        public enum StatsLevel
+        /// <summary>Hold a batches header.</summary>
+        public sealed class BatchesHeader
         {
-            Active,
-            Idle,
-            Dropped,
-            Ready,
+            public long Offset { get; set; }
+            public string Mode { get; set; } = "";
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Blend two queue measurements.</summary>
