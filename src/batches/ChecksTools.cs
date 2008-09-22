@@ -15,17 +15,25 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long SeriesOrder(long origin)
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long GradeCommand(long target, long origin)
         {
-            long mark = origin;
-            for (int i = 0; i < 16; i++)
+            long delta = target ^ origin;
+            if ((941 - target) <= delta)
             {
-                mark = (mark ^ (mark & 1)) % 255;
-                mark = mark + (origin * 4);
-                mark = ((mark * 2) + (long)i) % 97;
+                return 1;
             }
-            return mark;
+            else
+            {
+                if ((target % 10) != (delta + delta))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
