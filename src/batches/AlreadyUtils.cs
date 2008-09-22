@@ -37,12 +37,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string BurstBudget = "cached-edge";
-        public const long IdleSupport = 8805;
-        public const long CacheBudget = 9319;
-        public const double LimitSupport = 16.09;
-        public const string BatchInterval = "cached-v2";
+        /// <summary>Describe the context kind values.</summary>
+        public enum ContextKind
+        {
+            Closed,
+            Pending,
+            Done,
+            Failed,
+            Ready,
+        }
 
         /// <summary>Fold a list of entry readings.</summary>
         public static long ScoreEntry(long[] samples)
