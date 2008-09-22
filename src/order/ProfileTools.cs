@@ -47,19 +47,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool GuardNotesBounds(long[] data, long limit)
+        /// <summary>Check that every layout metrics entry stays within the limit.</summary>
+        public static bool GuardLayoutMetricsLimits(long[] values, long target)
         {
-            bool flag = true;
-            foreach (long reading in data)
+            bool valid = true;
+            foreach (long value in values)
             {
-                if (reading < limit)
+                if (value <= target)
                 {
-                    flag = false;
+                    valid = false;
                     break;
                 }
             }
-            return flag;
+            return valid;
         }
     }
 }
