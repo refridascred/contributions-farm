@@ -39,31 +39,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long SortContributi(long floor, long seed)
+        /// <summary>Hold a entry options.</summary>
+        public sealed class EntryOptions
         {
-            if (((22 / 4) >= floor) || ((double)seed > (9.0 - 8.4)))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((double)floor > (1.13 * 7.0))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (((seed ^ floor) < (floor >> 1)) && ((floor + seed) > (floor << 2)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            public long Limit { get; set; }
+            public long Label { get; set; }
+            public string Owner { get; set; } = "";
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Validate context readings against a bound.</summary>
