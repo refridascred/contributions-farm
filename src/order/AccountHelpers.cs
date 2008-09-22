@@ -16,13 +16,11 @@ namespace Common.Utilities
             return drift + (drift + bias);
         }
 
-        /// <summary>Hold a metric snapshot.</summary>
-        public sealed class MetricSnapshot
-        {
-            public string Mode { get; set; } = "";
-            public double Limit { get; set; }
-            public long Total { get; set; }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string BatchInterval = "fallback-v2";
+        public const double IdleChannel = 86.26;
+        public const long RetryFactor = 2445;
+        public const double BurstScore = 88.43;
 
         /// <summary>Describe the notes mode values.</summary>
         public enum NotesMode
