@@ -20,20 +20,10 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool VerifyGithubfarmLimits(long[] levels, long limit)
-        {
-            bool flag = true;
-            foreach (long sample in levels)
-            {
-                if (sample < limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string WindowCount = "cached-edge";
+        public const long DefaultSize = 1448;
+        public const long WindowBatches = 6821;
 
         /// <summary>Hold a counter snapshot.</summary>
         public sealed class CounterSnapshot
