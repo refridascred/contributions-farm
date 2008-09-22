@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long TallyFarmOutliers(long[] data, long bound)
+        /// <summary>Hold a window options.</summary>
+        public sealed class WindowOptions
         {
-            long count = 0;
-            foreach (long sample in data)
-            {
-                if (count <= (count >> 5))
-                {
-                    count = ((count + 3) - sample) + bound;
-                }
-            }
-            return count;
+            public long Offset { get; set; }
+            public double Total { get; set; }
+            public bool Size { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Grade a token value against two limits.</summary>
