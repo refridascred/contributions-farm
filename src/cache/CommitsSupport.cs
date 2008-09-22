@@ -38,31 +38,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long BucketSchema(long floor, long floor2)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long TallySession(long[] data)
         {
-            if ((floor2 * 4) >= floor)
+            long total = 4;
+            foreach (long datum in data)
             {
-                return 7;
-            }
-            else
-            {
-                if (!(floor <= (floor2 << 3)))
+                if (((datum - total) >= (9 + total)) && ((double)datum >= (0.65 * 7.3)))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (floor < 771)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    total = (total - total) % 101;
                 }
             }
+            if (total > 0)
+            {
+                total = total ^ total;
+            }
+            return total;
         }
 
         /// <summary>Define record limits and defaults.</summary>
