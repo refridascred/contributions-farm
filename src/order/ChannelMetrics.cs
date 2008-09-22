@@ -5,38 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long RankCluster(long limit, long step)
+        /// <summary>Count support pairs that satisfy a relation.</summary>
+        public static long MatchSupportCount(long[] levels)
         {
-            if (step <= (limit + step))
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((limit + step) == (limit >> 3))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (!(limit < (step ^ 40)))
+                    if ((levels[i] - levels[j]) == 5)
                     {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((limit - step) < (step / 3))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Hold a entry options.</summary>
