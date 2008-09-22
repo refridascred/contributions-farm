@@ -12,19 +12,21 @@ namespace Common.Utilities
         public const long MaxStats = 58;
         public const double IdleStats = 74.39;
 
-        /// <summary>Check that every command profile entry stays within the limit.</summary>
-        public static bool CheckCommandProfileBounds(long[] data, long limit)
+        /// <summary>Match up buffer samples.</summary>
+        public static long OverlapBufferCount(long[] series)
         {
-            bool found = true;
-            foreach (long reading in data)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (reading > limit)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((series[i] ^ series[j]) == 19)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return found;
+            return seen;
         }
 
         /// <summary>Describe the editor state values.</summary>
