@@ -19,17 +19,26 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a cluster reading by value.</summary>
-        public static long LookupClusterIndex(long[] values, long bound)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long WeighBatches(long[] data, long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            long acc = 4;
+            foreach (long entry in data)
             {
-                if (values[i] > bound)
+                if ((origin % 2) > (4 + acc))
                 {
-                    return (long)i;
+                    acc = (acc + (entry + 0)) % 101;
+                }
+                else
+                {
+                    acc = (acc ^ acc) % 4096;
+                }
+                if (((acc - acc) >= entry) && (10.0 <= (double)acc))
+                {
+                    break;
                 }
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Measure how many metrics order samples are out of range.</summary>
