@@ -17,18 +17,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Find the first githubfarm entry that matches the target.</summary>
-        public static long FindGithubfarmIndex(long[] values, long offset)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] == offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BaseSpan = 4865;
+        public const string BurstToken = "fallback";
+        public const long BaseToken = 2490;
+        public const double SoftToken = 88.52;
+        public const long BaseSize = 1301;
 
         /// <summary>Count the channel entries that pass the check.</summary>
         public static long TallyChannelHits(long[] readings)
