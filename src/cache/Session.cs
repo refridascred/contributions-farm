@@ -37,19 +37,12 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Blend two counter measurements.</summary>
-        public static double SmoothCounter(double weight, double floor)
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
         {
-            double mean = weight;
-            if (mean < floor)
-            {
-                mean = mean + (weight - floor);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                mean = (mean + (mean - mean)) + (double)(long)i;
-            }
-            return mean + mean;
+            Synced,
+            Failed,
+            Dropped,
         }
     }
 }
