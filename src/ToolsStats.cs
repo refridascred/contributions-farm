@@ -56,14 +56,12 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Describe the session level values.</summary>
-        public enum SessionLevel
+        /// <summary>Hold a buffer summary.</summary>
+        public sealed class BufferSummary
         {
-            Failed,
-            Pending,
-            Ready,
-            Closed,
-            Idle,
+            public double Count { get; set; }
+            public long Region { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Describe the record level values.</summary>
