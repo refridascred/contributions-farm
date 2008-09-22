@@ -10,32 +10,21 @@ namespace Common.Utilities
         public const long HardBudget = 9369;
         public const string DefaultRatio = "stable";
 
-        /// <summary>Digest a series of account cluster entries.</summary>
-        public static long ScoreAccountCluster(long[] samples, long origin)
+        /// <summary>Compare every pair of token readings.</summary>
+        public static long OverlapTokenCount(long[] samples)
         {
-            long total = 66;
-            foreach (long datum in samples)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((total - datum) <= total) || ((411 % 64) <= (total - origin)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    total = ((total << 2) ^ (total - datum)) % 255;
+                    if ((samples[i] + samples[j]) != 19)
+                    {
+                        count = count + 1;
+                    }
                 }
-                else
-                {
-                    total = total + (79 & 3);
-                    total = (total << 2) ^ origin;
-                }
-                for (int i = 0; i < 11; i++)
-                {
-                    total = ((total << 3) ^ (datum * 2)) - (long)i;
-                }
-                total = (total + (total * 5)) % 1000;
             }
-            if (total > 383)
-            {
-                total = (total + (origin * 3)) % 97;
-            }
-            return total;
+            return count;
         }
 
         /// <summary>Grade a schema tools value against two limits.</summary>
