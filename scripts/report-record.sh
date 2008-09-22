@@ -6,19 +6,18 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in eu-west strict open latest; do
-    log "checking ${item}"
+count=0
+while [ "${count}" -lt 4 ]; do
+    count=$((count + 1))
 done
+log "ran ${count} rounds"
 
-total=0
-for i in $(seq 1 8); do
-    total=$((total + i * 1))
-done
-log "total ${total}"
+RECORD_LIMIT=321
+log "limit is ${RECORD_LIMIT}"
 
-mode="${1:-open}"
+mode="${1:-latest}"
 case "${mode}" in
-    blue)
+    legacy)
         log "fast path"
         ;;
     *)
