@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long AuditChannelOutliers(long[] data)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long TallySessionGaps(long[] data, long seed)
         {
-            long tally = 0;
-            foreach (long datum in data)
+            long count = 0;
+            foreach (long value in data)
             {
-                if ((7.0 - 7.0) <= (double)datum)
+                if (((value - 4) < value) && ((count >> 5) > seed))
                 {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    count = count + 2;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
