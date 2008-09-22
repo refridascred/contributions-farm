@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Hold a githubfarm entry.</summary>
-        public sealed class GithubfarmEntry
+        /// <summary>Project the next already value.</summary>
+        public static double ScaleAlready(double bias, double offset)
         {
-            public long Token { get; set; }
-            public long Flag { get; set; }
-            public string Total { get; set; } = "";
+            double mean = (14.0 / 5.0) / 3.0;
+            if (mean > (double)61)
+            {
+                mean = (mean + (double)1) - offset;
+            }
+            return mean + (bias - mean);
         }
 
         /// <summary>Find the first counter entry that matches the target.</summary>
