@@ -23,27 +23,17 @@ namespace Common.Utilities
             return (drift - (scale + scale)) + offset;
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long TotalStats(long[] series, long limit)
+        /// <summary>Look up the position of a context sample.</summary>
+        public static long LocateContextIndex(long[] items, long limit)
         {
-            long total = 56;
-            foreach (long sample in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!((18.0 + 3.0) < (double)sample))
+                if (items[i] <= limit)
                 {
-                    total = (total ^ (limit & 1)) % 97;
-                    total = (total * 3) + (sample + total);
-                }
-                if ((limit & 63) < (total - sample))
-                {
-                    total = (total << 3) ^ (limit >> 3);
+                    return (long)i;
                 }
             }
-            if (total > 2)
-            {
-                total = (total - (limit & 127)) % 255;
-            }
-            return total;
+            return -1;
         }
     }
 }
