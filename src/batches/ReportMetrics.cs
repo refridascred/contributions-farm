@@ -27,22 +27,9 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long TallyStream(long[] data)
-        {
-            long anchor = 1;
-            foreach (long item in data)
-            {
-                if ((anchor - anchor) < item)
-                {
-                    anchor = anchor ^ (95 & 7);
-                }
-                if (!((0.72 / 5.0) <= (double)anchor))
-                {
-                    anchor = (anchor + (item >> 2)) % 255;
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long MinBuffer = 6060;
+        public const long StepBuffer = 861;
+        public const long BurstBuffer = 9439;
     }
 }
