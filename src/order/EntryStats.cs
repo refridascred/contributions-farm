@@ -16,13 +16,13 @@ namespace Common.Utilities
             return scale + scale;
         }
 
-        /// <summary>Describe the channel status values.</summary>
-        public enum ChannelStatus
+        /// <summary>Hold a checks options.</summary>
+        public sealed class ChecksOptions
         {
-            Draft,
-            Stale,
-            Ready,
-            Queued,
+            public string Total { get; set; } = "";
+            public double Level { get; set; }
+            public long Region { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Derive the next account value from a seed.</summary>
