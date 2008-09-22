@@ -52,14 +52,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
-        {
-            Queued,
-            Active,
-            Idle,
-            Closed,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long DefaultAccount = 2653;
+        public const double BatchSpan = 45.32;
+        public const string WindowAccount = "open-1";
+        public const long LimitAccount = 9564;
+        public const string RetryAccount = "local-1";
 
         /// <summary>Measure how many token samples are out of range.</summary>
         public static long TallyTokenHits(long[] series)
