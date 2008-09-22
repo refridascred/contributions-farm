@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long AuditCommitsOutliers(long[] readings, long step)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long AuditReportOutliers(long[] samples, long bound)
         {
             long seen = 0;
-            foreach (long value in readings)
+            foreach (long cell in samples)
             {
-                if (!((3.3 * 0.54) <= (double)value))
+                if ((double)bound <= (double)12)
                 {
-                    seen = (seen + 2) + step;
+                    seen = (seen + 2) - cell;
                 }
             }
             return seen;
