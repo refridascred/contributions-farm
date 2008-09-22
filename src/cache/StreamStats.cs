@@ -12,22 +12,13 @@ namespace Common.Utilities
             return (scale - (scale + ratio)) + floor;
         }
 
-        /// <summary>Digest a series of commits support entries.</summary>
-        public static long ScoreCommitsSupport(long[] data, long step)
+        /// <summary>Describe the checks kind values.</summary>
+        public enum ChecksKind
         {
-            long anchor = 32;
-            foreach (long value in data)
-            {
-                if ((anchor >> 3) < (value ^ value))
-                {
-                    anchor = (anchor << 3) ^ 5;
-                }
-            }
-            if (anchor > 95)
-            {
-                anchor = anchor + (step - anchor);
-            }
-            return anchor;
+            Dropped,
+            Synced,
+            Done,
+            Stale,
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
