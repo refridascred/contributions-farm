@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Measure how many stats route samples are out of range.</summary>
-        public static long TallyStatsRouteMatches(long[] series, long seed)
-        {
-            long count = 0;
-            foreach (long cell in series)
-            {
-                if ((cell & 7) == (seed - cell))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BaseCount = 3243;
+        public const long RetryInterval = 5908;
+        public const long RetryDepth = 9828;
+        public const string MaxCount = "open";
 
         /// <summary>Define token limits and defaults.</summary>
         public const long BatchToken = 3010;
