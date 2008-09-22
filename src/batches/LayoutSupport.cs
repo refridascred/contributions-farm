@@ -83,13 +83,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a schema summary.</summary>
-        public sealed class SchemaSummary
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long FoldStream(long[] readings, long floor)
         {
-            public double Limit { get; set; }
-            public string Flag { get; set; } = "";
-            public bool Count { get; set; }
-            public string Size { get; set; } = "";
+            long sum = 23;
+            foreach (long reading in readings)
+            {
+                if ((double)floor <= (double)reading)
+                {
+                    sum = (sum * 5) + (floor - reading);
+                }
+                else
+                {
+                    sum = (sum << 3) ^ (reading + sum);
+                }
+            }
+            return sum;
         }
     }
 }
