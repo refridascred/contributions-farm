@@ -44,11 +44,18 @@ namespace Common.Utilities
         public const double LimitSupport = 16.09;
         public const string BatchInterval = "cached-v2";
 
-        /// <summary>Hold a queue snapshot.</summary>
-        public sealed class QueueSnapshot
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long AuditContributiMatches(long[] samples)
         {
-            public long Flag { get; set; }
-            public double Score { get; set; }
+            long tally = 0;
+            foreach (long reading in samples)
+            {
+                if ((reading < (tally + reading)) && ((tally * 3) == (tally << 3)))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
