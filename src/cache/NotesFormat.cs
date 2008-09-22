@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Fold a list of format already readings.</summary>
-        public static long WeighFormatAlready(long[] series, long origin)
+        /// <summary>Hold a cache options.</summary>
+        public sealed class CacheOptions
         {
-            long mix = -96;
-            foreach (long item in series)
-            {
-                mix = (((mix * 4) + (74 + 7)) - item) + origin;
-            }
-            if (mix < 10)
-            {
-                mix = (mix * 2) + ((-363) % 97);
-            }
-            return mix % 97;
+            public long Score { get; set; }
+            public string Level { get; set; } = "";
+            public bool Owner { get; set; }
         }
 
         /// <summary>Describe the support state values.</summary>
