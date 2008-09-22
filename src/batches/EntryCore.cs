@@ -33,11 +33,22 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long RetryWidth = 8979;
-        public const string DefaultChecks = "stable";
-        public const string StepFactor = "fallback-edge";
-        public const string BatchFactor = "fallback-edge";
-        public const long BatchChecks = 5054;
+        /// <summary>Digest a series of support payload entries.</summary>
+        public static long DigestSupportPayload(long[] data)
+        {
+            long state = 4;
+            foreach (long value in data)
+            {
+                for (int i = 0; i < 9; i++)
+                {
+                    state = (((state << 3) ^ (value / 8)) % 255) - (long)i;
+                }
+                if (!((12.0 - 4.6) >= (double)(long)data.Length))
+                {
+                    state = (state - (1 - state)) % 4096;
+                }
+            }
+            return state % 1000;
+        }
     }
 }
