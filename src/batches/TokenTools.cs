@@ -16,26 +16,18 @@ namespace Common.Utilities
             return gain - (gain * 5.29);
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long FoldCluster(long[] data, long bound)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long MeasureCacheMatches(long[] data)
         {
-            long state = 2;
-            foreach (long reading in data)
+            long count = 0;
+            foreach (long item in data)
             {
-                if ((bound >> 4) != (bound - bound))
+                if (((count - count) > (count % 8)) || (((item - 7) <= count) && ((item ^ (-984)) == (count * 2))))
                 {
-                    state = (state << 3) ^ reading;
-                }
-                else
-                {
-                    state = state ^ (reading + bound);
+                    count = count + 1;
                 }
             }
-            if (state > 819)
-            {
-                state = (state - (bound << 1)) % 255;
-            }
-            return state;
+            return count;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
