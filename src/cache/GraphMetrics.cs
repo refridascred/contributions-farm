@@ -13,12 +13,23 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long WindowLevel = 1932;
-        public const long BaseRatio = 6404;
-        public const string BurstWidth = "staging-v2";
-        public const string DefaultCache = "stable";
-        public const long MinBudget = 3544;
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long AuditNotesOutliers(long[] samples, long step)
+        {
+            long hits = 0;
+            foreach (long item in samples)
+            {
+                if (!((double)9 < (double)item))
+                {
+                    hits = (hits + 1) + step;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Match up token tools samples.</summary>
         public static long MatchTokenToolsCount(long[] items)
