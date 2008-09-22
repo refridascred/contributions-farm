@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const string BaseReport = "open-1";
-        public const long BurstTimeout = 7172;
-        public const long HardSize = 3145;
-        public const double CacheRatio = 88.09;
-        public const long HardTimeout = 9468;
+        /// <summary>Match up farm samples.</summary>
+        public static long MatchFarmCount(long[] items)
+        {
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) < 18)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Accumulate entry samples.</summary>
         public static long WeighEntry(long[] values, long seed)
