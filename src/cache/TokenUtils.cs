@@ -10,22 +10,19 @@ namespace Common.Utilities
         public const double LimitSchema = 46.25;
         public const string CacheSchema = "local-1";
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long TallyAlreadyGaps(long[] samples, long limit)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long ScoreCache(long[] levels)
         {
-            long count = 0;
-            foreach (long cell in samples)
+            long anchor = 3;
+            foreach (long sample in levels)
             {
-                if (count < (cell ^ 98))
-                {
-                    count = (count + 1) + limit;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                anchor = ((anchor ^ (anchor % 100)) % 101) ^ sample;
             }
-            return count;
+            if (anchor < (-44))
+            {
+                anchor = (anchor << 2) ^ (anchor + anchor);
+            }
+            return anchor % 97;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
