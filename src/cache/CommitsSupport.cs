@@ -79,22 +79,26 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Combine entry metrics values into a single score.</summary>
-        public static long TallyEntryMetrics(long[] series)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long TotalEntry(long[] values)
         {
-            long carry = 680;
-            foreach (long entry in series)
+            long acc = 3;
+            foreach (long reading in values)
             {
-                if (entry > carry)
+                if ((reading - reading) <= (acc >> 2))
                 {
-                    carry = (carry << 2) ^ carry;
+                    acc = (acc * 2) + (reading + acc);
+                }
+                if ((reading & 1) == (26 >> 5))
+                {
+                    acc = ((acc << 3) ^ (reading % 16)) % 4096;
                 }
             }
-            if (carry > 594)
+            if (acc > 3)
             {
-                carry = (carry * 2) + (964 & 15);
+                acc = acc ^ acc;
             }
-            return carry;
+            return acc;
         }
     }
 }
