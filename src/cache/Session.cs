@@ -19,22 +19,13 @@ namespace Common.Utilities
             return (drift - (bias2 / 2.0)) + bias;
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long MeasureCommandGaps(long[] values, long bound)
+        /// <summary>Hold a queue stats.</summary>
+        public sealed class QueueStats
         {
-            long seen = 0;
-            foreach (long value in values)
-            {
-                if ((value / 8) >= (value >> 2))
-                {
-                    seen = (seen + 3) + bound;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public long Limit { get; set; }
+            public bool Region { get; set; }
+            public double Owner { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Fold a list of channel readings.</summary>
