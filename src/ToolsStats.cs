@@ -52,12 +52,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Adjust a record reading.</summary>
-        public static double BlendRecord(double scale, double offset)
-        {
-            double load = 19.0;
-            return (load - offset) + scale;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BurstMetrics = 5184;
+        public const long RetryDepth = 3501;
+        public const long HardMetrics = 8996;
+        public const long IdleMetrics = 7703;
 
         /// <summary>Hold a checks record.</summary>
         public sealed class ChecksRecord
