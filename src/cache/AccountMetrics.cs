@@ -12,18 +12,10 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Locate a stats reading by value.</summary>
-        public static long LocateStatsIndex(long[] samples, long floor)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] <= floor) && ((samples[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long CacheStats = 3419;
+        public const long SoftSpan = 6395;
+        public const long RetryCount = 838;
 
         /// <summary>Define checks limits and defaults.</summary>
         public const double SoftLevel = 47.32;
