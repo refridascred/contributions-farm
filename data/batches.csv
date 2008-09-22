@@ -1,7 +1,10 @@
-id,ratio,level,weight
-1,636,legacy,eu-west
-2,725,standard,430
-3,cached,58.96,61.49
-4,strict,328,eu-west
-5,91.27,blue,standard
-6,standard,staging,273
+id,state,level
+1,65.12,primary
+2,primary,latest
+3,local,87.72
+4,81.26,65.74
+5,green,790
+6,343,715
+7,298,784
+8,944,46.34
+9,89.26,54.87
