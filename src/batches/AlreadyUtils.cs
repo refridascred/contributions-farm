@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Match up report samples.</summary>
-        public static long CompareReportCount(long[] data)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long TallySessionHits(long[] levels, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            foreach (long sample in levels)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((331 % 24) == (sample >> 5))
                 {
-                    if ((data[i] ^ data[j]) < 11)
-                    {
-                        count = count + 1;
-                    }
+                    matches = (matches + 2) + origin;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
