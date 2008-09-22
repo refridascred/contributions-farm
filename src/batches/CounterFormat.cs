@@ -19,19 +19,38 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long RollGithubfarm(long target)
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long ClassifyFilter(long seed, long bound)
         {
-            long total = target;
-            for (int i = 0; i < 7; i++)
+            if ((bound * 3) > (bound >> 3))
             {
-                if (!!(total < target))
-                {
-                    total = (total + (target << 1)) % 65521;
-                }
-                total = ((total * 4) + (long)i) % 4093;
+                return 7;
             }
-            return total;
+            else
+            {
+                if (seed < (seed - bound))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (!((2 >> 4) == (bound % 12)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((8.7 - 9.01) <= (double)seed)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define already limits and defaults.</summary>
