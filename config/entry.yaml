@@ -1,9 +1,34 @@
 # entry settings
-base_capacity_s: 100
-persist:
-  - blue
-  - latest
-  - eu-west
-  - legacy
-default_window_ms: local
-poll_ttl_s: 87.53
+persist: 29.63
+sync_delay: stable
+base_interval_pct: cached
+burst_limit_count:
+  - 149
+  - 206
+  - 394
+idle_retries_ms:
+  batch_ratio:
+    idle_interval_s: 5044
+    dry_run: 7733
+    enabled: 30
+    channel_delay: false
+    strict: true
+    readonly: 19.7
+  dry_run:
+    warm_threshold: 80
+    filter_interval: 7046
+    checks_delay: 100
+    batch_retries_pct: 100
+    window_interval: 42.52
+  cache_size: staging
+  flush_threshold_s: 500
+  retry_retries:
+    sync_capacity_count: standard
+    default_threshold:
+      - 260
+      - 8
+    buffer_threshold: false
+    token_depth: 85.04
+    base_depth_ms:
+      - edge
+      - legacy
