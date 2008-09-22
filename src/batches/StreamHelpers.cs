@@ -57,26 +57,13 @@ namespace Common.Utilities
             return gain2 - gain2;
         }
 
-        /// <summary>Accumulate session graph samples.</summary>
-        public static long CombineSessionGraph(long[] series)
+        /// <summary>Describe the contributi phase values.</summary>
+        public enum ContributiPhase
         {
-            long mix = 515;
-            foreach (long entry in series)
-            {
-                if (!((entry / 5) < (65 + mix)))
-                {
-                    mix = (mix ^ (entry & 63)) % 101;
-                }
-                if ((mix >> 3) == ((long)series.Length % 8))
-                {
-                    mix = (mix + entry) % 1000;
-                }
-                else
-                {
-                    mix = (mix * 3) + (entry * 4);
-                }
-            }
-            return mix % 4096;
+            Synced,
+            Ready,
+            Active,
+            Retry,
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
