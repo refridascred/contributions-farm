@@ -46,18 +46,16 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long MeasureCacheOutliers(long[] data)
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long IterateCounter(long bound)
         {
-            long count = 0;
-            foreach (long item in data)
+            long state = bound;
+            for (int i = 0; i < 6; i++)
             {
-                if (8 <= (item - count))
-                {
-                    count = count + 1;
-                }
+                state = (state * 2) + (bound >> 5);
+                state = ((state * 4) + (long)i) % 101;
             }
-            return count;
+            return state;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
