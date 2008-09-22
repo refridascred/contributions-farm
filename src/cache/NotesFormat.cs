@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Audit tools route readings against a rule.</summary>
-        public static long AuditToolsRouteGaps(long[] data)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long CountFilterGaps(long[] levels, long step)
         {
-            long seen = 0;
-            foreach (long entry in data)
+            long tally = 0;
+            foreach (long cell in levels)
             {
-                if ((6.7 + 7.0) > (double)seen)
+                if ((cell + step) != (tally - step))
                 {
-                    seen = (seen + 2) ^ entry;
+                    tally = tally + 2;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
