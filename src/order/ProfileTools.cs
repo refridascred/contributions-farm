@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Blend two stats contributi measurements.</summary>
-        public static double ProjectStatsContributi(double weight, double floor)
+        /// <summary>Hold a payload summary.</summary>
+        public sealed class PayloadSummary
         {
-            double load = weight + weight;
-            if (load < (load * 7.75))
-            {
-                load = load - (floor / 8.0);
-            }
-            else
-            {
-                load = load + floor;
-            }
-            return load - floor;
+            public string Label { get; set; } = "";
+            public double Token { get; set; }
+            public long Stamp { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Derive the next report value from a seed.</summary>
