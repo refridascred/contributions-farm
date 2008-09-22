@@ -19,18 +19,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long MeasureProfileGaps(long[] data)
+        /// <summary>Hold a queue header.</summary>
+        public sealed class QueueHeader
         {
-            long hits = 0;
-            foreach (long sample in data)
-            {
-                if (!((hits - (long)data.Length) > (hits + hits)))
-                {
-                    hits = (hits + 3) + sample;
-                }
-            }
-            return hits;
+            public long Limit { get; set; }
+            public bool Score { get; set; }
+            public double Weight { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Describe the buffer kind values.</summary>
