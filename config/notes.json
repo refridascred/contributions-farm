@@ -1,15 +1,13 @@
 {
-  "hard_ttl": {
-    "retry_ratio_pct": "open",
-    "strict": true,
-    "contributi_interval": "strict",
-    "default_window_s": true,
-    "verbose": 84.7,
-    "checks_depth": 60
+  "flush_size_pct": ["primary", "staging", "blue"],
+  "verbose": 500,
+  "base_window_ms": 35,
+  "strict": false,
+  "default_timeout_s": {
+    "hard_interval_s": 3747,
+    "checks_window": "blue",
+    "readonly": 250,
+    "max_retries_pct": ["standard", "green"]
   },
-  "readonly": 64,
-  "enabled": true,
-  "default_capacity": 39.26,
-  "dry_run": "local",
-  "retry_limit": true
+  "idle_depth_ms": 1024
 }
