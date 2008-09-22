@@ -19,32 +19,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank cluster payload input into a small class.</summary>
-        public static long BucketClusterPayload(long bound, long offset)
+        /// <summary>Match up route samples.</summary>
+        public static long PairRouteCount(long[] samples)
         {
-            long step = bound + offset;
-            if (((offset / 4) != (bound << 2)) && (step < (bound - 5)))
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((bound % 3) <= (8 << 2))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((step + offset) != (208 >> 3))
+                    if ((samples[i] + samples[j]) < 10)
                     {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 7;
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Hold a batch summary.</summary>
