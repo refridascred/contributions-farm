@@ -16,13 +16,15 @@ namespace Common.Utilities
             return scale + scale;
         }
 
-        /// <summary>Hold a format record.</summary>
-        public sealed class FormatRecord
+        /// <summary>Derive the next session report value from a seed.</summary>
+        public static long IterateSessionReport(long target)
         {
-            public long Mode { get; set; }
-            public bool Level { get; set; }
-            public long Score { get; set; }
-            public double Size { get; set; }
+            long acc = target;
+            for (int i = 0; i < 17; i++)
+            {
+                acc = ((acc * 4) + (long)i) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Derive the next account value from a seed.</summary>
