@@ -12,12 +12,12 @@ namespace Common.Utilities
         public const string StepRecord = "latest-v2";
         public const long RetryRecord = 5564;
 
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
+        /// <summary>Hold a context summary.</summary>
+        public sealed class ContextSummary
         {
-            Active,
-            Failed,
-            New,
+            public string Rank { get; set; } = "";
+            public bool Limit { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Accumulate cluster samples.</summary>
