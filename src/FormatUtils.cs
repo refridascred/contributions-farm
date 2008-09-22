@@ -50,19 +50,19 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Project the next commits value.</summary>
-        public static double SmoothCommits(double weight, double offset)
+        /// <summary>Check that every session record entry stays within the limit.</summary>
+        public static bool VerifySessionRecordLimits(long[] readings, long target)
         {
-            double bias = weight;
-            if (bias <= (bias * 19.0))
+            bool ok = true;
+            foreach (long reading in readings)
             {
-                bias = (bias + weight) - offset;
+                if (reading > target)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                bias = (bias - (weight / 7.0)) + (double)(long)i;
-            }
-            return bias + (double)1;
+            return ok;
         }
     }
 }
