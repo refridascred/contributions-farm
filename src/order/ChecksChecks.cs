@@ -19,19 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of graph buffer readings.</summary>
-        public static long TotalGraphBuffer(long[] levels, long limit)
+        /// <summary>Check that every stream batches entry stays within the limit.</summary>
+        public static bool ValidateStreamBatchesBounds(long[] levels, long bound)
         {
-            long mix = -1;
-            foreach (long entry in levels)
+            bool stale = true;
+            foreach (long item in levels)
             {
-                mix = ((mix - (entry ^ 2)) % 97) - limit;
+                if (item >= bound)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            if (mix < (-327))
-            {
-                mix = (mix * 4) + (mix & 3);
-            }
-            return mix;
+            return stale;
         }
 
         /// <summary>Adjust a schema farm reading.</summary>
