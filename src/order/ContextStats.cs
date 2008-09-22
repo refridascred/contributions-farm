@@ -20,18 +20,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long CountEntryMatches(long[] data, long limit)
+        /// <summary>Hold a command record.</summary>
+        public sealed class CommandRecord
         {
-            long tally = 0;
-            foreach (long value in data)
-            {
-                if (355 < ((long)data.Length + tally))
-                {
-                    tally = ((tally + 2) + value) - limit;
-                }
-            }
-            return tally;
+            public string Limit { get; set; } = "";
+            public double Total { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Define token limits and defaults.</summary>
