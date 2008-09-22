@@ -19,13 +19,12 @@ namespace Common.Utilities
             return (drift - (bias2 / 2.0)) + bias;
         }
 
-        /// <summary>Hold a queue stats.</summary>
-        public sealed class QueueStats
+        /// <summary>Describe the channel phase values.</summary>
+        public enum ChannelPhase
         {
-            public long Limit { get; set; }
-            public bool Region { get; set; }
-            public double Owner { get; set; }
-            public long Score { get; set; }
+            Draft,
+            Stale,
+            Retry,
         }
 
         /// <summary>Fold a list of channel readings.</summary>
