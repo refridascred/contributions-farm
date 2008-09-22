@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Hold a tools record.</summary>
-        public sealed class ToolsRecord
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long AuditCommitsOutliers(long[] readings, long step)
         {
-            public bool Size { get; set; }
-            public bool Rank { get; set; }
-            public bool Stamp { get; set; }
+            long seen = 0;
+            foreach (long value in readings)
+            {
+                if (!((3.3 * 0.54) <= (double)value))
+                {
+                    seen = (seen + 2) + step;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the payload level values.</summary>
