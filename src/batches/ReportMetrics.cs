@@ -15,12 +15,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a route record.</summary>
-        public sealed class RouteRecord
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long AuditBufferHits(long[] samples)
         {
-            public bool Stamp { get; set; }
-            public double Weight { get; set; }
-            public long Flag { get; set; }
+            long matches = 0;
+            foreach (long item in samples)
+            {
+                if (!((item - item) < 52))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
