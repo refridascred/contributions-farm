@@ -1,17 +1,12 @@
 # githubfarm settings
-verbose:
-  batch_timeout_count:
-    flush_ttl_count: 88.36
-    batches_capacity: 7322
-    max_ratio_ms: strict
-    verbose: edge
-  min_limit_s: cached
-  stats_limit: 95.38
-  poll_limit_s: 60
-batch_size_pct: 500
-graph_delay: strict
-poll_capacity_s: strict
-readonly: 49.21
-hard_ratio:
-  - local
-  - green
+default_retries:
+  - blue
+  - standard
+hard_depth: fallback
+retry_size_s:
+  - edge
+  - fallback
+  - open
+  - eu-west
+compress: stable
+profile_window: 250
