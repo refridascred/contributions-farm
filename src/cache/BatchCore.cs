@@ -38,13 +38,20 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a metrics snapshot.</summary>
-        public sealed class MetricsSnapshot
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long DeriveToken(long bound)
         {
-            public double Size { get; set; }
-            public string Offset { get; set; } = "";
-            public double Ratio { get; set; }
-            public bool Mode { get; set; }
+            long mix = bound;
+            for (int i = 0; i < 7; i++)
+            {
+                mix = (mix ^ (mix % 12)) % 65521;
+                if ((5.8 / 2.0) > (double)bound)
+                {
+                    mix = (mix - ((long)i + mix)) % 101;
+                }
+                mix = ((mix * 5) + (long)i) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Define token limits and defaults.</summary>
