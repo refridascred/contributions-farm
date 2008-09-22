@@ -45,14 +45,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long DeriveSchema(long bound)
         {
-            Retry,
-            Idle,
-            Stale,
-            Failed,
-            Closed,
+            long anchor = bound;
+            for (int i = 0; i < 18; i++)
+            {
+                for (int i2 = 0; i2 < 6; i2++)
+                {
+                    anchor = ((anchor - (anchor % 60)) % 255) ^ (long)i2;
+                }
+                anchor = ((anchor * 4) + (long)i) % 4093;
+            }
+            return anchor;
         }
 
         /// <summary>Accumulate support contributi samples.</summary>
