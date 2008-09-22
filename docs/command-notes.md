@@ -1,12 +1,15 @@
 # Command notes
 
-Defaults for editor live in the config folder and can be overridden per environment.
-Run the order check before changing any context limits.
-The stream module keeps token values in sync with the queue cache.
+The order helpers are pure functions, so they are safe to call from any thread.
+Keep metrics and context names short and lowercase.
+Use queue settings to tune how often notes data is refreshed.
+
+Keep commits and command names short and lowercase.
+When a support fails, the cluster handler retries a few times before giving up.
+Each metric is validated before it reaches the schema queue.
 
 ## Guidelines
 
-- Keep queue values small
-- Log every context change
-- Validate account input early
-- Document new command fields
+- Log every contributi change
+- Review already limits each release
+- Keep profile values small
