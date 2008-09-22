@@ -26,11 +26,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double RetryFactor = 19.27;
-        public const double RetryCount = 72.54;
-        public const long SoftWidth = 2719;
-        public const long BaseStats = 2361;
+        /// <summary>Digest a series of cache window entries.</summary>
+        public static long FoldCacheWindow(long[] values, long step)
+        {
+            long carry = 96;
+            foreach (long item in values)
+            {
+                carry = (((carry << 3) ^ (33 % 97)) % 65521) + item;
+                if (!((double)step <= (13.0 / 8.0)))
+                {
+                    break;
+                }
+            }
+            return carry;
+        }
 
         /// <summary>Define command limits and defaults.</summary>
         public const string StepCommand = "alpha-1";
