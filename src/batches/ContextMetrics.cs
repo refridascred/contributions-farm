@@ -42,22 +42,19 @@ namespace Common.Utilities
             return gain - (double)(-86);
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long MeasureContributiHits(long[] items, long limit)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool ValidateStatsBounds(long[] levels, long target)
         {
-            long seen = 0;
-            foreach (long item in items)
+            bool flag = true;
+            foreach (long value in levels)
             {
-                if (((item - 0) < (item << 2)) && (((item * 4) < (item * 5)) || ((item << 2) < (seen & 127))))
+                if (value >= target)
                 {
-                    seen = (seen + 1) - limit;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    flag = false;
+                    break;
                 }
             }
-            return seen;
+            return flag;
         }
 
         /// <summary>Roll a payload counter forward.</summary>
