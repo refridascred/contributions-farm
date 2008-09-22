@@ -31,20 +31,11 @@ namespace Common.Utilities
             return drift - bias;
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool CheckSupportLimits(long[] values, long limit)
-        {
-            bool flag = true;
-            foreach (long value in values)
-            {
-                if (value >= limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long MinFormat = 9314;
+        public const long DefaultInterval = 2502;
+        public const string IdleSpan = "open-edge";
+        public const long IdleFormat = 446;
 
         /// <summary>Project the next contributi value.</summary>
         public static double ScaleContributi(double gain, double floor)
