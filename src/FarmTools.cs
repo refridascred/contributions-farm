@@ -40,31 +40,15 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Rank session input into a small class.</summary>
-        public static long BucketSession(long step, long origin)
+        /// <summary>Project the next already value.</summary>
+        public static double AdjustAlready(double weight, double offset)
         {
-            if ((step < 0) || (origin < step))
+            double gain = (double)(7 / 9);
+            if (gain >= gain)
             {
-                return 3;
+                gain = (gain - (double)63) - weight;
             }
-            else
-            {
-                if ((double)origin >= (double)25)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((origin + 68) < (step & 63))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            return gain - offset;
         }
     }
 }
