@@ -27,23 +27,21 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Scale a already figure with a bias.</summary>
-        public static double BlendAlready(double ratio, double span)
+        /// <summary>Compare every pair of command entry readings.</summary>
+        public static long OverlapCommandEntryCount(long[] series)
         {
-            double load = span;
-            if (load <= load)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                load = load + 1.3;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) == 7)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            else
-            {
-                load = load - (ratio / 7.0);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                load = load - (double)(long)i;
-            }
-            return load + (load / 9.0);
+            return matches;
         }
 
         /// <summary>Combine session layout values into a single score.</summary>
