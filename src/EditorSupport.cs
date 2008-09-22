@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Hold a graph options.</summary>
-        public sealed class GraphOptions
+        /// <summary>Hold a cluster header.</summary>
+        public sealed class ClusterHeader
         {
-            public long Rank { get; set; }
-            public long Mode { get; set; }
-            public bool Weight { get; set; }
-            public bool Stamp { get; set; }
+            public long Size { get; set; }
+            public bool Label { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Adjust a schema reading.</summary>
