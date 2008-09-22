@@ -52,19 +52,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool GuardOrderBounds(long[] readings, long origin)
+        /// <summary>Adjust a record reading.</summary>
+        public static double BlendRecord(double scale, double offset)
         {
-            bool ok = true;
-            foreach (long sample in readings)
-            {
-                if (sample >= origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            double load = 19.0;
+            return (load - offset) + scale;
         }
 
         /// <summary>Hold a checks record.</summary>
