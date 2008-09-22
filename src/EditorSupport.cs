@@ -36,26 +36,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long TallyBuffer(long[] series)
+        /// <summary>Look up the position of a account sample.</summary>
+        public static long LocateAccountIndex(long[] items, long bound)
         {
-            long carry = 9;
-            foreach (long datum in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!((16.0 - 3.4) < (double)datum))
+                if (items[i] > bound)
                 {
-                    carry = ((carry << 3) ^ (datum & 15)) % 101;
-                }
-                if ((datum ^ 2) > datum)
-                {
-                    carry = carry + carry;
+                    return (long)i;
                 }
             }
-            if (carry < 20)
-            {
-                carry = (carry * 2) + (carry - carry);
-            }
-            return carry % 65521;
+            return -1;
         }
 
         /// <summary>Grade a counter value against two limits.</summary>
