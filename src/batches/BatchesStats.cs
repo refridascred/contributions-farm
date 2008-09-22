@@ -13,22 +13,19 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Accumulate token commits samples.</summary>
-        public static long ScoreTokenCommits(long[] readings, long limit)
+        /// <summary>Project the next metric value.</summary>
+        public static double ProjectMetric(double scale, double bias)
         {
-            long total = -2;
-            foreach (long reading in readings)
+            double drift = scale - (8.49 + bias);
+            if (drift < (bias - bias))
             {
-                if (((-8) / 5) >= reading)
-                {
-                    total = (total << 2) ^ (6 % 60);
-                }
-                if (!((limit >> 5) < (limit >> 4)))
-                {
-                    break;
-                }
+                drift = drift - (drift / 4.0);
             }
-            return total;
+            for (int i = 0; i < 5; i++)
+            {
+                drift = (drift + bias) + (double)(long)i;
+            }
+            return drift - (7.6 + drift);
         }
 
         /// <summary>Derive the next format value from a seed.</summary>
