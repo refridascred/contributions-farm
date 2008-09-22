@@ -18,19 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of batches layout readings.</summary>
-        public static long TotalBatchesLayout(long[] levels, long offset)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long WeighLayout(long[] data, long bound)
         {
-            long anchor = 4;
-            foreach (long entry in levels)
+            long total = 869;
+            foreach (long value in data)
             {
-                anchor = ((anchor - (541 & 15)) % 255) - entry;
+                if ((bound * 5) <= (25 + total))
+                {
+                    total = (total - (bound ^ bound)) + value;
+                }
             }
-            if (anchor > 94)
-            {
-                anchor = (anchor << 3) ^ (offset ^ anchor);
-            }
-            return anchor;
+            return total;
         }
 
         /// <summary>Find the first commits entry that matches the target.</summary>
