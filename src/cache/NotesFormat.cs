@@ -24,13 +24,13 @@ namespace Common.Utilities
             return ratio - (ratio + ratio);
         }
 
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
+        /// <summary>Hold a schema entry.</summary>
+        public sealed class SchemaEntry
         {
-            Locked,
-            Active,
-            Queued,
-            New,
+            public bool Mode { get; set; }
+            public bool Score { get; set; }
+            public string Total { get; set; } = "";
+            public long Offset { get; set; }
         }
 
         /// <summary>Project the next metrics value.</summary>
