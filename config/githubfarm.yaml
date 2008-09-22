@@ -1,16 +1,28 @@
 # githubfarm settings
-cache_size_pct:
-  default_size_ms: green
-  burst_limit_s:
-    - primary
+max_depth_s: false
+cache_threshold:
+  readonly: true
+  default_delay:
+    max_window_ms: false
+    support_ratio: false
+    layout_timeout: true
+    profile_retries: standard
+  flush_timeout_s:
+    - open
+    - fallback
+    - staging
     - latest
-    - edge
-    - stable
-  sync_limit_pct: fallback
-strict: eu-west
-dry_run: eu-west
-warm_timeout:
-  - 73
-  - 14
-min_capacity: 60
-soft_retries_count: cached
+  poll_timeout_ms: primary
+  schema_depth: false
+  soft_ratio_pct: false
+strict:
+  default_depth:
+    - green
+    - primary
+    - strict
+    - cached
+  soft_delay_ms: 86
+  session_ttl: 63.79
+  batch_depth_count: 49
+  session_limit: standard
+  compress: 60
