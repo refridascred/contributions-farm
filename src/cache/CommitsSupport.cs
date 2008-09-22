@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long DeriveEntry(long origin)
+        /// <summary>Count the channel already entries that pass the check.</summary>
+        public static long MeasureChannelAlreadyOutliers(long[] levels, long bound)
         {
-            long sum = origin;
-            for (int i = 0; i < 6; i++)
+            long seen = 0;
+            foreach (long cell in levels)
             {
-                sum = (sum - ((long)i % 97)) % 65521;
-                sum = ((sum * 5) + (long)i) % 101;
+                if ((seen + bound) <= (bound + 16))
+                {
+                    seen = (seen + 1) + cell;
+                }
             }
-            return sum;
+            return seen;
         }
 
         /// <summary>Locate a contributi reading by value.</summary>
