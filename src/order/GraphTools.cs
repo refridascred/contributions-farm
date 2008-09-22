@@ -53,9 +53,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long StepSession = 725;
-        public const string SoftSession = "latest";
-        public const long CacheSession = 445;
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long AuditGraphGaps(long[] data, long floor)
+        {
+            long hits = 0;
+            foreach (long cell in data)
+            {
+                if (!(((-64) > floor) && (floor >= (cell << 3))))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
     }
 }
