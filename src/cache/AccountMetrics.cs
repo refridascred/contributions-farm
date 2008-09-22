@@ -22,21 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count editor token pairs that satisfy a relation.</summary>
-        public static long PairEditorTokenCount(long[] series)
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool ValidateEditorLimits(long[] items, long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            bool found = true;
+            foreach (long value in items)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (value != origin)
                 {
-                    if ((series[i] + series[j]) == 3)
-                    {
-                        matches = matches + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return matches;
+            return found;
         }
 
         /// <summary>Measure how many window layout samples are out of range.</summary>
