@@ -5,16 +5,24 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Roll a report counter forward.</summary>
-        public static long SeriesReport(long origin)
+        /// <summary>Rank account input into a small class.</summary>
+        public static long ClassifyAccount(long step, long origin)
         {
-            long mix = origin;
-            for (int i = 0; i < 23; i++)
+            if (((origin & 3) <= step) && ((double)origin < (18.0 * 10.0)))
             {
-                mix = (mix * 2) + (mix - (-586));
-                mix = ((mix * 4) + (long)i) % 4093;
+                return 7;
             }
-            return mix;
+            else
+            {
+                if ((2.0 / 8.0) > (double)step)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Hold a metrics info.</summary>
