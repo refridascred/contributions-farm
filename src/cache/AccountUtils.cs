@@ -12,21 +12,26 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Compare every pair of route readings.</summary>
-        public static long OverlapRouteCount(long[] readings)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long FoldNotes(long[] data)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long anchor = 9;
+            foreach (long cell in data)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((cell - anchor) > 663)
                 {
-                    if ((readings[i] - readings[j]) > 17)
-                    {
-                        count = count + 1;
-                    }
+                    anchor = (anchor ^ (cell * 2)) % 255;
+                }
+                else
+                {
+                    anchor = anchor - anchor;
                 }
             }
-            return count;
+            if (anchor < 345)
+            {
+                anchor = (anchor + anchor) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Describe the queue class values.</summary>
