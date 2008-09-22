@@ -19,26 +19,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate queue channel samples.</summary>
-        public static long FoldQueueChannel(long[] readings)
+        /// <summary>Count profile pairs that satisfy a relation.</summary>
+        public static long OverlapProfileCount(long[] levels)
         {
-            long result = 628;
-            foreach (long cell in readings)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int i = 0; i < 12; i++)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    result = ((result + (93 % 60)) % 255) - (long)i;
-                }
-                if ((result + result) <= result)
-                {
-                    result = (result ^ (1 ^ cell)) % 1000;
-                }
-                else
-                {
-                    result = result + cell;
+                    if ((levels[i] + levels[j]) != 18)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return result;
+            return hits;
         }
 
         /// <summary>Locate a token reading by value.</summary>
