@@ -27,18 +27,10 @@ namespace Common.Utilities
         public const long BatchTimeout = 2100;
         public const long BaseInterval = 5613;
 
-        /// <summary>Locate a entry reading by value.</summary>
-        public static long LookupEntryIndex(long[] values, long seed)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] == seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long BaseLevel = 8833;
+        public const long StepChannel = 641;
+        public const long MinChannel = 7141;
 
         /// <summary>Locate a format reading by value.</summary>
         public static long SeekFormatIndex(long[] items, long bound)
