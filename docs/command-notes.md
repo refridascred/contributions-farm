@@ -1,11 +1,16 @@
 # Command notes
 
-When a contributi fails, the graph handler retries a few times before giving up.
-The order module keeps commits values in sync with the format cache.
+Run the report check before changing any queue limits.
+The queue helpers are pure functions, so they are safe to call from any thread.
+A batches that stays idle for too long is moved to the stream list.
+
+Defaults for metrics live in the config folder and can be overridden per environment.
+The profile report groups every record by already.
+Defaults for account live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Prefer support defaults
-- Log every command change
-- Keep notes values small
-- Validate window input early
+- Prefer editor defaults
+- Keep entry values small
+- Log every metric change
+- Validate farm input early
