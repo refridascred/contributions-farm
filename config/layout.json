@@ -1,7 +1,13 @@
 {
-  "editor_window": 72.96,
-  "base_delay": true,
-  "batch_interval": ["standard", "stable"],
-  "strict": 25.47,
-  "default_depth": "edge"
+  "readonly": "cached",
+  "retry_limit": 4853,
+  "hard_capacity_ms": true,
+  "sync_window_ms": {
+    "dry_run": false,
+    "audit": ["primary", "stable"],
+    "soft_depth_pct": 144,
+    "flush_limit_pct": "blue",
+    "contributi_depth": "cached",
+    "poll_limit_s": "strict"
+  }
 }
