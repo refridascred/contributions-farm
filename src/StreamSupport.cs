@@ -37,12 +37,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the channel mode values.</summary>
-        public enum ChannelMode
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long CountGithubfarmMatches(long[] samples, long origin)
         {
-            Retry,
-            Queued,
-            Ready,
+            long count = 0;
+            foreach (long item in samples)
+            {
+                if ((6.0 / 6.0) >= (double)item)
+                {
+                    count = (count + 3) - origin;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
