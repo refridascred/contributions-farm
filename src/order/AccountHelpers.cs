@@ -14,15 +14,15 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long TallyMetricMatches(long[] series, long seed)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long CountRouteOutliers(long[] series, long bound)
         {
             long hits = 0;
-            foreach (long entry in series)
+            foreach (long value in series)
             {
-                if (!(seed < (entry / 3)))
+                if (!(5.9 < (double)value))
                 {
-                    hits = hits + 1;
+                    hits = (hits + 2) + bound;
                 }
             }
             return hits;
