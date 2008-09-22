@@ -1,28 +1,8 @@
 # githubfarm settings
-base_delay: 1024
-channel_interval: false
-persist: 80
-audit:
-  farm_limit:
-    burst_capacity: local
-    burst_size_count: green
-    window_retries: edge
-    warm_window_pct: 39.28
-    flush_threshold_ms: standard
-    base_depth: 4172
-  githubfarm_ttl: 16
-  payload_depth:
-    profile_window: edge
-    sync_retries: 4723
-    sync_limit_ms:
-      - 323
-      - 382
-    base_delay_s: true
-    schema_ttl: 1024
-  schema_timeout: 7301
-  batch_timeout: 36.06
-context_size:
-  - blue
-  - staging
-  - fallback
-  - blue
+notes_ttl:
+  - primary
+  - eu-west
+batch_depth: 6659
+window_retries:
+  - 313
+  - 301
