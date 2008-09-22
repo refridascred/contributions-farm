@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long TallyGithubfarmMatches(long[] series, long offset)
+        /// <summary>Check that every order entry entry stays within the limit.</summary>
+        public static bool ValidateOrderEntryRange(long[] samples, long origin)
         {
-            long matches = 0;
-            foreach (long sample in series)
+            bool found = true;
+            foreach (long value in samples)
             {
-                if (offset > (matches + offset))
+                if (value > origin)
                 {
-                    matches = (matches + 2) ^ sample;
+                    found = false;
+                    break;
                 }
             }
-            return matches;
+            return found;
         }
 
         /// <summary>Look up the position of a schema sample.</summary>
