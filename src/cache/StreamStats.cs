@@ -40,10 +40,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long MinNotes = 5724;
-        public const double RetryTimeout = 20.69;
-        public const double MaxLevel = 20.55;
+        /// <summary>Look up the position of a tools sample.</summary>
+        public static long LookupToolsIndex(long[] values, long origin)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] == origin) && ((values[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Grade a cluster value against two limits.</summary>
         public static long GradeCluster(long seed, long bound)
