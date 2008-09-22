@@ -34,9 +34,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long RetryBuffer = 5243;
-        public const long DefaultScore = 617;
-        public const string BurstBuffer = "open-edge";
+        /// <summary>Locate a session reading by value.</summary>
+        public static long LookupSessionIndex(long[] items, long target)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] < target) && ((items[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
