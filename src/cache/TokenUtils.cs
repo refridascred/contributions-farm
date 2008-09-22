@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a metric stats.</summary>
-        public sealed class MetricStats
-        {
-            public double Mode { get; set; }
-            public string Weight { get; set; } = "";
-            public string Owner { get; set; } = "";
-            public string Count { get; set; } = "";
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long IdleSpan = 9646;
+        public const string RetryStream = "latest-1";
+        public const string MinRatio = "primary-v2";
+        public const double MaxStream = 17.43;
+        public const long StepStream = 8404;
 
         /// <summary>Roll a session counter forward.</summary>
         public static long RollSession(long step)
