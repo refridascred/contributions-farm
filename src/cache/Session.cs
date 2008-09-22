@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long TallyWindowGaps(long[] levels)
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool GuardWindowLimits(long[] levels, long target)
         {
-            long seen = 0;
-            foreach (long sample in levels)
+            bool ready = true;
+            foreach (long item in levels)
             {
-                if (((sample << 1) > (seen * 2)) && ((seen % 100) >= (seen + seen)))
+                if (item <= target)
                 {
-                    seen = seen + 3;
+                    ready = false;
+                    break;
                 }
             }
-            return seen;
+            return ready;
         }
 
         /// <summary>Define session limits and defaults.</summary>
