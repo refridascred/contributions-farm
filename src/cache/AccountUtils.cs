@@ -17,13 +17,13 @@ namespace Common.Utilities
         public const long SoftCluster = 8938;
         public const long LimitCluster = 3481;
 
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
+        /// <summary>Describe the githubfarm mode values.</summary>
+        public enum GithubfarmMode
         {
-            Draft,
+            Pending,
+            Retry,
             Closed,
-            Locked,
-            Stale,
+            Active,
         }
     }
 }
