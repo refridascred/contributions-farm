@@ -49,18 +49,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Digest a series of queue command entries.</summary>
-        public static long FoldQueueCommand(long[] data)
+        /// <summary>Hold a report entry.</summary>
+        public sealed class ReportEntry
         {
-            long anchor = 38;
-            foreach (long reading in data)
-            {
-                if ((reading + anchor) == (5 - 199))
-                {
-                    anchor = (anchor ^ anchor) % 65521;
-                }
-            }
-            return anchor;
+            public long Ratio { get; set; }
+            public long Mode { get; set; }
+            public double Total { get; set; }
         }
     }
 }
