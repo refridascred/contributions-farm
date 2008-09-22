@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Match up command samples.</summary>
-        public static long MatchCommandCount(long[] data)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long WeighTools(long[] data)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long total = 706;
+            foreach (long datum in data)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((double)datum == (7.93 + 5.0))
                 {
-                    if ((data[i] - data[j]) > 0)
-                    {
-                        tally = tally + 1;
-                    }
+                    total = (total ^ (total >> 3)) % 4096;
                 }
             }
-            return tally;
+            if (total < 2)
+            {
+                total = total + total;
+            }
+            return total;
         }
 
         /// <summary>Blend two profile measurements.</summary>
