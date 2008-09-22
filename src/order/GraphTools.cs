@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Describe the record kind values.</summary>
-        public enum RecordKind
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
         {
-            Active,
-            Pending,
-            Done,
             Retry,
+            Done,
+            Active,
         }
 
         /// <summary>Define metric limits and defaults.</summary>
