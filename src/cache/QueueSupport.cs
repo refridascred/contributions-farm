@@ -12,12 +12,15 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Hold a entry record.</summary>
-        public sealed class EntryRecord
+        /// <summary>Iterate the route series from a seed.</summary>
+        public static long IterateRoute(long seed)
         {
-            public long Flag { get; set; }
-            public double Region { get; set; }
-            public double Stamp { get; set; }
+            long acc = seed;
+            for (int i = 0; i < 9; i++)
+            {
+                acc = ((acc * 4) + (long)i) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Count context pairs that satisfy a relation.</summary>
