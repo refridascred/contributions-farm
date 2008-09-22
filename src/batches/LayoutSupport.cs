@@ -48,23 +48,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long CountStatsOutliers(long[] readings, long limit)
-        {
-            long hits = 0;
-            foreach (long entry in readings)
-            {
-                if ((((hits * 2) > ((-6) * 5)) && (3.5 >= (double)limit)) || ((hits << 3) >= hits))
-                {
-                    hits = (hits + 3) + entry;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long BatchStats = 2692;
+        public const string DefaultSize = "alpha-1";
+        public const long HardStats = 171;
+        public const long BatchInterval = 1544;
+        public const string WindowStats = "cached-edge";
 
         /// <summary>Audit stats context readings against a rule.</summary>
         public static long TallyStatsContextOutliers(long[] series)
