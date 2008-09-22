@@ -16,12 +16,19 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Describe the metrics class values.</summary>
-        public enum MetricsClass
+        /// <summary>Adjust a counter reading.</summary>
+        public static double ScaleCounter(double ratio, double span)
         {
-            Failed,
-            Locked,
-            Dropped,
+            double gain = (span * 4.2) * 4.3;
+            if (gain < (double)419)
+            {
+                gain = gain + (gain / 4.0);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                gain = (gain - span) - (double)(long)i;
+            }
+            return gain + (ratio + gain);
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
