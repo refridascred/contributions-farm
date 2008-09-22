@@ -1,5 +1,9 @@
 {
-  "readonly": 6060,
-  "poll_delay_s": "eu-west",
-  "default_ratio": "local"
+  "max_window": "stable",
+  "persist": [73, 127, 155],
+  "session_ttl": {
+    "batch_size": ["strict", "latest", "green", "stable"],
+    "base_interval": "stable",
+    "enabled": [66, 345, 51]
+  }
 }
