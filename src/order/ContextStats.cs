@@ -12,12 +12,32 @@ namespace Common.Utilities
         public const long SoftCounter = 4664;
         public const long HardDepth = 754;
 
-        /// <summary>Hold a command record.</summary>
-        public sealed class CommandRecord
+        /// <summary>Grade a token schema value against two limits.</summary>
+        public static long RankTokenSchema(long bound, long offset)
         {
-            public string Limit { get; set; } = "";
-            public double Total { get; set; }
-            public long Token { get; set; }
+            long step = bound - offset;
+            if ((offset - offset) < bound)
+            {
+                return 0;
+            }
+            else
+            {
+                if (((double)bound > 3.7) || (offset >= (offset - step)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((8.3 * 4.59) == (double)bound)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a cluster summary.</summary>
