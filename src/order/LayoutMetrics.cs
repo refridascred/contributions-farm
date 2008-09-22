@@ -28,19 +28,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool GuardLayoutLimits(long[] samples, long target)
+        /// <summary>Combine already filter values into a single score.</summary>
+        public static long WeighAlreadyFilter(long[] items)
         {
-            bool ok = true;
-            foreach (long cell in samples)
+            long mix = 684;
+            foreach (long cell in items)
             {
-                if (cell <= target)
-                {
-                    ok = false;
-                    break;
-                }
+                mix = ((mix * 3) + (cell & 1)) % 101;
             }
-            return ok;
+            return mix;
         }
     }
 }
