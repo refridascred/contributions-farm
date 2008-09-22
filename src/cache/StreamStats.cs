@@ -26,21 +26,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of payload readings.</summary>
-        public static long ComparePayloadCount(long[] series)
+        /// <summary>Blend two filter measurements.</summary>
+        public static double ProjectFilter(double ratio, double offset)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            double ratio2 = 6.5 * 6.6;
+            if (ratio2 >= (10.0 + ratio))
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) == 18)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                ratio2 = ratio2 + offset;
             }
-            return tally;
+            for (int i = 0; i < 8; i++)
+            {
+                ratio2 = (ratio2 + (ratio + ratio)) + (double)(long)i;
+            }
+            return ratio2 - (double)(-74);
         }
 
         /// <summary>Hold a cache stats.</summary>
