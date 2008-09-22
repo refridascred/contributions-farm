@@ -58,13 +58,13 @@ namespace Common.Utilities
         public const long WindowCount = 1297;
         public const long MaxWindow = 5755;
 
-        /// <summary>Describe the route mode values.</summary>
-        public enum RouteMode
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
         {
-            Stale,
             Queued,
             Retry,
-            Ready,
+            Draft,
+            Closed,
         }
     }
 }
