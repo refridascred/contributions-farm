@@ -45,19 +45,31 @@ namespace Common.Utilities
         public const double RetryTimeout = 20.69;
         public const double MaxLevel = 20.55;
 
-        /// <summary>Project the next queue value.</summary>
-        public static double ScaleQueue(double ratio, double floor)
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long GradeCluster(long seed, long bound)
         {
-            double mean = floor;
-            if (mean < mean)
+            if ((6 / 8) != (bound + bound))
             {
-                mean = mean - floor;
+                return 5;
             }
             else
             {
-                mean = mean - ratio;
+                if ((seed & 31) < 1)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (((double)bound >= (2.4 + 6.8)) || ((seed + (-440)) <= seed))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
             }
-            return mean - ratio;
         }
     }
 }
