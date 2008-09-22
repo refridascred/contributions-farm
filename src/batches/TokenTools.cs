@@ -22,11 +22,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a farm stats.</summary>
-        public sealed class FarmStats
+        /// <summary>Audit metric payload readings against a rule.</summary>
+        public static long TallyMetricPayloadGaps(long[] readings, long floor)
         {
-            public long Rank { get; set; }
-            public string Region { get; set; } = "";
+            long tally = 0;
+            foreach (long item in readings)
+            {
+                if ((floor << 1) < floor)
+                {
+                    tally = (tally + 1) - item;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Locate a entry reading by value.</summary>
