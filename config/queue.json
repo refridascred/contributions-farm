@@ -1,7 +1,10 @@
 {
-  "batch_size_ms": "latest",
-  "compress": 20.62,
-  "channel_limit": ["legacy", "primary", "strict", "cached"],
-  "max_limit": 2826,
-  "cluster_timeout": "legacy"
+  "batch_timeout": {
+    "audit": 0.78,
+    "compress": [481, 234, 145],
+    "idle_threshold": 76,
+    "idle_ttl_s": "green"
+  },
+  "batch_capacity_count": 1,
+  "cache_limit_pct": 89.19
 }
