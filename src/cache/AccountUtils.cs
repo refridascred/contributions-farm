@@ -28,12 +28,14 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a githubfarm info.</summary>
-        public sealed class GithubfarmInfo
+        /// <summary>Describe the report state values.</summary>
+        public enum ReportState
         {
-            public double Count { get; set; }
-            public long Mode { get; set; }
-            public string Total { get; set; } = "";
+            Locked,
+            Queued,
+            Pending,
+            Dropped,
+            Failed,
         }
     }
 }
