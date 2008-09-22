@@ -47,10 +47,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long SoftSize = 8164;
-        public const long BurstSupport = 8656;
-        public const long BatchRatio = 4964;
-        public const long HardSupport = 3426;
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long FoldMetric(long[] data, long step)
+        {
+            long total = -128;
+            foreach (long value in data)
+            {
+                if (983 >= (total + value))
+                {
+                    total = ((total * 4) + step) % 101;
+                }
+            }
+            if (total > (-13))
+            {
+                total = (total - (9 << 2)) % 1000;
+            }
+            return total % 65521;
+        }
     }
 }
