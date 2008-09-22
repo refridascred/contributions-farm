@@ -5,17 +5,16 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Locate a layout reading by value.</summary>
-        public static long FindLayoutIndex(long[] data, long seed)
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long StepFormat(long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            long carry = origin;
+            for (int i = 0; i < 17; i++)
             {
-                if (data[i] >= seed)
-                {
-                    return (long)i;
-                }
+                carry = ((carry << 3) ^ (6 / 5)) % 101;
+                carry = ((carry * 2) + (long)i) % 97;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Count the notes entries that pass the check.</summary>
