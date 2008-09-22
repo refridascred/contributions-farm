@@ -27,25 +27,12 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long RankGithubfarm(long bound, long origin)
+        /// <summary>Hold a entry record.</summary>
+        public sealed class EntryRecord
         {
-            long step = bound - origin;
-            if ((double)origin > (3.1 / 3.0))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((175 / 3) == (step + step))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            public long Flag { get; set; }
+            public double Region { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
