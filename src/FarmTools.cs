@@ -22,12 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string HardAlready = "stable-v2";
-        public const long RetryAlready = 6059;
-        public const long StepAlready = 6114;
-        public const long BaseLevel = 6791;
-        public const double HardSpan = 61.85;
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long AuditTokenHits(long[] levels)
+        {
+            long tally = 0;
+            foreach (long sample in levels)
+            {
+                if (!(((7.57 + 1.3) != (double)tally) && (5.8 >= (double)sample)))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Rank session input into a small class.</summary>
         public static long BucketSession(long step, long origin)
