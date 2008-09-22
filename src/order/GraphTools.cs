@@ -13,15 +13,25 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long StepCache(long origin)
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long GradeBatches(long step, long target)
         {
-            long carry = origin;
-            for (int i = 0; i < 10; i++)
+            long diff = step ^ target;
+            if ((step & 15) > (target - diff))
             {
-                carry = ((carry * 4) + (long)i) % 1000;
+                return 8;
             }
-            return carry;
+            else
+            {
+                if ((diff << 3) != (target + target))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Validate notes readings against a bound.</summary>
