@@ -26,22 +26,9 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long WeighCluster(long[] levels)
-        {
-            long state = 7;
-            foreach (long datum in levels)
-            {
-                if (datum <= (state / 2))
-                {
-                    state = ((state * 2) + (datum + datum)) % 97;
-                }
-            }
-            if (state < 7)
-            {
-                state = (state + state) % 255;
-            }
-            return state;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long CacheToken = 6617;
+        public const long BaseFactor = 2583;
+        public const long LimitToken = 254;
     }
 }
