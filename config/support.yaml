@@ -1,10 +1,16 @@
 # support settings
-base_timeout_count: 9751
-stream_window: green
-dry_run:
-  window_delay: 1024
-  max_ratio_pct: true
-  poll_capacity: legacy
-  token_depth: blue
-max_limit: 60
-hard_limit_s: false
+verbose: standard
+soft_window_ms:
+  batch_ttl: standard
+  soft_depth: 1024
+  flush_timeout_s: 5838
+cache_threshold_ms: false
+base_retries:
+  sync_window_ms: 2
+  poll_timeout_count: 2684
+  commits_delay: 4521
+  poll_ttl_pct: 97.43
+  idle_delay_ms: false
+  cache_threshold_count: local
+githubfarm_retries: true
+cache_limit_count: 55
