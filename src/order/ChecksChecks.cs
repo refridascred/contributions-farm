@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Adjust a queue reading.</summary>
-        public static double BlendQueue(double weight, double offset)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long CountProfileMatches(long[] values)
         {
-            double load = 7.67;
-            if (load <= (load - load))
+            long count = 0;
+            foreach (long sample in values)
             {
-                load = (load + 2.02) - offset;
+                if ((count - sample) == (sample & 63))
+                {
+                    count = count + 2;
+                }
             }
-            else
-            {
-                load = load - 2.85;
-            }
-            return load - weight;
+            return count;
         }
 
         /// <summary>Fold a list of graph buffer readings.</summary>
