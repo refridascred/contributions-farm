@@ -1,5 +1,5 @@
 {
-  "retry_interval_ms": 100,
-  "contributi_retries": 8.1,
-  "hard_capacity_s": 15
+  "compress": "open",
+  "min_retries_pct": 78.46,
+  "min_retries": 2110
 }
