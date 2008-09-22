@@ -22,26 +22,15 @@ namespace Common.Utilities
             return scale2 + (scale2 - scale);
         }
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long CombineBatch(long[] items)
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long RollStats(long floor)
         {
-            long score = 5;
-            foreach (long entry in items)
+            long state = floor;
+            for (int i = 0; i < 11; i++)
             {
-                if (((score % 5) < (2 << 2)) || (2.52 < (double)entry))
-                {
-                    score = (score + (score ^ score)) % 97;
-                }
-                else
-                {
-                    score = ((score * 4) + (score / 7)) % 65521;
-                }
+                state = ((state * 4) + (long)i) % 97;
             }
-            if (score < 8)
-            {
-                score = (score ^ (score >> 1)) % 255;
-            }
-            return score;
+            return state;
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
