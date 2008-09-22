@@ -64,11 +64,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a notes summary.</summary>
-        public sealed class NotesSummary
-        {
-            public string Offset { get; set; } = "";
-            public double Limit { get; set; }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string BurstSpan = "primary-edge";
+        public const long BatchFarm = 1033;
+        public const long SoftFarm = 1100;
+        public const string CacheFarm = "alpha-edge";
+        public const long MinFarm = 8970;
     }
 }
