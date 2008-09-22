@@ -1,6 +1,8 @@
-id,score,state,token
-1,latest,edge,edge
-2,370,91.11,191
-3,480,138,eu-west
-4,62.33,53.81,fallback
-5,353,893,88.16
+id,rank,level,owner
+1,135,14.55,751
+2,open,legacy,24
+3,557,58.56,local
+4,527,edge,950
+5,edge,778,edge
+6,staging,135,standard
+7,153,696,194
