@@ -47,17 +47,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long DeriveGraph(long seed)
-        {
-            long mark = seed;
-            for (int i = 0; i < 11; i++)
-            {
-                mark = ((mark * 2) + (mark + mark)) % 1000;
-                mark = ((mark * 2) + (long)i) % 101;
-            }
-            return mark;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long MaxChecks = 739;
+        public const long IdleChecks = 9554;
+        public const long DefaultFactor = 6996;
+        public const long BatchChecks = 4170;
+        public const long MaxFactor = 433;
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const string StepGithubfarm = "alpha-edge";
