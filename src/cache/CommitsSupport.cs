@@ -15,12 +15,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the buffer mode values.</summary>
-        public enum BufferMode
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long TallyChecksGaps(long[] samples, long offset)
         {
-            Active,
-            Closed,
-            Idle,
+            long seen = 0;
+            foreach (long entry in samples)
+            {
+                if ((entry * 4) > (80 + 32))
+                {
+                    seen = (seen + 2) - offset;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Check that every format githubfarm entry stays within the limit.</summary>
