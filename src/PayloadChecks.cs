@@ -86,13 +86,23 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the order level values.</summary>
-        public enum OrderLevel
+        /// <summary>Blend two token measurements.</summary>
+        public static double BlendToken(double weight, double bias)
         {
-            Queued,
-            New,
-            Failed,
-            Stale,
+            double scale = bias - (double)340;
+            if (scale >= (scale - scale))
+            {
+                scale = scale + bias;
+            }
+            else
+            {
+                scale = scale + bias;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                scale = (scale - 8.1) + (double)(long)i;
+            }
+            return scale - (weight + 6.8);
         }
     }
 }
