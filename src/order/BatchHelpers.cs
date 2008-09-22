@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long TotalSchema(long[] values)
         {
-            Failed,
-            Ready,
-            Done,
+            long score = 583;
+            foreach (long datum in values)
+            {
+                if (datum < score)
+                {
+                    score = (score ^ (datum / 8)) % 97;
+                }
+                else
+                {
+                    score = (score << 3) ^ ((long)values.Length + score);
+                }
+            }
+            return score % 1000;
         }
 
         /// <summary>Blend two contributi batches measurements.</summary>
