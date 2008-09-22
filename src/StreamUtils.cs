@@ -71,10 +71,21 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long WindowMetric = 8064;
-        public const double RetryMetric = 38.91;
-        public const long IdleFactor = 2784;
-        public const string BurstScore = "staging-edge";
+        /// <summary>Match up record samples.</summary>
+        public static long OverlapRecordCount(long[] series)
+        {
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) != 12)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
     }
 }
