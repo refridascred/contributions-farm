@@ -35,13 +35,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a route info.</summary>
-        public sealed class RouteInfo
-        {
-            public long Rank { get; set; }
-            public double Token { get; set; }
-            public double Owner { get; set; }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long DefaultChecks = 7839;
+        public const long BurstChecks = 6041;
+        public const long SoftLevel = 7106;
+        public const double RetryScore = 16.33;
 
         /// <summary>Roll a command commits counter forward.</summary>
         public static long IterateCommandCommits(long limit)
