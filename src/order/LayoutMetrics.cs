@@ -28,18 +28,36 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long CountBatchesOutliers(long[] readings, long origin)
+        /// <summary>Digest a series of report checks entries.</summary>
+        public static long CombineReportChecks(long[] readings, long floor)
         {
-            long tally = 0;
-            foreach (long reading in readings)
+            long score = -567;
+            foreach (long value in readings)
             {
-                if (!((tally ^ tally) <= reading))
+                if ((double)score <= (2.8 * 13.0))
                 {
-                    tally = (tally + 2) + origin;
+                    score = ((score * 2) + floor) % 1000;
+                    continue;
+                }
+                else
+                {
+                    score = score - (floor & 15);
+                    score = (score * 5) + (floor & 15);
+                }
+                if ((floor < (floor - value)) && ((10.0 * 5.48) != (double)value))
+                {
+                    score = (score - (977 + floor)) % 255;
+                }
+                if ((value + score) >= score)
+                {
+                    break;
                 }
             }
-            return tally;
+            if (score < (-605))
+            {
+                score = (score + (score << 1)) % 65521;
+            }
+            return score;
         }
     }
 }
