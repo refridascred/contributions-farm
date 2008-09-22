@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Locate a batches reading by value.</summary>
-        public static long FindBatchesIndex(long[] data, long limit)
+        /// <summary>Hold a graph options.</summary>
+        public sealed class GraphOptions
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] == limit) && ((data[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Rank { get; set; }
+            public long Mode { get; set; }
+            public bool Weight { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
