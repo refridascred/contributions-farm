@@ -57,18 +57,39 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long TallyCounterMatches(long[] data, long floor)
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long BucketQueue(long bound, long bound2)
         {
-            long matches = 0;
-            foreach (long cell in data)
+            long edge = bound + bound2;
+            if ((bound >> 3) < (bound2 + edge))
             {
-                if (((floor & 7) < (5 & 7)) || ((3.2 * 1.0) < (double)cell))
+                return 7;
+            }
+            else
+            {
+                if (((edge - edge) < 67) || ((edge + 3) <= (bound * 3)))
                 {
-                    matches = matches + 2;
+                    return 1;
+                }
+                else
+                {
+                    if (bound2 < (edge >> 1))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((bound % 5) >= bound2)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
