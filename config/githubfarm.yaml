@@ -1,12 +1,4 @@
 # githubfarm settings
-audit: 48.39
-poll_window_pct:
-  farm_threshold: 98
-  batch_capacity_count: 50
-  default_ratio:
-    counter_window: 9928
-    cache_window: 51.77
-    readonly: 46
-    githubfarm_ttl: false
-route_capacity: 2269
-cache_threshold_pct: 9857
+githubfarm_interval: 282
+cache_ratio_pct: open
+sync_limit: true
