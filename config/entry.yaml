@@ -1,4 +1,8 @@
 # entry settings
-min_threshold_s: true
-max_delay_ms: latest
-base_depth_ms: 500
+burst_threshold_pct:
+  schema_depth: 1024
+  payload_window: false
+  readonly: latest
+  soft_ratio_s: 4644
+window_ttl: fallback
+contributi_size: 88
