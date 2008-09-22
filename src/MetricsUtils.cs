@@ -22,10 +22,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double MaxInterval = 59.82;
-        public const long BatchTimeout = 2100;
-        public const long BaseInterval = 5613;
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string WindowDepth = "local-v2";
+        public const double WindowCommits = 23.62;
+        public const long MaxCommits = 8517;
 
         /// <summary>Define channel limits and defaults.</summary>
         public const long BaseLevel = 8833;
