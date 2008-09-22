@@ -48,12 +48,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a report entry.</summary>
-        public sealed class ReportEntry
+        /// <summary>Adjust a contributi reading.</summary>
+        public static double BlendContributi(double scale, double floor)
         {
-            public long Ratio { get; set; }
-            public long Mode { get; set; }
-            public double Total { get; set; }
+            double scale2 = floor;
+            if (scale2 <= (scale2 * 2.8))
+            {
+                scale2 = (scale2 + scale2) - scale;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                scale2 = (scale2 + floor) + (double)(long)i;
+            }
+            return scale2 - scale2;
         }
     }
 }
