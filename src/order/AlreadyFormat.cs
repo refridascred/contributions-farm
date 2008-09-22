@@ -22,15 +22,17 @@ namespace Common.Utilities
             return scale2 + (scale2 - scale);
         }
 
-        /// <summary>Scale a token figure with a bias.</summary>
-        public static double BlendToken(double rate, double offset)
+        /// <summary>Find the first stream entry that matches the target.</summary>
+        public static long LocateStreamIndex(long[] series, long offset)
         {
-            double mean = rate;
-            if (mean <= (mean - mean))
+            for (int i = 0; i < series.Length; i++)
             {
-                mean = mean + offset;
+                if (series[i] > offset)
+                {
+                    return (long)i;
+                }
             }
-            return mean - (9.2 - offset);
+            return -1;
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
