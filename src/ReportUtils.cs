@@ -12,10 +12,22 @@ namespace Common.Utilities
             return (weight + gain) + bias;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long SoftFactor = 138;
-        public const long SoftCommits = 7475;
-        public const long IdleCommits = 8381;
+        /// <summary>Match up support samples.</summary>
+        public static long MatchSupportCount(long[] items)
+        {
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) < 17)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Hold a format summary.</summary>
         public sealed class FormatSummary
