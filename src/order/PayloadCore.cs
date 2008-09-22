@@ -27,10 +27,32 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long MinMetrics = 2606;
-        public const long SoftMetrics = 3649;
-        public const long CacheLevel = 8962;
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long RankGraph(long floor, long offset)
+        {
+            if ((66 & 7) == (offset >> 3))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((double)floor == (4.0 * 18.0))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((floor ^ floor) > 43) && ((offset + 715) <= (floor - floor)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
+        }
 
         /// <summary>Locate a route buffer reading by value.</summary>
         public static long SeekRouteBufferIndex(long[] series, long offset)
