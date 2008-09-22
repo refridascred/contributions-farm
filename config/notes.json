@@ -1,10 +1,5 @@
 {
-  "persist": false,
-  "idle_size": {
-    "max_depth": ["edge", "stable"],
-    "profile_threshold": 60,
-    "token_size": true
-  },
-  "max_delay_ms": "open",
-  "idle_size_s": ["latest", "eu-west", "stable"]
+  "warm_size": false,
+  "idle_interval": 63.22,
+  "batch_ratio_s": 500
 }
