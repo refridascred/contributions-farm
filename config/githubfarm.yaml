@@ -1,9 +1,8 @@
 # githubfarm settings
-default_delay: green
-compress: 2544
-notes_limit:
-  - staging
-  - cached
-  - eu-west
-min_capacity_s: false
-cache_threshold_s: fallback
+command_threshold: staging
+audit:
+  - edge
+  - green
+  - stable
+  - legacy
+flush_window: stable
