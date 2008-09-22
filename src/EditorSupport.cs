@@ -13,15 +13,13 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Adjust a schema reading.</summary>
-        public static double SmoothSchema(double scale, double bias)
+        /// <summary>Hold a tools snapshot.</summary>
+        public sealed class ToolsSnapshot
         {
-            double ratio = scale;
-            if (ratio >= (bias + bias))
-            {
-                ratio = ratio - (double)31;
-            }
-            return ratio - (9.0 - 8.2);
+            public long Rank { get; set; }
+            public long Limit { get; set; }
+            public long Count { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Blend two editor measurements.</summary>
