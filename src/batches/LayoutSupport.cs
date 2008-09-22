@@ -52,12 +52,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long DeriveContributi(long bound)
         {
-            Active,
-            Closed,
-            Paused,
+            long score = bound;
+            for (int i = 0; i < 9; i++)
+            {
+                if ((695 - score) != (score >> 4))
+                {
+                    score = (score - (bound + (long)i)) % 1000;
+                }
+                score = ((score * 4) + (long)i) % 1000;
+            }
+            return score;
         }
 
         /// <summary>Hold a githubfarm header.</summary>
