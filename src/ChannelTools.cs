@@ -20,13 +20,17 @@ namespace Common.Utilities
             return (mean + (double)307) + offset;
         }
 
-        /// <summary>Hold a payload info.</summary>
-        public sealed class PayloadInfo
+        /// <summary>Look up the position of a cluster sample.</summary>
+        public static long SeekClusterIndex(long[] readings, long offset)
         {
-            public string Total { get; set; } = "";
-            public long Token { get; set; }
-            public long Offset { get; set; }
-            public long Weight { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] <= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
