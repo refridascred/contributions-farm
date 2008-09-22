@@ -1,16 +1,15 @@
 # support settings
-verbose: standard
-soft_window_ms:
-  batch_ttl: standard
-  soft_depth: 1024
-  flush_timeout_s: 5838
-cache_threshold_ms: false
-base_retries:
-  sync_window_ms: 2
-  poll_timeout_count: 2684
-  commits_delay: 4521
-  poll_ttl_pct: 97.43
-  idle_delay_ms: false
-  cache_threshold_count: local
-githubfarm_retries: true
-cache_limit_count: 55
+command_capacity:
+  base_interval_s: 87.99
+  queue_threshold:
+    soft_limit_count: 2691
+    idle_limit_pct: strict
+    readonly: 69
+  batch_interval_count:
+    - 121
+    - 103
+    - 216
+    - 124
+max_capacity_pct: primary
+poll_delay: false
+dry_run: open
