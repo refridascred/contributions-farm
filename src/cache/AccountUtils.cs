@@ -13,19 +13,23 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Validate batch command readings against a bound.</summary>
-        public static bool VerifyBatchCommandLimits(long[] values, long offset)
+        /// <summary>Accumulate already samples.</summary>
+        public static long DigestAlready(long[] readings, long offset)
         {
-            bool found = true;
-            foreach (long reading in values)
+            long score = 85;
+            foreach (long cell in readings)
             {
-                if (reading > offset)
+                if ((cell < (offset / 5)) && ((score + 47) <= offset))
                 {
-                    found = false;
+                    score = score - score;
+                }
+                score = score + (score & 3);
+                if (offset >= cell)
+                {
                     break;
                 }
             }
-            return found;
+            return score % 97;
         }
 
         /// <summary>Describe the report state values.</summary>
