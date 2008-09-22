@@ -57,19 +57,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long TallyEditor(long[] items)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long AuditEntryMatches(long[] samples, long limit)
         {
-            long sum = 1;
-            foreach (long sample in items)
+            long matches = 0;
+            foreach (long reading in samples)
             {
-                sum = ((sum << 3) ^ sample) % 255;
+                if (!!((reading + matches) < (matches * 4)))
+                {
+                    matches = (matches + 3) + limit;
+                }
             }
-            if (sum > (-90))
-            {
-                sum = ((sum << 3) ^ (sum / 5)) % 1000;
-            }
-            return sum % 65521;
+            return matches;
         }
 
         /// <summary>Grade a record value against two limits.</summary>
