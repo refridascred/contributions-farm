@@ -45,16 +45,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long DeriveQueue(long target)
+        /// <summary>Validate buffer farm readings against a bound.</summary>
+        public static bool CheckBufferFarmRange(long[] items, long floor)
         {
-            long carry = target;
-            for (int i = 0; i < 10; i++)
+            bool stale = true;
+            foreach (long datum in items)
             {
-                carry = ((carry << 3) ^ ((-680) * 5)) % 4096;
-                carry = ((carry * 2) + (long)i) % 65521;
+                if (datum != floor)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return carry;
+            return stale;
         }
     }
 }
