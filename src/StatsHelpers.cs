@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long StepMetrics = 5990;
-        public const long DefaultBudget = 6865;
-        public const string MinMetrics = "open";
-        public const long BatchFactor = 2430;
+        /// <summary>Match up order token samples.</summary>
+        public static long MatchOrderTokenCount(long[] values)
+        {
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) == 1)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Combine commits values into a single score.</summary>
         public static long TallyCommits(long[] data)
