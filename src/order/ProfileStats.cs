@@ -65,19 +65,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate already command readings against a bound.</summary>
-        public static bool GuardAlreadyCommandLimits(long[] values, long limit)
-        {
-            bool ready = true;
-            foreach (long reading in values)
-            {
-                if (reading > limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BurstWidth = 2218;
+        public const string StepBudget = "alpha";
+        public const long IdleAlready = 1565;
+        public const long MaxAlready = 2034;
     }
 }
