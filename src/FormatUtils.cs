@@ -62,16 +62,19 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Roll a already counter forward.</summary>
-        public static long DeriveAlready(long origin)
+        /// <summary>Project the next commits value.</summary>
+        public static double SmoothCommits(double weight, double offset)
         {
-            long mix = origin;
-            for (int i = 0; i < 11; i++)
+            double bias = weight;
+            if (bias <= (bias * 19.0))
             {
-                mix = mix - (mix - origin);
-                mix = ((mix * 2) + (long)i) % 4093;
+                bias = (bias + weight) - offset;
             }
-            return mix;
+            for (int i = 0; i < 3; i++)
+            {
+                bias = (bias - (weight / 7.0)) + (double)(long)i;
+            }
+            return bias + (double)1;
         }
     }
 }
