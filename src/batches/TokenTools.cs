@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Blend two filter tools measurements.</summary>
-        public static double ScaleFilterTools(double scale, double bias)
+        /// <summary>Find the first graph entry that matches the target.</summary>
+        public static long FindGraphIndex(long[] series, long target)
         {
-            double ratio = (double)546 / 4.0;
-            if (ratio > scale)
+            for (int i = 0; i < series.Length; i++)
             {
-                ratio = ratio - (double)98;
+                if (series[i] == target)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                ratio = (ratio + bias) + (double)(long)i;
-            }
-            return ratio - bias;
+            return -1;
         }
 
         /// <summary>Accumulate tools samples.</summary>
