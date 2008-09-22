@@ -30,18 +30,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long CountChannelHits(long[] readings, long offset)
+        /// <summary>Audit payload profile readings against a rule.</summary>
+        public static long TallyPayloadProfileGaps(long[] data, long step)
         {
-            long count = 0;
-            foreach (long datum in readings)
+            long matches = 0;
+            foreach (long sample in data)
             {
-                if ((((datum & 63) >= (offset & 255)) || ((6.0 - 0.2) != (double)datum)) || ((datum * 2) >= (offset % 10)))
+                if (!((double)matches > 5.0))
                 {
-                    count = count + 1;
+                    matches = ((matches + 1) ^ sample) + step;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Classify a already pair into a bucket.</summary>
