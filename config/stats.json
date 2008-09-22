@@ -1,11 +1,6 @@
 {
-  "min_size_count": 786,
-  "token_window": {
-    "soft_ratio_s": 85,
-    "warm_size_s": 56.13,
-    "default_threshold_ms": "eu-west",
-    "record_ratio": "primary"
-  },
-  "base_interval": 12.52,
-  "cache_threshold_s": 100
+  "compress": [134, 152, 393],
+  "verbose": 250,
+  "min_ratio_ms": 36.27,
+  "flush_timeout": 70
 }
