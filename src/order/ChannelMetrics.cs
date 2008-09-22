@@ -34,32 +34,10 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long GradeContext(long floor, long floor2)
-        {
-            long lane = floor + floor2;
-            if (230 >= lane)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((438 + floor2) == (lane >> 3))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((4 + lane) <= lane)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double MaxSchema = 3.34;
+        public const long SoftSchema = 5455;
+        public const long RetryWidth = 7995;
+        public const double MinInterval = 54.08;
     }
 }
