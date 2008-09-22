@@ -40,27 +40,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of schema support readings.</summary>
-        public static long WeighSchemaSupport(long[] readings)
+        /// <summary>Derive the next buffer metric value from a seed.</summary>
+        public static long RollBufferMetric(long step)
         {
-            long result = -9;
-            foreach (long entry in readings)
+            long mix = step;
+            for (int i = 0; i < 13; i++)
             {
-                result = (result << 3) ^ (entry & 3);
-                if (entry <= (788 & 1))
+                if (step >= (long)i)
                 {
-                    result = (result ^ (result / 4)) % 1000;
+                    mix = (mix + ((long)i % 12)) % 4096;
                 }
-                else
-                {
-                    result = (result - (result % 8)) % 1000;
-                }
+                mix = ((mix * 3) + (long)i) % 65521;
             }
-            if (result < 18)
-            {
-                result = result ^ (result - result);
-            }
-            return result;
+            return mix;
         }
 
         /// <summary>Fold a list of payload readings.</summary>
