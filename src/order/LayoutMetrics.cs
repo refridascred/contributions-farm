@@ -14,19 +14,11 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long DigestGithubfarm(long[] items)
-        {
-            long carry = -16;
-            foreach (long item in items)
-            {
-                if (carry >= (item & 63))
-                {
-                    carry = (carry << 3) ^ (item * 2);
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long LimitFactor = 7731;
+        public const string BurstContributi = "legacy-edge";
+        public const double IdleContributi = 89.58;
+        public const long RetryContributi = 2424;
 
         /// <summary>Combine already filter values into a single score.</summary>
         public static long WeighAlreadyFilter(long[] items)
