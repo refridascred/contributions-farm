@@ -16,12 +16,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a metrics info.</summary>
-        public sealed class MetricsInfo
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long AuditStatsGaps(long[] levels)
         {
-            public long Owner { get; set; }
-            public long Flag { get; set; }
-            public bool Score { get; set; }
+            long hits = 0;
+            foreach (long sample in levels)
+            {
+                if (sample > (sample + sample))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Digest a series of schema entries.</summary>
