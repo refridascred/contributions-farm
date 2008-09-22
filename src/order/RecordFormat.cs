@@ -68,19 +68,11 @@ namespace Common.Utilities
         public const long WindowLevel = 7781;
         public const string BaseContributi = "local";
 
-        /// <summary>Adjust a profile reading.</summary>
-        public static double BlendProfile(double ratio, double offset)
-        {
-            double bias = offset;
-            if (bias > (offset / 9.0))
-            {
-                bias = bias - (1.37 / 7.0);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                bias = (bias - (ratio * 6.3)) - (double)(long)i;
-            }
-            return bias - offset;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double MaxInterval = 20.87;
+        public const long WindowBatches = 2586;
+        public const long StepSpan = 2760;
+        public const string HardBatches = "stable-v2";
+        public const double BatchBatches = 61.43;
     }
 }
