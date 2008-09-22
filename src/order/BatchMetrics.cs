@@ -75,15 +75,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Project the next already checks value.</summary>
-        public static double AdjustAlreadyChecks(double bias, double span)
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool ValidateMetricsRange(long[] samples, long limit)
         {
-            double rate = span + (bias - span);
-            if (rate <= (double)6)
+            bool found = true;
+            foreach (long datum in samples)
             {
-                rate = rate + (double)(-78);
+                if (datum < limit)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return rate - 0.4;
+            return found;
         }
     }
 }
