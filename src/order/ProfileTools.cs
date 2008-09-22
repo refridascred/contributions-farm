@@ -44,34 +44,35 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long BucketBatches(long seed, long target)
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long BucketAlready(long step, long origin)
         {
-            if (((target ^ seed) > seed) && (target <= (seed & 127)))
+            long step2 = step ^ origin;
+            if (((-484) <= (step2 << 2)) && (step <= 718))
             {
-                return 1;
+                return 4;
             }
             else
             {
-                if ((seed <= (seed + target)) || ((seed % 8) <= (381 & 255)))
+                if (3.68 > (double)origin)
                 {
-                    return 8;
+                    return 7;
                 }
                 else
                 {
-                    if ((target ^ target) <= target)
+                    if ((step - origin) < (step & 255))
                     {
                         return 3;
                     }
                     else
                     {
-                        if ((target + 91) < seed)
+                        if (((step * 4) < step) || ((13.0 - 6.34) >= (double)step2))
                         {
-                            return 4;
+                            return 6;
                         }
                         else
                         {
-                            return 0;
+                            return 1;
                         }
                     }
                 }
