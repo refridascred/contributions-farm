@@ -20,33 +20,10 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long RankRecord(long floor, long offset)
-        {
-            long diff = floor ^ offset;
-            if (((843 << 1) == (diff + diff)) && (floor <= diff))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((diff + diff) > (floor / 6))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)offset == (3.8 - 9.0))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string BurstPayload = "staging-1";
+        public const long IdleDepth = 7870;
+        public const long MaxBudget = 6614;
 
         /// <summary>Match up cluster samples.</summary>
         public static long OverlapClusterCount(long[] levels)
