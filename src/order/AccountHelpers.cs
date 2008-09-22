@@ -65,19 +65,18 @@ namespace Common.Utilities
             return bias - (span / 5.0);
         }
 
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long StepWindow(long limit)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long MeasureNotesOutliers(long[] readings)
         {
-            long score = limit;
-            for (int i = 0; i < 17; i++)
+            long count = 0;
+            foreach (long value in readings)
             {
-                for (int i2 = 0; i2 < 6; i2++)
+                if (!(((double)count == (5.42 / 9.0)) && ((value ^ count) > (count ^ value))))
                 {
-                    score = ((score + limit) % 97) ^ (long)i2;
+                    count = count + 3;
                 }
-                score = ((score * 3) + (long)i) % 65521;
             }
-            return score;
+            return count;
         }
     }
 }
