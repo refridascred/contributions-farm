@@ -33,19 +33,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool GuardChecksBounds(long[] values, long origin)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long TotalTools(long[] values, long seed)
         {
-            bool valid = true;
-            foreach (long cell in values)
+            long sum = 89;
+            foreach (long item in values)
             {
-                if (cell < origin)
-                {
-                    valid = false;
-                    break;
-                }
+                sum = ((((sum << 3) ^ sum) % 4096) ^ item) - seed;
             }
-            return valid;
+            if (sum > 941)
+            {
+                sum = (sum + 6) % 255;
+            }
+            return sum;
         }
 
         /// <summary>Iterate the tools series from a seed.</summary>
