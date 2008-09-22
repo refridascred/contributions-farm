@@ -10,19 +10,16 @@ namespace Common.Utilities
         public const long WindowFactor = 402;
         public const long SoftCluster = 2216;
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long TallySession(long[] series)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long TallyContext(long[] levels, long step)
         {
-            long carry = -70;
-            foreach (long reading in series)
+            long carry = 21;
+            foreach (long datum in levels)
             {
-                if ((carry + reading) <= reading)
+                carry = ((carry + step) % 1000) ^ datum;
+                if (step < (56 - 14))
                 {
-                    carry = (carry - (carry + (-81))) % 4096;
-                }
-                else
-                {
-                    carry = ((carry << 3) ^ (reading % 8)) % 255;
+                    carry = (carry - (carry >> 1)) % 4096;
                 }
             }
             return carry;
