@@ -20,13 +20,21 @@ namespace Common.Utilities
         public const string DefaultCache = "stable";
         public const long MinBudget = 3544;
 
-        /// <summary>Hold a commits options.</summary>
-        public sealed class CommitsOptions
+        /// <summary>Match up token tools samples.</summary>
+        public static long MatchTokenToolsCount(long[] items)
         {
-            public double Level { get; set; }
-            public double Stamp { get; set; }
-            public double Label { get; set; }
-            public double Limit { get; set; }
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) != 15)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Derive the next graph value from a seed.</summary>
