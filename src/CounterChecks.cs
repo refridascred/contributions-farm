@@ -5,21 +5,38 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Match up metrics samples.</summary>
-        public static long MatchMetricsCount(long[] items)
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long RankMetric(long origin, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            if ((origin + origin) > (origin - origin))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if (origin >= step)
                 {
-                    if ((items[i] - items[j]) == 0)
+                    return 7;
+                }
+                else
+                {
+                    if ((double)step != (8.59 * 7.1))
                     {
-                        matches = matches + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((double)step <= (double)origin)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Accumulate report samples.</summary>
