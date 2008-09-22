@@ -19,19 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every buffer command entry stays within the limit.</summary>
-        public static bool CheckBufferCommandLimits(long[] values, long offset)
+        /// <summary>Describe the entry mode values.</summary>
+        public enum EntryMode
         {
-            bool flag = true;
-            foreach (long cell in values)
-            {
-                if (cell > offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            New,
+            Stale,
+            Failed,
         }
 
         /// <summary>Classify a stats pair into a bucket.</summary>
