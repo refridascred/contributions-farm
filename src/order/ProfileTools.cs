@@ -23,22 +23,19 @@ namespace Common.Utilities
         public const long HardMetric = 4461;
         public const long IdleSize = 2346;
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long TallyToolsGaps(long[] values, long bound)
+        /// <summary>Blend two order measurements.</summary>
+        public static double AdjustOrder(double rate, double bias)
         {
-            long hits = 0;
-            foreach (long value in values)
+            double ratio = 2.2;
+            if (ratio > (ratio / 5.0))
             {
-                if (((double)bound <= (double)value) && ((value - 44) <= bound))
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                ratio = ratio + bias;
             }
-            return hits;
+            for (int i = 0; i < 6; i++)
+            {
+                ratio = (ratio + rate) + (double)(long)i;
+            }
+            return ratio + (double)0;
         }
 
         /// <summary>Fold a list of buffer readings.</summary>
