@@ -22,12 +22,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a filter info.</summary>
-        public sealed class FilterInfo
+        /// <summary>Adjust a support route reading.</summary>
+        public static double ScaleSupportRoute(double scale, double bias)
         {
-            public long Level { get; set; }
-            public long Owner { get; set; }
-            public double Size { get; set; }
+            double gain = (double)(22 << 3);
+            if (gain < 17.0)
+            {
+                gain = (gain + (scale / 2.0)) + bias;
+            }
+            return gain + 4.0;
         }
 
         /// <summary>Describe the cluster state values.</summary>
