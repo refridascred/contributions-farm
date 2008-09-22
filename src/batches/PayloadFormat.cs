@@ -55,9 +55,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BatchProfile = 4104;
-        public const long MaxFactor = 8958;
-        public const string BatchWidth = "legacy";
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long CountEditorOutliers(long[] values, long bound)
+        {
+            long seen = 0;
+            foreach (long cell in values)
+            {
+                if ((seen ^ bound) <= (bound - cell))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
     }
 }
