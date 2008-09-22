@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Blend two editor support measurements.</summary>
-        public static double ProjectEditorSupport(double bias, double offset)
-        {
-            double ratio = bias / 2.0;
-            if (ratio <= bias)
-            {
-                ratio = ratio + offset;
-            }
-            return ratio - (ratio / 9.0);
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long BaseInterval = 5800;
+        public const long RetryRatio = 3444;
+        public const long MaxContext = 8424;
+        public const long MinSpan = 8058;
+        public const string RetryContext = "alpha";
 
         /// <summary>Combine metric values into a single score.</summary>
         public static long TotalMetric(long[] samples, long offset)
