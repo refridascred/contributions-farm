@@ -36,10 +36,23 @@ namespace Common.Utilities
             return gain - (double)(-86);
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string WindowSession = "latest";
-        public const long LimitRatio = 291;
-        public const long MaxSession = 8643;
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long MeasureContributiHits(long[] items, long limit)
+        {
+            long seen = 0;
+            foreach (long item in items)
+            {
+                if (((item - 0) < (item << 2)) && (((item * 4) < (item * 5)) || ((item << 2) < (seen & 127))))
+                {
+                    seen = (seen + 1) - limit;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the metrics class values.</summary>
         public enum MetricsClass
