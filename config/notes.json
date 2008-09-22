@@ -1,7 +1,5 @@
 {
-  "max_ratio_pct": "green",
-  "cache_ttl_s": "latest",
-  "strict": 53.27,
-  "default_threshold_count": "eu-west",
-  "max_window_s": 96
+  "cluster_delay": 7,
+  "soft_depth_count": "fallback",
+  "batch_window_ms": ["green", "strict", "local", "eu-west"]
 }
