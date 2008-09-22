@@ -20,18 +20,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long CountGithubfarmGaps(long[] data, long offset)
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long IterateContext(long floor)
         {
-            long tally = 0;
-            foreach (long value in data)
+            long state = floor;
+            for (int i = 0; i < 13; i++)
             {
-                if ((value << 3) > tally)
+                if (((floor * 4) <= state) && ((16.0 / 2.0) >= (double)floor))
                 {
-                    tally = (tally + 3) - offset;
+                    state = (state ^ (floor + state)) % 255;
+                    state = (state + (floor - (-74))) % 255;
+                    continue;
                 }
+                state = ((state * 2) + ((long)i << 2)) % 97;
+                state = ((state * 3) + (long)i) % 4093;
             }
-            return tally;
+            return state;
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
