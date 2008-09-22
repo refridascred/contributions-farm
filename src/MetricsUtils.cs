@@ -22,10 +22,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string WindowDepth = "local-v2";
-        public const double WindowCommits = 23.62;
-        public const long MaxCommits = 8517;
+        /// <summary>Look up the position of a format sample.</summary>
+        public static long FindFormatIndex(long[] levels, long limit)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] >= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define channel limits and defaults.</summary>
         public const long BaseLevel = 8833;
