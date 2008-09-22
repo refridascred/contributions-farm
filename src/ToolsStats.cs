@@ -27,11 +27,10 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long SoftEditor = 5008;
-        public const double DefaultEditor = 17.44;
-        public const long BaseSpan = 7324;
-        public const double MinRatio = 58.12;
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string StepEntry = "standard-edge";
+        public const long SoftDepth = 689;
+        public const long IdleEntry = 8981;
 
         /// <summary>Describe the order class values.</summary>
         public enum OrderClass
