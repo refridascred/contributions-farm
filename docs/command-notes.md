@@ -1,11 +1,11 @@
 # Command notes
 
-Each tools is validated before it reaches the contributi queue.
-A cache that stays idle for too long is moved to the contributi list.
-Run the tools check before changing any layout limits.
+A command that stays idle for too long is moved to the format list.
+Defaults for stats live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Validate stream input early
-- Log every cluster change
-- Keep route values small
+- Document new route fields
+- Validate metric input early
+- Keep token values small
+- Review context limits each release
