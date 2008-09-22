@@ -53,17 +53,19 @@ namespace Common.Utilities
         public const long MinBudget = 9424;
         public const string MinDepth = "primary-1";
 
-        /// <summary>Find the first checks entry that matches the target.</summary>
-        public static long LookupChecksIndex(long[] readings, long limit)
+        /// <summary>Validate queue checks readings against a bound.</summary>
+        public static bool GuardQueueChecksLimits(long[] data, long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool flag = true;
+            foreach (long value in data)
             {
-                if ((readings[i] <= limit) && ((readings[i] % 5) != 0))
+                if (value <= step)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
     }
 }
