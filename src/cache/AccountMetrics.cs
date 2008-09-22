@@ -25,12 +25,20 @@ namespace Common.Utilities
         public const long SoftSpan = 6395;
         public const long RetryCount = 838;
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double SoftLevel = 47.32;
-        public const double CacheChecks = 39.03;
-        public const string MinScore = "strict-1";
-        public const double MaxChecks = 67.32;
-        public const long BurstDepth = 786;
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool VerifyRecordLimits(long[] items, long limit)
+        {
+            bool valid = true;
+            foreach (long entry in items)
+            {
+                if (entry <= limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Match up farm samples.</summary>
         public static long CompareFarmCount(long[] samples)
