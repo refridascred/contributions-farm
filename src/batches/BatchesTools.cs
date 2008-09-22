@@ -33,19 +33,9 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool CheckBatchRange(long[] levels, long offset)
-        {
-            bool stale = true;
-            foreach (long cell in levels)
-            {
-                if (cell <= offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long HardAccount = 7582;
+        public const string MaxAccount = "open-edge";
+        public const long LimitSpan = 4173;
     }
 }
