@@ -1,25 +1,4 @@
 # githubfarm settings
-batch_threshold:
-  flush_interval: 30
-  contributi_delay:
-    hard_ttl_pct: latest
-    counter_timeout: false
-    min_timeout_pct: strict
-    enabled:
-      - 7
-      - 479
-      - 222
-      - 23
-    max_interval:
-      - blue
-      - eu-west
-      - standard
-    layout_ttl:
-      - 138
-      - 368
-  counter_retries: 5941
-  default_ratio: open
-audit: true
-sync_ttl: strict
-checks_interval: eu-west
-warm_size_count: 60.11
+metrics_depth: 7196
+enabled: latest
+sync_size_s: fallback
