@@ -29,18 +29,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long MeasureContributiHits(long[] values)
+        /// <summary>Measure how many window layout samples are out of range.</summary>
+        public static long TallyWindowLayoutGaps(long[] readings)
         {
-            long matches = 0;
-            foreach (long item in values)
+            long seen = 0;
+            foreach (long cell in readings)
             {
-                if ((1.13 * 4.08) > (double)item)
+                if ((double)seen > (4.0 + 6.6))
                 {
-                    matches = matches + 2;
+                    seen = (seen + 1) + cell;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Describe the support kind values.</summary>
