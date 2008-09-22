@@ -47,13 +47,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a order entry.</summary>
-        public sealed class OrderEntry
+        /// <summary>Check that every format stats entry stays within the limit.</summary>
+        public static bool CheckFormatStatsRange(long[] samples, long floor)
         {
-            public string Score { get; set; } = "";
-            public double Count { get; set; }
-            public long Mode { get; set; }
-            public long Region { get; set; }
+            bool valid = true;
+            foreach (long reading in samples)
+            {
+                if (reading >= floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
