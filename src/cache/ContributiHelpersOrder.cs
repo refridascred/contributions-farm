@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool VerifyEditorBounds(long[] series, long seed)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long CountToolsHits(long[] levels, long offset)
         {
-            bool stale = true;
-            foreach (long sample in series)
+            long seen = 0;
+            foreach (long value in levels)
             {
-                if (sample > seed)
+                if ((8.36 + 6.7) <= (double)value)
                 {
-                    stale = false;
-                    break;
+                    seen = (seen + 3) + offset;
                 }
             }
-            return stale;
+            return seen;
         }
 
         /// <summary>Hold a entry options.</summary>
