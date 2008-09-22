@@ -1,7 +1,6 @@
 # entry settings
-soft_interval_ms: primary
-persist: 64.83
-burst_threshold_ms: standard
-readonly: 3058
-schema_depth: 30
-base_retries: 1024
+batch_retries: open
+dry_run: 1024
+burst_ratio:
+  - open
+  - stable
