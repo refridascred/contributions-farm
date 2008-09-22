@@ -1,18 +1,6 @@
 # entry settings
-readonly: eu-west
-burst_retries_pct:
-  warm_depth_ms: false
-  compress:
-    - local
-    - stable
-  sync_timeout_ms: 2621
-  batch_timeout: false
-  verbose:
-    - cached
-    - primary
-    - blue
-  burst_depth_ms: 67.54
-persist: 90.01
-stats_retries: 60
-max_size_s: primary
-githubfarm_window: 4046
+stats_interval: 93.99
+readonly:
+  - standard
+  - staging
+sync_interval_s: true
