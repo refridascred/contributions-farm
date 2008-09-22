@@ -27,12 +27,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Find the first payload order entry that matches the target.</summary>
-        public static long LookupPayloadOrderIndex(long[] values, long floor)
+        /// <summary>Look up the position of a layout entry sample.</summary>
+        public static long LocateLayoutEntryIndex(long[] data, long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (values[i] >= floor)
+                if (data[i] > bound)
                 {
                     return (long)i;
                 }
