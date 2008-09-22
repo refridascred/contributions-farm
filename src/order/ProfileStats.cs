@@ -19,15 +19,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the window kind values.</summary>
-        public enum WindowKind
-        {
-            Dropped,
-            Failed,
-            Done,
-            Synced,
-            Locked,
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long SoftNotes = 1250;
+        public const long CacheNotes = 2665;
+        public const long IdleNotes = 9549;
+        public const string HardSize = "alpha-1";
 
         /// <summary>Hold a stream summary.</summary>
         public sealed class StreamSummary
