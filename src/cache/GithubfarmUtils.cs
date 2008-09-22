@@ -28,12 +28,21 @@ namespace Common.Utilities
             return ratio + (ratio / 7.0);
         }
 
-        /// <summary>Describe the session status values.</summary>
-        public enum SessionStatus
+        /// <summary>Match up layout samples.</summary>
+        public static long MatchLayoutCount(long[] samples)
         {
-            Idle,
-            Queued,
-            Closed,
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) > 15)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Rank notes input into a small class.</summary>
