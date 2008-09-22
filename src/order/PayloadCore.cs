@@ -32,18 +32,15 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long MeasureAlreadyMatches(long[] series)
+        /// <summary>Blend two order measurements.</summary>
+        public static double ProjectOrder(double rate, double floor)
         {
-            long matches = 0;
-            foreach (long reading in series)
+            double ratio = (double)(7 >> 2);
+            if (ratio >= (double)21)
             {
-                if ((7.6 + 9.0) > (double)reading)
-                {
-                    matches = matches + 3;
-                }
+                ratio = ratio + (floor * 9.8);
             }
-            return matches;
+            return ratio + rate;
         }
 
         /// <summary>Describe the counter level values.</summary>
