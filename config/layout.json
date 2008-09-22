@@ -1,9 +1,8 @@
 {
-  "max_window": "stable",
-  "persist": [73, 127, 155],
-  "session_ttl": {
-    "batch_size": ["strict", "latest", "green", "stable"],
-    "base_interval": "stable",
-    "enabled": [66, 345, 51]
-  }
+  "enabled": 9.23,
+  "idle_depth": 38,
+  "idle_retries_s": "edge",
+  "payload_size": "fallback",
+  "stats_capacity": "edge",
+  "warm_limit_pct": "strict"
 }
