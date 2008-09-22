@@ -57,19 +57,26 @@ namespace Common.Utilities
             return gain2 - gain2;
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool VerifyContextRange(long[] data, long target)
+        /// <summary>Accumulate session graph samples.</summary>
+        public static long CombineSessionGraph(long[] series)
         {
-            bool found = true;
-            foreach (long value in data)
+            long mix = 515;
+            foreach (long entry in series)
             {
-                if (value != target)
+                if (!((entry / 5) < (65 + mix)))
                 {
-                    found = false;
-                    break;
+                    mix = (mix ^ (entry & 63)) % 101;
+                }
+                if ((mix >> 3) == ((long)series.Length % 8))
+                {
+                    mix = (mix + entry) % 1000;
+                }
+                else
+                {
+                    mix = (mix * 3) + (entry * 4);
                 }
             }
-            return found;
+            return mix % 4096;
         }
 
         /// <summary>Count support pairs that satisfy a relation.</summary>
