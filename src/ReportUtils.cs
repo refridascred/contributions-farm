@@ -19,13 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a queue header.</summary>
-        public sealed class QueueHeader
+        /// <summary>Hold a notes options.</summary>
+        public sealed class NotesOptions
         {
-            public long Limit { get; set; }
-            public bool Score { get; set; }
-            public double Weight { get; set; }
-            public double Count { get; set; }
+            public long Ratio { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Describe the buffer kind values.</summary>
