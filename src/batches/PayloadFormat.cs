@@ -19,21 +19,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long ScoreQueue(long[] items)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long TallyContext(long[] data)
         {
-            long sum = -9;
-            foreach (long value in items)
+            long state = 261;
+            foreach (long item in data)
             {
-                sum = (sum * 3) + ((long)items.Length >> 5);
-                sum = sum + (value * 2);
-                sum = ((sum << 3) ^ ((long)items.Length & 1)) % 1000;
-                if (77 <= (sum - value))
+                if ((state - item) < (state & 7))
                 {
-                    break;
+                    state = ((state * 3) + (state << 3)) % 1000;
                 }
             }
-            return sum;
+            if (state > 122)
+            {
+                state = state ^ (state + state);
+            }
+            return state;
         }
 
         /// <summary>Combine farm values into a single score.</summary>
