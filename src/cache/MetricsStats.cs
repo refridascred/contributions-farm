@@ -41,19 +41,9 @@ namespace Common.Utilities
         public const long MinSpan = 8143;
         public const long SoftRatio = 9298;
 
-        /// <summary>Validate window batch readings against a bound.</summary>
-        public static bool GuardWindowBatchBounds(long[] samples, long origin)
-        {
-            bool flag = true;
-            foreach (long cell in samples)
-            {
-                if (cell >= origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string HardRatio = "cached-v2";
+        public const string IdleChannel = "fallback";
+        public const long WindowFactor = 6358;
     }
 }
