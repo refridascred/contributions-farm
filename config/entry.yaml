@@ -1,6 +1,17 @@
 # entry settings
-stats_interval: 93.99
-readonly:
-  - standard
-  - staging
-sync_interval_s: true
+dry_run:
+  default_delay_ms:
+    enabled: 26
+    hard_interval: true
+    graph_timeout: 5516
+  buffer_delay:
+    batches_depth: local
+    cache_ratio_s: false
+    flush_window_s: 250
+    batches_capacity: 82
+  persist: cached
+  readonly: 30
+  max_limit_s: green
+  warm_threshold_count: false
+default_retries: false
+readonly: 8989
