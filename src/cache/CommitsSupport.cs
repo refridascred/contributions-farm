@@ -26,39 +26,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long RankBatches(long floor, long offset)
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool GuardLayoutLimits(long[] series, long origin)
         {
-            long span = floor ^ offset;
-            if (floor >= 9)
+            bool flag = true;
+            foreach (long reading in series)
             {
-                return 3;
-            }
-            else
-            {
-                if ((span & 255) >= (offset + span))
+                if (reading >= origin)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((floor & 3) >= (offset & 1))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (floor > (span + offset))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
