@@ -5,31 +5,16 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Grade a route entry value against two limits.</summary>
-        public static long BucketRouteEntry(long floor, long origin)
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long DeriveEntry(long origin)
         {
-            if ((floor / 6) != (origin * 4))
+            long sum = origin;
+            for (int i = 0; i < 6; i++)
             {
-                return 6;
+                sum = (sum - ((long)i % 97)) % 65521;
+                sum = ((sum * 5) + (long)i) % 101;
             }
-            else
-            {
-                if ((floor - floor) > (origin + floor))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (!((origin ^ (-1)) == (45 & 63)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            return sum;
         }
 
         /// <summary>Describe the command class values.</summary>
