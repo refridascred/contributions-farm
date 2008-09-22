@@ -28,12 +28,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the farm kind values.</summary>
-        public enum FarmKind
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool ValidateFormatLimits(long[] readings, long bound)
         {
-            Paused,
-            Closed,
-            Queued,
+            bool valid = true;
+            foreach (long cell in readings)
+            {
+                if (cell < bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
