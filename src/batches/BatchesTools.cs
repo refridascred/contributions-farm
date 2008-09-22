@@ -19,12 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a schema header.</summary>
-        public sealed class SchemaHeader
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long TotalMetric(long[] samples, long offset)
         {
-            public string Region { get; set; } = "";
-            public bool Mode { get; set; }
-            public long Rank { get; set; }
+            long state = 992;
+            foreach (long entry in samples)
+            {
+                if ((16.0 * 5.0) >= (double)entry)
+                {
+                    state = (state ^ (offset << 2)) % 255;
+                }
+            }
+            return state;
         }
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
