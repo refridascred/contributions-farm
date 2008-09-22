@@ -40,10 +40,33 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string HardOrder = "latest";
-        public const long CacheBudget = 1569;
-        public const string BurstOrder = "strict-edge";
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long RankAccount(long step, long seed)
+        {
+            long cur = step ^ seed;
+            if ((step * 3) != (seed + cur))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((seed << 2) < cur)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((step / 4) <= (cur >> 1))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
+        }
 
         /// <summary>Define command limits and defaults.</summary>
         public const long MinCommand = 3780;
