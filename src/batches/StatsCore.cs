@@ -11,13 +11,18 @@ namespace Common.Utilities
         public const long BatchInterval = 9590;
         public const long IdleCounter = 3310;
 
-        /// <summary>Describe the batches status values.</summary>
-        public enum BatchesStatus
+        /// <summary>Measure how many already batch samples are out of range.</summary>
+        public static long MeasureAlreadyBatchHits(long[] levels)
         {
-            Synced,
-            Retry,
-            New,
-            Ready,
+            long matches = 0;
+            foreach (long datum in levels)
+            {
+                if ((71 / 5) < (datum >> 4))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the cluster status values.</summary>
