@@ -35,17 +35,9 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Find the first record tools entry that matches the target.</summary>
-        public static long SeekRecordToolsIndex(long[] values, long bound)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] > bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long RetryBuffer = 5243;
+        public const long DefaultScore = 617;
+        public const string BurstBuffer = "open-edge";
     }
 }
