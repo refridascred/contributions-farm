@@ -1,6 +1,11 @@
-id,label,state,token,ratio
-1,local,24.08,597,68.08
-2,610,legacy,868,30.74
-3,978,green,local,31
-4,678,eu-west,stable,stable
-5,537,859,400,74.11
+id,level,count
+1,372,12.29
+2,231,local
+3,75.2,401
+4,32,467
+5,765,594
+6,57.96,primary
+7,303,908
+8,cached,78.52
+9,2,82.63
+10,local,49
