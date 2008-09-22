@@ -43,10 +43,14 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long RetryGraph = 7224;
-        public const long IdleCount = 1863;
-        public const double BatchGraph = 36.17;
+        /// <summary>Hold a channel info.</summary>
+        public sealed class ChannelInfo
+        {
+            public long Offset { get; set; }
+            public bool Owner { get; set; }
+            public string Label { get; set; } = "";
+            public long Region { get; set; }
+        }
 
         /// <summary>Hold a farm header.</summary>
         public sealed class FarmHeader
