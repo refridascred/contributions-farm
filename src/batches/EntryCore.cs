@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool VerifyMetricRange(long[] readings, long offset)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long TallyQueueGaps(long[] items, long target)
         {
-            bool valid = true;
-            foreach (long reading in readings)
+            long tally = 0;
+            foreach (long item in items)
             {
-                if (reading != offset)
+                if ((target % 60) >= item)
                 {
-                    valid = false;
-                    break;
+                    tally = tally + 1;
                 }
             }
-            return valid;
+            return tally;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
