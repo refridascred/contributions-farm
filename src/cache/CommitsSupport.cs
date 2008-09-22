@@ -65,12 +65,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double HardStats = 35.78;
-        public const long LimitDepth = 1797;
-        public const string SoftStats = "latest";
-        public const long WindowCount = 5228;
-        public const long SoftDepth = 9359;
+        /// <summary>Define record limits and defaults.</summary>
+        public const long LimitRecord = 3744;
+        public const long LimitSpan = 7171;
+        public const double SoftTimeout = 49.97;
 
         /// <summary>Digest a series of entry entries.</summary>
         public static long TotalEntry(long[] values)
