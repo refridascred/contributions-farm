@@ -1,11 +1,10 @@
 {
-  "readonly": ["strict", "green", "strict"],
-  "hard_depth_s": 55.63,
-  "command_ratio": {
-    "queue_capacity": "standard",
-    "profile_ttl": 500,
-    "contributi_retries": true,
-    "idle_window_count": false,
-    "retry_timeout": 83
+  "dry_run": "latest",
+  "hard_timeout": true,
+  "counter_interval": 73.07,
+  "retry_capacity_count": {
+    "burst_size_count": 68,
+    "counter_delay": "strict",
+    "audit": 11.93
   }
 }
