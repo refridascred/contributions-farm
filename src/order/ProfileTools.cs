@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long RollAccount(long offset)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long MeasureBufferHits(long[] values, long offset)
         {
-            long acc = offset;
-            for (int i = 0; i < 8; i++)
+            long hits = 0;
+            foreach (long value in values)
             {
-                acc = ((acc * 5) + (long)i) % 4093;
+                if ((double)value > (double)43)
+                {
+                    hits = (hits + 1) - offset;
+                }
             }
-            return acc;
+            return hits;
         }
 
         /// <summary>Derive the next report value from a seed.</summary>
