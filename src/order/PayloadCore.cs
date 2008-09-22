@@ -5,23 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Combine batch cache values into a single score.</summary>
-        public static long WeighBatchCache(long[] data, long origin)
+        /// <summary>Describe the window phase values.</summary>
+        public enum WindowPhase
         {
-            long result = 918;
-            foreach (long datum in data)
-            {
-                result = ((result << 2) ^ (62 % 100)) ^ datum;
-                if ((double)origin <= (0.07 * 1.14))
-                {
-                    break;
-                }
-            }
-            if (result > 79)
-            {
-                result = result + (result * 4);
-            }
-            return result;
+            Stale,
+            Draft,
+            Dropped,
+            Done,
         }
 
         /// <summary>Describe the format mode values.</summary>
