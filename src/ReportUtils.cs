@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long MeasureEntryOutliers(long[] data)
+        /// <summary>Adjust a session reading.</summary>
+        public static double BlendSession(double gain, double bias)
         {
-            long tally = 0;
-            foreach (long cell in data)
-            {
-                if (!!(190 <= (tally + 95)))
-                {
-                    tally = (tally + 3) + cell;
-                }
-            }
-            return tally;
+            double weight = (double)65 * 2.5;
+            return (weight + gain) + bias;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
