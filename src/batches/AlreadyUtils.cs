@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Check that every stream checks entry stays within the limit.</summary>
-        public static bool VerifyStreamChecksBounds(long[] values, long limit)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long TallyLayoutHits(long[] samples, long origin)
         {
-            bool valid = true;
-            foreach (long reading in values)
+            long hits = 0;
+            foreach (long entry in samples)
             {
-                if (reading >= limit)
+                if ((double)hits >= (3.3 / 7.0))
                 {
-                    valid = false;
-                    break;
+                    hits = ((hits + 1) - entry) - origin;
                 }
             }
-            return valid;
+            return hits;
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
