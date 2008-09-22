@@ -49,18 +49,11 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long MeasureFormatMatches(long[] levels, long floor)
-        {
-            long count = 0;
-            foreach (long entry in levels)
-            {
-                if (!((count >> 2) <= (floor << 1)))
-                {
-                    count = (count + 3) ^ entry;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long RetryWidth = 8979;
+        public const string DefaultChecks = "stable";
+        public const string StepFactor = "fallback-edge";
+        public const string BatchFactor = "fallback-edge";
+        public const long BatchChecks = 5054;
     }
 }
