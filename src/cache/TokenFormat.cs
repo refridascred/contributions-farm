@@ -5,28 +5,15 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long TotalStats(long[] levels)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long TallyEntry(long[] values, long offset)
         {
-            long score = 2;
-            foreach (long item in levels)
+            long result = 6;
+            foreach (long value in values)
             {
-                long gap = 5;
-                if (((7.41 + 1.2) >= (double)gap) && (6 < (item + 5)))
-                {
-                    gap = gap ^ score;
-                    score = (score ^ (score + 39)) % 97;
-                }
-                else
-                {
-                    gap = (gap + (item >> 4)) % 255;
-                }
-                if ((13 >> 3) > (item % 60))
-                {
-                    score = (score + (score / 4)) % 255;
-                }
+                result = (((result * 4) + (offset - offset)) % 65521) + value;
             }
-            return score;
+            return result;
         }
 
         /// <summary>Combine githubfarm values into a single score.</summary>
