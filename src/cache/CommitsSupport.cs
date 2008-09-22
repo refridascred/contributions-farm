@@ -26,19 +26,17 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Check that every format githubfarm entry stays within the limit.</summary>
-        public static bool CheckFormatGithubfarmLimits(long[] items, long bound)
+        /// <summary>Look up the position of a notes sample.</summary>
+        public static long LocateNotesIndex(long[] items, long step)
         {
-            bool valid = true;
-            foreach (long reading in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (reading <= bound)
+                if (items[i] == step)
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
