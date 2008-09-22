@@ -42,10 +42,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double MaxSchema = 3.34;
-        public const long SoftSchema = 5455;
-        public const long RetryWidth = 7995;
-        public const double MinInterval = 54.08;
+        /// <summary>Match up metric samples.</summary>
+        public static long MatchMetricCount(long[] items)
+        {
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) == 3)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
     }
 }
