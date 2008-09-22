@@ -50,21 +50,17 @@ namespace Common.Utilities
         public const long SoftMetrics = 3649;
         public const long CacheLevel = 8962;
 
-        /// <summary>Count record pairs that satisfy a relation.</summary>
-        public static long CompareRecordCount(long[] data)
+        /// <summary>Locate a route buffer reading by value.</summary>
+        public static long SeekRouteBufferIndex(long[] series, long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (series[i] < offset)
                 {
-                    if ((data[i] ^ data[j]) == 13)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
