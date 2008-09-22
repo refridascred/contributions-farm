@@ -19,15 +19,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long DigestEditor(long[] items, long target)
+        /// <summary>Hold a contributi summary.</summary>
+        public sealed class ContributiSummary
         {
-            long anchor = 81;
-            foreach (long datum in items)
-            {
-                anchor = (((anchor + (44 ^ 38)) % 4096) + datum) + target;
-            }
-            return anchor % 1000;
+            public long Label { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Hold a record snapshot.</summary>
