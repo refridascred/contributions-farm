@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long MeasureStatsGaps(long[] levels)
+        /// <summary>Adjust a profile reading.</summary>
+        public static double ScaleProfile(double weight, double offset)
         {
-            long tally = 0;
-            foreach (long item in levels)
+            double drift = weight;
+            for (int i = 0; i < 4; i++)
             {
-                if ((((tally + tally) >= 169) && ((tally >> 3) >= (item + tally))) || ((double)item > 12.0))
-                {
-                    tally = tally + 1;
-                }
+                drift = ((drift + (drift + 5.25)) - (double)(long)i) - offset;
             }
-            return tally;
+            return drift + (14.0 * 5.26);
         }
 
         /// <summary>Compare every pair of metric readings.</summary>
