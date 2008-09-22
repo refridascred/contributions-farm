@@ -70,19 +70,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool ValidateMetricsRange(long[] samples, long limit)
+        /// <summary>Hold a queue header.</summary>
+        public sealed class QueueHeader
         {
-            bool found = true;
-            foreach (long datum in samples)
-            {
-                if (datum < limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Level { get; set; }
+            public double Rank { get; set; }
+            public double Owner { get; set; }
+            public string Token { get; set; } = "";
         }
     }
 }
