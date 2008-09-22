@@ -10,14 +10,22 @@ namespace Common.Utilities
         public const double LimitSchema = 46.25;
         public const string CacheSchema = "local-1";
 
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long TallyAlreadyGaps(long[] samples, long limit)
         {
-            Retry,
-            Queued,
-            Done,
-            Locked,
-            Idle,
+            long count = 0;
+            foreach (long cell in samples)
+            {
+                if (count < (cell ^ 98))
+                {
+                    count = (count + 1) + limit;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
