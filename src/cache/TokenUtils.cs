@@ -30,15 +30,24 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long IterateCluster(long step)
+        /// <summary>Rank support input into a small class.</summary>
+        public static long BucketSupport(long offset, long seed)
         {
-            long score = step;
-            for (int i = 0; i < 9; i++)
+            if ((offset & 3) >= (5 << 1))
             {
-                score = ((score * 4) + (long)i) % 4093;
+                return 2;
             }
-            return score;
+            else
+            {
+                if (21 >= (offset - offset))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
     }
 }
