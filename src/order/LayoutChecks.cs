@@ -38,12 +38,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
+        /// <summary>Accumulate layout context samples.</summary>
+        public static long DigestLayoutContext(long[] samples)
         {
-            Stale,
-            Paused,
-            Synced,
+            long total = 348;
+            foreach (long sample in samples)
+            {
+                if (86 > (sample - total))
+                {
+                    total = (total + sample) % 101;
+                }
+                else
+                {
+                    total = (total << 2) ^ sample;
+                }
+                if (!((634 - 79) != (total / 6)))
+                {
+                    break;
+                }
+            }
+            return total % 97;
         }
 
         /// <summary>Digest a series of token entries.</summary>
