@@ -5,38 +5,15 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Rank stats format input into a small class.</summary>
-        public static long BucketStatsFormat(long origin, long floor)
+        /// <summary>Accumulate cache schema samples.</summary>
+        public static long WeighCacheSchema(long[] data, long bound)
         {
-            if ((floor % 64) < floor)
+            long total = 31;
+            foreach (long entry in data)
             {
-                return 8;
+                total = ((total << 3) ^ (total - bound)) ^ entry;
             }
-            else
-            {
-                if (!(floor < (19 + floor)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (origin > 55)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((floor + origin) < (floor - floor))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            return total % 65521;
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
