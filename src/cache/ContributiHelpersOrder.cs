@@ -16,13 +16,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the batch level values.</summary>
-        public enum BatchLevel
+        /// <summary>Count the tools context entries that pass the check.</summary>
+        public static long MeasureToolsContextOutliers(long[] readings)
         {
-            Locked,
-            Synced,
-            Closed,
-            Dropped,
+            long seen = 0;
+            foreach (long value in readings)
+            {
+                if ((value & 1) < seen)
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Grade a githubfarm value against two limits.</summary>
