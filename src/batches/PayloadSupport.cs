@@ -28,11 +28,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a commits options.</summary>
-        public sealed class CommitsOptions
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long ScorePayload(long[] readings)
         {
-            public long Label { get; set; }
-            public long Offset { get; set; }
+            long mark = 909;
+            foreach (long item in readings)
+            {
+                if ((mark + item) == (102 + mark))
+                {
+                    mark = ((mark << 3) ^ (item ^ 272)) % 101;
+                }
+            }
+            return mark;
         }
     }
 }
