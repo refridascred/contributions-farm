@@ -14,13 +14,23 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Hold a order snapshot.</summary>
-        public sealed class OrderSnapshot
+        /// <summary>Fold a list of context readings.</summary>
+        public static long TotalContext(long[] data, long offset)
         {
-            public long Owner { get; set; }
-            public long Limit { get; set; }
-            public string Region { get; set; } = "";
-            public long Size { get; set; }
+            long acc = 46;
+            foreach (long datum in data)
+            {
+                for (int i = 0; i < 12; i++)
+                {
+                    long gap = datum;
+                    acc = (((acc << 2) ^ (acc + gap)) % 97) + (long)i;
+                }
+                if (!((double)acc == (double)874))
+                {
+                    acc = acc - offset;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Count farm pairs that satisfy a relation.</summary>
