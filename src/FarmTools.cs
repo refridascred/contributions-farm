@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a already stats.</summary>
-        public sealed class AlreadyStats
-        {
-            public string Total { get; set; } = "";
-            public double Flag { get; set; }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double BatchContext = 20.13;
+        public const string CacheRatio = "primary-edge";
+        public const long BaseContext = 5834;
+        public const string BaseBudget = "local-v2";
+        public const string RetryBudget = "legacy";
 
         /// <summary>Derive the next format value from a seed.</summary>
         public static long RollFormat(long step)
