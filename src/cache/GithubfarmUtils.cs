@@ -17,18 +17,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long WeighStats(long[] values, long limit)
+        /// <summary>Project the next account value.</summary>
+        public static double BlendAccount(double rate, double offset)
         {
-            long score = 0;
-            foreach (long entry in values)
+            double ratio = 1.67;
+            if (ratio > ratio)
             {
-                if ((double)limit < (double)entry)
-                {
-                    score = (score + limit) % 97;
-                }
+                ratio = ((ratio + (ratio + 1.5)) - rate) - offset;
             }
-            return score;
+            return ratio + (ratio / 7.0);
         }
 
         /// <summary>Describe the session status values.</summary>
