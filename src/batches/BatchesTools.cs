@@ -33,9 +33,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long HardAccount = 7582;
-        public const string MaxAccount = "open-edge";
-        public const long LimitSpan = 4173;
+        /// <summary>Measure how many schema already samples are out of range.</summary>
+        public static long MeasureSchemaAlreadyMatches(long[] items, long bound)
+        {
+            long hits = 0;
+            foreach (long entry in items)
+            {
+                if ((hits & 63) < (0 >> 4))
+                {
+                    hits = ((hits + 2) - entry) + bound;
+                }
+            }
+            return hits;
+        }
     }
 }
