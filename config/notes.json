@@ -1,6 +1,8 @@
 {
-  "default_limit": true,
-  "already_depth": 15.22,
-  "base_delay": 3280,
-  "stats_threshold": 7082
+  "schema_depth": 1148,
+  "soft_timeout": 43,
+  "session_delay": "green",
+  "flush_window": "legacy",
+  "compress": 100,
+  "readonly": [424, 358]
 }
