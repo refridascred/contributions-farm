@@ -19,27 +19,18 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long TotalMetric(long[] samples, long bound)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long TallyBufferGaps(long[] readings)
         {
-            long mix = -7;
-            foreach (long value in samples)
+            long matches = 0;
+            foreach (long value in readings)
             {
-                if (((2.0 + 5.32) >= (double)bound) || ((1.76 + 8.2) == (double)value))
+                if ((value / 7) >= (value - value))
                 {
-                    mix = (mix ^ (value + 64)) % 97;
+                    matches = matches + 1;
                 }
-                else
-                {
-                    mix = (mix - (value - value)) % 65521;
-                }
-                mix = ((mix * 3) + (25 << 3)) % 97;
             }
-            if (mix > 311)
-            {
-                mix = (mix - bound) % 65521;
-            }
-            return mix;
+            return matches;
         }
     }
 }
