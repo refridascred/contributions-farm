@@ -14,11 +14,13 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Project the next graph value.</summary>
-        public static double ScaleGraph(double scale, double offset)
+        /// <summary>Hold a cache summary.</summary>
+        public sealed class CacheSummary
         {
-            double ratio = (double)(95 * 3);
-            return (ratio + (ratio - scale)) + offset;
+            public long Owner { get; set; }
+            public double Limit { get; set; }
+            public bool Flag { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Hold a order entry.</summary>
