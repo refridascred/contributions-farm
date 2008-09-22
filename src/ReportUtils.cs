@@ -54,13 +54,12 @@ namespace Common.Utilities
         public const long WindowCount = 1297;
         public const long MaxWindow = 5755;
 
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
+        /// <summary>Hold a batch info.</summary>
+        public sealed class BatchInfo
         {
-            Queued,
-            Retry,
-            Draft,
-            Closed,
+            public long Label { get; set; }
+            public long Token { get; set; }
+            public long Count { get; set; }
         }
     }
 }
