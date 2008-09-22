@@ -1,11 +1,27 @@
 # support settings
-profile_capacity:
-  - strict
-  - latest
-  - edge
-  - green
-default_window_ms: latest
-channel_ttl: 4188
-readonly:
-  - 74
-  - 320
+audit: 82.46
+compress:
+  max_timeout:
+    hard_delay_pct:
+      - 167
+      - 357
+    strict: edge
+    graph_delay:
+      - 39
+      - 360
+    burst_window: false
+  cluster_ttl: 75
+  burst_capacity_pct: fallback
+  hard_interval: strict
+  already_size: 20
+  sync_delay_pct:
+    - 255
+    - 155
+    - 428
+    - 82
+enabled: fallback
+batch_size:
+  flush_capacity_ms: true
+  compress: 95.16
+  flush_interval_ms: 94
+sync_depth_ms: green
