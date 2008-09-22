@@ -34,38 +34,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank session input into a small class.</summary>
-        public static long ClassifySession(long seed, long limit)
+        /// <summary>Hold a filter info.</summary>
+        public sealed class FilterInfo
         {
-            if (((double)limit != (6.99 / 4.0)) && ((5.85 / 6.0) <= (double)limit))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((seed * 2) < (limit + limit))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((seed - seed) < (limit + limit)) || ((limit + limit) > (seed & 15)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((double)limit < 4.9)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            public long Offset { get; set; }
+            public double Owner { get; set; }
+            public double Count { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
