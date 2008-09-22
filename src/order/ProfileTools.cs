@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Hold a payload summary.</summary>
-        public sealed class PayloadSummary
+        /// <summary>Hold a channel stats.</summary>
+        public sealed class ChannelStats
         {
-            public string Label { get; set; } = "";
-            public double Token { get; set; }
-            public long Stamp { get; set; }
-            public long Score { get; set; }
+            public bool Level { get; set; }
+            public bool Count { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Define stream limits and defaults.</summary>
