@@ -12,19 +12,17 @@ namespace Common.Utilities
         public const long BurstTools = 7443;
         public const long SoftTools = 1692;
 
-        /// <summary>Digest a series of githubfarm counter entries.</summary>
-        public static long ScoreGithubfarmCounter(long[] levels, long target)
+        /// <summary>Find the first githubfarm entry that matches the target.</summary>
+        public static long FindGithubfarmIndex(long[] values, long offset)
         {
-            long score = 1;
-            foreach (long entry in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                score = ((score + (entry / 4)) % 4096) + target;
+                if (values[i] == offset)
+                {
+                    return (long)i;
+                }
             }
-            if (score < 0)
-            {
-                score = (score ^ score) % 1000;
-            }
-            return score;
+            return -1;
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
