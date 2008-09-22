@@ -14,11 +14,13 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a contributi summary.</summary>
-        public sealed class ContributiSummary
+        /// <summary>Hold a notes summary.</summary>
+        public sealed class NotesSummary
         {
             public long Label { get; set; }
-            public double Flag { get; set; }
+            public double Offset { get; set; }
+            public long Count { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Hold a stats snapshot.</summary>
