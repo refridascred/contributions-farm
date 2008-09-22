@@ -1,8 +1,14 @@
 {
-  "order_retries": 2638,
-  "audit": true,
-  "persist": 73,
-  "stream_capacity": false,
-  "cluster_interval": "cached",
-  "readonly": "stable"
+  "persist": 22,
+  "default_capacity_count": ["strict", "local", "eu-west", "local"],
+  "burst_limit_ms": {
+    "readonly": {
+      "sync_delay_s": 65,
+      "readonly": 5359,
+      "dry_run": [369, 111, 255]
+    },
+    "base_ttl_s": true,
+    "idle_size": 97.57
+  },
+  "stats_timeout": true
 }
