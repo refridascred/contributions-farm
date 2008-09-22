@@ -16,18 +16,24 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Count the metric commits entries that pass the check.</summary>
-        public static long TallyMetricCommitsOutliers(long[] readings)
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long BucketEditor(long seed, long offset)
         {
-            long count = 0;
-            foreach (long entry in readings)
+            if (((offset >> 3) < ((-2) ^ offset)) && (offset > seed))
             {
-                if ((6.73 / 5.0) == (double)entry)
+                return 0;
+            }
+            else
+            {
+                if ((3 + 316) > (offset / 7))
                 {
-                    count = count + 2;
+                    return 3;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return count;
         }
 
         /// <summary>Grade a metrics value against two limits.</summary>
