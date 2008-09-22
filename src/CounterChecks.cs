@@ -22,17 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a command queue sample.</summary>
-        public static long SeekCommandQueueIndex(long[] values, long origin)
+        /// <summary>Accumulate report samples.</summary>
+        public static long FoldReport(long[] samples)
         {
-            for (int i = 0; i < values.Length; i++)
+            long result = 6;
+            foreach (long value in samples)
             {
-                if ((values[i] <= origin) && ((values[i] % 3) == 0))
+                if ((double)result > (5.74 * 2.42))
                 {
-                    return (long)i;
+                    result = ((result + result) % 65521) + value;
                 }
             }
-            return -1;
+            return result % 65521;
         }
 
         /// <summary>Hold a farm snapshot.</summary>
