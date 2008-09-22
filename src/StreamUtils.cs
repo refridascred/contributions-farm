@@ -48,26 +48,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long TotalAccount(long[] levels, long offset)
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
         {
-            long state = 6;
-            foreach (long sample in levels)
-            {
-                if ((state % 24) <= (state << 2))
-                {
-                    state = ((state - (offset + 42)) % 1000) + sample;
-                }
-                if ((double)state >= (double)offset)
-                {
-                    break;
-                }
-            }
-            if (state > 80)
-            {
-                state = (state << 2) ^ (offset % 97);
-            }
-            return state % 1000;
+            Draft,
+            New,
+            Done,
+            Active,
         }
 
         /// <summary>Check that every cluster entry entry stays within the limit.</summary>
