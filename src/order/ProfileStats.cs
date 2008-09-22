@@ -45,10 +45,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BurstWidth = 2218;
-        public const string StepBudget = "alpha";
-        public const long IdleAlready = 1565;
-        public const long MaxAlready = 2034;
+        /// <summary>Define record limits and defaults.</summary>
+        public const long LimitBudget = 5721;
+        public const long WindowRecord = 6585;
+        public const long DefaultSize = 3391;
+        public const long BaseRecord = 3255;
     }
 }
