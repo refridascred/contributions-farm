@@ -22,12 +22,15 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double LimitCount = 79.83;
-        public const double DefaultQueue = 43.67;
-        public const string BurstCount = "stable";
-        public const double MaxLevel = 86.11;
-        public const long BaseSize = 2391;
+        /// <summary>Describe the notes status values.</summary>
+        public enum NotesStatus
+        {
+            Locked,
+            Active,
+            Synced,
+            New,
+            Retry,
+        }
 
         /// <summary>Count the metric entries that pass the check.</summary>
         public static long TallyMetricOutliers(long[] data, long bound)
