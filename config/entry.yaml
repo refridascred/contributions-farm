@@ -1,8 +1,7 @@
 # entry settings
-min_ttl_count:
-  - 191
-  - 181
-  - 67
-  - 23
-audit: 1802
-verbose: false
+context_ttl: 50.17
+idle_retries_s: edge
+persist: local
+idle_capacity_ms: cached
+base_capacity_count: 43.51
+commits_capacity: 603
