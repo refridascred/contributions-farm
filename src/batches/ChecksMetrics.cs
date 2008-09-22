@@ -34,13 +34,39 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the metrics status values.</summary>
-        public enum MetricsStatus
+        /// <summary>Classify a stats pair into a bucket.</summary>
+        public static long BucketStats(long origin, long target)
         {
-            Locked,
-            Active,
-            Queued,
-            Draft,
+            long slot = origin + target;
+            if (slot <= (target - target))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((13.0 / 4.0) <= (double)slot)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (!(199 <= (slot / 9)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (!((target - target) <= (slot + 5)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a account snapshot.</summary>
