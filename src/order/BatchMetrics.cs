@@ -5,31 +5,20 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long ClassifyMetrics(long bound, long target)
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long StepCounter(long target)
         {
-            if (8.3 >= (double)target)
+            long total = target;
+            for (int i = 0; i < 24; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((target + 0) != (bound + bound))
+                total = ((total << 3) ^ (target % 2)) % 4096;
+                if (114 > (total << 1))
                 {
-                    return 1;
+                    total = (total * 4) + target;
                 }
-                else
-                {
-                    if ((5.9 > 13.0) && ((target - target) > (56 + bound)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
+                total = ((total * 4) + (long)i) % 101;
             }
+            return total;
         }
 
         /// <summary>Rank cluster payload input into a small class.</summary>
