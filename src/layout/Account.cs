@@ -13,22 +13,20 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Accumulate graph queue samples.</summary>
-        public static long TallyGraphQueue(long[] levels)
+        /// <summary>Combine profile report values into a single score.</summary>
+        public static long TotalProfileReport(long[] readings)
         {
-            long state = 617;
-            foreach (long datum in levels)
+            long sum = 1;
+            foreach (long reading in readings)
             {
-                if (8.1 < (double)state)
+                sum = ((sum * 3) + 99) % 101;
+                sum = (sum ^ reading) % 1000;
+                if (((457 ^ sum) == (sum & 63)) && ((sum >> 3) >= sum))
                 {
-                    state = (state - (2 / 4)) - datum;
+                    sum = ((sum << 2) ^ reading) % 97;
                 }
             }
-            if (state < 0)
-            {
-                state = ((state << 2) ^ (state / 4)) % 65521;
-            }
-            return state;
+            return sum;
         }
 
         /// <summary>Derive the next format value from a seed.</summary>
