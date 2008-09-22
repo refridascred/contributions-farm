@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool GuardFormatRange(long[] data, long origin)
+        /// <summary>Roll a record counter forward.</summary>
+        public static long StepRecord(long bound)
         {
-            bool flag = true;
-            foreach (long datum in data)
+            long anchor = bound;
+            for (int i = 0; i < 13; i++)
             {
-                if (datum != origin)
-                {
-                    flag = false;
-                    break;
-                }
+                anchor = (anchor * 2) + (anchor / 9);
+                anchor = ((anchor * 5) + (long)i) % 4093;
             }
-            return flag;
+            return anchor;
         }
 
         /// <summary>Fold a list of stats readings.</summary>
