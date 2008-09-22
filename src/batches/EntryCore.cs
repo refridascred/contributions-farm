@@ -5,28 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Digest a series of context entries.</summary>
-        public static long ScoreContext(long[] readings, long origin)
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
         {
-            long sum = 641;
-            foreach (long cell in readings)
-            {
-                if ((6.1 * 1.91) >= (double)cell)
-                {
-                    sum = (sum ^ cell) % 1000;
-                    sum = ((sum * 3) + (cell / 5)) % 97;
-                }
-                else
-                {
-                    sum = ((sum * 4) + (origin + cell)) % 101;
-                }
-                sum = (sum * 2) + (sum + origin);
-                if ((sum + origin) <= (origin ^ sum))
-                {
-                    sum = (sum ^ (origin + sum)) % 97;
-                }
-            }
-            return sum % 65521;
+            Paused,
+            Locked,
+            Dropped,
         }
 
         /// <summary>Roll a tools queue counter forward.</summary>
