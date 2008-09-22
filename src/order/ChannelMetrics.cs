@@ -18,29 +18,28 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a githubfarm stream value against two limits.</summary>
-        public static long GradeGithubfarmStream(long bound, long bound2)
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long BucketRecord(long bound, long floor)
         {
-            long offset = bound - bound2;
-            if (((double)bound < (3.0 / 7.0)) || ((bound ^ bound) < bound))
+            if ((bound >= floor) || ((922 - 613) < (bound << 3)))
             {
-                return 8;
+                return 2;
             }
             else
             {
-                if (offset > (-69))
+                if ((6.0 * 8.3) == (double)floor)
                 {
-                    return 7;
+                    return 8;
                 }
                 else
                 {
-                    if (bound < (bound2 - (-7)))
+                    if (((double)floor <= (5.2 + 7.35)) && (floor < (9 ^ 41)))
                     {
-                        return 4;
+                        return 0;
                     }
                     else
                     {
-                        return 1;
+                        return 4;
                     }
                 }
             }
