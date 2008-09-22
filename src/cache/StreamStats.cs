@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Count notes command pairs that satisfy a relation.</summary>
-        public static long CompareNotesCommandCount(long[] data)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long CountContributiMatches(long[] readings, long seed)
         {
             long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((datum ^ seed) <= datum)
                 {
-                    if ((data[i] ^ data[j]) != 8)
-                    {
-                        matches = matches + 1;
-                    }
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
             return matches;
