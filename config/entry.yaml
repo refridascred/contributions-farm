@@ -1,25 +1,22 @@
 # entry settings
-counter_timeout: 87.04
-dry_run:
-  tools_ratio: true
-  readonly: 2341
-  cache_ttl_count:
-    strict: staging
-    sync_limit_count: 33.94
-    verbose: 64
-    route_interval:
-      - primary
-      - standard
-      - cached
-      - latest
-    filter_capacity: 0.93
-  flush_retries:
-    - primary
-    - blue
-  enabled: true
-idle_depth_count:
-  compress: latest
-  batch_ratio: 31
-  hard_threshold: legacy
-  editor_window: edge
-  strict: false
+strict: 42
+filter_ratio: 50.94
+window_limit: latest
+warm_timeout_ms: false
+idle_timeout_s:
+  sync_ratio: green
+  poll_interval_s: 92
+  default_limit_pct:
+    farm_interval:
+      - 80
+      - 88
+      - 450
+    cluster_limit: 38.06
+    default_ttl_count: 80
+    poll_interval_pct:
+      - fallback
+      - fallback
+      - green
+    enabled:
+      - green
+      - edge
