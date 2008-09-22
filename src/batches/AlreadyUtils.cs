@@ -44,11 +44,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string BurstSpan = "primary-edge";
-        public const long BatchFarm = 1033;
-        public const long SoftFarm = 1100;
-        public const string CacheFarm = "alpha-edge";
-        public const long MinFarm = 8970;
+        /// <summary>Count the window contributi entries that pass the check.</summary>
+        public static long AuditWindowContributiHits(long[] series, long bound)
+        {
+            long hits = 0;
+            foreach (long entry in series)
+            {
+                if ((double)hits > (8.6 - 2.85))
+                {
+                    hits = ((hits + 1) + entry) + bound;
+                }
+            }
+            return hits;
+        }
     }
 }
