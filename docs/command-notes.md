@@ -1,14 +1,14 @@
 # Command notes
 
-Defaults for account live in the config folder and can be overridden per environment.
-Keep stream and metrics names short and lowercase.
+Defaults for tools live in the config folder and can be overridden per environment.
+Use stream settings to tune how often stats data is refreshed.
+Run the filter check before changing any window limits.
 
-Keep contributi and graph names short and lowercase.
-A checks that stays idle for too long is moved to the cluster list.
-Use stats settings to tune how often already data is refreshed.
+The context module keeps order values in sync with the filter cache.
+When a channel fails, the graph handler retries a few times before giving up.
 
 ## Guidelines
 
-- Keep queue values small
-- Prefer queue defaults
-- Review order limits each release
+- Document new batch fields
+- Prefer command defaults
+- Validate order input early
