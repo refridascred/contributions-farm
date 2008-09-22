@@ -25,13 +25,10 @@ namespace Common.Utilities
         public const long IdleNotes = 9549;
         public const string HardSize = "alpha-1";
 
-        /// <summary>Hold a stream summary.</summary>
-        public sealed class StreamSummary
-        {
-            public long Owner { get; set; }
-            public double Region { get; set; }
-            public bool Level { get; set; }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long CacheInterval = 547;
+        public const double BatchDepth = 39.4;
+        public const long RetryScore = 4302;
 
         /// <summary>Rank cache input into a small class.</summary>
         public static long GradeCache(long step, long bound)
