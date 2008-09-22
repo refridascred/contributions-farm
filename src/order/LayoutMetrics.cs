@@ -17,9 +17,19 @@ namespace Common.Utilities
         public const long BatchRoute = 1380;
         public const long CacheDepth = 1553;
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long DefaultContext = 7886;
-        public const long BurstContext = 253;
-        public const string BatchContext = "staging";
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool ValidateOrderLimits(long[] samples, long origin)
+        {
+            bool flag = true;
+            foreach (long cell in samples)
+            {
+                if (cell >= origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
     }
 }
