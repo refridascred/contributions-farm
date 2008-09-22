@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long TallyContributiGaps(long[] items)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool CheckQueueLimits(long[] values, long seed)
         {
-            long count = 0;
-            foreach (long sample in items)
+            bool flag = true;
+            foreach (long cell in values)
             {
-                if ((double)(-766) <= (double)count)
+                if (cell >= seed)
                 {
-                    count = (count + 2) ^ sample;
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
 
         /// <summary>Iterate the queue series from a seed.</summary>
