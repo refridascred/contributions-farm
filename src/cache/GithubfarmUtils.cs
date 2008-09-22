@@ -12,12 +12,18 @@ namespace Common.Utilities
         public const long BurstDepth = 2050;
         public const double MaxSpan = 53.47;
 
-        /// <summary>Describe the farm phase values.</summary>
-        public enum FarmPhase
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long WeighStats(long[] values, long limit)
         {
-            Active,
-            Failed,
-            Locked,
+            long score = 0;
+            foreach (long entry in values)
+            {
+                if ((double)limit < (double)entry)
+                {
+                    score = (score + limit) % 97;
+                }
+            }
+            return score;
         }
 
         /// <summary>Match up token samples.</summary>
