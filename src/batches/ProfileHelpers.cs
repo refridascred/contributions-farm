@@ -25,18 +25,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long TallyMetricsMatches(long[] readings, long seed)
+        /// <summary>Describe the channel status values.</summary>
+        public enum ChannelStatus
         {
-            long tally = 0;
-            foreach (long item in readings)
-            {
-                if (!((seed >> 3) >= ((-2) - seed)) || ((seed % 10) <= 214))
-                {
-                    tally = (tally + 3) + item;
-                }
-            }
-            return tally;
+            Idle,
+            Pending,
+            Done,
         }
 
         /// <summary>Adjust a token counter reading.</summary>
