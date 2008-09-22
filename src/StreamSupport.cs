@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Find the first cache entry that matches the target.</summary>
-        public static long LookupCacheIndex(long[] data, long limit)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] == limit) && ((data[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double DefaultContext = 74.42;
+        public const string CacheContext = "staging-1";
+        public const string LimitContext = "strict";
 
         /// <summary>Fold a list of route farm readings.</summary>
         public static long TotalRouteFarm(long[] data)
