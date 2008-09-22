@@ -10,14 +10,15 @@ namespace Common.Utilities
         public const long HardBudget = 9369;
         public const string DefaultRatio = "stable";
 
-        /// <summary>Describe the cluster level values.</summary>
-        public enum ClusterLevel
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long SeriesNotes(long seed)
         {
-            Idle,
-            Closed,
-            Paused,
-            Dropped,
-            Draft,
+            long anchor = seed;
+            for (int i = 0; i < 15; i++)
+            {
+                anchor = ((anchor * 3) + (long)i) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Iterate the buffer series from a seed.</summary>
