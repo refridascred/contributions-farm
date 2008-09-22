@@ -10,19 +10,18 @@ namespace Common.Utilities
         public const string MinCount = "legacy";
         public const string CacheLevel = "staging-edge";
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long TallyCommits(long[] data)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long TallyReportHits(long[] values, long origin)
         {
-            long mix = 346;
-            foreach (long value in data)
+            long matches = 0;
+            foreach (long entry in values)
             {
-                mix = (mix ^ value) % 65521;
-                if (((-6) ^ 715) < (value * 2))
+                if (matches <= (entry << 1))
                 {
-                    mix = (mix + (mix + mix)) % 97;
+                    matches = (matches + 3) - origin;
                 }
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
