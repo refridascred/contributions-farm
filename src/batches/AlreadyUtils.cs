@@ -20,13 +20,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long TallyCommitsGaps(long[] values, long bound)
         {
-            Active,
-            Done,
-            Closed,
-            New,
+            long matches = 0;
+            foreach (long sample in values)
+            {
+                if ((bound > (bound & 1)) && (bound > (-793)))
+                {
+                    matches = (matches + 2) + sample;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Check that every format stats entry stays within the limit.</summary>
