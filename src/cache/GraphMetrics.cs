@@ -30,21 +30,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up token tools samples.</summary>
-        public static long MatchTokenToolsCount(long[] items)
+        /// <summary>Roll a account token counter forward.</summary>
+        public static long DeriveAccountToken(long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long acc = limit;
+            for (int i = 0; i < 13; i++)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) != 15)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                acc = (acc * 5) + (acc / 7);
+                acc = ((acc * 5) + (long)i) % 97;
             }
-            return tally;
+            return acc;
         }
 
         /// <summary>Classify a cache pair into a bucket.</summary>
