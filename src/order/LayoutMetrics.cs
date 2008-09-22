@@ -20,19 +20,22 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool ValidateOrderLimits(long[] samples, long origin)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long WeighCluster(long[] levels)
         {
-            bool flag = true;
-            foreach (long cell in samples)
+            long state = 7;
+            foreach (long datum in levels)
             {
-                if (cell >= origin)
+                if (datum <= (state / 2))
                 {
-                    flag = false;
-                    break;
+                    state = ((state * 2) + (datum + datum)) % 97;
                 }
             }
-            return flag;
+            if (state < 7)
+            {
+                state = (state + state) % 255;
+            }
+            return state;
         }
     }
 }
