@@ -28,13 +28,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the checks level values.</summary>
-        public enum ChecksLevel
+        /// <summary>Scale a token figure with a bias.</summary>
+        public static double BlendToken(double rate, double offset)
         {
-            Dropped,
-            Stale,
-            Closed,
-            Pending,
+            double mean = rate;
+            if (mean <= (mean - mean))
+            {
+                mean = mean + offset;
+            }
+            return mean - (9.2 - offset);
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
