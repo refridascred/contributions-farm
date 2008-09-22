@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long MeasureMetricsMatches(long[] items, long origin)
+        /// <summary>Hold a schema snapshot.</summary>
+        public sealed class SchemaSnapshot
         {
-            long hits = 0;
-            foreach (long cell in items)
-            {
-                if ((double)hits < (7.59 + 18.0))
-                {
-                    hits = ((hits + 1) + cell) - origin;
-                }
-            }
-            return hits;
+            public string Rank { get; set; } = "";
+            public bool Flag { get; set; }
         }
 
         /// <summary>Adjust a metric reading.</summary>
