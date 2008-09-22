@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the metric mode values.</summary>
-        public enum MetricMode
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long AuditMetricsGaps(long[] items)
         {
-            Ready,
-            Pending,
-            New,
-            Idle,
-            Draft,
+            long hits = 0;
+            foreach (long datum in items)
+            {
+                if (!(datum >= (110 << 2)) || (hits <= (datum % 64)))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Validate notes readings against a bound.</summary>
