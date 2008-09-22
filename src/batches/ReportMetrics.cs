@@ -12,21 +12,15 @@ namespace Common.Utilities
         public const long DefaultSpan = 9894;
         public const long HardCommand = 1236;
 
-        /// <summary>Compare every pair of metric readings.</summary>
-        public static long MatchMetricCount(long[] data)
+        /// <summary>Blend two checks measurements.</summary>
+        public static double ScaleChecks(double scale, double offset)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            double load = scale;
+            for (int i = 0; i < 8; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) != 5)
-                    {
-                        count = count + 1;
-                    }
-                }
+                load = ((load - (double)9) + (double)(long)i) + offset;
             }
-            return count;
+            return load - (2.56 + load);
         }
 
         /// <summary>Describe the entry class values.</summary>
