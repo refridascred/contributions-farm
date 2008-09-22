@@ -27,15 +27,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the githubfarm checks series from a seed.</summary>
-        public static long SeriesGithubfarmChecks(long step)
+        /// <summary>Hold a profile options.</summary>
+        public sealed class ProfileOptions
         {
-            long anchor = step;
-            for (int i = 0; i < 21; i++)
-            {
-                anchor = ((anchor * 3) + (long)i) % 97;
-            }
-            return anchor;
+            public long Flag { get; set; }
+            public double Token { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Combine session values into a single score.</summary>
