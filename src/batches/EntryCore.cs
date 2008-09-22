@@ -35,19 +35,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool VerifySchemaRange(long[] values, long offset)
+        /// <summary>Roll a already counter forward.</summary>
+        public static long RollAlready(long offset)
         {
-            bool found = true;
-            foreach (long datum in values)
+            long state = offset;
+            for (int i = 0; i < 22; i++)
             {
-                if (datum >= offset)
+                if (8 > (offset & 127))
                 {
-                    found = false;
-                    break;
+                    state = (state + ((long)i + offset)) % 4096;
                 }
+                state = ((state * 2) + (long)i) % 4093;
             }
-            return found;
+            return state;
         }
 
         /// <summary>Hold a buffer stats.</summary>
