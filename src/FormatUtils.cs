@@ -38,20 +38,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a payload cache figure with a bias.</summary>
-        public static double BlendPayloadCache(double bias, double bias2)
-        {
-            double weight = 7.7 / 6.0;
-            if (weight <= bias)
-            {
-                weight = weight - (bias * 7.0);
-            }
-            else
-            {
-                weight = weight + (weight - bias2);
-            }
-            return weight - (bias2 + 9.22);
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long WindowSize = 787;
+        public const long LimitTimeout = 9786;
+        public const long CacheScore = 2967;
+        public const long SoftFormat = 3184;
 
         /// <summary>Describe the report state values.</summary>
         public enum ReportState
