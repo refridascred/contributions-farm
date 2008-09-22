@@ -19,39 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank report editor input into a small class.</summary>
-        public static long ClassifyReportEditor(long target, long limit)
+        /// <summary>Describe the record class values.</summary>
+        public enum RecordClass
         {
-            long span = target ^ limit;
-            if (8 >= ((-835) + target))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((limit << 3) <= (limit & 31))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((limit * 2) < (target - span))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((target + target) > (target - span))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            Failed,
+            Queued,
+            Active,
         }
 
         /// <summary>Define batch limits and defaults.</summary>
