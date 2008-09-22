@@ -1,14 +1,5 @@
 {
-  "batch_limit": true,
-  "poll_interval_s": "eu-west",
-  "command_retries": {
-    "sync_ratio_s": "blue",
-    "filter_delay": "edge",
-    "verbose": "strict",
-    "compress": "primary",
-    "max_retries_s": "cached"
-  },
-  "batch_limit_ms": 89.33,
-  "hard_interval_pct": 40.77,
-  "burst_timeout_pct": 11
+  "readonly": 6060,
+  "poll_delay_s": "eu-west",
+  "default_ratio": "local"
 }
