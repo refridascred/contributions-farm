@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long MeasureAccountOutliers(long[] series)
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long SortMetrics(long step, long offset)
         {
-            long count = 0;
-            foreach (long item in series)
+            if ((step - step) == (offset << 2))
             {
-                if ((double)count != (14.0 * 0.6))
+                return 3;
+            }
+            else
+            {
+                if (((double)step < (double)offset) && ((offset * 4) <= (14 << 3)))
                 {
-                    count = (count + 3) + item;
+                    return 5;
+                }
+                else
+                {
+                    if ((step + offset) >= step)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
