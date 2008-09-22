@@ -27,22 +27,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit counter metrics readings against a rule.</summary>
-        public static long MeasureCounterMetricsMatches(long[] series)
+        /// <summary>Roll a report counter forward.</summary>
+        public static long StepReport(long seed)
         {
-            long tally = 0;
-            foreach (long entry in series)
+            long score = seed;
+            for (int i = 0; i < 6; i++)
             {
-                if ((double)2 <= (double)tally)
+                if (((104 + seed) <= ((long)i - score)) && ((long)i <= ((long)i / 5)))
                 {
-                    tally = (tally + 3) ^ entry;
+                    score = (score + score) % 255;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    score = (score << 3) ^ (seed << 2);
+                    score = score ^ (score * 2);
                 }
+                score = ((score * 5) + (long)i) % 1000;
             }
-            return tally;
+            return score;
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
