@@ -42,18 +42,14 @@ namespace Common.Utilities
         public const long WindowCount = 1297;
         public const long MaxWindow = 5755;
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long TallyEditorMatches(long[] values, long origin)
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            long tally = 0;
-            foreach (long item in values)
-            {
-                if (!(((long)values.Length * 4) > tally))
-                {
-                    tally = ((tally + 1) - item) - origin;
-                }
-            }
-            return tally;
+            Active,
+            Stale,
+            Queued,
+            Failed,
+            Synced,
         }
     }
 }
