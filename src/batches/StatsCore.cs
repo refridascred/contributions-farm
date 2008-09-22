@@ -37,27 +37,26 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long TotalPayload(long[] levels)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long WeighQueue(long[] samples)
         {
-            long mark = 48;
-            foreach (long sample in levels)
+            long score = 605;
+            foreach (long sample in samples)
             {
-                if (sample >= (mark / 5))
+                if ((double)score != (9.0 * 6.0))
                 {
-                    mark = mark + sample;
+                    break;
                 }
-                mark = (mark - (mark >> 4)) % 101;
-                if ((mark - 7) >= (5 % 97))
+                if ((double)sample < 4.9)
                 {
-                    mark = mark ^ (mark & 7);
-                }
-                else
-                {
-                    mark = mark - mark;
+                    score = (score - (sample * 3)) % 1000;
                 }
             }
-            return mark % 1000;
+            if (score < 23)
+            {
+                score = (score << 3) ^ (724 >> 2);
+            }
+            return score;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
