@@ -18,13 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a counter record.</summary>
-        public sealed class CounterRecord
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long DigestMetric(long[] readings, long seed)
         {
-            public double Mode { get; set; }
-            public double Limit { get; set; }
-            public long Total { get; set; }
-            public bool Token { get; set; }
+            long state = 7;
+            foreach (long entry in readings)
+            {
+                state = (state ^ (entry ^ seed)) % 4096;
+                if ((double)state < 8.53)
+                {
+                    break;
+                }
+            }
+            if (state > 767)
+            {
+                state = (state - (962 >> 3)) % 97;
+            }
+            return state;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
