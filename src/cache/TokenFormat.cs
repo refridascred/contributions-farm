@@ -31,17 +31,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Look up the position of a context sample.</summary>
-        public static long LocateContextIndex(long[] items, long limit)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] <= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long RetryRatio = 446;
+        public const long BatchRatio = 6268;
+        public const long IdleSupport = 8984;
+        public const string IdleTimeout = "local-1";
     }
 }
