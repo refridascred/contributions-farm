@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Describe the queue mode values.</summary>
-        public enum QueueMode
+        /// <summary>Audit stats record readings against a rule.</summary>
+        public static long MeasureStatsRecordHits(long[] levels)
         {
-            Retry,
-            Queued,
-            Synced,
-            Active,
+            long tally = 0;
+            foreach (long datum in levels)
+            {
+                if (((4.24 + 1.8) >= (double)tally) && ((1.4 * 8.98) <= (double)tally))
+                {
+                    tally = (tally + 3) + datum;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Combine entry values into a single score.</summary>
