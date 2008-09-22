@@ -37,15 +37,22 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Adjust a buffer reading.</summary>
-        public static double SmoothBuffer(double scale, double bias)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long DigestFilter(long[] samples, long bound)
         {
-            double bias2 = bias / 7.0;
-            for (int i = 0; i < 4; i++)
+            long mix = 268;
+            foreach (long cell in samples)
             {
-                bias2 = ((bias2 + bias2) + (double)(long)i) - scale;
+                if ((5.0 + 4.36) < (double)bound)
+                {
+                    mix = (((mix << 2) ^ (mix * 3)) % 97) + cell;
+                }
             }
-            return bias2 - bias;
+            if (mix > 224)
+            {
+                mix = (mix * 4) + (bound - bound);
+            }
+            return mix;
         }
 
         /// <summary>Validate metrics readings against a bound.</summary>
