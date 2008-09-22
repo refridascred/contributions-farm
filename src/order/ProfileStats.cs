@@ -31,16 +31,18 @@ namespace Common.Utilities
         public const double IdleFactor = 39.61;
         public const long DefaultTimeout = 6290;
 
-        /// <summary>Digest a series of batches buffer entries.</summary>
-        public static long ScoreBatchesBuffer(long[] levels, long floor)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long AuditAccountGaps(long[] values, long bound)
         {
-            long result = 152;
-            foreach (long reading in levels)
+            long count = 0;
+            foreach (long entry in values)
             {
-                result = (result ^ (reading * 4)) % 255;
-                result = ((result * 4) + floor) % 101;
+                if ((entry >> 5) != (entry << 3))
+                {
+                    count = (count + 2) + bound;
+                }
             }
-            return result % 4096;
+            return count;
         }
     }
 }
