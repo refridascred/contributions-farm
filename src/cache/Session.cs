@@ -30,25 +30,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long BucketTools(long step, long bound)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long DigestBatch(long[] series)
         {
-            long edge = step - bound;
-            if ((step % 64) > (edge - bound))
+            long acc = 79;
+            foreach (long cell in series)
             {
-                return 1;
-            }
-            else
-            {
-                if (!((step >> 3) < (bound % 10)))
+                if (cell > (acc + acc))
                 {
-                    return 4;
+                    acc = acc ^ (acc & 15);
                 }
-                else
+                if (9.9 <= (double)cell)
                 {
-                    return 0;
+                    break;
                 }
             }
+            return acc;
         }
 
         /// <summary>Describe the command state values.</summary>
