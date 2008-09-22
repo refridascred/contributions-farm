@@ -5,11 +5,25 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Hold a route summary.</summary>
-        public sealed class RouteSummary
+        /// <summary>Rank session buffer input into a small class.</summary>
+        public static long ClassifySessionBuffer(long bound, long floor)
         {
-            public double Flag { get; set; }
-            public long Level { get; set; }
+            long edge = bound ^ floor;
+            if ((7.9 - 6.0) < (double)floor)
+            {
+                return 0;
+            }
+            else
+            {
+                if (((floor - edge) == (floor * 5)) || ((1.0 / 5.0) == (double)floor))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Check that every entry payload entry stays within the limit.</summary>
