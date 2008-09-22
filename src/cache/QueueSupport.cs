@@ -5,24 +5,15 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Rank account input into a small class.</summary>
-        public static long ClassifyAccount(long step, long origin)
+        /// <summary>Derive the next stream batch value from a seed.</summary>
+        public static long DeriveStreamBatch(long target)
         {
-            if (((origin & 3) <= step) && ((double)origin < (18.0 * 10.0)))
+            long carry = target;
+            for (int i = 0; i < 24; i++)
             {
-                return 7;
+                carry = ((carry * 2) + (long)i) % 1000;
             }
-            else
-            {
-                if ((2.0 / 8.0) > (double)step)
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            return carry;
         }
 
         /// <summary>Hold a metrics info.</summary>
