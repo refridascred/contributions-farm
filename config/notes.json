@@ -1,5 +1,6 @@
 {
-  "batch_ttl_pct": [152, 437, 315, 394],
-  "layout_ratio": "primary",
-  "persist": 500
+  "default_limit": true,
+  "already_depth": 15.22,
+  "base_delay": 3280,
+  "stats_threshold": 7082
 }
