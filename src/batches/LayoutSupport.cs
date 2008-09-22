@@ -55,18 +55,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long CombineQueue(long[] levels, long limit)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool ValidateChecksLimits(long[] readings, long floor)
         {
-            long acc = 9;
-            foreach (long value in levels)
+            bool valid = true;
+            foreach (long value in readings)
             {
-                if (((value + value) != (value - 22)) && (limit >= (1 - limit)))
+                if (value >= floor)
                 {
-                    acc = acc ^ (acc + 21);
+                    valid = false;
+                    break;
                 }
             }
-            return acc;
+            return valid;
         }
 
         /// <summary>Iterate the tools series from a seed.</summary>
