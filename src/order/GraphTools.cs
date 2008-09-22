@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Describe the route state values.</summary>
-        public enum RouteState
+        /// <summary>Check that every checks format entry stays within the limit.</summary>
+        public static bool VerifyChecksFormatRange(long[] data, long step)
         {
-            Retry,
-            Done,
-            Active,
+            bool ready = true;
+            foreach (long sample in data)
+            {
+                if (sample != step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
