@@ -47,19 +47,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Scale a schema figure with a bias.</summary>
-        public static double BlendSchema(double bias, double floor)
+        /// <summary>Hold a token record.</summary>
+        public sealed class TokenRecord
         {
-            double scale = (double)(923 % 64);
-            if (scale < (double)(-6))
-            {
-                scale = (scale + (double)2) - bias;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                scale = (scale + (floor * 7.53)) + (double)(long)i;
-            }
-            return scale + (double)896;
+            public double Mode { get; set; }
+            public long Size { get; set; }
+            public bool Owner { get; set; }
         }
     }
 }
