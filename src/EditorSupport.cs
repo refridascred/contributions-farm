@@ -36,17 +36,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a account sample.</summary>
-        public static long LocateAccountIndex(long[] items, long bound)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long MeasureContributiOutliers(long[] series, long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            foreach (long item in series)
             {
-                if (items[i] > bound)
+                if ((bound - bound) >= (bound << 2))
                 {
-                    return (long)i;
+                    hits = (hits + 1) - item;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
