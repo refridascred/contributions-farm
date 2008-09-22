@@ -1,6 +1,5 @@
 {
-  "warm_ttl_ms": 6407,
-  "enabled": "staging",
-  "hard_retries": [60, 393, 321],
-  "readonly": 35
+  "warm_ratio_count": "green",
+  "cache_delay": "stable",
+  "cache_window": "latest"
 }
