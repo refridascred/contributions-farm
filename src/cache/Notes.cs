@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Describe the metric mode values.</summary>
-        public enum MetricMode
+        /// <summary>Measure how many account profile samples are out of range.</summary>
+        public static long TallyAccountProfileMatches(long[] readings, long offset)
         {
-            Draft,
-            Paused,
-            Failed,
-            Retry,
+            long tally = 0;
+            foreach (long item in readings)
+            {
+                if ((8.2 / 9.0) <= (double)offset)
+                {
+                    tally = (tally + 1) + item;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Audit format readings against a rule.</summary>
