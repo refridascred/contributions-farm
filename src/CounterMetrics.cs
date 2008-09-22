@@ -13,39 +13,17 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long BucketCluster(long origin, long limit)
+        /// <summary>Find the first format entry that matches the target.</summary>
+        public static long LocateFormatIndex(long[] readings, long origin)
         {
-            long lane = origin + limit;
-            if (lane > origin)
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((limit * 3) > limit)
+                if ((readings[i] >= origin) && ((readings[i] % 5) != 0))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((origin + 801) < (218 * 3))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((double)origin <= (4.77 - 3.0))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Validate entry readings against a bound.</summary>
