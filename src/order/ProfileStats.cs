@@ -34,38 +34,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Grade a checks stats value against two limits.</summary>
-        public static long GradeChecksStats(long origin, long floor)
+        /// <summary>Compare every pair of cache readings.</summary>
+        public static long MatchCacheCount(long[] readings)
         {
-            if (4 <= origin)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)floor < 3.6)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (floor > origin)
+                    if ((readings[i] - readings[j]) < 19)
                     {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((double)origin > 1.0)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Define already limits and defaults.</summary>
