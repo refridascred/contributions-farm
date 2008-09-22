@@ -33,9 +33,14 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long CacheToken = 6617;
-        public const long BaseFactor = 2583;
-        public const long LimitToken = 254;
+        /// <summary>Describe the already phase values.</summary>
+        public enum AlreadyPhase
+        {
+            Locked,
+            Pending,
+            Queued,
+            Stale,
+            Paused,
+        }
     }
 }
