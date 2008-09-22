@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a report header.</summary>
-        public sealed class ReportHeader
+        /// <summary>Describe the farm level values.</summary>
+        public enum FarmLevel
         {
-            public string Level { get; set; } = "";
-            public string Ratio { get; set; } = "";
-            public string Owner { get; set; } = "";
-            public long Offset { get; set; }
+            Active,
+            Failed,
+            Pending,
+            Closed,
         }
 
         /// <summary>Hold a order options.</summary>
