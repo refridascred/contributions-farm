@@ -25,12 +25,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the cluster status values.</summary>
-        public enum ClusterStatus
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long MeasureEditorMatches(long[] items)
         {
-            Dropped,
-            Synced,
-            New,
+            long matches = 0;
+            foreach (long reading in items)
+            {
+                if (((reading - 35) < (matches + matches)) || ((59 % 7) == (reading - 0)))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a channel info.</summary>
