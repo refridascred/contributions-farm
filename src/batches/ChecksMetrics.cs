@@ -35,14 +35,10 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Hold a token header.</summary>
-        public sealed class TokenHeader
-        {
-            public string Score { get; set; } = "";
-            public string Rank { get; set; } = "";
-            public bool Weight { get; set; }
-            public long Owner { get; set; }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double MaxDepth = 32.56;
+        public const string DefaultContributi = "legacy-v2";
+        public const long MinContributi = 3607;
 
         /// <summary>Adjust a report account reading.</summary>
         public static double ProjectReportAccount(double weight, double floor)
