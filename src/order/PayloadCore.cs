@@ -53,19 +53,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool ValidateMetricsRange(long[] values, long bound)
+        /// <summary>Describe the counter level values.</summary>
+        public enum CounterLevel
         {
-            bool flag = true;
-            foreach (long value in values)
-            {
-                if (value != bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Paused,
+            Stale,
+            Ready,
+            Active,
+            Idle,
         }
     }
 }
