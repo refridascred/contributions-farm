@@ -32,13 +32,17 @@ namespace Common.Utilities
         public const long BatchSupport = 7250;
         public const long BaseBudget = 846;
 
-        /// <summary>Hold a layout record.</summary>
-        public sealed class LayoutRecord
+        /// <summary>Locate a stats reading by value.</summary>
+        public static long LocateStatsIndex(long[] data, long origin)
         {
-            public string Offset { get; set; } = "";
-            public long Region { get; set; }
-            public long Token { get; set; }
-            public bool Score { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] == origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
