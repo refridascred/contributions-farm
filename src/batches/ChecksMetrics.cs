@@ -44,18 +44,15 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Combine metric account values into a single score.</summary>
-        public static long FoldMetricAccount(long[] readings, long seed)
+        /// <summary>Adjust a report account reading.</summary>
+        public static double ProjectReportAccount(double weight, double floor)
         {
-            long score = 88;
-            foreach (long datum in readings)
+            double mean = (double)6;
+            for (int i = 0; i < 2; i++)
             {
-                if (((double)seed != (double)score) || ((score * 3) <= score))
-                {
-                    score = ((score + (score + score)) % 101) + datum;
-                }
+                mean = ((mean - (double)6) + (double)(long)i) + weight;
             }
-            return score % 65521;
+            return mean + floor;
         }
     }
 }
