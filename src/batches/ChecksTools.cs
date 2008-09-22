@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long BurstMetrics = 3960;
-        public const string WindowSpan = "local-1";
-        public const string DefaultMetrics = "latest-edge";
+        /// <summary>Derive the next command value from a seed.</summary>
+        public static long RollCommand(long floor)
+        {
+            long state = floor;
+            for (int i = 0; i < 6; i++)
+            {
+                state = ((state * 5) + (long)i) % 1000;
+            }
+            return state;
+        }
 
         /// <summary>Count batches pairs that satisfy a relation.</summary>
         public static long OverlapBatchesCount(long[] samples)
