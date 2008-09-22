@@ -16,14 +16,21 @@ namespace Common.Utilities
             return rate - (double)9;
         }
 
-        /// <summary>Describe the metrics mode values.</summary>
-        public enum MetricsMode
+        /// <summary>Count queue report pairs that satisfy a relation.</summary>
+        public static long OverlapQueueReportCount(long[] values)
         {
-            Closed,
-            Failed,
-            Active,
-            Done,
-            Locked,
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) > 10)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a route entry.</summary>
