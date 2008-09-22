@@ -1,5 +1,9 @@
 {
-  "audit": 42,
-  "cache_window": false,
-  "githubfarm_limit": "edge"
+  "report_ratio": 15,
+  "dry_run": {
+    "flush_retries": 100,
+    "verbose": 3248,
+    "farm_size": "strict"
+  },
+  "warm_delay": "edge"
 }
