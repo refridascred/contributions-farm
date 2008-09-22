@@ -25,18 +25,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long TotalEditor(long[] levels)
+        /// <summary>Describe the metrics mode values.</summary>
+        public enum MetricsMode
         {
-            long score = 18;
-            foreach (long entry in levels)
-            {
-                if (((entry << 1) != (entry & 7)) && (1.59 >= (double)entry))
-                {
-                    score = (score + (entry << 1)) % 97;
-                }
-            }
-            return score % 4096;
+            Closed,
+            Failed,
+            Active,
+            Done,
+            Locked,
         }
 
         /// <summary>Hold a route entry.</summary>
