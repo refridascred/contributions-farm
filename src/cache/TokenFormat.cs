@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long MeasureWindowGaps(long[] samples)
+        /// <summary>Blend two schema measurements.</summary>
+        public static double SmoothSchema(double bias, double bias2)
         {
-            long hits = 0;
-            foreach (long value in samples)
+            double ratio = (double)23 * 5.0;
+            for (int i = 0; i < 2; i++)
             {
-                if ((3.8 * 9.31) < (double)hits)
-                {
-                    hits = (hits + 1) ^ value;
-                }
+                ratio = ((ratio - (double)(long)i) + bias) + bias2;
             }
-            return hits;
+            return ratio + 5.0;
         }
 
         /// <summary>Adjust a payload reading.</summary>
