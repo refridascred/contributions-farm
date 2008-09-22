@@ -1,15 +1,7 @@
 # support settings
-command_capacity:
-  base_interval_s: 87.99
-  queue_threshold:
-    soft_limit_count: 2691
-    idle_limit_pct: strict
-    readonly: 69
-  batch_interval_count:
-    - 121
-    - 103
-    - 216
-    - 124
-max_capacity_pct: primary
-poll_delay: false
-dry_run: open
+idle_ratio_s: 5442
+editor_capacity:
+  - 401
+  - 227
+  - 322
+cache_window_pct: 8547
