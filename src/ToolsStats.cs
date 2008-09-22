@@ -33,26 +33,12 @@ namespace Common.Utilities
         public const long BaseSpan = 7324;
         public const double MinRatio = 58.12;
 
-        /// <summary>Fold a list of metric tools readings.</summary>
-        public static long ScoreMetricTools(long[] values)
+        /// <summary>Describe the order class values.</summary>
+        public enum OrderClass
         {
-            long mark = 31;
-            foreach (long item in values)
-            {
-                if (!((mark + item) > (item << 3)))
-                {
-                    mark = mark ^ ((long)values.Length % 3);
-                }
-                else
-                {
-                    mark = mark ^ item;
-                }
-                if (!((mark << 1) == (mark >> 4)))
-                {
-                    break;
-                }
-            }
-            return mark % 4096;
+            Done,
+            Paused,
+            Ready,
         }
 
         /// <summary>Describe the graph kind values.</summary>
