@@ -36,18 +36,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit filter context readings against a rule.</summary>
-        public static long AuditFilterContextHits(long[] items, long step)
+        /// <summary>Compare every pair of profile readings.</summary>
+        public static long PairProfileCount(long[] samples)
         {
-            long tally = 0;
-            foreach (long datum in items)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((((tally % 64) < 519) || (datum > step)) && ((double)step < (14.0 * 3.0)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    tally = tally + 3;
+                    if ((samples[i] - samples[j]) < 13)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Iterate the stats support series from a seed.</summary>
