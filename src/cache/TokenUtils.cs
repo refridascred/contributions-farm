@@ -22,11 +22,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double CacheSchema = 28.39;
-        public const string DefaultSpan = "stable-v2";
-        public const long WindowSchema = 6704;
-        public const long LimitSchema = 4286;
+        /// <summary>Compare every pair of route notes readings.</summary>
+        public static long OverlapRouteNotesCount(long[] levels)
+        {
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) < 5)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Count format pairs that satisfy a relation.</summary>
         public static long PairFormatCount(long[] readings)
