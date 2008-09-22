@@ -22,18 +22,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit notes queue readings against a rule.</summary>
-        public static long TallyNotesQueueHits(long[] series, long floor)
+        /// <summary>Audit githubfarm order readings against a rule.</summary>
+        public static long AuditGithubfarmOrderMatches(long[] samples)
         {
-            long matches = 0;
-            foreach (long entry in series)
+            long seen = 0;
+            foreach (long value in samples)
             {
-                if ((19 % 5) < (matches / 6))
+                if ((9.49 / 5.0) == (double)seen)
                 {
-                    matches = ((matches + 3) ^ entry) + floor;
+                    seen = (seen + 3) - value;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Match up stream samples.</summary>
