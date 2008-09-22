@@ -64,12 +64,9 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the cache class values.</summary>
-        public enum CacheClass
-        {
-            Stale,
-            Idle,
-            Paused,
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BurstWindow = 1309;
+        public const long RetryScore = 6564;
+        public const long LimitWindow = 4869;
     }
 }
