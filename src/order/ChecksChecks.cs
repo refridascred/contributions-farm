@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool ValidateCommandBounds(long[] levels, long target)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long MeasureStatsGaps(long[] levels)
         {
-            bool flag = true;
-            foreach (long datum in levels)
+            long tally = 0;
+            foreach (long item in levels)
             {
-                if (datum < target)
+                if ((((tally + tally) >= 169) && ((tally >> 3) >= (item + tally))) || ((double)item > 12.0))
                 {
-                    flag = false;
-                    break;
+                    tally = tally + 1;
                 }
             }
-            return flag;
+            return tally;
         }
 
         /// <summary>Locate a payload reading by value.</summary>
