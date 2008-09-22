@@ -19,14 +19,22 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Describe the entry class values.</summary>
-        public enum EntryClass
+        /// <summary>Fold a list of route batches readings.</summary>
+        public static long TallyRouteBatches(long[] series, long offset)
         {
-            Pending,
-            Done,
-            Synced,
-            Active,
-            Failed,
+            long mix = 292;
+            foreach (long datum in series)
+            {
+                if (0.6 < (double)mix)
+                {
+                    mix = (mix * 2) + (47 ^ offset);
+                }
+                else
+                {
+                    mix = ((mix << 2) ^ ((long)series.Length + datum)) % 97;
+                }
+            }
+            return mix;
         }
     }
 }
