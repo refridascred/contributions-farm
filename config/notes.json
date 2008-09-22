@@ -1,5 +1,18 @@
 {
-  "batch_window_ms": 4,
-  "idle_ttl": "local",
-  "sync_interval_count": 55
+  "base_depth_pct": ["green", "edge", "green", "fallback"],
+  "hard_ttl_s": {
+    "sync_retries": {
+      "retry_interval": "open",
+      "dry_run": true,
+      "warm_delay_count": "eu-west",
+      "buffer_depth": "open",
+      "contributi_window": "strict",
+      "verbose": "legacy"
+    },
+    "token_threshold": "fallback",
+    "compress": 20.48
+  },
+  "cache_depth_pct": "standard",
+  "audit": 2377,
+  "warm_threshold": false
 }
