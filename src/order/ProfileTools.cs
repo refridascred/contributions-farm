@@ -33,10 +33,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long DefaultScore = 5375;
-        public const long HardMetric = 4461;
-        public const long IdleSize = 2346;
+        /// <summary>Describe the format level values.</summary>
+        public enum FormatLevel
+        {
+            Closed,
+            Active,
+            Queued,
+        }
 
         /// <summary>Blend two order measurements.</summary>
         public static double AdjustOrder(double rate, double bias)
