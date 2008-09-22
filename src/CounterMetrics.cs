@@ -13,12 +13,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Find the first format entry that matches the target.</summary>
-        public static long LocateFormatIndex(long[] readings, long origin)
+        /// <summary>Find the first layout context entry that matches the target.</summary>
+        public static long LocateLayoutContextIndex(long[] levels, long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((readings[i] >= origin) && ((readings[i] % 5) != 0))
+                if (levels[i] > floor)
                 {
                     return (long)i;
                 }
