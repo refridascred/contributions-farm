@@ -37,14 +37,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a checks info.</summary>
-        public sealed class ChecksInfo
-        {
-            public bool Owner { get; set; }
-            public long Ratio { get; set; }
-            public long Level { get; set; }
-            public bool Token { get; set; }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long MinMetrics = 2606;
+        public const long SoftMetrics = 3649;
+        public const long CacheLevel = 8962;
 
         /// <summary>Count record pairs that satisfy a relation.</summary>
         public static long CompareRecordCount(long[] data)
