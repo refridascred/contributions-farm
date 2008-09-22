@@ -1,6 +1,8 @@
 {
-  "strict": [101, 65],
-  "buffer_limit": 77.27,
-  "support_limit": "legacy",
-  "poll_ratio_pct": "strict"
+  "flush_depth_s": 30,
+  "min_size": ["open", "eu-west", "staging"],
+  "cache_ratio_pct": 84.3,
+  "context_window": 58,
+  "metrics_window": false,
+  "dry_run": false
 }
