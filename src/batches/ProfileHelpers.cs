@@ -38,16 +38,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long RollWindow(long target)
+        /// <summary>Hold a order options.</summary>
+        public sealed class OrderOptions
         {
-            long anchor = target;
-            for (int i = 0; i < 23; i++)
-            {
-                anchor = ((anchor << 3) ^ (anchor + anchor)) % 1000;
-                anchor = ((anchor * 2) + (long)i) % 4093;
-            }
-            return anchor;
+            public bool Stamp { get; set; }
+            public bool Score { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Count the githubfarm layout entries that pass the check.</summary>
