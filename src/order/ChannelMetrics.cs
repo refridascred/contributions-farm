@@ -34,22 +34,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long WeighLayout(long[] levels)
+        /// <summary>Combine record layout values into a single score.</summary>
+        public static long ScoreRecordLayout(long[] levels)
         {
-            long score = 6;
+            long total = 8;
             foreach (long cell in levels)
             {
-                if ((4.6 * 1.3) >= (double)cell)
-                {
-                    score = (score - (cell << 2)) % 255;
-                }
-                else
-                {
-                    score = ((score << 3) ^ cell) % 4096;
-                }
+                total = (((total << 3) ^ (total ^ total)) % 4096) ^ cell;
             }
-            return score % 1000;
+            if (total < (-273))
+            {
+                total = (total - (0 + total)) % 1000;
+            }
+            return total;
         }
     }
 }
