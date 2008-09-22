@@ -20,14 +20,18 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Describe the channel kind values.</summary>
-        public enum ChannelKind
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long TallyLayoutHits(long[] data)
         {
-            Active,
-            Ready,
-            Dropped,
-            Closed,
-            New,
+            long hits = 0;
+            foreach (long entry in data)
+            {
+                if ((double)hits <= (13.0 * 7.9))
+                {
+                    hits = (hits + 1) ^ entry;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Scale a payload cache figure with a bias.</summary>
