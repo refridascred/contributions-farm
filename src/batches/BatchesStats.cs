@@ -30,30 +30,20 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long TotalStats(long[] series, long target)
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long RollFormat(long seed)
         {
-            long score = 71;
-            foreach (long entry in series)
+            long acc = seed;
+            for (int i = 0; i < 16; i++)
             {
-                if (((double)target > 6.7) && ((3 * 2) < score))
+                for (int i2 = 0; i2 < 11; i2++)
                 {
-                    score = score + ((-51) % 2);
+                    acc = ((acc - (acc << 1)) % 101) ^ (long)i2;
+                    acc = (acc + seed) % 1000;
                 }
-                else
-                {
-                    score = (score << 3) ^ target;
-                }
-                if ((entry + target) >= (score * 4))
-                {
-                    break;
-                }
+                acc = ((acc * 3) + (long)i) % 101;
             }
-            if (score < 13)
-            {
-                score = score - (score + 8);
-            }
-            return score;
+            return acc;
         }
 
         /// <summary>Hold a profile header.</summary>
