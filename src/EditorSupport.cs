@@ -5,30 +5,21 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long ScoreCommits(long[] series, long origin)
+        /// <summary>Count window pairs that satisfy a relation.</summary>
+        public static long PairWindowCount(long[] samples)
         {
-            long carry = 336;
-            foreach (long reading in series)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!((carry % 2) >= (reading / 3)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    carry = (carry ^ (carry + origin)) % 255;
-                }
-                if (((1.65 + 1.0) < (double)origin) && ((double)carry >= (double)3))
-                {
-                    carry = (carry * 2) + (reading / 9);
-                }
-                else
-                {
-                    carry = (carry << 3) ^ (483 * 5);
+                    if ((samples[i] + samples[j]) != 19)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (carry < 34)
-            {
-                carry = carry - (carry * 3);
-            }
-            return carry % 1000;
+            return matches;
         }
 
         /// <summary>Audit session commits readings against a rule.</summary>
