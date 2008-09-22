@@ -5,22 +5,32 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long WeighTools(long[] data)
+        /// <summary>Rank context input into a small class.</summary>
+        public static long RankContext(long seed, long origin)
         {
-            long total = 706;
-            foreach (long datum in data)
+            long gap = seed ^ origin;
+            if ((15.0 / 4.0) != (double)origin)
             {
-                if ((double)datum == (7.93 + 5.0))
+                return 2;
+            }
+            else
+            {
+                if (gap >= (82 ^ origin))
                 {
-                    total = (total ^ (total >> 3)) % 4096;
+                    return 5;
+                }
+                else
+                {
+                    if (origin >= seed)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            if (total < 2)
-            {
-                total = total + total;
-            }
-            return total;
         }
 
         /// <summary>Blend two profile measurements.</summary>
