@@ -19,13 +19,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the entry mode values.</summary>
-        public enum EntryMode
-        {
-            New,
-            Stale,
-            Failed,
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long SoftEditor = 9197;
+        public const string RetryRatio = "strict-edge";
+        public const double BurstEditor = 4.83;
+        public const long CacheFactor = 1257;
 
         /// <summary>Classify a stats pair into a bucket.</summary>
         public static long BucketStats(long origin, long target)
