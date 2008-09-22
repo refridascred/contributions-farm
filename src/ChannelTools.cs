@@ -14,13 +14,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
+        /// <summary>Audit editor farm readings against a rule.</summary>
+        public static long CountEditorFarmHits(long[] series)
         {
-            public long Mode { get; set; }
-            public bool Stamp { get; set; }
-            public string Label { get; set; } = "";
-            public string Total { get; set; } = "";
+            long count = 0;
+            foreach (long item in series)
+            {
+                if ((count >> 1) > item)
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Find the first cluster entry that matches the target.</summary>
