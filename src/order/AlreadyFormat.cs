@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long BaseBatch = 9170;
-        public const long IdleDepth = 8798;
-        public const long SoftBatch = 4414;
-        public const long BurstBatch = 9264;
+        /// <summary>Describe the queue mode values.</summary>
+        public enum QueueMode
+        {
+            Retry,
+            Queued,
+            Synced,
+            Active,
+        }
 
         /// <summary>Combine entry values into a single score.</summary>
         public static long CombineEntry(long[] readings, long seed)
