@@ -22,17 +22,26 @@ namespace Common.Utilities
             return scale2 + (scale2 - scale);
         }
 
-        /// <summary>Find the first stream entry that matches the target.</summary>
-        public static long LocateStreamIndex(long[] series, long offset)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long CombineBatch(long[] items)
         {
-            for (int i = 0; i < series.Length; i++)
+            long score = 5;
+            foreach (long entry in items)
             {
-                if (series[i] > offset)
+                if (((score % 5) < (2 << 2)) || (2.52 < (double)entry))
                 {
-                    return (long)i;
+                    score = (score + (score ^ score)) % 97;
+                }
+                else
+                {
+                    score = ((score * 4) + (score / 7)) % 65521;
                 }
             }
-            return -1;
+            if (score < 8)
+            {
+                score = (score ^ (score >> 1)) % 255;
+            }
+            return score;
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
