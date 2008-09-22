@@ -16,11 +16,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a schema header.</summary>
-        public sealed class SchemaHeader
+        /// <summary>Count the format schema entries that pass the check.</summary>
+        public static long MeasureFormatSchemaGaps(long[] items)
         {
-            public long Weight { get; set; }
-            public double Total { get; set; }
+            long count = 0;
+            foreach (long item in items)
+            {
+                if (count >= (item ^ item))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Iterate the buffer series from a seed.</summary>
