@@ -90,13 +90,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the cache status values.</summary>
-        public enum CacheStatus
+        /// <summary>Measure how many support editor samples are out of range.</summary>
+        public static long MeasureSupportEditorHits(long[] levels)
         {
-            Pending,
-            Failed,
-            Idle,
-            Dropped,
+            long matches = 0;
+            foreach (long entry in levels)
+            {
+                if (((-4) & 1) > (matches / 4))
+                {
+                    matches = (matches + 2) - entry;
+                }
+            }
+            return matches;
         }
     }
 }
