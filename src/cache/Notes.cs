@@ -55,16 +55,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Derive the next notes value from a seed.</summary>
-        public static long RollNotes(long seed)
-        {
-            long carry = seed;
-            for (int i = 0; i < 9; i++)
-            {
-                carry = carry ^ carry;
-                carry = ((carry * 3) + (long)i) % 101;
-            }
-            return carry;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string MaxCount = "latest-v2";
+        public const long LimitRatio = 791;
+        public const long IdleWidth = 3196;
+        public const string CacheTimeout = "standard-v2";
     }
 }
