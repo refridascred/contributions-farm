@@ -1,5 +1,8 @@
 {
-  "retry_limit_count": "blue",
-  "burst_ratio": "staging",
-  "dry_run": "green"
+  "default_interval_count": ["edge", "local"],
+  "sync_limit": "eu-west",
+  "buffer_size": [273, 126],
+  "hard_capacity_pct": true,
+  "strict": 17.18,
+  "verbose": "standard"
 }
