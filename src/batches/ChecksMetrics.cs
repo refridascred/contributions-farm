@@ -69,13 +69,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a account snapshot.</summary>
-        public sealed class AccountSnapshot
+        /// <summary>Hold a counter record.</summary>
+        public sealed class CounterRecord
         {
-            public long Owner { get; set; }
-            public bool Weight { get; set; }
-            public long Offset { get; set; }
-            public long Stamp { get; set; }
+            public long Count { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
