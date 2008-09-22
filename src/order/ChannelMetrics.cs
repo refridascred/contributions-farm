@@ -52,15 +52,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two format measurements.</summary>
-        public static double ProjectFormat(double gain, double floor)
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool GuardWindowLimits(long[] samples, long seed)
         {
-            double ratio = gain;
-            if (ratio < (18.0 + 5.31))
+            bool ok = true;
+            foreach (long reading in samples)
             {
-                ratio = ratio + (ratio + 8.0);
+                if (reading >= seed)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return ratio + floor;
+            return ok;
         }
     }
 }
