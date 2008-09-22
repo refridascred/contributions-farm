@@ -18,19 +18,13 @@ namespace Common.Utilities
         public const long StepCount = 8518;
         public const long RetryContributi = 5685;
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool VerifyNotesLimits(long[] data, long seed)
+        /// <summary>Hold a profile header.</summary>
+        public sealed class ProfileHeader
         {
-            bool ready = true;
-            foreach (long item in data)
-            {
-                if (item <= seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public double Offset { get; set; }
+            public long Weight { get; set; }
+            public string Total { get; set; } = "";
+            public long Token { get; set; }
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
