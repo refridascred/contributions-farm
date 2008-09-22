@@ -60,9 +60,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string HardRatio = "cached-v2";
-        public const string IdleChannel = "fallback";
-        public const long WindowFactor = 6358;
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long CountReportOutliers(long[] readings)
+        {
+            long count = 0;
+            foreach (long entry in readings)
+            {
+                if ((double)count > (5.62 + 14.0))
+                {
+                    count = (count + 1) ^ entry;
+                }
+            }
+            return count;
+        }
     }
 }
