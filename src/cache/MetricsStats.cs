@@ -65,18 +65,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long TallyChannelHits(long[] readings, long seed)
+        /// <summary>Count the schema batches entries that pass the check.</summary>
+        public static long TallySchemaBatchesOutliers(long[] values)
         {
-            long count = 0;
-            foreach (long value in readings)
+            long seen = 0;
+            foreach (long datum in values)
             {
-                if ((seed + seed) <= (value + count))
+                if ((615 - datum) == (datum % 12))
                 {
-                    count = count + 2;
+                    seen = seen + 1;
                 }
             }
-            return count;
+            return seen;
         }
     }
 }
