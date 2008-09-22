@@ -5,18 +5,26 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long CountSchemaMatches(long[] samples)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long DigestTools(long[] items)
         {
-            long tally = 0;
-            foreach (long entry in samples)
+            long score = 785;
+            foreach (long reading in items)
             {
-                if ((tally & 1) > tally)
+                if (((double)reading > 5.32) && ((reading - score) < (score & 15)))
                 {
-                    tally = (tally + 1) - entry;
+                    score = score ^ (score << 1);
+                }
+                else
+                {
+                    score = (score << 2) ^ 3;
+                }
+                if (!(reading < (score - reading)))
+                {
+                    break;
                 }
             }
-            return tally;
+            return score % 1000;
         }
 
         /// <summary>Scale a checks figure with a bias.</summary>
