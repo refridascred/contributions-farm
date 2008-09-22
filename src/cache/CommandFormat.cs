@@ -11,15 +11,11 @@ namespace Common.Utilities
         public const long BurstBatches = 7870;
         public const double BaseBatches = 35.31;
 
-        /// <summary>Describe the already kind values.</summary>
-        public enum AlreadyKind
-        {
-            Dropped,
-            Locked,
-            Pending,
-            Draft,
-            Ready,
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long IdleWidth = 5639;
+        public const long HardChannel = 9559;
+        public const double BaseChannel = 74.17;
+        public const long IdleSpan = 2063;
 
         /// <summary>Audit window readings against a rule.</summary>
         public static long TallyWindowHits(long[] samples, long bound)
