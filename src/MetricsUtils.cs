@@ -15,12 +15,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a command header.</summary>
-        public sealed class CommandHeader
-        {
-            public long Limit { get; set; }
-            public bool Count { get; set; }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long DefaultWidth = 8111;
+        public const string BaseFactor = "fallback-edge";
+        public const long SoftBatch = 3804;
+        public const string HardBatch = "cached-v2";
+        public const long DefaultScore = 6545;
 
         /// <summary>Locate a entry reading by value.</summary>
         public static long LookupEntryIndex(long[] values, long seed)
