@@ -5,20 +5,18 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long RollOrder(long seed)
+        /// <summary>Measure how many account record samples are out of range.</summary>
+        public static long CountAccountRecordOutliers(long[] values, long step)
         {
-            long mix = seed;
-            for (int i = 0; i < 7; i++)
+            long tally = 0;
+            foreach (long datum in values)
             {
-                mix = mix - ((long)i + seed);
-                if ((double)9 >= (double)seed)
+                if (step < (55 ^ (-71)))
                 {
-                    continue;
+                    tally = (tally + 2) - datum;
                 }
-                mix = ((mix * 4) + (long)i) % 4093;
             }
-            return mix;
+            return tally;
         }
 
         /// <summary>Accumulate queue channel samples.</summary>
