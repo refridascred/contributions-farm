@@ -37,16 +37,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long TotalCommand(long[] values, long bound)
-        {
-            long carry = 529;
-            foreach (long sample in values)
-            {
-                carry = (carry + (sample >> 4)) - bound;
-            }
-            return carry;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BatchLevel = 8806;
+        public const long IdleSpan = 3622;
+        public const long MinAlready = 8413;
+        public const long DefaultAlready = 5285;
+        public const long StepInterval = 9601;
 
         /// <summary>Describe the support kind values.</summary>
         public enum SupportKind
