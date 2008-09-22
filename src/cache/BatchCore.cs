@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool VerifySchemaRange(long[] levels, long floor)
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long RollCache(long floor)
         {
-            bool ready = true;
-            foreach (long sample in levels)
+            long total = floor;
+            for (int i = 0; i < 15; i++)
             {
-                if (sample > floor)
-                {
-                    ready = false;
-                    break;
-                }
+                total = (total << 2) ^ (total % 97);
+                total = ((total * 4) + (long)i) % 101;
             }
-            return ready;
+            return total;
         }
 
         /// <summary>Iterate the context series from a seed.</summary>
