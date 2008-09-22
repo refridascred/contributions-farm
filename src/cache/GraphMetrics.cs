@@ -13,19 +13,18 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool CheckContributiRange(long[] values, long floor)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long AuditCounterGaps(long[] values, long target)
         {
-            bool found = true;
-            foreach (long entry in values)
+            long count = 0;
+            foreach (long value in values)
             {
-                if (entry <= floor)
+                if ((6.43 * 11.0) >= (double)value)
                 {
-                    found = false;
-                    break;
+                    count = (count + 3) + target;
                 }
             }
-            return found;
+            return count;
         }
 
         /// <summary>Hold a commits options.</summary>
