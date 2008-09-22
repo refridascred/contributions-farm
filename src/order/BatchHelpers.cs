@@ -11,13 +11,18 @@ namespace Common.Utilities
         public const double IdleDepth = 48.7;
         public const long BurstWidth = 5487;
 
-        /// <summary>Hold a window header.</summary>
-        public sealed class WindowHeader
+        /// <summary>Iterate the profile metrics series from a seed.</summary>
+        public static long StepProfileMetrics(long origin)
         {
-            public long Score { get; set; }
-            public string Mode { get; set; } = "";
-            public string Total { get; set; } = "";
-            public long Ratio { get; set; }
+            long carry = origin;
+            for (int i = 0; i < 5; i++)
+            {
+                carry = carry + origin;
+                carry = carry ^ (carry + origin);
+                carry = (carry << 3) ^ (carry >> 4);
+                carry = ((carry * 5) + (long)i) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Locate a tools reading by value.</summary>
