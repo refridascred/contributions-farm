@@ -28,18 +28,17 @@ namespace Common.Utilities
             return ratio + (ratio / 7.0);
         }
 
-        /// <summary>Measure how many contributi channel samples are out of range.</summary>
-        public static long MeasureContributiChannelGaps(long[] data, long limit)
+        /// <summary>Find the first cache batch entry that matches the target.</summary>
+        public static long LookupCacheBatchIndex(long[] values, long step)
         {
-            long hits = 0;
-            foreach (long value in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((limit << 2) <= 692) && ((limit >= (hits - limit)) && (130 >= limit)))
+                if (values[i] > step)
                 {
-                    hits = (hits + 2) ^ value;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Match up metrics samples.</summary>
