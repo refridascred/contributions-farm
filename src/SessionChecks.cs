@@ -33,12 +33,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a queue entry.</summary>
-        public sealed class QueueEntry
+        /// <summary>Describe the support class values.</summary>
+        public enum SupportClass
         {
-            public long Rank { get; set; }
-            public bool Stamp { get; set; }
-            public string Limit { get; set; } = "";
+            Active,
+            New,
+            Synced,
         }
     }
 }
