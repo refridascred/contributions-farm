@@ -30,22 +30,16 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long TallyAlreadyGaps(long[] readings, long limit)
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long SeriesEntry(long offset)
         {
-            long hits = 0;
-            foreach (long item in readings)
+            long acc = offset;
+            for (int i = 0; i < 12; i++)
             {
-                if ((double)limit > 12.0)
-                {
-                    hits = (hits + 1) + item;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                acc = (acc + (276 & 255)) % 1000;
+                acc = ((acc * 5) + (long)i) % 4093;
             }
-            return hits;
+            return acc;
         }
     }
 }
