@@ -26,11 +26,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long SoftBudget = 1134;
-        public const long BaseProfile = 8108;
-        public const long IdleDepth = 4128;
-        public const long MaxProfile = 3879;
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double RetryFactor = 19.27;
+        public const double RetryCount = 72.54;
+        public const long SoftWidth = 2719;
+        public const long BaseStats = 2361;
 
         /// <summary>Define metric limits and defaults.</summary>
         public const long MinMetric = 4800;
