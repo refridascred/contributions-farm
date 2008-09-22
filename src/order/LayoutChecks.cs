@@ -22,17 +22,12 @@ namespace Common.Utilities
         public const long IdleTimeout = 1459;
         public const double HardWindow = 21.92;
 
-        /// <summary>Locate a metric reading by value.</summary>
-        public static long FindMetricIndex(long[] items, long limit)
+        /// <summary>Hold a checks stats.</summary>
+        public sealed class ChecksStats
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] == limit) && ((items[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Flag { get; set; } = "";
+            public long Size { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Accumulate layout context samples.</summary>
