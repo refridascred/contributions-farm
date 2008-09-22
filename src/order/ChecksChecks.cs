@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool GuardBatchesRange(long[] series, long floor)
+        /// <summary>Hold a editor stats.</summary>
+        public sealed class EditorStats
         {
-            bool valid = true;
-            foreach (long datum in series)
-            {
-                if (datum < floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public double Level { get; set; }
+            public double Flag { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Compare every pair of metric readings.</summary>
