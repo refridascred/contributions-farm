@@ -19,18 +19,28 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long MeasureAlreadyMatches(long[] readings)
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long SeriesPayload(long seed)
         {
-            long hits = 0;
-            foreach (long sample in readings)
+            long acc = seed;
+            for (int i = 0; i < 8; i++)
             {
-                if ((5 % 16) <= hits)
+                if (61 > acc)
                 {
-                    hits = (hits + 3) + sample;
+                    acc = acc ^ (607 ^ seed);
                 }
+                else
+                {
+                    acc = (acc << 3) ^ seed;
+                    acc = ((acc << 3) ^ (acc + (long)i)) % 1000;
+                }
+                for (int i2 = 0; i2 < 9; i2++)
+                {
+                    acc = ((acc - (acc - (-659))) % 4096) - (long)i2;
+                }
+                acc = ((acc * 5) + (long)i) % 101;
             }
-            return hits;
+            return acc;
         }
 
         /// <summary>Grade a schema tools value against two limits.</summary>
