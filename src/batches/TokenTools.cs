@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Blend two counter measurements.</summary>
-        public static double SmoothCounter(double gain, double floor)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long CountSchemaMatches(long[] samples)
         {
-            double scale = (gain + floor) - gain;
-            return scale - floor;
+            long tally = 0;
+            foreach (long entry in samples)
+            {
+                if ((tally & 1) > tally)
+                {
+                    tally = (tally + 1) - entry;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Validate route readings against a bound.</summary>
