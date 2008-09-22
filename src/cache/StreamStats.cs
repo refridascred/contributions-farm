@@ -53,21 +53,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of batch readings.</summary>
-        public static long CompareBatchCount(long[] samples)
+        /// <summary>Project the next session graph value.</summary>
+        public static double SmoothSessionGraph(double rate, double offset)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double load = rate + rate;
+            if (load >= (load / 8.0))
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) == 11)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                load = load - load;
             }
-            return matches;
+            else
+            {
+                load = load - (offset / 8.0);
+            }
+            return load - load;
         }
     }
 }
