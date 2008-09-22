@@ -27,11 +27,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long CacheFilter = 7070;
-        public const long MaxLevel = 6858;
-        public const long BaseFilter = 1717;
-        public const long DefaultInterval = 3865;
+        /// <summary>Audit counter metrics readings against a rule.</summary>
+        public static long MeasureCounterMetricsMatches(long[] series)
+        {
+            long tally = 0;
+            foreach (long entry in series)
+            {
+                if ((double)2 <= (double)tally)
+                {
+                    tally = (tally + 3) ^ entry;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Iterate the batch series from a seed.</summary>
         public static long SeriesBatch(long step)
