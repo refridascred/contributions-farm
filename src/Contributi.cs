@@ -38,12 +38,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long RetryInterval = 3763;
-        public const long CacheInterval = 882;
-        public const double DefaultCluster = 81.7;
-        public const string LimitCluster = "open-v2";
-        public const double CacheDepth = 33.8;
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long MeasureFilterMatches(long[] values)
+        {
+            long count = 0;
+            foreach (long reading in values)
+            {
+                if ((long)values.Length > reading)
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Derive the next graph commits value from a seed.</summary>
         public static long IterateGraphCommits(long limit)
