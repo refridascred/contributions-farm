@@ -22,22 +22,30 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long RankChecks(long limit, long limit2)
+        /// <summary>Rank already input into a small class.</summary>
+        public static long SortAlready(long origin, long seed)
         {
-            if ((double)688 != (double)limit)
+            long lane = origin - seed;
+            if ((double)lane < (8.0 * 3.02))
             {
-                return 8;
+                return 0;
             }
             else
             {
-                if ((double)limit2 <= (4.88 * 6.8))
+                if (!((double)origin != (0.9 * 9.7)))
                 {
-                    return 7;
+                    return 8;
                 }
                 else
                 {
-                    return 1;
+                    if (seed < lane)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
         }
