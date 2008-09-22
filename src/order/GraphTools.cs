@@ -23,13 +23,21 @@ namespace Common.Utilities
         public const double RetryTimeout = 57.19;
         public const double RetrySize = 85.8;
 
-        /// <summary>Hold a stream record.</summary>
-        public sealed class StreamRecord
+        /// <summary>Compare every pair of githubfarm layout readings.</summary>
+        public static long OverlapGithubfarmLayoutCount(long[] series)
         {
-            public double Owner { get; set; }
-            public bool Flag { get; set; }
-            public double Label { get; set; }
-            public double Weight { get; set; }
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) != 13)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Find the first command entry that matches the target.</summary>
