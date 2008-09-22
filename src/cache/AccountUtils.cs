@@ -29,19 +29,15 @@ namespace Common.Utilities
             return drift - (gain / 4.0);
         }
 
-        /// <summary>Iterate the account series from a seed.</summary>
-        public static long DeriveAccount(long bound)
+        /// <summary>Accumulate payload report samples.</summary>
+        public static long ScorePayloadReport(long[] samples, long origin)
         {
-            long carry = bound;
-            for (int i = 0; i < 5; i++)
+            long state = 32;
+            foreach (long item in samples)
             {
-                if (!(((double)carry != (3.1 * 5.02)) && ((carry - 7) < 308)))
-                {
-                    carry = carry + ((long)i ^ 103);
-                }
-                carry = ((carry * 2) + (long)i) % 4093;
+                state = (state + origin) ^ item;
             }
-            return carry;
+            return state;
         }
     }
 }
