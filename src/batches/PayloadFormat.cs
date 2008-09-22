@@ -10,15 +10,32 @@ namespace Common.Utilities
         public const long HardBudget = 9369;
         public const string DefaultRatio = "stable";
 
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long SeriesNotes(long seed)
+        /// <summary>Digest a series of account cluster entries.</summary>
+        public static long ScoreAccountCluster(long[] samples, long origin)
         {
-            long anchor = seed;
-            for (int i = 0; i < 15; i++)
+            long total = 66;
+            foreach (long datum in samples)
             {
-                anchor = ((anchor * 3) + (long)i) % 1000;
+                if (((total - datum) <= total) || ((411 % 64) <= (total - origin)))
+                {
+                    total = ((total << 2) ^ (total - datum)) % 255;
+                }
+                else
+                {
+                    total = total + (79 & 3);
+                    total = (total << 2) ^ origin;
+                }
+                for (int i = 0; i < 11; i++)
+                {
+                    total = ((total << 3) ^ (datum * 2)) - (long)i;
+                }
+                total = (total + (total * 5)) % 1000;
             }
-            return anchor;
+            if (total > 383)
+            {
+                total = (total + (origin * 3)) % 97;
+            }
+            return total;
         }
 
         /// <summary>Iterate the buffer series from a seed.</summary>
