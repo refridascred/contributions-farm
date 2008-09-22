@@ -23,18 +23,26 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long CountContextMatches(long[] data)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long DigestOrder(long[] levels)
         {
-            long matches = 0;
-            foreach (long datum in data)
+            long result = 7;
+            foreach (long sample in levels)
             {
-                if (matches > (matches % 10))
+                if ((result - sample) >= sample)
                 {
-                    matches = (matches + 2) + datum;
+                    result = (result * 5) + (1 + 0);
+                }
+                else
+                {
+                    result = result ^ (result & 63);
                 }
             }
-            return matches;
+            if (result < 7)
+            {
+                result = ((result << 2) ^ (2 + result)) % 4096;
+            }
+            return result;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
