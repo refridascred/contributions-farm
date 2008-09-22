@@ -1,8 +1,4 @@
 # githubfarm settings
-warm_timeout: 250
-default_delay_count: 48
-min_depth:
-  - fallback
-  - legacy
-  - eu-west
-  - stable
+warm_timeout: 33
+metric_limit: stable
+poll_interval_pct: true
