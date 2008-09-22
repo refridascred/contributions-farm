@@ -16,12 +16,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a layout entry.</summary>
-        public sealed class LayoutEntry
+        /// <summary>Compare every pair of editor readings.</summary>
+        public static long OverlapEditorCount(long[] readings)
         {
-            public long Token { get; set; }
-            public string Size { get; set; } = "";
-            public string Level { get; set; } = "";
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) != 16)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Find the first cluster entry that matches the target.</summary>
