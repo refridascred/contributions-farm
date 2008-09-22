@@ -1,11 +1,11 @@
 # Command notes
 
-A command that stays idle for too long is moved to the format list.
-Defaults for stats live in the config folder and can be overridden per environment.
+The command report groups every cluster by batch.
+Keep cluster and buffer names short and lowercase.
 
 ## Guidelines
 
-- Document new route fields
-- Validate metric input early
-- Keep token values small
-- Review context limits each release
+- Log every record change
+- Validate stream input early
+- Review stats limits each release
+- Document new token fields
