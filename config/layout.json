@@ -1,6 +1,20 @@
 {
-  "default_size_count": 70.45,
-  "hard_ttl": "standard",
-  "format_retries": 79.07,
-  "sync_retries": 4438
+  "base_size_pct": true,
+  "batch_depth": "standard",
+  "token_retries": {
+    "max_threshold_ms": true,
+    "max_window": [336, 414],
+    "tools_size": 96.52,
+    "format_capacity": {
+      "default_size_pct": [13, 410, 185],
+      "channel_timeout": "staging",
+      "verbose": "legacy"
+    },
+    "profile_size": "green",
+    "hard_depth_count": {
+      "default_ratio": true,
+      "checks_timeout": 13,
+      "cache_window": 138
+    }
+  }
 }
