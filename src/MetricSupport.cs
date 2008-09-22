@@ -25,10 +25,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long HardChannel = 6801;
-        public const string BatchChannel = "strict-edge";
-        public const long MaxChannel = 6383;
-        public const double DefaultChannel = 36.6;
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long TallyChannelHits(long[] readings)
+        {
+            long count = 0;
+            foreach (long entry in readings)
+            {
+                if ((entry >> 2) > (2 + count))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
     }
 }
