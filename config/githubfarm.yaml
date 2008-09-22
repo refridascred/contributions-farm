@@ -1,4 +1,4 @@
 # githubfarm settings
-audit: open
-hard_delay: primary
-strict: 100
+soft_interval_count: cached
+retry_delay: 60
+buffer_limit: 6302
