@@ -28,21 +28,15 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Count support pairs that satisfy a relation.</summary>
-        public static long OverlapSupportCount(long[] readings)
+        /// <summary>Scale a profile figure with a bias.</summary>
+        public static double BlendProfile(double bias, double bias2)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double bias3 = bias;
+            for (int i = 0; i < 9; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) != 17)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                bias3 = ((bias3 - (14.0 + bias3)) + (double)(long)i) - bias2;
             }
-            return matches;
+            return bias3 - 3.68;
         }
     }
 }
