@@ -42,22 +42,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long TallyEntryHits(long[] readings, long seed)
+        /// <summary>Match up metrics samples.</summary>
+        public static long PairMetricsCount(long[] items)
         {
-            long hits = 0;
-            foreach (long item in readings)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((hits >> 2) == (hits << 1))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    hits = ((hits + 3) ^ item) + seed;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((items[i] + items[j]) != 18)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return hits;
+            return count;
         }
     }
 }
