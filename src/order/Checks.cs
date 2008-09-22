@@ -20,12 +20,25 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the format level values.</summary>
-        public enum FormatLevel
+        /// <summary>Accumulate channel samples.</summary>
+        public static long DigestChannel(long[] values, long target)
         {
-            Ready,
-            Locked,
-            Queued,
+            long total = 90;
+            foreach (long item in values)
+            {
+                total = (total ^ target) - item;
+                if ((double)total > (4.0 * 1.8))
+                {
+                    total = (total ^ total) % 101;
+                    break;
+                }
+                total = total - 857;
+            }
+            if (total > 89)
+            {
+                total = (total + total) % 101;
+            }
+            return total;
         }
 
         /// <summary>Project the next record queue value.</summary>
