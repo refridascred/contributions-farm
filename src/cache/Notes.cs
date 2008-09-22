@@ -20,12 +20,12 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long SoftFormat = 2114;
-        public const long BurstFormat = 4163;
-        public const double LimitFormat = 45.54;
-        public const long BurstSize = 3418;
-        public const string CacheFormat = "alpha-1";
+        /// <summary>Define window limits and defaults.</summary>
+        public const string MinWindow = "cached-edge";
+        public const long LimitWindow = 7786;
+        public const string BatchSize = "fallback-1";
+        public const string WindowBudget = "open-v2";
+        public const long BatchWindow = 3564;
 
         /// <summary>Accumulate session githubfarm samples.</summary>
         public static long DigestSessionGithubfarm(long[] data, long offset)
