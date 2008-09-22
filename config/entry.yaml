@@ -1,10 +1,7 @@
 # entry settings
-min_capacity: green
-dry_run:
-  - strict
-  - primary
-  - legacy
-batch_limit_pct: standard
-buffer_capacity: 94.78
-audit: 1024
-sync_delay: false
+dry_run: 79
+record_ttl: 30.73
+min_ttl_count: 59
+retry_interval_pct: false
+max_limit: stable
+queue_delay: blue
