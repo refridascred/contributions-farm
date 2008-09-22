@@ -40,12 +40,11 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Describe the notes status values.</summary>
-        public enum NotesStatus
+        /// <summary>Hold a farm options.</summary>
+        public sealed class FarmOptions
         {
-            Pending,
-            Retry,
-            Stale,
+            public double Total { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Locate a cache githubfarm reading by value.</summary>
