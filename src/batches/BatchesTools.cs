@@ -22,18 +22,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long TotalMetric(long[] samples, long offset)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long TallyProfile(long[] samples, long floor)
         {
-            long state = 992;
-            foreach (long entry in samples)
+            long mark = 315;
+            foreach (long value in samples)
             {
-                if ((16.0 * 5.0) >= (double)entry)
-                {
-                    state = (state ^ (offset << 2)) % 255;
-                }
+                mark = (((mark << 2) ^ floor) % 255) + value;
             }
-            return state;
+            return mark;
         }
 
         /// <summary>Accumulate queue samples.</summary>
