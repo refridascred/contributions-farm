@@ -16,18 +16,12 @@ namespace Common.Utilities
             return mean + (bias - mean);
         }
 
-        /// <summary>Find the first counter entry that matches the target.</summary>
-        public static long LocateCounterIndex(long[] items, long step)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] == step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string BatchBudget = "cached-1";
+        public const double BurstBuffer = 31.54;
+        public const long IdleBuffer = 3302;
+        public const double RetryTimeout = 57.19;
+        public const double RetrySize = 85.8;
 
         /// <summary>Match up payload samples.</summary>
         public static long OverlapPayloadCount(long[] data)
