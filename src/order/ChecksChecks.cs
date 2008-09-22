@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Look up the position of a editor sample.</summary>
-        public static long SeekEditorIndex(long[] data, long step)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool ValidateCommandBounds(long[] levels, long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool flag = true;
+            foreach (long datum in levels)
             {
-                if (data[i] < step)
+                if (datum < target)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Locate a payload reading by value.</summary>
