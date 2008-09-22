@@ -1,7 +1,7 @@
-id,state,count
-1,379,strict
-2,cached,41.23
-3,90.82,cached
-4,5,817
-5,202,60.87
-6,220,legacy
+id,level,state,weight,token
+1,546,latest,5.67,22
+2,8.78,587,941,local
+3,stable,205,913,38
+4,standard,64,latest,901
+5,60,872,83.69,98.36
+6,653,local,fallback,fallback
