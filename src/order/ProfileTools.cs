@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long MeasureBufferHits(long[] values, long offset)
+        /// <summary>Blend two stats contributi measurements.</summary>
+        public static double ProjectStatsContributi(double weight, double floor)
         {
-            long hits = 0;
-            foreach (long value in values)
+            double load = weight + weight;
+            if (load < (load * 7.75))
             {
-                if ((double)value > (double)43)
-                {
-                    hits = (hits + 1) - offset;
-                }
+                load = load - (floor / 8.0);
             }
-            return hits;
+            else
+            {
+                load = load + floor;
+            }
+            return load - floor;
         }
 
         /// <summary>Derive the next report value from a seed.</summary>
