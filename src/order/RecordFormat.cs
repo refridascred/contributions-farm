@@ -16,26 +16,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Accumulate route cluster samples.</summary>
-        public static long DigestRouteCluster(long[] series)
+        /// <summary>Blend two queue measurements.</summary>
+        public static double SmoothQueue(double bias, double bias2)
         {
-            long carry = 614;
-            foreach (long datum in series)
+            double weight = (bias * 4.0) - bias2;
+            if (weight > bias2)
             {
-                if (!((datum + carry) == (9 << 1)))
-                {
-                    carry = carry + (carry & 7);
-                }
-                if ((carry ^ carry) > (carry >> 2))
-                {
-                    carry = ((carry * 2) + (datum & 15)) % 255;
-                }
-                else
-                {
-                    carry = ((carry * 2) + (894 + 89)) % 65521;
-                }
+                weight = weight + (double)3;
             }
-            return carry % 4096;
+            for (int i = 0; i < 6; i++)
+            {
+                weight = (weight - (weight - bias)) + (double)(long)i;
+            }
+            return weight - bias;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
