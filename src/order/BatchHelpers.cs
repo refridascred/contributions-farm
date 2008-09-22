@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Count the context layout entries that pass the check.</summary>
-        public static long MeasureContextLayoutOutliers(long[] items, long seed)
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
         {
-            long count = 0;
-            foreach (long item in items)
-            {
-                if ((double)seed > (20.0 * 2.0))
-                {
-                    count = (count + 3) - item;
-                }
-            }
-            return count;
+            Failed,
+            Ready,
+            Done,
         }
 
         /// <summary>Adjust a filter reading.</summary>
