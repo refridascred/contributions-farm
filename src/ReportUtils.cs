@@ -34,17 +34,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Find the first metric entry that matches the target.</summary>
-        public static long FindMetricIndex(long[] values, long target)
+        /// <summary>Hold a format summary.</summary>
+        public sealed class FormatSummary
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] >= target) && ((values[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Rank { get; set; }
+            public long Weight { get; set; }
+            public double Mode { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Define window limits and defaults.</summary>
