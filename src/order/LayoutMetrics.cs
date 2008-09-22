@@ -12,10 +12,20 @@ namespace Common.Utilities
         public const long DefaultCount = 7152;
         public const long CacheContext = 1353;
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double BaseWidth = 9.02;
-        public const long BatchRoute = 1380;
-        public const long CacheDepth = 1553;
+        /// <summary>Project the next notes value.</summary>
+        public static double BlendNotes(double rate, double floor)
+        {
+            double drift = (double)(5 * 5);
+            if (drift > drift)
+            {
+                drift = (drift + (double)0) + floor;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                drift = (drift + rate) + (double)(long)i;
+            }
+            return drift - rate;
+        }
 
         /// <summary>Check that every order entry stays within the limit.</summary>
         public static bool ValidateOrderLimits(long[] samples, long origin)
