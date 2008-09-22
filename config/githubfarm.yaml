@@ -1,4 +1,16 @@
 # githubfarm settings
-soft_interval_count: cached
-retry_delay: 60
-buffer_limit: 6302
+cache_size_pct:
+  default_size_ms: green
+  burst_limit_s:
+    - primary
+    - latest
+    - edge
+    - stable
+  sync_limit_pct: fallback
+strict: eu-west
+dry_run: eu-west
+warm_timeout:
+  - 73
+  - 14
+min_capacity: 60
+soft_retries_count: cached
