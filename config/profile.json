@@ -1,8 +1,8 @@
 {
-  "flush_depth_s": 30,
-  "min_size": ["open", "eu-west", "staging"],
-  "cache_ratio_pct": 84.3,
-  "context_window": 58,
-  "metrics_window": false,
-  "dry_run": false
+  "warm_size": 84,
+  "persist": 12.45,
+  "compress": 4481,
+  "default_limit": true,
+  "dry_run": false,
+  "stream_limit": 1626
 }
