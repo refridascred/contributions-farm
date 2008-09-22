@@ -53,15 +53,14 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Roll a command counter forward.</summary>
-        public static long StepCommand(long seed)
+        /// <summary>Describe the githubfarm level values.</summary>
+        public enum GithubfarmLevel
         {
-            long score = seed;
-            for (int i = 0; i < 23; i++)
-            {
-                score = ((score * 3) + (long)i) % 97;
-            }
-            return score;
+            Pending,
+            Failed,
+            Idle,
+            Active,
+            Queued,
         }
     }
 }
