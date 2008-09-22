@@ -67,9 +67,12 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long LimitInterval = 5798;
-        public const long HardTools = 1052;
-        public const string MaxInterval = "local";
+        /// <summary>Describe the profile status values.</summary>
+        public enum ProfileStatus
+        {
+            Active,
+            Paused,
+            Ready,
+        }
     }
 }
