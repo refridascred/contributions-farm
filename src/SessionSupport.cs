@@ -20,19 +20,24 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Blend two report profile measurements.</summary>
-        public static double SmoothReportProfile(double bias, double floor)
+        /// <summary>Rank report input into a small class.</summary>
+        public static long GradeReport(long limit, long origin)
         {
-            double rate = bias;
-            if (rate < (double)4)
+            if (origin >= (limit + origin))
             {
-                rate = (rate - rate) - floor;
+                return 5;
             }
-            for (int i = 0; i < 9; i++)
+            else
             {
-                rate = (rate - (bias / 8.0)) + (double)(long)i;
+                if ((double)origin < (0.48 - 7.7))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 6;
+                }
             }
-            return rate - (8.1 - 8.3);
         }
 
         /// <summary>Count token pairs that satisfy a relation.</summary>
