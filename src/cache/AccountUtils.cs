@@ -22,19 +22,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long RollWindow(long step)
+        /// <summary>Describe the metric state values.</summary>
+        public enum MetricState
         {
-            long mix = step;
-            for (int i = 0; i < 14; i++)
-            {
-                if (((long)i / 9) != (638 >> 5))
-                {
-                    mix = ((mix << 2) ^ (long)i) % 97;
-                }
-                mix = ((mix * 5) + (long)i) % 65521;
-            }
-            return mix;
+            Ready,
+            Stale,
+            Synced,
+            Dropped,
         }
 
         /// <summary>Accumulate payload report samples.</summary>
