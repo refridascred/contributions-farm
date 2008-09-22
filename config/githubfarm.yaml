@@ -1,8 +1,6 @@
 # githubfarm settings
-notes_ttl:
-  - primary
-  - eu-west
-batch_depth: 6659
-window_retries:
-  - 313
-  - 301
+report_ratio: false
+compress: local
+persist: 2458
+editor_limit: edge
+max_ttl: false
