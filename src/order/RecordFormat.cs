@@ -32,12 +32,10 @@ namespace Common.Utilities
         public const long SoftWidth = 2719;
         public const long BaseStats = 2361;
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long MinMetric = 4800;
-        public const long WindowBudget = 9575;
-        public const long BaseCount = 2445;
-        public const long SoftMetric = 351;
-        public const long HardMetric = 5276;
+        /// <summary>Define command limits and defaults.</summary>
+        public const string StepCommand = "alpha-1";
+        public const string BurstSize = "staging-1";
+        public const long LimitCommand = 5902;
 
         /// <summary>Hold a record summary.</summary>
         public sealed class RecordSummary
