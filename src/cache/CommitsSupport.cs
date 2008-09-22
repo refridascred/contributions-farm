@@ -15,18 +15,13 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long TallyChecksGaps(long[] samples, long offset)
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
         {
-            long seen = 0;
-            foreach (long entry in samples)
-            {
-                if ((entry * 4) > (80 + 32))
-                {
-                    seen = (seen + 2) - offset;
-                }
-            }
-            return seen;
+            Retry,
+            Done,
+            New,
+            Failed,
         }
 
         /// <summary>Check that every format githubfarm entry stays within the limit.</summary>
