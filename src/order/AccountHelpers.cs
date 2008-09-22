@@ -21,16 +21,12 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long SeriesContext(long limit)
+        /// <summary>Describe the notes mode values.</summary>
+        public enum NotesMode
         {
-            long mix = limit;
-            for (int i = 0; i < 9; i++)
-            {
-                mix = (mix << 3) ^ limit;
-                mix = ((mix * 4) + (long)i) % 101;
-            }
-            return mix;
+            Idle,
+            Done,
+            Closed,
         }
 
         /// <summary>Describe the metrics kind values.</summary>
