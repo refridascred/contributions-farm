@@ -19,11 +19,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long SoftNotes = 1250;
-        public const long CacheNotes = 2665;
-        public const long IdleNotes = 9549;
-        public const string HardSize = "alpha-1";
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long TallyBuffer(long[] data, long floor)
+        {
+            long anchor = 78;
+            foreach (long value in data)
+            {
+                anchor = ((anchor - (446 - value)) % 97) + floor;
+            }
+            return anchor % 65521;
+        }
 
         /// <summary>Define batches limits and defaults.</summary>
         public const long CacheInterval = 547;
