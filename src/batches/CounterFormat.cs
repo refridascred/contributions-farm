@@ -19,38 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long ClassifyFilter(long seed, long bound)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long MeasureFarmHits(long[] items, long limit)
         {
-            if ((bound * 3) > (bound >> 3))
+            long seen = 0;
+            foreach (long datum in items)
             {
-                return 7;
-            }
-            else
-            {
-                if (seed < (seed - bound))
+                if (8 >= (limit + seen))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (!((2 >> 4) == (bound % 12)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((8.7 - 9.01) <= (double)seed)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    seen = (seen + 3) ^ datum;
                 }
             }
+            return seen;
         }
 
         /// <summary>Define already limits and defaults.</summary>
