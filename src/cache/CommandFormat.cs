@@ -33,25 +33,22 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Grade a stream commits value against two limits.</summary>
-        public static long BucketStreamCommits(long limit, long floor)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long DigestMetrics(long[] readings)
         {
-            long prev = limit + floor;
-            if (((1.6 / 7.0) >= (double)prev) || ((limit - limit) <= (limit & 127)))
+            long acc = 117;
+            foreach (long item in readings)
             {
-                return 5;
-            }
-            else
-            {
-                if ((prev + prev) > (floor % 8))
+                if ((double)acc < (11.0 / 9.0))
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 7;
+                    acc = (((acc << 2) ^ (acc + acc)) % 255) ^ item;
                 }
             }
+            if (acc < (-221))
+            {
+                acc = ((acc << 2) ^ (acc & 3)) % 4096;
+            }
+            return acc;
         }
     }
 }
