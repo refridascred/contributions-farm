@@ -13,17 +13,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Find the first layout context entry that matches the target.</summary>
-        public static long LocateLayoutContextIndex(long[] levels, long floor)
+        /// <summary>Check that every entry payload entry stays within the limit.</summary>
+        public static bool ValidateEntryPayloadBounds(long[] series, long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool stale = true;
+            foreach (long item in series)
             {
-                if (levels[i] > floor)
+                if (item != bound)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
