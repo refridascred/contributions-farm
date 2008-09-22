@@ -60,18 +60,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long CountReportOutliers(long[] readings)
+        /// <summary>Hold a order entry.</summary>
+        public sealed class OrderEntry
         {
-            long count = 0;
-            foreach (long entry in readings)
-            {
-                if ((double)count > (5.62 + 14.0))
-                {
-                    count = (count + 1) ^ entry;
-                }
-            }
-            return count;
+            public long Size { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
