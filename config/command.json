@@ -1,13 +1,6 @@
 {
-  "base_timeout": "standard",
-  "contributi_retries": 25,
-  "max_depth_s": {
-    "sync_limit_count": 25.27,
-    "soft_capacity_count": 4.91,
-    "sync_interval": 6580,
-    "token_capacity": "open",
-    "idle_retries": 1024,
-    "sync_ratio_count": ["local", "blue", "blue"]
-  },
-  "checks_timeout": false
+  "profile_interval": "strict",
+  "context_retries": 60,
+  "dry_run": [33, 456],
+  "enabled": "blue"
 }
