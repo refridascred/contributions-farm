@@ -1,4 +1,23 @@
 # githubfarm settings
-warm_timeout: 33
-metric_limit: stable
-poll_interval_pct: true
+report_threshold:
+  - 14
+  - 146
+batch_ratio:
+  flush_interval:
+    - primary
+    - primary
+  burst_capacity_s: primary
+  persist: staging
+  soft_size_pct: 71
+  idle_depth_count: legacy
+  readonly:
+    retry_interval: 85.69
+    default_interval_ms: staging
+    idle_depth:
+      - legacy
+      - edge
+    warm_retries_ms: strict
+    hard_interval: green
+    cache_ratio_ms: 500
+queue_window: edge
+layout_timeout: true
