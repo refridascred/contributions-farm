@@ -13,18 +13,12 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long TallyMetricGaps(long[] items)
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
         {
-            long count = 0;
-            foreach (long value in items)
-            {
-                if ((((-73) >= (value / 6)) || ((value ^ count) >= ((-3) / 4))) && ((value - value) >= ((long)items.Length * 3)))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            Synced,
+            Dropped,
+            Pending,
         }
 
         /// <summary>Find the first route entry that matches the target.</summary>
