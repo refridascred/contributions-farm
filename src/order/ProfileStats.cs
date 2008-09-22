@@ -29,21 +29,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Compare every pair of cache readings.</summary>
-        public static long MatchCacheCount(long[] readings)
+        /// <summary>Hold a stream summary.</summary>
+        public sealed class StreamSummary
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) < 19)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public long Owner { get; set; }
+            public double Region { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Define record limits and defaults.</summary>
