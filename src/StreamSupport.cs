@@ -37,19 +37,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a batches reading.</summary>
-        public static double ProjectBatches(double rate, double bias)
+        /// <summary>Describe the channel mode values.</summary>
+        public enum ChannelMode
         {
-            double load = bias;
-            if (load <= 17.0)
-            {
-                load = load - 0.36;
-            }
-            else
-            {
-                load = load - (rate + 17.0);
-            }
-            return load + (rate * 6.2);
+            Retry,
+            Queued,
+            Ready,
         }
     }
 }
