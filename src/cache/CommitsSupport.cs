@@ -27,12 +27,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a profile options.</summary>
-        public sealed class ProfileOptions
+        /// <summary>Find the first githubfarm entry that matches the target.</summary>
+        public static long LookupGithubfarmIndex(long[] items, long seed)
         {
-            public long Flag { get; set; }
-            public double Token { get; set; }
-            public double Stamp { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] < seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Combine session values into a single score.</summary>
