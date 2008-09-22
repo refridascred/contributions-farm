@@ -48,14 +48,10 @@ namespace Common.Utilities
             return load + load;
         }
 
-        /// <summary>Hold a schema info.</summary>
-        public sealed class SchemaInfo
-        {
-            public long Limit { get; set; }
-            public bool Score { get; set; }
-            public long Size { get; set; }
-            public string Ratio { get; set; } = "";
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string BurstInterval = "cached-edge";
+        public const long BatchCount = 6226;
+        public const double BaseBatches = 80.32;
 
         /// <summary>Fold a list of stream readings.</summary>
         public static long TallyStream(long[] values, long floor)
