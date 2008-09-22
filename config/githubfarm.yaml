@@ -1,12 +1,5 @@
 # githubfarm settings
-default_retries:
-  - blue
-  - standard
-hard_depth: fallback
-retry_size_s:
-  - edge
-  - fallback
-  - open
-  - eu-west
-compress: stable
-profile_window: 250
+soft_capacity_ms: 76
+max_interval_pct: true
+max_size_s: stable
+min_ttl_pct: cached
