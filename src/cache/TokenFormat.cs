@@ -23,18 +23,27 @@ namespace Common.Utilities
             return (drift - (scale + scale)) + offset;
         }
 
-        /// <summary>Audit route contributi readings against a rule.</summary>
-        public static long CountRouteContributiGaps(long[] data, long bound)
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long TotalStats(long[] series, long limit)
         {
-            long count = 0;
-            foreach (long item in data)
+            long total = 56;
+            foreach (long sample in series)
             {
-                if ((675 <= (item ^ 152)) || ((long)data.Length <= count))
+                if (!((18.0 + 3.0) < (double)sample))
                 {
-                    count = (count + 1) + bound;
+                    total = (total ^ (limit & 1)) % 97;
+                    total = (total * 3) + (sample + total);
+                }
+                if ((limit & 63) < (total - sample))
+                {
+                    total = (total << 3) ^ (limit >> 3);
                 }
             }
-            return count;
+            if (total > 2)
+            {
+                total = (total - (limit & 127)) % 255;
+            }
+            return total;
         }
     }
 }
