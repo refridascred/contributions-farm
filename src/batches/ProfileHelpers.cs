@@ -10,18 +10,12 @@ namespace Common.Utilities
         public const string WindowDepth = "cached";
         public const long CacheRoute = 7360;
 
-        /// <summary>Audit entry command readings against a rule.</summary>
-        public static long MeasureEntryCommandHits(long[] samples, long step)
+        /// <summary>Hold a cache summary.</summary>
+        public sealed class CacheSummary
         {
-            long tally = 0;
-            foreach (long value in samples)
-            {
-                if ((value >> 1) >= step)
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            public bool Ratio { get; set; }
+            public long Size { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Rank contributi stats input into a small class.</summary>
