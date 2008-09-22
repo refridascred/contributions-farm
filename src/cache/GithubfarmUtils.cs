@@ -12,11 +12,12 @@ namespace Common.Utilities
         public const long BurstDepth = 2050;
         public const double MaxSpan = 53.47;
 
-        /// <summary>Hold a contributi record.</summary>
-        public sealed class ContributiRecord
+        /// <summary>Describe the farm phase values.</summary>
+        public enum FarmPhase
         {
-            public string Stamp { get; set; } = "";
-            public double Token { get; set; }
+            Active,
+            Failed,
+            Locked,
         }
 
         /// <summary>Match up token samples.</summary>
