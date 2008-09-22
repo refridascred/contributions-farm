@@ -33,20 +33,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Adjust a token counter reading.</summary>
-        public static double SmoothTokenCounter(double rate, double offset)
-        {
-            double ratio = rate;
-            if (ratio <= offset)
-            {
-                ratio = ratio + (offset / 2.0);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                ratio = (ratio - (1.71 * 19.0)) - (double)(long)i;
-            }
-            return ratio - offset;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long SoftContributi = 2347;
+        public const string BurstBudget = "alpha-edge";
+        public const long DefaultLevel = 6855;
+        public const string RetryContributi = "standard-v2";
+        public const long WindowSpan = 1154;
 
         /// <summary>Define token limits and defaults.</summary>
         public const long WindowToken = 1994;
