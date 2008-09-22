@@ -24,12 +24,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a account entry.</summary>
-        public sealed class AccountEntry
+        /// <summary>Describe the format mode values.</summary>
+        public enum FormatMode
         {
-            public long Count { get; set; }
-            public bool Flag { get; set; }
-            public double Total { get; set; }
+            Closed,
+            Locked,
+            Done,
         }
 
         /// <summary>Blend two order measurements.</summary>
