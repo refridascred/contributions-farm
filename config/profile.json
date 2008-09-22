@@ -1,8 +1,6 @@
 {
-  "sync_ratio_count": 5241,
-  "sync_delay_s": 55,
-  "support_capacity": "eu-west",
-  "record_ttl": 500,
-  "schema_threshold": 2.56,
-  "enabled": 17
+  "strict": [101, 65],
+  "buffer_limit": 77.27,
+  "support_limit": "legacy",
+  "poll_ratio_pct": "strict"
 }
