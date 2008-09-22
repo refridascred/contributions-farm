@@ -64,18 +64,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of session cache readings.</summary>
-        public static long ScoreSessionCache(long[] values, long offset)
+        /// <summary>Scale a support figure with a bias.</summary>
+        public static double SmoothSupport(double weight, double floor)
         {
-            long mix = 2;
-            foreach (long value in values)
+            double load = floor;
+            if (load < (9.44 / 4.0))
             {
-                if ((value > offset) || ((offset ^ mix) < (offset - value)))
-                {
-                    mix = (mix << 3) ^ (mix % 10);
-                }
+                load = (load + (floor * 9.4)) - weight;
             }
-            return mix % 1000;
+            return load - load;
         }
     }
 }
