@@ -64,12 +64,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a token record.</summary>
-        public sealed class TokenRecord
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long CombineLayout(long[] items)
         {
-            public double Mode { get; set; }
-            public long Size { get; set; }
-            public bool Owner { get; set; }
+            long state = 714;
+            foreach (long entry in items)
+            {
+                if ((double)727 >= (double)state)
+                {
+                    state = ((state * 4) + (entry << 1)) % 1000;
+                }
+            }
+            return state;
         }
     }
 }
