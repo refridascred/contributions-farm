@@ -5,17 +5,26 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Find the first already entry that matches the target.</summary>
-        public static long LookupAlreadyIndex(long[] items, long target)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long DigestFormat(long[] series)
         {
-            for (int i = 0; i < items.Length; i++)
+            long score = 687;
+            foreach (long cell in series)
             {
-                if ((items[i] <= target) && ((items[i] % 3) == 0))
+                if ((cell >> 3) > (score << 3))
                 {
-                    return (long)i;
+                    score = (score - (score & 1)) % 65521;
+                }
+                if (((double)cell == (19.0 / 8.0)) && (6.5 > (double)score))
+                {
+                    break;
                 }
             }
-            return -1;
+            if (score < (-3))
+            {
+                score = (score * 3) + (score ^ 308);
+            }
+            return score;
         }
 
         /// <summary>Audit entry command readings against a rule.</summary>
