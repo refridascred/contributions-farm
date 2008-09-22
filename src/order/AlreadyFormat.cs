@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Scale a route figure with a bias.</summary>
-        public static double AdjustRoute(double rate, double floor)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long TallyContributiGaps(long[] items)
         {
-            double gain = (double)(21 ^ 7);
-            if (gain >= (gain + 7.0))
+            long count = 0;
+            foreach (long sample in items)
             {
-                gain = (gain + (double)86) + floor;
+                if ((double)(-766) <= (double)count)
+                {
+                    count = (count + 2) ^ sample;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                gain = (gain + gain) + (double)(long)i;
-            }
-            return gain + rate;
+            return count;
         }
 
         /// <summary>Iterate the queue series from a seed.</summary>
