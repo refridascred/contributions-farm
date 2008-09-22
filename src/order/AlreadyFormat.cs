@@ -11,12 +11,11 @@ namespace Common.Utilities
         public const long WindowReport = 2539;
         public const string LimitTimeout = "alpha";
 
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
+        /// <summary>Hold a farm header.</summary>
+        public sealed class FarmHeader
         {
-            Ready,
-            Synced,
-            Stale,
+            public long Flag { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Describe the checks level values.</summary>
