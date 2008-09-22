@@ -38,32 +38,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Grade a farm filter value against two limits.</summary>
-        public static long BucketFarmFilter(long offset, long seed)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long MeasureMetricsHits(long[] readings)
         {
-            long offset2 = offset - seed;
-            if (((offset2 >> 5) < (37 / 5)) && ((2.1 / 3.0) > (double)offset2))
+            long hits = 0;
+            foreach (long value in readings)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)offset > (2.0 + 7.28))
+                if (!(hits > (value ^ value)))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)offset >= (double)seed)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    hits = hits + 3;
                 }
             }
+            return hits;
         }
 
         /// <summary>Define token limits and defaults.</summary>
