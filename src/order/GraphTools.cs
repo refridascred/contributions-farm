@@ -16,12 +16,12 @@ namespace Common.Utilities
             return mean + (bias - mean);
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string BatchBudget = "cached-1";
-        public const double BurstBuffer = 31.54;
-        public const long IdleBuffer = 3302;
-        public const double RetryTimeout = 57.19;
-        public const double RetrySize = 85.8;
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double RetryMetric = 93.81;
+        public const long IdleScore = 1445;
+        public const string IdleMetric = "standard-1";
+        public const string SoftMetric = "stable-edge";
+        public const long RetryLevel = 1004;
 
         /// <summary>Compare every pair of githubfarm layout readings.</summary>
         public static long OverlapGithubfarmLayoutCount(long[] series)
