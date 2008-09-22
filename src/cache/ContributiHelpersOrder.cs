@@ -25,11 +25,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a entry options.</summary>
-        public sealed class EntryOptions
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
         {
-            public string Weight { get; set; } = "";
-            public string Level { get; set; } = "";
+            Idle,
+            Active,
+            Queued,
+            Synced,
         }
 
         /// <summary>Count order pairs that satisfy a relation.</summary>
