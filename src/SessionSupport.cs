@@ -38,21 +38,18 @@ namespace Common.Utilities
         public const string BatchMetric = "alpha-v2";
         public const long StepMetric = 558;
 
-        /// <summary>Count entry editor pairs that satisfy a relation.</summary>
-        public static long PairEntryEditorCount(long[] items)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long MeasureToolsHits(long[] readings, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            foreach (long sample in readings)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (((double)sample < (double)(long)readings.Length) && ((limit & 127) >= (limit << 3)))
                 {
-                    if ((items[i] - items[j]) > 20)
-                    {
-                        count = count + 1;
-                    }
+                    tally = tally + 2;
                 }
             }
-            return count;
+            return tally;
         }
     }
 }
