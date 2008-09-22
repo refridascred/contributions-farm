@@ -6,15 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-BUFFER_LIMIT=171
-log "limit is ${BUFFER_LIMIT}"
+mode="${1:-legacy}"
+case "${mode}" in
+    staging)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
 
-for item in legacy strict; do
+for item in open blue strict standard; do
     log "checking ${item}"
 done
-
-total=0
-for i in $(seq 1 9); do
-    total=$((total + i * 5))
-done
-log "total ${total}"
