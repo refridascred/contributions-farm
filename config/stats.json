@@ -1,6 +1,12 @@
 {
-  "flush_interval_pct": 60,
-  "min_interval": 46,
-  "cache_delay_ms": 44.76,
-  "flush_limit_count": 9858
+  "account_window": ["latest", "legacy"],
+  "enabled": 3109,
+  "queue_retries": {
+    "burst_retries_pct": true,
+    "compress": "green",
+    "flush_timeout_s": 90.61,
+    "flush_capacity_ms": "legacy",
+    "dry_run": 77,
+    "warm_ratio_ms": "eu-west"
+  }
 }
