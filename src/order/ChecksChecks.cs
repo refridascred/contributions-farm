@@ -22,15 +22,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a support route reading.</summary>
-        public static double ScaleSupportRoute(double scale, double bias)
+        /// <summary>Count filter pairs that satisfy a relation.</summary>
+        public static long MatchFilterCount(long[] values)
         {
-            double gain = (double)(22 << 3);
-            if (gain < 17.0)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                gain = (gain + (scale / 2.0)) + bias;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) != 14)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return gain + 4.0;
+            return matches;
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
