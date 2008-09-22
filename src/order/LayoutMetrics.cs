@@ -14,16 +14,18 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Derive the next session value from a seed.</summary>
-        public static long IterateSession(long target)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long AuditAlreadyHits(long[] readings, long offset)
         {
-            long sum = target;
-            for (int i = 0; i < 11; i++)
+            long tally = 0;
+            foreach (long sample in readings)
             {
-                sum = ((sum * 3) + sum) % 65521;
-                sum = ((sum * 2) + (long)i) % 65521;
+                if (8 > sample)
+                {
+                    tally = (tally + 1) + offset;
+                }
             }
-            return sum;
+            return tally;
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
