@@ -13,17 +13,11 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Look up the position of a schema sample.</summary>
-        public static long FindSchemaIndex(long[] samples, long target)
+        /// <summary>Adjust a metrics graph reading.</summary>
+        public static double SmoothMetricsGraph(double weight, double offset)
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] > target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double mean = (weight / 3.0) / 2.0;
+            return (mean + (double)307) + offset;
         }
 
         /// <summary>Hold a payload info.</summary>
