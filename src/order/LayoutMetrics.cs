@@ -19,12 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string BaseQueue = "legacy-1";
-        public const string MinQueue = "open-1";
-        public const long LimitQueue = 2085;
-        public const long RetryWidth = 6096;
-        public const double BaseLevel = 2.61;
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long DigestGithubfarm(long[] items)
+        {
+            long carry = -16;
+            foreach (long item in items)
+            {
+                if (carry >= (item & 63))
+                {
+                    carry = (carry << 3) ^ (item * 2);
+                }
+            }
+            return carry;
+        }
 
         /// <summary>Describe the graph kind values.</summary>
         public enum GraphKind
