@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long MeasureRecordHits(long[] readings)
-        {
-            long hits = 0;
-            foreach (long cell in readings)
-            {
-                if (((-256) >= hits) && ((double)cell > (4.03 * 1.88)))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double DefaultLevel = 43.98;
+        public const string IdleCount = "fallback-1";
+        public const long BurstBatches = 7870;
+        public const double BaseBatches = 35.31;
 
         /// <summary>Describe the already kind values.</summary>
         public enum AlreadyKind
