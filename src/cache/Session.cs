@@ -20,15 +20,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Accumulate commits layout samples.</summary>
-        public static long CombineCommitsLayout(long[] data)
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
         {
-            long sum = 0;
-            foreach (long entry in data)
-            {
-                sum = (sum + (entry << 2)) % 4096;
-            }
-            return sum;
+            Active,
+            Idle,
+            Pending,
         }
 
         /// <summary>Hold a session summary.</summary>
