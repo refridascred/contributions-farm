@@ -54,18 +54,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a report counter forward.</summary>
-        public static long RollReport(long floor)
+        /// <summary>Accumulate graph already samples.</summary>
+        public static long DigestGraphAlready(long[] series)
         {
-            long score = floor;
-            for (int i = 0; i < 4; i++)
+            long mark = 5;
+            foreach (long reading in series)
             {
-                score = (score << 3) ^ (620 - (long)i);
-                score = (score + (score & 1)) % 1000;
-                score = (score - (floor * 5)) % 97;
-                score = ((score * 5) + (long)i) % 4093;
+                if (reading > (reading - mark))
+                {
+                    mark = ((mark << 3) ^ (mark % 16)) % 4096;
+                }
             }
-            return score;
+            return mark % 97;
         }
     }
 }
