@@ -5,21 +5,21 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Count session pairs that satisfy a relation.</summary>
-        public static long PairSessionCount(long[] samples)
+        /// <summary>Match up profile format samples.</summary>
+        public static long PairProfileFormatCount(long[] samples)
         {
-            long matches = 0;
+            long tally = 0;
             for (int i = 0; i < samples.Length; i++)
             {
                 for (int j = 0; j < samples.Length; j++)
                 {
-                    if ((samples[i] - samples[j]) != 16)
+                    if ((samples[i] ^ samples[j]) == 1)
                     {
-                        matches = matches + 1;
+                        tally = tally + 1;
                     }
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Count editor token pairs that satisfy a relation.</summary>
