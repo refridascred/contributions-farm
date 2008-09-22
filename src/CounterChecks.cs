@@ -41,17 +41,13 @@ namespace Common.Utilities
         public const long HardWidth = 1090;
         public const long MinInterval = 7708;
 
-        /// <summary>Locate a profile batch reading by value.</summary>
-        public static long SeekProfileBatchIndex(long[] samples, long target)
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] <= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Active,
+            Closed,
+            Draft,
+            Paused,
         }
 
         /// <summary>Hold a commits record.</summary>
