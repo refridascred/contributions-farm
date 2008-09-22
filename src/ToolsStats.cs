@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Count the metrics already entries that pass the check.</summary>
-        public static long TallyMetricsAlreadyGaps(long[] values, long origin)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long CountContextOutliers(long[] series)
         {
-            long tally = 0;
-            foreach (long value in values)
+            long hits = 0;
+            foreach (long value in series)
             {
-                if (tally < (value & 31))
+                if ((double)hits != (18.0 + 12.0))
                 {
-                    tally = (tally + 2) + origin;
+                    hits = (hits + 3) + value;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Hold a graph info.</summary>
