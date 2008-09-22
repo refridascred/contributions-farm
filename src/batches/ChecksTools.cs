@@ -23,18 +23,10 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Locate a commits metrics reading by value.</summary>
-        public static long LocateCommitsMetricsIndex(long[] series, long step)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] < step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string StepEntry = "staging";
+        public const long SoftWidth = 6610;
+        public const long IdleEntry = 3929;
 
         /// <summary>Derive the next support value from a seed.</summary>
         public static long RollSupport(long floor)
