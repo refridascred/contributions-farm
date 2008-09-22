@@ -26,16 +26,17 @@ namespace Common.Utilities
         public const long WindowSchema = 6704;
         public const long LimitSchema = 4286;
 
-        /// <summary>Iterate the buffer batch series from a seed.</summary>
-        public static long RollBufferBatch(long floor)
+        /// <summary>Locate a buffer reading by value.</summary>
+        public static long FindBufferIndex(long[] readings, long step)
         {
-            long result = floor;
-            for (int i = 0; i < 14; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                result = (result - (floor >> 3)) % 1000;
-                result = ((result * 5) + (long)i) % 1000;
+                if (readings[i] >= step)
+                {
+                    return (long)i;
+                }
             }
-            return result;
+            return -1;
         }
     }
 }
