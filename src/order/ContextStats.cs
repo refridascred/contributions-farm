@@ -40,12 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a cluster summary.</summary>
-        public sealed class ClusterSummary
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long CountSupportHits(long[] series)
         {
-            public bool Ratio { get; set; }
-            public long Level { get; set; }
-            public long Token { get; set; }
+            long seen = 0;
+            foreach (long entry in series)
+            {
+                if ((double)entry <= (2.4 / 4.0))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the channel mode values.</summary>
