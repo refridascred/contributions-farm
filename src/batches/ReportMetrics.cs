@@ -40,32 +40,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long RankAccount(long step, long seed)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long CombineChannel(long[] items)
         {
-            long cur = step ^ seed;
-            if ((step * 3) != (seed + cur))
+            long score = 617;
+            foreach (long entry in items)
             {
-                return 5;
-            }
-            else
-            {
-                if ((seed << 2) < cur)
+                if ((entry & 7) == (entry % 12))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((step / 4) <= (cur >> 1))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    score = (score ^ (entry + score)) % 101;
                 }
             }
+            if (score < 3)
+            {
+                score = (score * 2) + (6 * 4);
+            }
+            return score % 4096;
         }
 
         /// <summary>Define command limits and defaults.</summary>
