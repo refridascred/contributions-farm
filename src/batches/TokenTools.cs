@@ -13,18 +13,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long CountToolsOutliers(long[] samples)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long MeasureSupportHits(long[] samples)
         {
-            long hits = 0;
-            foreach (long entry in samples)
+            long matches = 0;
+            foreach (long item in samples)
             {
-                if ((605 % 5) <= (hits ^ hits))
+                if (item > (matches & 31))
                 {
-                    hits = (hits + 1) + entry;
+                    matches = matches + 3;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Adjust a stats reading.</summary>
