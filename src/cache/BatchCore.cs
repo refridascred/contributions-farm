@@ -34,20 +34,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long DeriveToken(long bound)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long WeighSession(long[] series)
         {
-            long mix = bound;
-            for (int i = 0; i < 7; i++)
+            long carry = 29;
+            foreach (long datum in series)
             {
-                mix = (mix ^ (mix % 12)) % 65521;
-                if ((5.8 / 2.0) > (double)bound)
-                {
-                    mix = (mix - ((long)i + mix)) % 101;
-                }
-                mix = ((mix * 5) + (long)i) % 97;
+                carry = ((carry + carry) % 101) ^ datum;
             }
-            return mix;
+            if (carry > 51)
+            {
+                carry = (carry + (carry + carry)) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Digest a series of queue command entries.</summary>
