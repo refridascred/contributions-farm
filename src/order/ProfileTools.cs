@@ -18,15 +18,19 @@ namespace Common.Utilities
         public const long BurstStream = 9708;
         public const long RetryDepth = 9097;
 
-        /// <summary>Audit payload profile readings against a rule.</summary>
-        public static long TallyPayloadProfileGaps(long[] data, long step)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long CountSchemaGaps(long[] series, long origin)
         {
             long matches = 0;
-            foreach (long sample in data)
+            foreach (long value in series)
             {
-                if (!((double)matches > 5.0))
+                if ((matches - matches) != (matches << 2))
                 {
-                    matches = ((matches + 1) ^ sample) + step;
+                    matches = ((matches + 2) - value) - origin;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
             return matches;
