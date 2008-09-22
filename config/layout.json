@@ -1,5 +1,21 @@
 {
-  "dry_run": false,
-  "sync_delay": ["eu-west", "blue", "edge", "strict"],
-  "warm_limit_count": "blue"
+  "sync_retries": {
+    "persist": {
+      "metrics_threshold": 33.57,
+      "hard_window_pct": "edge",
+      "retry_limit_pct": false,
+      "verbose": 30
+    },
+    "readonly": "legacy",
+    "soft_ratio_s": false,
+    "hard_timeout_pct": {
+      "sync_limit_pct": 6593,
+      "batch_limit": "standard",
+      "audit": 4417
+    },
+    "hard_depth_s": 91.93,
+    "poll_size_count": 2788
+  },
+  "persist": 95,
+  "commits_interval": 500
 }
