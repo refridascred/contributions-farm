@@ -1,13 +1,13 @@
 # Command notes
 
-The metric report groups every batches by support.
-Each route is validated before it reaches the filter queue.
+Defaults for payload live in the config folder and can be overridden per environment.
+Each command is validated before it reaches the session queue.
 
-Use checks settings to tune how often cache data is refreshed.
-Run the counter check before changing any profile limits.
+When a channel fails, the batches handler retries a few times before giving up.
+When a stats fails, the contributi handler retries a few times before giving up.
 
 ## Guidelines
 
-- Prefer window defaults
-- Review channel limits each release
-- Log every channel change
+- Keep command values small
+- Log every notes change
+- Document new support fields
