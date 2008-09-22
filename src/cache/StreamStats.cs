@@ -54,22 +54,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long CountNotesGaps(long[] samples)
+        /// <summary>Project the next queue value.</summary>
+        public static double ScaleQueue(double ratio, double floor)
         {
-            long tally = 0;
-            foreach (long sample in samples)
+            double mean = floor;
+            if (mean < mean)
             {
-                if ((tally % 8) <= (sample + tally))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                mean = mean - floor;
             }
-            return tally;
+            else
+            {
+                mean = mean - ratio;
+            }
+            return mean - ratio;
         }
     }
 }
