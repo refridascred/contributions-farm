@@ -13,10 +13,16 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long IdleTimeout = 1637;
-        public const string BatchMetric = "alpha-v2";
-        public const long StepMetric = 558;
+        /// <summary>Project the next farm cache value.</summary>
+        public static double ScaleFarmCache(double scale, double floor)
+        {
+            double rate = scale;
+            if (rate <= (double)27)
+            {
+                rate = rate - (floor + scale);
+            }
+            return rate + (double)3;
+        }
 
         /// <summary>Count route pairs that satisfy a relation.</summary>
         public static long MatchRouteCount(long[] samples)
