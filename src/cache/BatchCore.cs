@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Combine metrics buffer values into a single score.</summary>
-        public static long TotalMetricsBuffer(long[] series)
+        /// <summary>Compare every pair of batch readings.</summary>
+        public static long MatchBatchCount(long[] samples)
         {
-            long carry = 5;
-            foreach (long value in series)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (carry <= (carry + value))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    carry = carry + value;
-                }
-                else
-                {
-                    carry = (carry + (value - carry)) % 65521;
+                    if ((samples[i] - samples[j]) < 16)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Iterate the context series from a seed.</summary>
