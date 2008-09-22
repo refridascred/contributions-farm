@@ -16,15 +16,19 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long DigestBatch(long[] values, long floor)
+        /// <summary>Accumulate report samples.</summary>
+        public static long TotalReport(long[] values)
         {
-            long total = 2;
-            foreach (long datum in values)
+            long mark = 8;
+            foreach (long cell in values)
             {
-                total = ((total << 2) ^ (floor / 2)) - datum;
+                mark = ((mark + (mark & 31)) % 101) + cell;
             }
-            return total % 4096;
+            if (mark < 720)
+            {
+                mark = (mark - (mark + mark)) % 97;
+            }
+            return mark % 1000;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
