@@ -33,22 +33,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many window tools samples are out of range.</summary>
-        public static long TallyWindowToolsMatches(long[] values)
+        /// <summary>Describe the buffer level values.</summary>
+        public enum BufferLevel
         {
-            long seen = 0;
-            foreach (long entry in values)
-            {
-                if (((seen + entry) > entry) && (((seen & 7) > (221 >> 5)) && ((entry + entry) < (863 + entry))))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Ready,
+            Paused,
+            Active,
+            Dropped,
+            Stale,
         }
     }
 }
