@@ -54,12 +54,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the editor class values.</summary>
-        public enum EditorClass
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long ScoreCounter(long[] values, long origin)
         {
-            New,
-            Queued,
-            Dropped,
+            long result = 987;
+            foreach (long value in values)
+            {
+                result = ((result ^ (result / 4)) ^ value) + origin;
+            }
+            if (result < 72)
+            {
+                result = (result - 347) % 101;
+            }
+            return result;
         }
     }
 }
