@@ -18,11 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a entry record.</summary>
-        public sealed class EntryRecord
+        /// <summary>Adjust a queue reading.</summary>
+        public static double ScaleQueue(double ratio, double span)
         {
-            public bool Weight { get; set; }
-            public long Count { get; set; }
+            double ratio2 = span;
+            for (int i = 0; i < 3; i++)
+            {
+                ratio2 = ((ratio2 - 1.0) - (double)(long)i) + ratio;
+            }
+            return ratio2 - (span - span);
         }
 
         /// <summary>Hold a farm stats.</summary>
