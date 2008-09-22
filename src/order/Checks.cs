@@ -43,12 +43,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
+        /// <summary>Hold a commits summary.</summary>
+        public sealed class CommitsSummary
         {
-            Active,
-            Closed,
-            Synced,
+            public string Total { get; set; } = "";
+            public long Mode { get; set; }
         }
     }
 }
