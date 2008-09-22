@@ -1,11 +1,6 @@
-id,level,count,score
-1,legacy,green,426
-2,eu-west,blue,489
-3,250,83.02,local
-4,37.01,legacy,355
-5,15.85,blue,777
-6,34.46,337,legacy
-7,blue,eu-west,44.02
-8,81.33,staging,7.63
-9,66.07,0.39,62
-10,8.69,85.87,stable
+id,rank,score
+1,open,101
+2,87.96,green
+3,90.73,blue
+4,339,open
+5,22.55,fallback
