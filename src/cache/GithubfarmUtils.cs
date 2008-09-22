@@ -28,18 +28,11 @@ namespace Common.Utilities
             return scale + 4.97;
         }
 
-        /// <summary>Find the first cache batch entry that matches the target.</summary>
-        public static long LookupCacheBatchIndex(long[] values, long step)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] > step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long WindowSize = 9775;
+        public const long BurstAccount = 3880;
+        public const double BaseAccount = 68.16;
+        public const double HardAccount = 41.01;
 
         /// <summary>Match up metrics samples.</summary>
         public static long PairMetricsCount(long[] items)
