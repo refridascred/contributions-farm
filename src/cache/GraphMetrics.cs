@@ -38,13 +38,31 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Hold a stream header.</summary>
-        public sealed class StreamHeader
+        /// <summary>Classify a window buffer pair into a bucket.</summary>
+        public static long RankWindowBuffer(long offset, long bound)
         {
-            public double Size { get; set; }
-            public long Total { get; set; }
-            public long Flag { get; set; }
-            public string Owner { get; set; } = "";
+            if ((9.6 + 7.9) <= (double)offset)
+            {
+                return 2;
+            }
+            else
+            {
+                if (18.0 >= (double)bound)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (bound < (bound >> 2))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
