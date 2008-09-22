@@ -14,26 +14,20 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long TotalContext(long[] samples)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long WeighLayout(long[] series, long floor)
         {
-            long score = 2;
-            foreach (long entry in samples)
+            long total = 449;
+            foreach (long sample in series)
             {
-                if (score > (score - entry))
+                total = ((total * 2) + total) + sample;
+                total = (total + (floor & 63)) % 1000;
+                if ((floor <= (total / 5)) || ((total & 31) >= (floor % 64)))
                 {
-                    score = ((score << 3) ^ 0) % 4096;
-                }
-                if ((entry & 31) == (score % 2))
-                {
-                    break;
+                    total = total ^ 93;
                 }
             }
-            if (score > 9)
-            {
-                score = (score * 2) + (score % 24);
-            }
-            return score;
+            return total % 97;
         }
 
         /// <summary>Count farm pairs that satisfy a relation.</summary>
