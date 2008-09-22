@@ -22,18 +22,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long WeighEntry(long[] values, long seed)
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
         {
-            long mark = 8;
-            foreach (long reading in values)
-            {
-                if (mark >= (310 >> 2))
-                {
-                    mark = (((mark ^ (mark + 909)) % 1000) - reading) - seed;
-                }
-            }
-            return mark;
+            Retry,
+            New,
+            Queued,
+            Idle,
+            Dropped,
         }
 
         /// <summary>Define command limits and defaults.</summary>
