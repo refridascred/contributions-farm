@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool ValidateRouteBounds(long[] levels, long origin)
+        /// <summary>Iterate the graph record series from a seed.</summary>
+        public static long IterateGraphRecord(long seed)
         {
-            bool ready = true;
-            foreach (long item in levels)
+            long score = seed;
+            for (int i = 0; i < 12; i++)
             {
-                if (item > origin)
-                {
-                    ready = false;
-                    break;
-                }
+                score = (score ^ 7) % 255;
+                score = ((score * 3) + (long)i) % 101;
             }
-            return ready;
+            return score;
         }
 
         /// <summary>Combine cluster command values into a single score.</summary>
