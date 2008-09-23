@@ -6,22 +6,18 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in strict local legacy; do
-    log "checking ${item}"
+total=0
+for i in $(seq 1 9); do
+    total=$((total + i * 1))
 done
+log "total ${total}"
 
-mode="${1:-local}"
+mode="${1:-blue}"
 case "${mode}" in
-    eu-west)
+    stable)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
-
-total=0
-for i in $(seq 1 9); do
-    total=$((total + i * 4))
-done
-log "total ${total}"
