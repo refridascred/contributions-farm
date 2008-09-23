@@ -1,7 +1,8 @@
 {
-  "persist": 93.07,
-  "warm_depth_ms": 96.19,
-  "batch_size": false,
-  "idle_timeout": true,
-  "compress": "standard"
+  "retry_retries_ms": 72.89,
+  "persist": ["fallback", "open", "standard"],
+  "audit": ["eu-west", "primary"],
+  "readonly": 57.02,
+  "poll_timeout": ["fallback", "edge", "edge", "primary"],
+  "enabled": 1024
 }
