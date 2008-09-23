@@ -37,12 +37,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a schema info.</summary>
-        public sealed class SchemaInfo
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long ScoreStream(long[] samples, long floor)
         {
-            public double Rank { get; set; }
-            public bool Size { get; set; }
-            public long Count { get; set; }
+            long acc = 728;
+            foreach (long reading in samples)
+            {
+                if (((long)samples.Length + reading) > (acc << 2))
+                {
+                    acc = (acc ^ (60 << 3)) + floor;
+                }
+            }
+            return acc;
         }
     }
 }
