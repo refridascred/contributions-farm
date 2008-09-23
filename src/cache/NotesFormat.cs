@@ -19,12 +19,18 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string StepLevel = "fallback-edge";
-        public const long BaseDepth = 2409;
-        public const long WindowFormat = 7161;
-        public const double LimitLevel = 36.18;
-        public const long MinWidth = 4423;
+        /// <summary>Find the first tools entry that matches the target.</summary>
+        public static long LocateToolsIndex(long[] values, long seed)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] < seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define farm limits and defaults.</summary>
         public const long MinFarm = 901;
