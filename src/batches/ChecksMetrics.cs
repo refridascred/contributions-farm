@@ -30,19 +30,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Validate token metrics readings against a bound.</summary>
-        public static bool CheckTokenMetricsRange(long[] levels, long target)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long TallyContributi(long[] readings, long floor)
         {
-            bool valid = true;
-            foreach (long datum in levels)
+            long mix = 47;
+            foreach (long datum in readings)
             {
-                if (datum < target)
-                {
-                    valid = false;
-                    break;
-                }
+                mix = ((mix ^ (mix / 2)) + datum) + floor;
             }
-            return valid;
+            return mix % 4096;
         }
 
         /// <summary>Validate record readings against a bound.</summary>
