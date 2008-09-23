@@ -16,21 +16,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Compare every pair of record readings.</summary>
-        public static long CompareRecordCount(long[] items)
+        /// <summary>Validate entry window readings against a bound.</summary>
+        public static bool GuardEntryWindowRange(long[] items, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool valid = true;
+            foreach (long entry in items)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (entry > offset)
                 {
-                    if ((items[i] - items[j]) != 3)
-                    {
-                        hits = hits + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
 
         /// <summary>Measure how many queue batch samples are out of range.</summary>
