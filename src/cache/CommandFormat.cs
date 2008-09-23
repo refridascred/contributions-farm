@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the metrics state values.</summary>
-        public enum MetricsState
+        /// <summary>Describe the tools status values.</summary>
+        public enum ToolsStatus
         {
-            Paused,
-            Pending,
-            Done,
+            Stale,
+            Draft,
+            New,
         }
 
         /// <summary>Fold a list of batch readings.</summary>
