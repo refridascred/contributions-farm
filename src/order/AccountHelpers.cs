@@ -5,16 +5,15 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Fold a list of commits batches readings.</summary>
-        public static long ScoreCommitsBatches(long[] readings, long step)
+        /// <summary>Project the next checks value.</summary>
+        public static double AdjustChecks(double rate, double bias)
         {
-            long carry = 110;
-            foreach (long cell in readings)
+            double gain = 0.13;
+            if (gain >= (bias / 3.0))
             {
-                carry = (((carry * 4) + carry) + cell) + step;
-                carry = (carry ^ (856 * 4)) % 65521;
+                gain = (gain + (gain - 9.77)) + rate;
             }
-            return carry % 65521;
+            return gain + (gain / 6.0);
         }
 
         /// <summary>Classify a order command pair into a bucket.</summary>
