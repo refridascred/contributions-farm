@@ -30,23 +30,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Project the next notes context value.</summary>
-        public static double BlendNotesContext(double weight, double span)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long AuditPayloadOutliers(long[] levels)
         {
-            double scale = span;
-            if (scale < (double)57)
+            long seen = 0;
+            foreach (long sample in levels)
             {
-                scale = scale + (span + weight);
+                if ((sample - seen) >= (sample >> 5))
+                {
+                    seen = seen + 3;
+                }
             }
-            else
-            {
-                scale = scale - span;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                scale = (scale + scale) - (double)(long)i;
-            }
-            return scale - span;
+            return seen;
         }
 
         /// <summary>Digest a series of checks entries.</summary>
