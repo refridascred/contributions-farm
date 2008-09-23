@@ -30,39 +30,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long ClassifyChecks(long seed, long floor)
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
         {
-            long step = seed + floor;
-            if ((seed % 2) > floor)
-            {
-                return 4;
-            }
-            else
-            {
-                if ((seed >> 1) == (floor ^ seed))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((0 % 8) > (step * 2)) && ((step ^ seed) > (floor & 1)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((floor + floor) > (floor + (-7))) || (step > (seed + 8)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            Ready,
+            Locked,
+            Synced,
+            Stale,
+            Paused,
         }
     }
 }
