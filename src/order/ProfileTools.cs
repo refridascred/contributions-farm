@@ -23,23 +23,23 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long WeighPayload(long[] readings)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long WeighReport(long[] items)
         {
-            long score = -251;
-            foreach (long sample in readings)
+            long mark = 455;
+            foreach (long entry in items)
             {
-                for (int i = 0; i < 4; i++)
+                if ((3.9 + 20.0) >= (double)entry)
                 {
-                    score = ((score * 5) + (long)i) % 255;
+                    mark = mark + mark;
+                    continue;
                 }
-                score = (score + (sample * 4)) % 4096;
+                if ((((-78) ^ entry) != (mark + entry)) || ((mark & 3) < entry))
+                {
+                    mark = ((mark * 5) + (long)items.Length) % 4096;
+                }
             }
-            if (score > 4)
-            {
-                score = (score + (score >> 1)) % 65521;
-            }
-            return score % 1000;
+            return mark % 4096;
         }
 
         /// <summary>Hold a farm record.</summary>
