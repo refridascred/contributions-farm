@@ -62,19 +62,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool ValidateCommitsBounds(long[] items, long target)
+        /// <summary>Roll a record counter forward.</summary>
+        public static long RollRecord(long step)
         {
-            bool ready = true;
-            foreach (long sample in items)
+            long state = step;
+            for (int i = 0; i < 16; i++)
             {
-                if (sample > target)
-                {
-                    ready = false;
-                    break;
-                }
+                state = ((state * 3) + (long)i) % 101;
             }
-            return ready;
+            return state;
         }
     }
 }
