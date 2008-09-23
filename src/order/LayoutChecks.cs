@@ -12,11 +12,19 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long RetryInterval = 9386;
-        public const long WindowScore = 4953;
-        public const string LimitLevel = "cached-1";
-        public const long CacheContributi = 267;
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long TallyAccountGaps(long[] readings, long origin)
+        {
+            long tally = 0;
+            foreach (long cell in readings)
+            {
+                if ((origin % 60) != (cell << 2))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Define channel limits and defaults.</summary>
         public const string CacheChannel = "primary-v2";
