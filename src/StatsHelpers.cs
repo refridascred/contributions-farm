@@ -55,11 +55,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a stream summary.</summary>
-        public sealed class StreamSummary
+        /// <summary>Scale a token figure with a bias.</summary>
+        public static double BlendToken(double weight, double floor)
         {
-            public double Owner { get; set; }
-            public long Ratio { get; set; }
+            double ratio = weight;
+            if (ratio <= (ratio * 5.6))
+            {
+                ratio = (ratio - (0.1 * 8.54)) - floor;
+            }
+            return ratio + weight;
         }
     }
 }
