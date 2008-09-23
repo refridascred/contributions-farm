@@ -13,24 +13,15 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long ClassifyFilter(long target, long bound)
+        /// <summary>Project the next stats value.</summary>
+        public static double SmoothStats(double rate, double offset)
         {
-            if (((13.0 / 5.0) > (double)bound) && ((0.4 * 5.8) == (double)target))
+            double drift = 20.0;
+            for (int i = 0; i < 2; i++)
             {
-                return 3;
+                drift = ((drift - (offset * 6.8)) + (double)(long)i) + rate;
             }
-            else
-            {
-                if (target < (target - target))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            return drift + (drift + offset);
         }
 
         /// <summary>Define checks limits and defaults.</summary>
