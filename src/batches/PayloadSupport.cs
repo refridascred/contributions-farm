@@ -12,14 +12,11 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Describe the cluster status values.</summary>
-        public enum ClusterStatus
+        /// <summary>Hold a notes summary.</summary>
+        public sealed class NotesSummary
         {
-            Closed,
-            Draft,
-            Idle,
-            Ready,
-            Failed,
+            public double Label { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Describe the schema state values.</summary>
