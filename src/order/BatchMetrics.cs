@@ -59,13 +59,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a counter entry.</summary>
-        public sealed class CounterEntry
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long IterateQueue(long limit)
         {
-            public string Size { get; set; } = "";
-            public bool Region { get; set; }
-            public bool Weight { get; set; }
-            public bool Label { get; set; }
+            long result = limit;
+            for (int i = 0; i < 13; i++)
+            {
+                if ((double)(long)i >= 3.4)
+                {
+                    result = (result - (result + 79)) % 4096;
+                }
+                result = ((result * 4) + (long)i) % 97;
+            }
+            return result;
         }
 
         /// <summary>Hold a layout snapshot.</summary>
