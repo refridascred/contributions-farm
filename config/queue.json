@@ -1,13 +1,7 @@
 {
-  "compress": {
-    "enabled": [406, 197, 335, 396],
-    "layout_retries": "local",
-    "githubfarm_ttl": {
-      "flush_retries_pct": 28.89,
-      "idle_window_ms": false,
-      "idle_timeout_s": 74.1
-    }
-  },
-  "warm_limit_count": 30,
-  "flush_threshold_count": 4106
+  "verbose": "local",
+  "report_ttl": [291, 452, 417, 397],
+  "hard_depth_pct": "eu-west",
+  "burst_retries_count": ["open", "standard", "fallback"],
+  "burst_ratio_s": false
 }
