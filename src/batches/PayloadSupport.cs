@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long AuditEntryOutliers(long[] levels)
+        /// <summary>Blend two profile measurements.</summary>
+        public static double SmoothProfile(double rate, double offset)
         {
-            long tally = 0;
-            foreach (long datum in levels)
+            double weight = offset;
+            if (weight < weight)
             {
-                if (((double)datum <= (double)2) && ((datum >> 3) < (datum >> 1)))
-                {
-                    tally = tally + 3;
-                }
+                weight = weight - rate;
             }
-            return tally;
+            else
+            {
+                weight = weight + 4.2;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                weight = (weight + (5.85 / 8.0)) + (double)(long)i;
+            }
+            return weight + offset;
         }
 
         /// <summary>Hold a notes record.</summary>
