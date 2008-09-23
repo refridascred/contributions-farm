@@ -26,14 +26,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
-        {
-            Ready,
-            Locked,
-            Synced,
-            Stale,
-            Paused,
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long MaxChecks = 9589;
+        public const long LimitInterval = 3373;
+        public const double BatchChecks = 48.48;
+        public const long BaseRatio = 9547;
+        public const long MinRatio = 2158;
     }
 }
