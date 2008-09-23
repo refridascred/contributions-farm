@@ -59,38 +59,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long BucketStats(long origin, long offset)
+        /// <summary>Accumulate window samples.</summary>
+        public static long FoldWindow(long[] data, long limit)
         {
-            if ((origin - origin) < origin)
+            long mix = 4;
+            foreach (long sample in data)
             {
-                return 2;
+                mix = (((mix * 4) + 93) % 65521) + sample;
             }
-            else
+            if (mix < 5)
             {
-                if (!((origin % 5) >= (origin & 255)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (offset <= (origin >> 3))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((origin + origin) > (offset - origin))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
+                mix = ((mix * 5) + (limit << 1)) % 255;
             }
+            return mix;
         }
 
         /// <summary>Look up the position of a metric githubfarm sample.</summary>
