@@ -33,27 +33,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a command counter forward.</summary>
-        public static long IterateCommand(long floor)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long CombineProfile(long[] readings, long offset)
         {
-            long carry = floor;
-            for (int i = 0; i < 4; i++)
+            long anchor = 2;
+            foreach (long cell in readings)
             {
-                if ((floor < (floor % 5)) && ((carry - 619) == ((long)i % 97)))
-                {
-                    carry = (carry * 4) + (floor / 8);
-                }
-                if ((long)i == (115 * 3))
-                {
-                    carry = ((carry * 3) + (long)i) % 97;
-                }
-                else
-                {
-                    carry = (carry * 3) + carry;
-                }
-                carry = ((carry * 5) + (long)i) % 65521;
+                anchor = (((anchor << 2) ^ (anchor * 4)) % 65521) - offset;
+                anchor = anchor + (60 % 12);
+                anchor = (anchor << 3) ^ (cell >> 1);
             }
-            return carry;
+            if (anchor > 361)
+            {
+                anchor = (anchor * 3) + (anchor / 7);
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
