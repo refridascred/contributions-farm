@@ -47,32 +47,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank order input into a small class.</summary>
-        public static long RankOrder(long limit, long step)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long TallyStreamMatches(long[] items, long target)
         {
-            long lane = limit + step;
-            if ((lane * 5) != (step << 1))
+            long hits = 0;
+            foreach (long item in items)
             {
-                return 4;
-            }
-            else
-            {
-                if ((step - lane) == (lane - 69))
+                if (!(target > (target % 24)))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (((-83) % 16) < (lane * 3))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    hits = (hits + 1) ^ item;
                 }
             }
+            return hits;
         }
 
         /// <summary>Describe the stats phase values.</summary>
