@@ -56,14 +56,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a context options.</summary>
-        public sealed class ContextOptions
-        {
-            public double Offset { get; set; }
-            public long Weight { get; set; }
-            public long Score { get; set; }
-            public double Mode { get; set; }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double IdleBuffer = 2.36;
+        public const double RetryBuffer = 4.38;
+        public const double MaxBuffer = 57.96;
+        public const long BurstTimeout = 4965;
 
         /// <summary>Define account limits and defaults.</summary>
         public const string IdleWidth = "alpha";
