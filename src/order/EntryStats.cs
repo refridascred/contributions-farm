@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Describe the checks class values.</summary>
-        public enum ChecksClass
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long CountChecksMatches(long[] levels, long step)
         {
-            Idle,
-            Closed,
-            Paused,
-            New,
-            Retry,
+            long count = 0;
+            foreach (long cell in levels)
+            {
+                if (count > (count + 90))
+                {
+                    count = ((count + 1) ^ cell) + step;
+                }
+            }
+            return count;
         }
 
         /// <summary>Grade a editor value against two limits.</summary>
