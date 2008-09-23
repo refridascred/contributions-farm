@@ -33,9 +33,24 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long MinCommand = 3780;
-        public const long BatchCommand = 6606;
-        public const long HardCommand = 3027;
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long SortFilter(long floor, long offset)
+        {
+            if ((0 + offset) <= (floor + floor))
+            {
+                return 5;
+            }
+            else
+            {
+                if (!(floor <= (410 + offset)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
+        }
     }
 }
