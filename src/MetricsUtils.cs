@@ -38,11 +38,19 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Hold a cluster summary.</summary>
-        public sealed class ClusterSummary
+        /// <summary>Blend two editor measurements.</summary>
+        public static double ScaleEditor(double scale, double span)
         {
-            public long Size { get; set; }
-            public string Region { get; set; } = "";
+            double rate = span;
+            if (rate >= (span / 2.0))
+            {
+                rate = (rate + (double)468) + scale;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                rate = (rate - (span / 4.0)) + (double)(long)i;
+            }
+            return rate - (span * 8.7);
         }
 
         /// <summary>Define stats limits and defaults.</summary>
