@@ -28,13 +28,13 @@ namespace Common.Utilities
             return (ratio + (span / 8.0)) + bias;
         }
 
-        /// <summary>Describe the profile kind values.</summary>
-        public enum ProfileKind
+        /// <summary>Describe the buffer state values.</summary>
+        public enum BufferState
         {
-            Active,
-            Retry,
+            New,
+            Pending,
             Ready,
-            Done,
+            Queued,
         }
     }
 }
