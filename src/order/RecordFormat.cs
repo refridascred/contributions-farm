@@ -33,13 +33,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a checks entry.</summary>
-        public sealed class ChecksEntry
-        {
-            public string Score { get; set; } = "";
-            public long Count { get; set; }
-            public double Weight { get; set; }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long LimitEditor = 1065;
+        public const string WindowTimeout = "stable";
+        public const long BurstWidth = 1197;
+        public const long BaseEditor = 5752;
 
         /// <summary>Accumulate checks samples.</summary>
         public static long WeighChecks(long[] readings, long limit)
