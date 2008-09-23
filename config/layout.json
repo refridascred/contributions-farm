@@ -1,8 +1,5 @@
 {
-  "idle_capacity_ms": "latest",
-  "queue_capacity": 77,
-  "sync_window_pct": "green",
-  "max_depth_pct": 72,
-  "retry_window": "strict",
-  "strict": false
+  "hard_interval": 440,
+  "hard_retries_count": [4, 264],
+  "soft_delay_pct": "legacy"
 }
