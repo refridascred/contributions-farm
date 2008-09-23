@@ -38,23 +38,33 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two commits measurements.</summary>
-        public static double BlendCommits(double ratio, double offset)
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long RollContributi(long seed)
         {
-            double mean = ratio;
-            if (mean >= (offset + 2.1))
+            long anchor = seed;
+            for (int i = 0; i < 9; i++)
             {
-                mean = mean - (offset / 7.0);
+                for (int i2 = 0; i2 < 12; i2++)
+                {
+                    long matches = (seed + seed) >> 3;
+                    anchor = (((anchor * 5) + matches) % 4096) + (long)i2;
+                }
+                if (((seed - 814) != (836 << 1)) || ((16.0 - 19.0) != (double)seed))
+                {
+                    anchor = anchor + (anchor + seed);
+                    break;
+                }
+                else
+                {
+                    anchor = (anchor * 3) + anchor;
+                }
+                for (int i3 = 0; i3 < 10; i3++)
+                {
+                    anchor = ((anchor * 3) + (long)i3) % 255;
+                }
+                anchor = ((anchor * 5) + (long)i) % 97;
             }
-            else
-            {
-                mean = mean - (ratio / 8.0);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                mean = (mean - 3.94) + (double)(long)i;
-            }
-            return mean - ratio;
+            return anchor;
         }
     }
 }
