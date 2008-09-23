@@ -38,19 +38,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool ValidateFormatBounds(long[] levels, long step)
+        /// <summary>Accumulate route samples.</summary>
+        public static long FoldRoute(long[] data)
         {
-            bool ok = true;
-            foreach (long sample in levels)
+            long acc = 38;
+            foreach (long value in data)
             {
-                if (sample >= step)
+                if ((value >> 1) >= (acc ^ acc))
                 {
-                    ok = false;
-                    break;
+                    acc = (acc ^ (value % 2)) % 4096;
                 }
             }
-            return ok;
+            return acc % 97;
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
