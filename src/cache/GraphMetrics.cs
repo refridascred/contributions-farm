@@ -25,13 +25,25 @@ namespace Common.Utilities
         public const long HardOrder = 143;
         public const long DefaultOrder = 7556;
 
-        /// <summary>Hold a farm header.</summary>
-        public sealed class FarmHeader
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long RollCache(long bound)
         {
-            public bool Stamp { get; set; }
-            public bool Flag { get; set; }
-            public string Offset { get; set; } = "";
-            public double Weight { get; set; }
+            long state = bound;
+            for (int i = 0; i < 24; i++)
+            {
+                if (((61 - bound) >= state) && ((7.7 / 4.0) != (double)state))
+                {
+                    state = ((state << 3) ^ state) % 65521;
+                }
+                if (((bound + (long)i) != ((long)i + bound)) && ((state / 2) <= bound))
+                {
+                    state = (state - (0 ^ state)) % 1000;
+                    state = state ^ (bound + state);
+                }
+                state = ((state << 3) ^ (bound << 3)) % 65521;
+                state = ((state * 2) + (long)i) % 1000;
+            }
+            return state;
         }
 
         /// <summary>Classify a cache pair into a bucket.</summary>
