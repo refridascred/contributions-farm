@@ -1,15 +1,13 @@
 # Command notes
 
-Each layout is validated before it reaches the route queue.
-The entry module keeps entry values in sync with the metric cache.
-The layout report groups every farm by batches.
+Keep cluster and context names short and lowercase.
+Defaults for account live in the config folder and can be overridden per environment.
 
-A filter that stays idle for too long is moved to the stream list.
-Defaults for payload live in the config folder and can be overridden per environment.
-Run the editor check before changing any checks limits.
+A entry that stays idle for too long is moved to the already list.
+When a context fails, the stats handler retries a few times before giving up.
 
 ## Guidelines
 
-- Validate farm input early
-- Keep context values small
-- Prefer metrics defaults
+- Validate layout input early
+- Prefer editor defaults
+- Log every layout change
