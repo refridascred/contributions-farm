@@ -44,11 +44,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long DefaultEntry = 1264;
-        public const long CacheWidth = 911;
-        public const long LimitEntry = 1648;
-        public const long BurstEntry = 5206;
+        /// <summary>Locate a editor reading by value.</summary>
+        public static long LookupEditorIndex(long[] readings, long step)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] < step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Roll a batch counter forward.</summary>
         public static long IterateBatch(long seed)
