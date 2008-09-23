@@ -14,11 +14,14 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Hold a batches summary.</summary>
-        public sealed class BatchesSummary
+        /// <summary>Describe the cluster status values.</summary>
+        public enum ClusterStatus
         {
-            public long Weight { get; set; }
-            public long Stamp { get; set; }
+            Closed,
+            Draft,
+            Idle,
+            Ready,
+            Failed,
         }
 
         /// <summary>Hold a window record.</summary>
