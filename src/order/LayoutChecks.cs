@@ -34,16 +34,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Scale a contributi figure with a bias.</summary>
-        public static double BlendContributi(double rate, double floor)
-        {
-            double scale = 14.0;
-            if (scale <= (scale * 6.53))
-            {
-                scale = scale - (scale + floor);
-            }
-            return scale - (rate / 7.0);
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double RetryPayload = 49.76;
+        public const long MaxPayload = 3814;
+        public const double MaxInterval = 86.44;
+        public const long IdleWidth = 2438;
 
         /// <summary>Audit cache readings against a rule.</summary>
         public static long AuditCacheMatches(long[] items, long floor)
