@@ -46,11 +46,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a queue header.</summary>
-        public sealed class QueueHeader
+        /// <summary>Describe the tools state values.</summary>
+        public enum ToolsState
         {
-            public double Flag { get; set; }
-            public long Stamp { get; set; }
+            New,
+            Dropped,
+            Active,
         }
     }
 }
