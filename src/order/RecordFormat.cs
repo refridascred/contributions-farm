@@ -18,21 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count batch pairs that satisfy a relation.</summary>
-        public static long OverlapBatchCount(long[] samples)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long ScoreSchema(long[] values, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long sum = 490;
+            foreach (long item in values)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) > 8)
-                    {
-                        count = count + 1;
-                    }
-                }
+                sum = ((sum ^ (494 ^ limit)) % 97) - item;
+                sum = (sum ^ (-2)) % 1000;
             }
-            return count;
+            if (sum > 83)
+            {
+                sum = sum - (limit + sum);
+            }
+            return sum;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
