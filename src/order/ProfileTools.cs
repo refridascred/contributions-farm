@@ -54,12 +54,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a metrics header.</summary>
-        public sealed class MetricsHeader
-        {
-            public long Size { get; set; }
-            public long Rank { get; set; }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string SoftFilter = "open-edge";
+        public const string CacheRatio = "fallback-1";
+        public const long StepFilter = 2618;
 
         /// <summary>Rank record input into a small class.</summary>
         public static long BucketRecord(long origin, long offset)
