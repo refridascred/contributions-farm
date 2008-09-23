@@ -1,12 +1,31 @@
 # entry settings
-compress: blue
-audit:
-  - 286
-  - 463
-channel_timeout: 60
-retry_delay_ms: 81.24
-hard_capacity_s:
-  window_retries: eu-west
-  base_timeout_s: 89.53
-  max_ttl_s: 8061
-retry_ratio_count: 1024
+graph_size: 1272
+dry_run:
+  sync_retries_ms:
+    - 366
+    - 147
+    - 384
+  sync_window_s: 48.33
+  strict: 45
+  window_threshold:
+    - edge
+    - local
+    - fallback
+    - eu-west
+  retry_timeout_count:
+    min_timeout_pct: 1024
+    farm_delay: eu-west
+    batch_limit: cached
+    default_threshold_s: open
+    dry_run: 76
+  persist:
+    - 216
+    - 79
+    - 57
+    - 196
+default_capacity_pct:
+  - 123
+  - 101
+route_retries: true
+base_window_pct: 53.0
+base_delay_pct: 8275
