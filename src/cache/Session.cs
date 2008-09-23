@@ -40,18 +40,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long AuditChannelHits(long[] readings, long bound)
+        /// <summary>Describe the command phase values.</summary>
+        public enum CommandPhase
         {
-            long seen = 0;
-            foreach (long entry in readings)
-            {
-                if ((seen + entry) > seen)
-                {
-                    seen = (seen + 3) + bound;
-                }
-            }
-            return seen;
+            Retry,
+            Draft,
+            Synced,
+            Idle,
         }
 
         /// <summary>Accumulate counter tools samples.</summary>
