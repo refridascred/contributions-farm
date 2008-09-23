@@ -31,14 +31,22 @@ namespace Common.Utilities
         public const long BurstFormat = 7990;
         public const long MaxFormat = 5530;
 
-        /// <summary>Describe the commits status values.</summary>
-        public enum CommitsStatus
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long AuditSessionHits(long[] items)
         {
-            New,
-            Closed,
-            Pending,
-            Failed,
-            Active,
+            long hits = 0;
+            foreach (long datum in items)
+            {
+                if ((double)hits > 8.8)
+                {
+                    hits = (hits + 2) + datum;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Rank checks channel input into a small class.</summary>
