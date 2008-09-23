@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Scale a record figure with a bias.</summary>
-        public static double BlendRecord(double rate, double span)
-        {
-            double load = span;
-            if (load < load)
-            {
-                load = (load - (16.0 - load)) + rate;
-            }
-            return load + span;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long MaxSession = 2649;
+        public const long LimitBudget = 4594;
+        public const double SoftLevel = 89.62;
 
         /// <summary>Match up batches samples.</summary>
         public static long CompareBatchesCount(long[] values)
