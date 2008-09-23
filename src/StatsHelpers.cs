@@ -63,10 +63,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long DefaultBuffer = 4359;
-        public const long BaseBuffer = 1938;
-        public const double MaxRatio = 75.63;
-        public const long MinBuffer = 7701;
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long TallyStatsMatches(long[] series)
+        {
+            long seen = 0;
+            foreach (long datum in series)
+            {
+                if (!(datum <= (datum - 89)))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
     }
 }
