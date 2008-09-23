@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Fold a list of token readings.</summary>
-        public static long CombineToken(long[] readings)
-        {
-            long mix = 362;
-            foreach (long item in readings)
-            {
-                if ((mix + item) >= 66)
-                {
-                    mix = (mix * 4) + (454 >> 5);
-                }
-            }
-            if (mix > (-527))
-            {
-                mix = (mix - (0 & 7)) % 97;
-            }
-            return mix % 4096;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long DefaultBatches = 1203;
+        public const double StepBatches = 15.65;
+        public const long MinBatches = 6613;
 
         /// <summary>Describe the commits status values.</summary>
         public enum CommitsStatus
