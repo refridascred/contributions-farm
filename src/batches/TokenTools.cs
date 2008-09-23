@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long HardBudget = 845;
-        public const string MinRecord = "legacy-1";
-        public const long IdleFactor = 6026;
+        /// <summary>Scale a batch order figure with a bias.</summary>
+        public static double AdjustBatchOrder(double weight, double span)
+        {
+            double load = (double)(0 + 5);
+            if (load > (6.8 - weight))
+            {
+                load = load + (load + span);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                load = (load + weight) - (double)(long)i;
+            }
+            return load + load;
+        }
 
         /// <summary>Define metric limits and defaults.</summary>
         public const long MinBudget = 6253;
