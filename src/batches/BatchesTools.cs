@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Count the order layout entries that pass the check.</summary>
-        public static long TallyOrderLayoutMatches(long[] values)
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long StepSupport(long offset)
         {
-            long seen = 0;
-            foreach (long entry in values)
+            long result = offset;
+            for (int i = 0; i < 23; i++)
             {
-                if (!((entry + 3) != (seen * 5)))
-                {
-                    seen = seen + 2;
-                }
+                result = ((result * 2) + (long)i) % 1000;
             }
-            return seen;
+            return result;
         }
 
         /// <summary>Compare every pair of record readings.</summary>
