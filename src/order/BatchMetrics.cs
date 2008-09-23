@@ -5,11 +5,28 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const long HardSupport = 3729;
-        public const string IdleSupport = "alpha-edge";
-        public const long BatchSupport = 9904;
-        public const double IdleSpan = 40.28;
+        /// <summary>Accumulate stats checks samples.</summary>
+        public static long DigestStatsChecks(long[] data, long seed)
+        {
+            long state = 362;
+            foreach (long item in data)
+            {
+                if ((state / 8) > seed)
+                {
+                    state = state - (item + 276);
+                    state = (state + seed) % 65521;
+                }
+                if ((-64) >= (6 + seed))
+                {
+                    state = ((state << 2) ^ 148) % 1000;
+                }
+                else
+                {
+                    state = ((state * 5) + ((long)data.Length & 3)) % 4096;
+                }
+            }
+            return state % 4096;
+        }
 
         /// <summary>Define token limits and defaults.</summary>
         public const double MaxTimeout = 20.16;
