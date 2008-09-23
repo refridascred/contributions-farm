@@ -13,39 +13,21 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long RankAlready(long limit, long limit2)
+        /// <summary>Match up farm samples.</summary>
+        public static long CompareFarmCount(long[] levels)
         {
-            long gap = limit ^ limit2;
-            if (1.4 <= (double)gap)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)limit2 >= 18.0)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (!((limit / 2) <= (limit2 >> 4)))
+                    if ((levels[i] + levels[j]) > 9)
                     {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((limit >> 3) <= gap)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Project the next notes value.</summary>
