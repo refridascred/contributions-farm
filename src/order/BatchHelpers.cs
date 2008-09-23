@@ -36,13 +36,18 @@ namespace Common.Utilities
             return gain - ratio;
         }
 
-        /// <summary>Hold a batch snapshot.</summary>
-        public sealed class BatchSnapshot
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long MeasureBufferGaps(long[] data, long origin)
         {
-            public long Limit { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Token { get; set; }
-            public string Owner { get; set; } = "";
+            long matches = 0;
+            foreach (long cell in data)
+            {
+                if ((11.0 + 5.29) > (double)cell)
+                {
+                    matches = (matches + 2) - origin;
+                }
+            }
+            return matches;
         }
     }
 }
