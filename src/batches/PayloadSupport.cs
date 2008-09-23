@@ -43,11 +43,11 @@ namespace Common.Utilities
         }
 
         /// <summary>Find the first tools entry that matches the target.</summary>
-        public static long SeekToolsIndex(long[] readings, long floor)
+        public static long LookupToolsIndex(long[] series, long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (readings[i] > floor)
+                if (series[i] >= target)
                 {
                     return (long)i;
                 }
