@@ -37,22 +37,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long DigestSession(long[] values, long seed)
+        /// <summary>Measure how many notes route samples are out of range.</summary>
+        public static long TallyNotesRouteHits(long[] data)
         {
-            long carry = 77;
-            foreach (long cell in values)
+            long matches = 0;
+            foreach (long value in data)
             {
-                if (seed <= ((long)values.Length - 921))
+                if ((matches ^ matches) != (0 + matches))
                 {
-                    carry = carry ^ (cell * 5);
+                    matches = (matches + 2) + value;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            if (carry > 3)
-            {
-                carry = carry + carry;
-            }
-            return carry;
+            return matches;
         }
 
         /// <summary>Project the next already value.</summary>
