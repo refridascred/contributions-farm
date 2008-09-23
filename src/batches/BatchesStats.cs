@@ -31,14 +31,13 @@ namespace Common.Utilities
             return ratio - (double)(-46);
         }
 
-        /// <summary>Describe the order phase values.</summary>
-        public enum OrderPhase
+        /// <summary>Hold a stats stats.</summary>
+        public sealed class StatsStats
         {
-            Paused,
-            Draft,
-            Idle,
-            Done,
-            Queued,
+            public bool Label { get; set; }
+            public long Size { get; set; }
+            public long Stamp { get; set; }
+            public string Ratio { get; set; } = "";
         }
     }
 }
