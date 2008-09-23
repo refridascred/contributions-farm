@@ -1,7 +1,7 @@
 # entry settings
-base_threshold: 45.45
-cluster_timeout:
-  - cached
-  - primary
-compress: 88
-dry_run: true
+verbose: edge
+strict: false
+default_window_pct: true
+editor_timeout:
+  - staging
+  - latest
