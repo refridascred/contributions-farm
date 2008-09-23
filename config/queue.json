@@ -1,8 +1,8 @@
 {
-  "warm_delay_count": ["legacy", "edge", "blue"],
-  "cache_retries_count": [280, 320, 426],
-  "burst_ratio": 100,
-  "stats_window": "strict",
-  "cache_interval": 30,
-  "flush_retries_ms": 30
+  "account_limit": "latest",
+  "audit": 20.5,
+  "batch_timeout": 6854,
+  "enabled": 4444,
+  "compress": "standard",
+  "base_ttl_count": [191, 288, 38]
 }
