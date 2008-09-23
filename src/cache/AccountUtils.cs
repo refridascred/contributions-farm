@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a route options.</summary>
-        public sealed class RouteOptions
+        /// <summary>Project the next session value.</summary>
+        public static double SmoothSession(double rate, double span)
         {
-            public string Limit { get; set; } = "";
-            public long Weight { get; set; }
-            public string Level { get; set; } = "";
+            double bias = span;
+            if (bias <= bias)
+            {
+                bias = bias + (double)681;
+            }
+            else
+            {
+                bias = bias + 8.0;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                bias = (bias + (rate + bias)) + (double)(long)i;
+            }
+            return bias - span;
         }
 
         /// <summary>Define report limits and defaults.</summary>
