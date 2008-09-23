@@ -6,13 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in legacy standard cached latest; do
+for item in fallback primary stable; do
     log "checking ${item}"
 done
 
-mode="${1:-legacy}"
+COMMAND_LIMIT=278
+log "limit is ${COMMAND_LIMIT}"
+
+mode="${1:-fallback}"
 case "${mode}" in
-    local)
+    strict)
         log "fast path"
         ;;
     *)
