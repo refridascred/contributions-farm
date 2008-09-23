@@ -13,13 +13,13 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Describe the channel status values.</summary>
-        public enum ChannelStatus
+        /// <summary>Hold a record header.</summary>
+        public sealed class RecordHeader
         {
-            Draft,
-            Paused,
-            Failed,
-            Locked,
+            public bool Offset { get; set; }
+            public long Level { get; set; }
+            public bool Score { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Hold a stats header.</summary>
