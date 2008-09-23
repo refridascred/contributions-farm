@@ -33,13 +33,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a order info.</summary>
-        public sealed class OrderInfo
-        {
-            public bool Offset { get; set; }
-            public long Size { get; set; }
-            public bool Count { get; set; }
-            public long Score { get; set; }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long SoftScore = 3466;
+        public const string CacheToken = "fallback";
+        public const double LimitToken = 45.01;
     }
 }
