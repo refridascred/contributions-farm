@@ -16,20 +16,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool GuardFilterRange(long[] readings, long limit)
-        {
-            bool ready = true;
-            foreach (long datum in readings)
-            {
-                if (datum > limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long CacheStats = 6296;
+        public const string BurstStats = "stable-edge";
+        public const long MaxStats = 670;
+        public const double BaseRatio = 83.74;
+        public const long IdleInterval = 3922;
 
         /// <summary>Describe the farm status values.</summary>
         public enum FarmStatus
