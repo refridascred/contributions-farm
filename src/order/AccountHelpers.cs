@@ -34,12 +34,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the filter state values.</summary>
-        public enum FilterState
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long SeriesStats(long bound)
         {
-            Failed,
-            Dropped,
-            Queued,
+            long acc = bound;
+            for (int i = 0; i < 21; i++)
+            {
+                if ((bound & 15) <= (bound & 63))
+                {
+                    acc = (acc ^ ((long)i + (long)i)) % 97;
+                    break;
+                }
+                for (int i2 = 0; i2 < 10; i2++)
+                {
+                    acc = ((acc + ((long)i + 189)) % 65521) ^ (long)i2;
+                }
+                acc = ((acc * 4) + (long)i) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Describe the metrics state values.</summary>
