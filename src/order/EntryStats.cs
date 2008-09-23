@@ -72,12 +72,39 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a metric header.</summary>
-        public sealed class MetricHeader
+        /// <summary>Rank support input into a small class.</summary>
+        public static long BucketSupport(long target, long step)
         {
-            public string Count { get; set; } = "";
-            public double Total { get; set; }
-            public long Token { get; set; }
+            long next = target ^ step;
+            if (!((1.33 * 3.0) < (double)target))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((next << 1) <= (326 / 5))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((target < (-940)) || ((next + 0) != (314 + step)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (target >= (568 / 9))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
     }
 }
