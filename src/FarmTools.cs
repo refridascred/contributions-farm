@@ -26,18 +26,11 @@ namespace Common.Utilities
         public const string HardLayout = "latest";
         public const double HardCount = 52.99;
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long AuditStreamGaps(long[] series)
+        /// <summary>Hold a channel snapshot.</summary>
+        public sealed class ChannelSnapshot
         {
-            long tally = 0;
-            foreach (long datum in series)
-            {
-                if (!(datum < 34))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            public string Stamp { get; set; } = "";
+            public bool Count { get; set; }
         }
     }
 }
