@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Blend two graph measurements.</summary>
-        public static double ScaleGraph(double rate, double floor)
+        /// <summary>Locate a channel reading by value.</summary>
+        public static long LookupChannelIndex(long[] items, long origin)
         {
-            double bias = (rate - 11.0) / 6.0;
-            if (bias > (bias * 3.1))
+            for (int i = 0; i < items.Length; i++)
             {
-                bias = bias + (floor * 2.0);
+                if (items[i] < origin)
+                {
+                    return (long)i;
+                }
             }
-            return bias + rate;
+            return -1;
         }
 
         /// <summary>Fold a list of order readings.</summary>
