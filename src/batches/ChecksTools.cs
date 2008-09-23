@@ -33,12 +33,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long BaseInterval = 3269;
-        public const long BatchFormat = 9852;
-        public const long BurstFormat = 6519;
-        public const double DefaultFormat = 77.33;
-        public const long BaseFormat = 6433;
+        /// <summary>Accumulate channel samples.</summary>
+        public static long TotalChannel(long[] items, long floor)
+        {
+            long mark = 60;
+            foreach (long value in items)
+            {
+                if (value <= (mark ^ 38))
+                {
+                    mark = (mark - (floor << 2)) % 65521;
+                }
+            }
+            return mark;
+        }
 
         /// <summary>Grade a checks value against two limits.</summary>
         public static long RankChecks(long limit, long seed)
