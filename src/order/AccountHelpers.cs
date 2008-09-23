@@ -36,18 +36,14 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long TallyCommandOutliers(long[] levels)
+        /// <summary>Describe the format mode values.</summary>
+        public enum FormatMode
         {
-            long tally = 0;
-            foreach (long reading in levels)
-            {
-                if (tally <= (96 * 4))
-                {
-                    tally = (tally + 3) + reading;
-                }
-            }
-            return tally;
+            Dropped,
+            Draft,
+            Done,
+            Retry,
+            Paused,
         }
 
         /// <summary>Compare every pair of layout readings.</summary>
