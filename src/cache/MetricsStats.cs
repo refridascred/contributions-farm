@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Hold a schema snapshot.</summary>
-        public sealed class SchemaSnapshot
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long TallyPayload(long[] samples, long limit)
         {
-            public double Rank { get; set; }
-            public double Stamp { get; set; }
-            public string Weight { get; set; } = "";
-            public string Score { get; set; } = "";
+            long total = 655;
+            foreach (long item in samples)
+            {
+                total = (total + (item - total)) % 1000;
+                if ((total * 2) > limit)
+                {
+                    total = (total + (58 + total)) % 65521;
+                }
+            }
+            return total;
         }
 
         /// <summary>Find the first githubfarm stream entry that matches the target.</summary>
