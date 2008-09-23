@@ -20,10 +20,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long WindowFactor = 8007;
-        public const long CacheRatio = 2428;
-        public const string LimitTimeout = "legacy-edge";
+        /// <summary>Hold a commits snapshot.</summary>
+        public sealed class CommitsSnapshot
+        {
+            public long Stamp { get; set; }
+            public string Flag { get; set; } = "";
+            public string Total { get; set; } = "";
+            public bool Score { get; set; }
+        }
 
         /// <summary>Validate metric channel readings against a bound.</summary>
         public static bool GuardMetricChannelBounds(long[] series, long origin)
