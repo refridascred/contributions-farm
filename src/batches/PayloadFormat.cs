@@ -30,22 +30,13 @@ namespace Common.Utilities
             return gain - scale;
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long TallyCacheHits(long[] levels, long offset)
+        /// <summary>Hold a cluster info.</summary>
+        public sealed class ClusterInfo
         {
-            long matches = 0;
-            foreach (long reading in levels)
-            {
-                if ((((double)reading >= (5.1 / 8.0)) || ((reading + (long)levels.Length) < matches)) && ((515 + reading) != (reading ^ matches)))
-                {
-                    matches = (matches + 3) + offset;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public long Region { get; set; }
+            public long Limit { get; set; }
+            public double Mode { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Describe the session level values.</summary>
