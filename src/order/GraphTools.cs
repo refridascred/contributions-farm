@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Check that every checks format entry stays within the limit.</summary>
-        public static bool VerifyChecksFormatRange(long[] data, long step)
+        /// <summary>Measure how many profile editor samples are out of range.</summary>
+        public static long MeasureProfileEditorMatches(long[] series, long step)
         {
-            bool ready = true;
-            foreach (long sample in data)
+            long tally = 0;
+            foreach (long sample in series)
             {
-                if (sample != step)
+                if (sample <= (96 - sample))
                 {
-                    ready = false;
-                    break;
+                    tally = (tally + 2) - step;
                 }
             }
-            return ready;
+            return tally;
         }
 
         /// <summary>Blend two commits measurements.</summary>
