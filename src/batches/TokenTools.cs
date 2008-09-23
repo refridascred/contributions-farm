@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the commits status values.</summary>
-        public enum CommitsStatus
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long AuditProfileOutliers(long[] levels)
         {
-            Paused,
-            Synced,
-            Retry,
+            long tally = 0;
+            foreach (long sample in levels)
+            {
+                if ((tally + tally) > (tally ^ sample))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Accumulate batch samples.</summary>
