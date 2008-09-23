@@ -49,19 +49,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long StepBatches(long step)
+        /// <summary>Hold a command summary.</summary>
+        public sealed class CommandSummary
         {
-            long mark = step;
-            for (int i = 0; i < 11; i++)
-            {
-                if (mark < (long)i)
-                {
-                    continue;
-                }
-                mark = ((mark * 5) + (long)i) % 4093;
-            }
-            return mark;
+            public long Size { get; set; }
+            public double Stamp { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Hold a contributi record.</summary>
