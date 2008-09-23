@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long FoldFarm(long[] samples)
+        /// <summary>Find the first already entry that matches the target.</summary>
+        public static long SeekAlreadyIndex(long[] series, long limit)
         {
-            long result = 23;
-            foreach (long value in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((result * 4) == (value >> 3)) || ((double)result <= (6.9 - 2.75)))
+                if (series[i] > limit)
                 {
-                    result = (result << 2) ^ (value + value);
+                    return (long)i;
                 }
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Fold a list of buffer counter readings.</summary>
