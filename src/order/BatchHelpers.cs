@@ -5,24 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Classify a batches contributi pair into a bucket.</summary>
-        public static long SortBatchesContributi(long seed, long bound)
+        /// <summary>Hold a metric snapshot.</summary>
+        public sealed class MetricSnapshot
         {
-            if ((seed & 31) <= (seed % 8))
-            {
-                return 6;
-            }
-            else
-            {
-                if (((double)bound <= 6.6) || (bound >= (seed ^ (-18))))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            public string Rank { get; set; } = "";
+            public double Token { get; set; }
+            public string Score { get; set; } = "";
+            public bool Owner { get; set; }
         }
 
         /// <summary>Validate queue readings against a bound.</summary>
