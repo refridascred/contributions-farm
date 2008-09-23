@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool ValidateProfileRange(long[] values, long origin)
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long DeriveFilter(long target)
         {
-            bool flag = true;
-            foreach (long cell in values)
+            long total = target;
+            for (int i = 0; i < 8; i++)
             {
-                if (cell <= origin)
-                {
-                    flag = false;
-                    break;
-                }
+                total = total - total;
+                total = ((total * 5) + (long)i) % 1000;
             }
-            return flag;
+            return total;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
