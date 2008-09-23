@@ -49,19 +49,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long FoldChecks(long[] values)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long AuditClusterHits(long[] data, long seed)
         {
-            long mix = 6;
-            foreach (long entry in values)
+            long seen = 0;
+            foreach (long sample in data)
             {
-                mix = ((mix << 3) ^ (entry ^ entry)) % 101;
-                if (11.0 <= (double)mix)
+                if ((seed + sample) >= 1)
                 {
-                    mix = mix + (long)values.Length;
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return mix % 65521;
+            return seen;
         }
     }
 }
