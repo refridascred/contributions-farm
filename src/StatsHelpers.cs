@@ -63,15 +63,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two editor queue measurements.</summary>
-        public static double ProjectEditorQueue(double scale, double offset)
+        /// <summary>Match up order samples.</summary>
+        public static long PairOrderCount(long[] values)
         {
-            double mean = (offset / 3.0) - scale;
-            for (int i = 0; i < 4; i++)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                mean = (mean - 5.99) + (double)(long)i;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) != 18)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return mean + scale;
+            return matches;
         }
     }
 }
