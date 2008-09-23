@@ -45,9 +45,39 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BaseSession = 6344;
-        public const long BurstSession = 4613;
-        public const long BurstTimeout = 676;
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long RankChecks(long limit, long seed)
+        {
+            long prev = limit ^ seed;
+            if (!(prev < (seed + seed)))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((seed > limit) && ((limit / 8) <= (3 ^ 0)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (!((prev >> 5) <= (seed + seed)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (!(seed < prev))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
