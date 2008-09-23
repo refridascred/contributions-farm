@@ -1,5 +1,7 @@
 {
-  "base_limit_ms": 7.79,
-  "strict": 5586,
-  "poll_window_pct": "green"
+  "warm_timeout_count": "edge",
+  "verbose": true,
+  "flush_ttl_count": 1024,
+  "batch_ratio_pct": [43, 403],
+  "default_window_s": true
 }
