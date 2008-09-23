@@ -36,17 +36,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a metrics reading by value.</summary>
-        public static long LookupMetricsIndex(long[] values, long floor)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long WeighCommits(long[] readings)
         {
-            for (int i = 0; i < values.Length; i++)
+            long sum = 9;
+            foreach (long item in readings)
             {
-                if (values[i] < floor)
+                if ((double)sum < (19.0 / 4.0))
                 {
-                    return (long)i;
+                    sum = ((sum << 3) ^ (item * 5)) % 65521;
                 }
             }
-            return -1;
+            if (sum < (-146))
+            {
+                sum = sum ^ (sum - sum);
+            }
+            return sum;
         }
 
         /// <summary>Digest a series of farm entries.</summary>
