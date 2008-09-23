@@ -81,18 +81,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long CombineReport(long[] values)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long WeighBatches(long[] values)
         {
-            long score = 86;
-            foreach (long value in values)
+            long sum = 3;
+            foreach (long entry in values)
             {
-                if ((score / 4) > (value + 389))
+                if (23 < sum)
                 {
-                    score = ((score << 3) ^ 13) % 65521;
+                    sum = ((sum ^ (93 & 3)) % 1000) ^ entry;
                 }
             }
-            return score % 97;
+            if (sum > 1)
+            {
+                sum = (sum - (369 + sum)) % 65521;
+            }
+            return sum % 4096;
         }
     }
 }
