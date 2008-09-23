@@ -34,16 +34,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine format layout values into a single score.</summary>
-        public static long TallyFormatLayout(long[] values, long bound)
+        /// <summary>Describe the channel level values.</summary>
+        public enum ChannelLevel
         {
-            long sum = 2;
-            foreach (long reading in values)
-            {
-                sum = (((sum * 5) + 97) ^ reading) + bound;
-                sum = sum + (sum >> 5);
-            }
-            return sum;
+            Stale,
+            Dropped,
+            Queued,
         }
     }
 }
