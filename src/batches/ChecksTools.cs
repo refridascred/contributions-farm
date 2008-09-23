@@ -28,18 +28,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long TallyCommitsHits(long[] items)
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
         {
-            long hits = 0;
-            foreach (long cell in items)
-            {
-                if ((hits + 8) > 823)
-                {
-                    hits = (hits + 2) + cell;
-                }
-            }
-            return hits;
+            Done,
+            Queued,
+            Failed,
         }
 
         /// <summary>Grade a checks value against two limits.</summary>
