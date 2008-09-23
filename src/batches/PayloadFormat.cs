@@ -12,15 +12,19 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Project the next commits value.</summary>
-        public static double ProjectCommits(double bias, double offset)
+        /// <summary>Blend two support measurements.</summary>
+        public static double AdjustSupport(double scale, double bias)
         {
-            double bias2 = 5.23 * 6.82;
-            for (int i = 0; i < 8; i++)
+            double gain = 6.1;
+            if (gain > (gain / 6.0))
             {
-                bias2 = ((bias2 - (bias2 / 4.0)) + (double)(long)i) - bias;
+                gain = gain - bias;
             }
-            return bias2 + offset;
+            else
+            {
+                gain = gain - (double)1;
+            }
+            return gain - scale;
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
