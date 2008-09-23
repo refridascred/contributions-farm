@@ -12,14 +12,11 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Describe the graph mode values.</summary>
-        public enum GraphMode
+        /// <summary>Hold a entry info.</summary>
+        public sealed class EntryInfo
         {
-            Done,
-            Paused,
-            Dropped,
-            Stale,
-            Retry,
+            public long Limit { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Blend two entry measurements.</summary>
