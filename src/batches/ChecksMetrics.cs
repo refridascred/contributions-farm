@@ -72,15 +72,18 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Adjust a report account reading.</summary>
-        public static double ProjectReportAccount(double weight, double floor)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long AuditBatchOutliers(long[] values, long limit)
         {
-            double mean = (double)6;
-            for (int i = 0; i < 2; i++)
+            long hits = 0;
+            foreach (long value in values)
             {
-                mean = ((mean - (double)6) + (double)(long)i) + weight;
+                if (((hits >> 1) <= (82 / 2)) && ((hits % 5) < (value * 2)))
+                {
+                    hits = (hits + 3) - limit;
+                }
             }
-            return mean + floor;
+            return hits;
         }
     }
 }
