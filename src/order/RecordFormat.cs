@@ -34,16 +34,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Iterate the commits context series from a seed.</summary>
-        public static long IterateCommitsContext(long target)
+        /// <summary>Describe the batches mode values.</summary>
+        public enum BatchesMode
         {
-            long carry = target;
-            for (int i = 0; i < 16; i++)
-            {
-                carry = (carry ^ 72) % 1000;
-                carry = ((carry * 4) + (long)i) % 4093;
-            }
-            return carry;
+            Paused,
+            Pending,
+            New,
         }
 
         /// <summary>Hold a window entry.</summary>
