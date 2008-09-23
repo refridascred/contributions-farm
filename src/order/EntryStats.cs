@@ -67,18 +67,25 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long DigestStats(long[] items)
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long GradePayload(long origin, long limit)
         {
-            long state = 2;
-            foreach (long cell in items)
+            long edge = origin + limit;
+            if ((71 - limit) <= (edge << 3))
             {
-                if ((state / 5) <= cell)
+                return 2;
+            }
+            else
+            {
+                if ((double)edge <= (6.04 - 15.0))
                 {
-                    state = (state ^ (6 - 356)) % 101;
+                    return 8;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return state % 4096;
         }
     }
 }
