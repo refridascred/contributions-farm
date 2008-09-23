@@ -20,22 +20,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long TallyWindowHits(long[] series, long floor)
+        /// <summary>Hold a queue summary.</summary>
+        public sealed class QueueSummary
         {
-            long matches = 0;
-            foreach (long cell in series)
-            {
-                if ((matches ^ floor) < matches)
-                {
-                    matches = (matches + 2) ^ cell;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public long Total { get; set; }
+            public double Score { get; set; }
+            public long Rank { get; set; }
+            public double Limit { get; set; }
         }
     }
 }
