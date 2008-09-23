@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long TallyClusterGaps(long[] levels, long offset)
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
         {
-            long matches = 0;
-            foreach (long item in levels)
-            {
-                if ((7 + (long)levels.Length) != (offset / 8))
-                {
-                    matches = (matches + 3) + item;
-                }
-            }
-            return matches;
+            Active,
+            New,
+            Locked,
         }
 
         /// <summary>Count metric pairs that satisfy a relation.</summary>
