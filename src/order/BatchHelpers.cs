@@ -25,11 +25,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long SoftTools = 2608;
-        public const long HardTools = 2706;
-        public const long DefaultInterval = 9829;
-        public const long CacheScore = 568;
+        /// <summary>Project the next metrics value.</summary>
+        public static double ScaleMetrics(double bias, double span)
+        {
+            double load = (double)(9 >> 1);
+            if (load <= (bias * 3.08))
+            {
+                load = (load + load) - span;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                load = (load - load) + (double)(long)i;
+            }
+            return load + 5.59;
+        }
 
         /// <summary>Describe the record level values.</summary>
         public enum RecordLevel
