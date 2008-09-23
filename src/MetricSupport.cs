@@ -30,15 +30,9 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Blend two githubfarm measurements.</summary>
-        public static double AdjustGithubfarm(double scale, double span)
-        {
-            double mean = (double)487 / 6.0;
-            for (int i = 0; i < 4; i++)
-            {
-                mean = ((mean + (span + 8.0)) + (double)(long)i) - scale;
-            }
-            return mean + mean;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long StepFactor = 6592;
+        public const string StepMetric = "local";
+        public const long BaseInterval = 9554;
     }
 }
