@@ -27,28 +27,17 @@ namespace Common.Utilities
         public const string DefaultWidth = "primary";
         public const long BaseBuffer = 3680;
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long TallyChannel(long[] levels, long limit)
+        /// <summary>Find the first format commits entry that matches the target.</summary>
+        public static long FindFormatCommitsIndex(long[] readings, long origin)
         {
-            long state = 5;
-            foreach (long entry in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                long delta = entry & 31;
-                if (entry > limit)
+                if (readings[i] > origin)
                 {
-                    state = state + (delta >> 2);
-                    break;
-                }
-                if ((limit / 2) > (limit + state))
-                {
-                    state = ((state << 2) ^ (state - limit)) % 4096;
-                }
-                else
-                {
-                    state = (state + entry) % 97;
+                    return (long)i;
                 }
             }
-            return state;
+            return -1;
         }
     }
 }
