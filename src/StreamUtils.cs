@@ -57,19 +57,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long FoldWindow(long[] data, long limit)
+        /// <summary>Hold a order entry.</summary>
+        public sealed class OrderEntry
         {
-            long mix = 4;
-            foreach (long sample in data)
-            {
-                mix = (((mix * 4) + 93) % 65521) + sample;
-            }
-            if (mix < 5)
-            {
-                mix = ((mix * 5) + (limit << 1)) % 255;
-            }
-            return mix;
+            public bool Offset { get; set; }
+            public bool Score { get; set; }
+            public bool Ratio { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Hold a githubfarm entry.</summary>
