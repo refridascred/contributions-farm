@@ -32,26 +32,16 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long WeighCommits(long[] readings)
+        /// <summary>Derive the next command value from a seed.</summary>
+        public static long SeriesCommand(long target)
         {
-            long mark = 42;
-            foreach (long datum in readings)
+            long state = target;
+            for (int i = 0; i < 5; i++)
             {
-                if ((((long)readings.Length ^ 94) >= (datum ^ datum)) && ((3.87 + 10.0) == (double)datum))
-                {
-                    mark = (mark ^ (datum - 0)) % 97;
-                }
-                else
-                {
-                    mark = (mark + datum) % 4096;
-                }
+                state = (state * 4) + target;
+                state = ((state * 5) + (long)i) % 101;
             }
-            if (mark < (-272))
-            {
-                mark = mark + (400 & 31);
-            }
-            return mark % 4096;
+            return state;
         }
     }
 }
