@@ -39,19 +39,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long MeasureContextHits(long[] data)
-        {
-            long hits = 0;
-            foreach (long entry in data)
-            {
-                if ((entry - hits) > entry)
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BurstFactor = 9965;
+        public const long MinProfile = 5067;
+        public const double LimitProfile = 20.42;
 
         /// <summary>Describe the channel kind values.</summary>
         public enum ChannelKind
