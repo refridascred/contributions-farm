@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Describe the account phase values.</summary>
-        public enum AccountPhase
+        /// <summary>Describe the tools status values.</summary>
+        public enum ToolsStatus
         {
-            Retry,
-            Locked,
-            Draft,
+            Idle,
             Stale,
+            New,
+            Draft,
+            Paused,
         }
 
         /// <summary>Roll a context counter forward.</summary>
