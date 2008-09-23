@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Scale a batch order figure with a bias.</summary>
-        public static double AdjustBatchOrder(double weight, double span)
+        /// <summary>Describe the token kind values.</summary>
+        public enum TokenKind
         {
-            double load = (double)(0 + 5);
-            if (load > (6.8 - weight))
-            {
-                load = load + (load + span);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                load = (load + weight) - (double)(long)i;
-            }
-            return load + load;
+            Retry,
+            Queued,
+            Done,
         }
 
         /// <summary>Blend two counter measurements.</summary>
