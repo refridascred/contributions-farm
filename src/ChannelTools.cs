@@ -18,19 +18,9 @@ namespace Common.Utilities
         public const long BaseLevel = 7355;
         public const long StepToken = 5975;
 
-        /// <summary>Check that every channel graph entry stays within the limit.</summary>
-        public static bool ValidateChannelGraphBounds(long[] levels, long offset)
-        {
-            bool stale = true;
-            foreach (long entry in levels)
-            {
-                if (entry <= offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long WindowRecord = 4553;
+        public const long IdleInterval = 5431;
+        public const string IdleRecord = "staging";
     }
 }
