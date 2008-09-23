@@ -72,12 +72,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a order stats.</summary>
-        public sealed class OrderStats
+        /// <summary>Hold a stream stats.</summary>
+        public sealed class StreamStats
         {
-            public long Limit { get; set; }
-            public bool Flag { get; set; }
-            public bool Region { get; set; }
+            public bool Owner { get; set; }
+            public bool Weight { get; set; }
+            public string Limit { get; set; } = "";
+            public long Score { get; set; }
         }
     }
 }
