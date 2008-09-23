@@ -13,21 +13,26 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Count metric pairs that satisfy a relation.</summary>
-        public static long PairMetricCount(long[] data)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long TallyBuffer(long[] samples, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long score = 353;
+            foreach (long item in samples)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((score >> 1) == (score + bound))
                 {
-                    if ((data[i] ^ data[j]) < 11)
-                    {
-                        hits = hits + 1;
-                    }
+                    score = (score - score) % 101;
+                }
+                else
+                {
+                    score = score - (item + 5);
+                }
+                if (((double)score == (double)item) && ((2 & 31) == (score << 1)))
+                {
+                    break;
                 }
             }
-            return hits;
+            return score % 1000;
         }
 
         /// <summary>Describe the profile state values.</summary>
