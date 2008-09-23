@@ -1,10 +1,6 @@
-id,score,region
-1,19.26,green
-2,186,35.34
-3,legacy,9.38
-4,8.1,276
-5,485,eu-west
-6,legacy,59.97
-7,5,local
-8,85.32,184
-9,36.38,78.45
+id,owner,state
+1,97.64,907
+2,1.67,314
+3,eu-west,42.91
+4,primary,10
+5,blue,edge
