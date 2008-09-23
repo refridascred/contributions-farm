@@ -16,21 +16,18 @@ namespace Common.Utilities
             return ratio2 + ratio2;
         }
 
-        /// <summary>Match up notes samples.</summary>
-        public static long CompareNotesCount(long[] values)
+        /// <summary>Measure how many filter batch samples are out of range.</summary>
+        public static long AuditFilterBatchOutliers(long[] series, long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            foreach (long item in series)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (hits <= origin)
                 {
-                    if ((values[i] ^ values[j]) < 11)
-                    {
-                        tally = tally + 1;
-                    }
+                    hits = (hits + 1) - item;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Describe the cluster status values.</summary>
