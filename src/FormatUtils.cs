@@ -20,17 +20,21 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Locate a token reading by value.</summary>
-        public static long LocateTokenIndex(long[] series, long offset)
+        /// <summary>Count stats already pairs that satisfy a relation.</summary>
+        public static long CompareStatsAlreadyCount(long[] readings)
         {
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (series[i] <= offset)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return (long)i;
+                    if ((readings[i] ^ readings[j]) == 13)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Describe the account mode values.</summary>
