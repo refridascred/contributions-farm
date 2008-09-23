@@ -1,9 +1,6 @@
 # entry settings
-poll_retries: 1024
-idle_ttl_ms: 62
-cache_window_pct: eu-west
-hard_threshold:
-  - 393
-  - 198
-audit: 42.86
-strict: 53.44
+dry_run: 5436
+readonly: legacy
+compress: standard
+cache_threshold: cached
+base_threshold: false
