@@ -68,12 +68,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a batch info.</summary>
-        public sealed class BatchInfo
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
         {
-            public long Label { get; set; }
-            public long Token { get; set; }
-            public long Count { get; set; }
+            Draft,
+            Failed,
+            Queued,
         }
     }
 }
