@@ -45,16 +45,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long ScoreFormat(long[] series)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long AuditEntryOutliers(long[] data, long target)
         {
-            long mark = 65;
-            foreach (long value in series)
+            long count = 0;
+            foreach (long value in data)
             {
-                mark = mark + value;
-                mark = mark + 3;
+                if (((41 >= (count + count)) && ((target / 7) >= (count >> 3))) && (value <= (target + target)))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return mark;
+            return count;
         }
 
         /// <summary>Define route limits and defaults.</summary>
