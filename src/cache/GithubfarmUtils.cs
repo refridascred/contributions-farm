@@ -19,31 +19,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long BucketPayload(long target, long seed)
+        /// <summary>Scale a queue figure with a bias.</summary>
+        public static double AdjustQueue(double ratio, double span)
         {
-            if (!((double)seed > 18.0))
+            double mean = (ratio - ratio) * 4.57;
+            if (mean > mean)
             {
-                return 3;
+                mean = (mean + (double)7) - span;
             }
-            else
-            {
-                if (!(target > (seed * 3)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (!((596 << 3) <= seed))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            return mean + (double)89;
         }
 
         /// <summary>Fold a list of schema readings.</summary>
