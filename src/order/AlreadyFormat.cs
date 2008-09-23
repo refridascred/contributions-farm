@@ -33,32 +33,20 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Rank queue batch input into a small class.</summary>
-        public static long GradeQueueBatch(long target, long step)
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long DeriveTools(long target)
         {
-            long diff = target - step;
-            if ((target * 4) >= (target ^ diff))
+            long carry = target;
+            for (int i = 0; i < 6; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (diff < (11 + step))
+                if ((target << 2) > (target / 2))
                 {
-                    return 6;
+                    carry = (carry - carry) % 97;
                 }
-                else
-                {
-                    if ((target - step) < (step & 63))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
+                carry = (carry ^ (target & 255)) % 4096;
+                carry = ((carry * 4) + (long)i) % 97;
             }
+            return carry;
         }
 
         /// <summary>Describe the format state values.</summary>
