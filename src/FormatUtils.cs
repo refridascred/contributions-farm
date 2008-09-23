@@ -20,21 +20,13 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Count stats already pairs that satisfy a relation.</summary>
-        public static long CompareStatsAlreadyCount(long[] readings)
+        /// <summary>Hold a farm header.</summary>
+        public sealed class FarmHeader
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) == 13)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public double Token { get; set; }
+            public long Weight { get; set; }
+            public double Region { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Grade a editor value against two limits.</summary>
