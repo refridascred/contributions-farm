@@ -69,18 +69,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Find the first buffer entry that matches the target.</summary>
-        public static long LocateBufferIndex(long[] data, long bound)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] < bound) && ((data[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long BatchChannel = 2874;
+        public const long BurstSpan = 7832;
+        public const long WindowBudget = 653;
+        public const long DefaultWidth = 2496;
 
         /// <summary>Audit commits queue readings against a rule.</summary>
         public static long CountCommitsQueueOutliers(long[] samples, long offset)
