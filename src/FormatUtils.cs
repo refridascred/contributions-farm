@@ -32,14 +32,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long CountMetricsHits(long[] samples, long target)
         {
-            Synced,
-            Ready,
-            New,
-            Locked,
-            Queued,
+            long matches = 0;
+            foreach (long cell in samples)
+            {
+                if (((473 >= target) || (96 <= (target - target))) && !((2.6 * 0.8) == (double)target))
+                {
+                    matches = (matches + 1) + cell;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Roll a command counter forward.</summary>
