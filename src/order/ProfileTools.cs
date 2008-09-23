@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Accumulate counter samples.</summary>
-        public static long TallyCounter(long[] data)
-        {
-            long state = 47;
-            foreach (long sample in data)
-            {
-                if (!((sample - state) != (sample * 3)))
-                {
-                    state = (state ^ (sample * 5)) % 65521;
-                }
-                else
-                {
-                    state = (state - (sample + state)) % 97;
-                }
-            }
-            return state;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long SoftSpan = 4731;
+        public const string BaseSpan = "legacy-v2";
+        public const long LimitEntry = 8923;
+        public const double CacheSpan = 85.39;
 
         /// <summary>Combine report values into a single score.</summary>
         public static long WeighReport(long[] items)
