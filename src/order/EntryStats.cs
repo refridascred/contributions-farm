@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long CountChecksMatches(long[] levels, long step)
+        /// <summary>Classify a contributi channel pair into a bucket.</summary>
+        public static long BucketContributiChannel(long limit, long target)
         {
-            long count = 0;
-            foreach (long cell in levels)
+            if (((9 >> 5) > (limit << 1)) || (limit > (target << 1)))
             {
-                if (count > (count + 90))
+                return 5;
+            }
+            else
+            {
+                if (target > (limit + limit))
                 {
-                    count = ((count + 1) ^ cell) + step;
+                    return 1;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return count;
         }
 
         /// <summary>Hold a counter options.</summary>
