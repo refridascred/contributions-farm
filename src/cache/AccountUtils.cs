@@ -19,15 +19,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Project the next stats route value.</summary>
-        public static double SmoothStatsRoute(double scale, double bias)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long CombinePayload(long[] readings, long floor)
         {
-            double ratio = (double)(4 % 24);
-            if (ratio >= 7.61)
+            long score = 370;
+            foreach (long item in readings)
             {
-                ratio = ((ratio - (double)849) + scale) - bias;
+                if (floor < (7 - floor))
+                {
+                    score = (score + (item * 3)) % 65521;
+                }
             }
-            return ratio - (ratio - ratio);
+            return score % 1000;
         }
 
         /// <summary>Define token limits and defaults.</summary>
