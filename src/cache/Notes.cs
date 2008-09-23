@@ -42,19 +42,24 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool ValidateBatchRange(long[] values, long offset)
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long BucketSupport(long seed, long offset)
         {
-            bool found = true;
-            foreach (long entry in values)
+            if ((offset - (-933)) >= (offset % 97))
             {
-                if (entry <= offset)
+                return 4;
+            }
+            else
+            {
+                if ((offset + seed) > ((-74) - seed))
                 {
-                    found = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return found;
         }
     }
 }
