@@ -64,17 +64,32 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Find the first filter entry that matches the target.</summary>
-        public static long FindFilterIndex(long[] levels, long target)
+        /// <summary>Rank counter githubfarm input into a small class.</summary>
+        public static long RankCounterGithubfarm(long step, long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long slot = step + floor;
+            if (floor <= 7)
             {
-                if (levels[i] == target)
+                return 7;
+            }
+            else
+            {
+                if (((double)step == (6.8 - 9.8)) && ((double)step == (9.11 * 1.1)))
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    if (step < (slot - 161))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return -1;
         }
     }
 }
