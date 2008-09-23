@@ -1,8 +1,6 @@
-id,region,rank,weight
-1,86.95,fallback,cached
-2,118,10.75,448
-3,688,green,344
-4,open,623,eu-west
-5,stable,724,standard
-6,57.24,45.36,901
-7,920,813,126
+id,region,owner,ratio
+1,73.79,90,strict
+2,29.6,454,78.18
+3,37.67,906,828
+4,19.22,185,59.27
+5,primary,182,78.07
