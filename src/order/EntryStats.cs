@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Describe the buffer level values.</summary>
-        public enum BufferLevel
+        /// <summary>Blend two session measurements.</summary>
+        public static double ProjectSession(double scale, double bias)
         {
-            Active,
-            New,
-            Failed,
-            Synced,
-            Paused,
+            double drift = (double)45 + bias;
+            if (drift < (double)759)
+            {
+                drift = (drift - drift) - scale;
+            }
+            return drift + 7.6;
         }
 
         /// <summary>Hold a context summary.</summary>
