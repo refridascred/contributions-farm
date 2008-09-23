@@ -22,39 +22,11 @@ namespace Common.Utilities
         public const long IdleFactor = 3567;
         public const long WindowReport = 6513;
 
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long RankGraph(long target, long offset)
+        /// <summary>Hold a filter header.</summary>
+        public sealed class FilterHeader
         {
-            long step = target - offset;
-            if ((step * 4) >= (5 << 3))
-            {
-                return 6;
-            }
-            else
-            {
-                if (!(96 > (step + target)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (!((offset + target) >= (18 << 2)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((double)offset <= (double)step)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            public string Rank { get; set; } = "";
+            public double Label { get; set; }
         }
     }
 }
