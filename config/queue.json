@@ -1,12 +1,8 @@
 {
-  "persist": {
-    "max_depth_pct": 250,
-    "idle_depth": 3,
-    "hard_timeout": 49,
-    "min_capacity_pct": 38,
-    "poll_limit_pct": [107, 487, 69, 141]
-  },
-  "audit": 29.36,
-  "stream_delay": "open",
-  "format_depth": true
+  "warm_delay_count": ["legacy", "edge", "blue"],
+  "cache_retries_count": [280, 320, 426],
+  "burst_ratio": 100,
+  "stats_window": "strict",
+  "cache_interval": 30,
+  "flush_retries_ms": 30
 }
