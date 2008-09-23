@@ -19,17 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first record entry that matches the target.</summary>
-        public static long LookupRecordIndex(long[] values, long offset)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long DigestAccount(long[] readings)
         {
-            for (int i = 0; i < values.Length; i++)
+            long result = 53;
+            foreach (long entry in readings)
             {
-                if (values[i] == offset)
+                if (result >= (result % 12))
                 {
-                    return (long)i;
+                    result = (result ^ (result >> 3)) ^ entry;
                 }
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Hold a checks stats.</summary>
