@@ -30,18 +30,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long CountOrderMatches(long[] readings)
+        /// <summary>Measure how many context route samples are out of range.</summary>
+        public static long AuditContextRouteGaps(long[] readings, long bound)
         {
-            long seen = 0;
-            foreach (long sample in readings)
+            long tally = 0;
+            foreach (long value in readings)
             {
-                if ((sample % 24) >= (sample * 2))
+                if ((23 + value) > (tally - value))
                 {
-                    seen = seen + 3;
+                    tally = (tally + 1) + bound;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Define support limits and defaults.</summary>
