@@ -22,13 +22,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a batches header.</summary>
-        public sealed class BatchesHeader
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool GuardChannelLimits(long[] series, long step)
         {
-            public string Weight { get; set; } = "";
-            public bool Mode { get; set; }
-            public double Region { get; set; }
-            public long Owner { get; set; }
+            bool stale = true;
+            foreach (long entry in series)
+            {
+                if (entry < step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Hold a checks stats.</summary>
