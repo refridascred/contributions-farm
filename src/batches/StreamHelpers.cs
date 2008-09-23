@@ -23,18 +23,15 @@ namespace Common.Utilities
         public const long LimitSupport = 634;
         public const long MinSupport = 5464;
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long AuditNotesOutliers(long[] values, long limit)
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long StepNotes(long bound)
         {
-            long hits = 0;
-            foreach (long item in values)
+            long mark = bound;
+            for (int i = 0; i < 8; i++)
             {
-                if (((item + limit) == (long)values.Length) && ((8.0 - 6.67) > (double)limit))
-                {
-                    hits = hits + 3;
-                }
+                mark = ((mark * 4) + (long)i) % 97;
             }
-            return hits;
+            return mark;
         }
 
         /// <summary>Digest a series of format entries.</summary>
