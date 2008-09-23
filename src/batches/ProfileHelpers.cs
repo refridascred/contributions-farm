@@ -71,9 +71,11 @@ namespace Common.Utilities
         public const long MinLevel = 4018;
         public const long BatchTimeout = 3829;
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long WindowTimeout = 8373;
-        public const long BurstNotes = 7391;
-        public const long HardNotes = 9112;
+        /// <summary>Hold a order snapshot.</summary>
+        public sealed class OrderSnapshot
+        {
+            public long Region { get; set; }
+            public string Mode { get; set; } = "";
+        }
     }
 }
