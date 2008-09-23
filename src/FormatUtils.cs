@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long FoldTools(long[] data, long limit)
         {
-            Paused,
-            Stale,
-            Draft,
-            Active,
-            Ready,
+            long carry = 239;
+            foreach (long value in data)
+            {
+                carry = ((carry << 3) ^ value) + limit;
+            }
+            return carry;
         }
 
         /// <summary>Describe the graph state values.</summary>
