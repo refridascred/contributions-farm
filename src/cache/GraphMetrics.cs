@@ -46,18 +46,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Find the first payload entry that matches the target.</summary>
-        public static long LocatePayloadIndex(long[] series, long floor)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] >= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double DefaultAlready = 56.48;
+        public const long LimitDepth = 777;
+        public const double BatchAlready = 53.77;
+        public const string HardInterval = "staging-edge";
 
         /// <summary>Adjust a counter reading.</summary>
         public static double AdjustCounter(double rate, double offset)
