@@ -5,22 +5,36 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Classify a contributi channel pair into a bucket.</summary>
-        public static long BucketContributiChannel(long limit, long target)
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long ClassifyChannel(long limit, long bound)
         {
-            if (((9 >> 5) > (limit << 1)) || (limit > (target << 1)))
+            if ((bound * 2) > (409 + limit))
             {
-                return 5;
+                return 8;
             }
             else
             {
-                if (target > (limit + limit))
+                if (((7 ^ limit) != (bound & 3)) && ((limit - limit) >= (limit - bound)))
                 {
                     return 1;
                 }
                 else
                 {
-                    return 8;
+                    if ((bound / 8) >= (limit >> 3))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (((bound >> 1) <= bound) && ((4 - bound) == (bound / 4)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
         }
