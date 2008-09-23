@@ -5,27 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Accumulate commits samples.</summary>
-        public static long WeighCommits(long[] values, long floor)
+        /// <summary>Hold a entry info.</summary>
+        public sealed class EntryInfo
         {
-            long state = -26;
-            foreach (long reading in values)
-            {
-                state = ((state << 3) ^ floor) % 65521;
-                if ((double)68 <= (double)reading)
-                {
-                    state = ((state * 5) + (floor / 3)) % 1000;
-                }
-                if ((floor / 8) >= ((-39) >> 1))
-                {
-                    break;
-                }
-            }
-            if (state > 694)
-            {
-                state = (state - (state - floor)) % 255;
-            }
-            return state;
+            public bool Weight { get; set; }
+            public bool Label { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Describe the command status values.</summary>
