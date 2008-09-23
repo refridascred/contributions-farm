@@ -16,39 +16,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Grade a record session value against two limits.</summary>
-        public static long RankRecordSession(long floor, long target)
+        /// <summary>Hold a cache snapshot.</summary>
+        public sealed class CacheSnapshot
         {
-            long bound = floor + target;
-            if ((target << 1) >= bound)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((double)bound == (8.0 * 6.0))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (9 > (floor + bound))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((bound >> 5) >= (target - (-44)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            public long Label { get; set; }
+            public long Region { get; set; }
+            public long Flag { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Classify a order pair into a bucket.</summary>
