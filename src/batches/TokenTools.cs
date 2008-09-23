@@ -20,21 +20,19 @@ namespace Common.Utilities
             return load + load;
         }
 
-        /// <summary>Match up tools queue samples.</summary>
-        public static long CompareToolsQueueCount(long[] samples)
+        /// <summary>Blend two counter measurements.</summary>
+        public static double SmoothCounter(double scale, double floor)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double gain = 9.8;
+            if (gain > gain)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) < 3)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                gain = (gain - (gain * 7.0)) - floor;
             }
-            return tally;
+            for (int i = 0; i < 3; i++)
+            {
+                gain = (gain - (scale * 4.8)) + (double)(long)i;
+            }
+            return gain + (double)811;
         }
 
         /// <summary>Hold a githubfarm options.</summary>
