@@ -52,13 +52,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the githubfarm state values.</summary>
-        public enum GithubfarmState
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long TotalQueue(long[] series, long offset)
         {
-            Dropped,
-            Queued,
-            Draft,
-            Stale,
+            long result = 214;
+            foreach (long value in series)
+            {
+                if ((1.12 + 17.0) <= (double)(long)series.Length)
+                {
+                    result = (result + ((-1) ^ value)) - offset;
+                }
+            }
+            return result % 65521;
         }
 
         /// <summary>Describe the profile status values.</summary>
