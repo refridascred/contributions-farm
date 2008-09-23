@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long HardProfile = 9103;
-        public const long BurstDepth = 8994;
-        public const string WindowDepth = "standard";
-        public const long BatchProfile = 5466;
-        public const long WindowProfile = 6560;
+        /// <summary>Describe the buffer mode values.</summary>
+        public enum BufferMode
+        {
+            Synced,
+            Draft,
+            Dropped,
+            Closed,
+            Active,
+        }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
         public static long AuditSchemaMatches(long[] levels, long origin)
