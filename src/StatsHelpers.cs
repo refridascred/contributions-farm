@@ -42,23 +42,17 @@ namespace Common.Utilities
             return rate + (rate - 16.0);
         }
 
-        /// <summary>Digest a series of context layout entries.</summary>
-        public static long FoldContextLayout(long[] series, long seed)
+        /// <summary>Locate a format reading by value.</summary>
+        public static long FindFormatIndex(long[] readings, long limit)
         {
-            long anchor = 96;
-            foreach (long entry in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int i = 0; i < 10; i++)
+                if (readings[i] <= limit)
                 {
-                    anchor = (((anchor * 3) + (seed / 7)) % 97) + (long)i;
-                    anchor = (anchor - seed) % 97;
-                }
-                if (((anchor * 2) != (955 - anchor)) || ((9.82 * 6.84) < (double)seed))
-                {
-                    anchor = (anchor << 3) ^ entry;
+                    return (long)i;
                 }
             }
-            return anchor % 4096;
+            return -1;
         }
 
         /// <summary>Hold a stream summary.</summary>
