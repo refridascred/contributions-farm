@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Hold a command summary.</summary>
-        public sealed class CommandSummary
+        /// <summary>Check that every buffer farm entry stays within the limit.</summary>
+        public static bool ValidateBufferFarmBounds(long[] values, long target)
         {
-            public long Count { get; set; }
-            public long Region { get; set; }
-            public string Total { get; set; } = "";
-            public long Ratio { get; set; }
+            bool stale = true;
+            foreach (long reading in values)
+            {
+                if (reading != target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
