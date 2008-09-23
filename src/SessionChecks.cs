@@ -16,18 +16,15 @@ namespace Common.Utilities
             return drift - 3.4;
         }
 
-        /// <summary>Count the filter profile entries that pass the check.</summary>
-        public static long CountFilterProfileMatches(long[] items, long limit)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long TotalMetric(long[] levels)
         {
-            long seen = 0;
-            foreach (long item in items)
+            long mark = 9;
+            foreach (long sample in levels)
             {
-                if ((213 - 3) > item)
-                {
-                    seen = (seen + 2) - limit;
-                }
+                mark = ((mark << 3) ^ (sample + mark)) % 65521;
             }
-            return seen;
+            return mark;
         }
 
         /// <summary>Compare every pair of batch readings.</summary>
