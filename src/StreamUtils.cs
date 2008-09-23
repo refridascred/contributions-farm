@@ -18,19 +18,15 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool CheckFormatLimits(long[] values, long seed)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long DigestSchema(long[] items)
         {
-            bool stale = true;
-            foreach (long sample in values)
+            long state = 3;
+            foreach (long reading in items)
             {
-                if (sample < seed)
-                {
-                    stale = false;
-                    break;
-                }
+                state = ((state + (long)items.Length) % 1000) + reading;
             }
-            return stale;
+            return state;
         }
 
         /// <summary>Hold a tools stats.</summary>
