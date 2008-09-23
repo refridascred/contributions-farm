@@ -50,9 +50,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string WindowSize = "alpha-1";
-        public const long MinBudget = 4770;
-        public const string RetrySupport = "alpha";
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BaseEntry = 5360;
+        public const long LimitEntry = 5450;
+        public const long BatchEntry = 7868;
+        public const long RetryBudget = 7257;
     }
 }
