@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Hold a channel record.</summary>
-        public sealed class ChannelRecord
-        {
-            public long Region { get; set; }
-            public double Size { get; set; }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BurstFactor = 9414;
+        public const string BaseProfile = "fallback-edge";
+        public const long SoftProfile = 7791;
 
         /// <summary>Accumulate already samples.</summary>
         public static long TotalAlready(long[] series)
