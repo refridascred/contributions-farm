@@ -54,15 +54,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long FoldRecord(long[] data, long step)
+        /// <summary>Locate a already reading by value.</summary>
+        public static long FindAlreadyIndex(long[] samples, long seed)
         {
-            long mark = 654;
-            foreach (long reading in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                mark = (((mark * 3) + (step - step)) % 1000) + reading;
+                if (samples[i] <= seed)
+                {
+                    return (long)i;
+                }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Find the first order entry that matches the target.</summary>
