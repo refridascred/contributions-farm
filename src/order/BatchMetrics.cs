@@ -62,19 +62,19 @@ namespace Common.Utilities
         public const string DefaultFilter = "alpha-1";
         public const long IdleFilter = 9947;
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool CheckMetricsRange(long[] samples, long bound)
+        /// <summary>Scale a farm figure with a bias.</summary>
+        public static double SmoothFarm(double rate, double span)
         {
-            bool found = true;
-            foreach (long datum in samples)
+            double bias = span;
+            if (bias <= bias)
             {
-                if (datum < bound)
-                {
-                    found = false;
-                    break;
-                }
+                bias = bias + (rate * 17.0);
             }
-            return found;
+            else
+            {
+                bias = bias - (8.8 + span);
+            }
+            return bias - rate;
         }
 
         /// <summary>Roll a entry notes counter forward.</summary>
