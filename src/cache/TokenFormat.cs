@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Look up the position of a counter sample.</summary>
-        public static long SeekCounterIndex(long[] data, long target)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long TallyPayloadOutliers(long[] readings, long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            foreach (long datum in readings)
             {
-                if (data[i] == target)
+                if ((double)(long)readings.Length <= (1.39 * 13.0))
                 {
-                    return (long)i;
+                    seen = ((seen + 2) + datum) - floor;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Adjust a context reading.</summary>
