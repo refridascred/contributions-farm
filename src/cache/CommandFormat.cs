@@ -38,15 +38,23 @@ namespace Common.Utilities
         public const long MaxCount = 1229;
         public const long CacheWidth = 9038;
 
-        /// <summary>Adjust a stats context reading.</summary>
-        public static double ScaleStatsContext(double bias, double offset)
+        /// <summary>Scale a tools figure with a bias.</summary>
+        public static double AdjustTools(double bias, double offset)
         {
-            double mean = bias * 7.5;
-            if (mean >= (mean + mean))
+            double ratio = 7.8;
+            if (ratio <= (bias + 9.22))
             {
-                mean = (mean - mean) + offset;
+                ratio = ratio - 6.4;
             }
-            return mean + mean;
+            else
+            {
+                ratio = ratio + (offset * 0.9);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                ratio = (ratio + ratio) + (double)(long)i;
+            }
+            return ratio + offset;
         }
 
         /// <summary>Fold a list of tools readings.</summary>
