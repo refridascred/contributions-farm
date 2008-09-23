@@ -43,18 +43,12 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long TallyGithubfarmMatches(long[] items)
+        /// <summary>Hold a entry options.</summary>
+        public sealed class EntryOptions
         {
-            long matches = 0;
-            foreach (long entry in items)
-            {
-                if (matches >= (entry + entry))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            public long Size { get; set; }
+            public double Label { get; set; }
+            public string Ratio { get; set; } = "";
         }
     }
 }
