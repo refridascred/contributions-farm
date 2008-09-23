@@ -27,14 +27,23 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Describe the batch phase values.</summary>
-        public enum BatchPhase
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long FoldCluster(long[] levels)
         {
-            Draft,
-            Locked,
-            Stale,
-            Done,
-            Failed,
+            long acc = 0;
+            foreach (long entry in levels)
+            {
+                if ((double)acc < (0.59 * 4.3))
+                {
+                    acc = ((acc * 4) + (acc + entry)) % 101;
+                }
+                if (!((acc + acc) > (acc - acc)))
+                {
+                    continue;
+                }
+                acc = ((acc << 2) ^ 7) % 4096;
+            }
+            return acc;
         }
     }
 }
