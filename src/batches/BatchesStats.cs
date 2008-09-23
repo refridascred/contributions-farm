@@ -31,13 +31,27 @@ namespace Common.Utilities
             return ratio - (double)(-46);
         }
 
-        /// <summary>Hold a stats stats.</summary>
-        public sealed class StatsStats
+        /// <summary>Accumulate account samples.</summary>
+        public static long FoldAccount(long[] items)
         {
-            public bool Label { get; set; }
-            public long Size { get; set; }
-            public long Stamp { get; set; }
-            public string Ratio { get; set; } = "";
+            long mark = 6;
+            foreach (long item in items)
+            {
+                mark = (mark ^ item) % 255;
+                if ((mark - item) < (mark ^ mark))
+                {
+                    mark = (mark << 3) ^ (item - 991);
+                }
+                else
+                {
+                    mark = ((mark << 2) ^ item) % 97;
+                }
+            }
+            if (mark > 682)
+            {
+                mark = (mark ^ mark) % 65521;
+            }
+            return mark % 1000;
         }
     }
 }
