@@ -18,27 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long TotalStats(long[] items)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long CountToolsMatches(long[] readings)
         {
-            long result = 3;
-            foreach (long datum in items)
+            long seen = 0;
+            foreach (long cell in readings)
             {
-                for (int i = 0; i < 5; i++)
+                if (seen <= 53)
                 {
-                    result = result + ((long)i - result);
-                    result = ((result << 2) ^ result) % 4096;
-                }
-                if ((result >= (result >> 4)) || ((8.72 / 9.0) != (double)datum))
-                {
-                    result = (result - result) % 4096;
+                    seen = (seen + 1) ^ cell;
                 }
                 else
                 {
-                    result = (result << 3) ^ datum;
+                    seen = seen - 1;
                 }
             }
-            return result;
+            return seen;
         }
 
         /// <summary>Describe the graph phase values.</summary>
