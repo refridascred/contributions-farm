@@ -27,19 +27,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long TallyStream(long[] readings)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool VerifyRecordRange(long[] values, long target)
         {
-            long carry = 7;
-            foreach (long entry in readings)
+            bool flag = true;
+            foreach (long reading in values)
             {
-                carry = (carry + carry) + entry;
+                if (reading >= target)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            if (carry > 777)
-            {
-                carry = ((carry * 5) + ((-3) - 5)) % 101;
-            }
-            return carry % 1000;
+            return flag;
         }
 
         /// <summary>Rank checks input into a small class.</summary>
