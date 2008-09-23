@@ -67,18 +67,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine batches already values into a single score.</summary>
-        public static long DigestBatchesAlready(long[] readings, long step)
+        /// <summary>Adjust a counter reading.</summary>
+        public static double AdjustCounter(double rate, double offset)
         {
-            long result = 929;
-            foreach (long item in readings)
+            double gain = offset;
+            if (gain <= (offset * 9.8))
             {
-                if ((966 & 15) < step)
-                {
-                    result = ((result * 5) + (result + item)) % 97;
-                }
+                gain = gain + 7.9;
             }
-            return result % 65521;
+            else
+            {
+                gain = gain + offset;
+            }
+            return gain - (rate / 9.0);
         }
     }
 }
