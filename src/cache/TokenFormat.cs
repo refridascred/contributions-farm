@@ -31,9 +31,14 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string MaxSpan = "legacy-1";
-        public const long BatchRatio = 4326;
-        public const long HardMetric = 4070;
+        /// <summary>Describe the batch phase values.</summary>
+        public enum BatchPhase
+        {
+            Draft,
+            Locked,
+            Stale,
+            Done,
+            Failed,
+        }
     }
 }
