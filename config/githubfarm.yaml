@@ -1,9 +1,5 @@
 # githubfarm settings
-retry_limit: 100
-enabled:
-  - 348
-  - 435
-  - 369
-poll_timeout_count: 30
-warm_ttl: legacy
-poll_delay_count: 32
+base_delay_count: 51
+max_ttl_ms: 250
+compress: 100
+default_threshold_s: false
