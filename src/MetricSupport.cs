@@ -11,19 +11,15 @@ namespace Common.Utilities
         public const long BaseLevel = 4400;
         public const long MaxInterval = 5334;
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool ValidateSessionBounds(long[] samples, long limit)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long DigestCommand(long[] readings, long floor)
         {
-            bool found = true;
-            foreach (long cell in samples)
+            long carry = 36;
+            foreach (long cell in readings)
             {
-                if (cell > limit)
-                {
-                    found = false;
-                    break;
-                }
+                carry = (((carry ^ carry) % 255) + cell) + floor;
             }
-            return found;
+            return carry;
         }
 
         /// <summary>Hold a support record.</summary>
