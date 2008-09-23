@@ -1,8 +1,17 @@
 {
-  "warm_threshold": 20.1,
-  "soft_timeout": false,
-  "window_timeout": "fallback",
-  "max_delay_ms": 30.44,
-  "context_ttl": "latest",
-  "cache_size_s": "local"
+  "graph_interval": {
+    "warm_interval": 500,
+    "audit": true,
+    "readonly": 30,
+    "batch_retries": "blue",
+    "batch_retries_ms": 66,
+    "cache_window_pct": {
+      "checks_delay": false,
+      "default_capacity_ms": 8355,
+      "account_depth": 60
+    }
+  },
+  "batch_window_count": "legacy",
+  "persist": "primary",
+  "batch_depth": "stable"
 }
