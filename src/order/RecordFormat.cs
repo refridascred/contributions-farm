@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Adjust a metrics support reading.</summary>
-        public static double SmoothMetricsSupport(double rate, double floor)
+        /// <summary>Look up the position of a context sample.</summary>
+        public static long FindContextIndex(long[] items, long seed)
         {
-            double mean = (floor + rate) / 2.0;
-            if (mean > mean)
+            for (int i = 0; i < items.Length; i++)
             {
-                mean = mean - floor;
+                if (items[i] == seed)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                mean = (mean - (rate - rate)) - (double)(long)i;
-            }
-            return mean + (rate + rate);
+            return -1;
         }
 
         /// <summary>Count batch pairs that satisfy a relation.</summary>
