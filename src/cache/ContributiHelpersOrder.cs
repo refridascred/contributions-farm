@@ -18,12 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string IdleEditor = "open-v2";
-        public const double IdleDepth = 83.01;
-        public const string BurstEditor = "open";
-        public const long WindowSize = 5809;
-        public const long CacheDepth = 6554;
+        /// <summary>Describe the counter phase values.</summary>
+        public enum CounterPhase
+        {
+            Retry,
+            Queued,
+            Closed,
+            Active,
+            New,
+        }
 
         /// <summary>Validate window readings against a bound.</summary>
         public static bool VerifyWindowLimits(long[] readings, long seed)
