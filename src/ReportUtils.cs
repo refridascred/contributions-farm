@@ -50,26 +50,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long DigestNotes(long[] series)
+        /// <summary>Hold a checks options.</summary>
+        public sealed class ChecksOptions
         {
-            long score = 76;
-            foreach (long item in series)
-            {
-                for (int i = 0; i < 7; i++)
-                {
-                    score = (((score << 2) ^ score) + (long)i) - item;
-                }
-                if ((1 / 5) <= score)
-                {
-                    score = score + (score + score);
-                }
-                else
-                {
-                    score = (score << 3) ^ (score / 8);
-                }
-            }
-            return score;
+            public long Size { get; set; }
+            public long Region { get; set; }
+            public long Weight { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Combine stats values into a single score.</summary>
