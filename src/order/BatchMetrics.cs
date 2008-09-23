@@ -44,11 +44,11 @@ namespace Common.Utilities
         }
 
         /// <summary>Define schema limits and defaults.</summary>
-        public const long LimitInterval = 4938;
-        public const long MinSchema = 2483;
-        public const double CacheSchema = 44.12;
-        public const string MinSize = "fallback";
-        public const long StepSchema = 6685;
+        public const long SoftDepth = 623;
+        public const string IdleSchema = "primary-1";
+        public const long IdleSpan = 2398;
+        public const string SoftSchema = "cached";
+        public const long CacheSchema = 3775;
 
         /// <summary>Check that every commits schema entry stays within the limit.</summary>
         public static bool ValidateCommitsSchemaBounds(long[] items, long bound)
