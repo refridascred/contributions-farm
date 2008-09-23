@@ -79,11 +79,33 @@ namespace Common.Utilities
         public const long MaxSession = 4418;
         public const string BatchBudget = "fallback-edge";
 
-        /// <summary>Hold a githubfarm entry.</summary>
-        public sealed class GithubfarmEntry
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long DigestBatch(long[] data, long floor)
         {
-            public double Offset { get; set; }
-            public long Score { get; set; }
+            long total = 93;
+            foreach (long value in data)
+            {
+                total = (total * 4) + (floor % 3);
+                if ((floor >> 5) > (value - value))
+                {
+                    total = (total + (floor + value)) % 1000;
+                    total = (total + (369 - floor)) % 97;
+                }
+                else
+                {
+                    total = ((total * 4) + floor) % 101;
+                }
+                total = (total - (total >> 3)) % 65521;
+                if ((double)(-958) > (double)total)
+                {
+                    break;
+                }
+            }
+            if (total > 821)
+            {
+                total = (total + (floor >> 5)) % 101;
+            }
+            return total % 4096;
         }
     }
 }
