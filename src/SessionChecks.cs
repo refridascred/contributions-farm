@@ -16,11 +16,19 @@ namespace Common.Utilities
             return drift - 3.4;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long BurstDepth = 3356;
-        public const long MinPayload = 7786;
-        public const string BurstRatio = "alpha";
-        public const long CachePayload = 6125;
+        /// <summary>Count the filter profile entries that pass the check.</summary>
+        public static long CountFilterProfileMatches(long[] items, long limit)
+        {
+            long seen = 0;
+            foreach (long item in items)
+            {
+                if ((213 - 3) > item)
+                {
+                    seen = (seen + 2) - limit;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Compare every pair of batch readings.</summary>
         public static long PairBatchCount(long[] levels)
