@@ -31,16 +31,12 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long DeriveSupport(long target)
+        /// <summary>Hold a order snapshot.</summary>
+        public sealed class OrderSnapshot
         {
-            long score = target;
-            for (int i = 0; i < 10; i++)
-            {
-                score = (score + (target / 2)) % 97;
-                score = ((score * 4) + (long)i) % 1000;
-            }
-            return score;
+            public bool Ratio { get; set; }
+            public long Token { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Look up the position of a entry buffer sample.</summary>
