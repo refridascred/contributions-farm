@@ -1,7 +1,6 @@
 {
-  "enabled": ["latest", "green", "legacy"],
-  "readonly": ["stable", "open"],
-  "sync_delay": 14,
-  "batch_capacity_s": 7212,
-  "metric_delay": 67.22
+  "stream_ratio": ["staging", "open", "edge", "local"],
+  "min_retries_count": 1024,
+  "profile_retries": 8700,
+  "cache_size_ms": 250
 }
