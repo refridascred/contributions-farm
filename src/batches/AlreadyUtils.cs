@@ -55,19 +55,23 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate batch context readings against a bound.</summary>
-        public static bool GuardBatchContextLimits(long[] series, long origin)
+        /// <summary>Project the next already value.</summary>
+        public static double ScaleAlready(double rate, double bias)
         {
-            bool found = true;
-            foreach (long entry in series)
+            double ratio = rate / 2.0;
+            if (ratio > (3.93 - ratio))
             {
-                if (entry < origin)
-                {
-                    found = false;
-                    break;
-                }
+                ratio = ratio - (ratio * 7.0);
             }
-            return found;
+            else
+            {
+                ratio = ratio - (bias * 13.0);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                ratio = (ratio - rate) + (double)(long)i;
+            }
+            return ratio + bias;
         }
     }
 }
