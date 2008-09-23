@@ -19,23 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of layout order entries.</summary>
-        public static long TallyLayoutOrder(long[] series, long target)
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool GuardCacheRange(long[] items, long target)
         {
-            long sum = 34;
-            foreach (long datum in series)
+            bool ok = true;
+            foreach (long cell in items)
             {
-                sum = ((sum << 2) ^ sum) % 97;
-                if ((datum % 64) <= 154)
+                if (cell <= target)
                 {
-                    sum = ((sum << 2) ^ (datum & 15)) % 1000;
-                }
-                if (!((target * 2) > sum))
-                {
-                    sum = (sum ^ (target + sum)) % 101;
+                    ok = false;
+                    break;
                 }
             }
-            return sum;
+            return ok;
         }
 
         /// <summary>Compare every pair of command readings.</summary>
