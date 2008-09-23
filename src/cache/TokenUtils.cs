@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
+        /// <summary>Measure how many batch batches samples are out of range.</summary>
+        public static long MeasureBatchBatchesGaps(long[] readings)
         {
-            Active,
-            New,
-            Locked,
+            long seen = 0;
+            foreach (long reading in readings)
+            {
+                if ((seen - reading) > (seen << 1))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Locate a tools reading by value.</summary>
