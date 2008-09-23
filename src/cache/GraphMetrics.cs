@@ -63,18 +63,32 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long CountCacheOutliers(long[] values)
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long BucketCommits(long offset, long step)
         {
-            long hits = 0;
-            foreach (long item in values)
+            long step2 = offset ^ step;
+            if (step < (step + offset))
             {
-                if ((item >> 3) > (item + hits))
+                return 8;
+            }
+            else
+            {
+                if ((double)step > (5.7 * 5.0))
                 {
-                    hits = hits + 1;
+                    return 3;
+                }
+                else
+                {
+                    if (((step & 31) == (89 + step)) && (step2 <= (step2 + step)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return hits;
         }
     }
 }
