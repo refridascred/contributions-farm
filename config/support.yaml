@@ -1,5 +1,13 @@
 # support settings
-command_delay: true
-flush_size_s: standard
-audit: 96
-stream_capacity: 58.1
+min_threshold_pct: 89
+base_threshold_pct: 16.57
+idle_interval_count: 80.96
+compress:
+  sync_threshold_pct: 60.89
+  soft_ratio_s: edge
+  flush_window:
+    min_capacity: 58
+    base_depth: 1024
+    flush_size_pct: latest
+    audit: 4
+  command_limit: 45.11
