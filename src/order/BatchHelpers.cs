@@ -32,18 +32,13 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long AuditBatchesGaps(long[] readings)
+        /// <summary>Hold a tools entry.</summary>
+        public sealed class ToolsEntry
         {
-            long tally = 0;
-            foreach (long entry in readings)
-            {
-                if (556 < (tally << 1))
-                {
-                    tally = (tally + 3) + entry;
-                }
-            }
-            return tally;
+            public bool Owner { get; set; }
+            public bool Region { get; set; }
+            public long Size { get; set; }
+            public long Flag { get; set; }
         }
     }
 }
