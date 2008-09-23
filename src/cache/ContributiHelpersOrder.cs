@@ -22,19 +22,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool VerifyWindowLimits(long[] readings, long seed)
+        /// <summary>Describe the editor kind values.</summary>
+        public enum EditorKind
         {
-            bool valid = true;
-            foreach (long cell in readings)
-            {
-                if (cell <= seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Draft,
+            Retry,
+            Locked,
         }
     }
 }
