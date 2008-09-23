@@ -83,19 +83,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two token editor measurements.</summary>
-        public static double AdjustTokenEditor(double ratio, double span)
+        /// <summary>Describe the stream status values.</summary>
+        public enum StreamStatus
         {
-            double rate = ratio;
-            if (rate > (9.45 * 6.0))
-            {
-                rate = rate + (span + span);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                rate = (rate + (ratio * 11.0)) + (double)(long)i;
-            }
-            return rate - (span + rate);
+            Paused,
+            Stale,
+            Synced,
         }
 
         /// <summary>Hold a queue record.</summary>
