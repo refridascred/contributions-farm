@@ -1,6 +1,7 @@
 {
-  "command_threshold": [206, 285, 409, 242],
-  "compress": "edge",
-  "dry_run": ["legacy", "staging"],
-  "soft_delay_ms": [241, 18]
+  "sync_retries_count": 59,
+  "compress": 1267,
+  "verbose": 78,
+  "max_window": true,
+  "filter_window": "standard"
 }
