@@ -1,5 +1,8 @@
 {
-  "metric_interval": ["green", "green", "fallback", "legacy"],
-  "warm_capacity": 44.29,
-  "persist": "open"
+  "base_interval_ms": [269, 83, 189],
+  "notes_depth": 100,
+  "already_retries": "eu-west",
+  "buffer_delay": false,
+  "contributi_ratio": 250,
+  "audit": 4743
 }
