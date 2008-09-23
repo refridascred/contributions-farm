@@ -17,13 +17,19 @@ namespace Common.Utilities
         public const long IdleBudget = 8104;
         public const long BurstStats = 3762;
 
-        /// <summary>Hold a buffer header.</summary>
-        public sealed class BufferHeader
+        /// <summary>Project the next counter value.</summary>
+        public static double SmoothCounter(double weight, double bias)
         {
-            public long Label { get; set; }
-            public double Flag { get; set; }
-            public long Level { get; set; }
-            public bool Offset { get; set; }
+            double scale = (double)669 * 7.8;
+            if (scale <= (scale * 11.0))
+            {
+                scale = scale + (0.7 * 1.7);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                scale = (scale + (weight * 3.67)) + (double)(long)i;
+            }
+            return scale + (bias * 3.24);
         }
 
         /// <summary>Derive the next profile value from a seed.</summary>
