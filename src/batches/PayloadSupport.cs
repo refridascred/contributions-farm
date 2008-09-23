@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool GuardReportBounds(long[] series, long seed)
+        /// <summary>Project the next filter value.</summary>
+        public static double ProjectFilter(double scale, double offset)
         {
-            bool flag = true;
-            foreach (long item in series)
+            double drift = scale / 8.0;
+            if (drift < (drift / 8.0))
             {
-                if (item < seed)
-                {
-                    flag = false;
-                    break;
-                }
+                drift = drift + (8.44 + 8.81);
             }
-            return flag;
+            else
+            {
+                drift = drift + (scale * 11.0);
+            }
+            return drift + offset;
         }
 
         /// <summary>Hold a batches summary.</summary>
