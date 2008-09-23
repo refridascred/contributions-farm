@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Count the metric channel entries that pass the check.</summary>
-        public static long TallyMetricChannelOutliers(long[] readings, long offset)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool VerifyContributiLimits(long[] values, long step)
         {
-            long tally = 0;
-            foreach (long item in readings)
+            bool found = true;
+            foreach (long item in values)
             {
-                if ((51 / 4) >= (item + offset))
+                if (item < step)
                 {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
 
         /// <summary>Count the context stream entries that pass the check.</summary>
