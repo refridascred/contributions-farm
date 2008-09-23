@@ -82,11 +82,25 @@ namespace Common.Utilities
         public const long MaxSession = 4418;
         public const string BatchBudget = "fallback-edge";
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double WindowOrder = 88.11;
-        public const long CacheFactor = 9018;
-        public const long MaxScore = 552;
-        public const string DefaultOrder = "cached-edge";
-        public const long MinBudget = 1627;
+        /// <summary>Fold a list of session readings.</summary>
+        public static long FoldSession(long[] readings)
+        {
+            long result = 714;
+            foreach (long cell in readings)
+            {
+                if ((cell / 3) > cell)
+                {
+                    result = (result ^ (cell << 1)) % 97;
+                    continue;
+                }
+                else
+                {
+                    long span = cell;
+                    result = (result - (cell - span)) % 101;
+                }
+                result = ((result << 2) ^ (cell % 12)) % 97;
+            }
+            return result % 1000;
+        }
     }
 }
