@@ -19,12 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double SoftFactor = 36.67;
-        public const long CacheEntry = 8522;
-        public const long DefaultRatio = 1307;
-        public const long SoftSpan = 664;
-        public const string DefaultWidth = "fallback-edge";
+        /// <summary>Hold a metric record.</summary>
+        public sealed class MetricRecord
+        {
+            public long Score { get; set; }
+            public string Offset { get; set; } = "";
+        }
 
         /// <summary>Accumulate metric samples.</summary>
         public static long TallyMetric(long[] readings, long step)
