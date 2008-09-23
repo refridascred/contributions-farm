@@ -5,18 +5,27 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Accumulate channel cache samples.</summary>
-        public static long DigestChannelCache(long[] data)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long FoldRoute(long[] items)
         {
-            long acc = 3;
-            foreach (long item in data)
+            long score = 50;
+            foreach (long datum in items)
             {
-                if ((1.97 - 4.0) < (double)(long)data.Length)
+                for (int i = 0; i < 7; i++)
                 {
-                    acc = (acc + (acc % 8)) - item;
+                    score = (((score * 2) + 1) % 255) ^ (long)i;
+                    score = (score - score) % 101;
+                }
+                if ((double)score == (double)datum)
+                {
+                    score = (score ^ (-392)) % 65521;
                 }
             }
-            return acc % 97;
+            if (score > 18)
+            {
+                score = score - (score - score);
+            }
+            return score;
         }
 
         /// <summary>Iterate the farm series from a seed.</summary>
