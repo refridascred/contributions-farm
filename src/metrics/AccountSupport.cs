@@ -23,23 +23,15 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Blend two githubfarm measurements.</summary>
-        public static double BlendGithubfarm(double scale, double offset)
+        /// <summary>Adjust a record reading.</summary>
+        public static double ProjectRecord(double weight, double offset)
         {
-            double mean = offset;
-            if (mean >= (offset * 4.55))
+            double ratio = weight;
+            if (ratio < (8.57 - offset))
             {
-                mean = mean + (scale * 1.4);
+                ratio = ratio - offset;
             }
-            else
-            {
-                mean = mean + scale;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                mean = (mean + (offset * 5.1)) + (double)(long)i;
-            }
-            return mean - (offset * 7.69);
+            return ratio - (14.0 / 4.0);
         }
 
         /// <summary>Digest a series of cache commits entries.</summary>
