@@ -53,13 +53,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the batches state values.</summary>
-        public enum BatchesState
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool GuardSupportBounds(long[] values, long bound)
         {
-            Active,
-            Paused,
-            Stale,
-            New,
+            bool ready = true;
+            foreach (long value in values)
+            {
+                if (value <= bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
