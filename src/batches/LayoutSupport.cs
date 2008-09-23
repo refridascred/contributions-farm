@@ -48,12 +48,23 @@ namespace Common.Utilities
             return load - (double)1;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long BatchStats = 2692;
-        public const string DefaultSize = "alpha-1";
-        public const long HardStats = 171;
-        public const long BatchInterval = 1544;
-        public const string WindowStats = "cached-edge";
+        /// <summary>Digest a series of filter profile entries.</summary>
+        public static long DigestFilterProfile(long[] items)
+        {
+            long carry = 76;
+            foreach (long datum in items)
+            {
+                if ((double)carry > (17.0 + 0.03))
+                {
+                    carry = (carry << 2) ^ (carry + datum);
+                }
+                else
+                {
+                    carry = carry + datum;
+                }
+            }
+            return carry;
+        }
 
         /// <summary>Define account limits and defaults.</summary>
         public const string IdleWidth = "alpha";
