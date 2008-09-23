@@ -32,19 +32,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long AuditPayloadHits(long[] data, long limit)
-        {
-            long hits = 0;
-            foreach (long reading in data)
-            {
-                if (((reading & 1) >= (hits - limit)) || ((hits - limit) <= hits))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long HardLayout = 3905;
+        public const long CacheLayout = 3346;
+        public const double BaseTimeout = 4.19;
 
         /// <summary>Define context limits and defaults.</summary>
         public const long BurstWidth = 9175;
