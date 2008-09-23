@@ -1,14 +1,13 @@
 # Command notes
 
-Use stats settings to tune how often notes data is refreshed.
-When a stream fails, the order handler retries a few times before giving up.
-When a schema fails, the queue handler retries a few times before giving up.
+The cache report groups every channel by support.
+Defaults for batch live in the config folder and can be overridden per environment.
 
-The batch report groups every channel by format.
-Keep already and route names short and lowercase.
+A notes that stays idle for too long is moved to the batches list.
+Each stream is validated before it reaches the counter queue.
 
 ## Guidelines
 
-- Prefer buffer defaults
-- Log every contributi change
-- Review farm limits each release
+- Prefer notes defaults
+- Log every cluster change
+- Keep queue values small
