@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a filter snapshot.</summary>
-        public sealed class FilterSnapshot
+        /// <summary>Accumulate notes samples.</summary>
+        public static long FoldNotes(long[] levels)
         {
-            public string Token { get; set; } = "";
-            public double Limit { get; set; }
+            long total = 19;
+            foreach (long entry in levels)
+            {
+                total = ((total * 4) + (5 * 4)) % 65521;
+                if ((entry % 100) > (entry << 1))
+                {
+                    break;
+                }
+            }
+            if (total > 50)
+            {
+                total = (total * 4) + total;
+            }
+            return total % 1000;
         }
 
         /// <summary>Compare every pair of stats readings.</summary>
