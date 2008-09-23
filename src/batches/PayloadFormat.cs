@@ -35,19 +35,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Project the next counter value.</summary>
-        public static double SmoothCounter(double weight, double bias)
+        /// <summary>Count the token tools entries that pass the check.</summary>
+        public static long AuditTokenToolsMatches(long[] series, long seed)
         {
-            double scale = (double)669 * 7.8;
-            if (scale <= (scale * 11.0))
+            long matches = 0;
+            foreach (long reading in series)
             {
-                scale = scale + (0.7 * 1.7);
+                if ((reading / 4) <= (matches & 127))
+                {
+                    matches = (matches + 1) - seed;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                scale = (scale + (weight * 3.67)) + (double)(long)i;
-            }
-            return scale + (bias * 3.24);
+            return matches;
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
