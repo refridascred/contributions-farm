@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Classify a session cluster pair into a bucket.</summary>
-        public static long SortSessionCluster(long offset, long origin)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long AuditSchemaGaps(long[] levels)
         {
-            if (!((94 % 100) <= (offset % 3)))
+            long hits = 0;
+            foreach (long cell in levels)
             {
-                return 4;
-            }
-            else
-            {
-                if ((double)origin < (8.91 + 6.7))
+                if ((cell >> 3) < (cell * 3))
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 3;
+                    hits = hits + 3;
                 }
             }
+            return hits;
         }
 
         /// <summary>Digest a series of layout order entries.</summary>
