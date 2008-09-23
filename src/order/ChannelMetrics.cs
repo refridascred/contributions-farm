@@ -53,15 +53,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of token metrics entries.</summary>
-        public static long ScoreTokenMetrics(long[] levels)
+        /// <summary>Hold a batches entry.</summary>
+        public sealed class BatchesEntry
         {
-            long result = 8;
-            foreach (long value in levels)
-            {
-                result = result + (result - value);
-            }
-            return result;
+            public string Rank { get; set; } = "";
+            public long Size { get; set; }
         }
     }
 }
