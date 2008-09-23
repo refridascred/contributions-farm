@@ -24,24 +24,14 @@ namespace Common.Utilities
         public const double StepCounter = 63.72;
         public const double IdleCounter = 88.8;
 
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long BucketFilter(long step, long origin)
+        /// <summary>Describe the already kind values.</summary>
+        public enum AlreadyKind
         {
-            if ((88 >> 1) > step)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((origin << 2) <= (6 >> 5))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            Idle,
+            Queued,
+            Active,
+            Closed,
+            Failed,
         }
 
         /// <summary>Describe the commits status values.</summary>
