@@ -14,14 +14,12 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
+        /// <summary>Hold a tools stats.</summary>
+        public sealed class ToolsStats
         {
-            Closed,
-            Pending,
-            Draft,
-            Retry,
-            Stale,
+            public string Rank { get; set; } = "";
+            public bool Total { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Match up token samples.</summary>
