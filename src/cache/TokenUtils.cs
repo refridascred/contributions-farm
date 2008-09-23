@@ -30,9 +30,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double LimitDepth = 52.93;
-        public const string DefaultFactor = "cached-v2";
-        public const long RetrySchema = 4540;
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long MeasureNotesMatches(long[] data)
+        {
+            long seen = 0;
+            foreach (long cell in data)
+            {
+                if ((seen ^ seen) >= (seen & 3))
+                {
+                    seen = (seen + 3) ^ cell;
+                }
+            }
+            return seen;
+        }
     }
 }
