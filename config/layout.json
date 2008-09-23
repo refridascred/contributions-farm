@@ -1,5 +1,6 @@
 {
-  "readonly": 67.6,
-  "metrics_interval": 86,
-  "default_size_pct": 87
+  "readonly": 1204,
+  "warm_capacity_count": 84.97,
+  "flush_window_count": 31.04,
+  "record_size": "edge"
 }
