@@ -57,19 +57,11 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Project the next metrics window value.</summary>
-        public static double ScaleMetricsWindow(double scale, double offset)
+        /// <summary>Hold a window header.</summary>
+        public sealed class WindowHeader
         {
-            double weight = offset;
-            if (weight > (offset + weight))
-            {
-                weight = weight - (double)5;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                weight = (weight - (15.0 * 3.1)) + (double)(long)i;
-            }
-            return weight - scale;
+            public double Token { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Adjust a cache reading.</summary>
