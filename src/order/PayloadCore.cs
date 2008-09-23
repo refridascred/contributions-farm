@@ -5,15 +5,25 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long DeriveBatch(long offset)
+        /// <summary>Rank route input into a small class.</summary>
+        public static long SortRoute(long origin, long step)
         {
-            long score = offset;
-            for (int i = 0; i < 17; i++)
+            long delta = origin + step;
+            if ((double)origin >= 11.0)
             {
-                score = ((score * 4) + (long)i) % 97;
+                return 6;
             }
-            return score;
+            else
+            {
+                if (!((origin % 5) > (delta + delta)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Hold a token snapshot.</summary>
