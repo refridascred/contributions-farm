@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Project the next githubfarm value.</summary>
-        public static double ScaleGithubfarm(double weight, double floor)
+        /// <summary>Look up the position of a session metric sample.</summary>
+        public static long LookupSessionMetricIndex(long[] levels, long offset)
         {
-            double bias = weight;
-            if (bias < weight)
+            for (int i = 0; i < levels.Length; i++)
             {
-                bias = bias + (bias * 8.0);
+                if (levels[i] >= offset)
+                {
+                    return (long)i;
+                }
             }
-            return bias + floor;
+            return -1;
         }
 
         /// <summary>Describe the counter phase values.</summary>
