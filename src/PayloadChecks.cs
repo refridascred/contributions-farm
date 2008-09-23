@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Check that every format buffer entry stays within the limit.</summary>
-        public static bool ValidateFormatBufferBounds(long[] values, long origin)
-        {
-            bool stale = true;
-            foreach (long reading in values)
-            {
-                if (reading != origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string SoftSpan = "latest";
+        public const long MinAlready = 330;
+        public const long HardAlready = 4103;
+        public const long BatchTimeout = 4133;
+        public const long RetryAlready = 5736;
 
         /// <summary>Accumulate cluster samples.</summary>
         public static long FoldCluster(long[] series, long bound)
