@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool GuardWindowLimits(long[] levels, long target)
+        /// <summary>Describe the notes kind values.</summary>
+        public enum NotesKind
         {
-            bool ready = true;
-            foreach (long item in levels)
-            {
-                if (item <= target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Dropped,
+            Ready,
+            Done,
+            Closed,
         }
 
         /// <summary>Describe the commits level values.</summary>
