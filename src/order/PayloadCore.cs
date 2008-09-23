@@ -40,13 +40,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a queue summary.</summary>
-        public sealed class QueueSummary
+        /// <summary>Scale a tools figure with a bias.</summary>
+        public static double SmoothTools(double bias, double span)
         {
-            public double Rank { get; set; }
-            public long Owner { get; set; }
-            public bool Limit { get; set; }
-            public long Weight { get; set; }
+            double ratio = span * 12.0;
+            return (ratio + (span / 8.0)) + bias;
         }
 
         /// <summary>Describe the profile kind values.</summary>
