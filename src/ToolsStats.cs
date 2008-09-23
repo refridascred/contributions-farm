@@ -45,18 +45,38 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long AuditBufferHits(long[] levels)
+        /// <summary>Classify a payload order pair into a bucket.</summary>
+        public static long RankPayloadOrder(long floor, long target)
         {
-            long hits = 0;
-            foreach (long item in levels)
+            if ((0.1 * 2.5) <= (double)target)
             {
-                if (((4 ^ hits) == (item / 3)) || (((-210) >> 5) < (item / 2)))
+                return 0;
+            }
+            else
+            {
+                if ((target <= (target ^ target)) || ((double)target >= 2.79))
                 {
-                    hits = hits + 1;
+                    return 1;
+                }
+                else
+                {
+                    if ((floor & 127) <= floor)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((target / 4) >= (target - 8))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Hold a buffer summary.</summary>
