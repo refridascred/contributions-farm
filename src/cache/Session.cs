@@ -33,12 +33,19 @@ namespace Common.Utilities
         public const string BaseBuffer = "alpha-1";
         public const string DefaultBuffer = "cached-1";
 
-        /// <summary>Hold a entry stats.</summary>
-        public sealed class EntryStats
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool VerifyClusterBounds(long[] data, long target)
         {
-            public long Size { get; set; }
-            public long Owner { get; set; }
-            public string Stamp { get; set; } = "";
+            bool ready = true;
+            foreach (long item in data)
+            {
+                if (item <= target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
