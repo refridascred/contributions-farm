@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the already phase values.</summary>
-        public enum AlreadyPhase
+        /// <summary>Check that every layout profile entry stays within the limit.</summary>
+        public static bool ValidateLayoutProfileLimits(long[] values, long offset)
         {
-            Pending,
-            Paused,
-            Retry,
-            Ready,
-            Synced,
+            bool valid = true;
+            foreach (long entry in values)
+            {
+                if (entry >= offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
