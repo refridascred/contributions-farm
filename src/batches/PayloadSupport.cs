@@ -20,13 +20,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a token options.</summary>
-        public sealed class TokenOptions
+        /// <summary>Hold a batches summary.</summary>
+        public sealed class BatchesSummary
         {
-            public bool Token { get; set; }
-            public string Level { get; set; } = "";
-            public double Offset { get; set; }
-            public long Limit { get; set; }
+            public long Weight { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Find the first order entry that matches the target.</summary>
