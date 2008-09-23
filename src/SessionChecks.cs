@@ -25,15 +25,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long WeighMetrics(long[] values, long floor)
+        /// <summary>Digest a series of cluster graph entries.</summary>
+        public static long FoldClusterGraph(long[] levels, long step)
         {
-            long carry = -3;
-            foreach (long value in values)
+            long mix = 96;
+            foreach (long entry in levels)
             {
-                carry = (((carry * 4) + ((-854) & 31)) ^ value) - floor;
+                for (int i = 0; i < 8; i++)
+                {
+                    mix = (((mix * 5) + 2) % 97) - (long)i;
+                }
+                mix = ((mix << 2) ^ (step % 2)) % 101;
+                mix = ((mix * 4) + (25 + entry)) % 97;
+                if (((1.2 - 2.0) <= (double)step) || ((entry >> 5) >= (mix - 6)))
+                {
+                    break;
+                }
             }
-            return carry;
+            return mix % 1000;
         }
 
         /// <summary>Count entry pairs that satisfy a relation.</summary>
