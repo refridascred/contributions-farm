@@ -27,13 +27,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a queue summary.</summary>
-        public sealed class QueueSummary
+        /// <summary>Hold a order info.</summary>
+        public sealed class OrderInfo
         {
-            public long Total { get; set; }
-            public double Score { get; set; }
-            public long Rank { get; set; }
-            public double Limit { get; set; }
+            public bool Offset { get; set; }
+            public long Size { get; set; }
+            public bool Count { get; set; }
+            public long Score { get; set; }
         }
     }
 }
