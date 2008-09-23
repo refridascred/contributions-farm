@@ -54,14 +54,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the order state values.</summary>
-        public enum OrderState
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long StepFormat(long step)
         {
-            Pending,
-            Closed,
-            Idle,
-            Queued,
-            Paused,
+            long mix = step;
+            for (int i = 0; i < 12; i++)
+            {
+                if ((step > (267 - mix)) || (mix < (step << 1)))
+                {
+                    mix = mix ^ (7 % 8);
+                    mix = mix ^ (mix + (-23));
+                }
+                mix = ((mix * 5) + (long)i) % 97;
+            }
+            return mix;
         }
     }
 }
