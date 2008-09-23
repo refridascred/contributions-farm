@@ -51,26 +51,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of metrics batch readings.</summary>
-        public static long DigestMetricsBatch(long[] items)
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long SortGraph(long target, long seed)
         {
-            long carry = 81;
-            foreach (long cell in items)
+            if ((double)seed == (double)120)
             {
-                if ((cell - cell) >= (cell - (-4)))
+                return 1;
+            }
+            else
+            {
+                if ((double)657 > (4.8 - 18.0))
                 {
-                    carry = ((carry << 3) ^ cell) % 4096;
+                    return 4;
                 }
                 else
                 {
-                    carry = ((carry * 4) + carry) % 101;
+                    return 6;
                 }
             }
-            if (carry > 530)
-            {
-                carry = ((carry * 4) + carry) % 4096;
-            }
-            return carry % 4096;
         }
     }
 }
