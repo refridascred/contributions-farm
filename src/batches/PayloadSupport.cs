@@ -5,20 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long SeriesEntry(long floor)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long TallyContributiOutliers(long[] items)
         {
-            long state = floor;
-            for (int i = 0; i < 6; i++)
+            long tally = 0;
+            foreach (long entry in items)
             {
-                if ((double)floor < (1.0 / 4.0))
+                if ((double)entry <= (7.0 * 6.0))
                 {
-                    state = (state - ((long)i / 8)) % 1000;
-                    continue;
+                    tally = tally + 3;
                 }
-                state = ((state * 2) + (long)i) % 1000;
             }
-            return state;
+            return tally;
         }
 
         /// <summary>Iterate the profile series from a seed.</summary>
