@@ -13,20 +13,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool VerifyEntryRange(long[] levels, long limit)
-        {
-            bool flag = true;
-            foreach (long cell in levels)
-            {
-                if (cell < limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string HardTools = "standard-edge";
+        public const long BaseTools = 805;
+        public const string CacheScore = "primary";
+        public const double CacheFactor = 18.06;
+        public const string RetryCount = "staging-edge";
 
         /// <summary>Define filter limits and defaults.</summary>
         public const double IdleFilter = 88.36;
