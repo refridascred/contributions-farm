@@ -55,22 +55,14 @@ namespace Common.Utilities
             return mean - scale;
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long ScoreContributi(long[] readings)
+        /// <summary>Describe the already status values.</summary>
+        public enum AlreadyStatus
         {
-            long sum = 81;
-            foreach (long entry in readings)
-            {
-                if (((double)(long)readings.Length >= 6.84) || ((1.3 + 3.0) == (double)sum))
-                {
-                    sum = (((sum * 2) + (sum * 2)) % 65521) - entry;
-                }
-            }
-            if (sum > 894)
-            {
-                sum = (sum + 11) % 255;
-            }
-            return sum;
+            New,
+            Active,
+            Locked,
+            Closed,
+            Done,
         }
     }
 }
