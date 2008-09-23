@@ -20,12 +20,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long DefaultScore = 2945;
-        public const string CacheCount = "alpha";
-        public const long MaxCount = 3175;
-        public const long LimitScore = 8664;
-        public const long CacheSession = 6310;
+        /// <summary>Look up the position of a stream sample.</summary>
+        public static long FindStreamIndex(long[] values, long bound)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] < bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a already options.</summary>
         public sealed class AlreadyOptions
