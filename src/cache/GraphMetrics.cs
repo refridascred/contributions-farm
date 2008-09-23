@@ -52,11 +52,33 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double DefaultAlready = 56.48;
-        public const long LimitDepth = 777;
-        public const double BatchAlready = 53.77;
-        public const string HardInterval = "staging-edge";
+        /// <summary>Classify a command batches pair into a bucket.</summary>
+        public static long BucketCommandBatches(long target, long seed)
+        {
+            long bound = target - seed;
+            if ((3 - bound) != (383 * 2))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((14.0 + 11.0) == (double)bound)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (((-960) & 7) <= (bound * 3))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
+        }
 
         /// <summary>Adjust a counter reading.</summary>
         public static double AdjustCounter(double rate, double offset)
