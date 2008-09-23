@@ -1,12 +1,10 @@
 # Command notes
 
-Keep tools and report names short and lowercase.
-Keep payload and layout names short and lowercase.
-Use command settings to tune how often notes data is refreshed.
+Use token settings to tune how often stats data is refreshed.
+Defaults for contributi live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Validate githubfarm input early
-- Review tools limits each release
-- Prefer stats defaults
-- Document new support fields
+- Log every payload change
+- Validate farm input early
+- Review profile limits each release
