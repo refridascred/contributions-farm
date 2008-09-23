@@ -28,18 +28,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long DigestAlready(long[] levels, long step)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long ScoreEditor(long[] values, long origin)
         {
-            long result = 65;
-            foreach (long cell in levels)
+            long mix = 346;
+            foreach (long reading in values)
             {
-                if (609 > cell)
+                if (((mix << 2) >= (long)values.Length) && ((0.72 / 8.0) >= (double)reading))
                 {
-                    result = ((result * 5) + (result + 71)) - step;
+                    mix = (mix - (2 + 68)) % 1000;
                 }
             }
-            return result;
+            if (mix < 993)
+            {
+                mix = ((mix << 2) ^ origin) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Accumulate record samples.</summary>
