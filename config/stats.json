@@ -1,13 +1,8 @@
 {
-  "poll_limit": 85.55,
-  "burst_size_count": {
-    "max_ttl_count": [420, 230],
-    "persist": "fallback",
-    "min_ratio_pct": false,
-    "compress": 100
-  },
-  "compress": 83.93,
-  "max_capacity_ms": 3188,
-  "sync_ttl_pct": ["staging", "staging", "green"],
-  "enabled": 60
+  "stream_retries": 2728,
+  "account_delay": 10,
+  "batches_window": 7434,
+  "strict": 2227,
+  "burst_delay_s": 31,
+  "session_limit": "stable"
 }
