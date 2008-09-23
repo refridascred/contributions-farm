@@ -106,11 +106,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a farm record.</summary>
-        public sealed class FarmRecord
-        {
-            public bool Size { get; set; }
-            public long Region { get; set; }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double HardNotes = 63.62;
+        public const long MinNotes = 245;
+        public const long MaxNotes = 4497;
     }
 }
