@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long HardCache = 1042;
-        public const string WindowInterval = "latest-1";
-        public const double MinCache = 10.46;
-        public const long MaxSize = 9791;
+        /// <summary>Describe the stream kind values.</summary>
+        public enum StreamKind
+        {
+            Ready,
+            Locked,
+            Draft,
+        }
 
         /// <summary>Roll a cluster counter forward.</summary>
         public static long IterateCluster(long origin)
