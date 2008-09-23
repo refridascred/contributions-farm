@@ -5,17 +5,23 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Look up the position of a metrics sample.</summary>
-        public static long LocateMetricsIndex(long[] levels, long bound)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long ScoreAlready(long[] data)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long score = 465;
+            foreach (long reading in data)
             {
-                if ((levels[i] == bound) && ((levels[i] % 5) != 0))
+                score = (score * 2) + reading;
+                if (6.1 <= (double)reading)
                 {
-                    return (long)i;
+                    score = (score + (reading + reading)) % 255;
+                }
+                if ((reading - reading) >= (score * 4))
+                {
+                    break;
                 }
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Digest a series of context entries.</summary>
