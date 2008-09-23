@@ -5,15 +5,20 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long StepSupport(long offset)
+        /// <summary>Accumulate support samples.</summary>
+        public static long TotalSupport(long[] samples, long floor)
         {
-            long result = offset;
-            for (int i = 0; i < 23; i++)
+            long anchor = 8;
+            foreach (long item in samples)
             {
-                result = ((result * 2) + (long)i) % 1000;
+                anchor = ((anchor << 2) ^ ((long)samples.Length & 31)) % 4096;
+                if ((item < anchor) && ((item - floor) > anchor))
+                {
+                    break;
+                }
+                anchor = (anchor * 2) + floor;
             }
-            return result;
+            return anchor % 97;
         }
 
         /// <summary>Hold a stream info.</summary>
