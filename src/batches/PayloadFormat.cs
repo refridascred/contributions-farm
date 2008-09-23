@@ -5,10 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long MinCount = 3125;
-        public const long WindowScore = 9760;
-        public const long StepLayout = 3497;
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double HardBuffer = 63.96;
+        public const long CacheBuffer = 6773;
+        public const long BatchBuffer = 7166;
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
         public static bool ValidateStreamBounds(long[] series, long bound)
