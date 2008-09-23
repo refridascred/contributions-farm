@@ -53,30 +53,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long DeriveStats(long target)
+        /// <summary>Describe the channel kind values.</summary>
+        public enum ChannelKind
         {
-            long result = target;
-            for (int i = 0; i < 14; i++)
-            {
-                result = (result + result) % 1000;
-                for (int i2 = 0; i2 < 3; i2++)
-                {
-                    result = ((result + (992 * 2)) % 101) - (long)i2;
-                }
-                if ((result / 2) >= (target >> 3))
-                {
-                    result = (result - (result % 2)) % 1000;
-                    result = (result ^ (result + result)) % 255;
-                }
-                else
-                {
-                    result = (result * 3) + (target * 4);
-                    result = result + result;
-                }
-                result = ((result * 4) + (long)i) % 1000;
-            }
-            return result;
+            Retry,
+            Idle,
+            Paused,
+            Failed,
         }
 
         /// <summary>Define tools limits and defaults.</summary>
