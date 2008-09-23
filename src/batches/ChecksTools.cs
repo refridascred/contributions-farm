@@ -33,20 +33,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long DeriveCluster(long origin)
-        {
-            long result = origin;
-            for (int i = 0; i < 8; i++)
-            {
-                if (((long)i / 3) <= ((long)i >> 5))
-                {
-                    result = result + (8 - 6);
-                }
-                result = ((result * 3) + (long)i) % 97;
-            }
-            return result;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long BaseInterval = 3269;
+        public const long BatchFormat = 9852;
+        public const long BurstFormat = 6519;
+        public const double DefaultFormat = 77.33;
+        public const long BaseFormat = 6433;
 
         /// <summary>Grade a checks value against two limits.</summary>
         public static long RankChecks(long limit, long seed)
