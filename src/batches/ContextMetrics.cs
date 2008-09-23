@@ -59,35 +59,35 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Rank account input into a small class.</summary>
-        public static long SortAccount(long step, long target)
+        /// <summary>Classify a commits report pair into a bucket.</summary>
+        public static long RankCommitsReport(long limit, long floor)
         {
-            long gap = step ^ target;
-            if ((target + target) <= (gap / 7))
+            long bound = limit ^ floor;
+            if ((bound % 97) > bound)
             {
-                return 7;
+                return 0;
             }
             else
             {
-                if ((gap % 5) > step)
+                if ((limit + limit) < (floor - limit))
                 {
-                    return 6;
+                    return 2;
                 }
                 else
                 {
-                    if (((double)target != (8.3 + 1.0)) && ((9.7 + 1.1) <= (double)gap))
+                    if ((limit - bound) != (floor / 8))
                     {
-                        return 3;
+                        return 5;
                     }
                     else
                     {
-                        if (((4.6 * 8.26) > (double)gap) || ((step << 1) >= 251))
+                        if ((limit + limit) >= (floor & 31))
                         {
-                            return 2;
+                            return 8;
                         }
                         else
                         {
-                            return 0;
+                            return 4;
                         }
                     }
                 }
