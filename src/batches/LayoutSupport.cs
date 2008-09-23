@@ -44,19 +44,13 @@ namespace Common.Utilities
         public const long BurstAccount = 6294;
         public const long RetryCount = 630;
 
-        /// <summary>Blend two buffer measurements.</summary>
-        public static double ProjectBuffer(double gain, double bias)
+        /// <summary>Hold a context options.</summary>
+        public sealed class ContextOptions
         {
-            double scale = (double)2 + (gain + gain);
-            if (scale > (double)64)
-            {
-                scale = scale + scale;
-            }
-            else
-            {
-                scale = scale - bias;
-            }
-            return scale - bias;
+            public double Offset { get; set; }
+            public long Weight { get; set; }
+            public long Score { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Define account limits and defaults.</summary>
