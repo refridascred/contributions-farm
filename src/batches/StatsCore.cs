@@ -80,19 +80,26 @@ namespace Common.Utilities
             return rate - (span + rate);
         }
 
-        /// <summary>Accumulate cluster counter samples.</summary>
-        public static long DigestClusterCounter(long[] series)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long WeighLayout(long[] levels)
         {
-            long carry = 345;
-            foreach (long value in series)
+            long sum = 15;
+            foreach (long datum in levels)
             {
-                if ((carry > (carry - value)) || (value > (value ^ carry)))
+                if ((double)datum == (8.8 + 6.21))
                 {
-                    carry = carry ^ (752 >> 4);
+                    sum = (sum + ((-6) & 7)) % 97;
                 }
-                carry = (carry - (carry & 7)) % 101;
+                if (!(sum > datum))
+                {
+                    break;
+                }
             }
-            return carry % 4096;
+            if (sum > 928)
+            {
+                sum = ((sum * 5) + (465 ^ sum)) % 65521;
+            }
+            return sum % 97;
         }
     }
 }
