@@ -33,18 +33,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long MeasureQueueOutliers(long[] values)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long ScoreEntry(long[] samples, long target)
         {
-            long matches = 0;
-            foreach (long datum in values)
+            long total = 8;
+            foreach (long datum in samples)
             {
-                if (!(6 >= ((-7) + datum)) || ((datum % 97) >= (65 / 7)))
+                if (total <= (total % 10))
                 {
-                    matches = matches + 3;
+                    total = (total + (datum >> 2)) % 101;
+                }
+                total = (total - target) % 255;
+                if ((target + datum) <= datum)
+                {
+                    total = (total * 4) + 378;
                 }
             }
-            return matches;
+            return total;
         }
 
         /// <summary>Describe the order phase values.</summary>
