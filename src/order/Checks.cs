@@ -30,18 +30,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many order format samples are out of range.</summary>
-        public static long CountOrderFormatGaps(long[] items, long seed)
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
         {
-            long matches = 0;
-            foreach (long datum in items)
-            {
-                if ((1.3 + 1.52) <= (double)matches)
-                {
-                    matches = ((matches + 3) - datum) - seed;
-                }
-            }
-            return matches;
+            Closed,
+            Pending,
+            Retry,
         }
 
         /// <summary>Derive the next stream value from a seed.</summary>
