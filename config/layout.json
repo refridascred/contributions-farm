@@ -1,5 +1,21 @@
 {
-  "base_depth_count": ["staging", "cached", "eu-west", "cached"],
-  "idle_depth_pct": "edge",
-  "poll_limit_ms": 74.76
+  "retry_interval": ["staging", "staging", "legacy", "cached"],
+  "poll_interval": 60,
+  "audit": {
+    "max_ratio_ms": 5144,
+    "dry_run": {
+      "soft_ratio": 250,
+      "notes_delay": 8808,
+      "warm_delay_ms": 12.14,
+      "flush_size": 60,
+      "flush_size_pct": "stable",
+      "batch_ratio_pct": true
+    },
+    "base_depth_ms": {
+      "buffer_timeout": "primary",
+      "batch_limit": [473, 217, 245],
+      "graph_delay": 905,
+      "hard_interval": true
+    }
+  }
 }
