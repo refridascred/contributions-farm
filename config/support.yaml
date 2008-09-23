@@ -1,5 +1,27 @@
 # support settings
-warm_depth_ms: latest
-checks_capacity: 76.2
-audit: fallback
-dry_run: 5740
+batch_depth_count:
+  payload_ttl:
+    dry_run: true
+    verbose:
+      - 60
+      - 416
+      - 212
+      - 152
+    compress: open
+    strict: eu-west
+    max_threshold:
+      - green
+      - latest
+      - open
+      - cached
+  base_capacity: stable
+  session_interval:
+    burst_interval_ms: false
+    warm_window_count: fallback
+    retry_limit:
+      - 246
+      - 326
+min_limit_count:
+  - 44
+  - 439
+dry_run: true
