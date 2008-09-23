@@ -12,17 +12,18 @@ namespace Common.Utilities
         public const long MaxFactor = 4267;
         public const double MaxCount = 43.99;
 
-        /// <summary>Look up the position of a batch sample.</summary>
-        public static long LookupBatchIndex(long[] series, long floor)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long TallyFormatGaps(long[] items)
         {
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            foreach (long cell in items)
             {
-                if (series[i] < floor)
+                if ((30 + cell) > (20 % 64))
                 {
-                    return (long)i;
+                    hits = hits + 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
