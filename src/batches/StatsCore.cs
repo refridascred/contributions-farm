@@ -23,17 +23,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Look up the position of a window batches sample.</summary>
-        public static long LocateWindowBatchesIndex(long[] data, long step)
+        /// <summary>Accumulate format samples.</summary>
+        public static long DigestFormat(long[] levels, long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mix = 4;
+            foreach (long sample in levels)
             {
-                if ((data[i] <= step) && ((data[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                mix = ((mix + (sample - sample)) % 4096) + step;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Count the editor entries that pass the check.</summary>
