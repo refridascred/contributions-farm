@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Hold a command snapshot.</summary>
-        public sealed class CommandSnapshot
-        {
-            public long Count { get; set; }
-            public bool Total { get; set; }
-            public string Size { get; set; } = "";
-            public bool Rank { get; set; }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long CacheDepth = 3387;
+        public const string DefaultCache = "standard-1";
+        public const long SoftRatio = 9411;
 
         /// <summary>Adjust a contributi reading.</summary>
         public static double BlendContributi(double gain, double span)
