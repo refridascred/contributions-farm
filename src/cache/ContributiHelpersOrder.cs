@@ -35,21 +35,10 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Count order pairs that satisfy a relation.</summary>
-        public static long MatchOrderCount(long[] readings)
-        {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) == 20)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long WindowCount = 3420;
+        public const string BurstRoute = "open-1";
+        public const string HardSpan = "stable";
+        public const long IdleInterval = 5935;
     }
 }
