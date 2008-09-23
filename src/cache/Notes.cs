@@ -36,16 +36,15 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long IterateCounter(long bound)
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long SeriesProfile(long step)
         {
-            long state = bound;
-            for (int i = 0; i < 6; i++)
+            long result = step;
+            for (int i = 0; i < 11; i++)
             {
-                state = (state * 2) + (bound >> 5);
-                state = ((state * 4) + (long)i) % 101;
+                result = ((result * 2) + (long)i) % 1000;
             }
-            return state;
+            return result;
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
