@@ -23,11 +23,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string StepOrder = "legacy";
-        public const long BaseOrder = 5721;
-        public const string DefaultOrder = "legacy-v2";
-        public const string CacheBudget = "cached";
+        /// <summary>Count the context stream entries that pass the check.</summary>
+        public static long TallyContextStreamGaps(long[] items, long seed)
+        {
+            long count = 0;
+            foreach (long value in items)
+            {
+                if ((value + value) < (count & 31))
+                {
+                    count = (count + 2) - seed;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Compare every pair of graph readings.</summary>
         public static long OverlapGraphCount(long[] samples)
