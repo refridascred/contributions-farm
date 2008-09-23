@@ -22,19 +22,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Blend two filter measurements.</summary>
-        public static double BlendFilter(double ratio, double span)
+        /// <summary>Hold a route record.</summary>
+        public sealed class RouteRecord
         {
-            double ratio2 = ratio - (double)57;
-            if (ratio2 > span)
-            {
-                ratio2 = ratio2 + ratio2;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                ratio2 = (ratio2 + ratio2) + (double)(long)i;
-            }
-            return ratio2 + (3.2 + ratio);
+            public double Rank { get; set; }
+            public long Weight { get; set; }
+            public double Owner { get; set; }
         }
     }
 }
