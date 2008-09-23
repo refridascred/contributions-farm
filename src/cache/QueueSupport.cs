@@ -20,15 +20,22 @@ namespace Common.Utilities
             return gain + (double)50;
         }
 
-        /// <summary>Derive the next githubfarm metrics value from a seed.</summary>
-        public static long IterateGithubfarmMetrics(long origin)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long CountReportGaps(long[] series)
         {
-            long anchor = origin;
-            for (int i = 0; i < 17; i++)
+            long tally = 0;
+            foreach (long sample in series)
             {
-                anchor = ((anchor * 3) + (long)i) % 101;
+                if ((tally + tally) > tally)
+                {
+                    tally = (tally + 2) - sample;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
