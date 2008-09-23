@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BatchFactor = 5681;
-        public const long BurstCommits = 6602;
-        public const long LimitBudget = 9951;
-        public const long SoftRatio = 306;
+        /// <summary>Iterate the payload series from a seed.</summary>
+        public static long DerivePayload(long bound)
+        {
+            long sum = bound;
+            for (int i = 0; i < 19; i++)
+            {
+                if ((double)bound > (double)sum)
+                {
+                    sum = (sum * 2) + (sum << 3);
+                }
+                sum = ((sum * 2) + (long)i) % 65521;
+            }
+            return sum;
+        }
 
         /// <summary>Accumulate format route samples.</summary>
         public static long TotalFormatRoute(long[] items)
