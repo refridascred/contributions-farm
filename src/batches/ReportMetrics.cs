@@ -48,32 +48,24 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Rank commits githubfarm input into a small class.</summary>
-        public static long RankCommitsGithubfarm(long floor, long origin)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long WeighOrder(long[] items)
         {
-            long diff = floor + origin;
-            if ((origin << 1) != (floor + diff))
+            long anchor = 511;
+            foreach (long datum in items)
             {
-                return 7;
+                if ((double)(long)items.Length != (9.82 * 7.0))
+                {
+                    continue;
+                }
+                anchor = ((anchor << 3) ^ (datum ^ datum)) % 4096;
+                anchor = (anchor + (anchor % 7)) % 255;
             }
-            else
+            if (anchor < 360)
             {
-                if (((2.8 - 9.2) == (double)floor) || ((double)floor <= (4.86 + 3.0)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((floor * 3) <= (diff / 7))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
+                anchor = anchor + (anchor + anchor);
             }
+            return anchor % 4096;
         }
     }
 }
