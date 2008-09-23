@@ -6,15 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-COMMAND_LIMIT=105
-log "limit is ${COMMAND_LIMIT}"
-
 count=0
 while [ "${count}" -lt 9 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
 
-for item in latest strict cached; do
+for item in primary cached fallback open; do
     log "checking ${item}"
 done
