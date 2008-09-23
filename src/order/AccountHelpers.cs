@@ -85,10 +85,32 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double LimitSpan = 0.38;
-        public const long BaseCommand = 8937;
-        public const long CacheCommand = 4287;
-        public const long SoftCommand = 8750;
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long BucketTools(long origin, long step)
+        {
+            long prev = origin ^ step;
+            if (!((9.28 * 5.9) < (double)origin))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((double)step < (double)origin)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((31 - prev) >= 141)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
+        }
     }
 }
