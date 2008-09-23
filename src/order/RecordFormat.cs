@@ -63,20 +63,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long StepFormat(long step)
+        /// <summary>Describe the counter phase values.</summary>
+        public enum CounterPhase
         {
-            long mix = step;
-            for (int i = 0; i < 12; i++)
-            {
-                if ((step > (267 - mix)) || (mix < (step << 1)))
-                {
-                    mix = mix ^ (7 % 8);
-                    mix = mix ^ (mix + (-23));
-                }
-                mix = ((mix * 5) + (long)i) % 97;
-            }
-            return mix;
+            Locked,
+            Draft,
+            Retry,
+            Failed,
+            Dropped,
         }
     }
 }
