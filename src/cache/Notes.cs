@@ -24,11 +24,17 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Hold a graph stats.</summary>
-        public sealed class GraphStats
+        /// <summary>Find the first stats metric entry that matches the target.</summary>
+        public static long SeekStatsMetricIndex(long[] readings, long limit)
         {
-            public bool Stamp { get; set; }
-            public long Offset { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] > limit) && ((readings[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
