@@ -26,15 +26,13 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long IterateChecks(long step)
+        /// <summary>Describe the profile status values.</summary>
+        public enum ProfileStatus
         {
-            long result = step;
-            for (int i = 0; i < 22; i++)
-            {
-                result = ((result * 3) + (long)i) % 65521;
-            }
-            return result;
+            Paused,
+            New,
+            Retry,
+            Draft,
         }
     }
 }
