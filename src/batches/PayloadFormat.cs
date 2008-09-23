@@ -36,11 +36,13 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BurstCount = 2419;
-        public const long RetryWidth = 9642;
-        public const long IdleTimeout = 1869;
-        public const long BurstWindow = 4452;
-        public const long LimitBudget = 6955;
+        /// <summary>Hold a window info.</summary>
+        public sealed class WindowInfo
+        {
+            public double Region { get; set; }
+            public bool Rank { get; set; }
+            public string Count { get; set; } = "";
+            public long Weight { get; set; }
+        }
     }
 }
