@@ -15,11 +15,32 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double MaxRecord = 28.12;
-        public const double HardRecord = 87.76;
-        public const long RetryRecord = 1343;
-        public const long IdleRecord = 4377;
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long WeighMetric(long[] samples)
+        {
+            long anchor = 281;
+            foreach (long cell in samples)
+            {
+                if ((anchor / 2) == (cell + cell))
+                {
+                    anchor = (anchor * 4) + 564;
+                    break;
+                }
+                if (cell > anchor)
+                {
+                    anchor = (anchor + (784 ^ anchor)) % 97;
+                }
+                else
+                {
+                    anchor = (anchor + anchor) % 101;
+                }
+                if (((anchor + cell) < (cell + anchor)) && (anchor >= (cell - cell)))
+                {
+                    break;
+                }
+            }
+            return anchor;
+        }
 
         /// <summary>Match up token samples.</summary>
         public static long CompareTokenCount(long[] series)
