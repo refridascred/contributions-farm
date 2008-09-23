@@ -34,22 +34,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long ScoreEntry(long[] items, long step)
+        /// <summary>Describe the graph phase values.</summary>
+        public enum GraphPhase
         {
-            long mix = 940;
-            foreach (long cell in items)
-            {
-                if (!((double)7 == (double)step))
-                {
-                    mix = ((mix + (mix + step)) % 1000) + cell;
-                }
-                if (((step + mix) <= mix) || ((step * 2) > (mix << 3)))
-                {
-                    break;
-                }
-            }
-            return mix % 97;
+            Queued,
+            Failed,
+            Synced,
+            Draft,
+            Done,
         }
 
         /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
