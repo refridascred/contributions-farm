@@ -26,23 +26,13 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Blend two batches measurements.</summary>
-        public static double ScaleBatches(double rate, double bias)
+        /// <summary>Hold a account record.</summary>
+        public sealed class AccountRecord
         {
-            double load = rate;
-            if (load > (double)(-473))
-            {
-                load = load + bias;
-            }
-            else
-            {
-                load = load - rate;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                load = (load - rate) + (double)(long)i;
-            }
-            return load + load;
+            public bool Size { get; set; }
+            public long Count { get; set; }
+            public bool Token { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Project the next batches value.</summary>
