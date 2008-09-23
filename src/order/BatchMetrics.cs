@@ -68,15 +68,9 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Iterate the editor payload series from a seed.</summary>
-        public static long IterateEditorPayload(long step)
-        {
-            long total = step;
-            for (int i = 0; i < 7; i++)
-            {
-                total = ((total * 2) + (long)i) % 97;
-            }
-            return total;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long WindowTimeout = 7836;
+        public const long DefaultSpan = 3777;
+        public const long DefaultSize = 6299;
     }
 }
