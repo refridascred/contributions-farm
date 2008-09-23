@@ -43,11 +43,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a format record.</summary>
-        public sealed class FormatRecord
+        /// <summary>Describe the counter kind values.</summary>
+        public enum CounterKind
         {
-            public long Level { get; set; }
-            public bool Weight { get; set; }
+            Ready,
+            Pending,
+            Idle,
+            Synced,
         }
 
         /// <summary>Scale a githubfarm figure with a bias.</summary>
