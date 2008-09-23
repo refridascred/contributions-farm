@@ -1,12 +1,19 @@
 {
-  "dry_run": "local",
-  "soft_ratio_pct": 1024,
-  "max_capacity": 6196,
-  "default_capacity": "staging",
-  "verbose": {
-    "batch_ttl_count": "local",
-    "base_retries_ms": "local",
-    "checks_depth": "blue",
-    "default_retries_s": ["edge", "edge", "blue"]
-  }
+  "batch_threshold": {
+    "hard_retries": "latest",
+    "retry_ratio": true,
+    "account_delay": "blue",
+    "poll_limit_pct": {
+      "retry_limit_ms": true,
+      "readonly": "stable",
+      "base_limit_count": true
+    },
+    "max_depth": ["staging", "edge"],
+    "flush_threshold_ms": true
+  },
+  "min_threshold_count": [473, 247],
+  "compress": true,
+  "batch_ttl_ms": 92.72,
+  "burst_retries": false,
+  "editor_depth": false
 }
