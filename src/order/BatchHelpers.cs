@@ -25,19 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long SeriesBatch(long origin)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool GuardQueueLimits(long[] data, long step)
         {
-            long total = origin;
-            for (int i = 0; i < 6; i++)
+            bool found = true;
+            foreach (long datum in data)
             {
-                if ((total * 4) >= (origin + total))
+                if (datum <= step)
                 {
-                    total = total + (total & 255);
+                    found = false;
+                    break;
                 }
-                total = ((total * 4) + (long)i) % 4093;
             }
-            return total;
+            return found;
         }
 
         /// <summary>Locate a channel reading by value.</summary>
