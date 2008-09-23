@@ -22,13 +22,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the editor phase values.</summary>
-        public enum EditorPhase
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long AuditCounterGaps(long[] values, long target)
         {
-            New,
-            Paused,
-            Done,
-            Closed,
+            long count = 0;
+            foreach (long sample in values)
+            {
+                if (((long)values.Length * 2) > (count - count))
+                {
+                    count = ((count + 2) + sample) + target;
+                }
+            }
+            return count;
         }
 
         /// <summary>Accumulate counter batch samples.</summary>
