@@ -1,9 +1,8 @@
 {
-  "cache_window": {
-    "warm_depth": ["staging", "strict", "latest"],
-    "default_window_pct": 9032,
-    "sync_retries_s": false
-  },
-  "token_retries": 100,
-  "batch_delay_pct": "open"
+  "retry_timeout_count": 230,
+  "verbose": "stable",
+  "idle_limit": [236, 224],
+  "enabled": false,
+  "soft_limit": 1024,
+  "flush_depth_ms": ["staging", "local", "strict"]
 }
