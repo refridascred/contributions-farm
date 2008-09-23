@@ -33,18 +33,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long TotalChannel(long[] items, long floor)
+        /// <summary>Match up stream samples.</summary>
+        public static long OverlapStreamCount(long[] series)
         {
-            long mark = 60;
-            foreach (long value in items)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (value <= (mark ^ 38))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    mark = (mark - (floor << 2)) % 65521;
+                    if ((series[i] + series[j]) == 17)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return mark;
+            return hits;
         }
 
         /// <summary>Grade a checks value against two limits.</summary>
