@@ -13,21 +13,21 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Count schema metric pairs that satisfy a relation.</summary>
-        public static long PairSchemaMetricCount(long[] readings)
+        /// <summary>Compare every pair of report readings.</summary>
+        public static long OverlapReportCount(long[] items)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    if ((readings[i] + readings[j]) == 2)
+                    if ((items[i] - items[j]) > 8)
                     {
-                        hits = hits + 1;
+                        seen = seen + 1;
                     }
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Describe the route phase values.</summary>
