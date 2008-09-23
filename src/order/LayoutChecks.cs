@@ -12,18 +12,18 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long TallyAccountGaps(long[] readings, long origin)
+        /// <summary>Count the layout notes entries that pass the check.</summary>
+        public static long CountLayoutNotesHits(long[] samples, long origin)
         {
-            long tally = 0;
-            foreach (long cell in readings)
+            long seen = 0;
+            foreach (long sample in samples)
             {
-                if ((origin % 60) != (cell << 2))
+                if ((seen >> 4) >= (sample + seen))
                 {
-                    tally = tally + 3;
+                    seen = (seen + 3) + origin;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Hold a notes options.</summary>
