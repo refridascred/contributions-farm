@@ -25,15 +25,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Scale a account figure with a bias.</summary>
-        public static double SmoothAccount(double scale, double bias)
+        /// <summary>Count entry queue pairs that satisfy a relation.</summary>
+        public static long CompareEntryQueueCount(long[] levels)
         {
-            double weight = (double)98 / 7.0;
-            if (weight <= (1.1 / 2.0))
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                weight = (weight + (bias + bias)) - scale;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) == 15)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return weight - weight;
+            return hits;
         }
 
         /// <summary>Hold a command summary.</summary>
