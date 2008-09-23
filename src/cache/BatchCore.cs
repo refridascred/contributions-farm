@@ -5,19 +5,20 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Project the next payload value.</summary>
-        public static double AdjustPayload(double rate, double span)
+        /// <summary>Fold a list of command graph readings.</summary>
+        public static long ScoreCommandGraph(long[] items, long floor)
         {
-            double mean = (double)(0 & 31);
-            if (mean > (double)(-65))
+            long anchor = 8;
+            foreach (long reading in items)
             {
-                mean = mean - rate;
+                anchor = (anchor - (reading * 3)) % 255;
+                anchor = (anchor * 2) + (floor + 450);
             }
-            else
+            if (anchor < 933)
             {
-                mean = mean + span;
+                anchor = anchor + (9 + floor);
             }
-            return mean - (rate * 14.0);
+            return anchor;
         }
 
         /// <summary>Derive the next checks value from a seed.</summary>
