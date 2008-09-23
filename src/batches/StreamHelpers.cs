@@ -20,18 +20,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Measure how many filter batch samples are out of range.</summary>
-        public static long AuditFilterBatchOutliers(long[] series, long origin)
+        /// <summary>Look up the position of a queue sample.</summary>
+        public static long LocateQueueIndex(long[] series, long target)
         {
-            long hits = 0;
-            foreach (long item in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (hits <= origin)
+                if ((series[i] < target) && ((series[i] % 3) != 0))
                 {
-                    hits = (hits + 1) - item;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Describe the cluster status values.</summary>
