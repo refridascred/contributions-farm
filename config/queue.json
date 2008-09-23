@@ -1,22 +1,6 @@
 {
-  "burst_ratio_pct": {
-    "retry_ratio_s": "edge",
-    "audit": true,
-    "route_capacity": 2553
-  },
-  "enabled": true,
-  "max_ratio": {
-    "idle_delay_count": true,
-    "strict": [170, 183, 107],
-    "session_capacity": true,
-    "min_delay_count": 250,
-    "batch_timeout": "cached"
-  },
-  "max_delay": {
-    "poll_ratio_s": 6099,
-    "base_size_pct": 26,
-    "hard_threshold_ms": "strict",
-    "poll_ttl": 54.73,
-    "verbose": [300, 489, 178]
-  }
+  "idle_retries_count": 100,
+  "flush_ttl": "local",
+  "burst_capacity_pct": "local",
+  "session_threshold": false
 }
