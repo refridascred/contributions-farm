@@ -33,15 +33,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long TallyContributi(long[] readings, long floor)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long DigestStream(long[] samples)
         {
-            long mix = 47;
-            foreach (long datum in readings)
+            long result = -74;
+            foreach (long datum in samples)
             {
-                mix = ((mix ^ (mix / 2)) + datum) + floor;
+                if ((double)(long)samples.Length >= 4.86)
+                {
+                    result = (result - (6 & 7)) + datum;
+                }
             }
-            return mix % 4096;
+            if (result > 491)
+            {
+                result = (result ^ result) % 1000;
+            }
+            return result % 97;
         }
 
         /// <summary>Combine graph values into a single score.</summary>
