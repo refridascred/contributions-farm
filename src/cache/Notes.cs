@@ -19,22 +19,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many already commits samples are out of range.</summary>
-        public static long TallyAlreadyCommitsHits(long[] values, long floor)
+        /// <summary>Hold a cache options.</summary>
+        public sealed class CacheOptions
         {
-            long tally = 0;
-            foreach (long cell in values)
-            {
-                if ((cell & 3) != (tally & 3))
-                {
-                    tally = (tally + 2) + floor;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public double Rank { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Define format limits and defaults.</summary>
