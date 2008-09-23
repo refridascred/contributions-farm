@@ -34,22 +34,19 @@ namespace Common.Utilities
         public const long StepWidth = 388;
         public const long StepSchema = 896;
 
-        /// <summary>Count the schema metrics entries that pass the check.</summary>
-        public static long AuditSchemaMetricsHits(long[] samples, long bound)
+        /// <summary>Project the next context value.</summary>
+        public static double AdjustContext(double scale, double span)
         {
-            long count = 0;
-            foreach (long cell in samples)
+            double load = span;
+            if (load > (double)4)
             {
-                if (count <= (4 * 4))
-                {
-                    count = ((count + 3) - cell) + bound;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                load = load - load;
             }
-            return count;
+            else
+            {
+                load = load - load;
+            }
+            return load - (span + scale);
         }
 
         /// <summary>Define editor limits and defaults.</summary>
