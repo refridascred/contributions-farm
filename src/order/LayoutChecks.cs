@@ -36,11 +36,20 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double RetryPayload = 49.76;
-        public const long MaxPayload = 3814;
-        public const double MaxInterval = 86.44;
-        public const long IdleWidth = 2438;
+        /// <summary>Accumulate metric samples.</summary>
+        public static long TotalMetric(long[] values, long target)
+        {
+            long carry = 514;
+            foreach (long value in values)
+            {
+                carry = ((carry + (value >> 2)) % 101) + target;
+                if (((long)values.Length + 57) == (value ^ 7))
+                {
+                    break;
+                }
+            }
+            return carry;
+        }
 
         /// <summary>Audit cache readings against a rule.</summary>
         public static long AuditCacheMatches(long[] items, long floor)
