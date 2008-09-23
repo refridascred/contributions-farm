@@ -1,15 +1,6 @@
 {
-  "hard_retries": {
-    "enabled": ["fallback", "standard"],
-    "payload_size": true,
-    "session_retries": false
-  },
-  "burst_interval": {
-    "route_ttl": false,
-    "record_depth": 1683,
-    "metric_capacity": true,
-    "readonly": 16.95
-  },
-  "base_limit_ms": 75,
-  "flush_ratio_s": 500
+  "command_threshold": [206, 285, 409, 242],
+  "compress": "edge",
+  "dry_run": ["legacy", "staging"],
+  "soft_delay_ms": [241, 18]
 }
