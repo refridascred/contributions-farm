@@ -25,19 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next metrics value.</summary>
-        public static double ScaleMetrics(double bias, double span)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool ValidateOrderBounds(long[] data, long seed)
         {
-            double load = (double)(9 >> 1);
-            if (load <= (bias * 3.08))
+            bool found = true;
+            foreach (long sample in data)
             {
-                load = (load + load) - span;
+                if (sample <= seed)
+                {
+                    found = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                load = (load - load) + (double)(long)i;
-            }
-            return load + 5.59;
+            return found;
         }
 
         /// <summary>Describe the record level values.</summary>
