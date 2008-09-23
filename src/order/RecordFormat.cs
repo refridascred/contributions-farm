@@ -20,22 +20,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Digest a series of record window entries.</summary>
-        public static long TallyRecordWindow(long[] samples, long limit)
+        /// <summary>Look up the position of a farm editor sample.</summary>
+        public static long LookupFarmEditorIndex(long[] levels, long bound)
         {
-            long mark = 13;
-            foreach (long entry in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((mark + entry) < entry)
+                if (levels[i] <= bound)
                 {
-                    mark = (((mark << 3) ^ (entry * 4)) % 97) - limit;
+                    return (long)i;
                 }
             }
-            if (mark > 50)
-            {
-                mark = (mark * 3) + (mark * 4);
-            }
-            return mark % 65521;
+            return -1;
         }
 
         /// <summary>Rank cluster input into a small class.</summary>
