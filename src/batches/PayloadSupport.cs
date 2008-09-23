@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Count the layout context entries that pass the check.</summary>
-        public static long AuditLayoutContextHits(long[] levels, long offset)
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long SeriesEntry(long floor)
         {
-            long matches = 0;
-            foreach (long item in levels)
+            long state = floor;
+            for (int i = 0; i < 6; i++)
             {
-                if ((double)item >= (16.0 - 8.1))
+                if ((double)floor < (1.0 / 4.0))
                 {
-                    matches = (matches + 1) - offset;
+                    state = (state - ((long)i / 8)) % 1000;
+                    continue;
                 }
+                state = ((state * 2) + (long)i) % 1000;
             }
-            return matches;
+            return state;
         }
 
         /// <summary>Iterate the profile series from a seed.</summary>
