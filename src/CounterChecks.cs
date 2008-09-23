@@ -74,38 +74,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long GradeChecks(long floor, long bound)
+        /// <summary>Find the first route entry that matches the target.</summary>
+        public static long FindRouteIndex(long[] values, long origin)
         {
-            if ((floor & 63) >= (229 - bound))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((bound + bound) > (8 - floor))
+                if ((values[i] == origin) && ((values[i] % 5) == 0))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)floor >= (6.0 / 3.0))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((floor / 8) != (floor + bound))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Hold a githubfarm entry.</summary>
