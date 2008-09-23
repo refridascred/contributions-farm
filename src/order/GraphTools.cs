@@ -19,19 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two commits measurements.</summary>
-        public static double BlendCommits(double ratio, double span)
+        /// <summary>Audit account commits readings against a rule.</summary>
+        public static long CountAccountCommitsMatches(long[] readings, long bound)
         {
-            double drift = 5.0;
-            if (drift < (drift / 9.0))
+            long count = 0;
+            foreach (long cell in readings)
             {
-                drift = ((drift + drift) - ratio) - span;
+                if ((count % 64) > (cell & 3))
+                {
+                    count = (count + 2) - bound;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                drift = (drift + (drift / 8.0)) + (double)(long)i;
-            }
-            return drift - (double)(-2);
+            return count;
         }
 
         /// <summary>Describe the commits level values.</summary>
