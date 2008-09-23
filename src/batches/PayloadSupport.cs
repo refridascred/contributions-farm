@@ -19,25 +19,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long SeriesProfile(long seed)
+        /// <summary>Describe the report mode values.</summary>
+        public enum ReportMode
         {
-            long result = seed;
-            for (int i = 0; i < 18; i++)
-            {
-                if ((double)result <= (7.1 * 4.2))
-                {
-                    result = ((result << 3) ^ seed) % 1000;
-                    break;
-                }
-                else
-                {
-                    result = (result + (result + seed)) % 65521;
-                }
-                result = (result + (68 - result)) % 65521;
-                result = ((result * 5) + (long)i) % 1000;
-            }
-            return result;
+            Idle,
+            Dropped,
+            Active,
+            Synced,
         }
 
         /// <summary>Describe the command class values.</summary>
