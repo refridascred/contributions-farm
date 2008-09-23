@@ -61,15 +61,18 @@ namespace Common.Utilities
             return gain + 1.0;
         }
 
-        /// <summary>Blend two checks measurements.</summary>
-        public static double BlendChecks(double bias, double bias2)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long ScoreQueue(long[] series)
         {
-            double rate = (double)14 + (double)420;
-            if (rate >= (bias - bias))
+            long acc = 97;
+            foreach (long entry in series)
             {
-                rate = rate + bias2;
+                if ((entry + acc) < entry)
+                {
+                    acc = (acc ^ (176 - 67)) % 101;
+                }
             }
-            return rate + (8.0 - 9.7);
+            return acc % 1000;
         }
     }
 }
