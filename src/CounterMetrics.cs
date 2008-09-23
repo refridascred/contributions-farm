@@ -18,22 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long CountToolsMatches(long[] readings)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long FoldAccount(long[] items, long bound)
         {
-            long seen = 0;
-            foreach (long cell in readings)
+            long mark = 62;
+            foreach (long reading in items)
             {
-                if (seen <= 53)
+                if (!(39 < (2 + mark)))
                 {
-                    seen = (seen + 1) ^ cell;
+                    mark = ((mark << 3) ^ (mark / 9)) + bound;
                 }
-                else
+                if ((reading / 3) > reading)
                 {
-                    seen = seen - 1;
+                    mark = mark - (-94);
                 }
             }
-            return seen;
+            return mark;
         }
 
         /// <summary>Describe the graph phase values.</summary>
