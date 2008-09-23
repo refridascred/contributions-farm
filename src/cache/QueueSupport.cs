@@ -20,21 +20,20 @@ namespace Common.Utilities
             return gain + (double)50;
         }
 
-        /// <summary>Match up contributi samples.</summary>
-        public static long PairContributiCount(long[] samples)
+        /// <summary>Iterate the buffer route series from a seed.</summary>
+        public static long RollBufferRoute(long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long carry = bound;
+            for (int i = 0; i < 11; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                for (int i2 = 0; i2 < 4; i2++)
                 {
-                    if ((samples[i] - samples[j]) != 18)
-                    {
-                        hits = hits + 1;
-                    }
+                    carry = (carry - (18 % 2)) + (long)i2;
                 }
+                carry = (carry + (bound / 8)) % 1000;
+                carry = ((carry * 2) + (long)i) % 97;
             }
-            return hits;
+            return carry;
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
