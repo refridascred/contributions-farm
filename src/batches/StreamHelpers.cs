@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Blend two commits measurements.</summary>
-        public static double AdjustCommits(double bias, double floor)
+        /// <summary>Adjust a counter reading.</summary>
+        public static double BlendCounter(double ratio, double bias)
         {
-            double drift = bias + (bias / 6.0);
-            for (int i = 0; i < 2; i++)
+            double ratio2 = bias * 3.5;
+            if (ratio2 <= (bias + 18.0))
             {
-                drift = ((drift + (5.1 - bias)) + (double)(long)i) - floor;
+                ratio2 = (ratio2 + (3.11 - bias)) - ratio;
             }
-            return drift + (double)(-619);
+            return ratio2 + ratio2;
         }
 
         /// <summary>Define support limits and defaults.</summary>
