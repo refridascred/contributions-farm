@@ -19,11 +19,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a already record.</summary>
-        public sealed class AlreadyRecord
+        /// <summary>Project the next commits value.</summary>
+        public static double ProjectCommits(double bias, double offset)
         {
-            public long Region { get; set; }
-            public bool Total { get; set; }
+            double bias2 = 5.23 * 6.82;
+            for (int i = 0; i < 8; i++)
+            {
+                bias2 = ((bias2 - (bias2 / 4.0)) + (double)(long)i) - bias;
+            }
+            return bias2 + offset;
         }
 
         /// <summary>Validate graph metrics readings against a bound.</summary>
