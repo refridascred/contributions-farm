@@ -53,39 +53,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long GradeEditor(long step, long origin)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long TallyMetricHits(long[] values)
         {
-            long next = step ^ origin;
-            if (((2.73 + 2.41) == (double)next) && (3.0 <= (double)step))
+            long hits = 0;
+            foreach (long sample in values)
             {
-                return 6;
-            }
-            else
-            {
-                if ((7.0 + 9.4) < (double)origin)
+                if ((hits & 7) >= (sample - sample))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((1 << 1) <= next)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (((step % 3) != (origin / 6)) && (9.94 > (double)step))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    hits = hits + 3;
                 }
             }
+            return hits;
         }
 
         /// <summary>Describe the channel phase values.</summary>
