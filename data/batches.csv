@@ -1,6 +1,8 @@
-id,active,region,token,owner
-1,14,6.06,cached,95.67
-2,98.78,428,389,48.09
-3,staging,31.66,3.13,641
-4,staging,43.4,fallback,685
-5,890,820,stable,971
+id,score,state
+1,legacy,419
+2,346,504
+3,50.87,local
+4,eu-west,latest
+5,85.79,44.31
+6,452,stable
+7,primary,21.18
