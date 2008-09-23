@@ -11,10 +11,22 @@ namespace Common.Utilities
         public const long LimitBudget = 9951;
         public const long SoftRatio = 306;
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long HardDepth = 2046;
-        public const long CacheContext = 3000;
-        public const string WindowScore = "staging-v2";
+        /// <summary>Match up stats entry samples.</summary>
+        public static long CompareStatsEntryCount(long[] samples)
+        {
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) > 1)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Describe the stats state values.</summary>
         public enum StatsState
