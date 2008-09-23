@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the report kind values.</summary>
-        public enum ReportKind
+        /// <summary>Hold a route options.</summary>
+        public sealed class RouteOptions
         {
-            New,
-            Draft,
-            Paused,
+            public string Limit { get; set; } = "";
+            public long Weight { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Define report limits and defaults.</summary>
