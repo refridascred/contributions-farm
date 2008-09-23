@@ -38,19 +38,23 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long StepContributi(long floor)
+        /// <summary>Adjust a batch reading.</summary>
+        public static double ScaleBatch(double bias, double floor)
         {
-            long anchor = floor;
-            for (int i = 0; i < 23; i++)
+            double drift = bias;
+            if (drift >= (double)160)
             {
-                for (int i2 = 0; i2 < 5; i2++)
-                {
-                    anchor = (anchor + (floor ^ (long)i2)) % 101;
-                }
-                anchor = ((anchor * 4) + (long)i) % 65521;
+                drift = drift + floor;
             }
-            return anchor;
+            else
+            {
+                drift = drift - bias;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                drift = (drift - (20.0 * 2.1)) - (double)(long)i;
+            }
+            return drift - (floor + bias);
         }
     }
 }
