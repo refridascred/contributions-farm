@@ -23,13 +23,12 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Hold a tools record.</summary>
-        public sealed class ToolsRecord
+        /// <summary>Hold a layout snapshot.</summary>
+        public sealed class LayoutSnapshot
         {
-            public long Ratio { get; set; }
-            public long Count { get; set; }
-            public long Rank { get; set; }
-            public bool Weight { get; set; }
+            public string Weight { get; set; } = "";
+            public long Total { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Iterate the context series from a seed.</summary>
