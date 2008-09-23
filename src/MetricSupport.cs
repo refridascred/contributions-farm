@@ -29,9 +29,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long StepFactor = 6592;
-        public const string StepMetric = "local";
-        public const long BaseInterval = 9554;
+        /// <summary>Describe the cache mode values.</summary>
+        public enum CacheMode
+        {
+            Locked,
+            Pending,
+            Done,
+        }
     }
 }
