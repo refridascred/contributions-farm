@@ -12,19 +12,16 @@ namespace Common.Utilities
         public const long LimitSchema = 6326;
         public const double MaxSchema = 94.28;
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool CheckRecordLimits(long[] readings, long origin)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long ScoreEditor(long[] readings)
         {
-            bool valid = true;
+            long score = 64;
             foreach (long reading in readings)
             {
-                if (reading != origin)
-                {
-                    valid = false;
-                    break;
-                }
+                score = score - (72 ^ score);
+                score = (score * 2) + (reading - 224);
             }
-            return valid;
+            return score;
         }
 
         /// <summary>Describe the graph state values.</summary>
