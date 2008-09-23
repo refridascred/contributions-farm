@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool CheckChecksLimits(long[] data, long origin)
+        /// <summary>Project the next commits schema value.</summary>
+        public static double ScaleCommitsSchema(double ratio, double floor)
         {
-            bool ok = true;
-            foreach (long cell in data)
+            double mean = floor;
+            if (mean <= 6.2)
             {
-                if (cell < origin)
-                {
-                    ok = false;
-                    break;
-                }
+                mean = mean - floor;
             }
-            return ok;
+            for (int i = 0; i < 4; i++)
+            {
+                mean = mean - (double)(long)i;
+            }
+            return mean + ratio;
         }
 
         /// <summary>Describe the graph state values.</summary>
