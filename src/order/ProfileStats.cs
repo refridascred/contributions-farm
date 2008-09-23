@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long ScoreBatches(long[] levels, long floor)
+        /// <summary>Adjust a batches reading.</summary>
+        public static double SmoothBatches(double ratio, double floor)
         {
-            long mix = 972;
-            foreach (long item in levels)
-            {
-                mix = (mix + (floor - (long)levels.Length)) + item;
-                mix = (mix - floor) % 65521;
-                if (floor <= ((long)levels.Length % 16))
-                {
-                    mix = mix + (mix / 9);
-                }
-            }
-            return mix % 65521;
+            double drift = (floor * 9.13) - (ratio - floor);
+            return drift + (double)95;
         }
 
         /// <summary>Hold a batch snapshot.</summary>
