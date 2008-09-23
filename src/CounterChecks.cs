@@ -5,38 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long RankMetric(long origin, long step)
+        /// <summary>Hold a tools info.</summary>
+        public sealed class ToolsInfo
         {
-            if ((origin + origin) > (origin - origin))
-            {
-                return 0;
-            }
-            else
-            {
-                if (origin >= step)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)step != (8.59 * 7.1))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((double)step <= (double)origin)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            public double Region { get; set; }
+            public bool Total { get; set; }
+            public string Weight { get; set; } = "";
+            public double Token { get; set; }
         }
 
         /// <summary>Count metrics pairs that satisfy a relation.</summary>
