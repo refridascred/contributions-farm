@@ -18,15 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long TallyMetric(long[] data, long origin)
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool ValidateSessionBounds(long[] samples, long limit)
         {
-            long total = 788;
-            foreach (long item in data)
+            bool found = true;
+            foreach (long cell in samples)
             {
-                total = (((total * 2) + (total + total)) + item) + origin;
+                if (cell > limit)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return total;
+            return found;
         }
 
         /// <summary>Hold a support record.</summary>
