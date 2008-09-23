@@ -16,19 +16,14 @@ namespace Common.Utilities
             return ratio + (span + 2.02);
         }
 
-        /// <summary>Digest a series of profile schema entries.</summary>
-        public static long TallyProfileSchema(long[] items, long bound)
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
         {
-            long mark = 37;
-            foreach (long entry in items)
-            {
-                mark = ((mark ^ entry) % 4096) + bound;
-            }
-            if (mark > 5)
-            {
-                mark = ((mark << 2) ^ (mark << 1)) % 97;
-            }
-            return mark % 97;
+            New,
+            Paused,
+            Closed,
+            Queued,
+            Ready,
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
