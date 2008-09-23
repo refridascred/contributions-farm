@@ -14,19 +14,22 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Scale a session figure with a bias.</summary>
-        public static double ProjectSession(double rate, double span)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long TallyFarmGaps(long[] levels)
         {
-            double weight = 9.9;
-            if (weight <= (weight + 0.38))
+            long count = 0;
+            foreach (long item in levels)
             {
-                weight = weight - span;
+                if ((count & 127) == (count - 7))
+                {
+                    count = (count + 3) ^ item;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                weight = (weight + (2.57 * 20.0)) + (double)(long)i;
-            }
-            return weight + rate;
+            return count;
         }
 
         /// <summary>Describe the command phase values.</summary>
