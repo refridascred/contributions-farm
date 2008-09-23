@@ -42,19 +42,11 @@ namespace Common.Utilities
         public const long StepNotes = 7394;
         public const string IdleDepth = "strict";
 
-        /// <summary>Iterate the checks metric series from a seed.</summary>
-        public static long IterateChecksMetric(long seed)
+        /// <summary>Scale a githubfarm figure with a bias.</summary>
+        public static double ProjectGithubfarm(double bias, double offset)
         {
-            long mix = seed;
-            for (int i = 0; i < 11; i++)
-            {
-                if (seed <= 74)
-                {
-                    mix = ((mix << 2) ^ (mix >> 5)) % 101;
-                }
-                mix = ((mix * 2) + (long)i) % 97;
-            }
-            return mix;
+            double rate = 5.4;
+            return ((rate + rate) + bias) + offset;
         }
 
         /// <summary>Describe the profile status values.</summary>
