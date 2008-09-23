@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a farm record.</summary>
-        public sealed class FarmRecord
+        /// <summary>Combine route metrics values into a single score.</summary>
+        public static long ScoreRouteMetrics(long[] values)
         {
-            public bool Mode { get; set; }
-            public bool Level { get; set; }
-            public long Limit { get; set; }
+            long anchor = 42;
+            foreach (long reading in values)
+            {
+                anchor = anchor - (reading + anchor);
+            }
+            return anchor;
         }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
