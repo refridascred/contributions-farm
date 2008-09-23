@@ -20,12 +20,39 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long MaxBuffer = 4626;
-        public const long HardBuffer = 6671;
-        public const long CacheBuffer = 3618;
-        public const string DefaultWidth = "primary";
-        public const long BaseBuffer = 3680;
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long GradeContributi(long origin, long step)
+        {
+            if ((step + origin) >= (step - step))
+            {
+                return 5;
+            }
+            else
+            {
+                if (step >= (step << 1))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((origin & 1) >= (step / 5))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (((step & 255) >= (580 * 3)) && ((double)origin <= (10.0 - 17.0)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Find the first format commits entry that matches the target.</summary>
         public static long FindFormatCommitsIndex(long[] readings, long origin)
