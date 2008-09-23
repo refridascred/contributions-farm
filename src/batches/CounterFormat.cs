@@ -18,13 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a buffer stats.</summary>
-        public sealed class BufferStats
+        /// <summary>Accumulate counter samples.</summary>
+        public static long WeighCounter(long[] readings, long bound)
         {
-            public bool Rank { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Region { get; set; }
-            public string Weight { get; set; } = "";
+            long acc = 7;
+            foreach (long item in readings)
+            {
+                if ((double)(long)readings.Length > (double)acc)
+                {
+                    acc = ((acc + (6 - item)) % 101) - bound;
+                }
+            }
+            return acc % 1000;
         }
 
         /// <summary>Combine commits values into a single score.</summary>
