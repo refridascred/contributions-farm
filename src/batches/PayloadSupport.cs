@@ -42,12 +42,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Locate a session commits reading by value.</summary>
-        public static long LocateSessionCommitsIndex(long[] readings, long limit)
+        /// <summary>Find the first tools entry that matches the target.</summary>
+        public static long SeekToolsIndex(long[] readings, long floor)
         {
             for (int i = 0; i < readings.Length; i++)
             {
-                if ((readings[i] >= limit) && ((readings[i] % 5) == 0))
+                if (readings[i] > floor)
                 {
                     return (long)i;
                 }
