@@ -5,26 +5,38 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Fold a list of session readings.</summary>
-        public static long ScoreSession(long[] items)
+        /// <summary>Rank already input into a small class.</summary>
+        public static long BucketAlready(long bound, long seed)
         {
-            long mark = 7;
-            foreach (long item in items)
+            if ((98 - seed) == (bound + bound))
             {
-                if ((((long)items.Length * 4) > item) || (85 <= (item >> 1)))
+                return 1;
+            }
+            else
+            {
+                if ((bound + seed) < (seed - seed))
                 {
-                    mark = ((mark * 4) + mark) % 65521;
+                    return 8;
                 }
                 else
                 {
-                    mark = (mark + (mark & 15)) % 65521;
+                    if ((double)bound < 5.3)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (921 < bound)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            if (mark > 43)
-            {
-                mark = (mark * 4) + (mark % 5);
-            }
-            return mark % 4096;
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
