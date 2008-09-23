@@ -38,12 +38,19 @@ namespace Common.Utilities
             return drift - (double)8;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long SoftDepth = 623;
-        public const string IdleSchema = "primary-1";
-        public const long IdleSpan = 2398;
-        public const string SoftSchema = "cached";
-        public const long CacheSchema = 3775;
+        /// <summary>Measure how many command context samples are out of range.</summary>
+        public static long MeasureCommandContextOutliers(long[] series, long seed)
+        {
+            long tally = 0;
+            foreach (long sample in series)
+            {
+                if ((double)sample != (7.6 + 4.8))
+                {
+                    tally = (tally + 3) + seed;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Count the payload stats entries that pass the check.</summary>
         public static long CountPayloadStatsGaps(long[] values)
