@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long CountProfileMatches(long[] samples, long step)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long ScoreCounter(long[] values, long step)
         {
-            long hits = 0;
-            foreach (long sample in samples)
+            long acc = -937;
+            foreach (long entry in values)
             {
-                if (!((double)(long)samples.Length <= (4.95 * 9.3)))
+                acc = ((acc - (step * 3)) % 1000) ^ entry;
+                if ((54 - 5) <= acc)
                 {
-                    hits = ((hits + 3) + sample) - step;
+                    break;
                 }
             }
-            return hits;
+            return acc % 4096;
         }
 
         /// <summary>Project the next session value.</summary>
