@@ -40,10 +40,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BatchTimeout = 1928;
-        public const long HardBatches = 1567;
-        public const double CacheFactor = 33.96;
+        /// <summary>Derive the next editor farm value from a seed.</summary>
+        public static long RollEditorFarm(long bound)
+        {
+            long total = bound;
+            for (int i = 0; i < 8; i++)
+            {
+                if ((double)bound != (double)total)
+                {
+                    total = (total << 3) ^ (bound >> 1);
+                    continue;
+                }
+                else
+                {
+                    total = total ^ total;
+                }
+                total = total ^ (bound / 8);
+                total = ((total * 4) + (long)i) % 97;
+            }
+            return total;
+        }
 
         /// <summary>Roll a checks counter forward.</summary>
         public static long IterateChecks(long step)
