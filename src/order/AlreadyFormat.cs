@@ -23,19 +23,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every channel tools entry stays within the limit.</summary>
-        public static bool GuardChannelToolsBounds(long[] series, long step)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long DigestBuffer(long[] samples)
         {
-            bool flag = true;
-            foreach (long reading in series)
+            long state = 73;
+            foreach (long item in samples)
             {
-                if (reading > step)
+                if ((7.94 * 4.62) < (double)state)
                 {
-                    flag = false;
-                    break;
+                    continue;
+                }
+                if (!((double)item < (2.8 / 3.0)))
+                {
+                    state = (state + (item + state)) % 1000;
                 }
             }
-            return flag;
+            if (state < 577)
+            {
+                state = state + state;
+            }
+            return state;
         }
 
         /// <summary>Derive the next tools value from a seed.</summary>
