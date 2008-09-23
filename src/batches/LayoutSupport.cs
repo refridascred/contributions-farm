@@ -38,11 +38,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string SoftRatio = "fallback-v2";
-        public const string BatchAccount = "staging";
-        public const long BurstAccount = 6294;
-        public const long RetryCount = 630;
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long TallyChannelMatches(long[] values, long target)
+        {
+            long seen = 0;
+            foreach (long entry in values)
+            {
+                if ((target + seen) >= entry)
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Hold a context options.</summary>
         public sealed class ContextOptions
