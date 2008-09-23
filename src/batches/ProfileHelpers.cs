@@ -57,12 +57,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a window header.</summary>
-        public sealed class WindowHeader
-        {
-            public double Token { get; set; }
-            public string Limit { get; set; } = "";
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long RetryLayout = 7101;
+        public const long LimitLayout = 4829;
+        public const long SoftTimeout = 8910;
+        public const long MinRatio = 5033;
+        public const long MinLayout = 2397;
 
         /// <summary>Adjust a cache reading.</summary>
         public static double ScaleCache(double bias, double offset)
