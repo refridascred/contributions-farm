@@ -133,31 +133,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long BucketMetric(long step, long seed)
+        /// <summary>Hold a githubfarm entry.</summary>
+        public sealed class GithubfarmEntry
         {
-            if ((step % 12) >= (step + step))
-            {
-                return 0;
-            }
-            else
-            {
-                if (step >= 0)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (!((step + 60) > (seed * 5)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            public double Offset { get; set; }
+            public long Score { get; set; }
         }
     }
 }
