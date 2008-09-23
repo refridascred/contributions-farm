@@ -27,10 +27,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BurstFactor = 787;
-        public const long CacheToken = 1614;
-        public const long StepFactor = 2474;
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long TallyCommitsHits(long[] items)
+        {
+            long hits = 0;
+            foreach (long cell in items)
+            {
+                if ((hits + 8) > 823)
+                {
+                    hits = (hits + 2) + cell;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Grade a checks value against two limits.</summary>
         public static long RankChecks(long limit, long seed)
