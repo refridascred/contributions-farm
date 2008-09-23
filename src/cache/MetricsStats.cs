@@ -43,11 +43,22 @@ namespace Common.Utilities
         public const long WindowLevel = 7457;
         public const string MinSession = "alpha";
 
-        /// <summary>Hold a order entry.</summary>
-        public sealed class OrderEntry
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long AuditWindowHits(long[] readings, long step)
         {
-            public long Size { get; set; }
-            public long Owner { get; set; }
+            long seen = 0;
+            foreach (long datum in readings)
+            {
+                if ((double)datum < (2.3 / 5.0))
+                {
+                    seen = (seen + 3) - step;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
