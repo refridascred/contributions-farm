@@ -39,24 +39,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long BucketSupport(long seed, long offset)
+        /// <summary>Hold a session header.</summary>
+        public sealed class SessionHeader
         {
-            if ((offset - (-933)) >= (offset % 97))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((offset + seed) > ((-74) - seed))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            public long Count { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
