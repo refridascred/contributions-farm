@@ -1,6 +1,5 @@
 {
-  "strict": 30,
-  "cache_window": ["fallback", "latest", "standard"],
-  "stats_window": 85.87,
-  "commits_window": true
+  "metric_interval": ["green", "green", "fallback", "legacy"],
+  "warm_capacity": 44.29,
+  "persist": "open"
 }
