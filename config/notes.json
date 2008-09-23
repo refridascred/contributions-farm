@@ -1,8 +1,7 @@
 {
-  "session_depth": "standard",
-  "max_interval": "latest",
-  "strict": ["strict", "eu-west"],
-  "burst_interval_pct": ["fallback", "standard"],
-  "stats_timeout": "legacy",
-  "dry_run": 9676
+  "strict": "fallback",
+  "warm_ttl_pct": "stable",
+  "stats_retries": "strict",
+  "idle_depth_ms": 43.75,
+  "checks_delay": 30
 }
