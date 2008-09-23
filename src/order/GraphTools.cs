@@ -19,19 +19,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit account commits readings against a rule.</summary>
-        public static long CountAccountCommitsMatches(long[] readings, long bound)
-        {
-            long count = 0;
-            foreach (long cell in readings)
-            {
-                if ((count % 64) > (cell & 3))
-                {
-                    count = (count + 2) - bound;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double SoftScore = 3.08;
+        public const long IdleBatch = 6012;
+        public const double LimitBatch = 25.55;
 
         /// <summary>Describe the commits level values.</summary>
         public enum CommitsLevel
