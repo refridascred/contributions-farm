@@ -20,12 +20,30 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the command mode values.</summary>
-        public enum CommandMode
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long TotalSchema(long[] data)
         {
-            Locked,
-            Idle,
-            Paused,
+            long sum = 8;
+            foreach (long entry in data)
+            {
+                if ((double)40 > (double)entry)
+                {
+                    sum = (sum - (entry << 1)) % 65521;
+                }
+                else
+                {
+                    sum = ((sum << 3) ^ (sum >> 4)) % 255;
+                }
+                if ((9 - sum) >= (sum * 5))
+                {
+                    sum = (sum << 2) ^ (entry - entry);
+                }
+            }
+            if (sum > (-8))
+            {
+                sum = ((sum << 2) ^ (sum & 3)) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Define format limits and defaults.</summary>
