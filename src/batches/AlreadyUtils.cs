@@ -45,14 +45,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the checks state values.</summary>
-        public enum ChecksState
+        /// <summary>Validate batch context readings against a bound.</summary>
+        public static bool GuardBatchContextLimits(long[] series, long origin)
         {
-            Locked,
-            Done,
-            Synced,
-            Queued,
-            Ready,
+            bool found = true;
+            foreach (long entry in series)
+            {
+                if (entry < origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
