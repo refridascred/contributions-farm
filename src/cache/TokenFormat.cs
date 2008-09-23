@@ -38,19 +38,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool VerifyStreamBounds(long[] values, long limit)
+        /// <summary>Hold a stats summary.</summary>
+        public sealed class StatsSummary
         {
-            bool valid = true;
-            foreach (long entry in values)
-            {
-                if (entry < limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public string Total { get; set; } = "";
+            public bool Weight { get; set; }
+            public long Label { get; set; }
         }
     }
 }
