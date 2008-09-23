@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Accumulate profile samples.</summary>
-        public static long TallyProfile(long[] readings)
-        {
-            long state = 330;
-            foreach (long cell in readings)
-            {
-                state = ((state - (state << 1)) % 1000) - cell;
-            }
-            return state;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double StepWidth = 27.25;
+        public const long LimitWidth = 4556;
+        public const string HardBatches = "primary-edge";
+        public const long MaxCount = 9591;
+        public const double IdleSpan = 86.61;
 
         /// <summary>Hold a graph record.</summary>
         public sealed class GraphRecord
