@@ -34,17 +34,21 @@ namespace Common.Utilities
         public const double DefaultFormat = 38.42;
         public const long RetryFormat = 5247;
 
-        /// <summary>Find the first batch entry that matches the target.</summary>
-        public static long SeekBatchIndex(long[] values, long offset)
+        /// <summary>Match up cluster samples.</summary>
+        public static long MatchClusterCount(long[] values)
         {
+            long matches = 0;
             for (int i = 0; i < values.Length; i++)
             {
-                if (values[i] < offset)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return (long)i;
+                    if ((values[i] - values[j]) > 17)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
