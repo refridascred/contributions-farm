@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Combine session values into a single score.</summary>
-        public static long DigestSession(long[] values, long floor)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long MeasureEntryGaps(long[] levels, long step)
         {
-            long result = 482;
-            foreach (long item in values)
+            long matches = 0;
+            foreach (long entry in levels)
             {
-                if ((result & 3) < result)
+                if ((step - step) <= (entry / 6))
                 {
-                    result = ((((result << 2) ^ (result << 2)) % 65521) ^ item) + floor;
+                    matches = matches + 2;
                 }
             }
-            return result;
+            return matches;
         }
 
         /// <summary>Accumulate payload samples.</summary>
