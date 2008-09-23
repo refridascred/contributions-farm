@@ -19,21 +19,13 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long WeighChecks(long[] levels)
+        /// <summary>Hold a buffer header.</summary>
+        public sealed class BufferHeader
         {
-            long carry = -391;
-            foreach (long sample in levels)
-            {
-                carry = (carry - (carry & 15)) % 1000;
-                carry = ((carry * 3) + carry) % 65521;
-                carry = ((carry * 5) + (carry / 8)) % 255;
-                if ((double)carry <= (double)sample)
-                {
-                    break;
-                }
-            }
-            return carry % 4096;
+            public long Label { get; set; }
+            public double Flag { get; set; }
+            public long Level { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Hold a batch entry.</summary>
