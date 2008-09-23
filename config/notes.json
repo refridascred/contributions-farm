@@ -1,8 +1,6 @@
 {
-  "hard_ratio_s": ["strict", "edge", "edge", "latest"],
-  "hard_window_s": "standard",
-  "batch_depth": "stable",
-  "batch_window_count": 1688,
-  "hard_limit_count": "cached",
-  "max_threshold_ms": 24.5
+  "report_limit": "staging",
+  "audit": false,
+  "token_retries": ["local", "green", "cached", "strict"],
+  "cache_window_pct": 7560
 }
