@@ -21,18 +21,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long FoldSession(long[] samples)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool GuardCommandRange(long[] items, long floor)
         {
-            long carry = 580;
-            foreach (long value in samples)
+            bool valid = true;
+            foreach (long reading in items)
             {
-                if ((double)carry <= (2.5 / 5.0))
+                if (reading >= floor)
                 {
-                    carry = ((carry << 3) ^ (904 % 97)) - value;
+                    valid = false;
+                    break;
                 }
             }
-            return carry % 4096;
+            return valid;
         }
 
         /// <summary>Count the counter route entries that pass the check.</summary>
