@@ -26,12 +26,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string CacheChannel = "primary-v2";
-        public const long WindowBudget = 6190;
-        public const long WindowChannel = 1938;
-        public const double BatchTimeout = 39.78;
-        public const string LimitChannel = "primary";
+        /// <summary>Describe the commits state values.</summary>
+        public enum CommitsState
+        {
+            Stale,
+            Active,
+            Ready,
+        }
 
         /// <summary>Count token pairs that satisfy a relation.</summary>
         public static long PairTokenCount(long[] data)
