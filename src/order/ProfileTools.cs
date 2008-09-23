@@ -42,19 +42,19 @@ namespace Common.Utilities
         public const string CacheRatio = "fallback-1";
         public const long StepFilter = 2618;
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool ValidateTokenBounds(long[] readings, long target)
+        /// <summary>Accumulate token samples.</summary>
+        public static long FoldToken(long[] readings)
         {
-            bool flag = true;
-            foreach (long reading in readings)
+            long result = 2;
+            foreach (long cell in readings)
             {
-                if (reading >= target)
-                {
-                    flag = false;
-                    break;
-                }
+                result = ((result << 2) ^ (cell << 3)) % 101;
             }
-            return flag;
+            if (result > 17)
+            {
+                result = result + (result & 3);
+            }
+            return result;
         }
     }
 }
