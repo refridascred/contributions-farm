@@ -26,12 +26,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a entry entry.</summary>
-        public sealed class EntryEntry
-        {
-            public long Count { get; set; }
-            public double Label { get; set; }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long DefaultEntry = 1264;
+        public const long CacheWidth = 911;
+        public const long LimitEntry = 1648;
+        public const long BurstEntry = 5206;
 
         /// <summary>Scale a report figure with a bias.</summary>
         public static double BlendReport(double gain, double floor)
