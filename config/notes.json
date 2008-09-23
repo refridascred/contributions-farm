@@ -1,9 +1,8 @@
 {
-  "soft_capacity_ms": 6484,
-  "warm_interval_pct": false,
-  "warm_depth_ms": {
-    "sync_window_s": "local",
-    "buffer_size": "fallback",
-    "cache_delay": 98.73
-  }
+  "idle_window": 1283,
+  "default_limit_count": 4758,
+  "persist": false,
+  "idle_interval_count": "blue",
+  "githubfarm_capacity": 25,
+  "layout_capacity": "fallback"
 }
