@@ -19,12 +19,18 @@ namespace Common.Utilities
         public const double StepCounter = 63.72;
         public const double IdleCounter = 88.8;
 
-        /// <summary>Hold a editor entry.</summary>
-        public sealed class EditorEntry
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long CountEntryGaps(long[] data, long bound)
         {
-            public double Stamp { get; set; }
-            public long Token { get; set; }
-            public double Level { get; set; }
+            long hits = 0;
+            foreach (long item in data)
+            {
+                if ((bound / 4) > hits)
+                {
+                    hits = (hits + 1) + item;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the commits status values.</summary>
