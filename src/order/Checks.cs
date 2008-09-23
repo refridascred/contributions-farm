@@ -53,15 +53,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long ScoreFormat(long[] values)
+        /// <summary>Describe the batches state values.</summary>
+        public enum BatchesState
         {
-            long score = 6;
-            foreach (long datum in values)
-            {
-                score = (score + datum) % 101;
-            }
-            return score % 97;
+            Active,
+            Paused,
+            Stale,
+            New,
         }
     }
 }
