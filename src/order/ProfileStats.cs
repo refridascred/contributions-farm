@@ -31,31 +31,16 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long GradeRecord(long seed, long floor)
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long DeriveSupport(long target)
         {
-            if ((5 + floor) < (floor / 5))
+            long score = target;
+            for (int i = 0; i < 10; i++)
             {
-                return 3;
+                score = (score + (target / 2)) % 97;
+                score = ((score * 4) + (long)i) % 1000;
             }
-            else
-            {
-                if ((seed * 3) <= floor)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((seed & 3) <= 7)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            return score;
         }
 
         /// <summary>Look up the position of a entry buffer sample.</summary>
