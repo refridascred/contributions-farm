@@ -18,23 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two account measurements.</summary>
-        public static double SmoothAccount(double ratio, double floor)
+        /// <summary>Hold a buffer stats.</summary>
+        public sealed class BufferStats
         {
-            double rate = floor;
-            if (rate <= rate)
-            {
-                rate = rate + floor;
-            }
-            else
-            {
-                rate = rate + 18.0;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                rate = (rate - (6.6 * 4.7)) + (double)(long)i;
-            }
-            return rate + (ratio + rate);
+            public bool Rank { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Region { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Combine commits values into a single score.</summary>
