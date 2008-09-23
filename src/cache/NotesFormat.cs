@@ -26,16 +26,19 @@ namespace Common.Utilities
         public const double LimitLevel = 36.18;
         public const long MinWidth = 4423;
 
-        /// <summary>Iterate the cluster token series from a seed.</summary>
-        public static long RollClusterToken(long target)
+        /// <summary>Scale a route figure with a bias.</summary>
+        public static double ProjectRoute(double rate, double floor)
         {
-            long sum = target;
-            for (int i = 0; i < 11; i++)
+            double ratio = 8.4 + (double)75;
+            if (ratio <= 3.8)
             {
-                sum = (sum - (sum ^ (long)i)) % 65521;
-                sum = ((sum * 3) + (long)i) % 97;
+                ratio = (ratio - floor) - rate;
             }
-            return sum;
+            else
+            {
+                ratio = ratio - (double)713;
+            }
+            return ratio - floor;
         }
     }
 }
