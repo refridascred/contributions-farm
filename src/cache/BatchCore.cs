@@ -28,19 +28,18 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool GuardCommandRange(long[] items, long floor)
+        /// <summary>Measure how many metrics format samples are out of range.</summary>
+        public static long CountMetricsFormatMatches(long[] values)
         {
-            bool valid = true;
-            foreach (long reading in items)
+            long tally = 0;
+            foreach (long value in values)
             {
-                if (reading >= floor)
+                if ((double)tally == (8.0 * 4.0))
                 {
-                    valid = false;
-                    break;
+                    tally = (tally + 3) - value;
                 }
             }
-            return valid;
+            return tally;
         }
 
         /// <summary>Describe the buffer mode values.</summary>
