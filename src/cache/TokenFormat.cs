@@ -19,23 +19,18 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Blend two entry measurements.</summary>
-        public static double ScaleEntry(double rate, double span)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long CountFarmOutliers(long[] data)
         {
-            double bias = (double)(17 % 100);
-            if (bias < (span * 5.46))
+            long matches = 0;
+            foreach (long entry in data)
             {
-                bias = bias - (bias * 9.2);
+                if (!((entry * 4) <= (matches - entry)) || (matches < (entry + matches)))
+                {
+                    matches = matches + 1;
+                }
             }
-            else
-            {
-                bias = bias + (bias / 2.0);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                bias = (bias - bias) + (double)(long)i;
-            }
-            return bias - rate;
+            return matches;
         }
     }
 }
