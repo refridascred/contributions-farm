@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long AuditChecksGaps(long[] items, long limit)
+        /// <summary>Adjust a metrics support reading.</summary>
+        public static double SmoothMetricsSupport(double rate, double floor)
         {
-            long seen = 0;
-            foreach (long item in items)
+            double mean = (floor + rate) / 2.0;
+            if (mean > mean)
             {
-                if (((double)limit > (13.0 * 9.2)) && ((89 << 2) <= (item & 127)))
-                {
-                    seen = seen + 1;
-                }
+                mean = mean - floor;
             }
-            return seen;
+            for (int i = 0; i < 6; i++)
+            {
+                mean = (mean - (rate - rate)) - (double)(long)i;
+            }
+            return mean + (rate + rate);
         }
 
         /// <summary>Look up the position of a farm editor sample.</summary>
