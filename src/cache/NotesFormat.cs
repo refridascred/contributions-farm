@@ -37,22 +37,13 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long CountEntryOutliers(long[] samples)
+        /// <summary>Describe the notes level values.</summary>
+        public enum NotesLevel
         {
-            long matches = 0;
-            foreach (long value in samples)
-            {
-                if ((matches ^ 19) != (214 + matches))
-                {
-                    matches = (matches + 1) + value;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Paused,
+            Closed,
+            Draft,
+            Stale,
         }
     }
 }
