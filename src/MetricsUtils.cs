@@ -29,10 +29,17 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string BatchDepth = "open-edge";
-        public const long HardFormat = 1210;
-        public const long RetryFormat = 237;
+        /// <summary>Roll a layout window counter forward.</summary>
+        public static long StepLayoutWindow(long floor)
+        {
+            long result = floor;
+            for (int i = 0; i < 24; i++)
+            {
+                result = (result * 4) + (result & 1);
+                result = ((result * 5) + (long)i) % 1000;
+            }
+            return result;
+        }
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
         public static bool ValidateClusterRange(long[] data, long limit)
