@@ -1,5 +1,13 @@
 {
-  "burst_ratio_s": 6017,
-  "default_timeout": "primary",
-  "sync_threshold_count": ["cached", "strict", "local"]
+  "session_delay": true,
+  "batch_delay": 9527,
+  "verbose": {
+    "command_depth": "cached",
+    "min_delay_ms": 48.74,
+    "poll_limit_ms": 1550,
+    "warm_capacity_pct": false
+  },
+  "enabled": "open",
+  "record_window": "cached",
+  "batch_capacity_ms": 50.25
 }
