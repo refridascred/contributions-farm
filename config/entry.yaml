@@ -1,31 +1,7 @@
 # entry settings
-graph_size: 1272
-dry_run:
-  sync_retries_ms:
-    - 366
-    - 147
-    - 384
-  sync_window_s: 48.33
-  strict: 45
-  window_threshold:
-    - edge
-    - local
-    - fallback
-    - eu-west
-  retry_timeout_count:
-    min_timeout_pct: 1024
-    farm_delay: eu-west
-    batch_limit: cached
-    default_threshold_s: open
-    dry_run: 76
-  persist:
-    - 216
-    - 79
-    - 57
-    - 196
-default_capacity_pct:
-  - 123
-  - 101
-route_retries: true
-base_window_pct: 53.0
-base_delay_pct: 8275
+base_threshold: 45.45
+cluster_timeout:
+  - cached
+  - primary
+compress: 88
+dry_run: true
