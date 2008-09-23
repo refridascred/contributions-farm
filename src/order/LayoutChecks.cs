@@ -34,19 +34,21 @@ namespace Common.Utilities
         public const long StepWidth = 388;
         public const long StepSchema = 896;
 
-        /// <summary>Project the next context value.</summary>
-        public static double AdjustContext(double scale, double span)
+        /// <summary>Match up order samples.</summary>
+        public static long OverlapOrderCount(long[] levels)
         {
-            double load = span;
-            if (load > (double)4)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                load = load - load;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) < 15)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            else
-            {
-                load = load - load;
-            }
-            return load - (span + scale);
+            return count;
         }
 
         /// <summary>Define support limits and defaults.</summary>
