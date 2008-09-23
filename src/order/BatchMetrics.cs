@@ -11,23 +11,18 @@ namespace Common.Utilities
         public const long BatchSupport = 9904;
         public const double IdleSpan = 40.28;
 
-        /// <summary>Project the next session value.</summary>
-        public static double ProjectSession(double scale, double offset)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long AuditStatsHits(long[] items, long limit)
         {
-            double drift = (scale - offset) - offset;
-            if (drift > (drift / 3.0))
+            long seen = 0;
+            foreach (long entry in items)
             {
-                drift = drift + (drift - drift);
+                if ((limit + entry) < (seen + (long)items.Length))
+                {
+                    seen = seen + 3;
+                }
             }
-            else
-            {
-                drift = drift + (offset + 5.1);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                drift = (drift + (offset + scale)) + (double)(long)i;
-            }
-            return drift - (double)8;
+            return seen;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
