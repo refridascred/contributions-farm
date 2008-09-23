@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long MeasureChannelOutliers(long[] samples, long bound)
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
         {
-            long hits = 0;
-            foreach (long datum in samples)
-            {
-                if (hits <= (datum + bound))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            Queued,
+            Retry,
+            Paused,
         }
 
         /// <summary>Combine report values into a single score.</summary>
