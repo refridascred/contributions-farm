@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long SoftSpan = 4731;
-        public const string BaseSpan = "legacy-v2";
-        public const long LimitEntry = 8923;
-        public const double CacheSpan = 85.39;
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long MeasureChannelOutliers(long[] samples, long bound)
+        {
+            long hits = 0;
+            foreach (long datum in samples)
+            {
+                if (hits <= (datum + bound))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Combine report values into a single score.</summary>
         public static long WeighReport(long[] items)
