@@ -1,10 +1,6 @@
 # support settings
-format_interval:
-  - eu-west
-  - latest
-  - open
-flush_capacity: strict
-format_window:
-  - 158
-  - 112
-  - 185
+base_interval_count: fallback
+enabled: true
+soft_threshold_count: 53.85
+audit: green
+hard_interval_pct: false
