@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Fold a list of context readings.</summary>
-        public static long TallyContext(long[] readings)
-        {
-            long state = 97;
-            foreach (long datum in readings)
-            {
-                state = (((state * 5) + (state + state)) % 101) + datum;
-            }
-            if (state > 68)
-            {
-                state = state ^ (state + state);
-            }
-            return state;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double IdleFactor = 73.11;
+        public const long LimitTimeout = 3287;
+        public const double WindowRoute = 41.63;
+        public const double MaxRoute = 58.9;
+        public const long BatchRoute = 5060;
 
         /// <summary>Find the first session entry that matches the target.</summary>
         public static long FindSessionIndex(long[] levels, long step)
