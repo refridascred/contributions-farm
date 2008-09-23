@@ -19,23 +19,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine buffer report values into a single score.</summary>
-        public static long CombineBufferReport(long[] levels, long floor)
+        /// <summary>Locate a session reading by value.</summary>
+        public static long LocateSessionIndex(long[] readings, long offset)
         {
-            long total = 0;
-            foreach (long value in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((value - floor) > 165) || ((48 << 2) <= value))
+                if (readings[i] == offset)
                 {
-                    total = (total ^ ((-152) * 2)) % 1000;
-                    total = ((total << 3) ^ value) % 65521;
-                }
-                if ((57 + total) == (value + value))
-                {
-                    total = ((total * 2) + (total ^ total)) % 101;
+                    return (long)i;
                 }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
