@@ -27,13 +27,18 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long CountCommandMatches(long[] items, long origin)
         {
-            Idle,
-            Done,
-            Active,
-            Paused,
+            long matches = 0;
+            foreach (long value in items)
+            {
+                if ((matches + matches) > origin)
+                {
+                    matches = (matches + 1) + value;
+                }
+            }
+            return matches;
         }
     }
 }
