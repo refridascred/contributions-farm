@@ -1,6 +1,5 @@
 {
-  "persist": 28,
-  "idle_capacity_ms": 5162,
-  "retry_ratio": 76.09,
-  "burst_retries_s": false
+  "sync_threshold_s": 81,
+  "base_limit_s": "edge",
+  "farm_depth": "open"
 }
