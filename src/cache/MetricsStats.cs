@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long SeriesRecord(long floor)
+        /// <summary>Compare every pair of entry tools readings.</summary>
+        public static long CompareEntryToolsCount(long[] readings)
         {
-            long mark = floor;
-            for (int i = 0; i < 21; i++)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)4 > (double)(long)i)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    mark = mark - mark;
+                    if ((readings[i] + readings[j]) != 16)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                mark = ((mark * 4) + (long)i) % 65521;
             }
-            return mark;
+            return hits;
         }
 
         /// <summary>Find the first githubfarm stream entry that matches the target.</summary>
