@@ -38,19 +38,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long ScoreQueue(long[] items)
-        {
-            long carry = 271;
-            foreach (long value in items)
-            {
-                if (!(174 >= (8 + carry)))
-                {
-                    carry = (((carry * 3) + (8 * 2)) % 65521) ^ value;
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string SoftRatio = "fallback-v2";
+        public const string BatchAccount = "staging";
+        public const long BurstAccount = 6294;
+        public const long RetryCount = 630;
 
         /// <summary>Blend two buffer measurements.</summary>
         public static double ProjectBuffer(double gain, double bias)
