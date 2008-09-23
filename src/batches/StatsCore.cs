@@ -42,28 +42,35 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Rank record input into a small class.</summary>
-        public static long BucketRecord(long offset, long offset2)
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long GradeOrder(long step, long target)
         {
-            if ((double)offset2 >= (double)783)
+            if ((step - target) < step)
             {
-                return 5;
+                return 7;
             }
             else
             {
-                if ((offset2 >> 5) <= (offset2 + offset2))
+                if ((target < 81) || (step < target))
                 {
-                    return 6;
+                    return 8;
                 }
                 else
                 {
-                    if ((1.0 / 7.0) <= (double)offset2)
+                    if ((double)(-284) < (double)step)
                     {
-                        return 2;
+                        return 4;
                     }
                     else
                     {
-                        return 3;
+                        if ((step + target) != (step * 4))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
                     }
                 }
             }
