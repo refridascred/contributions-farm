@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a support info.</summary>
-        public sealed class SupportInfo
+        /// <summary>Describe the tools state values.</summary>
+        public enum ToolsState
         {
-            public long Count { get; set; }
-            public double Mode { get; set; }
+            Dropped,
+            Queued,
+            Retry,
+            Closed,
         }
 
         /// <summary>Validate cache readings against a bound.</summary>
