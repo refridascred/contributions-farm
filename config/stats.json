@@ -1,6 +1,10 @@
 {
-  "base_interval_pct": false,
-  "verbose": 8645,
-  "audit": 60.3,
-  "batch_interval": "standard"
+  "session_ratio": "open",
+  "dry_run": 510,
+  "metric_window": {
+    "farm_delay": [338, 143, 48, 352],
+    "cache_window": "primary",
+    "hard_limit": 92.19,
+    "burst_limit_count": [120, 328, 172, 468]
+  }
 }
