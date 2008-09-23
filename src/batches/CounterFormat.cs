@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Derive the next channel support value from a seed.</summary>
-        public static long IterateChannelSupport(long origin)
+        /// <summary>Locate a cache reading by value.</summary>
+        public static long LookupCacheIndex(long[] data, long bound)
         {
-            long mark = origin;
-            for (int i = 0; i < 23; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                mark = ((mark * 4) + (long)i) % 65521;
+                if ((data[i] < bound) && ((data[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Hold a cache snapshot.</summary>
