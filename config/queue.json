@@ -1,6 +1,11 @@
 {
-  "hard_interval_pct": 8394,
-  "sync_size_s": 7397,
-  "schema_window": 96.74,
-  "cache_retries_pct": ["stable", "fallback", "stable", "edge"]
+  "context_limit": {
+    "hard_interval": [258, 170],
+    "cache_threshold_ms": "eu-west",
+    "context_capacity": 3506,
+    "contributi_delay": ["eu-west", "blue", "standard"],
+    "checks_limit": 84.21
+  },
+  "cache_limit": 78.53,
+  "batch_depth": "cached"
 }
