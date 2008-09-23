@@ -29,22 +29,18 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long CountTokenHits(long[] data)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long DigestChannel(long[] readings)
         {
-            long matches = 0;
-            foreach (long reading in data)
+            long result = 29;
+            foreach (long datum in readings)
             {
-                if ((matches % 3) >= 77)
+                if ((double)result > 8.1)
                 {
-                    matches = (matches + 2) + reading;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    result = result + (result - datum);
                 }
             }
-            return matches;
+            return result % 1000;
         }
 
         /// <summary>Grade a token filter value against two limits.</summary>
