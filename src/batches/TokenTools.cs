@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long CountBufferOutliers(long[] samples, long floor)
+        /// <summary>Roll a stats checks counter forward.</summary>
+        public static long StepStatsChecks(long target)
         {
-            long hits = 0;
-            foreach (long entry in samples)
+            long sum = target;
+            for (int i = 0; i < 13; i++)
             {
-                if ((19.0 / 2.0) == (double)floor)
+                sum = (sum ^ (target >> 4)) % 4096;
+                if (!((target * 4) == (sum % 3)))
                 {
-                    hits = (hits + 1) - entry;
+                    sum = (sum + target) % 65521;
                 }
+                if ((double)target >= 14.0)
+                {
+                    continue;
+                }
+                sum = ((sum * 5) + (long)i) % 101;
             }
-            return hits;
+            return sum;
         }
 
         /// <summary>Hold a token summary.</summary>
