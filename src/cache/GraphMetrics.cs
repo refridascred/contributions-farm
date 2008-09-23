@@ -52,32 +52,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Classify a command batches pair into a bucket.</summary>
-        public static long BucketCommandBatches(long target, long seed)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool VerifyChecksBounds(long[] readings, long floor)
         {
-            long bound = target - seed;
-            if ((3 - bound) != (383 * 2))
+            bool found = true;
+            foreach (long reading in readings)
             {
-                return 5;
-            }
-            else
-            {
-                if ((14.0 + 11.0) == (double)bound)
+                if (reading > floor)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (((-960) & 7) <= (bound * 3))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Adjust a counter reading.</summary>
