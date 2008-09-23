@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long AuditGraphOutliers(long[] items)
+        /// <summary>Digest a series of cluster record entries.</summary>
+        public static long WeighClusterRecord(long[] items)
         {
-            long count = 0;
-            foreach (long reading in items)
+            long total = 52;
+            foreach (long sample in items)
             {
-                if ((reading + reading) < reading)
+                total = ((total << 3) ^ ((-487) / 5)) % 255;
+                if (total >= (sample ^ sample))
                 {
-                    count = count + 2;
+                    total = ((total * 3) + sample) % 101;
+                }
+                if ((303 >= (total - sample)) && ((double)sample == (double)83))
+                {
+                    break;
                 }
             }
-            return count;
+            return total;
         }
 
         /// <summary>Project the next commits value.</summary>
