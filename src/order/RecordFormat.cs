@@ -83,14 +83,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the account status values.</summary>
-        public enum AccountStatus
+        /// <summary>Describe the order state values.</summary>
+        public enum OrderState
         {
-            Paused,
-            Retry,
+            Pending,
             Closed,
-            New,
-            Draft,
+            Idle,
+            Queued,
+            Paused,
         }
     }
 }
