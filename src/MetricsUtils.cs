@@ -50,12 +50,16 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the metric phase values.</summary>
-        public enum MetricPhase
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long IterateFilter(long step)
         {
-            Retry,
-            Idle,
-            Paused,
+            long sum = step;
+            for (int i = 0; i < 6; i++)
+            {
+                sum = ((sum << 2) ^ sum) % 4096;
+                sum = ((sum * 4) + (long)i) % 65521;
+            }
+            return sum;
         }
     }
 }
