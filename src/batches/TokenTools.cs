@@ -28,17 +28,11 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Look up the position of a window cluster sample.</summary>
-        public static long LookupWindowClusterIndex(long[] values, long target)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] >= target) && ((values[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double LimitAlready = 92.48;
+        public const string IdleLevel = "local";
+        public const double DefaultAlready = 40.84;
+        public const double DefaultWidth = 16.93;
+        public const double LimitRatio = 77.44;
     }
 }
