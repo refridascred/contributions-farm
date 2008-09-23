@@ -45,13 +45,20 @@ namespace Common.Utilities
         public const string StepWidth = "local-edge";
         public const string BurstLayout = "local-v2";
 
-        /// <summary>Hold a order entry.</summary>
-        public sealed class OrderEntry
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long FoldFilter(long[] samples)
         {
-            public bool Offset { get; set; }
-            public bool Score { get; set; }
-            public bool Ratio { get; set; }
-            public string Stamp { get; set; } = "";
+            long result = 55;
+            foreach (long datum in samples)
+            {
+                result = (result + (95 + datum)) % 4096;
+                result = (result + 8) % 65521;
+            }
+            if (result > 50)
+            {
+                result = (result - (result * 3)) % 97;
+            }
+            return result % 97;
         }
 
         /// <summary>Check that every support entry stays within the limit.</summary>
