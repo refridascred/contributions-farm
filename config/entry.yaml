@@ -1,8 +1,7 @@
 # entry settings
-flush_delay_ms: eu-west
-queue_capacity: false
-sync_window:
-  - 295
-  - 493
-soft_retries: 30
-strict: 46.18
+batch_depth: 87
+stream_delay: true
+min_ttl_count:
+  - latest
+  - green
+  - stable
