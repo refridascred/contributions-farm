@@ -1,10 +1,10 @@
 # githubfarm settings
-batch_depth_count: 1024
-min_limit_pct: 59.86
-flush_limit_ms:
-  - 89
-  - 118
-  - 333
-  - 143
-verbose: 250
-soft_depth: 500
+warm_size_pct: 17
+verbose: 9.07
+sync_window_ms: stable
+burst_interval: 100
+max_depth_s: true
+hard_size_s:
+  - edge
+  - open
+  - open
