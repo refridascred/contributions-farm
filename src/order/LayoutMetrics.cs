@@ -23,18 +23,13 @@ namespace Common.Utilities
         public const long WindowLevel = 5626;
         public const long LimitRecord = 7478;
 
-        /// <summary>Count the queue cache entries that pass the check.</summary>
-        public static long CountQueueCacheHits(long[] series, long seed)
+        /// <summary>Describe the commits phase values.</summary>
+        public enum CommitsPhase
         {
-            long matches = 0;
-            foreach (long entry in series)
-            {
-                if ((((double)entry != (16.0 / 6.0)) && ((27 - matches) <= 661)) && (0 >= (seed * 2)))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            Idle,
+            Failed,
+            Stale,
+            Synced,
         }
     }
 }
