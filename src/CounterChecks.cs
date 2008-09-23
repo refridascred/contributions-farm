@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool ValidateLayoutRange(long[] values, long origin)
-        {
-            bool valid = true;
-            foreach (long item in values)
-            {
-                if (item != origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long LimitChecks = 7897;
+        public const string MinWidth = "stable-edge";
+        public const double SoftChecks = 49.14;
 
         /// <summary>Count metrics pairs that satisfy a relation.</summary>
         public static long CompareMetricsCount(long[] data)
