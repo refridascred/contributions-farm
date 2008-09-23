@@ -22,10 +22,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long HardLayout = 3905;
-        public const long CacheLayout = 3346;
-        public const double BaseTimeout = 4.19;
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long TallyCommandOutliers(long[] values)
+        {
+            long tally = 0;
+            foreach (long entry in values)
+            {
+                if (!(entry <= (tally * 4)))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Look up the position of a format sample.</summary>
         public static long SeekFormatIndex(long[] items, long target)
