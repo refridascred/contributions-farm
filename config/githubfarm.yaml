@@ -1,9 +1,8 @@
 # githubfarm settings
-persist:
-  - 243
-  - 217
-base_window_pct: 5314
-retry_timeout_ms:
-  retry_interval_pct: 32.66
-  tools_delay: 8159
-  dry_run: false
+retry_delay_pct: legacy
+burst_window_ms:
+  - 257
+  - 335
+  - 480
+  - 170
+sync_threshold_ms: 48.83
