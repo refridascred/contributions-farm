@@ -13,13 +13,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the token class values.</summary>
-        public enum TokenClass
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long TallyGraphHits(long[] items)
         {
-            Draft,
-            Active,
-            New,
-            Failed,
+            long count = 0;
+            foreach (long reading in items)
+            {
+                if ((count & 7) >= 512)
+                {
+                    count = (count + 1) + reading;
+                }
+            }
+            return count;
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
