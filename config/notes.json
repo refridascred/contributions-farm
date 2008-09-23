@@ -1,16 +1,7 @@
 {
-  "idle_threshold_s": {
-    "dry_run": 46.46,
-    "default_depth_count": "open",
-    "sync_size_count": {
-      "readonly": ["fallback", "eu-west", "green"],
-      "support_ttl": 8853,
-      "soft_capacity_pct": "eu-west",
-      "strict": 1303,
-      "route_ttl": 84,
-      "support_delay": "stable"
-    }
-  },
-  "cache_threshold_ms": "cached",
-  "enabled": "fallback"
+  "poll_limit": "edge",
+  "soft_size": false,
+  "commits_retries": 4.8,
+  "soft_window_pct": 60,
+  "enabled": 500
 }
