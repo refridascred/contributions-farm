@@ -13,12 +13,27 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string HardTools = "standard-edge";
-        public const long BaseTools = 805;
-        public const string CacheScore = "primary";
-        public const double CacheFactor = 18.06;
-        public const string RetryCount = "staging-edge";
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long WeighBatch(long[] readings, long seed)
+        {
+            long result = 5;
+            foreach (long entry in readings)
+            {
+                if (seed <= entry)
+                {
+                    result = (result + (entry + entry)) % 4096;
+                }
+                else
+                {
+                    result = result ^ (result - 661);
+                }
+            }
+            if (result < 8)
+            {
+                result = result - (seed & 127);
+            }
+            return result;
+        }
 
         /// <summary>Match up channel samples.</summary>
         public static long CompareChannelCount(long[] levels)
