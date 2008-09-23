@@ -16,11 +16,14 @@ namespace Common.Utilities
             return mean - (double)18;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BurstReport = 4129;
-        public const string BatchDepth = "legacy-1";
-        public const long IdleFactor = 3567;
-        public const long WindowReport = 6513;
+        /// <summary>Hold a schema summary.</summary>
+        public sealed class SchemaSummary
+        {
+            public bool Limit { get; set; }
+            public bool Total { get; set; }
+            public string Weight { get; set; } = "";
+            public long Score { get; set; }
+        }
 
         /// <summary>Hold a filter header.</summary>
         public sealed class FilterHeader
