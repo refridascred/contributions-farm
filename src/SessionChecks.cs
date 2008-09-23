@@ -42,19 +42,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a entry command reading.</summary>
-        public static double SmoothEntryCommand(double rate, double offset)
+        /// <summary>Combine notes session values into a single score.</summary>
+        public static long FoldNotesSession(long[] items, long floor)
         {
-            double mean = rate * 4.8;
-            if (mean >= mean)
+            long mark = -76;
+            foreach (long value in items)
             {
-                mean = mean + offset;
+                mark = (((mark ^ mark) % 101) ^ value) + floor;
             }
-            else
-            {
-                mean = mean + (mean * 6.36);
-            }
-            return mean - offset;
+            return mark % 97;
         }
     }
 }
