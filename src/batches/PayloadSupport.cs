@@ -31,31 +31,11 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long FoldReport(long[] samples)
-        {
-            long acc = 58;
-            foreach (long value in samples)
-            {
-                if (!(value > (value - acc)))
-                {
-                    acc = (acc * 3) + value;
-                    break;
-                }
-                if (!((double)value != (15.0 / 9.0)))
-                {
-                    acc = acc - (value ^ value);
-                }
-                else
-                {
-                    acc = (acc + (46 & 255)) % 4096;
-                }
-                if ((value % 16) > (value - acc))
-                {
-                    break;
-                }
-            }
-            return acc;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double HardWidth = 13.49;
+        public const long MaxWidth = 2066;
+        public const string SoftFilter = "fallback-1";
+        public const long WindowFilter = 5578;
+        public const long WindowDepth = 6698;
     }
 }
