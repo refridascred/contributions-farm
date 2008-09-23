@@ -28,12 +28,22 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the editor kind values.</summary>
-        public enum EditorKind
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long AuditChannelOutliers(long[] readings, long seed)
         {
-            Draft,
-            Retry,
-            Locked,
+            long hits = 0;
+            foreach (long item in readings)
+            {
+                if ((19.0 - 13.0) < (double)hits)
+                {
+                    hits = ((hits + 3) + item) + seed;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
