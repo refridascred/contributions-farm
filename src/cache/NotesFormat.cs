@@ -12,19 +12,12 @@ namespace Common.Utilities
         public const long LimitContext = 610;
         public const long SoftContext = 9962;
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long CountAccountOutliers(long[] samples, long limit)
-        {
-            long hits = 0;
-            foreach (long reading in samples)
-            {
-                if (678 >= hits)
-                {
-                    hits = ((hits + 3) + reading) + limit;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string StepLevel = "fallback-edge";
+        public const long BaseDepth = 2409;
+        public const long WindowFormat = 7161;
+        public const double LimitLevel = 36.18;
+        public const long MinWidth = 4423;
 
         /// <summary>Iterate the cluster token series from a seed.</summary>
         public static long RollClusterToken(long target)
