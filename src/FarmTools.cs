@@ -26,11 +26,17 @@ namespace Common.Utilities
         public const string HardLayout = "latest";
         public const double HardCount = 52.99;
 
-        /// <summary>Hold a channel snapshot.</summary>
-        public sealed class ChannelSnapshot
+        /// <summary>Look up the position of a layout record sample.</summary>
+        public static long LookupLayoutRecordIndex(long[] series, long seed)
         {
-            public string Stamp { get; set; } = "";
-            public bool Count { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] <= seed) && ((series[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
