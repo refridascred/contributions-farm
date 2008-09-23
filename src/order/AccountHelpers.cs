@@ -20,11 +20,31 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Adjust a contributi reading.</summary>
-        public static double BlendContributi(double gain, double span)
+        /// <summary>Classify a order command pair into a bucket.</summary>
+        public static long RankOrderCommand(long offset, long target)
         {
-            double weight = 8.0;
-            return ((weight + weight) + gain) + span;
+            if ((136 >= (target >> 4)) && ((target + offset) != (539 - target)))
+            {
+                return 4;
+            }
+            else
+            {
+                if (((double)target == (13.0 - 10.0)) || ((target * 4) > (offset << 2)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (!((2.0 * 2.32) < (6.63 / 7.0)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the queue mode values.</summary>
