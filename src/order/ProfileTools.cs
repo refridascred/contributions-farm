@@ -61,17 +61,39 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Locate a route reading by value.</summary>
-        public static long LookupRouteIndex(long[] readings, long bound)
+        /// <summary>Rank record input into a small class.</summary>
+        public static long BucketRecord(long origin, long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long diff = origin - offset;
+            if ((4 + diff) > (offset + (-1)))
             {
-                if ((readings[i] <= bound) && ((readings[i] % 5) == 0))
+                return 4;
+            }
+            else
+            {
+                if ((origin > (offset ^ origin)) || ((origin * 4) >= (diff << 2)))
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    if (!((13.0 - 3.8) < (double)offset))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((double)offset < (19.0 - 16.0))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return -1;
         }
     }
 }
