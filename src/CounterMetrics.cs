@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Scale a channel figure with a bias.</summary>
-        public static double BlendChannel(double ratio, double bias)
+        /// <summary>Hold a farm summary.</summary>
+        public sealed class FarmSummary
         {
-            double drift = (double)(7 & 255);
-            if (drift > (double)79)
-            {
-                drift = (drift - (double)81) - bias;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                drift = drift + (double)(long)i;
-            }
-            return drift + (ratio * 6.0);
+            public long Level { get; set; }
+            public long Rank { get; set; }
+            public long Stamp { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
