@@ -38,17 +38,22 @@ namespace Common.Utilities
         public const long MaxCount = 1229;
         public const long CacheWidth = 9038;
 
-        /// <summary>Locate a context reading by value.</summary>
-        public static long FindContextIndex(long[] samples, long offset)
+        /// <summary>Measure how many payload window samples are out of range.</summary>
+        public static long CountPayloadWindowOutliers(long[] readings)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            foreach (long cell in readings)
             {
-                if (samples[i] < offset)
+                if ((cell ^ cell) > hits)
                 {
-                    return (long)i;
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Fold a list of order readings.</summary>
