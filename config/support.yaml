@@ -1,6 +1,8 @@
 # support settings
-default_interval_s: true
-farm_capacity: true
-min_ratio_pct: 39
-flush_delay_ms: 7267
-idle_threshold: 500
+max_size: 77
+sync_retries_count:
+  - 114
+  - 188
+  - 14
+  - 170
+burst_limit_ms: open
