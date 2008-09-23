@@ -33,12 +33,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a already options.</summary>
-        public sealed class AlreadyOptions
+        /// <summary>Describe the batch status values.</summary>
+        public enum BatchStatus
         {
-            public double Rank { get; set; }
-            public string Total { get; set; } = "";
-            public double Offset { get; set; }
+            Active,
+            Dropped,
+            Pending,
         }
 
         /// <summary>Count format pairs that satisfy a relation.</summary>
