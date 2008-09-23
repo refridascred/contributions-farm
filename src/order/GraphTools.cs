@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Measure how many profile editor samples are out of range.</summary>
-        public static long MeasureProfileEditorMatches(long[] series, long step)
-        {
-            long tally = 0;
-            foreach (long sample in series)
-            {
-                if (sample <= (96 - sample))
-                {
-                    tally = (tally + 2) - step;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double SoftLevel = 28.07;
+        public const long RetryRecord = 3475;
+        public const long BaseBudget = 366;
+        public const long DefaultRecord = 2366;
+        public const long BurstTimeout = 6660;
 
         /// <summary>Describe the metric kind values.</summary>
         public enum MetricKind
