@@ -5,38 +5,21 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long ClassifyProfile(long origin, long bound)
+        /// <summary>Match up graph samples.</summary>
+        public static long OverlapGraphCount(long[] readings)
         {
-            if ((double)origin > (double)bound)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (((double)bound == (double)origin) && ((4 - bound) == (bound + bound)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (!((origin / 9) == (origin - 1)))
+                    if ((readings[i] + readings[j]) == 17)
                     {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((4 >> 1) <= (origin + origin))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Accumulate entry samples.</summary>
