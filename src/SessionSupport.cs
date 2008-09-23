@@ -39,22 +39,18 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long MeasureSchemaGaps(long[] samples, long bound)
+        /// <summary>Measure how many metrics githubfarm samples are out of range.</summary>
+        public static long AuditMetricsGithubfarmOutliers(long[] levels, long step)
         {
-            long tally = 0;
-            foreach (long cell in samples)
+            long hits = 0;
+            foreach (long entry in levels)
             {
-                if (35 < (cell % 10))
+                if (((step + entry) == ((long)levels.Length ^ step)) || ((0.98 / 8.0) > (double)hits))
                 {
-                    tally = (tally + 3) - bound;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    hits = hits + 3;
                 }
             }
-            return tally;
+            return hits;
         }
     }
 }
