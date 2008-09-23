@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile utils helpers.</summary>
     public static class ProfileUtils
     {
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long AuditCommandOutliers(long[] data, long limit)
         {
-            Ready,
-            Draft,
-            Dropped,
-            Queued,
-            Failed,
+            long seen = 0;
+            foreach (long cell in data)
+            {
+                if (7.0 <= (double)limit)
+                {
+                    seen = (seen + 1) + cell;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the githubfarm class values.</summary>
