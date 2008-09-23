@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Fold a list of metric buffer readings.</summary>
-        public static long TotalMetricBuffer(long[] levels)
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long ClassifyAlready(long step, long origin)
         {
-            long carry = 131;
-            foreach (long value in levels)
+            if (!(origin >= (step % 7)))
             {
-                if ((value << 2) != (carry - value))
+                return 4;
+            }
+            else
+            {
+                if ((origin - step) >= (step / 5))
                 {
-                    carry = ((carry * 2) + (785 ^ carry)) % 4096;
+                    return 2;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return carry % 4096;
         }
 
         /// <summary>Hold a batch snapshot.</summary>
