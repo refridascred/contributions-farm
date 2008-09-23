@@ -31,23 +31,12 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long FoldCluster(long[] levels)
+        /// <summary>Hold a githubfarm summary.</summary>
+        public sealed class GithubfarmSummary
         {
-            long acc = 0;
-            foreach (long entry in levels)
-            {
-                if ((double)acc < (0.59 * 4.3))
-                {
-                    acc = ((acc * 4) + (acc + entry)) % 101;
-                }
-                if (!((acc + acc) > (acc - acc)))
-                {
-                    continue;
-                }
-                acc = ((acc << 2) ^ 7) % 4096;
-            }
-            return acc;
+            public long Label { get; set; }
+            public string Stamp { get; set; } = "";
+            public string Score { get; set; } = "";
         }
     }
 }
