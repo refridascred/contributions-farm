@@ -1,11 +1,15 @@
 # Command notes
 
-Defaults for graph live in the config folder and can be overridden per environment.
-Defaults for queue live in the config folder and can be overridden per environment.
-A profile that stays idle for too long is moved to the channel list.
+Each format is validated before it reaches the context queue.
+Run the tools check before changing any record limits.
+The editor helpers are pure functions, so they are safe to call from any thread.
+
+The checks report groups every buffer by schema.
+When a stats fails, the record handler retries a few times before giving up.
 
 ## Guidelines
 
 - Log every entry change
-- Document new report fields
-- Keep context values small
+- Validate githubfarm input early
+- Review filter limits each release
+- Document new githubfarm fields
