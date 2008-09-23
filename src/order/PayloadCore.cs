@@ -43,19 +43,13 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long CombinePayload(long[] readings)
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
         {
-            long total = 8;
-            foreach (long item in readings)
-            {
-                total = (((total << 3) ^ (total >> 1)) % 1000) ^ item;
-            }
-            if (total > 8)
-            {
-                total = ((total * 3) + (total & 63)) % 65521;
-            }
-            return total % 4096;
+            Active,
+            Retry,
+            Ready,
+            Done,
         }
     }
 }
