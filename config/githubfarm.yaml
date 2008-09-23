@@ -1,27 +1,10 @@
 # githubfarm settings
-default_depth_ms: blue
-report_delay: true
-max_ttl_pct: 60
-audit:
-  session_retries:
-    - standard
-    - blue
-    - legacy
-    - edge
-  tools_limit: 4998
-  flush_delay: blue
-retry_window: 8.74
-max_threshold:
-  burst_limit_pct:
-    - 1
-    - 181
-  cluster_delay: 75.34
-  dry_run:
-    window_threshold: 9047
-    cache_threshold: 1170
-    flush_limit:
-      - strict
-      - edge
-    persist: strict
-    audit: 100
-    sync_timeout_pct: 64
+batch_size:
+  soft_threshold_count: 24
+  default_interval_count: true
+  dry_run: 100
+flush_threshold_pct: 4649
+profile_capacity: 1024
+flush_capacity: true
+poll_threshold_ms: 80
+queue_ttl: 3625
