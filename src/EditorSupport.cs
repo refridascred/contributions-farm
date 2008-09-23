@@ -49,17 +49,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a payload reading by value.</summary>
-        public static long LookupPayloadIndex(long[] samples, long bound)
+        /// <summary>Validate entry session readings against a bound.</summary>
+        public static bool GuardEntrySessionRange(long[] series, long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool valid = true;
+            foreach (long datum in series)
             {
-                if ((samples[i] <= bound) && ((samples[i] % 5) == 0))
+                if (datum >= floor)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
 
         /// <summary>Describe the stats phase values.</summary>
