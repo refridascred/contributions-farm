@@ -1,5 +1,20 @@
 {
-  "batch_capacity": "latest",
-  "editor_capacity": "local",
-  "payload_size": 75.57
+  "retry_size_ms": 53.79,
+  "hard_size": 1276,
+  "notes_window": 82.63,
+  "window_depth": {
+    "queue_retries": "staging",
+    "flush_ratio": "edge",
+    "payload_size": {
+      "max_window_s": false,
+      "persist": 53.44,
+      "min_capacity": false,
+      "idle_limit_pct": 1024,
+      "dry_run": 13.49
+    },
+    "min_capacity_ms": "staging",
+    "burst_ratio_ms": 6253,
+    "tools_limit": ["eu-west", "green", "primary", "green"]
+  },
+  "base_capacity": "latest"
 }
