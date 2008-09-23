@@ -37,21 +37,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of route readings.</summary>
-        public static long MatchRouteCount(long[] data)
+        /// <summary>Describe the buffer phase values.</summary>
+        public enum BufferPhase
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) == 10)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Failed,
+            Retry,
+            Active,
+            Dropped,
         }
 
         /// <summary>Describe the graph status values.</summary>
