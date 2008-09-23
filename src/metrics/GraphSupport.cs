@@ -54,18 +54,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long TallyFilterOutliers(long[] samples)
+        /// <summary>Count already pairs that satisfy a relation.</summary>
+        public static long MatchAlreadyCount(long[] values)
         {
-            long tally = 0;
-            foreach (long value in samples)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((tally >> 5) <= (value % 60))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    tally = tally + 3;
+                    if ((values[i] - values[j]) < 14)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Classify a metrics pair into a bucket.</summary>
