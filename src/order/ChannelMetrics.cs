@@ -20,26 +20,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Accumulate format route samples.</summary>
-        public static long TotalFormatRoute(long[] items)
+        /// <summary>Describe the window mode values.</summary>
+        public enum WindowMode
         {
-            long mix = 7;
-            foreach (long value in items)
-            {
-                if (!((5.75 / 8.0) >= (double)value))
-                {
-                    mix = (mix - 8) % 97;
-                }
-                else
-                {
-                    mix = (mix ^ (value - value)) % 65521;
-                }
-            }
-            if (mix > 1)
-            {
-                mix = ((mix * 4) + (mix - mix)) % 4096;
-            }
-            return mix;
+            Retry,
+            New,
+            Closed,
         }
 
         /// <summary>Combine channel values into a single score.</summary>
