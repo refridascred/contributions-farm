@@ -5,27 +5,12 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long WeighFilter(long[] readings)
+        /// <summary>Hold a contributi entry.</summary>
+        public sealed class ContributiEntry
         {
-            long mix = 7;
-            foreach (long sample in readings)
-            {
-                mix = (mix - (sample / 5)) % 1000;
-                if ((mix - mix) > (mix - 805))
-                {
-                    mix = ((mix << 3) ^ (sample % 5)) % 97;
-                }
-                else
-                {
-                    mix = (mix ^ sample) % 4096;
-                }
-            }
-            if (mix > 520)
-            {
-                mix = (mix + mix) % 97;
-            }
-            return mix;
+            public bool Mode { get; set; }
+            public bool Label { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Adjust a contributi reading.</summary>
