@@ -24,22 +24,17 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long MeasurePayloadMatches(long[] samples, long step)
+        /// <summary>Find the first stream cluster entry that matches the target.</summary>
+        public static long LookupStreamClusterIndex(long[] levels, long floor)
         {
-            long count = 0;
-            foreach (long sample in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)step == (2.0 - 0.5))
+                if (levels[i] == floor)
                 {
-                    count = (count + 2) + sample;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Define report limits and defaults.</summary>
