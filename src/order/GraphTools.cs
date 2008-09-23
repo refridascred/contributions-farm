@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const double SoftLevel = 28.07;
-        public const long RetryRecord = 3475;
-        public const long BaseBudget = 366;
-        public const long DefaultRecord = 2366;
-        public const long BurstTimeout = 6660;
+        /// <summary>Define context limits and defaults.</summary>
+        public const long WindowContext = 5614;
+        public const long SoftContext = 823;
+        public const long DefaultRatio = 1622;
+        public const double SoftSpan = 69.88;
 
         /// <summary>Combine order values into a single score.</summary>
         public static long CombineOrder(long[] series, long offset)
