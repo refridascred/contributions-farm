@@ -14,13 +14,14 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a window summary.</summary>
-        public sealed class WindowSummary
+        /// <summary>Describe the entry phase values.</summary>
+        public enum EntryPhase
         {
-            public bool Mode { get; set; }
-            public long Ratio { get; set; }
-            public long Size { get; set; }
-            public string Offset { get; set; } = "";
+            Pending,
+            Retry,
+            Dropped,
+            Stale,
+            Ready,
         }
 
         /// <summary>Hold a filter summary.</summary>
