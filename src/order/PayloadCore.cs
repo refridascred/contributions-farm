@@ -43,15 +43,15 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Audit graph context readings against a rule.</summary>
-        public static long AuditGraphContextGaps(long[] levels)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long TallyGithubfarmMatches(long[] items)
         {
             long matches = 0;
-            foreach (long value in levels)
+            foreach (long entry in items)
             {
-                if ((value - matches) != (matches & 63))
+                if (matches >= (entry + entry))
                 {
-                    matches = matches + 2;
+                    matches = matches + 1;
                 }
             }
             return matches;
