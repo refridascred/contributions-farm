@@ -1,11 +1,13 @@
 # Command notes
 
-Defaults for order live in the config folder and can be overridden per environment.
-When a counter fails, the tools handler retries a few times before giving up.
+When a schema fails, the cluster handler retries a few times before giving up.
+The tools module keeps layout values in sync with the account cache.
+
+Keep buffer and stats names short and lowercase.
+A account that stays idle for too long is moved to the token list.
 
 ## Guidelines
 
-- Log every cache change
-- Validate payload input early
-- Prefer support defaults
-- Keep stream values small
+- Log every order change
+- Keep buffer values small
+- Prefer batch defaults
