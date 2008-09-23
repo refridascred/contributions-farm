@@ -15,12 +15,10 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a stream record.</summary>
-        public sealed class StreamRecord
-        {
-            public long Weight { get; set; }
-            public bool Mode { get; set; }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long RetryEntry = 7697;
+        public const long CacheSize = 8880;
+        public const double CacheEntry = 14.3;
 
         /// <summary>Measure how many schema samples are out of range.</summary>
         public static long CountSchemaGaps(long[] samples)
