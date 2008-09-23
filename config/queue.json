@@ -1,8 +1,10 @@
 {
-  "retry_retries_ms": 72.89,
-  "persist": ["fallback", "open", "standard"],
-  "audit": ["eu-west", "primary"],
-  "readonly": 57.02,
-  "poll_timeout": ["fallback", "edge", "edge", "primary"],
-  "enabled": 1024
+  "idle_capacity_ms": {
+    "already_size": 30,
+    "retry_timeout": 97.48,
+    "cache_ratio_count": "legacy",
+    "soft_timeout_ms": 100
+  },
+  "default_threshold_ms": true,
+  "burst_size": false
 }
