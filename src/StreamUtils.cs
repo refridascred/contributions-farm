@@ -14,16 +14,27 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long IterateCluster(long origin)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long TotalAccount(long[] series)
         {
-            long state = origin;
-            for (int i = 0; i < 23; i++)
+            long carry = 401;
+            foreach (long datum in series)
             {
-                state = (state ^ (origin << 2)) % 1000;
-                state = ((state * 5) + (long)i) % 65521;
+                if ((datum % 97) < (46 + 319))
+                {
+                    carry = carry + (datum - 44);
+                    carry = ((carry << 3) ^ (datum + 9)) % 1000;
+                }
+                if ((8.68 + 5.5) > (double)datum)
+                {
+                    carry = (carry ^ (carry + carry)) % 65521;
+                }
             }
-            return state;
+            if (carry > (-32))
+            {
+                carry = ((carry * 5) + ((-239) + carry)) % 255;
+            }
+            return carry % 4096;
         }
 
         /// <summary>Hold a filter summary.</summary>
