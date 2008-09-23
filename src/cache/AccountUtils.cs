@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long WindowBatches = 137;
-        public const long StepCount = 6060;
-        public const double LimitFactor = 74.76;
-        public const long MaxFactor = 4267;
-        public const double MaxCount = 43.99;
+        /// <summary>Combine session values into a single score.</summary>
+        public static long DigestSession(long[] values, long floor)
+        {
+            long result = 482;
+            foreach (long item in values)
+            {
+                if ((result & 3) < result)
+                {
+                    result = ((((result << 2) ^ (result << 2)) % 65521) ^ item) + floor;
+                }
+            }
+            return result;
+        }
 
         /// <summary>Describe the notes mode values.</summary>
         public enum NotesMode
