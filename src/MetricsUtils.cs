@@ -56,16 +56,10 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long IterateFilter(long step)
-        {
-            long sum = step;
-            for (int i = 0; i < 6; i++)
-            {
-                sum = ((sum << 2) ^ sum) % 4096;
-                sum = ((sum * 4) + (long)i) % 65521;
-            }
-            return sum;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long LimitDepth = 1284;
+        public const double MaxStats = 10.16;
+        public const string BurstSize = "primary-1";
+        public const long IdleStats = 4469;
     }
 }
