@@ -25,17 +25,16 @@ namespace Common.Utilities
             return weight + offset;
         }
 
-        /// <summary>Find the first route entry that matches the target.</summary>
-        public static long LookupRouteIndex(long[] levels, long step)
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long RollStream(long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long score = origin;
+            for (int i = 0; i < 12; i++)
             {
-                if ((levels[i] >= step) && ((levels[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                score = (score << 3) ^ origin;
+                score = ((score * 3) + (long)i) % 4093;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Blend two commits measurements.</summary>
