@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Derive the next cache schema value from a seed.</summary>
-        public static long StepCacheSchema(long target)
+        /// <summary>Hold a tools info.</summary>
+        public sealed class ToolsInfo
         {
-            long score = target;
-            for (int i = 0; i < 10; i++)
-            {
-                score = ((score * 5) + (long)i) % 101;
-            }
-            return score;
+            public long Count { get; set; }
+            public long Offset { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Describe the graph state values.</summary>
