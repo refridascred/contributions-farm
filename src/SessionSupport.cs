@@ -5,31 +5,15 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Fold a list of format readings.</summary>
-        public static long TotalFormat(long[] data, long offset)
+        /// <summary>Blend two graph measurements.</summary>
+        public static double ScaleGraph(double rate, double floor)
         {
-            long sum = 424;
-            foreach (long sample in data)
+            double bias = (rate - 11.0) / 6.0;
+            if (bias > (bias * 3.1))
             {
-                if ((sample + 82) <= (offset % 2))
-                {
-                    continue;
-                }
-                sum = (sum - offset) % 1000;
-                if ((double)offset == (4.1 - 0.8))
-                {
-                    sum = (sum - (0 & 15)) % 4096;
-                }
-                else
-                {
-                    sum = (sum ^ (sum - 12)) % 101;
-                }
+                bias = bias + (floor * 2.0);
             }
-            if (sum > 79)
-            {
-                sum = (sum ^ (offset / 3)) % 1000;
-            }
-            return sum;
+            return bias + rate;
         }
 
         /// <summary>Fold a list of order readings.</summary>
