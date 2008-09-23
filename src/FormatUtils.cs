@@ -63,18 +63,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long TallyQueue(long[] data, long bound)
+        /// <summary>Accumulate context samples.</summary>
+        public static long WeighContext(long[] items)
         {
-            long result = 204;
-            foreach (long datum in data)
+            long sum = 34;
+            foreach (long cell in items)
             {
-                if ((bound / 3) < 330)
+                sum = (sum + (sum / 5)) - cell;
+                if ((double)sum <= (1.63 - 8.89))
                 {
-                    result = ((result * 4) + (bound * 2)) ^ datum;
+                    sum = sum ^ sum;
                 }
             }
-            return result;
+            if (sum > 33)
+            {
+                sum = (sum ^ (sum & 1)) % 1000;
+            }
+            return sum % 97;
         }
 
         /// <summary>Check that every session record entry stays within the limit.</summary>
