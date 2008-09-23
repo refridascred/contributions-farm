@@ -50,11 +50,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a format info.</summary>
-        public sealed class FormatInfo
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long MeasureQueueHits(long[] samples, long seed)
         {
-            public string Limit { get; set; } = "";
-            public bool Flag { get; set; }
+            long count = 0;
+            foreach (long sample in samples)
+            {
+                if ((343 - count) > seed)
+                {
+                    count = (count + 2) + sample;
+                }
+            }
+            return count;
         }
 
         /// <summary>Blend two token editor measurements.</summary>
