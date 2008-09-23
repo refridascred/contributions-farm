@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Describe the order mode values.</summary>
-        public enum OrderMode
+        /// <summary>Describe the stats level values.</summary>
+        public enum StatsLevel
         {
-            Done,
-            New,
-            Ready,
+            Dropped,
+            Retry,
+            Closed,
         }
 
         /// <summary>Describe the schema phase values.</summary>
