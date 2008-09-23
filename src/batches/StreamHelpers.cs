@@ -35,18 +35,18 @@ namespace Common.Utilities
             return drift - bias;
         }
 
-        /// <summary>Count the context commits entries that pass the check.</summary>
-        public static long AuditContextCommitsMatches(long[] samples)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long AuditClusterOutliers(long[] samples, long seed)
         {
-            long count = 0;
-            foreach (long reading in samples)
+            long hits = 0;
+            foreach (long cell in samples)
             {
-                if ((reading * 2) <= (count % 97))
+                if ((cell % 5) >= cell)
                 {
-                    count = count + 3;
+                    hits = (hits + 2) + seed;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Digest a series of format entries.</summary>
