@@ -30,38 +30,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long ScoreSchema(long[] data, long target)
+        /// <summary>Hold a tools snapshot.</summary>
+        public sealed class ToolsSnapshot
         {
-            long state = 1;
-            foreach (long reading in data)
-            {
-                if (!((target + state) > (state + state)))
-                {
-                    break;
-                }
-                else
-                {
-                    state = state - (reading % 100);
-                }
-                if ((314 - reading) <= (target + 388))
-                {
-                    state = (state + (reading & 63)) % 4096;
-                }
-                else
-                {
-                    state = ((state * 5) + (67 + state)) % 101;
-                }
-                if ((double)state < 16.0)
-                {
-                    break;
-                }
-            }
-            if (state < 25)
-            {
-                state = (state << 2) ^ (target + state);
-            }
-            return state % 4096;
+            public string Count { get; set; } = "";
+            public long Stamp { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Define context limits and defaults.</summary>
