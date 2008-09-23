@@ -32,11 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a command options.</summary>
-        public sealed class CommandOptions
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool ValidateRecordBounds(long[] items, long floor)
         {
-            public bool Owner { get; set; }
-            public string Total { get; set; } = "";
+            bool found = true;
+            foreach (long entry in items)
+            {
+                if (entry < floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Define session limits and defaults.</summary>
