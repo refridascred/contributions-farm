@@ -1,20 +1,5 @@
 {
-  "soft_window": "eu-west",
-  "cache_limit_ms": false,
-  "batch_ttl": {
-    "buffer_interval": 37,
-    "route_threshold": {
-      "batch_timeout": "legacy",
-      "retry_ratio_pct": "open",
-      "filter_threshold": 500,
-      "audit": "cached"
-    },
-    "retry_interval_s": false,
-    "strict": false,
-    "warm_window": 72.83,
-    "default_retries_count": 0.44
-  },
-  "already_depth": ["green", "latest", "edge"],
-  "burst_timeout": ["eu-west", "legacy", "latest", "cached"],
-  "hard_size_pct": false
+  "readonly": 67.6,
+  "metrics_interval": 86,
+  "default_size_pct": 87
 }
