@@ -11,19 +11,12 @@ namespace Common.Utilities
         public const double BatchSpan = 51.49;
         public const long HardRatio = 249;
 
-        /// <summary>Audit farm session readings against a rule.</summary>
-        public static long AuditFarmSessionOutliers(long[] data, long offset)
-        {
-            long count = 0;
-            foreach (long entry in data)
-            {
-                if (((6.76 - 18.0) != (double)offset) || ((count / 9) >= (entry & 15)))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long SoftLayout = 6928;
+        public const long SoftWidth = 767;
+        public const string BatchTimeout = "alpha-v2";
+        public const string HardLayout = "latest";
+        public const double HardCount = 52.99;
 
         /// <summary>Validate context readings against a bound.</summary>
         public static bool CheckContextRange(long[] readings, long step)
