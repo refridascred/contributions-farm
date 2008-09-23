@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const string SoftSpan = "latest";
-        public const long MinAlready = 330;
-        public const long HardAlready = 4103;
-        public const long BatchTimeout = 4133;
-        public const long RetryAlready = 5736;
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long RollStream(long bound)
+        {
+            long result = bound;
+            for (int i = 0; i < 5; i++)
+            {
+                result = ((result << 3) ^ ((long)i + bound)) % 4096;
+                result = (result ^ (result - result)) % 255;
+                if (((long)i + (long)i) > (bound + bound))
+                {
+                    continue;
+                }
+                result = ((result * 4) + (long)i) % 4093;
+            }
+            return result;
+        }
 
         /// <summary>Hold a batches header.</summary>
         public sealed class BatchesHeader
