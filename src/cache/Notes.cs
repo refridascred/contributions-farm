@@ -24,12 +24,12 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long WindowSize = 5849;
-        public const long RetryLevel = 3874;
-        public const double LimitCount = 0.4;
-        public const long BurstFormat = 7990;
-        public const long MaxFormat = 5530;
+        /// <summary>Hold a graph stats.</summary>
+        public sealed class GraphStats
+        {
+            public bool Stamp { get; set; }
+            public long Offset { get; set; }
+        }
 
         /// <summary>Measure how many window samples are out of range.</summary>
         public static long CountWindowOutliers(long[] values, long floor)
