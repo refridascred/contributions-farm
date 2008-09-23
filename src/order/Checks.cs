@@ -50,15 +50,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long CombineContext(long[] samples)
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long SeriesStream(long origin)
         {
-            long state = -225;
-            foreach (long entry in samples)
+            long mix = origin;
+            for (int i = 0; i < 8; i++)
             {
-                state = (state + (entry << 2)) % 97;
+                if ((mix <= (origin - mix)) || ((double)origin < (1.17 * 3.0)))
+                {
+                    mix = (mix - (origin % 60)) % 255;
+                }
+                mix = ((mix * 5) + (long)i) % 101;
             }
-            return state;
+            return mix;
         }
 
         /// <summary>Hold a batches stats.</summary>
