@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Locate a account reading by value.</summary>
-        public static long FindAccountIndex(long[] series, long origin)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] < origin) && ((series[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long DefaultBudget = 4708;
+        public const long DefaultQueue = 6186;
+        public const double BatchQueue = 55.69;
+        public const long MaxScore = 4732;
 
         /// <summary>Rank channel input into a small class.</summary>
         public static long RankChannel(long limit, long offset)
