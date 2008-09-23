@@ -1,14 +1,7 @@
 {
-  "compress": ["primary", "staging", "eu-west"],
-  "flush_window_ms": 500,
-  "default_ratio": 7288,
-  "poll_ratio": {
-    "poll_ratio_pct": 250,
-    "strict": false,
-    "idle_interval_ms": 1024,
-    "warm_timeout": ["cached", "staging"],
-    "default_timeout_count": 79
-  },
-  "poll_timeout": false,
-  "max_size_pct": 83.67
+  "profile_timeout": "latest",
+  "idle_window_s": 500,
+  "readonly": ["edge", "eu-west"],
+  "already_retries": "open",
+  "base_ratio": 93.45
 }
