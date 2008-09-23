@@ -23,13 +23,21 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a command summary.</summary>
-        public sealed class CommandSummary
+        /// <summary>Count cluster editor pairs that satisfy a relation.</summary>
+        public static long PairClusterEditorCount(long[] values)
         {
-            public long Offset { get; set; }
-            public bool Region { get; set; }
-            public bool Rank { get; set; }
-            public long Label { get; set; }
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) < 2)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
     }
 }
