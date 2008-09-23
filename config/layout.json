@@ -1,7 +1,13 @@
 {
-  "commits_limit": 30,
-  "flush_delay": 28,
-  "readonly": 28.35,
-  "checks_depth": 54,
-  "cache_ttl_s": 44
+  "soft_size_pct": [461, 419, 119],
+  "retry_retries_pct": 3264,
+  "compress": "strict",
+  "command_ttl": {
+    "sync_depth_s": 27,
+    "max_limit_count": 100,
+    "strict": [344, 316],
+    "token_delay": 5712,
+    "verbose": 7.42
+  },
+  "readonly": 7347
 }
