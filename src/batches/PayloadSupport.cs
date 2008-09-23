@@ -24,11 +24,13 @@ namespace Common.Utilities
             return weight + offset;
         }
 
-        /// <summary>Hold a notes record.</summary>
-        public sealed class NotesRecord
+        /// <summary>Hold a metric info.</summary>
+        public sealed class MetricInfo
         {
-            public bool Region { get; set; }
-            public long Level { get; set; }
+            public string Total { get; set; } = "";
+            public double Count { get; set; }
+            public double Region { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Define filter limits and defaults.</summary>
