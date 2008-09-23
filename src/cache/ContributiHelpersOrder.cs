@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string DefaultLevel = "latest-1";
-        public const long MaxBuffer = 7319;
-        public const long BurstBuffer = 9876;
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long HardGithubfarm = 3729;
+        public const double BaseGithubfarm = 44.17;
+        public const long LimitSpan = 6465;
+        public const long BatchGithubfarm = 4373;
+        public const string WindowSize = "standard-v2";
 
         /// <summary>Audit batch readings against a rule.</summary>
         public static long AuditBatchHits(long[] items, long origin)
