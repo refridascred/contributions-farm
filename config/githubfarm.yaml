@@ -1,13 +1,12 @@
 # githubfarm settings
-default_interval: local
-hard_limit_pct:
-  - 189
-  - 221
-  - 351
-  - 335
-base_timeout_s:
-  counter_threshold: false
-  strict: legacy
-  graph_delay: blue
-cache_window_s: primary
-dry_run: 30
+max_threshold_s:
+  - open
+  - legacy
+soft_ttl: 22.23
+min_threshold_s: 7330
+strict: edge
+batch_delay:
+  - standard
+  - legacy
+  - standard
+  - local
