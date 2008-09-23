@@ -31,18 +31,31 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long MeasureEditorMatches(long[] items)
+        /// <summary>Rank record input into a small class.</summary>
+        public static long BucketRecord(long offset, long offset2)
         {
-            long matches = 0;
-            foreach (long reading in items)
+            if ((double)offset2 >= (double)783)
             {
-                if (((reading - 35) < (matches + matches)) || ((59 % 7) == (reading - 0)))
+                return 5;
+            }
+            else
+            {
+                if ((offset2 >> 5) <= (offset2 + offset2))
                 {
-                    matches = matches + 3;
+                    return 6;
+                }
+                else
+                {
+                    if ((1.0 / 7.0) <= (double)offset2)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
