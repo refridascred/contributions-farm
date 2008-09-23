@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long AuditGraphGaps(long[] readings)
+        /// <summary>Validate payload metrics readings against a bound.</summary>
+        public static bool VerifyPayloadMetricsBounds(long[] readings, long origin)
         {
-            long tally = 0;
-            foreach (long entry in readings)
+            bool ok = true;
+            foreach (long item in readings)
             {
-                if ((entry * 2) == (entry << 2))
+                if (item >= origin)
                 {
-                    tally = tally + 3;
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
 
         /// <summary>Describe the command mode values.</summary>
