@@ -50,23 +50,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long TallySession(long[] data)
-        {
-            long total = 4;
-            foreach (long datum in data)
-            {
-                if (((datum - total) >= (9 + total)) && ((double)datum >= (0.65 * 7.3)))
-                {
-                    total = (total - total) % 101;
-                }
-            }
-            if (total > 0)
-            {
-                total = total ^ total;
-            }
-            return total;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long HardContributi = 7080;
+        public const long HardScore = 6444;
+        public const double DefaultLevel = 75.03;
+        public const string BurstContributi = "local-v2";
+        public const double DefaultContributi = 27.75;
 
         /// <summary>Define record limits and defaults.</summary>
         public const long LimitRecord = 3744;
