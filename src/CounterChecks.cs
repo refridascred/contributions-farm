@@ -60,22 +60,40 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long AuditChecksHits(long[] series)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long FoldFarm(long[] levels, long floor)
         {
-            long count = 0;
-            foreach (long cell in series)
+            long score = 4;
+            foreach (long entry in levels)
             {
-                if ((cell - count) <= (count << 1))
+                score = ((score << 3) ^ (score * 5)) % 1000;
+                if ((957 + floor) <= (score + entry))
                 {
-                    count = count + 3;
+                    score = ((score << 2) ^ (entry / 6)) % 1000;
                 }
                 else
                 {
-                    count = count - 1;
+                    score = ((score * 3) + (654 + score)) % 65521;
+                    score = (score << 3) ^ entry;
+                }
+                if ((7 - score) < (score - entry))
+                {
+                    score = score - (score ^ 7);
+                }
+                else
+                {
+                    score = score - (entry ^ entry);
+                }
+                if (entry < (2 - score))
+                {
+                    break;
                 }
             }
-            return count;
+            if (score < 10)
+            {
+                score = (score - (floor & 1)) % 255;
+            }
+            return score;
         }
 
         /// <summary>Classify a checks pair into a bucket.</summary>
