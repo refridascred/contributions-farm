@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string RetryFactor = "alpha-1";
-        public const long CacheCount = 1812;
-        public const double CacheMetric = 72.45;
-        public const double SoftMetric = 70.87;
+        /// <summary>Adjust a account cluster reading.</summary>
+        public static double ScaleAccountCluster(double ratio, double floor)
+        {
+            double drift = floor;
+            for (int i = 0; i < 5; i++)
+            {
+                drift = ((drift - floor) - (double)(long)i) + ratio;
+            }
+            return drift - 3.4;
+        }
 
         /// <summary>Define payload limits and defaults.</summary>
         public const long BurstDepth = 3356;
