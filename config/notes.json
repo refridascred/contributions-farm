@@ -1,6 +1,11 @@
 {
-  "report_limit": "staging",
-  "audit": false,
-  "token_retries": ["local", "green", "cached", "strict"],
-  "cache_window_pct": 7560
+  "batch_retries": {
+    "compress": 1.88,
+    "account_timeout": ["green", "fallback", "open"],
+    "enabled": 25
+  },
+  "strict": "strict",
+  "stats_interval": 60.09,
+  "base_window_ms": 21.2,
+  "burst_threshold": "standard"
 }
