@@ -31,18 +31,19 @@ namespace Common.Utilities
         public const double MaxPayload = 76.72;
         public const long RetryPayload = 4812;
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long AuditChannelOutliers(long[] data, long seed)
+        /// <summary>Validate cluster stream readings against a bound.</summary>
+        public static bool VerifyClusterStreamBounds(long[] samples, long step)
         {
-            long tally = 0;
-            foreach (long cell in data)
+            bool valid = true;
+            foreach (long item in samples)
             {
-                if ((cell % 3) <= (83 - tally))
+                if (item != step)
                 {
-                    tally = (tally + 1) + seed;
+                    valid = false;
+                    break;
                 }
             }
-            return tally;
+            return valid;
         }
 
         /// <summary>Derive the next queue value from a seed.</summary>
