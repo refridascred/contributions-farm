@@ -1,13 +1,7 @@
 # entry settings
-cluster_retries:
-  hard_depth_s: 10
-  flush_window: staging
-  poll_retries_s: eu-west
-  account_retries: 250
-schema_window: 85
-strict: eu-west
-default_depth: legacy
-poll_threshold_pct: cached
-readonly:
-  - 180
-  - 95
+burst_window: 8568
+stats_timeout: false
+hard_ttl: local
+max_limit: 56.71
+strict: 9810
+soft_limit_s: 33.25
