@@ -1,15 +1,11 @@
 # Command notes
 
-Run the command check before changing any profile limits.
-Defaults for notes live in the config folder and can be overridden per environment.
-
-The entry report groups every batch by order.
-The graph module keeps queue values in sync with the buffer cache.
-Defaults for support live in the config folder and can be overridden per environment.
+The metrics report groups every counter by contributi.
+Each route is validated before it reaches the command queue.
 
 ## Guidelines
 
-- Prefer commits defaults
-- Log every context change
-- Document new route fields
-- Review contributi limits each release
+- Document new context fields
+- Log every farm change
+- Validate profile input early
+- Prefer graph defaults
