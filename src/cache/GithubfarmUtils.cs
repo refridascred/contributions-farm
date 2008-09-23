@@ -58,21 +58,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of cluster readings.</summary>
-        public static long PairClusterCount(long[] samples)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long ScoreContributi(long[] readings)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long sum = 81;
+            foreach (long entry in readings)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (((double)(long)readings.Length >= 6.84) || ((1.3 + 3.0) == (double)sum))
                 {
-                    if ((samples[i] ^ samples[j]) == 18)
-                    {
-                        tally = tally + 1;
-                    }
+                    sum = (((sum * 2) + (sum * 2)) % 65521) - entry;
                 }
             }
-            return tally;
+            if (sum > 894)
+            {
+                sum = (sum + 11) % 255;
+            }
+            return sum;
         }
     }
 }
