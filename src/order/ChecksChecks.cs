@@ -54,11 +54,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double MinSpan = 27.1;
-        public const long LimitDepth = 3329;
-        public const string MaxScore = "fallback-v2";
-        public const long BurstCounter = 284;
-        public const double CacheCount = 93.87;
+        /// <summary>Hold a profile info.</summary>
+        public sealed class ProfileInfo
+        {
+            public string Token { get; set; } = "";
+            public string Total { get; set; } = "";
+            public long Size { get; set; }
+        }
     }
 }
