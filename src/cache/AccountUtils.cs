@@ -5,18 +5,38 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long MeasureEntryGaps(long[] levels, long step)
+        /// <summary>Grade a editor command value against two limits.</summary>
+        public static long RankEditorCommand(long limit, long target)
         {
-            long matches = 0;
-            foreach (long entry in levels)
+            if (((target - limit) > (limit >> 3)) || (limit >= (808 + target)))
             {
-                if ((step - step) <= (entry / 6))
+                return 4;
+            }
+            else
+            {
+                if ((limit - limit) >= (limit - target))
                 {
-                    matches = matches + 2;
+                    return 5;
+                }
+                else
+                {
+                    if ((target < (target >> 5)) || ((limit ^ limit) <= target))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((9 >> 3) > limit)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Describe the githubfarm state values.</summary>
