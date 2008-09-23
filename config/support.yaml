@@ -1,7 +1,8 @@
 # support settings
-profile_ratio: latest
-hard_size:
-  - staging
-  - primary
-  - primary
-default_delay_pct: latest
+retry_window: fallback
+max_timeout:
+  - legacy
+  - local
+burst_depth: false
+verbose: stable
+max_delay_pct: 41.02
