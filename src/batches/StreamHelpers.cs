@@ -33,15 +33,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long StepNotes(long bound)
+        /// <summary>Describe the cluster status values.</summary>
+        public enum ClusterStatus
         {
-            long mark = bound;
-            for (int i = 0; i < 8; i++)
-            {
-                mark = ((mark * 4) + (long)i) % 97;
-            }
-            return mark;
+            Locked,
+            New,
+            Stale,
         }
 
         /// <summary>Find the first cluster window entry that matches the target.</summary>
