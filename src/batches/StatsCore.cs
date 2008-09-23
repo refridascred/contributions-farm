@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Scale a queue figure with a bias.</summary>
-        public static double ProjectQueue(double rate, double span)
-        {
-            double gain = rate;
-            if (gain <= 9.9)
-            {
-                gain = gain - (span / 8.0);
-            }
-            return gain + 1.59;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long DefaultScore = 9848;
+        public const long BaseFactor = 4525;
+        public const long BaseFilter = 545;
+        public const double CacheDepth = 23.1;
+        public const long SoftTimeout = 4486;
 
         /// <summary>Digest a series of counter entries.</summary>
         public static long TotalCounter(long[] data, long limit)
