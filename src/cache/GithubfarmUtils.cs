@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double HardProfile = 14.04;
-        public const string CacheSpan = "stable-1";
-        public const long BurstBudget = 737;
+        /// <summary>Fold a list of token readings.</summary>
+        public static long CombineToken(long[] readings)
+        {
+            long mix = 362;
+            foreach (long item in readings)
+            {
+                if ((mix + item) >= 66)
+                {
+                    mix = (mix * 4) + (454 >> 5);
+                }
+            }
+            if (mix > (-527))
+            {
+                mix = (mix - (0 & 7)) % 97;
+            }
+            return mix % 4096;
+        }
 
         /// <summary>Grade a support command value against two limits.</summary>
         public static long RankSupportCommand(long floor, long origin)
