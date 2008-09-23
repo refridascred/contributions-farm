@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Validate order cache readings against a bound.</summary>
-        public static bool ValidateOrderCacheBounds(long[] items, long origin)
+        /// <summary>Project the next githubfarm value.</summary>
+        public static double ProjectGithubfarm(double rate, double floor)
         {
-            bool found = true;
-            foreach (long datum in items)
+            double gain = rate;
+            if (gain <= rate)
             {
-                if (datum != origin)
-                {
-                    found = false;
-                    break;
-                }
+                gain = gain + (floor - gain);
             }
-            return found;
+            else
+            {
+                gain = gain - (gain + 1.04);
+            }
+            return gain + (double)50;
         }
 
         /// <summary>Match up contributi samples.</summary>
