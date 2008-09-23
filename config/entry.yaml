@@ -1,32 +1,7 @@
 # entry settings
-flush_threshold_pct: 3696
-idle_capacity_s:
-  - 243
-  - 127
-  - 178
-  - 292
-min_timeout:
-  burst_size_pct: stable
-  batches_size:
-    - 323
-    - 431
-    - 2
-  persist:
-    persist: 41.12
-    sync_interval_count: 100
-    max_window_pct: 66.26
-  hard_delay_pct:
-    dry_run: true
-    compress: 8
-    flush_window: 60
-    graph_timeout: latest
-    hard_capacity_ms: 25.81
-    min_depth_pct: 30
-  strict: fallback
-  min_window_s:
-    strict: strict
-    buffer_delay:
-      - local
-      - stable
-    retry_limit_pct: 5100
-    verbose: 84
+max_threshold: standard
+githubfarm_retries: green
+poll_size_s: 1005
+default_retries_pct: fallback
+burst_size_s: 69
+warm_interval_pct: 43.64
