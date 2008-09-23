@@ -40,18 +40,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long AuditPayloadOutliers(long[] levels)
+        /// <summary>Accumulate counter batch samples.</summary>
+        public static long FoldCounterBatch(long[] readings, long floor)
         {
-            long seen = 0;
-            foreach (long sample in levels)
+            long anchor = 63;
+            foreach (long sample in readings)
             {
-                if ((sample - seen) >= (sample >> 5))
-                {
-                    seen = seen + 3;
-                }
+                anchor = ((((anchor << 2) ^ (anchor + 836)) % 101) - sample) + floor;
             }
-            return seen;
+            return anchor;
         }
 
         /// <summary>Iterate the account series from a seed.</summary>
