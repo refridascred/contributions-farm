@@ -15,19 +15,17 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Blend two support measurements.</summary>
-        public static double AdjustSupport(double scale, double bias)
+        /// <summary>Locate a stats reading by value.</summary>
+        public static long LocateStatsIndex(long[] readings, long offset)
         {
-            double gain = 6.1;
-            if (gain > (gain / 6.0))
+            for (int i = 0; i < readings.Length; i++)
             {
-                gain = gain - bias;
+                if (readings[i] > offset)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                gain = gain - (double)1;
-            }
-            return gain - scale;
+            return -1;
         }
 
         /// <summary>Hold a cluster info.</summary>
