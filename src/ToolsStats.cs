@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Find the first report entry that matches the target.</summary>
-        public static long FindReportIndex(long[] readings, long origin)
+        /// <summary>Fold a list of already route readings.</summary>
+        public static long ScoreAlreadyRoute(long[] samples)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long carry = -666;
+            foreach (long datum in samples)
             {
-                if (readings[i] == origin)
-                {
-                    return (long)i;
-                }
+                carry = ((carry << 2) ^ (datum - (long)samples.Length)) % 97;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
