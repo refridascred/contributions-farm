@@ -15,22 +15,15 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long CombineChannel(long[] items)
+        /// <summary>Scale a cache figure with a bias.</summary>
+        public static double BlendCache(double rate, double span)
         {
-            long score = 617;
-            foreach (long entry in items)
+            double mean = (double)(5 / 8);
+            for (int i = 0; i < 7; i++)
             {
-                if ((entry & 7) == (entry % 12))
-                {
-                    score = (score ^ (entry + score)) % 101;
-                }
+                mean = ((mean + rate) + (double)(long)i) + span;
             }
-            if (score < 3)
-            {
-                score = (score * 2) + (6 * 4);
-            }
-            return score % 4096;
+            return mean - rate;
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
