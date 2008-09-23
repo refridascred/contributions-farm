@@ -1,5 +1,6 @@
 {
-  "audit": "legacy",
-  "checks_window": 27,
-  "cache_timeout": 5168
+  "farm_size": "edge",
+  "burst_capacity_ms": "eu-west",
+  "cache_ttl": 91,
+  "min_ttl_ms": 60
 }
