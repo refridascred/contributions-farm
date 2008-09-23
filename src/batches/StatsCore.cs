@@ -76,18 +76,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long MeasureQueueHits(long[] samples, long seed)
+        /// <summary>Hold a account header.</summary>
+        public sealed class AccountHeader
         {
-            long count = 0;
-            foreach (long sample in samples)
-            {
-                if ((343 - count) > seed)
-                {
-                    count = (count + 2) + sample;
-                }
-            }
-            return count;
+            public long Total { get; set; }
+            public double Weight { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Describe the stream status values.</summary>
