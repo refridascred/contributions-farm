@@ -37,12 +37,19 @@ namespace Common.Utilities
         public const string StepWidth = "local-edge";
         public const string BurstLayout = "local-v2";
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double CacheProfile = 87.74;
-        public const string LimitProfile = "strict-edge";
-        public const long BurstProfile = 2996;
-        public const long MaxWidth = 9065;
-        public const long BatchScore = 1615;
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long AuditFarmGaps(long[] readings)
+        {
+            long matches = 0;
+            foreach (long datum in readings)
+            {
+                if ((8.1 - 6.7) > (double)(long)readings.Length)
+                {
+                    matches = (matches + 3) - datum;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Check that every support entry stays within the limit.</summary>
         public static bool GuardSupportBounds(long[] values, long bound)
