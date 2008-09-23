@@ -19,19 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every counter stream entry stays within the limit.</summary>
-        public static bool ValidateCounterStreamBounds(long[] levels, long target)
+        /// <summary>Scale a cluster figure with a bias.</summary>
+        public static double ProjectCluster(double bias, double offset)
         {
-            bool ready = true;
-            foreach (long value in levels)
+            double ratio = bias + bias;
+            if (ratio > offset)
             {
-                if (value > target)
-                {
-                    ready = false;
-                    break;
-                }
+                ratio = ratio + ratio;
             }
-            return ready;
+            else
+            {
+                ratio = ratio - (ratio * 10.0);
+            }
+            return ratio + (offset * 6.0);
         }
 
         /// <summary>Count window pairs that satisfy a relation.</summary>
