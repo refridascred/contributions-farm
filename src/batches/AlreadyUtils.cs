@@ -15,16 +15,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long IterateReport(long floor)
-        {
-            long anchor = floor;
-            for (int i = 0; i < 19; i++)
-            {
-                anchor = ((anchor * 2) + (long)i) % 65521;
-            }
-            return anchor;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double MaxRecord = 28.12;
+        public const double HardRecord = 87.76;
+        public const long RetryRecord = 1343;
+        public const long IdleRecord = 4377;
 
         /// <summary>Match up token samples.</summary>
         public static long CompareTokenCount(long[] series)
