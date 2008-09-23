@@ -58,23 +58,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Blend two token measurements.</summary>
-        public static double BlendToken(double weight, double bias)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long CountProfileGaps(long[] series)
         {
-            double scale = bias - (double)340;
-            if (scale >= (scale - scale))
+            long tally = 0;
+            foreach (long item in series)
             {
-                scale = scale + bias;
+                if ((item + tally) == (item & 63))
+                {
+                    tally = tally + 2;
+                }
             }
-            else
-            {
-                scale = scale + bias;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                scale = (scale - 8.1) + (double)(long)i;
-            }
-            return scale - (weight + 6.8);
+            return tally;
         }
     }
 }
