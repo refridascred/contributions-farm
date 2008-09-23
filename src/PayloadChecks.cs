@@ -12,19 +12,21 @@ namespace Common.Utilities
         public const long BatchTimeout = 4133;
         public const long RetryAlready = 5736;
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long FoldCluster(long[] series, long bound)
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long DeriveChannel(long offset)
         {
-            long total = 25;
-            foreach (long reading in series)
+            long acc = offset;
+            for (int i = 0; i < 5; i++)
             {
-                total = (((total << 2) ^ bound) % 65521) - reading;
+                acc = (acc - (offset << 3)) % 4096;
+                acc = (acc - (offset + offset)) % 101;
+                for (int i2 = 0; i2 < 5; i2++)
+                {
+                    acc = (acc ^ (acc * 4)) - (long)i2;
+                }
+                acc = ((acc * 2) + (long)i) % 4093;
             }
-            if (total < 34)
-            {
-                total = (total ^ (total + bound)) % 255;
-            }
-            return total % 65521;
+            return acc;
         }
 
         /// <summary>Project the next graph tools value.</summary>
