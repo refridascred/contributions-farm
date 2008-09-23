@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const double IdleFactor = 73.11;
-        public const long LimitTimeout = 3287;
-        public const double WindowRoute = 41.63;
-        public const double MaxRoute = 58.9;
-        public const long BatchRoute = 5060;
+        /// <summary>Look up the position of a record already sample.</summary>
+        public static long SeekRecordAlreadyIndex(long[] values, long target)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] > target) && ((values[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Find the first session entry that matches the target.</summary>
         public static long FindSessionIndex(long[] levels, long step)
