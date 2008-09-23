@@ -1,8 +1,15 @@
 # entry settings
-base_retries_s: staging
-default_interval_s: 52
-flush_ratio: true
-cache_delay:
-  - staging
-  - cached
-stream_delay: true
+format_ratio:
+  enabled:
+    - standard
+    - blue
+  poll_timeout_pct:
+    cache_ttl_pct: blue
+    filter_size: local
+    cluster_limit: eu-west
+  contributi_limit: fallback
+  sync_depth_count: latest
+editor_timeout: 2956
+persist: 98.32
+idle_delay: 4377
+base_ttl_pct: 500
