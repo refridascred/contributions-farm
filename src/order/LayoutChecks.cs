@@ -43,14 +43,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the entry level values.</summary>
-        public enum EntryLevel
-        {
-            Paused,
-            Draft,
-            Synced,
-            Pending,
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long SoftTimeout = 7772;
+        public const long DefaultSchema = 3841;
+        public const long IdleRatio = 6673;
+        public const long HardWidth = 1436;
 
         /// <summary>Project the next stats value.</summary>
         public static double ProjectStats(double weight, double offset)
