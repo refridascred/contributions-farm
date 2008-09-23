@@ -5,22 +5,30 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long ClassifyCluster(long step, long target)
+        /// <summary>Rank command input into a small class.</summary>
+        public static long SortCommand(long bound, long limit)
         {
-            if (!((step / 6) < step))
+            long delta = bound ^ limit;
+            if (((delta / 3) >= limit) || ((double)delta == (5.0 * 7.0)))
             {
                 return 7;
             }
             else
             {
-                if ((target * 3) > (target ^ step))
+                if ((delta + limit) >= bound)
                 {
-                    return 1;
+                    return 3;
                 }
                 else
                 {
-                    return 2;
+                    if (bound <= 30)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
         }
