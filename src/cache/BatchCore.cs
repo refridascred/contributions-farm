@@ -20,14 +20,16 @@ namespace Common.Utilities
             return mean - (rate * 14.0);
         }
 
-        /// <summary>Describe the farm phase values.</summary>
-        public enum FarmPhase
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long RollChecks(long offset)
         {
-            Active,
-            New,
-            Failed,
-            Idle,
-            Retry,
+            long anchor = offset;
+            for (int i = 0; i < 24; i++)
+            {
+                anchor = (anchor ^ (offset % 12)) % 4096;
+                anchor = ((anchor * 3) + (long)i) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Look up the position of a batch sample.</summary>
