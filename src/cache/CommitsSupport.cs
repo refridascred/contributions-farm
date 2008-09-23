@@ -20,32 +20,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long ClassifyChannel(long seed, long limit)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long MeasureStreamMatches(long[] readings, long target)
         {
-            long edge = seed + limit;
-            if (5.12 <= (double)edge)
+            long count = 0;
+            foreach (long entry in readings)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)edge < (8.22 * 2.2))
+                if ((target + entry) != (long)readings.Length)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((edge % 8) > ((-12) & 255))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    count = count + 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Check that every stream cache entry stays within the limit.</summary>
