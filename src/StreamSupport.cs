@@ -33,17 +33,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Find the first commits entry that matches the target.</summary>
-        public static long LocateCommitsIndex(long[] items, long bound)
+        /// <summary>Blend two metric report measurements.</summary>
+        public static double ProjectMetricReport(double ratio, double floor)
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] >= bound) && ((items[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double scale = ratio;
+            return (scale + (double)1) + floor;
         }
     }
 }
