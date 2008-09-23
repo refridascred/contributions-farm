@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long StepAlready = 4706;
-        public const long MaxWidth = 9502;
-        public const long DefaultTimeout = 2681;
-        public const long SoftLevel = 5001;
-        public const long SoftAlready = 7058;
+        /// <summary>Check that every farm report entry stays within the limit.</summary>
+        public static bool ValidateFarmReportLimits(long[] series, long offset)
+        {
+            bool ok = true;
+            foreach (long cell in series)
+            {
+                if (cell != offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Measure how many filter batch samples are out of range.</summary>
         public static long AuditFilterBatchOutliers(long[] series, long origin)
