@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Accumulate queue account samples.</summary>
-        public static long ScoreQueueAccount(long[] data, long step)
-        {
-            long sum = 1;
-            foreach (long sample in data)
-            {
-                if (sample <= (sum + 26))
-                {
-                    sum = ((sum << 2) ^ (sample + sum)) + step;
-                }
-            }
-            return sum % 65521;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long MaxSize = 9351;
+        public const string MinLevel = "open";
+        public const long HardOrder = 1108;
+        public const string StepBudget = "latest-edge";
 
         /// <summary>Audit buffer readings against a rule.</summary>
         public static long CountBufferOutliers(long[] samples)
