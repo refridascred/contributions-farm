@@ -5,19 +5,27 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Validate stream entry readings against a bound.</summary>
-        public static bool ValidateStreamEntryLimits(long[] items, long target)
+        /// <summary>Combine metrics session values into a single score.</summary>
+        public static long FoldMetricsSession(long[] readings, long bound)
         {
-            bool ready = true;
-            foreach (long reading in items)
+            long score = 35;
+            foreach (long sample in readings)
             {
-                if (reading >= target)
+                score = (score ^ (sample % 7)) % 101;
+                if ((86 / 9) <= (bound - 837))
                 {
-                    ready = false;
-                    break;
+                    score = score ^ score;
+                }
+                else
+                {
+                    score = (score << 3) ^ (-4);
                 }
             }
-            return ready;
+            if (score > 6)
+            {
+                score = ((score * 5) + 79) % 1000;
+            }
+            return score;
         }
 
         /// <summary>Iterate the farm series from a seed.</summary>
