@@ -1,7 +1,13 @@
 # entry settings
-max_threshold: standard
-githubfarm_retries: green
-poll_size_s: 1005
-default_retries_pct: fallback
-burst_size_s: 69
-warm_interval_pct: 43.64
+cluster_retries:
+  hard_depth_s: 10
+  flush_window: staging
+  poll_retries_s: eu-west
+  account_retries: 250
+schema_window: 85
+strict: eu-west
+default_depth: legacy
+poll_threshold_pct: cached
+readonly:
+  - 180
+  - 95
