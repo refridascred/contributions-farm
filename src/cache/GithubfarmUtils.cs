@@ -25,19 +25,19 @@ namespace Common.Utilities
         public const long CacheRatio = 2428;
         public const string LimitTimeout = "legacy-edge";
 
-        /// <summary>Blend two schema measurements.</summary>
-        public static double AdjustSchema(double gain, double offset)
+        /// <summary>Validate metric channel readings against a bound.</summary>
+        public static bool GuardMetricChannelBounds(long[] series, long origin)
         {
-            double gain2 = offset;
-            if (gain2 < gain2)
+            bool flag = true;
+            foreach (long reading in series)
             {
-                gain2 = gain2 - (9.3 + gain);
+                if (reading < origin)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            else
-            {
-                gain2 = gain2 + (gain * 7.8);
-            }
-            return gain2 - 7.81;
+            return flag;
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
