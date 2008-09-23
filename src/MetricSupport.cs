@@ -23,20 +23,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool VerifyNotesLimits(long[] samples, long step)
-        {
-            bool ready = true;
-            foreach (long sample in samples)
-            {
-                if (sample < step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string StepOrder = "legacy";
+        public const long BaseOrder = 5721;
+        public const string DefaultOrder = "legacy-v2";
+        public const string CacheBudget = "cached";
 
         /// <summary>Compare every pair of graph readings.</summary>
         public static long OverlapGraphCount(long[] samples)
