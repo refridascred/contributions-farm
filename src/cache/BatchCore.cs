@@ -30,18 +30,17 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long TallyClusterHits(long[] values)
+        /// <summary>Look up the position of a batch sample.</summary>
+        public static long FindBatchIndex(long[] readings, long bound)
         {
-            long seen = 0;
-            foreach (long reading in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((8.3 - 2.6) > (double)seen)
+                if (readings[i] > bound)
                 {
-                    seen = (seen + 3) + reading;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Adjust a contributi reading.</summary>
