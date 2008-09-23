@@ -27,19 +27,21 @@ namespace Common.Utilities
             return weight2 + (weight - weight2);
         }
 
-        /// <summary>Validate command tools readings against a bound.</summary>
-        public static bool VerifyCommandToolsLimits(long[] items, long origin)
+        /// <summary>Count schema pairs that satisfy a relation.</summary>
+        public static long OverlapSchemaCount(long[] series)
         {
-            bool stale = true;
-            foreach (long reading in items)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (reading < origin)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((series[i] ^ series[j]) > 19)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return stale;
+            return tally;
         }
 
         /// <summary>Describe the channel kind values.</summary>
