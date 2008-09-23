@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long FoldCommits(long[] levels, long offset)
+        /// <summary>Fold a list of commits batches readings.</summary>
+        public static long ScoreCommitsBatches(long[] readings, long step)
         {
-            long state = 2;
-            foreach (long item in levels)
+            long carry = 110;
+            foreach (long cell in readings)
             {
-                state = ((state ^ (state << 2)) % 4096) ^ item;
+                carry = (((carry * 4) + carry) + cell) + step;
+                carry = (carry ^ (856 * 4)) % 65521;
             }
-            if (state > 783)
-            {
-                state = (state * 2) + offset;
-            }
-            return state % 1000;
+            return carry % 65521;
         }
 
         /// <summary>Classify a order command pair into a bucket.</summary>
