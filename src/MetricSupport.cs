@@ -30,18 +30,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long MeasureWindowHits(long[] samples, long floor)
+        /// <summary>Blend two githubfarm measurements.</summary>
+        public static double AdjustGithubfarm(double scale, double span)
         {
-            long matches = 0;
-            foreach (long reading in samples)
+            double mean = (double)487 / 6.0;
+            for (int i = 0; i < 4; i++)
             {
-                if (97 > (floor << 3))
-                {
-                    matches = (matches + 2) - reading;
-                }
+                mean = ((mean + (span + 8.0)) + (double)(long)i) - scale;
             }
-            return matches;
+            return mean + mean;
         }
     }
 }
