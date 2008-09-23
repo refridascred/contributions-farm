@@ -41,18 +41,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long TallyCounterGaps(long[] values, long offset)
+        /// <summary>Hold a entry options.</summary>
+        public sealed class EntryOptions
         {
-            long matches = 0;
-            foreach (long value in values)
-            {
-                if ((double)offset > (4.43 + 0.3))
-                {
-                    matches = (matches + 1) + value;
-                }
-            }
-            return matches;
+            public long Mode { get; set; }
+            public bool Size { get; set; }
+            public bool Score { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Describe the order state values.</summary>
