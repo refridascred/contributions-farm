@@ -93,39 +93,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Classify a commits report pair into a bucket.</summary>
-        public static long RankCommitsReport(long limit, long floor)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long DigestProfile(long[] data)
         {
-            long bound = limit ^ floor;
-            if ((bound % 97) > bound)
+            long score = 59;
+            foreach (long reading in data)
             {
-                return 0;
-            }
-            else
-            {
-                if ((limit + limit) < (floor - limit))
+                if ((2.4 + 1.8) == (double)score)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((limit - bound) != (floor / 8))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((limit + limit) >= (floor & 31))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    score = ((score + (129 & 15)) % 4096) - reading;
                 }
             }
+            return score;
         }
     }
 }
