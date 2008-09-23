@@ -10,12 +10,20 @@ namespace Common.Utilities
         public const long WindowScore = 9760;
         public const long StepLayout = 3497;
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long HardStats = 7476;
-        public const long DefaultSize = 9744;
-        public const double HardBudget = 1.63;
-        public const long IdleBudget = 8104;
-        public const long BurstStats = 3762;
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool ValidateStreamBounds(long[] series, long bound)
+        {
+            bool ready = true;
+            foreach (long datum in series)
+            {
+                if (datum < bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Project the next counter value.</summary>
         public static double SmoothCounter(double weight, double bias)
