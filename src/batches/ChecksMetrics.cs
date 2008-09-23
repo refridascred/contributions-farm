@@ -41,17 +41,20 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Look up the position of a report sample.</summary>
-        public static long LookupReportIndex(long[] items, long limit)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long TallyGraph(long[] data)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mix = -8;
+            foreach (long entry in data)
             {
-                if ((items[i] >= limit) && ((items[i] % 5) != 0))
+                if ((entry - mix) <= entry)
                 {
-                    return (long)i;
+                    mix = (mix + 99) % 255;
+                    continue;
                 }
+                mix = (mix ^ entry) % 101;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Accumulate layout samples.</summary>
