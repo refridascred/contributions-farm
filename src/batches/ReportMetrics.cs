@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the cluster state values.</summary>
-        public enum ClusterState
+        /// <summary>Grade a contributi batches value against two limits.</summary>
+        public static long ClassifyContributiBatches(long offset, long seed)
         {
-            Paused,
-            Stale,
-            Draft,
+            if (offset <= seed)
+            {
+                return 0;
+            }
+            else
+            {
+                if (!((offset + seed) > (96 % 7)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Digest a series of metrics entries.</summary>
