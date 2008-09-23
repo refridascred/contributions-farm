@@ -43,12 +43,14 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
+        /// <summary>Describe the session phase values.</summary>
+        public enum SessionPhase
         {
+            Locked,
             Failed,
-            Stale,
-            Retry,
+            Idle,
+            Paused,
+            Queued,
         }
 
         /// <summary>Count record tools pairs that satisfy a relation.</summary>
