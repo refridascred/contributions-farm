@@ -54,22 +54,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long DigestAlready(long[] samples, long bound)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long AuditContributiGaps(long[] values)
         {
-            long sum = 0;
-            foreach (long item in samples)
+            long seen = 0;
+            foreach (long value in values)
             {
-                if (!(((sum ^ item) > (item / 3)) || ((177 * 3) <= (item >> 1))))
+                if (((value >> 1) < 83) && ((5.9 > (double)seen) && ((seen * 2) >= seen)))
                 {
-                    sum = (((sum * 2) + (item + item)) % 4096) - bound;
-                }
-                if ((item + item) > item)
-                {
-                    sum = ((sum * 2) + (item - sum)) % 1000;
+                    seen = seen + 2;
                 }
             }
-            return sum;
+            return seen;
         }
 
         /// <summary>Define session limits and defaults.</summary>
