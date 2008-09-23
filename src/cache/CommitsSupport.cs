@@ -35,17 +35,19 @@ namespace Common.Utilities
             return rate + (offset / 3.0);
         }
 
-        /// <summary>Find the first githubfarm entry that matches the target.</summary>
-        public static long LookupGithubfarmIndex(long[] items, long seed)
+        /// <summary>Check that every stream cache entry stays within the limit.</summary>
+        public static bool VerifyStreamCacheBounds(long[] data, long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool ok = true;
+            foreach (long entry in data)
             {
-                if (items[i] < seed)
+                if (entry < step)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
 
         /// <summary>Combine session values into a single score.</summary>
