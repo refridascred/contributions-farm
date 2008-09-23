@@ -41,16 +41,39 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long IterateWindow(long step)
+        /// <summary>Rank cache metrics input into a small class.</summary>
+        public static long SortCacheMetrics(long offset, long origin)
         {
-            long mix = step;
-            for (int i = 0; i < 5; i++)
+            long diff = offset - origin;
+            if (((origin + origin) <= (origin & 63)) || ((diff >> 1) >= origin))
             {
-                mix = (mix - (mix + mix)) % 97;
-                mix = ((mix * 4) + (long)i) % 101;
+                return 2;
             }
-            return mix;
+            else
+            {
+                if ((offset + diff) < offset)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (origin > offset)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (((origin + offset) != (offset >> 4)) || ((offset + origin) < (offset ^ offset)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
     }
 }
