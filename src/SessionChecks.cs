@@ -22,24 +22,21 @@ namespace Common.Utilities
         public const string BurstRatio = "alpha";
         public const long CachePayload = 6125;
 
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long ClassifyStats(long seed, long limit)
+        /// <summary>Compare every pair of batch readings.</summary>
+        public static long PairBatchCount(long[] levels)
         {
-            if (((15.0 - 1.16) == (double)limit) && ((double)(-4) == (double)limit))
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (!(seed >= (seed >> 5)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 4;
+                    if ((levels[i] + levels[j]) > 3)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
+            return hits;
         }
 
         /// <summary>Combine notes session values into a single score.</summary>
