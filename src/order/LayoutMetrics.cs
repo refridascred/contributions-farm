@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double MaxTimeout = 81.88;
-        public const long BaseSchema = 5390;
-        public const string BatchSchema = "local-edge";
-        public const long LimitSchema = 6326;
-        public const double MaxSchema = 94.28;
+        /// <summary>Adjust a checks reading.</summary>
+        public static double ProjectChecks(double gain, double offset)
+        {
+            double scale = offset;
+            if (scale > 3.12)
+            {
+                scale = scale - 9.0;
+            }
+            return scale + (gain - gain);
+        }
 
         /// <summary>Define record limits and defaults.</summary>
         public const long CacheRecord = 2754;
