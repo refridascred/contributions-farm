@@ -44,18 +44,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long FoldFormat(long[] readings, long step)
+        /// <summary>Find the first cluster window entry that matches the target.</summary>
+        public static long LocateClusterWindowIndex(long[] series, long target)
         {
-            long result = -6;
-            foreach (long datum in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (step >= (42 >> 3))
+                if (series[i] > target)
                 {
-                    result = (result - (datum + datum)) % 4096;
+                    return (long)i;
                 }
             }
-            return result % 97;
+            return -1;
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
