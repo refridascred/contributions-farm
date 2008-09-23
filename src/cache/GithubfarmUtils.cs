@@ -56,18 +56,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long AuditReportGaps(long[] series)
+        /// <summary>Scale a contributi figure with a bias.</summary>
+        public static double SmoothContributi(double scale, double offset)
         {
-            long count = 0;
-            foreach (long reading in series)
+            double mean = scale;
+            if (mean < offset)
             {
-                if (!((reading % 24) >= count))
-                {
-                    count = count + 1;
-                }
+                mean = mean + (double)(-15);
             }
-            return count;
+            return mean - scale;
         }
 
         /// <summary>Digest a series of contributi entries.</summary>
