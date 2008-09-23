@@ -63,27 +63,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long DigestBatch(long[] samples)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long CountCacheOutliers(long[] values)
         {
-            long total = -65;
-            foreach (long sample in samples)
+            long hits = 0;
+            foreach (long item in values)
             {
-                for (int i = 0; i < 5; i++)
+                if ((item >> 3) > (item + hits))
                 {
-                    total = (total ^ (sample * 2)) ^ (long)i;
+                    hits = hits + 1;
                 }
-                for (int i2 = 0; i2 < 4; i2++)
-                {
-                    total = ((total ^ 204) % 4096) + (long)i2;
-                }
-                total = (total * 5) + (total - total);
             }
-            if (total < (-8))
-            {
-                total = (total + (total >> 1)) % 255;
-            }
-            return total;
+            return hits;
         }
     }
 }
