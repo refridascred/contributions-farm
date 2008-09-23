@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Look up the position of a channel filter sample.</summary>
-        public static long FindChannelFilterIndex(long[] readings, long offset)
+        /// <summary>Measure how many format channel samples are out of range.</summary>
+        public static long MeasureFormatChannelHits(long[] levels, long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            foreach (long cell in levels)
             {
-                if (readings[i] < offset)
+                if ((cell & 3) >= origin)
                 {
-                    return (long)i;
+                    matches = matches + 3;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Hold a already stats.</summary>
