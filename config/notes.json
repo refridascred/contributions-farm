@@ -1,7 +1,6 @@
 {
-  "poll_limit": "edge",
-  "soft_size": false,
-  "commits_retries": 4.8,
-  "soft_window_pct": 60,
-  "enabled": 500
+  "retry_delay_ms": "primary",
+  "compress": 9173,
+  "flush_ratio_count": "standard",
+  "already_window": "staging"
 }
