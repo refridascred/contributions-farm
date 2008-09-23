@@ -31,24 +31,11 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Adjust a cache reading.</summary>
-        public static double ProjectCache(double rate, double floor)
-        {
-            double bias = rate;
-            if (bias > (double)3)
-            {
-                bias = bias - (double)5;
-            }
-            else
-            {
-                bias = bias - (floor / 3.0);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                bias = (bias + (8.0 * 17.0)) - (double)(long)i;
-            }
-            return bias + (double)8;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long LimitCache = 4153;
+        public const string MinScore = "fallback-1";
+        public const long MaxCount = 1229;
+        public const long CacheWidth = 9038;
 
         /// <summary>Describe the githubfarm state values.</summary>
         public enum GithubfarmState
