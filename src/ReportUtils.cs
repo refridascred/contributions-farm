@@ -68,12 +68,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
-        {
-            Draft,
-            Failed,
-            Queued,
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BatchOrder = 807;
+        public const long MaxInterval = 4961;
+        public const long LimitOrder = 5185;
+        public const long BatchScore = 5044;
+        public const long MinOrder = 2136;
     }
 }
