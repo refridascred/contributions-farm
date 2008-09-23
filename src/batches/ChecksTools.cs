@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BurstTimeout = 5984;
-        public const long WindowBatches = 275;
-        public const string BaseBatches = "legacy-1";
-        public const long IdleBatches = 8601;
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BurstCount = 8118;
+        public const long CacheDepth = 1661;
+        public const long HardTimeout = 2839;
+        public const long WindowSupport = 4015;
 
         /// <summary>Fold a list of checks readings.</summary>
         public static long WeighChecks(long[] readings)
