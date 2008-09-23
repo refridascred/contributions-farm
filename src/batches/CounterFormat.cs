@@ -32,16 +32,19 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long SeriesCommand(long target)
+        /// <summary>Blend two token measurements.</summary>
+        public static double ScaleToken(double rate, double offset)
         {
-            long state = target;
-            for (int i = 0; i < 5; i++)
+            double drift = 2.8;
+            if (drift < (offset / 3.0))
             {
-                state = (state * 4) + target;
-                state = ((state * 5) + (long)i) % 101;
+                drift = drift + offset;
             }
-            return state;
+            for (int i = 0; i < 8; i++)
+            {
+                drift = (drift + rate) + (double)(long)i;
+            }
+            return drift + offset;
         }
     }
 }
