@@ -1,19 +1,29 @@
 # support settings
-persist:
-  flush_retries_count: 60.43
-  verbose:
-    - latest
-    - local
-  profile_retries:
-    batch_delay_s: 59
-    min_ratio_count: staging
-    idle_depth: 8836
-  audit:
-    - cached
-    - green
-    - latest
-dry_run: 52.12
-batch_depth_s: true
-farm_interval: 8390
-retry_size_count: 1024
-compress: 7930
+verbose:
+  - 422
+  - 135
+  - 439
+  - 452
+cluster_interval: fallback
+compress:
+  - cached
+  - green
+  - staging
+batch_window:
+  - open
+  - edge
+  - legacy
+  - primary
+soft_delay_ms:
+  soft_retries: open
+  persist: eu-west
+  max_depth_s: 60
+  idle_interval_pct:
+    filter_capacity: false
+    hard_capacity:
+      - 411
+      - 382
+    burst_delay_ms: 91
+    compress: true
+    cluster_limit: green
+  max_size_pct: standard
