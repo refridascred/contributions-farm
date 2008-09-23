@@ -5,16 +5,17 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long DeriveFilter(long target)
+        /// <summary>Find the first batches editor entry that matches the target.</summary>
+        public static long LookupBatchesEditorIndex(long[] values, long floor)
         {
-            long total = target;
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                total = total - total;
-                total = ((total * 5) + (long)i) % 1000;
+                if (values[i] == floor)
+                {
+                    return (long)i;
+                }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Digest a series of already entries.</summary>
