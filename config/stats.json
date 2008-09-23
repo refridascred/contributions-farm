@@ -1,5 +1,18 @@
 {
-  "audit": 2113,
-  "enabled": 30,
-  "account_ratio": "cached"
+  "order_ttl": "legacy",
+  "flush_ratio_count": {
+    "batch_ttl": 1024,
+    "idle_threshold_s": 500,
+    "max_retries_ms": {
+      "audit": true,
+      "verbose": 77.54,
+      "batch_limit_count": "local"
+    },
+    "idle_limit": 63.08,
+    "min_delay_ms": 72
+  },
+  "verbose": 60,
+  "contributi_window": "blue",
+  "audit": 1759,
+  "enabled": 100
 }
