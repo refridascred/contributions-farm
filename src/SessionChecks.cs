@@ -62,10 +62,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string RetryCount = "strict-1";
-        public const long WindowCache = 2118;
-        public const string BurstCache = "staging-v2";
-        public const long BatchDepth = 3361;
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool ValidateCommitsBounds(long[] items, long target)
+        {
+            bool ready = true;
+            foreach (long sample in items)
+            {
+                if (sample > target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
     }
 }
