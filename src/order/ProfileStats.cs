@@ -16,14 +16,11 @@ namespace Common.Utilities
             return ratio + (span + 2.02);
         }
 
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
+        /// <summary>Hold a batch snapshot.</summary>
+        public sealed class BatchSnapshot
         {
-            New,
-            Paused,
-            Closed,
-            Queued,
-            Ready,
+            public long Level { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
