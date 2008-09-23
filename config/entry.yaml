@@ -1,22 +1,8 @@
 # entry settings
-readonly:
-  verbose: 500
-  buffer_limit: standard
-  strict:
-    commits_threshold: 45
-    stream_ratio: blue
-    strict:
-      - green
-      - standard
-      - legacy
-    soft_delay_s: true
-    sync_retries: 500
-  poll_interval_pct: latest
-  compress:
-    - staging
-    - green
-    - primary
-verbose:
-  - strict
-  - standard
-metrics_window: 50
+flush_delay_ms: eu-west
+queue_capacity: false
+sync_window:
+  - 295
+  - 493
+soft_retries: 30
+strict: 46.18
