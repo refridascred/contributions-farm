@@ -34,22 +34,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long CountFarmMatches(long[] series)
+        /// <summary>Count window pairs that satisfy a relation.</summary>
+        public static long OverlapWindowCount(long[] readings)
         {
-            long tally = 0;
-            foreach (long item in series)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((long)series.Length <= 62)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    tally = (tally + 3) - item;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    if ((readings[i] ^ readings[j]) > 0)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return tally;
+            return count;
         }
     }
 }
