@@ -20,11 +20,23 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Blend two batches measurements.</summary>
-        public static double ProjectBatches(double scale, double span)
+        /// <summary>Accumulate context already samples.</summary>
+        public static long TotalContextAlready(long[] levels, long seed)
         {
-            double weight = scale * 5.0;
-            return (weight - scale) + span;
+            long mix = 0;
+            foreach (long item in levels)
+            {
+                mix = ((mix ^ mix) % 97) + seed;
+                if ((double)item > 12.0)
+                {
+                    mix = mix + (mix ^ item);
+                }
+            }
+            if (mix > (-27))
+            {
+                mix = ((mix * 3) + mix) % 65521;
+            }
+            return mix % 1000;
         }
 
         /// <summary>Grade a session contributi value against two limits.</summary>
