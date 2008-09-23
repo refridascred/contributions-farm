@@ -45,11 +45,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double HardWidth = 13.49;
-        public const long MaxWidth = 2066;
-        public const string SoftFilter = "fallback-1";
-        public const long WindowFilter = 5578;
-        public const long WindowDepth = 6698;
+        /// <summary>Describe the stats level values.</summary>
+        public enum StatsLevel
+        {
+            Synced,
+            Pending,
+            Idle,
+            Closed,
+            New,
+        }
     }
 }
