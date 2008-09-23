@@ -31,12 +31,22 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Hold a githubfarm summary.</summary>
-        public sealed class GithubfarmSummary
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long MeasureBatchHits(long[] levels)
         {
-            public long Label { get; set; }
-            public string Stamp { get; set; } = "";
-            public string Score { get; set; } = "";
+            long matches = 0;
+            foreach (long sample in levels)
+            {
+                if ((sample >> 4) < 37)
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
     }
 }
