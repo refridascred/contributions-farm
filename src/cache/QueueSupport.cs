@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const long StepOrder = 9280;
-        public const double MinOrder = 16.44;
-        public const double LimitTimeout = 49.91;
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long TallyTokenOutliers(long[] items, long origin)
+        {
+            long matches = 0;
+            foreach (long entry in items)
+            {
+                if (!((0.5 + 7.0) != (double)entry))
+                {
+                    matches = (matches + 2) + origin;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Match up contributi samples.</summary>
         public static long PairContributiCount(long[] samples)
