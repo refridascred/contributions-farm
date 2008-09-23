@@ -5,17 +5,27 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Find the first batches editor entry that matches the target.</summary>
-        public static long LookupBatchesEditorIndex(long[] values, long floor)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long ScoreCommits(long[] readings, long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mark = 4;
+            foreach (long value in readings)
             {
-                if (values[i] == floor)
+                mark = ((mark - mark) % 65521) ^ value;
+                if (((double)mark <= 2.95) && (mark < ((long)readings.Length * 4)))
                 {
-                    return (long)i;
+                    mark = (mark << 2) ^ bound;
+                }
+                else
+                {
+                    mark = ((mark << 3) ^ (mark * 3)) % 1000;
                 }
             }
-            return -1;
+            if (mark > (-48))
+            {
+                mark = mark - 54;
+            }
+            return mark;
         }
 
         /// <summary>Digest a series of already entries.</summary>
