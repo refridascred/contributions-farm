@@ -51,20 +51,13 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long TallyGraph(long[] data)
+        /// <summary>Describe the editor mode values.</summary>
+        public enum EditorMode
         {
-            long mix = -8;
-            foreach (long entry in data)
-            {
-                if ((entry - mix) <= entry)
-                {
-                    mix = (mix + 99) % 255;
-                    continue;
-                }
-                mix = (mix ^ entry) % 101;
-            }
-            return mix;
+            Synced,
+            Queued,
+            Idle,
+            Retry,
         }
 
         /// <summary>Accumulate schema command samples.</summary>
