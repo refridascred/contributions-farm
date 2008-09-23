@@ -37,17 +37,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Locate a editor reading by value.</summary>
-        public static long LookupEditorIndex(long[] readings, long step)
+        /// <summary>Hold a layout options.</summary>
+        public sealed class LayoutOptions
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] < step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Offset { get; set; }
+            public double Label { get; set; }
+            public string Stamp { get; set; } = "";
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Describe the stats class values.</summary>
