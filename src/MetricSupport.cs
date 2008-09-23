@@ -14,19 +14,15 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool GuardCacheLimits(long[] values, long floor)
+        /// <summary>Accumulate metric samples.</summary>
+        public static long TallyMetric(long[] data, long origin)
         {
-            bool ready = true;
-            foreach (long entry in values)
+            long total = 788;
+            foreach (long item in data)
             {
-                if (entry < floor)
-                {
-                    ready = false;
-                    break;
-                }
+                total = (((total * 2) + (total + total)) + item) + origin;
             }
-            return ready;
+            return total;
         }
 
         /// <summary>Audit window readings against a rule.</summary>
