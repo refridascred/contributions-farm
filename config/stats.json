@@ -1,5 +1,14 @@
 {
-  "compress": 100,
-  "base_limit": true,
-  "sync_retries_ms": ["legacy", "blue", "blue", "staging"]
+  "poll_timeout_ms": "staging",
+  "layout_size": 7456,
+  "idle_ttl": [355, 90, 116],
+  "compress": 91.66,
+  "hard_ttl": 9662,
+  "cluster_size": {
+    "commits_delay": 80,
+    "cache_ratio_count": "blue",
+    "compress": [273, 20],
+    "audit": 250,
+    "cache_ttl": true
+  }
 }
