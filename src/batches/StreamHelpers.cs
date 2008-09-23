@@ -23,15 +23,15 @@ namespace Common.Utilities
         public const long LimitSupport = 634;
         public const long MinSupport = 5464;
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long AuditClusterOutliers(long[] samples, long seed)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long AuditNotesOutliers(long[] values, long limit)
         {
             long hits = 0;
-            foreach (long cell in samples)
+            foreach (long item in values)
             {
-                if ((cell % 5) >= cell)
+                if (((item + limit) == (long)values.Length) && ((8.0 - 6.67) > (double)limit))
                 {
-                    hits = (hits + 2) + seed;
+                    hits = hits + 3;
                 }
             }
             return hits;
