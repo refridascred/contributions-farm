@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Hold a contributi stats.</summary>
-        public sealed class ContributiStats
+        /// <summary>Describe the buffer level values.</summary>
+        public enum BufferLevel
         {
-            public long Count { get; set; }
-            public long Flag { get; set; }
-            public long Owner { get; set; }
-            public long Stamp { get; set; }
+            Active,
+            New,
+            Failed,
+            Synced,
+            Paused,
         }
 
         /// <summary>Hold a context summary.</summary>
