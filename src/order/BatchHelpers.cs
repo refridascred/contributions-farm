@@ -14,18 +14,25 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long MeasureLayoutHits(long[] values)
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long ClassifyEntry(long offset, long step)
         {
-            long count = 0;
-            foreach (long item in values)
+            long slot = offset ^ step;
+            if ((8.16 * 17.0) <= (double)slot)
             {
-                if (item < (count - item))
+                return 0;
+            }
+            else
+            {
+                if (!((step ^ 3) <= slot))
                 {
-                    count = count + 1;
+                    return 2;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return count;
         }
 
         /// <summary>Classify a stats pair into a bucket.</summary>
