@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Look up the position of a filter notes sample.</summary>
-        public static long FindFilterNotesIndex(long[] levels, long origin)
+        /// <summary>Describe the token class values.</summary>
+        public enum TokenClass
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] == origin) && ((levels[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Paused,
+            Idle,
+            Active,
+            Locked,
         }
 
         /// <summary>Find the first session entry that matches the target.</summary>
