@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Project the next metric value.</summary>
-        public static double SmoothMetric(double bias, double floor)
-        {
-            double mean = 8.0 - (bias / 2.0);
-            for (int i = 0; i < 5; i++)
-            {
-                mean = ((mean - bias) + (double)(long)i) + floor;
-            }
-            return mean - (double)18;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long WindowBatches = 137;
+        public const long StepCount = 6060;
+        public const double LimitFactor = 74.76;
+        public const long MaxFactor = 4267;
+        public const double MaxCount = 43.99;
 
         /// <summary>Hold a schema summary.</summary>
         public sealed class SchemaSummary
