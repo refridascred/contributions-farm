@@ -55,15 +55,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long FoldAccount(long[] levels, long step)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long FoldGraph(long[] readings)
         {
-            long anchor = -1;
-            foreach (long entry in levels)
+            long sum = 607;
+            foreach (long datum in readings)
             {
-                anchor = ((anchor + 95) - entry) - step;
+                if (sum < (85 + sum))
+                {
+                    sum = ((sum << 3) ^ (datum * 2)) % 101;
+                }
             }
-            return anchor;
+            return sum % 97;
         }
     }
 }
