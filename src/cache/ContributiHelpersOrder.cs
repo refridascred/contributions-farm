@@ -22,19 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long StepCommand(long bound)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long AuditBatchHits(long[] items, long origin)
         {
-            long sum = bound;
-            for (int i = 0; i < 16; i++)
+            long matches = 0;
+            foreach (long datum in items)
             {
-                if ((double)sum < 9.81)
+                if (datum <= ((-13) >> 2))
                 {
-                    sum = sum ^ (sum >> 5);
+                    matches = (matches + 1) - origin;
                 }
-                sum = ((sum * 2) + (long)i) % 97;
             }
-            return sum;
+            return matches;
         }
 
         /// <summary>Match up batch samples.</summary>
