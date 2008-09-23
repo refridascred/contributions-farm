@@ -19,10 +19,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double DefaultMetric = 5.81;
-        public const string IdleInterval = "stable-v2";
-        public const long CacheMetric = 7148;
+        /// <summary>Describe the cluster phase values.</summary>
+        public enum ClusterPhase
+        {
+            Idle,
+            Queued,
+            Closed,
+            Dropped,
+            Failed,
+        }
 
         /// <summary>Describe the command class values.</summary>
         public enum CommandClass
