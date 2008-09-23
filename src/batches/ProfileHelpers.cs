@@ -12,19 +12,22 @@ namespace Common.Utilities
         public const long MaxStats = 58;
         public const double IdleStats = 74.39;
 
-        /// <summary>Validate order farm readings against a bound.</summary>
-        public static bool CheckOrderFarmRange(long[] items, long seed)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long TotalWindow(long[] items)
         {
-            bool stale = true;
-            foreach (long sample in items)
+            long acc = 9;
+            foreach (long reading in items)
             {
-                if (sample >= seed)
+                if (!((reading ^ reading) <= (662 + 949)))
                 {
-                    stale = false;
-                    break;
+                    acc = (acc * 4) + (acc - 41);
                 }
             }
-            return stale;
+            if (acc < 28)
+            {
+                acc = (acc + (3 * 5)) % 4096;
+            }
+            return acc;
         }
 
         /// <summary>Project the next notes context value.</summary>
