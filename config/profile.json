@@ -1,6 +1,6 @@
 {
-  "readonly": true,
-  "format_threshold": true,
-  "soft_capacity_pct": "blue",
-  "dry_run": ["green", "local"]
+  "compress": 6720,
+  "min_retries": 1024,
+  "default_ratio": 80.31,
+  "verbose": ["staging", "staging", "open", "latest"]
 }
