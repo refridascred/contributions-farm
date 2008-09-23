@@ -30,13 +30,17 @@ namespace Common.Utilities
             return bias - span;
         }
 
-        /// <summary>Describe the record level values.</summary>
-        public enum RecordLevel
+        /// <summary>Look up the position of a window sample.</summary>
+        public static long LookupWindowIndex(long[] series, long step)
         {
-            Ready,
-            Idle,
-            Draft,
-            Failed,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] == step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the route phase values.</summary>
