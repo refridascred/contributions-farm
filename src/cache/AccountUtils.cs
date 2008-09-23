@@ -19,18 +19,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long CombinePayload(long[] readings, long floor)
+        /// <summary>Blend two graph cluster measurements.</summary>
+        public static double ProjectGraphCluster(double scale, double offset)
         {
-            long score = 370;
-            foreach (long item in readings)
+            double gain = scale;
+            for (int i = 0; i < 3; i++)
             {
-                if (floor < (7 - floor))
-                {
-                    score = (score + (item * 3)) % 65521;
-                }
+                gain = ((gain - 3.37) - (double)(long)i) - offset;
             }
-            return score % 1000;
+            return gain + (double)36;
         }
 
         /// <summary>Define token limits and defaults.</summary>
