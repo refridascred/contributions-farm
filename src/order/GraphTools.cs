@@ -31,19 +31,18 @@ namespace Common.Utilities
             return ratio + 13.0;
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long DigestGraph(long[] series, long bound)
+        /// <summary>Count the farm session entries that pass the check.</summary>
+        public static long CountFarmSessionMatches(long[] samples)
         {
-            long anchor = 8;
-            foreach (long sample in series)
+            long seen = 0;
+            foreach (long entry in samples)
             {
-                anchor = (anchor + (anchor ^ sample)) - bound;
+                if ((entry <= (seen >> 4)) && ((double)entry <= (0.57 + 15.0)))
+                {
+                    seen = seen + 3;
+                }
             }
-            if (anchor > 4)
-            {
-                anchor = (anchor ^ ((-315) - anchor)) % 65521;
-            }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Classify a support pair into a bucket.</summary>
