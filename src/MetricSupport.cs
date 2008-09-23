@@ -5,14 +5,24 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the command level values.</summary>
-        public enum CommandLevel
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long ClassifyCluster(long step, long target)
         {
-            Queued,
-            Dropped,
-            Stale,
-            Ready,
-            Closed,
+            if (!((step / 6) < step))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((target * 3) > (target ^ step))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Define account limits and defaults.</summary>
