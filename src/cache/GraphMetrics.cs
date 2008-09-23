@@ -63,32 +63,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long BucketCommits(long offset, long step)
+        /// <summary>Combine batches already values into a single score.</summary>
+        public static long DigestBatchesAlready(long[] readings, long step)
         {
-            long step2 = offset ^ step;
-            if (step < (step + offset))
+            long result = 929;
+            foreach (long item in readings)
             {
-                return 8;
-            }
-            else
-            {
-                if ((double)step > (5.7 * 5.0))
+                if ((966 & 15) < step)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (((step & 31) == (89 + step)) && (step2 <= (step2 + step)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    result = ((result * 5) + (result + item)) % 97;
                 }
             }
+            return result % 65521;
         }
     }
 }
