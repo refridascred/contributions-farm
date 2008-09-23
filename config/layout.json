@@ -1,8 +1,7 @@
 {
-  "retry_timeout_count": 230,
-  "verbose": "stable",
-  "idle_limit": [236, 224],
-  "enabled": false,
-  "soft_limit": 1024,
-  "flush_depth_ms": ["staging", "local", "strict"]
+  "commits_limit": 30,
+  "flush_delay": 28,
+  "readonly": 28.35,
+  "checks_depth": 54,
+  "cache_ttl_s": 44
 }
