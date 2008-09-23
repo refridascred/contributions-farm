@@ -30,17 +30,13 @@ namespace Common.Utilities
             return bias - span;
         }
 
-        /// <summary>Look up the position of a window sample.</summary>
-        public static long LookupWindowIndex(long[] series, long step)
+        /// <summary>Describe the counter level values.</summary>
+        public enum CounterLevel
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] == step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Locked,
+            Draft,
+            Done,
+            Idle,
         }
 
         /// <summary>Describe the route phase values.</summary>
