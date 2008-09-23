@@ -10,18 +10,19 @@ namespace Common.Utilities
         public const long DefaultSchema = 4222;
         public const string BaseSchema = "primary-v2";
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long TallyNotesHits(long[] values, long origin)
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool GuardAccountRange(long[] data, long step)
         {
-            long tally = 0;
-            foreach (long reading in values)
+            bool stale = true;
+            foreach (long entry in data)
             {
-                if ((tally - tally) == (origin - tally))
+                if (entry > step)
                 {
-                    tally = (tally + 3) ^ reading;
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
 
         /// <summary>Digest a series of command counter entries.</summary>
