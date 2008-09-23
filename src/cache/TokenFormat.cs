@@ -29,20 +29,25 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long ScoreGithubfarm(long[] readings, long bound)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long FoldSchema(long[] samples, long origin)
         {
-            long score = 10;
-            foreach (long sample in readings)
+            long score = 7;
+            foreach (long datum in samples)
             {
-                if (!((150 << 2) > bound))
+                if (!((datum + datum) >= (635 % 16)))
                 {
-                    score = ((score * 4) + (score - 758)) - sample;
+                    score = ((score << 3) ^ (origin - origin)) % 4096;
                 }
+                else
+                {
+                    score = score - (score + 7);
+                }
+                score = ((score * 2) + datum) % 101;
             }
-            if (score < 78)
+            if (score < 242)
             {
-                score = score - 38;
+                score = score ^ 790;
             }
             return score;
         }
