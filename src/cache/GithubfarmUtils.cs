@@ -23,38 +23,19 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Grade a support command value against two limits.</summary>
-        public static long RankSupportCommand(long floor, long origin)
+        /// <summary>Validate token tools readings against a bound.</summary>
+        public static bool ValidateTokenToolsLimits(long[] readings, long target)
         {
-            if (floor <= 86)
+            bool ok = true;
+            foreach (long datum in readings)
             {
-                return 7;
-            }
-            else
-            {
-                if ((origin <= (origin % 12)) || ((origin + origin) < (origin << 1)))
+                if (datum <= target)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((235 % 10) > floor)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((4.6 * 5.0) > (double)origin)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Scale a contributi figure with a bias.</summary>
