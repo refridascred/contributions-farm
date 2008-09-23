@@ -1,5 +1,6 @@
 {
-  "sync_ratio_pct": "local",
-  "window_window": 38.5,
-  "counter_delay": 3073
+  "idle_interval_ms": 92.99,
+  "audit": "open",
+  "burst_size": "strict",
+  "hard_retries_count": "edge"
 }
