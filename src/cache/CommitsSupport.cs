@@ -64,18 +64,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the metrics stream entries that pass the check.</summary>
-        public static long AuditMetricsStreamOutliers(long[] series)
+        /// <summary>Hold a contributi record.</summary>
+        public sealed class ContributiRecord
         {
-            long hits = 0;
-            foreach (long value in series)
-            {
-                if ((double)hits < (double)value)
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public double Token { get; set; }
+            public long Level { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Locate a counter reading by value.</summary>
