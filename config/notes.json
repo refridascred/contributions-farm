@@ -1,7 +1,17 @@
 {
-  "strict": "fallback",
-  "warm_ttl_pct": "stable",
-  "stats_retries": "strict",
-  "idle_depth_ms": 43.75,
-  "checks_delay": 30
+  "batches_limit": false,
+  "contributi_retries": {
+    "min_depth_s": {
+      "batch_depth_pct": "fallback",
+      "max_capacity_s": ["open", "green"],
+      "burst_timeout": "staging",
+      "token_depth": "fallback",
+      "sync_retries": 500,
+      "base_threshold_s": 250
+    },
+    "filter_threshold": "primary",
+    "max_limit": "latest"
+  },
+  "idle_limit_ms": true,
+  "default_limit_count": 250
 }
