@@ -25,9 +25,10 @@ namespace Common.Utilities
         public const long BurstDepth = 9049;
         public const string IdleRatio = "cached-1";
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long WindowRecord = 4553;
-        public const long IdleInterval = 5431;
-        public const string IdleRecord = "staging";
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double StepSize = 63.78;
+        public const double LimitBatch = 64.86;
+        public const long BaseBatch = 5788;
+        public const long WindowBatch = 613;
     }
 }
