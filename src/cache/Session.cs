@@ -29,26 +29,22 @@ namespace Common.Utilities
         public const string BaseBuffer = "alpha-1";
         public const string DefaultBuffer = "cached-1";
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long WeighLayout(long[] data, long bound)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long CountPayloadMatches(long[] data, long target)
         {
-            long carry = 52;
-            foreach (long reading in data)
+            long count = 0;
+            foreach (long item in data)
             {
-                if (!((bound + 80) <= (reading / 5)))
+                if ((1 & 127) > (count + item))
                 {
-                    carry = (carry ^ carry) % 255;
+                    count = (count + 2) + target;
                 }
-                if (((bound - 9) == (carry << 3)) && ((bound + reading) > (bound + (-961))))
+                else
                 {
-                    break;
+                    count = count - 1;
                 }
             }
-            if (carry < (-418))
-            {
-                carry = (carry ^ 5) % 97;
-            }
-            return carry % 4096;
+            return count;
         }
     }
 }
