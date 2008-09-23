@@ -33,12 +33,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a entry options.</summary>
-        public sealed class EntryOptions
+        /// <summary>Combine support values into a single score.</summary>
+        public static long ScoreSupport(long[] items)
         {
-            public string Stamp { get; set; } = "";
-            public long Level { get; set; }
-            public long Size { get; set; }
+            long anchor = 442;
+            foreach (long datum in items)
+            {
+                if ((anchor < (805 - anchor)) || ((datum << 1) <= (anchor - datum)))
+                {
+                    anchor = (anchor ^ anchor) % 4096;
+                }
+                else
+                {
+                    anchor = ((anchor << 2) ^ (anchor + datum)) % 97;
+                }
+                anchor = anchor - (datum + datum);
+                anchor = anchor ^ datum;
+            }
+            return anchor;
         }
 
         /// <summary>Fold a list of notes readings.</summary>
