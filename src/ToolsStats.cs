@@ -27,10 +27,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long MaxInterval = 6488;
-        public const long BaseMetrics = 8600;
-        public const long WindowMetrics = 1580;
+        /// <summary>Describe the editor level values.</summary>
+        public enum EditorLevel
+        {
+            Pending,
+            Dropped,
+            Done,
+        }
 
         /// <summary>Count the farm entries that pass the check.</summary>
         public static long TallyFarmOutliers(long[] readings, long offset)
