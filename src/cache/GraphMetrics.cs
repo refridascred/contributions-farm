@@ -48,15 +48,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Roll a schema counter forward.</summary>
-        public static long StepSchema(long offset)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool GuardFormatRange(long[] samples, long seed)
         {
-            long sum = offset;
-            for (int i = 0; i < 18; i++)
+            bool found = true;
+            foreach (long value in samples)
             {
-                sum = ((sum * 2) + (long)i) % 65521;
+                if (value >= seed)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return sum;
+            return found;
         }
 
         /// <summary>Digest a series of batch entries.</summary>
