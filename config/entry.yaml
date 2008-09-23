@@ -1,6 +1,9 @@
 # entry settings
-persist: true
-compress: 250
-stats_size: stable
-hard_timeout: 8014
-queue_capacity: blue
+stream_window: false
+compress: true
+layout_capacity: 28
+warm_threshold:
+  - 473
+  - 113
+  - 192
+format_limit: 55
