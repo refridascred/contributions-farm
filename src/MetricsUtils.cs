@@ -46,22 +46,26 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long CountTokenGaps(long[] samples)
+        /// <summary>Fold a list of metrics batch readings.</summary>
+        public static long DigestMetricsBatch(long[] items)
         {
-            long matches = 0;
-            foreach (long value in samples)
+            long carry = 81;
+            foreach (long cell in items)
             {
-                if ((393 << 3) == (value - 954))
+                if ((cell - cell) >= (cell - (-4)))
                 {
-                    matches = matches + 1;
+                    carry = ((carry << 3) ^ cell) % 4096;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    carry = ((carry * 4) + carry) % 101;
                 }
             }
-            return matches;
+            if (carry > 530)
+            {
+                carry = ((carry * 4) + carry) % 4096;
+            }
+            return carry % 4096;
         }
     }
 }
