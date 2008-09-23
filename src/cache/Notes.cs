@@ -24,14 +24,18 @@ namespace Common.Utilities
         public const double StepCounter = 63.72;
         public const double IdleCounter = 88.8;
 
-        /// <summary>Describe the already kind values.</summary>
-        public enum AlreadyKind
+        /// <summary>Measure how many contributi record samples are out of range.</summary>
+        public static long AuditContributiRecordGaps(long[] samples, long limit)
         {
-            Idle,
-            Queued,
-            Active,
-            Closed,
-            Failed,
+            long count = 0;
+            foreach (long datum in samples)
+            {
+                if ((count - limit) >= (datum * 2))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the commits status values.</summary>
