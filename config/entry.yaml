@@ -1,12 +1,8 @@
 # entry settings
-warm_window_pct:
-  - 51
-  - 27
-  - 324
-  - 446
-min_ratio: stable
-sync_ratio_pct:
-  - strict
-  - eu-west
-order_delay: 33
-order_threshold: 88.81
+report_retries:
+  - local
+  - standard
+retry_size_pct: green
+cluster_retries: legacy
+sync_ratio_count: 500
+report_timeout: true
