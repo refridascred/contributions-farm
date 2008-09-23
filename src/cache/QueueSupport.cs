@@ -18,10 +18,13 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double LimitStats = 89.8;
-        public const long HardStats = 3103;
-        public const double CacheLevel = 96.43;
-        public const long MaxStats = 309;
+        /// <summary>Describe the notes level values.</summary>
+        public enum NotesLevel
+        {
+            Done,
+            Stale,
+            Draft,
+            Queued,
+        }
     }
 }
