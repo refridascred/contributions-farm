@@ -1,11 +1,12 @@
 # Command notes
 
-The buffer report groups every entry by context.
-The record helpers are pure functions, so they are safe to call from any thread.
+The queue module keeps metrics values in sync with the payload cache.
+A filter that stays idle for too long is moved to the stats list.
+Keep payload and record names short and lowercase.
 
 ## Guidelines
 
-- Document new command fields
-- Review entry limits each release
-- Prefer filter defaults
-- Log every account change
+- Review tools limits each release
+- Prefer graph defaults
+- Log every githubfarm change
+- Document new support fields
