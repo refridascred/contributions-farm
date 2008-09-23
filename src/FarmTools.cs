@@ -18,19 +18,13 @@ namespace Common.Utilities
         public const string HardLayout = "latest";
         public const double HardCount = 52.99;
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool CheckContextRange(long[] readings, long step)
+        /// <summary>Describe the order mode values.</summary>
+        public enum OrderMode
         {
-            bool found = true;
-            foreach (long value in readings)
-            {
-                if (value >= step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Pending,
+            Stale,
+            Retry,
+            New,
         }
     }
 }
