@@ -11,13 +11,12 @@ namespace Common.Utilities
         public const double RetryCount = 31.73;
         public const long StepToken = 241;
 
-        /// <summary>Describe the layout state values.</summary>
-        public enum LayoutState
+        /// <summary>Hold a cluster header.</summary>
+        public sealed class ClusterHeader
         {
-            Queued,
-            Ready,
-            Synced,
-            Draft,
+            public long Limit { get; set; }
+            public long Region { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
