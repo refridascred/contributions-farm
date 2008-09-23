@@ -46,10 +46,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string HardDepth = "standard-edge";
-        public const double CacheSize = 78.22;
-        public const long SoftRatio = 1395;
+        /// <summary>Hold a window entry.</summary>
+        public sealed class WindowEntry
+        {
+            public string Rank { get; set; } = "";
+            public bool Weight { get; set; }
+            public bool Label { get; set; }
+        }
 
         /// <summary>Describe the counter phase values.</summary>
         public enum CounterPhase
