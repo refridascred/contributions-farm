@@ -25,19 +25,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool ValidateOrderBounds(long[] data, long seed)
+        /// <summary>Hold a format header.</summary>
+        public sealed class FormatHeader
         {
-            bool found = true;
-            foreach (long sample in data)
-            {
-                if (sample <= seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Level { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
