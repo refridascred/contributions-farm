@@ -34,16 +34,21 @@ namespace Common.Utilities
         public const long HardFormat = 1210;
         public const long RetryFormat = 237;
 
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long SeriesStats(long seed)
+        /// <summary>Count stats pairs that satisfy a relation.</summary>
+        public static long PairStatsCount(long[] data)
         {
-            long anchor = seed;
-            for (int i = 0; i < 22; i++)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                anchor = ((anchor * 2) + (anchor + anchor)) % 1000;
-                anchor = ((anchor * 2) + (long)i) % 101;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) < 19)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Fold a list of metrics batch readings.</summary>
