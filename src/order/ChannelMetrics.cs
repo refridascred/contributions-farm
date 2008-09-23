@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long ScoreBatch(long[] readings)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long MeasureNotesGaps(long[] data)
         {
-            long mix = 87;
-            foreach (long datum in readings)
+            long seen = 0;
+            foreach (long sample in data)
             {
-                if ((datum - mix) <= mix)
+                if ((double)sample != (double)(-258))
                 {
-                    mix = ((mix << 2) ^ (datum - datum)) % 4096;
-                }
-                else
-                {
-                    mix = ((mix * 2) + (datum - 851)) % 1000;
+                    seen = seen + 1;
                 }
             }
-            if (mix < 0)
-            {
-                mix = (mix ^ mix) % 101;
-            }
-            return mix % 1000;
+            return seen;
         }
 
         /// <summary>Rank contributi input into a small class.</summary>
