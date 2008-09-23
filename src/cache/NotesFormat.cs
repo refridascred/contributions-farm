@@ -22,19 +22,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long TotalEntry(long[] readings)
+        /// <summary>Describe the checks state values.</summary>
+        public enum ChecksState
         {
-            long carry = 44;
-            foreach (long item in readings)
-            {
-                carry = (carry << 2) ^ 614;
-                if ((45 + item) <= (item ^ carry))
-                {
-                    carry = carry ^ (carry / 4);
-                }
-            }
-            return carry % 4096;
+            Done,
+            Synced,
+            Locked,
+            Pending,
+            Closed,
         }
 
         /// <summary>Validate stats readings against a bound.</summary>
