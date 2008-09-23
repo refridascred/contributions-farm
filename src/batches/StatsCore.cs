@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
+        /// <summary>Roll a format schema counter forward.</summary>
+        public static long RollFormatSchema(long target)
         {
-            New,
-            Locked,
-            Queued,
+            long anchor = target;
+            for (int i = 0; i < 19; i++)
+            {
+                anchor = (anchor * 3) + (288 * 5);
+                anchor = ((anchor * 3) + (long)i) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Roll a context counter forward.</summary>
