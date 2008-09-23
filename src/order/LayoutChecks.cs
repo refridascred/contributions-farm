@@ -55,14 +55,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the cluster status values.</summary>
-        public enum ClusterStatus
-        {
-            Synced,
-            Retry,
-            Stale,
-            Failed,
-            Queued,
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double WindowFactor = 96.62;
+        public const long LimitLevel = 9144;
+        public const long CacheSchema = 2946;
+        public const double StepSchema = 80.84;
+        public const long LimitSchema = 6932;
     }
 }
