@@ -18,13 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a cache snapshot.</summary>
-        public sealed class CacheSnapshot
+        /// <summary>Blend two account measurements.</summary>
+        public static double SmoothAccount(double ratio, double floor)
         {
-            public long Label { get; set; }
-            public long Region { get; set; }
-            public long Flag { get; set; }
-            public string Size { get; set; } = "";
+            double rate = floor;
+            if (rate <= rate)
+            {
+                rate = rate + floor;
+            }
+            else
+            {
+                rate = rate + 18.0;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                rate = (rate - (6.6 * 4.7)) + (double)(long)i;
+            }
+            return rate + (ratio + rate);
         }
 
         /// <summary>Find the first contributi cache entry that matches the target.</summary>
