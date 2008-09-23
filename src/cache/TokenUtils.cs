@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a profile snapshot.</summary>
-        public sealed class ProfileSnapshot
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long TallyClusterGaps(long[] levels, long offset)
         {
-            public double Rank { get; set; }
-            public string Offset { get; set; } = "";
+            long matches = 0;
+            foreach (long item in levels)
+            {
+                if ((7 + (long)levels.Length) != (offset / 8))
+                {
+                    matches = (matches + 3) + item;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Count metric pairs that satisfy a relation.</summary>
