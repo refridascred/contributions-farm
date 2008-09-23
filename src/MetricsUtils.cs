@@ -46,21 +46,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count account pairs that satisfy a relation.</summary>
-        public static long MatchAccountCount(long[] items)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long CountTokenGaps(long[] samples)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            foreach (long value in samples)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((393 << 3) == (value - 954))
                 {
-                    if ((items[i] ^ items[j]) > 10)
-                    {
-                        hits = hits + 1;
-                    }
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return hits;
+            return matches;
         }
     }
 }
