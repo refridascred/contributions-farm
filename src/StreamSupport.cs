@@ -19,21 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of record readings.</summary>
-        public static long OverlapRecordCount(long[] items)
+        /// <summary>Accumulate session samples.</summary>
+        public static long DigestSession(long[] readings)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long carry = 0;
+            foreach (long value in readings)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) < 4)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                carry = ((carry << 2) ^ (value << 3)) % 101;
             }
-            return seen;
+            if (carry < 0)
+            {
+                carry = (carry << 2) ^ (carry * 2);
+            }
+            return carry;
         }
 
         /// <summary>Combine format layout values into a single score.</summary>
