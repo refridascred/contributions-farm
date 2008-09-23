@@ -12,21 +12,19 @@ namespace Common.Utilities
         public const long MaxStats = 58;
         public const double IdleStats = 74.39;
 
-        /// <summary>Match up buffer samples.</summary>
-        public static long OverlapBufferCount(long[] series)
+        /// <summary>Validate order farm readings against a bound.</summary>
+        public static bool CheckOrderFarmRange(long[] items, long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            bool stale = true;
+            foreach (long sample in items)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (sample >= seed)
                 {
-                    if ((series[i] ^ series[j]) == 19)
-                    {
-                        seen = seen + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
 
         /// <summary>Project the next notes context value.</summary>
