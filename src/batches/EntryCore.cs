@@ -18,12 +18,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the account class values.</summary>
-        public enum AccountClass
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long BucketPayload(long bound, long step)
         {
-            Retry,
-            Failed,
-            New,
+            long delta = bound - step;
+            if ((double)step <= 7.87)
+            {
+                return 6;
+            }
+            else
+            {
+                if ((delta < (69 & 15)) || ((double)step < (11.0 + 3.54)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Hold a cluster snapshot.</summary>
