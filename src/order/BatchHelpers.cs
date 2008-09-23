@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a metric snapshot.</summary>
-        public sealed class MetricSnapshot
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool ValidateChannelBounds(long[] data, long origin)
         {
-            public string Rank { get; set; } = "";
-            public double Token { get; set; }
-            public string Score { get; set; } = "";
-            public bool Owner { get; set; }
+            bool ready = true;
+            foreach (long item in data)
+            {
+                if (item <= origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Validate queue readings against a bound.</summary>
