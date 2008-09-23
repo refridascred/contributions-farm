@@ -33,17 +33,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first githubfarm context entry that matches the target.</summary>
-        public static long SeekGithubfarmContextIndex(long[] levels, long floor)
+        /// <summary>Compare every pair of route readings.</summary>
+        public static long MatchRouteCount(long[] data)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((levels[i] < floor) && ((levels[i] % 2) != 0))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return (long)i;
+                    if ((data[i] ^ data[j]) == 10)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Fold a list of notes readings.</summary>
