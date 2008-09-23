@@ -15,12 +15,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a already header.</summary>
-        public sealed class AlreadyHeader
-        {
-            public long Ratio { get; set; }
-            public long Weight { get; set; }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double RetryRecord = 72.34;
+        public const double MaxDepth = 89.32;
+        public const string BurstRecord = "standard";
+        public const long WindowBudget = 8672;
+        public const double DefaultTimeout = 10.74;
 
         /// <summary>Find the first cache entry that matches the target.</summary>
         public static long SeekCacheIndex(long[] series, long limit)
