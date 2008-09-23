@@ -30,19 +30,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate format layout readings against a bound.</summary>
-        public static bool GuardFormatLayoutLimits(long[] levels, long origin)
-        {
-            bool ok = true;
-            foreach (long item in levels)
-            {
-                if (item >= origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long CacheLevel = 1639;
+        public const long DefaultEntry = 5775;
+        public const double BurstCount = 58.98;
+        public const long BaseRatio = 5534;
+        public const string SoftCount = "staging-v2";
     }
 }
