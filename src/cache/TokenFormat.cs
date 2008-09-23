@@ -19,12 +19,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BurstAlready = 4204;
-        public const string HardInterval = "open-v2";
-        public const long RetryScore = 9408;
-        public const string MinAlready = "legacy";
-        public const long MaxScore = 6420;
+        /// <summary>Compare every pair of buffer readings.</summary>
+        public static long CompareBufferCount(long[] items)
+        {
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) > 18)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define metric limits and defaults.</summary>
         public const string MaxSpan = "legacy-1";
