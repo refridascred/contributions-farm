@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a farm summary.</summary>
-        public sealed class FarmSummary
-        {
-            public long Region { get; set; }
-            public long Stamp { get; set; }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string HardPayload = "staging-v2";
+        public const double BatchPayload = 74.9;
+        public const double CacheBudget = 28.73;
+        public const long IdleSize = 4285;
 
         /// <summary>Define token limits and defaults.</summary>
         public const long WindowCount = 6948;
