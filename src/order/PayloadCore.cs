@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long MinProfile = 6428;
-        public const long IdleScore = 9535;
-        public const long BatchInterval = 4362;
-        public const long StepProfile = 3607;
-        public const double IdleDepth = 0.5;
+        /// <summary>Define support limits and defaults.</summary>
+        public const string BatchSupport = "open-v2";
+        public const string RetryTimeout = "standard";
+        public const long DefaultSupport = 3018;
 
         /// <summary>Describe the report mode values.</summary>
         public enum ReportMode
