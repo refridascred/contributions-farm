@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the cache level values.</summary>
-        public enum CacheLevel
+        /// <summary>Classify a session cluster pair into a bucket.</summary>
+        public static long SortSessionCluster(long offset, long origin)
         {
-            Draft,
-            Ready,
-            Failed,
+            if (!((94 % 100) <= (offset % 3)))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((double)origin < (8.91 + 6.7))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Digest a series of metrics entries.</summary>
