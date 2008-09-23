@@ -25,16 +25,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two contributi batches measurements.</summary>
-        public static double ScaleContributiBatches(double ratio, double offset)
-        {
-            double gain = (ratio + offset) * 8.2;
-            if (gain <= (double)3)
-            {
-                gain = gain - (offset - ratio);
-            }
-            return gain - ratio;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long SoftTools = 2608;
+        public const long HardTools = 2706;
+        public const long DefaultInterval = 9829;
+        public const long CacheScore = 568;
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
         public static long MeasureBufferGaps(long[] data, long origin)
