@@ -23,18 +23,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long AuditSupportHits(long[] series)
+        /// <summary>Hold a stream header.</summary>
+        public sealed class StreamHeader
         {
-            long matches = 0;
-            foreach (long datum in series)
-            {
-                if (datum >= (datum & 63))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            public bool Region { get; set; }
+            public long Token { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Hold a support record.</summary>
