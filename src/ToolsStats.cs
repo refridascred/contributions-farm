@@ -5,32 +5,17 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long BucketOrder(long target, long target2)
+        /// <summary>Find the first report entry that matches the target.</summary>
+        public static long FindReportIndex(long[] readings, long origin)
         {
-            long step = target + target2;
-            if (target2 <= (target - target))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (!((step & 15) < target))
+                if (readings[i] == origin)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (((target - 709) < (target2 - step)) && (step >= (target2 >> 4)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
