@@ -38,22 +38,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long ScoreAlready(long[] levels, long target)
+        /// <summary>Hold a entry entry.</summary>
+        public sealed class EntryEntry
         {
-            long sum = 59;
-            foreach (long datum in levels)
-            {
-                if ((sum >> 2) <= datum)
-                {
-                    sum = (sum - (datum << 3)) + target;
-                }
-                else
-                {
-                    sum = ((sum * 5) + ((long)levels.Length ^ 991)) % 97;
-                }
-            }
-            return sum;
+            public long Count { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Scale a report figure with a bias.</summary>
