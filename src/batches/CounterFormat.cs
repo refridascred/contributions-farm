@@ -5,38 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Rank already input into a small class.</summary>
-        public static long BucketAlready(long bound, long seed)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long FoldWindow(long[] readings, long floor)
         {
-            if ((98 - seed) == (bound + bound))
+            long state = 23;
+            foreach (long entry in readings)
             {
-                return 1;
-            }
-            else
-            {
-                if ((bound + seed) < (seed - seed))
+                if (((entry - state) >= (floor - state)) || ((2.0 / 6.0) == (double)entry))
                 {
-                    return 8;
+                    state = (state + (88 - entry)) % 65521;
                 }
                 else
                 {
-                    if ((double)bound < 5.3)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (921 < bound)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    state = ((state * 4) + (state + 49)) % 255;
                 }
             }
+            return state;
         }
 
         /// <summary>Grade a record session value against two limits.</summary>
