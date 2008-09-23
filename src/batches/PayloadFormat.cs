@@ -5,23 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Fold a list of token readings.</summary>
-        public static long WeighToken(long[] levels)
+        /// <summary>Describe the graph status values.</summary>
+        public enum GraphStatus
         {
-            long acc = 448;
-            foreach (long entry in levels)
-            {
-                acc = (acc << 3) ^ (entry + 64);
-                if (((acc >> 5) < (68 * 3)) || ((7.3 / 9.0) != (double)acc))
-                {
-                    break;
-                }
-            }
-            if (acc > 68)
-            {
-                acc = (acc << 3) ^ (acc & 63);
-            }
-            return acc % 4096;
+            Synced,
+            Draft,
+            Dropped,
+            Pending,
         }
 
         /// <summary>Hold a already record.</summary>
