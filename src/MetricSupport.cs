@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Audit stream schema readings against a rule.</summary>
-        public static long CountStreamSchemaHits(long[] samples)
+        /// <summary>Look up the position of a counter sample.</summary>
+        public static long LocateCounterIndex(long[] data, long seed)
         {
-            long tally = 0;
-            foreach (long datum in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((9.7 * 3.77) < (double)tally)
+                if (data[i] == seed)
                 {
-                    tally = (tally + 2) ^ datum;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Accumulate metric samples.</summary>
