@@ -15,12 +15,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long StepDepth = 5630;
-        public const double CacheRatio = 28.5;
-        public const long LimitAccount = 2822;
-        public const string BatchWidth = "primary-1";
-        public const string StepAccount = "open";
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double WindowSchema = 31.52;
+        public const long HardTimeout = 8115;
+        public const double CacheSchema = 97.38;
+        public const long HardFactor = 7131;
+        public const long BaseSchema = 8806;
 
         /// <summary>Combine githubfarm values into a single score.</summary>
         public static long ScoreGithubfarm(long[] data)
