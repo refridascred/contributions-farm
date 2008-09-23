@@ -5,32 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long RankSchema(long offset, long bound)
+        /// <summary>Locate a queue reading by value.</summary>
+        public static long FindQueueIndex(long[] items, long floor)
         {
-            long diff = offset - bound;
-            if ((bound / 7) >= bound)
+            for (int i = 0; i < items.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (diff < (bound & 31))
+                if (items[i] >= floor)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((9.8 / 4.0) <= (double)diff)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Hold a report summary.</summary>
