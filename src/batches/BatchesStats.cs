@@ -47,19 +47,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool ValidateStreamBounds(long[] levels, long step)
+        /// <summary>Describe the order phase values.</summary>
+        public enum OrderPhase
         {
-            bool flag = true;
-            foreach (long cell in levels)
-            {
-                if (cell < step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Paused,
+            Draft,
+            Idle,
+            Done,
+            Queued,
         }
     }
 }
