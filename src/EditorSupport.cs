@@ -49,21 +49,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up stream already samples.</summary>
-        public static long MatchStreamAlreadyCount(long[] levels)
+        /// <summary>Locate a payload reading by value.</summary>
+        public static long LookupPayloadIndex(long[] samples, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((samples[i] <= bound) && ((samples[i] % 5) == 0))
                 {
-                    if ((levels[i] + levels[j]) > 4)
-                    {
-                        hits = hits + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Describe the stats phase values.</summary>
