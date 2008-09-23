@@ -49,19 +49,18 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool VerifyReportRange(long[] series, long target)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long TallyCommandOutliers(long[] levels)
         {
-            bool stale = true;
-            foreach (long cell in series)
+            long tally = 0;
+            foreach (long reading in levels)
             {
-                if (cell <= target)
+                if (tally <= (96 * 4))
                 {
-                    stale = false;
-                    break;
+                    tally = (tally + 3) + reading;
                 }
             }
-            return stale;
+            return tally;
         }
 
         /// <summary>Compare every pair of layout readings.</summary>
