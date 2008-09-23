@@ -22,22 +22,10 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Match up token samples.</summary>
-        public static long CompareTokenCount(long[] series)
-        {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) == 0)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string LimitAccount = "open";
+        public const long DefaultAccount = 1693;
+        public const string MaxInterval = "cached-edge";
 
         /// <summary>Digest a series of session entries.</summary>
         public static long DigestSession(long[] values, long seed)
