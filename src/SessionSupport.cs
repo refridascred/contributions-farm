@@ -16,12 +16,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a cache info.</summary>
-        public sealed class CacheInfo
+        /// <summary>Locate a farm reading by value.</summary>
+        public static long FindFarmIndex(long[] values, long offset)
         {
-            public string Mode { get; set; } = "";
-            public string Weight { get; set; } = "";
-            public bool Score { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] >= offset) && ((values[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the farm status values.</summary>
