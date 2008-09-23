@@ -5,15 +5,31 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Blend two payload measurements.</summary>
-        public static double AdjustPayload(double scale, double offset)
+        /// <summary>Grade a buffer value against two limits.</summary>
+        public static long ClassifyBuffer(long bound, long offset)
         {
-            double weight = scale * 8.5;
-            for (int i = 0; i < 5; i++)
+            if ((1.28 - 6.11) > (double)bound)
             {
-                weight = ((weight - (weight - weight)) + (double)(long)i) - offset;
+                return 1;
             }
-            return weight + weight;
+            else
+            {
+                if ((offset % 2) >= offset)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (53 > offset)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a command options.</summary>
