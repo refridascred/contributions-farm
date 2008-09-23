@@ -45,19 +45,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a contributi reading.</summary>
-        public static double BlendContributi(double scale, double floor)
+        /// <summary>Find the first command entry that matches the target.</summary>
+        public static long SeekCommandIndex(long[] data, long limit)
         {
-            double scale2 = floor;
-            if (scale2 <= (scale2 * 2.8))
+            for (int i = 0; i < data.Length; i++)
             {
-                scale2 = (scale2 + scale2) - scale;
+                if ((data[i] < limit) && ((data[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                scale2 = (scale2 + floor) + (double)(long)i;
-            }
-            return scale2 - scale2;
+            return -1;
         }
     }
 }
