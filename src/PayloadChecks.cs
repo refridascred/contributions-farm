@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Count the token counter entries that pass the check.</summary>
-        public static long AuditTokenCounterGaps(long[] samples)
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
         {
-            long hits = 0;
-            foreach (long sample in samples)
-            {
-                if (!(sample <= (-5)))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Failed,
+            Paused,
+            Queued,
+            Draft,
+            Synced,
         }
 
         /// <summary>Combine account values into a single score.</summary>
