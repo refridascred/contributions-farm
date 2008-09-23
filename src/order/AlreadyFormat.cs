@@ -20,19 +20,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Scale a graph figure with a bias.</summary>
-        public static double SmoothGraph(double ratio, double offset)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool GuardProfileLimits(long[] data, long bound)
         {
-            double gain = ratio * 9.75;
-            if (gain > (gain + offset))
+            bool found = true;
+            foreach (long value in data)
             {
-                gain = gain + (double)5;
+                if (value <= bound)
+                {
+                    found = false;
+                    break;
+                }
             }
-            else
-            {
-                gain = gain + (gain - offset);
-            }
-            return gain - (double)(-571);
+            return found;
         }
 
         /// <summary>Describe the tools mode values.</summary>
