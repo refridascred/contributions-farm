@@ -1,27 +1,7 @@
 # support settings
-batch_depth_count:
-  payload_ttl:
-    dry_run: true
-    verbose:
-      - 60
-      - 416
-      - 212
-      - 152
-    compress: open
-    strict: eu-west
-    max_threshold:
-      - green
-      - latest
-      - open
-      - cached
-  base_capacity: stable
-  session_interval:
-    burst_interval_ms: false
-    warm_window_count: fallback
-    retry_limit:
-      - 246
-      - 326
-min_limit_count:
-  - 44
-  - 439
-dry_run: true
+cache_retries: standard
+min_ttl_ms: edge
+retry_ttl_ms: false
+burst_ratio_ms: true
+default_size: edge
+flush_window: staging
