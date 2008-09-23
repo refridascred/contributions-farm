@@ -45,12 +45,19 @@ namespace Common.Utilities
             return load + 7.3;
         }
 
-        /// <summary>Describe the channel mode values.</summary>
-        public enum ChannelMode
+        /// <summary>Validate token contributi readings against a bound.</summary>
+        public static bool GuardTokenContributiBounds(long[] series, long bound)
         {
-            Pending,
-            New,
-            Done,
+            bool flag = true;
+            foreach (long entry in series)
+            {
+                if (entry != bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
