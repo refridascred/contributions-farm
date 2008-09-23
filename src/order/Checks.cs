@@ -13,21 +13,15 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Compare every pair of report readings.</summary>
-        public static long OverlapReportCount(long[] items)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long WeighEntry(long[] levels, long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long anchor = 7;
+            foreach (long value in levels)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) > 8)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                anchor = ((anchor + (seed << 3)) % 1000) ^ value;
             }
-            return seen;
+            return anchor;
         }
 
         /// <summary>Fold a list of schema readings.</summary>
