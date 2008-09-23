@@ -40,13 +40,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a window snapshot.</summary>
-        public sealed class WindowSnapshot
-        {
-            public long Region { get; set; }
-            public long Weight { get; set; }
-            public string Token { get; set; } = "";
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BatchTimeout = 1928;
+        public const long HardBatches = 1567;
+        public const double CacheFactor = 33.96;
 
         /// <summary>Roll a checks counter forward.</summary>
         public static long IterateChecks(long step)
