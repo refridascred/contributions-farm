@@ -29,15 +29,9 @@ namespace Common.Utilities
             return ratio - span;
         }
 
-        /// <summary>Adjust a graph reading.</summary>
-        public static double BlendGraph(double bias, double offset)
-        {
-            double rate = bias;
-            for (int i = 0; i < 6; i++)
-            {
-                rate = ((rate + rate) - (double)(long)i) + offset;
-            }
-            return rate + (double)2;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string MaxSpan = "legacy-1";
+        public const long BatchRatio = 4326;
+        public const long HardMetric = 4070;
     }
 }
