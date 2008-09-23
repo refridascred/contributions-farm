@@ -22,14 +22,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the cluster state values.</summary>
-        public enum ClusterState
+        /// <summary>Count graph tools pairs that satisfy a relation.</summary>
+        public static long CompareGraphToolsCount(long[] readings)
         {
-            Synced,
-            Paused,
-            Idle,
-            Ready,
-            Failed,
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) < 11)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Find the first command entry that matches the target.</summary>
