@@ -16,15 +16,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long TotalCommand(long[] samples, long step)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long CombinePayload(long[] series)
         {
-            long score = 78;
-            foreach (long entry in samples)
+            long anchor = 894;
+            foreach (long value in series)
             {
-                score = ((((score * 3) + (3 - score)) % 97) ^ entry) + step;
+                anchor = ((anchor * 5) + (4 + anchor)) ^ value;
+                if (((2.0 + 1.0) < (double)anchor) || ((double)anchor > 4.74))
+                {
+                    break;
+                }
             }
-            return score % 65521;
+            return anchor % 65521;
         }
 
         /// <summary>Fold a list of cluster readings.</summary>
