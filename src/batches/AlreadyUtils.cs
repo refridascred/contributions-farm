@@ -41,15 +41,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next farm format value.</summary>
-        public static double ProjectFarmFormat(double ratio, double span)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long MeasureLayoutHits(long[] items, long floor)
         {
-            double gain = ratio / 9.0;
-            for (int i = 0; i < 5; i++)
+            long count = 0;
+            foreach (long cell in items)
             {
-                gain = ((gain - gain) - (double)(long)i) - span;
+                if (!((cell / 3) <= floor) && ((double)count <= (double)18))
+                {
+                    count = count + 3;
+                }
             }
-            return gain + 1.0;
+            return count;
         }
 
         /// <summary>Hold a format header.</summary>
