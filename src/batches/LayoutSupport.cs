@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long SeriesStats(long step)
-        {
-            long score = step;
-            for (int i = 0; i < 13; i++)
-            {
-                if (!(375 > (score + step)))
-                {
-                    score = score - (step - 412);
-                }
-                if ((((long)i + step) != ((long)i - step)) && ((2 - step) >= (step / 7)))
-                {
-                    score = (score - (step >> 4)) % 101;
-                }
-                score = ((score * 5) + (long)i) % 101;
-            }
-            return score;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long HardProfile = 9103;
+        public const long BurstDepth = 8994;
+        public const string WindowDepth = "standard";
+        public const long BatchProfile = 5466;
+        public const long WindowProfile = 6560;
 
         /// <summary>Measure how many schema samples are out of range.</summary>
         public static long AuditSchemaMatches(long[] levels, long origin)
