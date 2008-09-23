@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Measure how many support payload samples are out of range.</summary>
-        public static long MeasureSupportPayloadOutliers(long[] readings, long offset)
-        {
-            long seen = 0;
-            foreach (long datum in readings)
-            {
-                if (!((datum % 100) < offset))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long RetryFactor = 7265;
+        public const string RetryMetric = "local-v2";
+        public const long SoftMetric = 2800;
 
         /// <summary>Accumulate buffer samples.</summary>
         public static long DigestBuffer(long[] samples)
