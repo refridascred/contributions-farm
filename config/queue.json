@@ -1,17 +1,6 @@
 {
-  "soft_ttl_ms": 79,
-  "warm_interval_count": ["fallback", "fallback", "blue", "stable"],
-  "sync_timeout_pct": {
-    "idle_depth_s": 60,
-    "soft_delay": "strict",
-    "audit": {
-      "min_interval": 6.44,
-      "enabled": 42,
-      "readonly": 6514,
-      "support_delay": "legacy"
-    },
-    "max_timeout_ms": 60,
-    "poll_size": "strict",
-    "dry_run": 9232
-  }
+  "hard_interval_pct": 8394,
+  "sync_size_s": 7397,
+  "schema_window": 96.74,
+  "cache_retries_pct": ["stable", "fallback", "stable", "edge"]
 }
