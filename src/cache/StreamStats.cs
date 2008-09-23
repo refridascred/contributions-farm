@@ -13,38 +13,13 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long ClassifyContext(long floor, long target)
+        /// <summary>Describe the channel status values.</summary>
+        public enum ChannelStatus
         {
-            if ((2.9 / 3.0) > (double)floor)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((double)target >= (9.79 + 6.15))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((target - 8) == (599 % 8))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((target <= (target * 3)) || ((double)target != (3.85 * 7.64)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            Draft,
+            Paused,
+            Failed,
+            Locked,
         }
 
         /// <summary>Hold a stats header.</summary>
