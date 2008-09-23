@@ -13,22 +13,39 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Measure how many contributi window samples are out of range.</summary>
-        public static long CountContributiWindowMatches(long[] samples)
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long SortEditor(long offset, long origin)
         {
-            long matches = 0;
-            foreach (long value in samples)
+            long edge = offset + origin;
+            if ((4 * 2) >= origin)
             {
-                if ((15.0 + 8.46) > (double)value)
+                return 4;
+            }
+            else
+            {
+                if ((offset > (552 - offset)) && ((origin - offset) >= 219))
                 {
-                    matches = matches + 2;
+                    return 7;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    if ((origin - edge) != (6 - 2))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((double)origin < (5.07 - 9.2))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Match up payload profile samples.</summary>
