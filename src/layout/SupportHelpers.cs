@@ -11,19 +11,21 @@ namespace Common.Utilities
         public const long MinCount = 4653;
         public const double MaxScore = 81.86;
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long TotalFarm(long[] levels, long seed)
+        /// <summary>Match up session samples.</summary>
+        public static long PairSessionCount(long[] data)
         {
-            long total = -66;
-            foreach (long datum in levels)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                total = ((total * 2) + (79 ^ seed)) + datum;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) != 3)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            if (total > 7)
-            {
-                total = (total * 3) + (total >> 1);
-            }
-            return total;
+            return seen;
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
