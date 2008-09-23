@@ -34,12 +34,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a tools stats.</summary>
-        public sealed class ToolsStats
+        /// <summary>Describe the metrics level values.</summary>
+        public enum MetricsLevel
         {
-            public double Mode { get; set; }
-            public bool Level { get; set; }
-            public long Count { get; set; }
+            Done,
+            Paused,
+            Draft,
+            Idle,
+            Synced,
         }
 
         /// <summary>Adjust a layout reading.</summary>
