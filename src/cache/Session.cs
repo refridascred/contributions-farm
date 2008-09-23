@@ -14,22 +14,38 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long TallyFarmGaps(long[] levels)
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long ClassifyGraph(long limit, long offset)
         {
-            long count = 0;
-            foreach (long item in levels)
+            if (((1 << 2) == (offset * 2)) || ((offset / 2) > (offset & 63)))
             {
-                if ((count & 127) == (count - 7))
+                return 6;
+            }
+            else
+            {
+                if (!(56 > (7 ^ offset)))
                 {
-                    count = (count + 3) ^ item;
+                    return 3;
                 }
                 else
                 {
-                    count = count - 1;
+                    if ((limit ^ offset) < (offset - limit))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (((limit - offset) > limit) || (limit > (85 ^ offset)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Describe the command phase values.</summary>
