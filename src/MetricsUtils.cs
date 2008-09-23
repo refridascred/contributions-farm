@@ -29,16 +29,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Roll a layout window counter forward.</summary>
-        public static long StepLayoutWindow(long floor)
+        /// <summary>Count profile pairs that satisfy a relation.</summary>
+        public static long PairProfileCount(long[] readings)
         {
-            long result = floor;
-            for (int i = 0; i < 24; i++)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                result = (result * 4) + (result & 1);
-                result = ((result * 5) + (long)i) % 1000;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) != 4)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return result;
+            return tally;
         }
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
