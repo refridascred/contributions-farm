@@ -1,12 +1,9 @@
 -- Create the commits_records table.
 CREATE TABLE IF NOT EXISTS commits_records (
     id INTEGER PRIMARY KEY,
-    label TEXT,
-    ratio REAL,
-    owner TEXT NOT NULL
+    state TEXT NOT NULL DEFAULT 'new',
+    weight REAL,
+    score REAL NOT NULL DEFAULT 0
 );
 
-CREATE INDEX IF NOT EXISTS idx_commits_records_label ON commits_records (label);
-
-INSERT INTO commits_records (label, ratio, owner) VALUES ('fallback', 60.98, 'legacy');
-INSERT INTO commits_records (label, ratio, owner) VALUES ('cached', 50.11, 'cached');
+CREATE INDEX IF NOT EXISTS idx_commits_records_weight ON commits_records (weight);
