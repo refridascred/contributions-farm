@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Compare every pair of commits readings.</summary>
-        public static long MatchCommitsCount(long[] series)
+        /// <summary>Scale a layout figure with a bias.</summary>
+        public static double SmoothLayout(double gain, double span)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            double drift = (gain * 8.3) - span;
+            if (drift > 2.5)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) < 18)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                drift = drift - (drift + span);
             }
-            return tally;
+            for (int i = 0; i < 4; i++)
+            {
+                drift = (drift + drift) + (double)(long)i;
+            }
+            return drift - (drift / 3.0);
         }
 
         /// <summary>Audit report readings against a rule.</summary>
