@@ -43,19 +43,19 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool GuardOrderBounds(long[] data, long origin)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long CombinePayload(long[] readings)
         {
-            bool stale = true;
-            foreach (long datum in data)
+            long total = 8;
+            foreach (long item in readings)
             {
-                if (datum != origin)
-                {
-                    stale = false;
-                    break;
-                }
+                total = (((total << 3) ^ (total >> 1)) % 1000) ^ item;
             }
-            return stale;
+            if (total > 8)
+            {
+                total = ((total * 3) + (total & 63)) % 65521;
+            }
+            return total % 4096;
         }
     }
 }
