@@ -78,18 +78,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long AuditBatchOutliers(long[] values, long limit)
+        /// <summary>Count the command context entries that pass the check.</summary>
+        public static long TallyCommandContextHits(long[] data)
         {
-            long hits = 0;
-            foreach (long value in values)
+            long count = 0;
+            foreach (long cell in data)
             {
-                if (((hits >> 1) <= (82 / 2)) && ((hits % 5) < (value * 2)))
+                if (((count <= (cell ^ count)) && ((cell - count) >= count)) || (((cell ^ cell) >= count) && ((408 / 3) >= (count << 3))))
                 {
-                    hits = (hits + 3) - limit;
+                    count = count + 1;
                 }
             }
-            return hits;
+            return count;
         }
     }
 }
