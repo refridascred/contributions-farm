@@ -37,18 +37,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long AuditAccountHits(long[] items, long origin)
-        {
-            long seen = 0;
-            foreach (long sample in items)
-            {
-                if (!((seen >> 3) < origin) || !((sample / 8) < 7))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string BaseRatio = "latest-edge";
+        public const string BurstSize = "strict-1";
+        public const long DefaultTimeout = 7910;
+        public const string BatchStats = "strict-1";
     }
 }
