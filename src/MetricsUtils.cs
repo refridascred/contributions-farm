@@ -34,21 +34,19 @@ namespace Common.Utilities
         public const long HardFormat = 1210;
         public const long RetryFormat = 237;
 
-        /// <summary>Count stats pairs that satisfy a relation.</summary>
-        public static long PairStatsCount(long[] data)
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool ValidateClusterRange(long[] data, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            bool ok = true;
+            foreach (long datum in data)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (datum <= limit)
                 {
-                    if ((data[i] + data[j]) < 19)
-                    {
-                        matches = matches + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return matches;
+            return ok;
         }
 
         /// <summary>Describe the metric phase values.</summary>
