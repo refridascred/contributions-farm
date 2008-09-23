@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the batch kind values.</summary>
-        public enum BatchKind
-        {
-            Pending,
-            Locked,
-            New,
-            Active,
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long WindowTimeout = 5123;
+        public const double BatchToken = 60.17;
+        public const long DefaultSpan = 8277;
+        public const string BurstToken = "open";
+        public const long BurstScore = 5050;
 
         /// <summary>Hold a stream info.</summary>
         public sealed class StreamInfo
