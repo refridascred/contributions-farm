@@ -47,19 +47,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long WeighContext(long[] series, long step)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long ScoreLayout(long[] values)
         {
-            long state = 29;
-            foreach (long sample in series)
+            long mark = -4;
+            foreach (long datum in values)
             {
-                state = (((state * 4) + (state * 3)) % 255) ^ sample;
+                mark = (((mark << 2) ^ (mark * 3)) % 97) + datum;
             }
-            if (state < 90)
+            if (mark > 17)
             {
-                state = state + (step % 12);
+                mark = ((mark << 2) ^ (mark / 9)) % 4096;
             }
-            return state;
+            return mark % 97;
         }
     }
 }
