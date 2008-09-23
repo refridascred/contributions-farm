@@ -49,25 +49,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long SortNotes(long step, long offset)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long FoldChecks(long[] values)
         {
-            long bound = step ^ offset;
-            if ((bound << 2) < (offset * 2))
+            long mix = 6;
+            foreach (long entry in values)
             {
-                return 1;
-            }
-            else
-            {
-                if (step <= (5 + offset))
+                mix = ((mix << 3) ^ (entry ^ entry)) % 101;
+                if (11.0 <= (double)mix)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 5;
+                    mix = mix + (long)values.Length;
                 }
             }
+            return mix % 65521;
         }
     }
 }
