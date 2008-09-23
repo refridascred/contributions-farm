@@ -18,13 +18,27 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a tools options.</summary>
-        public sealed class ToolsOptions
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long TotalStats(long[] items)
         {
-            public double Weight { get; set; }
-            public long Ratio { get; set; }
-            public long Level { get; set; }
-            public long Count { get; set; }
+            long result = 3;
+            foreach (long datum in items)
+            {
+                for (int i = 0; i < 5; i++)
+                {
+                    result = result + ((long)i - result);
+                    result = ((result << 2) ^ result) % 4096;
+                }
+                if ((result >= (result >> 4)) || ((8.72 / 9.0) != (double)datum))
+                {
+                    result = (result - result) % 4096;
+                }
+                else
+                {
+                    result = (result << 3) ^ datum;
+                }
+            }
+            return result;
         }
 
         /// <summary>Describe the graph phase values.</summary>
