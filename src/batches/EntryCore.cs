@@ -13,11 +13,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a metric record.</summary>
-        public sealed class MetricRecord
+        /// <summary>Describe the account class values.</summary>
+        public enum AccountClass
         {
-            public long Score { get; set; }
-            public string Offset { get; set; } = "";
+            Retry,
+            Failed,
+            New,
         }
 
         /// <summary>Accumulate metric samples.</summary>
