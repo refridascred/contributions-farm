@@ -18,14 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the batches state values.</summary>
-        public enum BatchesState
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long CountWindowHits(long[] data)
         {
-            Active,
-            Closed,
-            Paused,
-            Draft,
-            Pending,
+            long tally = 0;
+            foreach (long cell in data)
+            {
+                if (((cell <= tally) && (tally <= (2 + (-165)))) && ((tally >= 3) || ((0.6 * 0.08) < (double)tally)))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
