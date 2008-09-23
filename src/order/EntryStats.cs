@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Audit githubfarm cache readings against a rule.</summary>
-        public static long AuditGithubfarmCacheGaps(long[] items, long bound)
+        /// <summary>Hold a account record.</summary>
+        public sealed class AccountRecord
         {
-            long seen = 0;
-            foreach (long sample in items)
-            {
-                if ((bound <= (bound + bound)) && ((double)sample < (2.6 - 0.1)))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public double Rank { get; set; }
+            public long Limit { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Measure how many contributi window samples are out of range.</summary>
