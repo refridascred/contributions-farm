@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long IdleChannel = 5959;
-        public const long LimitInterval = 8529;
-        public const long MinCount = 3198;
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long DeriveContext(long seed)
+        {
+            long state = seed;
+            for (int i = 0; i < 13; i++)
+            {
+                for (int i2 = 0; i2 < 11; i2++)
+                {
+                    state = (((state << 2) ^ seed) % 101) ^ (long)i2;
+                    state = (state ^ (seed & 7)) % 101;
+                }
+                state = ((state * 3) + state) % 1000;
+                state = (state ^ (state - state)) % 101;
+                state = ((state * 4) + (long)i) % 97;
+            }
+            return state;
+        }
 
         /// <summary>Rank stats input into a small class.</summary>
         public static long GradeStats(long bound, long target)
