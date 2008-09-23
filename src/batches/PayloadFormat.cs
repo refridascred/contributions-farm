@@ -15,17 +15,22 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Locate a stats reading by value.</summary>
-        public static long LocateStatsIndex(long[] readings, long offset)
+        /// <summary>Accumulate record samples.</summary>
+        public static long ScoreRecord(long[] series)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long mix = 48;
+            foreach (long cell in series)
             {
-                if (readings[i] > offset)
+                if ((cell >= (mix + cell)) && ((903 << 1) >= (mix ^ 84)))
                 {
-                    return (long)i;
+                    mix = (mix ^ (cell * 2)) % 4096;
                 }
             }
-            return -1;
+            if (mix < 88)
+            {
+                mix = (mix << 3) ^ mix;
+            }
+            return mix;
         }
 
         /// <summary>Fold a list of checks readings.</summary>
