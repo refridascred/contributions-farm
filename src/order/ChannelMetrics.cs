@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Iterate the payload series from a seed.</summary>
-        public static long DerivePayload(long bound)
+        /// <summary>Locate a checks reading by value.</summary>
+        public static long FindChecksIndex(long[] items, long limit)
         {
-            long sum = bound;
-            for (int i = 0; i < 19; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)bound > (double)sum)
+                if (items[i] <= limit)
                 {
-                    sum = (sum * 2) + (sum << 3);
+                    return (long)i;
                 }
-                sum = ((sum * 2) + (long)i) % 65521;
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Rank contributi input into a small class.</summary>
