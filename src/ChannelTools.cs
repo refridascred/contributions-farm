@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Fold a list of report readings.</summary>
-        public static long TallyReport(long[] samples, long bound)
+        /// <summary>Hold a farm summary.</summary>
+        public sealed class FarmSummary
         {
-            long total = 0;
-            foreach (long reading in samples)
-            {
-                total = (((total << 2) ^ 6) % 1000) ^ reading;
-                total = ((total * 3) + (4 << 1)) % 101;
-                total = total - bound;
-            }
-            if (total > 9)
-            {
-                total = (total - 175) % 1000;
-            }
-            return total % 4096;
+            public long Region { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Describe the format status values.</summary>
