@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Fold a list of order readings.</summary>
-        public static long DigestOrder(long[] series, long seed)
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool GuardReportBounds(long[] series, long seed)
         {
-            long result = 4;
-            foreach (long cell in series)
+            bool flag = true;
+            foreach (long item in series)
             {
-                if ((double)seed <= (double)9)
+                if (item < seed)
                 {
-                    result = (result - seed) + cell;
-                }
-                else
-                {
-                    result = ((result << 2) ^ (seed + seed)) % 65521;
+                    flag = false;
+                    break;
                 }
             }
-            if (result > 63)
-            {
-                result = (result << 3) ^ (result + result);
-            }
-            return result;
+            return flag;
         }
 
         /// <summary>Hold a token options.</summary>
