@@ -1,11 +1,10 @@
 # githubfarm settings
-persist:
-  - cached
-  - fallback
-  - latest
-  - edge
-retry_limit_ms: 2566
-audit: standard
-verbose: blue
-min_interval_pct: 19.32
-enabled: 5289
+batch_depth_count: 1024
+min_limit_pct: 59.86
+flush_limit_ms:
+  - 89
+  - 118
+  - 333
+  - 143
+verbose: 250
+soft_depth: 500
