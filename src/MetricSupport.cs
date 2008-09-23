@@ -5,32 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Rank command input into a small class.</summary>
-        public static long SortCommand(long bound, long limit)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool CheckCommitsBounds(long[] items, long seed)
         {
-            long delta = bound ^ limit;
-            if (((delta / 3) >= limit) || ((double)delta == (5.0 * 7.0)))
+            bool found = true;
+            foreach (long reading in items)
             {
-                return 7;
-            }
-            else
-            {
-                if ((delta + limit) >= bound)
+                if (reading > seed)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (bound <= 30)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Describe the commits phase values.</summary>
