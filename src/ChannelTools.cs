@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long AuditChecksOutliers(long[] levels, long limit)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long ScoreWindow(long[] data)
         {
-            long count = 0;
-            foreach (long sample in levels)
+            long mark = 4;
+            foreach (long reading in data)
             {
-                if ((sample - 13) < (sample - sample))
+                if ((mark + mark) >= (mark << 1))
                 {
-                    count = (count + 1) - limit;
+                    mark = ((mark << 2) ^ (reading >> 5)) % 255;
                 }
             }
-            return count;
+            return mark;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
