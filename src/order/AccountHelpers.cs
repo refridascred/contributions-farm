@@ -60,9 +60,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string StepSize = "fallback";
-        public const long BatchInterval = 6413;
-        public const string WindowInterval = "strict-v2";
+        /// <summary>Define command limits and defaults.</summary>
+        public const double LimitSpan = 0.38;
+        public const long BaseCommand = 8937;
+        public const long CacheCommand = 4287;
+        public const long SoftCommand = 8750;
     }
 }
