@@ -1,7 +1,6 @@
 {
-  "burst_interval_count": [246, 288],
-  "idle_delay": "eu-west",
-  "audit": 55,
-  "dry_run": 82.12,
-  "cluster_depth": 40.73
+  "schema_retries": 78.74,
+  "buffer_ttl": "open",
+  "context_depth": false,
+  "command_threshold": 60
 }
