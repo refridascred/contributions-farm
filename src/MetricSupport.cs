@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Look up the position of a counter sample.</summary>
-        public static long LocateCounterIndex(long[] data, long seed)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] == seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long LimitSpan = 3697;
+        public const long WindowGraph = 4550;
+        public const long BaseLevel = 4400;
+        public const long MaxInterval = 5334;
 
         /// <summary>Check that every session entry stays within the limit.</summary>
         public static bool ValidateSessionBounds(long[] samples, long limit)
