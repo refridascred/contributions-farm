@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Describe the metrics kind values.</summary>
-        public enum MetricsKind
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long CountWindowHits(long[] data, long floor)
         {
-            New,
-            Idle,
-            Locked,
+            long hits = 0;
+            foreach (long cell in data)
+            {
+                if ((double)floor >= (6.67 + 8.9))
+                {
+                    hits = (hits + 2) ^ cell;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the account class values.</summary>
