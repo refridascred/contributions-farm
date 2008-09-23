@@ -18,18 +18,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long CountWindowHits(long[] data)
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long RankChannel(long limit, long offset)
         {
-            long tally = 0;
-            foreach (long cell in data)
+            if ((limit << 1) >= (limit % 5))
             {
-                if (((cell <= tally) && (tally <= (2 + (-165)))) && ((tally >= 3) || ((0.6 * 0.08) < (double)tally)))
+                return 0;
+            }
+            else
+            {
+                if ((double)offset >= (double)94)
                 {
-                    tally = tally + 3;
+                    return 3;
+                }
+                else
+                {
+                    if (offset > (offset - offset))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Count tools graph pairs that satisfy a relation.</summary>
