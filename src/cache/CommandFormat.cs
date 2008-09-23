@@ -56,18 +56,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long DigestOrder(long[] series, long step)
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long StepStats(long seed)
         {
-            long mix = 664;
-            foreach (long item in series)
+            long state = seed;
+            for (int i = 0; i < 13; i++)
             {
-                if (((double)mix >= (double)78) || ((item - 13) < (item ^ mix)))
-                {
-                    mix = (mix << 2) ^ (step + item);
-                }
+                state = state - (state ^ (long)i);
+                state = ((state * 2) + (long)i) % 65521;
             }
-            return mix % 65521;
+            return state;
         }
     }
 }
