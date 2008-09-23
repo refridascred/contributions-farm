@@ -31,10 +31,19 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long CachePayload = 2241;
-        public const long SoftPayload = 2120;
-        public const long DefaultPayload = 189;
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long CountCommandMatches(long[] data, long step)
+        {
+            long tally = 0;
+            foreach (long entry in data)
+            {
+                if ((entry - step) >= (tally & 127))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Look up the position of a entry buffer sample.</summary>
         public static long LocateEntryBufferIndex(long[] items, long origin)
