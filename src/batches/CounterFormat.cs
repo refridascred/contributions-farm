@@ -37,12 +37,26 @@ namespace Common.Utilities
             return rate + (ratio + rate);
         }
 
-        /// <summary>Describe the support mode values.</summary>
-        public enum SupportMode
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long WeighCommits(long[] readings)
         {
-            Done,
-            Dropped,
-            Ready,
+            long mark = 42;
+            foreach (long datum in readings)
+            {
+                if ((((long)readings.Length ^ 94) >= (datum ^ datum)) && ((3.87 + 10.0) == (double)datum))
+                {
+                    mark = (mark ^ (datum - 0)) % 97;
+                }
+                else
+                {
+                    mark = (mark + datum) % 4096;
+                }
+            }
+            if (mark < (-272))
+            {
+                mark = mark + (400 & 31);
+            }
+            return mark % 4096;
         }
     }
 }
