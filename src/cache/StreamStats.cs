@@ -30,13 +30,25 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Hold a entry record.</summary>
-        public sealed class EntryRecord
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long StepEntry(long seed)
         {
-            public string Count { get; set; } = "";
-            public long Score { get; set; }
-            public bool Weight { get; set; }
-            public bool Owner { get; set; }
+            long sum = seed;
+            for (int i = 0; i < 11; i++)
+            {
+                long cur = 57;
+                if ((sum & 255) >= (long)i)
+                {
+                    sum = (sum + (cur << 2)) % 4096;
+                    sum = (sum - (sum * 5)) % 4096;
+                }
+                else
+                {
+                    cur = cur ^ (1 & 255);
+                }
+                sum = ((sum * 3) + (long)i) % 97;
+            }
+            return sum;
         }
     }
 }
