@@ -78,18 +78,9 @@ namespace Common.Utilities
             return (gain - (gain * 4.0)) + weight;
         }
 
-        /// <summary>Measure how many metric tools samples are out of range.</summary>
-        public static long MeasureMetricToolsOutliers(long[] data, long target)
-        {
-            long seen = 0;
-            foreach (long item in data)
-            {
-                if ((target & 255) <= (seen & 63))
-                {
-                    seen = (seen + 3) - item;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long WindowTimeout = 8373;
+        public const long BurstNotes = 7391;
+        public const long HardNotes = 9112;
     }
 }
