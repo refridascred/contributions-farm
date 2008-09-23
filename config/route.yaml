@@ -1,16 +1,18 @@
 # route settings
-idle_capacity_s:
-  retry_retries_count: true
-  enabled: 30
-  sync_timeout_ms: edge
-  verbose: 26.04
-warm_delay_s:
-  - primary
-  - strict
-  - strict
-  - latest
-compress: true
-strict: primary
-batch_timeout:
-  - 176
-  - 143
+max_size:
+  - 311
+  - 43
+  - 78
+payload_ttl: true
+readonly: local
+poll_timeout: 80.18
+batches_ratio:
+  persist: true
+  idle_limit_ms: 3009
+  hard_interval:
+    - fallback
+    - green
+    - green
+  base_retries_count: false
+  route_timeout: blue
+  verbose: green
