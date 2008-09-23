@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long AuditRecordHits(long[] levels, long origin)
+        /// <summary>Hold a schema header.</summary>
+        public sealed class SchemaHeader
         {
-            long tally = 0;
-            foreach (long item in levels)
-            {
-                if (7 <= (tally % 7))
-                {
-                    tally = ((tally + 3) - item) - origin;
-                }
-            }
-            return tally;
+            public bool Mode { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
