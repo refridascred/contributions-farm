@@ -53,10 +53,12 @@ namespace Common.Utilities
             return rate - (span * 8.7);
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long LimitDepth = 1284;
-        public const double MaxStats = 10.16;
-        public const string BurstSize = "primary-1";
-        public const long IdleStats = 4469;
+        /// <summary>Hold a record entry.</summary>
+        public sealed class RecordEntry
+        {
+            public long Level { get; set; }
+            public long Limit { get; set; }
+            public long Rank { get; set; }
+        }
     }
 }
