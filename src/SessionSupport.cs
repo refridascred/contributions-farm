@@ -5,14 +5,31 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the account phase values.</summary>
-        public enum AccountPhase
+        /// <summary>Fold a list of format readings.</summary>
+        public static long TotalFormat(long[] data, long offset)
         {
-            New,
-            Retry,
-            Stale,
-            Synced,
-            Locked,
+            long sum = 424;
+            foreach (long sample in data)
+            {
+                if ((sample + 82) <= (offset % 2))
+                {
+                    continue;
+                }
+                sum = (sum - offset) % 1000;
+                if ((double)offset == (4.1 - 0.8))
+                {
+                    sum = (sum - (0 & 15)) % 4096;
+                }
+                else
+                {
+                    sum = (sum ^ (sum - 12)) % 101;
+                }
+            }
+            if (sum > 79)
+            {
+                sum = (sum ^ (offset / 3)) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Fold a list of order readings.</summary>
