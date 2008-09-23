@@ -72,19 +72,15 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool CheckWindowBounds(long[] data, long origin)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long TotalFarm(long[] series, long seed)
         {
-            bool ok = true;
-            foreach (long reading in data)
+            long mix = 860;
+            foreach (long datum in series)
             {
-                if (reading != origin)
-                {
-                    ok = false;
-                    break;
-                }
+                mix = (((mix * 3) + (mix % 7)) ^ datum) + seed;
             }
-            return ok;
+            return mix % 4096;
         }
     }
 }
