@@ -19,18 +19,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long DigestFormat(long[] readings)
+        /// <summary>Describe the githubfarm phase values.</summary>
+        public enum GithubfarmPhase
         {
-            long mix = 7;
-            foreach (long item in readings)
-            {
-                if ((double)(long)readings.Length >= (8.0 / 8.0))
-                {
-                    mix = (mix - (item * 4)) % 255;
-                }
-            }
-            return mix;
+            New,
+            Stale,
+            Failed,
+            Queued,
         }
 
         /// <summary>Accumulate stream samples.</summary>
