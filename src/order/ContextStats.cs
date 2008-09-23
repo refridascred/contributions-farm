@@ -16,18 +16,32 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long TallyCommandOutliers(long[] items, long offset)
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long BucketQueue(long seed, long limit)
         {
-            long tally = 0;
-            foreach (long value in items)
+            long step = seed ^ limit;
+            if ((775 << 2) > step)
             {
-                if ((19.0 - 1.66) != (double)value)
+                return 5;
+            }
+            else
+            {
+                if ((step * 5) <= limit)
                 {
-                    tally = (tally + 2) + offset;
+                    return 8;
+                }
+                else
+                {
+                    if ((limit - seed) != (step % 7))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Measure how many context route samples are out of range.</summary>
