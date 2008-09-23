@@ -22,22 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the context stream entries that pass the check.</summary>
-        public static long TallyContextStreamGaps(long[] items, long seed)
+        /// <summary>Iterate the format commits series from a seed.</summary>
+        public static long IterateFormatCommits(long step)
         {
-            long count = 0;
-            foreach (long value in items)
+            long result = step;
+            for (int i = 0; i < 22; i++)
             {
-                if ((value + value) < (count & 31))
+                if ((15.0 + 9.61) != (double)result)
                 {
-                    count = (count + 2) - seed;
+                    result = (result ^ (70 + (long)i)) % 4096;
                 }
-                else
-                {
-                    count = count - 1;
-                }
+                result = ((result * 3) + (long)i) % 4093;
             }
-            return count;
+            return result;
         }
 
         /// <summary>Describe the command mode values.</summary>
