@@ -26,23 +26,19 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Scale a window figure with a bias.</summary>
-        public static double BlendWindow(double weight, double span)
+        /// <summary>Validate graph token readings against a bound.</summary>
+        public static bool VerifyGraphTokenBounds(long[] series, long origin)
         {
-            double load = (double)(6 + (-2));
-            if (load > (load / 2.0))
+            bool valid = true;
+            foreach (long entry in series)
             {
-                load = load + (span / 7.0);
+                if (entry >= origin)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            else
-            {
-                load = load + (6.4 * 4.12);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                load = (load + (weight / 2.0)) + (double)(long)i;
-            }
-            return load + 7.3;
+            return valid;
         }
 
         /// <summary>Validate token contributi readings against a bound.</summary>
