@@ -18,13 +18,12 @@ namespace Common.Utilities
         public const string LimitLevel = "cached-1";
         public const long CacheContributi = 267;
 
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
-        {
-            Stale,
-            Closed,
-            Pending,
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string CacheChannel = "primary-v2";
+        public const long WindowBudget = 6190;
+        public const long WindowChannel = 1938;
+        public const double BatchTimeout = 39.78;
+        public const string LimitChannel = "primary";
 
         /// <summary>Count token pairs that satisfy a relation.</summary>
         public static long PairTokenCount(long[] data)
