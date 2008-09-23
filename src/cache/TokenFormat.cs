@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Measure how many layout counter samples are out of range.</summary>
-        public static long CountLayoutCounterMatches(long[] values)
+        /// <summary>Hold a batches record.</summary>
+        public sealed class BatchesRecord
         {
-            long hits = 0;
-            foreach (long sample in values)
-            {
-                if (((hits / 2) <= (sample + sample)) || ((sample + sample) >= (hits % 97)))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public string Size { get; set; } = "";
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Describe the graph mode values.</summary>
