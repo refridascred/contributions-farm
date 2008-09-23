@@ -1,22 +1,6 @@
 {
-  "warm_limit_count": "edge",
-  "default_timeout": {
-    "idle_ratio_count": {
-      "cache_retries": 35.5,
-      "retry_depth_pct": 4502,
-      "token_threshold": true,
-      "poll_threshold_s": 33.58,
-      "warm_retries_count": 42.28,
-      "default_depth": 29.12
-    },
-    "min_delay_s": {
-      "default_size_s": "standard",
-      "hard_ratio_s": 6.55,
-      "batch_depth_s": 2172,
-      "persist": 2,
-      "retry_threshold_ms": 890
-    },
-    "persist": [73, 181]
-  },
-  "max_ttl_pct": "green"
+  "already_delay": 11.19,
+  "idle_threshold_pct": "open",
+  "report_depth": true,
+  "sync_interval_count": "green"
 }
