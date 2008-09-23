@@ -1,4 +1,8 @@
 # entry settings
-base_retries_s: 85
-audit: 60
-metric_ttl: 29
+base_retries_s: staging
+default_interval_s: 52
+flush_ratio: true
+cache_delay:
+  - staging
+  - cached
+stream_delay: true
