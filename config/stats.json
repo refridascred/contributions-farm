@@ -1,17 +1,7 @@
 {
-  "min_interval_pct": {
-    "cache_capacity_ms": 500,
-    "max_ratio_s": 41.67,
-    "max_ttl": "fallback",
-    "retry_limit_ms": {
-      "verbose": 85.55,
-      "idle_retries": 37,
-      "strict": true
-    }
-  },
-  "checks_timeout": 100,
-  "window_ratio": true,
-  "dry_run": "legacy",
-  "profile_window": true,
-  "strict": 2571
+  "default_size_pct": "local",
+  "flush_retries_pct": "edge",
+  "max_window": 1024,
+  "max_limit": [120, 88, 110, 419],
+  "poll_capacity_count": 21.4
 }
