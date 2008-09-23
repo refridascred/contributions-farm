@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Count editor pairs that satisfy a relation.</summary>
-        public static long OverlapEditorCount(long[] samples)
+        /// <summary>Digest a series of graph layout entries.</summary>
+        public static long DigestGraphLayout(long[] readings, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mix = 6;
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < samples.Length; j++)
+                mix = (mix + 467) + reading;
+                if ((double)origin <= (double)153)
                 {
-                    if ((samples[i] + samples[j]) < 9)
-                    {
-                        seen = seen + 1;
-                    }
+                    mix = (mix << 2) ^ (origin << 1);
+                }
+                else
+                {
+                    mix = ((mix << 2) ^ (mix / 4)) % 1000;
                 }
             }
-            return seen;
+            return mix % 4096;
         }
 
         /// <summary>Describe the cluster phase values.</summary>
