@@ -1,9 +1,5 @@
 # githubfarm settings
-poll_limit_ms: latest
-soft_ratio_count: cached
-githubfarm_ttl: 73
-sync_threshold: true
-cache_ratio_count:
-  burst_ttl_count: 35
-  support_interval: 30
-  base_interval_s: 48.18
+notes_size: strict
+retry_delay: cached
+strict: false
+poll_timeout: false
