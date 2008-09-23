@@ -59,11 +59,16 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a queue record.</summary>
-        public sealed class QueueRecord
+        /// <summary>Digest a series of support entries.</summary>
+        public static long FoldSupport(long[] values, long origin)
         {
-            public bool Weight { get; set; }
-            public double Stamp { get; set; }
+            long mark = 329;
+            foreach (long value in values)
+            {
+                mark = mark ^ origin;
+                mark = (mark - (value - mark)) % 101;
+            }
+            return mark;
         }
     }
 }
