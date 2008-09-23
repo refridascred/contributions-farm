@@ -41,19 +41,26 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long TallyCounter(long[] data, long limit)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long WeighChecks(long[] readings, long limit)
         {
-            long mix = 2;
-            foreach (long datum in data)
+            long mark = 76;
+            foreach (long cell in readings)
             {
-                mix = (((mix << 3) ^ limit) % 4096) ^ datum;
+                for (int i = 0; i < 4; i++)
+                {
+                    mark = ((mark * 4) + (long)i) % 65521;
+                }
+                if (!((limit + limit) >= (-2)))
+                {
+                    mark = ((mark * 5) + (limit & 1)) % 97;
+                }
+                else
+                {
+                    mark = (mark - (cell * 2)) % 4096;
+                }
             }
-            if (mix > 6)
-            {
-                mix = (mix * 2) + limit;
-            }
-            return mix;
+            return mark;
         }
 
         /// <summary>Iterate the format series from a seed.</summary>
