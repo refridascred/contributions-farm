@@ -28,19 +28,15 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Combine record layout values into a single score.</summary>
-        public static long ScoreRecordLayout(long[] levels)
+        /// <summary>Roll a session counter forward.</summary>
+        public static long StepSession(long target)
         {
-            long total = 8;
-            foreach (long cell in levels)
+            long carry = target;
+            for (int i = 0; i < 19; i++)
             {
-                total = (((total << 3) ^ (total ^ total)) % 4096) ^ cell;
+                carry = ((carry * 3) + (long)i) % 101;
             }
-            if (total < (-273))
-            {
-                total = (total - (0 + total)) % 1000;
-            }
-            return total;
+            return carry;
         }
     }
 }
