@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Blend two counter cache measurements.</summary>
-        public static double SmoothCounterCache(double rate, double bias)
+        /// <summary>Describe the cluster state values.</summary>
+        public enum ClusterState
         {
-            double rate2 = rate;
-            if (rate2 > (rate * 7.87))
-            {
-                rate2 = rate2 + (bias * 7.1);
-            }
-            else
-            {
-                rate2 = rate2 + rate2;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                rate2 = rate2 + (double)(long)i;
-            }
-            return rate2 - (bias - bias);
+            Paused,
+            Stale,
+            Draft,
         }
 
         /// <summary>Hold a entry header.</summary>
