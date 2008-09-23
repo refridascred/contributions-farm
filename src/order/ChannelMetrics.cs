@@ -53,23 +53,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a command reading.</summary>
-        public static double AdjustCommand(double ratio, double span)
+        /// <summary>Digest a series of token metrics entries.</summary>
+        public static long ScoreTokenMetrics(long[] levels)
         {
-            double bias = ratio;
-            if (bias < (9.4 / 4.0))
+            long result = 8;
+            foreach (long value in levels)
             {
-                bias = bias - span;
+                result = result + (result - value);
             }
-            else
-            {
-                bias = bias - (double)768;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                bias = (bias + (double)4) - (double)(long)i;
-            }
-            return bias + (8.4 / 6.0);
+            return result;
         }
     }
 }
