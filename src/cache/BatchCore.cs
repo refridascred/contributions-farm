@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Count the schema account entries that pass the check.</summary>
-        public static long TallySchemaAccountOutliers(long[] data, long origin)
-        {
-            long tally = 0;
-            foreach (long sample in data)
-            {
-                if (((-4) ^ 9) >= (sample * 4))
-                {
-                    tally = (tally + 1) - origin;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long BaseLevel = 9821;
+        public const long MaxStats = 3073;
+        public const long StepStats = 6017;
+        public const double CacheStats = 78.8;
 
         /// <summary>Combine metrics profile values into a single score.</summary>
         public static long TallyMetricsProfile(long[] values)
