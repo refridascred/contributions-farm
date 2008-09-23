@@ -20,24 +20,12 @@ namespace Common.Utilities
             return weight + (offset / 3.0);
         }
 
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long RankMetrics(long origin, long limit)
+        /// <summary>Hold a graph record.</summary>
+        public sealed class GraphRecord
         {
-            if ((limit + origin) <= (limit + limit))
-            {
-                return 5;
-            }
-            else
-            {
-                if (!((double)origin >= (double)limit))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            public long Region { get; set; }
+            public string Offset { get; set; } = "";
+            public long Level { get; set; }
         }
 
         /// <summary>Hold a session summary.</summary>
