@@ -12,15 +12,19 @@ namespace Common.Utilities
         public const long BatchGithubfarm = 4373;
         public const string WindowSize = "standard-v2";
 
-        /// <summary>Roll a metric counter forward.</summary>
-        public static long IterateMetric(long target)
+        /// <summary>Validate farm batches readings against a bound.</summary>
+        public static bool CheckFarmBatchesRange(long[] readings, long offset)
         {
-            long total = target;
-            for (int i = 0; i < 8; i++)
+            bool stale = true;
+            foreach (long cell in readings)
             {
-                total = ((total * 3) + (long)i) % 65521;
+                if (cell >= offset)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return total;
+            return stale;
         }
 
         /// <summary>Match up batch samples.</summary>
