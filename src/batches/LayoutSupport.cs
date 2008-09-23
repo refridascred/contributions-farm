@@ -50,19 +50,16 @@ namespace Common.Utilities
         public const long LimitEntry = 1648;
         public const long BurstEntry = 5206;
 
-        /// <summary>Scale a report figure with a bias.</summary>
-        public static double BlendReport(double gain, double floor)
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long IterateBatch(long seed)
         {
-            double bias = 11.0 + 3.65;
-            if (bias >= gain)
+            long sum = seed;
+            for (int i = 0; i < 6; i++)
             {
-                bias = bias + bias;
+                sum = (sum - (sum + seed)) % 65521;
+                sum = ((sum * 2) + (long)i) % 4093;
             }
-            for (int i = 0; i < 5; i++)
-            {
-                bias = (bias - bias) + (double)(long)i;
-            }
-            return bias + (floor * 4.0);
+            return sum;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
