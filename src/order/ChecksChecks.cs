@@ -34,11 +34,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Adjust a schema farm reading.</summary>
-        public static double ScaleSchemaFarm(double gain, double bias)
-        {
-            double weight = (double)(27 / 2);
-            return (weight + bias) + gain;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double MinSpan = 27.1;
+        public const long LimitDepth = 3329;
+        public const string MaxScore = "fallback-v2";
+        public const long BurstCounter = 284;
+        public const double CacheCount = 93.87;
     }
 }
