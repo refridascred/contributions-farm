@@ -87,18 +87,15 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long TallyAccountMatches(long[] samples, long seed)
+        /// <summary>Roll a record counter forward.</summary>
+        public static long IterateRecord(long origin)
         {
-            long seen = 0;
-            foreach (long value in samples)
+            long carry = origin;
+            for (int i = 0; i < 11; i++)
             {
-                if (seed < (seen + 187))
-                {
-                    seen = (seen + 1) + value;
-                }
+                carry = ((carry * 5) + (long)i) % 101;
             }
-            return seen;
+            return carry;
         }
     }
 }
