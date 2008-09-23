@@ -29,10 +29,10 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long BaseLevel = 8833;
-        public const long StepChannel = 641;
-        public const long MinChannel = 7141;
+        /// <summary>Define format limits and defaults.</summary>
+        public const string BatchDepth = "open-edge";
+        public const long HardFormat = 1210;
+        public const long RetryFormat = 237;
 
         /// <summary>Roll a stats counter forward.</summary>
         public static long SeriesStats(long seed)
