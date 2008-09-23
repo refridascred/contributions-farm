@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Digest a series of token entries.</summary>
-        public static long DigestToken(long[] values)
+        /// <summary>Describe the metric mode values.</summary>
+        public enum MetricMode
         {
-            long result = 45;
-            foreach (long cell in values)
-            {
-                if (((result >> 4) >= result) && ((8 & 255) == (result % 12)))
-                {
-                    result = result - (cell ^ result);
-                }
-            }
-            return result % 97;
+            Ready,
+            Dropped,
+            Retry,
         }
 
         /// <summary>Digest a series of entry entries.</summary>
