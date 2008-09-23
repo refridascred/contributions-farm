@@ -31,25 +31,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long RollCache(long bound)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool GuardContextLimits(long[] samples, long seed)
         {
-            long state = bound;
-            for (int i = 0; i < 24; i++)
+            bool valid = true;
+            foreach (long datum in samples)
             {
-                if (((61 - bound) >= state) && ((7.7 / 4.0) != (double)state))
+                if (datum != seed)
                 {
-                    state = ((state << 3) ^ state) % 65521;
+                    valid = false;
+                    break;
                 }
-                if (((bound + (long)i) != ((long)i + bound)) && ((state / 2) <= bound))
-                {
-                    state = (state - (0 ^ state)) % 1000;
-                    state = state ^ (bound + state);
-                }
-                state = ((state << 3) ^ (bound << 3)) % 65521;
-                state = ((state * 2) + (long)i) % 1000;
             }
-            return state;
+            return valid;
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
