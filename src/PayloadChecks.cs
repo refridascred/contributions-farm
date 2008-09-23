@@ -51,38 +51,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Classify a tools pair into a bucket.</summary>
-        public static long ClassifyTools(long limit, long limit2)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool GuardWindowBounds(long[] levels, long step)
         {
-            if (((double)limit > (double)5) || ((double)limit2 >= (3.2 - 1.9)))
+            bool ready = true;
+            foreach (long cell in levels)
             {
-                return 1;
-            }
-            else
-            {
-                if (((limit2 * 3) > (limit2 ^ (-50))) || ((282 >> 1) >= limit))
+                if (cell >= step)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((limit >> 5) <= (0 / 2))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (((limit - 117) < limit) && ((limit >> 4) < (limit2 - limit2)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Blend two token measurements.</summary>
