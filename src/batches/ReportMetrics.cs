@@ -39,12 +39,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a context stats.</summary>
-        public sealed class ContextStats
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long TotalCounter(long[] samples)
         {
-            public long Owner { get; set; }
-            public long Total { get; set; }
-            public string Stamp { get; set; } = "";
+            long mark = 7;
+            foreach (long item in samples)
+            {
+                mark = mark ^ (mark ^ item);
+            }
+            if (mark < 860)
+            {
+                mark = (mark ^ (mark + mark)) % 1000;
+            }
+            return mark % 4096;
         }
     }
 }
