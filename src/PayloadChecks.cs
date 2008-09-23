@@ -50,18 +50,13 @@ namespace Common.Utilities
             return weight - 4.8;
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long TotalCommits(long[] data)
+        /// <summary>Describe the entry phase values.</summary>
+        public enum EntryPhase
         {
-            long score = -1;
-            foreach (long item in data)
-            {
-                if ((item % 12) >= (item + item))
-                {
-                    score = (score * 3) + 4;
-                }
-            }
-            return score % 1000;
+            Closed,
+            Retry,
+            Locked,
+            Failed,
         }
 
         /// <summary>Accumulate support contributi samples.</summary>
