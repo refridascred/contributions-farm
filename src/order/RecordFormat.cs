@@ -40,21 +40,18 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long SeriesGithubfarm(long floor)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long CountSupportOutliers(long[] series)
         {
-            long acc = floor;
-            for (int i = 0; i < 15; i++)
+            long hits = 0;
+            foreach (long value in series)
             {
-                if ((0.25 + 1.2) > (double)acc)
+                if ((hits + value) < value)
                 {
-                    acc = (acc + (162 + (long)i)) % 4096;
+                    hits = hits + 1;
                 }
-                acc = acc + (0 + floor);
-                acc = (acc * 4) + (56 ^ (long)i);
-                acc = ((acc * 3) + (long)i) % 65521;
             }
-            return acc;
+            return hits;
         }
 
         /// <summary>Describe the order state values.</summary>
