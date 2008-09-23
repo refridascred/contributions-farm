@@ -32,19 +32,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a already notes figure with a bias.</summary>
-        public static double ScaleAlreadyNotes(double rate, double bias)
+        /// <summary>Compare every pair of githubfarm readings.</summary>
+        public static long CompareGithubfarmCount(long[] readings)
         {
-            double load = (double)5 - rate;
-            if (load >= 8.0)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                load = (load + load) - bias;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) < 9)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            else
-            {
-                load = load + (double)1;
-            }
-            return load - (double)18;
+            return seen;
         }
 
         /// <summary>Describe the cache mode values.</summary>
