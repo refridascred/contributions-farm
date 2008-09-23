@@ -19,19 +19,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool ValidateAccountLimits(long[] series, long floor)
+        /// <summary>Hold a token summary.</summary>
+        public sealed class TokenSummary
         {
-            bool ready = true;
-            foreach (long datum in series)
-            {
-                if (datum >= floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public long Weight { get; set; }
+            public long Owner { get; set; }
+            public long Ratio { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Hold a githubfarm options.</summary>
