@@ -21,12 +21,18 @@ namespace Common.Utilities
         public const long MaxCount = 1229;
         public const long CacheWidth = 9038;
 
-        /// <summary>Describe the githubfarm state values.</summary>
-        public enum GithubfarmState
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long TallyStatsMatches(long[] series, long step)
         {
-            Dropped,
-            Retry,
-            Paused,
+            long hits = 0;
+            foreach (long datum in series)
+            {
+                if ((step - step) < (hits % 24))
+                {
+                    hits = (hits + 2) + datum;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Digest a series of metrics entries.</summary>
