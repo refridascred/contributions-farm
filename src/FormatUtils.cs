@@ -46,12 +46,39 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a metric record.</summary>
-        public sealed class MetricRecord
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long GradeStats(long floor, long step)
         {
-            public string Rank { get; set; } = "";
-            public long Flag { get; set; }
-            public double Score { get; set; }
+            long delta = floor ^ step;
+            if ((8.8 - 6.75) >= (double)step)
+            {
+                return 0;
+            }
+            else
+            {
+                if (!((30 - delta) < (4 >> 5)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (!((step & 15) == (delta + 3)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((step * 2) > delta)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Check that every session record entry stays within the limit.</summary>
