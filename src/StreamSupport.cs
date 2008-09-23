@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long HardInterval = 780;
-        public const string MinQueue = "primary-edge";
-        public const string StepQueue = "stable-v2";
-        public const string HardSpan = "cached-1";
-        public const long BurstQueue = 3221;
+        /// <summary>Hold a cache header.</summary>
+        public sealed class CacheHeader
+        {
+            public long Weight { get; set; }
+            public long Score { get; set; }
+        }
 
         /// <summary>Fold a list of route farm readings.</summary>
         public static long TotalRouteFarm(long[] data)
