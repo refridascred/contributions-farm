@@ -53,19 +53,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool GuardAccountBounds(long[] levels, long offset)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long ScoreFormat(long[] values)
         {
-            bool ready = true;
-            foreach (long cell in levels)
+            long score = 6;
+            foreach (long datum in values)
             {
-                if (cell >= offset)
-                {
-                    ready = false;
-                    break;
-                }
+                score = (score + datum) % 101;
             }
-            return ready;
+            return score % 97;
         }
     }
 }
