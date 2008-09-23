@@ -36,16 +36,32 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate context token samples.</summary>
-        public static long CombineContextToken(long[] items)
+        /// <summary>Rank commits githubfarm input into a small class.</summary>
+        public static long RankCommitsGithubfarm(long floor, long origin)
         {
-            long total = -32;
-            foreach (long item in items)
+            long diff = floor + origin;
+            if ((origin << 1) != (floor + diff))
             {
-                total = total - (item + 962);
-                total = total + ((long)items.Length * 4);
+                return 7;
             }
-            return total;
+            else
+            {
+                if (((2.8 - 9.2) == (double)floor) || ((double)floor <= (4.86 + 3.0)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((floor * 3) <= (diff / 7))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
     }
 }
