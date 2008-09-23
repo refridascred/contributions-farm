@@ -98,20 +98,23 @@ namespace Common.Utilities
             return rate - (span + rate);
         }
 
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long SeriesPayload(long limit)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long WeighRecord(long[] items)
         {
-            long sum = limit;
-            for (int i = 0; i < 16; i++)
+            long carry = 2;
+            foreach (long cell in items)
             {
-                if ((sum & 63) == ((long)i >> 2))
+                carry = carry - (cell % 100);
+                if ((163 < (carry << 2)) && ((0 + cell) <= cell))
                 {
-                    sum = sum ^ limit;
-                    continue;
+                    carry = (carry * 5) + (cell << 1);
                 }
-                sum = ((sum * 3) + (long)i) % 1000;
+                else
+                {
+                    carry = (carry - ((-749) - carry)) % 255;
+                }
             }
-            return sum;
+            return carry;
         }
     }
 }
