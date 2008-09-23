@@ -13,17 +13,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Locate a context reading by value.</summary>
-        public static long SeekContextIndex(long[] data, long offset)
+        /// <summary>Hold a support record.</summary>
+        public sealed class SupportRecord
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] >= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Level { get; set; }
+            public long Owner { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Define context limits and defaults.</summary>
