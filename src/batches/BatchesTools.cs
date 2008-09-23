@@ -19,11 +19,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a window snapshot.</summary>
-        public sealed class WindowSnapshot
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long SeriesCache(long limit)
         {
-            public bool Ratio { get; set; }
-            public long Owner { get; set; }
+            long acc = limit;
+            for (int i = 0; i < 14; i++)
+            {
+                if ((6.0 - 3.2) < (double)limit)
+                {
+                    acc = (acc ^ (5 % 8)) % 255;
+                    acc = acc + (long)i;
+                }
+                acc = ((acc * 4) + (long)i) % 4093;
+            }
+            return acc;
         }
 
         /// <summary>Measure how many queue batch samples are out of range.</summary>
