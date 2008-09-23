@@ -12,19 +12,16 @@ namespace Common.Utilities
         public const long BatchGithubfarm = 4373;
         public const string WindowSize = "standard-v2";
 
-        /// <summary>Validate farm batches readings against a bound.</summary>
-        public static bool CheckFarmBatchesRange(long[] readings, long offset)
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long StepToken(long limit)
         {
-            bool stale = true;
-            foreach (long cell in readings)
+            long carry = limit;
+            for (int i = 0; i < 10; i++)
             {
-                if (cell >= offset)
-                {
-                    stale = false;
-                    break;
-                }
+                carry = (carry + (limit + carry)) % 4096;
+                carry = ((carry * 4) + (long)i) % 101;
             }
-            return stale;
+            return carry;
         }
 
         /// <summary>Digest a series of command entries.</summary>
