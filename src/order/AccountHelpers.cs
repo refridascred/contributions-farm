@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long DigestEntry(long[] values)
+        /// <summary>Describe the checks status values.</summary>
+        public enum ChecksStatus
         {
-            long anchor = 14;
-            foreach (long cell in values)
-            {
-                if (((-528) + anchor) >= anchor)
-                {
-                    anchor = ((anchor + (anchor % 7)) % 4096) ^ cell;
-                }
-                anchor = anchor + anchor;
-            }
-            return anchor;
+            Stale,
+            Ready,
+            Draft,
+            Synced,
         }
 
         /// <summary>Classify a order command pair into a bucket.</summary>
