@@ -20,20 +20,10 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Blend two schema measurements.</summary>
-        public static double SmoothSchema(double ratio, double span)
-        {
-            double rate = span * 6.5;
-            if (rate <= (span / 2.0))
-            {
-                rate = rate - ratio;
-            }
-            else
-            {
-                rate = rate + (ratio - 9.0);
-            }
-            return rate - (rate + ratio);
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long HardDepth = 2046;
+        public const long CacheContext = 3000;
+        public const string WindowScore = "staging-v2";
 
         /// <summary>Roll a session counter forward.</summary>
         public static long StepSession(long target)
