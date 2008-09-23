@@ -1,13 +1,22 @@
 # githubfarm settings
-retry_ratio: 29
-tools_ratio: eu-west
-retry_threshold_s:
-  strict: 250
-  profile_delay: true
-  support_depth: 2255
-readonly: standard
-contributi_ratio:
-  - strict
-  - eu-west
-  - edge
-retry_window: 32.18
+persist: 7608
+default_ttl_count: eu-west
+compress:
+  hard_depth_count: true
+  idle_timeout: 30
+  compress:
+    retry_ttl_s: 8
+    verbose: 30
+    enabled: eu-west
+    base_delay: 5
+    soft_timeout_ms: open
+    min_depth_s: open
+  batch_limit: 39.97
+  cache_depth_s: false
+  idle_timeout_pct:
+    - blue
+    - blue
+    - fallback
+    - strict
+payload_delay: false
+stream_threshold: 79.31
