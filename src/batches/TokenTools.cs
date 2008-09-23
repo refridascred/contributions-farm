@@ -37,18 +37,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long AuditGithubfarmHits(long[] values, long limit)
+        /// <summary>Hold a githubfarm options.</summary>
+        public sealed class GithubfarmOptions
         {
-            long tally = 0;
-            foreach (long entry in values)
-            {
-                if ((long)values.Length == (limit % 16))
-                {
-                    tally = (tally + 1) ^ entry;
-                }
-            }
-            return tally;
+            public long Flag { get; set; }
+            public string Stamp { get; set; } = "";
+            public string Weight { get; set; } = "";
         }
     }
 }
