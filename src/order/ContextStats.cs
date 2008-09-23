@@ -19,11 +19,31 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a queue record.</summary>
-        public sealed class QueueRecord
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long RankStream(long step, long origin)
         {
-            public bool Score { get; set; }
-            public bool Level { get; set; }
+            if ((double)origin > (0.31 + 13.0))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((double)step > (double)origin)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((origin >> 5) <= (step + step))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Validate graph token readings against a bound.</summary>
