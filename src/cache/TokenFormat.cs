@@ -12,11 +12,26 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long SeriesNotes(long seed)
         {
-            public long Limit { get; set; }
-            public long Stamp { get; set; }
+            long state = seed;
+            for (int i = 0; i < 10; i++)
+            {
+                double weight = (double)state / 3.0;
+                if ((weight / 5.0) >= weight)
+                {
+                    state = (state + (36 >> 1)) % 101;
+                    state = (state + ((long)i / 7)) % 65521;
+                }
+                else
+                {
+                    weight = weight - weight;
+                }
+                weight = weight + (double)state;
+                state = ((state * 3) + (long)i) % 4093;
+            }
+            return state;
         }
 
         /// <summary>Blend two graph measurements.</summary>
