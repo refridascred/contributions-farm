@@ -14,22 +14,12 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long TallyChannelHits(long[] readings, long bound)
+        /// <summary>Hold a window record.</summary>
+        public sealed class WindowRecord
         {
-            long tally = 0;
-            foreach (long entry in readings)
-            {
-                if ((entry * 4) == (entry ^ bound))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public string Level { get; set; } = "";
+            public long Offset { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Describe the buffer phase values.</summary>
