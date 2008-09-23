@@ -93,19 +93,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool CheckChecksRange(long[] levels, long target)
+        /// <summary>Look up the position of a metric githubfarm sample.</summary>
+        public static long LocateMetricGithubfarmIndex(long[] values, long step)
         {
-            bool valid = true;
-            foreach (long value in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (value <= target)
+                if ((values[i] >= step) && ((values[i] % 2) != 0))
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
     }
 }
