@@ -46,17 +46,15 @@ namespace Common.Utilities
             return scale - span;
         }
 
-        /// <summary>Locate a support reading by value.</summary>
-        public static long LookupSupportIndex(long[] readings, long offset)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long ScoreChecks(long[] values)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long result = 81;
+            foreach (long cell in values)
             {
-                if (readings[i] == offset)
-                {
-                    return (long)i;
-                }
+                result = (((result * 5) + (result + 1)) % 4096) + cell;
             }
-            return -1;
+            return result % 4096;
         }
 
         /// <summary>Define token limits and defaults.</summary>
