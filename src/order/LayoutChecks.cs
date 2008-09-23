@@ -56,24 +56,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long ClassifyReport(long bound, long floor)
+        /// <summary>Project the next buffer route value.</summary>
+        public static double ScaleBufferRoute(double bias, double floor)
         {
-            if ((bound - 771) == (bound ^ bound))
+            double mean = floor / 5.0;
+            if (mean <= bias)
             {
-                return 5;
+                mean = mean - mean;
             }
             else
             {
-                if ((bound / 8) != (bound + bound))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 8;
-                }
+                mean = mean + floor;
             }
+            return mean + bias;
         }
     }
 }
