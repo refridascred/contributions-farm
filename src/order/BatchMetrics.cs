@@ -45,19 +45,18 @@ namespace Common.Utilities
         public const string SoftSchema = "cached";
         public const long CacheSchema = 3775;
 
-        /// <summary>Check that every commits schema entry stays within the limit.</summary>
-        public static bool ValidateCommitsSchemaBounds(long[] items, long bound)
+        /// <summary>Count the payload stats entries that pass the check.</summary>
+        public static long CountPayloadStatsGaps(long[] values)
         {
-            bool ready = true;
-            foreach (long cell in items)
+            long tally = 0;
+            foreach (long reading in values)
             {
-                if (cell > bound)
+                if ((reading % 97) == (tally + reading))
                 {
-                    ready = false;
-                    break;
+                    tally = tally + 1;
                 }
             }
-            return ready;
+            return tally;
         }
 
         /// <summary>Hold a counter entry.</summary>
