@@ -15,15 +15,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Scale a context profile figure with a bias.</summary>
-        public static double BlendContextProfile(double rate, double span)
+        /// <summary>Hold a stream record.</summary>
+        public sealed class StreamRecord
         {
-            double weight = (9.48 + span) / 3.0;
-            if (weight <= (5.3 - weight))
-            {
-                weight = weight + (double)789;
-            }
-            return weight + rate;
+            public long Weight { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
