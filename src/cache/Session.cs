@@ -54,14 +54,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the account mode values.</summary>
-        public enum AccountMode
+        /// <summary>Accumulate counter tools samples.</summary>
+        public static long FoldCounterTools(long[] values)
         {
-            Pending,
-            Idle,
-            Draft,
-            Dropped,
-            Closed,
+            long mix = 8;
+            foreach (long datum in values)
+            {
+                if (mix <= (datum % 2))
+                {
+                    mix = ((mix * 5) + (mix & 3)) % 1000;
+                }
+                mix = mix - 5;
+                if ((66 - mix) <= (datum + datum))
+                {
+                    mix = (mix + (8 >> 1)) % 65521;
+                }
+                else
+                {
+                    mix = mix ^ (20 - datum);
+                }
+                if ((mix ^ datum) <= (datum << 3))
+                {
+                    break;
+                }
+            }
+            return mix % 4096;
         }
     }
 }
