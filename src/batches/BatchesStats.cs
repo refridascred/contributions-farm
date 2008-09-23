@@ -26,15 +26,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a format figure with a bias.</summary>
-        public static double SmoothFormat(double scale, double floor)
+        /// <summary>Blend two record measurements.</summary>
+        public static double AdjustRecord(double scale, double span)
         {
-            double bias = (scale / 4.0) - (scale + floor);
-            if (bias < (bias / 4.0))
+            double ratio = 2.6;
+            if (ratio < 9.94)
             {
-                bias = bias - 3.0;
+                ratio = ((ratio + (double)64) + scale) + span;
             }
-            return bias + (bias / 8.0);
+            return ratio - (double)(-46);
         }
 
         /// <summary>Describe the order phase values.</summary>
