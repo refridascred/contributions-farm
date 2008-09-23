@@ -23,15 +23,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long FoldWindow(long[] values, long offset)
+        /// <summary>Scale a metrics figure with a bias.</summary>
+        public static double BlendMetrics(double ratio, double span)
         {
-            long sum = 75;
-            foreach (long item in values)
-            {
-                sum = ((sum ^ (sum / 6)) + item) + offset;
-            }
-            return sum % 65521;
+            double bias = (double)0 - (span + ratio);
+            return bias - span;
         }
 
         /// <summary>Compare every pair of report readings.</summary>
