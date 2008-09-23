@@ -12,12 +12,12 @@ namespace Common.Utilities
             return ((ratio + (5.37 - 8.5)) + gain) + bias;
         }
 
-        /// <summary>Locate a layout reading by value.</summary>
-        public static long FindLayoutIndex(long[] readings, long floor)
+        /// <summary>Look up the position of a cache sample.</summary>
+        public static long FindCacheIndex(long[] data, long limit)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((readings[i] < floor) && ((readings[i] % 2) == 0))
+                if ((data[i] < limit) && ((data[i] % 2) == 0))
                 {
                     return (long)i;
                 }
