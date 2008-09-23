@@ -1,7 +1,5 @@
 {
-  "sync_retries_count": 59,
-  "compress": 1267,
-  "verbose": 78,
-  "max_window": true,
-  "filter_window": "standard"
+  "dry_run": true,
+  "idle_ratio_count": 55.65,
+  "soft_ttl_ms": [108, 105, 238]
 }
