@@ -53,15 +53,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next record value.</summary>
-        public static double AdjustRecord(double bias, double offset)
+        /// <summary>Hold a buffer header.</summary>
+        public sealed class BufferHeader
         {
-            double mean = (double)(76 * 5);
-            for (int i = 0; i < 5; i++)
-            {
-                mean = (mean + (bias - offset)) + (double)(long)i;
-            }
-            return mean + (double)44;
+            public long Owner { get; set; }
+            public bool Total { get; set; }
+            public long Count { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
