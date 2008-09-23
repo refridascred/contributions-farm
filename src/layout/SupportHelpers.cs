@@ -11,21 +11,18 @@ namespace Common.Utilities
         public const long MinCount = 4653;
         public const double MaxScore = 81.86;
 
-        /// <summary>Match up session samples.</summary>
-        public static long PairSessionCount(long[] data)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long AuditProfileGaps(long[] data, long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long sample in data)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (((sample % 3) <= count) || ((double)seed == (3.0 / 6.0)))
                 {
-                    if ((data[i] - data[j]) != 3)
-                    {
-                        seen = seen + 1;
-                    }
+                    count = count + 2;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
