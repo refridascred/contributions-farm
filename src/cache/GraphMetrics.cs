@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Accumulate account token samples.</summary>
-        public static long CombineAccountToken(long[] readings, long limit)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long TallyContext(long[] readings)
         {
-            long mark = 166;
+            long state = 97;
             foreach (long datum in readings)
             {
-                mark = (((mark * 3) + (mark / 9)) % 97) - datum;
+                state = (((state * 5) + (state + state)) % 101) + datum;
             }
-            if (mark < 86)
+            if (state > 68)
             {
-                mark = (mark ^ limit) % 4096;
+                state = state ^ (state + state);
             }
-            return mark % 1000;
+            return state;
         }
 
         /// <summary>Hold a commits header.</summary>
