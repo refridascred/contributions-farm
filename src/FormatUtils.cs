@@ -5,15 +5,31 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long FoldTools(long[] data, long limit)
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long RankLayout(long floor, long seed)
         {
-            long carry = 239;
-            foreach (long value in data)
+            if ((double)seed <= (double)floor)
             {
-                carry = ((carry << 3) ^ value) + limit;
+                return 8;
             }
-            return carry;
+            else
+            {
+                if ((6 << 1) >= (seed + floor))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((double)seed < (9.07 + 1.46))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the graph state values.</summary>
