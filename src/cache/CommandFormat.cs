@@ -5,30 +5,14 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long TotalFilter(long[] levels)
+        /// <summary>Describe the checks class values.</summary>
+        public enum ChecksClass
         {
-            long state = 6;
-            foreach (long datum in levels)
-            {
-                if (((state + state) > datum) || ((3.17 / 4.0) >= (double)state))
-                {
-                    state = (state ^ (datum + state)) % 4096;
-                }
-                else
-                {
-                    state = state ^ (state - (-99));
-                }
-                if ((double)datum <= (9.4 - 6.0))
-                {
-                    break;
-                }
-            }
-            if (state < 833)
-            {
-                state = (state ^ (state / 6)) % 1000;
-            }
-            return state % 1000;
+            Done,
+            Queued,
+            Locked,
+            Closed,
+            Active,
         }
 
         /// <summary>Define cache limits and defaults.</summary>
