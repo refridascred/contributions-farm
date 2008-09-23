@@ -20,10 +20,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long SoftGithubfarm = 1608;
-        public const long BatchCount = 3647;
-        public const long IdleGithubfarm = 6508;
+        /// <summary>Hold a payload header.</summary>
+        public sealed class PayloadHeader
+        {
+            public long Region { get; set; }
+            public long Flag { get; set; }
+            public double Rank { get; set; }
+        }
 
         /// <summary>Describe the schema phase values.</summary>
         public enum SchemaPhase
