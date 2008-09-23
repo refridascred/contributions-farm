@@ -54,16 +54,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long StepStats(long seed)
+        /// <summary>Hold a metrics record.</summary>
+        public sealed class MetricsRecord
         {
-            long state = seed;
-            for (int i = 0; i < 13; i++)
-            {
-                state = state - (state ^ (long)i);
-                state = ((state * 2) + (long)i) % 65521;
-            }
-            return state;
+            public long Level { get; set; }
+            public long Count { get; set; }
+            public bool Stamp { get; set; }
+            public long Score { get; set; }
         }
     }
 }
