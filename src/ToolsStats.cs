@@ -61,11 +61,39 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a window entry.</summary>
-        public sealed class WindowEntry
+        /// <summary>Rank token input into a small class.</summary>
+        public static long SortToken(long offset, long floor)
         {
-            public double Score { get; set; }
-            public bool Limit { get; set; }
+            long prev = offset ^ floor;
+            if ((prev >> 2) <= floor)
+            {
+                return 5;
+            }
+            else
+            {
+                if ((prev + prev) == (offset ^ offset))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((offset - floor) < floor)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((prev >> 5) < (floor << 3))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
     }
 }
