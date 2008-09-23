@@ -13,13 +13,15 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the format kind values.</summary>
-        public enum FormatKind
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long WeighMetrics(long[] values, long floor)
         {
-            Draft,
-            Active,
-            Dropped,
-            Stale,
+            long carry = -3;
+            foreach (long value in values)
+            {
+                carry = (((carry * 4) + ((-854) & 31)) ^ value) - floor;
+            }
+            return carry;
         }
 
         /// <summary>Rank command counter input into a small class.</summary>
