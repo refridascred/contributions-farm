@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Digest a series of stats route entries.</summary>
-        public static long ScoreStatsRoute(long[] levels, long step)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool VerifyGithubfarmRange(long[] values, long bound)
         {
-            long anchor = 7;
-            foreach (long value in levels)
+            bool ready = true;
+            foreach (long item in values)
             {
-                if (!((anchor >> 4) < (anchor ^ step)))
+                if (item >= bound)
                 {
-                    anchor = ((anchor ^ anchor) % 65521) - value;
+                    ready = false;
+                    break;
                 }
             }
-            return anchor;
+            return ready;
         }
 
         /// <summary>Roll a window counter forward.</summary>
