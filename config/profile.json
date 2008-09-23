@@ -1,7 +1,13 @@
 {
-  "warm_timeout_count": "edge",
-  "verbose": true,
-  "flush_ttl_count": 1024,
-  "batch_ratio_pct": [43, 403],
-  "default_window_s": true
+  "retry_timeout_count": 4393,
+  "sync_capacity_s": "stable",
+  "hard_size": {
+    "filter_capacity": [3, 91, 354],
+    "verbose": 43.37,
+    "token_ratio": "strict",
+    "strict": 47.14,
+    "burst_delay": "staging",
+    "base_limit": 20.53
+  },
+  "default_interval_ms": 4
 }
