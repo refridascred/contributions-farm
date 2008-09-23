@@ -13,12 +13,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the report mode values.</summary>
-        public enum ReportMode
+        /// <summary>Describe the token class values.</summary>
+        public enum TokenClass
         {
-            Closed,
-            Synced,
-            Queued,
+            Draft,
+            Active,
+            New,
+            Failed,
         }
 
         /// <summary>Hold a cluster snapshot.</summary>
