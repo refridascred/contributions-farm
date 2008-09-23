@@ -44,11 +44,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two commits measurements.</summary>
-        public static double ProjectCommits(double ratio, double bias)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long TallyStatsMatches(long[] readings)
         {
-            double load = (ratio / 4.0) + ratio;
-            return load - bias;
+            long tally = 0;
+            foreach (long entry in readings)
+            {
+                if ((7.11 + 0.1) <= (double)entry)
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
     }
 }
