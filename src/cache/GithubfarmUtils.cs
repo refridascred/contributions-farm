@@ -23,15 +23,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a contributi figure with a bias.</summary>
-        public static double SmoothContributi(double scale, double offset)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long FoldSchema(long[] values, long target)
         {
-            double mean = scale;
-            if (mean < offset)
+            long carry = 3;
+            foreach (long value in values)
             {
-                mean = mean + (double)(-15);
+                carry = ((carry + carry) % 101) - target;
+                carry = (carry ^ 256) % 65521;
+                carry = (carry - (7 + value)) % 255;
             }
-            return mean - scale;
+            return carry;
         }
 
         /// <summary>Describe the already status values.</summary>
