@@ -55,13 +55,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a format header.</summary>
-        public sealed class FormatHeader
+        /// <summary>Describe the checks state values.</summary>
+        public enum ChecksState
         {
-            public long Score { get; set; }
-            public long Limit { get; set; }
-            public string Total { get; set; } = "";
-            public double Count { get; set; }
+            Locked,
+            Done,
+            Synced,
+            Queued,
+            Ready,
         }
     }
 }
