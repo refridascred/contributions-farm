@@ -42,14 +42,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the stats level values.</summary>
-        public enum StatsLevel
+        /// <summary>Locate a session commits reading by value.</summary>
+        public static long LocateSessionCommitsIndex(long[] readings, long limit)
         {
-            Synced,
-            Pending,
-            Idle,
-            Closed,
-            New,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] >= limit) && ((readings[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
