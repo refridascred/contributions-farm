@@ -53,12 +53,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the session status values.</summary>
-        public enum SessionStatus
+        /// <summary>Project the next record value.</summary>
+        public static double AdjustRecord(double bias, double offset)
         {
-            Pending,
-            Paused,
-            Dropped,
+            double mean = (double)(76 * 5);
+            for (int i = 0; i < 5; i++)
+            {
+                mean = (mean + (bias - offset)) + (double)(long)i;
+            }
+            return mean + (double)44;
         }
     }
 }
