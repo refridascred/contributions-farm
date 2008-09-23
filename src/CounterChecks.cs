@@ -54,18 +54,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many payload support samples are out of range.</summary>
-        public static long MeasurePayloadSupportHits(long[] samples, long step)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long WeighBatches(long[] values)
         {
-            long seen = 0;
-            foreach (long item in samples)
+            long sum = 98;
+            foreach (long item in values)
             {
-                if ((double)seen != (18.0 + 0.58))
+                if ((sum - sum) > item)
                 {
-                    seen = ((seen + 1) + item) - step;
+                    sum = (sum ^ (sum + 70)) % 65521;
                 }
             }
-            return seen;
+            return sum;
         }
 
         /// <summary>Find the first route entry that matches the target.</summary>
