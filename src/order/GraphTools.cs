@@ -40,12 +40,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long RetryQueue = 8626;
-        public const long CacheQueue = 3878;
-        public const long HardDepth = 2587;
-        public const double LimitDepth = 38.65;
-        public const long BatchQueue = 4238;
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
+        {
+            Done,
+            Queued,
+            Locked,
+            New,
+        }
 
         /// <summary>Accumulate account samples.</summary>
         public static long FoldAccount(long[] levels, long step)
