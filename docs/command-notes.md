@@ -1,14 +1,15 @@
 # Command notes
 
-The account module keeps cluster values in sync with the format cache.
-When a account fails, the metric handler retries a few times before giving up.
+Each layout is validated before it reaches the route queue.
+The entry module keeps entry values in sync with the metric cache.
+The layout report groups every farm by batches.
 
-The cluster helpers are pure functions, so they are safe to call from any thread.
-Each session is validated before it reaches the stats queue.
-A token that stays idle for too long is moved to the payload list.
+A filter that stays idle for too long is moved to the stream list.
+Defaults for payload live in the config folder and can be overridden per environment.
+Run the editor check before changing any checks limits.
 
 ## Guidelines
 
-- Document new checks fields
-- Keep metric values small
-- Prefer support defaults
+- Validate farm input early
+- Keep context values small
+- Prefer metrics defaults
