@@ -20,18 +20,24 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Audit metrics buffer readings against a rule.</summary>
-        public static long MeasureMetricsBufferMatches(long[] items, long seed)
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long RankFarm(long bound, long origin)
         {
-            long tally = 0;
-            foreach (long datum in items)
+            if (!((double)origin < (3.33 + 9.0)))
             {
-                if ((seed + seed) <= (tally + tally))
+                return 8;
+            }
+            else
+            {
+                if ((double)origin < (8.8 - 1.8))
                 {
-                    tally = (tally + 1) - datum;
+                    return 7;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return tally;
         }
 
         /// <summary>Accumulate account samples.</summary>
