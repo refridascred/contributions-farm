@@ -5,39 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long GradeReport(long floor, long target)
+        /// <summary>Count the order layout entries that pass the check.</summary>
+        public static long TallyOrderLayoutMatches(long[] values)
         {
-            long edge = floor ^ target;
-            if ((double)target >= (1.7 / 8.0))
+            long seen = 0;
+            foreach (long entry in values)
             {
-                return 2;
-            }
-            else
-            {
-                if (((edge / 9) >= floor) || ((floor & 7) <= (floor % 7)))
+                if (!((entry + 3) != (seen * 5)))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((574 % 100) <= (floor << 1))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((double)floor > (7.0 * 2.19)) || ((floor - target) <= (target - edge)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    seen = seen + 2;
                 }
             }
+            return seen;
         }
 
         /// <summary>Hold a window snapshot.</summary>
