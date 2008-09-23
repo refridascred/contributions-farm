@@ -36,22 +36,18 @@ namespace Common.Utilities
             return weight + rate;
         }
 
-        /// <summary>Measure how many payload window samples are out of range.</summary>
-        public static long CountPayloadWindowOutliers(long[] readings)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long CountSchemaGaps(long[] samples)
         {
-            long hits = 0;
-            foreach (long cell in readings)
+            long seen = 0;
+            foreach (long cell in samples)
             {
-                if ((cell ^ cell) > hits)
+                if (cell < (seen >> 3))
                 {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    seen = seen + 3;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Hold a metrics record.</summary>
