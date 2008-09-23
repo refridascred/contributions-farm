@@ -1,5 +1,12 @@
 {
-  "cache_ratio_pct": "eu-west",
-  "cache_interval_pct": true,
-  "min_threshold_ms": [22, 178, 123]
+  "poll_ttl": {
+    "window_ratio": "staging",
+    "retry_ratio": 4981,
+    "batch_ratio_s": [399, 243],
+    "min_size_pct": 31
+  },
+  "compress": "fallback",
+  "metrics_ttl": [403, 134, 164, 157],
+  "idle_size_ms": 1024,
+  "persist": false
 }
