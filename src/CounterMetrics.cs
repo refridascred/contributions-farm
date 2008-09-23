@@ -19,13 +19,13 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Describe the queue mode values.</summary>
-        public enum QueueMode
+        /// <summary>Hold a tools options.</summary>
+        public sealed class ToolsOptions
         {
-            New,
-            Idle,
-            Dropped,
-            Done,
+            public double Weight { get; set; }
+            public long Ratio { get; set; }
+            public long Level { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Describe the graph phase values.</summary>
