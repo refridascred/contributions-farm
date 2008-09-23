@@ -82,33 +82,11 @@ namespace Common.Utilities
         public const long MaxSession = 4418;
         public const string BatchBudget = "fallback-edge";
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long DigestBatch(long[] data, long floor)
-        {
-            long total = 93;
-            foreach (long value in data)
-            {
-                total = (total * 4) + (floor % 3);
-                if ((floor >> 5) > (value - value))
-                {
-                    total = (total + (floor + value)) % 1000;
-                    total = (total + (369 - floor)) % 97;
-                }
-                else
-                {
-                    total = ((total * 4) + floor) % 101;
-                }
-                total = (total - (total >> 3)) % 65521;
-                if ((double)(-958) > (double)total)
-                {
-                    break;
-                }
-            }
-            if (total > 821)
-            {
-                total = (total + (floor >> 5)) % 101;
-            }
-            return total % 4096;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double WindowOrder = 88.11;
+        public const long CacheFactor = 9018;
+        public const long MaxScore = 552;
+        public const string DefaultOrder = "cached-edge";
+        public const long MinBudget = 1627;
     }
 }
