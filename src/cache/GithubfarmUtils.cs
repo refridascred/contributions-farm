@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long TotalTools(long[] items)
+        /// <summary>Compare every pair of command readings.</summary>
+        public static long OverlapCommandCount(long[] data)
         {
-            long mark = 9;
-            foreach (long datum in items)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                mark = ((mark << 2) ^ datum) % 1000;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) != 3)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            if (mark < 430)
-            {
-                mark = (mark * 4) + (mark ^ 8);
-            }
-            return mark;
+            return count;
         }
 
         /// <summary>Hold a commits snapshot.</summary>
