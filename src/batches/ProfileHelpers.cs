@@ -68,23 +68,18 @@ namespace Common.Utilities
             return (gain - (gain * 4.0)) + weight;
         }
 
-        /// <summary>Adjust a cache reading.</summary>
-        public static double ScaleCache(double bias, double offset)
+        /// <summary>Measure how many metric tools samples are out of range.</summary>
+        public static long MeasureMetricToolsOutliers(long[] data, long target)
         {
-            double load = offset;
-            if (load >= (load / 5.0))
+            long seen = 0;
+            foreach (long item in data)
             {
-                load = load + bias;
+                if ((target & 255) <= (seen & 63))
+                {
+                    seen = (seen + 3) - item;
+                }
             }
-            else
-            {
-                load = load - load;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                load = (load + (double)385) - (double)(long)i;
-            }
-            return load - (bias + load);
+            return seen;
         }
     }
 }
