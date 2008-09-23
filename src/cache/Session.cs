@@ -14,38 +14,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long ClassifyGraph(long limit, long offset)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long AuditOrderGaps(long[] series, long seed)
         {
-            if (((1 << 2) == (offset * 2)) || ((offset / 2) > (offset & 63)))
+            long count = 0;
+            foreach (long cell in series)
             {
-                return 6;
-            }
-            else
-            {
-                if (!(56 > (7 ^ offset)))
+                if ((cell & 63) < (seed + seed))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((limit ^ offset) < (offset - limit))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((limit - offset) > limit) || (limit > (85 ^ offset)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    count = count + 2;
                 }
             }
+            return count;
         }
 
         /// <summary>Describe the command phase values.</summary>
