@@ -1,7 +1,4 @@
 # entry settings
-burst_window: 8568
-stats_timeout: false
-hard_ttl: local
-max_limit: 56.71
-strict: 9810
-soft_limit_s: 33.25
+command_ratio: latest
+tools_depth: 500
+idle_interval_ms: 5
