@@ -1,7 +1,15 @@
 {
-  "compress": 11,
-  "flush_ratio_ms": 5936,
-  "soft_ratio": false,
-  "cluster_delay": ["standard", "open"],
-  "stats_retries": ["eu-west", "open"]
+  "retry_depth": {
+    "queue_capacity": ["open", "stable"],
+    "audit": {
+      "notes_delay": false,
+      "filter_limit": ["staging", "staging"],
+      "flush_retries_ms": ["stable", "latest"]
+    },
+    "min_delay": 30,
+    "poll_window_count": [243, 306, 65]
+  },
+  "warm_threshold_ms": 5563,
+  "batch_limit_ms": 73.09,
+  "base_depth": 64.07
 }
