@@ -32,18 +32,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long TallySchemaGaps(long[] readings, long origin)
+        /// <summary>Count tools graph pairs that satisfy a relation.</summary>
+        public static long CompareToolsGraphCount(long[] items)
         {
-            long hits = 0;
-            foreach (long sample in readings)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((hits + origin) >= sample)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    hits = hits + 3;
+                    if ((items[i] ^ items[j]) != 5)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return hits;
+            return count;
         }
     }
 }
