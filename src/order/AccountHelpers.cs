@@ -23,10 +23,40 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long DefaultCache = 2548;
-        public const long HardCache = 3194;
-        public const double SoftCache = 36.57;
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long BucketGithubfarm(long origin, long floor)
+        {
+            long bound = origin - floor;
+            if ((bound & 127) < (bound >> 5))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((double)floor != (3.6 * 1.84))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (bound >= (bound + 4))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (((54 * 4) > (bound / 5)) || ((floor / 2) != (origin - 747)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a buffer header.</summary>
         public sealed class BufferHeader
