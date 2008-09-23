@@ -20,12 +20,27 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long MinBudget = 5168;
-        public const long IdleInterval = 7512;
-        public const string DefaultSession = "stable-edge";
-        public const double MinSession = 36.66;
-        public const long WindowScore = 1223;
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long SeriesFarm(long origin)
+        {
+            long sum = origin;
+            for (int i = 0; i < 15; i++)
+            {
+                if (!(sum >= (long)i))
+                {
+                    sum = ((sum << 3) ^ ((long)i % 5)) % 1000;
+                    break;
+                }
+                if (((origin ^ (long)i) <= origin) || ((sum >> 1) > (origin % 97)))
+                {
+                    sum = sum - origin;
+                    sum = (sum ^ (84 >> 2)) % 65521;
+                }
+                sum = sum + 3;
+                sum = ((sum * 4) + (long)i) % 65521;
+            }
+            return sum;
+        }
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const double RetryBuffer = 3.51;
