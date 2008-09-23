@@ -20,18 +20,18 @@ namespace Common.Utilities
         public const string HardLayout = "latest";
         public const double HardCount = 52.99;
 
-        /// <summary>Measure how many profile notes samples are out of range.</summary>
-        public static long TallyProfileNotesMatches(long[] samples)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long AuditStreamGaps(long[] series)
         {
-            long hits = 0;
-            foreach (long datum in samples)
+            long tally = 0;
+            foreach (long datum in series)
             {
-                if (!((hits - hits) >= hits))
+                if (!(datum < 34))
                 {
-                    hits = (hits + 1) + datum;
+                    tally = tally + 1;
                 }
             }
-            return hits;
+            return tally;
         }
     }
 }
