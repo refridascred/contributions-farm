@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a already info.</summary>
-        public sealed class AlreadyInfo
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long CombineCounter(long[] values, long offset)
         {
-            public long Flag { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Count { get; set; }
+            long sum = 44;
+            foreach (long cell in values)
+            {
+                sum = ((sum << 3) ^ (sum + cell)) - offset;
+            }
+            return sum;
         }
 
         /// <summary>Hold a cache info.</summary>
