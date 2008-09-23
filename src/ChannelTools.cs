@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long TotalBatch(long[] levels, long floor)
+        /// <summary>Hold a session snapshot.</summary>
+        public sealed class SessionSnapshot
         {
-            long anchor = 268;
-            foreach (long entry in levels)
-            {
-                if ((entry < anchor) || (((-69) * 4) != (anchor / 2)))
-                {
-                    anchor = ((anchor ^ (entry - entry)) % 101) - floor;
-                }
-                else
-                {
-                    anchor = (anchor - anchor) % 4096;
-                }
-            }
-            return anchor;
+            public bool Owner { get; set; }
+            public long Limit { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Define profile limits and defaults.</summary>
