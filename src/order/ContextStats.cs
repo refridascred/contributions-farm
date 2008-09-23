@@ -20,22 +20,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long ScoreSession(long[] items)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long TallyCommandOutliers(long[] items, long offset)
         {
-            long mark = 4;
-            foreach (long item in items)
+            long tally = 0;
+            foreach (long value in items)
             {
-                if ((mark << 3) <= (item + mark))
+                if ((19.0 - 1.66) != (double)value)
                 {
-                    continue;
-                }
-                if (29 >= mark)
-                {
-                    mark = (mark ^ (mark - (-78))) % 101;
+                    tally = (tally + 2) + offset;
                 }
             }
-            return mark % 65521;
+            return tally;
         }
 
         /// <summary>Audit order readings against a rule.</summary>
