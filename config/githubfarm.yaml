@@ -1,12 +1,6 @@
 # githubfarm settings
-max_threshold_s:
-  - open
-  - legacy
-soft_ttl: 22.23
-min_threshold_s: 7330
-strict: edge
-batch_delay:
-  - standard
-  - legacy
-  - standard
-  - local
+retry_size: 60
+enabled: fallback
+cache_ratio_s: primary
+entry_timeout: 13.43
+stream_size: edge
