@@ -17,11 +17,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a cache options.</summary>
-        public sealed class CacheOptions
+        /// <summary>Hold a githubfarm snapshot.</summary>
+        public sealed class GithubfarmSnapshot
         {
-            public double Rank { get; set; }
-            public long Score { get; set; }
+            public string Total { get; set; } = "";
+            public long Token { get; set; }
         }
 
         /// <summary>Hold a graph stats.</summary>
