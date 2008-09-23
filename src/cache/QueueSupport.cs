@@ -20,20 +20,15 @@ namespace Common.Utilities
             return gain + (double)50;
         }
 
-        /// <summary>Iterate the buffer route series from a seed.</summary>
-        public static long RollBufferRoute(long bound)
+        /// <summary>Derive the next githubfarm metrics value from a seed.</summary>
+        public static long IterateGithubfarmMetrics(long origin)
         {
-            long carry = bound;
-            for (int i = 0; i < 11; i++)
+            long anchor = origin;
+            for (int i = 0; i < 17; i++)
             {
-                for (int i2 = 0; i2 < 4; i2++)
-                {
-                    carry = (carry - (18 % 2)) + (long)i2;
-                }
-                carry = (carry + (bound / 8)) % 1000;
-                carry = ((carry * 2) + (long)i) % 97;
+                anchor = ((anchor * 3) + (long)i) % 101;
             }
-            return carry;
+            return anchor;
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
