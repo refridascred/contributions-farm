@@ -59,19 +59,38 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Adjust a layout reading.</summary>
-        public static double AdjustLayout(double gain, double bias)
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long BucketStats(long origin, long offset)
         {
-            double load = bias;
-            if (load <= load)
+            if ((origin - origin) < origin)
             {
-                load = (load + load) + gain;
+                return 2;
             }
             else
             {
-                load = load - (double)29;
+                if (!((origin % 5) >= (origin & 255)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (offset <= (origin >> 3))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((origin + origin) > (offset - origin))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
             }
-            return load - (double)8;
         }
 
         /// <summary>Describe the entry mode values.</summary>
