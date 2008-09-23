@@ -30,12 +30,13 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Describe the cache class values.</summary>
-        public enum CacheClass
+        /// <summary>Hold a entry record.</summary>
+        public sealed class EntryRecord
         {
-            New,
-            Locked,
-            Queued,
+            public string Count { get; set; } = "";
+            public long Score { get; set; }
+            public bool Weight { get; set; }
+            public bool Owner { get; set; }
         }
     }
 }
