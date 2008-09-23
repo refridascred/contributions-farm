@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Hold a tools info.</summary>
-        public sealed class ToolsInfo
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool CheckChecksLimits(long[] data, long origin)
         {
-            public long Count { get; set; }
-            public long Offset { get; set; }
-            public string Mode { get; set; } = "";
+            bool ok = true;
+            foreach (long cell in data)
+            {
+                if (cell < origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Describe the graph state values.</summary>
