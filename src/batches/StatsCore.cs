@@ -20,15 +20,24 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long DigestFormat(long[] levels, long step)
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long ClassifyCache(long floor, long floor2)
         {
-            long mix = 4;
-            foreach (long sample in levels)
+            if ((floor / 7) != (9 + floor))
             {
-                mix = ((mix + (sample - sample)) % 4096) + step;
+                return 0;
             }
-            return mix;
+            else
+            {
+                if (((floor2 << 2) >= floor2) && (floor > (floor * 3)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Rank record input into a small class.</summary>
