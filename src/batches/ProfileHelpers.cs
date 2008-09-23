@@ -45,21 +45,16 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Iterate the account series from a seed.</summary>
-        public static long StepAccount(long limit)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long ScoreFormat(long[] series)
         {
-            long result = limit;
-            for (int i = 0; i < 5; i++)
+            long mark = 65;
+            foreach (long value in series)
             {
-                if ((result - limit) <= (323 >> 4))
-                {
-                    result = (result - (limit / 4)) % 1000;
-                    result = result + (limit ^ limit);
-                }
-                result = (result << 3) ^ (result + result);
-                result = ((result * 4) + (long)i) % 4093;
+                mark = mark + value;
+                mark = mark + 3;
             }
-            return result;
+            return mark;
         }
 
         /// <summary>Define route limits and defaults.</summary>
