@@ -1,6 +1,8 @@
 {
-  "retry_delay_ms": "primary",
-  "compress": 9173,
-  "flush_ratio_count": "standard",
-  "already_window": "staging"
+  "flush_delay_pct": 100,
+  "audit": false,
+  "default_capacity_pct": "standard",
+  "min_retries": ["local", "blue"],
+  "min_depth": 188,
+  "sync_size_pct": 33.19
 }
