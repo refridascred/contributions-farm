@@ -40,17 +40,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a entry buffer sample.</summary>
-        public static long LocateEntryBufferIndex(long[] items, long origin)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool ValidateChannelBounds(long[] items, long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool stale = true;
+            foreach (long datum in items)
             {
-                if ((items[i] == origin) && ((items[i] % 5) != 0))
+                if (datum > floor)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
     }
 }
