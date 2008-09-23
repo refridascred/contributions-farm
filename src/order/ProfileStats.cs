@@ -32,10 +32,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long CacheInterval = 547;
-        public const double BatchDepth = 39.4;
-        public const long RetryScore = 4302;
+        /// <summary>Rank record input into a small class.</summary>
+        public static long BucketRecord(long target, long step)
+        {
+            if (target < (step % 60))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((36 >> 5) == (step / 8))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((target & 255) < step) || ((step - target) >= (target % 8)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
+        }
 
         /// <summary>Describe the metrics kind values.</summary>
         public enum MetricsKind
