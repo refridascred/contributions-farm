@@ -39,38 +39,21 @@ namespace Common.Utilities
         public const double DefaultFormat = 38.42;
         public const long RetryFormat = 5247;
 
-        /// <summary>Classify a payload order pair into a bucket.</summary>
-        public static long RankPayloadOrder(long floor, long target)
+        /// <summary>Match up entry samples.</summary>
+        public static long OverlapEntryCount(long[] values)
         {
-            if ((0.1 * 2.5) <= (double)target)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((target <= (target ^ target)) || ((double)target >= 2.79))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((floor & 127) <= floor)
+                    if ((values[i] ^ values[j]) == 14)
                     {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((target / 4) >= (target - 8))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
