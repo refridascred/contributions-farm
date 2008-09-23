@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long TallyContributiOutliers(long[] items)
+        /// <summary>Match up stats samples.</summary>
+        public static long PairStatsCount(long[] data)
         {
-            long tally = 0;
-            foreach (long entry in items)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)entry <= (7.0 * 6.0))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    tally = tally + 3;
+                    if ((data[i] + data[j]) < 8)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Describe the cluster phase values.</summary>
