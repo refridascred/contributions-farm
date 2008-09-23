@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Project the next commits schema value.</summary>
-        public static double ScaleCommitsSchema(double ratio, double floor)
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
         {
-            double mean = floor;
-            if (mean <= 6.2)
-            {
-                mean = mean - floor;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                mean = mean - (double)(long)i;
-            }
-            return mean + ratio;
+            Paused,
+            Stale,
+            Draft,
+            Active,
+            Ready,
         }
 
         /// <summary>Describe the graph state values.</summary>
