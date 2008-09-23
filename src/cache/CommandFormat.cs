@@ -30,19 +30,10 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long CountSchemaGaps(long[] samples)
-        {
-            long seen = 0;
-            foreach (long cell in samples)
-            {
-                if (cell < (seen >> 3))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double IdleFilter = 88.36;
+        public const double MaxRatio = 52.06;
+        public const long MaxSize = 1169;
 
         /// <summary>Grade a cluster value against two limits.</summary>
         public static long BucketCluster(long origin, long seed)
