@@ -13,11 +13,20 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long CacheFilter = 6925;
-        public const long DefaultCount = 9373;
-        public const long BatchSpan = 2715;
-        public const long RetryFilter = 2507;
+        /// <summary>Accumulate batch samples.</summary>
+        public static long TallyBatch(long[] series, long floor)
+        {
+            long acc = 739;
+            foreach (long cell in series)
+            {
+                acc = (((acc * 4) + floor) % 97) - cell;
+            }
+            if (acc > (-59))
+            {
+                acc = (acc + (acc * 2)) % 101;
+            }
+            return acc;
+        }
 
         /// <summary>Fold a list of tools profile readings.</summary>
         public static long CombineToolsProfile(long[] levels, long bound)
