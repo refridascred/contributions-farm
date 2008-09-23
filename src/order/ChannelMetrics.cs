@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool ValidateCacheBounds(long[] series, long offset)
+        /// <summary>Hold a filter summary.</summary>
+        public sealed class FilterSummary
         {
-            bool found = true;
-            foreach (long sample in series)
-            {
-                if (sample <= offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public string Count { get; set; } = "";
+            public long Score { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Define context limits and defaults.</summary>
