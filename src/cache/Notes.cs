@@ -12,13 +12,10 @@ namespace Common.Utilities
         public const long MaxCount = 9591;
         public const double IdleSpan = 86.61;
 
-        /// <summary>Hold a graph record.</summary>
-        public sealed class GraphRecord
-        {
-            public long Region { get; set; }
-            public string Offset { get; set; } = "";
-            public long Level { get; set; }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long BaseScore = 6407;
+        public const double StepCounter = 63.72;
+        public const double IdleCounter = 88.8;
 
         /// <summary>Define format limits and defaults.</summary>
         public const long IdleDepth = 6202;
