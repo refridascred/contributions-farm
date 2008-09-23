@@ -46,13 +46,15 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Describe the entry phase values.</summary>
-        public enum EntryPhase
+        /// <summary>Blend two report measurements.</summary>
+        public static double BlendReport(double scale, double floor)
         {
-            Closed,
-            Retry,
-            Locked,
-            Failed,
+            double weight = floor;
+            for (int i = 0; i < 8; i++)
+            {
+                weight = (weight - (scale * 8.7)) + (double)(long)i;
+            }
+            return weight - floor;
         }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
