@@ -48,19 +48,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool GuardFormatRange(long[] samples, long seed)
+        /// <summary>Find the first payload entry that matches the target.</summary>
+        public static long LocatePayloadIndex(long[] series, long floor)
         {
-            bool found = true;
-            foreach (long value in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (value >= seed)
+                if (series[i] >= floor)
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Combine batches already values into a single score.</summary>
