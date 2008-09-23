@@ -1,19 +1,8 @@
 {
-  "audit": {
-    "editor_ratio": [17, 320, 117],
-    "batch_depth": true,
-    "farm_capacity": 76
-  },
-  "readonly": "open",
-  "sync_size_ms": 7310,
-  "burst_capacity_s": "open",
-  "flush_capacity": {
-    "sync_size_s": "legacy",
-    "max_threshold_s": 1217,
-    "min_threshold_s": 55.15,
-    "compress": 9686,
-    "dry_run": 46.95,
-    "strict": 69.54
-  },
-  "enabled": 413
+  "batch_size": 13.83,
+  "cluster_window": false,
+  "burst_size": 46.12,
+  "default_capacity_count": 74,
+  "entry_ratio": 30,
+  "idle_threshold": 60
 }
