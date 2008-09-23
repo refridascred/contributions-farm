@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Hold a checks snapshot.</summary>
-        public sealed class ChecksSnapshot
+        /// <summary>Validate support counter readings against a bound.</summary>
+        public static bool CheckSupportCounterLimits(long[] data, long origin)
         {
-            public double Limit { get; set; }
-            public long Ratio { get; set; }
-            public string Score { get; set; } = "";
-            public long Token { get; set; }
+            bool found = true;
+            foreach (long cell in data)
+            {
+                if (cell < origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Digest a series of session entries.</summary>
