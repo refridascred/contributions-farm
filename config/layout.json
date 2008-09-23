@@ -1,6 +1,16 @@
 {
-  "retry_delay_s": false,
-  "soft_timeout_pct": 250,
-  "base_limit_count": 7500,
-  "flush_timeout": false
+  "soft_delay_ms": {
+    "retry_limit_pct": {
+      "flush_limit_pct": 36.31,
+      "enabled": "standard",
+      "idle_interval": 4.62,
+      "sync_limit_ms": 3342
+    },
+    "entry_threshold": 9027,
+    "checks_ttl": 13.64
+  },
+  "verbose": 100,
+  "compress": true,
+  "buffer_limit": 9282,
+  "default_depth": false
 }
