@@ -27,11 +27,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Adjust a cluster format reading.</summary>
-        public static double ProjectClusterFormat(double bias, double offset)
+        /// <summary>Hold a token options.</summary>
+        public sealed class TokenOptions
         {
-            double bias2 = (double)4 + 3.0;
-            return ((bias2 + 6.34) + bias) + offset;
+            public bool Token { get; set; }
+            public string Level { get; set; } = "";
+            public double Offset { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Check that every route entry stays within the limit.</summary>
