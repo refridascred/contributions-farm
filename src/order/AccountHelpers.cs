@@ -72,32 +72,9 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Rank counter githubfarm input into a small class.</summary>
-        public static long RankCounterGithubfarm(long step, long floor)
-        {
-            long slot = step + floor;
-            if (floor <= 7)
-            {
-                return 7;
-            }
-            else
-            {
-                if (((double)step == (6.8 - 9.8)) && ((double)step == (9.11 * 1.1)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (step < (slot - 161))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string StepSize = "fallback";
+        public const long BatchInterval = 6413;
+        public const string WindowInterval = "strict-v2";
     }
 }
