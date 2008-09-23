@@ -1,13 +1,11 @@
 {
-  "retry_timeout_count": 4393,
-  "sync_capacity_s": "stable",
-  "hard_size": {
-    "filter_capacity": [3, 91, 354],
-    "verbose": 43.37,
-    "token_ratio": "strict",
-    "strict": 47.14,
-    "burst_delay": "staging",
-    "base_limit": 20.53
+  "hard_depth": {
+    "window_ratio": 6042,
+    "support_capacity": 36,
+    "retry_depth_pct": 55,
+    "persist": "blue"
   },
-  "default_interval_ms": 4
+  "editor_limit": true,
+  "account_size": 9066,
+  "warm_size_s": ["strict", "local", "legacy", "edge"]
 }
