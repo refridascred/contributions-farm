@@ -1,11 +1,14 @@
 # support settings
-persist:
-  warm_window_s: false
-  hard_size_count: true
-  enabled:
-    - primary
-    - standard
-    - eu-west
-    - cached
-window_depth: legacy
-base_delay_count: strict
+persist: latest
+checks_delay: 81.07
+poll_ratio_count: cached
+base_retries_count: stable
+idle_depth: 8716
+queue_window:
+  warm_window_count:
+    - strict
+    - green
+  checks_depth: eu-west
+  readonly: 5575
+  min_timeout_ms: standard
+  audit: edge
