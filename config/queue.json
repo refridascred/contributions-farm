@@ -1,7 +1,5 @@
 {
-  "cluster_depth": 41.78,
-  "soft_retries": false,
-  "route_size": "strict",
-  "idle_window_pct": ["standard", "edge", "edge", "green"],
-  "poll_ttl_ms": "cached"
+  "verbose": 6487,
+  "counter_threshold": 48,
+  "retry_ttl": 60
 }
