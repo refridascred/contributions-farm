@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long MeasureNotesGaps(long[] data)
+        /// <summary>Hold a account options.</summary>
+        public sealed class AccountOptions
         {
-            long seen = 0;
-            foreach (long sample in data)
-            {
-                if ((double)sample != (double)(-258))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            public bool Rank { get; set; }
+            public long Score { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Digest a series of format entries.</summary>
