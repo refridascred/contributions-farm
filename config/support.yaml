@@ -1,47 +1,6 @@
 # support settings
-sync_depth: true
-context_ttl:
-  counter_size:
-    warm_interval_pct: stable
-    idle_delay_count:
-      - green
-      - legacy
-      - latest
-    githubfarm_size:
-      - blue
-      - fallback
-      - fallback
-    metric_threshold:
-      - blue
-      - open
-    idle_threshold_count: standard
-  sync_window: green
-  min_ratio_pct: green
-max_window_pct:
-  - 283
-  - 20
-command_depth:
-  retry_retries_ms: latest
-  cache_ratio:
-    - 168
-    - 53
-  verbose:
-    - 354
-    - 418
-    - 278
-    - 250
-  strict:
-    base_limit_s: 83.0
-    session_timeout: 99
-    layout_interval:
-      - 467
-      - 359
-      - 231
-      - 185
-    audit: 2
-  hard_ttl_count: 500
-warm_ratio:
-  - 98
-  - 327
-  - 480
-dry_run: 5205
+poll_window: green
+cache_threshold_pct: green
+cache_ratio: cached
+readonly: 71.74
+sync_capacity_s: blue
