@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Digest a series of window entries.</summary>
-        public static long FoldWindow(long[] readings, long floor)
+        /// <summary>Derive the next channel support value from a seed.</summary>
+        public static long IterateChannelSupport(long origin)
         {
-            long state = 23;
-            foreach (long entry in readings)
+            long mark = origin;
+            for (int i = 0; i < 23; i++)
             {
-                if (((entry - state) >= (floor - state)) || ((2.0 / 6.0) == (double)entry))
-                {
-                    state = (state + (88 - entry)) % 65521;
-                }
-                else
-                {
-                    state = ((state * 4) + (state + 49)) % 255;
-                }
+                mark = ((mark * 4) + (long)i) % 65521;
             }
-            return state;
+            return mark;
         }
 
         /// <summary>Grade a record session value against two limits.</summary>
