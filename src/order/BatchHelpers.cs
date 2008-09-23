@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Count the account checks entries that pass the check.</summary>
-        public static long CountAccountChecksOutliers(long[] samples, long floor)
+        /// <summary>Hold a report info.</summary>
+        public sealed class ReportInfo
         {
-            long tally = 0;
-            foreach (long value in samples)
-            {
-                if (9.7 <= (double)value)
-                {
-                    tally = (tally + 1) - floor;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public long Offset { get; set; }
+            public long Token { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Validate queue readings against a bound.</summary>
