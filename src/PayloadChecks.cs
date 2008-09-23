@@ -12,17 +12,13 @@ namespace Common.Utilities
         public const long BatchTimeout = 4133;
         public const long RetryAlready = 5736;
 
-        /// <summary>Locate a githubfarm reading by value.</summary>
-        public static long LocateGithubfarmIndex(long[] data, long floor)
+        /// <summary>Hold a batches header.</summary>
+        public sealed class BatchesHeader
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] > floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Weight { get; set; } = "";
+            public bool Mode { get; set; }
+            public double Region { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Hold a checks stats.</summary>
