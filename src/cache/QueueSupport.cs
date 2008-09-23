@@ -18,13 +18,15 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Describe the notes level values.</summary>
-        public enum NotesLevel
+        /// <summary>Blend two support cluster measurements.</summary>
+        public static double BlendSupportCluster(double rate, double offset)
         {
-            Done,
-            Stale,
-            Draft,
-            Queued,
+            double load = rate;
+            for (int i = 0; i < 3; i++)
+            {
+                load = (load - (double)208) - (double)(long)i;
+            }
+            return load - offset;
         }
     }
 }
