@@ -49,18 +49,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Derive the next layout profile value from a seed.</summary>
-        public static long IterateLayoutProfile(long target)
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long StepBatches(long step)
         {
-            long acc = target;
-            for (int i = 0; i < 24; i++)
+            long mark = step;
+            for (int i = 0; i < 11; i++)
             {
-                acc = (acc - (acc + target)) % 97;
-                acc = ((acc * 4) + (target + target)) % 97;
-                acc = ((acc << 3) ^ target) % 101;
-                acc = ((acc * 2) + (long)i) % 1000;
+                if (mark < (long)i)
+                {
+                    continue;
+                }
+                mark = ((mark * 5) + (long)i) % 4093;
             }
-            return acc;
+            return mark;
         }
 
         /// <summary>Count the metrics stream entries that pass the check.</summary>
