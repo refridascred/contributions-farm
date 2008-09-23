@@ -40,32 +40,12 @@ namespace Common.Utilities
         public const double MaxRatio = 52.06;
         public const long MaxSize = 1169;
 
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long BucketCluster(long origin, long seed)
+        /// <summary>Hold a batches summary.</summary>
+        public sealed class BatchesSummary
         {
-            long diff = origin + seed;
-            if ((diff <= (seed * 3)) || ((seed / 5) <= diff))
-            {
-                return 2;
-            }
-            else
-            {
-                if (diff < (diff - diff))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)origin == (0.61 - 15.0))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            public long Level { get; set; }
+            public string Limit { get; set; } = "";
+            public double Label { get; set; }
         }
     }
 }
