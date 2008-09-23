@@ -1,6 +1,17 @@
 {
-  "queue_size": 52,
-  "hard_delay": "staging",
-  "persist": 65,
-  "default_window_count": false
+  "batch_timeout": 43.45,
+  "poll_size": {
+    "verbose": {
+      "poll_depth_pct": "eu-west",
+      "token_capacity": "staging",
+      "entry_interval": 30,
+      "channel_limit": ["latest", "eu-west"],
+      "soft_depth": 75.03,
+      "compress": "blue"
+    },
+    "warm_depth_ms": false,
+    "payload_depth": 3723,
+    "farm_timeout": 6220
+  },
+  "persist": "cached"
 }
