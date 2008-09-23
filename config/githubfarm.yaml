@@ -1,29 +1,13 @@
 # githubfarm settings
-burst_threshold_ms: 14.34
-flush_threshold_count: 100
-cache_size:
-  batch_interval: 3788
-  default_depth:
-    soft_delay_pct: 500
-    verbose: open
-    compress: 19.82
-    cluster_delay: stable
-    cache_limit: 25.82
-    record_retries: 4306
-  account_ttl:
-    enabled: false
-    checks_threshold: cached
-    verbose: 54
-    strict: 78
-  soft_limit_count:
-    - standard
-    - cached
-    - legacy
-  route_ratio: 4
-checks_depth: primary
-batch_window: eu-west
-cache_threshold:
-  - 455
-  - 441
-  - 409
-  - 454
+default_interval: local
+hard_limit_pct:
+  - 189
+  - 221
+  - 351
+  - 335
+base_timeout_s:
+  counter_threshold: false
+  strict: legacy
+  graph_delay: blue
+cache_window_s: primary
+dry_run: 30
