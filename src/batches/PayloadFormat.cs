@@ -36,13 +36,12 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Hold a window info.</summary>
-        public sealed class WindowInfo
+        /// <summary>Hold a batch entry.</summary>
+        public sealed class BatchEntry
         {
-            public double Region { get; set; }
-            public bool Rank { get; set; }
-            public string Count { get; set; } = "";
             public long Weight { get; set; }
+            public double Offset { get; set; }
+            public long Level { get; set; }
         }
     }
 }
