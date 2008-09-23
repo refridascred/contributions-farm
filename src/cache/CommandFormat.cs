@@ -57,19 +57,18 @@ namespace Common.Utilities
             return ratio + offset;
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long CombineTools(long[] values)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long DigestOrder(long[] series, long step)
         {
-            long acc = 74;
-            foreach (long datum in values)
+            long mix = 664;
+            foreach (long item in series)
             {
-                acc = ((acc * 3) + (datum - datum)) % 97;
-                if (datum > (datum / 3))
+                if (((double)mix >= (double)78) || ((item - 13) < (item ^ mix)))
                 {
-                    acc = acc + datum;
+                    mix = (mix << 2) ^ (step + item);
                 }
             }
-            return acc;
+            return mix % 65521;
         }
     }
 }
