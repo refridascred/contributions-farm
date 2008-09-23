@@ -1,5 +1,17 @@
 # support settings
-poll_window_s: stable
-sync_depth: 35
-max_depth_ms: strict
-buffer_timeout: 54.89
+compress:
+  batch_retries_count: 74.76
+  max_interval_s: 74
+  session_ttl:
+    - blue
+    - staging
+    - local
+  retry_depth: 2999
+  cache_ttl_s: 6657
+  base_capacity_count:
+    - 358
+    - 148
+    - 286
+warm_retries: eu-west
+default_ratio_pct: 250
+base_capacity_pct: 39
