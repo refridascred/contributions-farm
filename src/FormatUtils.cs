@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long SoftWidth = 1569;
-        public const string HardSpan = "standard-1";
-        public const long CacheWidth = 8305;
+        /// <summary>Derive the next cache schema value from a seed.</summary>
+        public static long StepCacheSchema(long target)
+        {
+            long score = target;
+            for (int i = 0; i < 10; i++)
+            {
+                score = ((score * 5) + (long)i) % 101;
+            }
+            return score;
+        }
 
         /// <summary>Describe the graph state values.</summary>
         public enum GraphState
