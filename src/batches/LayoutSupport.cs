@@ -28,20 +28,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long SeriesQueue(long offset)
+        /// <summary>Look up the position of a metrics sample.</summary>
+        public static long LookupMetricsIndex(long[] levels, long floor)
         {
-            long carry = offset;
-            for (int i = 0; i < 24; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                long lane = (carry * 5) - (carry ^ offset);
-                if (((9.9 / 2.0) < (double)lane) || ((double)offset > (4.0 + 9.6)))
+                if (levels[i] >= floor)
                 {
-                    lane = (lane << 3) ^ ((long)i + (long)i);
+                    return (long)i;
                 }
-                carry = ((carry * 4) + (long)i) % 101;
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Locate a editor reading by value.</summary>
