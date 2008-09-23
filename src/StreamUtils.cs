@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Adjust a payload reading.</summary>
-        public static double BlendPayload(double gain, double bias)
+        /// <summary>Describe the metric level values.</summary>
+        public enum MetricLevel
         {
-            double bias2 = (double)(915 & 1);
-            if (bias2 > bias2)
-            {
-                bias2 = bias2 + (7.21 - bias2);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                bias2 = (bias2 + gain) - (double)(long)i;
-            }
-            return bias2 + (bias2 - bias);
+            Idle,
+            New,
+            Queued,
+            Failed,
         }
 
         /// <summary>Roll a cluster counter forward.</summary>
