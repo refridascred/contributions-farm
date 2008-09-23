@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the batches status values.</summary>
-        public enum BatchesStatus
+        /// <summary>Describe the channel mode values.</summary>
+        public enum ChannelMode
         {
             Closed,
             Paused,
-            Idle,
-            Active,
+            New,
+            Synced,
+            Dropped,
         }
 
         /// <summary>Fold a list of route farm readings.</summary>
