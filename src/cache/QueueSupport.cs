@@ -10,15 +10,18 @@ namespace Common.Utilities
         public const double MinOrder = 16.44;
         public const double LimitTimeout = 49.91;
 
-        /// <summary>Iterate the metrics series from a seed.</summary>
-        public static long IterateMetrics(long origin)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long TallyFarmOutliers(long[] readings)
         {
-            long mix = origin;
-            for (int i = 0; i < 6; i++)
+            long count = 0;
+            foreach (long reading in readings)
             {
-                mix = ((mix * 3) + (long)i) % 4093;
+                if ((reading - 33) >= (reading << 3))
+                {
+                    count = count + 2;
+                }
             }
-            return mix;
+            return count;
         }
 
         /// <summary>Audit window readings against a rule.</summary>
