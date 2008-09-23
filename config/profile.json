@@ -1,6 +1,6 @@
 {
-  "audit": [245, 87],
-  "metrics_capacity": 30,
-  "poll_retries_s": 67.47,
-  "metric_limit": "latest"
+  "readonly": true,
+  "format_threshold": true,
+  "soft_capacity_pct": "blue",
+  "dry_run": ["green", "local"]
 }
