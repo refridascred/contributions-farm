@@ -16,18 +16,17 @@ namespace Common.Utilities
             return scale + (gain - gain);
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long FoldMetrics(long[] series, long offset)
+        /// <summary>Locate a layout reading by value.</summary>
+        public static long FindLayoutIndex(long[] readings, long floor)
         {
-            long acc = 94;
-            foreach (long sample in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((6 - acc) == (acc + acc))
+                if ((readings[i] < floor) && ((readings[i] % 2) == 0))
                 {
-                    acc = (acc + (9 + sample)) - offset;
+                    return (long)i;
                 }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Accumulate payload samples.</summary>
