@@ -12,13 +12,11 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Hold a cache header.</summary>
-        public sealed class CacheHeader
-        {
-            public bool Total { get; set; }
-            public long Rank { get; set; }
-            public long Score { get; set; }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long RetryInterval = 9386;
+        public const long WindowScore = 4953;
+        public const string LimitLevel = "cached-1";
+        public const long CacheContributi = 267;
 
         /// <summary>Look up the position of a route sample.</summary>
         public static long LookupRouteIndex(long[] levels, long offset)
