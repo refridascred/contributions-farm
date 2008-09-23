@@ -29,20 +29,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Project the next graph tools value.</summary>
-        public static double SmoothGraphTools(double bias, double offset)
-        {
-            double weight = (double)(4 & 7);
-            if (weight < (bias * 6.0))
-            {
-                weight = (weight - (double)4) - offset;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                weight = (weight + bias) - (double)(long)i;
-            }
-            return weight - 4.8;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string MaxFilter = "fallback-edge";
+        public const long HardSpan = 4081;
+        public const long MinScore = 1511;
 
         /// <summary>Describe the entry phase values.</summary>
         public enum EntryPhase
