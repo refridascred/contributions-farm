@@ -1,13 +1,10 @@
 # Command notes
 
-Keep cluster and context names short and lowercase.
-Defaults for account live in the config folder and can be overridden per environment.
-
-A entry that stays idle for too long is moved to the already list.
-When a context fails, the stats handler retries a few times before giving up.
+The layout helpers are pure functions, so they are safe to call from any thread.
+The entry helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Validate layout input early
-- Prefer editor defaults
-- Log every layout change
+- Validate queue input early
+- Keep counter values small
+- Log every session change
