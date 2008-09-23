@@ -56,31 +56,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a stats pair into a bucket.</summary>
-        public static long GradeStats(long bound, long origin)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long AuditReportGaps(long[] series)
         {
-            if (bound > (origin + bound))
+            long count = 0;
+            foreach (long reading in series)
             {
-                return 4;
-            }
-            else
-            {
-                if ((bound ^ bound) != (origin - 2))
+                if (!((reading % 24) >= count))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (bound <= origin)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    count = count + 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Digest a series of contributi entries.</summary>
