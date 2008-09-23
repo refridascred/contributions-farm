@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Validate githubfarm checks readings against a bound.</summary>
-        public static bool ValidateGithubfarmChecksLimits(long[] series, long bound)
+        /// <summary>Hold a queue summary.</summary>
+        public sealed class QueueSummary
         {
-            bool ready = true;
-            foreach (long item in series)
-            {
-                if (item < bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public string Count { get; set; } = "";
+            public string Mode { get; set; } = "";
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Grade a context value against two limits.</summary>
