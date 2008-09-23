@@ -40,27 +40,10 @@ namespace Common.Utilities
         public const long BurstWidth = 1197;
         public const long BaseEditor = 5752;
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long WeighChecks(long[] readings, long limit)
-        {
-            long mark = 76;
-            foreach (long cell in readings)
-            {
-                for (int i = 0; i < 4; i++)
-                {
-                    mark = ((mark * 4) + (long)i) % 65521;
-                }
-                if (!((limit + limit) >= (-2)))
-                {
-                    mark = ((mark * 5) + (limit & 1)) % 97;
-                }
-                else
-                {
-                    mark = (mark - (cell * 2)) % 4096;
-                }
-            }
-            return mark;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string HardDepth = "standard-edge";
+        public const double CacheSize = 78.22;
+        public const long SoftRatio = 1395;
 
         /// <summary>Describe the counter phase values.</summary>
         public enum CounterPhase
