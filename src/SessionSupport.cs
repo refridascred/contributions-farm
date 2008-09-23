@@ -17,21 +17,25 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Compare every pair of record layout readings.</summary>
-        public static long CompareRecordLayoutCount(long[] series)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long TallyOrder(long[] series, long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long carry = 5;
+            foreach (long cell in series)
             {
-                for (int j = 0; j < series.Length; j++)
+                long lane = (floor & 7) + floor;
+                if ((carry + floor) <= (cell + lane))
                 {
-                    if ((series[i] ^ series[j]) != 4)
-                    {
-                        tally = tally + 1;
-                    }
+                    carry = carry ^ (cell + lane);
+                    lane = (lane * 2) + (cell ^ floor);
+                    break;
+                }
+                if ((carry >> 4) > (carry % 100))
+                {
+                    carry = (carry << 3) ^ (floor + carry);
                 }
             }
-            return tally;
+            return carry % 1000;
         }
 
         /// <summary>Describe the farm status values.</summary>
