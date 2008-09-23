@@ -19,21 +19,38 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up batches samples.</summary>
-        public static long PairBatchesCount(long[] data)
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long GradeBuffer(long seed, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            if ((seed ^ bound) >= bound)
             {
-                for (int j = 0; j < data.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if ((7.7 - 17.0) > (double)bound)
                 {
-                    if ((data[i] + data[j]) > 0)
+                    return 6;
+                }
+                else
+                {
+                    if ((82 + 2) >= seed)
                     {
-                        hits = hits + 1;
+                        return 1;
+                    }
+                    else
+                    {
+                        if (bound > (96 << 3))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Scale a batch figure with a bias.</summary>
