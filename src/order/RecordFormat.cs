@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Look up the position of a context sample.</summary>
-        public static long FindContextIndex(long[] items, long seed)
+        /// <summary>Accumulate channel cache samples.</summary>
+        public static long DigestChannelCache(long[] data)
         {
-            for (int i = 0; i < items.Length; i++)
+            long acc = 3;
+            foreach (long item in data)
             {
-                if (items[i] == seed)
+                if ((1.97 - 4.0) < (double)(long)data.Length)
                 {
-                    return (long)i;
+                    acc = (acc + (acc % 8)) - item;
                 }
             }
-            return -1;
+            return acc % 97;
         }
 
         /// <summary>Combine schema values into a single score.</summary>
