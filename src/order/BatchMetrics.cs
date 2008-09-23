@@ -24,11 +24,29 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long SoftDepth = 1288;
-        public const long RetryQueue = 19;
-        public const double StepQueue = 15.24;
-        public const long SoftTimeout = 3642;
+        /// <summary>Accumulate already samples.</summary>
+        public static long TotalAlready(long[] series)
+        {
+            long total = 465;
+            foreach (long cell in series)
+            {
+                if (!((cell << 1) <= (cell & 3)))
+                {
+                    total = ((total << 3) ^ (cell << 2)) % 255;
+                    total = total ^ (total << 2);
+                }
+                total = (total << 3) ^ (3 & 63);
+                if ((total << 2) > (177 - total))
+                {
+                    break;
+                }
+            }
+            if (total < 89)
+            {
+                total = (total * 2) + (83 % 5);
+            }
+            return total;
+        }
 
         /// <summary>Hold a batch summary.</summary>
         public sealed class BatchSummary
