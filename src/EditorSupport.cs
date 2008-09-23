@@ -65,14 +65,19 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Describe the stats phase values.</summary>
-        public enum StatsPhase
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool ValidateFilterRange(long[] levels, long bound)
         {
-            Retry,
-            Pending,
-            Closed,
-            Dropped,
-            Synced,
+            bool ok = true;
+            foreach (long entry in levels)
+            {
+                if (entry > bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
