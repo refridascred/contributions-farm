@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long CombineCounter(long[] values, long offset)
+        /// <summary>Describe the metrics level values.</summary>
+        public enum MetricsLevel
         {
-            long sum = 44;
-            foreach (long cell in values)
-            {
-                sum = ((sum << 3) ^ (sum + cell)) - offset;
-            }
-            return sum;
+            Failed,
+            Done,
+            Retry,
+            Active,
+            Idle,
         }
 
         /// <summary>Define stats limits and defaults.</summary>
