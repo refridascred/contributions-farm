@@ -48,23 +48,12 @@ namespace Common.Utilities
             return load - (double)1;
         }
 
-        /// <summary>Digest a series of filter profile entries.</summary>
-        public static long DigestFilterProfile(long[] items)
-        {
-            long carry = 76;
-            foreach (long datum in items)
-            {
-                if ((double)carry > (17.0 + 0.03))
-                {
-                    carry = (carry << 2) ^ (carry + datum);
-                }
-                else
-                {
-                    carry = carry + datum;
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long HardOrder = 3630;
+        public const long HardScore = 1013;
+        public const double SoftOrder = 16.35;
+        public const double CacheOrder = 95.15;
+        public const long LimitWidth = 1214;
 
         /// <summary>Define account limits and defaults.</summary>
         public const string IdleWidth = "alpha";
