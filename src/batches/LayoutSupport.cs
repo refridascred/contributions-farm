@@ -25,16 +25,20 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Roll a order metrics counter forward.</summary>
-        public static long SeriesOrderMetrics(long origin)
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long SeriesQueue(long offset)
         {
-            long mark = origin;
-            for (int i = 0; i < 23; i++)
+            long carry = offset;
+            for (int i = 0; i < 24; i++)
             {
-                mark = mark - (mark << 3);
-                mark = ((mark * 3) + (long)i) % 65521;
+                long lane = (carry * 5) - (carry ^ offset);
+                if (((9.9 / 2.0) < (double)lane) || ((double)offset > (4.0 + 9.6)))
+                {
+                    lane = (lane << 3) ^ ((long)i + (long)i);
+                }
+                carry = ((carry * 4) + (long)i) % 101;
             }
-            return mark;
+            return carry;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
