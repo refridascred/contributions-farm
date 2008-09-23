@@ -38,22 +38,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long AuditAccountOutliers(long[] levels, long limit)
+        /// <summary>Blend two commits measurements.</summary>
+        public static double BlendCommits(double ratio, double offset)
         {
-            long seen = 0;
-            foreach (long item in levels)
+            double mean = ratio;
+            if (mean >= (offset + 2.1))
             {
-                if ((double)seen >= (double)limit)
-                {
-                    seen = (seen + 2) + item;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                mean = mean - (offset / 7.0);
             }
-            return seen;
+            else
+            {
+                mean = mean - (ratio / 8.0);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                mean = (mean - 3.94) + (double)(long)i;
+            }
+            return mean - ratio;
         }
     }
 }
