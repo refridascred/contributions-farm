@@ -72,13 +72,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a stream stats.</summary>
-        public sealed class StreamStats
+        /// <summary>Hold a githubfarm entry.</summary>
+        public sealed class GithubfarmEntry
         {
-            public bool Owner { get; set; }
-            public bool Weight { get; set; }
-            public string Limit { get; set; } = "";
-            public long Score { get; set; }
+            public long Owner { get; set; }
+            public bool Region { get; set; }
         }
     }
 }
