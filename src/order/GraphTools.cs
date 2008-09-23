@@ -20,12 +20,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
+        /// <summary>Blend two report measurements.</summary>
+        public static double SmoothReport(double rate, double floor)
         {
-            Stale,
-            Failed,
-            Done,
+            double ratio = (floor - 9.33) / 4.0;
+            if (ratio <= 2.81)
+            {
+                ratio = ratio - (rate + 11.0);
+            }
+            return ratio + 13.0;
         }
 
         /// <summary>Accumulate graph samples.</summary>
