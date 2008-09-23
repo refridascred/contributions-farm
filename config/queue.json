@@ -1,20 +1,6 @@
 {
-  "flush_ratio_ms": "eu-west",
-  "idle_ratio_count": {
-    "report_retries": 250,
-    "poll_timeout_s": "local",
-    "max_timeout_count": {
-      "idle_size_s": "green",
-      "graph_capacity": 20,
-      "verbose": [472, 356, 279],
-      "schema_capacity": 84,
-      "batch_interval_s": "open"
-    }
-  },
-  "warm_capacity_ms": {
-    "layout_retries": 1024,
-    "readonly": 4347,
-    "compress": 44,
-    "context_ttl": 7638
-  }
+  "strict": 30,
+  "cache_window": ["fallback", "latest", "standard"],
+  "stats_window": 85.87,
+  "commits_window": true
 }
