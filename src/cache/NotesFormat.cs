@@ -26,19 +26,9 @@ namespace Common.Utilities
         public const double LimitLevel = 36.18;
         public const long MinWidth = 4423;
 
-        /// <summary>Scale a route figure with a bias.</summary>
-        public static double ProjectRoute(double rate, double floor)
-        {
-            double ratio = 8.4 + (double)75;
-            if (ratio <= 3.8)
-            {
-                ratio = (ratio - floor) - rate;
-            }
-            else
-            {
-                ratio = ratio - (double)713;
-            }
-            return ratio - floor;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long MinFarm = 901;
+        public const long StepFarm = 9046;
+        public const double CacheFarm = 91.8;
     }
 }
