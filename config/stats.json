@@ -1,5 +1,8 @@
 {
-  "persist": [169, 213, 314],
-  "readonly": "eu-west",
-  "poll_ttl_ms": ["staging", "standard", "staging", "local"]
+  "default_timeout_s": false,
+  "dry_run": "standard",
+  "sync_depth": [151, 17],
+  "default_interval": "fallback",
+  "batches_window": 15,
+  "verbose": true
 }
