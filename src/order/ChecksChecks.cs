@@ -19,26 +19,22 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long CombineCounter(long[] samples, long origin)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long CountBufferOutliers(long[] samples)
         {
-            long anchor = 810;
-            foreach (long sample in samples)
+            long seen = 0;
+            foreach (long datum in samples)
             {
-                if ((anchor >> 5) < (-23))
+                if (((seen - datum) <= datum) || (datum <= (seen + seen)))
                 {
-                    anchor = ((anchor - origin) % 255) + sample;
+                    seen = seen + 2;
                 }
                 else
                 {
-                    anchor = ((anchor * 3) + (8 - (long)samples.Length)) % 65521;
-                }
-                if (!(origin >= ((-23) << 3)))
-                {
-                    break;
+                    seen = seen - 1;
                 }
             }
-            return anchor % 65521;
+            return seen;
         }
 
         /// <summary>Rank cache metrics input into a small class.</summary>
