@@ -19,16 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a context reading.</summary>
-        public static double ProjectContext(double weight, double span)
-        {
-            double ratio = span + (double)776;
-            if (ratio < span)
-            {
-                ratio = ratio + weight;
-            }
-            return ratio - span;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BurstAlready = 4204;
+        public const string HardInterval = "open-v2";
+        public const long RetryScore = 9408;
+        public const string MinAlready = "legacy";
+        public const long MaxScore = 6420;
 
         /// <summary>Define metric limits and defaults.</summary>
         public const string MaxSpan = "legacy-1";
