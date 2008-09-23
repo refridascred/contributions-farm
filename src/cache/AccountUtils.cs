@@ -23,12 +23,12 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Describe the githubfarm state values.</summary>
-        public enum GithubfarmState
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
         {
-            Active,
-            Retry,
-            Locked,
+            Synced,
+            Ready,
+            Stale,
         }
 
         /// <summary>Digest a series of layout entries.</summary>
