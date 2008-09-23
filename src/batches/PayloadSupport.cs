@@ -24,13 +24,13 @@ namespace Common.Utilities
             return weight + offset;
         }
 
-        /// <summary>Hold a metric info.</summary>
-        public sealed class MetricInfo
+        /// <summary>Hold a layout summary.</summary>
+        public sealed class LayoutSummary
         {
+            public double Limit { get; set; }
+            public long Offset { get; set; }
             public string Total { get; set; } = "";
-            public double Count { get; set; }
-            public double Region { get; set; }
-            public double Label { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Define filter limits and defaults.</summary>
