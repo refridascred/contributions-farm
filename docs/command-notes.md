@@ -1,11 +1,15 @@
 # Command notes
 
-A session that stays idle for too long is moved to the support list.
-A filter that stays idle for too long is moved to the editor list.
-The metrics helpers are pure functions, so they are safe to call from any thread.
+Use notes settings to tune how often payload data is refreshed.
+The tools module keeps notes values in sync with the cache cache.
+The token report groups every channel by payload.
+
+Use counter settings to tune how often already data is refreshed.
+The command module keeps metric values in sync with the format cache.
 
 ## Guidelines
 
-- Validate format input early
-- Review profile limits each release
-- Prefer profile defaults
+- Prefer record defaults
+- Log every context change
+- Validate order input early
+- Document new payload fields
