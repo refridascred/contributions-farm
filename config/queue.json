@@ -1,8 +1,12 @@
 {
-  "base_interval_ms": [269, 83, 189],
-  "notes_depth": 100,
-  "already_retries": "eu-west",
-  "buffer_delay": false,
-  "contributi_ratio": 250,
-  "audit": 4743
+  "enabled": [493, 364, 98, 200],
+  "flush_retries_count": 2108,
+  "stream_delay": "stable",
+  "max_capacity": "legacy",
+  "min_window_ms": {
+    "session_threshold": 60,
+    "command_ratio": [129, 414, 129, 40],
+    "soft_depth": 250,
+    "stream_capacity": 60
+  }
 }
