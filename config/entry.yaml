@@ -1,9 +1,21 @@
 # entry settings
-compress: cached
-readonly: 829
-strict:
-  - legacy
-  - open
-  - staging
-retry_depth_ms: eu-west
-min_depth_count: eu-west
+warm_interval_pct: 958
+filter_timeout: 2123
+profile_retries:
+  audit:
+    window_capacity: true
+    support_depth: local
+    hard_timeout_s: 100
+    poll_timeout_ms: staging
+    metrics_limit: false
+  min_threshold_count: 1111
+  sync_ttl: 1024
+  flush_retries_s:
+    metrics_ttl: 1024
+    retry_depth_count: false
+    base_size_s:
+      - 344
+      - 263
+      - 360
+  commits_depth: local
+  verbose: true
