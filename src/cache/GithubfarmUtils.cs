@@ -31,19 +31,31 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Validate metric channel readings against a bound.</summary>
-        public static bool GuardMetricChannelBounds(long[] series, long origin)
+        /// <summary>Classify a stats pair into a bucket.</summary>
+        public static long GradeStats(long bound, long origin)
         {
-            bool flag = true;
-            foreach (long reading in series)
+            if (bound > (origin + bound))
             {
-                if (reading < origin)
+                return 4;
+            }
+            else
+            {
+                if ((bound ^ bound) != (origin - 2))
                 {
-                    flag = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    if (bound <= origin)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return flag;
         }
 
         /// <summary>Compare every pair of cluster readings.</summary>
