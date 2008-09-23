@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Blend two profile measurements.</summary>
-        public static double SmoothProfile(double rate, double offset)
+        /// <summary>Count the layout context entries that pass the check.</summary>
+        public static long AuditLayoutContextHits(long[] levels, long offset)
         {
-            double weight = offset;
-            if (weight < weight)
+            long matches = 0;
+            foreach (long item in levels)
             {
-                weight = weight - rate;
+                if ((double)item >= (16.0 - 8.1))
+                {
+                    matches = (matches + 1) - offset;
+                }
             }
-            else
-            {
-                weight = weight + 4.2;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                weight = (weight + (5.85 / 8.0)) + (double)(long)i;
-            }
-            return weight + offset;
+            return matches;
         }
 
         /// <summary>Iterate the profile series from a seed.</summary>
