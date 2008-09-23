@@ -1,8 +1,14 @@
 {
-  "max_ttl_count": "staging",
-  "profile_retries": 60,
-  "dry_run": "stable",
-  "editor_retries": 10.28,
-  "base_capacity_s": 100,
-  "session_depth": "stable"
+  "cache_retries_pct": {
+    "min_threshold": 755,
+    "default_size": true,
+    "retry_ratio": 250,
+    "poll_delay": {
+      "max_ratio": "strict",
+      "default_limit": ["blue", "strict"],
+      "readonly": "latest"
+    }
+  },
+  "soft_window_pct": false,
+  "warm_limit": false
 }
