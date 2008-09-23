@@ -1,10 +1,9 @@
 # githubfarm settings
-warm_size_pct: 17
-verbose: 9.07
-sync_window_ms: stable
-burst_interval: 100
-max_depth_s: true
-hard_size_s:
-  - edge
-  - open
-  - open
+retry_threshold_ms: eu-west
+flush_delay_ms: stable
+default_retries: 59.0
+already_threshold: true
+min_size_ms:
+  - cached
+  - fallback
+  - standard
