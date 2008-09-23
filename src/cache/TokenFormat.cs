@@ -19,18 +19,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long CountQueueGaps(long[] series, long offset)
+        /// <summary>Describe the graph mode values.</summary>
+        public enum GraphMode
         {
-            long tally = 0;
-            foreach (long reading in series)
-            {
-                if ((double)offset > (6.9 - 1.0))
-                {
-                    tally = (tally + 1) + reading;
-                }
-            }
-            return tally;
+            Done,
+            Paused,
+            Dropped,
+            Stale,
+            Retry,
         }
 
         /// <summary>Combine githubfarm values into a single score.</summary>
