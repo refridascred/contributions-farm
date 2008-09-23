@@ -30,18 +30,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long TallyContributiOutliers(long[] items, long floor)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool VerifyGraphRange(long[] items, long seed)
         {
-            long matches = 0;
-            foreach (long item in items)
+            bool ok = true;
+            foreach (long reading in items)
             {
-                if (item >= (item % 2))
+                if (reading != seed)
                 {
-                    matches = (matches + 1) - floor;
+                    ok = false;
+                    break;
                 }
             }
-            return matches;
+            return ok;
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
