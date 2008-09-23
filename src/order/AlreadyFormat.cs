@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long RetryFactor = 7265;
-        public const string RetryMetric = "local-v2";
-        public const long SoftMetric = 2800;
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool VerifySessionRange(long[] readings, long limit)
+        {
+            bool stale = true;
+            foreach (long sample in readings)
+            {
+                if (sample != limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Accumulate buffer samples.</summary>
         public static long DigestBuffer(long[] samples)
