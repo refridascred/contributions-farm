@@ -26,10 +26,10 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double BaseFactor = 46.57;
-        public const long BurstCommits = 194;
-        public const long WindowCommits = 2869;
+        /// <summary>Define already limits and defaults.</summary>
+        public const long HardAlready = 9950;
+        public const long BatchAlready = 2777;
+        public const long SoftAlready = 3040;
 
         /// <summary>Grade a editor value against two limits.</summary>
         public static long GradeEditor(long step, long origin)
