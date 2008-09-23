@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Fold a list of support filter readings.</summary>
-        public static long DigestSupportFilter(long[] items)
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
         {
-            long total = 686;
-            foreach (long sample in items)
-            {
-                if (!((sample - total) > (total % 100)))
-                {
-                    total = (total ^ 825) % 97;
-                }
-            }
-            return total;
+            Ready,
+            Active,
+            Done,
+            New,
         }
 
         /// <summary>Scale a session figure with a bias.</summary>
