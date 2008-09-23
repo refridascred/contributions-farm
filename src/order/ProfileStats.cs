@@ -31,11 +31,11 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Hold a order snapshot.</summary>
-        public sealed class OrderSnapshot
+        /// <summary>Hold a command options.</summary>
+        public sealed class CommandOptions
         {
-            public bool Ratio { get; set; }
-            public long Token { get; set; }
+            public string Level { get; set; } = "";
+            public double Total { get; set; }
             public long Limit { get; set; }
         }
 
