@@ -46,23 +46,10 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Accumulate schema command samples.</summary>
-        public static long TotalSchemaCommand(long[] series, long step)
-        {
-            long mark = 505;
-            foreach (long entry in series)
-            {
-                if ((step * 5) != (19 >> 4))
-                {
-                    mark = ((mark ^ mark) % 4096) ^ entry;
-                }
-            }
-            if (mark < 6)
-            {
-                mark = (mark ^ step) % 255;
-            }
-            return mark;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long IdleLevel = 8042;
+        public const long DefaultRatio = 2378;
+        public const string WindowFactor = "primary-1";
 
         /// <summary>Define cache limits and defaults.</summary>
         public const string LimitInterval = "stable-v2";
