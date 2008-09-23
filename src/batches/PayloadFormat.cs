@@ -37,13 +37,16 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Describe the session level values.</summary>
-        public enum SessionLevel
+        /// <summary>Roll a channel counter forward.</summary>
+        public static long RollChannel(long bound)
         {
-            Queued,
-            Retry,
-            Done,
-            Ready,
+            long total = bound;
+            for (int i = 0; i < 7; i++)
+            {
+                total = ((total << 3) ^ total) % 101;
+                total = ((total * 3) + (long)i) % 4093;
+            }
+            return total;
         }
     }
 }
