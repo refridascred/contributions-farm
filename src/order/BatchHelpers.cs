@@ -12,19 +12,18 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool GuardQueueLimits(long[] data, long step)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long MeasureChecksHits(long[] values, long seed)
         {
-            bool found = true;
-            foreach (long datum in data)
+            long matches = 0;
+            foreach (long reading in values)
             {
-                if (datum <= step)
+                if (!((88 + reading) == (reading / 9)))
                 {
-                    found = false;
-                    break;
+                    matches = (matches + 2) - seed;
                 }
             }
-            return found;
+            return matches;
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
