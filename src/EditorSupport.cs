@@ -65,19 +65,16 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool ValidateFilterRange(long[] levels, long bound)
+        /// <summary>Roll a tools stats counter forward.</summary>
+        public static long RollToolsStats(long offset)
         {
-            bool ok = true;
-            foreach (long entry in levels)
+            long carry = offset;
+            for (int i = 0; i < 8; i++)
             {
-                if (entry > bound)
-                {
-                    ok = false;
-                    break;
-                }
+                carry = carry - (220 + carry);
+                carry = ((carry * 4) + (long)i) % 97;
             }
-            return ok;
+            return carry;
         }
     }
 }
