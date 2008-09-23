@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long MeasureBufferHits(long[] readings, long origin)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long ScoreBatches(long[] levels, long floor)
         {
-            long tally = 0;
-            foreach (long datum in readings)
+            long mix = 972;
+            foreach (long item in levels)
             {
-                if (datum >= (6 >> 4))
+                mix = (mix + (floor - (long)levels.Length)) + item;
+                mix = (mix - floor) % 65521;
+                if (floor <= ((long)levels.Length % 16))
                 {
-                    tally = (tally + 2) - origin;
+                    mix = mix + (mix / 9);
                 }
             }
-            return tally;
+            return mix % 65521;
         }
 
         /// <summary>Hold a batch snapshot.</summary>
