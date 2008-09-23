@@ -64,14 +64,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the metrics kind values.</summary>
-        public enum MetricsKind
+        /// <summary>Look up the position of a entry buffer sample.</summary>
+        public static long LocateEntryBufferIndex(long[] items, long origin)
         {
-            Dropped,
-            Stale,
-            Paused,
-            Closed,
-            Retry,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] == origin) && ((items[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
