@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long WindowMetric = 5808;
-        public const long MinDepth = 4800;
-        public const string BaseMetric = "alpha-1";
-        public const long RetryInterval = 3277;
-        public const double LimitMetric = 69.04;
+        /// <summary>Count context farm pairs that satisfy a relation.</summary>
+        public static long MatchContextFarmCount(long[] items)
+        {
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) > 6)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Count metrics pairs that satisfy a relation.</summary>
         public static long CompareMetricsCount(long[] data)
