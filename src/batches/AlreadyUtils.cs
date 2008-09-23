@@ -22,10 +22,20 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string LimitAccount = "open";
-        public const long DefaultAccount = 1693;
-        public const string MaxInterval = "cached-edge";
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long StepChecks(long step)
+        {
+            long anchor = step;
+            for (int i = 0; i < 12; i++)
+            {
+                for (int i2 = 0; i2 < 11; i2++)
+                {
+                    anchor = ((anchor - step) % 101) + (long)i2;
+                }
+                anchor = ((anchor * 2) + (long)i) % 1000;
+            }
+            return anchor;
+        }
 
         /// <summary>Digest a series of session entries.</summary>
         public static long DigestSession(long[] values, long seed)
