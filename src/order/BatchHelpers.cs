@@ -25,11 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a session stats.</summary>
-        public sealed class SessionStats
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long SeriesBatch(long origin)
         {
-            public string Mode { get; set; } = "";
-            public long Rank { get; set; }
+            long total = origin;
+            for (int i = 0; i < 6; i++)
+            {
+                if ((total * 4) >= (origin + total))
+                {
+                    total = total + (total & 255);
+                }
+                total = ((total * 4) + (long)i) % 4093;
+            }
+            return total;
         }
 
         /// <summary>Locate a channel reading by value.</summary>
