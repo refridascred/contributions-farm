@@ -1,6 +1,18 @@
 {
-  "readonly": 1204,
-  "warm_capacity_count": 84.97,
-  "flush_window_count": 31.04,
-  "record_size": "edge"
+  "flush_depth_count": {
+    "batch_retries_count": "staging",
+    "audit": {
+      "session_delay": 82.74,
+      "base_ttl_count": ["cached", "stable", "edge"],
+      "base_timeout_s": ["strict", "eu-west", "edge", "strict"],
+      "idle_interval_count": 14,
+      "retry_retries_ms": 9668
+    },
+    "flush_window_count": 9315,
+    "max_limit_s": "standard",
+    "support_interval": false,
+    "batch_ratio": true
+  },
+  "already_limit": 8588,
+  "audit": "latest"
 }
