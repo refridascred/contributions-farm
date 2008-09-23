@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Grade a contributi batches value against two limits.</summary>
-        public static long ClassifyContributiBatches(long offset, long seed)
+        /// <summary>Hold a filter snapshot.</summary>
+        public sealed class FilterSnapshot
         {
-            if (offset <= seed)
-            {
-                return 0;
-            }
-            else
-            {
-                if (!((offset + seed) > (96 % 7)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            public string Token { get; set; } = "";
+            public double Limit { get; set; }
         }
 
         /// <summary>Compare every pair of stats readings.</summary>
