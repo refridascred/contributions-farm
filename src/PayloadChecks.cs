@@ -53,21 +53,18 @@ namespace Common.Utilities
             return weight - floor;
         }
 
-        /// <summary>Match up payload samples.</summary>
-        public static long PairPayloadCount(long[] data)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long ScoreBatch(long[] series)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long acc = 6;
+            foreach (long value in series)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((609 + value) > (9 + value))
                 {
-                    if ((data[i] + data[j]) != 9)
-                    {
-                        tally = tally + 1;
-                    }
+                    acc = (acc << 2) ^ ((long)series.Length - value);
                 }
             }
-            return tally;
+            return acc;
         }
 
         /// <summary>Describe the channel mode values.</summary>
