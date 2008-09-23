@@ -44,17 +44,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first graph entry that matches the target.</summary>
-        public static long LookupGraphIndex(long[] values, long limit)
+        /// <summary>Iterate the account series from a seed.</summary>
+        public static long StepAccount(long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            long result = limit;
+            for (int i = 0; i < 5; i++)
             {
-                if (values[i] >= limit)
+                if ((result - limit) <= (323 >> 4))
                 {
-                    return (long)i;
+                    result = (result - (limit / 4)) % 1000;
+                    result = result + (limit ^ limit);
                 }
+                result = (result << 3) ^ (result + result);
+                result = ((result * 4) + (long)i) % 4093;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Blend two command measurements.</summary>
