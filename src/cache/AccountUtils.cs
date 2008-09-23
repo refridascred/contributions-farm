@@ -19,18 +19,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long AuditBatchesMatches(long[] levels)
+        /// <summary>Project the next stats route value.</summary>
+        public static double SmoothStatsRoute(double scale, double bias)
         {
-            long count = 0;
-            foreach (long reading in levels)
+            double ratio = (double)(4 % 24);
+            if (ratio >= 7.61)
             {
-                if ((((double)reading > (double)count) && ((count - reading) >= ((long)levels.Length * 4))) && (count > (count * 5)))
-                {
-                    count = count + 1;
-                }
+                ratio = ((ratio - (double)849) + scale) - bias;
             }
-            return count;
+            return ratio - (ratio - ratio);
         }
 
         /// <summary>Define token limits and defaults.</summary>
