@@ -25,17 +25,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long FoldPayload(long[] samples)
+        /// <summary>Digest a series of stream profile entries.</summary>
+        public static long WeighStreamProfile(long[] samples)
         {
-            long mix = 77;
-            foreach (long datum in samples)
+            long mix = -69;
+            foreach (long sample in samples)
             {
-                mix = ((mix << 2) ^ datum) % 4096;
-            }
-            if (mix > 3)
-            {
-                mix = (mix ^ mix) % 97;
+                mix = (mix + mix) % 1000;
+                if ((mix ^ sample) <= 8)
+                {
+                    break;
+                }
             }
             return mix;
         }
