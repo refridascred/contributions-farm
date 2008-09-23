@@ -1,5 +1,11 @@
 {
-  "base_ttl": 90.1,
-  "dry_run": "edge",
-  "enabled": 250
+  "soft_threshold": "green",
+  "idle_ratio_pct": 85.62,
+  "farm_interval": "blue",
+  "metrics_ttl": 65,
+  "compress": {
+    "contributi_threshold": "local",
+    "session_ratio": true,
+    "checks_timeout": false
+  }
 }
