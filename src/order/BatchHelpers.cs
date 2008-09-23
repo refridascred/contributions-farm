@@ -27,27 +27,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long DigestBuffer(long[] readings)
+        /// <summary>Describe the batch phase values.</summary>
+        public enum BatchPhase
         {
-            long mark = 28;
-            foreach (long entry in readings)
-            {
-                mark = (mark + (mark - entry)) % 65521;
-                if ((double)entry < (4.5 / 5.0))
-                {
-                    mark = (mark << 3) ^ (85 + mark);
-                }
-                else
-                {
-                    mark = (mark + (mark % 3)) % 4096;
-                }
-            }
-            if (mark < 77)
-            {
-                mark = (mark + (mark * 3)) % 4096;
-            }
-            return mark;
+            Ready,
+            Pending,
+            Idle,
+            Failed,
         }
     }
 }
