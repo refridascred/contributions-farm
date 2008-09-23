@@ -1,11 +1,10 @@
 # Command notes
 
 The channel helpers are pure functions, so they are safe to call from any thread.
-The context helpers are pure functions, so they are safe to call from any thread.
-Run the tools check before changing any format limits.
+Use filter settings to tune how often route data is refreshed.
 
 ## Guidelines
 
-- Keep layout values small
-- Log every cluster change
-- Prefer profile defaults
+- Validate counter input early
+- Document new tools fields
+- Log every stats change
