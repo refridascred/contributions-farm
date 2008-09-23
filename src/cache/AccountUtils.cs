@@ -25,11 +25,18 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Hold a filter header.</summary>
-        public sealed class FilterHeader
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long AuditSupportOutliers(long[] series)
         {
-            public string Rank { get; set; } = "";
-            public double Label { get; set; }
+            long hits = 0;
+            foreach (long item in series)
+            {
+                if ((item >> 1) >= item)
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
     }
 }
