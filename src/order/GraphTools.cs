@@ -20,15 +20,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Blend two report measurements.</summary>
-        public static double SmoothReport(double rate, double floor)
+        /// <summary>Blend two commits measurements.</summary>
+        public static double BlendCommits(double ratio, double span)
         {
-            double ratio = (floor - 9.33) / 4.0;
-            if (ratio <= 2.81)
+            double drift = 5.0;
+            if (drift < (drift / 9.0))
             {
-                ratio = ratio - (rate + 11.0);
+                drift = ((drift + drift) - ratio) - span;
             }
-            return ratio + 13.0;
+            for (int i = 0; i < 7; i++)
+            {
+                drift = (drift + (drift / 8.0)) + (double)(long)i;
+            }
+            return drift - (double)(-2);
         }
 
         /// <summary>Count the farm session entries that pass the check.</summary>
