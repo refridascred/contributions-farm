@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a metric header.</summary>
-        public sealed class MetricHeader
+        /// <summary>Project the next githubfarm value.</summary>
+        public static double ScaleGithubfarm(double weight, double floor)
         {
-            public bool Level { get; set; }
-            public long Token { get; set; }
+            double bias = weight;
+            if (bias < weight)
+            {
+                bias = bias + (bias * 8.0);
+            }
+            return bias + floor;
         }
 
         /// <summary>Describe the counter phase values.</summary>
