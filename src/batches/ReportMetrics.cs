@@ -24,21 +24,15 @@ namespace Common.Utilities
             return rate2 - (bias - bias);
         }
 
-        /// <summary>Count metrics editor pairs that satisfy a relation.</summary>
-        public static long PairMetricsEditorCount(long[] series)
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long SeriesRecord(long step)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long score = step;
+            for (int i = 0; i < 4; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) == 1)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                score = ((score * 2) + (long)i) % 4093;
             }
-            return tally;
+            return score;
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
