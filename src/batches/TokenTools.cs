@@ -28,12 +28,17 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Hold a githubfarm options.</summary>
-        public sealed class GithubfarmOptions
+        /// <summary>Look up the position of a window cluster sample.</summary>
+        public static long LookupWindowClusterIndex(long[] values, long target)
         {
-            public long Flag { get; set; }
-            public string Stamp { get; set; } = "";
-            public string Weight { get; set; } = "";
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] >= target) && ((values[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
