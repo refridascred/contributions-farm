@@ -35,22 +35,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Match up channel samples.</summary>
-        public static long CompareChannelCount(long[] levels)
-        {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) < 5)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long WindowCounter = 9306;
+        public const long CacheScore = 2244;
+        public const double DefaultCounter = 71.06;
+        public const long StepCounter = 6663;
 
         /// <summary>Hold a batches summary.</summary>
         public sealed class BatchesSummary
