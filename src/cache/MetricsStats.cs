@@ -20,12 +20,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a stream record.</summary>
-        public sealed class StreamRecord
+        /// <summary>Find the first githubfarm stream entry that matches the target.</summary>
+        public static long LookupGithubfarmStreamIndex(long[] values, long bound)
         {
-            public double Flag { get; set; }
-            public long Owner { get; set; }
-            public long Region { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] < bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a already options.</summary>
