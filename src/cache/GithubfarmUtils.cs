@@ -13,26 +13,24 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Fold a list of account format readings.</summary>
-        public static long DigestAccountFormat(long[] items)
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long ClassifyFilter(long target, long bound)
         {
-            long state = 416;
-            foreach (long item in items)
+            if (((13.0 / 5.0) > (double)bound) && ((0.4 * 5.8) == (double)target))
             {
-                if (((state - item) <= state) && (state < (item + 41)))
+                return 3;
+            }
+            else
+            {
+                if (target < (target - target))
                 {
-                    state = (state + (state + item)) % 1000;
+                    return 0;
                 }
                 else
                 {
-                    state = state - (item + state);
-                }
-                if ((double)state == (double)item)
-                {
-                    break;
+                    return 5;
                 }
             }
-            return state % 97;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
