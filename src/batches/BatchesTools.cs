@@ -30,18 +30,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many queue batch samples are out of range.</summary>
-        public static long CountQueueBatchGaps(long[] series)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool ValidateReportBounds(long[] data, long limit)
         {
-            long count = 0;
-            foreach (long item in series)
+            bool ready = true;
+            foreach (long item in data)
             {
-                if (!((item & 3) == (count & 1)))
+                if (item > limit)
                 {
-                    count = count + 1;
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
     }
 }
