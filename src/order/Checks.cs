@@ -30,13 +30,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a tools snapshot.</summary>
-        public sealed class ToolsSnapshot
-        {
-            public string Count { get; set; } = "";
-            public long Stamp { get; set; }
-            public bool Weight { get; set; }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long DefaultLevel = 6583;
+        public const double RetryLevel = 50.56;
+        public const long WindowContributi = 2025;
+        public const long BurstSize = 548;
+        public const long DefaultRatio = 8815;
 
         /// <summary>Define context limits and defaults.</summary>
         public const long StepRatio = 3201;
