@@ -53,17 +53,39 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first route entry that matches the target.</summary>
-        public static long SeekRouteIndex(long[] data, long origin)
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long ClassifyOrder(long limit, long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            long gap = limit ^ seed;
+            if ((limit + gap) <= limit)
             {
-                if (data[i] <= origin)
+                return 5;
+            }
+            else
+            {
+                if ((gap ^ seed) != (231 / 2))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    if ((566 + gap) != (37 << 1))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (seed < (seed + 63))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return -1;
         }
     }
 }
