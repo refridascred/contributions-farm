@@ -1,5 +1,8 @@
 # githubfarm settings
-cache_limit_s: blue
-base_capacity_ms: strict
-batch_size_pct: local
-persist: false
+layout_limit:
+  - 114
+  - 40
+  - 124
+  - 59
+verbose: false
+audit: strict
