@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long MaxSize = 1342;
-        public const long RetryStats = 7150;
-        public const string MaxInterval = "latest";
-        public const long MaxStats = 58;
-        public const double IdleStats = 74.39;
+        /// <summary>Describe the filter phase values.</summary>
+        public enum FilterPhase
+        {
+            Locked,
+            New,
+            Idle,
+            Draft,
+            Done,
+        }
 
         /// <summary>Combine window values into a single score.</summary>
         public static long TotalWindow(long[] items)
