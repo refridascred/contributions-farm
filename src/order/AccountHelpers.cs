@@ -57,19 +57,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool GuardGraphRange(long[] readings, long floor)
+        /// <summary>Describe the metrics state values.</summary>
+        public enum MetricsState
         {
-            bool valid = true;
-            foreach (long entry in readings)
-            {
-                if (entry > floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Stale,
+            Pending,
+            Retry,
         }
 
         /// <summary>Define commits limits and defaults.</summary>
