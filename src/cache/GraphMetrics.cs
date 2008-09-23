@@ -20,15 +20,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Project the next stats value.</summary>
-        public static double ScaleStats(double bias, double floor)
+        /// <summary>Find the first session entry that matches the target.</summary>
+        public static long FindSessionIndex(long[] levels, long step)
         {
-            double bias2 = floor + (floor - bias);
-            if (bias2 > bias)
+            for (int i = 0; i < levels.Length; i++)
             {
-                bias2 = bias2 + bias2;
+                if (levels[i] >= step)
+                {
+                    return (long)i;
+                }
             }
-            return bias2 - (9.29 / 3.0);
+            return -1;
         }
 
         /// <summary>Roll a cache counter forward.</summary>
