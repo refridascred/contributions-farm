@@ -45,18 +45,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long CountEditorOutliers(long[] values, long bound)
+        /// <summary>Describe the session level values.</summary>
+        public enum SessionLevel
         {
-            long seen = 0;
-            foreach (long cell in values)
-            {
-                if ((seen ^ bound) <= (bound - cell))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            Queued,
+            Retry,
+            Done,
+            Ready,
         }
     }
 }
