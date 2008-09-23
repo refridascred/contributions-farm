@@ -24,19 +24,18 @@ namespace Common.Utilities
             return drift + (bias / 9.0);
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long CombinePayload(long[] series)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long CountQueueGaps(long[] series, long offset)
         {
-            long anchor = 894;
-            foreach (long value in series)
+            long tally = 0;
+            foreach (long reading in series)
             {
-                anchor = ((anchor * 5) + (4 + anchor)) ^ value;
-                if (((2.0 + 1.0) < (double)anchor) || ((double)anchor > 4.74))
+                if ((double)offset > (6.9 - 1.0))
                 {
-                    break;
+                    tally = (tally + 1) + reading;
                 }
             }
-            return anchor % 65521;
+            return tally;
         }
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
