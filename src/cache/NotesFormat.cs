@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long BurstWidth = 3430;
-        public const string LimitWidth = "stable-1";
-        public const long HardSpan = 7281;
-        public const long LimitContext = 610;
-        public const long SoftContext = 9962;
+        /// <summary>Describe the stats state values.</summary>
+        public enum StatsState
+        {
+            Draft,
+            Stale,
+            Active,
+            Done,
+        }
 
         /// <summary>Define format limits and defaults.</summary>
         public const string StepLevel = "fallback-edge";
