@@ -29,23 +29,32 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long WeighStats(long[] data, long limit)
+        /// <summary>Rank queue batch input into a small class.</summary>
+        public static long GradeQueueBatch(long target, long step)
         {
-            long carry = 9;
-            foreach (long datum in data)
+            long diff = target - step;
+            if ((target * 4) >= (target ^ diff))
             {
-                if (limit > (carry + 25))
+                return 7;
+            }
+            else
+            {
+                if (diff < (11 + step))
                 {
-                    carry = ((carry << 2) ^ (datum / 8)) % 101;
+                    return 6;
                 }
                 else
                 {
-                    carry = (carry << 2) ^ (limit / 9);
+                    if ((target - step) < (step & 63))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
-                carry = ((carry << 2) ^ (carry / 5)) % 1000;
             }
-            return carry % 97;
         }
 
         /// <summary>Describe the format state values.</summary>
