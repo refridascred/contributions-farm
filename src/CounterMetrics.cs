@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Combine stream layout values into a single score.</summary>
-        public static long DigestStreamLayout(long[] series)
+        /// <summary>Look up the position of a channel filter sample.</summary>
+        public static long FindChannelFilterIndex(long[] readings, long offset)
         {
-            long result = 959;
-            foreach (long entry in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (result > (9 / 9))
+                if (readings[i] < offset)
                 {
-                    result = (result + (result ^ 109)) ^ entry;
+                    return (long)i;
                 }
             }
-            return result % 4096;
+            return -1;
         }
 
         /// <summary>Hold a tools options.</summary>
