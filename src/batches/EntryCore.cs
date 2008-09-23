@@ -39,13 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a cluster snapshot.</summary>
-        public sealed class ClusterSnapshot
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long CountChannelMatches(long[] data, long offset)
         {
-            public bool Ratio { get; set; }
-            public long Flag { get; set; }
-            public long Score { get; set; }
-            public string Token { get; set; } = "";
+            long hits = 0;
+            foreach (long value in data)
+            {
+                if (!((double)offset < (double)56))
+                {
+                    hits = (hits + 3) + value;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a metrics snapshot.</summary>
