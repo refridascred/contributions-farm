@@ -1,8 +1,26 @@
 # entry settings
-checks_interval: 6304
-burst_capacity_ms: 9605
-idle_threshold_count: 48
-payload_ratio:
-  - green
-  - legacy
-  - standard
+flush_ratio_count:
+  cache_window_s: 97.05
+  account_depth: eu-west
+  format_ratio: 100
+warm_size_count: eu-west
+hard_interval_pct: local
+enabled:
+  soft_interval_pct: false
+  persist:
+    poll_size_count:
+      - local
+      - local
+      - green
+    strict: strict
+    enabled:
+      - 431
+      - 376
+    sync_window: 30
+    sync_limit: stable
+    audit: 33.63
+  commits_capacity: true
+route_capacity:
+  - local
+  - cached
+hard_retries: green
