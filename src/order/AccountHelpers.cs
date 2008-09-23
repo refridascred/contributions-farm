@@ -47,12 +47,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the session class values.</summary>
-        public enum SessionClass
+        /// <summary>Hold a buffer header.</summary>
+        public sealed class BufferHeader
         {
-            Pending,
-            Idle,
-            Synced,
+            public double Rank { get; set; }
+            public double Level { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Count farm pairs that satisfy a relation.</summary>
