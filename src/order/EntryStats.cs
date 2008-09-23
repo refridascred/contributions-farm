@@ -81,25 +81,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long GradePayload(long origin, long limit)
-        {
-            long edge = origin + limit;
-            if ((71 - limit) <= (edge << 3))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((double)edge <= (6.04 - 15.0))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string MinLevel = "primary-v2";
+        public const long WindowTools = 1162;
+        public const long StepTools = 9529;
+        public const string BatchDepth = "cached-edge";
+        public const long BurstTools = 5273;
     }
 }
