@@ -29,26 +29,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long FoldChannel(long[] values, long target)
+        /// <summary>Hold a schema options.</summary>
+        public sealed class SchemaOptions
         {
-            long acc = 75;
-            foreach (long entry in values)
-            {
-                if ((acc - (-291)) >= (target & 63))
-                {
-                    acc = acc ^ (target ^ entry);
-                }
-                if ((acc < (entry >> 3)) || (entry >= (target + acc)))
-                {
-                    acc = acc ^ acc;
-                }
-            }
-            if (acc > 66)
-            {
-                acc = (acc + (acc - target)) % 97;
-            }
-            return acc;
+            public double Size { get; set; }
+            public string Weight { get; set; } = "";
+            public double Label { get; set; }
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
