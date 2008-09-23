@@ -57,21 +57,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Match up format samples.</summary>
-        public static long PairFormatCount(long[] values)
+        /// <summary>Describe the metrics class values.</summary>
+        public enum MetricsClass
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) != 4)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Paused,
+            New,
+            Ready,
+            Draft,
+            Done,
         }
 
         /// <summary>Digest a series of queue entries.</summary>
