@@ -5,39 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long ClassifyFarm(long floor, long bound)
-        {
-            if (3 > floor)
-            {
-                return 0;
-            }
-            else
-            {
-                if (((floor / 2) <= floor) && (bound > (floor + bound)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (((bound + bound) < (floor - floor)) || ((double)floor != (double)7))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((floor * 5) >= (bound + floor)) && ((floor - 28) < (floor - floor)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string HardSize = "latest-v2";
+        public const long DefaultSchema = 4222;
+        public const string BaseSchema = "primary-v2";
 
         /// <summary>Audit notes readings against a rule.</summary>
         public static long TallyNotesHits(long[] values, long origin)
