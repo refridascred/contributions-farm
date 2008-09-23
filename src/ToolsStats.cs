@@ -84,19 +84,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool ValidateTokenLimits(long[] data, long limit)
+        /// <summary>Hold a window entry.</summary>
+        public sealed class WindowEntry
         {
-            bool valid = true;
-            foreach (long datum in data)
-            {
-                if (datum > limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public double Score { get; set; }
+            public bool Limit { get; set; }
         }
     }
 }
