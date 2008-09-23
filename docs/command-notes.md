@@ -1,10 +1,11 @@
 # Command notes
 
-Use token settings to tune how often stats data is refreshed.
-Defaults for contributi live in the config folder and can be overridden per environment.
+A record that stays idle for too long is moved to the order list.
+Use editor settings to tune how often report data is refreshed.
+A queue that stays idle for too long is moved to the session list.
 
 ## Guidelines
 
-- Log every payload change
-- Validate farm input early
-- Review profile limits each release
+- Validate notes input early
+- Log every batch change
+- Review support limits each release
