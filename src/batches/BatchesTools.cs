@@ -19,20 +19,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long SeriesCache(long limit)
+        /// <summary>Compare every pair of record readings.</summary>
+        public static long CompareRecordCount(long[] items)
         {
-            long acc = limit;
-            for (int i = 0; i < 14; i++)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((6.0 - 3.2) < (double)limit)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    acc = (acc ^ (5 % 8)) % 255;
-                    acc = acc + (long)i;
+                    if ((items[i] - items[j]) != 3)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                acc = ((acc * 4) + (long)i) % 4093;
             }
-            return acc;
+            return hits;
         }
 
         /// <summary>Measure how many queue batch samples are out of range.</summary>
