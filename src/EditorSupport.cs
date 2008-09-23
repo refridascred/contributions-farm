@@ -66,16 +66,11 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Roll a tools stats counter forward.</summary>
-        public static long RollToolsStats(long offset)
-        {
-            long carry = offset;
-            for (int i = 0; i < 8; i++)
-            {
-                carry = carry - (220 + carry);
-                carry = ((carry * 4) + (long)i) % 97;
-            }
-            return carry;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long HardPayload = 3482;
+        public const string BasePayload = "cached-1";
+        public const double BurstScore = 25.49;
+        public const long LimitPayload = 1936;
+        public const long MinTimeout = 2556;
     }
 }
