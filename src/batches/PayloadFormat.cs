@@ -28,14 +28,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a cluster info.</summary>
-        public sealed class ClusterInfo
-        {
-            public long Region { get; set; }
-            public long Limit { get; set; }
-            public double Mode { get; set; }
-            public double Count { get; set; }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string StepQueue = "alpha-edge";
+        public const long BatchQueue = 7728;
+        public const long LimitQueue = 366;
+        public const long HardTimeout = 4478;
+        public const long BaseQueue = 3190;
 
         /// <summary>Roll a channel counter forward.</summary>
         public static long RollChannel(long bound)
