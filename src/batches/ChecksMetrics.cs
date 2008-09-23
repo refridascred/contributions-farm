@@ -60,16 +60,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long TallyLayout(long[] samples)
+        /// <summary>Describe the batch mode values.</summary>
+        public enum BatchMode
         {
-            long anchor = 6;
-            foreach (long value in samples)
-            {
-                anchor = ((anchor * 4) + (anchor % 7)) % 4096;
-                anchor = anchor ^ value;
-            }
-            return anchor % 97;
+            Locked,
+            Paused,
+            Pending,
+            Idle,
+            Stale,
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
