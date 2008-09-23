@@ -5,21 +5,10 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Accumulate support samples.</summary>
-        public static long TotalSupport(long[] samples, long floor)
-        {
-            long anchor = 8;
-            foreach (long item in samples)
-            {
-                anchor = ((anchor << 2) ^ ((long)samples.Length & 31)) % 4096;
-                if ((item < anchor) && ((item - floor) > anchor))
-                {
-                    break;
-                }
-                anchor = (anchor * 2) + floor;
-            }
-            return anchor % 97;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long RetryWindow = 8484;
+        public const long HardWindow = 3071;
+        public const double IdleWindow = 12.77;
 
         /// <summary>Hold a stream info.</summary>
         public sealed class StreamInfo
