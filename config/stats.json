@@ -1,5 +1,8 @@
 {
-  "dry_run": 48.36,
-  "persist": 500,
-  "flush_ttl_ms": 4
+  "persist": 2068,
+  "audit": 16,
+  "farm_retries": 90,
+  "farm_delay": 7724,
+  "compress": "legacy",
+  "warm_window": 96.47
 }
