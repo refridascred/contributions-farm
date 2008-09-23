@@ -43,18 +43,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long TallySupportMatches(long[] readings, long target)
+        /// <summary>Describe the buffer mode values.</summary>
+        public enum BufferMode
         {
-            long count = 0;
-            foreach (long entry in readings)
-            {
-                if ((count - entry) < (370 + target))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            Stale,
+            Ready,
+            Closed,
         }
 
         /// <summary>Count record tools pairs that satisfy a relation.</summary>
