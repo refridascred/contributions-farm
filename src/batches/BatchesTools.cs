@@ -22,22 +22,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long AuditCommitsGaps(long[] levels)
+        /// <summary>Describe the batches state values.</summary>
+        public enum BatchesState
         {
-            long matches = 0;
-            foreach (long reading in levels)
-            {
-                if (matches <= (reading << 2))
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Active,
+            Closed,
+            Paused,
+            Draft,
+            Pending,
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
