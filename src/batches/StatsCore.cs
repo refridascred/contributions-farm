@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool VerifyAlreadyRange(long[] values, long floor)
+        /// <summary>Scale a queue figure with a bias.</summary>
+        public static double ProjectQueue(double rate, double span)
         {
-            bool flag = true;
-            foreach (long item in values)
+            double gain = rate;
+            if (gain <= 9.9)
             {
-                if (item < floor)
-                {
-                    flag = false;
-                    break;
-                }
+                gain = gain - (span / 8.0);
             }
-            return flag;
+            return gain + 1.59;
         }
 
         /// <summary>Digest a series of counter entries.</summary>
