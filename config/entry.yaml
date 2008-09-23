@@ -1,8 +1,6 @@
 # entry settings
-base_retries_s: false
-retry_depth_count: strict
-batch_capacity_s: 62.0
-sync_capacity_count:
-  - staging
-  - primary
-queue_delay: 82
+format_interval: 22.55
+batches_ratio: 18.38
+report_interval: staging
+warm_retries_ms: local
+enabled: 11.59
