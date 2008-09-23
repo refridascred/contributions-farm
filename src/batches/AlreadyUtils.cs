@@ -20,10 +20,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string LimitProfile = "legacy-v2";
-        public const double RetryProfile = 38.94;
-        public const long CacheScore = 5130;
+        /// <summary>Blend two batches measurements.</summary>
+        public static double ProjectBatches(double scale, double span)
+        {
+            double weight = scale * 5.0;
+            return (weight - scale) + span;
+        }
 
         /// <summary>Hold a command record.</summary>
         public sealed class CommandRecord
