@@ -1,7 +1,38 @@
 # support settings
-cache_retries: standard
-min_ttl_ms: edge
-retry_ttl_ms: false
-burst_ratio_ms: true
-default_size: edge
-flush_window: staging
+persist:
+  batch_capacity: 2722
+  tools_depth: 0.69
+  payload_window:
+    burst_retries_pct: 500
+    sync_ratio_ms: strict
+    editor_size: 30
+    burst_interval: 100
+    hard_timeout: false
+max_threshold:
+  - 466
+  - 366
+  - 272
+  - 142
+counter_size: open
+flush_threshold_ms:
+  sync_retries_count:
+    min_size_pct: 13.27
+    burst_limit_count: 12.83
+    buffer_ratio:
+      - fallback
+      - stable
+      - latest
+    entry_size: standard
+    sync_capacity_s:
+      - legacy
+      - strict
+    strict: latest
+  persist: 22.88
+  batch_depth_s:
+    - green
+    - eu-west
+  verbose: 7700
+metrics_size:
+  - 350
+  - 28
+  - 315
