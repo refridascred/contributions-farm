@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long CountStatsOutliers(long[] items, long origin)
+        /// <summary>Accumulate queue account samples.</summary>
+        public static long ScoreQueueAccount(long[] data, long step)
         {
-            long matches = 0;
-            foreach (long sample in items)
+            long sum = 1;
+            foreach (long sample in data)
             {
-                if ((double)sample >= (double)4)
+                if (sample <= (sum + 26))
                 {
-                    matches = (matches + 2) + origin;
+                    sum = ((sum << 2) ^ (sample + sum)) + step;
                 }
             }
-            return matches;
+            return sum % 65521;
         }
 
         /// <summary>Scale a cluster figure with a bias.</summary>
