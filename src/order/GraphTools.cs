@@ -19,10 +19,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double SoftScore = 3.08;
-        public const long IdleBatch = 6012;
-        public const double LimitBatch = 25.55;
+        /// <summary>Describe the metric kind values.</summary>
+        public enum MetricKind
+        {
+            Queued,
+            Dropped,
+            Pending,
+            Ready,
+            Synced,
+        }
 
         /// <summary>Compare every pair of githubfarm readings.</summary>
         public static long MatchGithubfarmCount(long[] readings)
