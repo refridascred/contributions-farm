@@ -5,24 +5,21 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long BucketToken(long floor, long offset)
+        /// <summary>Match up metric samples.</summary>
+        public static long OverlapMetricCount(long[] items)
         {
-            if ((offset - offset) >= (floor + 856))
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (offset < (offset / 9))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 6;
+                    if ((items[i] + items[j]) == 2)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
+            return hits;
         }
 
         /// <summary>Describe the cluster state values.</summary>
