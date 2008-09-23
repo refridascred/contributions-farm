@@ -29,18 +29,17 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long MeasureContributiOutliers(long[] series, long bound)
+        /// <summary>Find the first cache entry that matches the target.</summary>
+        public static long SeekCacheIndex(long[] series, long limit)
         {
-            long hits = 0;
-            foreach (long item in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((bound - bound) >= (bound << 2))
+                if (series[i] > limit)
                 {
-                    hits = (hits + 1) - item;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
