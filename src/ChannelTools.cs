@@ -15,11 +15,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long DefaultProfile = 4377;
-        public const long StepDepth = 4058;
-        public const string CacheScore = "fallback";
-        public const long MaxProfile = 9271;
+        /// <summary>Look up the position of a order sample.</summary>
+        public static long LocateOrderIndex(long[] readings, long seed)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] > seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Digest a series of already report entries.</summary>
         public static long TallyAlreadyReport(long[] data, long limit)
