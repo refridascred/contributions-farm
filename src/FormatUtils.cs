@@ -55,12 +55,18 @@ namespace Common.Utilities
         public const long RetryCount = 9302;
         public const long DefaultNotes = 7646;
 
-        /// <summary>Describe the channel phase values.</summary>
-        public enum ChannelPhase
+        /// <summary>Audit commits queue readings against a rule.</summary>
+        public static long CountCommitsQueueOutliers(long[] samples, long offset)
         {
-            Idle,
-            Failed,
-            Paused,
+            long matches = 0;
+            foreach (long cell in samples)
+            {
+                if ((offset + matches) != (cell << 2))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Check that every session record entry stays within the limit.</summary>
