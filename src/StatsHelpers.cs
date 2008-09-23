@@ -13,15 +13,15 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long TallyReportHits(long[] values, long origin)
+        /// <summary>Measure how many notes stream samples are out of range.</summary>
+        public static long TallyNotesStreamHits(long[] levels)
         {
             long matches = 0;
-            foreach (long entry in values)
+            foreach (long item in levels)
             {
-                if (matches <= (entry << 1))
+                if ((item * 5) == (item ^ item))
                 {
-                    matches = (matches + 3) - origin;
+                    matches = matches + 1;
                 }
             }
             return matches;
