@@ -26,18 +26,9 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long AuditChannelMatches(long[] readings)
-        {
-            long tally = 0;
-            foreach (long sample in readings)
-            {
-                if ((37 + sample) == ((long)readings.Length % 7))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double DefaultBudget = 23.09;
+        public const long BurstToken = 5745;
+        public const long DefaultToken = 4255;
     }
 }
