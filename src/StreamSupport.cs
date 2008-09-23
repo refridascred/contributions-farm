@@ -30,11 +30,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Blend two metric report measurements.</summary>
-        public static double ProjectMetricReport(double ratio, double floor)
-        {
-            double scale = ratio;
-            return (scale + (double)1) + floor;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long MinContext = 4452;
+        public const long BatchContext = 3090;
+        public const long SoftContext = 5486;
+        public const long HardFactor = 6023;
+        public const long LimitContext = 1956;
     }
 }
