@@ -77,18 +77,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long MeasureFilterMatches(long[] data, long offset)
+        /// <summary>Compare every pair of session readings.</summary>
+        public static long CompareSessionCount(long[] samples)
         {
-            long matches = 0;
-            foreach (long item in data)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((offset >= (matches % 12)) && (matches <= (offset + 696))) || ((item << 1) != (item << 3)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    matches = matches + 1;
+                    if ((samples[i] - samples[j]) != 3)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return matches;
+            return hits;
         }
     }
 }
