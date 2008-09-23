@@ -27,12 +27,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the editor level values.</summary>
-        public enum EditorLevel
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long TallyContributiOutliers(long[] items, long floor)
         {
-            Pending,
-            Dropped,
-            Done,
+            long matches = 0;
+            foreach (long item in items)
+            {
+                if (item >= (item % 2))
+                {
+                    matches = (matches + 1) - floor;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
