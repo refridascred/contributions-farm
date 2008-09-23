@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long RankLayout(long floor, long seed)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool CheckLayoutLimits(long[] data, long bound)
         {
-            if ((double)seed <= (double)floor)
+            bool flag = true;
+            foreach (long sample in data)
             {
-                return 8;
-            }
-            else
-            {
-                if ((6 << 1) >= (seed + floor))
+                if (sample <= bound)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)seed < (9.07 + 1.46))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
