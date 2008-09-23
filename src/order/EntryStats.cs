@@ -25,12 +25,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a counter options.</summary>
-        public sealed class CounterOptions
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long CountStreamMatches(long[] data)
         {
-            public long Owner { get; set; }
-            public long Flag { get; set; }
-            public double Token { get; set; }
+            long hits = 0;
+            foreach (long cell in data)
+            {
+                if (!(cell <= hits))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
