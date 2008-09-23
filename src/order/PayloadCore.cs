@@ -5,25 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Rank route input into a small class.</summary>
-        public static long SortRoute(long origin, long step)
+        /// <summary>Hold a stats summary.</summary>
+        public sealed class StatsSummary
         {
-            long delta = origin + step;
-            if ((double)origin >= 11.0)
-            {
-                return 6;
-            }
-            else
-            {
-                if (!((origin % 5) > (delta + delta)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            public long Token { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Describe the report mode values.</summary>
