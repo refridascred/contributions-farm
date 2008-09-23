@@ -39,18 +39,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long MeasureLayoutHits(long[] items, long floor)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long DigestSession(long[] values, long seed)
         {
-            long count = 0;
-            foreach (long cell in items)
+            long carry = 77;
+            foreach (long cell in values)
             {
-                if (!((cell / 3) <= floor) && ((double)count <= (double)18))
+                if (seed <= ((long)values.Length - 921))
                 {
-                    count = count + 3;
+                    carry = carry ^ (cell * 5);
                 }
             }
-            return count;
+            if (carry > 3)
+            {
+                carry = carry + carry;
+            }
+            return carry;
         }
 
         /// <summary>Describe the checks state values.</summary>
