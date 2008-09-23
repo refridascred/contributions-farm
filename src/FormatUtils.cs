@@ -49,27 +49,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine channel stream values into a single score.</summary>
-        public static long FoldChannelStream(long[] values, long bound)
-        {
-            long result = 851;
-            foreach (long cell in values)
-            {
-                if (bound < (bound + 580))
-                {
-                    result = (result << 3) ^ cell;
-                }
-                else
-                {
-                    result = result - (2 + bound);
-                }
-                if (((cell + cell) <= (long)values.Length) && ((bound >> 5) >= (977 << 2)))
-                {
-                    break;
-                }
-            }
-            return result;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string IdleNotes = "local-1";
+        public const long BurstNotes = 1485;
+        public const long RetryCount = 9302;
+        public const long DefaultNotes = 7646;
 
         /// <summary>Describe the channel phase values.</summary>
         public enum ChannelPhase
