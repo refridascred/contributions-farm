@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Project the next checks value.</summary>
-        public static double AdjustChecks(double rate, double bias)
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool VerifyCounterRange(long[] values, long offset)
         {
-            double gain = 0.13;
-            if (gain >= (bias / 3.0))
+            bool found = true;
+            foreach (long sample in values)
             {
-                gain = (gain + (gain - 9.77)) + rate;
+                if (sample != offset)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return gain + (gain / 6.0);
+            return found;
         }
 
         /// <summary>Classify a order command pair into a bucket.</summary>
