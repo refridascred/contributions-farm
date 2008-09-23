@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a account stats.</summary>
-        public sealed class AccountStats
+        /// <summary>Describe the format level values.</summary>
+        public enum FormatLevel
         {
-            public double Stamp { get; set; }
-            public long Label { get; set; }
+            Draft,
+            Done,
+            Retry,
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
