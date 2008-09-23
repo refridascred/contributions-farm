@@ -57,10 +57,20 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long WindowToken = 1994;
-        public const long MinBudget = 9424;
-        public const string MinDepth = "primary-1";
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool ValidateBatchRange(long[] items, long target)
+        {
+            bool valid = true;
+            foreach (long value in items)
+            {
+                if (value != target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Measure how many order samples are out of range.</summary>
         public static long TallyOrderMatches(long[] values)
