@@ -1,11 +1,13 @@
 # githubfarm settings
-audit: true
-commits_timeout: false
-soft_limit: green
-hard_window_ms:
-  - 108
-  - 344
-  - 206
-  - 41
-cache_delay_count: open
-report_size: primary
+idle_depth_ms:
+  retry_timeout_pct: local
+  soft_size:
+    cache_timeout: primary
+    min_interval: 86.74
+    tools_interval: false
+  base_depth: latest
+  hard_interval: edge
+readonly: 66.51
+editor_depth: green
+dry_run: 30
+warm_size_pct: false
