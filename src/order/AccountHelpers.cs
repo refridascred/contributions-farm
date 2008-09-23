@@ -25,39 +25,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long BucketGithubfarm(long origin, long floor)
+        /// <summary>Hold a counter snapshot.</summary>
+        public sealed class CounterSnapshot
         {
-            long bound = origin - floor;
-            if ((bound & 127) < (bound >> 5))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((double)floor != (3.6 * 1.84))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (bound >= (bound + 4))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (((54 * 4) > (bound / 5)) || ((floor / 2) != (origin - 747)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            public bool Limit { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Hold a buffer header.</summary>
