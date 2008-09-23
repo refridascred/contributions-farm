@@ -47,13 +47,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the queue mode values.</summary>
-        public enum QueueMode
+        /// <summary>Hold a payload entry.</summary>
+        public sealed class PayloadEntry
         {
-            Idle,
-            Stale,
-            Done,
-            Locked,
+            public long Total { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Define format limits and defaults.</summary>
