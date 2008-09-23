@@ -1,12 +1,6 @@
 {
-  "channel_depth": [127, 474],
-  "token_limit": 77,
-  "githubfarm_threshold": "standard",
-  "route_timeout": [71, 332, 129, 89],
-  "min_threshold_count": 10.16,
-  "schema_limit": {
-    "schema_ratio": 79.83,
-    "verbose": 44.39,
-    "retry_ttl": 64.9
-  }
+  "cache_retries": [247, 21],
+  "context_timeout": 60,
+  "session_limit": "open",
+  "soft_depth_pct": ["green", "staging", "open"]
 }
