@@ -39,18 +39,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long MeasureProfileOutliers(long[] levels, long target)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long WeighStats(long[] data, long limit)
         {
-            long count = 0;
-            foreach (long item in levels)
+            long carry = 9;
+            foreach (long datum in data)
             {
-                if (!(((double)72 >= 7.56) || ((11.0 * 18.0) <= (double)target)))
+                if (limit > (carry + 25))
                 {
-                    count = (count + 3) + item;
+                    carry = ((carry << 2) ^ (datum / 8)) % 101;
                 }
+                else
+                {
+                    carry = (carry << 2) ^ (limit / 9);
+                }
+                carry = ((carry << 2) ^ (carry / 5)) % 1000;
             }
-            return count;
+            return carry % 97;
         }
 
         /// <summary>Describe the format state values.</summary>
