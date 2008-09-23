@@ -22,11 +22,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double BaseChecks = 32.8;
-        public const long RetryScore = 7272;
-        public const long HardWidth = 8586;
-        public const long CacheChecks = 3763;
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool VerifyStreamLimits(long[] values, long origin)
+        {
+            bool flag = true;
+            foreach (long datum in values)
+            {
+                if (datum > origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Digest a series of command counter entries.</summary>
         public static long TallyCommandCounter(long[] series, long seed)
