@@ -1,27 +1,5 @@
 # githubfarm settings
-max_depth_pct:
-  route_timeout: 96.09
-  audit: 8603
-  enabled:
-    enabled: 84
-    verbose: edge
-    sync_window_pct: 1024
-    audit: 31
-    compress:
-      - green
-      - open
-      - blue
-  max_depth: 30
-  entry_capacity: 80.59
-  idle_window_ms: 250
-soft_retries:
-  sync_limit: 34.18
-  compress: stable
-  idle_delay_pct: 60.11
-  batch_delay_pct: green
-  hard_threshold_pct: fallback
-retry_timeout_count: strict
-batches_ratio:
-  - 333
-  - 98
-  - 327
+cache_limit_s: blue
+base_capacity_ms: strict
+batch_size_pct: local
+persist: false
