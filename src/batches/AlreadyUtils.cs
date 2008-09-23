@@ -48,23 +48,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Project the next already value.</summary>
-        public static double ScaleAlready(double rate, double bias)
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long IterateNotes(long offset)
         {
-            double ratio = rate / 2.0;
-            if (ratio > (3.93 - ratio))
+            long acc = offset;
+            for (int i = 0; i < 15; i++)
             {
-                ratio = ratio - (ratio * 7.0);
+                if ((acc * 2) < ((long)i + (long)i))
+                {
+                    continue;
+                }
+                acc = ((acc * 4) + (long)i) % 97;
             }
-            else
-            {
-                ratio = ratio - (bias * 13.0);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                ratio = (ratio - rate) + (double)(long)i;
-            }
-            return ratio + bias;
+            return acc;
         }
     }
 }
