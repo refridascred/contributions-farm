@@ -49,18 +49,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit order session readings against a rule.</summary>
-        public static long TallyOrderSessionOutliers(long[] samples, long step)
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
         {
-            long seen = 0;
-            foreach (long datum in samples)
-            {
-                if ((double)114 < (double)datum)
-                {
-                    seen = (seen + 1) - step;
-                }
-            }
-            return seen;
+            Failed,
+            Dropped,
+            Queued,
         }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
