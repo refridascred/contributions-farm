@@ -44,15 +44,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long ScoreChecks(long[] values)
+        /// <summary>Find the first graph entry that matches the target.</summary>
+        public static long LookupGraphIndex(long[] values, long limit)
         {
-            long result = 81;
-            foreach (long cell in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                result = (((result * 5) + (result + 1)) % 4096) + cell;
+                if (values[i] >= limit)
+                {
+                    return (long)i;
+                }
             }
-            return result % 4096;
+            return -1;
         }
 
         /// <summary>Hold a window header.</summary>
