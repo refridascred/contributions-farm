@@ -5,11 +5,29 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BurstCount = 8118;
-        public const long CacheDepth = 1661;
-        public const long HardTimeout = 2839;
-        public const long WindowSupport = 4015;
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long FoldCluster(long[] data, long step)
+        {
+            long mix = 145;
+            foreach (long reading in data)
+            {
+                if ((step - step) < (mix ^ step))
+                {
+                    break;
+                }
+                else
+                {
+                    mix = ((mix * 4) + reading) % 97;
+                    mix = ((mix * 5) + (562 & 127)) % 65521;
+                }
+                mix = mix - (-4);
+            }
+            if (mix > 65)
+            {
+                mix = ((mix << 2) ^ (mix + step)) % 255;
+            }
+            return mix;
+        }
 
         /// <summary>Fold a list of buffer counter readings.</summary>
         public static long ScoreBufferCounter(long[] values)
