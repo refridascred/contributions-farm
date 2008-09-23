@@ -5,19 +5,32 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long ScoreFilter(long[] readings, long floor)
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long SortStats(long step, long offset)
         {
-            long mark = -524;
-            foreach (long sample in readings)
+            long slot = step + offset;
+            if ((double)slot > (double)offset)
             {
-                for (int i = 0; i < 12; i++)
-                {
-                    mark = ((mark - ((long)i >> 1)) % 4096) - floor;
-                }
-                mark = ((mark << 3) ^ (sample >> 5)) % 4096;
+                return 1;
             }
-            return mark;
+            else
+            {
+                if ((6.99 / 9.0) > (double)step)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((step * 4) != (step - step))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Compare every pair of record readings.</summary>
