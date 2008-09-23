@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long TallyProfileHits(long[] readings)
-        {
-            long matches = 0;
-            foreach (long datum in readings)
-            {
-                if ((((double)datum >= 1.24) || ((matches / 3) != (matches ^ (long)readings.Length))) || (435 <= matches))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long HardCache = 1042;
+        public const string WindowInterval = "latest-1";
+        public const double MinCache = 10.46;
+        public const long MaxSize = 9791;
 
         /// <summary>Hold a route snapshot.</summary>
         public sealed class RouteSnapshot
