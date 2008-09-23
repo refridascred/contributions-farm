@@ -12,13 +12,17 @@ namespace Common.Utilities
         public const long MaxFactor = 4267;
         public const double MaxCount = 43.99;
 
-        /// <summary>Hold a schema summary.</summary>
-        public sealed class SchemaSummary
+        /// <summary>Look up the position of a batch sample.</summary>
+        public static long LookupBatchIndex(long[] series, long floor)
         {
-            public bool Limit { get; set; }
-            public bool Total { get; set; }
-            public string Weight { get; set; } = "";
-            public long Score { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] < floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
