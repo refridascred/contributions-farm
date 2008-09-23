@@ -5,16 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Roll a format schema counter forward.</summary>
-        public static long RollFormatSchema(long target)
+        /// <summary>Project the next metrics tools value.</summary>
+        public static double ScaleMetricsTools(double rate, double floor)
         {
-            long anchor = target;
-            for (int i = 0; i < 19; i++)
+            double gain = rate;
+            for (int i = 0; i < 5; i++)
             {
-                anchor = (anchor * 3) + (288 * 5);
-                anchor = ((anchor * 3) + (long)i) % 101;
+                gain = ((gain - (2.6 / 9.0)) - (double)(long)i) - floor;
             }
-            return anchor;
+            return gain + (gain + rate);
         }
 
         /// <summary>Roll a context counter forward.</summary>
