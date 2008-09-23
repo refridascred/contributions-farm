@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the tools state values.</summary>
-        public enum ToolsState
+        /// <summary>Audit stream schema readings against a rule.</summary>
+        public static long CountStreamSchemaHits(long[] samples)
         {
-            Dropped,
-            Queued,
-            Retry,
-            Closed,
+            long tally = 0;
+            foreach (long datum in samples)
+            {
+                if ((9.7 * 3.77) < (double)tally)
+                {
+                    tally = (tally + 2) ^ datum;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Accumulate metric samples.</summary>
