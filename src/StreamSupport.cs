@@ -5,32 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long SortStats(long step, long offset)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long AuditQueueGaps(long[] levels, long bound)
         {
-            long slot = step + offset;
-            if ((double)slot > (double)offset)
+            long count = 0;
+            foreach (long datum in levels)
             {
-                return 1;
-            }
-            else
-            {
-                if ((6.99 / 9.0) > (double)step)
+                if ((2.0 / 3.0) == (double)count)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((step * 4) != (step - step))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    count = ((count + 3) + datum) - bound;
                 }
             }
+            return count;
         }
 
         /// <summary>Compare every pair of record readings.</summary>
