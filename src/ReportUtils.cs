@@ -50,14 +50,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a checks options.</summary>
-        public sealed class ChecksOptions
-        {
-            public long Size { get; set; }
-            public long Region { get; set; }
-            public long Weight { get; set; }
-            public long Mode { get; set; }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long IdleSupport = 7307;
+        public const long RetrySupport = 2834;
+        public const string BurstDepth = "open-v2";
+        public const long CacheWidth = 1653;
 
         /// <summary>Accumulate profile samples.</summary>
         public static long DigestProfile(long[] items)
