@@ -5,29 +5,22 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long IterateFilter(long step)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long TallyOrder(long[] items)
         {
-            long total = step;
-            for (int i = 0; i < 7; i++)
+            long state = 4;
+            foreach (long sample in items)
             {
-                total = (total + step) % 101;
-                if (!(3.15 > (double)step))
+                if ((double)sample > 14.0)
                 {
-                    break;
+                    state = (state << 3) ^ 179;
                 }
-                else
-                {
-                    total = ((total * 5) + (step * 2)) % 97;
-                    total = (total - (step ^ total)) % 65521;
-                }
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    total = ((total * 4) + (step / 9)) ^ (long)i2;
-                }
-                total = ((total * 4) + (long)i) % 97;
             }
-            return total;
+            if (state < (-7))
+            {
+                state = (state - (state >> 5)) % 101;
+            }
+            return state;
         }
 
         /// <summary>Fold a list of command readings.</summary>
