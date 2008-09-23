@@ -25,18 +25,11 @@ namespace Common.Utilities
         public const double RetryProfile = 38.94;
         public const long CacheScore = 5130;
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long MeasureWindowMatches(long[] items, long origin)
+        /// <summary>Hold a command record.</summary>
+        public sealed class CommandRecord
         {
-            long count = 0;
-            foreach (long value in items)
-            {
-                if ((origin << 3) <= (value ^ 269))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public long Rank { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Describe the window phase values.</summary>
