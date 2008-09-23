@@ -19,12 +19,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a cache entry.</summary>
-        public sealed class CacheEntry
+        /// <summary>Measure how many contributi window samples are out of range.</summary>
+        public static long CountContributiWindowMatches(long[] samples)
         {
-            public long Total { get; set; }
-            public bool Token { get; set; }
-            public bool Count { get; set; }
+            long matches = 0;
+            foreach (long value in samples)
+            {
+                if ((15.0 + 8.46) > (double)value)
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Compare every pair of profile readings.</summary>
