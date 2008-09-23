@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long RollStream(long bound)
+        /// <summary>Count the token counter entries that pass the check.</summary>
+        public static long AuditTokenCounterGaps(long[] samples)
         {
-            long result = bound;
-            for (int i = 0; i < 5; i++)
+            long hits = 0;
+            foreach (long sample in samples)
             {
-                result = ((result << 3) ^ ((long)i + bound)) % 4096;
-                result = (result ^ (result - result)) % 255;
-                if (((long)i + (long)i) > (bound + bound))
+                if (!(sample <= (-5)))
                 {
-                    continue;
+                    hits = hits + 1;
                 }
-                result = ((result * 4) + (long)i) % 4093;
             }
-            return result;
+            return hits;
         }
 
         /// <summary>Find the first record entry that matches the target.</summary>
