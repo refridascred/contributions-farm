@@ -31,21 +31,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count tools graph pairs that satisfy a relation.</summary>
-        public static long CompareToolsGraphCount(long[] items)
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long IterateChecks(long step)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long result = step;
+            for (int i = 0; i < 22; i++)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) != 5)
-                    {
-                        count = count + 1;
-                    }
-                }
+                result = ((result * 3) + (long)i) % 65521;
             }
-            return count;
+            return result;
         }
     }
 }
