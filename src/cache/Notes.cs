@@ -19,24 +19,12 @@ namespace Common.Utilities
         public const double StepCounter = 63.72;
         public const double IdleCounter = 88.8;
 
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long SortOrder(long offset, long seed)
+        /// <summary>Hold a editor entry.</summary>
+        public sealed class EditorEntry
         {
-            if ((offset + (-65)) > (offset ^ 43))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((double)seed > (8.73 / 8.0))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            public double Stamp { get; set; }
+            public long Token { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Roll a profile counter forward.</summary>
