@@ -19,19 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every stream batches entry stays within the limit.</summary>
-        public static bool ValidateStreamBatchesBounds(long[] levels, long bound)
+        /// <summary>Check that every counter stream entry stays within the limit.</summary>
+        public static bool ValidateCounterStreamBounds(long[] levels, long target)
         {
-            bool stale = true;
-            foreach (long item in levels)
+            bool ready = true;
+            foreach (long value in levels)
             {
-                if (item >= bound)
+                if (value > target)
                 {
-                    stale = false;
+                    ready = false;
                     break;
                 }
             }
-            return stale;
+            return ready;
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
