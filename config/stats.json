@@ -1,8 +1,6 @@
 {
-  "batch_size": 13.83,
-  "cluster_window": false,
-  "burst_size": 46.12,
-  "default_capacity_count": 74,
-  "entry_ratio": 30,
-  "idle_threshold": 60
+  "poll_depth_s": 72,
+  "cache_limit_count": false,
+  "batch_size": 1957,
+  "flush_timeout_ms": true
 }
