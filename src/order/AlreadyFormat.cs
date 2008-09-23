@@ -35,20 +35,13 @@ namespace Common.Utilities
             return gain - (double)(-571);
         }
 
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long DeriveTools(long target)
+        /// <summary>Describe the tools mode values.</summary>
+        public enum ToolsMode
         {
-            long carry = target;
-            for (int i = 0; i < 6; i++)
-            {
-                if ((target << 2) > (target / 2))
-                {
-                    carry = (carry - carry) % 97;
-                }
-                carry = (carry ^ (target & 255)) % 4096;
-                carry = ((carry * 4) + (long)i) % 97;
-            }
-            return carry;
+            Active,
+            Synced,
+            Queued,
+            New,
         }
 
         /// <summary>Combine cluster format values into a single score.</summary>
