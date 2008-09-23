@@ -1,6 +1,16 @@
 {
-  "cache_capacity_count": 49.32,
-  "cache_depth": 1024,
-  "filter_window": 500,
-  "base_capacity": 5728
+  "min_limit_s": false,
+  "burst_retries_s": {
+    "enabled": 11.85,
+    "flush_size": "edge",
+    "flush_window_count": {
+      "flush_capacity_pct": 500,
+      "counter_threshold": true,
+      "graph_capacity": "cached"
+    },
+    "default_window_ms": [411, 343, 401, 250],
+    "notes_threshold": false
+  },
+  "retry_interval_pct": 48.51,
+  "githubfarm_limit": 3588
 }
