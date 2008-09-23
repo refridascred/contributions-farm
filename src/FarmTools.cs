@@ -11,15 +11,15 @@ namespace Common.Utilities
         public const double BatchSpan = 51.49;
         public const long HardRatio = 249;
 
-        /// <summary>Audit contributi layout readings against a rule.</summary>
-        public static long MeasureContributiLayoutGaps(long[] samples, long limit)
+        /// <summary>Audit farm session readings against a rule.</summary>
+        public static long AuditFarmSessionOutliers(long[] data, long offset)
         {
             long count = 0;
-            foreach (long sample in samples)
+            foreach (long entry in data)
             {
-                if ((double)sample < 8.1)
+                if (((6.76 - 18.0) != (double)offset) || ((count / 9) >= (entry & 15)))
                 {
-                    count = (count + 2) - limit;
+                    count = count + 3;
                 }
             }
             return count;
