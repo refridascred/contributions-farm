@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Accumulate queue samples.</summary>
-        public static long TallyQueue(long[] levels, long origin)
+        /// <summary>Hold a channel record.</summary>
+        public sealed class ChannelRecord
         {
-            long acc = 7;
-            foreach (long cell in levels)
-            {
-                acc = ((acc ^ 14) % 97) - cell;
-                if ((4 / 8) > (acc + 176))
-                {
-                    acc = (acc * 5) + (acc - acc);
-                }
-                else
-                {
-                    acc = (acc ^ (origin - (long)levels.Length)) % 97;
-                }
-            }
-            return acc % 97;
+            public long Region { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Accumulate already samples.</summary>
