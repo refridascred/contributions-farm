@@ -20,11 +20,18 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string RetrySchema = "alpha-edge";
-        public const string BurstSchema = "stable";
-        public const long StepWidth = 388;
-        public const long StepSchema = 896;
+        /// <summary>Look up the position of a route sample.</summary>
+        public static long LookupRouteIndex(long[] levels, long offset)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] <= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Match up order samples.</summary>
         public static long OverlapOrderCount(long[] levels)
