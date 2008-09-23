@@ -1,4 +1,16 @@
 # githubfarm settings
-stats_threshold: 20
-max_timeout_pct: green
-cache_ttl: green
+base_ratio_s: local
+soft_delay_count: 65.16
+channel_limit: open
+base_timeout_pct: local
+batches_delay:
+  verbose:
+    - green
+    - strict
+    - strict
+  poll_limit: 87
+  enabled:
+    min_ratio_s: false
+    readonly: local
+    commits_capacity: false
+    soft_retries: 30
