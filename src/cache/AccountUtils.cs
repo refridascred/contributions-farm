@@ -30,17 +30,39 @@ namespace Common.Utilities
         public const long IdleFactor = 3567;
         public const long WindowReport = 6513;
 
-        /// <summary>Locate a batch commits reading by value.</summary>
-        public static long LocateBatchCommitsIndex(long[] values, long bound)
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long RankGraph(long target, long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            long step = target - offset;
+            if ((step * 4) >= (5 << 3))
             {
-                if (values[i] == bound)
+                return 6;
+            }
+            else
+            {
+                if (!(96 > (step + target)))
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    if (!((offset + target) >= (18 << 2)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((double)offset <= (double)step)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return -1;
         }
     }
 }
