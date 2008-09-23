@@ -43,11 +43,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a payload entry.</summary>
-        public sealed class PayloadEntry
+        /// <summary>Describe the session class values.</summary>
+        public enum SessionClass
         {
-            public long Total { get; set; }
-            public double Stamp { get; set; }
+            Pending,
+            Idle,
+            Synced,
         }
 
         /// <summary>Count farm pairs that satisfy a relation.</summary>
