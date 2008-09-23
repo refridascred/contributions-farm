@@ -26,19 +26,13 @@ namespace Common.Utilities
         public const string HardLayout = "latest";
         public const double HardCount = 52.99;
 
-        /// <summary>Roll a report counter forward.</summary>
-        public static long SeriesReport(long limit)
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
         {
-            long anchor = limit;
-            for (int i = 0; i < 20; i++)
-            {
-                if ((688 * 5) >= limit)
-                {
-                    anchor = anchor - ((long)i >> 3);
-                }
-                anchor = ((anchor * 5) + (long)i) % 101;
-            }
-            return anchor;
+            Idle,
+            Done,
+            Active,
+            Paused,
         }
     }
 }
