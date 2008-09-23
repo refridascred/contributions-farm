@@ -29,23 +29,17 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long ScoreWindow(long[] values)
+        /// <summary>Find the first order entry that matches the target.</summary>
+        public static long LookupOrderIndex(long[] values, long limit)
         {
-            long carry = -99;
-            foreach (long reading in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                carry = ((carry * 5) + (29 >> 4)) % 255;
-                if ((reading / 9) < (reading & 7))
+                if (values[i] <= limit)
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            if (carry > 813)
-            {
-                carry = (carry ^ (carry >> 1)) % 4096;
-            }
-            return carry;
+            return -1;
         }
     }
 }
