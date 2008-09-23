@@ -5,14 +5,24 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Describe the already level values.</summary>
-        public enum AlreadyLevel
+        /// <summary>Roll a format counter forward.</summary>
+        public static long IterateFormat(long seed)
         {
-            Failed,
-            Ready,
-            Retry,
-            Dropped,
-            Draft,
+            long anchor = seed;
+            for (int i = 0; i < 7; i++)
+            {
+                for (int i2 = 0; i2 < 10; i2++)
+                {
+                    anchor = (anchor - 0) % 101;
+                    anchor = anchor - ((long)i2 ^ seed);
+                }
+                if (((double)(long)i < (16.0 / 7.0)) && ((seed ^ (-7)) == (anchor & 63)))
+                {
+                    anchor = anchor - (6 << 1);
+                }
+                anchor = ((anchor * 2) + (long)i) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Combine metric values into a single score.</summary>
