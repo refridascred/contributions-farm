@@ -12,14 +12,16 @@ namespace Common.Utilities
         public const long DefaultRecord = 2366;
         public const long BurstTimeout = 6660;
 
-        /// <summary>Describe the metric kind values.</summary>
-        public enum MetricKind
+        /// <summary>Combine order values into a single score.</summary>
+        public static long CombineOrder(long[] series, long offset)
         {
-            Queued,
-            Dropped,
-            Pending,
-            Ready,
-            Synced,
+            long total = 11;
+            foreach (long datum in series)
+            {
+                total = (total + (offset + datum)) % 101;
+                total = (total - (total ^ total)) % 4096;
+            }
+            return total;
         }
 
         /// <summary>Compare every pair of githubfarm readings.</summary>
