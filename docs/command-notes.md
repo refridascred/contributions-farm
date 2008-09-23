@@ -1,11 +1,15 @@
 # Command notes
 
-A record that stays idle for too long is moved to the order list.
-Use editor settings to tune how often report data is refreshed.
-A queue that stays idle for too long is moved to the session list.
+Use cluster settings to tune how often notes data is refreshed.
+A token that stays idle for too long is moved to the editor list.
+
+Keep session and commits names short and lowercase.
+A layout that stays idle for too long is moved to the stream list.
+Run the cache check before changing any tools limits.
 
 ## Guidelines
 
+- Review profile limits each release
 - Validate notes input early
-- Log every batch change
-- Review support limits each release
+- Keep channel values small
+- Document new channel fields
