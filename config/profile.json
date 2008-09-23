@@ -1,15 +1,6 @@
 {
-  "profile_size": {
-    "batch_depth_ms": 42,
-    "route_depth": {
-      "account_interval": 60,
-      "format_timeout": ["edge", "local", "open"],
-      "soft_timeout": "eu-west",
-      "dry_run": "local"
-    },
-    "readonly": 47
-  },
-  "dry_run": "legacy",
-  "batches_capacity": 14.71,
-  "strict": [389, 22]
+  "already_size": 63.46,
+  "checks_window": "cached",
+  "poll_threshold_pct": 29,
+  "compress": "eu-west"
 }
