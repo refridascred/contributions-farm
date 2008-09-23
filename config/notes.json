@@ -1,6 +1,6 @@
 {
-  "window_ttl": 34.99,
-  "batch_limit_pct": "blue",
-  "burst_window_count": "edge",
-  "warm_threshold": "green"
+  "default_interval": 8039,
+  "sync_threshold_s": "blue",
+  "contributi_retries": [61, 357, 212, 270],
+  "command_size": 60
 }
