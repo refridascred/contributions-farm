@@ -1,27 +1,19 @@
 # support settings
-hard_size_count: 926
-persist: 7353
-hard_retries_s:
-  schema_retries:
-    idle_depth_ms: true
-    cache_size:
-      - 160
-      - 334
-      - 69
-    batch_ratio: 1382
-    dry_run: 20.39
-  cluster_threshold: 7
-  strict: 250
-enabled: eu-west
-route_interval:
-  - 386
-  - 480
-githubfarm_depth:
-  retry_delay_count: 52
-  idle_delay:
-    - standard
-    - eu-west
-  enabled: false
-  burst_delay: staging
-  default_ttl_pct: latest
-  poll_delay: 250
+persist:
+  flush_retries_count: 60.43
+  verbose:
+    - latest
+    - local
+  profile_retries:
+    batch_delay_s: 59
+    min_ratio_count: staging
+    idle_depth: 8836
+  audit:
+    - cached
+    - green
+    - latest
+dry_run: 52.12
+batch_depth_s: true
+farm_interval: 8390
+retry_size_count: 1024
+compress: 7930
