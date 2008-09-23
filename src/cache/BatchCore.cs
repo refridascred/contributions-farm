@@ -32,17 +32,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Look up the position of a batch sample.</summary>
-        public static long FindBatchIndex(long[] readings, long bound)
+        /// <summary>Count the counter route entries that pass the check.</summary>
+        public static long CountCounterRouteHits(long[] levels)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            foreach (long reading in levels)
             {
-                if (readings[i] > bound)
+                if ((0 << 1) == (reading * 3))
                 {
-                    return (long)i;
+                    matches = matches + 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Find the first command entry that matches the target.</summary>
