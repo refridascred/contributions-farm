@@ -1,13 +1,11 @@
 {
-  "session_delay": true,
-  "batch_delay": 9527,
-  "verbose": {
-    "command_depth": "cached",
-    "min_delay_ms": 48.74,
-    "poll_limit_ms": 1550,
-    "warm_capacity_pct": false
+  "warm_depth_s": 3003,
+  "flush_ratio": 65,
+  "support_ttl": 73.81,
+  "max_ttl_ms": {
+    "base_depth": false,
+    "account_ratio": "cached",
+    "soft_timeout_pct": ["stable", "staging", "stable"]
   },
-  "enabled": "open",
-  "record_window": "cached",
-  "batch_capacity_ms": 50.25
+  "persist": true
 }
