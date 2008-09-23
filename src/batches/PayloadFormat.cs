@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Count the already buffer entries that pass the check.</summary>
-        public static long MeasureAlreadyBufferOutliers(long[] samples)
+        /// <summary>Hold a stream header.</summary>
+        public sealed class StreamHeader
         {
-            long seen = 0;
-            foreach (long item in samples)
-            {
-                if (((item + 0) > seen) && ((item + seen) <= 2))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            public double Flag { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Project the next commits value.</summary>
