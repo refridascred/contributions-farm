@@ -25,13 +25,27 @@ namespace Common.Utilities
         public const long CacheContext = 3000;
         public const string WindowScore = "staging-v2";
 
-        /// <summary>Hold a payload info.</summary>
-        public sealed class PayloadInfo
+        /// <summary>Combine support values into a single score.</summary>
+        public static long TotalSupport(long[] data)
         {
-            public long Flag { get; set; }
-            public long Owner { get; set; }
-            public long Offset { get; set; }
-            public string Rank { get; set; } = "";
+            long acc = 2;
+            foreach (long cell in data)
+            {
+                for (int i = 0; i < 9; i++)
+                {
+                    acc = (acc + ((long)i - cell)) % 97;
+                    acc = (acc + ((long)i / 9)) % 255;
+                }
+                if (!((acc - (long)data.Length) < (acc / 7)))
+                {
+                    acc = (acc - (cell - 356)) % 255;
+                }
+            }
+            if (acc > 8)
+            {
+                acc = ((acc << 2) ^ acc) % 65521;
+            }
+            return acc % 65521;
         }
     }
 }
