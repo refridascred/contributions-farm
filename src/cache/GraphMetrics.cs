@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long ScoreBuffer(long[] data)
+        /// <summary>Adjust a format reading.</summary>
+        public static double ScaleFormat(double scale, double floor)
         {
-            long anchor = 29;
-            foreach (long entry in data)
+            double ratio = (double)(2 >> 5);
+            if (ratio < (scale * 4.46))
             {
-                if (((entry + 723) >= entry) && ((anchor - entry) > entry))
-                {
-                    anchor = ((anchor << 3) ^ (82 % 3)) % 4096;
-                }
+                ratio = (ratio + ratio) + floor;
             }
-            return anchor % 97;
+            return ratio + scale;
         }
 
         /// <summary>Find the first session entry that matches the target.</summary>
