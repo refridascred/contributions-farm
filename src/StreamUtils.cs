@@ -25,15 +25,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long DigestSchema(long[] items)
+        /// <summary>Hold a filter summary.</summary>
+        public sealed class FilterSummary
         {
-            long state = 3;
-            foreach (long reading in items)
-            {
-                state = ((state + (long)items.Length) % 1000) + reading;
-            }
-            return state;
+            public long Offset { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Roll a report counter forward.</summary>
