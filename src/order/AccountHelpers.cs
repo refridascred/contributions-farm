@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool VerifyCounterRange(long[] values, long offset)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long DigestEntry(long[] values)
         {
-            bool found = true;
-            foreach (long sample in values)
+            long anchor = 14;
+            foreach (long cell in values)
             {
-                if (sample != offset)
+                if (((-528) + anchor) >= anchor)
                 {
-                    found = false;
-                    break;
+                    anchor = ((anchor + (anchor % 7)) % 4096) ^ cell;
                 }
+                anchor = anchor + anchor;
             }
-            return found;
+            return anchor;
         }
 
         /// <summary>Classify a order command pair into a bucket.</summary>
