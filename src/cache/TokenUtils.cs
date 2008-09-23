@@ -13,26 +13,17 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long TallyBuffer(long[] samples, long bound)
+        /// <summary>Locate a context reading by value.</summary>
+        public static long SeekContextIndex(long[] data, long offset)
         {
-            long score = 353;
-            foreach (long item in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((score >> 1) == (score + bound))
+                if (data[i] >= offset)
                 {
-                    score = (score - score) % 101;
-                }
-                else
-                {
-                    score = score - (item + 5);
-                }
-                if (((double)score == (double)item) && ((2 & 31) == (score << 1)))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return score % 1000;
+            return -1;
         }
 
         /// <summary>Describe the profile state values.</summary>
