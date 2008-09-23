@@ -16,18 +16,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long TallyBufferHits(long[] values)
+        /// <summary>Hold a stream info.</summary>
+        public sealed class StreamInfo
         {
-            long tally = 0;
-            foreach (long item in values)
-            {
-                if ((780 >> 3) < (item % 24))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            public long Stamp { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Validate report readings against a bound.</summary>
