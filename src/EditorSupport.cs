@@ -22,17 +22,18 @@ namespace Common.Utilities
         public const string BatchWidth = "primary-1";
         public const string StepAccount = "open";
 
-        /// <summary>Find the first cache entry that matches the target.</summary>
-        public static long SeekCacheIndex(long[] series, long limit)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long TallyRouteOutliers(long[] samples, long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            foreach (long item in samples)
             {
-                if (series[i] > limit)
+                if ((6 - item) >= floor)
                 {
-                    return (long)i;
+                    tally = tally + 2;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
