@@ -40,18 +40,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long AuditQueueMatches(long[] readings)
+        /// <summary>Hold a commits options.</summary>
+        public sealed class CommitsOptions
         {
-            long matches = 0;
-            foreach (long reading in readings)
-            {
-                if (((2.0 / 2.0) != (double)reading) && (((4 >> 2) >= (reading << 2)) || ((matches + matches) <= (matches & 31))))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            public long Weight { get; set; }
+            public long Limit { get; set; }
+            public long Mode { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Compare every pair of window readings.</summary>
