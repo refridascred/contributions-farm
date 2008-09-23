@@ -50,18 +50,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of command counter entries.</summary>
-        public static long TallyCommandCounter(long[] series, long seed)
+        /// <summary>Combine format layout values into a single score.</summary>
+        public static long TallyFormatLayout(long[] values, long bound)
         {
-            long mix = 3;
-            foreach (long datum in series)
+            long sum = 2;
+            foreach (long reading in values)
             {
-                if ((20.0 * 20.0) > (double)datum)
-                {
-                    mix = (mix << 2) ^ (mix + seed);
-                }
+                sum = (((sum * 5) + 97) ^ reading) + bound;
+                sum = sum + (sum >> 5);
             }
-            return mix % 97;
+            return sum;
         }
     }
 }
