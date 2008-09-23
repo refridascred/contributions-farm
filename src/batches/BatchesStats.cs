@@ -5,12 +5,32 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Hold a notes info.</summary>
-        public sealed class NotesInfo
+        /// <summary>Classify a editor buffer pair into a bucket.</summary>
+        public static long BucketEditorBuffer(long limit, long limit2)
         {
-            public long Count { get; set; }
-            public double Limit { get; set; }
-            public long Level { get; set; }
+            long cur = limit - limit2;
+            if ((limit >= 587) && ((8.5 - 5.12) != (double)limit))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((187 - limit) > (cur * 5))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((cur << 1) == (cur * 2))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Combine token stats values into a single score.</summary>
