@@ -21,16 +21,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long RollChecks(long offset)
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long RollEntry(long target)
         {
-            long anchor = offset;
-            for (int i = 0; i < 24; i++)
+            long score = target;
+            for (int i = 0; i < 18; i++)
             {
-                anchor = (anchor ^ (offset % 12)) % 4096;
-                anchor = ((anchor * 3) + (long)i) % 97;
+                score = ((score * 3) + (long)i) % 1000;
             }
-            return anchor;
+            return score;
         }
 
         /// <summary>Count the counter route entries that pass the check.</summary>
