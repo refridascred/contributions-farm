@@ -58,17 +58,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first payload entry that matches the target.</summary>
-        public static long SeekPayloadIndex(long[] series, long step)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long CountAlreadyHits(long[] items, long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            foreach (long item in items)
             {
-                if (series[i] == step)
+                if (((item * 4) > (300 - offset)) && ((item + count) == (count & 15)))
                 {
-                    return (long)i;
+                    count = count + 2;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
