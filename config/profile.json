@@ -1,6 +1,12 @@
 {
-  "already_size": 63.46,
-  "checks_window": "cached",
-  "poll_threshold_pct": 29,
-  "compress": "eu-west"
+  "batch_ratio_ms": true,
+  "hard_timeout_ms": {
+    "session_timeout": false,
+    "queue_capacity": false,
+    "default_size_s": "open",
+    "compress": 2164,
+    "burst_ttl_count": ["standard", "cached", "open"],
+    "audit": false
+  },
+  "enabled": 2179
 }
