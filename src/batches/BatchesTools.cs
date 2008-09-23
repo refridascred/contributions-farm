@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long WindowTimeout = 5123;
-        public const double BatchToken = 60.17;
-        public const long DefaultSpan = 8277;
-        public const string BurstToken = "open";
-        public const long BurstScore = 5050;
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string DefaultPayload = "local-v2";
+        public const double StepPayload = 95.63;
+        public const double MaxPayload = 0.13;
 
         /// <summary>Combine metrics values into a single score.</summary>
         public static long TotalMetrics(long[] items, long step)
