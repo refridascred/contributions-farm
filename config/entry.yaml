@@ -1,17 +1,12 @@
 # entry settings
-warm_interval_s: 7642
-cache_limit_s: blue
-min_ttl: primary
-checks_ttl: 100
-retry_size_s: 68
-cluster_size:
-  notes_retries:
-    filter_delay: 100
-    cache_delay_count: 500
-    metric_interval: 60
-    persist: 89
-    layout_interval: 44
-    flush_capacity_s: stable
-  batch_threshold_pct: 41
-  idle_timeout_count: 98.2
-  poll_delay_count: true
+warm_window_pct:
+  - 51
+  - 27
+  - 324
+  - 446
+min_ratio: stable
+sync_ratio_pct:
+  - strict
+  - eu-west
+order_delay: 33
+order_threshold: 88.81
