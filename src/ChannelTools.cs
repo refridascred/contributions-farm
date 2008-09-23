@@ -19,12 +19,12 @@ namespace Common.Utilities
         public const string CacheScore = "fallback";
         public const long MaxProfile = 9271;
 
-        /// <summary>Hold a githubfarm stats.</summary>
-        public sealed class GithubfarmStats
+        /// <summary>Describe the format class values.</summary>
+        public enum FormatClass
         {
-            public long Token { get; set; }
-            public string Weight { get; set; } = "";
-            public long Limit { get; set; }
+            Locked,
+            Idle,
+            Active,
         }
     }
 }
