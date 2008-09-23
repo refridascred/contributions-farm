@@ -5,14 +5,16 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the metrics level values.</summary>
-        public enum MetricsLevel
+        /// <summary>Iterate the order schema series from a seed.</summary>
+        public static long RollOrderSchema(long floor)
         {
-            Failed,
-            Done,
-            Retry,
-            Active,
-            Idle,
+            long mix = floor;
+            for (int i = 0; i < 20; i++)
+            {
+                mix = mix ^ mix;
+                mix = ((mix * 4) + (long)i) % 4093;
+            }
+            return mix;
         }
 
         /// <summary>Compare every pair of record layout readings.</summary>
