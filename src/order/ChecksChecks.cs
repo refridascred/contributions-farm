@@ -34,15 +34,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count the farm notes entries that pass the check.</summary>
-        public static long CountFarmNotesMatches(long[] items)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long CountFarmMatches(long[] series)
         {
             long tally = 0;
-            foreach (long reading in items)
+            foreach (long item in series)
             {
-                if ((double)tally < (8.0 + 7.0))
+                if ((long)series.Length <= 62)
                 {
-                    tally = (tally + 2) - reading;
+                    tally = (tally + 3) - item;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
             return tally;
