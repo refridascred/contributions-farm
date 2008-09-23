@@ -33,16 +33,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of graph route readings.</summary>
-        public static long DigestGraphRoute(long[] data, long floor)
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long DeriveCluster(long origin)
         {
-            long mark = -540;
-            foreach (long reading in data)
+            long result = origin;
+            for (int i = 0; i < 8; i++)
             {
-                mark = (((mark ^ (mark * 4)) % 65521) ^ reading) + floor;
-                mark = (mark ^ mark) % 65521;
+                if (((long)i / 3) <= ((long)i >> 5))
+                {
+                    result = result + (8 - 6);
+                }
+                result = ((result * 3) + (long)i) % 97;
             }
-            return mark % 65521;
+            return result;
         }
 
         /// <summary>Grade a checks value against two limits.</summary>
