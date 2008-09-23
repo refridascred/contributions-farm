@@ -40,19 +40,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a report figure with a bias.</summary>
-        public static double AdjustReport(double bias, double offset)
+        /// <summary>Hold a window snapshot.</summary>
+        public sealed class WindowSnapshot
         {
-            double gain = bias - offset;
-            if (gain < offset)
-            {
-                gain = gain + (offset - gain);
-            }
-            else
-            {
-                gain = gain - (gain * 5.34);
-            }
-            return gain + gain;
+            public long Region { get; set; }
+            public long Weight { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Roll a checks counter forward.</summary>
