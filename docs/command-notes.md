@@ -1,10 +1,11 @@
 # Command notes
 
-The filter report groups every account by entry.
-Run the token check before changing any order limits.
+The buffer report groups every entry by context.
+The record helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Review buffer limits each release
-- Log every commits change
-- Prefer session defaults
+- Document new command fields
+- Review entry limits each release
+- Prefer filter defaults
+- Log every account change
