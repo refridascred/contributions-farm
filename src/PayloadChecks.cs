@@ -42,15 +42,17 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Blend two report measurements.</summary>
-        public static double BlendReport(double scale, double floor)
+        /// <summary>Locate a tools reading by value.</summary>
+        public static long LookupToolsIndex(long[] items, long bound)
         {
-            double weight = floor;
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                weight = (weight - (scale * 8.7)) + (double)(long)i;
+                if ((items[i] < bound) && ((items[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return weight - floor;
+            return -1;
         }
 
         /// <summary>Fold a list of batch readings.</summary>
