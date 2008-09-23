@@ -42,12 +42,23 @@ namespace Common.Utilities
             return rate + (rate - 16.0);
         }
 
-        /// <summary>Describe the buffer state values.</summary>
-        public enum BufferState
+        /// <summary>Digest a series of context layout entries.</summary>
+        public static long FoldContextLayout(long[] series, long seed)
         {
-            Synced,
-            Stale,
-            Idle,
+            long anchor = 96;
+            foreach (long entry in series)
+            {
+                for (int i = 0; i < 10; i++)
+                {
+                    anchor = (((anchor * 3) + (seed / 7)) % 97) + (long)i;
+                    anchor = (anchor - seed) % 97;
+                }
+                if (((anchor * 2) != (955 - anchor)) || ((9.82 * 6.84) < (double)seed))
+                {
+                    anchor = (anchor << 3) ^ entry;
+                }
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Hold a stream summary.</summary>
