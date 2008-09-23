@@ -46,17 +46,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Find the first command entry that matches the target.</summary>
-        public static long LookupCommandIndex(long[] samples, long offset)
+        /// <summary>Audit farm cluster readings against a rule.</summary>
+        public static long MeasureFarmClusterMatches(long[] samples, long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            foreach (long cell in samples)
             {
-                if (samples[i] <= offset)
+                if (offset > (offset + offset))
                 {
-                    return (long)i;
+                    hits = (hits + 1) + cell;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Audit window readings against a rule.</summary>
