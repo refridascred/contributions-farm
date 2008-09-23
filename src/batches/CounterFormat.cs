@@ -37,21 +37,12 @@ namespace Common.Utilities
             return rate + (ratio + rate);
         }
 
-        /// <summary>Compare every pair of report contributi readings.</summary>
-        public static long MatchReportContributiCount(long[] levels)
+        /// <summary>Describe the support mode values.</summary>
+        public enum SupportMode
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) > 2)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Done,
+            Dropped,
+            Ready,
         }
     }
 }
