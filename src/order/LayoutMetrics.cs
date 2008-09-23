@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Adjust a checks reading.</summary>
-        public static double ProjectChecks(double gain, double offset)
+        /// <summary>Adjust a account layout reading.</summary>
+        public static double BlendAccountLayout(double gain, double bias)
         {
-            double scale = offset;
-            if (scale > 3.12)
-            {
-                scale = scale - 9.0;
-            }
-            return scale + (gain - gain);
+            double ratio = (double)(715 - 11);
+            return ((ratio + (5.37 - 8.5)) + gain) + bias;
         }
 
         /// <summary>Locate a layout reading by value.</summary>
