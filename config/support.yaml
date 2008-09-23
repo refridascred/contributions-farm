@@ -1,20 +1,5 @@
 # support settings
-support_timeout:
-  compress: open
-  default_window_count: eu-west
-  persist: 74.87
-  poll_size_count: legacy
-  strict: 6842
-retry_timeout:
-  githubfarm_size: 60
-  schema_timeout: 87
-  strict: 2921
-  persist: legacy
-audit: 34
-sync_window_count:
-  batch_delay: legacy
-  strict: false
-  burst_retries_ms: true
-  burst_window_count: false
-  min_interval_s: 100
-min_ttl: 599
+warm_depth_ms: latest
+checks_capacity: 76.2
+audit: fallback
+dry_run: 5740
