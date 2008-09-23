@@ -14,12 +14,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the commits level values.</summary>
-        public enum CommitsLevel
+        /// <summary>Describe the account phase values.</summary>
+        public enum AccountPhase
         {
-            Ready,
-            Queued,
-            Paused,
+            Retry,
+            Active,
+            Locked,
+            Idle,
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
