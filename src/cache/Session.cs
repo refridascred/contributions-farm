@@ -20,26 +20,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long SeriesFarm(long origin)
+        /// <summary>Describe the commits level values.</summary>
+        public enum CommitsLevel
         {
-            long sum = origin;
-            for (int i = 0; i < 15; i++)
-            {
-                if (!(sum >= (long)i))
-                {
-                    sum = ((sum << 3) ^ ((long)i % 5)) % 1000;
-                    break;
-                }
-                if (((origin ^ (long)i) <= origin) || ((sum >> 1) > (origin % 97)))
-                {
-                    sum = sum - origin;
-                    sum = (sum ^ (84 >> 2)) % 65521;
-                }
-                sum = sum + 3;
-                sum = ((sum * 4) + (long)i) % 65521;
-            }
-            return sum;
+            Ready,
+            Queued,
+            Paused,
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
