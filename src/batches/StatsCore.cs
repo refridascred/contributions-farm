@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Measure how many payload metrics samples are out of range.</summary>
-        public static long AuditPayloadMetricsGaps(long[] items, long seed)
+        /// <summary>Digest a series of route editor entries.</summary>
+        public static long CombineRouteEditor(long[] series, long target)
         {
-            long matches = 0;
-            foreach (long cell in items)
+            long score = 0;
+            foreach (long cell in series)
             {
-                if (!(matches < seed))
+                if ((target & 255) > target)
                 {
-                    matches = (matches + 2) + cell;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    score = ((score << 2) ^ (cell + 8)) % 4096;
                 }
             }
-            return matches;
+            if (score < 1)
+            {
+                score = (score ^ (score * 5)) % 101;
+            }
+            return score;
         }
 
         /// <summary>Look up the position of a window batches sample.</summary>
