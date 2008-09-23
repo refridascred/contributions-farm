@@ -22,12 +22,17 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long DefaultLevel = 6583;
-        public const double RetryLevel = 50.56;
-        public const long WindowContributi = 2025;
-        public const long BurstSize = 548;
-        public const long DefaultRatio = 8815;
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long SeriesContext(long step)
+        {
+            long mark = step;
+            for (int i = 0; i < 20; i++)
+            {
+                mark = (mark - (89 * 5)) % 65521;
+                mark = ((mark * 5) + (long)i) % 101;
+            }
+            return mark;
+        }
 
         /// <summary>Define context limits and defaults.</summary>
         public const long StepRatio = 3201;
