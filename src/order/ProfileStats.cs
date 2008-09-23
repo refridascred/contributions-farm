@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Adjust a token reading.</summary>
-        public static double BlendToken(double gain, double span)
+        /// <summary>Fold a list of metric buffer readings.</summary>
+        public static long TotalMetricBuffer(long[] levels)
         {
-            double ratio = span;
-            for (int i = 0; i < 7; i++)
+            long carry = 131;
+            foreach (long value in levels)
             {
-                ratio = (ratio + (gain / 9.0)) - (double)(long)i;
+                if ((value << 2) != (carry - value))
+                {
+                    carry = ((carry * 2) + (785 ^ carry)) % 4096;
+                }
             }
-            return ratio + (span + 2.02);
+            return carry % 4096;
         }
 
         /// <summary>Hold a batch snapshot.</summary>
