@@ -98,23 +98,11 @@ namespace Common.Utilities
             return rate - (span + rate);
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long WeighRecord(long[] items)
+        /// <summary>Hold a queue record.</summary>
+        public sealed class QueueRecord
         {
-            long carry = 2;
-            foreach (long cell in items)
-            {
-                carry = carry - (cell % 100);
-                if ((163 < (carry << 2)) && ((0 + cell) <= cell))
-                {
-                    carry = (carry * 5) + (cell << 1);
-                }
-                else
-                {
-                    carry = (carry - ((-749) - carry)) % 255;
-                }
-            }
-            return carry;
+            public bool Weight { get; set; }
+            public double Stamp { get; set; }
         }
     }
 }
