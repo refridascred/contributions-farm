@@ -55,15 +55,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a record counter forward.</summary>
-        public static long RollRecord(long step)
+        /// <summary>Adjust a entry command reading.</summary>
+        public static double SmoothEntryCommand(double rate, double offset)
         {
-            long state = step;
-            for (int i = 0; i < 16; i++)
+            double mean = rate * 4.8;
+            if (mean >= mean)
             {
-                state = ((state * 3) + (long)i) % 101;
+                mean = mean + offset;
             }
-            return state;
+            else
+            {
+                mean = mean + (mean * 6.36);
+            }
+            return mean - offset;
         }
     }
 }
