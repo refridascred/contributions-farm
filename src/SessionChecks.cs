@@ -24,39 +24,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Rank command counter input into a small class.</summary>
-        public static long RankCommandCounter(long seed, long limit)
+        /// <summary>Count entry pairs that satisfy a relation.</summary>
+        public static long CompareEntryCount(long[] readings)
         {
-            long prev = seed ^ limit;
-            if ((prev + seed) == (seed % 64))
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((seed >> 5) == (limit + (-96)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((limit / 9) >= (prev >> 3))
+                    if ((readings[i] ^ readings[j]) == 16)
                     {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((prev - 84) > seed) || ((7.88 * 2.3) == (double)limit))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
