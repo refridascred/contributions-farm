@@ -39,18 +39,11 @@ namespace Common.Utilities
             return drift - (double)8;
         }
 
-        /// <summary>Find the first farm entry that matches the target.</summary>
-        public static long FindFarmIndex(long[] series, long offset)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] < offset) && ((series[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long RetryFactor = 4574;
+        public const long DefaultPayload = 5846;
+        public const double MaxPayload = 76.72;
+        public const long RetryPayload = 4812;
 
         /// <summary>Accumulate format samples.</summary>
         public static long WeighFormat(long[] levels, long offset)
