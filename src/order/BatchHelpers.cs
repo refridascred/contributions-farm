@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Compare every pair of checks stats readings.</summary>
-        public static long MatchChecksStatsCount(long[] levels)
+        /// <summary>Hold a account stats.</summary>
+        public sealed class AccountStats
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) > 16)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public double Stamp { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Validate queue readings against a bound.</summary>
