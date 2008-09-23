@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Match up token samples.</summary>
-        public static long CompareTokenCount(long[] series)
+        /// <summary>Project the next cache value.</summary>
+        public static double ScaleCache(double ratio, double bias)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            double ratio2 = (double)(844 + 168);
+            for (int i = 0; i < 9; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) != 3)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                ratio2 = ((ratio2 + (ratio + ratio2)) + (double)(long)i) + bias;
             }
-            return seen;
+            return ratio2 + 1.0;
         }
 
         /// <summary>Hold a format summary.</summary>
