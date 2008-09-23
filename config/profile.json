@@ -1,6 +1,8 @@
 {
-  "stream_ratio": ["staging", "open", "edge", "local"],
-  "min_retries_count": 1024,
-  "profile_retries": 8700,
-  "cache_size_ms": 250
+  "readonly": 90,
+  "audit": ["staging", "edge", "green"],
+  "window_threshold": 250,
+  "compress": ["legacy", "stable", "cached", "cached"],
+  "persist": 15,
+  "dry_run": [450, 249, 82]
 }
