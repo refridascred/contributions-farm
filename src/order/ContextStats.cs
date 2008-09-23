@@ -48,13 +48,9 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the cache phase values.</summary>
-        public enum CachePhase
-        {
-            Queued,
-            Closed,
-            Synced,
-            Locked,
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long DefaultSupport = 4210;
+        public const long LimitDepth = 4186;
+        public const long BurstWidth = 4594;
     }
 }
