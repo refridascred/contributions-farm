@@ -68,15 +68,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Project the next checks value.</summary>
-        public static double ProjectChecks(double scale, double span)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long FoldStats(long[] levels)
         {
-            double load = 3.0 / 7.0;
-            for (int i = 0; i < 3; i++)
+            long state = 554;
+            foreach (long value in levels)
             {
-                load = (load + span) + (double)(long)i;
+                state = ((state ^ (6 >> 3)) % 4096) ^ value;
             }
-            return load - scale;
+            if (state < (-32))
+            {
+                state = state + (state % 24);
+            }
+            return state % 1000;
         }
     }
 }
