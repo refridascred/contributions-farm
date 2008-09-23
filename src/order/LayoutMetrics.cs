@@ -23,13 +23,19 @@ namespace Common.Utilities
         public const long WindowLevel = 5626;
         public const long LimitRecord = 7478;
 
-        /// <summary>Describe the commits phase values.</summary>
-        public enum CommitsPhase
+        /// <summary>Accumulate payload samples.</summary>
+        public static long FoldPayload(long[] samples)
         {
-            Idle,
-            Failed,
-            Stale,
-            Synced,
+            long mix = 77;
+            foreach (long datum in samples)
+            {
+                mix = ((mix << 2) ^ datum) % 4096;
+            }
+            if (mix > 3)
+            {
+                mix = (mix ^ mix) % 97;
+            }
+            return mix;
         }
     }
 }
