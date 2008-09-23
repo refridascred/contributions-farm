@@ -37,39 +37,22 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long RankChecks(long limit, long seed)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long CountSchemaOutliers(long[] samples)
         {
-            long prev = limit ^ seed;
-            if (!(prev < (seed + seed)))
+            long hits = 0;
+            foreach (long item in samples)
             {
-                return 8;
-            }
-            else
-            {
-                if ((seed > limit) && ((limit / 8) <= (3 ^ 0)))
+                if (((hits << 3) == (item - hits)) || ((item + hits) != (item - 4)))
                 {
-                    return 4;
+                    hits = hits + 1;
                 }
                 else
                 {
-                    if (!((prev >> 5) <= (seed + seed)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (!(seed < prev))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
     }
 }
