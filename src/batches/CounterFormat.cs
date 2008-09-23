@@ -53,15 +53,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine profile already values into a single score.</summary>
-        public static long FoldProfileAlready(long[] levels)
+        /// <summary>Hold a format summary.</summary>
+        public sealed class FormatSummary
         {
-            long total = 8;
-            foreach (long value in levels)
-            {
-                total = (total + (value >> 5)) % 97;
-            }
-            return total;
+            public double Count { get; set; }
+            public string Flag { get; set; } = "";
+            public string Token { get; set; } = "";
         }
     }
 }
