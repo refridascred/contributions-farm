@@ -1,10 +1,9 @@
 # githubfarm settings
-batch_size:
-  soft_threshold_count: 24
-  default_interval_count: true
-  dry_run: 100
-flush_threshold_pct: 4649
-profile_capacity: 1024
-flush_capacity: true
-poll_threshold_ms: 80
-queue_ttl: 3625
+retry_limit: 100
+enabled:
+  - 348
+  - 435
+  - 369
+poll_timeout_count: 30
+warm_ttl: legacy
+poll_delay_count: 32
