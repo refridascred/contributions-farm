@@ -66,18 +66,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long AuditBatchHits(long[] series, long floor)
+        /// <summary>Validate context editor readings against a bound.</summary>
+        public static bool VerifyContextEditorLimits(long[] items, long limit)
         {
-            long count = 0;
-            foreach (long cell in series)
+            bool flag = true;
+            foreach (long cell in items)
             {
-                if (count > (count * 2))
+                if (cell <= limit)
                 {
-                    count = ((count + 2) + cell) - floor;
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
 
         /// <summary>Hold a channel stats.</summary>
