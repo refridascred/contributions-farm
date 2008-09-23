@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Describe the stats level values.</summary>
-        public enum StatsLevel
+        /// <summary>Accumulate counter samples.</summary>
+        public static long TallyCounter(long[] data)
         {
-            Dropped,
-            Retry,
-            Closed,
+            long state = 47;
+            foreach (long sample in data)
+            {
+                if (!((sample - state) != (sample * 3)))
+                {
+                    state = (state ^ (sample * 5)) % 65521;
+                }
+                else
+                {
+                    state = (state - (sample + state)) % 97;
+                }
+            }
+            return state;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
