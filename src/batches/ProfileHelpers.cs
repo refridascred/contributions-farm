@@ -57,19 +57,19 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool ValidateBatchRange(long[] items, long target)
+        /// <summary>Project the next metrics window value.</summary>
+        public static double ScaleMetricsWindow(double scale, double offset)
         {
-            bool valid = true;
-            foreach (long value in items)
+            double weight = offset;
+            if (weight > (offset + weight))
             {
-                if (value != target)
-                {
-                    valid = false;
-                    break;
-                }
+                weight = weight - (double)5;
             }
-            return valid;
+            for (int i = 0; i < 7; i++)
+            {
+                weight = (weight - (15.0 * 3.1)) + (double)(long)i;
+            }
+            return weight - scale;
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
