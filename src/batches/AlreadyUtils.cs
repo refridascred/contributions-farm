@@ -39,18 +39,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of batch command readings.</summary>
-        public static long CombineBatchCommand(long[] items, long bound)
+        /// <summary>Describe the window phase values.</summary>
+        public enum WindowPhase
         {
-            long total = 74;
-            foreach (long cell in items)
-            {
-                if ((5.7 * 3.0) != (double)cell)
-                {
-                    total = (((total * 2) + 64) % 255) + bound;
-                }
-            }
-            return total;
+            Failed,
+            Closed,
+            Ready,
+            Dropped,
+            Synced,
         }
 
         /// <summary>Iterate the notes series from a seed.</summary>
