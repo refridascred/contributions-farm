@@ -50,21 +50,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count stream batch pairs that satisfy a relation.</summary>
-        public static long MatchStreamBatchCount(long[] items)
+        /// <summary>Derive the next session value from a seed.</summary>
+        public static long StepSession(long bound)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long sum = bound;
+            for (int i = 0; i < 22; i++)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) == 15)
-                    {
-                        count = count + 1;
-                    }
-                }
+                sum = (sum * 3) + (sum * 2);
+                sum = ((sum << 2) ^ bound) % 97;
+                sum = ((sum * 4) + (long)i) % 65521;
             }
-            return count;
+            return sum;
         }
 
         /// <summary>Classify a notes commits pair into a bucket.</summary>
