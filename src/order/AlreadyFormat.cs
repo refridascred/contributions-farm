@@ -66,9 +66,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BurstWindow = 1309;
-        public const long RetryScore = 6564;
-        public const long LimitWindow = 4869;
+        /// <summary>Describe the report phase values.</summary>
+        public enum ReportPhase
+        {
+            Closed,
+            Ready,
+            Locked,
+        }
     }
 }
