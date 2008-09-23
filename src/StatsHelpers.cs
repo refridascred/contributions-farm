@@ -42,17 +42,25 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Locate a format reading by value.</summary>
-        public static long FindFormatIndex(long[] readings, long limit)
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long SortChecks(long step, long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long prev = step ^ origin;
+            if ((origin & 3) >= (prev << 2))
             {
-                if (readings[i] <= limit)
+                return 1;
+            }
+            else
+            {
+                if ((origin ^ 9) <= (step ^ prev))
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return -1;
         }
 
         /// <summary>Blend two editor queue measurements.</summary>
