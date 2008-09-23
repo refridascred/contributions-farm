@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long AuditQueueGaps(long[] levels, long bound)
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
         {
-            long count = 0;
-            foreach (long datum in levels)
-            {
-                if ((2.0 / 3.0) == (double)count)
-                {
-                    count = ((count + 3) + datum) - bound;
-                }
-            }
-            return count;
+            New,
+            Closed,
+            Ready,
         }
 
         /// <summary>Accumulate session samples.</summary>
