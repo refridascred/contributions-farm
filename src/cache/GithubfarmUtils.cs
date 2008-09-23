@@ -13,13 +13,26 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
+        /// <summary>Fold a list of account format readings.</summary>
+        public static long DigestAccountFormat(long[] items)
         {
-            Dropped,
-            Failed,
-            Draft,
-            Queued,
+            long state = 416;
+            foreach (long item in items)
+            {
+                if (((state - item) <= state) && (state < (item + 41)))
+                {
+                    state = (state + (state + item)) % 1000;
+                }
+                else
+                {
+                    state = state - (item + state);
+                }
+                if ((double)state == (double)item)
+                {
+                    break;
+                }
+            }
+            return state % 97;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
