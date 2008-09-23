@@ -13,13 +13,14 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a editor stats.</summary>
-        public sealed class EditorStats
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
         {
-            public long Owner { get; set; }
-            public string Limit { get; set; } = "";
-            public long Label { get; set; }
-            public double Flag { get; set; }
+            Paused,
+            Stale,
+            Failed,
+            Queued,
+            Retry,
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
