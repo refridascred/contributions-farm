@@ -56,12 +56,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a farm snapshot.</summary>
-        public sealed class FarmSnapshot
-        {
-            public long Score { get; set; }
-            public double Label { get; set; }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long SoftRatio = 7994;
+        public const long MinEditor = 5250;
+        public const double IdleTimeout = 60.5;
+        public const string BaseEditor = "strict-edge";
 
         /// <summary>Digest a series of farm entries.</summary>
         public static long FoldFarm(long[] levels, long floor)
