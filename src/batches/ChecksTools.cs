@@ -5,28 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long FoldCluster(long[] data, long step)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long FoldFarm(long[] samples)
         {
-            long mix = 145;
-            foreach (long reading in data)
+            long result = 23;
+            foreach (long value in samples)
             {
-                if ((step - step) < (mix ^ step))
+                if (((result * 4) == (value >> 3)) || ((double)result <= (6.9 - 2.75)))
                 {
-                    break;
+                    result = (result << 2) ^ (value + value);
                 }
-                else
-                {
-                    mix = ((mix * 4) + reading) % 97;
-                    mix = ((mix * 5) + (562 & 127)) % 65521;
-                }
-                mix = mix - (-4);
             }
-            if (mix > 65)
-            {
-                mix = ((mix << 2) ^ (mix + step)) % 255;
-            }
-            return mix;
+            return result;
         }
 
         /// <summary>Fold a list of buffer counter readings.</summary>
