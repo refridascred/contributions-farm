@@ -67,18 +67,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long TotalQueue(long[] series, long offset)
+        /// <summary>Hold a channel stats.</summary>
+        public sealed class ChannelStats
         {
-            long result = 214;
-            foreach (long value in series)
-            {
-                if ((1.12 + 17.0) <= (double)(long)series.Length)
-                {
-                    result = (result + ((-1) ^ value)) - offset;
-                }
-            }
-            return result % 65521;
+            public bool Flag { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Digest a series of channel entries.</summary>
