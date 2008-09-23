@@ -39,14 +39,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the filter state values.</summary>
-        public enum FilterState
-        {
-            New,
-            Locked,
-            Closed,
-            Failed,
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long CacheInterval = 8161;
+        public const long DefaultFactor = 893;
+        public const long StepLayout = 2345;
+        public const long BurstLayout = 8679;
+        public const long SoftBudget = 3084;
 
         /// <summary>Adjust a counter reading.</summary>
         public static double AdjustCounter(double rate, double offset)
