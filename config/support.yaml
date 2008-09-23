@@ -1,8 +1,4 @@
 # support settings
-batch_delay: green
-poll_threshold_ms:
-  record_threshold: 62
-  flush_depth: staging
-  batch_window_pct: local
-  entry_ratio: 15
-hard_window_pct: 8.49
+audit: edge
+poll_window_count: 1024
+batch_interval: 16.48
