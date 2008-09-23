@@ -38,12 +38,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the farm class values.</summary>
-        public enum FarmClass
+        /// <summary>Check that every layout command entry stays within the limit.</summary>
+        public static bool CheckLayoutCommandLimits(long[] values, long seed)
         {
-            Ready,
-            Stale,
-            Locked,
+            bool stale = true;
+            foreach (long value in values)
+            {
+                if (value >= seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Count format pairs that satisfy a relation.</summary>
