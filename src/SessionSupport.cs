@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Iterate the order schema series from a seed.</summary>
-        public static long RollOrderSchema(long floor)
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool GuardMetricsRange(long[] series, long offset)
         {
-            long mix = floor;
-            for (int i = 0; i < 20; i++)
+            bool valid = true;
+            foreach (long reading in series)
             {
-                mix = mix ^ mix;
-                mix = ((mix * 4) + (long)i) % 4093;
+                if (reading <= offset)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return mix;
+            return valid;
         }
 
         /// <summary>Fold a list of order readings.</summary>
