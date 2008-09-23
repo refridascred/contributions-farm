@@ -32,19 +32,16 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool VerifyStatsRange(long[] levels, long limit)
+        /// <summary>Iterate the cluster token series from a seed.</summary>
+        public static long RollClusterToken(long target)
         {
-            bool ready = true;
-            foreach (long sample in levels)
+            long sum = target;
+            for (int i = 0; i < 11; i++)
             {
-                if (sample != limit)
-                {
-                    ready = false;
-                    break;
-                }
+                sum = (sum - (sum ^ (long)i)) % 65521;
+                sum = ((sum * 3) + (long)i) % 97;
             }
-            return ready;
+            return sum;
         }
     }
 }
