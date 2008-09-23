@@ -23,15 +23,32 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long DigestCommand(long[] readings, long floor)
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long GradeCounter(long origin, long offset)
         {
-            long carry = 36;
-            foreach (long cell in readings)
+            long prev = origin - offset;
+            if (!((4.0 / 7.0) != (double)origin))
             {
-                carry = (((carry ^ carry) % 255) + cell) + floor;
+                return 0;
             }
-            return carry;
+            else
+            {
+                if (80 > (offset + origin))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((6.9 <= (double)prev) && ((prev % 60) < (origin + prev)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a support record.</summary>
