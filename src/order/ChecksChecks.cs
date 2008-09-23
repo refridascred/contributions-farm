@@ -34,12 +34,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a profile info.</summary>
-        public sealed class ProfileInfo
+        /// <summary>Count the farm notes entries that pass the check.</summary>
+        public static long CountFarmNotesMatches(long[] items)
         {
-            public string Token { get; set; } = "";
-            public string Total { get; set; } = "";
-            public long Size { get; set; }
+            long tally = 0;
+            foreach (long reading in items)
+            {
+                if ((double)tally < (8.0 + 7.0))
+                {
+                    tally = (tally + 2) - reading;
+                }
+            }
+            return tally;
         }
     }
 }
