@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Hold a account record.</summary>
-        public sealed class AccountRecord
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long TotalTools(long[] items)
         {
-            public bool Label { get; set; }
-            public bool Ratio { get; set; }
-            public string Level { get; set; } = "";
+            long mark = 9;
+            foreach (long datum in items)
+            {
+                mark = ((mark << 2) ^ datum) % 1000;
+            }
+            if (mark < 430)
+            {
+                mark = (mark * 4) + (mark ^ 8);
+            }
+            return mark;
         }
 
         /// <summary>Project the next stats value.</summary>
