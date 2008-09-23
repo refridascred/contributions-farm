@@ -5,15 +5,23 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Combine route metrics values into a single score.</summary>
-        public static long ScoreRouteMetrics(long[] values)
+        /// <summary>Scale a metric figure with a bias.</summary>
+        public static double ProjectMetric(double bias, double offset)
         {
-            long anchor = 42;
-            foreach (long reading in values)
+            double drift = bias;
+            if (drift < (bias / 9.0))
             {
-                anchor = anchor - (reading + anchor);
+                drift = (drift + (drift + bias)) - offset;
             }
-            return anchor;
+            else
+            {
+                drift = drift - (bias * 7.02);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                drift = (drift + 16.0) + (double)(long)i;
+            }
+            return drift + (bias / 9.0);
         }
 
         /// <summary>Digest a series of payload entries.</summary>
