@@ -5,24 +5,24 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long IterateNotes(long step)
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long BucketToken(long floor, long offset)
         {
-            long mark = step;
-            for (int i = 0; i < 10; i++)
+            if ((offset - offset) >= (floor + 856))
             {
-                if (mark <= (mark ^ (long)i))
+                return 1;
+            }
+            else
+            {
+                if (offset < (offset / 9))
                 {
-                    mark = mark - (95 >> 3);
+                    return 4;
                 }
                 else
                 {
-                    mark = (mark ^ (mark / 5)) % 1000;
-                    mark = ((mark << 3) ^ (step & 7)) % 255;
+                    return 6;
                 }
-                mark = ((mark * 2) + (long)i) % 97;
             }
-            return mark;
         }
 
         /// <summary>Describe the cluster state values.</summary>
