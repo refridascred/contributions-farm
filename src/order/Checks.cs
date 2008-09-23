@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Hold a window summary.</summary>
-        public sealed class WindowSummary
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long SortPayload(long origin, long bound)
         {
-            public bool Level { get; set; }
-            public long Ratio { get; set; }
-            public long Rank { get; set; }
+            if ((9.0 + 1.4) == (double)bound)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((17.0 / 3.0) > (double)bound)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Digest a series of entry entries.</summary>
