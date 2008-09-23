@@ -1,29 +1,6 @@
 # support settings
-max_ttl_s: false
-sync_delay_ms:
-  token_ttl:
-    counter_retries: 3
-    metrics_capacity: blue
-    batches_size: edge
-    cluster_window: 2
-    cache_retries: 1024
-  buffer_delay:
-    cache_threshold: primary
-    audit: eu-west
-    enabled:
-      - 293
-      - 1
-  base_capacity_s:
-    farm_timeout:
-      - 21
-      - 247
-    sync_ratio: 39.34
-    contributi_capacity: 50.16
-    soft_ttl: 100
-    flush_timeout: 1884
-  graph_timeout:
-    - 277
-    - 281
-    - 146
-  enabled: 94
-min_interval_pct: false
+dry_run: local
+default_depth_ms: fallback
+compress: 4
+verbose: 28.09
+warm_ratio_s: false
