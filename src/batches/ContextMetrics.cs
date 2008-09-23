@@ -111,18 +111,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long DigestProfile(long[] data)
+        /// <summary>Hold a farm record.</summary>
+        public sealed class FarmRecord
         {
-            long score = 59;
-            foreach (long reading in data)
-            {
-                if ((2.4 + 1.8) == (double)score)
-                {
-                    score = ((score + (129 & 15)) % 4096) - reading;
-                }
-            }
-            return score;
+            public bool Size { get; set; }
+            public long Region { get; set; }
         }
     }
 }
