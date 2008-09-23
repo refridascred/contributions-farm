@@ -49,21 +49,26 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Compare every pair of window readings.</summary>
-        public static long CompareWindowCount(long[] series)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long ScoreChecks(long[] samples, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long total = 99;
+            foreach (long value in samples)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (((long)samples.Length % 7) >= step)
                 {
-                    if ((series[i] + series[j]) > 15)
-                    {
-                        tally = tally + 1;
-                    }
+                    total = (total + (long)samples.Length) % 101;
+                }
+                else
+                {
+                    total = total + (value - total);
                 }
             }
-            return tally;
+            if (total > 15)
+            {
+                total = total + step;
+            }
+            return total % 1000;
         }
 
         /// <summary>Validate context editor readings against a bound.</summary>
