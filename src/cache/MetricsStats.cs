@@ -11,22 +11,31 @@ namespace Common.Utilities
         public const long DefaultAlready = 1341;
         public const double StepFactor = 96.56;
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long TallyChannelOutliers(long[] items)
+        /// <summary>Rank command input into a small class.</summary>
+        public static long SortCommand(long target, long seed)
         {
-            long tally = 0;
-            foreach (long reading in items)
+            if ((double)seed >= (1.0 - 2.05))
             {
-                if (((6.0 + 0.1) != (double)reading) || ((tally + 639) >= (reading >> 1)))
+                return 1;
+            }
+            else
+            {
+                if ((3.46 + 6.51) == (double)target)
                 {
-                    tally = tally + 3;
+                    return 2;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    if (seed < (target - 36))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Describe the farm class values.</summary>
