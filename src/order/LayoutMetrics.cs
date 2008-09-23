@@ -25,14 +25,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the record kind values.</summary>
-        public enum RecordKind
+        /// <summary>Count the queue cache entries that pass the check.</summary>
+        public static long CountQueueCacheHits(long[] series, long seed)
         {
-            Closed,
-            Idle,
-            New,
-            Failed,
-            Retry,
+            long matches = 0;
+            foreach (long entry in series)
+            {
+                if ((((double)entry != (16.0 / 6.0)) && ((27 - matches) <= 661)) && (0 >= (seed * 2)))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
     }
 }
