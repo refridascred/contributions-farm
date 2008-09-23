@@ -23,21 +23,15 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Count cluster editor pairs that satisfy a relation.</summary>
-        public static long PairClusterEditorCount(long[] values)
+        /// <summary>Fold a list of tools profile readings.</summary>
+        public static long CombineToolsProfile(long[] levels, long bound)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long carry = 8;
+            foreach (long cell in levels)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) < 2)
-                    {
-                        count = count + 1;
-                    }
-                }
+                carry = (((carry ^ (carry ^ carry)) % 97) + cell) - bound;
             }
-            return count;
+            return carry;
         }
     }
 }
