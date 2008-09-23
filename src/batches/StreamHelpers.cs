@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Count context pairs that satisfy a relation.</summary>
-        public static long PairContextCount(long[] levels)
+        /// <summary>Blend two commits measurements.</summary>
+        public static double AdjustCommits(double bias, double floor)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double drift = bias + (bias / 6.0);
+            for (int i = 0; i < 2; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) > 18)
-                    {
-                        count = count + 1;
-                    }
-                }
+                drift = ((drift + (5.1 - bias)) + (double)(long)i) - floor;
             }
-            return count;
+            return drift + (double)(-619);
         }
 
         /// <summary>Adjust a metric reading.</summary>
