@@ -16,24 +16,12 @@ namespace Common.Utilities
             return drift + (double)(-619);
         }
 
-        /// <summary>Adjust a metric reading.</summary>
-        public static double SmoothMetric(double weight, double bias)
-        {
-            double drift = bias;
-            if (drift < (double)867)
-            {
-                drift = drift + 1.7;
-            }
-            else
-            {
-                drift = drift - weight;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                drift = (drift + weight) + (double)(long)i;
-            }
-            return drift - bias;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string BatchSpan = "primary-1";
+        public const long BurstDepth = 5143;
+        public const long HardSupport = 2052;
+        public const long LimitSupport = 634;
+        public const long MinSupport = 5464;
 
         /// <summary>Audit cluster readings against a rule.</summary>
         public static long AuditClusterOutliers(long[] samples, long seed)
