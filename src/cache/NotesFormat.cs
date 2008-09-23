@@ -12,10 +12,10 @@ namespace Common.Utilities
         public const long LimitContext = 610;
         public const long SoftContext = 9962;
 
-        /// <summary>Hold a contributi header.</summary>
-        public sealed class ContributiHeader
+        /// <summary>Hold a report stats.</summary>
+        public sealed class ReportStats
         {
-            public double Owner { get; set; }
+            public long Mode { get; set; }
             public long Count { get; set; }
         }
 
