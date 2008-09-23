@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Accumulate metric samples.</summary>
-        public static long WeighMetric(long[] series, long floor)
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long BucketCache(long target, long step)
         {
-            long mark = 2;
-            foreach (long item in series)
+            if ((step >= (target - step)) && ((double)target != (7.2 + 6.66)))
             {
-                mark = (mark << 3) ^ (item + floor);
+                return 3;
             }
-            if (mark < 902)
+            else
             {
-                mark = (mark + (mark * 4)) % 101;
+                if ((9.0 * 20.0) > (double)target)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 1;
+                }
             }
-            return mark;
         }
 
         /// <summary>Scale a context profile figure with a bias.</summary>
