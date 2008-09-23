@@ -89,11 +89,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double MaxInterval = 20.87;
-        public const long WindowBatches = 2586;
-        public const long StepSpan = 2760;
-        public const string HardBatches = "stable-v2";
-        public const double BatchBatches = 61.43;
+        /// <summary>Describe the account status values.</summary>
+        public enum AccountStatus
+        {
+            Paused,
+            Retry,
+            Closed,
+            New,
+            Draft,
+        }
     }
 }
