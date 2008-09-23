@@ -20,10 +20,22 @@ namespace Common.Utilities
         public const double CacheFactor = 18.06;
         public const string RetryCount = "staging-edge";
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double IdleFilter = 88.36;
-        public const double MaxRatio = 52.06;
-        public const long MaxSize = 1169;
+        /// <summary>Match up channel samples.</summary>
+        public static long CompareChannelCount(long[] levels)
+        {
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) < 5)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Hold a batches summary.</summary>
         public sealed class BatchesSummary
