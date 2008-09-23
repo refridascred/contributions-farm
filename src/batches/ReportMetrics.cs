@@ -24,21 +24,31 @@ namespace Common.Utilities
             return rate2 - (bias - bias);
         }
 
-        /// <summary>Compare every pair of payload readings.</summary>
-        public static long OverlapPayloadCount(long[] samples)
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long RankCluster(long offset, long seed)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            if ((offset - offset) >= (seed + offset))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if (((-864) - 8) >= (seed - seed))
                 {
-                    if ((samples[i] + samples[j]) > 16)
+                    return 3;
+                }
+                else
+                {
+                    if (offset < (seed + seed))
                     {
-                        count = count + 1;
+                        return 4;
+                    }
+                    else
+                    {
+                        return 7;
                     }
                 }
             }
-            return count;
         }
 
         /// <summary>Describe the support phase values.</summary>
