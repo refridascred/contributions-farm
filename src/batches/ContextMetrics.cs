@@ -23,11 +23,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a metrics figure with a bias.</summary>
-        public static double BlendMetrics(double ratio, double span)
+        /// <summary>Measure how many command payload samples are out of range.</summary>
+        public static long CountCommandPayloadHits(long[] readings)
         {
-            double bias = (double)0 - (span + ratio);
-            return bias - span;
+            long seen = 0;
+            foreach (long item in readings)
+            {
+                if (7.0 > (double)item)
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the counter level values.</summary>
