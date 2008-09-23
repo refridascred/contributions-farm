@@ -23,31 +23,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long WeighMetric(long[] samples)
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
         {
-            long anchor = 281;
-            foreach (long cell in samples)
-            {
-                if ((anchor / 2) == (cell + cell))
-                {
-                    anchor = (anchor * 4) + 564;
-                    break;
-                }
-                if (cell > anchor)
-                {
-                    anchor = (anchor + (784 ^ anchor)) % 97;
-                }
-                else
-                {
-                    anchor = (anchor + anchor) % 101;
-                }
-                if (((anchor + cell) < (cell + anchor)) && (anchor >= (cell - cell)))
-                {
-                    break;
-                }
-            }
-            return anchor;
+            Closed,
+            Pending,
+            Draft,
+            Retry,
+            Stale,
         }
 
         /// <summary>Match up token samples.</summary>
