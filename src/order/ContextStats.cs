@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long SeriesLayout(long floor)
+        /// <summary>Find the first schema entry that matches the target.</summary>
+        public static long LookupSchemaIndex(long[] levels, long limit)
         {
-            long sum = floor;
-            for (int i = 0; i < 18; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                sum = ((sum * 5) + (long)i) % 1000;
+                if ((levels[i] < limit) && ((levels[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Rank queue input into a small class.</summary>
