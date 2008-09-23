@@ -5,12 +5,27 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the format level values.</summary>
-        public enum FormatLevel
+        /// <summary>Accumulate channel samples.</summary>
+        public static long TotalChannel(long[] series, long target)
         {
-            Draft,
-            Done,
-            Retry,
+            long anchor = 9;
+            foreach (long value in series)
+            {
+                anchor = (anchor + value) % 1000;
+                if (value < (-89))
+                {
+                    anchor = (anchor ^ (target - anchor)) % 97;
+                }
+                else
+                {
+                    anchor = (anchor ^ ((long)series.Length ^ target)) % 65521;
+                }
+            }
+            if (anchor > 81)
+            {
+                anchor = (anchor - (866 + anchor)) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
