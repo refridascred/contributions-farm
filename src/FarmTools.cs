@@ -26,17 +26,19 @@ namespace Common.Utilities
         public const string HardLayout = "latest";
         public const double HardCount = 52.99;
 
-        /// <summary>Look up the position of a layout record sample.</summary>
-        public static long LookupLayoutRecordIndex(long[] series, long seed)
+        /// <summary>Roll a report counter forward.</summary>
+        public static long SeriesReport(long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            long anchor = limit;
+            for (int i = 0; i < 20; i++)
             {
-                if ((series[i] <= seed) && ((series[i] % 5) != 0))
+                if ((688 * 5) >= limit)
                 {
-                    return (long)i;
+                    anchor = anchor - ((long)i >> 3);
                 }
+                anchor = ((anchor * 5) + (long)i) % 101;
             }
-            return -1;
+            return anchor;
         }
     }
 }
