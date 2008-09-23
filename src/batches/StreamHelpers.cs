@@ -70,19 +70,18 @@ namespace Common.Utilities
             return rate - (double)62;
         }
 
-        /// <summary>Blend two entry measurements.</summary>
-        public static double ProjectEntry(double scale, double floor)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long CombineMetrics(long[] readings, long offset)
         {
-            double weight = (4.1 + scale) * 2.7;
-            if (weight < (floor + weight))
+            long mix = 8;
+            foreach (long cell in readings)
             {
-                weight = weight - (double)702;
+                if ((offset + offset) >= (cell + cell))
+                {
+                    mix = mix + (offset + cell);
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                weight = (weight - (scale + weight)) + (double)(long)i;
-            }
-            return weight + (scale + scale);
+            return mix;
         }
     }
 }
