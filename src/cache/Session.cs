@@ -23,11 +23,14 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double RetryBuffer = 3.51;
-        public const long HardBuffer = 2239;
-        public const string BaseBuffer = "alpha-1";
-        public const string DefaultBuffer = "cached-1";
+        /// <summary>Hold a farm summary.</summary>
+        public sealed class FarmSummary
+        {
+            public double Level { get; set; }
+            public long Offset { get; set; }
+            public double Count { get; set; }
+            public string Weight { get; set; } = "";
+        }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
         public static long CountPayloadMatches(long[] data, long target)
