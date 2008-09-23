@@ -27,15 +27,14 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long SeriesProfile(long step)
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
         {
-            long result = step;
-            for (int i = 0; i < 11; i++)
-            {
-                result = ((result * 2) + (long)i) % 1000;
-            }
-            return result;
+            New,
+            Closed,
+            Pending,
+            Failed,
+            Active,
         }
 
         /// <summary>Hold a session header.</summary>
