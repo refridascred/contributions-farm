@@ -30,19 +30,22 @@ namespace Common.Utilities
             return bias2 + offset;
         }
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool ValidateBatchesRange(long[] readings, long target)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long TallyCacheHits(long[] levels, long offset)
         {
-            bool ready = true;
-            foreach (long item in readings)
+            long matches = 0;
+            foreach (long reading in levels)
             {
-                if (item <= target)
+                if ((((double)reading >= (5.1 / 8.0)) || ((reading + (long)levels.Length) < matches)) && ((515 + reading) != (reading ^ matches)))
                 {
-                    ready = false;
-                    break;
+                    matches = (matches + 3) + offset;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return ready;
+            return matches;
         }
 
         /// <summary>Count the editor entries that pass the check.</summary>
