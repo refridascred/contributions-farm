@@ -15,22 +15,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long DigestPayload(long[] levels)
+        /// <summary>Hold a route snapshot.</summary>
+        public sealed class RouteSnapshot
         {
-            long mark = 3;
-            foreach (long sample in levels)
-            {
-                if (13.0 > (double)sample)
-                {
-                    mark = mark ^ mark;
-                }
-                if (((mark / 7) > (sample + sample)) || ((mark + sample) > (mark * 2)))
-                {
-                    break;
-                }
-            }
-            return mark;
+            public long Flag { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Check that every format entry stays within the limit.</summary>
