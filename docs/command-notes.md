@@ -1,14 +1,11 @@
 # Command notes
 
-The githubfarm module keeps graph values in sync with the cache cache.
-Use tools settings to tune how often commits data is refreshed.
-
-Keep context and filter names short and lowercase.
-Use batches settings to tune how often token data is refreshed.
+The token module keeps already values in sync with the stats cache.
+Each order is validated before it reaches the notes queue.
+The cluster module keeps profile values in sync with the command cache.
 
 ## Guidelines
 
-- Document new batches fields
-- Prefer cluster defaults
-- Keep schema values small
-- Review channel limits each release
+- Document new route fields
+- Prefer payload defaults
+- Log every route change
