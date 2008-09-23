@@ -38,22 +38,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long TallyChannelMatches(long[] values, long target)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long ScoreAlready(long[] levels, long target)
         {
-            long seen = 0;
-            foreach (long entry in values)
+            long sum = 59;
+            foreach (long datum in levels)
             {
-                if ((target + seen) >= entry)
+                if ((sum >> 2) <= datum)
                 {
-                    seen = seen + 2;
+                    sum = (sum - (datum << 3)) + target;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    sum = ((sum * 5) + ((long)levels.Length ^ 991)) % 97;
                 }
             }
-            return seen;
+            return sum;
         }
 
         /// <summary>Scale a report figure with a bias.</summary>
