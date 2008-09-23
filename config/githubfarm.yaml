@@ -1,19 +1,10 @@
 # githubfarm settings
-batches_ttl: 250
-idle_limit_count: 4
-entry_ratio: eu-west
-batch_depth_count: edge
-contributi_size: blue
-cache_timeout:
-  hard_threshold_s:
-    - staging
-    - open
-    - strict
-  idle_capacity: 6353
-  audit: 37.26
-  buffer_ratio: false
-  soft_ttl_ms:
-    cache_ratio_pct: 96
-    readonly: 2236
-    entry_capacity: 2889
-  retry_interval_s: false
+retry_ratio:
+  - eu-west
+  - standard
+  - strict
+  - blue
+strict: 500
+stats_threshold:
+  - latest
+  - green
