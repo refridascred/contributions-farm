@@ -44,25 +44,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long StepEntry(long seed)
+        /// <summary>Blend two commits measurements.</summary>
+        public static double ProjectCommits(double ratio, double bias)
         {
-            long sum = seed;
-            for (int i = 0; i < 11; i++)
-            {
-                long cur = 57;
-                if ((sum & 255) >= (long)i)
-                {
-                    sum = (sum + (cur << 2)) % 4096;
-                    sum = (sum - (sum * 5)) % 4096;
-                }
-                else
-                {
-                    cur = cur ^ (1 & 255);
-                }
-                sum = ((sum * 3) + (long)i) % 97;
-            }
-            return sum;
+            double load = (ratio / 4.0) + ratio;
+            return load - bias;
         }
     }
 }
