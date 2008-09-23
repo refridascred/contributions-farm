@@ -33,22 +33,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine token stats values into a single score.</summary>
-        public static long TotalTokenStats(long[] readings)
+        /// <summary>Describe the schema status values.</summary>
+        public enum SchemaStatus
         {
-            long result = 96;
-            foreach (long datum in readings)
-            {
-                if ((20.0 * 14.0) != (double)datum)
-                {
-                    result = (result ^ ((long)readings.Length - result)) % 65521;
-                }
-            }
-            if (result > 2)
-            {
-                result = result ^ (result & 7);
-            }
-            return result;
+            Paused,
+            Dropped,
+            Stale,
         }
 
         /// <summary>Hold a commits snapshot.</summary>
