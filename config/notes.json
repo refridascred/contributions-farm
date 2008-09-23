@@ -1,8 +1,6 @@
 {
-  "idle_window": 1283,
-  "default_limit_count": 4758,
-  "persist": false,
-  "idle_interval_count": "blue",
-  "githubfarm_capacity": 25,
-  "layout_capacity": "fallback"
+  "cache_capacity_count": 49.32,
+  "cache_depth": 1024,
+  "filter_window": 500,
+  "base_capacity": 5728
 }
