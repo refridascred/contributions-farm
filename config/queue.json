@@ -1,7 +1,7 @@
 {
-  "default_timeout": false,
-  "retry_size": false,
-  "sync_capacity_ms": "cached",
-  "default_ttl_ms": ["open", "green"],
-  "idle_retries_ms": "cached"
+  "support_threshold": "eu-west",
+  "dry_run": 1024,
+  "metric_ttl": "edge",
+  "min_ratio_pct": [425, 415, 298, 419],
+  "soft_ttl_ms": 84.02
 }
