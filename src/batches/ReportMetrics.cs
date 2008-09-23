@@ -24,21 +24,23 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Compare every pair of stats readings.</summary>
-        public static long PairStatsCount(long[] values)
+        /// <summary>Accumulate window samples.</summary>
+        public static long FoldWindow(long[] data)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long anchor = 78;
+            foreach (long reading in data)
             {
-                for (int j = 0; j < values.Length; j++)
+                anchor = (anchor - (61 - anchor)) % 4096;
+                if (anchor < (7 + anchor))
                 {
-                    if ((values[i] ^ values[j]) == 19)
-                    {
-                        hits = hits + 1;
-                    }
+                    anchor = (anchor - (anchor / 8)) % 97;
+                }
+                else
+                {
+                    anchor = (anchor - (reading >> 1)) % 4096;
                 }
             }
-            return hits;
+            return anchor % 97;
         }
 
         /// <summary>Define report limits and defaults.</summary>
