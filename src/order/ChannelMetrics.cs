@@ -20,13 +20,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the window mode values.</summary>
-        public enum WindowMode
-        {
-            Retry,
-            New,
-            Closed,
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long MaxBuffer = 4626;
+        public const long HardBuffer = 6671;
+        public const long CacheBuffer = 3618;
+        public const string DefaultWidth = "primary";
+        public const long BaseBuffer = 3680;
 
         /// <summary>Combine channel values into a single score.</summary>
         public static long TallyChannel(long[] levels, long limit)
