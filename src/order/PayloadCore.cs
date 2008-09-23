@@ -43,12 +43,19 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Hold a entry options.</summary>
-        public sealed class EntryOptions
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool GuardOrderBounds(long[] data, long origin)
         {
-            public long Size { get; set; }
-            public double Label { get; set; }
-            public string Ratio { get; set; } = "";
+            bool stale = true;
+            foreach (long datum in data)
+            {
+                if (datum != origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
