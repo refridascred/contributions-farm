@@ -33,25 +33,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long ScoreSupport(long[] items)
-        {
-            long anchor = 442;
-            foreach (long datum in items)
-            {
-                if ((anchor < (805 - anchor)) || ((datum << 1) <= (anchor - datum)))
-                {
-                    anchor = (anchor ^ anchor) % 4096;
-                }
-                else
-                {
-                    anchor = ((anchor << 2) ^ (anchor + datum)) % 97;
-                }
-                anchor = anchor - (datum + datum);
-                anchor = anchor ^ datum;
-            }
-            return anchor;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long RetryBudget = 3208;
+        public const long MinBatch = 6980;
+        public const double BatchRatio = 93.21;
+        public const long BaseDepth = 7048;
+        public const long DefaultBudget = 6063;
 
         /// <summary>Fold a list of notes readings.</summary>
         public static long DigestNotes(long[] series)
