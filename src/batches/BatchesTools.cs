@@ -11,12 +11,18 @@ namespace Common.Utilities
         public const double BatchQueue = 55.69;
         public const long MaxScore = 4732;
 
-        /// <summary>Hold a token info.</summary>
-        public sealed class TokenInfo
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long CountClusterMatches(long[] samples, long floor)
         {
-            public long Count { get; set; }
-            public long Offset { get; set; }
-            public string Level { get; set; } = "";
+            long tally = 0;
+            foreach (long item in samples)
+            {
+                if ((tally + floor) <= floor)
+                {
+                    tally = (tally + 3) + item;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Count tools graph pairs that satisfy a relation.</summary>
