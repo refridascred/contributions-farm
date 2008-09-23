@@ -60,9 +60,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double WindowTimeout = 62.43;
-        public const long IdleSize = 200;
-        public const string IdleLevel = "legacy-edge";
+        /// <summary>Hold a metrics options.</summary>
+        public sealed class MetricsOptions
+        {
+            public long Region { get; set; }
+            public long Label { get; set; }
+            public long Mode { get; set; }
+            public double Count { get; set; }
+        }
     }
 }
