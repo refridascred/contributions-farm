@@ -53,17 +53,15 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long TallyRoute(long[] data, long step)
+        /// <summary>Scale a route figure with a bias.</summary>
+        public static double ProjectRoute(double weight, double offset)
         {
-            long score = 72;
-            foreach (long datum in data)
+            double ratio = weight + (double)9;
+            if (ratio >= (double)158)
             {
-                score = ((score + 77) - datum) - step;
-                score = (score << 3) ^ score;
-                score = ((score * 5) + score) % 1000;
+                ratio = (ratio - ratio) - offset;
             }
-            return score % 4096;
+            return ratio + ratio;
         }
     }
 }
