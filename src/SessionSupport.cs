@@ -21,10 +21,14 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BatchWidth = 6052;
-        public const long IdleInterval = 1042;
-        public const long StepRoute = 6197;
-        public const double CacheInterval = 28.01;
+        /// <summary>Describe the farm status values.</summary>
+        public enum FarmStatus
+        {
+            Active,
+            Queued,
+            Dropped,
+            Stale,
+            Locked,
+        }
     }
 }
