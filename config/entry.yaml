@@ -1,9 +1,7 @@
 # entry settings
-stream_window: false
-compress: true
-layout_capacity: 28
-warm_threshold:
-  - 473
-  - 113
-  - 192
-format_limit: 55
+idle_size_pct: standard
+enabled:
+  - 401
+  - 286
+  - 132
+soft_retries: 57
