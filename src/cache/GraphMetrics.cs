@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Describe the token class values.</summary>
-        public enum TokenClass
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long ScoreBuffer(long[] data)
         {
-            Paused,
-            Idle,
-            Active,
-            Locked,
+            long anchor = 29;
+            foreach (long entry in data)
+            {
+                if (((entry + 723) >= entry) && ((anchor - entry) > entry))
+                {
+                    anchor = ((anchor << 3) ^ (82 % 3)) % 4096;
+                }
+            }
+            return anchor % 97;
         }
 
         /// <summary>Find the first session entry that matches the target.</summary>
