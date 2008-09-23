@@ -42,12 +42,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long SoftLevel = 3075;
-        public const long WindowInterval = 501;
-        public const long SoftNotes = 9329;
-        public const long StepNotes = 7394;
-        public const string IdleDepth = "strict";
+        /// <summary>Hold a format record.</summary>
+        public sealed class FormatRecord
+        {
+            public long Level { get; set; }
+            public bool Weight { get; set; }
+        }
 
         /// <summary>Scale a githubfarm figure with a bias.</summary>
         public static double ProjectGithubfarm(double bias, double offset)
