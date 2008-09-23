@@ -16,19 +16,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Validate entry window readings against a bound.</summary>
-        public static bool GuardEntryWindowRange(long[] items, long offset)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long TallyBufferHits(long[] values)
         {
-            bool valid = true;
-            foreach (long entry in items)
+            long tally = 0;
+            foreach (long item in values)
             {
-                if (entry > offset)
+                if ((780 >> 3) < (item % 24))
                 {
-                    valid = false;
-                    break;
+                    tally = tally + 1;
                 }
             }
-            return valid;
+            return tally;
         }
 
         /// <summary>Measure how many queue batch samples are out of range.</summary>
