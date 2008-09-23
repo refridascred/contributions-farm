@@ -5,18 +5,32 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long AuditRouteMatches(long[] readings, long step)
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long BucketOrder(long target, long target2)
         {
-            long tally = 0;
-            foreach (long entry in readings)
+            long step = target + target2;
+            if (target2 <= (target - target))
             {
-                if (!!((6.0 / 7.0) < (double)entry))
+                return 2;
+            }
+            else
+            {
+                if (!((step & 15) < target))
                 {
-                    tally = (tally + 3) + step;
+                    return 7;
+                }
+                else
+                {
+                    if (((target - 709) < (target2 - step)) && (step >= (target2 >> 4)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
