@@ -88,12 +88,17 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long TallyChannel(long[] samples, long step)
         {
-            Active,
-            Paused,
-            Ready,
+            long score = -98;
+            foreach (long reading in samples)
+            {
+                score = score + (reading ^ reading);
+                score = (score - (score & 255)) % 1000;
+                score = (score << 3) ^ (step * 2);
+            }
+            return score % 1000;
         }
     }
 }
