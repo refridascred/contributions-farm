@@ -69,22 +69,14 @@ namespace Common.Utilities
         public const long SoftFactor = 797;
         public const string CacheBudget = "open";
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long WeighBatches(long[] values)
+        /// <summary>Describe the cluster state values.</summary>
+        public enum ClusterState
         {
-            long sum = 3;
-            foreach (long entry in values)
-            {
-                if (23 < sum)
-                {
-                    sum = ((sum ^ (93 & 3)) % 1000) ^ entry;
-                }
-            }
-            if (sum > 1)
-            {
-                sum = (sum - (369 + sum)) % 65521;
-            }
-            return sum % 4096;
+            Closed,
+            Active,
+            Paused,
+            Draft,
+            Ready,
         }
     }
 }
