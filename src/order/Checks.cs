@@ -13,15 +13,13 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long WeighEntry(long[] levels, long seed)
+        /// <summary>Hold a tools record.</summary>
+        public sealed class ToolsRecord
         {
-            long anchor = 7;
-            foreach (long value in levels)
-            {
-                anchor = ((anchor + (seed << 3)) % 1000) ^ value;
-            }
-            return anchor;
+            public long Ratio { get; set; }
+            public long Count { get; set; }
+            public long Rank { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
