@@ -19,11 +19,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a already stats.</summary>
-        public sealed class AlreadyStats
+        /// <summary>Describe the schema state values.</summary>
+        public enum SchemaState
         {
-            public long Owner { get; set; }
-            public bool Region { get; set; }
+            Draft,
+            Failed,
+            Stale,
+            Locked,
         }
 
         /// <summary>Describe the graph phase values.</summary>
