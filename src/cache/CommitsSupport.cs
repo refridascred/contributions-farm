@@ -34,19 +34,26 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every stream cache entry stays within the limit.</summary>
-        public static bool VerifyStreamCacheBounds(long[] data, long step)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long ScoreProfile(long[] levels)
         {
-            bool ok = true;
-            foreach (long entry in data)
+            long carry = 242;
+            foreach (long datum in levels)
             {
-                if (entry < step)
+                if (datum > (datum % 12))
                 {
-                    ok = false;
+                    carry = carry + (datum / 7);
+                }
+                if ((carry & 1) > (1 - carry))
+                {
                     break;
                 }
             }
-            return ok;
+            if (carry > 4)
+            {
+                carry = (carry - 6) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
