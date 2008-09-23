@@ -22,19 +22,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the format commits series from a seed.</summary>
-        public static long IterateFormatCommits(long step)
+        /// <summary>Match up contributi samples.</summary>
+        public static long OverlapContributiCount(long[] items)
         {
-            long result = step;
-            for (int i = 0; i < 22; i++)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((15.0 + 9.61) != (double)result)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    result = (result ^ (70 + (long)i)) % 4096;
+                    if ((items[i] - items[j]) < 17)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                result = ((result * 3) + (long)i) % 4093;
             }
-            return result;
+            return matches;
         }
 
         /// <summary>Describe the command mode values.</summary>
