@@ -1,10 +1,7 @@
 {
-  "readonly": {
-    "readonly": "legacy",
-    "verbose": 9.9,
-    "strict": 42.82,
-    "sync_limit_ms": [432, 53, 407, 25]
-  },
-  "token_timeout": "latest",
-  "strict": "fallback"
+  "compress": 11,
+  "flush_ratio_ms": 5936,
+  "soft_ratio": false,
+  "cluster_delay": ["standard", "open"],
+  "stats_retries": ["eu-west", "open"]
 }
