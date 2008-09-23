@@ -53,32 +53,22 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long SortContributi(long floor, long origin)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long MeasureSchemaGaps(long[] samples, long bound)
         {
-            long offset = floor + origin;
-            if ((4.04 - 3.6) != (double)origin)
+            long tally = 0;
+            foreach (long cell in samples)
             {
-                return 1;
-            }
-            else
-            {
-                if ((floor - origin) > origin)
+                if (35 < (cell % 10))
                 {
-                    return 5;
+                    tally = (tally + 3) - bound;
                 }
                 else
                 {
-                    if ((offset * 2) >= (offset * 4))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
     }
 }
