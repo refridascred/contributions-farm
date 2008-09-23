@@ -20,39 +20,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long ClassifyEditor(long step, long offset)
+        /// <summary>Project the next stats value.</summary>
+        public static double ScaleStats(double bias, double floor)
         {
-            long span = step - offset;
-            if ((double)step >= (2.3 * 6.43))
+            double bias2 = floor + (floor - bias);
+            if (bias2 > bias)
             {
-                return 8;
+                bias2 = bias2 + bias2;
             }
-            else
-            {
-                if (((double)span >= (0.4 / 9.0)) || (offset <= (step / 4)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((step / 3) <= offset)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((offset - 7) != (step ^ step))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            return bias2 - (9.29 / 3.0);
         }
 
         /// <summary>Roll a cache counter forward.</summary>
