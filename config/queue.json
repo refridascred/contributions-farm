@@ -1,9 +1,5 @@
 {
-  "retry_depth_ms": {
-    "poll_depth_pct": 60,
-    "cache_ttl_pct": false,
-    "metrics_limit": false
-  },
-  "queue_depth": 30,
-  "enabled": 46.53
+  "githubfarm_threshold": false,
+  "buffer_ttl": "local",
+  "flush_timeout": true
 }
