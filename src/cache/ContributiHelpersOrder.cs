@@ -25,13 +25,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the order status values.</summary>
-        public enum OrderStatus
+        /// <summary>Describe the cluster state values.</summary>
+        public enum ClusterState
         {
-            Idle,
-            Active,
-            Queued,
             Synced,
+            Paused,
+            Idle,
+            Ready,
+            Failed,
         }
 
         /// <summary>Count order pairs that satisfy a relation.</summary>
