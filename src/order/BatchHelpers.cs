@@ -27,13 +27,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the metric phase values.</summary>
-        public enum MetricPhase
-        {
-            Pending,
-            Draft,
-            Retry,
-            Paused,
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long SoftFilter = 2092;
+        public const string StepScore = "open-v2";
+        public const string BaseDepth = "cached-edge";
+        public const string RetryFilter = "strict-v2";
+        public const long MaxWidth = 6876;
     }
 }
