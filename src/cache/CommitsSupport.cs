@@ -34,26 +34,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long ScoreProfile(long[] levels)
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool CheckEditorLimits(long[] levels, long origin)
         {
-            long carry = 242;
-            foreach (long datum in levels)
+            bool ready = true;
+            foreach (long cell in levels)
             {
-                if (datum > (datum % 12))
+                if (cell > origin)
                 {
-                    carry = carry + (datum / 7);
-                }
-                if ((carry & 1) > (1 - carry))
-                {
+                    ready = false;
                     break;
                 }
             }
-            if (carry > 4)
-            {
-                carry = (carry - 6) % 65521;
-            }
-            return carry;
+            return ready;
         }
 
         /// <summary>Derive the next layout profile value from a seed.</summary>
