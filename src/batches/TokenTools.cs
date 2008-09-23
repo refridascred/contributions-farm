@@ -37,10 +37,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string BaseRatio = "latest-edge";
-        public const string BurstSize = "strict-1";
-        public const long DefaultTimeout = 7910;
-        public const string BatchStats = "strict-1";
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long AuditGithubfarmHits(long[] values, long limit)
+        {
+            long tally = 0;
+            foreach (long entry in values)
+            {
+                if ((long)values.Length == (limit % 16))
+                {
+                    tally = (tally + 1) ^ entry;
+                }
+            }
+            return tally;
+        }
     }
 }
