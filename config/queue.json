@@ -1,13 +1,12 @@
 {
-  "batch_delay": {
-    "batch_window_count": true,
-    "poll_window": "open",
-    "verbose": 30.77,
-    "buffer_threshold": "fallback"
+  "warm_depth_s": "local",
+  "window_threshold": 446,
+  "enabled": false,
+  "base_delay_ms": {
+    "route_limit": "green",
+    "checks_depth": "blue",
+    "dry_run": 20.6,
+    "entry_threshold": 24.96
   },
-  "persist": 93.88,
-  "audit": [386, 296, 324],
-  "retry_limit": 937,
-  "flush_window": 61.61,
-  "poll_depth_ms": 24
+  "warm_limit_s": 40
 }
