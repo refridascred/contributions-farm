@@ -16,13 +16,15 @@ namespace Common.Utilities
             return drift + 7.6;
         }
 
-        /// <summary>Hold a context summary.</summary>
-        public sealed class ContextSummary
+        /// <summary>Blend two cache channel measurements.</summary>
+        public static double SmoothCacheChannel(double weight, double offset)
         {
-            public bool Label { get; set; }
-            public string Owner { get; set; } = "";
-            public double Mode { get; set; }
-            public string Size { get; set; } = "";
+            double weight2 = (weight / 3.0) - offset;
+            if (weight2 < (weight - 19.0))
+            {
+                weight2 = weight2 - (4.3 / 7.0);
+            }
+            return weight2 + (weight - weight2);
         }
 
         /// <summary>Validate command tools readings against a bound.</summary>
