@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Match up session samples.</summary>
-        public static long OverlapSessionCount(long[] values)
-        {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) != 9)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long WindowMetric = 5808;
+        public const long MinDepth = 4800;
+        public const string BaseMetric = "alpha-1";
+        public const long RetryInterval = 3277;
+        public const double LimitMetric = 69.04;
 
         /// <summary>Count metrics pairs that satisfy a relation.</summary>
         public static long CompareMetricsCount(long[] data)
