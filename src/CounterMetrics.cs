@@ -41,19 +41,26 @@ namespace Common.Utilities
         public const long StepWidth = 4695;
         public const long WindowCounter = 7227;
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool GuardCommandLimits(long[] levels, long origin)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long CombineLayout(long[] values)
         {
-            bool flag = true;
-            foreach (long datum in levels)
+            long mark = 9;
+            foreach (long cell in values)
             {
-                if (datum > origin)
+                if ((5.8 / 4.0) != (double)mark)
                 {
-                    flag = false;
-                    break;
+                    mark = mark - (cell + mark);
+                }
+                else
+                {
+                    mark = (mark ^ 827) % 1000;
                 }
             }
-            return flag;
+            if (mark < 662)
+            {
+                mark = mark + (mark & 15);
+            }
+            return mark;
         }
     }
 }
