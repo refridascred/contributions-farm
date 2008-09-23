@@ -1,7 +1,12 @@
 {
-  "persist": 2125,
-  "filter_ratio": "stable",
-  "soft_limit_ms": "legacy",
-  "batch_depth": "standard",
-  "burst_ttl_ms": 20
+  "support_size": 100,
+  "audit": {
+    "min_ratio_count": 57,
+    "min_size_count": "open",
+    "batch_window": 2501,
+    "account_limit": true,
+    "editor_window": [18, 21],
+    "report_retries": 81
+  },
+  "retry_limit_count": 2904
 }
