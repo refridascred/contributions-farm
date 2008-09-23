@@ -33,24 +33,18 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long SortFilter(long floor, long offset)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long AuditQueueOutliers(long[] readings)
         {
-            if ((0 + offset) <= (floor + floor))
+            long hits = 0;
+            foreach (long entry in readings)
             {
-                return 5;
-            }
-            else
-            {
-                if (!(floor <= (410 + offset)))
+                if ((hits + entry) > hits)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 1;
+                    hits = hits + 3;
                 }
             }
+            return hits;
         }
     }
 }
