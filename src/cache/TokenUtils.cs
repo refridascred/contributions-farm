@@ -26,11 +26,28 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long MaxChecks = 9589;
-        public const long LimitInterval = 3373;
-        public const double BatchChecks = 48.48;
-        public const long BaseRatio = 9547;
-        public const long MinRatio = 2158;
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long ScoreGraph(long[] levels)
+        {
+            long anchor = 20;
+            foreach (long value in levels)
+            {
+                if ((anchor >> 4) > (24 + (long)levels.Length))
+                {
+                    anchor = ((anchor * 4) + (value + 39)) % 97;
+                    anchor = ((anchor * 5) + value) % 97;
+                    continue;
+                }
+                else
+                {
+                    anchor = ((anchor * 4) + (anchor & 31)) % 4096;
+                }
+                if (6.0 > (double)anchor)
+                {
+                    anchor = (anchor + (anchor / 6)) % 65521;
+                }
+            }
+            return anchor % 97;
+        }
     }
 }
