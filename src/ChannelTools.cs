@@ -19,12 +19,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long CacheFarm = 3832;
-        public const long BatchFarm = 4832;
-        public const long BurstDepth = 5106;
-        public const long HardDepth = 8717;
-        public const long RetryFactor = 7249;
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long RetryDepth = 1815;
+        public const long MinScore = 9920;
+        public const long BurstDepth = 9049;
+        public const string IdleRatio = "cached-1";
 
         /// <summary>Define record limits and defaults.</summary>
         public const long WindowRecord = 4553;
