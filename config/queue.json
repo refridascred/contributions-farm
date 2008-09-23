@@ -1,10 +1,12 @@
 {
-  "idle_capacity_ms": {
-    "already_size": 30,
-    "retry_timeout": 97.48,
-    "cache_ratio_count": "legacy",
-    "soft_timeout_ms": 100
+  "persist": {
+    "max_depth_pct": 250,
+    "idle_depth": 3,
+    "hard_timeout": 49,
+    "min_capacity_pct": 38,
+    "poll_limit_pct": [107, 487, 69, 141]
   },
-  "default_threshold_ms": true,
-  "burst_size": false
+  "audit": 29.36,
+  "stream_delay": "open",
+  "format_depth": true
 }
