@@ -32,13 +32,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the batches state values.</summary>
-        public enum BatchesState
+        /// <summary>Hold a checks entry.</summary>
+        public sealed class ChecksEntry
         {
-            Pending,
-            Closed,
-            Stale,
-            Ready,
+            public string Score { get; set; } = "";
+            public long Count { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Hold a entry options.</summary>
