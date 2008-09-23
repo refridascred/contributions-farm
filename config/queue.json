@@ -1,7 +1,15 @@
 {
-  "verbose": "local",
-  "report_ttl": [291, 452, 417, 397],
-  "hard_depth_pct": "eu-west",
-  "burst_retries_count": ["open", "standard", "fallback"],
-  "burst_ratio_s": false
+  "notes_threshold": true,
+  "min_depth": 98.84,
+  "strict": 75,
+  "max_size_pct": [221, 293],
+  "max_delay_ms": ["legacy", "cached", "green"],
+  "command_ttl": {
+    "compress": 9514,
+    "default_retries": [455, 493, 464],
+    "strict": 30,
+    "cache_timeout": 44.74,
+    "sync_retries_ms": 79.54,
+    "retry_size": 100
+  }
 }
