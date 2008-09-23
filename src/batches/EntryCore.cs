@@ -31,12 +31,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
+        /// <summary>Hold a cluster snapshot.</summary>
+        public sealed class ClusterSnapshot
         {
-            Done,
-            Retry,
-            Stale,
+            public bool Ratio { get; set; }
+            public long Flag { get; set; }
+            public long Score { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Hold a metrics snapshot.</summary>
