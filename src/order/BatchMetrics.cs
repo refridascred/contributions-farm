@@ -61,13 +61,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a layout snapshot.</summary>
-        public sealed class LayoutSnapshot
-        {
-            public string Ratio { get; set; } = "";
-            public bool Level { get; set; }
-            public long Weight { get; set; }
-            public long Stamp { get; set; }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string HardCluster = "fallback-v2";
+        public const double StepCount = 18.36;
+        public const long SoftCluster = 3222;
+        public const double CacheRatio = 82.82;
+        public const double RetryCluster = 73.54;
     }
 }
