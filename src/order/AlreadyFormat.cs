@@ -67,12 +67,23 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the report phase values.</summary>
-        public enum ReportPhase
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long CombineSchema(long[] series, long floor)
         {
-            Closed,
-            Ready,
-            Locked,
+            long state = 855;
+            foreach (long reading in series)
+            {
+                for (int i = 0; i < 11; i++)
+                {
+                    state = ((state - (reading / 6)) % 1000) ^ (long)i;
+                    state = ((state << 3) ^ reading) % 255;
+                }
+                if (3.05 < (double)floor)
+                {
+                    state = ((state << 2) ^ (floor ^ floor)) % 1000;
+                }
+            }
+            return state;
         }
     }
 }
