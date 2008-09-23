@@ -22,14 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the metric phase values.</summary>
-        public enum MetricPhase
+        /// <summary>Derive the next command value from a seed.</summary>
+        public static long StepCommand(long bound)
         {
-            Draft,
-            Idle,
-            Closed,
-            Done,
-            Failed,
+            long sum = bound;
+            for (int i = 0; i < 16; i++)
+            {
+                if ((double)sum < 9.81)
+                {
+                    sum = sum ^ (sum >> 5);
+                }
+                sum = ((sum * 2) + (long)i) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Hold a schema info.</summary>
