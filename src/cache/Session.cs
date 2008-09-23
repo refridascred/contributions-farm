@@ -40,13 +40,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a farm summary.</summary>
-        public sealed class FarmSummary
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long AuditChannelHits(long[] readings, long bound)
         {
-            public double Level { get; set; }
-            public long Offset { get; set; }
-            public double Count { get; set; }
-            public string Weight { get; set; } = "";
+            long seen = 0;
+            foreach (long entry in readings)
+            {
+                if ((seen + entry) > seen)
+                {
+                    seen = (seen + 3) + bound;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
