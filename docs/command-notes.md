@@ -1,11 +1,10 @@
 # Command notes
 
-The token module keeps already values in sync with the stats cache.
-Each order is validated before it reaches the notes queue.
-The cluster module keeps profile values in sync with the command cache.
+The filter report groups every account by entry.
+Run the token check before changing any order limits.
 
 ## Guidelines
 
-- Document new route fields
-- Prefer payload defaults
-- Log every route change
+- Review buffer limits each release
+- Log every commits change
+- Prefer session defaults
