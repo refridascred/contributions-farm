@@ -1,10 +1,14 @@
 # Command notes
 
-The channel helpers are pure functions, so they are safe to call from any thread.
-Use filter settings to tune how often route data is refreshed.
+Use stats settings to tune how often notes data is refreshed.
+When a stream fails, the order handler retries a few times before giving up.
+When a schema fails, the queue handler retries a few times before giving up.
+
+The batch report groups every channel by format.
+Keep already and route names short and lowercase.
 
 ## Guidelines
 
-- Validate counter input early
-- Document new tools fields
-- Log every stats change
+- Prefer buffer defaults
+- Log every contributi change
+- Review farm limits each release
