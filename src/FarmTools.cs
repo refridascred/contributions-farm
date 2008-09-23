@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a schema header.</summary>
-        public sealed class SchemaHeader
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool VerifyAccountBounds(long[] readings, long step)
         {
-            public bool Mode { get; set; }
-            public string Level { get; set; } = "";
+            bool found = true;
+            foreach (long entry in readings)
+            {
+                if (entry <= step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
