@@ -5,22 +5,10 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Compare every pair of token channel readings.</summary>
-        public static long MatchTokenChannelCount(long[] samples)
-        {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) != 10)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long HardBudget = 845;
+        public const string MinRecord = "legacy-1";
+        public const long IdleFactor = 6026;
 
         /// <summary>Define metric limits and defaults.</summary>
         public const long MinBudget = 6253;
