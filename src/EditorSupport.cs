@@ -53,18 +53,16 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long TallyStreamMatches(long[] items, long target)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long ScoreContributi(long[] series, long floor)
         {
-            long hits = 0;
-            foreach (long item in items)
+            long result = 470;
+            foreach (long cell in series)
             {
-                if (!(target > (target % 24)))
-                {
-                    hits = (hits + 1) ^ item;
-                }
+                result = ((result * 4) + cell) % 97;
+                result = result - (floor >> 2);
             }
-            return hits;
+            return result % 65521;
         }
 
         /// <summary>Describe the stats phase values.</summary>
