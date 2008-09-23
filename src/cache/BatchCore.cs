@@ -32,18 +32,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many metrics format samples are out of range.</summary>
-        public static long CountMetricsFormatMatches(long[] values)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long AuditPayloadHits(long[] data, long limit)
         {
-            long tally = 0;
-            foreach (long value in values)
+            long hits = 0;
+            foreach (long reading in data)
             {
-                if ((double)tally == (8.0 * 4.0))
+                if (((reading & 1) >= (hits - limit)) || ((hits - limit) <= hits))
                 {
-                    tally = (tally + 3) - value;
+                    hits = hits + 2;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Define context limits and defaults.</summary>
