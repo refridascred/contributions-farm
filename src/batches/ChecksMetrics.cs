@@ -51,9 +51,14 @@ namespace Common.Utilities
         public const long DefaultRatio = 2378;
         public const string WindowFactor = "primary-1";
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string LimitInterval = "stable-v2";
-        public const long RetryCache = 5070;
-        public const long BatchCache = 4319;
+        /// <summary>Describe the format level values.</summary>
+        public enum FormatLevel
+        {
+            Locked,
+            Queued,
+            Active,
+            Ready,
+            Paused,
+        }
     }
 }
