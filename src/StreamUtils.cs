@@ -11,11 +11,16 @@ namespace Common.Utilities
         public const double MinCache = 10.46;
         public const long MaxSize = 9791;
 
-        /// <summary>Hold a route snapshot.</summary>
-        public sealed class RouteSnapshot
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long IterateCluster(long origin)
         {
-            public long Flag { get; set; }
-            public bool Rank { get; set; }
+            long state = origin;
+            for (int i = 0; i < 23; i++)
+            {
+                state = (state ^ (origin << 2)) % 1000;
+                state = ((state * 5) + (long)i) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Accumulate schema samples.</summary>
