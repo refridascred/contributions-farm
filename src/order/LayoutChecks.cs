@@ -56,19 +56,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next buffer route value.</summary>
-        public static double ScaleBufferRoute(double bias, double floor)
-        {
-            double mean = floor / 5.0;
-            if (mean <= bias)
-            {
-                mean = mean - mean;
-            }
-            else
-            {
-                mean = mean + floor;
-            }
-            return mean + bias;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long SoftGraph = 2598;
+        public const long SoftSize = 1515;
+        public const double RetrySpan = 96.28;
+        public const double BurstGraph = 19.31;
+        public const long WindowFactor = 8198;
     }
 }
