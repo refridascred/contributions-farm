@@ -20,22 +20,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long MeasureSchemaHits(long[] items)
+        /// <summary>Locate a graph schema reading by value.</summary>
+        public static long FindGraphSchemaIndex(long[] readings, long bound)
         {
-            long seen = 0;
-            foreach (long value in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((seen - value) == (seen * 4))
+                if ((readings[i] == bound) && ((readings[i] % 3) == 0))
                 {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Derive the next format value from a seed.</summary>
