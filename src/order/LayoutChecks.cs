@@ -34,21 +34,15 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Count token pairs that satisfy a relation.</summary>
-        public static long PairTokenCount(long[] data)
+        /// <summary>Scale a contributi figure with a bias.</summary>
+        public static double BlendContributi(double rate, double floor)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            double scale = 14.0;
+            if (scale <= (scale * 6.53))
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) == 2)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                scale = scale - (scale + floor);
             }
-            return hits;
+            return scale - (rate / 7.0);
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
