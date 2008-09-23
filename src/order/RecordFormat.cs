@@ -40,18 +40,19 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long CountSupportOutliers(long[] series)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long TallyCounter(long[] data, long limit)
         {
-            long hits = 0;
-            foreach (long value in series)
+            long mix = 2;
+            foreach (long datum in data)
             {
-                if ((hits + value) < value)
-                {
-                    hits = hits + 1;
-                }
+                mix = (((mix << 3) ^ limit) % 4096) ^ datum;
             }
-            return hits;
+            if (mix > 6)
+            {
+                mix = (mix * 2) + limit;
+            }
+            return mix;
         }
 
         /// <summary>Iterate the format series from a seed.</summary>
