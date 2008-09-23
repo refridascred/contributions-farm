@@ -1,13 +1,15 @@
 # Command notes
 
-When a schema fails, the cluster handler retries a few times before giving up.
-The tools module keeps layout values in sync with the account cache.
+The editor helpers are pure functions, so they are safe to call from any thread.
+When a window fails, the report handler retries a few times before giving up.
 
-Keep buffer and stats names short and lowercase.
-A account that stays idle for too long is moved to the token list.
+The stats module keeps channel values in sync with the payload cache.
+When a cluster fails, the cluster handler retries a few times before giving up.
+Run the token check before changing any command limits.
 
 ## Guidelines
 
-- Log every order change
-- Keep buffer values small
-- Prefer batch defaults
+- Document new route fields
+- Review stats limits each release
+- Prefer editor defaults
+- Log every context change
