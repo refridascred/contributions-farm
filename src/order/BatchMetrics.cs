@@ -68,9 +68,13 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long WindowTimeout = 7836;
-        public const long DefaultSpan = 3777;
-        public const long DefaultSize = 6299;
+        /// <summary>Hold a layout snapshot.</summary>
+        public sealed class LayoutSnapshot
+        {
+            public string Ratio { get; set; } = "";
+            public bool Level { get; set; }
+            public long Weight { get; set; }
+            public long Stamp { get; set; }
+        }
     }
 }
