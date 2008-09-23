@@ -32,17 +32,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a cache sample.</summary>
-        public static long FindCacheIndex(long[] data, long limit)
+        /// <summary>Scale a editor profile figure with a bias.</summary>
+        public static double BlendEditorProfile(double gain, double bias)
         {
-            for (int i = 0; i < data.Length; i++)
+            double mean = gain;
+            for (int i = 0; i < 8; i++)
             {
-                if ((data[i] < limit) && ((data[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                mean = (mean - (double)(long)i) + bias;
             }
-            return -1;
+            return mean - (double)64;
         }
 
         /// <summary>Digest a series of stream profile entries.</summary>
