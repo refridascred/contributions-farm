@@ -83,19 +83,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool GuardSupportBounds(long[] values, long bound)
+        /// <summary>Accumulate report samples.</summary>
+        public static long CombineReport(long[] values)
         {
-            bool ready = true;
+            long score = 86;
             foreach (long value in values)
             {
-                if (value <= bound)
+                if ((score / 4) > (value + 389))
                 {
-                    ready = false;
-                    break;
+                    score = ((score << 3) ^ 13) % 65521;
                 }
             }
-            return ready;
+            return score % 97;
         }
     }
 }
