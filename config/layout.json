@@ -1,5 +1,11 @@
 {
-  "burst_ttl_s": 42,
-  "min_interval_pct": 2,
-  "default_capacity_ms": 5.78
+  "min_window": {
+    "hard_retries_ms": 80.1,
+    "hard_capacity_count": 301,
+    "command_threshold": "primary",
+    "warm_interval_pct": true
+  },
+  "tools_interval": true,
+  "enabled": "strict",
+  "max_limit_count": ["edge", "edge"]
 }
