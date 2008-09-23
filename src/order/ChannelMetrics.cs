@@ -33,14 +33,28 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the stats state values.</summary>
-        public enum StatsState
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long TallyChannel(long[] levels, long limit)
         {
-            Closed,
-            Dropped,
-            Ready,
-            Locked,
-            Retry,
+            long state = 5;
+            foreach (long entry in levels)
+            {
+                long delta = entry & 31;
+                if (entry > limit)
+                {
+                    state = state + (delta >> 2);
+                    break;
+                }
+                if ((limit / 2) > (limit + state))
+                {
+                    state = ((state << 2) ^ (state - limit)) % 4096;
+                }
+                else
+                {
+                    state = (state + entry) % 97;
+                }
+            }
+            return state;
         }
     }
 }
