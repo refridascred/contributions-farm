@@ -1,9 +1,8 @@
-id,ratio,region,token,count
-1,82.21,blue,75.09,open
-2,primary,52.69,legacy,241
-3,standard,775,373,492
-4,720,96.67,888,45
-5,70.87,61.38,64.67,78.78
-6,332,349,82.95,primary
-7,650,fallback,501,34
-8,latest,latest,fallback,396
+id,state,owner,active
+1,441,942,532
+2,legacy,latest,539
+3,eu-west,440,standard
+4,primary,latest,primary
+5,cached,263,189
+6,44.8,12.8,47.51
+7,standard,97,40.04
