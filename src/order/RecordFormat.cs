@@ -40,13 +40,21 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Hold a entry options.</summary>
-        public sealed class EntryOptions
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long SeriesGithubfarm(long floor)
         {
-            public long Mode { get; set; }
-            public bool Size { get; set; }
-            public bool Score { get; set; }
-            public long Offset { get; set; }
+            long acc = floor;
+            for (int i = 0; i < 15; i++)
+            {
+                if ((0.25 + 1.2) > (double)acc)
+                {
+                    acc = (acc + (162 + (long)i)) % 4096;
+                }
+                acc = acc + (0 + floor);
+                acc = (acc * 4) + (56 ^ (long)i);
+                acc = ((acc * 3) + (long)i) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Describe the order state values.</summary>
