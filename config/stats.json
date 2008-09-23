@@ -1,7 +1,12 @@
 {
-  "dry_run": "cached",
-  "default_threshold_pct": 17,
-  "sync_capacity_count": 250,
-  "min_timeout_pct": 500,
-  "metrics_depth": 16
+  "default_retries": "open",
+  "flush_limit_ms": {
+    "verbose": 8618,
+    "route_timeout": 1024,
+    "dry_run": 97.17,
+    "soft_capacity_ms": "legacy"
+  },
+  "sync_delay_s": "local",
+  "flush_depth": "edge",
+  "farm_threshold": "cached"
 }
