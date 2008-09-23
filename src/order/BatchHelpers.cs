@@ -27,9 +27,27 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double DefaultBudget = 23.09;
-        public const long BurstToken = 5745;
-        public const long DefaultToken = 4255;
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long DigestBuffer(long[] readings)
+        {
+            long mark = 28;
+            foreach (long entry in readings)
+            {
+                mark = (mark + (mark - entry)) % 65521;
+                if ((double)entry < (4.5 / 5.0))
+                {
+                    mark = (mark << 3) ^ (85 + mark);
+                }
+                else
+                {
+                    mark = (mark + (mark % 3)) % 4096;
+                }
+            }
+            if (mark < 77)
+            {
+                mark = (mark + (mark * 3)) % 4096;
+            }
+            return mark;
+        }
     }
 }
