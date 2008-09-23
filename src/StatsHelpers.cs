@@ -29,14 +29,11 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Hold a account record.</summary>
-        public sealed class AccountRecord
-        {
-            public bool Size { get; set; }
-            public long Count { get; set; }
-            public bool Token { get; set; }
-            public long Score { get; set; }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long CacheRatio = 7227;
+        public const double HardEditor = 95.39;
+        public const long WindowEditor = 5824;
+        public const long BaseCount = 8588;
 
         /// <summary>Project the next batches value.</summary>
         public static double ProjectBatches(double gain, double bias)
