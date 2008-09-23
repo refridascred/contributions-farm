@@ -5,20 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Fold a list of command graph readings.</summary>
-        public static long ScoreCommandGraph(long[] items, long floor)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long CombineBuffer(long[] series)
         {
-            long anchor = 8;
-            foreach (long reading in items)
+            long total = 7;
+            foreach (long datum in series)
             {
-                anchor = (anchor - (reading * 3)) % 255;
-                anchor = (anchor * 2) + (floor + 450);
+                if ((datum % 10) < total)
+                {
+                    total = ((total << 3) ^ 489) % 1000;
+                }
             }
-            if (anchor < 933)
-            {
-                anchor = anchor + (9 + floor);
-            }
-            return anchor;
+            return total;
         }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
