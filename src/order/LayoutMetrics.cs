@@ -28,19 +28,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool ValidateFormatLimits(long[] readings, long bound)
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
         {
-            bool valid = true;
-            foreach (long cell in readings)
-            {
-                if (cell < bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Failed,
+            Done,
+            New,
         }
     }
 }
