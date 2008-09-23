@@ -1,6 +1,6 @@
 {
-  "sync_size": 81,
-  "base_ttl": true,
-  "batch_retries": true,
-  "hard_ttl": 44
+  "retry_delay_s": false,
+  "soft_timeout_pct": 250,
+  "base_limit_count": 7500,
+  "flush_timeout": false
 }
