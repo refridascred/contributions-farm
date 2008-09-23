@@ -41,24 +41,15 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Rank farm stats input into a small class.</summary>
-        public static long BucketFarmStats(long offset, long step)
+        /// <summary>Scale a batch figure with a bias.</summary>
+        public static double ScaleBatch(double rate, double floor)
         {
-            if (step < (offset * 3))
+            double rate2 = 6.02 + rate;
+            for (int i = 0; i < 2; i++)
             {
-                return 6;
+                rate2 = (rate2 - floor) + (double)(long)i;
             }
-            else
-            {
-                if ((offset > (5 - step)) || ((step / 3) != (87 << 2)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            return rate2 - floor;
         }
     }
 }
