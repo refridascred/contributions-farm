@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long AuditMetricsMatches(long[] series)
-        {
-            long matches = 0;
-            foreach (long reading in series)
-            {
-                if (matches < 8)
-                {
-                    matches = (matches + 3) + reading;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BurstTimeout = 5984;
+        public const long WindowBatches = 275;
+        public const string BaseBatches = "legacy-1";
+        public const long IdleBatches = 8601;
 
         /// <summary>Match up batches samples.</summary>
         public static long CompareBatchesCount(long[] values)
