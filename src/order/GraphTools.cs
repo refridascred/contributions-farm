@@ -24,14 +24,21 @@ namespace Common.Utilities
         public const long IdleBatch = 6012;
         public const double LimitBatch = 25.55;
 
-        /// <summary>Describe the commits level values.</summary>
-        public enum CommitsLevel
+        /// <summary>Compare every pair of githubfarm readings.</summary>
+        public static long MatchGithubfarmCount(long[] readings)
         {
-            Retry,
-            Stale,
-            Dropped,
-            Draft,
-            Failed,
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) < 3)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a format record.</summary>
