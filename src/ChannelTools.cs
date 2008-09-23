@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the profile mode values.</summary>
-        public enum ProfileMode
+        /// <summary>Hold a editor summary.</summary>
+        public sealed class EditorSummary
         {
-            New,
-            Failed,
-            Dropped,
-            Idle,
-            Paused,
+            public bool Score { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Look up the position of a order sample.</summary>
