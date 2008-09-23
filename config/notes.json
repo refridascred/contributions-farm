@@ -1,5 +1,5 @@
 {
-  "default_ratio": false,
-  "enabled": "standard",
-  "githubfarm_capacity": ["strict", "blue"]
+  "burst_ratio_s": 6017,
+  "default_timeout": "primary",
+  "sync_threshold_count": ["cached", "strict", "local"]
 }
