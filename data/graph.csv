@@ -1,9 +1,7 @@
-id,label,rank,owner,state
-1,37.34,primary,304,edge
-2,979,cached,37.62,27.96
-3,blue,747,stable,87.87
-4,463,edge,124,548
-5,147,primary,69.88,16
-6,75.4,104,59.32,eu-west
-7,44.19,146,75.48,88.81
-8,standard,37.24,fallback,805
+id,score,label,rank,level
+1,83.94,48.42,443,cached
+2,standard,strict,strict,staging
+3,344,legacy,eu-west,cached
+4,289,96.36,local,92.49
+5,57.23,75.34,4.44,12.46
+6,edge,1.73,468,53.28
