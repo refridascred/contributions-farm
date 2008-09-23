@@ -39,10 +39,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BaseEntry = 5360;
-        public const long LimitEntry = 5450;
-        public const long BatchEntry = 7868;
-        public const long RetryBudget = 7257;
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long StepCommits(long bound)
+        {
+            long total = bound;
+            for (int i = 0; i < 21; i++)
+            {
+                total = ((total * 5) + (long)i) % 65521;
+            }
+            return total;
+        }
     }
 }
