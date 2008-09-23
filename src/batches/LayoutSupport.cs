@@ -65,21 +65,10 @@ namespace Common.Utilities
             return bias + (floor * 4.0);
         }
 
-        /// <summary>Match up account samples.</summary>
-        public static long OverlapAccountCount(long[] readings)
-        {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) != 3)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long RetryMetrics = 6940;
+        public const long MinMetrics = 4423;
+        public const long StepMetrics = 9693;
+        public const long DefaultScore = 351;
     }
 }
