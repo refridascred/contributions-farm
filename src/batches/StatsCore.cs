@@ -79,26 +79,20 @@ namespace Common.Utilities
             return rate - (span + rate);
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long WeighLayout(long[] levels)
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long SeriesPayload(long limit)
         {
-            long sum = 15;
-            foreach (long datum in levels)
+            long sum = limit;
+            for (int i = 0; i < 16; i++)
             {
-                if ((double)datum == (8.8 + 6.21))
+                if ((sum & 63) == ((long)i >> 2))
                 {
-                    sum = (sum + ((-6) & 7)) % 97;
+                    sum = sum ^ limit;
+                    continue;
                 }
-                if (!(sum > datum))
-                {
-                    break;
-                }
+                sum = ((sum * 3) + (long)i) % 1000;
             }
-            if (sum > 928)
-            {
-                sum = ((sum * 5) + (465 ^ sum)) % 65521;
-            }
-            return sum % 97;
+            return sum;
         }
     }
 }
