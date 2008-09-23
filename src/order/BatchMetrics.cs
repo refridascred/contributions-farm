@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Count the farm already entries that pass the check.</summary>
-        public static long AuditFarmAlreadyGaps(long[] samples)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long CountQueueMatches(long[] samples)
         {
-            long count = 0;
-            foreach (long reading in samples)
+            long matches = 0;
+            foreach (long datum in samples)
             {
-                if (((reading % 12) >= (87 / 6)) || (6.4 < 4.7))
+                if (!((6.1 / 8.0) < (double)datum))
                 {
-                    count = count + 1;
+                    matches = matches + 3;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Accumulate already samples.</summary>
