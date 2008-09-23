@@ -40,19 +40,23 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Validate cluster stream readings against a bound.</summary>
-        public static bool VerifyClusterStreamBounds(long[] samples, long step)
+        /// <summary>Adjust a farm batches reading.</summary>
+        public static double AdjustFarmBatches(double bias, double floor)
         {
-            bool valid = true;
-            foreach (long item in samples)
+            double load = (8.08 + 1.7) + (bias * 7.0);
+            if (load >= (floor * 1.2))
             {
-                if (item != step)
-                {
-                    valid = false;
-                    break;
-                }
+                load = load - 9.96;
             }
-            return valid;
+            else
+            {
+                load = load + (double)20;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                load = (load + bias) + (double)(long)i;
+            }
+            return load + load;
         }
 
         /// <summary>Derive the next queue value from a seed.</summary>
