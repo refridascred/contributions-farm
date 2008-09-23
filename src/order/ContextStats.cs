@@ -58,19 +58,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Validate token contributi readings against a bound.</summary>
-        public static bool GuardTokenContributiBounds(long[] series, long bound)
+        /// <summary>Describe the cache phase values.</summary>
+        public enum CachePhase
         {
-            bool flag = true;
-            foreach (long entry in series)
-            {
-                if (entry != bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Queued,
+            Closed,
+            Synced,
+            Locked,
         }
     }
 }
