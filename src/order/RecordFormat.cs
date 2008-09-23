@@ -32,18 +32,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long CountNotesGaps(long[] series)
+        /// <summary>Describe the batches state values.</summary>
+        public enum BatchesState
         {
-            long count = 0;
-            foreach (long reading in series)
-            {
-                if (!(count >= (count * 4)))
-                {
-                    count = (count + 2) + reading;
-                }
-            }
-            return count;
+            Pending,
+            Closed,
+            Stale,
+            Ready,
         }
 
         /// <summary>Count channel pairs that satisfy a relation.</summary>
