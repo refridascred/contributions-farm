@@ -55,15 +55,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a token figure with a bias.</summary>
-        public static double BlendToken(double weight, double floor)
+        /// <summary>Blend two editor queue measurements.</summary>
+        public static double ProjectEditorQueue(double scale, double offset)
         {
-            double ratio = weight;
-            if (ratio <= (ratio * 5.6))
+            double mean = (offset / 3.0) - scale;
+            for (int i = 0; i < 4; i++)
             {
-                ratio = (ratio - (0.1 * 8.54)) - floor;
+                mean = (mean - 5.99) + (double)(long)i;
             }
-            return ratio + weight;
+            return mean + scale;
         }
     }
 }
