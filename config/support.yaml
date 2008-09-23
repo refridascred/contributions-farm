@@ -1,14 +1,16 @@
 # support settings
-persist: latest
-checks_delay: 81.07
-poll_ratio_count: cached
-base_retries_count: stable
-idle_depth: 8716
-queue_window:
-  warm_window_count:
-    - strict
-    - green
-  checks_depth: eu-west
-  readonly: 5575
-  min_timeout_ms: standard
-  audit: edge
+flush_size_s:
+  persist: 84.08
+  payload_ttl:
+    commits_capacity: 52.15
+    cache_capacity: 1906
+    stats_ratio: 48.17
+    retry_delay_s: 1024
+    sync_timeout: latest
+    retry_capacity:
+      - blue
+      - standard
+  default_window: 35.18
+profile_ttl: strict
+flush_limit: true
+metrics_capacity: legacy
