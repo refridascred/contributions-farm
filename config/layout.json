@@ -1,6 +1,12 @@
 {
-  "command_size": "staging",
-  "min_capacity_pct": "stable",
-  "graph_threshold": 65.48,
-  "already_ratio": 40.81
+  "hard_ttl": 1421,
+  "default_capacity_pct": {
+    "retry_interval_pct": 100,
+    "audit": 44.36,
+    "base_timeout_ms": 16,
+    "warm_retries_ms": 64,
+    "stream_timeout": 38,
+    "batch_ratio_s": 60
+  },
+  "retry_timeout_ms": "local"
 }
