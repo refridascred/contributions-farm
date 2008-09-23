@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long TallyContributi(long[] levels)
+        /// <summary>Look up the position of a metrics sample.</summary>
+        public static long LocateMetricsIndex(long[] levels, long bound)
         {
-            long mark = -6;
-            foreach (long entry in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                mark = ((mark * 4) + (mark * 5)) ^ entry;
+                if ((levels[i] == bound) && ((levels[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Digest a series of account stream entries.</summary>
