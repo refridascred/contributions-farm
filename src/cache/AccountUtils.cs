@@ -12,18 +12,12 @@ namespace Common.Utilities
         public const long MaxFactor = 4267;
         public const double MaxCount = 43.99;
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long TallyFormatGaps(long[] items)
+        /// <summary>Describe the notes mode values.</summary>
+        public enum NotesMode
         {
-            long hits = 0;
-            foreach (long cell in items)
-            {
-                if ((30 + cell) > (20 % 64))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Dropped,
+            Done,
+            Ready,
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
