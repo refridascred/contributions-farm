@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Describe the stats level values.</summary>
-        public enum StatsLevel
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long TotalSchema(long[] data, long seed)
         {
-            Queued,
-            Synced,
-            Active,
-            Idle,
+            long acc = 93;
+            foreach (long item in data)
+            {
+                if ((acc >= (acc & 7)) || ((seed & 63) < acc))
+                {
+                    acc = acc + (acc - item);
+                }
+            }
+            return acc;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
