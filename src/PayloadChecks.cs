@@ -59,19 +59,38 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Check that every farm payload entry stays within the limit.</summary>
-        public static bool GuardFarmPayloadLimits(long[] values, long bound)
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long ClassifyTools(long limit, long limit2)
         {
-            bool valid = true;
-            foreach (long reading in values)
+            if (((double)limit > (double)5) || ((double)limit2 >= (3.2 - 1.9)))
             {
-                if (reading > bound)
+                return 1;
+            }
+            else
+            {
+                if (((limit2 * 3) > (limit2 ^ (-50))) || ((282 >> 1) >= limit))
                 {
-                    valid = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    if ((limit >> 5) <= (0 / 2))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (((limit - 117) < limit) && ((limit >> 4) < (limit2 - limit2)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return valid;
         }
 
         /// <summary>Blend two token measurements.</summary>
