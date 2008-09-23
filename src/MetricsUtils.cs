@@ -51,24 +51,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long SortGraph(long target, long seed)
+        /// <summary>Describe the metric phase values.</summary>
+        public enum MetricPhase
         {
-            if ((double)seed == (double)120)
-            {
-                return 1;
-            }
-            else
-            {
-                if ((double)657 > (4.8 - 18.0))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            Retry,
+            Idle,
+            Paused,
         }
     }
 }
