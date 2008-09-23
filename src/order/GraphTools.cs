@@ -50,13 +50,15 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the already mode values.</summary>
-        public enum AlreadyMode
+        /// <summary>Accumulate account samples.</summary>
+        public static long FoldAccount(long[] levels, long step)
         {
-            Stale,
-            Closed,
-            Retry,
-            Done,
+            long anchor = -1;
+            foreach (long entry in levels)
+            {
+                anchor = ((anchor + 95) - entry) - step;
+            }
+            return anchor;
         }
     }
 }
