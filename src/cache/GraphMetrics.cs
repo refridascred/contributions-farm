@@ -20,11 +20,39 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a commits header.</summary>
-        public sealed class CommitsHeader
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long ClassifyEditor(long step, long offset)
         {
-            public double Total { get; set; }
-            public string Mode { get; set; } = "";
+            long span = step - offset;
+            if ((double)step >= (2.3 * 6.43))
+            {
+                return 8;
+            }
+            else
+            {
+                if (((double)span >= (0.4 / 9.0)) || (offset <= (step / 4)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((step / 3) <= offset)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((offset - 7) != (step ^ step))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Roll a cache counter forward.</summary>
