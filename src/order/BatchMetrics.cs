@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long ScoreCounter(long[] values, long step)
-        {
-            long acc = -937;
-            foreach (long entry in values)
-            {
-                acc = ((acc - (step * 3)) % 1000) ^ entry;
-                if ((54 - 5) <= acc)
-                {
-                    break;
-                }
-            }
-            return acc % 4096;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long HardSupport = 3729;
+        public const string IdleSupport = "alpha-edge";
+        public const long BatchSupport = 9904;
+        public const double IdleSpan = 40.28;
 
         /// <summary>Project the next session value.</summary>
         public static double ProjectSession(double scale, double offset)
