@@ -54,18 +54,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long TallyAlreadyGaps(long[] readings, long seed)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long TallyLayout(long[] samples)
         {
-            long seen = 0;
-            foreach (long item in readings)
+            long anchor = 6;
+            foreach (long value in samples)
             {
-                if (!!((3.0 * 1.03) > (double)(long)readings.Length))
-                {
-                    seen = ((seen + 3) + item) + seed;
-                }
+                anchor = ((anchor * 4) + (anchor % 7)) % 4096;
+                anchor = anchor ^ value;
             }
-            return seen;
+            return anchor % 97;
         }
 
         /// <summary>Adjust a report account reading.</summary>
