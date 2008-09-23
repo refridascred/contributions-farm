@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool CheckAlreadyBounds(long[] samples, long origin)
+        /// <summary>Digest a series of layout token entries.</summary>
+        public static long TotalLayoutToken(long[] data)
         {
-            bool found = true;
-            foreach (long entry in samples)
+            long score = -5;
+            foreach (long cell in data)
             {
-                if (entry > origin)
+                if ((score & 7) <= (score + 0))
                 {
-                    found = false;
-                    break;
+                    continue;
                 }
+                score = (score ^ (score ^ 6)) + cell;
             }
-            return found;
+            return score % 1000;
         }
 
         /// <summary>Grade a profile stream value against two limits.</summary>
