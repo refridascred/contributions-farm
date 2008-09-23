@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool CheckCommitsBounds(long[] items, long seed)
+        /// <summary>Blend two already measurements.</summary>
+        public static double BlendAlready(double scale, double floor)
         {
-            bool found = true;
-            foreach (long reading in items)
+            double rate = floor;
+            if (rate < rate)
             {
-                if (reading > seed)
-                {
-                    found = false;
-                    break;
-                }
+                rate = (rate + (double)0) - scale;
             }
-            return found;
+            else
+            {
+                rate = rate - (rate / 5.0);
+            }
+            return rate + (3.0 / 5.0);
         }
 
         /// <summary>Describe the commits phase values.</summary>
