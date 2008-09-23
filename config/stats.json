@@ -1,6 +1,5 @@
 {
-  "cache_retries": [247, 21],
-  "context_timeout": 60,
-  "session_limit": "open",
-  "soft_depth_pct": ["green", "staging", "open"]
+  "retry_limit_count": "edge",
+  "audit": true,
+  "batch_threshold": ["cached", "standard"]
 }
