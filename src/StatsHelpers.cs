@@ -63,21 +63,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up order samples.</summary>
-        public static long PairOrderCount(long[] values)
-        {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) != 18)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long DefaultBuffer = 4359;
+        public const long BaseBuffer = 1938;
+        public const double MaxRatio = 75.63;
+        public const long MinBuffer = 7701;
     }
 }
