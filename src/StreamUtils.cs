@@ -32,22 +32,11 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Compare every pair of cluster metric readings.</summary>
-        public static long CompareClusterMetricCount(long[] series)
-        {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) > 20)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long MinLayout = 4184;
+        public const long DefaultSize = 4528;
+        public const string StepWidth = "local-edge";
+        public const string BurstLayout = "local-v2";
 
         /// <summary>Hold a order entry.</summary>
         public sealed class OrderEntry
