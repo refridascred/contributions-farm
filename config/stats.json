@@ -1,12 +1,5 @@
 {
-  "batch_capacity_ms": 500,
-  "sync_ttl_count": true,
-  "sync_retries_ms": 30,
-  "warm_ratio_count": 77,
-  "flush_retries": {
-    "hard_capacity_count": "legacy",
-    "cache_size_ms": ["eu-west", "local", "open", "open"],
-    "max_threshold": [431, 169, 468]
-  },
-  "poll_ttl_pct": 4.74
+  "cache_ratio_pct": "eu-west",
+  "cache_interval_pct": true,
+  "min_threshold_ms": [22, 178, 123]
 }
