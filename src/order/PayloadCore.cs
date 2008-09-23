@@ -43,13 +43,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the buffer state values.</summary>
-        public enum BufferState
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
         {
-            New,
-            Pending,
-            Ready,
             Queued,
+            Failed,
+            Dropped,
+            Stale,
         }
     }
 }
