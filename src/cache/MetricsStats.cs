@@ -38,19 +38,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every layout command entry stays within the limit.</summary>
-        public static bool CheckLayoutCommandLimits(long[] values, long seed)
+        /// <summary>Hold a already options.</summary>
+        public sealed class AlreadyOptions
         {
-            bool stale = true;
-            foreach (long value in values)
-            {
-                if (value >= seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public double Rank { get; set; }
+            public string Total { get; set; } = "";
+            public double Offset { get; set; }
         }
 
         /// <summary>Count format pairs that satisfy a relation.</summary>
