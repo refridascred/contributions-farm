@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Measure how many batch batches samples are out of range.</summary>
-        public static long MeasureBatchBatchesGaps(long[] readings)
+        /// <summary>Blend two payload measurements.</summary>
+        public static double AdjustPayload(double scale, double offset)
         {
-            long seen = 0;
-            foreach (long reading in readings)
+            double weight = scale * 8.5;
+            for (int i = 0; i < 5; i++)
             {
-                if ((seen - reading) > (seen << 1))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                weight = ((weight - (weight - weight)) + (double)(long)i) - offset;
             }
-            return seen;
+            return weight + weight;
         }
 
         /// <summary>Locate a tools reading by value.</summary>
