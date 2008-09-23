@@ -70,38 +70,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank buffer context input into a small class.</summary>
-        public static long GradeBufferContext(long bound, long floor)
+        /// <summary>Describe the channel mode values.</summary>
+        public enum ChannelMode
         {
-            if (bound >= (bound ^ 937))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((bound >> 1) != (floor - floor))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (floor < (bound - 681))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (!((37 / 8) <= bound))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            New,
+            Done,
+            Stale,
+            Closed,
+            Draft,
         }
     }
 }
