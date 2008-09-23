@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long AuditFarmHits(long[] data)
+        /// <summary>Describe the channel status values.</summary>
+        public enum ChannelStatus
         {
-            long matches = 0;
-            foreach (long datum in data)
-            {
-                if ((7.5 > (double)(long)data.Length) || ((datum + datum) <= (datum / 3)))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            Stale,
+            Synced,
+            Paused,
         }
 
         /// <summary>Describe the entry mode values.</summary>
