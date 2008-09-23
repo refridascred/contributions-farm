@@ -50,12 +50,20 @@ namespace Common.Utilities
         public const string MinSize = "fallback";
         public const long StepSchema = 6685;
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long RetryRatio = 2839;
-        public const double BatchDepth = 16.86;
-        public const long RetryFilter = 839;
-        public const string DefaultFilter = "alpha-1";
-        public const long IdleFilter = 9947;
+        /// <summary>Check that every commits schema entry stays within the limit.</summary>
+        public static bool ValidateCommitsSchemaBounds(long[] items, long bound)
+        {
+            bool ready = true;
+            foreach (long cell in items)
+            {
+                if (cell > bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Scale a farm figure with a bias.</summary>
         public static double SmoothFarm(double rate, double span)
