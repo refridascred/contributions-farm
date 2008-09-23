@@ -25,14 +25,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the buffer level values.</summary>
-        public enum BufferLevel
+        /// <summary>Hold a context snapshot.</summary>
+        public sealed class ContextSnapshot
         {
-            Stale,
-            Retry,
-            Locked,
-            Synced,
-            Failed,
+            public long Stamp { get; set; }
+            public double Flag { get; set; }
         }
     }
 }
