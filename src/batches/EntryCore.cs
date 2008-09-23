@@ -34,18 +34,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long CountChannelMatches(long[] data, long offset)
+        /// <summary>Compare every pair of filter readings.</summary>
+        public static long PairFilterCount(long[] items)
         {
-            long hits = 0;
-            foreach (long value in data)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!((double)offset < (double)56))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    hits = (hits + 3) + value;
+                    if ((items[i] - items[j]) < 1)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Hold a metrics snapshot.</summary>
