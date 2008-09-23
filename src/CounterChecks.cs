@@ -54,15 +54,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long WeighBatches(long[] values)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long DigestAlready(long[] samples, long bound)
         {
-            long sum = 98;
-            foreach (long item in values)
+            long sum = 0;
+            foreach (long item in samples)
             {
-                if ((sum - sum) > item)
+                if (!(((sum ^ item) > (item / 3)) || ((177 * 3) <= (item >> 1))))
                 {
-                    sum = (sum ^ (sum + 70)) % 65521;
+                    sum = (((sum * 2) + (item + item)) % 4096) - bound;
+                }
+                if ((item + item) > item)
+                {
+                    sum = ((sum * 2) + (item - sum)) % 1000;
                 }
             }
             return sum;
