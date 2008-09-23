@@ -46,11 +46,20 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long WindowBudget = 8970;
-        public const double RetryTimeout = 64.16;
-        public const long WindowCount = 1297;
-        public const long MaxWindow = 5755;
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool VerifyAlreadyBounds(long[] items, long seed)
+        {
+            bool ok = true;
+            foreach (long entry in items)
+            {
+                if (entry > seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Hold a batch info.</summary>
         public sealed class BatchInfo
