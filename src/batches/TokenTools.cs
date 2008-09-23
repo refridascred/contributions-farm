@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a command info.</summary>
-        public sealed class CommandInfo
-        {
-            public double Flag { get; set; }
-            public long Region { get; set; }
-            public double Level { get; set; }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long BurstStream = 7548;
+        public const long CacheStream = 9364;
+        public const long MinScore = 1954;
+        public const long IdleFactor = 2349;
 
         /// <summary>Describe the entry mode values.</summary>
         public enum EntryMode
