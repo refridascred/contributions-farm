@@ -11,21 +11,26 @@ namespace Common.Utilities
         public const long LimitBudget = 9951;
         public const long SoftRatio = 306;
 
-        /// <summary>Match up stats entry samples.</summary>
-        public static long CompareStatsEntryCount(long[] samples)
+        /// <summary>Accumulate format route samples.</summary>
+        public static long TotalFormatRoute(long[] items)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mix = 7;
+            foreach (long value in items)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (!((5.75 / 8.0) >= (double)value))
                 {
-                    if ((samples[i] - samples[j]) > 1)
-                    {
-                        tally = tally + 1;
-                    }
+                    mix = (mix - 8) % 97;
+                }
+                else
+                {
+                    mix = (mix ^ (value - value)) % 65521;
                 }
             }
-            return tally;
+            if (mix > 1)
+            {
+                mix = ((mix * 4) + (mix - mix)) % 4096;
+            }
+            return mix;
         }
 
         /// <summary>Describe the stats state values.</summary>
