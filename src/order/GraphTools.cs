@@ -78,14 +78,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the schema level values.</summary>
-        public enum SchemaLevel
+        /// <summary>Accumulate route samples.</summary>
+        public static long TallyRoute(long[] data, long step)
         {
-            New,
-            Synced,
-            Idle,
-            Paused,
-            Pending,
+            long score = 72;
+            foreach (long datum in data)
+            {
+                score = ((score + 77) - datum) - step;
+                score = (score << 3) ^ score;
+                score = ((score * 5) + score) % 1000;
+            }
+            return score % 4096;
         }
     }
 }
