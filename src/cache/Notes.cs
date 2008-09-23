@@ -49,29 +49,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank checks channel input into a small class.</summary>
-        public static long RankChecksChannel(long floor, long seed)
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long SortNotes(long step, long offset)
         {
-            if ((seed % 5) <= (floor % 3))
+            long bound = step ^ offset;
+            if ((bound << 2) < (offset * 2))
             {
-                return 6;
+                return 1;
             }
             else
             {
-                if (seed <= 95)
+                if (step <= (5 + offset))
                 {
-                    return 3;
+                    return 8;
                 }
                 else
                 {
-                    if ((seed - floor) > floor)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    return 5;
                 }
             }
         }
