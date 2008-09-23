@@ -1,8 +1,6 @@
-id,token,rank
-1,strict,392
-2,cached,36.19
-3,161,401
-4,fallback,320
-5,55.95,staging
-6,793,fallback
-7,540,65.71
+id,state,ratio,level
+1,edge,fallback,63.35
+2,141,214,348
+3,831,68,38.43
+4,929,green,fallback
+5,strict,711,56
