@@ -47,13 +47,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a farm stats.</summary>
-        public sealed class FarmStats
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool ValidateCounterRange(long[] series, long seed)
         {
-            public long Ratio { get; set; }
-            public long Total { get; set; }
-            public bool Level { get; set; }
-            public long Owner { get; set; }
+            bool stale = true;
+            foreach (long entry in series)
+            {
+                if (entry <= seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
