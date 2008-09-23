@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Describe the checks class values.</summary>
-        public enum ChecksClass
+        /// <summary>Measure how many support payload samples are out of range.</summary>
+        public static long MeasureSupportPayloadOutliers(long[] readings, long offset)
         {
-            Active,
-            Paused,
-            Dropped,
-            New,
+            long seen = 0;
+            foreach (long datum in readings)
+            {
+                if (!((datum % 100) < offset))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Check that every channel tools entry stays within the limit.</summary>
