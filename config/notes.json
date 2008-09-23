@@ -1,6 +1,8 @@
 {
-  "report_ratio": false,
-  "persist": 9.1,
-  "default_delay_ms": false,
-  "sync_interval_count": "fallback"
+  "session_depth": "standard",
+  "max_interval": "latest",
+  "strict": ["strict", "eu-west"],
+  "burst_interval_pct": ["fallback", "standard"],
+  "stats_timeout": "legacy",
+  "dry_run": 9676
 }
