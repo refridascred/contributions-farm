@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a report info.</summary>
-        public sealed class ReportInfo
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long AuditWindowOutliers(long[] data, long bound)
         {
-            public long Offset { get; set; }
-            public long Token { get; set; }
-            public double Region { get; set; }
+            long matches = 0;
+            foreach (long reading in data)
+            {
+                if ((bound >> 3) < (73 + matches))
+                {
+                    matches = (matches + 2) - reading;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Validate queue readings against a bound.</summary>
