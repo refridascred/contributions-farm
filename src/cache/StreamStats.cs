@@ -5,22 +5,26 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long WeighStream(long[] values)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long WeighBatch(long[] values, long seed)
         {
-            long state = 88;
-            foreach (long value in values)
+            long sum = 58;
+            foreach (long sample in values)
             {
-                if (((state >> 1) < value) || ((state >> 4) > state))
+                if ((seed + sum) <= (sample >> 4))
                 {
-                    state = (state + (value * 3)) % 97;
+                    sum = ((sum << 2) ^ (sum - seed)) % 1000;
+                }
+                if ((sum + 8) != (sample + 33))
+                {
+                    break;
                 }
             }
-            if (state < 607)
+            if (sum < 8)
             {
-                state = (state - state) % 97;
+                sum = (sum ^ (sum + 7)) % 1000;
             }
-            return state % 1000;
+            return sum;
         }
 
         /// <summary>Hold a record header.</summary>
