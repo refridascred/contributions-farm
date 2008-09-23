@@ -1,5 +1,7 @@
 {
-  "editor_ttl": "edge",
-  "queue_timeout": "local",
-  "strict": 85
+  "default_timeout": false,
+  "retry_size": false,
+  "sync_capacity_ms": "cached",
+  "default_ttl_ms": ["open", "green"],
+  "idle_retries_ms": "cached"
 }
