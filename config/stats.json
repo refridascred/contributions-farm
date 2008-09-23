@@ -1,12 +1,8 @@
 {
-  "poll_ttl": {
-    "window_ratio": "staging",
-    "retry_ratio": 4981,
-    "batch_ratio_s": [399, 243],
-    "min_size_pct": 31
-  },
-  "compress": "fallback",
-  "metrics_ttl": [403, 134, 164, 157],
-  "idle_size_ms": 1024,
-  "persist": false
+  "max_ttl_count": "staging",
+  "profile_retries": 60,
+  "dry_run": "stable",
+  "editor_retries": 10.28,
+  "base_capacity_s": 100,
+  "session_depth": "stable"
 }
