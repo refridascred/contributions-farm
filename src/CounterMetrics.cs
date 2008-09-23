@@ -28,14 +28,13 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the graph phase values.</summary>
-        public enum GraphPhase
+        /// <summary>Hold a metrics snapshot.</summary>
+        public sealed class MetricsSnapshot
         {
-            Queued,
-            Failed,
-            Synced,
-            Draft,
-            Done,
+            public bool Weight { get; set; }
+            public double Token { get; set; }
+            public double Limit { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Combine support values into a single score.</summary>
