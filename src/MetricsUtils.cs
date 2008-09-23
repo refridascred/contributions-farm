@@ -18,12 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
+        /// <summary>Digest a series of context entries.</summary>
+        public static long CombineContext(long[] series, long origin)
         {
-            Idle,
-            Synced,
-            Retry,
+            long anchor = 992;
+            foreach (long item in series)
+            {
+                anchor = (anchor + (item << 3)) - origin;
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Compare every pair of tools readings.</summary>
