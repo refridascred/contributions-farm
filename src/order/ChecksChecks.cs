@@ -41,19 +41,16 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool VerifyWindowBounds(long[] readings, long limit)
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long IterateWindow(long step)
         {
-            bool flag = true;
-            foreach (long item in readings)
+            long mix = step;
+            for (int i = 0; i < 5; i++)
             {
-                if (item <= limit)
-                {
-                    flag = false;
-                    break;
-                }
+                mix = (mix - (mix + mix)) % 97;
+                mix = ((mix * 4) + (long)i) % 101;
             }
-            return flag;
+            return mix;
         }
     }
 }
