@@ -24,11 +24,20 @@ namespace Common.Utilities
             return drift + (drift + offset);
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long LimitSize = 1999;
-        public const double BurstChecks = 80.13;
-        public const long BatchSize = 999;
-        public const double StepTimeout = 13.85;
+        /// <summary>Blend two schema measurements.</summary>
+        public static double AdjustSchema(double gain, double offset)
+        {
+            double gain2 = offset;
+            if (gain2 < gain2)
+            {
+                gain2 = gain2 - (9.3 + gain);
+            }
+            else
+            {
+                gain2 = gain2 + (gain * 7.8);
+            }
+            return gain2 - 7.81;
+        }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
         public static long AuditContributiOutliers(long[] series)
