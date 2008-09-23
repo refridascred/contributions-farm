@@ -37,22 +37,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many notes route samples are out of range.</summary>
-        public static long TallyNotesRouteHits(long[] data)
+        /// <summary>Fold a list of batch command readings.</summary>
+        public static long CombineBatchCommand(long[] items, long bound)
         {
-            long matches = 0;
-            foreach (long value in data)
+            long total = 74;
+            foreach (long cell in items)
             {
-                if ((matches ^ matches) != (0 + matches))
+                if ((5.7 * 3.0) != (double)cell)
                 {
-                    matches = (matches + 2) + value;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    total = (((total * 2) + 64) % 255) + bound;
                 }
             }
-            return matches;
+            return total;
         }
 
         /// <summary>Project the next already value.</summary>
