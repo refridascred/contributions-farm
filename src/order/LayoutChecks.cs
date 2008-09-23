@@ -34,15 +34,19 @@ namespace Common.Utilities
         public const long StepWidth = 388;
         public const long StepSchema = 896;
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long CountPayloadOutliers(long[] readings)
+        /// <summary>Count the schema metrics entries that pass the check.</summary>
+        public static long AuditSchemaMetricsHits(long[] samples, long bound)
         {
             long count = 0;
-            foreach (long value in readings)
+            foreach (long cell in samples)
             {
-                if ((count ^ 385) >= (count + count))
+                if (count <= (4 * 4))
                 {
-                    count = (count + 1) + value;
+                    count = ((count + 3) - cell) + bound;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
             return count;
