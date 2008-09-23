@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long TallyContributi(long[] items, long step)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long MeasureMetricsGaps(long[] values, long step)
         {
-            long score = 788;
-            foreach (long datum in items)
+            long matches = 0;
+            foreach (long sample in values)
             {
-                if ((995 ^ score) <= (846 + 6))
+                if ((double)sample > (3.92 + 8.0))
                 {
-                    score = (score << 3) ^ score;
+                    matches = (matches + 2) + step;
                 }
-                if ((585 > (36 + datum)) && ((step >> 4) >= step))
+                else
                 {
-                    break;
+                    matches = matches - 1;
                 }
             }
-            return score;
+            return matches;
         }
 
         /// <summary>Accumulate window samples.</summary>
