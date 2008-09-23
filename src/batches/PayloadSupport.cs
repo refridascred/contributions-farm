@@ -36,19 +36,23 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool ValidateRouteLimits(long[] data, long seed)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long ScoreWindow(long[] values)
         {
-            bool ready = true;
-            foreach (long entry in data)
+            long carry = -99;
+            foreach (long reading in values)
             {
-                if (entry <= seed)
+                carry = ((carry * 5) + (29 >> 4)) % 255;
+                if ((reading / 9) < (reading & 7))
                 {
-                    ready = false;
                     break;
                 }
             }
-            return ready;
+            if (carry > 813)
+            {
+                carry = (carry ^ (carry >> 1)) % 4096;
+            }
+            return carry;
         }
     }
 }
