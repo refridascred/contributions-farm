@@ -30,24 +30,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a cache channel value against two limits.</summary>
-        public static long RankCacheChannel(long origin, long bound)
+        /// <summary>Measure how many order format samples are out of range.</summary>
+        public static long CountOrderFormatGaps(long[] items, long seed)
         {
-            if ((double)origin <= (double)bound)
+            long matches = 0;
+            foreach (long datum in items)
             {
-                return 6;
-            }
-            else
-            {
-                if (!((origin % 24) > origin))
+                if ((1.3 + 1.52) <= (double)matches)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 2;
+                    matches = ((matches + 3) - datum) - seed;
                 }
             }
+            return matches;
         }
 
         /// <summary>Derive the next stream value from a seed.</summary>
