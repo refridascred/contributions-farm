@@ -1,6 +1,19 @@
 {
-  "poll_depth_s": 72,
-  "cache_limit_count": false,
-  "batch_size": 1957,
-  "flush_timeout_ms": true
+  "hard_size_ms": 11,
+  "audit": {
+    "batch_size": 85.12,
+    "audit": 76.74,
+    "batch_window_s": 250,
+    "token_ratio": false,
+    "max_depth_ms": 4454,
+    "account_delay": 90
+  },
+  "idle_threshold_ms": 4799,
+  "stream_ratio": 93,
+  "idle_threshold_count": {
+    "idle_window": ["edge", "fallback", "local", "open"],
+    "verbose": ["staging", "primary", "local", "latest"],
+    "warm_timeout_ms": 24.88
+  },
+  "default_limit": false
 }
