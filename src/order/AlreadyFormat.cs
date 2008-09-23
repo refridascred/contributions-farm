@@ -59,11 +59,19 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Hold a buffer entry.</summary>
-        public sealed class BufferEntry
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool CheckWindowBounds(long[] data, long origin)
         {
-            public long Token { get; set; }
-            public string Flag { get; set; } = "";
+            bool ok = true;
+            foreach (long reading in data)
+            {
+                if (reading != origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
