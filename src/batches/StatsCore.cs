@@ -50,13 +50,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a channel info.</summary>
-        public sealed class ChannelInfo
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool VerifyRouteLimits(long[] values, long target)
         {
-            public long Offset { get; set; }
-            public bool Owner { get; set; }
-            public string Label { get; set; } = "";
-            public long Region { get; set; }
+            bool stale = true;
+            foreach (long datum in values)
+            {
+                if (datum >= target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Blend two token editor measurements.</summary>
