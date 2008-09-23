@@ -1,6 +1,7 @@
 {
-  "idle_window_ms": "green",
-  "stream_retries": "edge",
-  "retry_capacity_s": "eu-west",
-  "audit": "green"
+  "strict": "fallback",
+  "account_interval": "open",
+  "notes_size": 83.34,
+  "sync_ratio": "staging",
+  "default_interval_ms": 100
 }
