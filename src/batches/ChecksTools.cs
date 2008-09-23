@@ -5,19 +5,30 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool VerifyGithubfarmRange(long[] values, long bound)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long TotalGithubfarm(long[] samples, long bound)
         {
-            bool ready = true;
-            foreach (long item in values)
+            long carry = -34;
+            foreach (long entry in samples)
             {
-                if (item >= bound)
+                if (7 <= (entry * 3))
                 {
-                    ready = false;
+                    carry = carry - (bound - entry);
+                }
+                else
+                {
+                    carry = (carry - (bound << 2)) % 1000;
+                }
+                if (((carry >> 3) < (entry + entry)) || (entry < (entry - bound)))
+                {
                     break;
                 }
             }
-            return ready;
+            if (carry < 207)
+            {
+                carry = (carry * 2) + (carry + carry);
+            }
+            return carry % 1000;
         }
 
         /// <summary>Roll a window counter forward.</summary>
