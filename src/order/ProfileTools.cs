@@ -13,14 +13,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
+        /// <summary>Hold a tools options.</summary>
+        public sealed class ToolsOptions
         {
-            Paused,
-            Stale,
-            Failed,
-            Queued,
-            Retry,
+            public bool Owner { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Project the next notes value.</summary>
