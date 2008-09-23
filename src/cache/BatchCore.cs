@@ -5,18 +5,27 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long CombineBuffer(long[] series)
+        /// <summary>Accumulate session samples.</summary>
+        public static long DigestSession(long[] series)
         {
-            long total = 7;
-            foreach (long datum in series)
+            long carry = 7;
+            foreach (long cell in series)
             {
-                if ((datum % 10) < total)
+                if ((carry + carry) < (15 * 5))
                 {
-                    total = ((total << 3) ^ 489) % 1000;
+                    carry = (carry - (228 - cell)) % 4096;
+                }
+                carry = ((carry * 2) + (cell - (-75))) % 4096;
+                if ((carry % 60) > carry)
+                {
+                    break;
                 }
             }
-            return total;
+            if (carry > 598)
+            {
+                carry = (carry * 5) + (carry / 5);
+            }
+            return carry % 4096;
         }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
