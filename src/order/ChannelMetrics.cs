@@ -53,13 +53,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a buffer header.</summary>
-        public sealed class BufferHeader
+        /// <summary>Adjust a command reading.</summary>
+        public static double AdjustCommand(double ratio, double span)
         {
-            public long Owner { get; set; }
-            public bool Total { get; set; }
-            public long Count { get; set; }
-            public long Weight { get; set; }
+            double bias = ratio;
+            if (bias < (9.4 / 4.0))
+            {
+                bias = bias - span;
+            }
+            else
+            {
+                bias = bias - (double)768;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                bias = (bias + (double)4) - (double)(long)i;
+            }
+            return bias + (8.4 / 6.0);
         }
     }
 }
