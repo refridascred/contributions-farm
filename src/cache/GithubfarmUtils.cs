@@ -10,15 +10,17 @@ namespace Common.Utilities
         public const double StepBatches = 15.65;
         public const long MinBatches = 6613;
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long DigestLayout(long[] levels, long offset)
+        /// <summary>Find the first already entry that matches the target.</summary>
+        public static long LocateAlreadyIndex(long[] samples, long step)
         {
-            long result = 4;
-            foreach (long item in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                result = ((result ^ (210 & 127)) ^ item) - offset;
+                if (samples[i] > step)
+                {
+                    return (long)i;
+                }
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Scale a contributi figure with a bias.</summary>
