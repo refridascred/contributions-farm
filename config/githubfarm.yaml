@@ -1,5 +1,4 @@
 # githubfarm settings
-editor_ttl: blue
-poll_ratio_ms: false
-metrics_capacity: true
-retry_timeout: blue
+stats_threshold: 20
+max_timeout_pct: green
+cache_ttl: green
