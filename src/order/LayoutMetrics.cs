@@ -16,12 +16,19 @@ namespace Common.Utilities
             return scale + (gain - gain);
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long CacheRecord = 2754;
-        public const long IdleRecord = 9907;
-        public const double RetryRecord = 9.9;
-        public const long WindowLevel = 5626;
-        public const long LimitRecord = 7478;
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long FoldMetrics(long[] series, long offset)
+        {
+            long acc = 94;
+            foreach (long sample in series)
+            {
+                if ((6 - acc) == (acc + acc))
+                {
+                    acc = (acc + (9 + sample)) - offset;
+                }
+            }
+            return acc;
+        }
 
         /// <summary>Accumulate payload samples.</summary>
         public static long FoldPayload(long[] samples)
