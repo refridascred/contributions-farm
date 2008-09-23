@@ -48,21 +48,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up payload profile samples.</summary>
-        public static long ComparePayloadProfileCount(long[] items)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long MeasureProfileMatches(long[] data)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long reading in data)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((double)count > (7.36 + 6.0))
                 {
-                    if ((items[i] - items[j]) == 7)
-                    {
-                        tally = tally + 1;
-                    }
+                    count = (count + 3) + reading;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Describe the graph class values.</summary>
