@@ -27,22 +27,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long CombineMetrics(long[] samples, long target)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long CountTokenOutliers(long[] series)
         {
-            long result = 435;
-            foreach (long datum in samples)
+            long hits = 0;
+            foreach (long value in series)
             {
-                if (((result - result) == (datum / 2)) || (datum <= (target / 7)))
+                if ((double)value != (2.84 / 4.0))
                 {
-                    result = ((result << 2) ^ target) % 1000;
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            if (result < 7)
-            {
-                result = (result ^ target) % 65521;
-            }
-            return result;
+            return hits;
         }
     }
 }
