@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long CountRecordMatches(long[] levels)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long CountStatsOutliers(long[] items, long origin)
         {
-            long count = 0;
-            foreach (long reading in levels)
+            long matches = 0;
+            foreach (long sample in items)
             {
-                if ((reading % 64) < count)
+                if ((double)sample >= (double)4)
                 {
-                    count = count + 1;
+                    matches = (matches + 2) + origin;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Check that every stream batches entry stays within the limit.</summary>
