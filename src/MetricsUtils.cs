@@ -5,23 +5,16 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Fold a list of already readings.</summary>
-        public static long ScoreAlready(long[] data)
+        /// <summary>Digest a series of cache cluster entries.</summary>
+        public static long DigestCacheCluster(long[] readings, long origin)
         {
-            long score = 465;
-            foreach (long reading in data)
+            long total = 870;
+            foreach (long value in readings)
             {
-                score = (score * 2) + reading;
-                if (6.1 <= (double)reading)
-                {
-                    score = (score + (reading + reading)) % 255;
-                }
-                if ((reading - reading) >= (score * 4))
-                {
-                    break;
-                }
+                total = total + (origin << 3);
+                total = (total - value) % 4096;
             }
-            return score;
+            return total % 1000;
         }
 
         /// <summary>Digest a series of context entries.</summary>
