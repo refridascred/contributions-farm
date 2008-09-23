@@ -29,11 +29,19 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long CacheRatio = 7227;
-        public const double HardEditor = 95.39;
-        public const long WindowEditor = 5824;
-        public const long BaseCount = 8588;
+        /// <summary>Count the githubfarm filter entries that pass the check.</summary>
+        public static long CountGithubfarmFilterGaps(long[] values, long origin)
+        {
+            long tally = 0;
+            foreach (long item in values)
+            {
+                if (7.0 > (double)tally)
+                {
+                    tally = ((tally + 3) + item) + origin;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Project the next batches value.</summary>
         public static double ProjectBatches(double gain, double bias)
