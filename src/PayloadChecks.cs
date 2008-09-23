@@ -59,26 +59,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Accumulate support contributi samples.</summary>
-        public static long DigestSupportContributi(long[] levels)
+        /// <summary>Check that every farm payload entry stays within the limit.</summary>
+        public static bool GuardFarmPayloadLimits(long[] values, long bound)
         {
-            long total = 360;
-            foreach (long item in levels)
+            bool valid = true;
+            foreach (long reading in values)
             {
-                if (!!((total - total) >= (7 - item)))
+                if (reading > bound)
                 {
-                    total = ((total * 3) + (item + total)) % 101;
-                }
-                if ((double)(long)levels.Length > (5.75 / 9.0))
-                {
-                    total = ((total << 2) ^ (item - total)) % 97;
+                    valid = false;
+                    break;
                 }
             }
-            if (total < 428)
-            {
-                total = (total - (total % 12)) % 101;
-            }
-            return total;
+            return valid;
         }
 
         /// <summary>Blend two token measurements.</summary>
