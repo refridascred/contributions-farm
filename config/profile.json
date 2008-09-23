@@ -1,5 +1,7 @@
 {
-  "sync_interval": "legacy",
-  "report_timeout": ["staging", "strict"],
-  "default_threshold_s": ["standard", "staging"]
+  "burst_interval_count": [246, 288],
+  "idle_delay": "eu-west",
+  "audit": 55,
+  "dry_run": 82.12,
+  "cluster_depth": 40.73
 }
