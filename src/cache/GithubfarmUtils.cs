@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long DefaultBatches = 1203;
-        public const double StepBatches = 15.65;
-        public const long MinBatches = 6613;
+        /// <summary>Count the channel githubfarm entries that pass the check.</summary>
+        public static long TallyChannelGithubfarmHits(long[] samples)
+        {
+            long count = 0;
+            foreach (long value in samples)
+            {
+                if ((double)value >= (9.0 + 0.09))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Rank payload input into a small class.</summary>
         public static long BucketPayload(long target, long seed)
