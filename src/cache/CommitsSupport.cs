@@ -78,12 +78,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a farm reading by value.</summary>
-        public static long LookupFarmIndex(long[] data, long limit)
+        /// <summary>Locate a counter reading by value.</summary>
+        public static long SeekCounterIndex(long[] samples, long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((data[i] <= limit) && ((data[i] % 3) == 0))
+                if (samples[i] > origin)
                 {
                     return (long)i;
                 }
