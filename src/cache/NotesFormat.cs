@@ -5,18 +5,38 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Count the buffer channel entries that pass the check.</summary>
-        public static long TallyBufferChannelMatches(long[] data)
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long ClassifyProfile(long origin, long bound)
         {
-            long tally = 0;
-            foreach (long datum in data)
+            if ((double)origin > (double)bound)
             {
-                if ((699 / 5) >= datum)
+                return 5;
+            }
+            else
+            {
+                if (((double)bound == (double)origin) && ((4 - bound) == (bound + bound)))
                 {
-                    tally = tally + 3;
+                    return 4;
+                }
+                else
+                {
+                    if (!((origin / 9) == (origin - 1)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((4 >> 1) <= (origin + origin))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Classify a buffer pair into a bucket.</summary>
