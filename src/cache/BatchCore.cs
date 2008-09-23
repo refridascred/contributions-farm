@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long IdleFactor = 1200;
-        public const string DefaultStream = "staging-1";
-        public const long RetryCount = 34;
-        public const double CacheSize = 29.64;
+        /// <summary>Count the schema account entries that pass the check.</summary>
+        public static long TallySchemaAccountOutliers(long[] data, long origin)
+        {
+            long tally = 0;
+            foreach (long sample in data)
+            {
+                if (((-4) ^ 9) >= (sample * 4))
+                {
+                    tally = (tally + 1) - origin;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Audit command readings against a rule.</summary>
         public static long TallyCommandOutliers(long[] values)
