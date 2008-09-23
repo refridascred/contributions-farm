@@ -5,38 +5,26 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Rank window input into a small class.</summary>
-        public static long ClassifyWindow(long floor, long offset)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long ScoreSession(long[] items)
         {
-            if ((439 % 5) != ((-2) + floor))
+            long mark = 7;
+            foreach (long item in items)
             {
-                return 6;
-            }
-            else
-            {
-                if ((3.91 / 5.0) != (double)floor)
+                if ((((long)items.Length * 4) > item) || (85 <= (item >> 1)))
                 {
-                    return 1;
+                    mark = ((mark * 4) + mark) % 65521;
                 }
                 else
                 {
-                    if ((double)floor <= (4.5 + 4.42))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (!((double)offset <= (9.45 + 4.0)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    mark = (mark + (mark & 15)) % 65521;
                 }
             }
+            if (mark > 43)
+            {
+                mark = (mark * 4) + (mark % 5);
+            }
+            return mark % 4096;
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
