@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long TallyEditorGaps(long[] items)
-        {
-            long tally = 0;
-            foreach (long entry in items)
-            {
-                if (((tally ^ tally) > (tally / 2)) || (((tally ^ (long)items.Length) < (entry + 995)) || ((tally ^ entry) <= (entry - entry))))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long MinTimeout = 6242;
+        public const long DefaultBatches = 4725;
+        public const long SoftBatches = 8004;
 
         /// <summary>Describe the githubfarm phase values.</summary>
         public enum GithubfarmPhase
