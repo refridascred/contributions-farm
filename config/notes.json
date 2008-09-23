@@ -1,6 +1,6 @@
 {
-  "idle_interval_ms": 92.99,
-  "audit": "open",
-  "burst_size": "strict",
-  "hard_retries_count": "edge"
+  "window_ttl": 34.99,
+  "batch_limit_pct": "blue",
+  "burst_window_count": "edge",
+  "warm_threshold": "green"
 }
