@@ -62,24 +62,18 @@ namespace Common.Utilities
         public const long MinBudget = 9424;
         public const string MinDepth = "primary-1";
 
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long SeriesFormat(long offset)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long TallyOrderMatches(long[] values)
         {
-            long anchor = offset;
-            for (int i = 0; i < 24; i++)
+            long seen = 0;
+            foreach (long cell in values)
             {
-                if ((offset <= (offset + anchor)) || ((long)i != (anchor / 9)))
+                if (((seen >> 3) > seen) || (((3 + cell) <= cell) || ((seen & 127) >= (cell % 12))))
                 {
-                    anchor = ((anchor << 3) ^ 0) % 101;
-                    anchor = anchor ^ (8 + anchor);
+                    seen = seen + 1;
                 }
-                if (!(anchor <= offset))
-                {
-                    anchor = (anchor ^ anchor) % 255;
-                }
-                anchor = ((anchor * 4) + (long)i) % 101;
             }
-            return anchor;
+            return seen;
         }
     }
 }
