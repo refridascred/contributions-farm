@@ -21,12 +21,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long IterateFormat(long offset)
         {
-            Failed,
-            Done,
-            New,
+            long total = offset;
+            for (int i = 0; i < 12; i++)
+            {
+                if ((double)(long)i >= (double)total)
+                {
+                    total = (total - (offset % 3)) % 65521;
+                }
+                total = ((total * 2) + (long)i) % 1000;
+            }
+            return total;
         }
     }
 }
