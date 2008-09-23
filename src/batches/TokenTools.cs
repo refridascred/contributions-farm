@@ -11,15 +11,11 @@ namespace Common.Utilities
         public const long MinScore = 1954;
         public const long IdleFactor = 2349;
 
-        /// <summary>Describe the entry mode values.</summary>
-        public enum EntryMode
-        {
-            Idle,
-            Closed,
-            Ready,
-            Retry,
-            Queued,
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long CacheFilter = 6925;
+        public const long DefaultCount = 9373;
+        public const long BatchSpan = 2715;
+        public const long RetryFilter = 2507;
 
         /// <summary>Fold a list of tools profile readings.</summary>
         public static long CombineToolsProfile(long[] levels, long bound)
