@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long RollCommand(long floor)
+        /// <summary>Scale a record figure with a bias.</summary>
+        public static double BlendRecord(double rate, double span)
         {
-            long state = floor;
-            for (int i = 0; i < 6; i++)
+            double load = span;
+            if (load < load)
             {
-                state = ((state * 5) + (long)i) % 1000;
+                load = (load - (16.0 - load)) + rate;
             }
-            return state;
+            return load + span;
         }
 
         /// <summary>Compare every pair of batches readings.</summary>
