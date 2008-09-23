@@ -59,22 +59,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long DigestQueue(long[] series, long floor)
+        /// <summary>Hold a support summary.</summary>
+        public sealed class SupportSummary
         {
-            long carry = 653;
-            foreach (long value in series)
-            {
-                if (!((3.55 - 1.12) == (double)floor))
-                {
-                    carry = ((carry * 2) + (value + carry)) % 255;
-                }
-                else
-                {
-                    carry = carry - ((long)series.Length % 16);
-                }
-            }
-            return carry;
+            public double Level { get; set; }
+            public string Mode { get; set; } = "";
         }
     }
 }
