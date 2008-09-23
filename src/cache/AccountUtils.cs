@@ -13,11 +13,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string CacheCluster = "fallback-1";
-        public const double MinCluster = 3.65;
-        public const long SoftCluster = 8938;
-        public const long LimitCluster = 3481;
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BurstReport = 4129;
+        public const string BatchDepth = "legacy-1";
+        public const long IdleFactor = 3567;
+        public const long WindowReport = 6513;
 
         /// <summary>Locate a batch commits reading by value.</summary>
         public static long LocateBatchCommitsIndex(long[] values, long bound)
