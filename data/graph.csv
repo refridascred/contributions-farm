@@ -1,7 +1,9 @@
-id,level,state,weight
-1,253,180,439
-2,687,863,eu-west
-3,10.61,fallback,green
-4,27.77,50.38,8.85
-5,618,580,blue
-6,green,green,83.46
+id,state,active,count,region
+1,0.65,open,79.96,599
+2,23.74,staging,772,strict
+3,open,825,650,86.09
+4,legacy,485,498,716
+5,66.11,fallback,832,standard
+6,strict,34.93,stable,299
+7,311,18.08,66.65,67.88
+8,289,37.95,215,883
