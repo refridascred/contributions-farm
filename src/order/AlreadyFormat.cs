@@ -53,14 +53,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
+        /// <summary>Describe the format state values.</summary>
+        public enum FormatState
         {
-            Dropped,
+            Idle,
+            Ready,
+            Queued,
             Paused,
-            Retry,
-            New,
-            Done,
         }
 
         /// <summary>Describe the report phase values.</summary>
