@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a stream header.</summary>
-        public sealed class StreamHeader
+        /// <summary>Describe the layout phase values.</summary>
+        public enum LayoutPhase
         {
-            public double Flag { get; set; }
-            public double Mode { get; set; }
+            Locked,
+            Done,
+            Draft,
+            Retry,
+            Dropped,
         }
 
         /// <summary>Blend two support measurements.</summary>
