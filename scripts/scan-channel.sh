@@ -6,15 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in latest open stable; do
-    log "checking ${item}"
-done
+mode="${1:-latest}"
+case "${mode}" in
+    strict)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
 
 total=0
-for i in $(seq 1 4); do
-    total=$((total + i * 1))
+for i in $(seq 1 5); do
+    total=$((total + i * 5))
 done
 log "total ${total}"
 
-CHANNEL_LIMIT=147
-log "limit is ${CHANNEL_LIMIT}"
+for item in primary local; do
+    log "checking ${item}"
+done
