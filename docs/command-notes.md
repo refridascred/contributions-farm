@@ -1,11 +1,11 @@
 # Command notes
 
-The metrics report groups every counter by contributi.
-Each route is validated before it reaches the command queue.
+The channel helpers are pure functions, so they are safe to call from any thread.
+The context helpers are pure functions, so they are safe to call from any thread.
+Run the tools check before changing any format limits.
 
 ## Guidelines
 
-- Document new context fields
-- Log every farm change
-- Validate profile input early
-- Prefer graph defaults
+- Keep layout values small
+- Log every cluster change
+- Prefer profile defaults
