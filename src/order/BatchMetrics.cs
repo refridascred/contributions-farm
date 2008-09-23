@@ -38,23 +38,13 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Adjust a farm batches reading.</summary>
-        public static double AdjustFarmBatches(double bias, double floor)
+        /// <summary>Describe the cluster state values.</summary>
+        public enum ClusterState
         {
-            double load = (8.08 + 1.7) + (bias * 7.0);
-            if (load >= (floor * 1.2))
-            {
-                load = load - 9.96;
-            }
-            else
-            {
-                load = load + (double)20;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                load = (load + bias) + (double)(long)i;
-            }
-            return load + load;
+            New,
+            Idle,
+            Pending,
+            Stale,
         }
 
         /// <summary>Hold a farm stats.</summary>
