@@ -46,19 +46,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool VerifyChecksBounds(long[] readings, long floor)
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
         {
-            bool found = true;
-            foreach (long reading in readings)
-            {
-                if (reading > floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            New,
+            Locked,
+            Closed,
+            Failed,
         }
 
         /// <summary>Adjust a counter reading.</summary>
