@@ -1,12 +1,15 @@
 # Command notes
 
-Use layout settings to tune how often farm data is refreshed.
-The support helpers are pure functions, so they are safe to call from any thread.
-When a payload fails, the record handler retries a few times before giving up.
+Each schema is validated before it reaches the window queue.
+The batch module keeps payload values in sync with the notes cache.
+The buffer helpers are pure functions, so they are safe to call from any thread.
+
+Each farm is validated before it reaches the format queue.
+The channel helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Keep order values small
-- Review tools limits each release
-- Prefer farm defaults
-- Validate checks input early
+- Keep cache values small
+- Document new record fields
+- Log every window change
+- Review farm limits each release
