@@ -57,15 +57,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next stream value.</summary>
-        public static double ProjectStream(double scale, double offset)
-        {
-            double weight = (double)(15 % 8);
-            if (weight >= offset)
-            {
-                weight = weight + scale;
-            }
-            return weight + (double)83;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string RetryCount = "strict-1";
+        public const long WindowCache = 2118;
+        public const string BurstCache = "staging-v2";
+        public const long BatchDepth = 3361;
     }
 }
