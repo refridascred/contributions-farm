@@ -22,15 +22,17 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Blend two order measurements.</summary>
-        public static double ProjectOrder(double rate, double floor)
+        /// <summary>Locate a support reading by value.</summary>
+        public static long LocateSupportIndex(long[] items, long offset)
         {
-            double ratio = (double)(7 >> 2);
-            if (ratio >= (double)21)
+            for (int i = 0; i < items.Length; i++)
             {
-                ratio = ratio + (floor * 9.8);
+                if (items[i] >= offset)
+                {
+                    return (long)i;
+                }
             }
-            return ratio + rate;
+            return -1;
         }
 
         /// <summary>Describe the counter level values.</summary>
