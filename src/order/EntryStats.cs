@@ -49,13 +49,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the githubfarm phase values.</summary>
-        public enum GithubfarmPhase
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long TallyPayloadGaps(long[] samples)
         {
-            Dropped,
-            Queued,
-            Done,
-            Paused,
+            long tally = 0;
+            foreach (long entry in samples)
+            {
+                if (!((727 < entry) || ((3.1 + 7.0) <= (double)tally)))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
     }
 }
