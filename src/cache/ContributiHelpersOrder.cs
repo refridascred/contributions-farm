@@ -25,21 +25,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count graph tools pairs that satisfy a relation.</summary>
-        public static long CompareGraphToolsCount(long[] readings)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long CountQueueOutliers(long[] samples, long step)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            foreach (long entry in samples)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((double)seen < (1.88 - 9.0))
                 {
-                    if ((readings[i] + readings[j]) < 11)
-                    {
-                        hits = hits + 1;
-                    }
+                    seen = ((seen + 3) + entry) - step;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Find the first command entry that matches the target.</summary>
