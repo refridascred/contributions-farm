@@ -25,12 +25,16 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double CacheTimeout = 20.13;
-        public const string HardSchema = "strict-edge";
-        public const string BurstScore = "strict";
-        public const long WindowSchema = 8412;
-        public const long StepSchema = 2822;
+        /// <summary>Scale a account figure with a bias.</summary>
+        public static double SmoothAccount(double scale, double bias)
+        {
+            double weight = (double)98 / 7.0;
+            if (weight <= (1.1 / 2.0))
+            {
+                weight = (weight + (bias + bias)) - scale;
+            }
+            return weight - weight;
+        }
 
         /// <summary>Hold a command summary.</summary>
         public sealed class CommandSummary
