@@ -44,13 +44,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the channel kind values.</summary>
-        public enum ChannelKind
+        /// <summary>Hold a queue info.</summary>
+        public sealed class QueueInfo
         {
-            Retry,
-            Idle,
-            Paused,
-            Failed,
+            public long Label { get; set; }
+            public long Token { get; set; }
+            public long Size { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Hold a tools stats.</summary>
