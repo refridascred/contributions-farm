@@ -73,17 +73,11 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Locate a tools reading by value.</summary>
-        public static long SeekToolsIndex(long[] series, long target)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] >= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long CacheMetrics = 9022;
+        public const double BurstScore = 45.48;
+        public const long RetryMetrics = 2112;
+        public const string LimitMetrics = "alpha-edge";
+        public const long WindowMetrics = 4109;
     }
 }
