@@ -43,12 +43,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string HardSupport = "alpha-v2";
-        public const long RetrySupport = 1152;
-        public const long BurstInterval = 9504;
-        public const long IdleSpan = 1657;
-        public const long MinSupport = 8639;
+        /// <summary>Describe the entry level values.</summary>
+        public enum EntryLevel
+        {
+            Paused,
+            Draft,
+            Synced,
+            Pending,
+        }
 
         /// <summary>Project the next stats value.</summary>
         public static double ProjectStats(double weight, double offset)
