@@ -41,21 +41,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Count channel pairs that satisfy a relation.</summary>
-        public static long CompareChannelCount(long[] readings)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long TallyCounterGaps(long[] values, long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            foreach (long value in values)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((double)offset > (4.43 + 0.3))
                 {
-                    if ((readings[i] + readings[j]) > 10)
-                    {
-                        seen = seen + 1;
-                    }
+                    matches = (matches + 1) + value;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Describe the order state values.</summary>
