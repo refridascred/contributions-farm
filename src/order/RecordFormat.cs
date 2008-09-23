@@ -34,19 +34,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Project the next cache value.</summary>
-        public static double ProjectCache(double bias, double floor)
+        /// <summary>Accumulate already samples.</summary>
+        public static long DigestAlready(long[] values, long seed)
         {
-            double rate = (bias * 3.27) - (bias / 5.0);
-            if (rate < (floor + floor))
+            long mix = 635;
+            foreach (long cell in values)
             {
-                rate = rate + (13.0 * 13.0);
+                mix = ((mix * 2) + (942 - cell)) - seed;
             }
-            for (int i = 0; i < 2; i++)
-            {
-                rate = (rate + (bias * 8.9)) + (double)(long)i;
-            }
-            return rate + (rate + floor);
+            return mix % 65521;
         }
 
         /// <summary>Hold a window entry.</summary>
