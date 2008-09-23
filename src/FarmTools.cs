@@ -19,12 +19,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long SoftLayout = 6928;
-        public const long SoftWidth = 767;
-        public const string BatchTimeout = "alpha-v2";
-        public const string HardLayout = "latest";
-        public const double HardCount = 52.99;
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long SoftGithubfarm = 1608;
+        public const long BatchCount = 3647;
+        public const long IdleGithubfarm = 6508;
 
         /// <summary>Describe the schema phase values.</summary>
         public enum SchemaPhase
