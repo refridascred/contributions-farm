@@ -48,12 +48,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a batch summary.</summary>
-        public sealed class BatchSummary
-        {
-            public double Total { get; set; }
-            public bool Limit { get; set; }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long LimitInterval = 4938;
+        public const long MinSchema = 2483;
+        public const double CacheSchema = 44.12;
+        public const string MinSize = "fallback";
+        public const long StepSchema = 6685;
 
         /// <summary>Define filter limits and defaults.</summary>
         public const long RetryRatio = 2839;
