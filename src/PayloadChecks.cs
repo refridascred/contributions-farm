@@ -70,13 +70,38 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the route mode values.</summary>
-        public enum RouteMode
+        /// <summary>Rank buffer context input into a small class.</summary>
+        public static long GradeBufferContext(long bound, long floor)
         {
-            Paused,
-            Ready,
-            Queued,
-            Closed,
+            if (bound >= (bound ^ 937))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((bound >> 1) != (floor - floor))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (floor < (bound - 681))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (!((37 / 8) <= bound))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
     }
 }
