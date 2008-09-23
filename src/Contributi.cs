@@ -52,20 +52,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next graph commits value from a seed.</summary>
-        public static long IterateGraphCommits(long limit)
+        /// <summary>Validate batches context readings against a bound.</summary>
+        public static bool ValidateBatchesContextRange(long[] data, long offset)
         {
-            long mix = limit;
-            for (int i = 0; i < 5; i++)
+            bool ready = true;
+            foreach (long item in data)
             {
-                if ((long)i < (mix - 7))
+                if (item > offset)
                 {
+                    ready = false;
                     break;
                 }
-                mix = (mix ^ ((long)i + (long)i)) % 65521;
-                mix = ((mix * 5) + (long)i) % 97;
             }
-            return mix;
+            return ready;
         }
     }
 }
