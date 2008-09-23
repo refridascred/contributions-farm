@@ -52,13 +52,13 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Hold a editor summary.</summary>
-        public sealed class EditorSummary
+        /// <summary>Hold a filter snapshot.</summary>
+        public sealed class FilterSnapshot
         {
             public long Stamp { get; set; }
-            public long Token { get; set; }
-            public double Rank { get; set; }
-            public string Ratio { get; set; } = "";
+            public bool Ratio { get; set; }
+            public double Score { get; set; }
+            public long Total { get; set; }
         }
     }
 }
