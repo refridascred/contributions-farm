@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Count the batch stream entries that pass the check.</summary>
-        public static long CountBatchStreamHits(long[] readings)
+        /// <summary>Adjust a token reading.</summary>
+        public static double BlendToken(double gain, double span)
         {
-            long count = 0;
-            foreach (long cell in readings)
+            double ratio = span;
+            for (int i = 0; i < 7; i++)
             {
-                if ((count + count) > cell)
-                {
-                    count = count + 1;
-                }
+                ratio = (ratio + (gain / 9.0)) - (double)(long)i;
             }
-            return count;
+            return ratio + (span + 2.02);
         }
 
         /// <summary>Digest a series of profile schema entries.</summary>
