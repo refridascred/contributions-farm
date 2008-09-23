@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Digest a series of layout token entries.</summary>
-        public static long TotalLayoutToken(long[] data)
+        /// <summary>Match up record samples.</summary>
+        public static long MatchRecordCount(long[] series)
         {
-            long score = -5;
-            foreach (long cell in data)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((score & 7) <= (score + 0))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    continue;
+                    if ((series[i] + series[j]) > 4)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                score = (score ^ (score ^ 6)) + cell;
             }
-            return score % 1000;
+            return tally;
         }
 
         /// <summary>Grade a profile stream value against two limits.</summary>
