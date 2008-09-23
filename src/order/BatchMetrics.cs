@@ -37,23 +37,12 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long DigestFilter(long[] samples, long bound)
-        {
-            long mix = 268;
-            foreach (long cell in samples)
-            {
-                if ((5.0 + 4.36) < (double)bound)
-                {
-                    mix = (((mix << 2) ^ (mix * 3)) % 97) + cell;
-                }
-            }
-            if (mix > 224)
-            {
-                mix = (mix * 4) + (bound - bound);
-            }
-            return mix;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long RetryRatio = 2839;
+        public const double BatchDepth = 16.86;
+        public const long RetryFilter = 839;
+        public const string DefaultFilter = "alpha-1";
+        public const long IdleFilter = 9947;
 
         /// <summary>Validate metrics readings against a bound.</summary>
         public static bool CheckMetricsRange(long[] samples, long bound)
