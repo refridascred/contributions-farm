@@ -1,8 +1,8 @@
 # entry settings
-report_retries:
-  - local
-  - standard
-retry_size_pct: green
-cluster_retries: legacy
-sync_ratio_count: 500
-report_timeout: true
+base_retries_s: false
+retry_depth_count: strict
+batch_capacity_s: 62.0
+sync_capacity_count:
+  - staging
+  - primary
+queue_delay: 82
