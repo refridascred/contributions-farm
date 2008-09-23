@@ -1,10 +1,14 @@
 # Command notes
 
-Use farm settings to tune how often record data is refreshed.
-The tools report groups every githubfarm by batches.
+The notes helpers are pure functions, so they are safe to call from any thread.
+The notes module keeps record values in sync with the schema cache.
+The stats module keeps contributi values in sync with the record cache.
+
+Each metric is validated before it reaches the commits queue.
+Keep tools and notes names short and lowercase.
 
 ## Guidelines
 
-- Prefer metric defaults
-- Log every schema change
-- Validate report input early
+- Document new batches fields
+- Log every graph change
+- Review payload limits each release
