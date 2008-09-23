@@ -18,10 +18,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double LimitGithubfarm = 0.21;
-        public const long CacheGithubfarm = 7668;
-        public const string MaxScore = "stable";
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
+        {
+            Stale,
+            Paused,
+            Queued,
+            Idle,
+        }
 
         /// <summary>Describe the entry mode values.</summary>
         public enum EntryMode
