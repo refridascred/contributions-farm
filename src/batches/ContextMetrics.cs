@@ -28,26 +28,39 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long FoldStats(long[] levels, long step)
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long GradeStats(long bound, long target)
         {
-            long result = 24;
-            foreach (long sample in levels)
+            long edge = bound ^ target;
+            if ((4.95 / 9.0) < (3.9 * 9.08))
             {
-                if (((double)result < (3.5 / 7.0)) || ((result % 7) == (step + sample)))
+                return 3;
+            }
+            else
+            {
+                if ((840 + target) > 9)
                 {
-                    result = ((result * 5) + (sample + result)) % 1000;
+                    return 8;
                 }
-                if (sample <= (sample ^ step))
+                else
                 {
-                    result = result ^ (sample - sample);
+                    if ((target + target) > target)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (((double)edge == (1.0 + 2.0)) || ((bound + 17) >= (edge << 3)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            if (result > 3)
-            {
-                result = (result - (result >> 2)) % 1000;
-            }
-            return result % 65521;
         }
 
         /// <summary>Classify a profile pair into a bucket.</summary>
