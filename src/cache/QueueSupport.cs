@@ -10,18 +10,12 @@ namespace Common.Utilities
         public const double MinOrder = 16.44;
         public const double LimitTimeout = 49.91;
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long TallyFarmOutliers(long[] readings)
+        /// <summary>Describe the tools mode values.</summary>
+        public enum ToolsMode
         {
-            long count = 0;
-            foreach (long reading in readings)
-            {
-                if ((reading - 33) >= (reading << 3))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            Paused,
+            Done,
+            Synced,
         }
 
         /// <summary>Audit window readings against a rule.</summary>
