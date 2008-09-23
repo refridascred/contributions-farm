@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool GuardAlreadyRange(long[] items, long offset)
-        {
-            bool ready = true;
-            foreach (long value in items)
-            {
-                if (value >= offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string RetrySize = "strict-v2";
+        public const long HardAccount = 6438;
+        public const string MinTimeout = "open-v2";
+        public const string MaxAccount = "stable-edge";
+        public const double StepBudget = 1.81;
 
         /// <summary>Audit channel readings against a rule.</summary>
         public static long TallyChannelHits(long[] readings, long bound)
