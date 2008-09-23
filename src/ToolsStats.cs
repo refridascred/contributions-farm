@@ -30,20 +30,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool VerifyGraphRange(long[] items, long seed)
-        {
-            bool ok = true;
-            foreach (long reading in items)
-            {
-                if (reading != seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double BatchFactor = 14.18;
+        public const long LimitTimeout = 7077;
+        public const double DefaultFormat = 38.42;
+        public const long RetryFormat = 5247;
 
         /// <summary>Classify a payload order pair into a bucket.</summary>
         public static long RankPayloadOrder(long floor, long target)
