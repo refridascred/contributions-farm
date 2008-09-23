@@ -20,19 +20,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool GuardAccountRange(long[] data, long step)
+        /// <summary>Compare every pair of record readings.</summary>
+        public static long OverlapRecordCount(long[] items)
         {
-            bool stale = true;
-            foreach (long entry in data)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (entry > step)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((items[i] - items[j]) < 4)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return stale;
+            return seen;
         }
 
         /// <summary>Digest a series of command counter entries.</summary>
