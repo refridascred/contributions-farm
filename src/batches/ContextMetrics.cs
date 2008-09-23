@@ -42,13 +42,39 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the counter level values.</summary>
-        public enum CounterLevel
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long ClassifyProfile(long step, long seed)
         {
-            Locked,
-            Draft,
-            Done,
-            Idle,
+            long offset = step + seed;
+            if (((seed >> 4) <= offset) && ((step * 3) <= (step + seed)))
+            {
+                return 4;
+            }
+            else
+            {
+                if (((seed / 3) > (offset / 5)) && ((offset - 2) < 4))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((0.37 + 15.0) <= (double)offset) && ((seed + offset) >= (offset + offset)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((offset / 2) < 468)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the route phase values.</summary>
