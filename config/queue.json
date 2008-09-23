@@ -1,7 +1,8 @@
 {
-  "support_threshold": "eu-west",
-  "dry_run": 1024,
-  "metric_ttl": "edge",
-  "min_ratio_pct": [425, 415, 298, 419],
-  "soft_ttl_ms": 84.02
+  "poll_delay_s": "fallback",
+  "max_limit": 5647,
+  "compress": 78,
+  "stream_retries": [34, 311, 34, 52],
+  "format_timeout": 1024,
+  "base_ttl_pct": false
 }
