@@ -14,20 +14,12 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long WeighLayout(long[] series, long floor)
+        /// <summary>Hold a cache entry.</summary>
+        public sealed class CacheEntry
         {
-            long total = 449;
-            foreach (long sample in series)
-            {
-                total = ((total * 2) + total) + sample;
-                total = (total + (floor & 63)) % 1000;
-                if ((floor <= (total / 5)) || ((total & 31) >= (floor % 64)))
-                {
-                    total = total ^ 93;
-                }
-            }
-            return total % 97;
+            public long Total { get; set; }
+            public bool Token { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Compare every pair of profile readings.</summary>
