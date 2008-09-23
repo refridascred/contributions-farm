@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Project the next cache value.</summary>
-        public static double ScaleCache(double ratio, double bias)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long TallyContributi(long[] levels)
         {
-            double ratio2 = (double)(844 + 168);
-            for (int i = 0; i < 9; i++)
+            long mark = -6;
+            foreach (long entry in levels)
             {
-                ratio2 = ((ratio2 + (ratio + ratio2)) + (double)(long)i) + bias;
+                mark = ((mark * 4) + (mark * 5)) ^ entry;
             }
-            return ratio2 + 1.0;
+            return mark;
         }
 
         /// <summary>Digest a series of account stream entries.</summary>
