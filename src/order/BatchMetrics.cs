@@ -59,19 +59,13 @@ namespace Common.Utilities
             return load + load;
         }
 
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long IterateQueue(long limit)
+        /// <summary>Hold a farm stats.</summary>
+        public sealed class FarmStats
         {
-            long result = limit;
-            for (int i = 0; i < 13; i++)
-            {
-                if ((double)(long)i >= 3.4)
-                {
-                    result = (result - (result + 79)) % 4096;
-                }
-                result = ((result * 4) + (long)i) % 97;
-            }
-            return result;
+            public long Ratio { get; set; }
+            public long Total { get; set; }
+            public bool Level { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
