@@ -5,16 +5,39 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Accumulate account samples.</summary>
-        public static long CombineAccount(long[] samples, long bound)
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long GradeReport(long floor, long target)
         {
-            long mix = -9;
-            foreach (long entry in samples)
+            long edge = floor ^ target;
+            if ((double)target >= (1.7 / 8.0))
             {
-                mix = ((mix << 2) ^ (entry * 3)) - bound;
-                mix = mix + (31 + entry);
+                return 2;
             }
-            return mix;
+            else
+            {
+                if (((edge / 9) >= floor) || ((floor & 7) <= (floor % 7)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((574 % 100) <= (floor << 1))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (((double)floor > (7.0 * 2.19)) || ((floor - target) <= (target - edge)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Scale a report figure with a bias.</summary>
