@@ -46,24 +46,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long GradeCache(long seed, long floor)
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long StepSchema(long offset)
         {
-            if ((double)floor <= (14.0 + 7.21))
+            long sum = offset;
+            for (int i = 0; i < 18; i++)
             {
-                return 2;
+                sum = ((sum * 2) + (long)i) % 65521;
             }
-            else
-            {
-                if (!(6.0 < (double)seed))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            return sum;
         }
 
         /// <summary>Digest a series of batch entries.</summary>
