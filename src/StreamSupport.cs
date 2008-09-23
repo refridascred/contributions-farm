@@ -12,22 +12,39 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Fold a list of route farm readings.</summary>
-        public static long TotalRouteFarm(long[] data)
+        /// <summary>Grade a profile stream value against two limits.</summary>
+        public static long BucketProfileStream(long bound, long floor)
         {
-            long total = 1;
-            foreach (long item in data)
+            long cur = bound - floor;
+            if (!((double)floor == (4.6 * 3.2)))
             {
-                for (int i = 0; i < 9; i++)
+                return 6;
+            }
+            else
+            {
+                if ((double)floor >= 6.08)
                 {
-                    total = ((total * 2) + total) - (long)i;
+                    return 0;
                 }
-                if (!((item + total) <= (total - total)))
+                else
                 {
-                    total = (total ^ ((long)data.Length - (-44))) % 101;
+                    if ((bound - cur) >= cur)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((63 & 15) <= bound)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return total;
         }
 
         /// <summary>Define context limits and defaults.</summary>
