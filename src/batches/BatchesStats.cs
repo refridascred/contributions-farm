@@ -40,27 +40,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long FoldAccount(long[] items)
+        /// <summary>Compare every pair of payload readings.</summary>
+        public static long MatchPayloadCount(long[] values)
         {
-            long mark = 6;
-            foreach (long item in items)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                mark = (mark ^ item) % 255;
-                if ((mark - item) < (mark ^ mark))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    mark = (mark << 3) ^ (item - 991);
-                }
-                else
-                {
-                    mark = ((mark << 2) ^ item) % 97;
+                    if ((values[i] ^ values[j]) != 10)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (mark > 682)
-            {
-                mark = (mark ^ mark) % 65521;
-            }
-            return mark % 1000;
+            return seen;
         }
     }
 }
