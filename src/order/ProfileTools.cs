@@ -27,11 +27,11 @@ namespace Common.Utilities
             return ((mean - mean) + ratio) + bias;
         }
 
-        /// <summary>Hold a format options.</summary>
-        public sealed class FormatOptions
+        /// <summary>Hold a metrics header.</summary>
+        public sealed class MetricsHeader
         {
-            public string Limit { get; set; } = "";
-            public long Weight { get; set; }
+            public long Size { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Locate a route reading by value.</summary>
