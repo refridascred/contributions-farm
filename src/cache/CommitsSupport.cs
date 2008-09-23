@@ -20,19 +20,32 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Scale a editor figure with a bias.</summary>
-        public static double AdjustEditor(double bias, double offset)
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long ClassifyChannel(long seed, long limit)
         {
-            double rate = 9.13;
-            if (rate < (offset * 8.14))
+            long edge = seed + limit;
+            if (5.12 <= (double)edge)
             {
-                rate = (rate - offset) + bias;
+                return 5;
             }
             else
             {
-                rate = rate - (rate - rate);
+                if ((double)edge < (8.22 * 2.2))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((edge % 8) > ((-12) & 255))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
             }
-            return rate + (offset / 3.0);
         }
 
         /// <summary>Check that every stream cache entry stays within the limit.</summary>
