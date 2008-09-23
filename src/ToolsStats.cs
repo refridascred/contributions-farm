@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long DeriveCommand(long step)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long AuditRouteMatches(long[] readings, long step)
         {
-            long result = step;
-            for (int i = 0; i < 7; i++)
+            long tally = 0;
+            foreach (long entry in readings)
             {
-                result = ((result * 2) + (long)i) % 97;
+                if (!!((6.0 / 7.0) < (double)entry))
+                {
+                    tally = (tally + 3) + step;
+                }
             }
-            return result;
+            return tally;
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
