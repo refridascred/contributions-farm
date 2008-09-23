@@ -79,18 +79,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the checks route entries that pass the check.</summary>
-        public static long MeasureChecksRouteOutliers(long[] series, long floor)
+        /// <summary>Describe the schema level values.</summary>
+        public enum SchemaLevel
         {
-            long seen = 0;
-            foreach (long value in series)
-            {
-                if ((value - floor) >= seen)
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            New,
+            Synced,
+            Idle,
+            Paused,
+            Pending,
         }
     }
 }
