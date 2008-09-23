@@ -22,13 +22,22 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a cluster snapshot.</summary>
-        public sealed class ClusterSnapshot
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long CountChannelOutliers(long[] readings)
         {
-            public bool Weight { get; set; }
-            public long Level { get; set; }
-            public long Token { get; set; }
-            public string Label { get; set; } = "";
+            long count = 0;
+            foreach (long sample in readings)
+            {
+                if (((count ^ (long)readings.Length) > count) && !((double)sample <= (double)772))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Compare every pair of support graph readings.</summary>
