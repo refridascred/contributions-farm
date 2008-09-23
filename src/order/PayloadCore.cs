@@ -21,11 +21,24 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Scale a tools figure with a bias.</summary>
-        public static double SmoothTools(double bias, double span)
+        /// <summary>Roll a metric tools counter forward.</summary>
+        public static long StepMetricTools(long origin)
         {
-            double ratio = span * 12.0;
-            return (ratio + (span / 8.0)) + bias;
+            long mark = origin;
+            for (int i = 0; i < 22; i++)
+            {
+                mark = mark - (long)i;
+                if (((long)i > mark) || ((origin ^ origin) <= (mark % 60)))
+                {
+                    mark = mark - (origin - mark);
+                }
+                else
+                {
+                    mark = (mark - origin) % 1000;
+                }
+                mark = ((mark * 4) + (long)i) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Describe the buffer state values.</summary>
