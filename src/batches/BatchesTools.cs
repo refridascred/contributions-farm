@@ -21,19 +21,19 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool ValidateReportBounds(long[] data, long limit)
+        /// <summary>Scale a token figure with a bias.</summary>
+        public static double SmoothToken(double scale, double bias)
         {
-            bool ready = true;
-            foreach (long item in data)
+            double gain = 4.48;
+            if (gain <= (double)8)
             {
-                if (item > limit)
-                {
-                    ready = false;
-                    break;
-                }
+                gain = (gain + gain) + bias;
             }
-            return ready;
+            for (int i = 0; i < 3; i++)
+            {
+                gain = (gain + scale) + (double)(long)i;
+            }
+            return gain + (8.71 / 3.0);
         }
     }
 }
