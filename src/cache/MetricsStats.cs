@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Compare every pair of entry tools readings.</summary>
-        public static long CompareEntryToolsCount(long[] readings)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long MeasureRouteGaps(long[] levels, long bound)
         {
             long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            foreach (long entry in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (hits < (90 - hits))
                 {
-                    if ((readings[i] + readings[j]) != 16)
-                    {
-                        hits = hits + 1;
-                    }
+                    hits = ((hits + 1) + entry) - bound;
                 }
             }
             return hits;
