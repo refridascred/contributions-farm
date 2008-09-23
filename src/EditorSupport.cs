@@ -57,19 +57,32 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate entry session readings against a bound.</summary>
-        public static bool GuardEntrySessionRange(long[] series, long floor)
+        /// <summary>Rank order input into a small class.</summary>
+        public static long RankOrder(long limit, long step)
         {
-            bool valid = true;
-            foreach (long datum in series)
+            long lane = limit + step;
+            if ((lane * 5) != (step << 1))
             {
-                if (datum >= floor)
+                return 4;
+            }
+            else
+            {
+                if ((step - lane) == (lane - 69))
                 {
-                    valid = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if (((-83) % 16) < (lane * 3))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return valid;
         }
 
         /// <summary>Describe the stats phase values.</summary>
