@@ -19,18 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long CountSupportHits(long[] data)
+        /// <summary>Hold a counter options.</summary>
+        public sealed class CounterOptions
         {
-            long hits = 0;
-            foreach (long item in data)
-            {
-                if (!((double)item <= (double)hits))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            public long Owner { get; set; }
+            public long Flag { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
