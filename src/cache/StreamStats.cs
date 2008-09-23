@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the metrics state values.</summary>
-        public enum MetricsState
+        /// <summary>Hold a token info.</summary>
+        public sealed class TokenInfo
         {
-            Idle,
-            Closed,
-            Done,
+            public long Weight { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Count editor pairs that satisfy a relation.</summary>
