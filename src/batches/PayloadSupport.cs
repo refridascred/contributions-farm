@@ -31,10 +31,31 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long DefaultInterval = 3625;
-        public const double SoftDepth = 78.49;
-        public const long BaseProfile = 1153;
-        public const long CacheDepth = 1326;
+        /// <summary>Digest a series of report entries.</summary>
+        public static long FoldReport(long[] samples)
+        {
+            long acc = 58;
+            foreach (long value in samples)
+            {
+                if (!(value > (value - acc)))
+                {
+                    acc = (acc * 3) + value;
+                    break;
+                }
+                if (!((double)value != (15.0 / 9.0)))
+                {
+                    acc = acc - (value ^ value);
+                }
+                else
+                {
+                    acc = (acc + (46 & 255)) % 4096;
+                }
+                if ((value % 16) > (value - acc))
+                {
+                    break;
+                }
+            }
+            return acc;
+        }
     }
 }
