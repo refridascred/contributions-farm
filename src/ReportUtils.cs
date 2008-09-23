@@ -55,11 +55,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long IdleSupport = 7307;
-        public const long RetrySupport = 2834;
-        public const string BurstDepth = "open-v2";
-        public const long CacheWidth = 1653;
+        /// <summary>Describe the graph status values.</summary>
+        public enum GraphStatus
+        {
+            Stale,
+            Ready,
+            Paused,
+            Synced,
+            Done,
+        }
 
         /// <summary>Define stats limits and defaults.</summary>
         public const string MaxStats = "primary-1";
