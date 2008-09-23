@@ -14,21 +14,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Count cache account pairs that satisfy a relation.</summary>
-        public static long CompareCacheAccountCount(long[] samples)
+        /// <summary>Hold a token snapshot.</summary>
+        public sealed class TokenSnapshot
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) != 6)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public string Offset { get; set; } = "";
+            public long Flag { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Hold a queue summary.</summary>
