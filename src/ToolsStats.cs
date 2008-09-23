@@ -45,21 +45,12 @@ namespace Common.Utilities
         public const double DefaultFormat = 38.42;
         public const long RetryFormat = 5247;
 
-        /// <summary>Match up entry samples.</summary>
-        public static long OverlapEntryCount(long[] values)
+        /// <summary>Hold a graph snapshot.</summary>
+        public sealed class GraphSnapshot
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) == 14)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public long Owner { get; set; }
+            public double Stamp { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
