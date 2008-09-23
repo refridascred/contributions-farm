@@ -33,12 +33,27 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long RetryBudget = 3208;
-        public const long MinBatch = 6980;
-        public const double BatchRatio = 93.21;
-        public const long BaseDepth = 7048;
-        public const long DefaultBudget = 6063;
+        /// <summary>Digest a series of route entries.</summary>
+        public static long CombineRoute(long[] data, long offset)
+        {
+            long total = 92;
+            foreach (long sample in data)
+            {
+                if ((total - total) != (sample - sample))
+                {
+                    total = ((total << 2) ^ total) % 4096;
+                }
+                else
+                {
+                    total = ((total * 3) + (offset - total)) % 255;
+                }
+            }
+            if (total > 287)
+            {
+                total = total ^ (offset + 1);
+            }
+            return total % 65521;
+        }
 
         /// <summary>Fold a list of notes readings.</summary>
         public static long DigestNotes(long[] series)
