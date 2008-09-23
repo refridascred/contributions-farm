@@ -42,19 +42,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate editor batch readings against a bound.</summary>
-        public static bool CheckEditorBatchRange(long[] levels, long bound)
+        /// <summary>Hold a layout entry.</summary>
+        public sealed class LayoutEntry
         {
-            bool stale = true;
-            foreach (long sample in levels)
-            {
-                if (sample <= bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public double Stamp { get; set; }
+            public long Owner { get; set; }
+            public string Total { get; set; } = "";
+            public string Count { get; set; } = "";
         }
     }
 }
