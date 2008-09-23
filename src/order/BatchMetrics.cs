@@ -77,15 +77,19 @@ namespace Common.Utilities
             return bias - rate;
         }
 
-        /// <summary>Roll a entry notes counter forward.</summary>
-        public static long SeriesEntryNotes(long bound)
+        /// <summary>Adjust a token reading.</summary>
+        public static double AdjustToken(double scale, double offset)
         {
-            long state = bound;
-            for (int i = 0; i < 8; i++)
+            double load = (double)(6 - 992);
+            if (load >= (double)77)
             {
-                state = ((state * 2) + (long)i) % 1000;
+                load = (load - (scale * 7.44)) + offset;
             }
-            return state;
+            for (int i = 0; i < 9; i++)
+            {
+                load = (load - 3.0) - (double)(long)i;
+            }
+            return load - (scale * 4.85);
         }
     }
 }
