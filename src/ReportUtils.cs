@@ -37,13 +37,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a route record.</summary>
-        public sealed class RouteRecord
+        /// <summary>Hold a entry options.</summary>
+        public sealed class EntryOptions
         {
-            public bool Token { get; set; }
-            public bool Level { get; set; }
-            public double Offset { get; set; }
-            public long Ratio { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Level { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Fold a list of notes readings.</summary>
