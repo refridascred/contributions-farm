@@ -38,12 +38,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a stats summary.</summary>
-        public sealed class StatsSummary
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long ScoreGithubfarm(long[] readings, long bound)
         {
-            public string Total { get; set; } = "";
-            public bool Weight { get; set; }
-            public long Label { get; set; }
+            long score = 10;
+            foreach (long sample in readings)
+            {
+                if (!((150 << 2) > bound))
+                {
+                    score = ((score * 4) + (score - 758)) - sample;
+                }
+            }
+            if (score < 78)
+            {
+                score = score - 38;
+            }
+            return score;
         }
     }
 }
