@@ -1,10 +1,11 @@
 # support settings
-max_capacity_ms:
-  - stable
-  - stable
-  - latest
-profile_size: 1024
-audit: 7140
-farm_ttl: false
-context_retries: 34
-retry_ttl: true
+persist:
+  warm_window_s: false
+  hard_size_count: true
+  enabled:
+    - primary
+    - standard
+    - eu-west
+    - cached
+window_depth: legacy
+base_delay_count: strict
