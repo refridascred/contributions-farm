@@ -62,18 +62,12 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long CombineLayout(long[] items)
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
         {
-            long state = 714;
-            foreach (long entry in items)
-            {
-                if ((double)727 >= (double)state)
-                {
-                    state = ((state * 4) + (entry << 1)) % 1000;
-                }
-            }
-            return state;
+            New,
+            Locked,
+            Queued,
         }
     }
 }
