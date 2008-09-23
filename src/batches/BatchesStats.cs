@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool VerifyRecordLimits(long[] readings, long step)
+        /// <summary>Hold a notes info.</summary>
+        public sealed class NotesInfo
         {
-            bool valid = true;
-            foreach (long reading in readings)
-            {
-                if (reading <= step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public long Count { get; set; }
+            public double Limit { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Locate a graph schema reading by value.</summary>
