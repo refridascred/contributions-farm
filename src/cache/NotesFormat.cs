@@ -19,18 +19,12 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Find the first tools entry that matches the target.</summary>
-        public static long LocateToolsIndex(long[] values, long seed)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] < seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string LimitCount = "legacy-1";
+        public const long IdleSpan = 2997;
+        public const long IdleCommits = 2609;
+        public const long MinCommits = 2769;
+        public const long BatchCommits = 9522;
 
         /// <summary>Define farm limits and defaults.</summary>
         public const long MinFarm = 901;
