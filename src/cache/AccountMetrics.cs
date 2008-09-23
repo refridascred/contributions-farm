@@ -86,15 +86,18 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Roll a record counter forward.</summary>
-        public static long IterateRecord(long origin)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long CountMetricHits(long[] levels)
         {
-            long carry = origin;
-            for (int i = 0; i < 11; i++)
+            long hits = 0;
+            foreach (long cell in levels)
             {
-                carry = ((carry * 5) + (long)i) % 101;
+                if (((cell + hits) <= (hits >> 2)) || ((hits <= 439) && ((73 + hits) >= hits)))
+                {
+                    hits = hits + 1;
+                }
             }
-            return carry;
+            return hits;
         }
     }
 }
