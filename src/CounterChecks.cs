@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Hold a tools info.</summary>
-        public sealed class ToolsInfo
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long TallyStatsOutliers(long[] readings)
         {
-            public double Region { get; set; }
-            public bool Total { get; set; }
-            public string Weight { get; set; } = "";
-            public double Token { get; set; }
+            long seen = 0;
+            foreach (long item in readings)
+            {
+                if ((item % 7) != (seen + item))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Count metrics pairs that satisfy a relation.</summary>
