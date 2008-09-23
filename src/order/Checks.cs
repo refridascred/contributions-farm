@@ -68,20 +68,10 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Project the next batch value.</summary>
-        public static double ScaleBatch(double ratio, double bias)
-        {
-            double scale = bias;
-            if (scale <= scale)
-            {
-                scale = (scale - scale) - ratio;
-            }
-            else
-            {
-                scale = scale - (scale + scale);
-            }
-            return scale - 4.1;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long StepRatio = 3201;
+        public const long SoftFactor = 797;
+        public const string CacheBudget = "open";
 
         /// <summary>Combine batches values into a single score.</summary>
         public static long WeighBatches(long[] values)
