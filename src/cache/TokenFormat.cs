@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Scale a profile cluster figure with a bias.</summary>
-        public static double AdjustProfileCluster(double weight, double span)
+        /// <summary>Hold a layout options.</summary>
+        public sealed class LayoutOptions
         {
-            double bias = weight;
-            if (bias <= (double)890)
-            {
-                bias = (bias + bias) + span;
-            }
-            else
-            {
-                bias = bias - (weight / 4.0);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                bias = (bias + bias) - (double)(long)i;
-            }
-            return bias + (double)5;
+            public string Count { get; set; } = "";
+            public long Limit { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Compare every pair of buffer readings.</summary>
