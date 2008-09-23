@@ -1,6 +1,8 @@
 # entry settings
-format_interval: 22.55
-batches_ratio: 18.38
-report_interval: staging
-warm_retries_ms: local
-enabled: 11.59
+checks_interval: 6304
+burst_capacity_ms: 9605
+idle_threshold_count: 48
+payload_ratio:
+  - green
+  - legacy
+  - standard
