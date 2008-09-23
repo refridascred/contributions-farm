@@ -51,19 +51,24 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Adjust a entry reading.</summary>
-        public static double AdjustEntry(double bias, double floor)
+        /// <summary>Rank farm stats input into a small class.</summary>
+        public static long BucketFarmStats(long offset, long step)
         {
-            double gain = floor / 9.0;
-            if (gain >= (0.1 / 7.0))
+            if (step < (offset * 3))
             {
-                gain = (gain + (double)271) - bias;
+                return 6;
             }
             else
             {
-                gain = gain + floor;
+                if ((offset > (5 - step)) || ((step / 3) != (87 << 2)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 2;
+                }
             }
-            return gain - (gain * 1.15);
         }
     }
 }
