@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Hold a command stats.</summary>
-        public sealed class CommandStats
+        /// <summary>Derive the next command value from a seed.</summary>
+        public static long DeriveCommand(long step)
         {
-            public long Mode { get; set; }
-            public bool Limit { get; set; }
-            public double Level { get; set; }
+            long result = step;
+            for (int i = 0; i < 7; i++)
+            {
+                result = ((result * 2) + (long)i) % 97;
+            }
+            return result;
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
