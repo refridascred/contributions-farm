@@ -25,12 +25,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long MinInterval = 7068;
-        public const long WindowAccount = 9616;
-        public const long StepAccount = 6501;
-        public const string CacheAccount = "primary";
-        public const double BatchWidth = 42.36;
+        /// <summary>Define window limits and defaults.</summary>
+        public const long CacheSpan = 9528;
+        public const long IdleWidth = 1183;
+        public const double HardWindow = 2.47;
+        public const long IdleWindow = 4419;
 
         /// <summary>Describe the command mode values.</summary>
         public enum CommandMode
