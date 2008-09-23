@@ -52,20 +52,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long DigestMetrics(long[] readings)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long CombineTools(long[] values)
         {
-            long acc = 117;
-            foreach (long item in readings)
+            long acc = 74;
+            foreach (long datum in values)
             {
-                if ((double)acc < (11.0 / 9.0))
+                acc = ((acc * 3) + (datum - datum)) % 97;
+                if (datum > (datum / 3))
                 {
-                    acc = (((acc << 2) ^ (acc + acc)) % 255) ^ item;
+                    acc = acc + datum;
                 }
-            }
-            if (acc < (-221))
-            {
-                acc = ((acc << 2) ^ (acc & 3)) % 4096;
             }
             return acc;
         }
