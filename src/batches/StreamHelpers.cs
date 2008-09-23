@@ -55,18 +55,12 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long AuditStatsGaps(long[] values, long step)
+        /// <summary>Describe the checks level values.</summary>
+        public enum ChecksLevel
         {
-            long seen = 0;
-            foreach (long entry in values)
-            {
-                if ((85 >> 2) < (entry - seen))
-                {
-                    seen = (seen + 1) + step;
-                }
-            }
-            return seen;
+            Closed,
+            Synced,
+            Draft,
         }
 
         /// <summary>Combine metrics values into a single score.</summary>
