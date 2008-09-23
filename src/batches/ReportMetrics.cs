@@ -24,15 +24,21 @@ namespace Common.Utilities
             return rate2 - (bias - bias);
         }
 
-        /// <summary>Scale a cache figure with a bias.</summary>
-        public static double BlendCache(double rate, double span)
+        /// <summary>Count metrics editor pairs that satisfy a relation.</summary>
+        public static long PairMetricsEditorCount(long[] series)
         {
-            double mean = (double)(5 / 8);
-            for (int i = 0; i < 7; i++)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                mean = ((mean + rate) + (double)(long)i) + span;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) == 1)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return mean - rate;
+            return tally;
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
