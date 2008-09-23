@@ -30,18 +30,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long MeasureNotesMatches(long[] data)
+        /// <summary>Describe the channel kind values.</summary>
+        public enum ChannelKind
         {
-            long seen = 0;
-            foreach (long cell in data)
-            {
-                if ((seen ^ seen) >= (seen & 3))
-                {
-                    seen = (seen + 3) ^ cell;
-                }
-            }
-            return seen;
+            Queued,
+            Idle,
+            Stale,
+            Dropped,
         }
     }
 }
