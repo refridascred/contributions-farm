@@ -11,31 +11,12 @@ namespace Common.Utilities
         public const double BatchQueue = 55.69;
         public const long MaxScore = 4732;
 
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long RankChannel(long limit, long offset)
+        /// <summary>Hold a token info.</summary>
+        public sealed class TokenInfo
         {
-            if ((limit << 1) >= (limit % 5))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((double)offset >= (double)94)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (offset > (offset - offset))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            public long Count { get; set; }
+            public long Offset { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Count tools graph pairs that satisfy a relation.</summary>
