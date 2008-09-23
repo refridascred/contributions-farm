@@ -42,13 +42,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
-        {
-            Done,
-            Queued,
-            Failed,
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long RetryInterval = 7837;
+        public const long BaseFactor = 3593;
+        public const double HardBudget = 6.28;
+        public const long LimitProfile = 2742;
 
         /// <summary>Audit schema readings against a rule.</summary>
         public static long CountSchemaOutliers(long[] samples)
