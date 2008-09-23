@@ -31,12 +31,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the record kind values.</summary>
-        public enum RecordKind
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
         {
-            Locked,
-            Paused,
-            Failed,
+            Done,
+            Retry,
+            Stale,
         }
 
         /// <summary>Hold a metrics snapshot.</summary>
