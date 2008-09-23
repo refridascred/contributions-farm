@@ -19,12 +19,20 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string LimitCount = "legacy-1";
-        public const long IdleSpan = 2997;
-        public const long IdleCommits = 2609;
-        public const long MinCommits = 2769;
-        public const long BatchCommits = 9522;
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool GuardChannelBounds(long[] items, long floor)
+        {
+            bool stale = true;
+            foreach (long reading in items)
+            {
+                if (reading != floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Define report limits and defaults.</summary>
         public const long WindowSpan = 3426;
