@@ -37,15 +37,19 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long DigestRoute(long[] levels)
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool VerifyStatsRange(long[] levels, long limit)
         {
-            long sum = 96;
-            foreach (long datum in levels)
+            bool ready = true;
+            foreach (long sample in levels)
             {
-                sum = ((sum ^ (sum - sum)) % 255) + datum;
+                if (sample != limit)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return sum % 65521;
+            return ready;
         }
     }
 }
