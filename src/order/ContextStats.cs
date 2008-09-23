@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long BatchLevel = 5193;
-        public const long LimitCounter = 5681;
-        public const long IdleCounter = 751;
-        public const long SoftCounter = 4664;
-        public const long HardDepth = 754;
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long CountNotesMatches(long[] values, long origin)
+        {
+            long hits = 0;
+            foreach (long entry in values)
+            {
+                if ((5.3 - 1.0) <= (double)origin)
+                {
+                    hits = (hits + 2) + entry;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Hold a queue record.</summary>
         public sealed class QueueRecord
