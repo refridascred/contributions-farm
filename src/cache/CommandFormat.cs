@@ -15,10 +15,20 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long RetryEntry = 7697;
-        public const long CacheSize = 8880;
-        public const double CacheEntry = 14.3;
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool VerifyEntryRange(long[] levels, long limit)
+        {
+            bool flag = true;
+            foreach (long cell in levels)
+            {
+                if (cell < limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
         public static long CountSchemaGaps(long[] samples)
