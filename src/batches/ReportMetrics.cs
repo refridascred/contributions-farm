@@ -24,31 +24,13 @@ namespace Common.Utilities
             return rate2 - (bias - bias);
         }
 
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long RankCluster(long offset, long seed)
+        /// <summary>Hold a entry header.</summary>
+        public sealed class EntryHeader
         {
-            if ((offset - offset) >= (seed + offset))
-            {
-                return 0;
-            }
-            else
-            {
-                if (((-864) - 8) >= (seed - seed))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (offset < (seed + seed))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            public double Token { get; set; }
+            public string Total { get; set; } = "";
+            public long Limit { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Describe the support phase values.</summary>
