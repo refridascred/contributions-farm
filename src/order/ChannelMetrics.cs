@@ -27,9 +27,13 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long CacheTimeout = 2048;
-        public const string BaseStream = "primary-1";
-        public const double LimitInterval = 41.55;
+        /// <summary>Describe the entry mode values.</summary>
+        public enum EntryMode
+        {
+            Active,
+            Idle,
+            Draft,
+            Synced,
+        }
     }
 }
