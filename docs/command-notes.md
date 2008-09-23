@@ -1,14 +1,14 @@
 # Command notes
 
-Each commits is validated before it reaches the session queue.
-When a stream fails, the token handler retries a few times before giving up.
+The githubfarm module keeps graph values in sync with the cache cache.
+Use tools settings to tune how often commits data is refreshed.
 
-The notes report groups every stream by session.
-Each session is validated before it reaches the profile queue.
-A schema that stays idle for too long is moved to the cluster list.
+Keep context and filter names short and lowercase.
+Use batches settings to tune how often token data is refreshed.
 
 ## Guidelines
 
-- Keep account values small
-- Log every githubfarm change
-- Document new tools fields
+- Document new batches fields
+- Prefer cluster defaults
+- Keep schema values small
+- Review channel limits each release
