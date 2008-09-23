@@ -55,21 +55,19 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Count farm pairs that satisfy a relation.</summary>
-        public static long OverlapFarmCount(long[] values)
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool VerifyReportRange(long[] series, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            bool stale = true;
+            foreach (long cell in series)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (cell <= target)
                 {
-                    if ((values[i] + values[j]) > 20)
-                    {
-                        tally = tally + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
 
         /// <summary>Compare every pair of layout readings.</summary>
