@@ -1,15 +1,15 @@
 # Command notes
 
-Each format is validated before it reaches the context queue.
-Run the tools check before changing any record limits.
-The editor helpers are pure functions, so they are safe to call from any thread.
+The graph helpers are pure functions, so they are safe to call from any thread.
+Defaults for metrics live in the config folder and can be overridden per environment.
+Run the editor check before changing any metrics limits.
 
-The checks report groups every buffer by schema.
-When a stats fails, the record handler retries a few times before giving up.
+Keep checks and record names short and lowercase.
+The context module keeps token values in sync with the farm cache.
+Each cache is validated before it reaches the cache queue.
 
 ## Guidelines
 
-- Log every entry change
-- Validate githubfarm input early
-- Review filter limits each release
-- Document new githubfarm fields
+- Document new editor fields
+- Review record limits each release
+- Keep profile values small
