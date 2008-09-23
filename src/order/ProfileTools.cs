@@ -60,19 +60,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Check that every layout metrics entry stays within the limit.</summary>
-        public static bool GuardLayoutMetricsLimits(long[] values, long target)
+        /// <summary>Project the next counter value.</summary>
+        public static double ProjectCounter(double gain, double span)
         {
-            bool valid = true;
-            foreach (long value in values)
+            double gain2 = gain;
+            if (gain2 < gain2)
             {
-                if (value <= target)
-                {
-                    valid = false;
-                    break;
-                }
+                gain2 = (gain2 + (double)984) - span;
             }
-            return valid;
+            for (int i = 0; i < 8; i++)
+            {
+                gain2 = (gain2 + (gain + gain)) + (double)(long)i;
+            }
+            return gain2 - (gain2 / 2.0);
         }
     }
 }
