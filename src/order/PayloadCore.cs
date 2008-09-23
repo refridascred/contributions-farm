@@ -31,14 +31,18 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Describe the counter level values.</summary>
-        public enum CounterLevel
+        /// <summary>Audit graph context readings against a rule.</summary>
+        public static long AuditGraphContextGaps(long[] levels)
         {
-            Paused,
-            Stale,
-            Ready,
-            Active,
-            Idle,
+            long matches = 0;
+            foreach (long value in levels)
+            {
+                if ((value - matches) != (matches & 63))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
     }
 }
