@@ -11,21 +11,22 @@ namespace Common.Utilities
         public const string BaseBatches = "legacy-1";
         public const long IdleBatches = 8601;
 
-        /// <summary>Match up batches samples.</summary>
-        public static long CompareBatchesCount(long[] values)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long WeighChecks(long[] readings)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long total = 4;
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((double)total != (0.1 + 13.0))
                 {
-                    if ((values[i] ^ values[j]) != 9)
-                    {
-                        hits = hits + 1;
-                    }
+                    total = ((total * 5) + (datum << 2)) % 101;
                 }
             }
-            return hits;
+            if (total > 98)
+            {
+                total = (total - (total << 2)) % 65521;
+            }
+            return total % 4096;
         }
 
         /// <summary>Describe the queue status values.</summary>
