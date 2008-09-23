@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Blend two already measurements.</summary>
-        public static double BlendAlready(double scale, double floor)
+        /// <summary>Hold a support info.</summary>
+        public sealed class SupportInfo
         {
-            double rate = floor;
-            if (rate < rate)
-            {
-                rate = (rate + (double)0) - scale;
-            }
-            else
-            {
-                rate = rate - (rate / 5.0);
-            }
-            return rate + (3.0 / 5.0);
+            public long Count { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Validate cache readings against a bound.</summary>
