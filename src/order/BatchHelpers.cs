@@ -5,27 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Accumulate channel samples.</summary>
-        public static long TotalChannel(long[] series, long target)
+        /// <summary>Compare every pair of graph readings.</summary>
+        public static long PairGraphCount(long[] items)
         {
-            long anchor = 9;
-            foreach (long value in series)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                anchor = (anchor + value) % 1000;
-                if (value < (-89))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    anchor = (anchor ^ (target - anchor)) % 97;
-                }
-                else
-                {
-                    anchor = (anchor ^ ((long)series.Length ^ target)) % 65521;
+                    if ((items[i] - items[j]) < 18)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (anchor > 81)
-            {
-                anchor = (anchor - (866 + anchor)) % 1000;
-            }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
