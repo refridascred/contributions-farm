@@ -1,9 +1,5 @@
 # githubfarm settings
-retry_threshold_ms: eu-west
-flush_delay_ms: stable
-default_retries: 59.0
-already_threshold: true
-min_size_ms:
-  - cached
-  - fallback
-  - standard
+editor_ttl: blue
+poll_ratio_ms: false
+metrics_capacity: true
+retry_timeout: blue
