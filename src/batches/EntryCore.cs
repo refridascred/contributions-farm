@@ -51,13 +51,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a metrics snapshot.</summary>
-        public sealed class MetricsSnapshot
-        {
-            public bool Offset { get; set; }
-            public long Limit { get; set; }
-            public bool Count { get; set; }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BaseDepth = 1655;
+        public const string BatchCommits = "strict";
+        public const double BaseCommits = 89.6;
 
         /// <summary>Audit counter githubfarm readings against a rule.</summary>
         public static long MeasureCounterGithubfarmHits(long[] series)
