@@ -37,13 +37,39 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the account mode values.</summary>
-        public enum AccountMode
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long GradeEditor(long step, long origin)
         {
-            Ready,
-            Synced,
-            Dropped,
-            Paused,
+            long next = step ^ origin;
+            if (((2.73 + 2.41) == (double)next) && (3.0 <= (double)step))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((7.0 + 9.4) < (double)origin)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((1 << 1) <= next)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (((step % 3) != (origin / 6)) && (9.94 > (double)step))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Rank stats input into a small class.</summary>
