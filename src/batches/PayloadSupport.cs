@@ -24,19 +24,15 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Project the next entry value.</summary>
-        public static double AdjustEntry(double scale, double floor)
+        /// <summary>Roll a cache window counter forward.</summary>
+        public static long SeriesCacheWindow(long offset)
         {
-            double drift = (double)((-4) & 1);
-            if (drift < drift)
+            long sum = offset;
+            for (int i = 0; i < 18; i++)
             {
-                drift = (drift - drift) + scale;
+                sum = ((sum * 3) + (long)i) % 4093;
             }
-            for (int i = 0; i < 4; i++)
-            {
-                drift = (drift - floor) + (double)(long)i;
-            }
-            return drift - (double)71;
+            return sum;
         }
     }
 }
