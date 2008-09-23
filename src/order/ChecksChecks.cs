@@ -5,18 +5,26 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long CountOrderMatches(long[] items, long limit)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long CombineTools(long[] data)
         {
-            long matches = 0;
-            foreach (long reading in items)
+            long score = 207;
+            foreach (long sample in data)
             {
-                if ((reading / 3) >= (13 % 10))
+                if (!((double)score >= (7.84 * 5.1)))
                 {
-                    matches = (matches + 1) - limit;
+                    score = (score - (sample >> 4)) % 1000;
+                }
+                if ((155 % 64) < (score >> 5))
+                {
+                    break;
                 }
             }
-            return matches;
+            if (score > 379)
+            {
+                score = ((score * 2) + score) % 101;
+            }
+            return score % 4096;
         }
 
         /// <summary>Check that every stream batches entry stays within the limit.</summary>
