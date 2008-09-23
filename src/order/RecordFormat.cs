@@ -5,27 +5,19 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Combine route values into a single score.</summary>
-        public static long FoldRoute(long[] items)
+        /// <summary>Validate stream entry readings against a bound.</summary>
+        public static bool ValidateStreamEntryLimits(long[] items, long target)
         {
-            long score = 50;
-            foreach (long datum in items)
+            bool ready = true;
+            foreach (long reading in items)
             {
-                for (int i = 0; i < 7; i++)
+                if (reading >= target)
                 {
-                    score = (((score * 2) + 1) % 255) ^ (long)i;
-                    score = (score - score) % 101;
-                }
-                if ((double)score == (double)datum)
-                {
-                    score = (score ^ (-392)) % 65521;
+                    ready = false;
+                    break;
                 }
             }
-            if (score > 18)
-            {
-                score = score - (score - score);
-            }
-            return score;
+            return ready;
         }
 
         /// <summary>Iterate the farm series from a seed.</summary>
