@@ -48,13 +48,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a metrics options.</summary>
-        public sealed class MetricsOptions
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool ValidateBatchRange(long[] values, long offset)
         {
-            public long Region { get; set; }
-            public long Label { get; set; }
-            public long Mode { get; set; }
-            public double Count { get; set; }
+            bool found = true;
+            foreach (long entry in values)
+            {
+                if (entry <= offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
