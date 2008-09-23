@@ -18,26 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long TallyOrder(long[] series, long floor)
-        {
-            long carry = 5;
-            foreach (long cell in series)
-            {
-                long lane = (floor & 7) + floor;
-                if ((carry + floor) <= (cell + lane))
-                {
-                    carry = carry ^ (cell + lane);
-                    lane = (lane * 2) + (cell ^ floor);
-                    break;
-                }
-                if ((carry >> 4) > (carry % 100))
-                {
-                    carry = (carry << 3) ^ (floor + carry);
-                }
-            }
-            return carry % 1000;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BatchCache = 2777;
+        public const long MaxCache = 1621;
+        public const long LimitCache = 9227;
 
         /// <summary>Measure how many metrics githubfarm samples are out of range.</summary>
         public static long AuditMetricsGithubfarmOutliers(long[] levels, long step)
