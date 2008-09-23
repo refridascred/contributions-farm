@@ -1,8 +1,12 @@
 {
-  "readonly": 90,
-  "audit": ["staging", "edge", "green"],
-  "window_threshold": 250,
-  "compress": ["legacy", "stable", "cached", "cached"],
-  "persist": 15,
-  "dry_run": [450, 249, 82]
+  "dry_run": "local",
+  "soft_ratio_pct": 1024,
+  "max_capacity": 6196,
+  "default_capacity": "staging",
+  "verbose": {
+    "batch_ttl_count": "local",
+    "base_retries_ms": "local",
+    "checks_depth": "blue",
+    "default_retries_s": ["edge", "edge", "blue"]
+  }
 }
