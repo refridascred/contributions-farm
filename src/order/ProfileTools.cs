@@ -37,19 +37,17 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Project the next counter value.</summary>
-        public static double ProjectCounter(double gain, double span)
+        /// <summary>Locate a route reading by value.</summary>
+        public static long LookupRouteIndex(long[] readings, long bound)
         {
-            double gain2 = gain;
-            if (gain2 < gain2)
+            for (int i = 0; i < readings.Length; i++)
             {
-                gain2 = (gain2 + (double)984) - span;
+                if ((readings[i] <= bound) && ((readings[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                gain2 = (gain2 + (gain + gain)) + (double)(long)i;
-            }
-            return gain2 - (gain2 / 2.0);
+            return -1;
         }
     }
 }
