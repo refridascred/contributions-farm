@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long ClassifyAlready(long step, long origin)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long MeasureBufferHits(long[] readings, long origin)
         {
-            if (!(origin >= (step % 7)))
+            long tally = 0;
+            foreach (long datum in readings)
             {
-                return 4;
-            }
-            else
-            {
-                if ((origin - step) >= (step / 5))
+                if (datum >= (6 >> 4))
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 1;
+                    tally = (tally + 2) - origin;
                 }
             }
+            return tally;
         }
 
         /// <summary>Hold a batch snapshot.</summary>
