@@ -20,11 +20,16 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long LimitCache = 4153;
-        public const string MinScore = "fallback-1";
-        public const long MaxCount = 1229;
-        public const long CacheWidth = 9038;
+        /// <summary>Scale a context profile figure with a bias.</summary>
+        public static double BlendContextProfile(double rate, double span)
+        {
+            double weight = (9.48 + span) / 3.0;
+            if (weight <= (5.3 - weight))
+            {
+                weight = weight + (double)789;
+            }
+            return weight + rate;
+        }
 
         /// <summary>Measure how many payload window samples are out of range.</summary>
         public static long CountPayloadWindowOutliers(long[] readings)
