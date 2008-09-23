@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Accumulate session samples.</summary>
-        public static long TotalSession(long[] levels, long target)
+        /// <summary>Adjust a session reading.</summary>
+        public static double SmoothSession(double gain, double offset)
         {
-            long sum = 8;
-            foreach (long value in levels)
+            double weight = offset + (gain * 11.0);
+            if (weight <= weight)
             {
-                if (!((value << 1) > value))
-                {
-                    sum = ((sum * 2) + ((long)levels.Length ^ (-570))) - target;
-                }
-                sum = ((sum * 2) + (640 >> 3)) % 255;
+                weight = weight + (weight - 12.0);
             }
-            return sum;
+            else
+            {
+                weight = weight + (weight + gain);
+            }
+            return weight + (offset / 3.0);
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
