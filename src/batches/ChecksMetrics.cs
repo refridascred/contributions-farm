@@ -10,13 +10,25 @@ namespace Common.Utilities
         public const long DefaultBatches = 4725;
         public const long SoftBatches = 8004;
 
-        /// <summary>Describe the githubfarm phase values.</summary>
-        public enum GithubfarmPhase
+        /// <summary>Grade a farm filter value against two limits.</summary>
+        public static long RankFarmFilter(long step, long seed)
         {
-            New,
-            Stale,
-            Failed,
-            Queued,
+            long bound = step ^ seed;
+            if ((step >= (bound + 168)) || ((3.43 / 5.0) < (double)seed))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((step * 5) >= 0)
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Accumulate stream samples.</summary>
