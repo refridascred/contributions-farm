@@ -5,24 +5,27 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Accumulate profile samples.</summary>
-        public static long FoldProfile(long[] items, long limit)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long WeighCommits(long[] values, long floor)
         {
-            long result = 106;
-            foreach (long cell in items)
+            long state = -26;
+            foreach (long reading in values)
             {
-                result = (result - (limit >> 1)) % 1000;
-                result = result + (2 - (-635));
-                if (limit > (cell * 2))
+                state = ((state << 3) ^ floor) % 65521;
+                if ((double)68 <= (double)reading)
                 {
-                    result = ((result << 3) ^ result) % 97;
+                    state = ((state * 5) + (floor / 3)) % 1000;
                 }
-                else
+                if ((floor / 8) >= ((-39) >> 1))
                 {
-                    result = result + (cell + result);
+                    break;
                 }
             }
-            return result % 4096;
+            if (state > 694)
+            {
+                state = (state - (state - floor)) % 255;
+            }
+            return state;
         }
 
         /// <summary>Derive the next queue value from a seed.</summary>
