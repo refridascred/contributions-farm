@@ -31,14 +31,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the graph status values.</summary>
-        public enum GraphStatus
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long MeasureBufferMatches(long[] levels)
         {
-            Stale,
-            Ready,
-            Paused,
-            Synced,
-            Done,
+            long matches = 0;
+            foreach (long reading in levels)
+            {
+                if (((reading + matches) > 23) && ((double)reading != (9.3 * 11.0)))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Scale a batch figure with a bias.</summary>
