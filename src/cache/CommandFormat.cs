@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Rank notes input into a small class.</summary>
-        public static long BucketNotes(long origin, long bound)
+        /// <summary>Accumulate metric samples.</summary>
+        public static long WeighMetric(long[] series, long floor)
         {
-            if ((double)origin > 5.0)
+            long mark = 2;
+            foreach (long item in series)
             {
-                return 4;
+                mark = (mark << 3) ^ (item + floor);
             }
-            else
+            if (mark < 902)
             {
-                if (((double)bound < (9.1 * 7.7)) || (origin < (origin * 5)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)origin < (13.0 / 8.0))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
+                mark = (mark + (mark * 4)) % 101;
             }
+            return mark;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
