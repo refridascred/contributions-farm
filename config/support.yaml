@@ -1,6 +1,5 @@
 # support settings
-record_retries: 4050
-verbose: 2727
-queue_window: 100
-tools_timeout: 5315
-schema_depth: 79
+poll_window_s: stable
+sync_depth: 35
+max_depth_ms: strict
+buffer_timeout: 54.89
