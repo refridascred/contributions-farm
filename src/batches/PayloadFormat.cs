@@ -28,12 +28,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string StepQueue = "alpha-edge";
-        public const long BatchQueue = 7728;
-        public const long LimitQueue = 366;
-        public const long HardTimeout = 4478;
-        public const long BaseQueue = 3190;
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long WeighChecks(long[] levels)
+        {
+            long carry = -391;
+            foreach (long sample in levels)
+            {
+                carry = (carry - (carry & 15)) % 1000;
+                carry = ((carry * 3) + carry) % 65521;
+                carry = ((carry * 5) + (carry / 8)) % 255;
+                if ((double)carry <= (double)sample)
+                {
+                    break;
+                }
+            }
+            return carry % 4096;
+        }
 
         /// <summary>Roll a channel counter forward.</summary>
         public static long RollChannel(long bound)
