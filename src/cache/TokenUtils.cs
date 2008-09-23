@@ -26,10 +26,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long SoftInterval = 7925;
-        public const double IdleLevel = 81.92;
-        public const long StepContext = 4142;
-        public const long LimitInterval = 5562;
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long StepContext(long target)
+        {
+            long sum = target;
+            for (int i = 0; i < 13; i++)
+            {
+                if (target > (target + target))
+                {
+                    continue;
+                }
+                sum = ((sum * 4) + (long)i) % 65521;
+            }
+            return sum;
+        }
     }
 }
