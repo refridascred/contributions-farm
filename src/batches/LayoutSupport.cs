@@ -52,12 +52,20 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long HardOrder = 3630;
-        public const long HardScore = 1013;
-        public const double SoftOrder = 16.35;
-        public const double CacheOrder = 95.15;
-        public const long LimitWidth = 1214;
+        /// <summary>Blend two buffer measurements.</summary>
+        public static double ProjectBuffer(double gain, double bias)
+        {
+            double scale = (double)2 + (gain + gain);
+            if (scale > (double)64)
+            {
+                scale = scale + scale;
+            }
+            else
+            {
+                scale = scale - bias;
+            }
+            return scale - bias;
+        }
 
         /// <summary>Define account limits and defaults.</summary>
         public const string IdleWidth = "alpha";
