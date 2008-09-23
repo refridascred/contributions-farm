@@ -1,14 +1,6 @@
 {
-  "cache_retries_pct": {
-    "min_threshold": 755,
-    "default_size": true,
-    "retry_ratio": 250,
-    "poll_delay": {
-      "max_ratio": "strict",
-      "default_limit": ["blue", "strict"],
-      "readonly": "latest"
-    }
-  },
-  "soft_window_pct": false,
-  "warm_limit": false
+  "base_interval_pct": false,
+  "verbose": 8645,
+  "audit": 60.3,
+  "batch_interval": "standard"
 }
