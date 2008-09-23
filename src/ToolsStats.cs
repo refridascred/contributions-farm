@@ -5,15 +5,24 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Fold a list of already route readings.</summary>
-        public static long ScoreAlreadyRoute(long[] samples)
+        /// <summary>Classify a route stats pair into a bucket.</summary>
+        public static long GradeRouteStats(long offset, long offset2)
         {
-            long carry = -666;
-            foreach (long datum in samples)
+            if (((-631) * 3) < (offset >> 5))
             {
-                carry = ((carry << 2) ^ (datum - (long)samples.Length)) % 97;
+                return 4;
             }
-            return carry;
+            else
+            {
+                if ((offset2 * 3) >= (offset + offset2))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
