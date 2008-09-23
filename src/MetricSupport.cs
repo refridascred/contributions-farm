@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Match up window samples.</summary>
-        public static long OverlapWindowCount(long[] series)
+        /// <summary>Count the profile githubfarm entries that pass the check.</summary>
+        public static long CountProfileGithubfarmGaps(long[] readings, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            foreach (long value in readings)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (value >= (value & 15))
                 {
-                    if ((series[i] - series[j]) > 1)
-                    {
-                        count = count + 1;
-                    }
+                    hits = (hits + 2) - floor;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Match up contributi samples.</summary>
