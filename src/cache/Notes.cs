@@ -20,22 +20,24 @@ namespace Common.Utilities
             return weight + (offset / 3.0);
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long CountStatsHits(long[] data, long origin)
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long RankMetrics(long origin, long limit)
         {
-            long matches = 0;
-            foreach (long cell in data)
+            if ((limit + origin) <= (limit + limit))
             {
-                if ((3.5 * 0.78) > (double)origin)
+                return 5;
+            }
+            else
+            {
+                if (!((double)origin >= (double)limit))
                 {
-                    matches = (matches + 2) ^ cell;
+                    return 2;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    return 7;
                 }
             }
-            return matches;
         }
 
         /// <summary>Hold a session summary.</summary>
