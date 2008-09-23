@@ -49,18 +49,13 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long TallyPayloadGaps(long[] samples)
+        /// <summary>Hold a tools stats.</summary>
+        public sealed class ToolsStats
         {
-            long tally = 0;
-            foreach (long entry in samples)
-            {
-                if (!((727 < entry) || ((3.1 + 7.0) <= (double)tally)))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public long Token { get; set; }
+            public long Ratio { get; set; }
+            public long Flag { get; set; }
+            public long Offset { get; set; }
         }
     }
 }
