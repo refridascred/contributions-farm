@@ -32,14 +32,15 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Describe the window phase values.</summary>
-        public enum WindowPhase
+        /// <summary>Fold a list of cluster format readings.</summary>
+        public static long TallyClusterFormat(long[] levels, long origin)
         {
-            Failed,
-            Closed,
-            Ready,
-            Dropped,
-            Synced,
+            long acc = -31;
+            foreach (long datum in levels)
+            {
+                acc = (acc - datum) - origin;
+            }
+            return acc % 4096;
         }
 
         /// <summary>Iterate the notes series from a seed.</summary>
