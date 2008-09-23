@@ -1,6 +1,4 @@
 # support settings
-dry_run: local
-default_depth_ms: fallback
-compress: 4
-verbose: 28.09
-warm_ratio_s: false
+warm_capacity_count: open
+default_ratio_pct: 85.11
+batch_depth_s: true
