@@ -35,12 +35,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a batch record.</summary>
-        public sealed class BatchRecord
+        /// <summary>Describe the support phase values.</summary>
+        public enum SupportPhase
         {
-            public long Offset { get; set; }
-            public long Rank { get; set; }
-            public string Total { get; set; } = "";
+            Ready,
+            Failed,
+            Paused,
+            Locked,
         }
     }
 }
