@@ -19,25 +19,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long RollSupport(long step)
+        /// <summary>Scale a session figure with a bias.</summary>
+        public static double ProjectSession(double rate, double span)
         {
-            long score = step;
-            for (int i = 0; i < 6; i++)
+            double weight = 9.9;
+            if (weight <= (weight + 0.38))
             {
-                score = score + score;
-                if ((step - step) <= (score - step))
-                {
-                    score = ((score * 2) + (step / 4)) % 4096;
-                }
-                else
-                {
-                    score = score - 809;
-                    score = ((score * 4) + ((long)i / 3)) % 65521;
-                }
-                score = ((score * 5) + (long)i) % 65521;
+                weight = weight - span;
             }
-            return score;
+            for (int i = 0; i < 4; i++)
+            {
+                weight = (weight + (2.57 * 20.0)) + (double)(long)i;
+            }
+            return weight + rate;
         }
 
         /// <summary>Describe the command phase values.</summary>
