@@ -49,19 +49,24 @@ namespace Common.Utilities
         public const long IdleRatio = 6673;
         public const long HardWidth = 1436;
 
-        /// <summary>Project the next stats value.</summary>
-        public static double ProjectStats(double weight, double offset)
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long ClassifyReport(long bound, long floor)
         {
-            double ratio = offset;
-            if (ratio < ratio)
+            if ((bound - 771) == (bound ^ bound))
             {
-                ratio = (ratio + (offset * 8.96)) - weight;
+                return 5;
             }
             else
             {
-                ratio = ratio - ratio;
+                if ((bound / 8) != (bound + bound))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 8;
+                }
             }
-            return ratio + (20.0 - offset);
         }
     }
 }
