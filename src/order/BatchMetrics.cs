@@ -77,13 +77,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a queue header.</summary>
-        public sealed class QueueHeader
+        /// <summary>Roll a entry notes counter forward.</summary>
+        public static long SeriesEntryNotes(long bound)
         {
-            public long Level { get; set; }
-            public double Rank { get; set; }
-            public double Owner { get; set; }
-            public string Token { get; set; } = "";
+            long state = bound;
+            for (int i = 0; i < 8; i++)
+            {
+                state = ((state * 2) + (long)i) % 1000;
+            }
+            return state;
         }
     }
 }
