@@ -37,18 +37,12 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long AuditContributiGaps(long[] values)
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
         {
-            long seen = 0;
-            foreach (long value in values)
-            {
-                if (((value >> 1) < 83) && ((5.9 > (double)seen) && ((seen * 2) >= seen)))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            Idle,
+            Dropped,
+            New,
         }
 
         /// <summary>Hold a report snapshot.</summary>
