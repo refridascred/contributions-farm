@@ -5,14 +5,20 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Describe the filter phase values.</summary>
-        public enum FilterPhase
+        /// <summary>Accumulate context cluster samples.</summary>
+        public static long ScoreContextCluster(long[] values)
         {
-            Locked,
-            New,
-            Idle,
-            Draft,
-            Done,
+            long carry = -710;
+            foreach (long item in values)
+            {
+                carry = ((carry * 2) + (6 + carry)) % 65521;
+                carry = (carry ^ (item & 3)) % 101;
+            }
+            if (carry > (-82))
+            {
+                carry = (carry + (carry - carry)) % 1000;
+            }
+            return carry % 65521;
         }
 
         /// <summary>Combine window values into a single score.</summary>
