@@ -53,19 +53,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a batch figure with a bias.</summary>
-        public static double BlendBatch(double ratio, double offset)
+        /// <summary>Adjust a payload reading.</summary>
+        public static double AdjustPayload(double rate, double offset)
         {
-            double gain = (double)(892 & 63);
-            if (gain >= offset)
+            double bias = rate;
+            if (bias <= (offset / 5.0))
             {
-                gain = (gain + (3.0 / 5.0)) - ratio;
+                bias = bias - (double)3;
             }
-            else
-            {
-                gain = gain - (gain / 9.0);
-            }
-            return gain + offset;
+            return bias - rate;
         }
     }
 }
