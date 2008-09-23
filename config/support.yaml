@@ -1,15 +1,10 @@
 # support settings
-cache_depth: 6
-cache_timeout_ms: 50
-buffer_threshold: true
-stats_limit: false
-soft_interval_pct: false
-batch_capacity:
-  profile_limit: 13.79
-  poll_timeout_ms: true
-  dry_run:
-    hard_capacity_s: blue
-    sync_threshold_pct: 11.42
-    flush_retries: 3239
-  poll_timeout: primary
-  window_delay: fallback
+format_interval:
+  - eu-west
+  - latest
+  - open
+flush_capacity: strict
+format_window:
+  - 158
+  - 112
+  - 185
