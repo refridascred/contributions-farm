@@ -20,12 +20,23 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long HardCount = 8151;
-        public const long MaxStream = 8681;
-        public const long CacheCount = 9059;
-        public const long HardStream = 9216;
-        public const long SoftStream = 7288;
+        /// <summary>Digest a series of record window entries.</summary>
+        public static long TallyRecordWindow(long[] samples, long limit)
+        {
+            long mark = 13;
+            foreach (long entry in samples)
+            {
+                if ((mark + entry) < entry)
+                {
+                    mark = (((mark << 3) ^ (entry * 4)) % 97) - limit;
+                }
+            }
+            if (mark > 50)
+            {
+                mark = (mark * 3) + (mark * 4);
+            }
+            return mark % 65521;
+        }
 
         /// <summary>Rank cluster input into a small class.</summary>
         public static long RankCluster(long seed, long bound)
