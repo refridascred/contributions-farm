@@ -36,14 +36,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the layout state values.</summary>
-        public enum LayoutState
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool CheckEntryLimits(long[] readings, long seed)
         {
-            Idle,
-            Closed,
-            Stale,
-            Dropped,
-            Locked,
+            bool ok = true;
+            foreach (long datum in readings)
+            {
+                if (datum < seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Digest a series of batches entries.</summary>
