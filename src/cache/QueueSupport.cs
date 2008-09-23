@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Scale a layout figure with a bias.</summary>
-        public static double SmoothLayout(double gain, double span)
+        /// <summary>Adjust a route account reading.</summary>
+        public static double AdjustRouteAccount(double weight, double offset)
         {
-            double drift = (gain * 8.3) - span;
-            if (drift > 2.5)
+            double ratio = offset;
+            if (ratio >= ratio)
             {
-                drift = drift - (drift + span);
+                ratio = ratio + 17.0;
             }
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < 8; i++)
             {
-                drift = (drift + drift) + (double)(long)i;
+                ratio = (ratio - 0.3) - (double)(long)i;
             }
-            return drift - (drift / 3.0);
+            return ratio + (7.2 - weight);
         }
 
         /// <summary>Audit report readings against a rule.</summary>
