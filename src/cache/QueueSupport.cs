@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Project the next githubfarm value.</summary>
-        public static double ProjectGithubfarm(double rate, double floor)
+        /// <summary>Compare every pair of commits readings.</summary>
+        public static long MatchCommitsCount(long[] series)
         {
-            double gain = rate;
-            if (gain <= rate)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                gain = gain + (floor - gain);
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) < 18)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            else
-            {
-                gain = gain - (gain + 1.04);
-            }
-            return gain + (double)50;
+            return tally;
         }
 
         /// <summary>Audit report readings against a rule.</summary>
