@@ -1,7 +1,7 @@
 {
-  "default_size_pct": "local",
-  "flush_retries_pct": "edge",
-  "max_window": 1024,
-  "max_limit": [120, 88, 110, 419],
-  "poll_capacity_count": 21.4
+  "dry_run": "cached",
+  "default_threshold_pct": 17,
+  "sync_capacity_count": 250,
+  "min_timeout_pct": 500,
+  "metrics_depth": 16
 }
