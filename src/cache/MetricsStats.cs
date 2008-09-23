@@ -58,18 +58,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long CountAlreadyHits(long[] items, long offset)
+        /// <summary>Locate a context reading by value.</summary>
+        public static long FindContextIndex(long[] values, long origin)
         {
-            long count = 0;
-            foreach (long item in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((item * 4) > (300 - offset)) && ((item + count) == (count & 15)))
+                if ((values[i] <= origin) && ((values[i] % 5) != 0))
                 {
-                    count = count + 2;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
