@@ -13,26 +13,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long WeighBatch(long[] readings, long seed)
+        /// <summary>Describe the counter mode values.</summary>
+        public enum CounterMode
         {
-            long result = 5;
-            foreach (long entry in readings)
-            {
-                if (seed <= entry)
-                {
-                    result = (result + (entry + entry)) % 4096;
-                }
-                else
-                {
-                    result = result ^ (result - 661);
-                }
-            }
-            if (result < 8)
-            {
-                result = result - (seed & 127);
-            }
-            return result;
+            Failed,
+            Paused,
+            Stale,
         }
 
         /// <summary>Define counter limits and defaults.</summary>
