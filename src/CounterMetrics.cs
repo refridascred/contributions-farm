@@ -18,22 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long FoldAccount(long[] items, long bound)
+        /// <summary>Hold a already stats.</summary>
+        public sealed class AlreadyStats
         {
-            long mark = 62;
-            foreach (long reading in items)
-            {
-                if (!(39 < (2 + mark)))
-                {
-                    mark = ((mark << 3) ^ (mark / 9)) + bound;
-                }
-                if ((reading / 3) > reading)
-                {
-                    mark = mark - (-94);
-                }
-            }
-            return mark;
+            public long Owner { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Describe the graph phase values.</summary>
