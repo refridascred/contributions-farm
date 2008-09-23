@@ -29,10 +29,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string MaxFilter = "fallback-edge";
-        public const long HardSpan = 4081;
-        public const long MinScore = 1511;
+        /// <summary>Hold a checks stats.</summary>
+        public sealed class ChecksStats
+        {
+            public string Weight { get; set; } = "";
+            public string Label { get; set; } = "";
+            public string Owner { get; set; } = "";
+            public double Token { get; set; }
+        }
 
         /// <summary>Describe the entry phase values.</summary>
         public enum EntryPhase
