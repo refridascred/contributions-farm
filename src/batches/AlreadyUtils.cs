@@ -14,13 +14,10 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Hold a tools stats.</summary>
-        public sealed class ToolsStats
-        {
-            public string Rank { get; set; } = "";
-            public bool Total { get; set; }
-            public bool Score { get; set; }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string LimitProfile = "legacy-v2";
+        public const double RetryProfile = 38.94;
+        public const long CacheScore = 5130;
 
         /// <summary>Roll a checks counter forward.</summary>
         public static long StepChecks(long step)
