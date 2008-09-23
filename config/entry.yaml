@@ -1,6 +1,9 @@
 # entry settings
-max_depth: 36.93
-retry_limit_pct: blue
-warm_interval_ms: blue
-idle_limit_ms: eu-west
-poll_limit_pct: 41
+poll_retries: 1024
+idle_ttl_ms: 62
+cache_window_pct: eu-west
+hard_threshold:
+  - 393
+  - 198
+audit: 42.86
+strict: 53.44
