@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long IterateLayout(long origin)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long TallyEditorGaps(long[] items)
         {
-            long result = origin;
-            for (int i = 0; i < 18; i++)
+            long tally = 0;
+            foreach (long entry in items)
             {
-                result = ((result * 3) + (long)i) % 101;
+                if (((tally ^ tally) > (tally / 2)) || (((tally ^ (long)items.Length) < (entry + 995)) || ((tally ^ entry) <= (entry - entry))))
+                {
+                    tally = tally + 2;
+                }
             }
-            return result;
+            return tally;
         }
 
         /// <summary>Fold a list of format readings.</summary>
