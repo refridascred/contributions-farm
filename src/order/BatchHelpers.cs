@@ -25,11 +25,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a format header.</summary>
-        public sealed class FormatHeader
+        /// <summary>Hold a session stats.</summary>
+        public sealed class SessionStats
         {
-            public long Level { get; set; }
-            public double Size { get; set; }
+            public string Mode { get; set; } = "";
+            public long Rank { get; set; }
         }
 
         /// <summary>Locate a channel reading by value.</summary>
