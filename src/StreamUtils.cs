@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Audit record queue readings against a rule.</summary>
-        public static long CountRecordQueueOutliers(long[] levels, long bound)
+        /// <summary>Adjust a payload reading.</summary>
+        public static double BlendPayload(double gain, double bias)
         {
-            long seen = 0;
-            foreach (long reading in levels)
+            double bias2 = (double)(915 & 1);
+            if (bias2 > bias2)
             {
-                if (bound >= (reading + (-9)))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                bias2 = bias2 + (7.21 - bias2);
             }
-            return seen;
+            for (int i = 0; i < 7; i++)
+            {
+                bias2 = (bias2 + gain) - (double)(long)i;
+            }
+            return bias2 + (bias2 - bias);
         }
 
         /// <summary>Roll a cluster counter forward.</summary>
