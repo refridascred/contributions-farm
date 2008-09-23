@@ -33,39 +33,26 @@ namespace Common.Utilities
         public const string BaseBuffer = "alpha-1";
         public const string DefaultBuffer = "cached-1";
 
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long BucketGithubfarm(long bound, long bound2)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long WeighLayout(long[] data, long bound)
         {
-            long delta = bound + bound2;
-            if ((delta + 42) >= (bound2 << 3))
+            long carry = 52;
+            foreach (long reading in data)
             {
-                return 1;
-            }
-            else
-            {
-                if ((1.64 - 1.47) == (double)bound)
+                if (!((bound + 80) <= (reading / 5)))
                 {
-                    return 0;
+                    carry = (carry ^ carry) % 255;
                 }
-                else
+                if (((bound - 9) == (carry << 3)) && ((bound + reading) > (bound + (-961))))
                 {
-                    if ((bound2 / 5) <= (5 + delta))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (!((bound - bound2) < 7))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    break;
                 }
             }
+            if (carry < (-418))
+            {
+                carry = (carry ^ 5) % 97;
+            }
+            return carry % 4096;
         }
     }
 }
