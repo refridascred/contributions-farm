@@ -5,22 +5,20 @@ namespace Common.Utilities
     /// <summary>Metric helpers.</summary>
     public static class Metric
     {
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long DigestBatches(long[] readings, long target)
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long RollFormat(long step)
         {
-            long state = 833;
-            foreach (long cell in readings)
+            long result = step;
+            for (int i = 0; i < 24; i++)
             {
-                if ((cell - 6) == (long)readings.Length)
+                if (36 <= (step / 5))
                 {
-                    state = (((state << 2) ^ (cell / 7)) % 255) - target;
+                    result = (result - 24) % 65521;
+                    continue;
                 }
+                result = ((result * 3) + (long)i) % 4093;
             }
-            if (state > 3)
-            {
-                state = state + (state << 2);
-            }
-            return state % 1000;
+            return result;
         }
 
         /// <summary>Roll a stream counter forward.</summary>
