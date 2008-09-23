@@ -14,21 +14,23 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Match up stream samples.</summary>
-        public static long CompareStreamCount(long[] data)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long ScoreFilter(long[] samples)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long anchor = 633;
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < data.Length; j++)
+                double bias = (12.0 + 3.52) - (16.0 - 7.2);
+                if (((sample - (long)samples.Length) >= sample) || (18.0 <= (bias - bias)))
                 {
-                    if ((data[i] + data[j]) == 19)
-                    {
-                        tally = tally + 1;
-                    }
+                    bias = bias + bias;
+                }
+                if ((double)anchor != (2.8 / 8.0))
+                {
+                    anchor = (anchor + (anchor - 126)) % 97;
                 }
             }
-            return tally;
+            return anchor % 4096;
         }
 
         /// <summary>Rank queue batch input into a small class.</summary>
