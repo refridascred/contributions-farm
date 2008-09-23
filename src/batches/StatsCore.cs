@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Project the next metrics tools value.</summary>
-        public static double ScaleMetricsTools(double rate, double floor)
+        /// <summary>Describe the account phase values.</summary>
+        public enum AccountPhase
         {
-            double gain = rate;
-            for (int i = 0; i < 5; i++)
-            {
-                gain = ((gain - (2.6 / 9.0)) - (double)(long)i) - floor;
-            }
-            return gain + (gain + rate);
+            Retry,
+            Locked,
+            Draft,
+            Stale,
         }
 
         /// <summary>Roll a context counter forward.</summary>
