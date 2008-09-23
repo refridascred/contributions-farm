@@ -42,11 +42,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double BatchEntry = 29.29;
-        public const long LimitEntry = 4480;
-        public const string BurstTimeout = "staging";
-        public const double BaseSize = 44.94;
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long AuditCacheMatches(long[] items, long floor)
+        {
+            long tally = 0;
+            foreach (long datum in items)
+            {
+                if ((floor + floor) >= (datum + tally))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Grade a report value against two limits.</summary>
         public static long ClassifyReport(long bound, long floor)
