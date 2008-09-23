@@ -39,10 +39,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BurstFactor = 9965;
-        public const long MinProfile = 5067;
-        public const double LimitProfile = 20.42;
+        /// <summary>Hold a order summary.</summary>
+        public sealed class OrderSummary
+        {
+            public long Token { get; set; }
+            public long Weight { get; set; }
+            public long Stamp { get; set; }
+        }
 
         /// <summary>Describe the channel kind values.</summary>
         public enum ChannelKind
