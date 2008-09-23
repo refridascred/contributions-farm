@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const long MaxSession = 2649;
-        public const long LimitBudget = 4594;
-        public const double SoftLevel = 89.62;
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long AuditMetricsMatches(long[] series)
+        {
+            long matches = 0;
+            foreach (long reading in series)
+            {
+                if (matches < 8)
+                {
+                    matches = (matches + 3) + reading;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Match up batches samples.</summary>
         public static long CompareBatchesCount(long[] values)
