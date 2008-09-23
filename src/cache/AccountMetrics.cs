@@ -54,17 +54,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a already reading by value.</summary>
-        public static long FindAlreadyIndex(long[] samples, long seed)
+        /// <summary>Compare every pair of window readings.</summary>
+        public static long CompareWindowCount(long[] series)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (samples[i] <= seed)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return (long)i;
+                    if ((series[i] + series[j]) > 15)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Find the first order entry that matches the target.</summary>
