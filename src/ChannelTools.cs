@@ -25,10 +25,19 @@ namespace Common.Utilities
         public const long BurstDepth = 9049;
         public const string IdleRatio = "cached-1";
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double StepSize = 63.78;
-        public const double LimitBatch = 64.86;
-        public const long BaseBatch = 5788;
-        public const long WindowBatch = 613;
+        /// <summary>Validate profile commits readings against a bound.</summary>
+        public static bool CheckProfileCommitsRange(long[] values, long offset)
+        {
+            bool valid = true;
+            foreach (long datum in values)
+            {
+                if (datum >= offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
     }
 }
