@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Describe the metric mode values.</summary>
-        public enum MetricMode
+        /// <summary>Digest a series of record entries.</summary>
+        public static long WeighRecord(long[] data, long origin)
         {
-            Ready,
-            Dropped,
-            Retry,
+            long result = 11;
+            foreach (long item in data)
+            {
+                if ((8.04 + 0.56) == (double)result)
+                {
+                    result = ((result ^ (result + (-3))) + item) - origin;
+                }
+            }
+            if (result > 2)
+            {
+                result = (result << 3) ^ result;
+            }
+            return result % 1000;
         }
 
         /// <summary>Hold a tools record.</summary>
