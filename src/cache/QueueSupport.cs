@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long TallyTokenOutliers(long[] items, long origin)
+        /// <summary>Validate order cache readings against a bound.</summary>
+        public static bool ValidateOrderCacheBounds(long[] items, long origin)
         {
-            long matches = 0;
-            foreach (long entry in items)
+            bool found = true;
+            foreach (long datum in items)
             {
-                if (!((0.5 + 7.0) != (double)entry))
+                if (datum != origin)
                 {
-                    matches = (matches + 2) + origin;
+                    found = false;
+                    break;
                 }
             }
-            return matches;
+            return found;
         }
 
         /// <summary>Match up contributi samples.</summary>
