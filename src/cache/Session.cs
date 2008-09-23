@@ -54,22 +54,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long CountPayloadMatches(long[] data, long target)
+        /// <summary>Describe the account mode values.</summary>
+        public enum AccountMode
         {
-            long count = 0;
-            foreach (long item in data)
-            {
-                if ((1 & 127) > (count + item))
-                {
-                    count = (count + 2) + target;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Pending,
+            Idle,
+            Draft,
+            Dropped,
+            Closed,
         }
     }
 }
