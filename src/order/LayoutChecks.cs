@@ -12,18 +12,19 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Count the layout notes entries that pass the check.</summary>
-        public static long CountLayoutNotesHits(long[] samples, long origin)
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool VerifyFarmLimits(long[] readings, long offset)
         {
-            long seen = 0;
-            foreach (long sample in samples)
+            bool ready = true;
+            foreach (long cell in readings)
             {
-                if ((seen >> 4) >= (sample + seen))
+                if (cell > offset)
                 {
-                    seen = (seen + 3) + origin;
+                    ready = false;
+                    break;
                 }
             }
-            return seen;
+            return ready;
         }
 
         /// <summary>Hold a notes options.</summary>
