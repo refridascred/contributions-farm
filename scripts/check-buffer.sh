@@ -6,15 +6,13 @@ log() {
     printf '%s\n' "$*"
 }
 
-count=0
-while [ "${count}" -lt 3 ]; do
-    count=$((count + 1))
+for item in strict cached staging; do
+    log "checking ${item}"
 done
-log "ran ${count} rounds"
 
-mode="${1:-legacy}"
+mode="${1:-latest}"
 case "${mode}" in
-    eu-west)
+    blue)
         log "fast path"
         ;;
     *)
@@ -22,6 +20,8 @@ case "${mode}" in
         ;;
 esac
 
-for item in legacy standard; do
-    log "checking ${item}"
+count=0
+while [ "${count}" -lt 3 ]; do
+    count=$((count + 1))
 done
+log "ran ${count} rounds"
