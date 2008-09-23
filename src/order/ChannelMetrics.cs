@@ -25,15 +25,13 @@ namespace Common.Utilities
         public const long CacheContext = 3000;
         public const string WindowScore = "staging-v2";
 
-        /// <summary>Roll a session counter forward.</summary>
-        public static long StepSession(long target)
+        /// <summary>Hold a format record.</summary>
+        public sealed class FormatRecord
         {
-            long carry = target;
-            for (int i = 0; i < 19; i++)
-            {
-                carry = ((carry * 3) + (long)i) % 101;
-            }
-            return carry;
+            public bool Score { get; set; }
+            public bool Rank { get; set; }
+            public bool Mode { get; set; }
+            public bool Label { get; set; }
         }
     }
 }
