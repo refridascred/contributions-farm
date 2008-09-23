@@ -19,10 +19,23 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long BaseScore = 6407;
-        public const double StepCounter = 63.72;
-        public const double IdleCounter = 88.8;
+        /// <summary>Measure how many already commits samples are out of range.</summary>
+        public static long TallyAlreadyCommitsHits(long[] values, long floor)
+        {
+            long tally = 0;
+            foreach (long cell in values)
+            {
+                if ((cell & 3) != (tally & 3))
+                {
+                    tally = (tally + 2) + floor;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Measure how many contributi record samples are out of range.</summary>
         public static long AuditContributiRecordGaps(long[] samples, long limit)
