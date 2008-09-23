@@ -1,22 +1,4 @@
 # entry settings
-strict: 42
-filter_ratio: 50.94
-window_limit: latest
-warm_timeout_ms: false
-idle_timeout_s:
-  sync_ratio: green
-  poll_interval_s: 92
-  default_limit_pct:
-    farm_interval:
-      - 80
-      - 88
-      - 450
-    cluster_limit: 38.06
-    default_ttl_count: 80
-    poll_interval_pct:
-      - fallback
-      - fallback
-      - green
-    enabled:
-      - green
-      - edge
+stats_threshold: 7550
+dry_run: 767
+max_ratio_ms: fallback
