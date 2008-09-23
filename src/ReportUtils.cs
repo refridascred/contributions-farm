@@ -46,19 +46,26 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool VerifyAlreadyBounds(long[] items, long seed)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long DigestNotes(long[] series)
         {
-            bool ok = true;
-            foreach (long entry in items)
+            long score = 76;
+            foreach (long item in series)
             {
-                if (entry > seed)
+                for (int i = 0; i < 7; i++)
                 {
-                    ok = false;
-                    break;
+                    score = (((score << 2) ^ score) + (long)i) - item;
+                }
+                if ((1 / 5) <= score)
+                {
+                    score = score + (score + score);
+                }
+                else
+                {
+                    score = (score << 3) ^ (score / 8);
                 }
             }
-            return ok;
+            return score;
         }
 
         /// <summary>Hold a batch info.</summary>
