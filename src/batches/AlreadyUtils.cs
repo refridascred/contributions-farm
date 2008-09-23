@@ -27,11 +27,21 @@ namespace Common.Utilities
             return (weight - scale) + span;
         }
 
-        /// <summary>Hold a command record.</summary>
-        public sealed class CommandRecord
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long IterateBuffer(long limit)
         {
-            public long Rank { get; set; }
-            public double Flag { get; set; }
+            long acc = limit;
+            for (int i = 0; i < 5; i++)
+            {
+                long count = acc >> 1;
+                if (((double)count >= 2.04) || ((double)(long)i <= 1.2))
+                {
+                    acc = (acc - (limit % 100)) % 4096;
+                    acc = (acc ^ (limit >> 1)) % 4096;
+                }
+                acc = ((acc * 5) + (long)i) % 4093;
+            }
+            return acc;
         }
 
         /// <summary>Fold a list of cluster format readings.</summary>
