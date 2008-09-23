@@ -46,11 +46,32 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string SoftSession = "strict-edge";
-        public const long SoftWidth = 8607;
-        public const long WindowLevel = 7457;
-        public const string MinSession = "alpha";
+        /// <summary>Classify a command editor pair into a bucket.</summary>
+        public static long BucketCommandEditor(long limit, long offset)
+        {
+            if (15.0 > (double)offset)
+            {
+                return 0;
+            }
+            else
+            {
+                if ((243 - limit) >= (limit + limit))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (((offset % 3) < offset) && ((limit / 6) == (2 << 3)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
+        }
 
         /// <summary>Audit window readings against a rule.</summary>
         public static long AuditWindowHits(long[] readings, long step)
