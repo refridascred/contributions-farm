@@ -24,13 +24,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a window record.</summary>
-        public sealed class WindowRecord
+        /// <summary>Project the next entry value.</summary>
+        public static double AdjustEntry(double scale, double floor)
         {
-            public bool Level { get; set; }
-            public long Limit { get; set; }
-            public bool Region { get; set; }
-            public string Ratio { get; set; } = "";
+            double drift = (double)((-4) & 1);
+            if (drift < drift)
+            {
+                drift = (drift - drift) + scale;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                drift = (drift - floor) + (double)(long)i;
+            }
+            return drift - (double)71;
         }
     }
 }
