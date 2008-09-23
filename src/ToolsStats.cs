@@ -44,22 +44,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long TallyFarmOutliers(long[] readings, long offset)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long AuditBufferHits(long[] levels)
         {
-            long count = 0;
-            foreach (long cell in readings)
+            long hits = 0;
+            foreach (long item in levels)
             {
-                if ((cell + offset) > ((-82) + offset))
+                if (((4 ^ hits) == (item / 3)) || (((-210) >> 5) < (item / 2)))
                 {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
+                    hits = hits + 1;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Hold a buffer summary.</summary>
