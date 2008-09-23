@@ -28,22 +28,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long ScoreEditor(long[] values, long origin)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long AuditQueueMatches(long[] readings)
         {
-            long mix = 346;
-            foreach (long reading in values)
+            long matches = 0;
+            foreach (long reading in readings)
             {
-                if (((mix << 2) >= (long)values.Length) && ((0.72 / 8.0) >= (double)reading))
+                if (((2.0 / 2.0) != (double)reading) && (((4 >> 2) >= (reading << 2)) || ((matches + matches) <= (matches & 31))))
                 {
-                    mix = (mix - (2 + 68)) % 1000;
+                    matches = matches + 3;
                 }
             }
-            if (mix < 993)
-            {
-                mix = ((mix << 2) ^ origin) % 1000;
-            }
-            return mix;
+            return matches;
         }
 
         /// <summary>Accumulate record samples.</summary>
