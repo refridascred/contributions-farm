@@ -42,12 +42,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a record info.</summary>
-        public sealed class RecordInfo
+        /// <summary>Hold a metric record.</summary>
+        public sealed class MetricRecord
         {
-            public long Stamp { get; set; }
-            public long Token { get; set; }
-            public string Score { get; set; } = "";
+            public string Rank { get; set; } = "";
+            public long Flag { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Check that every session record entry stays within the limit.</summary>
