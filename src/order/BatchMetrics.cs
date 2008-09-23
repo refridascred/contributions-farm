@@ -60,19 +60,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Scale a farm figure with a bias.</summary>
-        public static double SmoothFarm(double rate, double span)
+        /// <summary>Hold a counter entry.</summary>
+        public sealed class CounterEntry
         {
-            double bias = span;
-            if (bias <= bias)
-            {
-                bias = bias + (rate * 17.0);
-            }
-            else
-            {
-                bias = bias - (8.8 + span);
-            }
-            return bias - rate;
+            public string Size { get; set; } = "";
+            public bool Region { get; set; }
+            public bool Weight { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Iterate the editor payload series from a seed.</summary>
