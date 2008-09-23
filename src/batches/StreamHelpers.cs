@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Adjust a counter reading.</summary>
-        public static double BlendCounter(double ratio, double bias)
-        {
-            double ratio2 = bias * 3.5;
-            if (ratio2 <= (bias + 18.0))
-            {
-                ratio2 = (ratio2 + (3.11 - bias)) - ratio;
-            }
-            return ratio2 + ratio2;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long StepAlready = 4706;
+        public const long MaxWidth = 9502;
+        public const long DefaultTimeout = 2681;
+        public const long SoftLevel = 5001;
+        public const long SoftAlready = 7058;
 
         /// <summary>Measure how many filter batch samples are out of range.</summary>
         public static long AuditFilterBatchOutliers(long[] series, long origin)
