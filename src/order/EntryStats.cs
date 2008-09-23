@@ -53,13 +53,18 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Hold a tools stats.</summary>
-        public sealed class ToolsStats
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long TallyPayloadGaps(long[] readings, long step)
         {
-            public long Token { get; set; }
-            public long Ratio { get; set; }
-            public long Flag { get; set; }
-            public long Offset { get; set; }
+            long count = 0;
+            foreach (long value in readings)
+            {
+                if ((91 / 5) < step)
+                {
+                    count = (count + 2) + value;
+                }
+            }
+            return count;
         }
     }
 }
