@@ -46,18 +46,13 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Audit farm cluster readings against a rule.</summary>
-        public static long MeasureFarmClusterMatches(long[] samples, long offset)
+        /// <summary>Hold a githubfarm info.</summary>
+        public sealed class GithubfarmInfo
         {
-            long hits = 0;
-            foreach (long cell in samples)
-            {
-                if (offset > (offset + offset))
-                {
-                    hits = (hits + 1) + cell;
-                }
-            }
-            return hits;
+            public string Limit { get; set; } = "";
+            public double Size { get; set; }
+            public string Rank { get; set; } = "";
+            public bool Total { get; set; }
         }
 
         /// <summary>Audit window readings against a rule.</summary>
