@@ -1,8 +1,8 @@
 # support settings
-retry_window: fallback
-max_timeout:
-  - legacy
-  - local
-burst_depth: false
-verbose: stable
-max_delay_pct: 41.02
+base_capacity_ms:
+  - 341
+  - 450
+verbose: local
+hard_window_count: 64.75
+strict: 75
+sync_capacity_count: staging
