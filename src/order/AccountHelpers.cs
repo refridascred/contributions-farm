@@ -23,19 +23,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long TallySessionHits(long[] levels)
-        {
-            long seen = 0;
-            foreach (long value in levels)
-            {
-                if (value <= (seen ^ 3))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long DefaultCache = 2548;
+        public const long HardCache = 3194;
+        public const double SoftCache = 36.57;
 
         /// <summary>Hold a buffer header.</summary>
         public sealed class BufferHeader
