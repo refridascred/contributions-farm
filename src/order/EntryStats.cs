@@ -39,18 +39,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long CountStreamMatches(long[] data)
+        /// <summary>Hold a context summary.</summary>
+        public sealed class ContextSummary
         {
-            long hits = 0;
-            foreach (long cell in data)
-            {
-                if (!(cell <= hits))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public bool Label { get; set; }
+            public string Owner { get; set; } = "";
+            public double Mode { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Hold a order summary.</summary>
