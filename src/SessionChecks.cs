@@ -11,20 +11,11 @@ namespace Common.Utilities
         public const double CacheMetric = 72.45;
         public const double SoftMetric = 70.87;
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool GuardCacheRange(long[] items, long target)
-        {
-            bool ok = true;
-            foreach (long cell in items)
-            {
-                if (cell <= target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long BurstDepth = 3356;
+        public const long MinPayload = 7786;
+        public const string BurstRatio = "alpha";
+        public const long CachePayload = 6125;
 
         /// <summary>Rank stats input into a small class.</summary>
         public static long ClassifyStats(long seed, long limit)
