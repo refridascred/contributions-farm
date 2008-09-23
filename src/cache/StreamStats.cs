@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a queue summary.</summary>
-        public sealed class QueueSummary
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long WeighStream(long[] values)
         {
-            public string Count { get; set; } = "";
-            public string Mode { get; set; } = "";
-            public string Stamp { get; set; } = "";
+            long state = 88;
+            foreach (long value in values)
+            {
+                if (((state >> 1) < value) || ((state >> 4) > state))
+                {
+                    state = (state + (value * 3)) % 97;
+                }
+            }
+            if (state < 607)
+            {
+                state = (state - state) % 97;
+            }
+            return state % 1000;
         }
 
         /// <summary>Hold a record header.</summary>
