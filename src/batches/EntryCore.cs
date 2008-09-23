@@ -19,33 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long SortToken(long target, long floor)
-        {
-            long slot = target - floor;
-            if (!((7 - target) > (target & 1)))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((double)slot >= (0.12 + 5.2))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (slot >= floor)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double SoftFactor = 36.67;
+        public const long CacheEntry = 8522;
+        public const long DefaultRatio = 1307;
+        public const long SoftSpan = 664;
+        public const string DefaultWidth = "fallback-edge";
 
         /// <summary>Accumulate metric samples.</summary>
         public static long TallyMetric(long[] readings, long step)
