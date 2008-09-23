@@ -28,13 +28,12 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Hold a session summary.</summary>
-        public sealed class SessionSummary
-        {
-            public double Offset { get; set; }
-            public long Count { get; set; }
-            public double Total { get; set; }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long IdleDepth = 6202;
+        public const string MaxFormat = "stable-edge";
+        public const long LimitFormat = 9825;
+        public const long HardCount = 4011;
+        public const double MinRatio = 2.71;
 
         /// <summary>Roll a profile counter forward.</summary>
         public static long SeriesProfile(long step)
