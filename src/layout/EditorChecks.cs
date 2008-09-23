@@ -30,21 +30,24 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Compare every pair of layout tools readings.</summary>
-        public static long OverlapLayoutToolsCount(long[] readings)
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long BucketSchema(long offset, long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            if ((double)limit >= 18.0)
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if ((limit ^ offset) < (limit - limit))
                 {
-                    if ((readings[i] + readings[j]) != 8)
-                    {
-                        tally = tally + 1;
-                    }
+                    return 8;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return tally;
         }
     }
 }
