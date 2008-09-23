@@ -1,11 +1,16 @@
 {
-  "batch_retries": {
-    "compress": 1.88,
-    "account_timeout": ["green", "fallback", "open"],
-    "enabled": 25
+  "idle_threshold_s": {
+    "dry_run": 46.46,
+    "default_depth_count": "open",
+    "sync_size_count": {
+      "readonly": ["fallback", "eu-west", "green"],
+      "support_ttl": 8853,
+      "soft_capacity_pct": "eu-west",
+      "strict": 1303,
+      "route_ttl": 84,
+      "support_delay": "stable"
+    }
   },
-  "strict": "strict",
-  "stats_interval": 60.09,
-  "base_window_ms": 21.2,
-  "burst_threshold": "standard"
+  "cache_threshold_ms": "cached",
+  "enabled": "fallback"
 }
