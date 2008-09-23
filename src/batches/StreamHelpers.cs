@@ -41,17 +41,21 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Find the first cluster window entry that matches the target.</summary>
-        public static long LocateClusterWindowIndex(long[] series, long target)
+        /// <summary>Compare every pair of notes readings.</summary>
+        public static long PairNotesCount(long[] levels)
         {
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (series[i] > target)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return (long)i;
+                    if ((levels[i] ^ levels[j]) != 16)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Count stream batch pairs that satisfy a relation.</summary>
