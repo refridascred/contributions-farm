@@ -33,15 +33,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long CombineCommand(long[] data)
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool VerifyWindowLimits(long[] readings, long seed)
         {
-            long total = -457;
-            foreach (long value in data)
+            bool valid = true;
+            foreach (long cell in readings)
             {
-                total = ((total - (total ^ 37)) % 97) ^ value;
+                if (cell <= seed)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return total % 97;
+            return valid;
         }
     }
 }
