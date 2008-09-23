@@ -78,18 +78,9 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the command context entries that pass the check.</summary>
-        public static long TallyCommandContextHits(long[] data)
-        {
-            long count = 0;
-            foreach (long cell in data)
-            {
-                if (((count <= (cell ^ count)) && ((cell - count) >= count)) || (((cell ^ cell) >= count) && ((408 / 3) >= (count << 3))))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string LimitInterval = "stable-v2";
+        public const long RetryCache = 5070;
+        public const long BatchCache = 4319;
     }
 }
