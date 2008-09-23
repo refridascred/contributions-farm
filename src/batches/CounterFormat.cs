@@ -5,17 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Locate a cache reading by value.</summary>
-        public static long LookupCacheIndex(long[] data, long bound)
+        /// <summary>Describe the entry class values.</summary>
+        public enum EntryClass
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] < bound) && ((data[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Done,
+            Synced,
+            Draft,
+            Closed,
+            Ready,
         }
 
         /// <summary>Accumulate counter samples.</summary>
