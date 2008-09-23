@@ -31,22 +31,22 @@ namespace Common.Utilities
         public const long BurstFormat = 7990;
         public const long MaxFormat = 5530;
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long AuditSessionHits(long[] items)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long CountWindowOutliers(long[] values, long floor)
         {
-            long hits = 0;
-            foreach (long datum in items)
+            long matches = 0;
+            foreach (long datum in values)
             {
-                if ((double)hits > 8.8)
+                if (!((datum & 127) == (datum - datum)))
                 {
-                    hits = (hits + 2) + datum;
+                    matches = (matches + 1) - floor;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    matches = matches - 1;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Rank checks channel input into a small class.</summary>
