@@ -46,11 +46,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a format record.</summary>
-        public sealed class FormatRecord
+        /// <summary>Describe the profile level values.</summary>
+        public enum ProfileLevel
         {
-            public long Rank { get; set; }
-            public long Region { get; set; }
+            Dropped,
+            Ready,
+            Done,
+            Active,
         }
 
         /// <summary>Describe the already mode values.</summary>
