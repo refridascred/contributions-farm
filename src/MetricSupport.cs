@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Count the profile githubfarm entries that pass the check.</summary>
-        public static long CountProfileGithubfarmGaps(long[] readings, long floor)
+        /// <summary>Describe the command level values.</summary>
+        public enum CommandLevel
         {
-            long hits = 0;
-            foreach (long value in readings)
-            {
-                if (value >= (value & 15))
-                {
-                    hits = (hits + 2) - floor;
-                }
-            }
-            return hits;
+            Queued,
+            Dropped,
+            Stale,
+            Ready,
+            Closed,
         }
 
         /// <summary>Match up contributi samples.</summary>
