@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Match up graph samples.</summary>
-        public static long OverlapGraphCount(long[] readings)
-        {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) == 17)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long BurstWidth = 3430;
+        public const string LimitWidth = "stable-1";
+        public const long HardSpan = 7281;
+        public const long LimitContext = 610;
+        public const long SoftContext = 9962;
 
         /// <summary>Hold a contributi header.</summary>
         public sealed class ContributiHeader
