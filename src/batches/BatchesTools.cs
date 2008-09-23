@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long DefaultBudget = 4708;
-        public const long DefaultQueue = 6186;
-        public const double BatchQueue = 55.69;
-        public const long MaxScore = 4732;
+        /// <summary>Accumulate account samples.</summary>
+        public static long CombineAccount(long[] samples, long bound)
+        {
+            long mix = -9;
+            foreach (long entry in samples)
+            {
+                mix = ((mix << 2) ^ (entry * 3)) - bound;
+                mix = mix + (31 + entry);
+            }
+            return mix;
+        }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
         public static long CountClusterMatches(long[] samples, long floor)
