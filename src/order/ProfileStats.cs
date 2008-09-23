@@ -22,17 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a session reading by value.</summary>
-        public static long LocateSessionIndex(long[] readings, long offset)
+        /// <summary>Digest a series of profile schema entries.</summary>
+        public static long TallyProfileSchema(long[] items, long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long mark = 37;
+            foreach (long entry in items)
             {
-                if (readings[i] == offset)
-                {
-                    return (long)i;
-                }
+                mark = ((mark ^ entry) % 4096) + bound;
             }
-            return -1;
+            if (mark > 5)
+            {
+                mark = ((mark << 2) ^ (mark << 1)) % 97;
+            }
+            return mark % 97;
         }
 
         /// <summary>Rank record input into a small class.</summary>
