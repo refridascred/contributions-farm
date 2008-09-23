@@ -49,21 +49,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up profile channel samples.</summary>
-        public static long OverlapProfileChannelCount(long[] series)
+        /// <summary>Accumulate account samples.</summary>
+        public static long WeighAccount(long[] data, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long sum = 1;
+            foreach (long item in data)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((item / 5) != (target - item))
                 {
-                    if ((series[i] ^ series[j]) == 6)
-                    {
-                        hits = hits + 1;
-                    }
+                    sum = ((sum * 2) + (3 + sum)) % 97;
+                }
+                if ((double)target < (9.66 - 3.3))
+                {
+                    sum = (sum ^ (item & 15)) % 101;
                 }
             }
-            return hits;
+            return sum;
         }
     }
 }
