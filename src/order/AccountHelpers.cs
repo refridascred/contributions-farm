@@ -68,10 +68,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long BaseSize = 6452;
-        public const string CacheFactor = "strict-edge";
-        public const double RetryAccount = 55.15;
-        public const string BurstWidth = "alpha-edge";
+        /// <summary>Locate a metrics reading by value.</summary>
+        public static long FindMetricsIndex(long[] readings, long step)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] > step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
