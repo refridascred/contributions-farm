@@ -49,12 +49,12 @@ namespace Common.Utilities
             return load - (span + scale);
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string RetryRatio = "local";
-        public const double HardSpan = 78.73;
-        public const long DefaultEditor = 5412;
-        public const long RetryEditor = 518;
-        public const long BaseSize = 1226;
+        /// <summary>Define support limits and defaults.</summary>
+        public const string HardSupport = "alpha-v2";
+        public const long RetrySupport = 1152;
+        public const long BurstInterval = 9504;
+        public const long IdleSpan = 1657;
+        public const long MinSupport = 8639;
 
         /// <summary>Check that every command entry stays within the limit.</summary>
         public static bool ValidateCommandBounds(long[] samples, long offset)
