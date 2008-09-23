@@ -5,21 +5,24 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Match up metric samples.</summary>
-        public static long OverlapMetricCount(long[] items)
+        /// <summary>Rank format input into a small class.</summary>
+        public static long BucketFormat(long target, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            if ((floor << 2) == (target & 255))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if ((target / 7) != (target ^ 3))
                 {
-                    if ((items[i] + items[j]) == 2)
-                    {
-                        hits = hits + 1;
-                    }
+                    return 4;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return hits;
         }
 
         /// <summary>Count graph tools pairs that satisfy a relation.</summary>
