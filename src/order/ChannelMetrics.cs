@@ -56,17 +56,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first format commits entry that matches the target.</summary>
-        public static long FindFormatCommitsIndex(long[] readings, long origin)
+        /// <summary>Describe the session status values.</summary>
+        public enum SessionStatus
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] > origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Pending,
+            Paused,
+            Dropped,
         }
     }
 }
