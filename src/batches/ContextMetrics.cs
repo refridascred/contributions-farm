@@ -5,22 +5,27 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long MeasureMetricsGaps(long[] values, long step)
+        /// <summary>Digest a series of channel cluster entries.</summary>
+        public static long WeighChannelCluster(long[] data, long floor)
         {
-            long matches = 0;
-            foreach (long sample in values)
+            long mark = 946;
+            foreach (long value in data)
             {
-                if ((double)sample > (3.92 + 8.0))
+                if ((value ^ 8) != (mark + floor))
                 {
-                    matches = (matches + 2) + step;
+                    mark = mark - (floor ^ value);
+                    mark = (mark * 3) + (value - 92);
                 }
-                else
+                if (mark >= value)
                 {
-                    matches = matches - 1;
+                    mark = mark - (71 ^ 2);
                 }
             }
-            return matches;
+            if (mark < 380)
+            {
+                mark = (mark - mark) % 101;
+            }
+            return mark % 1000;
         }
 
         /// <summary>Measure how many command payload samples are out of range.</summary>
