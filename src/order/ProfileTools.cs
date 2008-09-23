@@ -13,11 +13,39 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a tools options.</summary>
-        public sealed class ToolsOptions
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long RankAlready(long limit, long limit2)
         {
-            public bool Owner { get; set; }
-            public double Stamp { get; set; }
+            long gap = limit ^ limit2;
+            if (1.4 <= (double)gap)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((double)limit2 >= 18.0)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (!((limit / 2) <= (limit2 >> 4)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((limit >> 3) <= gap)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Project the next notes value.</summary>
