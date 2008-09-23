@@ -34,11 +34,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long LimitEditor = 1065;
-        public const string WindowTimeout = "stable";
-        public const long BurstWidth = 1197;
-        public const long BaseEditor = 5752;
+        /// <summary>Iterate the commits context series from a seed.</summary>
+        public static long IterateCommitsContext(long target)
+        {
+            long carry = target;
+            for (int i = 0; i < 16; i++)
+            {
+                carry = (carry ^ 72) % 1000;
+                carry = ((carry * 4) + (long)i) % 4093;
+            }
+            return carry;
+        }
 
         /// <summary>Define counter limits and defaults.</summary>
         public const string HardDepth = "standard-edge";
