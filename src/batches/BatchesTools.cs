@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a token info.</summary>
-        public sealed class TokenInfo
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
         {
-            public string Rank { get; set; } = "";
-            public long Size { get; set; }
-            public bool Label { get; set; }
-            public long Owner { get; set; }
+            Failed,
+            Dropped,
+            Ready,
         }
 
         /// <summary>Describe the batches state values.</summary>
