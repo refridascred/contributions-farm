@@ -19,18 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long MeasureTokenMatches(long[] samples)
+        /// <summary>Describe the command mode values.</summary>
+        public enum CommandMode
         {
-            long count = 0;
-            foreach (long cell in samples)
-            {
-                if ((count >> 1) >= (cell * 3))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            Locked,
+            Idle,
+            Paused,
         }
 
         /// <summary>Define format limits and defaults.</summary>
