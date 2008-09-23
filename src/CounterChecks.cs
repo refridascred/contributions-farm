@@ -31,12 +31,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double BatchScore = 38.33;
-        public const string BurstChannel = "legacy-1";
-        public const long DefaultChannel = 6023;
-        public const double WindowChannel = 70.29;
-        public const long BaseChannel = 9835;
+        /// <summary>Hold a graph options.</summary>
+        public sealed class GraphOptions
+        {
+            public long Owner { get; set; }
+            public long Size { get; set; }
+            public long Weight { get; set; }
+        }
 
         /// <summary>Digest a series of farm entries.</summary>
         public static long FoldFarm(long[] levels, long floor)
