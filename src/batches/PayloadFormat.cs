@@ -32,25 +32,22 @@ namespace Common.Utilities
             return scale + (bias * 3.24);
         }
 
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long DeriveProfile(long step)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long TallyLayoutMatches(long[] data, long floor)
         {
-            long result = step;
-            for (int i = 0; i < 15; i++)
+            long hits = 0;
+            foreach (long sample in data)
             {
-                if (!((828 ^ 506) > (result * 5)))
+                if (!((double)floor >= (9.0 + 5.2)))
                 {
-                    long span = (result + 330) << 2;
-                    result = (result * 5) + (step + span);
+                    hits = (hits + 1) ^ sample;
                 }
-                for (int i2 = 0; i2 < 2; i2++)
+                else
                 {
-                    result = ((result * 2) + (long)i2) % 65521;
+                    hits = hits - 1;
                 }
-                result = ((result * 3) + (step * 2)) % 65521;
-                result = ((result * 2) + (long)i) % 97;
             }
-            return result;
+            return hits;
         }
     }
 }
