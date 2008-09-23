@@ -37,21 +37,21 @@ namespace Common.Utilities
             return rate + (ratio + rate);
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long WeighWindow(long[] data, long origin)
+        /// <summary>Compare every pair of report contributi readings.</summary>
+        public static long MatchReportContributiCount(long[] levels)
         {
-            long anchor = 257;
-            foreach (long cell in data)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((cell << 3) >= (origin % 64)) || ((2.7 - 4.6) == (double)cell))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    anchor = ((anchor * 4) + (cell >> 2)) % 1000;
-                    anchor = anchor + (cell ^ origin);
-                    continue;
+                    if ((levels[i] - levels[j]) > 2)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                anchor = anchor ^ cell;
             }
-            return anchor;
+            return seen;
         }
     }
 }
