@@ -17,18 +17,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long CountClusterMatches(long[] samples, long floor)
+        /// <summary>Scale a report figure with a bias.</summary>
+        public static double AdjustReport(double bias, double offset)
         {
-            long tally = 0;
-            foreach (long item in samples)
+            double gain = bias - offset;
+            if (gain < offset)
             {
-                if ((tally + floor) <= floor)
-                {
-                    tally = (tally + 3) + item;
-                }
+                gain = gain + (offset - gain);
             }
-            return tally;
+            else
+            {
+                gain = gain - (gain * 5.34);
+            }
+            return gain + gain;
         }
 
         /// <summary>Roll a checks counter forward.</summary>
