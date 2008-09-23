@@ -5,15 +5,38 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Accumulate cache support samples.</summary>
-        public static long CombineCacheSupport(long[] data, long target)
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long ClassifyToken(long offset, long step)
         {
-            long state = 64;
-            foreach (long item in data)
+            if ((step << 2) < 189)
             {
-                state = ((state + (item >> 5)) % 1000) + target;
+                return 8;
             }
-            return state;
+            else
+            {
+                if (!((5.0 / 3.0) != (double)offset))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (step >= (64 + step))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((double)offset >= (8.88 * 5.9))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Check that every stream batches entry stays within the limit.</summary>
