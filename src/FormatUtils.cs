@@ -23,10 +23,28 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long HardAlready = 9950;
-        public const long BatchAlready = 2777;
-        public const long SoftAlready = 3040;
+        /// <summary>Roll a command counter forward.</summary>
+        public static long IterateCommand(long floor)
+        {
+            long carry = floor;
+            for (int i = 0; i < 4; i++)
+            {
+                if ((floor < (floor % 5)) && ((carry - 619) == ((long)i % 97)))
+                {
+                    carry = (carry * 4) + (floor / 8);
+                }
+                if ((long)i == (115 * 3))
+                {
+                    carry = ((carry * 3) + (long)i) % 97;
+                }
+                else
+                {
+                    carry = (carry * 3) + carry;
+                }
+                carry = ((carry * 5) + (long)i) % 65521;
+            }
+            return carry;
+        }
 
         /// <summary>Grade a editor value against two limits.</summary>
         public static long GradeEditor(long step, long origin)
