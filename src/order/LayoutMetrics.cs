@@ -12,18 +12,12 @@ namespace Common.Utilities
         public const long LimitSchema = 6326;
         public const double MaxSchema = 94.28;
 
-        /// <summary>Locate a entry contributi reading by value.</summary>
-        public static long LocateEntryContributiIndex(long[] samples, long limit)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] == limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long CacheRecord = 2754;
+        public const long IdleRecord = 9907;
+        public const double RetryRecord = 9.9;
+        public const long WindowLevel = 5626;
+        public const long LimitRecord = 7478;
 
         /// <summary>Count the queue cache entries that pass the check.</summary>
         public static long CountQueueCacheHits(long[] series, long seed)
