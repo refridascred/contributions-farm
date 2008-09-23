@@ -98,12 +98,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
+        /// <summary>Locate a profile format reading by value.</summary>
+        public static long FindProfileFormatIndex(long[] items, long bound)
         {
-            Locked,
-            Queued,
-            New,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] > bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Accumulate profile samples.</summary>
