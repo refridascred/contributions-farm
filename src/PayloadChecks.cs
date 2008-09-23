@@ -73,14 +73,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the channel mode values.</summary>
-        public enum ChannelMode
+        /// <summary>Hold a cluster stats.</summary>
+        public sealed class ClusterStats
         {
-            New,
-            Done,
-            Stale,
-            Closed,
-            Draft,
+            public long Flag { get; set; }
+            public bool Token { get; set; }
+            public long Stamp { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
