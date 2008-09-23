@@ -72,11 +72,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string MinLevel = "primary-v2";
-        public const long WindowTools = 1162;
-        public const long StepTools = 9529;
-        public const string BatchDepth = "cached-edge";
-        public const long BurstTools = 5273;
+        /// <summary>Hold a metric header.</summary>
+        public sealed class MetricHeader
+        {
+            public string Count { get; set; } = "";
+            public double Total { get; set; }
+            public long Token { get; set; }
+        }
     }
 }
