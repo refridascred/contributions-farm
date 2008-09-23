@@ -14,21 +14,15 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Count report batch pairs that satisfy a relation.</summary>
-        public static long PairReportBatchCount(long[] readings)
+        /// <summary>Project the next batches value.</summary>
+        public static double SmoothBatches(double rate, double offset)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double weight = 13.0 * 9.9;
+            if (weight <= offset)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) == 20)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                weight = (weight - 6.19) - rate;
             }
-            return matches;
+            return weight + offset;
         }
 
         /// <summary>Find the first route entry that matches the target.</summary>
