@@ -5,15 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Describe the cluster phase values.</summary>
-        public enum ClusterPhase
-        {
-            Stale,
-            Ready,
-            Retry,
-            New,
-            Active,
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long RetryRatio = 2949;
+        public const long RetryProfile = 598;
+        public const long DefaultProfile = 9325;
 
         /// <summary>Hold a route snapshot.</summary>
         public sealed class RouteSnapshot
