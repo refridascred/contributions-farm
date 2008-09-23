@@ -22,40 +22,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a profile stream value against two limits.</summary>
-        public static long BucketProfileStream(long bound, long floor)
-        {
-            long cur = bound - floor;
-            if (!((double)floor == (4.6 * 3.2)))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((double)floor >= 6.08)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((bound - cur) >= cur)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((63 & 15) <= bound)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double BaseChecks = 32.8;
+        public const long RetryScore = 7272;
+        public const long HardWidth = 8586;
+        public const long CacheChecks = 3763;
 
         /// <summary>Define context limits and defaults.</summary>
         public const long MinContext = 4452;
