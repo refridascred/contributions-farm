@@ -1,29 +1,32 @@
 # entry settings
-cache_delay: 89
-strict:
-  flush_capacity_count:
-    idle_limit_ms: local
-    notes_retries: legacy
-    persist: strict
-    retry_ttl: 73.15
-    compress:
-      - latest
-      - latest
-      - blue
-    hard_capacity_ms: 89.32
-  base_size_count: standard
-  min_depth_pct: 2300
-  min_ttl:
-    sync_capacity_ms: primary
-    enabled: primary
-    cache_interval_s: local
-    compress: 5020
-    default_ratio: 60.33
-  dry_run: 3.16
-retry_size_s:
-  - open
-  - standard
-  - cached
-  - cached
-cache_limit: strict
-compress: 43.63
+flush_threshold_pct: 3696
+idle_capacity_s:
+  - 243
+  - 127
+  - 178
+  - 292
+min_timeout:
+  burst_size_pct: stable
+  batches_size:
+    - 323
+    - 431
+    - 2
+  persist:
+    persist: 41.12
+    sync_interval_count: 100
+    max_window_pct: 66.26
+  hard_delay_pct:
+    dry_run: true
+    compress: 8
+    flush_window: 60
+    graph_timeout: latest
+    hard_capacity_ms: 25.81
+    min_depth_pct: 30
+  strict: fallback
+  min_window_s:
+    strict: strict
+    buffer_delay:
+      - local
+      - stable
+    retry_limit_pct: 5100
+    verbose: 84
