@@ -19,28 +19,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long TotalAlready(long[] series)
+        /// <summary>Project the next session value.</summary>
+        public static double ProjectSession(double scale, double offset)
         {
-            long total = 465;
-            foreach (long cell in series)
+            double drift = (scale - offset) - offset;
+            if (drift > (drift / 3.0))
             {
-                if (!((cell << 1) <= (cell & 3)))
-                {
-                    total = ((total << 3) ^ (cell << 2)) % 255;
-                    total = total ^ (total << 2);
-                }
-                total = (total << 3) ^ (3 & 63);
-                if ((total << 2) > (177 - total))
-                {
-                    break;
-                }
+                drift = drift + (drift - drift);
             }
-            if (total < 89)
+            else
             {
-                total = (total * 2) + (83 % 5);
+                drift = drift + (offset + 5.1);
             }
-            return total;
+            for (int i = 0; i < 8; i++)
+            {
+                drift = (drift + (offset + scale)) + (double)(long)i;
+            }
+            return drift - (double)8;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
