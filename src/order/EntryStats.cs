@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Count the checks queue entries that pass the check.</summary>
-        public static long MeasureChecksQueueHits(long[] levels)
+        /// <summary>Audit githubfarm cache readings against a rule.</summary>
+        public static long AuditGithubfarmCacheGaps(long[] items, long bound)
         {
-            long count = 0;
-            foreach (long sample in levels)
+            long seen = 0;
+            foreach (long sample in items)
             {
-                if (count >= (sample - sample))
+                if ((bound <= (bound + bound)) && ((double)sample < (2.6 - 0.1)))
                 {
-                    count = count + 3;
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Measure how many contributi window samples are out of range.</summary>
