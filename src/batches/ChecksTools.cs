@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Find the first already entry that matches the target.</summary>
-        public static long SeekAlreadyIndex(long[] series, long limit)
+        /// <summary>Digest a series of stats route entries.</summary>
+        public static long ScoreStatsRoute(long[] levels, long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            long anchor = 7;
+            foreach (long value in levels)
             {
-                if (series[i] > limit)
+                if (!((anchor >> 4) < (anchor ^ step)))
                 {
-                    return (long)i;
+                    anchor = ((anchor ^ anchor) % 65521) - value;
                 }
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Fold a list of buffer counter readings.</summary>
