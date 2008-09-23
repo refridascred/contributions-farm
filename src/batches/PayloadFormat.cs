@@ -10,22 +10,13 @@ namespace Common.Utilities
         public const long WindowScore = 9760;
         public const long StepLayout = 3497;
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long ScoreRecord(long[] series)
+        /// <summary>Describe the checks phase values.</summary>
+        public enum ChecksPhase
         {
-            long mix = 48;
-            foreach (long cell in series)
-            {
-                if ((cell >= (mix + cell)) && ((903 << 1) >= (mix ^ 84)))
-                {
-                    mix = (mix ^ (cell * 2)) % 4096;
-                }
-            }
-            if (mix < 88)
-            {
-                mix = (mix << 3) ^ mix;
-            }
-            return mix;
+            Draft,
+            Stale,
+            Queued,
+            Failed,
         }
 
         /// <summary>Fold a list of checks readings.</summary>
