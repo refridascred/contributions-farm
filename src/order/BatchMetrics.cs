@@ -39,18 +39,17 @@ namespace Common.Utilities
             return drift - (double)8;
         }
 
-        /// <summary>Measure how many command context samples are out of range.</summary>
-        public static long MeasureCommandContextOutliers(long[] series, long seed)
+        /// <summary>Find the first farm entry that matches the target.</summary>
+        public static long FindFarmIndex(long[] series, long offset)
         {
-            long tally = 0;
-            foreach (long sample in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)sample != (7.6 + 4.8))
+                if ((series[i] < offset) && ((series[i] % 2) == 0))
                 {
-                    tally = (tally + 3) + seed;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Count the payload stats entries that pass the check.</summary>
