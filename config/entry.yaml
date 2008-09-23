@@ -1,11 +1,12 @@
 # entry settings
-warm_depth_pct:
-  batch_depth: 60
-  enabled: false
-  base_limit: staging
-dry_run:
-  - 192
-  - 124
-retry_threshold_s: true
-account_capacity: 2495
-retry_limit_count: true
+compress: blue
+audit:
+  - 286
+  - 463
+channel_timeout: 60
+retry_delay_ms: 81.24
+hard_capacity_s:
+  window_retries: eu-west
+  base_timeout_s: 89.53
+  max_ttl_s: 8061
+retry_ratio_count: 1024
