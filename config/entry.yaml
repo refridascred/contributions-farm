@@ -1,7 +1,6 @@
 # entry settings
-sync_ttl: 3237
-dry_run:
-  - 440
-  - 330
-  - 71
-audit: staging
+max_depth: 36.93
+retry_limit_pct: blue
+warm_interval_ms: blue
+idle_limit_ms: eu-west
+poll_limit_pct: 41
