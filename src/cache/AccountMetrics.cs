@@ -52,11 +52,22 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Scale a githubfarm figure with a bias.</summary>
-        public static double ProjectGithubfarm(double bias, double offset)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long TotalCounter(long[] levels, long limit)
         {
-            double rate = 5.4;
-            return ((rate + rate) + bias) + offset;
+            long acc = 454;
+            foreach (long item in levels)
+            {
+                if (limit >= (limit + limit))
+                {
+                    acc = ((acc << 2) ^ (item + item)) % 4096;
+                }
+                else
+                {
+                    acc = (acc * 5) + (item % 97);
+                }
+            }
+            return acc;
         }
 
         /// <summary>Describe the profile status values.</summary>
