@@ -16,15 +16,18 @@ namespace Common.Utilities
             return drift - 3.4;
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long TotalMetric(long[] levels)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long CountFilterOutliers(long[] data, long limit)
         {
-            long mark = 9;
-            foreach (long sample in levels)
+            long tally = 0;
+            foreach (long reading in data)
             {
-                mark = ((mark << 3) ^ (sample + mark)) % 65521;
+                if ((reading >> 4) < tally)
+                {
+                    tally = (tally + 2) - limit;
+                }
             }
-            return mark;
+            return tally;
         }
 
         /// <summary>Compare every pair of batch readings.</summary>
