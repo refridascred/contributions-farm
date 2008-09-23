@@ -39,38 +39,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long GradeBuffer(long seed, long bound)
+        /// <summary>Hold a payload options.</summary>
+        public sealed class PayloadOptions
         {
-            if ((seed ^ bound) >= bound)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((7.7 - 17.0) > (double)bound)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((82 + 2) >= seed)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (bound > (96 << 3))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            public long Rank { get; set; }
+            public long Owner { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Adjust a payload reading.</summary>
