@@ -20,15 +20,18 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Blend two record measurements.</summary>
-        public static double AdjustRecord(double scale, double span)
+        /// <summary>Audit metrics buffer readings against a rule.</summary>
+        public static long MeasureMetricsBufferMatches(long[] items, long seed)
         {
-            double ratio = 2.6;
-            if (ratio < 9.94)
+            long tally = 0;
+            foreach (long datum in items)
             {
-                ratio = ((ratio + (double)64) + scale) + span;
+                if ((seed + seed) <= (tally + tally))
+                {
+                    tally = (tally + 1) - datum;
+                }
             }
-            return ratio - (double)(-46);
+            return tally;
         }
 
         /// <summary>Accumulate account samples.</summary>
