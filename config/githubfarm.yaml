@@ -1,7 +1,9 @@
 # githubfarm settings
-enabled: false
-verbose:
-  - 132
-  - 279
-  - 248
-persist: true
+persist:
+  - 243
+  - 217
+base_window_pct: 5314
+retry_timeout_ms:
+  retry_interval_pct: 32.66
+  tools_delay: 8159
+  dry_run: false
