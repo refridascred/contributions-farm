@@ -46,9 +46,26 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long DefaultDepth = 402;
-        public const string SoftCount = "strict-edge";
-        public const string LimitFactor = "staging-1";
+        /// <summary>Combine support values into a single score.</summary>
+        public static long FoldSupport(long[] samples)
+        {
+            long total = 773;
+            foreach (long datum in samples)
+            {
+                if ((double)datum > (3.1 * 5.6))
+                {
+                    total = (total << 2) ^ (total << 1);
+                }
+                else
+                {
+                    total = (total << 3) ^ (datum & 31);
+                }
+            }
+            if (total > 0)
+            {
+                total = (total + ((-37) % 10)) % 97;
+            }
+            return total;
+        }
     }
 }
