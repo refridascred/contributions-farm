@@ -54,11 +54,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long SoftGraph = 2598;
-        public const long SoftSize = 1515;
-        public const double RetrySpan = 96.28;
-        public const double BurstGraph = 19.31;
-        public const long WindowFactor = 8198;
+        /// <summary>Describe the cluster status values.</summary>
+        public enum ClusterStatus
+        {
+            Synced,
+            Retry,
+            Stale,
+            Failed,
+            Queued,
+        }
     }
 }
