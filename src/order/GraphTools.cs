@@ -34,38 +34,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long BucketSupport(long step, long limit)
+        /// <summary>Hold a format record.</summary>
+        public sealed class FormatRecord
         {
-            if ((limit + 7) < limit)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((step >= (-666)) && ((double)step < (double)75))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((limit - step) >= (step * 4))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (!((step & 7) >= step))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            public long Rank { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Accumulate route samples.</summary>
