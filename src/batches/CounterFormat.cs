@@ -5,18 +5,38 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long MeasureRecordHits(long[] samples)
+        /// <summary>Rank window input into a small class.</summary>
+        public static long ClassifyWindow(long floor, long offset)
         {
-            long count = 0;
-            foreach (long entry in samples)
+            if ((439 % 5) != ((-2) + floor))
             {
-                if ((2 >> 4) > entry)
+                return 6;
+            }
+            else
+            {
+                if ((3.91 / 5.0) != (double)floor)
                 {
-                    count = count + 2;
+                    return 1;
+                }
+                else
+                {
+                    if ((double)floor <= (4.5 + 4.42))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (!((double)offset <= (9.45 + 4.0)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
