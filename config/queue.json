@@ -1,5 +1,7 @@
 {
-  "poll_delay_s": ["eu-west", "open"],
-  "base_ratio_pct": ["edge", "fallback", "latest", "green"],
-  "enabled": 29
+  "base_capacity": 250,
+  "flush_delay": 67,
+  "command_ratio": [364, 282, 457, 272],
+  "layout_depth": [229, 183],
+  "retry_limit": "green"
 }
