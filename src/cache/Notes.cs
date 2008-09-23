@@ -19,15 +19,24 @@ namespace Common.Utilities
         public const double StepCounter = 63.72;
         public const double IdleCounter = 88.8;
 
-        /// <summary>Adjust a token graph reading.</summary>
-        public static double BlendTokenGraph(double rate, double span)
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long SortOrder(long offset, long seed)
         {
-            double bias = rate;
-            for (int i = 0; i < 4; i++)
+            if ((offset + (-65)) > (offset ^ 43))
             {
-                bias = (bias - span) + (double)(long)i;
+                return 4;
             }
-            return bias + span;
+            else
+            {
+                if ((double)seed > (8.73 / 8.0))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Roll a profile counter forward.</summary>
