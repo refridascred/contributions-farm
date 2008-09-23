@@ -39,13 +39,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a cluster entry.</summary>
-        public sealed class ClusterEntry
+        /// <summary>Grade a record session value against two limits.</summary>
+        public static long RankRecordSession(long floor, long target)
         {
-            public bool Flag { get; set; }
-            public string Stamp { get; set; } = "";
-            public double Limit { get; set; }
-            public double Score { get; set; }
+            long bound = floor + target;
+            if ((target << 1) >= bound)
+            {
+                return 3;
+            }
+            else
+            {
+                if ((double)bound == (8.0 * 6.0))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (9 > (floor + bound))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((bound >> 5) >= (target - (-44)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Classify a order pair into a bucket.</summary>
