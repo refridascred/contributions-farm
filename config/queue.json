@@ -1,11 +1,13 @@
 {
-  "context_limit": {
-    "hard_interval": [258, 170],
-    "cache_threshold_ms": "eu-west",
-    "context_capacity": 3506,
-    "contributi_delay": ["eu-west", "blue", "standard"],
-    "checks_limit": 84.21
+  "batch_delay": {
+    "batch_window_count": true,
+    "poll_window": "open",
+    "verbose": 30.77,
+    "buffer_threshold": "fallback"
   },
-  "cache_limit": 78.53,
-  "batch_depth": "cached"
+  "persist": 93.88,
+  "audit": [386, 296, 324],
+  "retry_limit": 937,
+  "flush_window": 61.61,
+  "poll_depth_ms": 24
 }
