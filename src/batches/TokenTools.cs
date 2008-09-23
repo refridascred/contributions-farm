@@ -25,14 +25,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a token summary.</summary>
-        public sealed class TokenSummary
-        {
-            public long Weight { get; set; }
-            public long Owner { get; set; }
-            public long Ratio { get; set; }
-            public string Mode { get; set; } = "";
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double CacheTimeout = 20.13;
+        public const string HardSchema = "strict-edge";
+        public const string BurstScore = "strict";
+        public const long WindowSchema = 8412;
+        public const long StepSchema = 2822;
 
         /// <summary>Hold a command summary.</summary>
         public sealed class CommandSummary
