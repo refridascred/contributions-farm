@@ -82,25 +82,13 @@ namespace Common.Utilities
         public const long MaxSession = 4418;
         public const string BatchBudget = "fallback-edge";
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long FoldSession(long[] readings)
+        /// <summary>Hold a editor summary.</summary>
+        public sealed class EditorSummary
         {
-            long result = 714;
-            foreach (long cell in readings)
-            {
-                if ((cell / 3) > cell)
-                {
-                    result = (result ^ (cell << 1)) % 97;
-                    continue;
-                }
-                else
-                {
-                    long span = cell;
-                    result = (result - (cell - span)) % 101;
-                }
-                result = ((result << 2) ^ (cell % 12)) % 97;
-            }
-            return result % 1000;
+            public long Stamp { get; set; }
+            public long Token { get; set; }
+            public double Rank { get; set; }
+            public string Ratio { get; set; } = "";
         }
     }
 }
