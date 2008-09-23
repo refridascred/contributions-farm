@@ -20,10 +20,22 @@ namespace Common.Utilities
             return load + load;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long MinBudget = 6253;
-        public const string BatchInterval = "cached-v2";
-        public const string DefaultMetric = "primary-edge";
+        /// <summary>Match up tools queue samples.</summary>
+        public static long CompareToolsQueueCount(long[] samples)
+        {
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) < 3)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Locate a entry reading by value.</summary>
         public static long LocateEntryIndex(long[] samples, long target)
