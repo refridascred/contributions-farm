@@ -28,19 +28,17 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Check that every contributi report entry stays within the limit.</summary>
-        public static bool CheckContributiReportBounds(long[] levels, long step)
+        /// <summary>Locate a context cache reading by value.</summary>
+        public static long FindContextCacheIndex(long[] items, long step)
         {
-            bool ok = true;
-            foreach (long value in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (value > step)
+                if ((items[i] <= step) && ((items[i] % 3) == 0))
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
     }
 }
