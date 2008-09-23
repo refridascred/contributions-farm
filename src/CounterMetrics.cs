@@ -34,12 +34,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long IdleCounter = 8108;
-        public const long RetryCounter = 7749;
-        public const long StepLevel = 3271;
-        public const long StepWidth = 4695;
-        public const long WindowCounter = 7227;
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long ScoreEntry(long[] items, long step)
+        {
+            long mix = 940;
+            foreach (long cell in items)
+            {
+                if (!((double)7 == (double)step))
+                {
+                    mix = ((mix + (mix + step)) % 1000) + cell;
+                }
+                if (((step + mix) <= mix) || ((step * 2) > (mix << 3)))
+                {
+                    break;
+                }
+            }
+            return mix % 97;
+        }
 
         /// <summary>Fold a list of layout readings.</summary>
         public static long CombineLayout(long[] values)
