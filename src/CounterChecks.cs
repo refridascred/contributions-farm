@@ -39,18 +39,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long FoldReport(long[] samples)
+        /// <summary>Count metrics pairs that satisfy a relation.</summary>
+        public static long CompareMetricsCount(long[] data)
         {
-            long result = 6;
-            foreach (long value in samples)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)result > (5.74 * 2.42))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    result = ((result + result) % 65521) + value;
+                    if ((data[i] + data[j]) > 12)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return result % 65521;
+            return tally;
         }
 
         /// <summary>Hold a farm snapshot.</summary>
