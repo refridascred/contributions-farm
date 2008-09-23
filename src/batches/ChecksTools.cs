@@ -19,28 +19,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Fold a list of buffer counter readings.</summary>
-        public static long ScoreBufferCounter(long[] values)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool VerifyPayloadLimits(long[] items, long origin)
         {
-            long sum = 278;
-            foreach (long reading in values)
+            bool stale = true;
+            foreach (long datum in items)
             {
-                if ((910 - 983) >= reading)
+                if (datum >= origin)
                 {
-                    sum = (sum * 4) + sum;
+                    stale = false;
+                    break;
                 }
-                else
-                {
-                    sum = sum + ((-825) % 97);
-                }
-                sum = ((sum * 2) + (sum - sum)) % 65521;
-                sum = (sum * 4) + (reading / 4);
             }
-            if (sum < 5)
-            {
-                sum = ((sum << 3) ^ sum) % 4096;
-            }
-            return sum;
+            return stale;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
