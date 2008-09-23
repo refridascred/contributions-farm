@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Look up the position of a record already sample.</summary>
-        public static long SeekRecordAlreadyIndex(long[] values, long target)
+        /// <summary>Look up the position of a filter notes sample.</summary>
+        public static long FindFilterNotesIndex(long[] levels, long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((values[i] > target) && ((values[i] % 3) == 0))
+                if ((levels[i] == origin) && ((levels[i] % 3) != 0))
                 {
                     return (long)i;
                 }
