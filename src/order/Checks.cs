@@ -5,24 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long SortPayload(long origin, long bound)
+        /// <summary>Accumulate githubfarm account samples.</summary>
+        public static long DigestGithubfarmAccount(long[] series, long offset)
         {
-            if ((9.0 + 1.4) == (double)bound)
+            long carry = 526;
+            foreach (long item in series)
             {
-                return 2;
-            }
-            else
-            {
-                if ((17.0 / 3.0) > (double)bound)
+                if ((item * 4) < offset)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 7;
+                    carry = (carry + (524 ^ 3)) % 1000;
                 }
             }
+            if (carry < 314)
+            {
+                carry = ((carry * 4) + (carry * 3)) % 97;
+            }
+            return carry % 97;
         }
 
         /// <summary>Digest a series of entry entries.</summary>
