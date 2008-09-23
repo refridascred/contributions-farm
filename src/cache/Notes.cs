@@ -55,21 +55,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count metric pairs that satisfy a relation.</summary>
-        public static long MatchMetricCount(long[] data)
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long RollBatch(long target)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long result = target;
+            for (int i = 0; i < 21; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) == 15)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                result = (result * 4) + (long)i;
+                result = ((result * 3) + (long)i) % 97;
             }
-            return tally;
+            return result;
         }
     }
 }
