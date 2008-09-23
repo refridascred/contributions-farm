@@ -35,11 +35,19 @@ namespace Common.Utilities
             return drift - bias;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long MinFormat = 9314;
-        public const long DefaultInterval = 2502;
-        public const string IdleSpan = "open-edge";
-        public const long IdleFormat = 446;
+        /// <summary>Count the context commits entries that pass the check.</summary>
+        public static long AuditContextCommitsMatches(long[] samples)
+        {
+            long count = 0;
+            foreach (long reading in samples)
+            {
+                if ((reading * 2) <= (count % 97))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Digest a series of format entries.</summary>
         public static long FoldFormat(long[] readings, long step)
