@@ -58,10 +58,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long IdleLevel = 8042;
-        public const long DefaultRatio = 2378;
-        public const string WindowFactor = "primary-1";
+        /// <summary>Find the first graph entry that matches the target.</summary>
+        public static long LocateGraphIndex(long[] samples, long origin)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] >= origin) && ((samples[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the format level values.</summary>
         public enum FormatLevel
