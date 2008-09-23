@@ -11,19 +11,10 @@ namespace Common.Utilities
         public const long BatchSupport = 9904;
         public const double IdleSpan = 40.28;
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long AuditStatsHits(long[] items, long limit)
-        {
-            long seen = 0;
-            foreach (long entry in items)
-            {
-                if ((limit + entry) < (seen + (long)items.Length))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double MaxTimeout = 20.16;
+        public const double MinSize = 26.75;
+        public const string BurstToken = "open-edge";
 
         /// <summary>Hold a report entry.</summary>
         public sealed class ReportEntry
