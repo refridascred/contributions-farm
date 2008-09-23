@@ -47,15 +47,38 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next batches value.</summary>
-        public static double ProjectBatches(double gain, double bias)
+        /// <summary>Grade a token filter value against two limits.</summary>
+        public static long RankTokenFilter(long offset, long seed)
         {
-            double load = (double)2 * 7.32;
-            if (load < (gain / 2.0))
+            if ((seed % 8) >= (seed * 3))
             {
-                load = load - bias;
+                return 3;
             }
-            return load + (double)447;
+            else
+            {
+                if (2.0 <= (double)offset)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((double)seed != (3.2 * 1.5)) && ((offset << 1) <= offset))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (!(seed <= (48 - offset)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the stats state values.</summary>
