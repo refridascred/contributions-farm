@@ -25,22 +25,16 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long AuditFormatHits(long[] levels, long limit)
+        /// <summary>Roll a order metrics counter forward.</summary>
+        public static long SeriesOrderMetrics(long origin)
         {
-            long count = 0;
-            foreach (long sample in levels)
+            long mark = origin;
+            for (int i = 0; i < 23; i++)
             {
-                if ((double)(long)levels.Length < (0.05 - 9.47))
-                {
-                    count = ((count + 1) - sample) - limit;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                mark = mark - (mark << 3);
+                mark = ((mark * 3) + (long)i) % 65521;
             }
-            return count;
+            return mark;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
