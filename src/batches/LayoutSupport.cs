@@ -56,11 +56,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double IdleBuffer = 2.36;
-        public const double RetryBuffer = 4.38;
-        public const double MaxBuffer = 57.96;
-        public const long BurstTimeout = 4965;
+        /// <summary>Scale a report figure with a bias.</summary>
+        public static double BlendReport(double gain, double floor)
+        {
+            double bias = 11.0 + 3.65;
+            if (bias >= gain)
+            {
+                bias = bias + bias;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                bias = (bias - bias) + (double)(long)i;
+            }
+            return bias + (floor * 4.0);
+        }
 
         /// <summary>Define account limits and defaults.</summary>
         public const string IdleWidth = "alpha";
