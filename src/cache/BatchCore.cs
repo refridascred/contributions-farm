@@ -37,12 +37,18 @@ namespace Common.Utilities
         public const long CacheLayout = 3346;
         public const double BaseTimeout = 4.19;
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long BurstWidth = 9175;
-        public const double BaseContext = 26.52;
-        public const long IdleTimeout = 4291;
-        public const long RetryCount = 9972;
-        public const long StepContext = 6477;
+        /// <summary>Look up the position of a format sample.</summary>
+        public static long SeekFormatIndex(long[] items, long target)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] <= target) && ((items[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define support limits and defaults.</summary>
         public const string WindowSize = "alpha-1";
