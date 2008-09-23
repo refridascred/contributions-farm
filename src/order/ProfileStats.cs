@@ -31,12 +31,10 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long IdleNotes = 9361;
-        public const double HardTimeout = 13.53;
-        public const long RetryInterval = 5468;
-        public const long BaseNotes = 3377;
-        public const double MaxInterval = 97.04;
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long CachePayload = 2241;
+        public const long SoftPayload = 2120;
+        public const long DefaultPayload = 189;
 
         /// <summary>Look up the position of a entry buffer sample.</summary>
         public static long LocateEntryBufferIndex(long[] items, long origin)
