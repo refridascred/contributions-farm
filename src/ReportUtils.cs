@@ -65,9 +65,9 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string MaxStats = "primary-1";
-        public const string DefaultStats = "primary-edge";
-        public const string BaseStats = "strict-1";
+        /// <summary>Define context limits and defaults.</summary>
+        public const long LimitContext = 4952;
+        public const string DefaultLevel = "local";
+        public const long BurstContext = 1969;
     }
 }
