@@ -2,10 +2,10 @@
 CREATE TABLE IF NOT EXISTS stats_logs (
     id INTEGER PRIMARY KEY,
     active INTEGER NOT NULL DEFAULT 1,
-    rank INTEGER,
-    state TEXT NOT NULL DEFAULT 'new',
+    ratio REAL,
+    region TEXT,
     token TEXT,
-    weight REAL
+    count INTEGER NOT NULL DEFAULT 0
 );
 
 CREATE INDEX IF NOT EXISTS idx_stats_logs_active ON stats_logs (active);
