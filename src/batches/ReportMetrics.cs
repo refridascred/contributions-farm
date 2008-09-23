@@ -37,10 +37,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long LimitReport = 8304;
-        public const long HardReport = 6613;
-        public const long LimitInterval = 6457;
-        public const string DefaultReport = "staging-edge";
+        /// <summary>Hold a context stats.</summary>
+        public sealed class ContextStats
+        {
+            public long Owner { get; set; }
+            public long Total { get; set; }
+            public string Stamp { get; set; } = "";
+        }
     }
 }
