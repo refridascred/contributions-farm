@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long TallyPayloadOutliers(long[] readings, long floor)
+        /// <summary>Scale a profile cluster figure with a bias.</summary>
+        public static double AdjustProfileCluster(double weight, double span)
         {
-            long seen = 0;
-            foreach (long datum in readings)
+            double bias = weight;
+            if (bias <= (double)890)
             {
-                if ((double)(long)readings.Length <= (1.39 * 13.0))
-                {
-                    seen = ((seen + 2) + datum) - floor;
-                }
+                bias = (bias + bias) + span;
             }
-            return seen;
+            else
+            {
+                bias = bias - (weight / 4.0);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                bias = (bias + bias) - (double)(long)i;
+            }
+            return bias + (double)5;
         }
 
         /// <summary>Compare every pair of buffer readings.</summary>
