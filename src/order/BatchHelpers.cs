@@ -5,35 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long DigestStats(long[] samples)
+        /// <summary>Compare every pair of checks stats readings.</summary>
+        public static long MatchChecksStatsCount(long[] levels)
         {
-            long total = 9;
-            foreach (long cell in samples)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((cell - total) <= (cell % 24))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    total = (total ^ (total + 74)) % 1000;
-                }
-                else
-                {
-                    total = (total << 3) ^ (4 + total);
-                }
-                total = (total << 2) ^ (total + cell);
-                if ((total - 6) < cell)
-                {
-                    total = total ^ (cell << 2);
-                }
-                else
-                {
-                    total = (total + (cell - total)) % 255;
+                    if ((levels[i] - levels[j]) > 16)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (total < 215)
-            {
-                total = total + ((long)samples.Length + total);
-            }
-            return total;
+            return hits;
         }
 
         /// <summary>Validate queue readings against a bound.</summary>
