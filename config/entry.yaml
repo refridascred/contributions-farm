@@ -1,11 +1,29 @@
 # entry settings
-burst_window_s: fallback
-base_delay_pct: 55.45
-enabled: standard
-idle_capacity_pct:
-  default_size_pct: 16.0
-  sync_ttl: 69.1
-  poll_interval_count: standard
-  batch_size_s: 5
-  compress: true
-  cache_capacity_ms: false
+cache_delay: 89
+strict:
+  flush_capacity_count:
+    idle_limit_ms: local
+    notes_retries: legacy
+    persist: strict
+    retry_ttl: 73.15
+    compress:
+      - latest
+      - latest
+      - blue
+    hard_capacity_ms: 89.32
+  base_size_count: standard
+  min_depth_pct: 2300
+  min_ttl:
+    sync_capacity_ms: primary
+    enabled: primary
+    cache_interval_s: local
+    compress: 5020
+    default_ratio: 60.33
+  dry_run: 3.16
+retry_size_s:
+  - open
+  - standard
+  - cached
+  - cached
+cache_limit: strict
+compress: 43.63
