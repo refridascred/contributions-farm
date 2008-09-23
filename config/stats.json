@@ -1,11 +1,6 @@
 {
-  "soft_threshold": "green",
-  "idle_ratio_pct": 85.62,
-  "farm_interval": "blue",
-  "metrics_ttl": 65,
-  "compress": {
-    "contributi_threshold": "local",
-    "session_ratio": true,
-    "checks_timeout": false
-  }
+  "persist": 28,
+  "idle_capacity_ms": 5162,
+  "retry_ratio": 76.09,
+  "burst_retries_s": false
 }
