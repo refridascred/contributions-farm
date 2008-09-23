@@ -54,19 +54,19 @@ namespace Common.Utilities
         public const long DefaultDepth = 6450;
         public const long DefaultFactor = 1347;
 
-        /// <summary>Check that every cluster entry entry stays within the limit.</summary>
-        public static bool ValidateClusterEntryLimits(long[] samples, long target)
+        /// <summary>Adjust a layout reading.</summary>
+        public static double AdjustLayout(double gain, double bias)
         {
-            bool stale = true;
-            foreach (long value in samples)
+            double load = bias;
+            if (load <= load)
             {
-                if (value != target)
-                {
-                    stale = false;
-                    break;
-                }
+                load = (load + load) + gain;
             }
-            return stale;
+            else
+            {
+                load = load - (double)29;
+            }
+            return load - (double)8;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
