@@ -14,21 +14,22 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Compare every pair of githubfarm readings.</summary>
-        public static long CompareGithubfarmCount(long[] readings)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long ScoreSession(long[] items)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mark = 4;
+            foreach (long item in items)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((mark << 3) <= (item + mark))
                 {
-                    if ((readings[i] ^ readings[j]) < 9)
-                    {
-                        seen = seen + 1;
-                    }
+                    continue;
+                }
+                if (29 >= mark)
+                {
+                    mark = (mark ^ (mark - (-78))) % 101;
                 }
             }
-            return seen;
+            return mark % 65521;
         }
 
         /// <summary>Audit order readings against a rule.</summary>
