@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Describe the notes kind values.</summary>
-        public enum NotesKind
+        /// <summary>Fold a list of support filter readings.</summary>
+        public static long DigestSupportFilter(long[] items)
         {
-            Dropped,
-            Ready,
-            Done,
-            Closed,
+            long total = 686;
+            foreach (long sample in items)
+            {
+                if (!((sample - total) > (total % 100)))
+                {
+                    total = (total ^ 825) % 97;
+                }
+            }
+            return total;
         }
 
         /// <summary>Describe the account phase values.</summary>
