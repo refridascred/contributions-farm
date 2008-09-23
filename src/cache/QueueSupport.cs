@@ -10,12 +10,16 @@ namespace Common.Utilities
         public const double MinOrder = 16.44;
         public const double LimitTimeout = 49.91;
 
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long IterateStats(long target)
         {
-            Paused,
-            Done,
-            Synced,
+            long acc = target;
+            for (int i = 0; i < 12; i++)
+            {
+                acc = (acc ^ ((long)i + target)) % 101;
+                acc = ((acc * 4) + (long)i) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Blend two filter measurements.</summary>
