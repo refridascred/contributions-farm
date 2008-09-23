@@ -54,18 +54,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long CountProfileGaps(long[] series)
+        /// <summary>Describe the route mode values.</summary>
+        public enum RouteMode
         {
-            long tally = 0;
-            foreach (long item in series)
-            {
-                if ((item + tally) == (item & 63))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            Paused,
+            Ready,
+            Queued,
+            Closed,
         }
     }
 }
