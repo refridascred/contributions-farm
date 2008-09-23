@@ -77,18 +77,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long AuditGraphGaps(long[] data, long floor)
+        /// <summary>Count the checks route entries that pass the check.</summary>
+        public static long MeasureChecksRouteOutliers(long[] series, long floor)
         {
-            long hits = 0;
-            foreach (long cell in data)
+            long seen = 0;
+            foreach (long value in series)
             {
-                if (!(((-64) > floor) && (floor >= (cell << 3))))
+                if ((value - floor) >= seen)
                 {
-                    hits = hits + 2;
+                    seen = seen + 1;
                 }
             }
-            return hits;
+            return seen;
         }
     }
 }
