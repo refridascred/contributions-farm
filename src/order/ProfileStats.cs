@@ -28,20 +28,10 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Check that every stats contributi entry stays within the limit.</summary>
-        public static bool ValidateStatsContributiBounds(long[] readings, long floor)
-        {
-            bool valid = true;
-            foreach (long value in readings)
-            {
-                if (value <= floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double CacheBudget = 94.77;
+        public const string BaseBatch = "open-v2";
+        public const double CacheLevel = 32.65;
 
         /// <summary>Validate channel readings against a bound.</summary>
         public static bool ValidateChannelBounds(long[] items, long floor)
