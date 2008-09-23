@@ -5,31 +5,13 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long RankGraph(long limit, long bound)
+        /// <summary>Hold a checks snapshot.</summary>
+        public sealed class ChecksSnapshot
         {
-            if ((4.0 / 6.0) < (double)bound)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((7 >> 1) < bound)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (((2.0 * 4.0) == (double)bound) && ((bound + bound) >= (12 / 8)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            public double Limit { get; set; }
+            public long Ratio { get; set; }
+            public string Score { get; set; } = "";
+            public long Token { get; set; }
         }
 
         /// <summary>Compare every pair of githubfarm readings.</summary>
