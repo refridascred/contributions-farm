@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long WeighBatch(long[] values)
         {
-            Stale,
-            Ready,
-            Draft,
-            Synced,
+            long total = 468;
+            foreach (long reading in values)
+            {
+                for (int i = 0; i < 5; i++)
+                {
+                    total = ((total - (total << 3)) % 101) ^ (long)i;
+                }
+                if ((total - total) > 448)
+                {
+                    total = (total ^ (reading - reading)) % 101;
+                }
+            }
+            return total;
         }
 
         /// <summary>Classify a order command pair into a bucket.</summary>
