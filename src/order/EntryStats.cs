@@ -27,21 +27,13 @@ namespace Common.Utilities
             return weight2 + (weight - weight2);
         }
 
-        /// <summary>Count schema pairs that satisfy a relation.</summary>
-        public static long OverlapSchemaCount(long[] series)
+        /// <summary>Hold a metrics record.</summary>
+        public sealed class MetricsRecord
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) > 19)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public bool Owner { get; set; }
+            public long Total { get; set; }
+            public string Stamp { get; set; } = "";
+            public double Flag { get; set; }
         }
 
         /// <summary>Hold a queue info.</summary>
