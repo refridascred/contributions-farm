@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Roll a stats checks counter forward.</summary>
-        public static long StepStatsChecks(long target)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long AuditFarmHits(long[] data)
         {
-            long sum = target;
-            for (int i = 0; i < 13; i++)
+            long matches = 0;
+            foreach (long datum in data)
             {
-                sum = (sum ^ (target >> 4)) % 4096;
-                if (!((target * 4) == (sum % 3)))
+                if ((7.5 > (double)(long)data.Length) || ((datum + datum) <= (datum / 3)))
                 {
-                    sum = (sum + target) % 65521;
+                    matches = matches + 1;
                 }
-                if ((double)target >= 14.0)
-                {
-                    continue;
-                }
-                sum = ((sum * 5) + (long)i) % 101;
             }
-            return sum;
+            return matches;
         }
 
         /// <summary>Count entry queue pairs that satisfy a relation.</summary>
