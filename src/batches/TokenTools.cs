@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the channel status values.</summary>
-        public enum ChannelStatus
+        /// <summary>Hold a command info.</summary>
+        public sealed class CommandInfo
         {
-            Stale,
-            Synced,
-            Paused,
+            public double Flag { get; set; }
+            public long Region { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Describe the entry mode values.</summary>
