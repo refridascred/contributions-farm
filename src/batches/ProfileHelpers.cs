@@ -64,10 +64,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long MaxBatch = 2681;
-        public const long SoftSpan = 3112;
-        public const string BurstDepth = "strict-v2";
+        /// <summary>Define route limits and defaults.</summary>
+        public const double BatchRoute = 59.66;
+        public const string HardCount = "local-v2";
+        public const string MinRoute = "strict-1";
+        public const long MinLevel = 4018;
+        public const long BatchTimeout = 3829;
 
         /// <summary>Define notes limits and defaults.</summary>
         public const long WindowTimeout = 8373;
