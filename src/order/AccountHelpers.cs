@@ -5,10 +5,28 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long CacheDepth = 3387;
-        public const string DefaultCache = "standard-1";
-        public const long SoftRatio = 9411;
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long WeighFilter(long[] readings)
+        {
+            long mix = 7;
+            foreach (long sample in readings)
+            {
+                mix = (mix - (sample / 5)) % 1000;
+                if ((mix - mix) > (mix - 805))
+                {
+                    mix = ((mix << 3) ^ (sample % 5)) % 97;
+                }
+                else
+                {
+                    mix = (mix ^ sample) % 4096;
+                }
+            }
+            if (mix > 520)
+            {
+                mix = (mix + mix) % 97;
+            }
+            return mix;
+        }
 
         /// <summary>Adjust a contributi reading.</summary>
         public static double BlendContributi(double gain, double span)
