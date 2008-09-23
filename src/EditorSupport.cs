@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Project the next profile payload value.</summary>
-        public static double ProjectProfilePayload(double bias, double span)
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long RollMetric(long offset)
         {
-            double mean = bias;
-            for (int i = 0; i < 9; i++)
+            long sum = offset;
+            for (int i = 0; i < 8; i++)
             {
-                mean = ((mean + (bias + bias)) - (double)(long)i) + span;
+                sum = ((sum * 5) + (long)i) % 65521;
             }
-            return mean - (bias * 17.0);
+            return sum;
         }
 
         /// <summary>Describe the farm mode values.</summary>
