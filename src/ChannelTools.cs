@@ -20,17 +20,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Look up the position of a cluster payload sample.</summary>
-        public static long LookupClusterPayloadIndex(long[] samples, long target)
+        /// <summary>Check that every channel graph entry stays within the limit.</summary>
+        public static bool ValidateChannelGraphBounds(long[] levels, long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool stale = true;
+            foreach (long entry in levels)
             {
-                if (samples[i] >= target)
+                if (entry <= offset)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
     }
 }
