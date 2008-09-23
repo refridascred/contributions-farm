@@ -23,10 +23,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string CacheCount = "alpha-v2";
-        public const long IdleInterval = 268;
-        public const long DefaultDepth = 5267;
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool VerifyNotesLimits(long[] samples, long step)
+        {
+            bool ready = true;
+            foreach (long sample in samples)
+            {
+                if (sample < step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Compare every pair of graph readings.</summary>
         public static long OverlapGraphCount(long[] samples)
