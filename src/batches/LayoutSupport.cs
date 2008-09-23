@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Count the cluster stream entries that pass the check.</summary>
-        public static long TallyClusterStreamOutliers(long[] data)
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long SeriesStats(long step)
         {
-            long tally = 0;
-            foreach (long entry in data)
+            long score = step;
+            for (int i = 0; i < 13; i++)
             {
-                if ((double)entry <= (8.87 - 13.0))
+                if (!(375 > (score + step)))
                 {
-                    tally = tally + 1;
+                    score = score - (step - 412);
                 }
+                if ((((long)i + step) != ((long)i - step)) && ((2 - step) >= (step / 7)))
+                {
+                    score = (score - (step >> 4)) % 101;
+                }
+                score = ((score * 5) + (long)i) % 101;
             }
-            return tally;
+            return score;
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
