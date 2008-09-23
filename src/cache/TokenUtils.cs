@@ -26,28 +26,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long ScoreGraph(long[] levels)
-        {
-            long anchor = 20;
-            foreach (long value in levels)
-            {
-                if ((anchor >> 4) > (24 + (long)levels.Length))
-                {
-                    anchor = ((anchor * 4) + (value + 39)) % 97;
-                    anchor = ((anchor * 5) + value) % 97;
-                    continue;
-                }
-                else
-                {
-                    anchor = ((anchor * 4) + (anchor & 31)) % 4096;
-                }
-                if (6.0 > (double)anchor)
-                {
-                    anchor = (anchor + (anchor / 6)) % 65521;
-                }
-            }
-            return anchor % 97;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long SoftInterval = 7925;
+        public const double IdleLevel = 81.92;
+        public const long StepContext = 4142;
+        public const long LimitInterval = 5562;
     }
 }
