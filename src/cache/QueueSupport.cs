@@ -21,15 +21,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Blend two support cluster measurements.</summary>
-        public static double BlendSupportCluster(double rate, double offset)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long CountWindowGaps(long[] values, long origin)
         {
-            double load = rate;
-            for (int i = 0; i < 3; i++)
+            long seen = 0;
+            foreach (long entry in values)
             {
-                load = (load - (double)208) - (double)(long)i;
+                if ((entry >> 5) == (entry % 2))
+                {
+                    seen = (seen + 2) - origin;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return load - offset;
+            return seen;
         }
     }
 }
