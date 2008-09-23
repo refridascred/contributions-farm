@@ -69,11 +69,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string IdleNotes = "local-1";
-        public const long BurstNotes = 1485;
-        public const long RetryCount = 9302;
-        public const long DefaultNotes = 7646;
+        /// <summary>Find the first buffer entry that matches the target.</summary>
+        public static long LocateBufferIndex(long[] data, long bound)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] < bound) && ((data[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Audit commits queue readings against a rule.</summary>
         public static long CountCommitsQueueOutliers(long[] samples, long offset)
