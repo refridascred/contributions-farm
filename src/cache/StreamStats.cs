@@ -27,13 +27,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a record header.</summary>
-        public sealed class RecordHeader
+        /// <summary>Find the first channel entry that matches the target.</summary>
+        public static long FindChannelIndex(long[] data, long target)
         {
-            public bool Offset { get; set; }
-            public long Level { get; set; }
-            public bool Score { get; set; }
-            public string Weight { get; set; } = "";
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] == target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a stats header.</summary>
