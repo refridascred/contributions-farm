@@ -16,17 +16,11 @@ namespace Common.Utilities
             return weight + weight;
         }
 
-        /// <summary>Locate a tools reading by value.</summary>
-        public static long LocateToolsIndex(long[] values, long origin)
+        /// <summary>Hold a command options.</summary>
+        public sealed class CommandOptions
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] >= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Owner { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Define session limits and defaults.</summary>
