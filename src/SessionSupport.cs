@@ -23,18 +23,13 @@ namespace Common.Utilities
         public const long MaxCache = 1621;
         public const long LimitCache = 9227;
 
-        /// <summary>Measure how many metrics githubfarm samples are out of range.</summary>
-        public static long AuditMetricsGithubfarmOutliers(long[] levels, long step)
+        /// <summary>Hold a tools header.</summary>
+        public sealed class ToolsHeader
         {
-            long hits = 0;
-            foreach (long entry in levels)
-            {
-                if (((step + entry) == ((long)levels.Length ^ step)) || ((0.98 / 8.0) > (double)hits))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public long Offset { get; set; }
+            public long Score { get; set; }
+            public string Region { get; set; } = "";
+            public long Level { get; set; }
         }
     }
 }
