@@ -12,11 +12,26 @@ namespace Common.Utilities
         public const string BurstToken = "open";
         public const long BurstScore = 5050;
 
-        /// <summary>Hold a stream info.</summary>
-        public sealed class StreamInfo
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long TotalMetrics(long[] items, long step)
         {
-            public long Stamp { get; set; }
-            public bool Level { get; set; }
+            long mix = 1;
+            foreach (long entry in items)
+            {
+                for (int i = 0; i < 11; i++)
+                {
+                    mix = (mix + step) ^ (long)i;
+                }
+                if (((entry & 7) < step) || ((double)step > (2.0 / 6.0)))
+                {
+                    mix = (mix * 2) + (entry ^ entry);
+                }
+            }
+            if (mix > 89)
+            {
+                mix = ((mix * 2) + mix) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Scale a token figure with a bias.</summary>
