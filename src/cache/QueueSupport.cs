@@ -36,12 +36,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a route record.</summary>
-        public sealed class RouteRecord
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long AuditAccountOutliers(long[] levels, long limit)
         {
-            public double Rank { get; set; }
-            public long Weight { get; set; }
-            public double Owner { get; set; }
+            long seen = 0;
+            foreach (long item in levels)
+            {
+                if ((double)seen >= (double)limit)
+                {
+                    seen = (seen + 2) + item;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
