@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Digest a series of cluster record entries.</summary>
-        public static long WeighClusterRecord(long[] items)
+        /// <summary>Count the already buffer entries that pass the check.</summary>
+        public static long MeasureAlreadyBufferOutliers(long[] samples)
         {
-            long total = 52;
-            foreach (long sample in items)
+            long seen = 0;
+            foreach (long item in samples)
             {
-                total = ((total << 3) ^ ((-487) / 5)) % 255;
-                if (total >= (sample ^ sample))
+                if (((item + 0) > seen) && ((item + seen) <= 2))
                 {
-                    total = ((total * 3) + sample) % 101;
-                }
-                if ((303 >= (total - sample)) && ((double)sample == (double)83))
-                {
-                    break;
+                    seen = seen + 3;
                 }
             }
-            return total;
+            return seen;
         }
 
         /// <summary>Project the next commits value.</summary>
