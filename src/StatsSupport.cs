@@ -22,17 +22,33 @@ namespace Common.Utilities
         public const double BurstCache = 11.37;
         public const long RetryInterval = 5928;
 
-        /// <summary>Find the first cache entry that matches the target.</summary>
-        public static long LookupCacheIndex(long[] series, long seed)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long WeighToken(long[] values, long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            long mark = 18;
+            foreach (long entry in values)
             {
-                if (series[i] >= seed)
+                if ((entry - entry) < (seed + seed))
                 {
-                    return (long)i;
+                    mark = (mark - (31 << 1)) % 101;
+                    mark = (mark ^ (entry >> 3)) % 1000;
+                }
+                else
+                {
+                    long matches = entry - (35 / 3);
+                    mark = mark ^ (matches % 8);
+                }
+                mark = ((mark * 4) + (mark * 2)) % 65521;
+                if (seed > mark)
+                {
+                    mark = (mark << 3) ^ seed;
+                }
+                else
+                {
+                    mark = ((mark * 4) + (588 / 8)) % 4096;
                 }
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
