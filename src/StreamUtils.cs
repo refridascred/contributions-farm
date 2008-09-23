@@ -69,24 +69,9 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Rank token input into a small class.</summary>
-        public static long BucketToken(long bound, long origin)
-        {
-            if (((double)origin == (2.0 / 3.0)) || ((double)origin == (7.0 + 9.0)))
-            {
-                return 4;
-            }
-            else
-            {
-                if (((8.0 + 5.8) == (double)origin) && ((double)origin > (8.1 - 18.0)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long IdleNotes = 2105;
+        public const string DefaultNotes = "cached-v2";
+        public const long BatchNotes = 2679;
     }
 }
