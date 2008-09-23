@@ -65,12 +65,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a batches stats.</summary>
-        public sealed class BatchesStats
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool GuardAccountBounds(long[] levels, long offset)
         {
-            public double Label { get; set; }
-            public double Limit { get; set; }
-            public bool Level { get; set; }
+            bool ready = true;
+            foreach (long cell in levels)
+            {
+                if (cell >= offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
