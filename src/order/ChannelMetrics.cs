@@ -25,13 +25,13 @@ namespace Common.Utilities
         public const long CacheContext = 3000;
         public const string WindowScore = "staging-v2";
 
-        /// <summary>Hold a format record.</summary>
-        public sealed class FormatRecord
+        /// <summary>Hold a payload info.</summary>
+        public sealed class PayloadInfo
         {
-            public bool Score { get; set; }
-            public bool Rank { get; set; }
-            public bool Mode { get; set; }
-            public bool Label { get; set; }
+            public long Flag { get; set; }
+            public long Owner { get; set; }
+            public long Offset { get; set; }
+            public string Rank { get; set; } = "";
         }
     }
 }
