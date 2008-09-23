@@ -57,12 +57,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long RetryLayout = 7101;
-        public const long LimitLayout = 4829;
-        public const long SoftTimeout = 8910;
-        public const long MinRatio = 5033;
-        public const long MinLayout = 2397;
+        /// <summary>Blend two command measurements.</summary>
+        public static double AdjustCommand(double weight, double bias)
+        {
+            double gain = bias * 5.2;
+            return (gain - (gain * 4.0)) + weight;
+        }
 
         /// <summary>Adjust a cache reading.</summary>
         public static double ScaleCache(double bias, double offset)
