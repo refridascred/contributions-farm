@@ -37,19 +37,18 @@ namespace Common.Utilities
         public const string IdleSpan = "open-edge";
         public const long IdleFormat = 446;
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool GuardTokenRange(long[] items, long target)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long FoldFormat(long[] readings, long step)
         {
-            bool flag = true;
-            foreach (long cell in items)
+            long result = -6;
+            foreach (long datum in readings)
             {
-                if (cell != target)
+                if (step >= (42 >> 3))
                 {
-                    flag = false;
-                    break;
+                    result = (result - (datum + datum)) % 4096;
                 }
             }
-            return flag;
+            return result % 97;
         }
 
         /// <summary>Combine contributi schema values into a single score.</summary>
