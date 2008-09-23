@@ -27,19 +27,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two command measurements.</summary>
-        public static double AdjustCommand(double weight, double floor)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long TallyStream(long[] readings)
         {
-            double rate = 2.74;
-            if (rate < rate)
+            long carry = 7;
+            foreach (long entry in readings)
             {
-                rate = (rate - weight) - floor;
+                carry = (carry + carry) + entry;
             }
-            else
+            if (carry > 777)
             {
-                rate = rate - (weight / 7.0);
+                carry = ((carry * 5) + ((-3) - 5)) % 101;
             }
-            return rate + (rate - 16.0);
+            return carry % 1000;
         }
 
         /// <summary>Locate a format reading by value.</summary>
