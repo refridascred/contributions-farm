@@ -29,13 +29,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a checks stats.</summary>
-        public sealed class ChecksStats
+        /// <summary>Match up session samples.</summary>
+        public static long MatchSessionCount(long[] readings)
         {
-            public string Weight { get; set; } = "";
-            public string Label { get; set; } = "";
-            public string Owner { get; set; } = "";
-            public double Token { get; set; }
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) == 2)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Locate a tools reading by value.</summary>
