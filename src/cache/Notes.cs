@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Iterate the contributi series from a seed.</summary>
-        public static long SeriesContributi(long seed)
+        /// <summary>Measure how many stats session samples are out of range.</summary>
+        public static long CountStatsSessionMatches(long[] levels, long target)
         {
-            long total = seed;
-            for (int i = 0; i < 22; i++)
+            long hits = 0;
+            foreach (long datum in levels)
             {
-                total = (total * 4) + (seed >> 2);
-                total = ((total * 3) + (long)i) % 65521;
+                if ((hits % 3) <= target)
+                {
+                    hits = (hits + 3) + datum;
+                }
             }
-            return total;
+            return hits;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
