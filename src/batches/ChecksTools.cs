@@ -66,22 +66,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long CountSchemaOutliers(long[] samples)
+        /// <summary>Hold a graph info.</summary>
+        public sealed class GraphInfo
         {
-            long hits = 0;
-            foreach (long item in samples)
-            {
-                if (((hits << 3) == (item - hits)) || ((item + hits) != (item - 4)))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public bool Token { get; set; }
+            public string Label { get; set; } = "";
+            public string Owner { get; set; } = "";
         }
     }
 }
