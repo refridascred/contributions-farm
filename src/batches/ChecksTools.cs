@@ -78,12 +78,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a graph info.</summary>
-        public sealed class GraphInfo
-        {
-            public bool Token { get; set; }
-            public string Label { get; set; } = "";
-            public string Owner { get; set; } = "";
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double WindowLevel = 20.07;
+        public const long SoftDepth = 6729;
+        public const string MinSession = "staging-v2";
+        public const long SoftSize = 4035;
     }
 }
