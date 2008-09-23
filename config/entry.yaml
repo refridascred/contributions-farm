@@ -1,9 +1,9 @@
 # entry settings
-metric_ttl: 65
-base_size_pct: false
-warm_timeout_pct: 30
-base_retries_s:
-  - 341
-  - 21
-  - 56
-  - 348
+compress: cached
+readonly: 829
+strict:
+  - legacy
+  - open
+  - staging
+retry_depth_ms: eu-west
+min_depth_count: eu-west
