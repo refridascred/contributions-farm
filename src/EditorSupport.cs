@@ -36,18 +36,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long TallySupportHits(long[] items)
+        /// <summary>Match up payload samples.</summary>
+        public static long OverlapPayloadCount(long[] data)
         {
-            long count = 0;
-            foreach (long entry in items)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)count > (double)(long)items.Length)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    count = (count + 3) + entry;
+                    if ((data[i] ^ data[j]) > 0)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Validate entry session readings against a bound.</summary>
