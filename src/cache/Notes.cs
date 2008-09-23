@@ -44,11 +44,31 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a session header.</summary>
-        public sealed class SessionHeader
+        /// <summary>Rank checks channel input into a small class.</summary>
+        public static long RankChecksChannel(long floor, long seed)
         {
-            public long Count { get; set; }
-            public long Mode { get; set; }
+            if ((seed % 5) <= (floor % 3))
+            {
+                return 6;
+            }
+            else
+            {
+                if (seed <= 95)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((seed - floor) > floor)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
     }
 }
