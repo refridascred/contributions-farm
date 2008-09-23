@@ -1,6 +1,6 @@
 {
-  "cache_depth_ms": "strict",
-  "compress": "blue",
-  "base_limit_ms": 97,
-  "default_delay_pct": [355, 258]
+  "report_ratio": false,
+  "persist": 9.1,
+  "default_delay_ms": false,
+  "sync_interval_count": "fallback"
 }
