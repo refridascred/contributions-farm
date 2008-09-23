@@ -27,20 +27,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every buffer editor entry stays within the limit.</summary>
-        public static bool ValidateBufferEditorBounds(long[] data, long step)
-        {
-            bool ready = true;
-            foreach (long cell in data)
-            {
-                if (cell != step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BurstFactor = 787;
+        public const long CacheToken = 1614;
+        public const long StepFactor = 2474;
 
         /// <summary>Grade a checks value against two limits.</summary>
         public static long RankChecks(long limit, long seed)
