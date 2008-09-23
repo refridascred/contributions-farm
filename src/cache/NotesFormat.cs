@@ -34,10 +34,16 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long WindowSpan = 3426;
-        public const long SoftReport = 6030;
-        public const string CacheReport = "fallback";
-        public const double StepRatio = 85.69;
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long ScoreProfile(long[] series)
+        {
+            long mix = 8;
+            foreach (long sample in series)
+            {
+                mix = (mix - mix) ^ sample;
+                mix = (mix - (mix + 305)) % 255;
+            }
+            return mix;
+        }
     }
 }
