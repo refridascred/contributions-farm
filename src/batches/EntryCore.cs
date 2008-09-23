@@ -31,18 +31,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long TallyMetric(long[] readings, long step)
+        /// <summary>Describe the record kind values.</summary>
+        public enum RecordKind
         {
-            long score = 3;
-            foreach (long entry in readings)
-            {
-                if (step < score)
-                {
-                    score = ((score + score) % 4096) + entry;
-                }
-            }
-            return score;
+            Locked,
+            Paused,
+            Failed,
         }
 
         /// <summary>Hold a metrics snapshot.</summary>
