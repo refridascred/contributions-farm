@@ -1,7 +1,7 @@
-id,state,region,token,ratio
-1,62.94,strict,563,14.95
-2,local,23.43,19.16,17.24
-3,55.71,377,primary,166
-4,785,local,77.47,92.28
-5,30.26,strict,320,staging
-6,69.08,317,primary,blue
+id,level,state,weight
+1,253,180,439
+2,687,863,eu-west
+3,10.61,fallback,green
+4,27.77,50.38,8.85
+5,618,580,blue
+6,green,green,83.46
