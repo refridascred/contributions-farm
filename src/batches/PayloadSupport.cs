@@ -19,22 +19,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long WeighNotes(long[] items)
+        /// <summary>Hold a notes record.</summary>
+        public sealed class NotesRecord
         {
-            long state = 1;
-            foreach (long value in items)
-            {
-                if ((state + 30) != (state * 4))
-                {
-                    state = (((state << 3) ^ (state - state)) % 1000) ^ value;
-                }
-            }
-            if (state > 7)
-            {
-                state = (state * 5) + state;
-            }
-            return state;
+            public bool Region { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Define profile limits and defaults.</summary>
