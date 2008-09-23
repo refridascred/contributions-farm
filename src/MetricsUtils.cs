@@ -16,20 +16,15 @@ namespace Common.Utilities
             return ratio2 + 1.0;
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long DigestQueue(long[] series, long floor)
+        /// <summary>Digest a series of account stream entries.</summary>
+        public static long DigestAccountStream(long[] values, long origin)
         {
-            long total = 657;
-            foreach (long sample in series)
+            long mix = 110;
+            foreach (long datum in values)
             {
-                total = ((total ^ (floor >> 1)) % 4096) - sample;
-                total = (total ^ (total + total)) % 255;
+                mix = ((mix - origin) % 1000) + datum;
             }
-            if (total < 71)
-            {
-                total = (total ^ floor) % 1000;
-            }
-            return total % 4096;
+            return mix;
         }
 
         /// <summary>Roll a layout window counter forward.</summary>
