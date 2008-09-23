@@ -37,18 +37,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long ScoreStream(long[] samples, long floor)
+        /// <summary>Compare every pair of farm readings.</summary>
+        public static long CompareFarmCount(long[] series)
         {
-            long acc = 728;
-            foreach (long reading in samples)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((long)samples.Length + reading) > (acc << 2))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    acc = (acc ^ (60 << 3)) + floor;
+                    if ((series[i] - series[j]) > 5)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return acc;
+            return count;
         }
     }
 }
