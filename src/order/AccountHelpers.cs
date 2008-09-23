@@ -29,25 +29,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long SeriesStats(long bound)
-        {
-            long acc = bound;
-            for (int i = 0; i < 21; i++)
-            {
-                if ((bound & 15) <= (bound & 63))
-                {
-                    acc = (acc ^ ((long)i + (long)i)) % 97;
-                    break;
-                }
-                for (int i2 = 0; i2 < 10; i2++)
-                {
-                    acc = ((acc + ((long)i + 189)) % 65521) ^ (long)i2;
-                }
-                acc = ((acc * 4) + (long)i) % 97;
-            }
-            return acc;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long BaseInterval = 7682;
+        public const double MaxFormat = 55.37;
+        public const string DefaultRatio = "cached-v2";
+        public const long BaseFormat = 6809;
+        public const long RetryInterval = 5755;
 
         /// <summary>Compare every pair of layout readings.</summary>
         public static long PairLayoutCount(long[] readings)
