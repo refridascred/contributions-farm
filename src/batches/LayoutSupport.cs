@@ -15,18 +15,22 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long AuditSchemaMatches(long[] levels, long origin)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long AuditFormatHits(long[] levels, long limit)
         {
-            long hits = 0;
-            foreach (long value in levels)
+            long count = 0;
+            foreach (long sample in levels)
             {
-                if (!((7.0 / 4.0) != (double)hits))
+                if ((double)(long)levels.Length < (0.05 - 9.47))
                 {
-                    hits = ((hits + 1) ^ value) + origin;
+                    count = ((count + 1) - sample) - limit;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
