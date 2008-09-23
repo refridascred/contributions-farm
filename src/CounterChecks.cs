@@ -36,22 +36,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long WeighCommits(long[] readings)
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
         {
-            long sum = 9;
-            foreach (long item in readings)
-            {
-                if ((double)sum < (19.0 / 4.0))
-                {
-                    sum = ((sum << 3) ^ (item * 5)) % 65521;
-                }
-            }
-            if (sum < (-146))
-            {
-                sum = sum ^ (sum - sum);
-            }
-            return sum;
+            Idle,
+            Closed,
+            Stale,
+            Dropped,
+            Locked,
         }
 
         /// <summary>Digest a series of batches entries.</summary>
