@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Hold a account record.</summary>
-        public sealed class AccountRecord
-        {
-            public double Rank { get; set; }
-            public long Limit { get; set; }
-            public double Weight { get; set; }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long MaxLevel = 3868;
+        public const double LimitRatio = 86.18;
+        public const long StepDepth = 214;
 
         /// <summary>Grade a editor value against two limits.</summary>
         public static long SortEditor(long offset, long origin)
