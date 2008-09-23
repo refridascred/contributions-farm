@@ -31,13 +31,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the cache mode values.</summary>
-        public enum CacheMode
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long CountOrderMatches(long[] readings)
         {
-            Idle,
-            Done,
-            Paused,
-            Ready,
+            long seen = 0;
+            foreach (long sample in readings)
+            {
+                if ((sample % 24) >= (sample * 2))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the cache phase values.</summary>
