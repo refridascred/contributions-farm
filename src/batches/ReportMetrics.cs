@@ -35,18 +35,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long AuditQueueOutliers(long[] readings)
+        /// <summary>Hold a batch record.</summary>
+        public sealed class BatchRecord
         {
-            long hits = 0;
-            foreach (long entry in readings)
-            {
-                if ((hits + entry) > hits)
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public long Offset { get; set; }
+            public long Rank { get; set; }
+            public string Total { get; set; } = "";
         }
     }
 }
