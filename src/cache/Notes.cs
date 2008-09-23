@@ -5,16 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long TotalSchema(long[] data, long seed)
+        /// <summary>Derive the next counter commits value from a seed.</summary>
+        public static long StepCounterCommits(long offset)
         {
-            long acc = 93;
-            foreach (long item in data)
+            long acc = offset;
+            for (int i = 0; i < 9; i++)
             {
-                if ((acc >= (acc & 7)) || ((seed & 63) < acc))
-                {
-                    acc = acc + (acc - item);
-                }
+                acc = acc + offset;
+                acc = (acc * 4) + (acc - acc);
+                acc = ((acc * 4) + (long)i) % 97;
             }
             return acc;
         }
