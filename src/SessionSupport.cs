@@ -32,13 +32,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a tools header.</summary>
-        public sealed class ToolsHeader
+        /// <summary>Count the support already entries that pass the check.</summary>
+        public static long MeasureSupportAlreadyOutliers(long[] items, long bound)
         {
-            public long Offset { get; set; }
-            public long Score { get; set; }
-            public string Region { get; set; } = "";
-            public long Level { get; set; }
+            long count = 0;
+            foreach (long item in items)
+            {
+                if ((double)count <= 1.0)
+                {
+                    count = ((count + 1) + item) - bound;
+                }
+            }
+            return count;
         }
     }
 }
