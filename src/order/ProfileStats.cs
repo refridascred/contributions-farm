@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Count the window notes entries that pass the check.</summary>
-        public static long MeasureWindowNotesMatches(long[] readings, long step)
+        /// <summary>Match up contributi payload samples.</summary>
+        public static long MatchContributiPayloadCount(long[] data)
         {
-            long matches = 0;
-            foreach (long reading in readings)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (step >= reading)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    matches = matches + 3;
+                    if ((data[i] + data[j]) < 3)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Locate a session reading by value.</summary>
