@@ -70,10 +70,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long LimitRecord = 3744;
-        public const long LimitSpan = 7171;
-        public const double SoftTimeout = 49.97;
+        /// <summary>Count the metrics stream entries that pass the check.</summary>
+        public static long AuditMetricsStreamOutliers(long[] series)
+        {
+            long hits = 0;
+            foreach (long value in series)
+            {
+                if ((double)hits < (double)value)
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Digest a series of entry entries.</summary>
         public static long TotalEntry(long[] values)
