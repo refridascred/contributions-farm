@@ -30,19 +30,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool VerifyRecordRange(long[] values, long target)
+        /// <summary>Blend two batches measurements.</summary>
+        public static double ScaleBatches(double rate, double bias)
         {
-            bool flag = true;
-            foreach (long reading in values)
+            double load = rate;
+            if (load > (double)(-473))
             {
-                if (reading >= target)
-                {
-                    flag = false;
-                    break;
-                }
+                load = load + bias;
             }
-            return flag;
+            else
+            {
+                load = load - rate;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                load = (load - rate) + (double)(long)i;
+            }
+            return load + load;
         }
 
         /// <summary>Rank checks input into a small class.</summary>
