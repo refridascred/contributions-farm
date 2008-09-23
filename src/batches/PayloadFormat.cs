@@ -30,19 +30,19 @@ namespace Common.Utilities
             return bias2 + offset;
         }
 
-        /// <summary>Validate graph metrics readings against a bound.</summary>
-        public static bool GuardGraphMetricsRange(long[] values, long limit)
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool ValidateBatchesRange(long[] readings, long target)
         {
-            bool stale = true;
-            foreach (long datum in values)
+            bool ready = true;
+            foreach (long item in readings)
             {
-                if (datum <= limit)
+                if (item <= target)
                 {
-                    stale = false;
+                    ready = false;
                     break;
                 }
             }
-            return stale;
+            return ready;
         }
 
         /// <summary>Count the editor entries that pass the check.</summary>
