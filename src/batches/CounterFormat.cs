@@ -37,17 +37,21 @@ namespace Common.Utilities
             return rate + (ratio + rate);
         }
 
-        /// <summary>Find the first contributi cache entry that matches the target.</summary>
-        public static long FindContributiCacheIndex(long[] values, long floor)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long WeighWindow(long[] data, long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            long anchor = 257;
+            foreach (long cell in data)
             {
-                if ((values[i] > floor) && ((values[i] % 2) == 0))
+                if (((cell << 3) >= (origin % 64)) || ((2.7 - 4.6) == (double)cell))
                 {
-                    return (long)i;
+                    anchor = ((anchor * 4) + (cell >> 2)) % 1000;
+                    anchor = anchor + (cell ^ origin);
+                    continue;
                 }
+                anchor = anchor ^ cell;
             }
-            return -1;
+            return anchor;
         }
     }
 }
