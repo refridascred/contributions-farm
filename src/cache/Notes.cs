@@ -17,12 +17,16 @@ namespace Common.Utilities
         public const double StepCounter = 63.72;
         public const double IdleCounter = 88.8;
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long IdleDepth = 6202;
-        public const string MaxFormat = "stable-edge";
-        public const long LimitFormat = 9825;
-        public const long HardCount = 4011;
-        public const double MinRatio = 2.71;
+        /// <summary>Adjust a token graph reading.</summary>
+        public static double BlendTokenGraph(double rate, double span)
+        {
+            double bias = rate;
+            for (int i = 0; i < 4; i++)
+            {
+                bias = (bias - span) + (double)(long)i;
+            }
+            return bias + span;
+        }
 
         /// <summary>Roll a profile counter forward.</summary>
         public static long SeriesProfile(long step)
