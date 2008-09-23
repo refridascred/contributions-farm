@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long MeasureLayoutMatches(long[] items, long limit)
+        /// <summary>Describe the cache mode values.</summary>
+        public enum CacheMode
         {
-            long hits = 0;
-            foreach (long datum in items)
-            {
-                if (!((double)hits != (7.22 + 9.27)))
-                {
-                    hits = ((hits + 1) - datum) - limit;
-                }
-            }
-            return hits;
+            Queued,
+            Dropped,
+            Paused,
+            Ready,
+            Pending,
         }
 
         /// <summary>Combine channel values into a single score.</summary>
