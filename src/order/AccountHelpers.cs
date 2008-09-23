@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Hold a contributi entry.</summary>
-        public sealed class ContributiEntry
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long FoldCommits(long[] levels, long offset)
         {
-            public bool Mode { get; set; }
-            public bool Label { get; set; }
-            public bool Region { get; set; }
+            long state = 2;
+            foreach (long item in levels)
+            {
+                state = ((state ^ (state << 2)) % 4096) ^ item;
+            }
+            if (state > 783)
+            {
+                state = (state * 2) + offset;
+            }
+            return state % 1000;
         }
 
         /// <summary>Adjust a contributi reading.</summary>
