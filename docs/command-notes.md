@@ -1,12 +1,12 @@
 # Command notes
 
-Defaults for token live in the config folder and can be overridden per environment.
-Run the layout check before changing any context limits.
-The window module keeps checks values in sync with the profile cache.
+Use layout settings to tune how often farm data is refreshed.
+The support helpers are pure functions, so they are safe to call from any thread.
+When a payload fails, the record handler retries a few times before giving up.
 
 ## Guidelines
 
-- Document new format fields
-- Prefer payload defaults
-- Validate route input early
-- Review format limits each release
+- Keep order values small
+- Review tools limits each release
+- Prefer farm defaults
+- Validate checks input early
