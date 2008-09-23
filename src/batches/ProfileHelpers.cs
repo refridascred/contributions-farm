@@ -68,12 +68,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Blend two command measurements.</summary>
-        public static double AdjustCommand(double weight, double bias)
-        {
-            double gain = bias * 5.2;
-            return (gain - (gain * 4.0)) + weight;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long MaxBatch = 2681;
+        public const long SoftSpan = 3112;
+        public const string BurstDepth = "strict-v2";
 
         /// <summary>Define notes limits and defaults.</summary>
         public const long WindowTimeout = 8373;
