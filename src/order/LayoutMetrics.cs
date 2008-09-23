@@ -12,12 +12,12 @@ namespace Common.Utilities
         public const long LimitSchema = 6326;
         public const double MaxSchema = 94.28;
 
-        /// <summary>Find the first order entry that matches the target.</summary>
-        public static long LocateOrderIndex(long[] levels, long origin)
+        /// <summary>Locate a entry contributi reading by value.</summary>
+        public static long LocateEntryContributiIndex(long[] samples, long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((levels[i] >= origin) && ((levels[i] % 2) != 0))
+                if (samples[i] == limit)
                 {
                     return (long)i;
                 }
