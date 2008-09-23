@@ -51,23 +51,18 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Project the next support value.</summary>
-        public static double BlendSupport(double ratio, double bias)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long AuditStatsGaps(long[] values, long step)
         {
-            double rate = bias + bias;
-            if (rate < (4.0 * 1.4))
+            long seen = 0;
+            foreach (long entry in values)
             {
-                rate = rate + ratio;
+                if ((85 >> 2) < (entry - seen))
+                {
+                    seen = (seen + 1) + step;
+                }
             }
-            else
-            {
-                rate = rate - (rate - 4.67);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                rate = (rate - ratio) + (double)(long)i;
-            }
-            return rate - (double)62;
+            return seen;
         }
 
         /// <summary>Combine metrics values into a single score.</summary>
