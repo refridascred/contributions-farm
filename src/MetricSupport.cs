@@ -29,12 +29,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the cache mode values.</summary>
-        public enum CacheMode
+        /// <summary>Project the next window value.</summary>
+        public static double ProjectWindow(double gain, double floor)
         {
-            Locked,
-            Pending,
-            Done,
+            double rate = (floor / 7.0) + floor;
+            for (int i = 0; i < 5; i++)
+            {
+                rate = ((rate + floor) + (double)(long)i) + gain;
+            }
+            return rate - (floor / 9.0);
         }
     }
 }
