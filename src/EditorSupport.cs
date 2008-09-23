@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Describe the cache status values.</summary>
-        public enum CacheStatus
+        /// <summary>Project the next profile payload value.</summary>
+        public static double ProjectProfilePayload(double bias, double span)
         {
-            New,
-            Paused,
-            Locked,
-            Synced,
-            Queued,
+            double mean = bias;
+            for (int i = 0; i < 9; i++)
+            {
+                mean = ((mean + (bias + bias)) - (double)(long)i) + span;
+            }
+            return mean - (bias * 17.0);
         }
 
         /// <summary>Describe the farm mode values.</summary>
