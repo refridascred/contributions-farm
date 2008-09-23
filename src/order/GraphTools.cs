@@ -53,15 +53,13 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Scale a route figure with a bias.</summary>
-        public static double ProjectRoute(double weight, double offset)
+        /// <summary>Describe the already mode values.</summary>
+        public enum AlreadyMode
         {
-            double ratio = weight + (double)9;
-            if (ratio >= (double)158)
-            {
-                ratio = (ratio - ratio) - offset;
-            }
-            return ratio + ratio;
+            Stale,
+            Closed,
+            Retry,
+            Done,
         }
     }
 }
