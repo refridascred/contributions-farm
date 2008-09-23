@@ -22,13 +22,38 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a commits snapshot.</summary>
-        public sealed class CommitsSnapshot
+        /// <summary>Grade a support command value against two limits.</summary>
+        public static long RankSupportCommand(long floor, long origin)
         {
-            public long Stamp { get; set; }
-            public string Flag { get; set; } = "";
-            public string Total { get; set; } = "";
-            public bool Score { get; set; }
+            if (floor <= 86)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((origin <= (origin % 12)) || ((origin + origin) < (origin << 1)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((235 % 10) > floor)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((4.6 * 5.0) > (double)origin)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Classify a stats pair into a bucket.</summary>
