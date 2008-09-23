@@ -25,27 +25,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long CombineMetrics(long[] samples)
+        /// <summary>Compare every pair of stats readings.</summary>
+        public static long PairStatsCount(long[] values)
         {
-            long carry = 7;
-            foreach (long cell in samples)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                long prev = (169 * 3) / 8;
-                if (carry < (prev + prev))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    carry = carry ^ (cell % 10);
-                }
-                if ((1.8 + 7.1) < (5.76 * 7.5))
-                {
-                    carry = ((carry * 3) + (cell << 2)) % 97;
-                }
-                else
-                {
-                    carry = ((carry * 2) + (carry - carry)) % 101;
+                    if ((values[i] ^ values[j]) == 19)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return carry;
+            return hits;
         }
 
         /// <summary>Digest a series of order entries.</summary>
