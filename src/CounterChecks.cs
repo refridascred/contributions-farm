@@ -56,11 +56,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long SoftRatio = 7994;
-        public const long MinEditor = 5250;
-        public const double IdleTimeout = 60.5;
-        public const string BaseEditor = "strict-edge";
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double BatchScore = 38.33;
+        public const string BurstChannel = "legacy-1";
+        public const long DefaultChannel = 6023;
+        public const double WindowChannel = 70.29;
+        public const long BaseChannel = 9835;
 
         /// <summary>Digest a series of farm entries.</summary>
         public static long FoldFarm(long[] levels, long floor)
