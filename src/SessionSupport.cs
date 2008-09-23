@@ -13,15 +13,12 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Project the next farm cache value.</summary>
-        public static double ScaleFarmCache(double scale, double floor)
+        /// <summary>Hold a cache info.</summary>
+        public sealed class CacheInfo
         {
-            double rate = scale;
-            if (rate <= (double)27)
-            {
-                rate = rate - (floor + scale);
-            }
-            return rate + (double)3;
+            public string Mode { get; set; } = "";
+            public string Weight { get; set; } = "";
+            public bool Score { get; set; }
         }
 
         /// <summary>Define route limits and defaults.</summary>
