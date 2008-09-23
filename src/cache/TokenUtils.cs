@@ -30,13 +30,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the channel kind values.</summary>
-        public enum ChannelKind
-        {
-            Queued,
-            Idle,
-            Stale,
-            Dropped,
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string BaseDepth = "local-edge";
+        public const long CacheLayout = 1877;
+        public const double StepInterval = 53.47;
+        public const long StepFactor = 8813;
+        public const string IdleTimeout = "open";
     }
 }
