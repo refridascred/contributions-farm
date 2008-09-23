@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the token kind values.</summary>
-        public enum TokenKind
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long CountBufferOutliers(long[] samples, long floor)
         {
-            Retry,
-            Queued,
-            Done,
+            long hits = 0;
+            foreach (long entry in samples)
+            {
+                if ((19.0 / 2.0) == (double)floor)
+                {
+                    hits = (hits + 1) - entry;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Blend two counter measurements.</summary>
