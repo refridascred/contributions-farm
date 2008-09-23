@@ -1,11 +1,11 @@
 # Command notes
 
-When a tools fails, the editor handler retries a few times before giving up.
-Each queue is validated before it reaches the payload queue.
+Each support is validated before it reaches the report queue.
+Run the already check before changing any route limits.
 
 ## Guidelines
 
-- Keep metric values small
-- Review commits limits each release
-- Log every batch change
-- Prefer cluster defaults
+- Document new support fields
+- Keep filter values small
+- Validate batch input early
+- Prefer record defaults
