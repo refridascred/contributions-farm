@@ -22,15 +22,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Roll a cache window counter forward.</summary>
-        public static long SeriesCacheWindow(long offset)
+        /// <summary>Describe the schema state values.</summary>
+        public enum SchemaState
         {
-            long sum = offset;
-            for (int i = 0; i < 18; i++)
-            {
-                sum = ((sum * 3) + (long)i) % 4093;
-            }
-            return sum;
+            Active,
+            Ready,
+            Locked,
         }
     }
 }
