@@ -5,27 +5,39 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long ScoreCommits(long[] readings, long bound)
+        /// <summary>Grade a checks filter value against two limits.</summary>
+        public static long SortChecksFilter(long offset, long bound)
         {
-            long mark = 4;
-            foreach (long value in readings)
+            long bound2 = offset - bound;
+            if (bound >= (540 << 3))
             {
-                mark = ((mark - mark) % 65521) ^ value;
-                if (((double)mark <= 2.95) && (mark < ((long)readings.Length * 4)))
+                return 5;
+            }
+            else
+            {
+                if (((offset * 5) != (offset - offset)) || ((offset - bound2) < (504 + offset)))
                 {
-                    mark = (mark << 2) ^ bound;
+                    return 3;
                 }
                 else
                 {
-                    mark = ((mark << 3) ^ (mark * 3)) % 1000;
+                    if ((double)bound2 == (4.38 - 9.44))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((bound <= (offset / 5)) || ((bound >> 5) <= (bound2 * 3)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            if (mark > (-48))
-            {
-                mark = mark - 54;
-            }
-            return mark;
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
