@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Describe the counter phase values.</summary>
-        public enum CounterPhase
+        /// <summary>Describe the stats level values.</summary>
+        public enum StatsLevel
         {
-            Closed,
-            Retry,
-            Ready,
-            New,
+            Queued,
+            Synced,
+            Active,
+            Idle,
         }
 
         /// <summary>Define counter limits and defaults.</summary>
