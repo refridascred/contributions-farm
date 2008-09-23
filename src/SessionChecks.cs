@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long AuditSchemaGaps(long[] levels)
-        {
-            long hits = 0;
-            foreach (long cell in levels)
-            {
-                if ((cell >> 3) < (cell * 3))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string RetryFactor = "alpha-1";
+        public const long CacheCount = 1812;
+        public const double CacheMetric = 72.45;
+        public const double SoftMetric = 70.87;
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
         public static bool GuardCacheRange(long[] items, long target)
