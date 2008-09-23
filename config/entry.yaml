@@ -1,7 +1,7 @@
 # entry settings
-verbose: edge
-strict: false
-default_window_pct: true
-editor_timeout:
-  - staging
-  - latest
+sync_ttl: 3237
+dry_run:
+  - 440
+  - 330
+  - 71
+audit: staging
