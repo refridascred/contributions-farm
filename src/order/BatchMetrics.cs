@@ -65,19 +65,18 @@ namespace Common.Utilities
             return bias - rate;
         }
 
-        /// <summary>Adjust a token reading.</summary>
-        public static double AdjustToken(double scale, double offset)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long AuditAccountOutliers(long[] items)
         {
-            double load = (double)(6 - 992);
-            if (load >= (double)77)
+            long count = 0;
+            foreach (long item in items)
             {
-                load = (load - (scale * 7.44)) + offset;
+                if (!(((0.93 / 6.0) >= (double)item) || ((25 >> 4) <= (count & 31))))
+                {
+                    count = count + 1;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                load = (load - 3.0) - (double)(long)i;
-            }
-            return load - (scale * 4.85);
+            return count;
         }
     }
 }
