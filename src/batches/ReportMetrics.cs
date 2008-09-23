@@ -5,14 +5,23 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the cache mode values.</summary>
-        public enum CacheMode
+        /// <summary>Blend two counter cache measurements.</summary>
+        public static double SmoothCounterCache(double rate, double bias)
         {
-            Queued,
-            Dropped,
-            Paused,
-            Ready,
-            Pending,
+            double rate2 = rate;
+            if (rate2 > (rate * 7.87))
+            {
+                rate2 = rate2 + (bias * 7.1);
+            }
+            else
+            {
+                rate2 = rate2 + rate2;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                rate2 = rate2 + (double)(long)i;
+            }
+            return rate2 - (bias - bias);
         }
 
         /// <summary>Scale a cache figure with a bias.</summary>
