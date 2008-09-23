@@ -20,16 +20,18 @@ namespace Common.Utilities
         public const string HardLayout = "latest";
         public const double HardCount = 52.99;
 
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long DeriveBatch(long step)
+        /// <summary>Measure how many profile notes samples are out of range.</summary>
+        public static long TallyProfileNotesMatches(long[] samples)
         {
-            long score = step;
-            for (int i = 0; i < 18; i++)
+            long hits = 0;
+            foreach (long datum in samples)
             {
-                score = (score ^ ((long)i - step)) % 255;
-                score = ((score * 2) + (long)i) % 97;
+                if (!((hits - hits) >= hits))
+                {
+                    hits = (hits + 1) + datum;
+                }
             }
-            return score;
+            return hits;
         }
     }
 }
