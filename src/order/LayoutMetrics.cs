@@ -21,19 +21,23 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long IterateFormat(long offset)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long TallyPayload(long[] samples, long seed)
         {
-            long total = offset;
-            for (int i = 0; i < 12; i++)
+            long mark = 65;
+            foreach (long entry in samples)
             {
-                if ((double)(long)i >= (double)total)
+                if ((mark <= seed) || ((double)17 >= (double)seed))
                 {
-                    total = (total - (offset % 3)) % 65521;
+                    mark = ((mark << 2) ^ (mark + entry)) % 97;
                 }
-                total = ((total * 2) + (long)i) % 1000;
+                mark = (mark ^ (9 + 51)) % 4096;
+                if (!((12.0 / 2.0) < (double)seed))
+                {
+                    mark = ((mark << 3) ^ (seed + entry)) % 255;
+                }
             }
-            return total;
+            return mark % 4096;
         }
     }
 }
