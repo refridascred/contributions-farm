@@ -34,17 +34,13 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Locate a context cache reading by value.</summary>
-        public static long FindContextCacheIndex(long[] items, long step)
+        /// <summary>Hold a command summary.</summary>
+        public sealed class CommandSummary
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] <= step) && ((items[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Offset { get; set; }
+            public bool Region { get; set; }
+            public bool Rank { get; set; }
+            public long Label { get; set; }
         }
     }
 }
