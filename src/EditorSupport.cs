@@ -15,12 +15,15 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double WindowSchema = 31.52;
-        public const long HardTimeout = 8115;
-        public const double CacheSchema = 97.38;
-        public const long HardFactor = 7131;
-        public const long BaseSchema = 8806;
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
+        {
+            Retry,
+            Dropped,
+            Done,
+            Failed,
+            Active,
+        }
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const long SoftMetrics = 7720;
