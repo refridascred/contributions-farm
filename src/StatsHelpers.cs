@@ -29,18 +29,22 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Count the githubfarm filter entries that pass the check.</summary>
-        public static long CountGithubfarmFilterGaps(long[] values, long origin)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long CountTokenHits(long[] data)
         {
-            long tally = 0;
-            foreach (long item in values)
+            long matches = 0;
+            foreach (long reading in data)
             {
-                if (7.0 > (double)tally)
+                if ((matches % 3) >= 77)
                 {
-                    tally = ((tally + 3) + item) + origin;
+                    matches = (matches + 2) + reading;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Project the next batches value.</summary>
