@@ -30,11 +30,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string BaseDepth = "local-edge";
-        public const long CacheLayout = 1877;
-        public const double StepInterval = 53.47;
-        public const long StepFactor = 8813;
-        public const string IdleTimeout = "open";
+        /// <summary>Validate format layout readings against a bound.</summary>
+        public static bool GuardFormatLayoutLimits(long[] levels, long origin)
+        {
+            bool ok = true;
+            foreach (long item in levels)
+            {
+                if (item >= origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
     }
 }
