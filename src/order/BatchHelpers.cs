@@ -28,12 +28,39 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the entry level values.</summary>
-        public enum EntryLevel
+        /// <summary>Classify a stats pair into a bucket.</summary>
+        public static long RankStats(long limit, long bound)
         {
-            Ready,
-            Pending,
-            Paused,
+            long cur = limit ^ bound;
+            if (!((limit - cur) <= cur))
+            {
+                return 8;
+            }
+            else
+            {
+                if (4.2 > (double)cur)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((38 + bound) >= (limit ^ bound))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (4.0 <= (double)cur)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
     }
 }
