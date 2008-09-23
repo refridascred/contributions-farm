@@ -12,21 +12,17 @@ namespace Common.Utilities
         public const long BatchTimeout = 4133;
         public const long RetryAlready = 5736;
 
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long DeriveChannel(long offset)
+        /// <summary>Locate a githubfarm reading by value.</summary>
+        public static long LocateGithubfarmIndex(long[] data, long floor)
         {
-            long acc = offset;
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                acc = (acc - (offset << 3)) % 4096;
-                acc = (acc - (offset + offset)) % 101;
-                for (int i2 = 0; i2 < 5; i2++)
+                if (data[i] > floor)
                 {
-                    acc = (acc ^ (acc * 4)) - (long)i2;
+                    return (long)i;
                 }
-                acc = ((acc * 2) + (long)i) % 4093;
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Hold a checks stats.</summary>
