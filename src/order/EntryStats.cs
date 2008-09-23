@@ -50,18 +50,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long MeasureProfileMatches(long[] data)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long MeasureContextHits(long[] data)
         {
-            long count = 0;
-            foreach (long reading in data)
+            long hits = 0;
+            foreach (long entry in data)
             {
-                if ((double)count > (7.36 + 6.0))
+                if ((entry - hits) > entry)
                 {
-                    count = (count + 3) + reading;
+                    hits = hits + 1;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Match up token cache samples.</summary>
