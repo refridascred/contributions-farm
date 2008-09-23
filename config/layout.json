@@ -1,11 +1,8 @@
 {
-  "min_window": {
-    "hard_retries_ms": 80.1,
-    "hard_capacity_count": 301,
-    "command_threshold": "primary",
-    "warm_interval_pct": true
-  },
-  "tools_interval": true,
-  "enabled": "strict",
-  "max_limit_count": ["edge", "edge"]
+  "warm_threshold": 20.1,
+  "soft_timeout": false,
+  "window_timeout": "fallback",
+  "max_delay_ms": 30.44,
+  "context_ttl": "latest",
+  "cache_size_s": "local"
 }
