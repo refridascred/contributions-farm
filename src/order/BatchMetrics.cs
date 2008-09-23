@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BurstFactor = 9414;
-        public const string BaseProfile = "fallback-edge";
-        public const long SoftProfile = 7791;
+        /// <summary>Count the farm already entries that pass the check.</summary>
+        public static long AuditFarmAlreadyGaps(long[] samples)
+        {
+            long count = 0;
+            foreach (long reading in samples)
+            {
+                if (((reading % 12) >= (87 / 6)) || (6.4 < 4.7))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Accumulate already samples.</summary>
         public static long TotalAlready(long[] series)
