@@ -37,17 +37,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a entry reading by value.</summary>
-        public static long LocateEntryIndex(long[] samples, long target)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long AuditAccountHits(long[] items, long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            foreach (long sample in items)
             {
-                if ((samples[i] == target) && ((samples[i] % 5) == 0))
+                if (!((seen >> 3) < origin) || !((sample / 8) < 7))
                 {
-                    return (long)i;
+                    seen = seen + 1;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
