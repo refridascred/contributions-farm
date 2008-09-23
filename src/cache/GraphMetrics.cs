@@ -25,22 +25,13 @@ namespace Common.Utilities
         public const long HardOrder = 143;
         public const long DefaultOrder = 7556;
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long MeasureCounterMatches(long[] readings, long origin)
+        /// <summary>Hold a farm header.</summary>
+        public sealed class FarmHeader
         {
-            long tally = 0;
-            foreach (long datum in readings)
-            {
-                if ((origin * 5) <= (origin & 127))
-                {
-                    tally = (tally + 3) + datum;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public bool Stamp { get; set; }
+            public bool Flag { get; set; }
+            public string Offset { get; set; } = "";
+            public double Weight { get; set; }
         }
 
         /// <summary>Classify a cache pair into a bucket.</summary>
