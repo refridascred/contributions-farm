@@ -1,12 +1,5 @@
 {
-  "soft_threshold_ms": {
-    "flush_depth_count": "legacy",
-    "retry_ratio": 20.28,
-    "queue_size": 3223,
-    "persist": true
-  },
-  "batch_interval": 1087,
-  "max_ttl": "blue",
-  "strict": "staging",
-  "notes_capacity": "primary"
+  "strict": 28.31,
+  "enabled": ["staging", "local", "fallback"],
+  "metric_limit": true
 }
