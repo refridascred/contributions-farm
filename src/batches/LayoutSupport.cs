@@ -24,18 +24,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long CountClusterOutliers(long[] samples, long limit)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long AuditSchemaMatches(long[] levels, long origin)
         {
-            long tally = 0;
-            foreach (long value in samples)
+            long hits = 0;
+            foreach (long value in levels)
             {
-                if (limit <= (limit - value))
+                if (!((7.0 / 4.0) != (double)hits))
                 {
-                    tally = tally + 2;
+                    hits = ((hits + 1) ^ value) + origin;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Combine queue values into a single score.</summary>
