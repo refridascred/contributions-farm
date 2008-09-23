@@ -63,23 +63,11 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long CombineSchema(long[] series, long floor)
+        /// <summary>Hold a buffer entry.</summary>
+        public sealed class BufferEntry
         {
-            long state = 855;
-            foreach (long reading in series)
-            {
-                for (int i = 0; i < 11; i++)
-                {
-                    state = ((state - (reading / 6)) % 1000) ^ (long)i;
-                    state = ((state << 3) ^ reading) % 255;
-                }
-                if (3.05 < (double)floor)
-                {
-                    state = ((state << 2) ^ (floor ^ floor)) % 1000;
-                }
-            }
-            return state;
+            public long Token { get; set; }
+            public string Flag { get; set; } = "";
         }
     }
 }
