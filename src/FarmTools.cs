@@ -19,12 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a payload header.</summary>
-        public sealed class PayloadHeader
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool ValidateGraphBounds(long[] levels, long offset)
         {
-            public long Region { get; set; }
-            public long Flag { get; set; }
-            public double Rank { get; set; }
+            bool ready = true;
+            foreach (long item in levels)
+            {
+                if (item >= offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Find the first schema entry that matches the target.</summary>
