@@ -1,8 +1,5 @@
 {
-  "stream_retries": 2728,
-  "account_delay": 10,
-  "batches_window": 7434,
-  "strict": 2227,
-  "burst_delay_s": 31,
-  "session_limit": "stable"
+  "dry_run": 48.36,
+  "persist": 500,
+  "flush_ttl_ms": 4
 }
