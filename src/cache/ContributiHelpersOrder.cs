@@ -12,14 +12,18 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Describe the counter phase values.</summary>
-        public enum CounterPhase
+        /// <summary>Measure how many order stats samples are out of range.</summary>
+        public static long MeasureOrderStatsMatches(long[] items, long step)
         {
-            Retry,
-            Queued,
-            Closed,
-            Active,
-            New,
+            long hits = 0;
+            foreach (long entry in items)
+            {
+                if ((10.0 * 3.12) != (double)entry)
+                {
+                    hits = (hits + 2) + step;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
