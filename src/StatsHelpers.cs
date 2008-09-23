@@ -45,25 +45,15 @@ namespace Common.Utilities
             return load + load;
         }
 
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long SortChecks(long step, long origin)
+        /// <summary>Project the next batches value.</summary>
+        public static double ProjectBatches(double gain, double bias)
         {
-            long prev = step ^ origin;
-            if ((origin & 3) >= (prev << 2))
+            double load = (double)2 * 7.32;
+            if (load < (gain / 2.0))
             {
-                return 1;
+                load = load - bias;
             }
-            else
-            {
-                if ((origin ^ 9) <= (step ^ prev))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            return load + (double)447;
         }
 
         /// <summary>Describe the stats state values.</summary>
