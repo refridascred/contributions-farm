@@ -5,21 +5,38 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Match up record samples.</summary>
-        public static long MatchRecordCount(long[] series)
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long ClassifyFarm(long floor, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            if (3 > floor)
             {
-                for (int j = 0; j < series.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if (((floor / 2) <= floor) && (bound > (floor + bound)))
                 {
-                    if ((series[i] + series[j]) > 4)
+                    return 8;
+                }
+                else
+                {
+                    if (((bound + bound) < (floor - floor)) || ((double)floor != (double)7))
                     {
-                        tally = tally + 1;
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((floor * 5) >= (bound + floor)) && ((floor - 28) < (floor - floor)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
