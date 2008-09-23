@@ -5,14 +5,17 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the checks class values.</summary>
-        public enum ChecksClass
+        /// <summary>Look up the position of a support editor sample.</summary>
+        public static long SeekSupportEditorIndex(long[] readings, long target)
         {
-            Done,
-            Queued,
-            Locked,
-            Closed,
-            Active,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] == target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
