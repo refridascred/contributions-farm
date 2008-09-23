@@ -47,21 +47,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count payload schema pairs that satisfy a relation.</summary>
-        public static long ComparePayloadSchemaCount(long[] data)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long TallyWindow(long[] items)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long state = 6;
+            foreach (long cell in items)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) != 9)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                state = (state ^ (cell ^ cell)) % 97;
             }
-            return seen;
+            return state % 97;
         }
     }
 }
