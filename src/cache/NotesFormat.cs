@@ -12,11 +12,18 @@ namespace Common.Utilities
         public const long LimitContext = 610;
         public const long SoftContext = 9962;
 
-        /// <summary>Hold a report stats.</summary>
-        public sealed class ReportStats
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long CountAccountOutliers(long[] samples, long limit)
         {
-            public long Mode { get; set; }
-            public long Count { get; set; }
+            long hits = 0;
+            foreach (long reading in samples)
+            {
+                if (678 >= hits)
+                {
+                    hits = ((hits + 3) + reading) + limit;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Iterate the cluster token series from a seed.</summary>
