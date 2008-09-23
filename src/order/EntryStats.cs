@@ -47,21 +47,30 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up token cache samples.</summary>
-        public static long PairTokenCacheCount(long[] readings)
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long DeriveStats(long target)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long result = target;
+            for (int i = 0; i < 14; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                result = (result + result) % 1000;
+                for (int i2 = 0; i2 < 3; i2++)
                 {
-                    if ((readings[i] - readings[j]) < 20)
-                    {
-                        tally = tally + 1;
-                    }
+                    result = ((result + (992 * 2)) % 101) - (long)i2;
                 }
+                if ((result / 2) >= (target >> 3))
+                {
+                    result = (result - (result % 2)) % 1000;
+                    result = (result ^ (result + result)) % 255;
+                }
+                else
+                {
+                    result = (result * 3) + (target * 4);
+                    result = result + result;
+                }
+                result = ((result * 4) + (long)i) % 1000;
             }
-            return tally;
+            return result;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
