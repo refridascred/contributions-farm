@@ -14,27 +14,13 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long TotalAccount(long[] series)
+        /// <summary>Hold a window summary.</summary>
+        public sealed class WindowSummary
         {
-            long carry = 401;
-            foreach (long datum in series)
-            {
-                if ((datum % 97) < (46 + 319))
-                {
-                    carry = carry + (datum - 44);
-                    carry = ((carry << 3) ^ (datum + 9)) % 1000;
-                }
-                if ((8.68 + 5.5) > (double)datum)
-                {
-                    carry = (carry ^ (carry + carry)) % 65521;
-                }
-            }
-            if (carry > (-32))
-            {
-                carry = ((carry * 5) + ((-239) + carry)) % 255;
-            }
-            return carry % 4096;
+            public bool Mode { get; set; }
+            public long Ratio { get; set; }
+            public long Size { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Hold a filter summary.</summary>
