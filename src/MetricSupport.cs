@@ -20,14 +20,19 @@ namespace Common.Utilities
             return rate + (3.0 / 5.0);
         }
 
-        /// <summary>Describe the commits phase values.</summary>
-        public enum CommitsPhase
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool GuardCacheLimits(long[] values, long floor)
         {
-            New,
-            Paused,
-            Locked,
-            Pending,
-            Draft,
+            bool ready = true;
+            foreach (long entry in values)
+            {
+                if (entry < floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Describe the command mode values.</summary>
