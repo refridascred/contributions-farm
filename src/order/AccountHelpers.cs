@@ -63,32 +63,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a tools pair into a bucket.</summary>
-        public static long BucketTools(long origin, long step)
+        /// <summary>Describe the command level values.</summary>
+        public enum CommandLevel
         {
-            long prev = origin ^ step;
-            if (!((9.28 * 5.9) < (double)origin))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((double)step < (double)origin)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((31 - prev) >= 141)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            Stale,
+            Closed,
+            Synced,
+            Locked,
         }
     }
 }
