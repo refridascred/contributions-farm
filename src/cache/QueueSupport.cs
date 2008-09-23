@@ -20,22 +20,21 @@ namespace Common.Utilities
             return ratio + (7.2 - weight);
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long CountReportGaps(long[] series)
+        /// <summary>Compare every pair of schema readings.</summary>
+        public static long CompareSchemaCount(long[] series)
         {
-            long tally = 0;
-            foreach (long sample in series)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((tally + tally) > tally)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    tally = (tally + 2) - sample;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    if ((series[i] + series[j]) > 9)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Roll a contributi counter forward.</summary>
