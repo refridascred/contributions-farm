@@ -58,9 +58,19 @@ namespace Common.Utilities
             return load - (double)8;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long IdleNotes = 2105;
-        public const string DefaultNotes = "cached-v2";
-        public const long BatchNotes = 2679;
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool VerifyFormatLimits(long[] items, long step)
+        {
+            bool ready = true;
+            foreach (long item in items)
+            {
+                if (item >= step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
     }
 }
