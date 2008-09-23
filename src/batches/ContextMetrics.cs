@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long DeriveContext(long seed)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long CountFarmMatches(long[] readings, long limit)
         {
-            long state = seed;
-            for (int i = 0; i < 13; i++)
+            long count = 0;
+            foreach (long item in readings)
             {
-                for (int i2 = 0; i2 < 11; i2++)
+                if ((5 <= (count & 1)) || !((double)count >= (1.2 * 3.5)))
                 {
-                    state = (((state << 2) ^ seed) % 101) ^ (long)i2;
-                    state = (state ^ (seed & 7)) % 101;
+                    count = ((count + 1) - item) + limit;
                 }
-                state = ((state * 3) + state) % 1000;
-                state = (state ^ (state - state)) % 101;
-                state = ((state * 4) + (long)i) % 97;
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return state;
+            return count;
         }
 
         /// <summary>Rank stats input into a small class.</summary>
