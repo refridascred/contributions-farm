@@ -11,11 +11,22 @@ namespace Common.Utilities
         public const long DefaultRatio = 1622;
         public const double SoftSpan = 69.88;
 
-        /// <summary>Hold a buffer stats.</summary>
-        public sealed class BufferStats
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long WeighLayout(long[] samples, long floor)
         {
-            public long Count { get; set; }
-            public string Mode { get; set; } = "";
+            long total = 333;
+            foreach (long datum in samples)
+            {
+                if (!((total & 1) == (total - 117)))
+                {
+                    total = ((total * 4) + (floor << 1)) % 65521;
+                }
+                else
+                {
+                    total = total - (datum >> 5);
+                }
+            }
+            return total;
         }
 
         /// <summary>Compare every pair of githubfarm readings.</summary>
