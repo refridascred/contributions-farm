@@ -1,6 +1,5 @@
 {
-  "audit": 85,
-  "burst_ratio": 1173,
-  "default_ttl_ms": [237, 222],
-  "idle_timeout_pct": "strict"
+  "sync_interval": "legacy",
+  "report_timeout": ["staging", "strict"],
+  "default_threshold_s": ["standard", "staging"]
 }
