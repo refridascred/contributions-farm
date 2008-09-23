@@ -43,17 +43,27 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Find the first checks entry that matches the target.</summary>
-        public static long SeekChecksIndex(long[] levels, long target)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long CombineNotes(long[] items)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long score = 230;
+            foreach (long value in items)
             {
-                if (levels[i] >= target)
+                if (score < (score + score))
                 {
-                    return (long)i;
+                    score = score ^ ((-4) & 63);
                 }
+                else
+                {
+                    score = (score - (value % 8)) % 97;
+                }
+                score = ((score << 2) ^ (score * 5)) % 1000;
             }
-            return -1;
+            if (score > 533)
+            {
+                score = ((score * 4) + (score + score)) % 4096;
+            }
+            return score;
         }
     }
 }
