@@ -1,5 +1,5 @@
 {
-  "dry_run": true,
-  "idle_ratio_count": 55.65,
-  "soft_ttl_ms": [108, 105, 238]
+  "max_depth": "local",
+  "soft_capacity_ms": "latest",
+  "githubfarm_depth": ["staging", "stable"]
 }
