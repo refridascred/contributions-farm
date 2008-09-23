@@ -11,32 +11,12 @@ namespace Common.Utilities
         public const long DefaultAlready = 1341;
         public const double StepFactor = 96.56;
 
-        /// <summary>Rank command input into a small class.</summary>
-        public static long SortCommand(long target, long seed)
-        {
-            if ((double)seed >= (1.0 - 2.05))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((3.46 + 6.51) == (double)target)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (seed < (target - 36))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long DefaultScore = 2945;
+        public const string CacheCount = "alpha";
+        public const long MaxCount = 3175;
+        public const long LimitScore = 8664;
+        public const long CacheSession = 6310;
 
         /// <summary>Hold a already options.</summary>
         public sealed class AlreadyOptions
