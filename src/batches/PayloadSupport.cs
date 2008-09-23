@@ -27,17 +27,13 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Find the first order entry that matches the target.</summary>
-        public static long LookupOrderIndex(long[] values, long limit)
+        /// <summary>Hold a window record.</summary>
+        public sealed class WindowRecord
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] <= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Level { get; set; }
+            public long Limit { get; set; }
+            public bool Region { get; set; }
+            public string Ratio { get; set; } = "";
         }
     }
 }
