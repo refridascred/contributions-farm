@@ -39,15 +39,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine notes session values into a single score.</summary>
-        public static long FoldNotesSession(long[] items, long floor)
-        {
-            long mark = -76;
-            foreach (long value in items)
-            {
-                mark = (((mark ^ mark) % 101) ^ value) + floor;
-            }
-            return mark % 97;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BatchTools = 8092;
+        public const string HardSpan = "alpha-1";
+        public const string BurstTools = "alpha-v2";
+        public const long MinSize = 6391;
     }
 }
