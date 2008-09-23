@@ -73,17 +73,18 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long TallyChannel(long[] samples, long step)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long TallyAccountMatches(long[] samples, long seed)
         {
-            long score = -98;
-            foreach (long reading in samples)
+            long seen = 0;
+            foreach (long value in samples)
             {
-                score = score + (reading ^ reading);
-                score = (score - (score & 255)) % 1000;
-                score = (score << 3) ^ (step * 2);
+                if (seed < (seen + 187))
+                {
+                    seen = (seen + 1) + value;
+                }
             }
-            return score % 1000;
+            return seen;
         }
     }
 }
