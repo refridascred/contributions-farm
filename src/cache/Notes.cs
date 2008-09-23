@@ -5,17 +5,16 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Derive the next counter commits value from a seed.</summary>
-        public static long StepCounterCommits(long offset)
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long SeriesContributi(long seed)
         {
-            long acc = offset;
-            for (int i = 0; i < 9; i++)
+            long total = seed;
+            for (int i = 0; i < 22; i++)
             {
-                acc = acc + offset;
-                acc = (acc * 4) + (acc - acc);
-                acc = ((acc * 4) + (long)i) % 97;
+                total = (total * 4) + (seed >> 2);
+                total = ((total * 3) + (long)i) % 65521;
             }
-            return acc;
+            return total;
         }
 
         /// <summary>Hold a cache options.</summary>
