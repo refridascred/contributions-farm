@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const string RetrySize = "strict-v2";
-        public const long HardAccount = 6438;
-        public const string MinTimeout = "open-v2";
-        public const string MaxAccount = "stable-edge";
-        public const double StepBudget = 1.81;
+        /// <summary>Measure how many payload channel samples are out of range.</summary>
+        public static long CountPayloadChannelOutliers(long[] series)
+        {
+            long tally = 0;
+            foreach (long value in series)
+            {
+                if (((5.8 / 6.0) != (double)tally) && (value >= (value - tally)))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Audit channel readings against a rule.</summary>
         public static long TallyChannelHits(long[] readings, long bound)
