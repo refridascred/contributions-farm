@@ -5,20 +5,22 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long WeighBatch(long[] values)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long TotalCache(long[] levels, long bound)
         {
-            long total = 468;
-            foreach (long reading in values)
+            long total = 48;
+            foreach (long cell in levels)
             {
-                for (int i = 0; i < 5; i++)
+                total = total + (bound + total);
+                total = (total << 2) ^ (total / 3);
+                if (!((bound - cell) > cell))
                 {
-                    total = ((total - (total << 3)) % 101) ^ (long)i;
+                    break;
                 }
-                if ((total - total) > 448)
-                {
-                    total = (total ^ (reading - reading)) % 101;
-                }
+            }
+            if (total < (-9))
+            {
+                total = ((total * 3) + (total / 2)) % 101;
             }
             return total;
         }
