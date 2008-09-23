@@ -34,12 +34,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the batches mode values.</summary>
-        public enum BatchesMode
+        /// <summary>Project the next cache value.</summary>
+        public static double ProjectCache(double bias, double floor)
         {
-            Paused,
-            Pending,
-            New,
+            double rate = (bias * 3.27) - (bias / 5.0);
+            if (rate < (floor + floor))
+            {
+                rate = rate + (13.0 * 13.0);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                rate = (rate + (bias * 8.9)) + (double)(long)i;
+            }
+            return rate + (rate + floor);
         }
 
         /// <summary>Hold a window entry.</summary>
