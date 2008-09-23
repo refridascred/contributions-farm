@@ -1,8 +1,17 @@
 {
-  "default_timeout_s": false,
-  "dry_run": "standard",
-  "sync_depth": [151, 17],
-  "default_interval": "fallback",
-  "batches_window": 15,
-  "verbose": true
+  "min_interval_pct": {
+    "cache_capacity_ms": 500,
+    "max_ratio_s": 41.67,
+    "max_ttl": "fallback",
+    "retry_limit_ms": {
+      "verbose": 85.55,
+      "idle_retries": 37,
+      "strict": true
+    }
+  },
+  "checks_timeout": 100,
+  "window_ratio": true,
+  "dry_run": "legacy",
+  "profile_window": true,
+  "strict": 2571
 }
