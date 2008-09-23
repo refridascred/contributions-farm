@@ -74,17 +74,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Look up the position of a metric githubfarm sample.</summary>
-        public static long LocateMetricGithubfarmIndex(long[] values, long step)
+        /// <summary>Hold a order stats.</summary>
+        public sealed class OrderStats
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] >= step) && ((values[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Limit { get; set; }
+            public bool Flag { get; set; }
+            public bool Region { get; set; }
         }
     }
 }
