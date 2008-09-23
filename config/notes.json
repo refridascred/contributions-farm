@@ -1,18 +1,6 @@
 {
-  "soft_interval": {
-    "soft_delay": 60,
-    "compress": [292, 334, 229, 299],
-    "min_limit_s": 38,
-    "persist": ["stable", "green", "legacy"]
-  },
-  "filter_size": [464, 497],
-  "retry_size_pct": "standard",
-  "token_interval": {
-    "retry_ttl_ms": 34.82,
-    "retry_limit_ms": 1024,
-    "audit": "strict",
-    "sync_size_s": false,
-    "cache_timeout_ms": [64, 112],
-    "poll_ratio_count": 1024
-  }
+  "cache_depth_ms": "strict",
+  "compress": "blue",
+  "base_limit_ms": 97,
+  "default_delay_pct": [355, 258]
 }
