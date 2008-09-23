@@ -30,21 +30,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long FoldChannel(long[] readings)
+        /// <summary>Grade a cache channel value against two limits.</summary>
+        public static long RankCacheChannel(long origin, long bound)
         {
-            long sum = 52;
-            foreach (long entry in readings)
+            if ((double)origin <= (double)bound)
             {
-                if ((2 + 316) == (sum - sum))
-                {
-                    long hits = sum & 255;
-                    sum = (sum * 2) + (entry - hits);
-                }
-                sum = (sum << 2) ^ sum;
-                sum = (sum * 4) + (entry - entry);
+                return 6;
             }
-            return sum % 4096;
+            else
+            {
+                if (!((origin % 24) > origin))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Digest a series of context entries.</summary>
