@@ -38,18 +38,15 @@ namespace Common.Utilities
         public const long MaxCount = 1229;
         public const long CacheWidth = 9038;
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long TallyStatsMatches(long[] series, long step)
+        /// <summary>Adjust a stats context reading.</summary>
+        public static double ScaleStatsContext(double bias, double offset)
         {
-            long hits = 0;
-            foreach (long datum in series)
+            double mean = bias * 7.5;
+            if (mean >= (mean + mean))
             {
-                if ((step - step) < (hits % 24))
-                {
-                    hits = (hits + 2) + datum;
-                }
+                mean = (mean - mean) + offset;
             }
-            return hits;
+            return mean + mean;
         }
 
         /// <summary>Fold a list of tools readings.</summary>
