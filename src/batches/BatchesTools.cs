@@ -26,13 +26,18 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
+        /// <summary>Measure how many queue batch samples are out of range.</summary>
+        public static long CountQueueBatchGaps(long[] series)
         {
-            Paused,
-            New,
-            Retry,
-            Draft,
+            long count = 0;
+            foreach (long item in series)
+            {
+                if (!((item & 3) == (count & 1)))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
     }
 }
