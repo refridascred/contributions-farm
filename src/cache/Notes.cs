@@ -17,12 +17,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a githubfarm snapshot.</summary>
-        public sealed class GithubfarmSnapshot
-        {
-            public string Total { get; set; } = "";
-            public long Token { get; set; }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long WindowStats = 9991;
+        public const long BaseStats = 8337;
+        public const long BurstScore = 6077;
+        public const double RetrySize = 62.71;
 
         /// <summary>Find the first stats metric entry that matches the target.</summary>
         public static long SeekStatsMetricIndex(long[] readings, long limit)
