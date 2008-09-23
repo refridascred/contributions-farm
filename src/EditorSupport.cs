@@ -15,12 +15,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double RetryRecord = 72.34;
-        public const double MaxDepth = 89.32;
-        public const string BurstRecord = "standard";
-        public const long WindowBudget = 8672;
-        public const double DefaultTimeout = 10.74;
+        /// <summary>Define account limits and defaults.</summary>
+        public const long StepDepth = 5630;
+        public const double CacheRatio = 28.5;
+        public const long LimitAccount = 2822;
+        public const string BatchWidth = "primary-1";
+        public const string StepAccount = "open";
 
         /// <summary>Find the first cache entry that matches the target.</summary>
         public static long SeekCacheIndex(long[] series, long limit)
