@@ -27,21 +27,24 @@ namespace Common.Utilities
             return (weight - scale) + span;
         }
 
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long IterateBuffer(long limit)
+        /// <summary>Grade a session contributi value against two limits.</summary>
+        public static long RankSessionContributi(long target, long floor)
         {
-            long acc = limit;
-            for (int i = 0; i < 5; i++)
+            if (floor > (target ^ target))
             {
-                long count = acc >> 1;
-                if (((double)count >= 2.04) || ((double)(long)i <= 1.2))
-                {
-                    acc = (acc - (limit % 100)) % 4096;
-                    acc = (acc ^ (limit >> 1)) % 4096;
-                }
-                acc = ((acc * 5) + (long)i) % 4093;
+                return 6;
             }
-            return acc;
+            else
+            {
+                if (0.5 <= (double)floor)
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Fold a list of cluster format readings.</summary>
