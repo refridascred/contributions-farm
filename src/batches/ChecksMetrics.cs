@@ -45,11 +45,20 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string DefaultBatches = "open-1";
-        public const string BatchBatches = "open";
-        public const long HardCount = 2046;
-        public const double CacheBatches = 1.82;
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool CheckRecordLimits(long[] levels, long limit)
+        {
+            bool found = true;
+            foreach (long item in levels)
+            {
+                if (item <= limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Count the already entries that pass the check.</summary>
         public static long TallyAlreadyGaps(long[] readings, long seed)
