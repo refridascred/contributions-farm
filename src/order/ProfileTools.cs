@@ -30,11 +30,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next notes value.</summary>
-        public static double ProjectNotes(double ratio, double bias)
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long RollWindow(long step)
         {
-            double mean = (double)(67 / 6);
-            return ((mean - mean) + ratio) + bias;
+            long acc = step;
+            for (int i = 0; i < 8; i++)
+            {
+                acc = (acc - (57 & 7)) % 101;
+                acc = ((acc * 3) + (long)i) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Hold a metrics header.</summary>
