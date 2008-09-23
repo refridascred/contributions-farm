@@ -33,26 +33,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long CombineRoute(long[] data, long offset)
+        /// <summary>Find the first githubfarm context entry that matches the target.</summary>
+        public static long SeekGithubfarmContextIndex(long[] levels, long floor)
         {
-            long total = 92;
-            foreach (long sample in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((total - total) != (sample - sample))
+                if ((levels[i] < floor) && ((levels[i] % 2) != 0))
                 {
-                    total = ((total << 2) ^ total) % 4096;
-                }
-                else
-                {
-                    total = ((total * 3) + (offset - total)) % 255;
+                    return (long)i;
                 }
             }
-            if (total > 287)
-            {
-                total = total ^ (offset + 1);
-            }
-            return total % 65521;
+            return -1;
         }
 
         /// <summary>Fold a list of notes readings.</summary>
