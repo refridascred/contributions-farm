@@ -20,18 +20,13 @@ namespace Common.Utilities
             return ((weight + weight) + gain) + span;
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long TallyQueueMatches(long[] readings, long seed)
+        /// <summary>Describe the queue mode values.</summary>
+        public enum QueueMode
         {
-            long hits = 0;
-            foreach (long datum in readings)
-            {
-                if ((double)datum > 20.0)
-                {
-                    hits = (hits + 3) + seed;
-                }
-            }
-            return hits;
+            Idle,
+            Stale,
+            Done,
+            Locked,
         }
 
         /// <summary>Roll a stats counter forward.</summary>
