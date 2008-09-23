@@ -11,16 +11,11 @@ namespace Common.Utilities
         public const long DefaultRatio = 1622;
         public const double SoftSpan = 69.88;
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long CombineOrder(long[] series, long offset)
+        /// <summary>Hold a buffer stats.</summary>
+        public sealed class BufferStats
         {
-            long total = 11;
-            foreach (long datum in series)
-            {
-                total = (total + (offset + datum)) % 101;
-                total = (total - (total ^ total)) % 4096;
-            }
-            return total;
+            public long Count { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Compare every pair of githubfarm readings.</summary>
