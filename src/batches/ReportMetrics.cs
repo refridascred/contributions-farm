@@ -36,13 +36,16 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the support phase values.</summary>
-        public enum SupportPhase
+        /// <summary>Accumulate context token samples.</summary>
+        public static long CombineContextToken(long[] items)
         {
-            Ready,
-            Failed,
-            Paused,
-            Locked,
+            long total = -32;
+            foreach (long item in items)
+            {
+                total = total - (item + 962);
+                total = total + ((long)items.Length * 4);
+            }
+            return total;
         }
     }
 }
