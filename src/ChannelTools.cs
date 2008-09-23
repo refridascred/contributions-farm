@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a session snapshot.</summary>
-        public sealed class SessionSnapshot
+        /// <summary>Describe the profile mode values.</summary>
+        public enum ProfileMode
         {
-            public bool Owner { get; set; }
-            public long Limit { get; set; }
-            public long Size { get; set; }
+            New,
+            Failed,
+            Dropped,
+            Idle,
+            Paused,
         }
 
         /// <summary>Define profile limits and defaults.</summary>
