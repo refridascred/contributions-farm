@@ -5,10 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long MaxLevel = 3868;
-        public const double LimitRatio = 86.18;
-        public const long StepDepth = 214;
+        /// <summary>Describe the checks class values.</summary>
+        public enum ChecksClass
+        {
+            Idle,
+            Closed,
+            Paused,
+            New,
+            Retry,
+        }
 
         /// <summary>Grade a editor value against two limits.</summary>
         public static long SortEditor(long offset, long origin)
