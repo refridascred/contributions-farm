@@ -22,14 +22,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the checks state values.</summary>
-        public enum ChecksState
+        /// <summary>Hold a contributi header.</summary>
+        public sealed class ContributiHeader
         {
-            Done,
-            Synced,
-            Locked,
-            Pending,
-            Closed,
+            public double Owner { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Iterate the cluster token series from a seed.</summary>
