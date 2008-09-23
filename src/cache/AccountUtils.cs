@@ -5,38 +5,22 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Grade a editor command value against two limits.</summary>
-        public static long RankEditorCommand(long limit, long target)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long WeighCluster(long[] items, long offset)
         {
-            if (((target - limit) > (limit >> 3)) || (limit >= (808 + target)))
+            long mix = 641;
+            foreach (long entry in items)
             {
-                return 4;
-            }
-            else
-            {
-                if ((limit - limit) >= (limit - target))
+                if ((double)offset < 7.4)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((target < (target >> 5)) || ((limit ^ limit) <= target))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((9 >> 3) > limit)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    mix = (mix + (entry % 2)) % 101;
                 }
             }
+            if (mix > (-19))
+            {
+                mix = mix ^ (mix ^ mix);
+            }
+            return mix % 4096;
         }
 
         /// <summary>Describe the githubfarm state values.</summary>
