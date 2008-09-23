@@ -51,21 +51,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Compare every pair of support stream readings.</summary>
-        public static long OverlapSupportStreamCount(long[] data)
+        /// <summary>Hold a commits snapshot.</summary>
+        public sealed class CommitsSnapshot
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) == 19)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public string Limit { get; set; } = "";
+            public double Score { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Compare every pair of payload readings.</summary>
