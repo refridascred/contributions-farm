@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long StepWidth = 445;
-        public const long BurstAlready = 5739;
-        public const long DefaultAlready = 1341;
-        public const double StepFactor = 96.56;
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long SeriesRecord(long floor)
+        {
+            long mark = floor;
+            for (int i = 0; i < 21; i++)
+            {
+                if ((double)4 > (double)(long)i)
+                {
+                    mark = mark - mark;
+                }
+                mark = ((mark * 4) + (long)i) % 65521;
+            }
+            return mark;
+        }
 
         /// <summary>Define session limits and defaults.</summary>
         public const long DefaultScore = 2945;
