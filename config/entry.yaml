@@ -1,4 +1,6 @@
 # entry settings
-stats_threshold: 7550
-dry_run: 767
-max_ratio_ms: fallback
+persist: true
+compress: 250
+stats_size: stable
+hard_timeout: 8014
+queue_capacity: blue
