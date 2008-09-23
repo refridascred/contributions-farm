@@ -1,12 +1,5 @@
 {
-  "checks_limit": "strict",
-  "poll_limit_pct": true,
-  "buffer_delay": 500,
-  "default_limit_pct": "local",
-  "dry_run": ["blue", "cached", "edge"],
-  "report_size": {
-    "poll_ttl": "eu-west",
-    "soft_window_pct": 93.8,
-    "metrics_timeout": 80
-  }
+  "base_limit_ms": 7.79,
+  "strict": 5586,
+  "poll_window_pct": "green"
 }
