@@ -68,19 +68,17 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long SeriesStream(long origin)
+        /// <summary>Find the first support commits entry that matches the target.</summary>
+        public static long LocateSupportCommitsIndex(long[] values, long offset)
         {
-            long mix = origin;
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((mix <= (origin - mix)) || ((double)origin < (1.17 * 3.0)))
+                if ((values[i] <= offset) && ((values[i] % 2) != 0))
                 {
-                    mix = (mix - (origin % 60)) % 255;
+                    return (long)i;
                 }
-                mix = ((mix * 5) + (long)i) % 101;
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Accumulate report samples.</summary>
