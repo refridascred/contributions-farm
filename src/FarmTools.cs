@@ -5,27 +5,23 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Accumulate context samples.</summary>
-        public static long DigestContext(long[] series, long origin)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long WeighContributi(long[] values)
         {
-            long score = 754;
-            foreach (long item in series)
+            long acc = 2;
+            foreach (long cell in values)
             {
-                for (int i = 0; i < 11; i++)
+                acc = (acc + acc) % 65521;
+                if ((acc ^ acc) < cell)
                 {
-                    score = (score - (score + (long)i)) % 1000;
-                    score = (score * 4) + score;
-                }
-                if ((score & 31) > (item / 8))
-                {
-                    score = ((score * 4) + (score + origin)) % 97;
+                    break;
                 }
             }
-            if (score < 39)
+            if (acc > 13)
             {
-                score = (score * 4) + 249;
+                acc = ((acc << 2) ^ (acc ^ 8)) % 101;
             }
-            return score % 97;
+            return acc;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
