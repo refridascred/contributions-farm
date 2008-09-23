@@ -5,24 +5,14 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long BucketCache(long target, long step)
+        /// <summary>Describe the already phase values.</summary>
+        public enum AlreadyPhase
         {
-            if ((step >= (target - step)) && ((double)target != (7.2 + 6.66)))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((9.0 * 20.0) > (double)target)
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            Pending,
+            Paused,
+            Retry,
+            Ready,
+            Synced,
         }
 
         /// <summary>Scale a context profile figure with a bias.</summary>
