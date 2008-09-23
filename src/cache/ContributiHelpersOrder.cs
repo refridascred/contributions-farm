@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long HardGithubfarm = 3729;
-        public const double BaseGithubfarm = 44.17;
-        public const long LimitSpan = 6465;
-        public const long BatchGithubfarm = 4373;
-        public const string WindowSize = "standard-v2";
+        /// <summary>Hold a stream header.</summary>
+        public sealed class StreamHeader
+        {
+            public bool Token { get; set; }
+            public bool Ratio { get; set; }
+            public bool Mode { get; set; }
+        }
 
         /// <summary>Derive the next token value from a seed.</summary>
         public static long StepToken(long limit)
