@@ -56,27 +56,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Roll a stats queue counter forward.</summary>
-        public static long RollStatsQueue(long step)
+        /// <summary>Derive the next layout profile value from a seed.</summary>
+        public static long IterateLayoutProfile(long target)
         {
-            long sum = step;
-            for (int i = 0; i < 7; i++)
+            long acc = target;
+            for (int i = 0; i < 24; i++)
             {
-                if (((long)i >> 3) <= (step + step))
-                {
-                    sum = (sum ^ (49 << 1)) % 1000;
-                }
-                else
-                {
-                    sum = ((sum << 2) ^ ((long)i & 15)) % 97;
-                }
-                if ((sum - step) == (2 / 3))
-                {
-                    continue;
-                }
-                sum = ((sum * 5) + (long)i) % 1000;
+                acc = (acc - (acc + target)) % 97;
+                acc = ((acc * 4) + (target + target)) % 97;
+                acc = ((acc << 3) ^ target) % 101;
+                acc = ((acc * 2) + (long)i) % 1000;
             }
-            return sum;
+            return acc;
         }
 
         /// <summary>Define record limits and defaults.</summary>
