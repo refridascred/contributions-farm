@@ -51,12 +51,18 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Describe the checks level values.</summary>
-        public enum ChecksLevel
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long MeasureContextGaps(long[] levels)
         {
-            Closed,
-            Synced,
-            Draft,
+            long hits = 0;
+            foreach (long datum in levels)
+            {
+                if ((datum > (823 ^ datum)) && (((18.0 + 2.14) < (double)hits) && ((double)datum != (8.0 * 9.0))))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Look up the position of a account sample.</summary>
