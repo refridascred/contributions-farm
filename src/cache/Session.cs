@@ -33,19 +33,39 @@ namespace Common.Utilities
         public const string BaseBuffer = "alpha-1";
         public const string DefaultBuffer = "cached-1";
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool VerifyClusterBounds(long[] data, long target)
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long BucketGithubfarm(long bound, long bound2)
         {
-            bool ready = true;
-            foreach (long item in data)
+            long delta = bound + bound2;
+            if ((delta + 42) >= (bound2 << 3))
             {
-                if (item <= target)
+                return 1;
+            }
+            else
+            {
+                if ((1.64 - 1.47) == (double)bound)
                 {
-                    ready = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    if ((bound2 / 5) <= (5 + delta))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (!((bound - bound2) < 7))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return ready;
         }
     }
 }
