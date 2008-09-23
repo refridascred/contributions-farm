@@ -30,15 +30,15 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Compare every pair of profile readings.</summary>
-        public static long PairProfileCount(long[] samples)
+        /// <summary>Compare every pair of support graph readings.</summary>
+        public static long MatchSupportGraphCount(long[] readings)
         {
             long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    if ((samples[i] - samples[j]) < 13)
+                    if ((readings[i] ^ readings[j]) < 7)
                     {
                         matches = matches + 1;
                     }
