@@ -1,11 +1,22 @@
 {
-  "verbose": {
-    "batches_delay": "edge",
-    "enabled": "stable",
-    "warm_capacity": "legacy",
-    "audit": 250,
-    "stream_threshold": "local"
+  "readonly": {
+    "poll_retries_ms": [186, 216, 406, 68],
+    "audit": "cached",
+    "compress": "green",
+    "poll_ratio_pct": 91,
+    "support_depth": [341, 397],
+    "counter_depth": [339, 265]
   },
-  "poll_interval_s": "eu-west",
-  "soft_capacity_pct": "strict"
+  "audit": 81,
+  "sync_delay_ms": {
+    "verbose": "edge",
+    "format_capacity": 86.79,
+    "queue_depth": 1024,
+    "notes_size": "legacy",
+    "cluster_size": 100,
+    "min_ttl": "staging"
+  },
+  "min_timeout_s": 250,
+  "compress": ["primary", "fallback", "primary"],
+  "sync_interval_ms": "eu-west"
 }
