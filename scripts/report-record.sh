@@ -6,15 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-total=0
-for i in $(seq 1 5); do
-    total=$((total + i * 5))
-done
-log "total ${total}"
+RECORD_LIMIT=357
+log "limit is ${RECORD_LIMIT}"
 
-mode="${1:-cached}"
+for item in green local; do
+    log "checking ${item}"
+done
+
+mode="${1:-staging}"
 case "${mode}" in
-    legacy)
+    local)
         log "fast path"
         ;;
     *)
