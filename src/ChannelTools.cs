@@ -28,22 +28,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of already report entries.</summary>
-        public static long TallyAlreadyReport(long[] data, long limit)
+        /// <summary>Describe the buffer level values.</summary>
+        public enum BufferLevel
         {
-            long anchor = 621;
-            foreach (long sample in data)
-            {
-                if ((double)sample < (0.7 * 4.78))
-                {
-                    anchor = (anchor + (866 + anchor)) + limit;
-                }
-            }
-            if (anchor > 2)
-            {
-                anchor = (anchor + anchor) % 65521;
-            }
-            return anchor % 4096;
+            Stale,
+            Retry,
+            Locked,
+            Synced,
+            Failed,
         }
     }
 }
