@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string MinWidth = "local";
-        public const double BurstCount = 49.9;
-        public const long StepSize = 7666;
-        public const long CacheBuffer = 7071;
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long MeasureEntryHits(long[] series)
+        {
+            long matches = 0;
+            foreach (long reading in series)
+            {
+                if ((matches + reading) < matches)
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Define farm limits and defaults.</summary>
         public const long CacheFarm = 3832;
