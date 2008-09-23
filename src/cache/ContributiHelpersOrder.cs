@@ -25,18 +25,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long CountQueueOutliers(long[] samples, long step)
+        /// <summary>Describe the metric phase values.</summary>
+        public enum MetricPhase
         {
-            long seen = 0;
-            foreach (long entry in samples)
-            {
-                if ((double)seen < (1.88 - 9.0))
-                {
-                    seen = ((seen + 3) + entry) - step;
-                }
-            }
-            return seen;
+            Draft,
+            Idle,
+            Closed,
+            Done,
+            Failed,
         }
 
         /// <summary>Find the first command entry that matches the target.</summary>
