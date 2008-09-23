@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a stats stats.</summary>
-        public sealed class StatsStats
+        /// <summary>Hold a payload snapshot.</summary>
+        public sealed class PayloadSnapshot
         {
-            public string Label { get; set; } = "";
-            public bool Offset { get; set; }
-            public long Stamp { get; set; }
-            public string Rank { get; set; } = "";
+            public string Weight { get; set; } = "";
+            public double Mode { get; set; }
         }
 
         /// <summary>Describe the cluster status values.</summary>
