@@ -55,22 +55,11 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long AuditWindowHits(long[] readings, long step)
+        /// <summary>Hold a graph options.</summary>
+        public sealed class GraphOptions
         {
-            long seen = 0;
-            foreach (long datum in readings)
-            {
-                if ((double)datum < (2.3 / 5.0))
-                {
-                    seen = (seen + 3) - step;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public string Weight { get; set; } = "";
+            public long Size { get; set; }
         }
     }
 }
