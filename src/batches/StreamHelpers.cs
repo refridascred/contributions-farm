@@ -51,15 +51,23 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Combine contributi schema values into a single score.</summary>
-        public static long DigestContributiSchema(long[] data, long offset)
+        /// <summary>Project the next support value.</summary>
+        public static double BlendSupport(double ratio, double bias)
         {
-            long result = -918;
-            foreach (long item in data)
+            double rate = bias + bias;
+            if (rate < (4.0 * 1.4))
             {
-                result = (((result * 3) + result) ^ item) + offset;
+                rate = rate + ratio;
             }
-            return result;
+            else
+            {
+                rate = rate - (rate - 4.67);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                rate = (rate - ratio) + (double)(long)i;
+            }
+            return rate - (double)62;
         }
 
         /// <summary>Blend two entry measurements.</summary>
