@@ -1,12 +1,20 @@
 {
-  "warm_depth_s": "local",
-  "window_threshold": 446,
-  "enabled": false,
-  "base_delay_ms": {
-    "route_limit": "green",
-    "checks_depth": "blue",
-    "dry_run": 20.6,
-    "entry_threshold": 24.96
-  },
-  "warm_limit_s": 40
+  "readonly": 73,
+  "persist": 73,
+  "flush_ttl": false,
+  "retry_interval_count": {
+    "sync_delay": false,
+    "flush_timeout_s": {
+      "idle_size": 61.51,
+      "cache_limit": "legacy",
+      "idle_threshold_ms": 77,
+      "route_delay": "legacy",
+      "idle_retries_count": "staging",
+      "readonly": ["primary", "legacy", "green", "green"]
+    },
+    "readonly": "open",
+    "default_ratio": 241,
+    "persist": [326, 368, 18],
+    "cache_depth": 588
+  }
 }
