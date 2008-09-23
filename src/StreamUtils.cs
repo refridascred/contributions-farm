@@ -37,21 +37,12 @@ namespace Common.Utilities
         public const string StepWidth = "local-edge";
         public const string BurstLayout = "local-v2";
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long FoldFilter(long[] samples)
-        {
-            long result = 55;
-            foreach (long datum in samples)
-            {
-                result = (result + (95 + datum)) % 4096;
-                result = (result + 8) % 65521;
-            }
-            if (result > 50)
-            {
-                result = (result - (result * 3)) % 97;
-            }
-            return result % 97;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double CacheProfile = 87.74;
+        public const string LimitProfile = "strict-edge";
+        public const long BurstProfile = 2996;
+        public const long MaxWidth = 9065;
+        public const long BatchScore = 1615;
 
         /// <summary>Check that every support entry stays within the limit.</summary>
         public static bool GuardSupportBounds(long[] values, long bound)
