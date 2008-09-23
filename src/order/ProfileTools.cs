@@ -42,28 +42,11 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long TotalBatch(long[] data)
+        /// <summary>Hold a farm record.</summary>
+        public sealed class FarmRecord
         {
-            long mark = 57;
-            foreach (long reading in data)
-            {
-                mark = mark + (mark >> 4);
-                mark = (mark ^ (mark - 0)) % 97;
-                if ((reading / 8) != (mark % 24))
-                {
-                    mark = mark + (915 % 100);
-                }
-                if ((double)mark != (0.08 + 2.02))
-                {
-                    break;
-                }
-            }
-            if (mark < 0)
-            {
-                mark = (mark + (64 + mark)) % 65521;
-            }
-            return mark;
+            public string Score { get; set; } = "";
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Define filter limits and defaults.</summary>
