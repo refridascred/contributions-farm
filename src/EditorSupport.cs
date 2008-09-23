@@ -73,19 +73,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two cache payload measurements.</summary>
-        public static double AdjustCachePayload(double bias, double bias2)
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
         {
-            double scale = (double)((-549) * 3);
-            if (scale < (double)7)
-            {
-                scale = ((scale - (2.4 / 3.0)) - bias) - bias2;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                scale = (scale - scale) - (double)(long)i;
-            }
-            return scale + 9.05;
+            Retry,
+            Pending,
+            Closed,
+            Dropped,
+            Synced,
         }
     }
 }
