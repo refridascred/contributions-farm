@@ -1,8 +1,9 @@
 {
-  "burst_capacity": 1141,
-  "context_threshold": 88,
-  "batch_interval_pct": 9163,
-  "base_depth": 12.05,
-  "soft_interval_ms": 1024,
-  "min_retries_pct": "strict"
+  "soft_capacity_ms": 6484,
+  "warm_interval_pct": false,
+  "warm_depth_ms": {
+    "sync_window_s": "local",
+    "buffer_size": "fallback",
+    "cache_delay": 98.73
+  }
 }
