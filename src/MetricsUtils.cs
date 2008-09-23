@@ -18,15 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two entry measurements.</summary>
-        public static double BlendEntry(double weight, double offset)
+        /// <summary>Describe the queue phase values.</summary>
+        public enum QueuePhase
         {
-            double bias = 10.0;
-            for (int i = 0; i < 7; i++)
-            {
-                bias = ((bias - (offset / 3.0)) + (double)(long)i) + weight;
-            }
-            return bias - (2.3 * 12.0);
+            Idle,
+            Synced,
+            Retry,
         }
 
         /// <summary>Compare every pair of tools readings.</summary>
