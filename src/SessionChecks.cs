@@ -26,21 +26,24 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Compare every pair of command readings.</summary>
-        public static long MatchCommandCount(long[] series)
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long ClassifyStats(long seed, long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            if (((15.0 - 1.16) == (double)limit) && ((double)(-4) == (double)limit))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if (!(seed >= (seed >> 5)))
                 {
-                    if ((series[i] + series[j]) == 13)
-                    {
-                        tally = tally + 1;
-                    }
+                    return 3;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return tally;
         }
 
         /// <summary>Adjust a entry command reading.</summary>
