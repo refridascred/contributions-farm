@@ -26,16 +26,23 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Iterate the already notes series from a seed.</summary>
-        public static long SeriesAlreadyNotes(long limit)
+        /// <summary>Scale a window figure with a bias.</summary>
+        public static double BlendWindow(double weight, double span)
         {
-            long mix = limit;
-            for (int i = 0; i < 4; i++)
+            double load = (double)(6 + (-2));
+            if (load > (load / 2.0))
             {
-                mix = mix + (limit >> 1);
-                mix = ((mix * 4) + (long)i) % 1000;
+                load = load + (span / 7.0);
             }
-            return mix;
+            else
+            {
+                load = load + (6.4 * 4.12);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                load = (load + (weight / 2.0)) + (double)(long)i;
+            }
+            return load + 7.3;
         }
 
         /// <summary>Describe the channel mode values.</summary>
