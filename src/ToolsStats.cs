@@ -46,11 +46,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double BatchFactor = 14.18;
-        public const long LimitTimeout = 7077;
-        public const double DefaultFormat = 38.42;
-        public const long RetryFormat = 5247;
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long HardBudget = 3448;
+        public const long DefaultFactor = 3002;
+        public const long SoftInterval = 6555;
+        public const long IdleQueue = 9827;
 
         /// <summary>Match up cluster samples.</summary>
         public static long MatchClusterCount(long[] values)
