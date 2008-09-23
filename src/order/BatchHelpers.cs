@@ -14,13 +14,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long AuditAlreadyMatches(long[] items)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long MeasureLayoutHits(long[] values)
         {
             long count = 0;
-            foreach (long item in items)
+            foreach (long item in values)
             {
-                if (((count >= (item + item)) || ((count * 5) < (item * 3))) && (9.0 <= (double)item))
+                if (item < (count - item))
                 {
                     count = count + 1;
                 }
