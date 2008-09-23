@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long MeasureRouteGaps(long[] levels, long bound)
+        /// <summary>Hold a schema snapshot.</summary>
+        public sealed class SchemaSnapshot
         {
-            long hits = 0;
-            foreach (long entry in levels)
-            {
-                if (hits < (90 - hits))
-                {
-                    hits = ((hits + 1) + entry) - bound;
-                }
-            }
-            return hits;
+            public double Rank { get; set; }
+            public double Stamp { get; set; }
+            public string Weight { get; set; } = "";
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Find the first githubfarm stream entry that matches the target.</summary>
