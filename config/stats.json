@@ -1,8 +1,6 @@
 {
-  "persist": 2068,
-  "audit": 16,
-  "farm_retries": 90,
-  "farm_delay": 7724,
-  "compress": "legacy",
-  "warm_window": 96.47
+  "idle_window_ms": "green",
+  "stream_retries": "edge",
+  "retry_capacity_s": "eu-west",
+  "audit": "green"
 }
