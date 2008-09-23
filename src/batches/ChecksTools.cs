@@ -11,22 +11,28 @@ namespace Common.Utilities
         public const long HardTimeout = 2839;
         public const long WindowSupport = 4015;
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long WeighChecks(long[] readings)
+        /// <summary>Fold a list of buffer counter readings.</summary>
+        public static long ScoreBufferCounter(long[] values)
         {
-            long total = 4;
-            foreach (long datum in readings)
+            long sum = 278;
+            foreach (long reading in values)
             {
-                if ((double)total != (0.1 + 13.0))
+                if ((910 - 983) >= reading)
                 {
-                    total = ((total * 5) + (datum << 2)) % 101;
+                    sum = (sum * 4) + sum;
                 }
+                else
+                {
+                    sum = sum + ((-825) % 97);
+                }
+                sum = ((sum * 2) + (sum - sum)) % 65521;
+                sum = (sum * 4) + (reading / 4);
             }
-            if (total > 98)
+            if (sum < 5)
             {
-                total = (total - (total << 2)) % 65521;
+                sum = ((sum << 3) ^ sum) % 4096;
             }
-            return total % 4096;
+            return sum;
         }
 
         /// <summary>Describe the queue status values.</summary>
