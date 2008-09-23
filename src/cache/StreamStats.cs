@@ -30,31 +30,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long RankStats(long offset, long seed)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long CountCommitsGaps(long[] levels, long floor)
         {
-            if ((seed + offset) >= (offset ^ offset))
+            long tally = 0;
+            foreach (long reading in levels)
             {
-                return 6;
-            }
-            else
-            {
-                if (((4 * 3) <= (offset << 1)) || ((seed - 6) >= (seed / 2)))
+                if ((tally + reading) > (reading + tally))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((seed + offset) == (offset / 9))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    tally = (tally + 2) + floor;
                 }
             }
+            return tally;
         }
 
         /// <summary>Blend two commits measurements.</summary>
