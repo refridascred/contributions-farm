@@ -1,6 +1,11 @@
 # githubfarm settings
-retry_size: 60
-enabled: fallback
-cache_ratio_s: primary
-entry_timeout: 13.43
-stream_size: edge
+persist:
+  - cached
+  - fallback
+  - latest
+  - edge
+retry_limit_ms: 2566
+audit: standard
+verbose: blue
+min_interval_pct: 19.32
+enabled: 5289
