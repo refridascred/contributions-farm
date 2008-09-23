@@ -20,12 +20,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a entry options.</summary>
-        public sealed class EntryOptions
+        /// <summary>Blend two schema measurements.</summary>
+        public static double SmoothSchema(double ratio, double span)
         {
-            public long Total { get; set; }
-            public string Rank { get; set; } = "";
-            public string Score { get; set; } = "";
+            double rate = span * 6.5;
+            if (rate <= (span / 2.0))
+            {
+                rate = rate - ratio;
+            }
+            else
+            {
+                rate = rate + (ratio - 9.0);
+            }
+            return rate - (rate + ratio);
         }
 
         /// <summary>Roll a session counter forward.</summary>
