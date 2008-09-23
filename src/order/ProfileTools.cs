@@ -13,22 +13,10 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Match up farm samples.</summary>
-        public static long CompareFarmCount(long[] levels)
-        {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) > 9)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long StepCount = 9834;
+        public const string BatchSpan = "latest-edge";
+        public const string WindowNotes = "standard-v2";
 
         /// <summary>Accumulate batch samples.</summary>
         public static long TotalBatch(long[] data)
