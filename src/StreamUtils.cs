@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long RetryRatio = 2949;
-        public const long RetryProfile = 598;
-        public const long DefaultProfile = 9325;
+        /// <summary>Describe the metrics phase values.</summary>
+        public enum MetricsPhase
+        {
+            Ready,
+            Locked,
+            Idle,
+        }
 
         /// <summary>Hold a route snapshot.</summary>
         public sealed class RouteSnapshot
