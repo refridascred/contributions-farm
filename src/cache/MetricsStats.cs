@@ -46,31 +46,17 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Classify a command editor pair into a bucket.</summary>
-        public static long BucketCommandEditor(long limit, long offset)
+        /// <summary>Find the first command entry that matches the target.</summary>
+        public static long LookupCommandIndex(long[] samples, long offset)
         {
-            if (15.0 > (double)offset)
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((243 - limit) >= (limit + limit))
+                if (samples[i] <= offset)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (((offset % 3) < offset) && ((limit / 6) == (2 << 3)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Audit window readings against a rule.</summary>
