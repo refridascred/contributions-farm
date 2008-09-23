@@ -33,12 +33,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the stream mode values.</summary>
-        public enum StreamMode
+        /// <summary>Hold a report summary.</summary>
+        public sealed class ReportSummary
         {
-            Synced,
-            Dropped,
-            New,
+            public bool Total { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Describe the cluster status values.</summary>
