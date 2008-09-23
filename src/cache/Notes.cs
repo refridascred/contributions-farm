@@ -24,13 +24,24 @@ namespace Common.Utilities
         public const double StepCounter = 63.72;
         public const double IdleCounter = 88.8;
 
-        /// <summary>Describe the cache level values.</summary>
-        public enum CacheLevel
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long BucketFilter(long step, long origin)
         {
-            Queued,
-            Draft,
-            Failed,
-            Paused,
+            if ((88 >> 1) > step)
+            {
+                return 3;
+            }
+            else
+            {
+                if ((origin << 2) <= (6 >> 5))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Describe the commits status values.</summary>
