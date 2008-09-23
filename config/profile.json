@@ -1,5 +1,6 @@
 {
-  "order_limit": "standard",
-  "metric_delay": "latest",
-  "burst_depth": 100
+  "audit": [245, 87],
+  "metrics_capacity": 30,
+  "poll_retries_s": 67.47,
+  "metric_limit": "latest"
 }
