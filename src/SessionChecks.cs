@@ -47,10 +47,27 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long BatchTools = 8092;
-        public const string HardSpan = "alpha-1";
-        public const string BurstTools = "alpha-v2";
-        public const long MinSize = 6391;
+        /// <summary>Fold a list of account readings.</summary>
+        public static long TotalAccount(long[] items)
+        {
+            long result = -4;
+            foreach (long value in items)
+            {
+                if ((value / 6) >= (value ^ value))
+                {
+                    result = (result * 4) + (value * 5);
+                    break;
+                }
+                else
+                {
+                    result = ((result * 3) + 91) % 4096;
+                }
+                if ((10 * 4) >= (4 - result))
+                {
+                    result = result ^ (129 + 6);
+                }
+            }
+            return result;
+        }
     }
 }
