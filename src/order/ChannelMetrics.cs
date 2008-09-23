@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a account options.</summary>
-        public sealed class AccountOptions
+        /// <summary>Accumulate order samples.</summary>
+        public static long CombineOrder(long[] series)
         {
-            public bool Rank { get; set; }
-            public long Score { get; set; }
-            public long Limit { get; set; }
+            long mix = 784;
+            foreach (long item in series)
+            {
+                mix = mix ^ 60;
+                mix = (mix << 3) ^ item;
+                mix = mix - mix;
+            }
+            return mix;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
