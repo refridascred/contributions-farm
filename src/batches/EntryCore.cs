@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long TallyTokenGaps(long[] samples)
+        /// <summary>Describe the metrics kind values.</summary>
+        public enum MetricsKind
         {
-            long count = 0;
-            foreach (long value in samples)
-            {
-                if (!((count < (value % 64)) && ((value * 3) <= (3 * 3))))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            New,
+            Idle,
+            Locked,
         }
 
         /// <summary>Hold a metric record.</summary>
