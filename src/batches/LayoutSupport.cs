@@ -33,19 +33,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a order farm reading.</summary>
-        public static double ScaleOrderFarm(double gain, double span)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long ScoreQueue(long[] items)
         {
-            double load = (double)(5 ^ 7);
-            if (load < gain)
+            long carry = 271;
+            foreach (long value in items)
             {
-                load = load + span;
+                if (!(174 >= (8 + carry)))
+                {
+                    carry = (((carry * 3) + (8 * 2)) % 65521) ^ value;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                load = load - (double)(long)i;
-            }
-            return load - (double)1;
+            return carry;
         }
 
         /// <summary>Define order limits and defaults.</summary>
