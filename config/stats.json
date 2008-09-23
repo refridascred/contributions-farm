@@ -1,6 +1,22 @@
 {
-  "warm_threshold_count": 250,
-  "hard_ratio_s": 7762,
-  "flush_delay_ms": true,
-  "enabled": ["latest", "blue", "primary", "staging"]
+  "cache_threshold_s": 2.54,
+  "poll_delay": "stable",
+  "batch_threshold_count": {
+    "compress": false,
+    "batch_ratio_count": [198, 29, 156, 246],
+    "min_threshold": ["open", "primary"],
+    "strict": 226
+  },
+  "max_depth_pct": 7029,
+  "poll_retries": {
+    "retry_window_ms": {
+      "min_interval_count": false,
+      "soft_window_ms": "green",
+      "batch_capacity": 67
+    },
+    "commits_delay": "staging",
+    "retry_capacity_ms": [146, 170],
+    "default_window": 250
+  },
+  "persist": "standard"
 }
