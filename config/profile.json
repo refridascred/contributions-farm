@@ -1,20 +1,12 @@
 {
-  "compress": 36.36,
-  "cache_ttl_count": 7001,
-  "dry_run": "open",
-  "readonly": {
-    "warm_ratio": "eu-west",
-    "filter_retries": {
-      "audit": 79.88,
-      "retry_capacity": 7032,
-      "default_retries": 81.19,
-      "channel_interval": ["blue", "strict"],
-      "idle_delay_s": 250,
-      "default_ratio": 65.76
-    },
-    "cache_capacity_s": "local",
-    "dry_run": false,
-    "idle_retries_ms": true,
-    "editor_depth": "staging"
+  "checks_limit": "strict",
+  "poll_limit_pct": true,
+  "buffer_delay": 500,
+  "default_limit_pct": "local",
+  "dry_run": ["blue", "cached", "edge"],
+  "report_size": {
+    "poll_ttl": "eu-west",
+    "soft_window_pct": 93.8,
+    "metrics_timeout": 80
   }
 }
