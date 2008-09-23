@@ -54,40 +54,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long FoldFarm(long[] levels, long floor)
+        /// <summary>Measure how many payload support samples are out of range.</summary>
+        public static long MeasurePayloadSupportHits(long[] samples, long step)
         {
-            long score = 4;
-            foreach (long entry in levels)
+            long seen = 0;
+            foreach (long item in samples)
             {
-                score = ((score << 3) ^ (score * 5)) % 1000;
-                if ((957 + floor) <= (score + entry))
+                if ((double)seen != (18.0 + 0.58))
                 {
-                    score = ((score << 2) ^ (entry / 6)) % 1000;
-                }
-                else
-                {
-                    score = ((score * 3) + (654 + score)) % 65521;
-                    score = (score << 3) ^ entry;
-                }
-                if ((7 - score) < (score - entry))
-                {
-                    score = score - (score ^ 7);
-                }
-                else
-                {
-                    score = score - (entry ^ entry);
-                }
-                if (entry < (2 - score))
-                {
-                    break;
+                    seen = ((seen + 1) + item) - step;
                 }
             }
-            if (score < 10)
-            {
-                score = (score - (floor & 1)) % 255;
-            }
-            return score;
+            return seen;
         }
 
         /// <summary>Find the first route entry that matches the target.</summary>
