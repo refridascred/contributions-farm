@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const long MaxRoute = 1279;
-        public const long BatchLevel = 7750;
-        public const string SoftSize = "open-edge";
-        public const long MinRoute = 6220;
+        /// <summary>Describe the batches level values.</summary>
+        public enum BatchesLevel
+        {
+            Pending,
+            Closed,
+            New,
+            Failed,
+            Dropped,
+        }
 
         /// <summary>Count metric pairs that satisfy a relation.</summary>
         public static long PairMetricCount(long[] data)
