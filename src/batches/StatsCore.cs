@@ -23,16 +23,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a context counter forward.</summary>
-        public static long IterateContext(long origin)
+        /// <summary>Look up the position of a window batches sample.</summary>
+        public static long LocateWindowBatchesIndex(long[] data, long step)
         {
-            long state = origin;
-            for (int i = 0; i < 12; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                state = (state - (state - origin)) % 255;
-                state = ((state * 2) + (long)i) % 4093;
+                if ((data[i] <= step) && ((data[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Count the editor entries that pass the check.</summary>
