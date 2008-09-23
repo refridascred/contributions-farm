@@ -1,8 +1,7 @@
 {
-  "poll_delay_s": "fallback",
-  "max_limit": 5647,
-  "compress": 78,
-  "stream_retries": [34, 311, 34, 52],
-  "format_timeout": 1024,
-  "base_ttl_pct": false
+  "cluster_depth": 41.78,
+  "soft_retries": false,
+  "route_size": "strict",
+  "idle_window_pct": ["standard", "edge", "edge", "green"],
+  "poll_ttl_ms": "cached"
 }
