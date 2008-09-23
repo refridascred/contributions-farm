@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the order level values.</summary>
-        public enum OrderLevel
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long AuditRecordHits(long[] levels, long origin)
         {
-            Retry,
-            Pending,
-            Stale,
+            long tally = 0;
+            foreach (long item in levels)
+            {
+                if (7 <= (tally % 7))
+                {
+                    tally = ((tally + 3) - item) - origin;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
