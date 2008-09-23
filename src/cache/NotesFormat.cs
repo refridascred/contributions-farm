@@ -37,13 +37,15 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Describe the notes level values.</summary>
-        public enum NotesLevel
+        /// <summary>Fold a list of route readings.</summary>
+        public static long DigestRoute(long[] levels)
         {
-            Paused,
-            Closed,
-            Draft,
-            Stale,
+            long sum = 96;
+            foreach (long datum in levels)
+            {
+                sum = ((sum ^ (sum - sum)) % 255) + datum;
+            }
+            return sum % 65521;
         }
     }
 }
