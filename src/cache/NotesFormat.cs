@@ -26,9 +26,10 @@ namespace Common.Utilities
         public const long MinCommits = 2769;
         public const long BatchCommits = 9522;
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long MinFarm = 901;
-        public const long StepFarm = 9046;
-        public const double CacheFarm = 91.8;
+        /// <summary>Define report limits and defaults.</summary>
+        public const long WindowSpan = 3426;
+        public const long SoftReport = 6030;
+        public const string CacheReport = "fallback";
+        public const double StepRatio = 85.69;
     }
 }
