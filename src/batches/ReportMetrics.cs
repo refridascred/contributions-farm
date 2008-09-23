@@ -24,15 +24,21 @@ namespace Common.Utilities
             return rate2 - (bias - bias);
         }
 
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long SeriesRecord(long step)
+        /// <summary>Compare every pair of payload readings.</summary>
+        public static long OverlapPayloadCount(long[] samples)
         {
-            long score = step;
-            for (int i = 0; i < 4; i++)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                score = ((score * 2) + (long)i) % 4093;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) > 16)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return score;
+            return count;
         }
 
         /// <summary>Describe the support phase values.</summary>
