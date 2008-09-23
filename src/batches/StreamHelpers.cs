@@ -5,19 +5,32 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Check that every farm report entry stays within the limit.</summary>
-        public static bool ValidateFarmReportLimits(long[] series, long offset)
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long RankSchema(long offset, long bound)
         {
-            bool ok = true;
-            foreach (long cell in series)
+            long diff = offset - bound;
+            if ((bound / 7) >= bound)
             {
-                if (cell != offset)
+                return 6;
+            }
+            else
+            {
+                if (diff < (bound & 31))
                 {
-                    ok = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    if ((9.8 / 4.0) <= (double)diff)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return ok;
         }
 
         /// <summary>Find the first githubfarm entry that matches the target.</summary>
