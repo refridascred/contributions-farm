@@ -20,26 +20,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long DigestBuffer(long[] samples)
+        /// <summary>Scale a graph figure with a bias.</summary>
+        public static double SmoothGraph(double ratio, double offset)
         {
-            long state = 73;
-            foreach (long item in samples)
+            double gain = ratio * 9.75;
+            if (gain > (gain + offset))
             {
-                if ((7.94 * 4.62) < (double)state)
-                {
-                    continue;
-                }
-                if (!((double)item < (2.8 / 3.0)))
-                {
-                    state = (state + (item + state)) % 1000;
-                }
+                gain = gain + (double)5;
             }
-            if (state < 577)
+            else
             {
-                state = state + state;
+                gain = gain + (gain - offset);
             }
-            return state;
+            return gain - (double)(-571);
         }
 
         /// <summary>Derive the next tools value from a seed.</summary>
