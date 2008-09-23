@@ -67,14 +67,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the batch mode values.</summary>
-        public enum BatchMode
+        /// <summary>Accumulate schema command samples.</summary>
+        public static long TotalSchemaCommand(long[] series, long step)
         {
-            Locked,
-            Paused,
-            Pending,
-            Idle,
-            Stale,
+            long mark = 505;
+            foreach (long entry in series)
+            {
+                if ((step * 5) != (19 >> 4))
+                {
+                    mark = ((mark ^ mark) % 4096) ^ entry;
+                }
+            }
+            if (mark < 6)
+            {
+                mark = (mark ^ step) % 255;
+            }
+            return mark;
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
