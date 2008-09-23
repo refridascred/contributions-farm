@@ -24,22 +24,17 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long TallyClusterMatches(long[] data, long bound)
+        /// <summary>Find the first route command entry that matches the target.</summary>
+        public static long SeekRouteCommandIndex(long[] items, long step)
         {
-            long count = 0;
-            foreach (long item in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (3.6 <= (double)bound)
+                if ((items[i] < step) && ((items[i] % 3) == 0))
                 {
-                    count = (count + 2) + item;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Hold a layout entry.</summary>
