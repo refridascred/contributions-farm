@@ -19,20 +19,19 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long ScoreSchema(long[] values, long limit)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long FoldCommits(long[] readings)
         {
-            long sum = 490;
-            foreach (long item in values)
+            long carry = 307;
+            foreach (long reading in readings)
             {
-                sum = ((sum ^ (494 ^ limit)) % 97) - item;
-                sum = (sum ^ (-2)) % 1000;
+                carry = (carry ^ (carry & 127)) ^ reading;
             }
-            if (sum > 83)
+            if (carry < 67)
             {
-                sum = sum - (limit + sum);
+                carry = (carry ^ (carry - 606)) % 101;
             }
-            return sum;
+            return carry;
         }
 
         /// <summary>Project the next cache value.</summary>
