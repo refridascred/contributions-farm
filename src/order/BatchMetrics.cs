@@ -5,27 +5,25 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Accumulate stats checks samples.</summary>
-        public static long DigestStatsChecks(long[] data, long seed)
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long RankChannel(long bound, long limit)
         {
-            long state = 362;
-            foreach (long item in data)
+            long delta = bound + limit;
+            if (((delta ^ limit) > limit) || ((bound / 7) < (87 - delta)))
             {
-                if ((state / 8) > seed)
+                return 3;
+            }
+            else
+            {
+                if ((969 + delta) == (limit + limit))
                 {
-                    state = state - (item + 276);
-                    state = (state + seed) % 65521;
-                }
-                if ((-64) >= (6 + seed))
-                {
-                    state = ((state << 2) ^ 148) % 1000;
+                    return 0;
                 }
                 else
                 {
-                    state = ((state * 5) + ((long)data.Length & 3)) % 4096;
+                    return 2;
                 }
             }
-            return state % 4096;
         }
 
         /// <summary>Define token limits and defaults.</summary>
