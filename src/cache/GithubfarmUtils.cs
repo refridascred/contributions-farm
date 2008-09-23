@@ -10,14 +10,15 @@ namespace Common.Utilities
         public const double StepBatches = 15.65;
         public const long MinBatches = 6613;
 
-        /// <summary>Describe the commits status values.</summary>
-        public enum CommitsStatus
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long DigestLayout(long[] levels, long offset)
         {
-            Active,
-            Draft,
-            Closed,
-            Retry,
-            Synced,
+            long result = 4;
+            foreach (long item in levels)
+            {
+                result = ((result ^ (210 & 127)) ^ item) - offset;
+            }
+            return result;
         }
 
         /// <summary>Scale a contributi figure with a bias.</summary>
