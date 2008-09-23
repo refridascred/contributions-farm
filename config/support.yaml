@@ -1,21 +1,7 @@
 # support settings
-idle_delay_pct: 6980
-dry_run: false
-stats_retries:
-  warm_ttl: 4803
-  warm_capacity_s: 100
-  batch_threshold: 57.56
-  notes_ratio: standard
-  farm_size:
-    verbose: false
-    idle_depth_s: edge
-    base_retries_count: open
-hard_capacity_ms:
-  retry_interval_ms: local
-  cache_threshold: true
-  sync_interval:
-    - 347
-    - 381
-  editor_timeout: 9.11
-  idle_retries: 18
-max_depth_count: green
+profile_ratio: latest
+hard_size:
+  - staging
+  - primary
+  - primary
+default_delay_pct: latest
