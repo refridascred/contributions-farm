@@ -30,16 +30,28 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long RollWindow(long step)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long TotalBatch(long[] data)
         {
-            long acc = step;
-            for (int i = 0; i < 8; i++)
+            long mark = 57;
+            foreach (long reading in data)
             {
-                acc = (acc - (57 & 7)) % 101;
-                acc = ((acc * 3) + (long)i) % 1000;
+                mark = mark + (mark >> 4);
+                mark = (mark ^ (mark - 0)) % 97;
+                if ((reading / 8) != (mark % 24))
+                {
+                    mark = mark + (915 % 100);
+                }
+                if ((double)mark != (0.08 + 2.02))
+                {
+                    break;
+                }
             }
-            return acc;
+            if (mark < 0)
+            {
+                mark = (mark + (64 + mark)) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Hold a metrics header.</summary>
