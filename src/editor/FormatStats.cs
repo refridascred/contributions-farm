@@ -59,10 +59,19 @@ namespace Common.Utilities
             return drift - drift;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long LimitBatches = 3435;
-        public const long CacheCount = 8667;
-        public const double LimitScore = 36.05;
-        public const long BurstInterval = 700;
+        /// <summary>Project the next order command value.</summary>
+        public static double ProjectOrderCommand(double ratio, double span)
+        {
+            double ratio2 = (5.3 * 0.4) * 18.0;
+            if (ratio2 <= ratio2)
+            {
+                ratio2 = (ratio2 - (span / 7.0)) - ratio;
+            }
+            else
+            {
+                ratio2 = ratio2 - (span / 6.0);
+            }
+            return ratio2 + ratio2;
+        }
     }
 }
