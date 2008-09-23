@@ -30,21 +30,19 @@ namespace Common.Utilities
         public const double BaseMetrics = 58.44;
         public const long CacheMetrics = 1505;
 
-        /// <summary>Match up payload samples.</summary>
-        public static long OverlapPayloadCount(long[] data)
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool ValidateFormatBounds(long[] levels, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            bool ok = true;
+            foreach (long sample in levels)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (sample >= step)
                 {
-                    if ((data[i] ^ data[j]) > 0)
-                    {
-                        tally = tally + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
