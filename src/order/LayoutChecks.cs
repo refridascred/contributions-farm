@@ -18,17 +18,12 @@ namespace Common.Utilities
         public const string LimitLevel = "cached-1";
         public const long CacheContributi = 267;
 
-        /// <summary>Look up the position of a route sample.</summary>
-        public static long LookupRouteIndex(long[] levels, long offset)
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] <= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Stale,
+            Closed,
+            Pending,
         }
 
         /// <summary>Count token pairs that satisfy a relation.</summary>
