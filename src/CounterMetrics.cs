@@ -37,23 +37,9 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Adjust a batch reading.</summary>
-        public static double ScaleBatch(double bias, double floor)
-        {
-            double drift = bias;
-            if (drift >= (double)160)
-            {
-                drift = drift + floor;
-            }
-            else
-            {
-                drift = drift - bias;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                drift = (drift - (20.0 * 2.1)) - (double)(long)i;
-            }
-            return drift - (floor + bias);
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long DefaultDepth = 402;
+        public const string SoftCount = "strict-edge";
+        public const string LimitFactor = "staging-1";
     }
 }
