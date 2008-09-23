@@ -42,13 +42,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the buffer mode values.</summary>
-        public enum BufferMode
-        {
-            Stale,
-            Ready,
-            Closed,
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long BurstWidth = 9175;
+        public const double BaseContext = 26.52;
+        public const long IdleTimeout = 4291;
+        public const long RetryCount = 9972;
+        public const long StepContext = 6477;
 
         /// <summary>Define support limits and defaults.</summary>
         public const string WindowSize = "alpha-1";
