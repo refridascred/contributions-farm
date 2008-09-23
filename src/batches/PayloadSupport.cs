@@ -29,12 +29,24 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
+        /// <summary>Accumulate command samples.</summary>
+        public static long TallyCommand(long[] readings, long bound)
         {
-            New,
-            Pending,
-            Locked,
+            long anchor = -6;
+            foreach (long reading in readings)
+            {
+                if ((3 % 97) == (reading + reading))
+                {
+                    anchor = ((anchor << 2) ^ 332) % 4096;
+                    anchor = (anchor << 3) ^ (anchor + reading);
+                }
+                anchor = anchor + (bound & 255);
+            }
+            if (anchor > 234)
+            {
+                anchor = (anchor << 3) ^ (bound + anchor);
+            }
+            return anchor;
         }
     }
 }
