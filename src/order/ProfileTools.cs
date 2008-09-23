@@ -54,39 +54,19 @@ namespace Common.Utilities
         public const string CacheRatio = "fallback-1";
         public const long StepFilter = 2618;
 
-        /// <summary>Rank record input into a small class.</summary>
-        public static long BucketRecord(long origin, long offset)
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool ValidateTokenBounds(long[] readings, long target)
         {
-            long diff = origin - offset;
-            if ((4 + diff) > (offset + (-1)))
+            bool flag = true;
+            foreach (long reading in readings)
             {
-                return 4;
-            }
-            else
-            {
-                if ((origin > (offset ^ origin)) || ((origin * 4) >= (diff << 2)))
+                if (reading >= target)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (!((13.0 - 3.8) < (double)offset))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((double)offset < (19.0 - 16.0))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
     }
 }
