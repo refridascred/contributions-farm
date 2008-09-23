@@ -5,14 +5,27 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the channel mode values.</summary>
-        public enum ChannelMode
+        /// <summary>Combine checks counter values into a single score.</summary>
+        public static long TallyChecksCounter(long[] values)
         {
-            Closed,
-            Paused,
-            New,
-            Synced,
-            Dropped,
+            long result = -65;
+            foreach (long value in values)
+            {
+                result = (result ^ (value & 255)) % 1000;
+                if ((723 + value) != (value << 3))
+                {
+                    result = (result << 3) ^ (222 % 5);
+                }
+                else
+                {
+                    result = (result << 2) ^ (result - result);
+                }
+            }
+            if (result < 308)
+            {
+                result = result ^ (result - 830);
+            }
+            return result;
         }
 
         /// <summary>Fold a list of route farm readings.</summary>
