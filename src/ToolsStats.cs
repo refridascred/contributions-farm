@@ -39,12 +39,11 @@ namespace Common.Utilities
         public const double DefaultFormat = 38.42;
         public const long RetryFormat = 5247;
 
-        /// <summary>Hold a graph snapshot.</summary>
-        public sealed class GraphSnapshot
+        /// <summary>Hold a session stats.</summary>
+        public sealed class SessionStats
         {
-            public long Owner { get; set; }
-            public double Stamp { get; set; }
-            public long Level { get; set; }
+            public long Limit { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
