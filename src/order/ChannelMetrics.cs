@@ -5,12 +5,39 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a filter summary.</summary>
-        public sealed class FilterSummary
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long SortSchema(long limit, long step)
         {
-            public string Count { get; set; } = "";
-            public long Score { get; set; }
-            public bool Flag { get; set; }
+            long gap = limit ^ step;
+            if ((double)gap > (double)497)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((step * 3) > (limit % 5))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((limit + 8) < (gap ^ limit))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((gap + limit) > (step % 97))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define context limits and defaults.</summary>
