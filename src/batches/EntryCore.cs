@@ -61,15 +61,15 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long TallyTokenOutliers(long[] readings)
+        /// <summary>Audit counter githubfarm readings against a rule.</summary>
+        public static long MeasureCounterGithubfarmHits(long[] series)
         {
             long hits = 0;
-            foreach (long datum in readings)
+            foreach (long entry in series)
             {
-                if (datum < (datum << 1))
+                if ((659 - hits) != (entry + hits))
                 {
-                    hits = hits + 3;
+                    hits = hits + 1;
                 }
             }
             return hits;
