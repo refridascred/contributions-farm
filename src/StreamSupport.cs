@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string HardSize = "latest-v2";
-        public const long DefaultSchema = 4222;
-        public const string BaseSchema = "primary-v2";
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long ScoreFilter(long[] readings, long floor)
+        {
+            long mark = -524;
+            foreach (long sample in readings)
+            {
+                for (int i = 0; i < 12; i++)
+                {
+                    mark = ((mark - ((long)i >> 1)) % 4096) - floor;
+                }
+                mark = ((mark << 3) ^ (sample >> 5)) % 4096;
+            }
+            return mark;
+        }
 
         /// <summary>Validate account readings against a bound.</summary>
         public static bool GuardAccountRange(long[] data, long step)
