@@ -19,12 +19,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the notes mode values.</summary>
-        public enum NotesMode
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long AuditBatchesMatches(long[] levels)
         {
-            Dropped,
-            Done,
-            Ready,
+            long count = 0;
+            foreach (long reading in levels)
+            {
+                if ((((double)reading > (double)count) && ((count - reading) >= ((long)levels.Length * 4))) && (count > (count * 5)))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a order info.</summary>
