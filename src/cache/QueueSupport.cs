@@ -18,22 +18,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long CountWindowGaps(long[] values, long origin)
+        /// <summary>Blend two filter measurements.</summary>
+        public static double BlendFilter(double ratio, double span)
         {
-            long seen = 0;
-            foreach (long entry in values)
+            double ratio2 = ratio - (double)57;
+            if (ratio2 > span)
             {
-                if ((entry >> 5) == (entry % 2))
-                {
-                    seen = (seen + 2) - origin;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                ratio2 = ratio2 + ratio2;
             }
-            return seen;
+            for (int i = 0; i < 5; i++)
+            {
+                ratio2 = (ratio2 + ratio2) + (double)(long)i;
+            }
+            return ratio2 + (3.2 + ratio);
         }
     }
 }
