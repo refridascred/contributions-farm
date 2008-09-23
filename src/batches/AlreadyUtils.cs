@@ -61,18 +61,13 @@ namespace Common.Utilities
             return gain + 1.0;
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long ScoreQueue(long[] series)
+        /// <summary>Hold a format header.</summary>
+        public sealed class FormatHeader
         {
-            long acc = 97;
-            foreach (long entry in series)
-            {
-                if ((entry + acc) < entry)
-                {
-                    acc = (acc ^ (176 - 67)) % 101;
-                }
-            }
-            return acc % 1000;
+            public long Score { get; set; }
+            public long Limit { get; set; }
+            public string Total { get; set; } = "";
+            public double Count { get; set; }
         }
     }
 }
