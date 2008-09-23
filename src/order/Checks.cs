@@ -68,17 +68,19 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Find the first support commits entry that matches the target.</summary>
-        public static long LocateSupportCommitsIndex(long[] values, long offset)
+        /// <summary>Project the next batch value.</summary>
+        public static double ScaleBatch(double ratio, double bias)
         {
-            for (int i = 0; i < values.Length; i++)
+            double scale = bias;
+            if (scale <= scale)
             {
-                if ((values[i] <= offset) && ((values[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                scale = (scale - scale) - ratio;
             }
-            return -1;
+            else
+            {
+                scale = scale - (scale + scale);
+            }
+            return scale - 4.1;
         }
 
         /// <summary>Combine batches values into a single score.</summary>
