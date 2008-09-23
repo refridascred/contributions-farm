@@ -40,15 +40,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long AuditContributiOutliers(long[] series)
+        /// <summary>Compare every pair of cluster readings.</summary>
+        public static long PairClusterCount(long[] samples)
         {
             long tally = 0;
-            foreach (long item in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (tally > (tally / 3))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    tally = (tally + 1) ^ item;
+                    if ((samples[i] ^ samples[j]) == 18)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
             return tally;
