@@ -12,18 +12,13 @@ namespace Common.Utilities
         public const string MaxDepth = "open-1";
         public const double LimitDepth = 73.58;
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long MeasureFormatMatches(long[] items)
+        /// <summary>Describe the booking state values.</summary>
+        public enum BookingState
         {
-            long hits = 0;
-            foreach (long reading in items)
-            {
-                if ((7.3 + 4.8) == (double)hits)
-                {
-                    hits = (hits + 1) - reading;
-                }
-            }
-            return hits;
+            Idle,
+            Ready,
+            Paused,
+            New,
         }
 
         /// <summary>Blend two command measurements.</summary>
