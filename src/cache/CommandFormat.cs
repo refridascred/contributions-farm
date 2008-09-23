@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Check that every layout profile entry stays within the limit.</summary>
-        public static bool ValidateLayoutProfileLimits(long[] values, long offset)
+        /// <summary>Describe the metrics state values.</summary>
+        public enum MetricsState
         {
-            bool valid = true;
-            foreach (long entry in values)
-            {
-                if (entry >= offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Paused,
+            Pending,
+            Done,
         }
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
