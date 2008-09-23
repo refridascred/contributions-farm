@@ -26,14 +26,10 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a farm header.</summary>
-        public sealed class FarmHeader
-        {
-            public double Token { get; set; }
-            public long Weight { get; set; }
-            public double Region { get; set; }
-            public bool Count { get; set; }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double BaseFactor = 46.57;
+        public const long BurstCommits = 194;
+        public const long WindowCommits = 2869;
 
         /// <summary>Grade a editor value against two limits.</summary>
         public static long GradeEditor(long step, long origin)
