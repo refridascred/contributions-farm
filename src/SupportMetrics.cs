@@ -47,11 +47,12 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long RetryCommand = 898;
-        public const long BurstCommand = 1552;
-        public const long MinCommand = 4977;
-        public const string MaxCommand = "stable-edge";
+        /// <summary>Hold a metrics snapshot.</summary>
+        public sealed class MetricsSnapshot
+        {
+            public long Token { get; set; }
+            public double Offset { get; set; }
+        }
 
         /// <summary>Classify a already pair into a bucket.</summary>
         public static long RankAlready(long step, long seed)
