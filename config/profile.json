@@ -1,12 +1,15 @@
 {
-  "batch_ratio_ms": true,
-  "hard_timeout_ms": {
-    "session_timeout": false,
-    "queue_capacity": false,
-    "default_size_s": "open",
-    "compress": 2164,
-    "burst_ttl_count": ["standard", "cached", "open"],
-    "audit": false
+  "strict": {
+    "farm_threshold": [303, 33, 281, 328],
+    "strict": "strict",
+    "sync_capacity_pct": 72.13,
+    "idle_ttl_count": 1024,
+    "idle_retries_ms": [244, 82, 459, 156],
+    "flush_interval_s": 10
   },
-  "enabled": 2179
+  "queue_retries": "fallback",
+  "flush_window": [309, 307, 233],
+  "account_ttl": false,
+  "account_ratio": 99,
+  "verbose": "cached"
 }
