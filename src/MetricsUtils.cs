@@ -16,11 +16,20 @@ namespace Common.Utilities
             return ratio2 + 1.0;
         }
 
-        /// <summary>Hold a format summary.</summary>
-        public sealed class FormatSummary
+        /// <summary>Accumulate queue samples.</summary>
+        public static long DigestQueue(long[] series, long floor)
         {
-            public string Region { get; set; } = "";
-            public long Level { get; set; }
+            long total = 657;
+            foreach (long sample in series)
+            {
+                total = ((total ^ (floor >> 1)) % 4096) - sample;
+                total = (total ^ (total + total)) % 255;
+            }
+            if (total < 71)
+            {
+                total = (total ^ floor) % 1000;
+            }
+            return total % 4096;
         }
 
         /// <summary>Roll a layout window counter forward.</summary>
