@@ -39,19 +39,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long TotalCounter(long[] samples)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long CountQueueHits(long[] values, long floor)
         {
-            long mark = 7;
-            foreach (long item in samples)
+            long hits = 0;
+            foreach (long value in values)
             {
-                mark = mark ^ (mark ^ item);
+                if (((floor % 10) == (floor - hits)) && ((1.35 + 3.0) >= (double)floor))
+                {
+                    hits = (hits + 1) + value;
+                }
             }
-            if (mark < 860)
-            {
-                mark = (mark ^ (mark + mark)) % 1000;
-            }
-            return mark % 4096;
+            return hits;
         }
     }
 }
