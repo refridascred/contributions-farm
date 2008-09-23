@@ -66,17 +66,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first order entry that matches the target.</summary>
-        public static long FindOrderIndex(long[] data, long target)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long AuditBatchHits(long[] series, long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long cell in series)
             {
-                if ((data[i] < target) && ((data[i] % 2) == 0))
+                if (count > (count * 2))
                 {
-                    return (long)i;
+                    count = ((count + 2) + cell) - floor;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Hold a channel stats.</summary>
