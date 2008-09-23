@@ -49,17 +49,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first tools entry that matches the target.</summary>
-        public static long FindToolsIndex(long[] values, long bound)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool GuardGraphRange(long[] readings, long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool valid = true;
+            foreach (long entry in readings)
             {
-                if ((values[i] == bound) && ((values[i] % 5) == 0))
+                if (entry > floor)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
 
         /// <summary>Find the first filter entry that matches the target.</summary>
