@@ -47,27 +47,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long TotalAccount(long[] items)
+        /// <summary>Count payload schema pairs that satisfy a relation.</summary>
+        public static long ComparePayloadSchemaCount(long[] data)
         {
-            long result = -4;
-            foreach (long value in items)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((value / 6) >= (value ^ value))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    result = (result * 4) + (value * 5);
-                    break;
-                }
-                else
-                {
-                    result = ((result * 3) + 91) % 4096;
-                }
-                if ((10 * 4) >= (4 - result))
-                {
-                    result = result ^ (129 + 6);
+                    if ((data[i] - data[j]) != 9)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return result;
+            return seen;
         }
     }
 }
