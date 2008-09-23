@@ -1,8 +1,5 @@
 {
-  "readonly": 17,
-  "min_threshold_ms": 7.16,
-  "cache_delay_count": "open",
-  "audit": "standard",
-  "retry_capacity": 45.54,
-  "githubfarm_limit": 79
+  "batch_capacity": "latest",
+  "editor_capacity": "local",
+  "payload_size": 75.57
 }
