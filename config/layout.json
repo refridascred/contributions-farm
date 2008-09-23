@@ -1,8 +1,8 @@
 {
-  "strict": 62.9,
-  "soft_capacity_count": 4396,
-  "max_window_count": 46.95,
-  "verbose": [471, 76],
-  "default_interval": ["edge", "standard"],
-  "readonly": "eu-west"
+  "max_depth_count": true,
+  "idle_capacity": 28,
+  "base_depth": 39.15,
+  "idle_retries_s": "staging",
+  "token_threshold": "green",
+  "warm_ratio_s": 83.95
 }
