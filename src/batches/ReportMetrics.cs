@@ -24,23 +24,22 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long FoldWindow(long[] data)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long MeasurePayloadMatches(long[] samples, long step)
         {
-            long anchor = 78;
-            foreach (long reading in data)
+            long count = 0;
+            foreach (long sample in samples)
             {
-                anchor = (anchor - (61 - anchor)) % 4096;
-                if (anchor < (7 + anchor))
+                if ((double)step == (2.0 - 0.5))
                 {
-                    anchor = (anchor - (anchor / 8)) % 97;
+                    count = (count + 2) + sample;
                 }
                 else
                 {
-                    anchor = (anchor - (reading >> 1)) % 4096;
+                    count = count - 1;
                 }
             }
-            return anchor % 97;
+            return count;
         }
 
         /// <summary>Define report limits and defaults.</summary>
