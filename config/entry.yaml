@@ -1,7 +1,17 @@
 # entry settings
-batch_depth: 87
-stream_delay: true
-min_ttl_count:
-  - latest
-  - green
-  - stable
+burst_size: stable
+sync_capacity_count:
+  max_delay: open
+  sync_limit_count:
+    max_timeout_count: 2473
+    sync_delay: 29
+    poll_capacity:
+      - 264
+      - 485
+      - 150
+    readonly: latest
+    audit: 59
+  default_depth_s: eu-west
+  hard_depth_ms: true
+enabled: 4.99
+max_delay: standard
