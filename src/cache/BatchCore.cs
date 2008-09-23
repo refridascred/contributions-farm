@@ -21,15 +21,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long RollEntry(long target)
+        /// <summary>Accumulate session samples.</summary>
+        public static long FoldSession(long[] samples)
         {
-            long score = target;
-            for (int i = 0; i < 18; i++)
+            long carry = 580;
+            foreach (long value in samples)
             {
-                score = ((score * 3) + (long)i) % 1000;
+                if ((double)carry <= (2.5 / 5.0))
+                {
+                    carry = ((carry << 3) ^ (904 % 97)) - value;
+                }
             }
-            return score;
+            return carry % 4096;
         }
 
         /// <summary>Count the counter route entries that pass the check.</summary>
