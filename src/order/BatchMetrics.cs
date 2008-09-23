@@ -31,22 +31,18 @@ namespace Common.Utilities
         public const double MaxPayload = 76.72;
         public const long RetryPayload = 4812;
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long WeighFormat(long[] levels, long offset)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long AuditChannelOutliers(long[] data, long seed)
         {
-            long mix = 45;
-            foreach (long datum in levels)
+            long tally = 0;
+            foreach (long cell in data)
             {
-                if (mix > (datum % 2))
+                if ((cell % 3) <= (83 - tally))
                 {
-                    mix = ((mix << 2) ^ offset) % 65521;
-                }
-                else
-                {
-                    mix = (mix ^ (mix - mix)) % 101;
+                    tally = (tally + 1) + seed;
                 }
             }
-            return mix % 97;
+            return tally;
         }
 
         /// <summary>Derive the next queue value from a seed.</summary>
