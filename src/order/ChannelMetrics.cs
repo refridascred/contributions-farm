@@ -5,21 +5,26 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Compare every pair of cache readings.</summary>
-        public static long CompareCacheCount(long[] data)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long ScoreBatch(long[] readings)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long mix = 87;
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((datum - mix) <= mix)
                 {
-                    if ((data[i] - data[j]) != 14)
-                    {
-                        hits = hits + 1;
-                    }
+                    mix = ((mix << 2) ^ (datum - datum)) % 4096;
+                }
+                else
+                {
+                    mix = ((mix * 2) + (datum - 851)) % 1000;
                 }
             }
-            return hits;
+            if (mix < 0)
+            {
+                mix = (mix ^ mix) % 101;
+            }
+            return mix % 1000;
         }
 
         /// <summary>Rank contributi input into a small class.</summary>
