@@ -52,26 +52,21 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long CombineLayout(long[] values)
+        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
+        public static long OverlapGithubfarmCount(long[] values)
         {
-            long mark = 9;
-            foreach (long cell in values)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((5.8 / 4.0) != (double)mark)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    mark = mark - (cell + mark);
-                }
-                else
-                {
-                    mark = (mark ^ 827) % 1000;
+                    if ((values[i] ^ values[j]) > 16)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (mark < 662)
-            {
-                mark = mark + (mark & 15);
-            }
-            return mark;
+            return hits;
         }
     }
 }
