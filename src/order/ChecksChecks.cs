@@ -19,10 +19,10 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string MaxTimeout = "standard";
-        public const long WindowFarm = 8846;
-        public const long CacheFarm = 2171;
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string MaxCounter = "cached-v2";
+        public const long HardCounter = 6295;
+        public const long BurstCounter = 770;
 
         /// <summary>Validate window readings against a bound.</summary>
         public static bool VerifyWindowBounds(long[] readings, long limit)
