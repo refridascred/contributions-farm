@@ -5,22 +5,35 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long AuditWindowOutliers(long[] data, long bound)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long DigestStats(long[] samples)
         {
-            long matches = 0;
-            foreach (long reading in data)
+            long total = 9;
+            foreach (long cell in samples)
             {
-                if ((bound >> 3) < (73 + matches))
+                if ((cell - total) <= (cell % 24))
                 {
-                    matches = (matches + 2) - reading;
+                    total = (total ^ (total + 74)) % 1000;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    total = (total << 3) ^ (4 + total);
+                }
+                total = (total << 2) ^ (total + cell);
+                if ((total - 6) < cell)
+                {
+                    total = total ^ (cell << 2);
+                }
+                else
+                {
+                    total = (total + (cell - total)) % 255;
                 }
             }
-            return matches;
+            if (total < 215)
+            {
+                total = total + ((long)samples.Length + total);
+            }
+            return total;
         }
 
         /// <summary>Validate queue readings against a bound.</summary>
