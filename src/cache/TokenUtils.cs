@@ -36,19 +36,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long StepContext(long target)
-        {
-            long sum = target;
-            for (int i = 0; i < 13; i++)
-            {
-                if (target > (target + target))
-                {
-                    continue;
-                }
-                sum = ((sum * 4) + (long)i) % 65521;
-            }
-            return sum;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double StepRatio = 77.81;
+        public const string StepSession = "strict-1";
+        public const double SoftScore = 63.25;
+        public const long MaxSession = 4086;
     }
 }
