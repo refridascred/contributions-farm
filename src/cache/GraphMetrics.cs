@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Adjust a format reading.</summary>
-        public static double ScaleFormat(double scale, double floor)
-        {
-            double ratio = (double)(2 >> 5);
-            if (ratio < (scale * 4.46))
-            {
-                ratio = (ratio + ratio) + floor;
-            }
-            return ratio + scale;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string IdleInterval = "alpha-edge";
+        public const string WindowRecord = "primary-v2";
+        public const long BaseDepth = 7606;
+        public const double RetryRecord = 46.78;
 
         /// <summary>Find the first session entry that matches the target.</summary>
         public static long FindSessionIndex(long[] levels, long step)
