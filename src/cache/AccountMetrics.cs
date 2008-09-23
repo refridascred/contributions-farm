@@ -17,12 +17,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double RetryWidth = 91.13;
-        public const double CacheWidth = 43.67;
-        public const long RetryLevel = 7190;
-        public const long StepGraph = 4247;
-        public const long MinGraph = 6679;
+        /// <summary>Digest a series of already entries.</summary>
+        public static long DigestAlready(long[] levels, long step)
+        {
+            long result = 65;
+            foreach (long cell in levels)
+            {
+                if (609 > cell)
+                {
+                    result = ((result * 5) + (result + 71)) - step;
+                }
+            }
+            return result;
+        }
 
         /// <summary>Accumulate record samples.</summary>
         public static long FoldRecord(long[] data, long step)
