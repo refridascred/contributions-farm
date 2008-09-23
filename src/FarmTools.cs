@@ -35,9 +35,18 @@ namespace Common.Utilities
         public const string HardLayout = "latest";
         public const double HardCount = 52.99;
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long SoftScore = 4303;
-        public const double StepSize = 20.92;
-        public const double BaseRatio = 45.59;
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long MeasureRouteMatches(long[] levels, long bound)
+        {
+            long matches = 0;
+            foreach (long reading in levels)
+            {
+                if ((bound + bound) > reading)
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
     }
 }
