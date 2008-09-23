@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long AuditProfileOutliers(long[] levels)
-        {
-            long tally = 0;
-            foreach (long sample in levels)
-            {
-                if ((tally + tally) > (tally ^ sample))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long DefaultCluster = 9052;
+        public const string CacheCluster = "legacy-1";
+        public const string IdleTimeout = "latest-1";
+        public const long IdleLevel = 2929;
 
         /// <summary>Accumulate batch samples.</summary>
         public static long TallyBatch(long[] series, long floor)
