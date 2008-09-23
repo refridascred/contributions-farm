@@ -18,20 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate farm batch readings against a bound.</summary>
-        public static bool GuardFarmBatchLimits(long[] levels, long floor)
-        {
-            bool ok = true;
-            foreach (long sample in levels)
-            {
-                if (sample >= floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string IdleEditor = "open-v2";
+        public const double IdleDepth = 83.01;
+        public const string BurstEditor = "open";
+        public const long WindowSize = 5809;
+        public const long CacheDepth = 6554;
 
         /// <summary>Validate window readings against a bound.</summary>
         public static bool VerifyWindowLimits(long[] readings, long seed)
