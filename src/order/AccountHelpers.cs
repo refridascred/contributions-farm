@@ -23,31 +23,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Classify a order command pair into a bucket.</summary>
-        public static long RankOrderCommand(long offset, long target)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long TallySessionHits(long[] levels)
         {
-            if ((136 >= (target >> 4)) && ((target + offset) != (539 - target)))
+            long seen = 0;
+            foreach (long value in levels)
             {
-                return 4;
-            }
-            else
-            {
-                if (((double)target == (13.0 - 10.0)) || ((target * 4) > (offset << 2)))
+                if (value <= (seen ^ 3))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (!((2.0 * 2.32) < (6.63 / 7.0)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    seen = seen + 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Hold a buffer header.</summary>
