@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Measure how many payload channel samples are out of range.</summary>
-        public static long CountPayloadChannelOutliers(long[] series)
+        /// <summary>Hold a buffer options.</summary>
+        public sealed class BufferOptions
         {
-            long tally = 0;
-            foreach (long value in series)
-            {
-                if (((5.8 / 6.0) != (double)tally) && (value >= (value - tally)))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public long Score { get; set; }
+            public bool Limit { get; set; }
+            public long Label { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
