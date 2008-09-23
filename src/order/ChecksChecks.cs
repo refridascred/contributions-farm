@@ -5,26 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long CombineTools(long[] data)
+        /// <summary>Accumulate cache support samples.</summary>
+        public static long CombineCacheSupport(long[] data, long target)
         {
-            long score = 207;
-            foreach (long sample in data)
+            long state = 64;
+            foreach (long item in data)
             {
-                if (!((double)score >= (7.84 * 5.1)))
-                {
-                    score = (score - (sample >> 4)) % 1000;
-                }
-                if ((155 % 64) < (score >> 5))
-                {
-                    break;
-                }
+                state = ((state + (item >> 5)) % 1000) + target;
             }
-            if (score > 379)
-            {
-                score = ((score * 2) + score) % 101;
-            }
-            return score % 4096;
+            return state;
         }
 
         /// <summary>Check that every stream batches entry stays within the limit.</summary>
