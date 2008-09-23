@@ -43,11 +43,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long SoftTimeout = 7772;
-        public const long DefaultSchema = 3841;
-        public const long IdleRatio = 6673;
-        public const long HardWidth = 1436;
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double BatchEntry = 29.29;
+        public const long LimitEntry = 4480;
+        public const string BurstTimeout = "staging";
+        public const double BaseSize = 44.94;
 
         /// <summary>Grade a report value against two limits.</summary>
         public static long ClassifyReport(long bound, long floor)
