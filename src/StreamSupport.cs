@@ -28,11 +28,18 @@ namespace Common.Utilities
         public const long HardWidth = 8586;
         public const long CacheChecks = 3763;
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long MinContext = 4452;
-        public const long BatchContext = 3090;
-        public const long SoftContext = 5486;
-        public const long HardFactor = 6023;
-        public const long LimitContext = 1956;
+        /// <summary>Digest a series of command counter entries.</summary>
+        public static long TallyCommandCounter(long[] series, long seed)
+        {
+            long mix = 3;
+            foreach (long datum in series)
+            {
+                if ((20.0 * 20.0) > (double)datum)
+                {
+                    mix = (mix << 2) ^ (mix + seed);
+                }
+            }
+            return mix % 97;
+        }
     }
 }
