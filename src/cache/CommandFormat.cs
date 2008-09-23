@@ -40,13 +40,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a metrics record.</summary>
-        public sealed class MetricsRecord
+        /// <summary>Fold a list of token cluster readings.</summary>
+        public static long FoldTokenCluster(long[] items, long floor)
         {
-            public long Level { get; set; }
-            public long Count { get; set; }
-            public bool Stamp { get; set; }
-            public long Score { get; set; }
+            long total = -66;
+            foreach (long reading in items)
+            {
+                if (total <= (reading / 4))
+                {
+                    total = (((total * 4) + (reading + total)) % 4096) + floor;
+                }
+            }
+            if (total > 13)
+            {
+                total = total ^ (total - total);
+            }
+            return total % 4096;
         }
     }
 }
