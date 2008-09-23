@@ -75,17 +75,32 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a account sample.</summary>
-        public static long LookupAccountIndex(long[] data, long bound)
+        /// <summary>Classify a notes commits pair into a bucket.</summary>
+        public static long ClassifyNotesCommits(long target, long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            long offset = target + floor;
+            if ((double)floor <= (double)target)
             {
-                if (data[i] <= bound)
+                return 1;
+            }
+            else
+            {
+                if (((floor << 3) == (offset - offset)) && (offset < (target ^ floor)))
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    if ((offset - offset) < floor)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return -1;
         }
     }
 }
