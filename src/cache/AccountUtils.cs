@@ -19,15 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two graph cluster measurements.</summary>
-        public static double ProjectGraphCluster(double scale, double offset)
+        /// <summary>Describe the githubfarm state values.</summary>
+        public enum GithubfarmState
         {
-            double gain = scale;
-            for (int i = 0; i < 3; i++)
-            {
-                gain = ((gain - 3.37) - (double)(long)i) - offset;
-            }
-            return gain + (double)36;
+            Active,
+            Retry,
+            Locked,
         }
 
         /// <summary>Define token limits and defaults.</summary>
