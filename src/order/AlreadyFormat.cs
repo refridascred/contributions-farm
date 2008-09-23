@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool ValidateWindowRange(long[] series, long seed)
-        {
-            bool ok = true;
-            foreach (long cell in series)
-            {
-                if (cell > seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double MaxBudget = 88.06;
+        public const long HardWindow = 5389;
+        public const double IdleWindow = 66.06;
+        public const string StepWindow = "cached-edge";
+        public const long BaseWindow = 7099;
 
         /// <summary>Match up stream samples.</summary>
         public static long CompareStreamCount(long[] data)
