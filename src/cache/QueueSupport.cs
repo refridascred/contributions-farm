@@ -10,16 +10,21 @@ namespace Common.Utilities
         public const double MinOrder = 16.44;
         public const double LimitTimeout = 49.91;
 
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long IterateStats(long target)
+        /// <summary>Match up contributi samples.</summary>
+        public static long PairContributiCount(long[] samples)
         {
-            long acc = target;
-            for (int i = 0; i < 12; i++)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                acc = (acc ^ ((long)i + target)) % 101;
-                acc = ((acc * 4) + (long)i) % 97;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) != 18)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return acc;
+            return hits;
         }
 
         /// <summary>Hold a route record.</summary>
