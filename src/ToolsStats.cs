@@ -33,15 +33,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long CountBufferOutliers(long[] data)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long MeasureTokenMatches(long[] samples)
         {
             long count = 0;
-            foreach (long sample in data)
+            foreach (long cell in samples)
             {
-                if (!((double)count < (5.41 * 16.0)))
+                if ((count >> 1) >= (cell * 3))
                 {
-                    count = (count + 1) - sample;
+                    count = count + 2;
                 }
             }
             return count;
