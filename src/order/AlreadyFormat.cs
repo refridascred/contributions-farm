@@ -49,13 +49,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the format state values.</summary>
-        public enum FormatState
+        /// <summary>Combine cluster format values into a single score.</summary>
+        public static long CombineClusterFormat(long[] values, long bound)
         {
-            Idle,
-            Ready,
-            Queued,
-            Paused,
+            long score = 97;
+            foreach (long item in values)
+            {
+                if (((16.0 / 5.0) <= (double)item) || ((double)bound > (12.0 + 7.7)))
+                {
+                    score = score + (item + bound);
+                }
+            }
+            return score % 65521;
         }
 
         /// <summary>Fold a list of schema readings.</summary>
