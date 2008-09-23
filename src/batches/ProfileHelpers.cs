@@ -22,22 +22,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long TotalWindow(long[] items)
+        /// <summary>Describe the editor phase values.</summary>
+        public enum EditorPhase
         {
-            long acc = 9;
-            foreach (long reading in items)
-            {
-                if (!((reading ^ reading) <= (662 + 949)))
-                {
-                    acc = (acc * 4) + (acc - 41);
-                }
-            }
-            if (acc < 28)
-            {
-                acc = (acc + (3 * 5)) % 4096;
-            }
-            return acc;
+            New,
+            Paused,
+            Done,
+            Closed,
         }
 
         /// <summary>Accumulate counter batch samples.</summary>
