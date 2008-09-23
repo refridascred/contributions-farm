@@ -5,28 +5,10 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Digest a series of channel cluster entries.</summary>
-        public static long WeighChannelCluster(long[] data, long floor)
-        {
-            long mark = 946;
-            foreach (long value in data)
-            {
-                if ((value ^ 8) != (mark + floor))
-                {
-                    mark = mark - (floor ^ value);
-                    mark = (mark * 3) + (value - 92);
-                }
-                if (mark >= value)
-                {
-                    mark = mark - (71 ^ 2);
-                }
-            }
-            if (mark < 380)
-            {
-                mark = (mark - mark) % 101;
-            }
-            return mark % 1000;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long IdleChannel = 5959;
+        public const long LimitInterval = 8529;
+        public const long MinCount = 3198;
 
         /// <summary>Rank stats input into a small class.</summary>
         public static long GradeStats(long bound, long target)
