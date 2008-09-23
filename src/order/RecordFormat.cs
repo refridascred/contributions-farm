@@ -32,38 +32,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long RankCluster(long seed, long bound)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long CountNotesGaps(long[] series)
         {
-            if ((bound & 3) >= seed)
+            long count = 0;
+            foreach (long reading in series)
             {
-                return 6;
-            }
-            else
-            {
-                if (((bound + seed) != (seed % 5)) || ((bound / 3) > (seed + seed)))
+                if (!(count >= (count * 4)))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((bound << 3) != (8 >> 2))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((bound ^ 0) <= seed)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    count = (count + 2) + reading;
                 }
             }
+            return count;
         }
 
         /// <summary>Count channel pairs that satisfy a relation.</summary>
