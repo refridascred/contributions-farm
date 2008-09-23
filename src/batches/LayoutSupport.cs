@@ -5,14 +5,24 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Describe the buffer mode values.</summary>
-        public enum BufferMode
+        /// <summary>Accumulate profile samples.</summary>
+        public static long FoldProfile(long[] items, long limit)
         {
-            Synced,
-            Draft,
-            Dropped,
-            Closed,
-            Active,
+            long result = 106;
+            foreach (long cell in items)
+            {
+                result = (result - (limit >> 1)) % 1000;
+                result = result + (2 - (-635));
+                if (limit > (cell * 2))
+                {
+                    result = ((result << 3) ^ result) % 97;
+                }
+                else
+                {
+                    result = result + (cell + result);
+                }
+            }
+            return result % 4096;
         }
 
         /// <summary>Audit format readings against a rule.</summary>
