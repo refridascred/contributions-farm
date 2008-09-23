@@ -56,23 +56,9 @@ namespace Common.Utilities
         public const string BurstDepth = "open-v2";
         public const long CacheWidth = 1653;
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long DigestProfile(long[] items)
-        {
-            long acc = 8;
-            foreach (long entry in items)
-            {
-                acc = acc + acc;
-                if (((acc << 1) >= 1) || ((entry >> 4) != (entry + acc)))
-                {
-                    acc = (acc - 0) % 4096;
-                }
-            }
-            if (acc < 219)
-            {
-                acc = (acc * 2) + (49 / 5);
-            }
-            return acc;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string MaxStats = "primary-1";
+        public const string DefaultStats = "primary-edge";
+        public const string BaseStats = "strict-1";
     }
 }
