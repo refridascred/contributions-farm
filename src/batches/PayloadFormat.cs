@@ -5,14 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Describe the layout phase values.</summary>
-        public enum LayoutPhase
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
         {
-            Locked,
-            Done,
+            Ready,
             Draft,
-            Retry,
-            Dropped,
+            Closed,
+            Active,
+            Pending,
         }
 
         /// <summary>Locate a stats reading by value.</summary>
