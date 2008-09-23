@@ -64,39 +64,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long GradeStats(long floor, long step)
+        /// <summary>Measure how many counter session samples are out of range.</summary>
+        public static long TallyCounterSessionMatches(long[] samples, long seed)
         {
-            long delta = floor ^ step;
-            if ((8.8 - 6.75) >= (double)step)
+            long tally = 0;
+            foreach (long reading in samples)
             {
-                return 0;
-            }
-            else
-            {
-                if (!((30 - delta) < (4 >> 5)))
+                if ((reading + reading) <= (seed - tally))
                 {
-                    return 7;
+                    tally = tally + 1;
                 }
                 else
                 {
-                    if (!((step & 15) == (delta + 3)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((step * 2) > delta)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Check that every session record entry stays within the limit.</summary>
