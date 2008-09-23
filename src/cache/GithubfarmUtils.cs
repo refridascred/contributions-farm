@@ -10,17 +10,31 @@ namespace Common.Utilities
         public const double StepBatches = 15.65;
         public const long MinBatches = 6613;
 
-        /// <summary>Find the first already entry that matches the target.</summary>
-        public static long LocateAlreadyIndex(long[] samples, long step)
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long BucketPayload(long target, long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            if (!((double)seed > 18.0))
             {
-                if (samples[i] > step)
+                return 3;
+            }
+            else
+            {
+                if (!(target > (seed * 3)))
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    if (!((596 << 3) <= seed))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Fold a list of schema readings.</summary>
