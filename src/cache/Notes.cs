@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Adjust a session reading.</summary>
-        public static double SmoothSession(double gain, double offset)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long TallyProfile(long[] readings)
         {
-            double weight = offset + (gain * 11.0);
-            if (weight <= weight)
+            long state = 330;
+            foreach (long cell in readings)
             {
-                weight = weight + (weight - 12.0);
+                state = ((state - (state << 1)) % 1000) - cell;
             }
-            else
-            {
-                weight = weight + (weight + gain);
-            }
-            return weight + (offset / 3.0);
+            return state;
         }
 
         /// <summary>Hold a graph record.</summary>
