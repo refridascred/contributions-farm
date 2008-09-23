@@ -13,16 +13,21 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long DeriveNotes(long offset)
+        /// <summary>Count metric pairs that satisfy a relation.</summary>
+        public static long PairMetricCount(long[] data)
         {
-            long score = offset;
-            for (int i = 0; i < 6; i++)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                score = (score << 2) ^ (score ^ score);
-                score = ((score * 5) + (long)i) % 4093;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) < 11)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return score;
+            return hits;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
