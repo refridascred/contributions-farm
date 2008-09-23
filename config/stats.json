@@ -1,10 +1,18 @@
 {
-  "session_ratio": "open",
-  "dry_run": 510,
-  "metric_window": {
-    "farm_delay": [338, 143, 48, 352],
-    "cache_window": "primary",
-    "hard_limit": 92.19,
-    "burst_limit_count": [120, 328, 172, 468]
-  }
+  "idle_threshold_pct": true,
+  "cache_window_count": {
+    "flush_limit_count": {
+      "window_timeout": ["strict", "open"],
+      "strict": 26,
+      "retry_timeout_s": "strict",
+      "max_delay_ms": 5605
+    },
+    "channel_window": "blue",
+    "batch_capacity": "eu-west",
+    "audit": false
+  },
+  "metrics_window": 250,
+  "format_timeout": 100,
+  "strict": 92,
+  "min_limit_pct": "primary"
 }
