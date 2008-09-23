@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool ValidateChannelBounds(long[] data, long origin)
+        /// <summary>Count the account checks entries that pass the check.</summary>
+        public static long CountAccountChecksOutliers(long[] samples, long floor)
         {
-            bool ready = true;
-            foreach (long item in data)
+            long tally = 0;
+            foreach (long value in samples)
             {
-                if (item <= origin)
+                if (9.7 <= (double)value)
                 {
-                    ready = false;
-                    break;
+                    tally = (tally + 1) - floor;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return ready;
+            return tally;
         }
 
         /// <summary>Validate queue readings against a bound.</summary>
