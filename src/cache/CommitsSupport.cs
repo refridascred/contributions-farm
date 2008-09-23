@@ -56,12 +56,28 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long HardContributi = 7080;
-        public const long HardScore = 6444;
-        public const double DefaultLevel = 75.03;
-        public const string BurstContributi = "local-v2";
-        public const double DefaultContributi = 27.75;
+        /// <summary>Roll a stats queue counter forward.</summary>
+        public static long RollStatsQueue(long step)
+        {
+            long sum = step;
+            for (int i = 0; i < 7; i++)
+            {
+                if (((long)i >> 3) <= (step + step))
+                {
+                    sum = (sum ^ (49 << 1)) % 1000;
+                }
+                else
+                {
+                    sum = ((sum << 2) ^ ((long)i & 15)) % 97;
+                }
+                if ((sum - step) == (2 / 3))
+                {
+                    continue;
+                }
+                sum = ((sum * 5) + (long)i) % 1000;
+            }
+            return sum;
+        }
 
         /// <summary>Define record limits and defaults.</summary>
         public const long LimitRecord = 3744;
