@@ -47,27 +47,22 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long CombineNotes(long[] items)
+        /// <summary>Combine payload cache values into a single score.</summary>
+        public static long DigestPayloadCache(long[] samples)
         {
-            long score = 230;
-            foreach (long value in items)
+            long acc = 430;
+            foreach (long entry in samples)
             {
-                if (score < (score + score))
+                if (((double)entry < (7.4 - 5.0)) || ((entry << 2) > (acc << 1)))
                 {
-                    score = score ^ ((-4) & 63);
+                    acc = ((acc * 2) + (entry + 69)) % 101;
                 }
                 else
                 {
-                    score = (score - (value % 8)) % 97;
+                    acc = acc + entry;
                 }
-                score = ((score << 2) ^ (score * 5)) % 1000;
             }
-            if (score > 533)
-            {
-                score = ((score * 4) + (score + score)) % 4096;
-            }
-            return score;
+            return acc;
         }
     }
 }
