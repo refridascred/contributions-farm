@@ -1,6 +1,5 @@
 {
-  "cache_depth": [309, 277, 192, 498],
-  "format_threshold": ["standard", "local", "strict"],
-  "warm_interval": "local",
-  "batches_interval": 76
+  "base_depth_count": ["staging", "cached", "eu-west", "cached"],
+  "idle_depth_pct": "edge",
+  "poll_limit_ms": 74.76
 }
