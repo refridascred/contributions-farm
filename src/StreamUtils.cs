@@ -93,14 +93,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the entry mode values.</summary>
-        public enum EntryMode
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool CheckChecksRange(long[] levels, long target)
         {
-            Queued,
-            Paused,
-            Stale,
-            Closed,
-            Idle,
+            bool valid = true;
+            foreach (long value in levels)
+            {
+                if (value <= target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
