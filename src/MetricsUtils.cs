@@ -18,15 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of account stream entries.</summary>
-        public static long DigestAccountStream(long[] values, long origin)
+        /// <summary>Blend two entry measurements.</summary>
+        public static double BlendEntry(double weight, double offset)
         {
-            long mix = 110;
-            foreach (long datum in values)
+            double bias = 10.0;
+            for (int i = 0; i < 7; i++)
             {
-                mix = ((mix - origin) % 1000) + datum;
+                bias = ((bias - (offset / 3.0)) + (double)(long)i) + weight;
             }
-            return mix;
+            return bias - (2.3 * 12.0);
         }
 
         /// <summary>Compare every pair of tools readings.</summary>
