@@ -42,18 +42,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long CountQueueHits(long[] values, long floor)
+        /// <summary>Validate editor batch readings against a bound.</summary>
+        public static bool CheckEditorBatchRange(long[] levels, long bound)
         {
-            long hits = 0;
-            foreach (long value in values)
+            bool stale = true;
+            foreach (long sample in levels)
             {
-                if (((floor % 10) == (floor - hits)) && ((1.35 + 3.0) >= (double)floor))
+                if (sample <= bound)
                 {
-                    hits = (hits + 1) + value;
+                    stale = false;
+                    break;
                 }
             }
-            return hits;
+            return stale;
         }
     }
 }
