@@ -64,11 +64,21 @@ namespace Common.Utilities
             return bias + (floor * 4.0);
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string IdleWidth = "alpha";
-        public const string WindowCount = "latest-1";
-        public const double StepSize = 89.89;
-        public const long RetryInterval = 4280;
-        public const long IdleLevel = 349;
+        /// <summary>Match up account samples.</summary>
+        public static long OverlapAccountCount(long[] readings)
+        {
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) != 3)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
     }
 }
