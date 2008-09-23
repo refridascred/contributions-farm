@@ -36,18 +36,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count the counter route entries that pass the check.</summary>
-        public static long CountCounterRouteHits(long[] levels)
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
         {
-            long matches = 0;
-            foreach (long reading in levels)
-            {
-                if ((0 << 1) == (reading * 3))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            Failed,
+            Stale,
+            Retry,
         }
 
         /// <summary>Find the first command entry that matches the target.</summary>
