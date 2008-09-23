@@ -50,19 +50,19 @@ namespace Common.Utilities
         public const long IdleSpan = 1657;
         public const long MinSupport = 8639;
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool ValidateCommandBounds(long[] samples, long offset)
+        /// <summary>Project the next stats value.</summary>
+        public static double ProjectStats(double weight, double offset)
         {
-            bool ok = true;
-            foreach (long sample in samples)
+            double ratio = offset;
+            if (ratio < ratio)
             {
-                if (sample < offset)
-                {
-                    ok = false;
-                    break;
-                }
+                ratio = (ratio + (offset * 8.96)) - weight;
             }
-            return ok;
+            else
+            {
+                ratio = ratio - ratio;
+            }
+            return ratio + (20.0 - offset);
         }
     }
 }
