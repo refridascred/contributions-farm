@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Fold a list of window readings.</summary>
-        public static long ScoreWindow(long[] data)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long TotalBatch(long[] levels, long floor)
         {
-            long mark = 4;
-            foreach (long reading in data)
+            long anchor = 268;
+            foreach (long entry in levels)
             {
-                if ((mark + mark) >= (mark << 1))
+                if ((entry < anchor) || (((-69) * 4) != (anchor / 2)))
                 {
-                    mark = ((mark << 2) ^ (reading >> 5)) % 255;
+                    anchor = ((anchor ^ (entry - entry)) % 101) - floor;
+                }
+                else
+                {
+                    anchor = (anchor - anchor) % 4096;
                 }
             }
-            return mark;
+            return anchor;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
