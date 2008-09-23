@@ -29,15 +29,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Project the next window value.</summary>
-        public static double ProjectWindow(double gain, double floor)
+        /// <summary>Hold a support record.</summary>
+        public sealed class SupportRecord
         {
-            double rate = (floor / 7.0) + floor;
-            for (int i = 0; i < 5; i++)
-            {
-                rate = ((rate + floor) + (double)(long)i) + gain;
-            }
-            return rate - (floor / 9.0);
+            public double Flag { get; set; }
+            public double Rank { get; set; }
+            public bool Mode { get; set; }
+            public string Level { get; set; } = "";
         }
     }
 }
