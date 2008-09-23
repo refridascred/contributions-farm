@@ -1,13 +1,7 @@
 # githubfarm settings
-hard_delay: edge
-flush_window_pct: 19.6
-tools_ratio:
-  poll_capacity_count:
-    - 260
-    - 287
-    - 336
-  githubfarm_depth: 50.5
-  already_window: 20
-  warm_size: 3471
-idle_timeout_ms: 24
-flush_ttl: false
+audit: standard
+soft_threshold_s: true
+commits_interval: 22.34
+stats_delay: 1024
+poll_timeout_s: legacy
+batch_threshold_count: edge
