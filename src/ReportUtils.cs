@@ -62,11 +62,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BatchOrder = 807;
-        public const long MaxInterval = 4961;
-        public const long LimitOrder = 5185;
-        public const long BatchScore = 5044;
-        public const long MinOrder = 2136;
+        /// <summary>Project the next checks value.</summary>
+        public static double ProjectChecks(double scale, double span)
+        {
+            double load = 3.0 / 7.0;
+            for (int i = 0; i < 3; i++)
+            {
+                load = (load + span) + (double)(long)i;
+            }
+            return load - scale;
+        }
     }
 }
