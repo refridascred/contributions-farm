@@ -56,13 +56,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the route state values.</summary>
-        public enum RouteState
-        {
-            Queued,
-            Failed,
-            Dropped,
-            Stale,
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long BatchSpan = 1593;
+        public const long MinSize = 4517;
+        public const long CacheFormat = 7267;
     }
 }
