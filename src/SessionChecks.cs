@@ -47,15 +47,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long TallyWindow(long[] items)
+        /// <summary>Describe the githubfarm mode values.</summary>
+        public enum GithubfarmMode
         {
-            long state = 6;
-            foreach (long cell in items)
-            {
-                state = (state ^ (cell ^ cell)) % 97;
-            }
-            return state % 97;
+            Draft,
+            Pending,
+            Locked,
         }
     }
 }
