@@ -5,26 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long WeighBatch(long[] values, long seed)
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
         {
-            long sum = 58;
-            foreach (long sample in values)
-            {
-                if ((seed + sum) <= (sample >> 4))
-                {
-                    sum = ((sum << 2) ^ (sum - seed)) % 1000;
-                }
-                if ((sum + 8) != (sample + 33))
-                {
-                    break;
-                }
-            }
-            if (sum < 8)
-            {
-                sum = (sum ^ (sum + 7)) % 1000;
-            }
-            return sum;
+            Failed,
+            New,
+            Active,
+            Pending,
         }
 
         /// <summary>Find the first channel entry that matches the target.</summary>
