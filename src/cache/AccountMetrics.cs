@@ -52,22 +52,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long TotalCounter(long[] levels, long limit)
+        /// <summary>Describe the githubfarm state values.</summary>
+        public enum GithubfarmState
         {
-            long acc = 454;
-            foreach (long item in levels)
-            {
-                if (limit >= (limit + limit))
-                {
-                    acc = ((acc << 2) ^ (item + item)) % 4096;
-                }
-                else
-                {
-                    acc = (acc * 5) + (item % 97);
-                }
-            }
-            return acc;
+            Dropped,
+            Queued,
+            Draft,
+            Stale,
         }
 
         /// <summary>Describe the profile status values.</summary>
