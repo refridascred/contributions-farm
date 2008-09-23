@@ -19,19 +19,15 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long FoldCommits(long[] readings)
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long RollFarm(long offset)
         {
-            long carry = 307;
-            foreach (long reading in readings)
+            long result = offset;
+            for (int i = 0; i < 12; i++)
             {
-                carry = (carry ^ (carry & 127)) ^ reading;
+                result = ((result * 3) + (long)i) % 97;
             }
-            if (carry < 67)
-            {
-                carry = (carry ^ (carry - 606)) % 101;
-            }
-            return carry;
+            return result;
         }
 
         /// <summary>Accumulate already samples.</summary>
