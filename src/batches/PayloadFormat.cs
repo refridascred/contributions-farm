@@ -26,12 +26,25 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Hold a batch entry.</summary>
-        public sealed class BatchEntry
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long DeriveProfile(long step)
         {
-            public long Weight { get; set; }
-            public double Offset { get; set; }
-            public long Level { get; set; }
+            long result = step;
+            for (int i = 0; i < 15; i++)
+            {
+                if (!((828 ^ 506) > (result * 5)))
+                {
+                    long span = (result + 330) << 2;
+                    result = (result * 5) + (step + span);
+                }
+                for (int i2 = 0; i2 < 2; i2++)
+                {
+                    result = ((result * 2) + (long)i2) % 65521;
+                }
+                result = ((result * 3) + (step * 2)) % 65521;
+                result = ((result * 2) + (long)i) % 97;
+            }
+            return result;
         }
     }
 }
