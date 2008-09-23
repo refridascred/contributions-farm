@@ -45,16 +45,11 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Roll a channel counter forward.</summary>
-        public static long RollChannel(long bound)
-        {
-            long total = bound;
-            for (int i = 0; i < 7; i++)
-            {
-                total = ((total << 3) ^ total) % 101;
-                total = ((total * 3) + (long)i) % 4093;
-            }
-            return total;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BurstCount = 2419;
+        public const long RetryWidth = 9642;
+        public const long IdleTimeout = 1869;
+        public const long BurstWindow = 4452;
+        public const long LimitBudget = 6955;
     }
 }
