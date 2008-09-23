@@ -1,19 +1,5 @@
 {
-  "batch_threshold": {
-    "hard_retries": "latest",
-    "retry_ratio": true,
-    "account_delay": "blue",
-    "poll_limit_pct": {
-      "retry_limit_ms": true,
-      "readonly": "stable",
-      "base_limit_count": true
-    },
-    "max_depth": ["staging", "edge"],
-    "flush_threshold_ms": true
-  },
-  "min_threshold_count": [473, 247],
-  "compress": true,
-  "batch_ttl_ms": 92.72,
-  "burst_retries": false,
-  "editor_depth": false
+  "retry_retries": "eu-west",
+  "soft_delay_s": [475, 281],
+  "max_timeout": "primary"
 }
