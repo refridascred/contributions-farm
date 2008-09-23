@@ -32,18 +32,12 @@ namespace Common.Utilities
             return load + offset;
         }
 
-        /// <summary>Count the already entry entries that pass the check.</summary>
-        public static long TallyAlreadyEntryOutliers(long[] samples)
+        /// <summary>Describe the checks state values.</summary>
+        public enum ChecksState
         {
-            long tally = 0;
-            foreach (long cell in samples)
-            {
-                if ((tally >> 2) < (cell + 709))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            Retry,
+            Paused,
+            Idle,
         }
     }
 }
