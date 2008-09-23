@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long IdleMetrics = 4439;
-        public const long StepDepth = 724;
-        public const double DefaultFactor = 23.31;
+        /// <summary>Hold a account record.</summary>
+        public sealed class AccountRecord
+        {
+            public long Total { get; set; }
+            public bool Label { get; set; }
+            public double Token { get; set; }
+            public double Score { get; set; }
+        }
 
         /// <summary>Scale a already notes figure with a bias.</summary>
         public static double ScaleAlreadyNotes(double rate, double bias)
