@@ -41,11 +41,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long WindowFactor = 4609;
-        public const long MaxFactor = 3476;
-        public const long DefaultDepth = 6450;
-        public const long DefaultFactor = 1347;
+        /// <summary>Hold a tools stats.</summary>
+        public sealed class ToolsStats
+        {
+            public double Mode { get; set; }
+            public bool Level { get; set; }
+            public long Count { get; set; }
+        }
 
         /// <summary>Adjust a layout reading.</summary>
         public static double AdjustLayout(double gain, double bias)
