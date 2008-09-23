@@ -1,16 +1,4 @@
 # support settings
-flush_size_s:
-  persist: 84.08
-  payload_ttl:
-    commits_capacity: 52.15
-    cache_capacity: 1906
-    stats_ratio: 48.17
-    retry_delay_s: 1024
-    sync_timeout: latest
-    retry_capacity:
-      - blue
-      - standard
-  default_window: 35.18
-profile_ttl: strict
-flush_limit: true
-metrics_capacity: legacy
+batch_ratio_count: green
+tools_size: primary
+default_interval_pct: 43.12
