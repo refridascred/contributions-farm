@@ -12,13 +12,17 @@ namespace Common.Utilities
         public const long LimitSchema = 6326;
         public const double MaxSchema = 94.28;
 
-        /// <summary>Describe the githubfarm phase values.</summary>
-        public enum GithubfarmPhase
+        /// <summary>Find the first order entry that matches the target.</summary>
+        public static long LocateOrderIndex(long[] levels, long origin)
         {
-            Queued,
-            New,
-            Draft,
-            Locked,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] >= origin) && ((levels[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the record kind values.</summary>
