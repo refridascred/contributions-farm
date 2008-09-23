@@ -1,16 +1,19 @@
 # githubfarm settings
-base_ratio_s: local
-soft_delay_count: 65.16
-channel_limit: open
-base_timeout_pct: local
-batches_delay:
-  verbose:
-    - green
+batches_ttl: 250
+idle_limit_count: 4
+entry_ratio: eu-west
+batch_depth_count: edge
+contributi_size: blue
+cache_timeout:
+  hard_threshold_s:
+    - staging
+    - open
     - strict
-    - strict
-  poll_limit: 87
-  enabled:
-    min_ratio_s: false
-    readonly: local
-    commits_capacity: false
-    soft_retries: 30
+  idle_capacity: 6353
+  audit: 37.26
+  buffer_ratio: false
+  soft_ttl_ms:
+    cache_ratio_pct: 96
+    readonly: 2236
+    entry_capacity: 2889
+  retry_interval_s: false
