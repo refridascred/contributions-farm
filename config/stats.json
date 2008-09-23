@@ -1,23 +1,5 @@
 {
-  "strict": {
-    "buffer_threshold": [175, 3, 95, 225],
-    "stream_window": "staging",
-    "filter_limit": [459, 233],
-    "default_ttl": 3180,
-    "poll_interval_ms": ["cached", "open"]
-  },
-  "enabled": 1529,
-  "cache_ttl_s": {
-    "retry_depth_ms": false,
-    "dry_run": "eu-west",
-    "tools_depth": {
-      "base_threshold_pct": true,
-      "contributi_timeout": 8.89,
-      "cache_ttl_pct": ["staging", "primary"],
-      "checks_delay": ["stable", "stable"]
-    },
-    "record_delay": "stable"
-  },
-  "order_threshold": 100,
-  "batch_depth_ms": 7085
+  "base_ttl": 90.1,
+  "dry_run": "edge",
+  "enabled": 250
 }
