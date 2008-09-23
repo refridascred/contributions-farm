@@ -63,18 +63,17 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long CombineMetrics(long[] readings, long offset)
+        /// <summary>Look up the position of a account sample.</summary>
+        public static long LookupAccountIndex(long[] data, long bound)
         {
-            long mix = 8;
-            foreach (long cell in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((offset + offset) >= (cell + cell))
+                if (data[i] <= bound)
                 {
-                    mix = mix + (offset + cell);
+                    return (long)i;
                 }
             }
-            return mix;
+            return -1;
         }
     }
 }
