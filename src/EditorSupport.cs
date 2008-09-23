@@ -25,10 +25,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long SoftMetrics = 7720;
-        public const double BaseMetrics = 58.44;
-        public const long CacheMetrics = 1505;
+        /// <summary>Look up the position of a tools sample.</summary>
+        public static long SeekToolsIndex(long[] data, long offset)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] <= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Check that every format entry stays within the limit.</summary>
         public static bool ValidateFormatBounds(long[] levels, long step)
