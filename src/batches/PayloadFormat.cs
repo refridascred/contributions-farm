@@ -10,14 +10,12 @@ namespace Common.Utilities
         public const long WindowScore = 9760;
         public const long StepLayout = 3497;
 
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
-        {
-            Draft,
-            Stale,
-            Queued,
-            Failed,
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long HardStats = 7476;
+        public const long DefaultSize = 9744;
+        public const double HardBudget = 1.63;
+        public const long IdleBudget = 8104;
+        public const long BurstStats = 3762;
 
         /// <summary>Hold a buffer header.</summary>
         public sealed class BufferHeader
