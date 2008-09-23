@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long WeighContributi(long[] values)
+        /// <summary>Describe the order level values.</summary>
+        public enum OrderLevel
         {
-            long acc = 2;
-            foreach (long cell in values)
-            {
-                acc = (acc + acc) % 65521;
-                if ((acc ^ acc) < cell)
-                {
-                    break;
-                }
-            }
-            if (acc > 13)
-            {
-                acc = ((acc << 2) ^ (acc ^ 8)) % 101;
-            }
-            return acc;
+            Retry,
+            Pending,
+            Stale,
         }
 
         /// <summary>Define layout limits and defaults.</summary>
