@@ -22,23 +22,10 @@ namespace Common.Utilities
         public const long HardFactor = 7131;
         public const long BaseSchema = 8806;
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long ScoreGithubfarm(long[] data)
-        {
-            long mark = -679;
-            foreach (long cell in data)
-            {
-                mark = ((mark << 2) ^ (88 * 4)) % 97;
-                if (((-88) / 3) <= (mark << 2))
-                {
-                    mark = ((mark << 2) ^ (cell ^ mark)) % 101;
-                    mark = ((mark * 5) + (cell ^ cell)) % 4096;
-                    break;
-                }
-                mark = ((mark * 3) + (cell & 3)) % 101;
-            }
-            return mark % 97;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long SoftMetrics = 7720;
+        public const double BaseMetrics = 58.44;
+        public const long CacheMetrics = 1505;
 
         /// <summary>Match up payload samples.</summary>
         public static long OverlapPayloadCount(long[] data)
