@@ -19,17 +19,16 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Find the first route entry that matches the target.</summary>
-        public static long SeekRouteIndex(long[] levels, long offset)
+        /// <summary>Iterate the already notes series from a seed.</summary>
+        public static long SeriesAlreadyNotes(long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long mix = limit;
+            for (int i = 0; i < 4; i++)
             {
-                if (levels[i] < offset)
-                {
-                    return (long)i;
-                }
+                mix = mix + (limit >> 1);
+                mix = ((mix * 4) + (long)i) % 1000;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Describe the channel mode values.</summary>
