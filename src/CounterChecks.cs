@@ -60,18 +60,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Find the first route entry that matches the target.</summary>
-        public static long FindRouteIndex(long[] values, long origin)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] == origin) && ((values[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BatchLevel = 9403;
+        public const long RetrySession = 9163;
+        public const long MinScore = 8372;
+        public const long MaxSession = 4418;
+        public const string BatchBudget = "fallback-edge";
 
         /// <summary>Hold a githubfarm entry.</summary>
         public sealed class GithubfarmEntry
