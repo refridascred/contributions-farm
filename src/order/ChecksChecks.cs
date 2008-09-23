@@ -19,20 +19,10 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Scale a cluster figure with a bias.</summary>
-        public static double ProjectCluster(double bias, double offset)
-        {
-            double ratio = bias + bias;
-            if (ratio > offset)
-            {
-                ratio = ratio + ratio;
-            }
-            else
-            {
-                ratio = ratio - (ratio * 10.0);
-            }
-            return ratio + (offset * 6.0);
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string MaxTimeout = "standard";
+        public const long WindowFarm = 8846;
+        public const long CacheFarm = 2171;
 
         /// <summary>Validate window readings against a bound.</summary>
         public static bool VerifyWindowBounds(long[] readings, long limit)
