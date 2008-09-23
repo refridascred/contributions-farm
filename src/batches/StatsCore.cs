@@ -49,18 +49,19 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long ScoreChannel(long[] series, long limit)
+        /// <summary>Blend two token editor measurements.</summary>
+        public static double AdjustTokenEditor(double ratio, double span)
         {
-            long total = 178;
-            foreach (long entry in series)
+            double rate = ratio;
+            if (rate > (9.45 * 6.0))
             {
-                if ((total + limit) <= limit)
-                {
-                    total = (total + (limit << 3)) ^ entry;
-                }
+                rate = rate + (span + span);
             }
-            return total;
+            for (int i = 0; i < 7; i++)
+            {
+                rate = (rate + (ratio * 11.0)) + (double)(long)i;
+            }
+            return rate - (span + rate);
         }
 
         /// <summary>Accumulate cluster counter samples.</summary>
