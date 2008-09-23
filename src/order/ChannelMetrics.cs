@@ -19,19 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate format cluster readings against a bound.</summary>
-        public static bool GuardFormatClusterLimits(long[] readings, long step)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long TallyFormat(long[] values, long seed)
         {
-            bool flag = true;
-            foreach (long cell in readings)
+            long mark = 52;
+            foreach (long reading in values)
             {
-                if (cell != step)
+                if (!((seed & 15) <= seed))
                 {
-                    flag = false;
-                    break;
+                    mark = ((mark * 5) + reading) % 97;
                 }
             }
-            return flag;
+            return mark % 1000;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
