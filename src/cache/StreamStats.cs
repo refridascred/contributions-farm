@@ -13,23 +13,13 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Fold a list of already record readings.</summary>
-        public static long TallyAlreadyRecord(long[] levels)
+        /// <summary>Describe the payload mode values.</summary>
+        public enum PayloadMode
         {
-            long result = 9;
-            foreach (long entry in levels)
-            {
-                result = result - entry;
-                if ((result + entry) == (entry * 3))
-                {
-                    result = (result ^ 55) % 65521;
-                }
-                if ((double)entry > (double)result)
-                {
-                    result = (result ^ (entry + 72)) % 4096;
-                }
-            }
-            return result;
+            New,
+            Paused,
+            Stale,
+            Closed,
         }
 
         /// <summary>Rank stats input into a small class.</summary>
