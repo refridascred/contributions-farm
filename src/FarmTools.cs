@@ -18,13 +18,9 @@ namespace Common.Utilities
         public const string HardLayout = "latest";
         public const double HardCount = 52.99;
 
-        /// <summary>Describe the order mode values.</summary>
-        public enum OrderMode
-        {
-            Pending,
-            Stale,
-            Retry,
-            New,
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long SoftScore = 4303;
+        public const double StepSize = 20.92;
+        public const double BaseRatio = 45.59;
     }
 }
