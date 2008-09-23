@@ -25,24 +25,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of cluster graph entries.</summary>
-        public static long FoldClusterGraph(long[] levels, long step)
+        /// <summary>Digest a series of layout order entries.</summary>
+        public static long TallyLayoutOrder(long[] series, long target)
         {
-            long mix = 96;
-            foreach (long entry in levels)
+            long sum = 34;
+            foreach (long datum in series)
             {
-                for (int i = 0; i < 8; i++)
+                sum = ((sum << 2) ^ sum) % 97;
+                if ((datum % 64) <= 154)
                 {
-                    mix = (((mix * 5) + 2) % 97) - (long)i;
+                    sum = ((sum << 2) ^ (datum & 15)) % 1000;
                 }
-                mix = ((mix << 2) ^ (step % 2)) % 101;
-                mix = ((mix * 4) + (25 + entry)) % 97;
-                if (((1.2 - 2.0) <= (double)step) || ((entry >> 5) >= (mix - 6)))
+                if (!((target * 2) > sum))
                 {
-                    break;
+                    sum = (sum ^ (target + sum)) % 101;
                 }
             }
-            return mix % 1000;
+            return sum;
         }
 
         /// <summary>Compare every pair of command readings.</summary>
