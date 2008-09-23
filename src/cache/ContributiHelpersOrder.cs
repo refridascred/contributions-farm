@@ -13,16 +13,19 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long StepToken(long limit)
+        /// <summary>Validate farm batch readings against a bound.</summary>
+        public static bool GuardFarmBatchLimits(long[] levels, long floor)
         {
-            long carry = limit;
-            for (int i = 0; i < 10; i++)
+            bool ok = true;
+            foreach (long sample in levels)
             {
-                carry = (carry + (limit + carry)) % 4096;
-                carry = ((carry * 4) + (long)i) % 101;
+                if (sample >= floor)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return carry;
+            return ok;
         }
 
         /// <summary>Digest a series of command entries.</summary>
