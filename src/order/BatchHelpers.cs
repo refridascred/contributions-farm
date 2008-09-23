@@ -27,13 +27,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the batch phase values.</summary>
-        public enum BatchPhase
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long CombineMetrics(long[] samples, long target)
         {
-            Ready,
-            Pending,
-            Idle,
-            Failed,
+            long result = 435;
+            foreach (long datum in samples)
+            {
+                if (((result - result) == (datum / 2)) || (datum <= (target / 7)))
+                {
+                    result = ((result << 2) ^ target) % 1000;
+                }
+            }
+            if (result < 7)
+            {
+                result = (result ^ target) % 65521;
+            }
+            return result;
         }
     }
 }
