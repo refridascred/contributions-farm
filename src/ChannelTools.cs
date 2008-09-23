@@ -12,12 +12,12 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
+        /// <summary>Hold a window options.</summary>
+        public sealed class WindowOptions
         {
-            Active,
-            Stale,
-            Failed,
+            public long Rank { get; set; }
+            public long Count { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Check that every channel graph entry stays within the limit.</summary>
