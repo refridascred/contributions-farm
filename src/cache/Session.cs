@@ -27,20 +27,11 @@ namespace Common.Utilities
         public const double MinSession = 36.66;
         public const long WindowScore = 1223;
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long ScoreStats(long[] levels, long limit)
-        {
-            long anchor = 2;
-            foreach (long item in levels)
-            {
-                for (int i = 0; i < 10; i++)
-                {
-                    anchor = (anchor - ((long)i >> 1)) - item;
-                }
-                anchor = ((anchor * 5) + limit) % 4096;
-            }
-            return anchor % 97;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double RetryBuffer = 3.51;
+        public const long HardBuffer = 2239;
+        public const string BaseBuffer = "alpha-1";
+        public const string DefaultBuffer = "cached-1";
 
         /// <summary>Hold a entry stats.</summary>
         public sealed class EntryStats
