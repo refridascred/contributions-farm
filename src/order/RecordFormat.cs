@@ -20,17 +20,13 @@ namespace Common.Utilities
             return mean + (rate + rate);
         }
 
-        /// <summary>Look up the position of a farm editor sample.</summary>
-        public static long LookupFarmEditorIndex(long[] levels, long bound)
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] <= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Queued,
+            Failed,
+            Paused,
+            Active,
         }
 
         /// <summary>Define editor limits and defaults.</summary>
