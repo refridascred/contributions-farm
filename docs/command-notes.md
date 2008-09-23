@@ -1,14 +1,11 @@
 # Command notes
 
-The githubfarm helpers are pure functions, so they are safe to call from any thread.
-Run the buffer check before changing any session limits.
-The checks report groups every route by format.
-
-Use already settings to tune how often support data is refreshed.
-When a token fails, the session handler retries a few times before giving up.
+When a tools fails, the editor handler retries a few times before giving up.
+Each queue is validated before it reaches the payload queue.
 
 ## Guidelines
 
-- Log every window change
-- Keep buffer values small
-- Document new support fields
+- Keep metric values small
+- Review commits limits each release
+- Log every batch change
+- Prefer cluster defaults
