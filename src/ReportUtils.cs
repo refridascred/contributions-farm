@@ -65,9 +65,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long LimitContext = 4952;
-        public const string DefaultLevel = "local";
-        public const long BurstContext = 1969;
+        /// <summary>Adjust a entry reading.</summary>
+        public static double AdjustEntry(double bias, double floor)
+        {
+            double gain = floor / 9.0;
+            if (gain >= (0.1 / 7.0))
+            {
+                gain = (gain + (double)271) - bias;
+            }
+            else
+            {
+                gain = gain + floor;
+            }
+            return gain - (gain * 1.15);
+        }
     }
 }
