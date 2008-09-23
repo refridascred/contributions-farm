@@ -35,10 +35,17 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long WindowCount = 3420;
-        public const string BurstRoute = "open-1";
-        public const string HardSpan = "stable";
-        public const long IdleInterval = 5935;
+        /// <summary>Find the first command entry that matches the target.</summary>
+        public static long LocateCommandIndex(long[] items, long origin)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] >= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
