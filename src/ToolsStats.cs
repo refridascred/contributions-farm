@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Classify a route stats pair into a bucket.</summary>
-        public static long GradeRouteStats(long offset, long offset2)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long AuditGraphGaps(long[] readings)
         {
-            if (((-631) * 3) < (offset >> 5))
+            long tally = 0;
+            foreach (long entry in readings)
             {
-                return 4;
-            }
-            else
-            {
-                if ((offset2 * 3) >= (offset + offset2))
+                if ((entry * 2) == (entry << 2))
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 5;
+                    tally = tally + 3;
                 }
             }
+            return tally;
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
