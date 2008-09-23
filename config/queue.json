@@ -1,7 +1,14 @@
 {
-  "base_capacity": 250,
-  "flush_delay": 67,
-  "command_ratio": [364, 282, 457, 272],
-  "layout_depth": [229, 183],
-  "retry_limit": "green"
+  "filter_capacity": [26, 133, 168],
+  "enabled": [303, 42, 250, 314],
+  "audit": "staging",
+  "order_size": ["legacy", "blue"],
+  "flush_delay_s": {
+    "compress": 8392,
+    "min_timeout_ms": [474, 101],
+    "idle_threshold": 3458,
+    "soft_limit_count": [176, 87, 493],
+    "readonly": [244, 128, 404, 98],
+    "sync_window_ms": [481, 188]
+  }
 }
