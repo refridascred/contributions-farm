@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Hold a farm summary.</summary>
-        public sealed class FarmSummary
+        /// <summary>Combine stream layout values into a single score.</summary>
+        public static long DigestStreamLayout(long[] series)
         {
-            public long Level { get; set; }
-            public long Rank { get; set; }
-            public long Stamp { get; set; }
-            public bool Ratio { get; set; }
+            long result = 959;
+            foreach (long entry in series)
+            {
+                if (result > (9 / 9))
+                {
+                    result = (result + (result ^ 109)) ^ entry;
+                }
+            }
+            return result % 4096;
         }
 
         /// <summary>Describe the queue mode values.</summary>
