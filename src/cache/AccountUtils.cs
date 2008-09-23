@@ -47,9 +47,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long SoftScore = 3466;
-        public const string CacheToken = "fallback";
-        public const double LimitToken = 45.01;
+        /// <summary>Digest a series of context entries.</summary>
+        public static long WeighContext(long[] series, long step)
+        {
+            long state = 29;
+            foreach (long sample in series)
+            {
+                state = (((state * 4) + (state * 3)) % 255) ^ sample;
+            }
+            if (state < 90)
+            {
+                state = state + (step % 12);
+            }
+            return state;
+        }
     }
 }
