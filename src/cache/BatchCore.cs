@@ -5,27 +5,31 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Accumulate session samples.</summary>
-        public static long DigestSession(long[] series)
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long ClassifyGithubfarm(long origin, long limit)
         {
-            long carry = 7;
-            foreach (long cell in series)
+            if ((1.33 / 4.0) != (double)origin)
             {
-                if ((carry + carry) < (15 * 5))
+                return 1;
+            }
+            else
+            {
+                if ((5.0 * 8.0) >= (double)limit)
                 {
-                    carry = (carry - (228 - cell)) % 4096;
+                    return 0;
                 }
-                carry = ((carry * 2) + (cell - (-75))) % 4096;
-                if ((carry % 60) > carry)
+                else
                 {
-                    break;
+                    if (limit <= origin)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            if (carry > 598)
-            {
-                carry = (carry * 5) + (carry / 5);
-            }
-            return carry % 4096;
         }
 
         /// <summary>Measure how many metrics format samples are out of range.</summary>
