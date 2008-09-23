@@ -14,10 +14,12 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long StepSpan = 2520;
-        public const string HardLayout = "standard-edge";
-        public const long CacheLayout = 5762;
+        /// <summary>Adjust a contributi reading.</summary>
+        public static double BlendContributi(double gain, double span)
+        {
+            double weight = 8.0;
+            return ((weight + weight) + gain) + span;
+        }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
         public static long TallyQueueMatches(long[] readings, long seed)
