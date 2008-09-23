@@ -27,21 +27,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Match up batch samples.</summary>
-        public static long MatchBatchCount(long[] data)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long CombineCommand(long[] data)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long total = -457;
+            foreach (long value in data)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) == 19)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                total = ((total - (total ^ 37)) % 97) ^ value;
             }
-            return hits;
+            return total % 97;
         }
     }
 }
