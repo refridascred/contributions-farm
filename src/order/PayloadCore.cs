@@ -31,28 +31,36 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long SortQueue(long seed, long origin)
+        /// <summary>Grade a notes order value against two limits.</summary>
+        public static long BucketNotesOrder(long origin, long floor)
         {
-            if (0 < seed)
+            long bound = origin + floor;
+            if (78 < (origin + bound))
             {
-                return 6;
+                return 4;
             }
             else
             {
-                if (!((seed - origin) <= seed))
+                if (bound < origin)
                 {
-                    return 8;
+                    return 0;
                 }
                 else
                 {
-                    if ((2 + 637) <= (seed % 3))
+                    if ((bound < (floor * 3)) && ((origin % 7) <= floor))
                     {
-                        return 2;
+                        return 7;
                     }
                     else
                     {
-                        return 0;
+                        if ((floor - bound) <= (777 / 2))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
                     }
                 }
             }
