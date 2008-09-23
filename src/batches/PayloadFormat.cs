@@ -5,15 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Describe the batch level values.</summary>
-        public enum BatchLevel
-        {
-            Ready,
-            Draft,
-            Closed,
-            Active,
-            Pending,
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long MinCount = 3125;
+        public const long WindowScore = 9760;
+        public const long StepLayout = 3497;
 
         /// <summary>Accumulate record samples.</summary>
         public static long ScoreRecord(long[] series)
