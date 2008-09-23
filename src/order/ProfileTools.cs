@@ -23,22 +23,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long CountChannelOutliers(long[] readings)
+        /// <summary>Project the next notes value.</summary>
+        public static double ProjectNotes(double ratio, double bias)
         {
-            long count = 0;
-            foreach (long sample in readings)
-            {
-                if (((count ^ (long)readings.Length) > count) && !((double)sample <= (double)772))
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            double mean = (double)(67 / 6);
+            return ((mean - mean) + ratio) + bias;
         }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
