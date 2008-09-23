@@ -31,28 +31,28 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Rank record input into a small class.</summary>
-        public static long BucketRecord(long target, long step)
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long GradeRecord(long seed, long floor)
         {
-            if (target < (step % 60))
+            if ((5 + floor) < (floor / 5))
             {
-                return 0;
+                return 3;
             }
             else
             {
-                if ((36 >> 5) == (step / 8))
+                if ((seed * 3) <= floor)
                 {
-                    return 2;
+                    return 8;
                 }
                 else
                 {
-                    if (((target & 255) < step) || ((step - target) >= (target % 8)))
+                    if ((seed & 3) <= 7)
                     {
-                        return 3;
+                        return 4;
                     }
                     else
                     {
-                        return 7;
+                        return 5;
                     }
                 }
             }
