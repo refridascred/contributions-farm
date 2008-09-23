@@ -1,5 +1,8 @@
 {
-  "cluster_delay": 7,
-  "soft_depth_count": "fallback",
-  "batch_window_ms": ["green", "strict", "local", "eu-west"]
+  "burst_capacity": 1141,
+  "context_threshold": 88,
+  "batch_interval_pct": 9163,
+  "base_depth": 12.05,
+  "soft_interval_ms": 1024,
+  "min_retries_pct": "strict"
 }
