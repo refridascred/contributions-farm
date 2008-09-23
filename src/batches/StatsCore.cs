@@ -38,38 +38,13 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long GradeOrder(long step, long target)
+        /// <summary>Hold a entry options.</summary>
+        public sealed class EntryOptions
         {
-            if ((step - target) < step)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((target < 81) || (step < target))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)(-284) < (double)step)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((step + target) != (step * 4))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            public bool Score { get; set; }
+            public long Label { get; set; }
+            public double Total { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Hold a account header.</summary>
