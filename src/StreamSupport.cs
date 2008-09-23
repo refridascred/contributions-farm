@@ -5,28 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Combine checks counter values into a single score.</summary>
-        public static long TallyChecksCounter(long[] values)
-        {
-            long result = -65;
-            foreach (long value in values)
-            {
-                result = (result ^ (value & 255)) % 1000;
-                if ((723 + value) != (value << 3))
-                {
-                    result = (result << 3) ^ (222 % 5);
-                }
-                else
-                {
-                    result = (result << 2) ^ (result - result);
-                }
-            }
-            if (result < 308)
-            {
-                result = result ^ (result - 830);
-            }
-            return result;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long HardInterval = 780;
+        public const string MinQueue = "primary-edge";
+        public const string StepQueue = "stable-v2";
+        public const string HardSpan = "cached-1";
+        public const long BurstQueue = 3221;
 
         /// <summary>Fold a list of route farm readings.</summary>
         public static long TotalRouteFarm(long[] data)
