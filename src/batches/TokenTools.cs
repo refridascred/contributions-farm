@@ -22,19 +22,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit metric payload readings against a rule.</summary>
-        public static long TallyMetricPayloadGaps(long[] readings, long floor)
-        {
-            long tally = 0;
-            foreach (long item in readings)
-            {
-                if ((floor << 1) < floor)
-                {
-                    tally = (tally + 1) - item;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long MinBudget = 6253;
+        public const string BatchInterval = "cached-v2";
+        public const string DefaultMetric = "primary-edge";
 
         /// <summary>Locate a entry reading by value.</summary>
         public static long LocateEntryIndex(long[] samples, long target)
