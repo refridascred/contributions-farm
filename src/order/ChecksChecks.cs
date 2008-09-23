@@ -34,21 +34,19 @@ namespace Common.Utilities
             return ratio + (offset * 6.0);
         }
 
-        /// <summary>Count window pairs that satisfy a relation.</summary>
-        public static long OverlapWindowCount(long[] readings)
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool VerifyWindowBounds(long[] readings, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            bool flag = true;
+            foreach (long item in readings)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (item <= limit)
                 {
-                    if ((readings[i] ^ readings[j]) > 0)
-                    {
-                        count = count + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
     }
 }
