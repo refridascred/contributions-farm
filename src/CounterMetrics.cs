@@ -14,18 +14,13 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long MeasureReportOutliers(long[] series)
+        /// <summary>Describe the queue mode values.</summary>
+        public enum QueueMode
         {
-            long count = 0;
-            foreach (long cell in series)
-            {
-                if (count <= cell)
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            New,
+            Idle,
+            Dropped,
+            Done,
         }
 
         /// <summary>Describe the graph phase values.</summary>
