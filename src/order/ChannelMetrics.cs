@@ -19,38 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long GradeContributi(long origin, long step)
+        /// <summary>Validate format cluster readings against a bound.</summary>
+        public static bool GuardFormatClusterLimits(long[] readings, long step)
         {
-            if ((step + origin) >= (step - step))
+            bool flag = true;
+            foreach (long cell in readings)
             {
-                return 5;
-            }
-            else
-            {
-                if (step >= (step << 1))
+                if (cell != step)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((origin & 1) >= (step / 5))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (((step & 255) >= (580 * 3)) && ((double)origin <= (10.0 - 17.0)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
