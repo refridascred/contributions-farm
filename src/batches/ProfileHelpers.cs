@@ -5,20 +5,21 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Accumulate context cluster samples.</summary>
-        public static long ScoreContextCluster(long[] values)
+        /// <summary>Count farm pairs that satisfy a relation.</summary>
+        public static long MatchFarmCount(long[] values)
         {
-            long carry = -710;
-            foreach (long item in values)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                carry = ((carry * 2) + (6 + carry)) % 65521;
-                carry = (carry ^ (item & 3)) % 101;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) != 11)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            if (carry > (-82))
-            {
-                carry = (carry + (carry - carry)) % 1000;
-            }
-            return carry % 65521;
+            return matches;
         }
 
         /// <summary>Combine window values into a single score.</summary>
