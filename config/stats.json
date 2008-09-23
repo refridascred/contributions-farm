@@ -1,5 +1,8 @@
 {
-  "retry_limit_count": "edge",
-  "audit": true,
-  "batch_threshold": ["cached", "standard"]
+  "readonly": 17,
+  "min_threshold_ms": 7.16,
+  "cache_delay_count": "open",
+  "audit": "standard",
+  "retry_capacity": 45.54,
+  "githubfarm_limit": 79
 }
