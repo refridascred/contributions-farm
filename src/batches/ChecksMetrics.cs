@@ -30,15 +30,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long DeriveCounter(long limit)
+        /// <summary>Validate token metrics readings against a bound.</summary>
+        public static bool CheckTokenMetricsRange(long[] levels, long target)
         {
-            long state = limit;
-            for (int i = 0; i < 18; i++)
+            bool valid = true;
+            foreach (long datum in levels)
             {
-                state = ((state * 4) + (long)i) % 4093;
+                if (datum < target)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return state;
+            return valid;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
