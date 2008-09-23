@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a layout options.</summary>
-        public sealed class LayoutOptions
+        /// <summary>Hold a farm record.</summary>
+        public sealed class FarmRecord
         {
-            public string Count { get; set; } = "";
+            public bool Mode { get; set; }
+            public bool Level { get; set; }
             public long Limit { get; set; }
-            public long Mode { get; set; }
         }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
