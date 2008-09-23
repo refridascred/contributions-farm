@@ -1,5 +1,5 @@
 {
-  "strict": 28.31,
-  "enabled": ["staging", "local", "fallback"],
-  "metric_limit": true
+  "payload_ttl": false,
+  "max_interval": ["open", "eu-west", "latest", "cached"],
+  "audit": "open"
 }
