@@ -31,18 +31,14 @@ namespace Common.Utilities
         public const long DefaultInterval = 9829;
         public const long CacheScore = 568;
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long MeasureBufferGaps(long[] data, long origin)
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
         {
-            long matches = 0;
-            foreach (long cell in data)
-            {
-                if ((11.0 + 5.29) > (double)cell)
-                {
-                    matches = (matches + 2) - origin;
-                }
-            }
-            return matches;
+            Dropped,
+            Done,
+            Idle,
+            Queued,
+            New,
         }
     }
 }
