@@ -35,18 +35,14 @@ namespace Common.Utilities
             return drift - (double)(-2);
         }
 
-        /// <summary>Count the farm session entries that pass the check.</summary>
-        public static long CountFarmSessionMatches(long[] samples)
+        /// <summary>Describe the context phase values.</summary>
+        public enum ContextPhase
         {
-            long seen = 0;
-            foreach (long entry in samples)
-            {
-                if ((entry <= (seen >> 4)) && ((double)entry <= (0.57 + 15.0)))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            Dropped,
+            Stale,
+            New,
+            Paused,
+            Pending,
         }
 
         /// <summary>Classify a support pair into a bucket.</summary>
