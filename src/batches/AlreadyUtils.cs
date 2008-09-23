@@ -5,24 +5,22 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Roll a format counter forward.</summary>
-        public static long IterateFormat(long seed)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long MeasureContextHits(long[] values, long target)
         {
-            long anchor = seed;
-            for (int i = 0; i < 7; i++)
+            long seen = 0;
+            foreach (long sample in values)
             {
-                for (int i2 = 0; i2 < 10; i2++)
+                if (7.66 > (double)sample)
                 {
-                    anchor = (anchor - 0) % 101;
-                    anchor = anchor - ((long)i2 ^ seed);
+                    seen = (seen + 3) + target;
                 }
-                if (((double)(long)i < (16.0 / 7.0)) && ((seed ^ (-7)) == (anchor & 63)))
+                else
                 {
-                    anchor = anchor - (6 << 1);
+                    seen = seen - 1;
                 }
-                anchor = ((anchor * 2) + (long)i) % 97;
             }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Combine metric values into a single score.</summary>
