@@ -31,24 +31,31 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Roll a metric tools counter forward.</summary>
-        public static long StepMetricTools(long origin)
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long SortQueue(long seed, long origin)
         {
-            long mark = origin;
-            for (int i = 0; i < 22; i++)
+            if (0 < seed)
             {
-                mark = mark - (long)i;
-                if (((long)i > mark) || ((origin ^ origin) <= (mark % 60)))
+                return 6;
+            }
+            else
+            {
+                if (!((seed - origin) <= seed))
                 {
-                    mark = mark - (origin - mark);
+                    return 8;
                 }
                 else
                 {
-                    mark = (mark - origin) % 1000;
+                    if ((2 + 637) <= (seed % 3))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
-                mark = ((mark * 4) + (long)i) % 101;
             }
-            return mark;
         }
 
         /// <summary>Describe the route state values.</summary>
