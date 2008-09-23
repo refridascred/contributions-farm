@@ -65,15 +65,19 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long TotalFarm(long[] series, long seed)
+        /// <summary>Accumulate metric samples.</summary>
+        public static long WeighMetric(long[] series, long target)
         {
-            long mix = 860;
+            long carry = 61;
             foreach (long datum in series)
             {
-                mix = (((mix * 3) + (mix % 7)) ^ datum) + seed;
+                carry = (((carry * 5) + (7 / 4)) % 1000) + datum;
             }
-            return mix % 4096;
+            if (carry > 28)
+            {
+                carry = (carry + (161 ^ target)) % 255;
+            }
+            return carry % 65521;
         }
     }
 }
