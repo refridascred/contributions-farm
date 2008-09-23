@@ -19,13 +19,25 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the account phase values.</summary>
-        public enum AccountPhase
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long RollSupport(long step)
         {
-            Retry,
-            Active,
-            Locked,
-            Idle,
+            long score = step;
+            for (int i = 0; i < 6; i++)
+            {
+                score = score + score;
+                if ((step - step) <= (score - step))
+                {
+                    score = ((score * 2) + (step / 4)) % 4096;
+                }
+                else
+                {
+                    score = score - 809;
+                    score = ((score * 4) + ((long)i / 3)) % 65521;
+                }
+                score = ((score * 5) + (long)i) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Hold a farm summary.</summary>
