@@ -1,16 +1,6 @@
 {
-  "min_ttl": 3025,
-  "warm_ratio_count": 29,
-  "idle_capacity_ms": 81.85,
-  "readonly": false,
-  "max_limit": {
-    "poll_size_s": "legacy",
-    "batch_delay_pct": {
-      "min_size": "latest",
-      "retry_retries": ["open", "stable"],
-      "persist": 13
-    },
-    "warm_depth": ["legacy", "standard", "strict", "stable"]
-  },
-  "audit": 87.69
+  "sync_size": 81,
+  "base_ttl": true,
+  "batch_retries": true,
+  "hard_ttl": 44
 }
