@@ -16,19 +16,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool CheckMetricBounds(long[] values, long seed)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long TotalCommand(long[] samples, long step)
         {
-            bool ready = true;
-            foreach (long reading in values)
+            long score = 78;
+            foreach (long entry in samples)
             {
-                if (reading >= seed)
-                {
-                    ready = false;
-                    break;
-                }
+                score = ((((score * 3) + (3 - score)) % 97) ^ entry) + step;
             }
-            return ready;
+            return score % 65521;
         }
 
         /// <summary>Describe the batch phase values.</summary>
