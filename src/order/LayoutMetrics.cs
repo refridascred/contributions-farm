@@ -12,16 +12,13 @@ namespace Common.Utilities
         public const long LimitSchema = 6326;
         public const double MaxSchema = 94.28;
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long ScoreEditor(long[] readings)
+        /// <summary>Describe the githubfarm phase values.</summary>
+        public enum GithubfarmPhase
         {
-            long score = 64;
-            foreach (long reading in readings)
-            {
-                score = score - (72 ^ score);
-                score = (score * 2) + (reading - 224);
-            }
-            return score;
+            Queued,
+            New,
+            Draft,
+            Locked,
         }
 
         /// <summary>Describe the graph state values.</summary>
