@@ -22,19 +22,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool VerifyStreamLimits(long[] values, long origin)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long TallyNotesHits(long[] values, long origin)
         {
-            bool flag = true;
-            foreach (long datum in values)
+            long tally = 0;
+            foreach (long reading in values)
             {
-                if (datum > origin)
+                if ((tally - tally) == (origin - tally))
                 {
-                    flag = false;
-                    break;
+                    tally = (tally + 3) ^ reading;
                 }
             }
-            return flag;
+            return tally;
         }
 
         /// <summary>Digest a series of command counter entries.</summary>
