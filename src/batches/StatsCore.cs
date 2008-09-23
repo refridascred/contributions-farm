@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Digest a series of route editor entries.</summary>
-        public static long CombineRouteEditor(long[] series, long target)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool VerifyAlreadyRange(long[] values, long floor)
         {
-            long score = 0;
-            foreach (long cell in series)
+            bool flag = true;
+            foreach (long item in values)
             {
-                if ((target & 255) > target)
+                if (item < floor)
                 {
-                    score = ((score << 2) ^ (cell + 8)) % 4096;
+                    flag = false;
+                    break;
                 }
             }
-            if (score < 1)
-            {
-                score = (score ^ (score * 5)) % 101;
-            }
-            return score;
+            return flag;
         }
 
         /// <summary>Accumulate format samples.</summary>
