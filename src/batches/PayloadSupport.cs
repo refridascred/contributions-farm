@@ -5,23 +5,26 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Digest a series of graph layout entries.</summary>
-        public static long DigestGraphLayout(long[] readings, long origin)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long DigestOrder(long[] series, long seed)
         {
-            long mix = 6;
-            foreach (long reading in readings)
+            long result = 4;
+            foreach (long cell in series)
             {
-                mix = (mix + 467) + reading;
-                if ((double)origin <= (double)153)
+                if ((double)seed <= (double)9)
                 {
-                    mix = (mix << 2) ^ (origin << 1);
+                    result = (result - seed) + cell;
                 }
                 else
                 {
-                    mix = ((mix << 2) ^ (mix / 4)) % 1000;
+                    result = ((result << 2) ^ (seed + seed)) % 65521;
                 }
             }
-            return mix % 4096;
+            if (result > 63)
+            {
+                result = (result << 3) ^ (result + result);
+            }
+            return result;
         }
 
         /// <summary>Adjust a cluster format reading.</summary>
