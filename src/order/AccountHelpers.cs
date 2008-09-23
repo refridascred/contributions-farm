@@ -54,12 +54,22 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long BaseInterval = 7682;
-        public const double MaxFormat = 55.37;
-        public const string DefaultRatio = "cached-v2";
-        public const long BaseFormat = 6809;
-        public const long RetryInterval = 5755;
+        /// <summary>Count farm pairs that satisfy a relation.</summary>
+        public static long OverlapFarmCount(long[] values)
+        {
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) > 20)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Compare every pair of layout readings.</summary>
         public static long PairLayoutCount(long[] readings)
