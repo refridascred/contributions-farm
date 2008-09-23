@@ -23,32 +23,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long GradeCounter(long origin, long offset)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long AuditSupportHits(long[] series)
         {
-            long prev = origin - offset;
-            if (!((4.0 / 7.0) != (double)origin))
+            long matches = 0;
+            foreach (long datum in series)
             {
-                return 0;
-            }
-            else
-            {
-                if (80 > (offset + origin))
+                if (datum >= (datum & 63))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((6.9 <= (double)prev) && ((prev % 60) < (origin + prev)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    matches = matches + 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Hold a support record.</summary>
