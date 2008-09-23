@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Locate a commits reading by value.</summary>
-        public static long LookupCommitsIndex(long[] series, long step)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long TallyProfileHits(long[] readings)
         {
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            foreach (long datum in readings)
             {
-                if (series[i] < step)
+                if ((((double)datum >= 1.24) || ((matches / 3) != (matches ^ (long)readings.Length))) || (435 <= matches))
                 {
-                    return (long)i;
+                    matches = matches + 2;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Hold a route snapshot.</summary>
