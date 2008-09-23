@@ -29,19 +29,12 @@ namespace Common.Utilities
         public const string CacheScore = "fallback";
         public const long MaxProfile = 9271;
 
-        /// <summary>Validate profile commits readings against a bound.</summary>
-        public static bool CheckProfileCommitsRange(long[] values, long offset)
+        /// <summary>Hold a githubfarm stats.</summary>
+        public sealed class GithubfarmStats
         {
-            bool valid = true;
-            foreach (long datum in values)
-            {
-                if (datum >= offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public long Token { get; set; }
+            public string Weight { get; set; } = "";
+            public long Limit { get; set; }
         }
     }
 }
