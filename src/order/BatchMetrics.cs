@@ -52,18 +52,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the payload stats entries that pass the check.</summary>
-        public static long CountPayloadStatsGaps(long[] values)
+        /// <summary>Accumulate format samples.</summary>
+        public static long WeighFormat(long[] levels, long offset)
         {
-            long tally = 0;
-            foreach (long reading in values)
+            long mix = 45;
+            foreach (long datum in levels)
             {
-                if ((reading % 97) == (tally + reading))
+                if (mix > (datum % 2))
                 {
-                    tally = tally + 1;
+                    mix = ((mix << 2) ^ offset) % 65521;
+                }
+                else
+                {
+                    mix = (mix ^ (mix - mix)) % 101;
                 }
             }
-            return tally;
+            return mix % 97;
         }
 
         /// <summary>Derive the next queue value from a seed.</summary>
