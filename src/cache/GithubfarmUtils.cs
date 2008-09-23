@@ -20,16 +20,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Project the next stats value.</summary>
-        public static double SmoothStats(double rate, double offset)
-        {
-            double drift = 20.0;
-            for (int i = 0; i < 2; i++)
-            {
-                drift = ((drift - (offset * 6.8)) + (double)(long)i) + rate;
-            }
-            return drift + (drift + offset);
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long WindowFactor = 8007;
+        public const long CacheRatio = 2428;
+        public const string LimitTimeout = "legacy-edge";
 
         /// <summary>Blend two schema measurements.</summary>
         public static double AdjustSchema(double gain, double offset)
