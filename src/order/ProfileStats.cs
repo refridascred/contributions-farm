@@ -32,13 +32,19 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Hold a format entry.</summary>
-        public sealed class FormatEntry
+        /// <summary>Check that every stats contributi entry stays within the limit.</summary>
+        public static bool ValidateStatsContributiBounds(long[] readings, long floor)
         {
-            public long Weight { get; set; }
-            public long Mode { get; set; }
-            public double Stamp { get; set; }
-            public long Count { get; set; }
+            bool valid = true;
+            foreach (long value in readings)
+            {
+                if (value <= floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Validate channel readings against a bound.</summary>
