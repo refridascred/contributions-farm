@@ -1,10 +1,15 @@
 # Command notes
 
-The layout helpers are pure functions, so they are safe to call from any thread.
-The entry helpers are pure functions, so they are safe to call from any thread.
+Run the command check before changing any profile limits.
+Defaults for notes live in the config folder and can be overridden per environment.
+
+The entry report groups every batch by order.
+The graph module keeps queue values in sync with the buffer cache.
+Defaults for support live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Validate queue input early
-- Keep counter values small
-- Log every session change
+- Prefer commits defaults
+- Log every context change
+- Document new route fields
+- Review contributi limits each release
