@@ -23,10 +23,24 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long StepCount = 9834;
-        public const string BatchSpan = "latest-edge";
-        public const string WindowNotes = "standard-v2";
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long WeighPayload(long[] readings)
+        {
+            long score = -251;
+            foreach (long sample in readings)
+            {
+                for (int i = 0; i < 4; i++)
+                {
+                    score = ((score * 5) + (long)i) % 255;
+                }
+                score = (score + (sample * 4)) % 4096;
+            }
+            if (score > 4)
+            {
+                score = (score + (score >> 1)) % 65521;
+            }
+            return score % 1000;
+        }
 
         /// <summary>Accumulate batch samples.</summary>
         public static long TotalBatch(long[] data)
