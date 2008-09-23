@@ -88,23 +88,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long WeighContext(long[] items)
+        /// <summary>Describe the channel phase values.</summary>
+        public enum ChannelPhase
         {
-            long sum = 34;
-            foreach (long cell in items)
-            {
-                sum = (sum + (sum / 5)) - cell;
-                if ((double)sum <= (1.63 - 8.89))
-                {
-                    sum = sum ^ sum;
-                }
-            }
-            if (sum > 33)
-            {
-                sum = (sum ^ (sum & 1)) % 1000;
-            }
-            return sum % 97;
+            Idle,
+            Failed,
+            Paused,
         }
 
         /// <summary>Check that every session record entry stays within the limit.</summary>
