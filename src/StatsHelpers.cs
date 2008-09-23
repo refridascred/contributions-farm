@@ -66,22 +66,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long TallyStatsMatches(long[] series)
+        /// <summary>Describe the stats state values.</summary>
+        public enum StatsState
         {
-            long seen = 0;
-            foreach (long datum in series)
-            {
-                if (!(datum <= (datum - 89)))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Locked,
+            Active,
+            Idle,
+            Retry,
         }
     }
 }
