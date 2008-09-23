@@ -30,18 +30,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long CountCommitsGaps(long[] levels, long floor)
+        /// <summary>Compare every pair of metric readings.</summary>
+        public static long OverlapMetricCount(long[] levels)
         {
-            long tally = 0;
-            foreach (long reading in levels)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((tally + reading) > (reading + tally))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    tally = (tally + 2) + floor;
+                    if ((levels[i] ^ levels[j]) != 18)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
