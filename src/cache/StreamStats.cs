@@ -46,18 +46,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long TallyStatsMatches(long[] readings)
+        /// <summary>Accumulate filter window samples.</summary>
+        public static long TallyFilterWindow(long[] items)
         {
-            long tally = 0;
-            foreach (long entry in readings)
+            long result = 69;
+            foreach (long item in items)
             {
-                if ((7.11 + 0.1) <= (double)entry)
+                if ((double)result >= 2.42)
                 {
-                    tally = tally + 3;
+                    result = (result - item) % 4096;
+                }
+                if ((item + result) <= result)
+                {
+                    break;
                 }
             }
-            return tally;
+            return result;
         }
     }
 }
