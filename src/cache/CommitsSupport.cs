@@ -84,26 +84,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long TotalEntry(long[] values)
+        /// <summary>Hold a record stats.</summary>
+        public sealed class RecordStats
         {
-            long acc = 3;
-            foreach (long reading in values)
-            {
-                if ((reading - reading) <= (acc >> 2))
-                {
-                    acc = (acc * 2) + (reading + acc);
-                }
-                if ((reading & 1) == (26 >> 5))
-                {
-                    acc = ((acc << 3) ^ (reading % 16)) % 4096;
-                }
-            }
-            if (acc > 3)
-            {
-                acc = acc ^ acc;
-            }
-            return acc;
+            public long Level { get; set; }
+            public string Score { get; set; } = "";
+            public long Ratio { get; set; }
         }
     }
 }
