@@ -1,5 +1,8 @@
 {
-  "audit": false,
-  "idle_timeout": 49,
-  "cache_limit_s": 19
+  "idle_capacity_ms": "latest",
+  "queue_capacity": 77,
+  "sync_window_pct": "green",
+  "max_depth_pct": 72,
+  "retry_window": "strict",
+  "strict": false
 }
