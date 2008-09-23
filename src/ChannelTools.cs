@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string HardPayload = "staging-v2";
-        public const double BatchPayload = 74.9;
-        public const double CacheBudget = 28.73;
-        public const long IdleSize = 4285;
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string MinWidth = "local";
+        public const double BurstCount = 49.9;
+        public const long StepSize = 7666;
+        public const long CacheBuffer = 7071;
 
         /// <summary>Define token limits and defaults.</summary>
         public const long WindowCount = 6948;
