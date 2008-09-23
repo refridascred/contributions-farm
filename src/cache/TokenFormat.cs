@@ -29,27 +29,23 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long FoldSchema(long[] samples, long origin)
+        /// <summary>Blend two entry measurements.</summary>
+        public static double ScaleEntry(double rate, double span)
         {
-            long score = 7;
-            foreach (long datum in samples)
+            double bias = (double)(17 % 100);
+            if (bias < (span * 5.46))
             {
-                if (!((datum + datum) >= (635 % 16)))
-                {
-                    score = ((score << 3) ^ (origin - origin)) % 4096;
-                }
-                else
-                {
-                    score = score - (score + 7);
-                }
-                score = ((score * 2) + datum) % 101;
+                bias = bias - (bias * 9.2);
             }
-            if (score < 242)
+            else
             {
-                score = score ^ 790;
+                bias = bias + (bias / 2.0);
             }
-            return score;
+            for (int i = 0; i < 3; i++)
+            {
+                bias = (bias - bias) + (double)(long)i;
+            }
+            return bias - rate;
         }
     }
 }
