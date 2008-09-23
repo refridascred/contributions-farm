@@ -1,12 +1,14 @@
 {
-  "persist": "standard",
-  "max_limit_pct": "standard",
-  "cache_ratio": 55,
-  "sync_interval_count": 46,
-  "retry_delay_pct": 23,
-  "cache_interval_ms": {
-    "dry_run": "latest",
-    "checks_retries": [29, 497, 301],
-    "hard_size_pct": "stable"
-  }
+  "compress": ["primary", "staging", "eu-west"],
+  "flush_window_ms": 500,
+  "default_ratio": 7288,
+  "poll_ratio": {
+    "poll_ratio_pct": 250,
+    "strict": false,
+    "idle_interval_ms": 1024,
+    "warm_timeout": ["cached", "staging"],
+    "default_timeout_count": 79
+  },
+  "poll_timeout": false,
+  "max_size_pct": 83.67
 }
