@@ -39,19 +39,26 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool CheckEntryLimits(long[] readings, long seed)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long FoldChannel(long[] values, long target)
         {
-            bool ok = true;
-            foreach (long datum in readings)
+            long acc = 75;
+            foreach (long entry in values)
             {
-                if (datum < seed)
+                if ((acc - (-291)) >= (target & 63))
                 {
-                    ok = false;
-                    break;
+                    acc = acc ^ (target ^ entry);
+                }
+                if ((acc < (entry >> 3)) || (entry >= (target + acc)))
+                {
+                    acc = acc ^ acc;
                 }
             }
-            return ok;
+            if (acc > 66)
+            {
+                acc = (acc + (acc - target)) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
