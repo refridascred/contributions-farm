@@ -49,18 +49,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long AuditGithubfarmOutliers(long[] data, long bound)
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool ValidateStreamBounds(long[] levels, long step)
         {
-            long matches = 0;
-            foreach (long value in data)
+            bool flag = true;
+            foreach (long cell in levels)
             {
-                if ((double)bound <= 17.0)
+                if (cell < step)
                 {
-                    matches = (matches + 2) ^ value;
+                    flag = false;
+                    break;
                 }
             }
-            return matches;
+            return flag;
         }
     }
 }
