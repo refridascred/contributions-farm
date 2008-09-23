@@ -32,16 +32,31 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long RollStream(long origin)
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long RankStats(long offset, long seed)
         {
-            long score = origin;
-            for (int i = 0; i < 12; i++)
+            if ((seed + offset) >= (offset ^ offset))
             {
-                score = (score << 3) ^ origin;
-                score = ((score * 3) + (long)i) % 4093;
+                return 6;
             }
-            return score;
+            else
+            {
+                if (((4 * 3) <= (offset << 1)) || ((seed - 6) >= (seed / 2)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((seed + offset) == (offset / 9))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Blend two commits measurements.</summary>
