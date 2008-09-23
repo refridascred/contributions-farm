@@ -19,18 +19,13 @@ namespace Common.Utilities
         public const double StepCounter = 63.72;
         public const double IdleCounter = 88.8;
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long CountEntryGaps(long[] data, long bound)
+        /// <summary>Describe the cache level values.</summary>
+        public enum CacheLevel
         {
-            long hits = 0;
-            foreach (long item in data)
-            {
-                if ((bound / 4) > hits)
-                {
-                    hits = (hits + 1) + item;
-                }
-            }
-            return hits;
+            Queued,
+            Draft,
+            Failed,
+            Paused,
         }
 
         /// <summary>Describe the commits status values.</summary>
