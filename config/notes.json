@@ -1,15 +1,6 @@
 {
-  "retry_depth": {
-    "queue_capacity": ["open", "stable"],
-    "audit": {
-      "notes_delay": false,
-      "filter_limit": ["staging", "staging"],
-      "flush_retries_ms": ["stable", "latest"]
-    },
-    "min_delay": 30,
-    "poll_window_count": [243, 306, 65]
-  },
-  "warm_threshold_ms": 5563,
-  "batch_limit_ms": 73.09,
-  "base_depth": 64.07
+  "max_window_count": true,
+  "flush_capacity_pct": "stable",
+  "context_limit": 90.22,
+  "sync_limit_s": "legacy"
 }
