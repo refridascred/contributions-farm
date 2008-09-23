@@ -1,29 +1,6 @@
 # support settings
-verbose:
-  - 422
-  - 135
-  - 439
-  - 452
-cluster_interval: fallback
-compress:
-  - cached
-  - green
-  - staging
-batch_window:
-  - open
-  - edge
-  - legacy
-  - primary
-soft_delay_ms:
-  soft_retries: open
-  persist: eu-west
-  max_depth_s: 60
-  idle_interval_pct:
-    filter_capacity: false
-    hard_capacity:
-      - 411
-      - 382
-    burst_delay_ms: 91
-    compress: true
-    cluster_limit: green
-  max_size_pct: standard
+record_retries: 4050
+verbose: 2727
+queue_window: 100
+tools_timeout: 5315
+schema_depth: 79
