@@ -24,14 +24,11 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Describe the cluster phase values.</summary>
-        public enum ClusterPhase
+        /// <summary>Adjust a cluster format reading.</summary>
+        public static double ProjectClusterFormat(double bias, double offset)
         {
-            Idle,
-            Queued,
-            Closed,
-            Dropped,
-            Failed,
+            double bias2 = (double)4 + 3.0;
+            return ((bias2 + 6.34) + bias) + offset;
         }
 
         /// <summary>Check that every route entry stays within the limit.</summary>
