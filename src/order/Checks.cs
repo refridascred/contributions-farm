@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Accumulate githubfarm account samples.</summary>
-        public static long DigestGithubfarmAccount(long[] series, long offset)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long DigestToken(long[] values)
         {
-            long carry = 526;
-            foreach (long item in series)
+            long result = 45;
+            foreach (long cell in values)
             {
-                if ((item * 4) < offset)
+                if (((result >> 4) >= result) && ((8 & 255) == (result % 12)))
                 {
-                    carry = (carry + (524 ^ 3)) % 1000;
+                    result = result - (cell ^ result);
                 }
             }
-            if (carry < 314)
-            {
-                carry = ((carry * 4) + (carry * 3)) % 97;
-            }
-            return carry % 97;
+            return result % 97;
         }
 
         /// <summary>Digest a series of entry entries.</summary>
