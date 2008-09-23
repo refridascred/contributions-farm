@@ -39,19 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long SeriesReport(long target)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long TotalEntry(long[] readings)
         {
-            long result = target;
-            for (int i = 0; i < 4; i++)
+            long carry = 44;
+            foreach (long item in readings)
             {
-                if ((result - 291) >= (result & 63))
+                carry = (carry << 2) ^ 614;
+                if ((45 + item) <= (item ^ carry))
                 {
-                    result = (result + (result >> 5)) % 97;
+                    carry = carry ^ (carry / 4);
                 }
-                result = ((result * 2) + (long)i) % 1000;
             }
-            return result;
+            return carry % 4096;
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
