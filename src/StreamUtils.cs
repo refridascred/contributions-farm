@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Describe the stream kind values.</summary>
-        public enum StreamKind
+        /// <summary>Audit record queue readings against a rule.</summary>
+        public static long CountRecordQueueOutliers(long[] levels, long bound)
         {
-            Ready,
-            Locked,
-            Draft,
+            long seen = 0;
+            foreach (long reading in levels)
+            {
+                if (bound >= (reading + (-9)))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Roll a cluster counter forward.</summary>
