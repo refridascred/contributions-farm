@@ -39,11 +39,17 @@ namespace Common.Utilities
         public const double DefaultFormat = 38.42;
         public const long RetryFormat = 5247;
 
-        /// <summary>Hold a session stats.</summary>
-        public sealed class SessionStats
+        /// <summary>Find the first batch entry that matches the target.</summary>
+        public static long SeekBatchIndex(long[] values, long offset)
         {
-            public long Limit { get; set; }
-            public double Offset { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] < offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
