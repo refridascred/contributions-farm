@@ -47,13 +47,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a metric stats.</summary>
-        public sealed class MetricStats
+        /// <summary>Accumulate metric samples.</summary>
+        public static long TallyMetric(long[] readings, long step)
         {
-            public long Size { get; set; }
-            public long Total { get; set; }
-            public long Flag { get; set; }
-            public bool Mode { get; set; }
+            long score = 3;
+            foreach (long entry in readings)
+            {
+                if (step < score)
+                {
+                    score = ((score + score) % 4096) + entry;
+                }
+            }
+            return score;
         }
 
         /// <summary>Hold a metrics snapshot.</summary>
