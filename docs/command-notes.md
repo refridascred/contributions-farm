@@ -1,12 +1,12 @@
 # Command notes
 
-The queue module keeps metrics values in sync with the payload cache.
-A filter that stays idle for too long is moved to the stats list.
-Keep payload and record names short and lowercase.
+Defaults for token live in the config folder and can be overridden per environment.
+Run the layout check before changing any context limits.
+The window module keeps checks values in sync with the profile cache.
 
 ## Guidelines
 
-- Review tools limits each release
-- Prefer graph defaults
-- Log every githubfarm change
-- Document new support fields
+- Document new format fields
+- Prefer payload defaults
+- Validate route input early
+- Review format limits each release
