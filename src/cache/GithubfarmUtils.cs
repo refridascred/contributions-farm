@@ -30,13 +30,18 @@ namespace Common.Utilities
         public const long BatchSize = 999;
         public const double StepTimeout = 13.85;
 
-        /// <summary>Describe the support kind values.</summary>
-        public enum SupportKind
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long AuditContributiOutliers(long[] series)
         {
-            Paused,
-            Stale,
-            Pending,
-            Synced,
+            long tally = 0;
+            foreach (long item in series)
+            {
+                if (tally > (tally / 3))
+                {
+                    tally = (tally + 1) ^ item;
+                }
+            }
+            return tally;
         }
     }
 }
