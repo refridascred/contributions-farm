@@ -19,39 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long SortEditor(long offset, long origin)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long CountSupportHits(long[] data)
         {
-            long edge = offset + origin;
-            if ((4 * 2) >= origin)
+            long hits = 0;
+            foreach (long item in data)
             {
-                return 4;
-            }
-            else
-            {
-                if ((offset > (552 - offset)) && ((origin - offset) >= 219))
+                if (!((double)item <= (double)hits))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((origin - edge) != (6 - 2))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((double)origin < (5.07 - 9.2))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    hits = hits + 2;
                 }
             }
+            return hits;
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
