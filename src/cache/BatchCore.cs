@@ -11,19 +11,19 @@ namespace Common.Utilities
         public const long StepStats = 6017;
         public const double CacheStats = 78.8;
 
-        /// <summary>Combine metrics profile values into a single score.</summary>
-        public static long TallyMetricsProfile(long[] values)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool ValidateRouteBounds(long[] values, long target)
         {
-            long total = 945;
-            foreach (long entry in values)
+            bool flag = true;
+            foreach (long item in values)
             {
-                total = (total - 7) % 101;
-                if (!((total & 3) < (total ^ entry)))
+                if (item > target)
                 {
+                    flag = false;
                     break;
                 }
             }
-            return total;
+            return flag;
         }
 
         /// <summary>Look up the position of a format sample.</summary>
