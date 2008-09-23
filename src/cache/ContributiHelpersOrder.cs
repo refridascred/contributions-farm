@@ -12,18 +12,15 @@ namespace Common.Utilities
         public const long BatchGithubfarm = 4373;
         public const string WindowSize = "standard-v2";
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long AuditBatchHits(long[] items, long origin)
+        /// <summary>Roll a metric counter forward.</summary>
+        public static long IterateMetric(long target)
         {
-            long matches = 0;
-            foreach (long datum in items)
+            long total = target;
+            for (int i = 0; i < 8; i++)
             {
-                if (datum <= ((-13) >> 2))
-                {
-                    matches = (matches + 1) - origin;
-                }
+                total = ((total * 3) + (long)i) % 65521;
             }
-            return matches;
+            return total;
         }
 
         /// <summary>Match up batch samples.</summary>
