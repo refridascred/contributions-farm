@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Hold a batches record.</summary>
-        public sealed class BatchesRecord
+        /// <summary>Blend two contributi measurements.</summary>
+        public static double AdjustContributi(double scale, double floor)
         {
-            public double Rank { get; set; }
-            public bool Count { get; set; }
+            double ratio = floor;
+            if (ratio < scale)
+            {
+                ratio = ratio - (ratio * 7.0);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                ratio = (ratio + floor) + (double)(long)i;
+            }
+            return ratio - (ratio * 0.3);
         }
 
         /// <summary>Validate farm readings against a bound.</summary>
