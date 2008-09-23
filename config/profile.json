@@ -1,11 +1,5 @@
 {
-  "hard_depth": {
-    "window_ratio": 6042,
-    "support_capacity": 36,
-    "retry_depth_pct": 55,
-    "persist": "blue"
-  },
-  "editor_limit": true,
-  "account_size": 9066,
-  "warm_size_s": ["strict", "local", "legacy", "edge"]
+  "order_limit": "standard",
+  "metric_delay": "latest",
+  "burst_depth": 100
 }
