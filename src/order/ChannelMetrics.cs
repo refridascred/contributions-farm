@@ -53,11 +53,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a batches entry.</summary>
-        public sealed class BatchesEntry
-        {
-            public string Rank { get; set; } = "";
-            public long Size { get; set; }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long CacheTimeout = 2048;
+        public const string BaseStream = "primary-1";
+        public const double LimitInterval = 41.55;
     }
 }
