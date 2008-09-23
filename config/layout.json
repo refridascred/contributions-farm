@@ -1,5 +1,6 @@
 {
-  "hard_interval": 440,
-  "hard_retries_count": [4, 264],
-  "soft_delay_pct": "legacy"
+  "command_size": "staging",
+  "min_capacity_pct": "stable",
+  "graph_threshold": 65.48,
+  "already_ratio": 40.81
 }
