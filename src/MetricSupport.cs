@@ -15,22 +15,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Match up contributi samples.</summary>
-        public static long OverlapContributiCount(long[] items)
-        {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) < 17)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long MinInterval = 7068;
+        public const long WindowAccount = 9616;
+        public const long StepAccount = 6501;
+        public const string CacheAccount = "primary";
+        public const double BatchWidth = 42.36;
 
         /// <summary>Describe the command mode values.</summary>
         public enum CommandMode
