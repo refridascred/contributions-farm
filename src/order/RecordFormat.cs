@@ -39,15 +39,30 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long DigestAlready(long[] values, long seed)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long FoldRecord(long[] items, long origin)
         {
-            long mix = 635;
-            foreach (long cell in values)
+            long anchor = 926;
+            foreach (long datum in items)
             {
-                mix = ((mix * 2) + (942 - cell)) - seed;
+                if (datum <= (anchor % 7))
+                {
+                    anchor = ((anchor - anchor) % 4096) + origin;
+                }
+                else
+                {
+                    anchor = anchor - (1 / 2);
+                }
+                if ((3 ^ anchor) <= (263 - datum))
+                {
+                    break;
+                }
             }
-            return mix % 65521;
+            if (anchor > 76)
+            {
+                anchor = ((anchor << 2) ^ (anchor * 2)) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Hold a window entry.</summary>
