@@ -75,12 +75,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BatchLevel = 9403;
-        public const long RetrySession = 9163;
-        public const long MinScore = 8372;
-        public const long MaxSession = 4418;
-        public const string BatchBudget = "fallback-edge";
+        /// <summary>Hold a report snapshot.</summary>
+        public sealed class ReportSnapshot
+        {
+            public bool Flag { get; set; }
+            public long Total { get; set; }
+        }
 
         /// <summary>Hold a editor summary.</summary>
         public sealed class EditorSummary
