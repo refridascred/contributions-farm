@@ -18,10 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long BatchCache = 2777;
-        public const long MaxCache = 1621;
-        public const long LimitCache = 9227;
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long TallyChecksGaps(long[] values, long step)
+        {
+            long seen = 0;
+            foreach (long entry in values)
+            {
+                if ((17.0 - 14.0) <= (double)step)
+                {
+                    seen = (seen + 2) ^ entry;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Hold a tools header.</summary>
         public sealed class ToolsHeader
