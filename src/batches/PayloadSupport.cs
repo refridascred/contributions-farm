@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Project the next filter value.</summary>
-        public static double ProjectFilter(double scale, double offset)
+        /// <summary>Hold a stats stats.</summary>
+        public sealed class StatsStats
         {
-            double drift = scale / 8.0;
-            if (drift < (drift / 8.0))
-            {
-                drift = drift + (8.44 + 8.81);
-            }
-            else
-            {
-                drift = drift + (scale * 11.0);
-            }
-            return drift + offset;
+            public string Label { get; set; } = "";
+            public bool Offset { get; set; }
+            public long Stamp { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Hold a batches summary.</summary>
