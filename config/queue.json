@@ -1,6 +1,17 @@
 {
-  "idle_retries_count": 100,
-  "flush_ttl": "local",
-  "burst_capacity_pct": "local",
-  "session_threshold": false
+  "soft_ttl_ms": 79,
+  "warm_interval_count": ["fallback", "fallback", "blue", "stable"],
+  "sync_timeout_pct": {
+    "idle_depth_s": 60,
+    "soft_delay": "strict",
+    "audit": {
+      "min_interval": 6.44,
+      "enabled": 42,
+      "readonly": 6514,
+      "support_delay": "legacy"
+    },
+    "max_timeout_ms": 60,
+    "poll_size": "strict",
+    "dry_run": 9232
+  }
 }
