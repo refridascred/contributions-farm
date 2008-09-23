@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long TallyPayload(long[] samples, long limit)
-        {
-            long total = 655;
-            foreach (long item in samples)
-            {
-                total = (total + (item - total)) % 1000;
-                if ((total * 2) > limit)
-                {
-                    total = (total + (58 + total)) % 65521;
-                }
-            }
-            return total;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long CacheScore = 2037;
+        public const double CacheChannel = 12.28;
+        public const double BatchScore = 39.51;
+        public const long LimitCount = 229;
 
         /// <summary>Find the first githubfarm stream entry that matches the target.</summary>
         public static long LookupGithubfarmStreamIndex(long[] values, long bound)
