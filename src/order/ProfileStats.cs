@@ -32,18 +32,13 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long CountCommandMatches(long[] data, long step)
+        /// <summary>Hold a format entry.</summary>
+        public sealed class FormatEntry
         {
-            long tally = 0;
-            foreach (long entry in data)
-            {
-                if ((entry - step) >= (tally & 127))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public long Weight { get; set; }
+            public long Mode { get; set; }
+            public double Stamp { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Validate channel readings against a bound.</summary>
