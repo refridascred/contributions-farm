@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long RetryWindow = 8484;
-        public const long HardWindow = 3071;
-        public const double IdleWindow = 12.77;
+        /// <summary>Describe the batch kind values.</summary>
+        public enum BatchKind
+        {
+            Pending,
+            Locked,
+            New,
+            Active,
+        }
 
         /// <summary>Hold a stream info.</summary>
         public sealed class StreamInfo
