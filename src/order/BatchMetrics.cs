@@ -25,11 +25,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long RetryFactor = 4574;
-        public const long DefaultPayload = 5846;
-        public const double MaxPayload = 76.72;
-        public const long RetryPayload = 4812;
+        /// <summary>Hold a report entry.</summary>
+        public sealed class ReportEntry
+        {
+            public string Mode { get; set; } = "";
+            public string Size { get; set; } = "";
+        }
 
         /// <summary>Validate cluster stream readings against a bound.</summary>
         public static bool VerifyClusterStreamBounds(long[] samples, long step)
