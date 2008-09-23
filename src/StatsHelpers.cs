@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Hold a schema entry.</summary>
-        public sealed class SchemaEntry
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long MeasureRecordMatches(long[] data)
         {
-            public long Flag { get; set; }
-            public string Limit { get; set; } = "";
-            public string Rank { get; set; } = "";
+            long matches = 0;
+            foreach (long entry in data)
+            {
+                if ((((8.4 - 5.3) > (double)entry) || ((matches >> 1) >= (entry ^ matches))) || ((9.59 / 4.0) < (double)matches))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Match up token samples.</summary>
