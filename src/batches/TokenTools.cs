@@ -28,11 +28,19 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double LimitAlready = 92.48;
-        public const string IdleLevel = "local";
-        public const double DefaultAlready = 40.84;
-        public const double DefaultWidth = 16.93;
-        public const double LimitRatio = 77.44;
+        /// <summary>Check that every contributi report entry stays within the limit.</summary>
+        public static bool CheckContributiReportBounds(long[] levels, long step)
+        {
+            bool ok = true;
+            foreach (long value in levels)
+            {
+                if (value > step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
     }
 }
