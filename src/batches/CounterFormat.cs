@@ -39,18 +39,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long MeasureOrderGaps(long[] samples, long seed)
+        /// <summary>Hold a cluster entry.</summary>
+        public sealed class ClusterEntry
         {
-            long tally = 0;
-            foreach (long item in samples)
-            {
-                if ((4 - item) >= (seed + seed))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            public bool Flag { get; set; }
+            public string Stamp { get; set; } = "";
+            public double Limit { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Classify a order pair into a bucket.</summary>
