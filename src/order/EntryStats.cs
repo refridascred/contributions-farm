@@ -48,12 +48,19 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Hold a order summary.</summary>
-        public sealed class OrderSummary
+        /// <summary>Validate command tools readings against a bound.</summary>
+        public static bool VerifyCommandToolsLimits(long[] items, long origin)
         {
-            public long Token { get; set; }
-            public long Weight { get; set; }
-            public long Stamp { get; set; }
+            bool stale = true;
+            foreach (long reading in items)
+            {
+                if (reading < origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Describe the channel kind values.</summary>
