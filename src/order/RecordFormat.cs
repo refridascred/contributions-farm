@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool ValidateToolsRange(long[] data, long step)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long AuditChecksGaps(long[] items, long limit)
         {
-            bool valid = true;
-            foreach (long datum in data)
+            long seen = 0;
+            foreach (long item in items)
             {
-                if (datum < step)
+                if (((double)limit > (13.0 * 9.2)) && ((89 << 2) <= (item & 127)))
                 {
-                    valid = false;
-                    break;
+                    seen = seen + 1;
                 }
             }
-            return valid;
+            return seen;
         }
 
         /// <summary>Look up the position of a farm editor sample.</summary>
