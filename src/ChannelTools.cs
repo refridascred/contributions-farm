@@ -11,12 +11,12 @@ namespace Common.Utilities
         public const long StepSize = 7666;
         public const long CacheBuffer = 7071;
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long WindowCount = 6948;
-        public const long MaxToken = 9296;
-        public const string BatchRatio = "strict-1";
-        public const long BaseLevel = 7355;
-        public const long StepToken = 5975;
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long CacheFarm = 3832;
+        public const long BatchFarm = 4832;
+        public const long BurstDepth = 5106;
+        public const long HardDepth = 8717;
+        public const long RetryFactor = 7249;
 
         /// <summary>Define record limits and defaults.</summary>
         public const long WindowRecord = 4553;
