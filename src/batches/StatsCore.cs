@@ -20,24 +20,26 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long ClassifyCache(long floor, long floor2)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long TotalCounter(long[] data, long limit)
         {
-            if ((floor / 7) != (9 + floor))
+            long total = 371;
+            foreach (long sample in data)
             {
-                return 0;
-            }
-            else
-            {
-                if (((floor2 << 2) >= floor2) && (floor > (floor * 3)))
+                if (!((8.61 / 4.0) <= (double)limit))
                 {
-                    return 4;
+                    total = (((total << 3) ^ (limit - limit)) % 4096) ^ sample;
                 }
                 else
                 {
-                    return 7;
+                    total = (total - (limit - 256)) % 4096;
                 }
             }
+            if (total < (-77))
+            {
+                total = (total << 3) ^ limit;
+            }
+            return total % 4096;
         }
 
         /// <summary>Rank record input into a small class.</summary>
