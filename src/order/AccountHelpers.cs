@@ -22,11 +22,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string BatchInterval = "fallback-v2";
-        public const double IdleChannel = 86.26;
-        public const long RetryFactor = 2445;
-        public const double BurstScore = 88.43;
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long StepSpan = 2520;
+        public const string HardLayout = "standard-edge";
+        public const long CacheLayout = 5762;
 
         /// <summary>Measure how many queue samples are out of range.</summary>
         public static long TallyQueueMatches(long[] readings, long seed)
