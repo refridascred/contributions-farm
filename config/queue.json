@@ -1,5 +1,7 @@
 {
-  "verbose": 6487,
-  "counter_threshold": 48,
-  "retry_ttl": 60
+  "persist": 93.07,
+  "warm_depth_ms": 96.19,
+  "batch_size": false,
+  "idle_timeout": true,
+  "compress": "standard"
 }
