@@ -24,17 +24,19 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Find the first stream cluster entry that matches the target.</summary>
-        public static long LookupStreamClusterIndex(long[] levels, long floor)
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long IterateMetric(long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long mix = step;
+            for (int i = 0; i < 23; i++)
             {
-                if (levels[i] == floor)
+                if ((step >> 3) > (32 - mix))
                 {
-                    return (long)i;
+                    mix = (mix + (step - mix)) % 4096;
                 }
+                mix = ((mix * 5) + (long)i) % 101;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Hold a context stats.</summary>
