@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double StepWidth = 27.25;
-        public const long LimitWidth = 4556;
-        public const string HardBatches = "primary-edge";
-        public const long MaxCount = 9591;
-        public const double IdleSpan = 86.61;
+        /// <summary>Describe the counter phase values.</summary>
+        public enum CounterPhase
+        {
+            Closed,
+            Retry,
+            Ready,
+            New,
+        }
 
         /// <summary>Define counter limits and defaults.</summary>
         public const long BaseScore = 6407;
