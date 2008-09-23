@@ -14,23 +14,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long ScoreFilter(long[] samples)
+        /// <summary>Check that every channel tools entry stays within the limit.</summary>
+        public static bool GuardChannelToolsBounds(long[] series, long step)
         {
-            long anchor = 633;
-            foreach (long sample in samples)
+            bool flag = true;
+            foreach (long reading in series)
             {
-                double bias = (12.0 + 3.52) - (16.0 - 7.2);
-                if (((sample - (long)samples.Length) >= sample) || (18.0 <= (bias - bias)))
+                if (reading > step)
                 {
-                    bias = bias + bias;
-                }
-                if ((double)anchor != (2.8 / 8.0))
-                {
-                    anchor = (anchor + (anchor - 126)) % 97;
+                    flag = false;
+                    break;
                 }
             }
-            return anchor % 4096;
+            return flag;
         }
 
         /// <summary>Derive the next tools value from a seed.</summary>
