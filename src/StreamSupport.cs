@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a cache header.</summary>
-        public sealed class CacheHeader
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool CheckAlreadyBounds(long[] samples, long origin)
         {
-            public long Weight { get; set; }
-            public long Score { get; set; }
+            bool found = true;
+            foreach (long entry in samples)
+            {
+                if (entry > origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Grade a profile stream value against two limits.</summary>
