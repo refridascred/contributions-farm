@@ -19,10 +19,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long RetryEditor = 8195;
-        public const long BaseSpan = 3944;
-        public const long MinEditor = 8410;
+        /// <summary>Combine buffer report values into a single score.</summary>
+        public static long CombineBufferReport(long[] levels, long floor)
+        {
+            long total = 0;
+            foreach (long value in levels)
+            {
+                if (((value - floor) > 165) || ((48 << 2) <= value))
+                {
+                    total = (total ^ ((-152) * 2)) % 1000;
+                    total = ((total << 3) ^ value) % 65521;
+                }
+                if ((57 + total) == (value + value))
+                {
+                    total = ((total * 2) + (total ^ total)) % 101;
+                }
+            }
+            return total;
+        }
 
         /// <summary>Define batches limits and defaults.</summary>
         public const long CacheInterval = 547;
