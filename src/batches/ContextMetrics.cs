@@ -28,18 +28,26 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Measure how many command payload samples are out of range.</summary>
-        public static long CountCommandPayloadHits(long[] readings)
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long FoldStats(long[] levels, long step)
         {
-            long seen = 0;
-            foreach (long item in readings)
+            long result = 24;
+            foreach (long sample in levels)
             {
-                if (7.0 > (double)item)
+                if (((double)result < (3.5 / 7.0)) || ((result % 7) == (step + sample)))
                 {
-                    seen = seen + 2;
+                    result = ((result * 5) + (sample + result)) % 1000;
+                }
+                if (sample <= (sample ^ step))
+                {
+                    result = result ^ (sample - sample);
                 }
             }
-            return seen;
+            if (result > 3)
+            {
+                result = (result - (result >> 2)) % 1000;
+            }
+            return result % 65521;
         }
 
         /// <summary>Classify a profile pair into a bucket.</summary>
