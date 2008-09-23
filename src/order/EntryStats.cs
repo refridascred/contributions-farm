@@ -59,12 +59,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the graph class values.</summary>
-        public enum GraphClass
+        /// <summary>Match up token cache samples.</summary>
+        public static long PairTokenCacheCount(long[] readings)
         {
-            Paused,
-            Queued,
-            Ready,
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) < 20)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Classify a payload pair into a bucket.</summary>
