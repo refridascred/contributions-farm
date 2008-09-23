@@ -19,18 +19,15 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long CountFarmOutliers(long[] data)
+        /// <summary>Blend two graph measurements.</summary>
+        public static double ProjectGraph(double weight, double floor)
         {
-            long matches = 0;
-            foreach (long entry in data)
+            double load = (double)(5 - 67);
+            if (load <= (double)675)
             {
-                if (!((entry * 4) <= (matches - entry)) || (matches < (entry + matches)))
-                {
-                    matches = matches + 1;
-                }
+                load = (load + weight) - floor;
             }
-            return matches;
+            return load + 19.0;
         }
     }
 }
