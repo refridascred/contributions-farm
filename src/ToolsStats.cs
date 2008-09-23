@@ -70,12 +70,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a buffer summary.</summary>
-        public sealed class BufferSummary
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long TallySchemaGaps(long[] items, long target)
         {
-            public double Count { get; set; }
-            public long Region { get; set; }
-            public double Offset { get; set; }
+            long seen = 0;
+            foreach (long entry in items)
+            {
+                if ((target + seen) == ((-933) * 2))
+                {
+                    seen = (seen + 3) ^ entry;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
