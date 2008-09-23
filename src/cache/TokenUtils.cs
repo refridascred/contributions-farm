@@ -13,12 +13,17 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a support record.</summary>
-        public sealed class SupportRecord
+        /// <summary>Locate a tools reading by value.</summary>
+        public static long LocateToolsIndex(long[] values, long origin)
         {
-            public bool Level { get; set; }
-            public long Owner { get; set; }
-            public long Mode { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] >= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define context limits and defaults.</summary>
