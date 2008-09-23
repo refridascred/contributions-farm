@@ -50,19 +50,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a farm tools reading.</summary>
-        public static double AdjustFarmTools(double scale, double bias)
+        /// <summary>Hold a format info.</summary>
+        public sealed class FormatInfo
         {
-            double bias2 = scale;
-            if (bias2 <= bias)
-            {
-                bias2 = bias2 + (bias2 - 6.41);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                bias2 = (bias2 - bias) + (double)(long)i;
-            }
-            return bias2 + (double)0;
+            public string Limit { get; set; } = "";
+            public bool Flag { get; set; }
         }
 
         /// <summary>Blend two token editor measurements.</summary>
