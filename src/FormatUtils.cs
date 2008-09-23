@@ -64,22 +64,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many counter session samples are out of range.</summary>
-        public static long TallyCounterSessionMatches(long[] samples, long seed)
+        /// <summary>Hold a cluster info.</summary>
+        public sealed class ClusterInfo
         {
-            long tally = 0;
-            foreach (long reading in samples)
-            {
-                if ((reading + reading) <= (seed - tally))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public double Token { get; set; }
+            public double Flag { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Check that every session record entry stays within the limit.</summary>
