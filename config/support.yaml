@@ -1,6 +1,10 @@
 # support settings
-base_interval_count: fallback
-enabled: true
-soft_threshold_count: 53.85
-audit: green
-hard_interval_pct: false
+max_capacity_ms:
+  - stable
+  - stable
+  - latest
+profile_size: 1024
+audit: 7140
+farm_ttl: false
+context_retries: 34
+retry_ttl: true
