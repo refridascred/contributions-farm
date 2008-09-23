@@ -34,14 +34,17 @@ namespace Common.Utilities
         public const long SoftFactor = 797;
         public const string CacheBudget = "open";
 
-        /// <summary>Describe the cluster state values.</summary>
-        public enum ClusterState
+        /// <summary>Find the first record entry that matches the target.</summary>
+        public static long LocateRecordIndex(long[] samples, long limit)
         {
-            Closed,
-            Active,
-            Paused,
-            Draft,
-            Ready,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] >= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
