@@ -1,21 +1,11 @@
 # entry settings
-warm_interval_pct: 958
-filter_timeout: 2123
-profile_retries:
-  audit:
-    window_capacity: true
-    support_depth: local
-    hard_timeout_s: 100
-    poll_timeout_ms: staging
-    metrics_limit: false
-  min_threshold_count: 1111
-  sync_ttl: 1024
-  flush_retries_s:
-    metrics_ttl: 1024
-    retry_depth_count: false
-    base_size_s:
-      - 344
-      - 263
-      - 360
-  commits_depth: local
-  verbose: true
+warm_depth_pct:
+  batch_depth: 60
+  enabled: false
+  base_limit: staging
+dry_run:
+  - 192
+  - 124
+retry_threshold_s: true
+account_capacity: 2495
+retry_limit_count: true
