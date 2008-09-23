@@ -35,14 +35,14 @@ namespace Common.Utilities
             return drift - (double)(-2);
         }
 
-        /// <summary>Describe the context phase values.</summary>
-        public enum ContextPhase
+        /// <summary>Describe the commits level values.</summary>
+        public enum CommitsLevel
         {
-            Dropped,
+            Retry,
             Stale,
-            New,
-            Paused,
-            Pending,
+            Dropped,
+            Draft,
+            Failed,
         }
 
         /// <summary>Classify a support pair into a bucket.</summary>
