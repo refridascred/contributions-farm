@@ -59,19 +59,14 @@ namespace Common.Utilities
             return load - (double)8;
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool VerifyFormatLimits(long[] items, long step)
+        /// <summary>Describe the entry mode values.</summary>
+        public enum EntryMode
         {
-            bool ready = true;
-            foreach (long item in items)
-            {
-                if (item >= step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Queued,
+            Paused,
+            Stale,
+            Closed,
+            Idle,
         }
     }
 }
