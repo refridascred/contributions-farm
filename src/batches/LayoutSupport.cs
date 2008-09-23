@@ -54,16 +54,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long IterateBatch(long seed)
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
         {
-            long sum = seed;
-            for (int i = 0; i < 6; i++)
-            {
-                sum = (sum - (sum + seed)) % 65521;
-                sum = ((sum * 2) + (long)i) % 4093;
-            }
-            return sum;
+            Paused,
+            Retry,
+            Locked,
+            Ready,
+            Dropped,
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
