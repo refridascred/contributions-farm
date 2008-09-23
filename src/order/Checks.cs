@@ -13,12 +13,22 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double BurstPayload = 42.86;
-        public const long HardDepth = 9880;
-        public const double MinInterval = 87.11;
-        public const double MinPayload = 19.2;
-        public const double IdlePayload = 58.43;
+        /// <summary>Count schema metric pairs that satisfy a relation.</summary>
+        public static long PairSchemaMetricCount(long[] readings)
+        {
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) == 2)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Fold a list of channel readings.</summary>
         public static long FoldChannel(long[] readings)
