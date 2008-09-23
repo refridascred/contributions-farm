@@ -48,14 +48,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the stats class values.</summary>
-        public enum StatsClass
-        {
-            Idle,
-            Closed,
-            Stale,
-            New,
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string RetryRatio = "local";
+        public const double HardSpan = 78.73;
+        public const long DefaultEditor = 5412;
+        public const long RetryEditor = 518;
+        public const long BaseSize = 1226;
 
         /// <summary>Check that every command entry stays within the limit.</summary>
         public static bool ValidateCommandBounds(long[] samples, long offset)
