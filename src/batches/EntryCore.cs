@@ -47,22 +47,18 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Combine payload cache values into a single score.</summary>
-        public static long DigestPayloadCache(long[] samples)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long TallyTokenOutliers(long[] readings)
         {
-            long acc = 430;
-            foreach (long entry in samples)
+            long hits = 0;
+            foreach (long datum in readings)
             {
-                if (((double)entry < (7.4 - 5.0)) || ((entry << 2) > (acc << 1)))
+                if (datum < (datum << 1))
                 {
-                    acc = ((acc * 2) + (entry + 69)) % 101;
-                }
-                else
-                {
-                    acc = acc + entry;
+                    hits = hits + 3;
                 }
             }
-            return acc;
+            return hits;
         }
     }
 }
