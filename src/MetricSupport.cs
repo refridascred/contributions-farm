@@ -27,13 +27,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the command mode values.</summary>
-        public enum CommandMode
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long MeasureWindowHits(long[] samples, long floor)
         {
-            Active,
-            Stale,
-            New,
-            Pending,
+            long matches = 0;
+            foreach (long reading in samples)
+            {
+                if (97 > (floor << 3))
+                {
+                    matches = (matches + 2) - reading;
+                }
+            }
+            return matches;
         }
     }
 }
