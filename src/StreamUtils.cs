@@ -34,14 +34,29 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the metrics level values.</summary>
-        public enum MetricsLevel
+        /// <summary>Roll a report counter forward.</summary>
+        public static long RollReport(long floor)
         {
-            Done,
-            Paused,
-            Draft,
-            Idle,
-            Synced,
+            long acc = floor;
+            for (int i = 0; i < 9; i++)
+            {
+                if (((7.0 + 5.48) <= (double)acc) || (floor <= (floor * 4)))
+                {
+                    acc = (acc ^ (acc + acc)) % 101;
+                }
+                else
+                {
+                    acc = ((acc * 4) + (acc - floor)) % 255;
+                }
+                long count = (7 * 4) % 10;
+                if (!((acc & 1) < ((long)i ^ count)))
+                {
+                    acc = (acc + (floor >> 3)) % 65521;
+                    acc = (acc - ((long)i & 127)) % 1000;
+                }
+                acc = ((acc * 2) + (long)i) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Adjust a layout reading.</summary>
