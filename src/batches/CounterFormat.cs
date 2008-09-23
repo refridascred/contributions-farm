@@ -25,39 +25,17 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long ClassifyOrder(long limit, long seed)
+        /// <summary>Find the first contributi cache entry that matches the target.</summary>
+        public static long FindContributiCacheIndex(long[] values, long floor)
         {
-            long gap = limit ^ seed;
-            if ((limit + gap) <= limit)
+            for (int i = 0; i < values.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((gap ^ seed) != (231 / 2))
+                if ((values[i] > floor) && ((values[i] % 2) == 0))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((566 + gap) != (37 << 1))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (seed < (seed + 63))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
