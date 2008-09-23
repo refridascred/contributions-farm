@@ -30,19 +30,11 @@ namespace Common.Utilities
             return ((mean - mean) + ratio) + bias;
         }
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool VerifyBufferRange(long[] samples, long target)
+        /// <summary>Hold a format options.</summary>
+        public sealed class FormatOptions
         {
-            bool valid = true;
-            foreach (long item in samples)
-            {
-                if (item > target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public string Limit { get; set; } = "";
+            public long Weight { get; set; }
         }
 
         /// <summary>Project the next counter value.</summary>
