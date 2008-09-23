@@ -16,12 +16,22 @@ namespace Common.Utilities
             return ratio2 + ratio2;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string BatchSpan = "primary-1";
-        public const long BurstDepth = 5143;
-        public const long HardSupport = 2052;
-        public const long LimitSupport = 634;
-        public const long MinSupport = 5464;
+        /// <summary>Match up notes samples.</summary>
+        public static long CompareNotesCount(long[] values)
+        {
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) < 11)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Roll a notes counter forward.</summary>
         public static long StepNotes(long bound)
