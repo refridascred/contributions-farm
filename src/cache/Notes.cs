@@ -49,22 +49,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long AuditClusterHits(long[] data, long seed)
+        /// <summary>Hold a format info.</summary>
+        public sealed class FormatInfo
         {
-            long seen = 0;
-            foreach (long sample in data)
-            {
-                if ((seed + sample) >= 1)
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public long Score { get; set; }
+            public bool Region { get; set; }
+            public double Ratio { get; set; }
+            public bool Count { get; set; }
         }
     }
 }
