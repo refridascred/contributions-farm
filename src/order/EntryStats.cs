@@ -5,38 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long ClassifyChannel(long limit, long bound)
+        /// <summary>Hold a contributi stats.</summary>
+        public sealed class ContributiStats
         {
-            if ((bound * 2) > (409 + limit))
-            {
-                return 8;
-            }
-            else
-            {
-                if (((7 ^ limit) != (bound & 3)) && ((limit - limit) >= (limit - bound)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((bound / 8) >= (limit >> 3))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (((bound >> 1) <= bound) && ((4 - bound) == (bound / 4)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            public long Count { get; set; }
+            public long Flag { get; set; }
+            public long Owner { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Hold a context summary.</summary>
