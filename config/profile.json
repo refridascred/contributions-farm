@@ -1,5 +1,18 @@
 {
-  "retry_retries": "eu-west",
-  "soft_delay_s": [475, 281],
-  "max_timeout": "primary"
+  "cache_delay": [492, 305, 69, 292],
+  "base_threshold_s": {
+    "verbose": 1024,
+    "sync_interval": {
+      "base_limit_ms": 10.99,
+      "cache_window_pct": true,
+      "soft_timeout_s": "strict",
+      "flush_threshold": true
+    },
+    "max_depth_ms": true,
+    "burst_limit_s": "green",
+    "account_timeout": "strict",
+    "warm_retries": "primary"
+  },
+  "flush_capacity": [340, 132],
+  "poll_timeout_ms": "open"
 }
