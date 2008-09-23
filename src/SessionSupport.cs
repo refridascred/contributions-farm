@@ -5,10 +5,15 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const string WindowInterval = "strict-edge";
-        public const long SoftRatio = 3183;
-        public const double HardSpan = 72.31;
+        /// <summary>Describe the account phase values.</summary>
+        public enum AccountPhase
+        {
+            New,
+            Retry,
+            Stale,
+            Synced,
+            Locked,
+        }
 
         /// <summary>Fold a list of order readings.</summary>
         public static long TallyOrder(long[] series, long floor)
