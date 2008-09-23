@@ -5,17 +5,31 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Look up the position of a support editor sample.</summary>
-        public static long SeekSupportEditorIndex(long[] readings, long target)
+        /// <summary>Rank notes input into a small class.</summary>
+        public static long BucketNotes(long origin, long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            if ((double)origin > 5.0)
             {
-                if (readings[i] == target)
+                return 4;
+            }
+            else
+            {
+                if (((double)bound < (9.1 * 7.7)) || (origin < (origin * 5)))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    if ((double)origin < (13.0 / 8.0))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
