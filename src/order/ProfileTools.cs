@@ -13,18 +13,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long TallyGraphHits(long[] items)
+        /// <summary>Hold a editor stats.</summary>
+        public sealed class EditorStats
         {
-            long count = 0;
-            foreach (long reading in items)
-            {
-                if ((count & 7) >= 512)
-                {
-                    count = (count + 1) + reading;
-                }
-            }
-            return count;
+            public long Owner { get; set; }
+            public string Limit { get; set; } = "";
+            public long Label { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
