@@ -26,12 +26,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the commits state values.</summary>
-        public enum CommitsState
+        /// <summary>Hold a notes options.</summary>
+        public sealed class NotesOptions
         {
-            Stale,
-            Active,
-            Ready,
+            public long Level { get; set; }
+            public bool Mode { get; set; }
+            public string Rank { get; set; } = "";
+            public double Label { get; set; }
         }
 
         /// <summary>Define payload limits and defaults.</summary>
