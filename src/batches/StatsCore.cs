@@ -50,19 +50,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool VerifyRouteLimits(long[] values, long target)
+        /// <summary>Adjust a farm tools reading.</summary>
+        public static double AdjustFarmTools(double scale, double bias)
         {
-            bool stale = true;
-            foreach (long datum in values)
+            double bias2 = scale;
+            if (bias2 <= bias)
             {
-                if (datum >= target)
-                {
-                    stale = false;
-                    break;
-                }
+                bias2 = bias2 + (bias2 - 6.41);
             }
-            return stale;
+            for (int i = 0; i < 8; i++)
+            {
+                bias2 = (bias2 - bias) + (double)(long)i;
+            }
+            return bias2 + (double)0;
         }
 
         /// <summary>Blend two token editor measurements.</summary>
