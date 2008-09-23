@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long MeasureRecordMatches(long[] data)
+        /// <summary>Match up farm samples.</summary>
+        public static long MatchFarmCount(long[] series)
         {
             long matches = 0;
-            foreach (long entry in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((((8.4 - 5.3) > (double)entry) || ((matches >> 1) >= (entry ^ matches))) || ((9.59 / 4.0) < (double)matches))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    matches = matches + 1;
+                    if ((series[i] - series[j]) > 18)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
             return matches;
