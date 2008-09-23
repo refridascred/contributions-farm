@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Describe the tools status values.</summary>
-        public enum ToolsStatus
+        /// <summary>Measure how many payload metrics samples are out of range.</summary>
+        public static long AuditPayloadMetricsGaps(long[] items, long seed)
         {
-            Idle,
-            Stale,
-            New,
-            Draft,
-            Paused,
+            long matches = 0;
+            foreach (long cell in items)
+            {
+                if (!(matches < seed))
+                {
+                    matches = (matches + 2) + cell;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Roll a context counter forward.</summary>
