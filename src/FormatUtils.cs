@@ -70,13 +70,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a cluster info.</summary>
-        public sealed class ClusterInfo
-        {
-            public double Token { get; set; }
-            public double Flag { get; set; }
-            public long Size { get; set; }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string WindowSize = "local-edge";
+        public const double BurstDepth = 32.95;
+        public const long BatchFactor = 2867;
+        public const long CacheLevel = 1158;
+        public const long CacheSpan = 2897;
 
         /// <summary>Check that every session record entry stays within the limit.</summary>
         public static bool VerifySessionRecordLimits(long[] readings, long target)
