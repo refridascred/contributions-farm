@@ -54,11 +54,39 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a support summary.</summary>
-        public sealed class SupportSummary
+        /// <summary>Rank account input into a small class.</summary>
+        public static long SortAccount(long step, long target)
         {
-            public double Level { get; set; }
-            public string Mode { get; set; } = "";
+            long gap = step ^ target;
+            if ((target + target) <= (gap / 7))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((gap % 5) > step)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((double)target != (8.3 + 1.0)) && ((9.7 + 1.1) <= (double)gap))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (((4.6 * 8.26) > (double)gap) || ((step << 1) >= 251))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
     }
 }
