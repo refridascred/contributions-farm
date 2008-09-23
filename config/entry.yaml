@@ -1,17 +1,17 @@
 # entry settings
-burst_size: stable
-sync_capacity_count:
-  max_delay: open
-  sync_limit_count:
-    max_timeout_count: 2473
-    sync_delay: 29
-    poll_capacity:
-      - 264
-      - 485
-      - 150
-    readonly: latest
-    audit: 59
-  default_depth_s: eu-west
-  hard_depth_ms: true
-enabled: 4.99
-max_delay: standard
+warm_interval_s: 7642
+cache_limit_s: blue
+min_ttl: primary
+checks_ttl: 100
+retry_size_s: 68
+cluster_size:
+  notes_retries:
+    filter_delay: 100
+    cache_delay_count: 500
+    metric_interval: 60
+    persist: 89
+    layout_interval: 44
+    flush_capacity_s: stable
+  batch_threshold_pct: 41
+  idle_timeout_count: 98.2
+  poll_delay_count: true
