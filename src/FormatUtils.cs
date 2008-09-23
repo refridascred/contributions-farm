@@ -48,18 +48,26 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long TallyMetricHits(long[] values)
+        /// <summary>Combine channel stream values into a single score.</summary>
+        public static long FoldChannelStream(long[] values, long bound)
         {
-            long hits = 0;
-            foreach (long sample in values)
+            long result = 851;
+            foreach (long cell in values)
             {
-                if ((hits & 7) >= (sample - sample))
+                if (bound < (bound + 580))
                 {
-                    hits = hits + 3;
+                    result = (result << 3) ^ cell;
+                }
+                else
+                {
+                    result = result - (2 + bound);
+                }
+                if (((cell + cell) <= (long)values.Length) && ((bound >> 5) >= (977 << 2)))
+                {
+                    break;
                 }
             }
-            return hits;
+            return result;
         }
 
         /// <summary>Describe the channel phase values.</summary>
