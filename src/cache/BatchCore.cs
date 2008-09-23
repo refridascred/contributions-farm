@@ -19,22 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long TallyCommandOutliers(long[] values)
+        /// <summary>Combine metrics profile values into a single score.</summary>
+        public static long TallyMetricsProfile(long[] values)
         {
-            long tally = 0;
+            long total = 945;
             foreach (long entry in values)
             {
-                if (!(entry <= (tally * 4)))
+                total = (total - 7) % 101;
+                if (!((total & 3) < (total ^ entry)))
                 {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    break;
                 }
             }
-            return tally;
+            return total;
         }
 
         /// <summary>Look up the position of a format sample.</summary>
