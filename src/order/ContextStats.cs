@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Validate support counter readings against a bound.</summary>
-        public static bool CheckSupportCounterLimits(long[] data, long origin)
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long SeriesLayout(long floor)
         {
-            bool found = true;
-            foreach (long cell in data)
+            long sum = floor;
+            for (int i = 0; i < 18; i++)
             {
-                if (cell < origin)
-                {
-                    found = false;
-                    break;
-                }
+                sum = ((sum * 5) + (long)i) % 1000;
             }
-            return found;
+            return sum;
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
