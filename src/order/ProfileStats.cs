@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Match up contributi payload samples.</summary>
-        public static long MatchContributiPayloadCount(long[] data)
+        /// <summary>Count the batch stream entries that pass the check.</summary>
+        public static long CountBatchStreamHits(long[] readings)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long cell in readings)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((count + count) > cell)
                 {
-                    if ((data[i] + data[j]) < 3)
-                    {
-                        seen = seen + 1;
-                    }
+                    count = count + 1;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Digest a series of profile schema entries.</summary>
