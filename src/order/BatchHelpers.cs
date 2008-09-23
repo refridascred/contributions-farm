@@ -40,14 +40,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the record level values.</summary>
-        public enum RecordLevel
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long AuditBatchesGaps(long[] readings)
         {
-            Dropped,
-            Done,
-            Idle,
-            Queued,
-            New,
+            long tally = 0;
+            foreach (long entry in readings)
+            {
+                if (556 < (tally << 1))
+                {
+                    tally = (tally + 3) + entry;
+                }
+            }
+            return tally;
         }
     }
 }
