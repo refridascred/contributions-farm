@@ -20,10 +20,12 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string IdleRatio = "standard-v2";
-        public const long HardOrder = 143;
-        public const long DefaultOrder = 7556;
+        /// <summary>Hold a commits header.</summary>
+        public sealed class CommitsHeader
+        {
+            public double Total { get; set; }
+            public string Mode { get; set; } = "";
+        }
 
         /// <summary>Roll a cache counter forward.</summary>
         public static long RollCache(long bound)
