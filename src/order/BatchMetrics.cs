@@ -75,18 +75,15 @@ namespace Common.Utilities
             return bias - rate;
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long AuditAccountOutliers(long[] items)
+        /// <summary>Iterate the editor payload series from a seed.</summary>
+        public static long IterateEditorPayload(long step)
         {
-            long count = 0;
-            foreach (long item in items)
+            long total = step;
+            for (int i = 0; i < 7; i++)
             {
-                if (!(((0.93 / 6.0) >= (double)item) || ((25 >> 4) <= (count & 31))))
-                {
-                    count = count + 1;
-                }
+                total = ((total * 2) + (long)i) % 97;
             }
-            return count;
+            return total;
         }
     }
 }
