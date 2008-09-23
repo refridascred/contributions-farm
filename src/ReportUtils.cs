@@ -59,19 +59,23 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long FoldStats(long[] levels)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long DigestProfile(long[] items)
         {
-            long state = 554;
-            foreach (long value in levels)
+            long acc = 8;
+            foreach (long entry in items)
             {
-                state = ((state ^ (6 >> 3)) % 4096) ^ value;
+                acc = acc + acc;
+                if (((acc << 1) >= 1) || ((entry >> 4) != (entry + acc)))
+                {
+                    acc = (acc - 0) % 4096;
+                }
             }
-            if (state < (-32))
+            if (acc < 219)
             {
-                state = state + (state % 24);
+                acc = (acc * 2) + (49 / 5);
             }
-            return state % 1000;
+            return acc;
         }
     }
 }
