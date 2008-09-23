@@ -47,23 +47,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next githubfarm buffer value from a seed.</summary>
-        public static long DeriveGithubfarmBuffer(long bound)
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool ValidateEditorBounds(long[] levels, long floor)
         {
-            long acc = bound;
-            for (int i = 0; i < 22; i++)
+            bool flag = true;
+            foreach (long cell in levels)
             {
-                if (((long)i % 12) != (1 - 54))
+                if (cell != floor)
                 {
-                    continue;
+                    flag = false;
+                    break;
                 }
-                if ((((long)i + bound) >= (bound / 8)) || (414 > ((long)i - acc)))
-                {
-                    acc = acc - (acc + 57);
-                }
-                acc = ((acc * 2) + (long)i) % 4093;
             }
-            return acc;
+            return flag;
         }
 
         /// <summary>Hold a metrics snapshot.</summary>
