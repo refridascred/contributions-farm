@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const double DefaultContext = 74.42;
-        public const string CacheContext = "staging-1";
-        public const string LimitContext = "strict";
+        /// <summary>Describe the batches status values.</summary>
+        public enum BatchesStatus
+        {
+            Closed,
+            Paused,
+            Idle,
+            Active,
+        }
 
         /// <summary>Fold a list of route farm readings.</summary>
         public static long TotalRouteFarm(long[] data)
