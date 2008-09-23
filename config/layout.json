@@ -1,5 +1,11 @@
 {
-  "payload_ttl": false,
-  "max_interval": ["open", "eu-west", "latest", "cached"],
-  "audit": "open"
+  "verbose": {
+    "batches_delay": "edge",
+    "enabled": "stable",
+    "warm_capacity": "legacy",
+    "audit": 250,
+    "stream_threshold": "local"
+  },
+  "poll_interval_s": "eu-west",
+  "soft_capacity_pct": "strict"
 }
