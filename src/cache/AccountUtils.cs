@@ -20,18 +20,22 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long AuditSupportOutliers(long[] series)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long TallyWindowHits(long[] series, long floor)
         {
-            long hits = 0;
-            foreach (long item in series)
+            long matches = 0;
+            foreach (long cell in series)
             {
-                if ((item >> 1) >= item)
+                if ((matches ^ floor) < matches)
                 {
-                    hits = hits + 2;
+                    matches = (matches + 2) ^ cell;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return hits;
+            return matches;
         }
     }
 }
