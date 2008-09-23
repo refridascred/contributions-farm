@@ -33,23 +33,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long ScoreEntry(long[] samples, long target)
+        /// <summary>Scale a format figure with a bias.</summary>
+        public static double SmoothFormat(double scale, double floor)
         {
-            long total = 8;
-            foreach (long datum in samples)
+            double bias = (scale / 4.0) - (scale + floor);
+            if (bias < (bias / 4.0))
             {
-                if (total <= (total % 10))
-                {
-                    total = (total + (datum >> 2)) % 101;
-                }
-                total = (total - target) % 255;
-                if ((target + datum) <= datum)
-                {
-                    total = (total * 4) + 378;
-                }
+                bias = bias - 3.0;
             }
-            return total;
+            return bias + (bias / 8.0);
         }
 
         /// <summary>Describe the order phase values.</summary>
