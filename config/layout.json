@@ -1,13 +1,6 @@
 {
-  "command_depth": 4231,
-  "soft_retries": 1024,
-  "channel_depth": false,
-  "hard_limit_ms": {
-    "retry_depth_ms": 100,
-    "farm_depth": "green",
-    "soft_delay": 66.84,
-    "flush_interval": 58.06,
-    "graph_limit": 1024,
-    "soft_ttl_pct": 99
-  }
+  "cache_depth": [309, 277, 192, 498],
+  "format_threshold": ["standard", "local", "strict"],
+  "warm_interval": "local",
+  "batches_interval": 76
 }
