@@ -37,19 +37,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate graph token readings against a bound.</summary>
-        public static bool VerifyGraphTokenBounds(long[] series, long origin)
+        /// <summary>Describe the cache mode values.</summary>
+        public enum CacheMode
         {
-            bool valid = true;
-            foreach (long entry in series)
-            {
-                if (entry >= origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Idle,
+            Done,
+            Paused,
+            Ready,
         }
 
         /// <summary>Validate token contributi readings against a bound.</summary>
