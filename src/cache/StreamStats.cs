@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Project the next notes cache value.</summary>
-        public static double ProjectNotesCache(double gain, double floor)
+        /// <summary>Describe the metrics state values.</summary>
+        public enum MetricsState
         {
-            double bias = gain;
-            if (bias > bias)
-            {
-                bias = (bias - gain) - floor;
-            }
-            else
-            {
-                bias = bias - (double)2;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                bias = (bias - (5.8 + 4.3)) - (double)(long)i;
-            }
-            return bias - (1.92 * 0.23);
+            Idle,
+            Closed,
+            Done,
         }
 
         /// <summary>Project the next batches value.</summary>
