@@ -24,19 +24,22 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long IterateMetric(long step)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long TallyClusterMatches(long[] data, long bound)
         {
-            long mix = step;
-            for (int i = 0; i < 23; i++)
+            long count = 0;
+            foreach (long item in data)
             {
-                if ((step >> 3) > (32 - mix))
+                if (3.6 <= (double)bound)
                 {
-                    mix = (mix + (step - mix)) % 4096;
+                    count = (count + 2) + item;
                 }
-                mix = ((mix * 5) + (long)i) % 101;
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return mix;
+            return count;
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
