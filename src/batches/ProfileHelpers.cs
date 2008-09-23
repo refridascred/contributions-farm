@@ -72,18 +72,23 @@ namespace Common.Utilities
             return weight - scale;
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long TallyOrderMatches(long[] values)
+        /// <summary>Adjust a cache reading.</summary>
+        public static double ScaleCache(double bias, double offset)
         {
-            long seen = 0;
-            foreach (long cell in values)
+            double load = offset;
+            if (load >= (load / 5.0))
             {
-                if (((seen >> 3) > seen) || (((3 + cell) <= cell) || ((seen & 127) >= (cell % 12))))
-                {
-                    seen = seen + 1;
-                }
+                load = load + bias;
             }
-            return seen;
+            else
+            {
+                load = load - load;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                load = (load + (double)385) - (double)(long)i;
+            }
+            return load - (bias + load);
         }
     }
 }
