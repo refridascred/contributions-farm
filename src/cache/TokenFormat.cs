@@ -31,22 +31,19 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long MeasureBatchHits(long[] levels)
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool VerifyStreamBounds(long[] values, long limit)
         {
-            long matches = 0;
-            foreach (long sample in levels)
+            bool valid = true;
+            foreach (long entry in values)
             {
-                if ((sample >> 4) < 37)
+                if (entry < limit)
                 {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
     }
 }
