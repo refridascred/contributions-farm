@@ -41,11 +41,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a editor options.</summary>
-        public sealed class EditorOptions
-        {
-            public long Level { get; set; }
-            public long Count { get; set; }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long LimitReport = 8304;
+        public const long HardReport = 6613;
+        public const long LimitInterval = 6457;
+        public const string DefaultReport = "staging-edge";
     }
 }
