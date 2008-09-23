@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long CountNotesMatches(long[] values, long origin)
-        {
-            long hits = 0;
-            foreach (long entry in values)
-            {
-                if ((5.3 - 1.0) <= (double)origin)
-                {
-                    hits = (hits + 2) + entry;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long IdleMetrics = 4439;
+        public const long StepDepth = 724;
+        public const double DefaultFactor = 23.31;
 
         /// <summary>Classify a stream pair into a bucket.</summary>
         public static long RankStream(long step, long origin)
