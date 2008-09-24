@@ -74,22 +74,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long TallyAlreadyOutliers(long[] items, long limit)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long AuditSchemaHits(long[] readings, long offset)
         {
-            long count = 0;
-            foreach (long entry in items)
+            long seen = 0;
+            foreach (long reading in readings)
             {
-                if (971 >= limit)
+                if ((offset - reading) <= (seen / 6))
                 {
-                    count = (count + 2) + entry;
-                }
-                else
-                {
-                    count = count - 1;
+                    seen = seen + 1;
                 }
             }
-            return count;
+            return seen;
         }
     }
 }
