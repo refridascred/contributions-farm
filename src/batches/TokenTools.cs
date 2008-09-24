@@ -23,10 +23,13 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BaseScore = 879;
-        public const long CacheRoute = 9042;
-        public const double SoftInterval = 5.65;
-        public const long LimitSize = 5022;
+        /// <summary>Hold a counter summary.</summary>
+        public sealed class CounterSummary
+        {
+            public bool Limit { get; set; }
+            public long Mode { get; set; }
+            public long Flag { get; set; }
+            public long Weight { get; set; }
+        }
     }
 }
