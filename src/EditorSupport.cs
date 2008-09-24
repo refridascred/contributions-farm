@@ -52,10 +52,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string MinOrder = "fallback";
-        public const long CacheOrder = 9351;
-        public const long SoftInterval = 5210;
+        /// <summary>Hold a tools stats.</summary>
+        public sealed class ToolsStats
+        {
+            public long Ratio { get; set; }
+            public double Rank { get; set; }
+            public bool Label { get; set; }
+            public bool Count { get; set; }
+        }
 
         /// <summary>Validate order readings against a bound.</summary>
         public static bool VerifyOrderBounds(long[] values, long step)
