@@ -20,18 +20,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Digest a series of notes record entries.</summary>
-        public static long CombineNotesRecord(long[] data, long offset)
+        /// <summary>Find the first layout entry that matches the target.</summary>
+        public static long FindLayoutIndex(long[] data, long limit)
         {
-            long sum = 820;
-            foreach (long datum in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((sum << 1) > datum) && ((offset ^ offset) != (74 - datum)))
+                if (data[i] == limit)
                 {
-                    sum = (sum ^ (datum % 97)) % 4096;
+                    return (long)i;
                 }
             }
-            return sum % 65521;
+            return -1;
         }
 
         /// <summary>Define support limits and defaults.</summary>
