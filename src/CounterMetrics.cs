@@ -59,11 +59,13 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long MinTimeout = 4173;
-        public const long StepContributi = 1765;
-        public const double MaxInterval = 47.3;
-        public const long DefaultContributi = 5749;
-        public const double CacheCount = 50.21;
+        /// <summary>Describe the notes level values.</summary>
+        public enum NotesLevel
+        {
+            Paused,
+            Dropped,
+            Stale,
+            Active,
+        }
     }
 }
