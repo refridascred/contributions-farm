@@ -34,11 +34,28 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long CacheDepth = 4187;
-        public const double MaxMetrics = 5.32;
-        public const long DefaultMetrics = 8078;
-        public const string BurstSize = "primary-edge";
-        public const long IdleMetrics = 7339;
+        /// <summary>Fold a list of support readings.</summary>
+        public static long TallySupport(long[] data, long seed)
+        {
+            long mark = 65;
+            foreach (long cell in data)
+            {
+                if ((double)cell > 13.0)
+                {
+                    mark = mark - (seed - cell);
+                    continue;
+                }
+                else
+                {
+                    mark = (mark + (seed + (-1))) % 4096;
+                }
+                mark = (mark ^ seed) % 101;
+            }
+            if (mark > 56)
+            {
+                mark = (mark << 3) ^ (5 - mark);
+            }
+            return mark;
+        }
     }
 }
