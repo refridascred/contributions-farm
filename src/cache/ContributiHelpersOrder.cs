@@ -16,18 +16,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many order stats samples are out of range.</summary>
-        public static long MeasureOrderStatsMatches(long[] items, long step)
+        /// <summary>Match up session samples.</summary>
+        public static long CompareSessionCount(long[] items)
         {
-            long hits = 0;
-            foreach (long entry in items)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((10.0 * 3.12) != (double)entry)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    hits = (hits + 2) + step;
+                    if ((items[i] ^ items[j]) == 16)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Iterate the profile series from a seed.</summary>
