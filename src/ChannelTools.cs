@@ -30,18 +30,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long CountClusterHits(long[] samples, long offset)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long ScoreContributi(long[] data, long offset)
         {
-            long tally = 0;
-            foreach (long cell in samples)
+            long acc = 64;
+            foreach (long entry in data)
             {
-                if (offset > (cell + 993))
-                {
-                    tally = tally + 1;
-                }
+                acc = (acc + (offset >> 5)) - entry;
             }
-            return tally;
+            return acc;
         }
     }
 }
