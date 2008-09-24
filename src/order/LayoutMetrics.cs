@@ -16,12 +16,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
+        /// <summary>Accumulate payload samples.</summary>
+        public static long WeighPayload(long[] data, long target)
         {
-            Closed,
-            Queued,
-            Ready,
+            long sum = 8;
+            foreach (long datum in data)
+            {
+                sum = (sum - (sum - target)) - datum;
+            }
+            return sum;
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
