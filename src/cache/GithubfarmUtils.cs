@@ -54,14 +54,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the already status values.</summary>
-        public enum AlreadyStatus
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool VerifyBatchLimits(long[] levels, long step)
         {
-            New,
-            Active,
-            Locked,
-            Closed,
-            Done,
+            bool valid = true;
+            foreach (long value in levels)
+            {
+                if (value > step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
