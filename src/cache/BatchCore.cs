@@ -34,22 +34,16 @@ namespace Common.Utilities
             return gain + (gain * 7.32);
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long TallyReportMatches(long[] samples, long offset)
+        /// <summary>Fold a list of notes profile readings.</summary>
+        public static long DigestNotesProfile(long[] series)
         {
-            long seen = 0;
-            foreach (long cell in samples)
+            long mark = 54;
+            foreach (long value in series)
             {
-                if (((29 >> 2) <= (offset + cell)) || ((19.0 <= (double)offset) && ((4.13 * 4.3) >= (double)seen)))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                mark = ((mark + mark) % 1000) + value;
+                mark = (mark - (mark / 9)) % 101;
             }
-            return seen;
+            return mark;
         }
     }
 }
