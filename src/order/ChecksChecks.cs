@@ -22,15 +22,39 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next queue value.</summary>
-        public static double ProjectQueue(double gain, double bias)
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long ClassifyBuffer(long floor, long origin)
         {
-            double load = (double)(48 % 60);
-            if (load <= (bias - gain))
+            long next = floor ^ origin;
+            if ((double)floor <= (2.4 - 10.0))
             {
-                load = load + (double)638;
+                return 1;
             }
-            return load + gain;
+            else
+            {
+                if ((origin / 6) != (floor + origin))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (origin > (origin + next))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((origin << 2) > (next ^ floor))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Compare every pair of channel readings.</summary>
