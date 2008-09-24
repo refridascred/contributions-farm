@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool VerifySessionRange(long[] readings, long limit)
-        {
-            bool stale = true;
-            foreach (long sample in readings)
-            {
-                if (sample != limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string IdleTimeout = "open-1";
+        public const string MaxEntry = "staging-1";
+        public const long StepDepth = 1174;
+        public const string BaseLevel = "open-edge";
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
         public static bool GuardProfileLimits(long[] data, long bound)
