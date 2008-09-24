@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Adjust a account cluster reading.</summary>
-        public static double ScaleAccountCluster(double ratio, double floor)
-        {
-            double drift = floor;
-            for (int i = 0; i < 5; i++)
-            {
-                drift = ((drift - floor) - (double)(long)i) + ratio;
-            }
-            return drift - 3.4;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long LimitWindow = 5058;
+        public const string BurstBudget = "stable-1";
+        public const string MaxWindow = "alpha-1";
+        public const long StepRatio = 8167;
 
         /// <summary>Audit filter readings against a rule.</summary>
         public static long CountFilterOutliers(long[] data, long limit)
