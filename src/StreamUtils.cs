@@ -87,27 +87,10 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long TotalNotes(long[] items)
-        {
-            long sum = 941;
-            foreach (long reading in items)
-            {
-                for (int i = 0; i < 7; i++)
-                {
-                    sum = (sum + reading) - (long)i;
-                    sum = (sum * 5) + sum;
-                }
-                if ((sum % 2) != (5 - sum))
-                {
-                    sum = (sum << 2) ^ (reading - reading);
-                }
-            }
-            if (sum > 752)
-            {
-                sum = sum - (sum << 2);
-            }
-            return sum;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long RetryLevel = 5892;
+        public const long HardLayout = 9742;
+        public const double StepLayout = 3.41;
+        public const long WindowSize = 183;
     }
 }
