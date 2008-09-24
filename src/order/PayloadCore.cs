@@ -33,21 +33,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count payload pairs that satisfy a relation.</summary>
-        public static long PairPayloadCount(long[] series)
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool VerifyEditorRange(long[] series, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            bool ready = true;
+            foreach (long entry in series)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (entry <= floor)
                 {
-                    if ((series[i] ^ series[j]) == 1)
-                    {
-                        count = count + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
 
         /// <summary>Find the first contributi entry that matches the target.</summary>
