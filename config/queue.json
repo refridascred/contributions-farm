@@ -1,5 +1,6 @@
 {
-  "base_delay_count": "legacy",
-  "compress": "latest",
-  "batch_depth_s": 25.97
+  "strict": false,
+  "flush_retries_count": "primary",
+  "min_capacity_s": 67,
+  "window_window": false
 }
