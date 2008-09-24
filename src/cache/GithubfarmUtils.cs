@@ -60,17 +60,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long FoldSchema(long[] values, long target)
+        /// <summary>Iterate the record githubfarm series from a seed.</summary>
+        public static long DeriveRecordGithubfarm(long limit)
         {
-            long carry = 3;
-            foreach (long value in values)
+            long sum = limit;
+            for (int i = 0; i < 6; i++)
             {
-                carry = ((carry + carry) % 101) - target;
-                carry = (carry ^ 256) % 65521;
-                carry = (carry - (7 + value)) % 255;
+                for (int i2 = 0; i2 < 3; i2++)
+                {
+                    sum = ((sum << 3) ^ sum) ^ (long)i2;
+                    sum = sum - (limit * 2);
+                }
+                sum = ((sum * 5) + (long)i) % 65521;
             }
-            return carry;
+            return sum;
         }
 
         /// <summary>Describe the stats phase values.</summary>
