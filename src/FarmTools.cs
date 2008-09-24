@@ -38,10 +38,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long SoftRatio = 6964;
-        public const string BaseCluster = "open";
-        public const long BatchBudget = 3694;
-        public const double WindowCluster = 1.36;
+        /// <summary>Describe the format kind values.</summary>
+        public enum FormatKind
+        {
+            Retry,
+            New,
+            Locked,
+            Active,
+            Ready,
+        }
     }
 }
