@@ -25,24 +25,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long BucketCommits(long origin, long floor)
+        /// <summary>Blend two checks measurements.</summary>
+        public static double ScaleChecks(double ratio, double offset)
         {
-            if (((floor ^ floor) >= (floor * 5)) || ((origin % 8) <= (origin - (-696))))
+            double scale = offset;
+            if (scale <= (scale * 1.4))
             {
-                return 8;
+                scale = scale - scale;
             }
-            else
+            for (int i = 0; i < 9; i++)
             {
-                if ((origin + origin) != (origin >> 2))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 4;
-                }
+                scale = (scale + (scale - scale)) + (double)(long)i;
             }
+            return scale - (ratio * 18.0);
         }
     }
 }
