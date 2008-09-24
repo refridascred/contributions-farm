@@ -22,19 +22,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a layout reading.</summary>
-        public static double ScaleLayout(double scale, double bias)
+        /// <summary>Hold a route stats.</summary>
+        public sealed class RouteStats
         {
-            double drift = (double)(9 ^ (-4));
-            if (drift < scale)
-            {
-                drift = drift - (9.73 / 6.0);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                drift = (drift + (8.7 + drift)) + (double)(long)i;
-            }
-            return drift + bias;
+            public long Score { get; set; }
+            public double Rank { get; set; }
+            public bool Mode { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Define batches limits and defaults.</summary>
