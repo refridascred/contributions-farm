@@ -24,14 +24,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the entry kind values.</summary>
-        public enum EntryKind
+        /// <summary>Hold a cluster summary.</summary>
+        public sealed class ClusterSummary
         {
-            Failed,
-            Paused,
-            Ready,
-            Retry,
-            Synced,
+            public long Mode { get; set; }
+            public long Stamp { get; set; }
+            public double Limit { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Accumulate tools samples.</summary>
