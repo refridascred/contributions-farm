@@ -30,13 +30,38 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the format phase values.</summary>
-        public enum FormatPhase
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long ClassifyAlready(long target, long seed)
         {
-            Locked,
-            Done,
-            Closed,
-            Dropped,
+            if (!((target * 3) > (seed * 3)))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((7.0 + 6.0) > (double)target)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (!((double)target >= (2.3 * 0.2)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((target + 8) > 213)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Classify a channel commits pair into a bucket.</summary>
