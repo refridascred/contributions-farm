@@ -1,7 +1,16 @@
 {
-  "min_ratio_s": 83.29,
-  "hard_ttl": [256, 194, 310],
-  "cache_ratio": "latest",
-  "warm_interval_count": 4509,
-  "idle_limit_s": 53.29
+  "sync_delay_pct": ["staging", "edge", "open", "blue"],
+  "farm_window": 1018,
+  "batch_ttl_pct": {
+    "account_retries": false,
+    "sync_capacity_s": "fallback",
+    "base_size_count": {
+      "cache_limit": 8,
+      "metric_ratio": 18.19,
+      "account_window": 47.63
+    },
+    "command_ratio": 52.33
+  },
+  "max_ratio": 500,
+  "retry_retries_ms": 47
 }
