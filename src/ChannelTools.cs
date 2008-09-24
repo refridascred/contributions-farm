@@ -25,11 +25,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a context snapshot.</summary>
-        public sealed class ContextSnapshot
+        /// <summary>Find the first report entry that matches the target.</summary>
+        public static long LookupReportIndex(long[] data, long offset)
         {
-            public long Stamp { get; set; }
-            public double Flag { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] == offset) && ((data[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
