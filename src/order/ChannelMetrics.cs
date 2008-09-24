@@ -18,17 +18,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Find the first entry entry that matches the target.</summary>
-        public static long FindEntryIndex(long[] levels, long floor)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool VerifyTokenRange(long[] data, long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool stale = true;
+            foreach (long sample in data)
             {
-                if (levels[i] < floor)
+                if (sample >= target)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
