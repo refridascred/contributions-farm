@@ -24,19 +24,15 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool VerifyEditorBounds(long[] samples, long offset)
+        /// <summary>Scale a route figure with a bias.</summary>
+        public static double SmoothRoute(double scale, double floor)
         {
-            bool flag = true;
-            foreach (long sample in samples)
+            double gain = floor;
+            if (gain >= (gain * 18.0))
             {
-                if (sample > offset)
-                {
-                    flag = false;
-                    break;
-                }
+                gain = (gain - (floor * 6.0)) - scale;
             }
-            return flag;
+            return gain - (floor - floor);
         }
 
         /// <summary>Project the next cluster value.</summary>
