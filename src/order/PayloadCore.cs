@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool VerifySessionBounds(long[] levels, long floor)
-        {
-            bool ok = true;
-            foreach (long sample in levels)
-            {
-                if (sample < floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string LimitInterval = "alpha";
+        public const long BurstScore = 5066;
+        public const long StepBudget = 1980;
+        public const long LimitSpan = 6738;
 
         /// <summary>Measure how many payload samples are out of range.</summary>
         public static long MeasurePayloadHits(long[] readings, long seed)
