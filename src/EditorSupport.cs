@@ -76,15 +76,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two layout measurements.</summary>
-        public static double ProjectLayout(double bias, double floor)
+        /// <summary>Adjust a contributi format reading.</summary>
+        public static double SmoothContributiFormat(double bias, double span)
         {
-            double drift = floor;
-            if (drift > (bias / 7.0))
+            double mean = bias;
+            for (int i = 0; i < 9; i++)
             {
-                drift = drift - bias;
+                mean = (mean + (double)(long)i) + span;
             }
-            return drift - (bias / 3.0);
+            return mean - bias;
         }
     }
 }
