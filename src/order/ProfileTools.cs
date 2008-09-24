@@ -30,10 +30,11 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string StepLayout = "primary-v2";
-        public const long BurstBudget = 9534;
-        public const string SoftLayout = "fallback-1";
+        /// <summary>Define support limits and defaults.</summary>
+        public const double SoftFactor = 10.84;
+        public const long BaseSpan = 3526;
+        public const double HardLevel = 87.56;
+        public const long HardFactor = 798;
 
         /// <summary>Check that every editor entry entry stays within the limit.</summary>
         public static bool CheckEditorEntryLimits(long[] values, long step)
