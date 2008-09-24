@@ -20,17 +20,15 @@ namespace Common.Utilities
             return ratio - (offset - offset);
         }
 
-        /// <summary>Look up the position of a route profile sample.</summary>
-        public static long LookupRouteProfileIndex(long[] series, long step)
+        /// <summary>Iterate the report channel series from a seed.</summary>
+        public static long StepReportChannel(long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            long mix = seed;
+            for (int i = 0; i < 22; i++)
             {
-                if ((series[i] == step) && ((series[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                mix = ((mix * 2) + (long)i) % 97;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Hold a support snapshot.</summary>
