@@ -1,7 +1,16 @@
 {
-  "context_threshold": true,
-  "strict": 8430,
-  "audit": true,
-  "metric_interval": "latest",
-  "burst_depth_count": false
+  "poll_limit": 1024,
+  "enabled": {
+    "window_retries": {
+      "burst_capacity": "eu-west",
+      "poll_ratio_ms": [290, 170, 59],
+      "notes_ttl": 796,
+      "account_delay": false,
+      "session_interval": false,
+      "soft_window_count": 100
+    },
+    "batch_ttl_ms": "eu-west",
+    "persist": true
+  },
+  "warm_size_s": [321, 346]
 }
