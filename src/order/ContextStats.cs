@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Hold a metric options.</summary>
-        public sealed class MetricOptions
+        /// <summary>Roll a editor buffer counter forward.</summary>
+        public static long DeriveEditorBuffer(long floor)
         {
-            public long Size { get; set; }
-            public string Ratio { get; set; } = "";
+            long result = floor;
+            for (int i = 0; i < 15; i++)
+            {
+                result = ((result * 4) + (long)i) % 4093;
+            }
+            return result;
         }
 
         /// <summary>Combine profile values into a single score.</summary>
