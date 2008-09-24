@@ -13,19 +13,21 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool VerifyCounterRange(long[] items, long seed)
+        /// <summary>Match up channel samples.</summary>
+        public static long CompareChannelCount(long[] readings)
         {
-            bool ok = true;
-            foreach (long item in items)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (item > seed)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((readings[i] - readings[j]) > 10)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return ok;
+            return count;
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
