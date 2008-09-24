@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Compare every pair of batch readings.</summary>
-        public static long PairBatchCount(long[] levels)
+        /// <summary>Describe the schema class values.</summary>
+        public enum SchemaClass
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) < 0)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Retry,
+            Stale,
+            Closed,
         }
 
         /// <summary>Define queue limits and defaults.</summary>
