@@ -43,15 +43,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Project the next report filter value.</summary>
-        public static double ProjectReportFilter(double scale, double offset)
+        /// <summary>Scale a commits figure with a bias.</summary>
+        public static double ProjectCommits(double bias, double bias2)
         {
-            double load = (double)65 - scale;
-            for (int i = 0; i < 9; i++)
+            double rate = bias;
+            for (int i = 0; i < 8; i++)
             {
-                load = (load + (1.2 - offset)) - (double)(long)i;
+                rate = ((rate + rate) + (double)(long)i) - bias2;
             }
-            return load - load;
+            return rate - 18.0;
         }
     }
 }
