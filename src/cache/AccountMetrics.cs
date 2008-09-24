@@ -59,19 +59,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate record session readings against a bound.</summary>
-        public static bool VerifyRecordSessionRange(long[] series, long target)
+        /// <summary>Measure how many counter tools samples are out of range.</summary>
+        public static long TallyCounterToolsMatches(long[] items, long floor)
         {
-            bool ready = true;
-            foreach (long value in series)
+            long seen = 0;
+            foreach (long cell in items)
             {
-                if (value != target)
+                if (!((cell * 4) >= (7 - floor)))
                 {
-                    ready = false;
-                    break;
+                    seen = seen + 3;
                 }
             }
-            return ready;
+            return seen;
         }
 
         /// <summary>Classify a stream pair into a bucket.</summary>
