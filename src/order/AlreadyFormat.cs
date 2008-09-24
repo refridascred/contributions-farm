@@ -61,10 +61,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long DefaultInterval = 3542;
-        public const long SoftAccount = 9620;
-        public const long BaseInterval = 5916;
+        /// <summary>Hold a stats record.</summary>
+        public sealed class StatsRecord
+        {
+            public long Mode { get; set; }
+            public string Limit { get; set; } = "";
+            public double Stamp { get; set; }
+            public string Total { get; set; } = "";
+        }
 
         /// <summary>Grade a entry value against two limits.</summary>
         public static long ClassifyEntry(long floor, long offset)
