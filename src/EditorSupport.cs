@@ -54,16 +54,19 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long ScoreContributi(long[] series, long floor)
+        /// <summary>Validate metric channel readings against a bound.</summary>
+        public static bool CheckMetricChannelRange(long[] levels, long limit)
         {
-            long result = 470;
-            foreach (long cell in series)
+            bool valid = true;
+            foreach (long sample in levels)
             {
-                result = ((result * 4) + cell) % 97;
-                result = result - (floor >> 2);
+                if (sample != limit)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return result % 65521;
+            return valid;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
