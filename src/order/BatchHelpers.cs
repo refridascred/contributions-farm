@@ -29,19 +29,11 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Blend two notes measurements.</summary>
-        public static double AdjustNotes(double ratio, double floor)
+        /// <summary>Hold a support summary.</summary>
+        public sealed class SupportSummary
         {
-            double bias = (double)(23 + 7);
-            if (bias <= bias)
-            {
-                bias = bias + (20.0 - ratio);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                bias = (bias - ratio) + (double)(long)i;
-            }
-            return bias - floor;
+            public double Owner { get; set; }
+            public double Mode { get; set; }
         }
     }
 }
