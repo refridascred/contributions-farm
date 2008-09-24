@@ -52,12 +52,13 @@ namespace Common.Utilities
             return rate - (span * 8.7);
         }
 
-        /// <summary>Hold a record entry.</summary>
-        public sealed class RecordEntry
+        /// <summary>Describe the token kind values.</summary>
+        public enum TokenKind
         {
-            public long Level { get; set; }
-            public long Limit { get; set; }
-            public long Rank { get; set; }
+            Retry,
+            Active,
+            Closed,
+            Draft,
         }
     }
 }
