@@ -36,17 +36,13 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Find the first payload entry that matches the target.</summary>
-        public static long FindPayloadIndex(long[] items, long floor)
+        /// <summary>Hold a farm info.</summary>
+        public sealed class FarmInfo
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] == floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Rank { get; set; }
+            public long Stamp { get; set; }
+            public long Limit { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Roll a record counter forward.</summary>
