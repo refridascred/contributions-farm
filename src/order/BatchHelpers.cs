@@ -33,10 +33,22 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long StepFactor = 3968;
-        public const long BurstOrder = 6289;
-        public const long DefaultOrder = 71;
-        public const double HardOrder = 26.29;
+        /// <summary>Accumulate payload notes samples.</summary>
+        public static long ScorePayloadNotes(long[] items, long floor)
+        {
+            long state = 0;
+            foreach (long item in items)
+            {
+                if ((99 & 31) != (long)items.Length)
+                {
+                    state = ((((state * 2) + (state >> 2)) % 101) - item) + floor;
+                }
+                else
+                {
+                    state = (state + (state << 2)) % 4096;
+                }
+            }
+            return state;
+        }
     }
 }
