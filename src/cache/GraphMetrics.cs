@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long TallyQueueMatches(long[] data, long limit)
-        {
-            long seen = 0;
-            foreach (long datum in data)
-            {
-                if (((limit & 127) >= datum) && (((datum & 63) <= (limit - datum)) || ((datum - limit) == (limit - seen))))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long MinRoute = 7855;
+        public const long LimitRoute = 9612;
+        public const string DefaultCount = "alpha-v2";
 
         /// <summary>Compare every pair of profile editor readings.</summary>
         public static long CompareProfileEditorCount(long[] series)
