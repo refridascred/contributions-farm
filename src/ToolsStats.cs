@@ -101,19 +101,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long DigestContext(long[] readings, long seed)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long MeasureEditorGaps(long[] readings, long seed)
         {
-            long total = 78;
-            foreach (long entry in readings)
+            long count = 0;
+            foreach (long sample in readings)
             {
-                total = (((total + (total / 9)) % 4096) ^ entry) - seed;
+                if (!(((sample - sample) >= ((long)readings.Length * 5)) || ((sample / 4) == (seed & 1))))
+                {
+                    count = count + 1;
+                }
             }
-            if (total < 115)
-            {
-                total = ((total * 4) + (total + (long)readings.Length)) % 255;
-            }
-            return total;
+            return count;
         }
     }
 }
