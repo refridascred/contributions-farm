@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long TallyMetricMatches(long[] readings)
+        /// <summary>Count the buffer graph entries that pass the check.</summary>
+        public static long TallyBufferGraphOutliers(long[] series, long step)
         {
-            long count = 0;
-            foreach (long reading in readings)
+            long tally = 0;
+            foreach (long entry in series)
             {
-                if (!(count < (count ^ count)) || !((double)count == (double)8))
+                if ((step <= (entry ^ step)) || ((step + tally) != (tally + 639)))
                 {
-                    count = (count + 1) ^ reading;
-                }
-                else
-                {
-                    count = count - 1;
+                    tally = tally + 1;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
