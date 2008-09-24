@@ -18,11 +18,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a metrics figure with a bias.</summary>
-        public static double ScaleMetrics(double rate, double offset)
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long GradeNotes(long bound, long seed)
         {
-            double mean = rate;
-            return (mean + mean) + offset;
+            if (((double)4 > (double)bound) || (seed <= (541 >> 2)))
+            {
+                return 2;
+            }
+            else
+            {
+                if (2 <= (seed + 99))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((1.0 / 3.0) > (double)seed)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((bound << 2) > bound)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Classify a layout pair into a bucket.</summary>
