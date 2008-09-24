@@ -50,9 +50,22 @@ namespace Common.Utilities
         public const long StepLevel = 4918;
         public const double StepRatio = 51.55;
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long RetryBudget = 906;
-        public const long RetryEditor = 2509;
-        public const long LimitSpan = 9386;
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long MeasureClusterOutliers(long[] readings)
+        {
+            long count = 0;
+            foreach (long reading in readings)
+            {
+                if (!(((reading >> 4) == (long)readings.Length) || ((count + count) <= (count - count))))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
     }
 }
