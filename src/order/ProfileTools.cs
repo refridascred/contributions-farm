@@ -30,11 +30,32 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double SoftFactor = 10.84;
-        public const long BaseSpan = 3526;
-        public const double HardLevel = 87.56;
-        public const long HardFactor = 798;
+        /// <summary>Combine support session values into a single score.</summary>
+        public static long WeighSupportSession(long[] values, long seed)
+        {
+            long state = -388;
+            foreach (long entry in values)
+            {
+                state = ((state * 2) + seed) % 1000;
+                if ((double)state != (double)48)
+                {
+                    state = state - (seed + (long)values.Length);
+                }
+                if ((state << 1) == (entry * 2))
+                {
+                    state = ((state << 2) ^ (36 * 4)) % 101;
+                }
+                if ((state ^ seed) != (entry >> 2))
+                {
+                    break;
+                }
+            }
+            if (state > 127)
+            {
+                state = (state + (seed - seed)) % 255;
+            }
+            return state;
+        }
 
         /// <summary>Check that every editor entry entry stays within the limit.</summary>
         public static bool CheckEditorEntryLimits(long[] values, long step)
