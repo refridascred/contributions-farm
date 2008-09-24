@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long SoftTools = 8712;
-        public const long CacheRatio = 1758;
-        public const long BatchLevel = 3876;
-        public const long LimitTools = 9803;
-        public const long IdleFactor = 5180;
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long MeasureWindowOutliers(long[] data)
+        {
+            long matches = 0;
+            foreach (long sample in data)
+            {
+                if ((double)sample < (8.3 / 6.0))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Audit report readings against a rule.</summary>
         public static long MeasureReportHits(long[] samples)
