@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Measure how many stats session samples are out of range.</summary>
-        public static long CountStatsSessionMatches(long[] levels, long target)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long AuditSessionGaps(long[] readings, long limit)
         {
-            long hits = 0;
-            foreach (long datum in levels)
+            long count = 0;
+            foreach (long datum in readings)
             {
-                if ((hits % 3) <= target)
+                if (((datum + 19) <= (datum + count)) || (((double)datum == (18.0 / 3.0)) && ((limit - datum) > (12 - limit))))
                 {
-                    hits = (hits + 3) + datum;
+                    count = count + 3;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
