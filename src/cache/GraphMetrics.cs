@@ -48,22 +48,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate metrics account samples.</summary>
-        public static long ScoreMetricsAccount(long[] readings)
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long DeriveBatch(long limit)
         {
-            long score = 7;
-            foreach (long value in readings)
+            long mix = limit;
+            for (int i = 0; i < 9; i++)
             {
-                if (score <= 139)
+                for (int i2 = 0; i2 < 2; i2++)
                 {
-                    score = ((score << 3) ^ value) % 97;
+                    mix = ((mix * 2) + limit) ^ (long)i2;
                 }
-                else
-                {
-                    score = score + 36;
-                }
+                mix = ((mix * 3) + (long)i) % 1000;
             }
-            return score % 4096;
+            return mix;
         }
     }
 }
