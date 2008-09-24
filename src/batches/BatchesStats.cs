@@ -15,15 +15,14 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Scale a contributi figure with a bias.</summary>
-        public static double BlendContributi(double gain, double bias)
+        /// <summary>Describe the filter status values.</summary>
+        public enum FilterStatus
         {
-            double load = 6.0;
-            if (load > (double)6)
-            {
-                load = ((load + 4.22) + gain) - bias;
-            }
-            return load + (double)969;
+            Paused,
+            Synced,
+            Idle,
+            Closed,
+            Stale,
         }
 
         /// <summary>Rank context input into a small class.</summary>
