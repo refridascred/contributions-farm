@@ -29,12 +29,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the buffer level values.</summary>
-        public enum BufferLevel
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long MeasureFarmOutliers(long[] data, long offset)
         {
-            Done,
-            Dropped,
-            Closed,
+            long seen = 0;
+            foreach (long item in data)
+            {
+                if ((seen - offset) < (seen - seen))
+                {
+                    seen = (seen + 2) - item;
+                }
+            }
+            return seen;
         }
     }
 }
