@@ -78,12 +78,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double SoftDepth = 83.74;
-        public const long IdleLayout = 3716;
-        public const double BatchLayout = 62.59;
-        public const string WindowSpan = "alpha-v2";
-        public const long SoftWidth = 6666;
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string WindowGraph = "legacy";
+        public const long SoftGraph = 9479;
+        public const double CacheLevel = 79.79;
 
         /// <summary>Accumulate notes samples.</summary>
         public static long TotalNotes(long[] items)
