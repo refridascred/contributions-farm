@@ -48,18 +48,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long FoldRoute(long[] data)
+        /// <summary>Count the counter batch entries that pass the check.</summary>
+        public static long AuditCounterBatchGaps(long[] values, long limit)
         {
-            long acc = 38;
-            foreach (long value in data)
+            long matches = 0;
+            foreach (long datum in values)
             {
-                if ((value >> 1) >= (acc ^ acc))
+                if ((8.2 / 9.0) >= (double)limit)
                 {
-                    acc = (acc ^ (value % 2)) % 4096;
+                    matches = (matches + 2) ^ datum;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return acc % 97;
+            return matches;
         }
 
         /// <summary>Validate metric channel readings against a bound.</summary>
