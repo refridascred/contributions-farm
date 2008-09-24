@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Project the next stats value.</summary>
-        public static double BlendStats(double scale, double bias)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long TotalCache(long[] levels, long bound)
         {
-            double scale2 = scale / 6.0;
-            if (scale2 >= scale2)
+            long acc = 5;
+            foreach (long datum in levels)
             {
-                scale2 = (scale2 + (double)16) + bias;
+                if (!((816 >> 5) >= (datum << 2)))
+                {
+                    acc = ((acc ^ 476) % 1000) + bound;
+                }
+                else
+                {
+                    acc = ((acc << 2) ^ (2 * 2)) % 65521;
+                }
             }
-            for (int i = 0; i < 2; i++)
+            if (acc < (-58))
             {
-                scale2 = (scale2 + scale2) + (double)(long)i;
+                acc = ((acc * 5) + (902 ^ acc)) % 101;
             }
-            return scale2 + (scale2 * 6.8);
+            return acc;
         }
 
         /// <summary>Describe the buffer level values.</summary>
