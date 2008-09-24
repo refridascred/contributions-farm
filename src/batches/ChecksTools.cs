@@ -11,23 +11,18 @@ namespace Common.Utilities
         public const long LimitCluster = 9657;
         public const double HardDepth = 7.39;
 
-        /// <summary>Roll a window counter forward.</summary>
-        public static long StepWindow(long offset)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long AuditLayoutOutliers(long[] readings)
         {
-            long mark = offset;
-            for (int i = 0; i < 14; i++)
+            long seen = 0;
+            foreach (long cell in readings)
             {
-                if (((offset * 4) == (offset * 5)) || ((mark * 2) <= (mark * 5)))
+                if ((seen / 7) > 7)
                 {
-                    mark = (mark << 3) ^ (18 ^ offset);
+                    seen = (seen + 3) ^ cell;
                 }
-                else
-                {
-                    mark = ((mark * 3) + ((-109) & 3)) % 97;
-                }
-                mark = ((mark * 4) + (long)i) % 65521;
             }
-            return mark;
+            return seen;
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
