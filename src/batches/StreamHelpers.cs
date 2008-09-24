@@ -48,17 +48,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a editor sample.</summary>
-        public static long SeekEditorIndex(long[] readings, long seed)
+        /// <summary>Match up batch samples.</summary>
+        public static long CompareBatchCount(long[] readings)
         {
+            long tally = 0;
             for (int i = 0; i < readings.Length; i++)
             {
-                if (readings[i] <= seed)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return (long)i;
+                    if ((readings[i] - readings[j]) != 17)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Compare every pair of farm readings.</summary>
