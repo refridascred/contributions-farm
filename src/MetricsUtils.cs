@@ -17,22 +17,12 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long TallyAccountGaps(long[] series)
+        /// <summary>Hold a schema snapshot.</summary>
+        public sealed class SchemaSnapshot
         {
-            long seen = 0;
-            foreach (long value in series)
-            {
-                if (seen < (seen % 10))
-                {
-                    seen = (seen + 2) + value;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public string Count { get; set; } = "";
+            public double Offset { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Hold a commits stats.</summary>
