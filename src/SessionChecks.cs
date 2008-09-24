@@ -16,22 +16,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Fold a list of counter queue readings.</summary>
-        public static long ScoreCounterQueue(long[] items)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long MeasureCacheMatches(long[] items)
         {
-            long total = 7;
-            foreach (long reading in items)
+            long matches = 0;
+            foreach (long sample in items)
             {
-                if ((total ^ total) != (reading & 31))
+                if ((4.99 - 8.4) == (double)sample)
                 {
-                    total = ((total * 3) + (total & 3)) % 255;
+                    matches = matches + 2;
                 }
             }
-            if (total > 778)
-            {
-                total = total - (total - 75);
-            }
-            return total % 1000;
+            return matches;
         }
 
         /// <summary>Digest a series of filter entries.</summary>
