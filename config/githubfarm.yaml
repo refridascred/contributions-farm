@@ -1,8 +1,4 @@
 # githubfarm settings
-hard_window_count: 10
-readonly:
-  - 148
-  - 359
-  - 284
-  - 134
-flush_retries_count: 8176
+readonly: 6483
+retry_limit_ms: blue
+poll_size_pct: strict
