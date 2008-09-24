@@ -5,39 +5,11 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Grade a checks filter value against two limits.</summary>
-        public static long SortChecksFilter(long offset, long bound)
+        /// <summary>Hold a order summary.</summary>
+        public sealed class OrderSummary
         {
-            long bound2 = offset - bound;
-            if (bound >= (540 << 3))
-            {
-                return 5;
-            }
-            else
-            {
-                if (((offset * 5) != (offset - offset)) || ((offset - bound2) < (504 + offset)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)bound2 == (4.38 - 9.44))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((bound <= (offset / 5)) || ((bound >> 5) <= (bound2 * 3)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            public bool Total { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Hold a commits options.</summary>
