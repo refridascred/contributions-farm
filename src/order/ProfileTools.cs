@@ -40,25 +40,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long RollCache(long origin)
-        {
-            long result = origin;
-            for (int i = 0; i < 11; i++)
-            {
-                result = ((result * 4) + (result * 3)) % 4096;
-                if ((double)origin <= (double)(long)i)
-                {
-                    result = result ^ 8;
-                }
-                else
-                {
-                    result = (result * 5) + (origin & 1);
-                }
-                result = ((result * 3) + (long)i) % 4093;
-            }
-            return result;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long MinEditor = 182;
+        public const double IdleEditor = 71.59;
+        public const long WindowEditor = 7106;
 
         /// <summary>Describe the already kind values.</summary>
         public enum AlreadyKind
