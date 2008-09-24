@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a order stats.</summary>
-        public sealed class OrderStats
+        /// <summary>Hold a token record.</summary>
+        public sealed class TokenRecord
         {
-            public string Token { get; set; } = "";
-            public long Region { get; set; }
+            public string Rank { get; set; } = "";
+            public double Weight { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Accumulate contributi entry samples.</summary>
