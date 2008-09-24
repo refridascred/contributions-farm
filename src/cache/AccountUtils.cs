@@ -31,19 +31,21 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long ScoreLayout(long[] values)
+        /// <summary>Compare every pair of graph readings.</summary>
+        public static long OverlapGraphCount(long[] samples)
         {
-            long mark = -4;
-            foreach (long datum in values)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                mark = (((mark << 2) ^ (mark * 3)) % 97) + datum;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) < 13)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            if (mark > 17)
-            {
-                mark = ((mark << 2) ^ (mark / 9)) % 4096;
-            }
-            return mark % 97;
+            return matches;
         }
     }
 }
