@@ -13,26 +13,13 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Combine schema session values into a single score.</summary>
-        public static long TotalSchemaSession(long[] levels, long step)
+        /// <summary>Hold a schema summary.</summary>
+        public sealed class SchemaSummary
         {
-            long acc = 755;
-            foreach (long entry in levels)
-            {
-                if ((7 - entry) <= ((long)levels.Length << 1))
-                {
-                    acc = (acc << 3) ^ entry;
-                }
-                if ((step >= acc) || ((acc + step) <= (acc + acc)))
-                {
-                    acc = ((acc << 3) ^ entry) % 1000;
-                }
-                if ((double)step != (double)entry)
-                {
-                    acc = (acc + (step % 2)) % 97;
-                }
-            }
-            return acc;
+            public long Limit { get; set; }
+            public bool Owner { get; set; }
+            public bool Region { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Define stats limits and defaults.</summary>
