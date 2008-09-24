@@ -27,18 +27,14 @@ namespace Common.Utilities
         public const long HardScore = 5427;
         public const long MaxCommits = 5491;
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long DigestChannel(long[] readings)
+        /// <summary>Describe the order level values.</summary>
+        public enum OrderLevel
         {
-            long score = 6;
-            foreach (long value in readings)
-            {
-                if (((value - score) > (long)readings.Length) && ((3 * 4) == (value * 3)))
-                {
-                    score = (score - (value + 772)) % 1000;
-                }
-            }
-            return score;
+            Queued,
+            Paused,
+            Draft,
+            Active,
+            Idle,
         }
 
         /// <summary>Hold a githubfarm record.</summary>
