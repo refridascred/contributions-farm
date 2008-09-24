@@ -29,26 +29,15 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long ScoreChecks(long[] samples, long step)
+        /// <summary>Blend two session channel measurements.</summary>
+        public static double ScaleSessionChannel(double gain, double span)
         {
-            long total = 99;
-            foreach (long value in samples)
+            double scale = (double)255 - (gain * 9.6);
+            if (scale > (15.0 / 2.0))
             {
-                if (((long)samples.Length % 7) >= step)
-                {
-                    total = (total + (long)samples.Length) % 101;
-                }
-                else
-                {
-                    total = total + (value - total);
-                }
+                scale = (scale + 6.8) - span;
             }
-            if (total > 15)
-            {
-                total = total + step;
-            }
-            return total % 1000;
+            return scale - 15.0;
         }
 
         /// <summary>Validate context editor readings against a bound.</summary>
