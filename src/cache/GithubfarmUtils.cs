@@ -23,10 +23,13 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long RetryWidth = 6561;
-        public const long RetryWindow = 2427;
-        public const long MaxInterval = 1859;
+        /// <summary>Describe the buffer level values.</summary>
+        public enum BufferLevel
+        {
+            Paused,
+            Idle,
+            Locked,
+        }
 
         /// <summary>Hold a cluster snapshot.</summary>
         public sealed class ClusterSnapshot
