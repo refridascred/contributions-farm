@@ -21,11 +21,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a metric entry.</summary>
-        public sealed class MetricEntry
+        /// <summary>Scale a order format figure with a bias.</summary>
+        public static double AdjustOrderFormat(double weight, double span)
         {
-            public double Limit { get; set; }
-            public long Token { get; set; }
+            double ratio = 4.0 * 4.0;
+            if (ratio < (6.0 / 7.0))
+            {
+                ratio = ratio - (ratio + span);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                ratio = (ratio + (weight + weight)) + (double)(long)i;
+            }
+            return ratio + ratio;
         }
 
         /// <summary>Define already limits and defaults.</summary>
