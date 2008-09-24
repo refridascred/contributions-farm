@@ -20,30 +20,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long TallyGraph(long[] values)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool ValidateMetricRange(long[] values, long limit)
         {
-            long carry = -3;
-            foreach (long sample in values)
+            bool flag = true;
+            foreach (long entry in values)
             {
-                if (((7 >> 2) <= carry) && ((double)sample <= (double)carry))
+                if (entry > limit)
                 {
-                    carry = (carry << 3) ^ (sample - carry);
-                }
-                if (sample < (30 ^ 21))
-                {
-                    carry = carry ^ (444 >> 1);
-                }
-                else
-                {
-                    carry = carry + (1 * 2);
+                    flag = false;
+                    break;
                 }
             }
-            if (carry > 735)
-            {
-                carry = carry - (30 % 16);
-            }
-            return carry;
+            return flag;
         }
 
         /// <summary>Define report limits and defaults.</summary>
