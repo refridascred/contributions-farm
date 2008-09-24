@@ -1,12 +1,25 @@
 # githubfarm settings
-soft_ratio_s:
-  max_interval_ms: 69.72
-  metric_ratio: false
-  soft_retries:
-    - 462
-    - 207
-  persist: 500
-  base_size: primary
-  warm_timeout: true
-warm_interval: 70.47
-session_delay: latest
+filter_depth:
+  metric_depth: 60
+  checks_capacity:
+    warm_delay_s: cached
+    schema_retries: 68.52
+    readonly: 1281
+    max_limit_ms: 47
+  entry_capacity: 60
+  dry_run: true
+  compress:
+    - 266
+    - 273
+  persist:
+    - 102
+    - 328
+githubfarm_retries:
+  - 298
+  - 90
+  - 440
+warm_interval_count: 90.66
+batch_capacity:
+  readonly: primary
+  poll_capacity: 2.99
+  verbose: 45
