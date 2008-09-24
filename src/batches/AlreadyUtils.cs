@@ -39,21 +39,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count contributi pairs that satisfy a relation.</summary>
-        public static long CompareContributiCount(long[] data)
+        /// <summary>Describe the farm state values.</summary>
+        public enum FarmState
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) > 20)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Stale,
+            Closed,
+            Ready,
+            Done,
+            Retry,
         }
 
         /// <summary>Hold a graph info.</summary>
