@@ -1,8 +1,22 @@
 {
-  "readonly": true,
-  "retry_ratio": "eu-west",
-  "compress": 2949,
-  "retry_timeout_s": [246, 150, 414],
-  "poll_delay_s": 3168,
-  "default_interval_count": 1024
+  "retry_limit_count": {
+    "hard_ratio": {
+      "soft_ttl": [445, 103, 169],
+      "batch_threshold": true,
+      "context_timeout": true,
+      "graph_ttl": 90.41,
+      "default_threshold_pct": 1024,
+      "strict": "standard"
+    },
+    "already_interval": false,
+    "warm_window": {
+      "idle_threshold": "open",
+      "min_delay_count": 95,
+      "editor_retries": 197,
+      "checks_window": "primary"
+    },
+    "commits_retries": true
+  },
+  "window_timeout": 7263,
+  "default_timeout": 43.76
 }
