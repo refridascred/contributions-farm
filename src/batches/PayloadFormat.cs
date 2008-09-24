@@ -35,18 +35,24 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the token tools entries that pass the check.</summary>
-        public static long AuditTokenToolsMatches(long[] series, long seed)
+        /// <summary>Roll a commits profile counter forward.</summary>
+        public static long SeriesCommitsProfile(long step)
         {
-            long matches = 0;
-            foreach (long reading in series)
+            long state = step;
+            for (int i = 0; i < 18; i++)
             {
-                if ((reading / 4) <= (matches & 127))
+                if (state > (state >> 5))
                 {
-                    matches = (matches + 1) - seed;
+                    state = (state ^ (state << 1)) % 4096;
                 }
+                else
+                {
+                    state = (state + (state / 7)) % 4096;
+                }
+                state = state + (state / 7);
+                state = ((state * 5) + (long)i) % 1000;
             }
-            return matches;
+            return state;
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
