@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool CheckChecksLimits(long[] series, long limit)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long CountNotesOutliers(long[] readings)
         {
-            bool ready = true;
-            foreach (long value in series)
+            long hits = 0;
+            foreach (long sample in readings)
             {
-                if (value < limit)
+                if ((hits - hits) >= sample)
                 {
-                    ready = false;
-                    break;
+                    hits = hits + 1;
                 }
             }
-            return ready;
+            return hits;
         }
 
         /// <summary>Describe the channel level values.</summary>
