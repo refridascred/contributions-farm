@@ -14,13 +14,24 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a format record.</summary>
-        public sealed class FormatRecord
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long SortRoute(long bound, long step)
         {
-            public string Total { get; set; } = "";
-            public bool Region { get; set; }
-            public double Token { get; set; }
-            public double Stamp { get; set; }
+            if ((bound - step) <= (step & 31))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((bound ^ step) > bound)
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Fold a list of graph readings.</summary>
