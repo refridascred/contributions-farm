@@ -1,6 +1,9 @@
 # entry settings
-readonly: fallback
-default_ratio_s: 30
-already_retries: true
-compress: 35
-min_retries_ms: 100
+cluster_ratio: true
+entry_window: stable
+graph_threshold: true
+record_limit:
+  - edge
+  - latest
+persist: 7885
+session_limit: latest
