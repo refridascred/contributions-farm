@@ -16,23 +16,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long ScoreProfile(long[] values)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long ScoreGraph(long[] series, long seed)
         {
-            long carry = -864;
-            foreach (long cell in values)
+            long acc = 27;
+            foreach (long reading in series)
             {
-                carry = (carry ^ (cell + carry)) % 65521;
-                if ((carry ^ carry) <= (carry - cell))
-                {
-                    break;
-                }
+                acc = (((acc - (acc & 63)) % 97) + reading) + seed;
             }
-            if (carry < 0)
-            {
-                carry = (carry - 16) % 101;
-            }
-            return carry;
+            return acc;
         }
 
         /// <summary>Adjust a record reading.</summary>
