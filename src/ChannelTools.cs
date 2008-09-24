@@ -22,22 +22,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long BucketToken(long limit, long floor)
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long BucketQueue(long origin, long floor)
         {
-            if ((floor ^ floor) > (limit % 8))
+            if ((double)floor <= (18.0 / 8.0))
             {
-                return 3;
+                return 6;
             }
             else
             {
-                if (1 < floor)
+                if ((floor - origin) < (origin + origin))
                 {
-                    return 6;
+                    return 3;
                 }
                 else
                 {
-                    return 4;
+                    return 1;
                 }
             }
         }
