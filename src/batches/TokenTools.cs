@@ -46,13 +46,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a counter summary.</summary>
-        public sealed class CounterSummary
-        {
-            public bool Limit { get; set; }
-            public long Mode { get; set; }
-            public long Flag { get; set; }
-            public long Weight { get; set; }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string LimitReport = "primary-1";
+        public const long MinReport = 7014;
+        public const long IdleInterval = 2925;
+        public const string RetryCount = "latest-edge";
+        public const double RetryFactor = 85.32;
     }
 }
