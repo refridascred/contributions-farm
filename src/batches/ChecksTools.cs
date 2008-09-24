@@ -50,32 +50,20 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long GradeSchema(long step, long step2)
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long DeriveFilter(long seed)
         {
-            long lane = step ^ step2;
-            if ((step + lane) > (lane ^ step))
+            long mark = seed;
+            for (int i = 0; i < 5; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (!(step2 > (step2 ^ lane)))
+                if ((((-718) % 100) != (mark >> 4)) || ((seed ^ 9) >= 6))
                 {
-                    return 4;
+                    mark = mark ^ (seed + seed);
+                    continue;
                 }
-                else
-                {
-                    if (step <= lane)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
+                mark = ((mark * 5) + (long)i) % 4093;
             }
+            return mark;
         }
 
         /// <summary>Define session limits and defaults.</summary>
