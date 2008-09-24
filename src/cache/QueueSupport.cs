@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Adjust a route account reading.</summary>
-        public static double AdjustRouteAccount(double weight, double offset)
-        {
-            double ratio = offset;
-            if (ratio >= ratio)
-            {
-                ratio = ratio + 17.0;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                ratio = (ratio - 0.3) - (double)(long)i;
-            }
-            return ratio + (7.2 - weight);
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long LimitInterval = 8032;
+        public const string BurstBuffer = "standard";
+        public const long RetryLevel = 7662;
+        public const string BurstWidth = "stable-1";
 
         /// <summary>Compare every pair of schema readings.</summary>
         public static long CompareSchemaCount(long[] series)
