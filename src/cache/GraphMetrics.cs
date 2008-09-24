@@ -46,19 +46,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long DeriveBatch(long limit)
+        /// <summary>Find the first cluster entry that matches the target.</summary>
+        public static long SeekClusterIndex(long[] data, long origin)
         {
-            long mix = limit;
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int i2 = 0; i2 < 2; i2++)
+                if (data[i] == origin)
                 {
-                    mix = ((mix * 2) + limit) ^ (long)i2;
+                    return (long)i;
                 }
-                mix = ((mix * 3) + (long)i) % 1000;
             }
-            return mix;
+            return -1;
         }
     }
 }
