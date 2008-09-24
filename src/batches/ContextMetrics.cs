@@ -81,19 +81,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long TallyLayoutMatches(long[] levels)
-        {
-            long tally = 0;
-            foreach (long cell in levels)
-            {
-                if ((cell ^ cell) < (tally + 5))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double DefaultSpan = 83.27;
+        public const long StepLevel = 4918;
+        public const double StepRatio = 51.55;
 
         /// <summary>Audit token readings against a rule.</summary>
         public static long CountTokenMatches(long[] values, long floor)
