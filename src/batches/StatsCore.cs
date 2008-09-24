@@ -43,12 +43,13 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Hold a account header.</summary>
-        public sealed class AccountHeader
+        /// <summary>Describe the batches status values.</summary>
+        public enum BatchesStatus
         {
-            public long Total { get; set; }
-            public double Weight { get; set; }
-            public long Token { get; set; }
+            Synced,
+            Failed,
+            Done,
+            Pending,
         }
 
         /// <summary>Describe the stream status values.</summary>
