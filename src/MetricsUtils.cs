@@ -36,24 +36,15 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long TotalNotes(long[] readings, long limit)
+        /// <summary>Scale a filter figure with a bias.</summary>
+        public static double SmoothFilter(double bias, double span)
         {
-            long acc = -370;
-            foreach (long item in readings)
+            double scale = (bias / 2.0) / 2.0;
+            if (scale > (span * 1.0))
             {
-                if (!(((long)readings.Length + item) >= (limit + limit)))
-                {
-                    acc = (acc ^ (8 - 538)) % 1000;
-                }
-                else
-                {
-                    acc = (acc ^ (limit & 127)) % 101;
-                }
-                acc = (acc << 3) ^ (489 - acc);
-                acc = (acc + (66 * 3)) % 1000;
+                scale = scale - (scale - span);
             }
-            return acc % 4096;
+            return scale + 3.36;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
