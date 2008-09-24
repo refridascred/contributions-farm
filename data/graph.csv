@@ -1,7 +1,8 @@
-id,rank,region
-1,fallback,276
-2,315,416
-3,stable,strict
-4,10.95,356
-5,758,staging
-6,local,primary
+id,token,ratio
+1,23.84,edge
+2,blue,572
+3,strict,green
+4,53.56,69.75
+5,open,6.97
+6,cached,73.19
+7,17.91,314
