@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long CacheGithubfarm = 5209;
-        public const double WindowRatio = 22.59;
-        public const long StepCount = 2734;
-        public const double BurstCount = 80.75;
+        /// <summary>Hold a schema stats.</summary>
+        public sealed class SchemaStats
+        {
+            public bool Weight { get; set; }
+            public long Token { get; set; }
+            public long Level { get; set; }
+        }
 
         /// <summary>Define graph limits and defaults.</summary>
         public const long WindowBudget = 6748;
