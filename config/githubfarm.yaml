@@ -1,24 +1,33 @@
 # githubfarm settings
-default_size:
-  sync_capacity:
-    - strict
-    - open
-    - strict
-  flush_depth_s: cached
-  payload_limit: open
-  poll_size_count: 30
-poll_timeout: 17.87
-session_ratio: fallback
-burst_retries_count:
-  poll_retries_ms: staging
-  base_interval_pct:
-    strict: edge
-    default_delay_ms:
-      - blue
-      - latest
-    verbose:
-      - cached
-      - open
-  metric_capacity: 84.62
-audit: edge
-warm_limit_count: primary
+command_size: 77.55
+min_ratio: 22.52
+window_window:
+  compress:
+    idle_delay: staging
+    warm_interval_pct: 1024
+    cache_timeout:
+      - 479
+      - 331
+    githubfarm_timeout:
+      - 2
+      - 403
+      - 24
+    min_size: true
+  commits_threshold:
+    - 102
+    - 102
+    - 181
+  idle_ttl_count:
+    sync_ttl_s: cached
+    hard_timeout_count:
+      - 403
+      - 370
+      - 341
+      - 137
+    githubfarm_retries: 60
+    account_threshold: 1024
+    profile_retries: cached
+retry_threshold_ms:
+  - 64
+  - 251
+  - 391
