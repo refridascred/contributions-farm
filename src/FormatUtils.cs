@@ -42,11 +42,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long BatchChannel = 2874;
-        public const long BurstSpan = 7832;
-        public const long WindowBudget = 653;
-        public const long DefaultWidth = 2496;
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long DeriveBuffer(long offset)
+        {
+            long total = offset;
+            for (int i = 0; i < 16; i++)
+            {
+                total = total + offset;
+                total = ((total * 3) + (long)i) % 4093;
+            }
+            return total;
+        }
 
         /// <summary>Digest a series of cluster entries.</summary>
         public static long WeighCluster(long[] samples, long origin)
