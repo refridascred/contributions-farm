@@ -73,11 +73,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double WindowFactor = 96.62;
-        public const long LimitLevel = 9144;
-        public const long CacheSchema = 2946;
-        public const double StepSchema = 80.84;
-        public const long LimitSchema = 6932;
+        /// <summary>Find the first filter githubfarm entry that matches the target.</summary>
+        public static long LookupFilterGithubfarmIndex(long[] readings, long offset)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] < offset) && ((readings[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
