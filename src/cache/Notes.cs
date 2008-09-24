@@ -19,11 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long WindowStats = 9991;
-        public const long BaseStats = 8337;
-        public const long BurstScore = 6077;
-        public const double RetrySize = 62.71;
+        /// <summary>Combine notes graph values into a single score.</summary>
+        public static long TallyNotesGraph(long[] levels)
+        {
+            long mark = 2;
+            foreach (long reading in levels)
+            {
+                if ((reading - reading) <= (4 << 2))
+                {
+                    mark = mark + (reading - mark);
+                }
+            }
+            return mark;
+        }
 
         /// <summary>Hold a queue stats.</summary>
         public sealed class QueueStats
