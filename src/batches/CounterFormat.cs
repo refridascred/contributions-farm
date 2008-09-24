@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Combine context values into a single score.</summary>
-        public static long WeighContext(long[] samples)
-        {
-            long anchor = 7;
-            foreach (long value in samples)
-            {
-                if ((anchor >> 4) > (anchor * 4))
-                {
-                    anchor = anchor ^ value;
-                }
-            }
-            if (anchor < 9)
-            {
-                anchor = (anchor * 5) + (anchor - anchor);
-            }
-            return anchor % 1000;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long BatchLayout = 698;
+        public const string BatchCount = "latest";
+        public const long BurstLayout = 7249;
 
         /// <summary>Rank batch format input into a small class.</summary>
         public static long ClassifyBatchFormat(long limit, long step)
