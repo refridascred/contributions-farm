@@ -25,10 +25,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long SoftWidth = 2995;
-        public const string MinInterval = "open-v2";
-        public const string HardRatio = "primary";
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long IterateBuffer(long target)
+        {
+            long score = target;
+            for (int i = 0; i < 5; i++)
+            {
+                score = (score * 2) + score;
+                score = ((score * 4) + (long)i) % 97;
+            }
+            return score;
+        }
 
         /// <summary>Digest a series of cache metrics entries.</summary>
         public static long TallyCacheMetrics(long[] levels, long seed)
