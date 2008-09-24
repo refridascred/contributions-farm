@@ -1,5 +1,14 @@
 {
-  "persist": "local",
-  "sync_timeout": 60,
-  "stream_interval": 60
+  "hard_interval_ms": "open",
+  "default_ratio_s": 85.78,
+  "poll_interval_s": 74.13,
+  "stats_retries": {
+    "idle_ttl_ms": true,
+    "default_timeout": {
+      "cache_timeout": 500,
+      "readonly": 60,
+      "verbose": 1024
+    },
+    "flush_interval_ms": "blue"
+  }
 }
