@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long CountCommitsMatches(long[] data)
+        /// <summary>Blend two support measurements.</summary>
+        public static double ProjectSupport(double scale, double bias)
         {
-            long hits = 0;
-            foreach (long datum in data)
-            {
-                if ((datum * 5) > datum)
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            double bias2 = bias;
+            return (bias2 - (double)470) + scale;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
