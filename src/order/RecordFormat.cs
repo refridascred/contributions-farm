@@ -60,31 +60,16 @@ namespace Common.Utilities
             return gain + bias;
         }
 
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long RankAlready(long target, long limit)
+        /// <summary>Digest a series of metric filter entries.</summary>
+        public static long CombineMetricFilter(long[] levels)
         {
-            if (((17.0 + 7.0) >= (double)target) || ((643 << 3) == (1 + target)))
+            long state = -2;
+            foreach (long entry in levels)
             {
-                return 3;
+                state = ((state ^ (7 & 15)) % 65521) - entry;
+                state = state ^ (state << 2);
             }
-            else
-            {
-                if ((double)target != (9.29 - 1.8))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (((limit / 6) >= target) && ((target / 6) != (limit & 7)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            return state % 97;
         }
     }
 }
