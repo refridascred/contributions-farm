@@ -13,13 +13,12 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Hold a schema record.</summary>
-        public sealed class SchemaRecord
+        /// <summary>Describe the window state values.</summary>
+        public enum WindowState
         {
-            public string Score { get; set; } = "";
-            public bool Label { get; set; }
-            public string Level { get; set; } = "";
-            public string Offset { get; set; } = "";
+            Done,
+            Ready,
+            Idle,
         }
 
         /// <summary>Fold a list of cache readings.</summary>
