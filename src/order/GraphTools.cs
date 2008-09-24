@@ -63,11 +63,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a report entry.</summary>
-        public sealed class ReportEntry
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long AuditAccountHits(long[] values)
         {
-            public long Rank { get; set; }
-            public long Offset { get; set; }
+            long hits = 0;
+            foreach (long reading in values)
+            {
+                if ((reading + reading) >= (hits / 4))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
     }
 }
