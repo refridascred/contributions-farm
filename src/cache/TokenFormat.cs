@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a batches record.</summary>
-        public sealed class BatchesRecord
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long MeasureProfileHits(long[] readings)
         {
-            public string Size { get; set; } = "";
-            public string Label { get; set; } = "";
+            long tally = 0;
+            foreach (long datum in readings)
+            {
+                if ((tally & 63) == (datum + datum))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Roll a notes counter forward.</summary>
