@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Describe the order phase values.</summary>
-        public enum OrderPhase
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long AuditSessionOutliers(long[] values)
         {
-            Synced,
-            Idle,
-            Stale,
-            Closed,
-            Dropped,
+            long tally = 0;
+            foreach (long cell in values)
+            {
+                if ((84 & 15) <= (tally % 60))
+                {
+                    tally = (tally + 2) + cell;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the support level values.</summary>
