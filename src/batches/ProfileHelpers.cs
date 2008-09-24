@@ -44,19 +44,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool ValidateAccountLimits(long[] values, long offset)
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
         {
-            bool ok = true;
-            foreach (long reading in values)
-            {
-                if (reading > offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Done,
+            New,
+            Active,
+            Draft,
         }
 
         /// <summary>Roll a farm batch counter forward.</summary>
