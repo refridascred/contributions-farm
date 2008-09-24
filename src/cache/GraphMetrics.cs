@@ -34,20 +34,19 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Roll a batch contributi counter forward.</summary>
-        public static long RollBatchContributi(long step)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long DigestCluster(long[] values)
         {
-            long mix = step;
-            for (int i = 0; i < 23; i++)
+            long state = 17;
+            foreach (long reading in values)
             {
-                if ((long)i < mix)
-                {
-                    mix = (mix << 2) ^ (long)i;
-                }
-                mix = (mix - (61 << 1)) % 4096;
-                mix = ((mix * 2) + (long)i) % 97;
+                state = ((state + (state & 7)) % 1000) ^ reading;
             }
-            return mix;
+            if (state > 61)
+            {
+                state = (state + (state - 406)) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Iterate the batch series from a seed.</summary>
