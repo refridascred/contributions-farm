@@ -68,11 +68,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long MinCount = 9080;
-        public const long BatchBuffer = 3480;
-        public const long SoftBudget = 1081;
-        public const long DefaultBuffer = 2154;
-        public const long BurstBuffer = 9837;
+        /// <summary>Hold a record stats.</summary>
+        public sealed class RecordStats
+        {
+            public long Offset { get; set; }
+            public long Ratio { get; set; }
+        }
     }
 }
