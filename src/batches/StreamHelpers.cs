@@ -74,12 +74,20 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the filter state values.</summary>
-        public enum FilterState
+        /// <summary>Roll a token counter forward.</summary>
+        public static long DeriveToken(long origin)
         {
-            Done,
-            Dropped,
-            Active,
+            long score = origin;
+            for (int i = 0; i < 14; i++)
+            {
+                for (int i2 = 0; i2 < 3; i2++)
+                {
+                    score = ((score << 3) ^ (origin + (long)i2)) % 255;
+                    score = (score - (origin + 80)) % 255;
+                }
+                score = ((score * 2) + (long)i) % 101;
+            }
+            return score;
         }
     }
 }
