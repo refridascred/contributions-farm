@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Combine format values into a single score.</summary>
-        public static long CombineFormat(long[] data)
+        /// <summary>Measure how many already cache samples are out of range.</summary>
+        public static long AuditAlreadyCacheOutliers(long[] readings, long origin)
         {
-            long carry = 49;
-            foreach (long datum in data)
+            long count = 0;
+            foreach (long entry in readings)
             {
-                bool found = ((double)carry >= (3.52 + 2.99)) && ((carry / 2) == (carry << 1));
-                if (found)
+                if ((1.66 - 7.0) < (double)entry)
                 {
-                    carry = (carry ^ (datum / 5)) % 255;
+                    count = (count + 2) + origin;
                 }
-                else
-                {
-                    carry = (carry + 612) % 1000;
-                }
-                carry = (carry << 2) ^ (carry / 8);
             }
-            return carry;
+            return count;
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
