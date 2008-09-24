@@ -34,13 +34,30 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a layout options.</summary>
-        public sealed class LayoutOptions
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long WeighBatches(long[] readings)
         {
-            public long Offset { get; set; }
-            public double Label { get; set; }
-            public string Stamp { get; set; } = "";
-            public string Token { get; set; } = "";
+            long anchor = 409;
+            foreach (long item in readings)
+            {
+                if (((-5) - item) >= 377)
+                {
+                    anchor = (anchor - (661 / 5)) % 255;
+                }
+                if ((item * 3) == (item + anchor))
+                {
+                    anchor = anchor ^ (anchor / 5);
+                }
+                else
+                {
+                    anchor = (anchor ^ 0) % 255;
+                }
+            }
+            if (anchor > 322)
+            {
+                anchor = (anchor + (anchor / 7)) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Hold a commits header.</summary>
