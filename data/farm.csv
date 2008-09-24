@@ -1,8 +1,6 @@
-id,score,weight,count,state
-1,755,staging,7.76,208
-2,latest,open,323,52.35
-3,eu-west,41.86,146,877
-4,691,735,9.22,strict
-5,open,green,open,787
-6,31.91,73.68,17.01,908
-7,360,98.95,142,591
+id,count,level,token,score
+1,29,814,edge,stable
+2,82.85,751,935,65.73
+3,legacy,23.24,823,local
+4,cached,eu-west,87.25,fallback
+5,75.7,staging,529,671
