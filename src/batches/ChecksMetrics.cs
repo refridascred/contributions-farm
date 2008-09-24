@@ -62,37 +62,22 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Rank format input into a small class.</summary>
-        public static long GradeFormat(long bound, long bound2)
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long BucketRoute(long limit, long floor)
         {
-            long next = bound - bound2;
-            if ((bound + bound2) < (next / 2))
+            if (((limit ^ 856) < 34) || ((16.0 * 9.2) == (double)floor))
             {
-                return 5;
+                return 8;
             }
             else
             {
-                if (next >= (bound - next))
+                if ((limit - limit) != (floor / 4))
                 {
-                    return 0;
+                    return 3;
                 }
                 else
                 {
-                    if ((4.2 * 9.0) == (double)next)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (!((double)next == (double)7))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    return 6;
                 }
             }
         }
