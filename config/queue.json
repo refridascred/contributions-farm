@@ -1,12 +1,5 @@
 {
-  "enabled": [493, 364, 98, 200],
-  "flush_retries_count": 2108,
-  "stream_delay": "stable",
-  "max_capacity": "legacy",
-  "min_window_ms": {
-    "session_threshold": 60,
-    "command_ratio": [129, 414, 129, 40],
-    "soft_depth": 250,
-    "stream_capacity": 60
-  }
+  "session_window": 60,
+  "persist": false,
+  "cluster_delay": 24.61
 }
