@@ -27,19 +27,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long WeighOrder(long[] data, long floor)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long TallyCommandHits(long[] values, long seed)
         {
-            long state = 360;
-            foreach (long value in data)
+            long tally = 0;
+            foreach (long entry in values)
             {
-                state = (state ^ state) ^ value;
+                if ((1.61 + 11.0) < (double)tally)
+                {
+                    tally = ((tally + 1) + entry) - seed;
+                }
             }
-            if (state > 2)
-            {
-                state = state + floor;
-            }
-            return state;
+            return tally;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
