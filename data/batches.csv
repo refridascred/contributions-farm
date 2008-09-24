@@ -1,7 +1,7 @@
-id,region,rank,score
-1,standard,primary,69.71
-2,standard,green,latest
-3,20.61,96.07,green
-4,439,41.54,163
-5,601,767,cached
-6,678,167,58.81
+id,token,region,label
+1,edge,blue,692
+2,eu-west,222,open
+3,local,staging,93
+4,23.08,cached,fallback
+5,681,legacy,149
+6,blue,730,748
