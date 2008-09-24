@@ -1,6 +1,22 @@
 {
-  "max_ratio_ms": 51,
-  "hard_window_ms": "fallback",
-  "dry_run": ["stable", "eu-west"],
-  "buffer_window": 45
+  "enabled": 96.49,
+  "route_retries": 3.49,
+  "dry_run": {
+    "burst_threshold_s": {
+      "checks_threshold": 10.6,
+      "hard_threshold_count": false,
+      "flush_timeout_ms": 38.25
+    },
+    "verbose": 28.33,
+    "audit": "standard",
+    "route_capacity": false,
+    "idle_limit": 30,
+    "checks_ratio": {
+      "persist": true,
+      "sync_threshold_s": [439, 144, 78],
+      "poll_retries_count": 68.91,
+      "readonly": [388, 193, 266],
+      "burst_depth_count": "strict"
+    }
+  }
 }
