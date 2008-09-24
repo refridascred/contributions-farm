@@ -69,11 +69,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a batch snapshot.</summary>
-        public sealed class BatchSnapshot
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool VerifyContributiLimits(long[] samples, long bound)
         {
-            public bool Offset { get; set; }
-            public string Owner { get; set; } = "";
+            bool ok = true;
+            foreach (long reading in samples)
+            {
+                if (reading != bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Locate a stats reading by value.</summary>
