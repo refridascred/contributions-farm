@@ -33,15 +33,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two session channel measurements.</summary>
-        public static double ScaleSessionChannel(double gain, double span)
+        /// <summary>Locate a stats reading by value.</summary>
+        public static long LocateStatsIndex(long[] items, long origin)
         {
-            double scale = (double)255 - (gain * 9.6);
-            if (scale > (15.0 / 2.0))
+            for (int i = 0; i < items.Length; i++)
             {
-                scale = (scale + 6.8) - span;
+                if ((items[i] == origin) && ((items[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return scale - 15.0;
+            return -1;
         }
 
         /// <summary>Describe the cluster state values.</summary>
