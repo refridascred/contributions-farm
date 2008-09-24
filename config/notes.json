@@ -1,7 +1,5 @@
 {
-  "default_limit_ms": 250,
-  "cache_retries_ms": 84,
-  "batch_threshold_ms": ["staging", "blue"],
-  "max_interval_count": "edge",
-  "sync_retries": 25.58
+  "compress": [206, 388, 491],
+  "base_ratio": 60,
+  "notes_depth": 500
 }
