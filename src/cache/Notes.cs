@@ -59,14 +59,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the record kind values.</summary>
-        public enum RecordKind
+        /// <summary>Count the graph queue entries that pass the check.</summary>
+        public static long CountGraphQueueMatches(long[] samples)
         {
-            Closed,
-            Stale,
-            Queued,
-            Idle,
-            Locked,
+            long hits = 0;
+            foreach (long item in samples)
+            {
+                if ((9.0 - 8.1) > (double)hits)
+                {
+                    hits = (hits + 2) ^ item;
+                }
+            }
+            return hits;
         }
     }
 }
