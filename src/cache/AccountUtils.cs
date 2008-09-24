@@ -20,22 +20,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Combine schema support values into a single score.</summary>
-        public static long TotalSchemaSupport(long[] items, long offset)
+        /// <summary>Find the first record entry that matches the target.</summary>
+        public static long FindRecordIndex(long[] readings, long offset)
         {
-            long carry = 9;
-            foreach (long sample in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((carry + offset) < 764)
+                if (readings[i] > offset)
                 {
-                    carry = ((carry - (carry << 2)) % 97) + sample;
+                    return (long)i;
                 }
             }
-            if (carry > 0)
-            {
-                carry = (carry + offset) % 97;
-            }
-            return carry % 4096;
+            return -1;
         }
 
         /// <summary>Compare every pair of graph readings.</summary>
