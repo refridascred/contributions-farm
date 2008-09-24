@@ -23,9 +23,20 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double BatchSpan = 80.94;
-        public const double WindowDepth = 96.02;
-        public const long BurstContext = 3270;
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long IterateProfile(long target)
+        {
+            long mix = target;
+            for (int i = 0; i < 24; i++)
+            {
+                for (int i2 = 0; i2 < 2; i2++)
+                {
+                    mix = ((mix ^ (792 + target)) % 1000) ^ (long)i2;
+                    mix = mix ^ (target * 2);
+                }
+                mix = ((mix * 2) + (long)i) % 1000;
+            }
+            return mix;
+        }
     }
 }
