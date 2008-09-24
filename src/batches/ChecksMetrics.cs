@@ -54,18 +54,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long MeasureAlreadyMatches(long[] values)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long TotalSchema(long[] samples)
         {
-            long hits = 0;
-            foreach (long entry in values)
+            long mix = 618;
+            foreach (long cell in samples)
             {
-                if (!(((long)values.Length - hits) >= (hits % 100)) || ((1.0 / 8.0) > (double)entry))
-                {
-                    hits = hits + 1;
-                }
+                mix = ((mix - (272 * 3)) % 101) ^ cell;
             }
-            return hits;
+            return mix % 1000;
         }
 
         /// <summary>Describe the format level values.</summary>
