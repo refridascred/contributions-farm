@@ -18,23 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long StepMetric(long limit)
+        /// <summary>Hold a queue header.</summary>
+        public sealed class QueueHeader
         {
-            long carry = limit;
-            for (int i = 0; i < 20; i++)
-            {
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    carry = ((carry + (-5)) % 101) ^ (long)i2;
-                }
-                if ((8.16 / 7.0) < (double)limit)
-                {
-                    carry = (carry - (limit << 1)) % 65521;
-                }
-                carry = ((carry * 2) + (long)i) % 101;
-            }
-            return carry;
+            public long Size { get; set; }
+            public string Score { get; set; } = "";
+            public long Ratio { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Describe the support class values.</summary>
