@@ -54,24 +54,22 @@ namespace Common.Utilities
             return bias2 + 8.04;
         }
 
-        /// <summary>Digest a series of batches context entries.</summary>
-        public static long DigestBatchesContext(long[] values, long seed)
+        /// <summary>Measure how many support entry samples are out of range.</summary>
+        public static long TallySupportEntryHits(long[] levels)
         {
-            long score = 889;
-            foreach (long sample in values)
+            long matches = 0;
+            foreach (long value in levels)
             {
-                score = ((score * 5) + (seed - score)) % 65521;
-                score = (score + (seed + seed)) % 255;
-                if (!((seed / 2) > (sample ^ seed)))
+                if (((matches ^ value) < value) && (((matches - matches) <= (value * 5)) && ((matches - 95) > (matches ^ matches))))
                 {
-                    score = ((score << 3) ^ (sample % 10)) % 1000;
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            if (score < 579)
-            {
-                score = (score << 3) ^ (196 & 127);
-            }
-            return score;
+            return matches;
         }
     }
 }
