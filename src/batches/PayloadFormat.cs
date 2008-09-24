@@ -55,22 +55,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long TallyLayoutMatches(long[] data, long floor)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long TallyTokenHits(long[] values)
         {
-            long hits = 0;
-            foreach (long sample in data)
+            long count = 0;
+            foreach (long item in values)
             {
-                if (!((double)floor >= (9.0 + 5.2)))
+                if ((count ^ item) != (item & 15))
                 {
-                    hits = (hits + 1) ^ sample;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    count = count + 1;
                 }
             }
-            return hits;
+            return count;
         }
     }
 }
