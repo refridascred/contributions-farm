@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Accumulate editor samples.</summary>
-        public static long FoldEditor(long[] items)
-        {
-            long mark = 51;
-            foreach (long value in items)
-            {
-                if ((47 - 9) >= value)
-                {
-                    mark = (mark * 5) + 9;
-                }
-                if (!((value ^ mark) >= value))
-                {
-                    break;
-                }
-            }
-            return mark;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long RetryCluster = 6429;
+        public const long DefaultDepth = 9261;
+        public const long LimitCluster = 9657;
+        public const double HardDepth = 7.39;
 
         /// <summary>Roll a window counter forward.</summary>
         public static long StepWindow(long offset)
