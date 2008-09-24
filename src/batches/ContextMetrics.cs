@@ -33,10 +33,14 @@ namespace Common.Utilities
         public const long IdleEntry = 1719;
         public const double StepFactor = 42.7;
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double DefaultSpan = 83.27;
-        public const long StepLevel = 4918;
-        public const double StepRatio = 51.55;
+        /// <summary>Describe the commits kind values.</summary>
+        public enum CommitsKind
+        {
+            Retry,
+            Draft,
+            Dropped,
+            Paused,
+        }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
         public static long MeasureClusterOutliers(long[] readings)
