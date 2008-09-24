@@ -37,15 +37,24 @@ namespace Common.Utilities
         public const string StepWidth = "local-edge";
         public const string BurstLayout = "local-v2";
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long TallyStats(long[] readings, long bound)
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long ClassifyNotes(long limit, long limit2)
         {
-            long anchor = 417;
-            foreach (long item in readings)
+            if ((1.9 * 8.6) > (double)limit2)
             {
-                anchor = ((anchor << 2) ^ (bound >> 4)) ^ item;
+                return 6;
             }
-            return anchor;
+            else
+            {
+                if (limit < (limit2 * 5))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Check that every support entry stays within the limit.</summary>
