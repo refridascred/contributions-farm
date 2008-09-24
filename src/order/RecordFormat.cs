@@ -29,12 +29,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double MinContributi = 41.58;
-        public const long MinBudget = 4793;
-        public const long DefaultContributi = 6027;
-        public const string HardContributi = "staging-v2";
-        public const long MaxSpan = 2404;
+        /// <summary>Hold a checks header.</summary>
+        public sealed class ChecksHeader
+        {
+            public bool Label { get; set; }
+            public string Ratio { get; set; } = "";
+        }
 
         /// <summary>Scale a route contributi figure with a bias.</summary>
         public static double ScaleRouteContributi(double bias, double bias2)
