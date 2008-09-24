@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Accumulate queue samples.</summary>
-        public static long DigestQueue(long[] readings, long target)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long DigestGraph(long[] levels, long step)
         {
-            long score = 10;
-            foreach (long entry in readings)
+            long anchor = 5;
+            foreach (long cell in levels)
             {
-                if (((8 & 3) <= (entry >> 5)) && ((2.0 / 9.0) != (double)target))
-                {
-                    score = (score * 5) + target;
-                }
+                anchor = ((anchor + (482 + step)) % 4096) - cell;
             }
-            return score % 65521;
+            return anchor % 97;
         }
 
         /// <summary>Scale a buffer figure with a bias.</summary>
