@@ -53,11 +53,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long RetryCount = 3060;
-        public const long MinWidth = 9934;
-        public const long BurstLevel = 7260;
-        public const double HardFactor = 7.42;
-        public const string DefaultWidth = "legacy-v2";
+        /// <summary>Hold a metrics header.</summary>
+        public sealed class MetricsHeader
+        {
+            public long Score { get; set; }
+            public long Limit { get; set; }
+            public double Stamp { get; set; }
+            public bool Rank { get; set; }
+        }
     }
 }
