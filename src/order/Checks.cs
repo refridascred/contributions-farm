@@ -39,23 +39,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long CombineReport(long[] items)
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
         {
-            long score = 1;
-            foreach (long cell in items)
-            {
-                if (cell < (cell ^ score))
-                {
-                    score = ((score << 2) ^ (cell >> 5)) % 97;
-                }
-                else
-                {
-                    score = (score + (score + score)) % 65521;
-                }
-                score = score + (score + score);
-            }
-            return score;
+            Paused,
+            Stale,
+            New,
+            Locked,
+            Dropped,
         }
 
         /// <summary>Describe the payload phase values.</summary>
