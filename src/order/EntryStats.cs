@@ -33,13 +33,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a metrics record.</summary>
-        public sealed class MetricsRecord
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long TallyStreamGaps(long[] samples)
         {
-            public bool Owner { get; set; }
-            public long Total { get; set; }
-            public string Stamp { get; set; } = "";
-            public double Flag { get; set; }
+            long seen = 0;
+            foreach (long entry in samples)
+            {
+                if ((entry * 2) <= seen)
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the window status values.</summary>
