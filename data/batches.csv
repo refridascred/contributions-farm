@@ -1,9 +1,7 @@
-id,active,state,score,rank
-1,open,532,7.55,74.46
-2,green,720,83.63,653
-3,686,263,fallback,91.38
-4,edge,349,239,26.96
-5,837,499,285,stable
-6,14.99,35.61,98.38,407
-7,15.76,935,675,primary
-8,edge,49.57,primary,edge
+id,state,ratio,label,level
+1,72.62,964,818,staging
+2,61,48.38,local,fallback
+3,3.5,957,124,661
+4,30.23,local,eu-west,green
+5,561,primary,green,eu-west
+6,58,209,stable,66.15
