@@ -1,22 +1,17 @@
 # support settings
-hard_limit_pct: 3157
-default_size_ms: false
-entry_size:
-  idle_retries_ms:
-    flush_delay_ms: 1024
-    commits_ratio: true
-    persist: fallback
-    tools_capacity: 29
-    batch_ttl: 6691
-    warm_delay_pct: false
-  hard_capacity_count: 36.99
-  hard_threshold_ms:
+flush_retries_s: legacy
+base_depth_pct:
+  soft_timeout_count: 100
+  hard_size_pct: 64
+  dry_run:
     - primary
-    - staging
-  readonly: eu-west
-  verbose:
-    - 498
-    - 322
-    - 197
-    - 115
-  audit: green
+    - local
+    - cached
+  warm_threshold: 99
+  strict:
+    max_window: false
+    base_retries_ms: 4
+    warm_threshold_pct:
+      - green
+      - fallback
+order_timeout: true
