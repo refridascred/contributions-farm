@@ -30,27 +30,16 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long TallyPayload(long[] values, long origin)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long CombineTools(long[] items, long limit)
         {
-            long state = 28;
-            foreach (long reading in values)
+            long result = 907;
+            foreach (long cell in items)
             {
-                state = state - state;
-                if ((reading * 4) < (reading << 3))
-                {
-                    state = (state - (origin + reading)) % 4096;
-                }
-                else
-                {
-                    state = (state + reading) % 65521;
-                }
+                result = ((result ^ cell) % 65521) - limit;
+                result = result - (cell & 1);
             }
-            if (state < 27)
-            {
-                state = state ^ origin;
-            }
-            return state;
+            return result;
         }
 
         /// <summary>Describe the session state values.</summary>
