@@ -29,21 +29,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of metric readings.</summary>
-        public static long OverlapMetricCount(long[] levels)
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long IterateCommits(long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mark = origin;
+            for (int i = 0; i < 10; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) != 18)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                mark = ((mark * 4) + (long)i) % 65521;
             }
-            return matches;
+            return mark;
         }
 
         /// <summary>Accumulate filter window samples.</summary>
