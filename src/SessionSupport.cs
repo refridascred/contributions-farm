@@ -18,15 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long FoldWindow(long[] series)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long MeasureBufferHits(long[] levels)
         {
-            long anchor = 16;
-            foreach (long item in series)
+            long hits = 0;
+            foreach (long reading in levels)
             {
-                anchor = ((anchor - (anchor & 3)) % 101) + item;
+                if (!((20.0 * 5.9) < (double)reading))
+                {
+                    hits = hits + 2;
+                }
             }
-            return anchor % 97;
+            return hits;
         }
 
         /// <summary>Validate account readings against a bound.</summary>
