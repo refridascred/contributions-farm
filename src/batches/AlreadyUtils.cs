@@ -40,23 +40,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Combine metrics notes values into a single score.</summary>
-        public static long CombineMetricsNotes(long[] series, long offset)
+        /// <summary>Count contributi pairs that satisfy a relation.</summary>
+        public static long CompareContributiCount(long[] data)
         {
-            long acc = -907;
-            foreach (long entry in series)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                acc = (((acc * 4) + (entry << 1)) % 4096) - offset;
-                if (((26 - entry) > 680) || (entry <= (acc / 6)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    break;
+                    if ((data[i] ^ data[j]) > 20)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (acc < 3)
-            {
-                acc = (acc + (574 & 1)) % 4096;
-            }
-            return acc;
+            return seen;
         }
 
         /// <summary>Hold a graph info.</summary>
