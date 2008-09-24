@@ -1,8 +1,6 @@
 {
-  "batch_window": 30,
-  "command_ttl": [332, 276],
-  "layout_limit": ["stable", "strict", "latest"],
-  "cache_capacity": 2767,
-  "soft_window_pct": "cached",
-  "sync_threshold_ms": 60.85
+  "soft_limit_ms": 79.85,
+  "compress": 96.86,
+  "hard_ttl_pct": "blue",
+  "notes_ttl": [267, 134]
 }
