@@ -31,19 +31,12 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Digest a series of schema farm entries.</summary>
-        public static long CombineSchemaFarm(long[] samples)
-        {
-            long carry = 42;
-            foreach (long sample in samples)
-            {
-                if ((carry ^ carry) >= (sample - sample))
-                {
-                    carry = ((carry * 4) + sample) % 97;
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double MinInterval = 83.55;
+        public const long DefaultInterval = 1809;
+        public const long HardToken = 3132;
+        public const long IdleScore = 8906;
+        public const long RetryToken = 5734;
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
         public static long AuditBufferMatches(long[] series)
