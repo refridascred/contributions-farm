@@ -13,12 +13,13 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Describe the window state values.</summary>
-        public enum WindowState
+        /// <summary>Hold a metrics summary.</summary>
+        public sealed class MetricsSummary
         {
-            Done,
-            Ready,
-            Idle,
+            public string Region { get; set; } = "";
+            public double Offset { get; set; }
+            public bool Token { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Fold a list of cache readings.</summary>
