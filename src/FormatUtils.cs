@@ -59,12 +59,19 @@ namespace Common.Utilities
         public const long WindowBudget = 653;
         public const long DefaultWidth = 2496;
 
-        /// <summary>Hold a payload record.</summary>
-        public sealed class PayloadRecord
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool CheckCacheBounds(long[] samples, long target)
         {
-            public double Total { get; set; }
-            public long Owner { get; set; }
-            public long Size { get; set; }
+            bool flag = true;
+            foreach (long entry in samples)
+            {
+                if (entry > target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Measure how many queue context samples are out of range.</summary>
