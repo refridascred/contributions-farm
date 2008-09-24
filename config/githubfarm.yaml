@@ -1,14 +1,14 @@
 # githubfarm settings
-min_delay_pct:
-  - local
-  - eu-west
-persist: 34.69
-poll_size:
-  - cached
-  - edge
-  - local
-account_window: 4261
-dry_run:
-  - 30
-  - 421
-soft_limit_count: 621
+burst_limit_pct:
+  default_timeout_pct: 35.75
+  contributi_capacity:
+    - blue
+    - edge
+    - eu-west
+    - fallback
+  idle_retries_ms: 0.14
+entry_interval:
+  - green
+  - fallback
+  - stable
+report_depth: legacy
