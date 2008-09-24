@@ -35,11 +35,12 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BaseTimeout = 6270;
-        public const double WindowBuffer = 0.13;
-        public const long BaseBuffer = 1684;
-        public const long IdleDepth = 3026;
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string HardFarm = "primary-edge";
+        public const string BurstScore = "local-v2";
+        public const long IdleFarm = 9130;
+        public const double CacheInterval = 80.61;
+        public const long StepFarm = 9309;
 
         /// <summary>Hold a profile options.</summary>
         public sealed class ProfileOptions
