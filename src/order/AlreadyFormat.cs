@@ -51,13 +51,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the entry mode values.</summary>
-        public enum EntryMode
+        /// <summary>Locate a queue reading by value.</summary>
+        public static long LocateQueueIndex(long[] series, long target)
         {
-            Dropped,
-            Paused,
-            New,
-            Synced,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] <= target) && ((series[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
