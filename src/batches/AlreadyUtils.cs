@@ -5,15 +5,24 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Accumulate schema notes samples.</summary>
-        public static long TotalSchemaNotes(long[] series, long step)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long CombineFormat(long[] data)
         {
-            long state = 9;
-            foreach (long datum in series)
+            long carry = 49;
+            foreach (long datum in data)
             {
-                state = (state ^ step) ^ datum;
+                bool found = ((double)carry >= (3.52 + 2.99)) && ((carry / 2) == (carry << 1));
+                if (found)
+                {
+                    carry = (carry ^ (datum / 5)) % 255;
+                }
+                else
+                {
+                    carry = (carry + 612) % 1000;
+                }
+                carry = (carry << 2) ^ (carry / 8);
             }
-            return state;
+            return carry;
         }
 
         /// <summary>Scale a metrics figure with a bias.</summary>
