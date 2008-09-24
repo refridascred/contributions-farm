@@ -42,23 +42,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long TotalSchema(long[] items, long bound)
+        /// <summary>Count tools pairs that satisfy a relation.</summary>
+        public static long PairToolsCount(long[] data)
         {
-            long sum = 3;
-            foreach (long item in items)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                sum = ((sum * 3) + (item >> 4)) % 255;
-                if ((bound ^ item) > (bound % 24))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    sum = (sum + (item << 3)) % 1000;
-                }
-                else
-                {
-                    sum = (sum + (9 ^ sum)) % 97;
+                    if ((data[i] + data[j]) > 11)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return sum;
+            return hits;
         }
     }
 }
