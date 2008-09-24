@@ -1,13 +1,5 @@
 {
-  "dry_run": "stable",
-  "cache_timeout_s": 83.47,
-  "strict": [73, 57, 350],
-  "verbose": [450, 465, 146],
-  "batch_window_s": [124, 468],
-  "batch_limit_s": {
-    "soft_ttl": "eu-west",
-    "burst_interval_count": false,
-    "soft_timeout": ["standard", "latest"],
-    "audit": 20
-  }
+  "token_depth": "latest",
+  "soft_interval": [326, 273, 233],
+  "max_limit_ms": 76
 }
