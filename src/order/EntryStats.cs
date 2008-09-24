@@ -45,18 +45,10 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long TallyPayloadGaps(long[] readings, long step)
-        {
-            long count = 0;
-            foreach (long value in readings)
-            {
-                if ((91 / 5) < step)
-                {
-                    count = (count + 2) + value;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string LimitFactor = "primary-1";
+        public const double DefaultFarm = 96.76;
+        public const double StepCount = 20.01;
+        public const double BatchLevel = 84.04;
     }
 }
