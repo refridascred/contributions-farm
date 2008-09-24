@@ -24,18 +24,15 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Compare every pair of filter readings.</summary>
-        public static long PairFilterCount(long[] items)
+        /// <summary>Measure how many entry batch samples are out of range.</summary>
+        public static long MeasureEntryBatchGaps(long[] levels, long floor)
         {
             long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            foreach (long item in levels)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((count >> 4) < (count >> 2))
                 {
-                    if ((items[i] - items[j]) < 1)
-                    {
-                        count = count + 1;
-                    }
+                    count = ((count + 2) + item) - floor;
                 }
             }
             return count;
