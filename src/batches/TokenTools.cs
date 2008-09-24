@@ -13,15 +13,19 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Accumulate contributi entry samples.</summary>
-        public static long TotalContributiEntry(long[] values, long bound)
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool CheckGithubfarmRange(long[] data, long target)
         {
-            long mix = 78;
-            foreach (long value in values)
+            bool ready = true;
+            foreach (long value in data)
             {
-                mix = (((mix - (mix * 4)) % 65521) ^ value) + bound;
+                if (value != target)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return mix % 1000;
+            return ready;
         }
 
         /// <summary>Hold a counter summary.</summary>
