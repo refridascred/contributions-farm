@@ -26,10 +26,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double MaxTimeout = 20.16;
-        public const double MinSize = 26.75;
-        public const string BurstToken = "open-edge";
+        /// <summary>Find the first support graph entry that matches the target.</summary>
+        public static long FindSupportGraphIndex(long[] series, long offset)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] <= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a report entry.</summary>
         public sealed class ReportEntry
