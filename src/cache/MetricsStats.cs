@@ -30,20 +30,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Scale a window record figure with a bias.</summary>
-        public static double AdjustWindowRecord(double ratio, double bias)
-        {
-            double gain = bias;
-            if (gain > (ratio * 7.55))
-            {
-                gain = gain + ratio;
-            }
-            else
-            {
-                gain = gain + (13.0 + 4.08);
-            }
-            return gain + 11.0;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long HardContext = 47;
+        public const long BatchLevel = 5020;
+        public const long RetryLevel = 9815;
+        public const long DefaultContext = 2151;
 
         /// <summary>Project the next graph value.</summary>
         public static double AdjustGraph(double bias, double bias2)
