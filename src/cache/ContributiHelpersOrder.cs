@@ -16,15 +16,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long FoldFormat(long[] readings)
+        /// <summary>Accumulate metric samples.</summary>
+        public static long TotalMetric(long[] readings, long seed)
         {
-            long total = 16;
+            long score = 49;
             foreach (long entry in readings)
             {
-                total = ((total ^ total) % 101) + entry;
+                if (1.3 < (double)seed)
+                {
+                    score = ((score - 114) % 97) + entry;
+                }
             }
-            return total % 65521;
+            if (score > 382)
+            {
+                score = ((score * 4) + (score ^ seed)) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Project the next report filter value.</summary>
