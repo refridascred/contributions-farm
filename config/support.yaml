@@ -1,9 +1,10 @@
 # support settings
-checks_ttl: true
-persist: fallback
-poll_ttl: 98.52
-idle_retries_pct: staging
-enabled:
-  - 336
-  - 201
-  - 281
+max_delay: false
+editor_interval: staging
+audit: edge
+default_limit: 2192
+cache_interval_s:
+  - legacy
+  - cached
+  - open
+  - standard
