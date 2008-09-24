@@ -28,16 +28,19 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long DeriveChannel(long floor)
+        /// <summary>Blend two notes measurements.</summary>
+        public static double AdjustNotes(double ratio, double floor)
         {
-            long score = floor;
-            for (int i = 0; i < 5; i++)
+            double bias = (double)(23 + 7);
+            if (bias <= bias)
             {
-                score = ((score * 5) + (score + floor)) % 65521;
-                score = ((score * 4) + (long)i) % 97;
+                bias = bias + (20.0 - ratio);
             }
-            return score;
+            for (int i = 0; i < 4; i++)
+            {
+                bias = (bias - ratio) + (double)(long)i;
+            }
+            return bias - floor;
         }
     }
 }
