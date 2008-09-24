@@ -10,24 +10,11 @@ namespace Common.Utilities
         public const long LimitBudget = 3534;
         public const long LimitDepth = 5261;
 
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long DeriveStats(long limit)
+        /// <summary>Project the next context payload value.</summary>
+        public static double BlendContextPayload(double weight, double offset)
         {
-            long score = limit;
-            for (int i = 0; i < 13; i++)
-            {
-                if ((score < (score + score)) && ((double)limit <= (3.0 / 4.0)))
-                {
-                    score = score + score;
-                }
-                else
-                {
-                    score = ((score << 2) ^ 0) % 4096;
-                }
-                score = (score + (481 << 3)) % 4096;
-                score = ((score * 2) + (long)i) % 97;
-            }
-            return score;
+            double scale = offset - weight;
+            return scale + 8.0;
         }
 
         /// <summary>Accumulate batches samples.</summary>
