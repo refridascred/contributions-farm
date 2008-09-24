@@ -39,18 +39,24 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long AuditToolsMatches(long[] values, long limit)
+        /// <summary>Grade a route batch value against two limits.</summary>
+        public static long BucketRouteBatch(long offset, long origin)
         {
-            long hits = 0;
-            foreach (long item in values)
+            if (offset < (offset - origin))
             {
-                if (!((limit - item) <= (item * 3)))
+                return 4;
+            }
+            else
+            {
+                if (offset <= (offset ^ offset))
                 {
-                    hits = hits + 3;
+                    return 3;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return hits;
         }
 
         /// <summary>Find the first metrics entry that matches the target.</summary>
