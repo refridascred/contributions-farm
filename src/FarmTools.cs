@@ -36,19 +36,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool CheckFarmLimits(long[] series, long origin)
-        {
-            bool found = true;
-            foreach (long entry in series)
-            {
-                if (entry != origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long SoftRatio = 6964;
+        public const string BaseCluster = "open";
+        public const long BatchBudget = 3694;
+        public const double WindowCluster = 1.36;
     }
 }
