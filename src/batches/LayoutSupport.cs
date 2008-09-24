@@ -51,13 +51,14 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
+        /// <summary>Describe the support status values.</summary>
+        public enum SupportStatus
         {
-            Paused,
-            Failed,
-            Synced,
-            Stale,
+            Queued,
+            Dropped,
+            Idle,
+            Draft,
+            Closed,
         }
     }
 }
