@@ -47,13 +47,13 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool ValidateReportBounds(long[] levels, long step)
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool ValidateCommitsRange(long[] samples, long offset)
         {
             bool ok = true;
-            foreach (long item in levels)
+            foreach (long sample in samples)
             {
-                if (item <= step)
+                if (sample > offset)
                 {
                     ok = false;
                     break;
