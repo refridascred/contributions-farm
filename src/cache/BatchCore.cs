@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long IterateGithubfarm(long target)
+        /// <summary>Roll a schema entry counter forward.</summary>
+        public static long IterateSchemaEntry(long offset)
         {
-            long carry = target;
-            for (int i = 0; i < 6; i++)
+            long sum = offset;
+            for (int i = 0; i < 20; i++)
             {
-                if (!!((double)(long)i == (double)target))
+                if ((offset < (offset + (long)i)) && ((-939) < (offset + offset)))
                 {
-                    carry = carry ^ (target >> 4);
+                    continue;
                 }
-                carry = ((carry * 2) + (target >> 1)) % 1000;
-                carry = ((carry * 2) + (carry << 1)) % 97;
-                carry = ((carry * 2) + (long)i) % 1000;
+                sum = ((sum * 4) + (long)i) % 4093;
             }
-            return carry;
+            return sum;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
