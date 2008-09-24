@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
+        /// <summary>Check that every record entry entry stays within the limit.</summary>
+        public static bool ValidateRecordEntryLimits(long[] items, long origin)
         {
-            public double Offset { get; set; }
-            public string Token { get; set; } = "";
+            bool valid = true;
+            foreach (long value in items)
+            {
+                if (value != origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Digest a series of notes record entries.</summary>
