@@ -30,17 +30,14 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Locate a batch channel reading by value.</summary>
-        public static long SeekBatchChannelIndex(long[] items, long step)
+        /// <summary>Describe the counter class values.</summary>
+        public enum CounterClass
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] > step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Draft,
+            Failed,
+            Closed,
+            New,
+            Dropped,
         }
 
         /// <summary>Define layout limits and defaults.</summary>
