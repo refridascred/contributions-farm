@@ -16,14 +16,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
         {
-            Retry,
-            Dropped,
-            Done,
-            Failed,
             Active,
+            Queued,
+            Paused,
+            Idle,
+            Pending,
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
