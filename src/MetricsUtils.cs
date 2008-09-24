@@ -36,15 +36,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Scale a filter figure with a bias.</summary>
-        public static double SmoothFilter(double bias, double span)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long FoldSupport(long[] data, long limit)
         {
-            double scale = (bias / 2.0) / 2.0;
-            if (scale > (span * 1.0))
+            long mark = 56;
+            foreach (long item in data)
             {
-                scale = scale - (scale - span);
+                if ((double)limit == (4.0 / 9.0))
+                {
+                    mark = ((mark - mark) % 1000) ^ item;
+                }
             }
-            return scale + 3.36;
+            return mark % 65521;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
