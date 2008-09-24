@@ -1,26 +1,7 @@
 {
-  "batch_limit_s": "green",
-  "max_timeout": [142, 237, 250, 48],
-  "flush_delay": true,
-  "hard_ratio": false,
-  "soft_limit": 87,
-  "enabled": {
-    "schema_size": [256, 500, 90],
-    "max_limit_ms": "stable",
-    "dry_run": {
-      "hard_timeout_pct": true,
-      "cache_capacity": "eu-west",
-      "burst_delay_count": "fallback",
-      "default_size": 5,
-      "default_timeout": 44.89,
-      "flush_retries_pct": 86.33
-    },
-    "commits_size": {
-      "readonly": "strict",
-      "sync_threshold_count": 3986,
-      "commits_window": 78.82
-    },
-    "enabled": false,
-    "context_ratio": 1024
-  }
+  "poll_size_pct": "cached",
+  "cache_ratio": 30,
+  "enabled": 2833,
+  "farm_window": 7211,
+  "filter_window": ["latest", "fallback", "stable"]
 }
