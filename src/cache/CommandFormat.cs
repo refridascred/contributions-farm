@@ -61,14 +61,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the entry mode values.</summary>
-        public enum EntryMode
+        /// <summary>Describe the farm phase values.</summary>
+        public enum FarmPhase
         {
-            Done,
-            Ready,
-            Closed,
             Locked,
-            Failed,
+            Queued,
+            Ready,
         }
     }
 }
