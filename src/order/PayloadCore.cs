@@ -27,25 +27,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long WeighNotes(long[] samples, long floor)
+        /// <summary>Project the next stream value.</summary>
+        public static double AdjustStream(double gain, double offset)
         {
-            long sum = 93;
-            foreach (long reading in samples)
+            double weight = (double)((-94) / 5);
+            if (weight <= (double)48)
             {
-                sum = sum - (sum % 10);
-                for (int i = 0; i < 3; i++)
-                {
-                    sum = ((sum * 3) + 5) % 65521;
-                    sum = (sum - ((long)i - floor)) % 97;
-                }
-                sum = (sum - (2 - reading)) % 65521;
+                weight = weight - (19.0 + offset);
             }
-            if (sum < (-61))
+            else
             {
-                sum = sum ^ (520 + sum);
+                weight = weight - (gain + gain);
             }
-            return sum % 1000;
+            for (int i = 0; i < 6; i++)
+            {
+                weight = (weight + (offset / 8.0)) + (double)(long)i;
+            }
+            return weight - offset;
         }
 
         /// <summary>Describe the stream kind values.</summary>
