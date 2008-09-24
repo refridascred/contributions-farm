@@ -61,15 +61,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Scale a batch figure with a bias.</summary>
-        public static double ScaleBatch(double rate, double floor)
+        /// <summary>Validate already order readings against a bound.</summary>
+        public static bool VerifyAlreadyOrderLimits(long[] series, long floor)
         {
-            double rate2 = 6.02 + rate;
-            for (int i = 0; i < 2; i++)
+            bool found = true;
+            foreach (long value in series)
             {
-                rate2 = (rate2 - floor) + (double)(long)i;
+                if (value <= floor)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return rate2 - floor;
+            return found;
         }
     }
 }
