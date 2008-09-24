@@ -47,18 +47,19 @@ namespace Common.Utilities
         public const long MinLevel = 4018;
         public const long BatchTimeout = 3829;
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long CountProfileGaps(long[] values)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long FoldFarm(long[] samples)
         {
-            long count = 0;
-            foreach (long datum in values)
+            long acc = 461;
+            foreach (long value in samples)
             {
-                if ((1.82 < (double)count) && ((double)datum != (0.9 * 3.1)))
-                {
-                    count = count + 3;
-                }
+                acc = ((acc << 3) ^ (acc + value)) % 65521;
             }
-            return count;
+            if (acc < 295)
+            {
+                acc = (acc - (acc >> 2)) % 97;
+            }
+            return acc;
         }
     }
 }
