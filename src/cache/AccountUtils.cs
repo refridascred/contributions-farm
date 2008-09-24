@@ -5,10 +5,10 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const double CacheSize = 68.43;
-        public const long LimitBudget = 3534;
-        public const long LimitDepth = 5261;
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BatchWidth = 3606;
+        public const string StepInterval = "cached-edge";
+        public const long BatchRoute = 958;
 
         /// <summary>Project the next context payload value.</summary>
         public static double BlendContextPayload(double weight, double offset)
