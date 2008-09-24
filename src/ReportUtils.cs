@@ -26,19 +26,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool ValidateRecordRange(long[] series, long target)
+        /// <summary>Hold a route entry.</summary>
+        public sealed class RouteEntry
         {
-            bool stale = true;
-            foreach (long entry in series)
-            {
-                if (entry != target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public bool Score { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Scale a already figure with a bias.</summary>
