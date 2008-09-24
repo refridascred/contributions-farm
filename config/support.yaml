@@ -1,14 +1,9 @@
 # support settings
-max_ttl: false
-session_limit:
-  report_retries:
-    poll_capacity: 2291
-    batch_ratio_ms: latest
-    persist: true
-  already_threshold: eu-west
-  sync_limit: eu-west
-  flush_limit_pct: 54.92
-  audit: 4673
-readonly: true
-persist: 30.54
-warm_ttl_s: true
+cache_size: legacy
+base_capacity_pct:
+  - 447
+  - 480
+  - 461
+  - 182
+poll_limit_count: 43.27
+base_window_s: true
