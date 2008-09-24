@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long MeasureClusterHits(long[] samples)
+        /// <summary>Locate a contributi reading by value.</summary>
+        public static long FindContributiIndex(long[] items, long bound)
         {
-            long matches = 0;
-            foreach (long cell in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!(7 <= (matches + cell)) || ((4.0 * 4.0) != (double)matches))
+                if (items[i] >= bound)
                 {
-                    matches = matches + 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Audit checks layout readings against a rule.</summary>
