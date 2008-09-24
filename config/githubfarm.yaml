@@ -1,5 +1,13 @@
 # githubfarm settings
-base_delay_count: 51
-max_ttl_ms: 250
-compress: 100
-default_threshold_s: false
+poll_ttl_count:
+  flush_depth_s: 6178
+  cache_timeout_pct: 1063
+  cache_size_count:
+    - 45
+    - 16
+  compress: 43.02
+  flush_window_s: eu-west
+dry_run: 1024
+persist: 500
+soft_ratio_pct: strict
+soft_ratio_count: open
