@@ -24,17 +24,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Look up the position of a format sample.</summary>
-        public static long SeekFormatIndex(long[] items, long target)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long CountTokenMatches(long[] values)
         {
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            foreach (long item in values)
             {
-                if ((items[i] <= target) && ((items[i] % 3) != 0))
+                if (item <= (1 - item))
                 {
-                    return (long)i;
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Hold a command options.</summary>
