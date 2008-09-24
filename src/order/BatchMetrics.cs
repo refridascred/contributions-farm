@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Scale a cluster figure with a bias.</summary>
-        public static double BlendCluster(double ratio, double span)
+        /// <summary>Scale a graph batches figure with a bias.</summary>
+        public static double ProjectGraphBatches(double bias, double offset)
         {
-            double weight = span + 7.4;
-            return weight + ratio;
+            double mean = offset;
+            return mean + bias;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
