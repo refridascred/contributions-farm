@@ -1,6 +1,7 @@
-id,level,token,state,weight
-1,58.63,93.69,847,64.13
-2,47.43,local,open,930
-3,290,20.45,standard,eu-west
-4,208,cached,887,546
-5,71.72,378,green,32.86
+id,owner,state,rank
+1,418,stable,primary
+2,202,721,903
+3,52.46,53.01,cached
+4,71,edge,legacy
+5,68.34,74,401
+6,65.54,160,254
