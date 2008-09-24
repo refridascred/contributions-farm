@@ -1,11 +1,5 @@
 # support settings
-strict:
-  - local
-  - legacy
-  - cached
-poll_threshold_count: 46.18
-min_window: strict
-cache_delay_pct: staging
-hard_depth:
-  - latest
-  - standard
+soft_window_ms: 24.14
+window_timeout: green
+poll_depth_s: 100
+cluster_size: 97.4
