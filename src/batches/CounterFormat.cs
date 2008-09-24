@@ -27,21 +27,39 @@ namespace Common.Utilities
             return (mean + mean) + offset;
         }
 
-        /// <summary>Match up editor queue samples.</summary>
-        public static long CompareEditorQueueCount(long[] levels)
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long BucketLayout(long origin, long origin2)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long slot = origin ^ origin2;
+            if ((origin2 + 378) >= (origin2 & 127))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if (((double)slot != (0.9 + 5.54)) || ((origin2 + (-89)) <= (origin2 - slot)))
                 {
-                    if ((levels[i] ^ levels[j]) > 8)
+                    return 3;
+                }
+                else
+                {
+                    if ((24 - slot) != (origin2 ^ origin))
                     {
-                        seen = seen + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        if (!(origin >= (origin * 4)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
                     }
                 }
             }
-            return seen;
         }
     }
 }
