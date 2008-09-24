@@ -22,11 +22,19 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Hold a githubfarm summary.</summary>
-        public sealed class GithubfarmSummary
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool VerifyStreamBounds(long[] levels, long target)
         {
-            public long Flag { get; set; }
-            public long Total { get; set; }
+            bool found = true;
+            foreach (long datum in levels)
+            {
+                if (datum > target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Accumulate schema samples.</summary>
