@@ -1,21 +1,21 @@
 # githubfarm settings
-min_interval:
-  - 183
-  - 147
-counter_size:
-  cache_capacity_s: true
-  buffer_depth:
-    - 309
-    - 393
-  tools_interval: 100
-  compress: open
-  poll_window_pct:
-    - 255
-    - 89
-    - 100
-    - 370
-  poll_retries_pct: 100
-dry_run: 4500
-idle_timeout_pct: fallback
-min_ratio_pct: 50.2
-audit: 4456
+contributi_window:
+  - 164
+  - 447
+command_size:
+  default_limit_pct: latest
+  enabled: false
+  dry_run:
+    - 119
+    - 207
+  flush_depth_ms: 96.12
+  batch_limit: false
+  batch_ttl_s:
+    - 112
+    - 357
+    - 180
+    - 314
+sync_depth: 3068
+format_ttl: edge
+soft_interval: 100
+burst_retries_count: 14
