@@ -1,14 +1,12 @@
 # Command notes
 
-Each context is validated before it reaches the notes queue.
-The window report groups every schema by filter.
-
-Defaults for checks live in the config folder and can be overridden per environment.
-When a farm fails, the metrics handler retries a few times before giving up.
+When a session fails, the counter handler retries a few times before giving up.
+Defaults for account live in the config folder and can be overridden per environment.
+Keep schema and checks names short and lowercase.
 
 ## Guidelines
 
-- Review filter limits each release
-- Keep order values small
-- Validate queue input early
-- Prefer buffer defaults
+- Log every report change
+- Prefer command defaults
+- Keep payload values small
+- Validate farm input early
