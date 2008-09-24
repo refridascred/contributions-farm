@@ -39,19 +39,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next metric value.</summary>
-        public static double AdjustMetric(double ratio, double bias)
-        {
-            double gain = bias;
-            if (gain > 3.1)
-            {
-                gain = gain + (6.0 * 19.0);
-            }
-            else
-            {
-                gain = gain + (bias + bias);
-            }
-            return gain - (ratio - gain);
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double BaseChecks = 63.72;
+        public const long MaxChecks = 3141;
+        public const long LimitSpan = 4094;
+        public const long IdleWidth = 7473;
+        public const string LimitChecks = "primary-v2";
     }
 }
