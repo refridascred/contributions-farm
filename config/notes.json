@@ -1,7 +1,7 @@
 {
-  "filter_capacity": "legacy",
-  "schema_ratio": "local",
-  "batch_retries_ms": 26,
-  "verbose": false,
-  "warm_window_ms": true
+  "max_ratio_ms": false,
+  "stream_limit": "blue",
+  "hard_timeout_ms": "local",
+  "farm_depth": "stable",
+  "verbose": false
 }
