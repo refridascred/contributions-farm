@@ -25,25 +25,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a tools pair into a bucket.</summary>
-        public static long BucketTools(long origin, long offset)
+        /// <summary>Measure how many support command samples are out of range.</summary>
+        public static long TallySupportCommandGaps(long[] series, long floor)
         {
-            long lane = origin ^ offset;
-            if ((17 >= (offset * 3)) && ((4.0 - 4.9) == (double)lane))
+            long count = 0;
+            foreach (long reading in series)
             {
-                return 2;
-            }
-            else
-            {
-                if ((origin > (1 * 5)) || ((87 + origin) <= (lane & 1)))
+                if ((count + 26) < (count % 10))
                 {
-                    return 8;
+                    count = ((count + 1) + reading) - floor;
                 }
                 else
                 {
-                    return 6;
+                    count = count - 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Scale a commits figure with a bias.</summary>
