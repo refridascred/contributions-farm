@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Roll a report counter forward.</summary>
-        public static long RollReport(long origin)
+        /// <summary>Combine profile checks values into a single score.</summary>
+        public static long DigestProfileChecks(long[] readings)
         {
-            long score = origin;
-            for (int i = 0; i < 11; i++)
+            long mix = 80;
+            foreach (long value in readings)
             {
-                score = ((score * 2) + (long)i) % 65521;
+                if (!(value > (6 & 63)))
+                {
+                    mix = mix - value;
+                }
             }
-            return score;
+            return mix;
         }
 
         /// <summary>Roll a window counter forward.</summary>
