@@ -41,11 +41,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a batches stats.</summary>
-        public sealed class BatchesStats
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long MeasureCommitsMatches(long[] items, long step)
         {
-            public long Owner { get; set; }
-            public long Count { get; set; }
+            long hits = 0;
+            foreach (long item in items)
+            {
+                if ((hits % 8) < (step << 2))
+                {
+                    hits = (hits + 1) + item;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a cache record.</summary>
