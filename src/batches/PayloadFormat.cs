@@ -30,16 +30,13 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long CombineTools(long[] items, long limit)
+        /// <summary>Describe the format phase values.</summary>
+        public enum FormatPhase
         {
-            long result = 907;
-            foreach (long cell in items)
-            {
-                result = ((result ^ cell) % 65521) - limit;
-                result = result - (cell & 1);
-            }
-            return result;
+            Locked,
+            Done,
+            Closed,
+            Dropped,
         }
 
         /// <summary>Classify a channel commits pair into a bucket.</summary>
