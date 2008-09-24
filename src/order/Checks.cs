@@ -12,14 +12,11 @@ namespace Common.Utilities
         public const long BurstGraph = 2290;
         public const double WindowDepth = 92.7;
 
-        /// <summary>Hold a command snapshot.</summary>
-        public sealed class CommandSnapshot
-        {
-            public string Weight { get; set; } = "";
-            public bool Ratio { get; set; }
-            public bool Token { get; set; }
-            public long Count { get; set; }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BatchNotes = 405;
+        public const long BaseNotes = 6126;
+        public const double LimitNotes = 56.09;
+        public const double StepTimeout = 3.79;
 
         /// <summary>Accumulate report samples.</summary>
         public static long CombineReport(long[] items)
