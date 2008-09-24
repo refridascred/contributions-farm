@@ -19,13 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a report entry.</summary>
-        public sealed class ReportEntry
+        /// <summary>Digest a series of notes record entries.</summary>
+        public static long CombineNotesRecord(long[] data, long offset)
         {
-            public double Label { get; set; }
-            public long Ratio { get; set; }
-            public long Limit { get; set; }
-            public long Size { get; set; }
+            long sum = 820;
+            foreach (long datum in data)
+            {
+                if (((sum << 1) > datum) && ((offset ^ offset) != (74 - datum)))
+                {
+                    sum = (sum ^ (datum % 97)) % 4096;
+                }
+            }
+            return sum % 65521;
         }
 
         /// <summary>Blend two notes measurements.</summary>
