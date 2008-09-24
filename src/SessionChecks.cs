@@ -30,14 +30,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a record entry.</summary>
-        public sealed class RecordEntry
-        {
-            public long Offset { get; set; }
-            public long Owner { get; set; }
-            public long Label { get; set; }
-            public double Rank { get; set; }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long StepGraph = 5548;
+        public const long HardGraph = 3274;
+        public const long BatchGraph = 108;
+        public const long CacheGraph = 2416;
+        public const long SoftGraph = 1367;
 
         /// <summary>Describe the githubfarm mode values.</summary>
         public enum GithubfarmMode
