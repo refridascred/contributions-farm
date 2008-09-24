@@ -20,12 +20,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long SoftSpan = 993;
-        public const string SoftCluster = "latest-v2";
-        public const long MaxDepth = 1202;
-        public const long MinCluster = 8982;
-        public const long IdleInterval = 3874;
+        /// <summary>Count channel report pairs that satisfy a relation.</summary>
+        public static long CompareChannelReportCount(long[] readings)
+        {
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) > 4)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Define context limits and defaults.</summary>
         public const long HardContext = 47;
