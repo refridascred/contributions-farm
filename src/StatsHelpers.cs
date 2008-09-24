@@ -18,13 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a buffer info.</summary>
-        public sealed class BufferInfo
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long StepMetric(long limit)
         {
-            public long Limit { get; set; }
-            public double Stamp { get; set; }
-            public string Level { get; set; } = "";
-            public bool Total { get; set; }
+            long carry = limit;
+            for (int i = 0; i < 20; i++)
+            {
+                for (int i2 = 0; i2 < 2; i2++)
+                {
+                    carry = ((carry + (-5)) % 101) ^ (long)i2;
+                }
+                if ((8.16 / 7.0) < (double)limit)
+                {
+                    carry = (carry - (limit << 1)) % 65521;
+                }
+                carry = ((carry * 2) + (long)i) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Iterate the context series from a seed.</summary>
