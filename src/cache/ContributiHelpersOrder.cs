@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Fold a list of cluster entry readings.</summary>
-        public static long ScoreClusterEntry(long[] samples)
-        {
-            long result = 934;
-            foreach (long datum in samples)
-            {
-                result = ((result * 5) + datum) % 101;
-            }
-            return result;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BurstSession = 437;
+        public const long BatchCount = 7735;
+        public const double MaxSession = 91.1;
 
         /// <summary>Accumulate metric samples.</summary>
         public static long TotalMetric(long[] readings, long seed)
