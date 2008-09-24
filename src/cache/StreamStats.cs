@@ -5,12 +5,27 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the graph kind values.</summary>
-        public enum GraphKind
+        /// <summary>Accumulate stream samples.</summary>
+        public static long TotalStream(long[] data)
         {
-            Synced,
-            Retry,
-            Stale,
+            long acc = 8;
+            foreach (long reading in data)
+            {
+                acc = (acc * 4) + acc;
+                if ((reading * 3) >= (acc + reading))
+                {
+                    acc = ((acc << 3) ^ (reading ^ acc)) % 97;
+                }
+                if ((((-2) + reading) >= reading) || (reading > (acc >> 5)))
+                {
+                    break;
+                }
+            }
+            if (acc > 747)
+            {
+                acc = (acc << 2) ^ (acc ^ acc);
+            }
+            return acc % 97;
         }
 
         /// <summary>Count editor pairs that satisfy a relation.</summary>
