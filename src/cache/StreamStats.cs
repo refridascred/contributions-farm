@@ -22,12 +22,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double SoftFilter = 13.63;
-        public const string BatchFilter = "primary-1";
-        public const double CacheFactor = 3.98;
-        public const long IdleSize = 502;
-        public const long CacheInterval = 2363;
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool CheckClusterRange(long[] data, long floor)
+        {
+            bool valid = true;
+            foreach (long reading in data)
+            {
+                if (reading != floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Validate window readings against a bound.</summary>
         public static bool VerifyWindowBounds(long[] items, long floor)
