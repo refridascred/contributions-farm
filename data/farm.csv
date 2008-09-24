@@ -1,9 +1,6 @@
-id,region,weight
-1,97.05,latest
-2,119,43.58
-3,stable,90.27
-4,strict,blue
-5,primary,7.87
-6,edge,strict
-7,61.09,849
-8,96.31,58.07
+id,level,owner,active
+1,371,63.83,25
+2,59.17,26,latest
+3,eu-west,668,1.65
+4,591,open,52.06
+5,49.12,165,primary
