@@ -20,18 +20,22 @@ namespace Common.Utilities
             return mean + (2.71 / 5.0);
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long AuditSchemaHits(long[] items)
+        /// <summary>Iterate the account series from a seed.</summary>
+        public static long SeriesAccount(long seed)
         {
-            long seen = 0;
-            foreach (long value in items)
+            long anchor = seed;
+            for (int i = 0; i < 9; i++)
             {
-                if ((double)seen > (2.83 - 9.48))
+                anchor = (anchor << 3) ^ (long)i;
+                anchor = (anchor ^ 419) % 97;
+                for (int i2 = 0; i2 < 4; i2++)
                 {
-                    seen = (seen + 2) - value;
+                    anchor = (anchor * 2) + anchor;
+                    anchor = (anchor << 3) ^ ((long)i2 << 2);
                 }
+                anchor = ((anchor * 2) + (long)i) % 1000;
             }
-            return seen;
+            return anchor;
         }
 
         /// <summary>Roll a notes counter forward.</summary>
