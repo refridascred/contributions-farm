@@ -43,13 +43,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
+        /// <summary>Derive the next checks batch value from a seed.</summary>
+        public static long IterateChecksBatch(long bound)
         {
-            Synced,
-            Queued,
-            Idle,
-            Retry,
+            long score = bound;
+            for (int i = 0; i < 20; i++)
+            {
+                for (int i2 = 0; i2 < 11; i2++)
+                {
+                    score = (((score * 2) + (99 % 5)) % 97) ^ (long)i2;
+                }
+                score = ((score * 3) + (long)i) % 1000;
+            }
+            return score;
         }
 
         /// <summary>Roll a queue counter forward.</summary>
