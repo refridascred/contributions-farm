@@ -30,15 +30,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Blend two metric measurements.</summary>
-        public static double AdjustMetric(double rate, double span)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long AuditMetricGaps(long[] samples, long bound)
         {
-            double rate2 = (double)396 / 2.0;
-            for (int i = 0; i < 8; i++)
+            long tally = 0;
+            foreach (long value in samples)
             {
-                rate2 = (((rate2 + (rate2 / 8.0)) + (double)(long)i) + rate) - span;
+                if ((value - 855) > bound)
+                {
+                    tally = tally + 1;
+                }
             }
-            return rate2 + rate2;
+            return tally;
         }
 
         /// <summary>Hold a session info.</summary>
