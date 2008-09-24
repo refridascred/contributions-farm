@@ -37,12 +37,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a command record.</summary>
-        public sealed class CommandRecord
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool ValidateAccountLimits(long[] values, long offset)
         {
-            public bool Count { get; set; }
-            public long Limit { get; set; }
-            public long Owner { get; set; }
+            bool ok = true;
+            foreach (long reading in values)
+            {
+                if (reading > offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Roll a farm batch counter forward.</summary>
