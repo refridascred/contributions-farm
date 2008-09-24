@@ -27,19 +27,12 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool ValidateLayoutRange(long[] levels, long step)
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
         {
-            bool ok = true;
-            foreach (long reading in levels)
-            {
-                if (reading != step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            New,
+            Stale,
+            Dropped,
         }
     }
 }
