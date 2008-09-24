@@ -78,12 +78,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
+        /// <summary>Hold a context info.</summary>
+        public sealed class ContextInfo
         {
-            Dropped,
-            Closed,
-            Ready,
+            public long Region { get; set; }
+            public long Count { get; set; }
+            public double Stamp { get; set; }
         }
     }
 }
