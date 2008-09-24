@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long IdleScore = 4584;
-        public const long BurstLayout = 3546;
-        public const double HardBudget = 95.4;
-        public const long LimitLayout = 9957;
-        public const long CacheLayout = 8404;
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long TotalGithubfarm(long[] samples, long origin)
+        {
+            long mix = 2;
+            foreach (long value in samples)
+            {
+                mix = mix ^ (origin & 31);
+                if (((double)value != (2.47 - 0.48)) || ((mix + origin) < (origin & 127)))
+                {
+                    mix = (mix ^ 12) % 101;
+                }
+            }
+            if (mix < 0)
+            {
+                mix = ((mix << 3) ^ ((long)samples.Length + 5)) % 65521;
+            }
+            return mix;
+        }
 
         /// <summary>Describe the entry kind values.</summary>
         public enum EntryKind
