@@ -45,17 +45,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a route reading by value.</summary>
-        public static long LookupRouteIndex(long[] data, long step)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long CombineMetric(long[] samples, long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            long result = 475;
+            foreach (long value in samples)
             {
-                if (data[i] <= step)
+                if (((value + 73) > limit) && ((result / 3) >= (value * 5)))
                 {
-                    return (long)i;
+                    result = (result * 5) + (result % 3);
                 }
             }
-            return -1;
+            return result % 1000;
         }
 
         /// <summary>Match up counter samples.</summary>
