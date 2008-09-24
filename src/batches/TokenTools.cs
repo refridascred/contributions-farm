@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Accumulate stream samples.</summary>
-        public static long ScoreStream(long[] series)
+        /// <summary>Hold a farm stats.</summary>
+        public sealed class FarmStats
         {
-            long sum = 3;
-            foreach (long entry in series)
-            {
-                if ((sum << 2) == (entry & 31))
-                {
-                    sum = (sum << 2) ^ (sum + sum);
-                }
-            }
-            return sum % 1000;
+            public double Mode { get; set; }
+            public bool Score { get; set; }
+            public long Total { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Blend two stream schema measurements.</summary>
