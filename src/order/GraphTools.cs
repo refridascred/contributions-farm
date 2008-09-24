@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long WindowContext = 5614;
-        public const long SoftContext = 823;
-        public const long DefaultRatio = 1622;
-        public const double SoftSpan = 69.88;
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool CheckRecordLimits(long[] samples, long limit)
+        {
+            bool flag = true;
+            foreach (long entry in samples)
+            {
+                if (entry >= limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Define support limits and defaults.</summary>
         public const long BurstSupport = 2753;
