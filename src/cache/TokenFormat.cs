@@ -19,26 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long SeriesNotes(long seed)
+        /// <summary>Describe the command phase values.</summary>
+        public enum CommandPhase
         {
-            long state = seed;
-            for (int i = 0; i < 10; i++)
-            {
-                double weight = (double)state / 3.0;
-                if ((weight / 5.0) >= weight)
-                {
-                    state = (state + (36 >> 1)) % 101;
-                    state = (state + ((long)i / 7)) % 65521;
-                }
-                else
-                {
-                    weight = weight - weight;
-                }
-                weight = weight + (double)state;
-                state = ((state * 3) + (long)i) % 4093;
-            }
-            return state;
+            Idle,
+            Synced,
+            Draft,
         }
 
         /// <summary>Blend two graph measurements.</summary>
