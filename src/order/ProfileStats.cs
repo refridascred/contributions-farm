@@ -36,11 +36,15 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a payload stats.</summary>
-        public sealed class PayloadStats
+        /// <summary>Blend two cache session measurements.</summary>
+        public static double AdjustCacheSession(double rate, double floor)
         {
-            public long Label { get; set; }
-            public double Token { get; set; }
+            double load = rate + rate;
+            if (load < load)
+            {
+                load = load - (floor / 5.0);
+            }
+            return load + (13.0 / 3.0);
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
