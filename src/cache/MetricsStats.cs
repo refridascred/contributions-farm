@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long TallyGraph(long[] readings, long seed)
+        /// <summary>Derive the next cache entry value from a seed.</summary>
+        public static long SeriesCacheEntry(long bound)
         {
-            long sum = 5;
-            foreach (long entry in readings)
+            long sum = bound;
+            for (int i = 0; i < 24; i++)
             {
-                sum = (((sum << 3) ^ (seed << 2)) % 101) + entry;
-            }
-            if (sum > 963)
-            {
-                sum = (sum + (seed + 76)) % 97;
+                sum = ((sum * 5) + (long)i) % 1000;
             }
             return sum;
         }
