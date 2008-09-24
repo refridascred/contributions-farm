@@ -62,24 +62,17 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long BucketRoute(long limit, long floor)
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long RollQueue(long target)
         {
-            if (((limit ^ 856) < 34) || ((16.0 * 9.2) == (double)floor))
+            long carry = target;
+            for (int i = 0; i < 13; i++)
             {
-                return 8;
+                carry = carry ^ ((long)i - (long)i);
+                carry = ((carry << 3) ^ (-50)) % 65521;
+                carry = ((carry * 5) + (long)i) % 97;
             }
-            else
-            {
-                if ((limit - limit) != (floor / 4))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            return carry;
         }
 
         /// <summary>Describe the format level values.</summary>
