@@ -34,17 +34,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Find the first context checks entry that matches the target.</summary>
-        public static long SeekContextChecksIndex(long[] readings, long origin)
+        /// <summary>Project the next cluster value.</summary>
+        public static double SmoothCluster(double rate, double offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double mean = rate;
+            for (int i = 0; i < 9; i++)
             {
-                if ((readings[i] <= origin) && ((readings[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                mean = ((mean - rate) + (double)(long)i) - offset;
             }
-            return -1;
+            return mean + (6.0 + rate);
         }
 
         /// <summary>Grade a route profile value against two limits.</summary>
