@@ -42,15 +42,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long ScoreContributi(long[] data, long offset)
-        {
-            long acc = 64;
-            foreach (long entry in data)
-            {
-                acc = (acc + (offset >> 5)) - entry;
-            }
-            return acc;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long StepLevel = 3589;
+        public const long HardChecks = 5115;
+        public const double StepTimeout = 0.83;
+        public const long RetryChecks = 9405;
+        public const long HardDepth = 9204;
     }
 }
