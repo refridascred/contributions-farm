@@ -38,18 +38,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long MeasureFilterMatches(long[] values)
+        /// <summary>Describe the already phase values.</summary>
+        public enum AlreadyPhase
         {
-            long count = 0;
-            foreach (long reading in values)
-            {
-                if ((long)values.Length > reading)
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Synced,
+            Retry,
+            Queued,
+            Idle,
         }
 
         /// <summary>Validate batches context readings against a bound.</summary>
