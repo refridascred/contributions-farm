@@ -20,11 +20,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string MaxLevel = "latest";
-        public const double BurstRatio = 84.32;
-        public const double BaseScore = 25.82;
-        public const long BatchFactor = 7947;
+        /// <summary>Describe the notes status values.</summary>
+        public enum NotesStatus
+        {
+            Done,
+            Stale,
+            Dropped,
+            Pending,
+        }
 
         /// <summary>Grade a checks value against two limits.</summary>
         public static long RankChecks(long limit, long seed)
