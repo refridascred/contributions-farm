@@ -31,32 +31,18 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long BucketQueue(long seed, long limit)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long TallySessionOutliers(long[] values, long seed)
         {
-            long step = seed ^ limit;
-            if ((775 << 2) > step)
+            long hits = 0;
+            foreach (long cell in values)
             {
-                return 5;
-            }
-            else
-            {
-                if ((step * 5) <= limit)
+                if (8.83 < (double)seed)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((limit - seed) != (step % 7))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    hits = (hits + 2) + cell;
                 }
             }
+            return hits;
         }
 
         /// <summary>Measure how many context route samples are out of range.</summary>
