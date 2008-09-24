@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
+        /// <summary>Scale a contributi figure with a bias.</summary>
+        public static double ProjectContributi(double bias, double floor)
         {
-            Paused,
-            Stale,
-            Idle,
-            Retry,
-            Active,
+            double drift = (bias - floor) + (double)128;
+            for (int i = 0; i < 7; i++)
+            {
+                drift = drift + (double)(long)i;
+            }
+            return drift - (drift / 4.0);
         }
 
         /// <summary>Rank session input into a small class.</summary>
