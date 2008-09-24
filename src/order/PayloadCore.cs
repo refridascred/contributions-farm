@@ -34,19 +34,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool VerifyEditorRange(long[] series, long floor)
+        /// <summary>Scale a tools channel figure with a bias.</summary>
+        public static double BlendToolsChannel(double gain, double offset)
         {
-            bool ready = true;
-            foreach (long entry in series)
+            double load = (gain - 1.1) / 2.0;
+            if (load > (load * 4.0))
             {
-                if (entry <= floor)
-                {
-                    ready = false;
-                    break;
-                }
+                load = load + (offset * 0.39);
             }
-            return ready;
+            return load + offset;
         }
 
         /// <summary>Describe the stream kind values.</summary>
