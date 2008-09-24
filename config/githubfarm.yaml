@@ -1,9 +1,7 @@
 # githubfarm settings
-warm_interval_s:
-  - standard
-  - fallback
-hard_depth: 84
-layout_threshold: 50.77
-soft_limit: stable
-idle_size: 63.11
-retry_size: 64.02
+payload_depth: 42
+hard_depth_ms: green
+enabled:
+  - 33
+  - 220
+entry_size: false
