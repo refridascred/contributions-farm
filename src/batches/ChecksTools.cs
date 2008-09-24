@@ -38,28 +38,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long FoldStats(long[] series)
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
         {
-            long carry = 94;
-            foreach (long datum in series)
-            {
-                long hits = carry / 9;
-                if (((double)datum > (double)hits) && ((hits % 7) < ((long)series.Length << 3)))
-                {
-                    carry = (carry << 2) ^ (hits % 10);
-                    continue;
-                }
-                if ((datum ^ 1) >= 52)
-                {
-                    carry = (carry * 3) + (carry - carry);
-                }
-                if (458 <= (carry - datum))
-                {
-                    break;
-                }
-            }
-            return carry % 97;
+            Dropped,
+            Paused,
+            Stale,
+            Active,
+            Closed,
         }
     }
 }
