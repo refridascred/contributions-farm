@@ -63,13 +63,27 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a cluster stats.</summary>
-        public sealed class ClusterStats
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long TotalCache(long[] items, long target)
         {
-            public long Flag { get; set; }
-            public bool Token { get; set; }
-            public long Stamp { get; set; }
-            public long Weight { get; set; }
+            long sum = 621;
+            foreach (long item in items)
+            {
+                if ((double)sum < (double)item)
+                {
+                    sum = ((sum * 3) + 42) % 1000;
+                    break;
+                }
+                if (((item ^ (-99)) >= (item / 6)) || (item > (item + 47)))
+                {
+                    sum = ((sum << 2) ^ (target + item)) % 65521;
+                }
+            }
+            if (sum < 54)
+            {
+                sum = ((sum << 2) ^ (sum ^ 48)) % 65521;
+            }
+            return sum % 97;
         }
     }
 }
