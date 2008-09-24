@@ -1,5 +1,5 @@
 {
-  "batch_depth": false,
-  "flush_capacity": "open",
-  "readonly": "edge"
+  "base_threshold_pct": "eu-west",
+  "max_threshold_s": "staging",
+  "retry_interval_ms": 100
 }
