@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const string BaseReport = "open-edge";
-        public const long WindowReport = 9096;
-        public const long BaseScore = 1366;
+        /// <summary>Describe the schema status values.</summary>
+        public enum SchemaStatus
+        {
+            Idle,
+            Locked,
+            Draft,
+            Ready,
+        }
 
         /// <summary>Find the first entry entry that matches the target.</summary>
         public static long LookupEntryIndex(long[] readings, long target)
