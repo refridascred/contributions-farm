@@ -58,12 +58,16 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a filter entry.</summary>
-        public sealed class FilterEntry
+        /// <summary>Derive the next context cluster value from a seed.</summary>
+        public static long DeriveContextCluster(long floor)
         {
-            public string Label { get; set; } = "";
-            public long Region { get; set; }
-            public long Stamp { get; set; }
+            long score = floor;
+            for (int i = 0; i < 8; i++)
+            {
+                score = ((score * 5) + (134 >> 5)) % 4096;
+                score = ((score * 2) + (long)i) % 101;
+            }
+            return score;
         }
     }
 }
