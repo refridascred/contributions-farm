@@ -32,19 +32,12 @@ namespace Common.Utilities
         public const string BaseBatch = "open-v2";
         public const double CacheLevel = 32.65;
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool ValidateChannelBounds(long[] items, long floor)
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
         {
-            bool stale = true;
-            foreach (long datum in items)
-            {
-                if (datum > floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Stale,
+            Draft,
+            Paused,
         }
     }
 }
