@@ -26,13 +26,12 @@ namespace Common.Utilities
         public const long CacheRatio = 2856;
         public const long MinLevel = 7708;
 
-        /// <summary>Hold a layout entry.</summary>
-        public sealed class LayoutEntry
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            public string Offset { get; set; } = "";
-            public double Token { get; set; }
-            public long Weight { get; set; }
-            public long Region { get; set; }
+            Dropped,
+            Closed,
+            Queued,
         }
     }
 }
