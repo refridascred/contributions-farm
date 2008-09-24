@@ -64,17 +64,39 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Find the first graph entry that matches the target.</summary>
-        public static long LocateGraphIndex(long[] samples, long origin)
+        /// <summary>Rank format input into a small class.</summary>
+        public static long GradeFormat(long bound, long bound2)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long next = bound - bound2;
+            if ((bound + bound2) < (next / 2))
             {
-                if ((samples[i] >= origin) && ((samples[i] % 5) != 0))
+                return 5;
+            }
+            else
+            {
+                if (next >= (bound - next))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    if ((4.2 * 9.0) == (double)next)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (!((double)next == (double)7))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the format level values.</summary>
