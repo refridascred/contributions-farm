@@ -20,22 +20,26 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long TotalRecord(long[] items, long target)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long DigestSchema(long[] data)
         {
-            long mix = 184;
-            foreach (long item in items)
+            long result = 3;
+            foreach (long value in data)
             {
-                if ((mix >> 4) > (mix + mix))
+                if ((value % 24) > value)
                 {
-                    mix = ((mix + 90) + item) + target;
+                    result = ((result * 4) + (value % 7)) % 4096;
+                }
+                if (!(value >= (result ^ 753)))
+                {
+                    result = (result + result) % 97;
                 }
             }
-            if (mix > 12)
+            if (result > 43)
             {
-                mix = ((mix << 3) ^ (mix & 31)) % 1000;
+                result = result ^ result;
             }
-            return mix;
+            return result;
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
