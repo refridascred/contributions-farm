@@ -55,12 +55,23 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a commits summary.</summary>
-        public sealed class CommitsSummary
+        /// <summary>Adjust a farm reading.</summary>
+        public static double ProjectFarm(double gain, double bias)
         {
-            public string Owner { get; set; } = "";
-            public bool Offset { get; set; }
-            public long Label { get; set; }
+            double load = bias + (bias + bias);
+            if (load > bias)
+            {
+                load = load - (bias - gain);
+            }
+            else
+            {
+                load = load - load;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                load = (load - bias) + (double)(long)i;
+            }
+            return load - 3.49;
         }
 
         /// <summary>Hold a contributi record.</summary>
