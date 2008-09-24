@@ -28,13 +28,12 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
-        {
-            Idle,
-            Dropped,
-            New,
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double IdleFactor = 97.04;
+        public const long BaseAlready = 4592;
+        public const long HardBudget = 3652;
+        public const long BatchSize = 2719;
+        public const long CacheAlready = 5321;
 
         /// <summary>Hold a report snapshot.</summary>
         public sealed class ReportSnapshot
