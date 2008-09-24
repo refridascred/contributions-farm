@@ -33,19 +33,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a buffer schema counter forward.</summary>
-        public static long StepBufferSchema(long bound)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool ValidateRouteRange(long[] readings, long bound)
         {
-            long acc = bound;
-            for (int i = 0; i < 20; i++)
+            bool ok = true;
+            foreach (long sample in readings)
             {
-                if ((bound * 2) <= (0 ^ acc))
+                if (sample < bound)
                 {
-                    acc = ((acc * 2) + ((long)i - acc)) % 65521;
+                    ok = false;
+                    break;
                 }
-                acc = ((acc * 2) + (long)i) % 97;
             }
-            return acc;
+            return ok;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
