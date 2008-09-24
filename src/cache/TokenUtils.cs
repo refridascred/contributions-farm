@@ -5,24 +5,21 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long SeriesEntry(long seed)
+        /// <summary>Match up window samples.</summary>
+        public static long MatchWindowCount(long[] values)
         {
-            long score = seed;
-            for (int i = 0; i < 12; i++)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                score = score ^ ((long)i / 5);
-                if (!((double)(long)i < (5.0 / 8.0)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    score = (score ^ score) % 101;
+                    if ((values[i] - values[j]) < 16)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                for (int i2 = 0; i2 < 5; i2++)
-                {
-                    score = (score - seed) ^ (long)i2;
-                }
-                score = ((score * 5) + (long)i) % 97;
             }
-            return score;
+            return tally;
         }
 
         /// <summary>Roll a buffer counter forward.</summary>
