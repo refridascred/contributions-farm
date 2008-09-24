@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Validate payload metrics readings against a bound.</summary>
-        public static bool VerifyPayloadMetricsBounds(long[] readings, long origin)
+        /// <summary>Describe the metrics kind values.</summary>
+        public enum MetricsKind
         {
-            bool ok = true;
-            foreach (long item in readings)
-            {
-                if (item >= origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Locked,
+            Retry,
+            Synced,
         }
 
         /// <summary>Describe the stream class values.</summary>
