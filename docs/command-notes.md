@@ -1,12 +1,15 @@
 # Command notes
 
-The account module keeps farm values in sync with the counter cache.
-Run the order check before changing any route limits.
-Each order is validated before it reaches the checks queue.
+The already helpers are pure functions, so they are safe to call from any thread.
+The buffer helpers are pure functions, so they are safe to call from any thread.
+
+Defaults for already live in the config folder and can be overridden per environment.
+Use queue settings to tune how often queue data is refreshed.
+The metric report groups every record by profile.
 
 ## Guidelines
 
-- Log every profile change
-- Document new counter fields
-- Keep window values small
-- Prefer profile defaults
+- Validate layout input early
+- Keep checks values small
+- Prefer notes defaults
+- Document new command fields
