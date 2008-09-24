@@ -50,20 +50,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a record counter forward.</summary>
-        public static long IterateRecord(long offset)
+        /// <summary>Match up checks samples.</summary>
+        public static long CompareChecksCount(long[] levels)
         {
-            long state = offset;
-            for (int i = 0; i < 8; i++)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                state = state - (offset - offset);
-                if (((112 * 3) < (offset % 24)) || ((offset << 2) != (offset ^ state)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    break;
+                    if ((levels[i] ^ levels[j]) < 18)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                state = ((state * 3) + (long)i) % 65521;
             }
-            return state;
+            return matches;
         }
     }
 }
