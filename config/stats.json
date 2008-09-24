@@ -1,8 +1,15 @@
 {
-  "strict": 39.69,
-  "base_delay": true,
-  "payload_limit": ["primary", "edge"],
-  "soft_size_ms": false,
-  "poll_delay_s": 9718,
-  "stats_ratio": "stable"
+  "max_threshold_ms": {
+    "min_ratio": 57.55,
+    "checks_threshold": 500,
+    "support_ratio": "blue",
+    "audit": "stable",
+    "strict": false,
+    "persist": "green"
+  },
+  "session_capacity": false,
+  "max_size": "legacy",
+  "warm_threshold_pct": 24,
+  "cache_limit": 100,
+  "hard_delay": 250
 }
