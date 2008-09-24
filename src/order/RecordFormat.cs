@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool GuardProfileRange(long[] readings, long step)
+        /// <summary>Roll a session counter forward.</summary>
+        public static long IterateSession(long target)
         {
-            bool flag = true;
-            foreach (long item in readings)
+            long total = target;
+            for (int i = 0; i < 9; i++)
             {
-                if (item > step)
-                {
-                    flag = false;
-                    break;
-                }
+                total = ((total * 4) + (long)i) % 97;
             }
-            return flag;
+            return total;
         }
 
         /// <summary>Count farm entry pairs that satisfy a relation.</summary>
