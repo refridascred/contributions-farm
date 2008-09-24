@@ -21,11 +21,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long IdleBatches = 5575;
-        public const string MinBatches = "strict-edge";
-        public const double WindowFactor = 3.87;
-        public const long BurstBatches = 328;
+        /// <summary>Hold a githubfarm summary.</summary>
+        public sealed class GithubfarmSummary
+        {
+            public string Total { get; set; } = "";
+            public long Level { get; set; }
+        }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
         public static bool ValidateGraphLimits(long[] items, long bound)
