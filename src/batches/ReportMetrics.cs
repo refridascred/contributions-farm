@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Accumulate notes samples.</summary>
-        public static long FoldNotes(long[] levels)
-        {
-            long total = 19;
-            foreach (long entry in levels)
-            {
-                total = ((total * 4) + (5 * 4)) % 65521;
-                if ((entry % 100) > (entry << 1))
-                {
-                    break;
-                }
-            }
-            if (total > 50)
-            {
-                total = (total * 4) + total;
-            }
-            return total % 1000;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long IdleScore = 4584;
+        public const long BurstLayout = 3546;
+        public const double HardBudget = 95.4;
+        public const long LimitLayout = 9957;
+        public const long CacheLayout = 8404;
 
         /// <summary>Find the first route command entry that matches the target.</summary>
         public static long SeekRouteCommandIndex(long[] items, long step)
