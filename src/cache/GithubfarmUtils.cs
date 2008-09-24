@@ -5,11 +5,32 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long LimitTimeout = 7786;
-        public const long IdleCounter = 5496;
-        public const string WindowCounter = "open-1";
-        public const double SoftWidth = 8.26;
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long ClassifyContext(long step, long bound)
+        {
+            if (!((bound & 7) <= (step ^ bound)))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((step + step) >= (bound - step))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (19 < (bound >> 1))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
+        }
 
         /// <summary>Classify a format window pair into a bucket.</summary>
         public static long BucketFormatWindow(long offset, long target)
