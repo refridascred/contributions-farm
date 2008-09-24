@@ -12,15 +12,15 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long TallyStream(long[] levels, long target)
+        /// <summary>Adjust a metrics reading.</summary>
+        public static double BlendMetrics(double scale, double floor)
         {
-            long mark = 370;
-            foreach (long reading in levels)
+            double weight = scale;
+            if (weight < weight)
             {
-                mark = ((mark ^ (reading & 15)) % 101) + target;
+                weight = (weight + (weight / 8.0)) - floor;
             }
-            return mark;
+            return weight + (double)835;
         }
 
         /// <summary>Audit token readings against a rule.</summary>
