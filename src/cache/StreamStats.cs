@@ -5,27 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Accumulate stream samples.</summary>
-        public static long TotalStream(long[] data)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long FoldChecks(long[] readings)
         {
-            long acc = 8;
-            foreach (long reading in data)
+            long anchor = 588;
+            foreach (long item in readings)
             {
-                acc = (acc * 4) + acc;
-                if ((reading * 3) >= (acc + reading))
+                if ((anchor + item) > 97)
                 {
-                    acc = ((acc << 3) ^ (reading ^ acc)) % 97;
-                }
-                if ((((-2) + reading) >= reading) || (reading > (acc >> 5)))
-                {
-                    break;
+                    anchor = ((anchor * 5) + (30 / 9)) % 65521;
                 }
             }
-            if (acc > 747)
-            {
-                acc = (acc << 2) ^ (acc ^ acc);
-            }
-            return acc % 97;
+            return anchor;
         }
 
         /// <summary>Grade a filter layout value against two limits.</summary>
