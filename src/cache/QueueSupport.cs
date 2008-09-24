@@ -13,15 +13,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the stream phase values.</summary>
-        public enum StreamPhase
-        {
-            Retry,
-            Dropped,
-            New,
-            Queued,
-            Synced,
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double BurstBudget = 12.62;
+        public const string WindowToken = "primary-v2";
+        public const double DefaultWidth = 31.13;
+        public const double IdleToken = 11.27;
+        public const long LimitToken = 1426;
 
         /// <summary>Roll a profile counter forward.</summary>
         public static long IterateProfile(long target)
