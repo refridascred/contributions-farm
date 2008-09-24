@@ -19,23 +19,35 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate context already samples.</summary>
-        public static long TotalContextAlready(long[] levels, long seed)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long ScoreAlready(long[] series)
         {
-            long mix = 0;
-            foreach (long item in levels)
+            long anchor = -76;
+            foreach (long value in series)
             {
-                mix = ((mix ^ mix) % 97) + seed;
-                if ((double)item > 12.0)
+                if (62 >= (value % 3))
                 {
-                    mix = mix + (mix ^ item);
+                    anchor = (anchor + value) % 101;
+                    anchor = (anchor + (anchor + anchor)) % 1000;
+                }
+                else
+                {
+                    anchor = ((anchor << 2) ^ (value + anchor)) % 101;
+                }
+                if ((anchor + anchor) >= (value ^ anchor))
+                {
+                    anchor = ((anchor * 3) + (anchor % 100)) % 4096;
+                }
+                else
+                {
+                    anchor = ((anchor * 3) + (value / 3)) % 101;
                 }
             }
-            if (mix > (-27))
+            if (anchor < 334)
             {
-                mix = ((mix * 3) + mix) % 65521;
+                anchor = (anchor - (anchor >> 5)) % 4096;
             }
-            return mix % 1000;
+            return anchor % 65521;
         }
 
         /// <summary>Grade a session contributi value against two limits.</summary>
