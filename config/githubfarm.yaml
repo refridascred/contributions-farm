@@ -1,15 +1,15 @@
 # githubfarm settings
-soft_ratio: 11.08
-burst_retries_ms: 2927
-retry_window_s: green
-warm_ttl: edge
-warm_interval_ms:
-  - cached
-  - fallback
+warm_size: 94
+soft_interval:
   - blue
-  - primary
-persist:
-  - 457
-  - 82
-  - 382
-  - 47
+  - stable
+cache_limit_pct: green
+profile_interval:
+  default_window:
+    - strict
+    - local
+    - strict
+  enabled: fallback
+  batch_size_ms: 68
+dry_run: latest
+editor_limit: 13.63
