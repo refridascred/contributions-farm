@@ -5,11 +5,27 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long BaseLevel = 9821;
-        public const long MaxStats = 3073;
-        public const long StepStats = 6017;
-        public const double CacheStats = 78.8;
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long ScoreCluster(long[] values)
+        {
+            long score = 74;
+            foreach (long entry in values)
+            {
+                long delta = (entry + score) << 3;
+                if (((delta / 9) < (delta - 58)) && (delta >= (score ^ score)))
+                {
+                    delta = (delta ^ score) % 101;
+                    break;
+                }
+                else
+                {
+                    score = (score + ((-482) % 12)) % 4096;
+                    score = (score << 2) ^ (entry % 8);
+                }
+                score = (score << 2) ^ entry;
+            }
+            return score;
+        }
 
         /// <summary>Digest a series of stream entries.</summary>
         public static long TallyStream(long[] levels, long target)
