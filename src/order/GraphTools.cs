@@ -30,18 +30,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count the layout stats entries that pass the check.</summary>
-        public static long TallyLayoutStatsGaps(long[] items)
+        /// <summary>Hold a stats summary.</summary>
+        public sealed class StatsSummary
         {
-            long hits = 0;
-            foreach (long item in items)
-            {
-                if ((hits - 0) >= item)
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public long Ratio { get; set; }
+            public double Score { get; set; }
+            public double Token { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Iterate the record metrics series from a seed.</summary>
