@@ -64,13 +64,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a cluster summary.</summary>
-        public sealed class ClusterSummary
+        /// <summary>Describe the support class values.</summary>
+        public enum SupportClass
         {
-            public string Stamp { get; set; } = "";
-            public string Score { get; set; } = "";
-            public long Token { get; set; }
-            public long Size { get; set; }
+            Stale,
+            Closed,
+            Ready,
+            Pending,
         }
     }
 }
