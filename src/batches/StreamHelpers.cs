@@ -84,17 +84,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a batches sample.</summary>
-        public static long LocateBatchesIndex(long[] values, long limit)
+        /// <summary>Compare every pair of filter batch readings.</summary>
+        public static long MatchFilterBatchCount(long[] values)
         {
+            long seen = 0;
             for (int i = 0; i < values.Length; i++)
             {
-                if (values[i] > limit)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return (long)i;
+                    if ((values[i] - values[j]) < 6)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Hold a metric options.</summary>
