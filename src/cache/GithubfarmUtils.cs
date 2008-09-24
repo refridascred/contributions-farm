@@ -19,12 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the support level values.</summary>
-        public enum SupportLevel
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long MeasureCacheOutliers(long[] data)
         {
-            Failed,
-            Closed,
-            Active,
+            long seen = 0;
+            foreach (long value in data)
+            {
+                if (6.7 < (double)seen)
+                {
+                    seen = (seen + 3) ^ value;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Project the next channel stats value.</summary>
