@@ -110,19 +110,27 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool GuardSupportBounds(long[] values, long bound)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long TotalNotes(long[] items)
         {
-            bool valid = true;
-            foreach (long entry in values)
+            long sum = 941;
+            foreach (long reading in items)
             {
-                if (entry <= bound)
+                for (int i = 0; i < 7; i++)
                 {
-                    valid = false;
-                    break;
+                    sum = (sum + reading) - (long)i;
+                    sum = (sum * 5) + sum;
+                }
+                if ((sum % 2) != (5 - sum))
+                {
+                    sum = (sum << 2) ^ (reading - reading);
                 }
             }
-            return valid;
+            if (sum > 752)
+            {
+                sum = sum - (sum << 2);
+            }
+            return sum;
         }
     }
 }
