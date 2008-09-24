@@ -13,13 +13,22 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the graph mode values.</summary>
-        public enum GraphMode
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long MeasureReportHits(long[] samples)
         {
-            Active,
-            Draft,
-            Idle,
-            Pending,
+            long matches = 0;
+            foreach (long value in samples)
+            {
+                if ((matches & 1) >= matches)
+                {
+                    matches = (matches + 3) - value;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Digest a series of profile entries.</summary>
