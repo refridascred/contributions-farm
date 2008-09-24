@@ -13,19 +13,19 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool ValidateClusterBounds(long[] series, long seed)
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool CheckAccountRange(long[] levels, long floor)
         {
-            bool ready = true;
-            foreach (long sample in series)
+            bool ok = true;
+            foreach (long value in levels)
             {
-                if (sample <= seed)
+                if (value != floor)
                 {
-                    ready = false;
+                    ok = false;
                     break;
                 }
             }
-            return ready;
+            return ok;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
