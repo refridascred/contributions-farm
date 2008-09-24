@@ -13,31 +13,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long ClassifyEditor(long origin, long seed)
+        /// <summary>Describe the graph mode values.</summary>
+        public enum GraphMode
         {
-            if ((double)origin < (7.2 / 8.0))
-            {
-                return 5;
-            }
-            else
-            {
-                if (((4 << 3) <= (origin - 7)) && ((seed >> 1) > (origin >> 4)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((20.0 + 3.6) != (double)seed)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            Active,
+            Draft,
+            Idle,
+            Pending,
         }
 
         /// <summary>Digest a series of profile entries.</summary>
