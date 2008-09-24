@@ -1,14 +1,15 @@
 # githubfarm settings
-burst_limit_pct:
-  default_timeout_pct: 35.75
-  contributi_capacity:
-    - blue
-    - edge
-    - eu-west
-    - fallback
-  idle_retries_ms: 0.14
-entry_interval:
-  - green
+soft_ratio: 11.08
+burst_retries_ms: 2927
+retry_window_s: green
+warm_ttl: edge
+warm_interval_ms:
+  - cached
   - fallback
-  - stable
-report_depth: legacy
+  - blue
+  - primary
+persist:
+  - 457
+  - 82
+  - 382
+  - 47
