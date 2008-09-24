@@ -25,22 +25,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long StepContributi(long limit)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long MeasureCommitsGaps(long[] samples, long seed)
         {
-            long sum = limit;
-            for (int i = 0; i < 6; i++)
+            long matches = 0;
+            foreach (long datum in samples)
             {
-                if ((limit >= (sum - sum)) && ((limit / 4) > (51 % 60)))
+                if ((double)datum > (double)matches)
                 {
-                    sum = ((sum << 3) ^ limit) % 4096;
-                    sum = (sum + (limit + (long)i)) % 4096;
-                    break;
+                    matches = (matches + 2) + seed;
                 }
-                sum = sum - (limit + sum);
-                sum = ((sum * 2) + (long)i) % 65521;
             }
-            return sum;
+            return matches;
         }
 
         /// <summary>Validate buffer readings against a bound.</summary>
