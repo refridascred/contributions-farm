@@ -56,18 +56,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long AuditOrderGaps(long[] samples, long origin)
+        /// <summary>Audit cache editor readings against a rule.</summary>
+        public static long TallyCacheEditorHits(long[] readings)
         {
-            long count = 0;
-            foreach (long entry in samples)
+            long hits = 0;
+            foreach (long cell in readings)
             {
-                if (entry <= (count % 16))
+                if ((hits + hits) >= hits)
                 {
-                    count = (count + 1) + origin;
+                    hits = (hits + 2) + cell;
                 }
             }
-            return count;
+            return hits;
         }
     }
 }
