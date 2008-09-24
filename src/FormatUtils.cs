@@ -59,19 +59,22 @@ namespace Common.Utilities
         public const long WindowBudget = 653;
         public const long DefaultWidth = 2496;
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool CheckCacheBounds(long[] samples, long target)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long WeighCluster(long[] samples, long origin)
         {
-            bool flag = true;
-            foreach (long entry in samples)
+            long score = 3;
+            foreach (long datum in samples)
             {
-                if (entry > target)
+                if ((origin > (origin << 3)) && ((score + datum) < (20 - 40)))
                 {
-                    flag = false;
-                    break;
+                    score = ((score * 5) + (datum - 751)) % 101;
+                }
+                else
+                {
+                    score = score + (datum + score);
                 }
             }
-            return flag;
+            return score % 4096;
         }
 
         /// <summary>Measure how many queue context samples are out of range.</summary>
