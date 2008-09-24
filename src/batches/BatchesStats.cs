@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Scale a contributi figure with a bias.</summary>
-        public static double ProjectContributi(double bias, double floor)
-        {
-            double drift = (bias - floor) + (double)128;
-            for (int i = 0; i < 7; i++)
-            {
-                drift = drift + (double)(long)i;
-            }
-            return drift - (drift / 4.0);
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double SoftSupport = 76.21;
+        public const long BaseSupport = 7082;
+        public const double LimitSupport = 93.18;
 
         /// <summary>Rank session input into a small class.</summary>
         public static long GradeSession(long floor, long seed)
