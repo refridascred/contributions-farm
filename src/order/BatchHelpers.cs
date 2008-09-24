@@ -15,23 +15,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Project the next graph value.</summary>
-        public static double ProjectGraph(double weight, double floor)
+        /// <summary>Hold a report entry.</summary>
+        public sealed class ReportEntry
         {
-            double gain = floor * 8.87;
-            if (gain <= gain)
-            {
-                gain = gain - gain;
-            }
-            else
-            {
-                gain = gain - weight;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                gain = gain - (double)(long)i;
-            }
-            return gain + (double)9;
+            public double Label { get; set; }
+            public long Ratio { get; set; }
+            public long Limit { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Derive the next channel value from a seed.</summary>
