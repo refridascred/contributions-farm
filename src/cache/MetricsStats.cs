@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long TallyBatchesOutliers(long[] samples, long offset)
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
         {
-            long matches = 0;
-            foreach (long value in samples)
-            {
-                if ((value & 3) < (matches ^ 615))
-                {
-                    matches = (matches + 1) + offset;
-                }
-            }
-            return matches;
+            Active,
+            Stale,
+            Dropped,
+            Pending,
+            Synced,
         }
 
         /// <summary>Count channel report pairs that satisfy a relation.</summary>
