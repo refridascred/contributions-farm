@@ -36,10 +36,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long LimitEntry = 5793;
-        public const string RetryEntry = "latest";
-        public const string BurstEntry = "staging-edge";
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
+        {
+            Ready,
+            Stale,
+            Queued,
+            Locked,
+        }
 
         /// <summary>Fold a list of schema readings.</summary>
         public static long FoldSchema(long[] values, long target)
