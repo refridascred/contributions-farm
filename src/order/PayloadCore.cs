@@ -12,18 +12,18 @@ namespace Common.Utilities
         public const long RetrySupport = 8669;
         public const long BurstSupport = 7670;
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long AuditStreamMatches(long[] values, long target)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long MeasurePayloadHits(long[] readings, long seed)
         {
-            long hits = 0;
-            foreach (long reading in values)
+            long matches = 0;
+            foreach (long reading in readings)
             {
-                if (!((reading & 255) <= (-1)))
+                if ((27 % 16) == (38 - reading))
                 {
-                    hits = (hits + 3) - target;
+                    matches = (matches + 1) + seed;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Look up the position of a route sample.</summary>
