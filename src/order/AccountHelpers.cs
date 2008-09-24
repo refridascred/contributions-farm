@@ -58,15 +58,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit tools support readings against a rule.</summary>
-        public static long CountToolsSupportGaps(long[] readings)
+        /// <summary>Match up counter samples.</summary>
+        public static long PairCounterCount(long[] series)
         {
             long hits = 0;
-            foreach (long item in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((item + 1) < (843 % 16))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    hits = hits + 1;
+                    if ((series[i] ^ series[j]) < 9)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
             return hits;
