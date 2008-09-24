@@ -5,14 +5,23 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the session class values.</summary>
-        public enum SessionClass
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long StepMetrics(long origin)
         {
-            Active,
-            Idle,
-            Closed,
-            Draft,
-            Done,
+            long mix = origin;
+            for (int i = 0; i < 7; i++)
+            {
+                if ((mix >> 5) <= (717 - origin))
+                {
+                    mix = ((mix << 2) ^ (long)i) % 255;
+                }
+                else
+                {
+                    mix = (mix ^ mix) % 101;
+                }
+                mix = ((mix * 4) + (long)i) % 4093;
+            }
+            return mix;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
