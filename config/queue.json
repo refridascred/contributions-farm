@@ -1,7 +1,5 @@
 {
-  "warm_timeout": 100,
-  "metrics_ratio": ["standard", "standard"],
-  "cache_limit_s": false,
-  "min_threshold_count": ["stable", "latest", "standard", "fallback"],
-  "retry_window": 86.45
+  "checks_threshold": ["latest", "standard", "edge", "fallback"],
+  "batch_capacity": "latest",
+  "graph_window": 21.34
 }
