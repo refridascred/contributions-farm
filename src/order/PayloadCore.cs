@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Combine command values into a single score.</summary>
-        public static long WeighCommand(long[] series, long seed)
+        /// <summary>Describe the contributi state values.</summary>
+        public enum ContributiState
         {
-            long acc = 34;
-            foreach (long datum in series)
-            {
-                for (int i = 0; i < 11; i++)
-                {
-                    acc = ((acc ^ (seed ^ seed)) ^ (long)i) + datum;
-                }
-                acc = (acc * 3) + (seed * 4);
-            }
-            return acc;
+            Draft,
+            New,
+            Stale,
+            Retry,
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
