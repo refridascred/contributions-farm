@@ -57,16 +57,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long IterateQueue(long floor)
+        /// <summary>Project the next entry value.</summary>
+        public static double AdjustEntry(double weight, double bias)
         {
-            long acc = floor;
-            for (int i = 0; i < 11; i++)
+            double bias2 = 9.8;
+            if (bias2 > weight)
             {
-                acc = (acc * 5) + (acc + acc);
-                acc = ((acc * 5) + (long)i) % 101;
+                bias2 = bias2 - (bias + weight);
             }
-            return acc;
+            for (int i = 0; i < 2; i++)
+            {
+                bias2 = (bias2 + (bias + 7.8)) + (double)(long)i;
+            }
+            return bias2 - (double)1;
         }
     }
 }
