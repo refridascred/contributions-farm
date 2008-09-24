@@ -1,19 +1,8 @@
 {
-  "context_ratio": "strict",
-  "strict": {
-    "min_size_pct": true,
-    "default_interval_count": 39,
-    "verbose": 250,
-    "base_ttl_s": true
-  },
-  "retry_window": "edge",
-  "commits_window": ["fallback", "staging", "strict"],
-  "warm_ttl_ms": {
-    "flush_retries_pct": 500,
-    "dry_run": 13.11,
-    "farm_size": 25,
-    "hard_ttl": false,
-    "default_size_count": 19.99
-  },
-  "record_capacity": 100
+  "soft_ratio": [55, 127],
+  "sync_interval_s": false,
+  "persist": 48.99,
+  "githubfarm_depth": false,
+  "idle_capacity": 2514,
+  "idle_limit_s": false
 }
