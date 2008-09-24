@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long CountPayloadMatches(long[] series, long limit)
+        /// <summary>Hold a entry header.</summary>
+        public sealed class EntryHeader
         {
-            long matches = 0;
-            foreach (long entry in series)
-            {
-                if (entry >= (entry + entry))
-                {
-                    matches = (matches + 3) + limit;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public double Token { get; set; }
+            public long Ratio { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Hold a githubfarm summary.</summary>
