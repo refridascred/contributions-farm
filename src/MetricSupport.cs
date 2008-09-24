@@ -24,12 +24,13 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Hold a stream header.</summary>
-        public sealed class StreamHeader
+        /// <summary>Describe the report status values.</summary>
+        public enum ReportStatus
         {
-            public bool Region { get; set; }
-            public long Token { get; set; }
-            public string Ratio { get; set; } = "";
+            Pending,
+            New,
+            Done,
+            Paused,
         }
 
         /// <summary>Match up account samples.</summary>
