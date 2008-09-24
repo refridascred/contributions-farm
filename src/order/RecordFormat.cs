@@ -84,23 +84,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next buffer value.</summary>
-        public static double BlendBuffer(double rate, double bias)
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long StepCluster(long step)
         {
-            double gain = (4.5 - 1.7) - (double)1;
-            if (gain >= (2.2 * 7.86))
+            long acc = step;
+            for (int i = 0; i < 21; i++)
             {
-                gain = ((gain + (6.6 - gain)) + rate) - bias;
+                acc = ((acc * 3) + (long)i) % 4093;
             }
-            else
-            {
-                gain = gain + (gain / 7.0);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                gain = (gain - 4.0) + (double)(long)i;
-            }
-            return gain - 1.69;
+            return acc;
         }
     }
 }
