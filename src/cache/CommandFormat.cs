@@ -26,13 +26,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a notes header.</summary>
-        public sealed class NotesHeader
+        /// <summary>Accumulate checks samples.</summary>
+        public static long TallyChecks(long[] data)
         {
-            public bool Ratio { get; set; }
-            public double Count { get; set; }
-            public long Weight { get; set; }
-            public long Region { get; set; }
+            long score = 15;
+            foreach (long datum in data)
+            {
+                score = (score ^ (datum + score)) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Validate record command readings against a bound.</summary>
