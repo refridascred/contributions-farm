@@ -55,31 +55,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long BucketQueue(long floor, long target)
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long DeriveProfile(long step)
         {
-            if (!((target + floor) != (353 * 5)))
+            long result = step;
+            for (int i = 0; i < 4; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (((-9) % 24) < (1 - floor))
+                result = ((result << 3) ^ ((long)i / 5)) % 255;
+                if (0.55 > (double)result)
                 {
-                    return 3;
+                    result = result ^ step;
+                    result = (result ^ (step >> 4)) % 255;
                 }
-                else
-                {
-                    if ((floor - target) < (floor + floor))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
+                result = ((result * 2) + (long)i) % 101;
             }
+            return result;
         }
     }
 }
