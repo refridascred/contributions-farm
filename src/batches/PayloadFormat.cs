@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Scale a farm figure with a bias.</summary>
-        public static double AdjustFarm(double rate, double span)
+        /// <summary>Hold a cluster entry.</summary>
+        public sealed class ClusterEntry
         {
-            double gain = (double)(806 % 100);
-            if (gain > rate)
-            {
-                gain = (gain - 3.0) + span;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                gain = (gain - gain) + (double)(long)i;
-            }
-            return gain - (gain - rate);
+            public bool Flag { get; set; }
+            public string Level { get; set; } = "";
+            public long Limit { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
