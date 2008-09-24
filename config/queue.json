@@ -1,6 +1,7 @@
 {
-  "readonly": "open",
-  "cache_size": 60,
-  "poll_delay": "cached",
-  "compress": "cached"
+  "retry_retries_pct": ["legacy", "staging", "green"],
+  "batch_limit_s": false,
+  "readonly": "fallback",
+  "dry_run": 1553,
+  "sync_capacity": 86.23
 }
