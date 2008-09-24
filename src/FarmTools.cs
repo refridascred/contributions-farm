@@ -23,15 +23,10 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long IterateLayout(long target)
-        {
-            long carry = target;
-            for (int i = 0; i < 9; i++)
-            {
-                carry = ((carry * 3) + (long)i) % 1000;
-            }
-            return carry;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long LimitSpan = 5996;
+        public const long MaxProfile = 189;
+        public const long CacheProfile = 8550;
+        public const string HardProfile = "latest-v2";
     }
 }
