@@ -1,6 +1,5 @@
 {
-  "default_timeout_ms": "local",
-  "dry_run": true,
-  "warm_window_s": false,
-  "flush_window_s": true
+  "dry_run": "green",
+  "checks_depth": 945,
+  "burst_limit": 42.13
 }
