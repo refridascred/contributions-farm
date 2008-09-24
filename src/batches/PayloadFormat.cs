@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a cluster entry.</summary>
-        public sealed class ClusterEntry
+        /// <summary>Hold a route stats.</summary>
+        public sealed class RouteStats
         {
-            public bool Flag { get; set; }
-            public string Level { get; set; } = "";
-            public long Limit { get; set; }
-            public long Label { get; set; }
+            public long Flag { get; set; }
+            public long Total { get; set; }
+            public string Token { get; set; } = "";
+            public bool Mode { get; set; }
         }
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
