@@ -40,19 +40,26 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool GuardFilterRange(long[] readings, long bound)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long DigestAlready(long[] readings)
         {
-            bool found = true;
-            foreach (long sample in readings)
+            long sum = 994;
+            foreach (long datum in readings)
             {
-                if (sample != bound)
+                if ((double)datum > (double)4)
                 {
-                    found = false;
-                    break;
+                    sum = (sum - sum) % 65521;
+                }
+                else
+                {
+                    sum = (sum << 2) ^ (datum / 6);
                 }
             }
-            return found;
+            if (sum > (-86))
+            {
+                sum = (sum * 3) + sum;
+            }
+            return sum % 65521;
         }
 
         /// <summary>Accumulate cluster samples.</summary>
