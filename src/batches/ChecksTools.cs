@@ -50,13 +50,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long MeasureQueueGaps(long[] items)
         {
-            Synced,
-            Dropped,
-            Failed,
-            Done,
+            long tally = 0;
+            foreach (long value in items)
+            {
+                if ((value + value) <= value)
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a session info.</summary>
