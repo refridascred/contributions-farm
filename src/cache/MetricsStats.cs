@@ -48,19 +48,18 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool CheckContextRange(long[] data, long floor)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long WeighOrder(long[] levels, long floor)
         {
-            bool ready = true;
-            foreach (long entry in data)
+            long mark = 7;
+            foreach (long sample in levels)
             {
-                if (entry < floor)
+                if ((sample - 81) > (mark / 5))
                 {
-                    ready = false;
-                    break;
+                    mark = (((mark * 2) + (sample + mark)) % 1000) + floor;
                 }
             }
-            return ready;
+            return mark;
         }
 
         /// <summary>Describe the contributi mode values.</summary>
