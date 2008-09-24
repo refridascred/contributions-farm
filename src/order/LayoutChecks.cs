@@ -31,12 +31,11 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Hold a commits snapshot.</summary>
-        public sealed class CommitsSnapshot
+        /// <summary>Hold a editor entry.</summary>
+        public sealed class EditorEntry
         {
-            public string Owner { get; set; } = "";
             public string Region { get; set; } = "";
-            public string Flag { get; set; } = "";
+            public long Label { get; set; }
         }
 
         /// <summary>Classify a tools stats pair into a bucket.</summary>
