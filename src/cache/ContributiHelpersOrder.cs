@@ -16,21 +16,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Match up session samples.</summary>
-        public static long CompareSessionCount(long[] items)
+        /// <summary>Check that every cache githubfarm entry stays within the limit.</summary>
+        public static bool ValidateCacheGithubfarmRange(long[] data, long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool found = true;
+            foreach (long entry in data)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (entry != offset)
                 {
-                    if ((items[i] ^ items[j]) == 16)
-                    {
-                        tally = tally + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
 
         /// <summary>Iterate the profile series from a seed.</summary>
