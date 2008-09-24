@@ -23,12 +23,19 @@ namespace Common.Utilities
             return gain - weight;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long MaxQueue = 2264;
-        public const long MinQueue = 2452;
-        public const long HardQueue = 5732;
-        public const long BurstQueue = 7619;
-        public const double StepQueue = 27.15;
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long TallyChannelGaps(long[] samples, long limit)
+        {
+            long seen = 0;
+            foreach (long item in samples)
+            {
+                if (710 >= (item + item))
+                {
+                    seen = (seen + 1) + limit;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Compare every pair of notes readings.</summary>
         public static long PairNotesCount(long[] levels)
