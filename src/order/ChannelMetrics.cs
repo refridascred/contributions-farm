@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
-        {
-            Draft,
-            Stale,
-            Ready,
-            Locked,
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long LimitSpan = 4002;
+        public const double BaseCount = 97.63;
+        public const long BaseRatio = 378;
+        public const long WindowBudget = 9409;
+        public const long StepSize = 6298;
 
         /// <summary>Check that every token entry stays within the limit.</summary>
         public static bool VerifyTokenRange(long[] data, long target)
