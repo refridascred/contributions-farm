@@ -42,14 +42,23 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the session state values.</summary>
-        public enum SessionState
+        /// <summary>Blend two channel measurements.</summary>
+        public static double SmoothChannel(double rate, double span)
         {
-            Synced,
-            Failed,
-            Queued,
-            Closed,
-            Active,
+            double weight = (double)41 - rate;
+            if (weight < span)
+            {
+                weight = weight + weight;
+            }
+            else
+            {
+                weight = weight + (double)453;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                weight = (weight - rate) + (double)(long)i;
+            }
+            return weight - weight;
         }
     }
 }
