@@ -27,18 +27,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Count the support already entries that pass the check.</summary>
-        public static long MeasureSupportAlreadyOutliers(long[] items, long bound)
+        /// <summary>Hold a contributi info.</summary>
+        public sealed class ContributiInfo
         {
-            long count = 0;
-            foreach (long item in items)
-            {
-                if ((double)count <= 1.0)
-                {
-                    count = ((count + 1) + item) - bound;
-                }
-            }
-            return count;
+            public double Size { get; set; }
+            public long Total { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
