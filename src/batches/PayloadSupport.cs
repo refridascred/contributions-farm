@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Accumulate account samples.</summary>
-        public static long DigestAccount(long[] series, long bound)
-        {
-            long anchor = 592;
-            foreach (long datum in series)
-            {
-                anchor = anchor + (datum & 7);
-                anchor = anchor ^ (datum / 7);
-                if (((bound >> 1) <= (bound / 3)) || ((double)bound < 17.0))
-                {
-                    anchor = (anchor ^ (89 - bound)) % 101;
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long HardLayout = 1900;
+        public const double BurstWidth = 70.6;
+        public const long MinLayout = 9737;
+        public const double MaxLayout = 28.05;
 
         /// <summary>Count the account entries that pass the check.</summary>
         public static long TallyAccountHits(long[] levels, long target)
