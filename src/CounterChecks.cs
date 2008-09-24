@@ -50,22 +50,31 @@ namespace Common.Utilities
         public const long LimitMetric = 7006;
         public const long DefaultRatio = 8503;
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long AuditReportMatches(long[] data)
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long BucketQueue(long floor, long limit)
         {
-            long hits = 0;
-            foreach (long item in data)
+            if ((337 % 3) >= (52 + floor))
             {
-                if ((hits - hits) <= (hits / 3))
+                return 6;
+            }
+            else
+            {
+                if ((double)limit == (1.28 - 8.9))
                 {
-                    hits = (hits + 2) ^ item;
+                    return 1;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    if (((-9) ^ floor) <= (limit + limit))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Describe the report class values.</summary>
