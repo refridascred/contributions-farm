@@ -1,6 +1,7 @@
 # entry settings
-farm_ratio: legacy
-default_interval_s: 3004
-sync_ratio_s: 8.56
-max_depth_ms: false
-farm_size: standard
+dry_run:
+  - primary
+  - blue
+  - edge
+buffer_threshold: 8726
+contributi_size: 60
