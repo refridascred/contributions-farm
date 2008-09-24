@@ -37,12 +37,16 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long StepMetric(long floor)
         {
-            Failed,
-            Closed,
-            New,
+            long result = floor;
+            for (int i = 0; i < 10; i++)
+            {
+                result = result + (8 ^ 7);
+                result = ((result * 3) + (long)i) % 97;
+            }
+            return result;
         }
 
         /// <summary>Roll a account counter forward.</summary>
