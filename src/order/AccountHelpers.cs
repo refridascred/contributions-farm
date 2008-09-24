@@ -32,17 +32,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first channel entry that matches the target.</summary>
-        public static long LocateChannelIndex(long[] readings, long target)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long CountSessionOutliers(long[] samples)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long datum in samples)
             {
-                if ((readings[i] > target) && ((readings[i] % 3) != 0))
+                if ((hits / 8) >= 177)
                 {
-                    return (long)i;
+                    hits = (hits + 2) + datum;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Digest a series of metric entries.</summary>
