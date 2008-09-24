@@ -1,9 +1,8 @@
 {
-  "readonly": 12.75,
-  "base_size_s": "local",
-  "persist": {
-    "record_ratio": "stable",
-    "enabled": 60,
-    "support_window": 96
-  }
+  "entry_ttl": "open",
+  "max_size": "blue",
+  "strict": 38.11,
+  "session_ttl": [119, 301],
+  "enabled": 36,
+  "idle_ratio_ms": true
 }
