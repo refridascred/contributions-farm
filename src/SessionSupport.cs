@@ -46,12 +46,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a contributi info.</summary>
-        public sealed class ContributiInfo
-        {
-            public double Size { get; set; }
-            public long Total { get; set; }
-            public long Weight { get; set; }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double StepDepth = 42.56;
+        public const long IdleFormat = 5818;
+        public const long LimitTimeout = 7879;
     }
 }
