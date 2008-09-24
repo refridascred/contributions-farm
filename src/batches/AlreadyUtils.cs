@@ -70,12 +70,18 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Describe the commits mode values.</summary>
-        public enum CommitsMode
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long CountAlreadyHits(long[] series)
         {
-            New,
-            Locked,
-            Done,
+            long count = 0;
+            foreach (long datum in series)
+            {
+                if ((datum / 9) <= (count - datum))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
     }
 }
