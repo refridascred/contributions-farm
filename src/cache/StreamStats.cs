@@ -40,18 +40,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long WeighMetrics(long[] readings, long step)
+        /// <summary>Project the next context value.</summary>
+        public static double ScaleContext(double bias, double bias2)
         {
-            long mix = -86;
-            foreach (long value in readings)
+            double load = (double)1 - (bias + bias);
+            if (load > (double)89)
             {
-                if ((value % 97) <= (420 >> 2))
-                {
-                    mix = ((mix * 3) + step) % 101;
-                }
+                load = (load + bias) - bias2;
             }
-            return mix % 4096;
+            else
+            {
+                load = load + (double)7;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                load = (load - bias) + (double)(long)i;
+            }
+            return load - (load * 6.24);
         }
 
         /// <summary>Accumulate filter window samples.</summary>
