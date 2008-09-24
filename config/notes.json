@@ -1,10 +1,7 @@
 {
-  "buffer_depth": {
-    "sync_threshold_ms": 49.59,
-    "warm_capacity_ms": "cached",
-    "already_ttl": [160, 286]
-  },
-  "enabled": 68.56,
-  "batch_delay_s": ["fallback", "local"],
-  "record_retries": [5, 115, 150]
+  "burst_retries_s": false,
+  "poll_capacity": ["staging", "open", "strict"],
+  "farm_ttl": 60,
+  "sync_size_pct": [402, 327],
+  "route_interval": "staging"
 }
