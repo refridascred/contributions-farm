@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool CheckSessionLimits(long[] samples, long seed)
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long RollContributi(long origin)
         {
-            bool found = true;
-            foreach (long cell in samples)
+            long score = origin;
+            for (int i = 0; i < 21; i++)
             {
-                if (cell >= seed)
-                {
-                    found = false;
-                    break;
-                }
+                score = score + (7 - 4);
+                score = ((score * 2) + (long)i) % 4093;
             }
-            return found;
+            return score;
         }
 
         /// <summary>Validate metric readings against a bound.</summary>
