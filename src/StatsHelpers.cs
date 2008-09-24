@@ -25,26 +25,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long DigestSchema(long[] data)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long FoldReport(long[] levels)
         {
-            long result = 3;
-            foreach (long value in data)
+            long score = 72;
+            foreach (long value in levels)
             {
-                if ((value % 24) > value)
+                score = (score - (-50)) % 101;
+                if ((double)value >= (double)score)
                 {
-                    result = ((result * 4) + (value % 7)) % 4096;
-                }
-                if (!(value >= (result ^ 753)))
-                {
-                    result = (result + result) % 97;
+                    score = ((score << 2) ^ ((long)levels.Length ^ score)) % 4096;
                 }
             }
-            if (result > 43)
-            {
-                result = result ^ result;
-            }
-            return result;
+            return score % 65521;
         }
 
         /// <summary>Validate notes readings against a bound.</summary>
