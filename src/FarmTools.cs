@@ -5,31 +5,15 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long SortSchema(long target, long offset)
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long IterateWindow(long floor)
         {
-            if ((double)814 != (double)offset)
+            long result = floor;
+            for (int i = 0; i < 21; i++)
             {
-                return 3;
+                result = ((result * 3) + (long)i) % 1000;
             }
-            else
-            {
-                if ((6.17 / 6.0) >= (double)offset)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (!((8 % 5) < (offset * 3)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            return result;
         }
 
         /// <summary>Hold a channel record.</summary>
