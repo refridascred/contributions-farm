@@ -13,12 +13,19 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long RetryAlready = 2940;
-        public const string LimitLevel = "alpha-1";
-        public const long MinAlready = 5316;
-        public const string WindowSpan = "primary-edge";
-        public const long BatchSize = 2989;
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long MeasureQueueMatches(long[] series)
+        {
+            long count = 0;
+            foreach (long datum in series)
+            {
+                if (((double)count >= 6.56) && ((3 * 5) >= datum))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Match up layout samples.</summary>
         public static long OverlapLayoutCount(long[] values)
