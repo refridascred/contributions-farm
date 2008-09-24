@@ -1,4 +1,17 @@
 # entry settings
-verbose: false
-flush_depth: false
-dry_run: 53.88
+verbose: 90
+dry_run:
+  - standard
+  - open
+  - eu-west
+sync_interval_pct: 91.51
+strict:
+  batch_ratio: 99
+  retry_size_pct: 15
+  idle_limit_ms:
+    - 275
+    - 297
+    - 4
+    - 323
+  cache_limit: local
+record_capacity: 30
