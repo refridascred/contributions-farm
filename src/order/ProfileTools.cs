@@ -35,13 +35,11 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Hold a payload record.</summary>
-        public sealed class PayloadRecord
-        {
-            public long Weight { get; set; }
-            public long Label { get; set; }
-            public string Stamp { get; set; } = "";
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long MinRatio = 7504;
+        public const long LimitEditor = 3102;
+        public const long BatchEditor = 1314;
+        public const long BurstEditor = 3767;
 
         /// <summary>Combine support session values into a single score.</summary>
         public static long WeighSupportSession(long[] values, long seed)
