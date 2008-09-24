@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Hold a batch info.</summary>
-        public sealed class BatchInfo
-        {
-            public double Size { get; set; }
-            public string Stamp { get; set; } = "";
-            public bool Mode { get; set; }
-            public string Offset { get; set; } = "";
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long LimitTimeout = 7786;
+        public const long IdleCounter = 5496;
+        public const string WindowCounter = "open-1";
+        public const double SoftWidth = 8.26;
 
         /// <summary>Classify a format window pair into a bucket.</summary>
         public static long BucketFormatWindow(long offset, long target)
