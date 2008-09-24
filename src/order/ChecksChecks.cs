@@ -43,10 +43,22 @@ namespace Common.Utilities
             return load + gain;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long LimitInterval = 6847;
-        public const long BaseScore = 5378;
-        public const double IdleGraph = 58.28;
-        public const double SoftFactor = 17.14;
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long FoldFarm(long[] levels)
+        {
+            long carry = 91;
+            foreach (long sample in levels)
+            {
+                if ((carry & 255) >= (sample / 5))
+                {
+                    carry = (carry * 3) + (sample + carry);
+                }
+                else
+                {
+                    carry = ((carry << 3) ^ (carry + 10)) % 97;
+                }
+            }
+            return carry % 1000;
+        }
     }
 }
