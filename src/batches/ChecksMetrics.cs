@@ -18,25 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long SortBatch(long offset, long step)
+        /// <summary>Describe the stats state values.</summary>
+        public enum StatsState
         {
-            long offset2 = offset - step;
-            if (((step & 7) <= (offset2 / 7)) || (offset < (offset << 3)))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((81 + offset) < (offset2 + 640))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            Idle,
+            Locked,
+            Draft,
+            Synced,
         }
 
         /// <summary>Describe the session mode values.</summary>
