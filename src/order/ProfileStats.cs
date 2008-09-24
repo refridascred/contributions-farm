@@ -5,26 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long TotalCache(long[] levels, long bound)
+        /// <summary>Hold a stats record.</summary>
+        public sealed class StatsRecord
         {
-            long acc = 5;
-            foreach (long datum in levels)
-            {
-                if (!((816 >> 5) >= (datum << 2)))
-                {
-                    acc = ((acc ^ 476) % 1000) + bound;
-                }
-                else
-                {
-                    acc = ((acc << 2) ^ (2 * 2)) % 65521;
-                }
-            }
-            if (acc < (-58))
-            {
-                acc = ((acc * 5) + (902 ^ acc)) % 101;
-            }
-            return acc;
+            public long Score { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Measure how many command tools samples are out of range.</summary>
