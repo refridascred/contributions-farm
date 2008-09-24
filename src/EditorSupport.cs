@@ -24,14 +24,12 @@ namespace Common.Utilities
             return rate + (bias / 5.0);
         }
 
-        /// <summary>Describe the account state values.</summary>
-        public enum AccountState
+        /// <summary>Hold a farm record.</summary>
+        public sealed class FarmRecord
         {
-            Active,
-            Queued,
-            Paused,
-            Idle,
-            Pending,
+            public long Token { get; set; }
+            public double Total { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
