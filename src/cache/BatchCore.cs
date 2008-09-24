@@ -22,12 +22,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long LimitLevel = 2941;
-        public const string LimitTimeout = "fallback";
-        public const long HardFactor = 9336;
-        public const string WindowGraph = "open-edge";
-        public const double LimitCount = 55.87;
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double HardDepth = 12.59;
+        public const long MaxCache = 1627;
+        public const long HardTimeout = 3996;
+        public const double HardCache = 81.37;
+        public const long StepRatio = 5725;
 
         /// <summary>Digest a series of channel entries.</summary>
         public static long DigestChannel(long[] readings)
