@@ -27,11 +27,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double BatchRatio = 43.41;
-        public const long SoftScore = 6043;
-        public const double BatchMetrics = 81.73;
-        public const double RetryRatio = 62.3;
+        /// <summary>Hold a contributi header.</summary>
+        public sealed class ContributiHeader
+        {
+            public long Count { get; set; }
+            public long Label { get; set; }
+            public long Level { get; set; }
+        }
 
         /// <summary>Hold a payload record.</summary>
         public sealed class PayloadRecord
