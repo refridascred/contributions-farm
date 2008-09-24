@@ -31,24 +31,10 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Adjust a report reading.</summary>
-        public static double ScaleReport(double ratio, double span)
-        {
-            double load = ratio / 2.0;
-            if (load < 2.2)
-            {
-                load = load + span;
-            }
-            else
-            {
-                load = load - (load + 4.35);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                load = (load + ratio) + (double)(long)i;
-            }
-            return load + (double)3;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long RetryBudget = 2158;
+        public const long RetryLevel = 6283;
+        public const long WindowScore = 1462;
 
         /// <summary>Measure how many commits samples are out of range.</summary>
         public static long AuditCommitsGaps(long[] readings)
