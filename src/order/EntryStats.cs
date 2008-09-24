@@ -19,15 +19,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two cache channel measurements.</summary>
-        public static double SmoothCacheChannel(double weight, double offset)
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long SortBatch(long floor, long floor2)
         {
-            double weight2 = (weight / 3.0) - offset;
-            if (weight2 < (weight - 19.0))
+            if ((floor & 127) > (-5))
             {
-                weight2 = weight2 - (4.3 / 7.0);
+                return 4;
             }
-            return weight2 + (weight - weight2);
+            else
+            {
+                if (344 < (floor + floor2))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Hold a metrics record.</summary>
