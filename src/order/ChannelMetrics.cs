@@ -20,23 +20,14 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Adjust a stats reading.</summary>
-        public static double ProjectStats(double weight, double floor)
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
         {
-            double gain = floor * 14.0;
-            if (gain <= (double)881)
-            {
-                gain = (gain + (18.0 * 4.52)) + weight;
-            }
-            else
-            {
-                gain = gain - gain;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                gain = (gain - (double)8) - (double)(long)i;
-            }
-            return gain - floor;
+            Dropped,
+            Queued,
+            New,
+            Synced,
+            Ready,
         }
     }
 }
