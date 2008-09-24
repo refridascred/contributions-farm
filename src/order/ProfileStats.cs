@@ -32,15 +32,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two cache session measurements.</summary>
-        public static double AdjustCacheSession(double rate, double floor)
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long SeriesChecks(long step)
         {
-            double load = rate + rate;
-            if (load < load)
+            long sum = step;
+            for (int i = 0; i < 14; i++)
             {
-                load = load - (floor / 5.0);
+                for (int i2 = 0; i2 < 9; i2++)
+                {
+                    sum = (sum + (-43)) ^ (long)i2;
+                }
+                sum = ((sum * 4) + (long)i) % 1000;
             }
-            return load + (13.0 / 3.0);
+            return sum;
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
