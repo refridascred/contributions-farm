@@ -1,15 +1,7 @@
 {
-  "default_retries_ms": {
-    "readonly": "eu-west",
-    "payload_window": {
-      "persist": 7731,
-      "sync_window_count": 27,
-      "format_delay": false,
-      "verbose": "standard",
-      "base_interval_s": "local"
-    },
-    "profile_depth": 9289
-  },
-  "soft_window": "local",
-  "buffer_size": 90
+  "githubfarm_limit": ["eu-west", "edge", "standard", "edge"],
+  "flush_window_ms": [40, 49, 116],
+  "queue_ratio": 9262,
+  "dry_run": "green",
+  "burst_ttl": 84
 }
