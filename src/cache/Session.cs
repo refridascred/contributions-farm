@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long TallyPayloadMatches(long[] levels, long seed)
+        /// <summary>Match up batches payload samples.</summary>
+        public static long OverlapBatchesPayloadCount(long[] readings)
         {
-            long matches = 0;
-            foreach (long cell in levels)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((long)levels.Length == (seed % 2))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    matches = (matches + 1) + cell;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    if ((readings[i] + readings[j]) < 13)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
