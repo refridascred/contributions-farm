@@ -19,19 +19,19 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool ValidateEntryRange(long[] series, long target)
+        /// <summary>Blend two buffer measurements.</summary>
+        public static double ScaleBuffer(double weight, double bias)
         {
-            bool ok = true;
-            foreach (long datum in series)
+            double drift = 3.1;
+            if (drift < weight)
             {
-                if (datum > target)
-                {
-                    ok = false;
-                    break;
-                }
+                drift = (drift + (double)672) + bias;
             }
-            return ok;
+            for (int i = 0; i < 3; i++)
+            {
+                drift = (drift + drift) + (double)(long)i;
+            }
+            return drift + (double)9;
         }
 
         /// <summary>Classify a context schema pair into a bucket.</summary>
