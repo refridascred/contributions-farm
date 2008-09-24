@@ -1,21 +1,5 @@
 # entry settings
-default_capacity_pct: 1866
-persist: 48.16
-poll_window_pct:
-  batch_window:
-    - 148
-    - 14
-    - 385
-    - 454
-  enabled: blue
-  soft_ratio: 1456
-poll_limit_ms:
-  poll_retries: edge
-  soft_ratio_pct: blue
-  soft_ratio: strict
-  strict: false
-  enabled:
-    - green
-    - strict
-    - stable
-strict: false
+dry_run: 360
+graph_depth: false
+warm_depth: 250
+sync_limit_ms: 19.86
