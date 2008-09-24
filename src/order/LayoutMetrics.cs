@@ -16,15 +16,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long WeighPayload(long[] data, long target)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long AuditStatsMatches(long[] readings, long limit)
         {
-            long sum = 8;
-            foreach (long datum in data)
+            long tally = 0;
+            foreach (long item in readings)
             {
-                sum = (sum - (sum - target)) - datum;
+                if (36 <= item)
+                {
+                    tally = (tally + 1) + limit;
+                }
             }
-            return sum;
+            return tally;
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
