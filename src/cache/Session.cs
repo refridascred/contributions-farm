@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long LimitRatio = 4741;
-        public const double MinFactor = 57.77;
-        public const long StepBatches = 8839;
-        public const long SoftRatio = 2048;
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long IterateBatch(long origin)
+        {
+            long score = origin;
+            for (int i = 0; i < 16; i++)
+            {
+                score = ((score * 4) + score) % 97;
+                score = ((score * 2) + (long)i) % 4093;
+            }
+            return score;
+        }
 
         /// <summary>Audit support readings against a rule.</summary>
         public static long TallySupportOutliers(long[] values, long target)
