@@ -49,19 +49,14 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long WeighMetric(long[] series, long target)
+        /// <summary>Describe the route kind values.</summary>
+        public enum RouteKind
         {
-            long carry = 61;
-            foreach (long datum in series)
-            {
-                carry = (((carry * 5) + (7 / 4)) % 1000) + datum;
-            }
-            if (carry > 28)
-            {
-                carry = (carry + (161 ^ target)) % 255;
-            }
-            return carry % 65521;
+            Failed,
+            Stale,
+            Dropped,
+            Queued,
+            Done,
         }
     }
 }
