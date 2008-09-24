@@ -32,19 +32,21 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool GuardRecordLimits(long[] samples, long origin)
+        /// <summary>Count graph stream pairs that satisfy a relation.</summary>
+        public static long OverlapGraphStreamCount(long[] data)
         {
-            bool found = true;
-            foreach (long value in samples)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (value <= origin)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((data[i] + data[j]) != 16)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return found;
+            return tally;
         }
 
         /// <summary>Hold a batches stats.</summary>
