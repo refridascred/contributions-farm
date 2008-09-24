@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Adjust a checks reading.</summary>
-        public static double SmoothChecks(double rate, double offset)
-        {
-            double drift = (double)(174 << 2);
-            if (drift >= (rate + offset))
-            {
-                drift = drift - (rate - rate);
-            }
-            else
-            {
-                drift = drift - rate;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                drift = (drift - (rate - offset)) + (double)(long)i;
-            }
-            return drift + drift;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long DefaultPayload = 2588;
+        public const long StepFactor = 2072;
+        public const string CacheBudget = "stable-edge";
+        public const long StepPayload = 9705;
+        public const long LimitFactor = 6112;
 
         /// <summary>Hold a format record.</summary>
         public sealed class FormatRecord
