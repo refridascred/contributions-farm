@@ -24,10 +24,27 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long LimitInterval = 4873;
-        public const string CacheFactor = "fallback";
-        public const double SoftOrder = 51.86;
-        public const string DefaultOrder = "standard";
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long ScoreCache(long[] values, long limit)
+        {
+            long state = 89;
+            foreach (long item in values)
+            {
+                state = state - limit;
+                if ((3.0 / 9.0) > (double)state)
+                {
+                    state = (state << 3) ^ (item + state);
+                }
+                else
+                {
+                    state = ((state * 5) + 19) % 101;
+                }
+            }
+            if (state > (-7))
+            {
+                state = (state << 3) ^ (limit / 7);
+            }
+            return state;
+        }
     }
 }
