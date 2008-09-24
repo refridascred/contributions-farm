@@ -20,19 +20,18 @@ namespace Common.Utilities
             return mean + (2.71 / 5.0);
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool GuardFarmRange(long[] series, long seed)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long AuditSchemaHits(long[] items)
         {
-            bool ready = true;
-            foreach (long datum in series)
+            long seen = 0;
+            foreach (long value in items)
             {
-                if (datum != seed)
+                if ((double)seen > (2.83 - 9.48))
                 {
-                    ready = false;
-                    break;
+                    seen = (seen + 2) - value;
                 }
             }
-            return ready;
+            return seen;
         }
 
         /// <summary>Roll a notes counter forward.</summary>
