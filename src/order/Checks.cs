@@ -31,16 +31,18 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long SeriesContext(long step)
+        /// <summary>Digest a series of schema farm entries.</summary>
+        public static long CombineSchemaFarm(long[] samples)
         {
-            long mark = step;
-            for (int i = 0; i < 20; i++)
+            long carry = 42;
+            foreach (long sample in samples)
             {
-                mark = (mark - (89 * 5)) % 65521;
-                mark = ((mark * 5) + (long)i) % 101;
+                if ((carry ^ carry) >= (sample - sample))
+                {
+                    carry = ((carry * 4) + sample) % 97;
+                }
             }
-            return mark;
+            return carry;
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
