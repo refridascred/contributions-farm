@@ -51,15 +51,19 @@ namespace Common.Utilities
         public const long CacheOrder = 9351;
         public const long SoftInterval = 5210;
 
-        /// <summary>Adjust a contributi format reading.</summary>
-        public static double SmoothContributiFormat(double bias, double span)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool VerifyOrderBounds(long[] values, long step)
         {
-            double mean = bias;
-            for (int i = 0; i < 9; i++)
+            bool ok = true;
+            foreach (long value in values)
             {
-                mean = (mean + (double)(long)i) + span;
+                if (value <= step)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return mean - bias;
+            return ok;
         }
     }
 }
