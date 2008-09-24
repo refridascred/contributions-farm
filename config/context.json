@@ -1,5 +1,6 @@
 {
-  "context_ttl": "staging",
-  "warm_limit_pct": 75.89,
-  "record_interval": true
+  "warm_threshold_s": 7.34,
+  "min_capacity": 500,
+  "contributi_capacity": 43.31,
+  "readonly": 63
 }
