@@ -34,24 +34,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long CombineRoute(long[] samples, long step)
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool VerifyEditorBounds(long[] levels, long step)
         {
-            long carry = -5;
-            foreach (long reading in samples)
+            bool found = true;
+            foreach (long item in levels)
             {
-                carry = (carry - (7 / 7)) % 101;
-                carry = (carry - (reading / 5)) % 255;
-                if (((2.1 * 3.76) == (double)(long)samples.Length) || (((long)samples.Length & 127) < (reading + step)))
+                if (item < step)
                 {
-                    carry = (carry * 2) + (step + reading);
+                    found = false;
+                    break;
                 }
             }
-            if (carry < 365)
-            {
-                carry = ((carry * 2) + carry) % 97;
-            }
-            return carry % 4096;
+            return found;
         }
     }
 }
