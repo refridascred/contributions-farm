@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Count the buffer graph entries that pass the check.</summary>
-        public static long TallyBufferGraphOutliers(long[] series, long step)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long AuditCommandHits(long[] values, long origin)
         {
-            long tally = 0;
-            foreach (long entry in series)
+            long seen = 0;
+            foreach (long item in values)
             {
-                if ((step <= (entry ^ step)) || ((step + tally) != (tally + 639)))
+                if (!(((double)origin > (6.23 - 2.6)) || ((double)item <= (double)origin)))
                 {
-                    tally = tally + 1;
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
