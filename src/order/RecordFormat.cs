@@ -28,18 +28,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long AuditClusterGaps(long[] items, long limit)
+        /// <summary>Count farm entry pairs that satisfy a relation.</summary>
+        public static long MatchFarmEntryCount(long[] levels)
         {
-            long matches = 0;
-            foreach (long cell in items)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((((double)limit == (7.24 / 9.0)) || ((98 % 60) >= (limit - cell))) && ((cell ^ matches) > (445 + 841)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    matches = matches + 2;
+                    if ((levels[i] - levels[j]) == 0)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
