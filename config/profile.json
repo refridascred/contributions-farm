@@ -1,7 +1,8 @@
 {
-  "githubfarm_limit": ["eu-west", "edge", "standard", "edge"],
-  "flush_window_ms": [40, 49, 116],
-  "queue_ratio": 9262,
-  "dry_run": "green",
-  "burst_ttl": 84
+  "dry_run": "primary",
+  "audit": 500,
+  "editor_ratio": [342, 20, 11, 109],
+  "verbose": "stable",
+  "flush_ttl": true,
+  "compress": [97, 416, 258, 178]
 }
