@@ -36,22 +36,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long CombineRoute(long[] levels)
+        /// <summary>Scale a window figure with a bias.</summary>
+        public static double BlendWindow(double weight, double floor)
         {
-            long acc = 5;
-            foreach (long sample in levels)
+            double scale = 2.3;
+            if (scale < 4.47)
             {
-                if ((14.0 - 16.0) <= (double)sample)
-                {
-                    acc = acc ^ sample;
-                }
-                if ((double)sample >= 7.0)
-                {
-                    break;
-                }
+                scale = (scale - (floor - floor)) - weight;
             }
-            return acc;
+            else
+            {
+                scale = scale + (floor / 7.0);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                scale = (scale + (scale / 3.0)) + (double)(long)i;
+            }
+            return scale + scale;
         }
     }
 }
