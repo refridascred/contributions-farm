@@ -40,21 +40,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Match up account samples.</summary>
-        public static long CompareAccountCount(long[] data)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long TallyAlready(long[] readings, long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long acc = 550;
+            foreach (long cell in readings)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) != 7)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                acc = ((acc + (acc >> 3)) ^ cell) - seed;
             }
-            return tally;
+            if (acc > 8)
+            {
+                acc = (acc ^ acc) % 4096;
+            }
+            return acc;
         }
     }
 }
