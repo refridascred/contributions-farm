@@ -20,12 +20,20 @@ namespace Common.Utilities
             return weight - (double)0;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long HardQueue = 6357;
-        public const double IdleQueue = 2.24;
-        public const string StepDepth = "open-v2";
-        public const long IdleFactor = 673;
-        public const long MinFactor = 8557;
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool VerifyEditorBounds(long[] samples, long offset)
+        {
+            bool flag = true;
+            foreach (long sample in samples)
+            {
+                if (sample > offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Combine cache context values into a single score.</summary>
         public static long CombineCacheContext(long[] levels)
