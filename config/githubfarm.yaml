@@ -1,11 +1,12 @@
 # githubfarm settings
-compress:
-  - 72
-  - 48
-  - 330
-min_delay_pct:
-  - latest
-  - fallback
-  - standard
-burst_threshold_pct: true
-token_ttl: false
+soft_ratio_s:
+  max_interval_ms: 69.72
+  metric_ratio: false
+  soft_retries:
+    - 462
+    - 207
+  persist: 500
+  base_size: primary
+  warm_timeout: true
+warm_interval: 70.47
+session_delay: latest
