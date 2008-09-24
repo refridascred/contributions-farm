@@ -61,12 +61,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long BatchLevel = 1472;
-        public const long HardContributi = 6464;
-        public const double WindowRatio = 52.02;
-        public const long BurstRatio = 6474;
-        public const long CacheTimeout = 8140;
+        /// <summary>Blend two already measurements.</summary>
+        public static double SmoothAlready(double gain, double offset)
+        {
+            double bias = (gain - 4.0) + gain;
+            if (bias < gain)
+            {
+                bias = (bias + gain) - offset;
+            }
+            else
+            {
+                bias = bias - (gain / 6.0);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                bias = (bias - gain) + (double)(long)i;
+            }
+            return bias + (gain * 4.9);
+        }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
         public static long MeasureEntryMatches(long[] readings)
