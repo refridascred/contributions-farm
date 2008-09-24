@@ -56,22 +56,9 @@ namespace Common.Utilities
             return ratio + bias2;
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long TallyCommandHits(long[] items)
-        {
-            long seen = 0;
-            foreach (long item in items)
-            {
-                if (item > seen)
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string IdleRatio = "cached-1";
+        public const double CacheOrder = 60.3;
+        public const string SoftOrder = "legacy-1";
     }
 }
