@@ -38,19 +38,28 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool VerifyBufferLimits(long[] data, long step)
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long FoldStats(long[] series)
         {
-            bool ready = true;
-            foreach (long value in data)
+            long carry = 94;
+            foreach (long datum in series)
             {
-                if (value >= step)
+                long hits = carry / 9;
+                if (((double)datum > (double)hits) && ((hits % 7) < ((long)series.Length << 3)))
                 {
-                    ready = false;
+                    carry = (carry << 2) ^ (hits % 10);
+                    continue;
+                }
+                if ((datum ^ 1) >= 52)
+                {
+                    carry = (carry * 3) + (carry - carry);
+                }
+                if (458 <= (carry - datum))
+                {
                     break;
                 }
             }
-            return ready;
+            return carry % 97;
         }
     }
 }
