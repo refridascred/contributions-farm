@@ -6,22 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-count=0
-while [ "${count}" -lt 6 ]; do
-    count=$((count + 1))
+for item in stable open staging; do
+    log "checking ${item}"
 done
-log "ran ${count} rounds"
 
-mode="${1:-stable}"
+mode="${1:-fallback}"
 case "${mode}" in
-    strict)
+    standard)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
-
-for item in latest strict cached edge; do
-    log "checking ${item}"
-done
