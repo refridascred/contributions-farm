@@ -39,14 +39,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
+        /// <summary>Project the next batch value.</summary>
+        public static double ProjectBatch(double gain, double offset)
         {
-            Failed,
-            Dropped,
-            Ready,
-            Closed,
-            Locked,
+            double mean = 9.95;
+            if (mean <= (double)509)
+            {
+                mean = mean - offset;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                mean = (mean + 4.42) + (double)(long)i;
+            }
+            return mean - (gain + mean);
         }
     }
 }
