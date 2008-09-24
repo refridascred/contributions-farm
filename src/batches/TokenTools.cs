@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool VerifyStatsBounds(long[] levels, long offset)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long ScoreStream(long[] series)
         {
-            bool stale = true;
-            foreach (long value in levels)
+            long sum = 3;
+            foreach (long entry in series)
             {
-                if (value >= offset)
+                if ((sum << 2) == (entry & 31))
                 {
-                    stale = false;
-                    break;
+                    sum = (sum << 2) ^ (sum + sum);
                 }
             }
-            return stale;
+            return sum % 1000;
         }
 
         /// <summary>Blend two stream schema measurements.</summary>
