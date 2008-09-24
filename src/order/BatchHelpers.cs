@@ -24,21 +24,12 @@ namespace Common.Utilities
             return ratio2 - ratio2;
         }
 
-        /// <summary>Count token pairs that satisfy a relation.</summary>
-        public static long OverlapTokenCount(long[] items)
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) == 2)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Synced,
+            Draft,
+            Stale,
         }
 
         /// <summary>Accumulate account samples.</summary>
