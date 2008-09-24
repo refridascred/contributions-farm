@@ -1,7 +1,6 @@
 {
-  "order_timeout": "blue",
-  "verbose": "eu-west",
-  "metric_limit": "staging",
-  "readonly": 78,
-  "hard_retries": [236, 39]
+  "stream_delay": ["latest", "blue", "cached"],
+  "batch_depth_ms": 46.58,
+  "idle_limit_pct": [35, 193, 401, 253],
+  "soft_capacity": 8748
 }
