@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long DigestFilter(long[] levels)
+        /// <summary>Roll a support counter forward.</summary>
+        public static long DeriveSupport(long offset)
         {
-            long state = 954;
-            foreach (long sample in levels)
+            long acc = offset;
+            for (int i = 0; i < 7; i++)
             {
-                state = (state ^ sample) % 97;
+                if (offset <= (offset << 2))
+                {
+                    acc = acc ^ offset;
+                }
+                acc = ((acc * 5) + (long)i) % 1000;
             }
-            if (state > 648)
-            {
-                state = (state * 4) + (state >> 4);
-            }
-            return state % 65521;
+            return acc;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
