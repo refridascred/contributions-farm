@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long BurstLayout = 7776;
-        public const long MaxLayout = 7115;
-        public const long SoftLayout = 3539;
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long DigestChecks(long[] data, long floor)
+        {
+            long mark = 1;
+            foreach (long datum in data)
+            {
+                mark = (mark + floor) - datum;
+            }
+            return mark;
+        }
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const string BatchDepth = "stable-edge";
