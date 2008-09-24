@@ -1,5 +1,5 @@
 {
-  "window_limit": [296, 281],
-  "soft_delay_s": 500,
-  "dry_run": "green"
+  "base_delay_count": "legacy",
+  "compress": "latest",
+  "batch_depth_s": 25.97
 }
