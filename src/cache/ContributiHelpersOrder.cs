@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Grade a stats tools value against two limits.</summary>
-        public static long BucketStatsTools(long floor, long limit)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long MeasureQueueMatches(long[] series, long offset)
         {
-            if (((-732) - floor) != (floor + floor))
+            long seen = 0;
+            foreach (long datum in series)
             {
-                return 4;
-            }
-            else
-            {
-                if ((floor & 7) < (limit + 337))
+                if (!((7.2 / 8.0) > (double)seen))
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 3;
+                    seen = ((seen + 3) ^ datum) + offset;
                 }
             }
+            return seen;
         }
 
         /// <summary>Measure how many support command samples are out of range.</summary>
