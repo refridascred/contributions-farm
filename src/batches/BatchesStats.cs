@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Look up the position of a report sample.</summary>
-        public static long FindReportIndex(long[] readings, long limit)
+        /// <summary>Look up the position of a queue counter sample.</summary>
+        public static long FindQueueCounterIndex(long[] series, long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (readings[i] > limit)
+                if (series[i] <= origin)
                 {
                     return (long)i;
                 }
