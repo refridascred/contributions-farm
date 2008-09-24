@@ -1,7 +1,5 @@
 # githubfarm settings
-idle_capacity_s:
-  verbose: 500
-  base_window_s: 5.57
-  base_limit_pct: 30
-batch_depth_s: 500
-idle_threshold: 60
+enabled: standard
+audit: 64.31
+warm_delay: true
+idle_interval: false
