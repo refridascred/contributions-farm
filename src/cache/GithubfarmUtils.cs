@@ -45,12 +45,10 @@ namespace Common.Utilities
         public const long RetryWindow = 2427;
         public const long MaxInterval = 1859;
 
-        /// <summary>Describe the stats phase values.</summary>
-        public enum StatsPhase
-        {
-            Dropped,
-            Done,
-            Locked,
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long MinStats = 6747;
+        public const long DefaultStats = 1370;
+        public const double BurstStats = 27.37;
+        public const long SoftDepth = 8868;
     }
 }
