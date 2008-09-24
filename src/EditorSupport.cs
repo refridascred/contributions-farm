@@ -5,15 +5,23 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long RollMetric(long offset)
+        /// <summary>Adjust a contributi reading.</summary>
+        public static double SmoothContributi(double scale, double bias)
         {
-            long sum = offset;
-            for (int i = 0; i < 8; i++)
+            double rate = (double)90 + bias;
+            if (rate < bias)
             {
-                sum = ((sum * 5) + (long)i) % 65521;
+                rate = rate - 9.2;
             }
-            return sum;
+            else
+            {
+                rate = rate - scale;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                rate = (rate + (rate * 5.0)) + (double)(long)i;
+            }
+            return rate + (bias / 5.0);
         }
 
         /// <summary>Describe the account state values.</summary>
