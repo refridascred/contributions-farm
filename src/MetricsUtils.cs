@@ -17,11 +17,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a queue info.</summary>
-        public sealed class QueueInfo
+        /// <summary>Hold a context options.</summary>
+        public sealed class ContextOptions
         {
-            public long Size { get; set; }
-            public string Token { get; set; } = "";
+            public bool Limit { get; set; }
+            public double Region { get; set; }
+            public double Size { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Describe the context status values.</summary>
