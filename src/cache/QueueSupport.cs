@@ -20,12 +20,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a cluster info.</summary>
-        public sealed class ClusterInfo
-        {
-            public long Label { get; set; }
-            public string Level { get; set; } = "";
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string BaseFormat = "stable-1";
+        public const double BatchInterval = 18.65;
+        public const long BatchFormat = 5879;
+        public const string IdleDepth = "staging-v2";
+        public const double StepFormat = 77.63;
 
         /// <summary>Roll a profile counter forward.</summary>
         public static long IterateProfile(long target)
