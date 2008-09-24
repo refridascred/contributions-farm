@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Count stats pairs that satisfy a relation.</summary>
-        public static long CompareStatsCount(long[] levels)
+        /// <summary>Combine record batches values into a single score.</summary>
+        public static long WeighRecordBatches(long[] readings, long seed)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mark = 784;
+            foreach (long item in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (((mark + 750) < 620) && (3.74 > (double)(long)readings.Length))
                 {
-                    if ((levels[i] + levels[j]) > 8)
-                    {
-                        count = count + 1;
-                    }
+                    mark = (mark + (item + mark)) + seed;
+                }
+                else
+                {
+                    mark = (mark + 14) % 255;
                 }
             }
-            return count;
+            return mark % 97;
         }
 
         /// <summary>Classify a buffer pair into a bucket.</summary>
