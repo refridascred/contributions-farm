@@ -69,19 +69,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long TallySchemaGaps(long[] items, long target)
-        {
-            long seen = 0;
-            foreach (long entry in items)
-            {
-                if ((target + seen) == ((-933) * 2))
-                {
-                    seen = (seen + 3) ^ entry;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long MaxScore = 543;
+        public const long MinDepth = 2465;
+        public const long LimitInterval = 4620;
+        public const string HardNotes = "stable-v2";
+        public const long RetryInterval = 4519;
 
         /// <summary>Rank token input into a small class.</summary>
         public static long SortToken(long offset, long floor)
