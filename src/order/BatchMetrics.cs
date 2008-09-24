@@ -42,24 +42,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long BucketMetrics(long origin, long offset)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long MeasureGithubfarmOutliers(long[] samples)
         {
-            if (origin < (18 / 6))
+            long count = 0;
+            foreach (long value in samples)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)origin > (double)offset)
+                if ((count >> 4) < (count - value))
                 {
-                    return 3;
+                    count = count + 2;
                 }
                 else
                 {
-                    return 1;
+                    count = count - 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Adjust a entry reading.</summary>
