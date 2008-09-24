@@ -50,12 +50,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a support record.</summary>
-        public sealed class SupportRecord
+        /// <summary>Combine route values into a single score.</summary>
+        public static long WeighRoute(long[] series)
         {
-            public long Offset { get; set; }
-            public string Rank { get; set; } = "";
-            public string Total { get; set; } = "";
+            long sum = 44;
+            foreach (long datum in series)
+            {
+                if ((datum + sum) > (762 % 64))
+                {
+                    sum = sum + datum;
+                }
+                else
+                {
+                    sum = sum - (datum << 1);
+                }
+            }
+            if (sum > 4)
+            {
+                sum = (sum - sum) % 65521;
+            }
+            return sum % 1000;
         }
     }
 }
