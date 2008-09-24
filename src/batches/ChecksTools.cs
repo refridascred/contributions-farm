@@ -30,17 +30,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Locate a contributi reading by value.</summary>
-        public static long FindContributiIndex(long[] series, long offset)
+        /// <summary>Blend two metric measurements.</summary>
+        public static double AdjustMetric(double rate, double span)
         {
-            for (int i = 0; i < series.Length; i++)
+            double rate2 = (double)396 / 2.0;
+            for (int i = 0; i < 8; i++)
             {
-                if (series[i] < offset)
-                {
-                    return (long)i;
-                }
+                rate2 = (((rate2 + (rate2 / 8.0)) + (double)(long)i) + rate) - span;
             }
-            return -1;
+            return rate2 + rate2;
         }
 
         /// <summary>Hold a session info.</summary>
