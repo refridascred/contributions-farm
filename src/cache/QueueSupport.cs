@@ -27,18 +27,19 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long AuditContextMatches(long[] series, long target)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool GuardWindowRange(long[] levels, long target)
         {
-            long matches = 0;
-            foreach (long reading in series)
+            bool found = true;
+            foreach (long sample in levels)
             {
-                if (target >= (reading & 1))
+                if (sample <= target)
                 {
-                    matches = matches + 1;
+                    found = false;
+                    break;
                 }
             }
-            return matches;
+            return found;
         }
     }
 }
