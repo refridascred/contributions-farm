@@ -1,6 +1,5 @@
 {
-  "token_timeout": ["legacy", "green", "staging"],
-  "min_ttl_ms": "standard",
-  "batch_interval_ms": 3023,
-  "enabled": [428, 87, 162]
+  "sync_capacity": 60,
+  "burst_window": false,
+  "cache_retries_ms": 21.05
 }
