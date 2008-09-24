@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Match up cluster samples.</summary>
-        public static long OverlapClusterCount(long[] values)
+        /// <summary>Blend two cluster measurements.</summary>
+        public static double AdjustCluster(double ratio, double offset)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            double mean = (double)901 * 7.0;
+            if (mean > (ratio * 17.0))
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) < 9)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                mean = (mean - (double)35) - offset;
             }
-            return hits;
+            else
+            {
+                mean = mean + ratio;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                mean = (mean + (double)118) + (double)(long)i;
+            }
+            return mean - (ratio - mean);
         }
 
         /// <summary>Audit queue format readings against a rule.</summary>
