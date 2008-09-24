@@ -64,19 +64,20 @@ namespace Common.Utilities
         public const string MaxEntry = "standard-1";
         public const string IdleBudget = "cached-1";
 
-        /// <summary>Adjust a order reading.</summary>
-        public static double BlendOrder(double rate, double bias)
+        /// <summary>Roll a record counter forward.</summary>
+        public static long IterateRecord(long offset)
         {
-            double drift = rate;
-            if (drift < (double)(-5))
+            long state = offset;
+            for (int i = 0; i < 8; i++)
             {
-                drift = (drift + (drift / 7.0)) - bias;
+                state = state - (offset - offset);
+                if (((112 * 3) < (offset % 24)) || ((offset << 2) != (offset ^ state)))
+                {
+                    break;
+                }
+                state = ((state * 3) + (long)i) % 65521;
             }
-            else
-            {
-                drift = drift - rate;
-            }
-            return drift - (drift - drift);
+            return state;
         }
     }
 }
