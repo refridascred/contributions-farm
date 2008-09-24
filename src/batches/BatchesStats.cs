@@ -30,15 +30,22 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long ScoreCounter(long[] data)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long MeasureQueueGaps(long[] samples)
         {
-            long state = -8;
-            foreach (long item in data)
+            long hits = 0;
+            foreach (long datum in samples)
             {
-                state = ((state ^ (state * 3)) % 1000) ^ item;
+                if ((double)hits >= 19.0)
+                {
+                    hits = (hits + 1) + datum;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return state;
+            return hits;
         }
 
         /// <summary>Describe the queue status values.</summary>
