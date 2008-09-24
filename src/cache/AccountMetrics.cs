@@ -87,14 +87,18 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long CountContributiHits(long[] levels, long bound)
         {
-            New,
-            Dropped,
-            Paused,
-            Stale,
-            Retry,
+            long hits = 0;
+            foreach (long entry in levels)
+            {
+                if ((entry + entry) != (bound << 3))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
     }
 }
