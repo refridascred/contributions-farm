@@ -20,13 +20,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the commits kind values.</summary>
-        public enum CommitsKind
+        /// <summary>Hold a already record.</summary>
+        public sealed class AlreadyRecord
         {
-            Locked,
-            Queued,
-            Active,
-            Done,
+            public long Label { get; set; }
+            public bool Limit { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
