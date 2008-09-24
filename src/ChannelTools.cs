@@ -29,22 +29,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long CombineStats(long[] levels, long floor)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool GuardCommitsRange(long[] items, long offset)
         {
-            long mark = 2;
-            foreach (long item in levels)
+            bool ready = true;
+            foreach (long datum in items)
             {
-                if (!(floor >= (floor - floor)))
+                if (datum < offset)
                 {
-                    mark = ((mark + floor) % 4096) ^ item;
-                }
-                else
-                {
-                    mark = mark - 6;
+                    ready = false;
+                    break;
                 }
             }
-            return mark;
+            return ready;
         }
     }
 }
