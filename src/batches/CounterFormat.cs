@@ -28,18 +28,21 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long TallyReportOutliers(long[] data, long seed)
+        /// <summary>Match up editor queue samples.</summary>
+        public static long CompareEditorQueueCount(long[] levels)
         {
-            long hits = 0;
-            foreach (long datum in data)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)seed == (double)284)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    hits = (hits + 1) ^ datum;
+                    if ((levels[i] ^ levels[j]) > 8)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return hits;
+            return seen;
         }
     }
 }
