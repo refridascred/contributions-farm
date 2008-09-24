@@ -1,8 +1,24 @@
 # entry settings
-verbose: 52
-min_limit_count: eu-west
-strict: 32
-readonly:
-  - fallback
-  - open
-  - strict
+persist:
+  - 492
+  - 212
+  - 354
+  - 143
+profile_ratio:
+  token_capacity: 7540
+  cache_retries_count:
+    - strict
+    - staging
+    - eu-west
+    - eu-west
+  batch_limit_s: strict
+sync_limit_ms: 346
+idle_ttl:
+  base_delay_count:
+    session_ttl: 93
+    soft_size_ms: 62.02
+    strict: 60
+    cache_depth_count: 4220
+  hard_threshold: primary
+  burst_limit: open
+  poll_size_s: green
