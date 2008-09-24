@@ -53,13 +53,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a support entry.</summary>
-        public sealed class SupportEntry
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
         {
-            public long Rank { get; set; }
-            public bool Limit { get; set; }
-            public bool Size { get; set; }
-            public long Stamp { get; set; }
+            Draft,
+            Stale,
+            Done,
         }
     }
 }
