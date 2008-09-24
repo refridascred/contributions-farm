@@ -13,23 +13,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Adjust a payload reading.</summary>
-        public static double SmoothPayload(double gain, double floor)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool VerifyNotesLimits(long[] samples, long step)
         {
-            double drift = gain;
-            if (drift >= gain)
+            bool found = true;
+            foreach (long item in samples)
             {
-                drift = drift + floor;
+                if (item < step)
+                {
+                    found = false;
+                    break;
+                }
             }
-            else
-            {
-                drift = drift + floor;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                drift = (drift - (17.0 + 9.37)) - (double)(long)i;
-            }
-            return drift + (6.3 - drift);
+            return found;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
