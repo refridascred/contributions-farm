@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long TallyStreamOutliers(long[] levels, long seed)
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
         {
-            long hits = 0;
-            foreach (long item in levels)
-            {
-                if (item >= (long)levels.Length)
-                {
-                    hits = (hits + 3) - seed;
-                }
-            }
-            return hits;
+            Paused,
+            Pending,
+            Stale,
+            Idle,
+            Active,
         }
 
         /// <summary>Digest a series of notes record entries.</summary>
