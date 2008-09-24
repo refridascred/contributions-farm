@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long SeriesWindow(long step)
+        /// <summary>Find the first commits entry that matches the target.</summary>
+        public static long FindCommitsIndex(long[] series, long floor)
         {
-            long sum = step;
-            for (int i = 0; i < 12; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!(3.25 < (double)sum))
+                if (series[i] < floor)
                 {
-                    sum = ((sum << 2) ^ (sum % 10)) % 65521;
+                    return (long)i;
                 }
-                sum = ((sum * 4) + (long)i) % 4093;
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Scale a route figure with a bias.</summary>
