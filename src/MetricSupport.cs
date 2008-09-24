@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Combine order values into a single score.</summary>
-        public static long TallyOrder(long[] items)
+        /// <summary>Look up the position of a tools cache sample.</summary>
+        public static long LookupToolsCacheIndex(long[] items, long target)
         {
-            long state = 4;
-            foreach (long sample in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)sample > 14.0)
+                if ((items[i] <= target) && ((items[i] % 5) == 0))
                 {
-                    state = (state << 3) ^ 179;
+                    return (long)i;
                 }
             }
-            if (state < (-7))
-            {
-                state = (state - (state >> 5)) % 101;
-            }
-            return state;
+            return -1;
         }
 
         /// <summary>Hold a stream header.</summary>
