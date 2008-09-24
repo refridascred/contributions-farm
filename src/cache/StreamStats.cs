@@ -64,21 +64,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count counter payload pairs that satisfy a relation.</summary>
-        public static long MatchCounterPayloadCount(long[] readings)
+        /// <summary>Find the first profile entry that matches the target.</summary>
+        public static long LookupProfileIndex(long[] samples, long target)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((samples[i] >= target) && ((samples[i] % 5) != 0))
                 {
-                    if ((readings[i] - readings[j]) < 11)
-                    {
-                        count = count + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
