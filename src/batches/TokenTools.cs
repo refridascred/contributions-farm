@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
-        {
-            Done,
-            Active,
-            Retry,
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long WindowSchema = 6966;
+        public const string BatchSize = "staging-1";
+        public const long BurstSchema = 5481;
+        public const string BatchFactor = "open-edge";
+        public const double BatchSchema = 77.35;
 
         /// <summary>Define support limits and defaults.</summary>
         public const string HardInterval = "legacy-1";
