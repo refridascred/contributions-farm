@@ -57,21 +57,12 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Iterate the entry githubfarm series from a seed.</summary>
-        public static long StepEntryGithubfarm(long origin)
+        /// <summary>Hold a graph stats.</summary>
+        public sealed class GraphStats
         {
-            long sum = origin;
-            for (int i = 0; i < 15; i++)
-            {
-                sum = ((sum * 3) + origin) % 65521;
-                if (!((double)sum < (9.48 - 3.87)))
-                {
-                    sum = sum ^ (34 >> 5);
-                    sum = (sum * 5) + (origin - origin);
-                }
-                sum = ((sum * 4) + (long)i) % 1000;
-            }
-            return sum;
+            public double Weight { get; set; }
+            public long Rank { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Grade a queue value against two limits.</summary>
