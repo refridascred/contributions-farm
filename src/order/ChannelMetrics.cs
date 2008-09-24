@@ -17,22 +17,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long FoldSchema(long[] readings)
+        /// <summary>Locate a queue reading by value.</summary>
+        public static long LocateQueueIndex(long[] series, long seed)
         {
-            long state = 547;
-            foreach (long value in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((5.7 + 2.83) <= (double)state)
+                if (series[i] <= seed)
                 {
-                    state = (((state << 2) ^ (79 >> 1)) % 255) + value;
+                    return (long)i;
                 }
             }
-            if (state > 81)
-            {
-                state = (state ^ (state ^ state)) % 1000;
-            }
-            return state;
+            return -1;
         }
 
         /// <summary>Hold a buffer summary.</summary>
