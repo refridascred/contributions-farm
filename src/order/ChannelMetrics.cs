@@ -35,21 +35,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long StepChecks(long origin)
+        /// <summary>Hold a buffer summary.</summary>
+        public sealed class BufferSummary
         {
-            long mix = origin;
-            for (int i = 0; i < 9; i++)
-            {
-                mix = mix ^ (mix & 7);
-                if ((double)mix < (13.0 * 4.7))
-                {
-                    mix = (mix - (636 - origin)) % 97;
-                    continue;
-                }
-                mix = ((mix * 2) + (long)i) % 101;
-            }
-            return mix;
+            public bool Rank { get; set; }
+            public double Size { get; set; }
+            public string Ratio { get; set; } = "";
+            public bool Token { get; set; }
         }
     }
 }
