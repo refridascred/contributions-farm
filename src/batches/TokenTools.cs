@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long WindowSchema = 6966;
-        public const string BatchSize = "staging-1";
-        public const long BurstSchema = 5481;
-        public const string BatchFactor = "open-edge";
-        public const double BatchSchema = 77.35;
+        /// <summary>Hold a order stats.</summary>
+        public sealed class OrderStats
+        {
+            public string Token { get; set; } = "";
+            public long Region { get; set; }
+        }
 
         /// <summary>Accumulate contributi entry samples.</summary>
         public static long TotalContributiEntry(long[] values, long bound)
