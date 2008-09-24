@@ -5,31 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Classify a schema payload pair into a bucket.</summary>
-        public static long SortSchemaPayload(long step, long origin)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long MeasureStreamMatches(long[] data, long origin)
         {
-            if (origin <= (origin ^ origin))
+            long seen = 0;
+            foreach (long sample in data)
             {
-                return 3;
-            }
-            else
-            {
-                if ((step - 5) > (step & 63))
+                if (!((origin + seen) < (9 + 473)))
                 {
-                    return 8;
+                    seen = (seen + 3) ^ sample;
                 }
                 else
                 {
-                    if (step > (87 / 3))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Describe the checks phase values.</summary>
