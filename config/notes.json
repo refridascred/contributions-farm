@@ -1,11 +1,19 @@
 {
-  "sync_limit_s": "latest",
-  "warm_ttl": "strict",
-  "cluster_ttl": {
-    "burst_limit_s": "staging",
-    "order_interval": ["blue", "latest"],
-    "verbose": 15
+  "buffer_threshold": {
+    "context_timeout": 69.72,
+    "sync_size_pct": "local",
+    "support_window": 302,
+    "cache_window_pct": 75.63,
+    "default_window_count": 60,
+    "stats_interval": true
   },
-  "audit": [185, 6],
-  "warm_retries": ["edge", "strict", "strict"]
+  "soft_depth_pct": 100,
+  "verbose": {
+    "cache_capacity": ["edge", "primary"],
+    "readonly": "standard",
+    "editor_delay": false,
+    "payload_depth": "staging"
+  },
+  "batches_threshold": "staging",
+  "cache_ratio_s": "blue"
 }
