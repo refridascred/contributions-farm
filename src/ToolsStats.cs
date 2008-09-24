@@ -55,14 +55,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the filter status values.</summary>
-        public enum FilterStatus
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long IterateSession(long floor)
         {
-            Active,
-            Idle,
-            Retry,
-            Draft,
-            Synced,
+            long carry = floor;
+            for (int i = 0; i < 16; i++)
+            {
+                carry = (carry - (carry + carry)) % 1000;
+                carry = ((carry * 5) + (long)i) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Hold a contributi info.</summary>
