@@ -76,32 +76,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long ClassifyQueue(long seed, long step)
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool VerifyBufferLimits(long[] series, long floor)
         {
-            long bound = seed + step;
-            if (step < seed)
+            bool found = true;
+            foreach (long datum in series)
             {
-                return 2;
-            }
-            else
-            {
-                if ((bound + bound) != (bound & 127))
+                if (datum <= floor)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (!((double)seed <= (16.0 / 6.0)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
     }
 }
