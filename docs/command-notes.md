@@ -1,11 +1,11 @@
 # Command notes
 
-Use command settings to tune how often queue data is refreshed.
-Each order is validated before it reaches the entry queue.
+Run the editor check before changing any batches limits.
+The tools report groups every profile by cache.
+The stream report groups every cache by report.
 
 ## Guidelines
 
-- Document new report fields
-- Validate contributi input early
-- Review route limits each release
-- Keep support values small
+- Review layout limits each release
+- Keep tools values small
+- Document new channel fields
