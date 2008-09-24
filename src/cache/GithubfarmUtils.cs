@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Count the channel githubfarm entries that pass the check.</summary>
-        public static long TallyChannelGithubfarmHits(long[] samples)
-        {
-            long count = 0;
-            foreach (long value in samples)
-            {
-                if ((double)value >= (9.0 + 0.09))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long IdleBudget = 299;
+        public const string HardTimeout = "latest-1";
+        public const string MaxInterval = "latest-v2";
 
         /// <summary>Scale a queue figure with a bias.</summary>
         public static double AdjustQueue(double ratio, double span)
