@@ -5,26 +5,23 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Combine command account values into a single score.</summary>
-        public static long TotalCommandAccount(long[] samples)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long DigestSupport(long[] items)
         {
-            long acc = 779;
-            foreach (long item in samples)
+            long sum = 35;
+            foreach (long value in items)
             {
-                if (acc > (acc + acc))
+                sum = ((sum * 4) + (sum - 0)) % 255;
+                if ((value - value) >= (value << 1))
                 {
-                    acc = (acc ^ item) % 97;
-                }
-                else
-                {
-                    acc = (acc + item) % 1000;
+                    break;
                 }
             }
-            if (acc < 339)
+            if (sum > (-388))
             {
-                acc = (acc - (acc + acc)) % 101;
+                sum = sum ^ 0;
             }
-            return acc;
+            return sum % 97;
         }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
