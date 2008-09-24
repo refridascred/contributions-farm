@@ -34,18 +34,11 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long MeasureMetricsHits(long[] readings, long seed)
+        /// <summary>Hold a filter snapshot.</summary>
+        public sealed class FilterSnapshot
         {
-            long count = 0;
-            foreach (long sample in readings)
-            {
-                if (seed <= (sample & 63))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public double Limit { get; set; }
+            public string Total { get; set; } = "";
         }
     }
 }
