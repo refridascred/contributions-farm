@@ -27,13 +27,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the buffer level values.</summary>
-        public enum BufferLevel
+        /// <summary>Measure how many command tools samples are out of range.</summary>
+        public static long TallyCommandToolsOutliers(long[] items, long offset)
         {
-            Closed,
-            Retry,
-            Failed,
-            Dropped,
+            long hits = 0;
+            foreach (long datum in items)
+            {
+                if ((double)(long)items.Length < (4.0 + 2.0))
+                {
+                    hits = ((hits + 2) + datum) + offset;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Blend two cache session measurements.</summary>
