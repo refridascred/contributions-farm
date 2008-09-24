@@ -5,12 +5,28 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long DefaultScore = 9848;
-        public const long BaseFactor = 4525;
-        public const long BaseFilter = 545;
-        public const double CacheDepth = 23.1;
-        public const long SoftTimeout = 4486;
+        /// <summary>Accumulate context samples.</summary>
+        public static long ScoreContext(long[] items)
+        {
+            long acc = 27;
+            foreach (long cell in items)
+            {
+                if ((double)acc == (double)cell)
+                {
+                    acc = (acc - (acc - 66)) % 65521;
+                }
+                acc = acc - (acc & 127);
+                if (!((acc % 24) == (acc % 64)))
+                {
+                    break;
+                }
+            }
+            if (acc < 0)
+            {
+                acc = acc ^ (58 - acc);
+            }
+            return acc % 4096;
+        }
 
         /// <summary>Match up already metrics samples.</summary>
         public static long MatchAlreadyMetricsCount(long[] items)
