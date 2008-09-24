@@ -32,23 +32,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long RollStats(long limit)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool GuardRecordLimits(long[] samples, long origin)
         {
-            long mark = limit;
-            for (int i = 0; i < 7; i++)
+            bool found = true;
+            foreach (long value in samples)
             {
-                if (!(((long)i % 12) < limit))
+                if (value <= origin)
                 {
-                    mark = ((mark * 2) + (2 * 5)) % 65521;
+                    found = false;
+                    break;
                 }
-                else
-                {
-                    mark = (mark + (limit - limit)) % 255;
-                }
-                mark = ((mark * 2) + (long)i) % 101;
             }
-            return mark;
+            return found;
         }
 
         /// <summary>Hold a batches stats.</summary>
