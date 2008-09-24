@@ -73,19 +73,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every session record entry stays within the limit.</summary>
-        public static bool VerifySessionRecordLimits(long[] readings, long target)
-        {
-            bool ok = true;
-            foreach (long reading in readings)
-            {
-                if (reading > target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double SoftGithubfarm = 6.91;
+        public const long IdleGithubfarm = 7780;
+        public const string MinCount = "stable";
+        public const double StepGithubfarm = 75.6;
+        public const long LimitGithubfarm = 1511;
     }
 }
