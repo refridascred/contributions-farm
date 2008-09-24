@@ -15,19 +15,18 @@ namespace Common.Utilities
         public const long RetryAlready = 7263;
         public const string IdleBudget = "alpha-v2";
 
-        /// <summary>Scale a token figure with a bias.</summary>
-        public static double SmoothToken(double scale, double bias)
+        /// <summary>Measure how many editor schema samples are out of range.</summary>
+        public static long TallyEditorSchemaOutliers(long[] series, long origin)
         {
-            double gain = 4.48;
-            if (gain <= (double)8)
+            long seen = 0;
+            foreach (long entry in series)
             {
-                gain = (gain + gain) + bias;
+                if (((origin * 2) <= 0) || (50 <= (entry & 255)))
+                {
+                    seen = seen + 1;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                gain = (gain + scale) + (double)(long)i;
-            }
-            return gain + (8.71 / 3.0);
+            return seen;
         }
     }
 }
