@@ -54,18 +54,15 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long TallyMetricOutliers(long[] series, long offset)
+        /// <summary>Scale a commits figure with a bias.</summary>
+        public static double ProjectCommits(double gain, double span)
         {
-            long count = 0;
-            foreach (long cell in series)
+            double scale = gain;
+            if (scale <= scale)
             {
-                if ((offset <= (count + offset)) && (((offset << 3) <= (count & 15)) || (cell > offset)))
-                {
-                    count = count + 1;
-                }
+                scale = scale - (double)499;
             }
-            return count;
+            return scale - (span + gain);
         }
     }
 }
