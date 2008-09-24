@@ -34,19 +34,25 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two metrics measurements.</summary>
-        public static double ScaleMetrics(double gain, double floor)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long WeighNotes(long[] samples, long floor)
         {
-            double weight = floor;
-            if (weight > 4.11)
+            long sum = 93;
+            foreach (long reading in samples)
             {
-                weight = weight - weight;
+                sum = sum - (sum % 10);
+                for (int i = 0; i < 3; i++)
+                {
+                    sum = ((sum * 3) + 5) % 65521;
+                    sum = (sum - ((long)i - floor)) % 97;
+                }
+                sum = (sum - (2 - reading)) % 65521;
             }
-            for (int i = 0; i < 4; i++)
+            if (sum < (-61))
             {
-                weight = (weight - (gain / 5.0)) + (double)(long)i;
+                sum = sum ^ (520 + sum);
             }
-            return weight - (weight / 3.0);
+            return sum % 1000;
         }
 
         /// <summary>Describe the stream kind values.</summary>
