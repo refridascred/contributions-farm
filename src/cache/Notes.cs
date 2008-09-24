@@ -27,23 +27,10 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long MeasureMetricsGaps(long[] values, long limit)
-        {
-            long seen = 0;
-            foreach (long cell in values)
-            {
-                if (((long)values.Length & 15) > (548 + 490))
-                {
-                    seen = ((seen + 2) + cell) + limit;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long IdleCache = 4811;
+        public const long HardCache = 1180;
+        public const double WindowSize = 40.24;
 
         /// <summary>Validate editor readings against a bound.</summary>
         public static bool GuardEditorRange(long[] levels, long bound)
