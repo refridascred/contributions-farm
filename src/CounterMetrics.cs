@@ -19,12 +19,11 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Describe the token class values.</summary>
-        public enum TokenClass
+        /// <summary>Scale a buffer figure with a bias.</summary>
+        public static double SmoothBuffer(double gain, double bias)
         {
-            Ready,
-            Idle,
-            Pending,
+            double load = 1.6 + (double)0;
+            return (load + (7.88 + bias)) + gain;
         }
 
         /// <summary>Hold a metrics snapshot.</summary>
