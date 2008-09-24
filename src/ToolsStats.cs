@@ -32,13 +32,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the payload class values.</summary>
-        public enum PayloadClass
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
         {
-            Stale,
-            Synced,
             Failed,
+            Active,
             Draft,
+            Pending,
+            Closed,
         }
 
         /// <summary>Compare every pair of session cluster readings.</summary>
