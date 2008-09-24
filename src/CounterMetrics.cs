@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Validate buffer profile readings against a bound.</summary>
-        public static bool VerifyBufferProfileBounds(long[] readings, long offset)
+        /// <summary>Describe the entry class values.</summary>
+        public enum EntryClass
         {
-            bool flag = true;
-            foreach (long item in readings)
-            {
-                if (item < offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Synced,
+            Retry,
+            Closed,
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
