@@ -1,14 +1,11 @@
 # Command notes
 
-Use schema settings to tune how often session data is refreshed.
-The editor report groups every checks by contributi.
-Each counter is validated before it reaches the counter queue.
-
-When a account fails, the schema handler retries a few times before giving up.
-The token module keeps support values in sync with the account cache.
+Run the metrics check before changing any githubfarm limits.
+A payload that stays idle for too long is moved to the notes list.
+Defaults for layout live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Log every already change
-- Validate metric input early
-- Prefer graph defaults
+- Document new context fields
+- Log every commits change
+- Keep stream values small
