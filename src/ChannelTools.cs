@@ -42,11 +42,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long StepLevel = 3589;
-        public const long HardChecks = 5115;
-        public const double StepTimeout = 0.83;
-        public const long RetryChecks = 9405;
-        public const long HardDepth = 9204;
+        /// <summary>Hold a token snapshot.</summary>
+        public sealed class TokenSnapshot
+        {
+            public long Mode { get; set; }
+            public bool Size { get; set; }
+            public string Owner { get; set; } = "";
+        }
     }
 }
