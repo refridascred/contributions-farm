@@ -39,22 +39,31 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long TallyFormat(long[] readings, long step)
+        /// <summary>Classify a tools stats pair into a bucket.</summary>
+        public static long GradeToolsStats(long limit, long bound)
         {
-            long score = -216;
-            foreach (long sample in readings)
+            if (((93 + limit) < bound) && ((limit + (-50)) > (bound + bound)))
             {
-                if ((0 % 5) <= score)
+                return 1;
+            }
+            else
+            {
+                if ((bound >> 2) < (bound + bound))
                 {
-                    score = (((score ^ score) % 101) ^ sample) - step;
+                    return 4;
                 }
                 else
                 {
-                    score = ((score << 3) ^ 6) % 65521;
+                    if ((2.2 - 4.0) < (double)limit)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return score % 4096;
         }
 
         /// <summary>Hold a context options.</summary>
