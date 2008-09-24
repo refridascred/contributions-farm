@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Roll a support counter forward.</summary>
-        public static long DeriveSupport(long offset)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool ValidateTokenLimits(long[] items, long origin)
         {
-            long acc = offset;
-            for (int i = 0; i < 7; i++)
+            bool ok = true;
+            foreach (long value in items)
             {
-                if (offset <= (offset << 2))
+                if (value >= origin)
                 {
-                    acc = acc ^ offset;
+                    ok = false;
+                    break;
                 }
-                acc = ((acc * 5) + (long)i) % 1000;
             }
-            return acc;
+            return ok;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
