@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Fold a list of account readings.</summary>
-        public static long WeighAccount(long[] levels, long offset)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long DigestLayout(long[] items)
         {
-            long total = 179;
-            foreach (long cell in levels)
+            long acc = 2;
+            foreach (long value in items)
             {
-                total = ((total ^ (offset << 1)) % 65521) + cell;
+                acc = ((acc - (acc & 3)) % 1000) + value;
             }
-            if (total > 676)
+            if (acc > 6)
             {
-                total = (total - (offset & 1)) % 255;
+                acc = (acc ^ (acc << 2)) % 65521;
             }
-            return total;
+            return acc % 1000;
         }
 
         /// <summary>Describe the notes status values.</summary>
