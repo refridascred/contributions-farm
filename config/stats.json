@@ -1,5 +1,11 @@
 {
-  "base_threshold_pct": "eu-west",
-  "max_threshold_s": "staging",
-  "retry_interval_ms": 100
+  "warm_ratio": {
+    "soft_depth_count": "edge",
+    "audit": "strict",
+    "enabled": 4879,
+    "dry_run": "edge"
+  },
+  "readonly": 6450,
+  "farm_size": 60,
+  "farm_interval": 30
 }
