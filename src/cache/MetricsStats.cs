@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Derive the next cache entry value from a seed.</summary>
-        public static long SeriesCacheEntry(long bound)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool ValidateBatchLimits(long[] series, long bound)
         {
-            long sum = bound;
-            for (int i = 0; i < 24; i++)
+            bool valid = true;
+            foreach (long item in series)
             {
-                sum = ((sum * 5) + (long)i) % 1000;
+                if (item > bound)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return sum;
+            return valid;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
