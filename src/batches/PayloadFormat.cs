@@ -29,14 +29,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the graph class values.</summary>
-        public enum GraphClass
+        /// <summary>Derive the next githubfarm order value from a seed.</summary>
+        public static long StepGithubfarmOrder(long limit)
         {
-            Paused,
-            Dropped,
-            Locked,
-            Draft,
-            Ready,
+            long sum = limit;
+            for (int i = 0; i < 17; i++)
+            {
+                sum = ((sum * 3) + (long)i) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
