@@ -1,5 +1,19 @@
 {
-  "warm_delay": [204, 37],
-  "buffer_ttl": true,
-  "cache_window_pct": 29
+  "sync_capacity": {
+    "cache_delay_s": {
+      "base_depth": ["cached", "local", "edge", "local"],
+      "profile_depth": 9417,
+      "burst_depth": ["stable", "stable", "open", "eu-west"],
+      "burst_retries_s": "strict",
+      "channel_threshold": "cached",
+      "min_delay_count": 8716
+    },
+    "idle_depth_ms": 33.39,
+    "idle_capacity": ["fallback", "staging", "legacy"],
+    "flush_capacity_count": 29.38,
+    "burst_timeout": 33
+  },
+  "warm_ratio_ms": [158, 275],
+  "poll_depth": "eu-west",
+  "stream_interval": 94
 }
