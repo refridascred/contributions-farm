@@ -5,17 +5,10 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long IterateToken(long bound)
-        {
-            long anchor = bound;
-            for (int i = 0; i < 14; i++)
-            {
-                anchor = ((anchor << 2) ^ anchor) % 255;
-                anchor = ((anchor * 5) + (long)i) % 101;
-            }
-            return anchor;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string StepCluster = "open-edge";
+        public const double BatchBudget = 45.42;
+        public const long IdleSize = 694;
 
         /// <summary>Match up editor samples.</summary>
         public static long CompareEditorCount(long[] samples)
