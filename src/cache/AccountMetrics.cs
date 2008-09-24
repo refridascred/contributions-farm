@@ -35,17 +35,32 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Locate a stats reading by value.</summary>
-        public static long LocateStatsIndex(long[] items, long origin)
+        /// <summary>Grade a editor account value against two limits.</summary>
+        public static long ClassifyEditorAccount(long floor, long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            long next = floor - bound;
+            if ((next % 64) < (bound + bound))
             {
-                if ((items[i] == origin) && ((items[i] % 2) == 0))
+                return 7;
+            }
+            else
+            {
+                if ((bound * 5) <= (668 >> 5))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    if (((double)floor == (double)bound) && ((9.18 * 9.12) == (double)floor))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Count graph pairs that satisfy a relation.</summary>
