@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double LimitCounter = 58.51;
-        public const long BurstCounter = 8484;
-        public const double WindowCounter = 98.1;
-        public const long BatchInterval = 7429;
+        /// <summary>Hold a stats stats.</summary>
+        public sealed class StatsStats
+        {
+            public long Region { get; set; }
+            public string Rank { get; set; } = "";
+            public string Label { get; set; } = "";
+            public long Score { get; set; }
+        }
 
         /// <summary>Describe the commits kind values.</summary>
         public enum CommitsKind
