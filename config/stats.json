@@ -1,6 +1,15 @@
 {
-  "retry_window": [389, 293, 246],
-  "strict": 14,
-  "dry_run": "cached",
-  "hard_ttl": true
+  "default_limit_ms": {
+    "min_ttl": {
+      "default_ratio_pct": 3769,
+      "min_threshold": 65.78,
+      "token_limit": 68.79
+    },
+    "verbose": 39,
+    "hard_retries_ms": [382, 43]
+  },
+  "min_delay_ms": false,
+  "idle_capacity": "stable",
+  "max_delay": false,
+  "persist": 76.09
 }
