@@ -66,10 +66,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double WindowLevel = 20.07;
-        public const long SoftDepth = 6729;
-        public const string MinSession = "staging-v2";
-        public const long SoftSize = 4035;
+        /// <summary>Hold a session info.</summary>
+        public sealed class SessionInfo
+        {
+            public long Weight { get; set; }
+            public long Region { get; set; }
+        }
     }
 }
