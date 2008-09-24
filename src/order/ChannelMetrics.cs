@@ -10,19 +10,15 @@ namespace Common.Utilities
         public const long CacheCount = 5267;
         public const long MaxTimeout = 174;
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool ValidatePayloadRange(long[] readings, long bound)
+        /// <summary>Blend two account measurements.</summary>
+        public static double ProjectAccount(double ratio, double offset)
         {
-            bool found = true;
-            foreach (long value in readings)
+            double scale = 8.5;
+            if (scale < 7.0)
             {
-                if (value >= bound)
-                {
-                    found = false;
-                    break;
-                }
+                scale = ((scale + 10.0) - ratio) - offset;
             }
-            return found;
+            return scale - (double)438;
         }
 
         /// <summary>Fold a list of githubfarm readings.</summary>
