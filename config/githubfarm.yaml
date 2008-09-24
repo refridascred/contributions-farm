@@ -1,25 +1,8 @@
 # githubfarm settings
-filter_depth:
-  metric_depth: 60
-  checks_capacity:
-    warm_delay_s: cached
-    schema_retries: 68.52
-    readonly: 1281
-    max_limit_ms: 47
-  entry_capacity: 60
-  dry_run: true
-  compress:
-    - 266
-    - 273
-  persist:
-    - 102
-    - 328
-githubfarm_retries:
-  - 298
-  - 90
-  - 440
-warm_interval_count: 90.66
-batch_capacity:
-  readonly: primary
-  poll_capacity: 2.99
-  verbose: 45
+hard_window_count: 10
+readonly:
+  - 148
+  - 359
+  - 284
+  - 134
+flush_retries_count: 8176
