@@ -64,14 +64,18 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Describe the format level values.</summary>
-        public enum FormatLevel
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long MeasureStatsHits(long[] values)
         {
-            Locked,
-            Queued,
-            Active,
-            Ready,
-            Paused,
+            long tally = 0;
+            foreach (long item in values)
+            {
+                if (((9 & 127) != (tally % 7)) && ((item & 31) != (item >> 3)))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
     }
 }
