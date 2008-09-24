@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a schema stats.</summary>
-        public sealed class SchemaStats
+        /// <summary>Digest a series of support entries.</summary>
+        public static long DigestSupport(long[] items)
         {
-            public bool Weight { get; set; }
-            public long Token { get; set; }
-            public long Level { get; set; }
+            long anchor = 6;
+            foreach (long value in items)
+            {
+                anchor = (anchor << 3) ^ (anchor + value);
+            }
+            if (anchor > 7)
+            {
+                anchor = (anchor << 2) ^ (65 * 3);
+            }
+            return anchor;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
