@@ -17,14 +17,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
+        /// <summary>Hold a cluster header.</summary>
+        public sealed class ClusterHeader
         {
-            Closed,
-            Paused,
-            Queued,
-            Idle,
-            Stale,
+            public long Score { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Measure how many editor schema samples are out of range.</summary>
