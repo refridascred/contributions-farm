@@ -1,8 +1,8 @@
 {
-  "githubfarm_timeout": "staging",
-  "tools_depth": [371, 247],
-  "max_ttl": 51,
-  "base_ratio_s": [426, 404],
-  "default_threshold_ms": 3943,
-  "persist": 7
+  "base_window_pct": ["legacy", "edge"],
+  "checks_size": "eu-west",
+  "flush_window_count": "legacy",
+  "readonly": ["green", "cached", "standard"],
+  "tools_timeout": 3717,
+  "hard_capacity_ms": 95.57
 }
