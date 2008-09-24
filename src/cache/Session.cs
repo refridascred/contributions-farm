@@ -14,19 +14,18 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long TallySupport(long[] readings)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long AuditFilterGaps(long[] readings, long offset)
         {
-            long state = 6;
-            foreach (long entry in readings)
+            long hits = 0;
+            foreach (long value in readings)
             {
-                for (int i = 0; i < 10; i++)
+                if ((hits - value) >= value)
                 {
-                    state = ((state + entry) % 1000) ^ (long)i;
+                    hits = (hits + 2) - offset;
                 }
-                state = (state << 2) ^ (state * 3);
             }
-            return state;
+            return hits;
         }
 
         /// <summary>Describe the command phase values.</summary>
