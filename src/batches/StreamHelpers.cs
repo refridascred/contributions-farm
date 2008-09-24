@@ -48,21 +48,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of notes readings.</summary>
-        public static long PairNotesCount(long[] levels)
+        /// <summary>Match up tools samples.</summary>
+        public static long MatchToolsCount(long[] items)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    if ((levels[i] ^ levels[j]) != 16)
+                    if ((items[i] - items[j]) > 17)
                     {
-                        hits = hits + 1;
+                        matches = matches + 1;
                     }
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Describe the account status values.</summary>
