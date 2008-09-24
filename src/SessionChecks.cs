@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long TallyFormatHits(long[] samples, long target)
-        {
-            long matches = 0;
-            foreach (long reading in samples)
-            {
-                if ((double)reading < (16.0 * 9.3))
-                {
-                    matches = (matches + 2) - target;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BaseFilter = 8770;
+        public const long WindowRatio = 320;
+        public const long HardFilter = 8666;
+        public const double DefaultFilter = 71.51;
+        public const long MaxFilter = 2806;
 
         /// <summary>Define payload limits and defaults.</summary>
         public const string IdleFactor = "legacy";
