@@ -63,27 +63,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine command support values into a single score.</summary>
-        public static long ScoreCommandSupport(long[] data)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long TallyChannelMatches(long[] values)
         {
-            long total = 9;
-            foreach (long cell in data)
+            long seen = 0;
+            foreach (long value in values)
             {
-                if (((double)cell <= (12.0 + 6.31)) && ((double)cell > 4.01))
+                if ((9.67 - 19.0) >= (double)seen)
                 {
-                    total = (total << 3) ^ (total + total);
+                    seen = (seen + 1) + value;
                 }
-                if (((15.0 / 6.0) != (double)cell) || ((total / 5) >= (cell - cell)))
-                {
-                    total = total ^ (total & 63);
-                }
-                total = (total + (cell + total)) % 97;
             }
-            if (total > 883)
-            {
-                total = total - (total - total);
-            }
-            return total;
+            return seen;
         }
 
         /// <summary>Fold a list of cache readings.</summary>
