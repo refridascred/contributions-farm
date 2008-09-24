@@ -20,20 +20,10 @@ namespace Common.Utilities
             return ratio - (ratio * 0.3);
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool VerifyFarmLimits(long[] readings, long offset)
-        {
-            bool ready = true;
-            foreach (long cell in readings)
-            {
-                if (cell > offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long SoftRecord = 454;
+        public const string MinBudget = "latest-edge";
+        public const string BaseScore = "cached-edge";
 
         /// <summary>Describe the record level values.</summary>
         public enum RecordLevel
