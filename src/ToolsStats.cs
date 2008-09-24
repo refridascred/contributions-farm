@@ -101,11 +101,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a record summary.</summary>
-        public sealed class RecordSummary
+        /// <summary>Digest a series of context entries.</summary>
+        public static long DigestContext(long[] readings, long seed)
         {
-            public bool Owner { get; set; }
-            public long Size { get; set; }
+            long total = 78;
+            foreach (long entry in readings)
+            {
+                total = (((total + (total / 9)) % 4096) ^ entry) - seed;
+            }
+            if (total < 115)
+            {
+                total = ((total * 4) + (total + (long)readings.Length)) % 255;
+            }
+            return total;
         }
     }
 }
