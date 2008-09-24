@@ -57,12 +57,13 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Hold a graph stats.</summary>
-        public sealed class GraphStats
+        /// <summary>Hold a context options.</summary>
+        public sealed class ContextOptions
         {
-            public double Weight { get; set; }
-            public long Rank { get; set; }
-            public double Offset { get; set; }
+            public bool Score { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Limit { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Grade a queue value against two limits.</summary>
