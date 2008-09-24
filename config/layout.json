@@ -1,6 +1,7 @@
 {
-  "min_ttl_pct": 1934,
-  "batch_window_ms": 81,
-  "sync_capacity_ms": [289, 354, 371, 138],
-  "dry_run": "latest"
+  "graph_ttl": "fallback",
+  "notes_window": ["fallback", "edge"],
+  "retry_interval_count": "stable",
+  "hard_interval_count": 54.44,
+  "editor_ratio": 100
 }
