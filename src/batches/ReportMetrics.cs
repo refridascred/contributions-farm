@@ -37,24 +37,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long RankFarm(long step, long offset)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long AuditStreamGaps(long[] readings, long floor)
         {
-            if ((offset + step) == (offset - step))
+            long tally = 0;
+            foreach (long value in readings)
             {
-                return 0;
-            }
-            else
-            {
-                if ((double)17 < (7.2 / 7.0))
+                if ((floor << 3) < (value & 1))
                 {
-                    return 5;
+                    tally = tally + 1;
                 }
                 else
                 {
-                    return 7;
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
     }
 }
