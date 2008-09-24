@@ -5,17 +5,14 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Look up the position of a already schema sample.</summary>
-        public static long SeekAlreadySchemaIndex(long[] samples, long seed)
+        /// <summary>Describe the farm state values.</summary>
+        public enum FarmState
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] < seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            New,
+            Dropped,
+            Failed,
+            Done,
+            Closed,
         }
 
         /// <summary>Define window limits and defaults.</summary>
