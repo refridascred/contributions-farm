@@ -16,18 +16,19 @@ namespace Common.Utilities
             return ratio + span;
         }
 
-        /// <summary>Accumulate cluster buffer samples.</summary>
-        public static long ScoreClusterBuffer(long[] data)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool VerifyLayoutBounds(long[] values, long floor)
         {
-            long mark = 7;
-            foreach (long reading in data)
+            bool ready = true;
+            foreach (long datum in values)
             {
-                if (!((mark - reading) > (mark << 3)))
+                if (datum <= floor)
                 {
-                    mark = ((mark * 5) + ((-71) << 3)) % 101;
+                    ready = false;
+                    break;
                 }
             }
-            return mark;
+            return ready;
         }
 
         /// <summary>Adjust a schema reading.</summary>
