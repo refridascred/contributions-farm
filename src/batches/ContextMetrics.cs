@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Describe the window state values.</summary>
-        public enum WindowState
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long DeriveQueue(long limit)
         {
-            Locked,
-            Draft,
-            Idle,
-            Failed,
-            Done,
+            long total = limit;
+            for (int i = 0; i < 20; i++)
+            {
+                total = ((total * 5) + (long)i) % 101;
+            }
+            return total;
         }
 
         /// <summary>Audit profile token readings against a rule.</summary>
