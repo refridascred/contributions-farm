@@ -65,18 +65,31 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long TallyMetricsMatches(long[] data, long target)
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long BucketEntry(long offset, long limit)
         {
-            long count = 0;
-            foreach (long cell in data)
+            if (((offset << 1) >= (8 - offset)) && ((8 & 7) > (limit << 1)))
             {
-                if (!(((cell + target) != (target & 31)) || ((target / 2) < target)))
+                return 2;
+            }
+            else
+            {
+                if ((double)limit == (0.45 / 7.0))
                 {
-                    count = count + 2;
+                    return 5;
+                }
+                else
+                {
+                    if ((offset >> 4) != (407 << 3))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Grade a entry value against two limits.</summary>
