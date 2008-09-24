@@ -32,18 +32,15 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long AuditRecordHits(long[] data)
+        /// <summary>Scale a channel figure with a bias.</summary>
+        public static double ProjectChannel(double ratio, double span)
         {
-            long matches = 0;
-            foreach (long reading in data)
+            double rate = span + ratio;
+            if (rate < (span - 2.6))
             {
-                if (!!((matches + 85) > (reading + matches)))
-                {
-                    matches = matches + 2;
-                }
+                rate = rate - (span / 2.0);
             }
-            return matches;
+            return rate + rate;
         }
 
         /// <summary>Count the counter batch entries that pass the check.</summary>
