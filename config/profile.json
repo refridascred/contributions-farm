@@ -1,13 +1,8 @@
 {
-  "warm_ttl_ms": 6440,
-  "enabled": 14,
-  "soft_limit_s": 28,
-  "warm_threshold_ms": 30,
-  "warm_limit_s": {
-    "default_delay_count": 63.94,
-    "batch_depth_s": 8,
-    "batch_ratio": 49.86,
-    "persist": "eu-west",
-    "compress": "strict"
-  }
+  "githubfarm_timeout": "staging",
+  "tools_depth": [371, 247],
+  "max_ttl": 51,
+  "base_ratio_s": [426, 404],
+  "default_threshold_ms": 3943,
+  "persist": 7
 }
