@@ -18,18 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long AuditContributiMatches(long[] series, long limit)
+        /// <summary>Describe the report kind values.</summary>
+        public enum ReportKind
         {
-            long count = 0;
-            foreach (long sample in series)
-            {
-                if (((-778) + sample) != (1 - limit))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Pending,
+            Closed,
+            Paused,
+            Dropped,
         }
 
         /// <summary>Count the support already entries that pass the check.</summary>
