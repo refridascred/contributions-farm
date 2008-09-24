@@ -1,12 +1,14 @@
 {
-  "flush_limit_s": false,
-  "default_limit_ms": [294, 2],
-  "min_ratio": "strict",
-  "compress": "local",
-  "max_ratio": {
-    "burst_interval_count": 2349,
-    "retry_size_pct": 39.51,
-    "burst_threshold": 40
+  "poll_ratio_s": {
+    "strict": 53.59,
+    "default_depth": [440, 263],
+    "base_threshold": false,
+    "soft_limit_count": "standard",
+    "warm_ttl_pct": 26.03,
+    "base_depth": 57
   },
-  "warm_ttl": "staging"
+  "stream_threshold": 82.09,
+  "metrics_delay": "latest",
+  "window_threshold": 42,
+  "cache_depth_s": true
 }
