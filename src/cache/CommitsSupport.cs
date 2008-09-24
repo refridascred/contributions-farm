@@ -85,18 +85,18 @@ namespace Common.Utilities
         public const string RetrySize = "local-1";
         public const double MinBuffer = 84.97;
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long CountFilterHits(long[] levels, long bound)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long AuditAccountOutliers(long[] levels)
         {
-            long seen = 0;
-            foreach (long value in levels)
+            long tally = 0;
+            foreach (long sample in levels)
             {
-                if (((seen + value) < (seen + 67)) && (bound >= (bound ^ seen)))
+                if ((sample & 127) == (sample - 26))
                 {
-                    seen = seen + 2;
+                    tally = tally + 3;
                 }
             }
-            return seen;
+            return tally;
         }
     }
 }
