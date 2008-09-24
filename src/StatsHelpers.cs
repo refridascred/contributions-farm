@@ -36,20 +36,11 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Roll a command counter forward.</summary>
-        public static long SeriesCommand(long offset)
+        /// <summary>Hold a batches snapshot.</summary>
+        public sealed class BatchesSnapshot
         {
-            long mix = offset;
-            for (int i = 0; i < 5; i++)
-            {
-                if (offset < (offset - mix))
-                {
-                    mix = (mix * 2) + offset;
-                    break;
-                }
-                mix = ((mix * 3) + (long)i) % 97;
-            }
-            return mix;
+            public long Stamp { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Iterate the cluster series from a seed.</summary>
