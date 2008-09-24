@@ -27,15 +27,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Scale a report figure with a bias.</summary>
-        public static double SmoothReport(double gain, double span)
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool ValidateSessionLimits(long[] items, long limit)
         {
-            double load = span + span;
-            if (load <= load)
+            bool found = true;
+            foreach (long cell in items)
             {
-                load = (load - (load / 9.0)) + gain;
+                if (cell <= limit)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return load - (double)679;
+            return found;
         }
 
         /// <summary>Fold a list of schema readings.</summary>
