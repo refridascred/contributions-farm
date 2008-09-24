@@ -1,34 +1,25 @@
 # githubfarm settings
-min_delay:
-  max_retries:
-    counter_threshold:
-      - edge
-      - primary
-      - cached
-      - standard
-    command_interval:
-      - eu-west
-      - primary
-      - stable
-    batch_retries_count:
-      - 381
-      - 214
-      - 31
-    cache_window:
-      - 33
-      - 286
-      - 181
-    max_ttl_s: 17.39
-    flush_window_pct: false
-  idle_depth_ms:
-    - 329
-    - 127
-    - 26
-  max_retries_pct:
-    flush_size_s: 60
-    base_threshold_s: edge
-    readonly: latest
-    layout_depth: strict
-  burst_depth_count: 5260
-dry_run: fallback
-report_size: green
+record_threshold:
+  persist: true
+  sync_ttl_s:
+    default_threshold_pct: 5958
+    cache_limit:
+      - 367
+      - 233
+      - 142
+    soft_timeout_pct: 19.52
+    max_ttl_ms: true
+    contributi_timeout: strict
+  burst_interval: local
+  sync_size_s: true
+contributi_delay: 5179
+sync_window_count:
+  compress:
+    - 215
+    - 311
+  max_ratio_s: 3
+  default_capacity_pct: 30
+flush_ratio_pct:
+  - 476
+  - 489
+verbose: standard
