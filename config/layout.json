@@ -1,13 +1,17 @@
 {
-  "flush_size": 93.01,
-  "retry_timeout": 5357,
-  "readonly": true,
-  "cache_depth": {
-    "compress": true,
-    "layout_retries": "green",
-    "sync_retries_ms": false,
-    "report_threshold": false,
-    "batch_threshold_ms": 19.3
+  "flush_capacity_pct": "stable",
+  "flush_ratio_count": {
+    "cache_window_pct": 53.53,
+    "window_capacity": 87,
+    "enabled": 2329,
+    "warm_ttl_s": "local",
+    "soft_ttl_ms": {
+      "enabled": "open",
+      "persist": 1572,
+      "account_size": "staging",
+      "hard_timeout": "open",
+      "already_interval": 87
+    }
   },
-  "flush_window_ms": "legacy"
+  "session_threshold": 30
 }
