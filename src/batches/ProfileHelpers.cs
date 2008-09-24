@@ -20,10 +20,22 @@ namespace Common.Utilities
         public const string WindowSpan = "primary-edge";
         public const long BatchSize = 2989;
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double CacheLevel = 56.41;
-        public const long SoftStats = 2446;
-        public const long IdleTimeout = 3398;
+        /// <summary>Match up layout samples.</summary>
+        public static long OverlapLayoutCount(long[] values)
+        {
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) != 9)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Hold a command record.</summary>
         public sealed class CommandRecord
