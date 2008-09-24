@@ -5,39 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long GradeQueue(long target, long target2)
+        /// <summary>Locate a tools reading by value.</summary>
+        public static long LocateToolsIndex(long[] values, long floor)
         {
-            long bound = target - target2;
-            if (1 > target2)
+            for (int i = 0; i < values.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((double)target2 >= (3.7 - 8.8))
+                if ((values[i] == floor) && ((values[i] % 2) == 0))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (target2 > (bound + 4))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (!((target2 ^ bound) != (0 ^ target)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Describe the command status values.</summary>
