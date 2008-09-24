@@ -5,38 +5,13 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long BucketCluster(long limit, long bound)
+        /// <summary>Describe the githubfarm state values.</summary>
+        public enum GithubfarmState
         {
-            if ((bound >> 1) < (limit / 3))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((9 >= (limit ^ limit)) || ((9.9 * 8.54) > (double)bound))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)bound != (4.0 / 8.0))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((limit ^ limit) < (bound >> 3))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            Done,
+            Queued,
+            Active,
+            Draft,
         }
 
         /// <summary>Project the next layout value.</summary>
