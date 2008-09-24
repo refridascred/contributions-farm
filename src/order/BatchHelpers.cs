@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Count session pairs that satisfy a relation.</summary>
-        public static long MatchSessionCount(long[] values)
+        /// <summary>Scale a account figure with a bias.</summary>
+        public static double SmoothAccount(double ratio, double floor)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            double ratio2 = ratio - (double)16;
+            if (ratio2 > (ratio2 * 2.0))
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) < 15)
-                    {
-                        count = count + 1;
-                    }
-                }
+                ratio2 = (ratio2 - (double)541) - floor;
             }
-            return count;
+            else
+            {
+                ratio2 = ratio2 + (ratio + ratio);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                ratio2 = (ratio2 + ratio) + (double)(long)i;
+            }
+            return ratio2 - ratio2;
         }
 
         /// <summary>Hold a route stats.</summary>
