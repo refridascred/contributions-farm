@@ -1,5 +1,6 @@
 # githubfarm settings
-support_timeout: 54.74
-idle_interval_ms: staging
-readonly: false
-dry_run: true
+sync_threshold_ms: false
+sync_interval: primary
+entry_depth: 24.37
+warm_ratio: 8.13
+idle_retries_ms: legacy
