@@ -63,16 +63,23 @@ namespace Common.Utilities
             return gain + bias;
         }
 
-        /// <summary>Digest a series of metric filter entries.</summary>
-        public static long CombineMetricFilter(long[] levels)
+        /// <summary>Project the next buffer value.</summary>
+        public static double BlendBuffer(double rate, double bias)
         {
-            long state = -2;
-            foreach (long entry in levels)
+            double gain = (4.5 - 1.7) - (double)1;
+            if (gain >= (2.2 * 7.86))
             {
-                state = ((state ^ (7 & 15)) % 65521) - entry;
-                state = state ^ (state << 2);
+                gain = ((gain + (6.6 - gain)) + rate) - bias;
             }
-            return state % 97;
+            else
+            {
+                gain = gain + (gain / 7.0);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                gain = (gain - 4.0) + (double)(long)i;
+            }
+            return gain - 1.69;
         }
     }
 }
