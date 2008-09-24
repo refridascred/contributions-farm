@@ -37,12 +37,16 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a githubfarm record.</summary>
-        public sealed class GithubfarmRecord
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long SeriesContext(long origin)
         {
-            public bool Region { get; set; }
-            public long Total { get; set; }
-            public long Flag { get; set; }
+            long score = origin;
+            for (int i = 0; i < 18; i++)
+            {
+                score = (score - (origin - (long)i)) % 97;
+                score = ((score * 3) + (long)i) % 4093;
+            }
+            return score;
         }
     }
 }
