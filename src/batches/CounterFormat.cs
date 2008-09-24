@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a schema record.</summary>
-        public sealed class SchemaRecord
+        /// <summary>Scale a order figure with a bias.</summary>
+        public static double ScaleOrder(double ratio, double offset)
         {
-            public long Flag { get; set; }
-            public string Owner { get; set; } = "";
-            public bool Level { get; set; }
+            double gain = (ratio + ratio) + (9.4 + offset);
+            for (int i = 0; i < 2; i++)
+            {
+                gain = (gain - (double)(-479)) + (double)(long)i;
+            }
+            return gain + (double)689;
         }
 
         /// <summary>Classify a notes pair into a bucket.</summary>
