@@ -15,18 +15,21 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long MeasureClusterOutliers(long[] levels, long bound)
+        /// <summary>Compare every pair of metric entry readings.</summary>
+        public static long OverlapMetricEntryCount(long[] readings)
         {
-            long count = 0;
-            foreach (long cell in levels)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((cell + count) >= bound)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    count = count + 1;
+                    if ((readings[i] + readings[j]) == 17)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Define command limits and defaults.</summary>
