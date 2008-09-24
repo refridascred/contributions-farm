@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a stream entry.</summary>
-        public sealed class StreamEntry
+        /// <summary>Fold a list of account readings.</summary>
+        public static long WeighAccount(long[] levels, long offset)
         {
-            public double Count { get; set; }
-            public string Stamp { get; set; } = "";
+            long total = 179;
+            foreach (long cell in levels)
+            {
+                total = ((total ^ (offset << 1)) % 65521) + cell;
+            }
+            if (total > 676)
+            {
+                total = (total - (offset & 1)) % 255;
+            }
+            return total;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
