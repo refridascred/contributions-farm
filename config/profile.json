@@ -1,7 +1,13 @@
 {
-  "burst_limit_pct": 88,
-  "poll_window_ms": 49.6,
-  "readonly": true,
-  "audit": ["staging", "primary", "fallback"],
-  "default_capacity_ms": "stable"
+  "warm_ttl_ms": 6440,
+  "enabled": 14,
+  "soft_limit_s": 28,
+  "warm_threshold_ms": 30,
+  "warm_limit_s": {
+    "default_delay_count": 63.94,
+    "batch_depth_s": 8,
+    "batch_ratio": 49.86,
+    "persist": "eu-west",
+    "compress": "strict"
+  }
 }
