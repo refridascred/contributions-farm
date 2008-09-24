@@ -1,6 +1,10 @@
-id,region,token,count
-1,45.18,standard,28.17
-2,745,71.65,fallback
-3,86.95,401,green
-4,23,latest,31.99
-5,658,green,647
+id,weight,level,label
+1,109,open,local
+2,eu-west,edge,108
+3,929,940,195
+4,700,581,583
+5,48.26,499,161
+6,630,43.23,latest
+7,877,local,604
+8,482,77.11,199
+9,942,open,468
