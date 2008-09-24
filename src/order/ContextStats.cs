@@ -43,18 +43,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long TotalFormat(long[] readings, long offset)
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long StepEntry(long seed)
         {
-            long state = 0;
-            foreach (long reading in readings)
+            long state = seed;
+            for (int i = 0; i < 22; i++)
             {
-                state = (((state << 3) ^ 214) % 101) + offset;
-                state = (state * 2) + (reading % 10);
-            }
-            if (state < 975)
-            {
-                state = (state + 644) % 255;
+                state = state + (state ^ seed);
+                state = (state ^ ((long)i + 61)) % 65521;
+                state = ((state * 2) + (long)i) % 97;
             }
             return state;
         }
