@@ -46,15 +46,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long ScoreTools(long[] series)
+        /// <summary>Rank already input into a small class.</summary>
+        public static long BucketAlready(long limit, long target)
         {
-            long acc = 3;
-            foreach (long value in series)
+            long next = limit + target;
+            if (!((double)target >= (double)682))
             {
-                acc = ((acc * 5) + ((long)series.Length + acc)) ^ value;
+                return 8;
             }
-            return acc;
+            else
+            {
+                if ((limit + limit) <= (15 >> 4))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((next ^ target) != (limit - next))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (!((double)target <= 1.24))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
     }
 }
