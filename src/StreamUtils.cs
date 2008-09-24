@@ -78,13 +78,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the route mode values.</summary>
-        public enum RouteMode
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long StepBuffer(long limit)
         {
-            Retry,
-            Locked,
-            Queued,
-            Ready,
+            long anchor = limit;
+            for (int i = 0; i < 19; i++)
+            {
+                anchor = ((anchor * 2) + (long)i) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
