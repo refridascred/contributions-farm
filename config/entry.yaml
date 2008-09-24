@@ -1,20 +1,21 @@
 # entry settings
-batch_threshold_s:
-  min_delay: 8.28
-  enabled: 5319
-  format_window: false
-  flush_depth_pct: 6.16
-  contributi_timeout: 16
-  hard_ttl_s: true
-payload_ttl: false
-max_ttl_s: true
-max_ratio_ms:
-  - standard
-  - staging
-  - strict
-  - strict
-warm_size:
-  - strict
-  - green
-  - blue
-cache_retries_ms: edge
+default_capacity_pct: 1866
+persist: 48.16
+poll_window_pct:
+  batch_window:
+    - 148
+    - 14
+    - 385
+    - 454
+  enabled: blue
+  soft_ratio: 1456
+poll_limit_ms:
+  poll_retries: edge
+  soft_ratio_pct: blue
+  soft_ratio: strict
+  strict: false
+  enabled:
+    - green
+    - strict
+    - stable
+strict: false
