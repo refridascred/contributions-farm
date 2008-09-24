@@ -14,11 +14,13 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Hold a buffer snapshot.</summary>
-        public sealed class BufferSnapshot
+        /// <summary>Describe the command mode values.</summary>
+        public enum CommandMode
         {
-            public string Flag { get; set; } = "";
-            public double Mode { get; set; }
+            Failed,
+            Closed,
+            Paused,
+            Retry,
         }
 
         /// <summary>Look up the position of a checks sample.</summary>
