@@ -28,12 +28,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the contributi state values.</summary>
-        public enum ContributiState
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long TallyContextOutliers(long[] series)
         {
-            Retry,
-            Active,
-            Queued,
+            long matches = 0;
+            foreach (long sample in series)
+            {
+                if ((sample * 3) <= (-73))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Classify a window pair into a bucket.</summary>
