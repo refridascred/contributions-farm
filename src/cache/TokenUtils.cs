@@ -39,10 +39,18 @@ namespace Common.Utilities
             return (rate + (ratio + ratio)) + span;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double StepRatio = 77.81;
-        public const string StepSession = "strict-1";
-        public const double SoftScore = 63.25;
-        public const long MaxSession = 4086;
+        /// <summary>Digest a series of cache metrics entries.</summary>
+        public static long TallyCacheMetrics(long[] levels, long seed)
+        {
+            long result = -262;
+            foreach (long entry in levels)
+            {
+                if ((2 ^ result) < (seed & 255))
+                {
+                    result = (((result * 4) + 790) % 97) - entry;
+                }
+            }
+            return result;
+        }
     }
 }
