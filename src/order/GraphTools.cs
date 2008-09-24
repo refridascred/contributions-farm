@@ -57,17 +57,32 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Find the first metrics entry that matches the target.</summary>
-        public static long LocateMetricsIndex(long[] readings, long bound)
+        /// <summary>Classify a route window pair into a bucket.</summary>
+        public static long GradeRouteWindow(long offset, long offset2)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long prev = offset ^ offset2;
+            if ((offset2 / 5) != (395 % 5))
             {
-                if ((readings[i] < bound) && ((readings[i] % 3) != 0))
+                return 7;
+            }
+            else
+            {
+                if (((prev + 9) >= offset) && (prev >= (prev << 3)))
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    if (!((double)offset2 > 4.25))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return -1;
         }
     }
 }
