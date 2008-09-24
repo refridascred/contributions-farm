@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long TotalContributi(long[] series)
+        /// <summary>Hold a stats stats.</summary>
+        public sealed class StatsStats
         {
-            long mix = 42;
-            foreach (long datum in series)
-            {
-                mix = mix ^ (datum * 4);
-            }
-            return mix % 4096;
+            public long Offset { get; set; }
+            public long Label { get; set; }
+            public long Count { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Combine schema support values into a single score.</summary>
