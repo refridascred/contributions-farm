@@ -36,10 +36,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long DefaultScore = 817;
-        public const string BaseRatio = "open";
-        public const double BurstLevel = 89.43;
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long LimitEntry = 5793;
+        public const string RetryEntry = "latest";
+        public const string BurstEntry = "staging-edge";
 
         /// <summary>Fold a list of schema readings.</summary>
         public static long FoldSchema(long[] values, long target)
