@@ -20,18 +20,14 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long CountQueueHits(long[] values)
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
         {
-            long matches = 0;
-            foreach (long cell in values)
-            {
-                if ((cell > matches) && (((matches >> 3) > cell) && ((matches >> 3) < matches)))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            Active,
+            Ready,
+            Done,
+            Closed,
+            Failed,
         }
 
         /// <summary>Combine payload values into a single score.</summary>
