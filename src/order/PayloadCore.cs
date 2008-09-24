@@ -54,9 +54,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long BatchSpan = 1593;
-        public const long MinSize = 4517;
-        public const long CacheFormat = 7267;
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long BucketQueue(long floor, long target)
+        {
+            if (!((target + floor) != (353 * 5)))
+            {
+                return 2;
+            }
+            else
+            {
+                if (((-9) % 24) < (1 - floor))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((floor - target) < (floor + floor))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
+        }
     }
 }
