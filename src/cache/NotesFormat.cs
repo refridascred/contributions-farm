@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the route mode values.</summary>
-        public enum RouteMode
-        {
-            Synced,
-            Locked,
-            Dropped,
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long SoftTools = 8712;
+        public const long CacheRatio = 1758;
+        public const long BatchLevel = 3876;
+        public const long LimitTools = 9803;
+        public const long IdleFactor = 5180;
 
         /// <summary>Audit report readings against a rule.</summary>
         public static long MeasureReportHits(long[] samples)
