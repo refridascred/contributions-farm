@@ -1,6 +1,14 @@
 {
-  "soft_limit_ms": 79.85,
-  "compress": 96.86,
-  "hard_ttl_pct": "blue",
-  "notes_ttl": [267, 134]
+  "soft_interval_count": [279, 48],
+  "hard_size_s": "edge",
+  "route_depth": "edge",
+  "checks_capacity": {
+    "poll_depth": "open",
+    "verbose": true,
+    "base_capacity_count": 2372,
+    "stream_timeout": [207, 177, 239],
+    "strict": 88.18
+  },
+  "base_interval_ms": 74.2,
+  "dry_run": true
 }
