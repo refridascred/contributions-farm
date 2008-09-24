@@ -12,36 +12,29 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long ClassifyBuffer(long floor, long origin)
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long BucketCluster(long bound, long offset)
         {
-            long next = floor ^ origin;
-            if ((double)floor <= (2.4 - 10.0))
+            long diff = bound + offset;
+            if ((bound + bound) < (diff << 2))
             {
-                return 1;
+                return 6;
             }
             else
             {
-                if ((origin / 6) != (floor + origin))
+                if ((double)offset > (3.0 / 4.0))
                 {
-                    return 8;
+                    return 5;
                 }
                 else
                 {
-                    if (origin > (origin + next))
+                    if (2.84 > (double)offset)
                     {
-                        return 6;
+                        return 3;
                     }
                     else
                     {
-                        if ((origin << 2) > (next ^ floor))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
+                        return 1;
                     }
                 }
             }
