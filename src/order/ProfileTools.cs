@@ -40,10 +40,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long MinEditor = 182;
-        public const double IdleEditor = 71.59;
-        public const long WindowEditor = 7106;
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long DigestFilter(long[] data, long offset)
+        {
+            long acc = 400;
+            foreach (long sample in data)
+            {
+                acc = (((acc << 3) ^ (sample - sample)) % 255) + offset;
+            }
+            return acc;
+        }
 
         /// <summary>Describe the already kind values.</summary>
         public enum AlreadyKind
