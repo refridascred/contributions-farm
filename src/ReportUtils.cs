@@ -37,13 +37,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the contributi kind values.</summary>
-        public enum ContributiKind
-        {
-            Dropped,
-            Failed,
-            Queued,
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long BatchFactor = 4447;
+        public const long IdleCounter = 6556;
+        public const string RetryTimeout = "strict-edge";
+        public const string BatchCounter = "cached";
 
         /// <summary>Validate command readings against a bound.</summary>
         public static bool ValidateCommandBounds(long[] levels, long offset)
