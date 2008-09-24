@@ -1,36 +1,7 @@
 # entry settings
-max_limit:
-  graph_threshold: 33
-  warm_timeout_pct:
-    audit:
-      - 343
-      - 368
-      - 472
-      - 373
-    max_window:
-      - 324
-      - 269
-    sync_timeout_s: 250
-    contributi_window: blue
-    flush_threshold_pct: 85.75
-  stream_interval: staging
-  warm_limit_pct: stable
-  cache_limit: true
-soft_size_ms:
-  counter_delay: 60
-  idle_threshold_s: 66
-  hard_ttl: blue
-  min_timeout_ms: local
-  soft_limit_ms: 38
-  layout_interval:
-    - primary
-    - primary
-    - open
-    - standard
-flush_retries: fallback
-githubfarm_threshold: latest
-window_window: false
-githubfarm_delay:
-  - cached
-  - eu-west
-  - staging
+support_capacity:
+  - 404
+  - 450
+  - 410
+entry_size: 93.17
+sync_size_ms: 1024
