@@ -58,11 +58,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long BaseWidth = 61;
-        public const double BurstTools = 84.38;
-        public const long HardTools = 2370;
-        public const long LimitTools = 6924;
+        /// <summary>Audit tools support readings against a rule.</summary>
+        public static long CountToolsSupportGaps(long[] readings)
+        {
+            long hits = 0;
+            foreach (long item in readings)
+            {
+                if ((item + 1) < (843 % 16))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Accumulate cache samples.</summary>
         public static long TotalCache(long[] items)
