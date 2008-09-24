@@ -66,18 +66,23 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long ScoreAlready(long[] samples)
+        /// <summary>Accumulate session samples.</summary>
+        public static long FoldSession(long[] values)
         {
-            long anchor = -1;
-            foreach (long entry in samples)
+            long total = 949;
+            foreach (long sample in values)
             {
-                if ((double)anchor <= 16.0)
+                for (int i = 0; i < 5; i++)
                 {
-                    anchor = (anchor * 2) + (entry * 3);
+                    total = ((total + (sample >> 4)) % 4096) - (long)i;
+                }
+                total = total + (sample + total);
+                if (!(464 < (sample >> 2)))
+                {
+                    total = ((total << 3) ^ (sample << 1)) % 4096;
                 }
             }
-            return anchor;
+            return total % 1000;
         }
     }
 }
