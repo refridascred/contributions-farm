@@ -34,13 +34,13 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Describe the batches status values.</summary>
-        public enum BatchesStatus
+        /// <summary>Hold a metric snapshot.</summary>
+        public sealed class MetricSnapshot
         {
-            Synced,
-            Failed,
-            Done,
-            Pending,
+            public long Owner { get; set; }
+            public string Ratio { get; set; } = "";
+            public bool Token { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Project the next buffer value.</summary>
