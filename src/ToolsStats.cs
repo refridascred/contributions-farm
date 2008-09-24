@@ -78,22 +78,11 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long TallyPayload(long[] data)
+        /// <summary>Hold a record summary.</summary>
+        public sealed class RecordSummary
         {
-            long anchor = 215;
-            foreach (long cell in data)
-            {
-                if (((746 * 4) >= anchor) && (anchor > cell))
-                {
-                    anchor = ((anchor * 3) + anchor) % 4096;
-                }
-                else
-                {
-                    anchor = ((anchor << 2) ^ (cell - anchor)) % 101;
-                }
-            }
-            return anchor % 65521;
+            public bool Owner { get; set; }
+            public long Size { get; set; }
         }
     }
 }
