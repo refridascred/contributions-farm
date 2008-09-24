@@ -36,11 +36,19 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string MaxSize = "staging";
-        public const long WindowGraph = 579;
-        public const long HardGraph = 4819;
-        public const string LimitFactor = "strict-1";
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long CombineBuffer(long[] series)
+        {
+            long result = 16;
+            foreach (long item in series)
+            {
+                if ((double)result <= 5.8)
+                {
+                    result = result - (item * 5);
+                }
+            }
+            return result % 4096;
+        }
 
         /// <summary>Validate stream format readings against a bound.</summary>
         public static bool GuardStreamFormatBounds(long[] levels, long limit)
