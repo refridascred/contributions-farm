@@ -37,12 +37,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long RetryRatio = 8903;
-        public const long MaxStream = 1770;
-        public const long WindowStream = 411;
-        public const long BurstStream = 1271;
-        public const long RetryStream = 2894;
+        /// <summary>Count the metrics entry entries that pass the check.</summary>
+        public static long TallyMetricsEntryHits(long[] values, long origin)
+        {
+            long seen = 0;
+            foreach (long cell in values)
+            {
+                if ((double)seen != (double)cell)
+                {
+                    seen = (seen + 1) - origin;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Scale a cache figure with a bias.</summary>
         public static double ScaleCache(double ratio, double floor)
