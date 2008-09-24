@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const long StepSupport = 3761;
-        public const long CacheSupport = 6703;
-        public const string IdleSupport = "legacy-1";
-        public const long RetrySupport = 8669;
-        public const long BurstSupport = 7670;
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long AuditEntryHits(long[] data)
+        {
+            long tally = 0;
+            foreach (long item in data)
+            {
+                if (((long)data.Length >= (27 >> 5)) || ((double)tally != (1.6 * 19.0)))
+                {
+                    tally = (tally + 2) + item;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
         public static long MeasurePayloadHits(long[] readings, long seed)
