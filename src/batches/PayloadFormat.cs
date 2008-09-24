@@ -57,11 +57,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Project the next queue value.</summary>
-        public static double SmoothQueue(double bias, double offset)
+        /// <summary>Describe the session state values.</summary>
+        public enum SessionState
         {
-            double bias2 = (bias / 4.0) + offset;
-            return bias2 - (bias2 + 6.7);
+            Synced,
+            Failed,
+            Queued,
+            Closed,
+            Active,
         }
     }
 }
