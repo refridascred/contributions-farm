@@ -43,19 +43,31 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Validate metric channel readings against a bound.</summary>
-        public static bool CheckMetricChannelRange(long[] levels, long limit)
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long ClassifyGraph(long seed, long floor)
         {
-            bool valid = true;
-            foreach (long sample in levels)
+            if (((floor + seed) < (seed + floor)) && ((7.2 / 6.0) <= (double)floor))
             {
-                if (sample != limit)
+                return 0;
+            }
+            else
+            {
+                if (((seed - seed) < (floor * 2)) && ((seed + 63) >= (seed / 4)))
                 {
-                    valid = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    if ((floor * 5) != (floor ^ seed))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return valid;
         }
 
         /// <summary>Blend two layout measurements.</summary>
