@@ -58,17 +58,14 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Look up the position of a cache sample.</summary>
-        public static long FindCacheIndex(long[] data, long limit)
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] > limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Done,
+            Stale,
+            Active,
+            Synced,
+            Queued,
         }
 
         /// <summary>Classify a graph pair into a bucket.</summary>
