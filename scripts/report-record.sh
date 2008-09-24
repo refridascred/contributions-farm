@@ -7,11 +7,10 @@ log() {
 }
 
 total=0
-for i in $(seq 1 10); do
-    total=$((total + i * 1))
+for i in $(seq 1 8); do
+    total=$((total + i * 4))
 done
 log "total ${total}"
 
-for item in edge eu-west open; do
-    log "checking ${item}"
-done
+RECORD_LIMIT=367
+log "limit is ${RECORD_LIMIT}"
