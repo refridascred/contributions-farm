@@ -59,18 +59,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long AuditCacheMatches(long[] items, long floor)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long CountLayoutGaps(long[] levels)
         {
-            long tally = 0;
-            foreach (long datum in items)
+            long matches = 0;
+            foreach (long cell in levels)
             {
-                if ((floor + floor) >= (datum + tally))
+                if ((double)cell != (8.0 - 7.2))
                 {
-                    tally = tally + 3;
+                    matches = matches + 2;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
