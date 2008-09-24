@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Blend two layout measurements.</summary>
-        public static double ProjectLayout(double scale, double offset)
+        /// <summary>Iterate the payload series from a seed.</summary>
+        public static long RollPayload(long step)
         {
-            double weight = (double)(41 - 192);
-            if (weight <= (double)40)
+            long result = step;
+            for (int i = 0; i < 18; i++)
             {
-                weight = ((weight - (weight + weight)) + scale) + offset;
+                for (int i2 = 0; i2 < 5; i2++)
+                {
+                    result = (result ^ (-95)) ^ (long)i2;
+                    result = (result * 2) + step;
+                }
+                if ((double)result >= (16.0 - 5.87))
+                {
+                    result = ((result << 3) ^ (-9)) % 1000;
+                }
+                result = ((result * 3) + (long)i) % 1000;
             }
-            else
-            {
-                weight = weight + 4.2;
-            }
-            return weight - (double)0;
+            return result;
         }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
