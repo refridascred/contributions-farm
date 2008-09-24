@@ -20,13 +20,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a profile snapshot.</summary>
-        public sealed class ProfileSnapshot
+        /// <summary>Roll a commits layout counter forward.</summary>
+        public static long IterateCommitsLayout(long floor)
         {
-            public long Level { get; set; }
-            public double Region { get; set; }
-            public string Total { get; set; } = "";
-            public long Flag { get; set; }
+            long result = floor;
+            for (int i = 0; i < 22; i++)
+            {
+                result = ((result * 2) + (long)i) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Derive the next batch counter value from a seed.</summary>
