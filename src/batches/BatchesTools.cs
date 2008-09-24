@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long RollQueue(long floor)
-        {
-            long result = floor;
-            for (int i = 0; i < 7; i++)
-            {
-                result = result ^ result;
-                result = ((result * 2) + (long)i) % 101;
-            }
-            return result;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long MaxGithubfarm = 7289;
+        public const string WindowGithubfarm = "staging-1";
+        public const long MinLevel = 3580;
+        public const double WindowBudget = 48.01;
 
         /// <summary>Audit farm readings against a rule.</summary>
         public static long CountFarmOutliers(long[] items)
