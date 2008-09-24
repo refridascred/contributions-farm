@@ -1,5 +1,5 @@
 {
-  "entry_retries": 3377,
-  "min_depth_ms": 3327,
-  "burst_interval_pct": "stable"
+  "warm_delay": [204, 37],
+  "buffer_ttl": true,
+  "cache_window_pct": 29
 }
