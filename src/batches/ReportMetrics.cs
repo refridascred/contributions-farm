@@ -17,19 +17,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool VerifyMetricBounds(long[] data, long limit)
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
         {
-            bool ready = true;
-            foreach (long item in data)
-            {
-                if (item <= limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Dropped,
+            Closed,
+            Locked,
+            Ready,
         }
 
         /// <summary>Grade a commits value against two limits.</summary>
