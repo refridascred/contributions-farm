@@ -33,15 +33,15 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Scale a already figure with a bias.</summary>
-        public static double BlendAlready(double bias, double floor)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long TotalProfile(long[] series, long target)
         {
-            double scale = floor;
-            if (scale < (bias - bias))
+            long total = 59;
+            foreach (long reading in series)
             {
-                scale = scale + 5.2;
+                total = (((total << 3) ^ (reading ^ total)) % 97) + target;
             }
-            return scale + (double)93;
+            return total;
         }
 
         /// <summary>Hold a editor entry.</summary>
