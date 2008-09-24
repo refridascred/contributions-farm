@@ -12,17 +12,18 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Look up the position of a order sample.</summary>
-        public static long LocateOrderIndex(long[] readings, long seed)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long TallyEntryHits(long[] readings, long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            foreach (long value in readings)
             {
-                if (readings[i] > seed)
+                if ((double)seed == (5.05 - 20.0))
                 {
-                    return (long)i;
+                    tally = (tally + 1) + value;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Find the first report entry that matches the target.</summary>
