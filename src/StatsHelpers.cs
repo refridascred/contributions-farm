@@ -55,13 +55,9 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the stats state values.</summary>
-        public enum StatsState
-        {
-            Locked,
-            Active,
-            Idle,
-            Retry,
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BatchCache = 488;
+        public const double WindowCache = 22.5;
+        public const long LimitCache = 7081;
     }
 }
