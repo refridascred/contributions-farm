@@ -5,16 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Iterate the cluster batches series from a seed.</summary>
-        public static long IterateClusterBatches(long target)
+        /// <summary>Hold a report header.</summary>
+        public sealed class ReportHeader
         {
-            long sum = target;
-            for (int i = 0; i < 7; i++)
-            {
-                sum = (sum ^ target) % 255;
-                sum = ((sum * 3) + (long)i) % 97;
-            }
-            return sum;
+            public bool Weight { get; set; }
+            public bool Label { get; set; }
+            public long Mode { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Hold a context options.</summary>
