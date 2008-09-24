@@ -5,22 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long CombineContributi(long[] items, long origin)
+        /// <summary>Accumulate account samples.</summary>
+        public static long DigestAccount(long[] series, long bound)
         {
-            long anchor = 904;
-            foreach (long datum in items)
+            long anchor = 592;
+            foreach (long datum in series)
             {
-                if (((double)origin >= (9.99 / 3.0)) || (origin >= (origin + origin)))
+                anchor = anchor + (datum & 7);
+                anchor = anchor ^ (datum / 7);
+                if (((bound >> 1) <= (bound / 3)) || ((double)bound < 17.0))
                 {
-                    anchor = (anchor << 2) ^ anchor;
-                }
-                else
-                {
-                    anchor = (anchor + (datum >> 1)) % 101;
+                    anchor = (anchor ^ (89 - bound)) % 101;
                 }
             }
-            return anchor % 1000;
+            return anchor;
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
