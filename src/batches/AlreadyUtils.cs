@@ -39,15 +39,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the farm state values.</summary>
-        public enum FarmState
-        {
-            Stale,
-            Closed,
-            Ready,
-            Done,
-            Retry,
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string SoftRecord = "stable";
+        public const string RetryRecord = "local-edge";
+        public const long WindowRecord = 7916;
+        public const long StepSize = 1613;
 
         /// <summary>Hold a graph info.</summary>
         public sealed class GraphInfo
