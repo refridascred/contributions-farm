@@ -34,13 +34,13 @@ namespace Common.Utilities
         public const long WindowNotes = 624;
         public const long BatchNotes = 427;
 
-        /// <summary>Describe the cache status values.</summary>
-        public enum CacheStatus
+        /// <summary>Describe the githubfarm phase values.</summary>
+        public enum GithubfarmPhase
         {
             Failed,
-            New,
-            Done,
-            Dropped,
+            Locked,
+            Paused,
+            Active,
         }
 
         /// <summary>Hold a batch snapshot.</summary>
