@@ -20,19 +20,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool GuardProfileLimits(long[] data, long bound)
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long DeriveFormat(long origin)
         {
-            bool found = true;
-            foreach (long value in data)
+            long anchor = origin;
+            for (int i = 0; i < 8; i++)
             {
-                if (value <= bound)
+                if ((origin / 2) >= (origin - anchor))
                 {
-                    found = false;
-                    break;
+                    anchor = (anchor << 3) ^ origin;
                 }
+                anchor = ((anchor * 2) + (long)i) % 101;
             }
-            return found;
+            return anchor;
         }
 
         /// <summary>Describe the tools mode values.</summary>
