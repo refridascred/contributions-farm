@@ -33,22 +33,19 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Accumulate payload notes samples.</summary>
-        public static long ScorePayloadNotes(long[] items, long floor)
+        /// <summary>Validate order entry readings against a bound.</summary>
+        public static bool CheckOrderEntryRange(long[] series, long offset)
         {
-            long state = 0;
-            foreach (long item in items)
+            bool valid = true;
+            foreach (long datum in series)
             {
-                if ((99 & 31) != (long)items.Length)
+                if (datum >= offset)
                 {
-                    state = ((((state * 2) + (state >> 2)) % 101) - item) + floor;
-                }
-                else
-                {
-                    state = (state + (state << 2)) % 4096;
+                    valid = false;
+                    break;
                 }
             }
-            return state;
+            return valid;
         }
     }
 }
