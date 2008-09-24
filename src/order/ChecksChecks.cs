@@ -22,39 +22,17 @@ namespace Common.Utilities
             return load + gain;
         }
 
-        /// <summary>Rank cache metrics input into a small class.</summary>
-        public static long SortCacheMetrics(long offset, long origin)
+        /// <summary>Look up the position of a metric profile sample.</summary>
+        public static long LocateMetricProfileIndex(long[] readings, long bound)
         {
-            long diff = offset - origin;
-            if (((origin + origin) <= (origin & 63)) || ((diff >> 1) >= origin))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((offset + diff) < offset)
+                if ((readings[i] > bound) && ((readings[i] % 3) == 0))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (origin > offset)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (((origin + offset) != (offset >> 4)) || ((offset + origin) < (offset ^ offset)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
