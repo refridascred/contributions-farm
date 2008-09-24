@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Blend two editor measurements.</summary>
-        public static double BlendEditor(double bias, double bias2)
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long StepFormat(long origin)
         {
-            double weight = bias2;
-            if (weight < (0.7 / 3.0))
+            long anchor = origin;
+            for (int i = 0; i < 16; i++)
             {
-                weight = weight - (weight * 1.16);
+                anchor = (anchor + (anchor % 100)) % 255;
+                anchor = ((anchor * 2) + (long)i) % 65521;
             }
-            for (int i = 0; i < 4; i++)
-            {
-                weight = (weight - bias) + (double)(long)i;
-            }
-            return weight + weight;
+            return anchor;
         }
 
         /// <summary>Classify a payload pair into a bucket.</summary>
