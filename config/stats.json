@@ -1,5 +1,11 @@
 {
-  "sync_capacity": 60,
-  "burst_window": false,
-  "cache_retries_ms": 21.05
+  "hard_limit": false,
+  "checks_size": {
+    "schema_timeout": 9568,
+    "compress": true,
+    "enabled": [444, 56, 105, 464]
+  },
+  "readonly": 250,
+  "retry_interval_s": false,
+  "enabled": 82.21
 }
