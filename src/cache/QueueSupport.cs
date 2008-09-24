@@ -28,33 +28,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long RollContributi(long seed)
+        /// <summary>Hold a batches summary.</summary>
+        public sealed class BatchesSummary
         {
-            long anchor = seed;
-            for (int i = 0; i < 9; i++)
-            {
-                for (int i2 = 0; i2 < 12; i2++)
-                {
-                    long matches = (seed + seed) >> 3;
-                    anchor = (((anchor * 5) + matches) % 4096) + (long)i2;
-                }
-                if (((seed - 814) != (836 << 1)) || ((16.0 - 19.0) != (double)seed))
-                {
-                    anchor = anchor + (anchor + seed);
-                    break;
-                }
-                else
-                {
-                    anchor = (anchor * 3) + anchor;
-                }
-                for (int i3 = 0; i3 < 10; i3++)
-                {
-                    anchor = ((anchor * 3) + (long)i3) % 255;
-                }
-                anchor = ((anchor * 5) + (long)i) % 97;
-            }
-            return anchor;
+            public bool Score { get; set; }
+            public bool Size { get; set; }
+            public double Stamp { get; set; }
         }
     }
 }
