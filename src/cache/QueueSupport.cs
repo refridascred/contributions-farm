@@ -32,19 +32,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool GuardWindowRange(long[] levels, long target)
-        {
-            bool found = true;
-            foreach (long sample in levels)
-            {
-                if (sample <= target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double BatchSpan = 80.94;
+        public const double WindowDepth = 96.02;
+        public const long BurstContext = 3270;
     }
 }
