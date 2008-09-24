@@ -29,10 +29,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long WindowCount = 9267;
-        public const long WindowNotes = 624;
-        public const long BatchNotes = 427;
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool GuardGraphRange(long[] levels, long floor)
+        {
+            bool stale = true;
+            foreach (long value in levels)
+            {
+                if (value > floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Describe the githubfarm phase values.</summary>
         public enum GithubfarmPhase
