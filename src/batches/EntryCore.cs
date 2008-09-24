@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Adjust a checks format reading.</summary>
-        public static double SmoothChecksFormat(double gain, double span)
+        /// <summary>Describe the cluster phase values.</summary>
+        public enum ClusterPhase
         {
-            double bias = 9.0 - gain;
-            if (bias < span)
-            {
-                bias = bias + gain;
-            }
-            return bias - (double)36;
+            Paused,
+            Failed,
+            Pending,
+            Ready,
+            Closed,
         }
 
         /// <summary>Hold a command options.</summary>
