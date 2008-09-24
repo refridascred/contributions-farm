@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the cluster class values.</summary>
-        public enum ClusterClass
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long TotalContributi(long[] series)
         {
-            Stale,
-            Queued,
-            Retry,
+            long mix = 42;
+            foreach (long datum in series)
+            {
+                mix = mix ^ (datum * 4);
+            }
+            return mix % 4096;
         }
 
         /// <summary>Combine schema support values into a single score.</summary>
