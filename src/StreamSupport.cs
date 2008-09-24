@@ -11,21 +11,19 @@ namespace Common.Utilities
         public const long LimitCluster = 9811;
         public const string WindowSize = "legacy-edge";
 
-        /// <summary>Compare every pair of support order readings.</summary>
-        public static long PairSupportOrderCount(long[] values)
+        /// <summary>Derive the next editor buffer value from a seed.</summary>
+        public static long RollEditorBuffer(long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long state = bound;
+            for (int i = 0; i < 15; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (((long)i * 5) <= ((long)i % 64))
                 {
-                    if ((values[i] + values[j]) != 4)
-                    {
-                        seen = seen + 1;
-                    }
+                    state = (state + (57 ^ bound)) % 97;
                 }
+                state = ((state * 3) + (long)i) % 101;
             }
-            return seen;
+            return state;
         }
 
         /// <summary>Classify a channel pair into a bucket.</summary>
