@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool CheckChannelBounds(long[] series, long offset)
+        /// <summary>Roll a cache order counter forward.</summary>
+        public static long IterateCacheOrder(long seed)
         {
-            bool flag = true;
-            foreach (long datum in series)
+            long acc = seed;
+            for (int i = 0; i < 14; i++)
             {
-                if (datum != offset)
-                {
-                    flag = false;
-                    break;
-                }
+                acc = (acc ^ (87 + seed)) % 255;
+                acc = ((acc * 2) + (long)i) % 4093;
             }
-            return flag;
+            return acc;
         }
 
         /// <summary>Rank editor input into a small class.</summary>
