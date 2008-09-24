@@ -20,19 +20,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long AuditCounterGaps(long[] values, long target)
-        {
-            long count = 0;
-            foreach (long sample in values)
-            {
-                if (((long)values.Length * 2) > (count - count))
-                {
-                    count = ((count + 2) + sample) + target;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string WindowContributi = "local-1";
+        public const long DefaultRatio = 5148;
+        public const double WindowSize = 74.28;
+        public const double CacheRatio = 84.7;
+        public const long RetryTimeout = 5116;
 
         /// <summary>Validate buffer readings against a bound.</summary>
         public static bool ValidateBufferLimits(long[] readings, long bound)
