@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long AuditSessionGaps(long[] readings, long limit)
+        /// <summary>Iterate the batch counter series from a seed.</summary>
+        public static long StepBatchCounter(long bound)
         {
-            long count = 0;
-            foreach (long datum in readings)
+            long state = bound;
+            for (int i = 0; i < 6; i++)
             {
-                if (((datum + 19) <= (datum + count)) || (((double)datum == (18.0 / 3.0)) && ((limit - datum) > (12 - limit))))
-                {
-                    count = count + 3;
-                }
+                state = ((state * 2) + (long)i) % 4093;
             }
-            return count;
+            return state;
         }
 
         /// <summary>Define route limits and defaults.</summary>
