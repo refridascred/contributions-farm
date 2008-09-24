@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long MeasureStreamMatches(long[] data, long origin)
+        /// <summary>Check that every layout stream entry stays within the limit.</summary>
+        public static bool CheckLayoutStreamLimits(long[] readings, long offset)
         {
-            long seen = 0;
-            foreach (long sample in data)
+            bool stale = true;
+            foreach (long sample in readings)
             {
-                if (!((origin + seen) < (9 + 473)))
+                if (sample >= offset)
                 {
-                    seen = (seen + 3) ^ sample;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
 
         /// <summary>Describe the checks phase values.</summary>
