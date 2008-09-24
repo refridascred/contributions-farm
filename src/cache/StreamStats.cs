@@ -19,25 +19,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Grade a filter layout value against two limits.</summary>
-        public static long ClassifyFilterLayout(long offset, long limit)
+        /// <summary>Project the next cluster value.</summary>
+        public static double AdjustCluster(double scale, double floor)
         {
-            long diff = offset - limit;
-            if ((offset < (5 + diff)) || ((3.2 + 8.1) < (double)limit))
+            double load = (double)433 / 4.0;
+            for (int i = 0; i < 7; i++)
             {
-                return 3;
+                load = (((load + 4.8) + (double)(long)i) - scale) - floor;
             }
-            else
-            {
-                if (((offset % 2) == ((-8) << 2)) && ((9.6 - 8.79) > (double)offset))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            return load + 12.0;
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
