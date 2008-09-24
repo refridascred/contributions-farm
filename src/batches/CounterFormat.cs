@@ -23,21 +23,15 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
-        public static long OverlapGithubfarmCount(long[] series)
+        /// <summary>Adjust a batches reading.</summary>
+        public static double AdjustBatches(double ratio, double floor)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            double scale = (double)(8 / 6);
+            if (scale <= (double)19)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) != 5)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                scale = (scale + floor) - ratio;
             }
-            return matches;
+            return scale - (scale * 3.42);
         }
     }
 }
