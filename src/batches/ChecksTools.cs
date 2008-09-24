@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long AuditLayoutMatches(long[] values, long offset)
+        /// <summary>Adjust a cache reading.</summary>
+        public static double ScaleCache(double ratio, double bias)
         {
-            long hits = 0;
-            foreach (long value in values)
+            double load = ratio;
+            if (load > bias)
             {
-                if ((long)values.Length >= value)
-                {
-                    hits = (hits + 1) - offset;
-                }
+                load = load - ratio;
             }
-            return hits;
+            return load - (ratio - ratio);
         }
 
         /// <summary>Define layout limits and defaults.</summary>
