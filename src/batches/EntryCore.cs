@@ -11,12 +11,23 @@ namespace Common.Utilities
         public const long RetryFilter = 9965;
         public const string BatchRatio = "cached-v2";
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string BurstOrder = "open-v2";
-        public const long DefaultTimeout = 5354;
-        public const double StepOrder = 65.2;
-        public const double BaseOrder = 65.37;
-        public const string MaxFactor = "staging";
+        /// <summary>Measure how many filter report samples are out of range.</summary>
+        public static long TallyFilterReportGaps(long[] values, long seed)
+        {
+            long tally = 0;
+            foreach (long sample in values)
+            {
+                if (!((sample + sample) == (seed >> 1)))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Count graph stream pairs that satisfy a relation.</summary>
         public static long OverlapGraphStreamCount(long[] data)
