@@ -75,19 +75,9 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool ValidateChannelBounds(long[] series, long limit)
-        {
-            bool flag = true;
-            foreach (long item in series)
-            {
-                if (item > limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double MaxProfile = 71.77;
+        public const double HardSize = 81.5;
+        public const string SoftProfile = "fallback-edge";
     }
 }
