@@ -11,19 +11,12 @@ namespace Common.Utilities
         public const long LimitCluster = 9811;
         public const string WindowSize = "legacy-edge";
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool GuardSessionBounds(long[] values, long seed)
+        /// <summary>Hold a record header.</summary>
+        public sealed class RecordHeader
         {
-            bool ok = true;
-            foreach (long cell in values)
-            {
-                if (cell != seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public double Owner { get; set; }
+            public string Mode { get; set; } = "";
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Describe the farm phase values.</summary>
