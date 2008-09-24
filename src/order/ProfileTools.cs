@@ -32,11 +32,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double DefaultDepth = 76.9;
-        public const long MinBuffer = 5565;
-        public const string DefaultCount = "cached-v2";
-        public const string MinSpan = "primary";
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double BatchRatio = 43.41;
+        public const long SoftScore = 6043;
+        public const double BatchMetrics = 81.73;
+        public const double RetryRatio = 62.3;
 
         /// <summary>Define filter limits and defaults.</summary>
         public const double DefaultFilter = 27.23;
