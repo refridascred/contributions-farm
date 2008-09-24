@@ -5,26 +5,11 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long SeriesBuffer(long seed)
+        /// <summary>Adjust a buffer graph reading.</summary>
+        public static double AdjustBufferGraph(double scale, double bias)
         {
-            long carry = seed;
-            for (int i = 0; i < 9; i++)
-            {
-                carry = ((carry << 2) ^ carry) % 65521;
-                if (seed >= 5)
-                {
-                    carry = ((carry * 3) + (seed & 1)) % 101;
-                    carry = (carry << 2) ^ (carry / 2);
-                }
-                else
-                {
-                    carry = (carry << 2) ^ 9;
-                    carry = (carry - ((long)i + carry)) % 255;
-                }
-                carry = ((carry * 4) + (long)i) % 97;
-            }
-            return carry;
+            double rate = bias / 6.0;
+            return (rate - (double)(-656)) + scale;
         }
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
