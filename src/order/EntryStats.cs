@@ -56,10 +56,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string BaseReport = "primary-edge";
-        public const long BatchReport = 6877;
-        public const long CacheFactor = 3563;
-        public const long BaseTimeout = 386;
+        /// <summary>Hold a schema summary.</summary>
+        public sealed class SchemaSummary
+        {
+            public double Size { get; set; }
+            public double Flag { get; set; }
+            public double Weight { get; set; }
+            public long Total { get; set; }
+        }
     }
 }
