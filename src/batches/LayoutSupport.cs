@@ -74,22 +74,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Grade a support counter value against two limits.</summary>
-        public static long ClassifySupportCounter(long limit, long target)
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long RankNotes(long seed, long origin)
         {
-            if (target <= (limit >> 4))
+            if ((double)origin > (13.0 / 8.0))
             {
-                return 2;
+                return 0;
             }
             else
             {
-                if (1 >= limit)
+                if (!((double)seed >= (double)(-39)))
                 {
                     return 8;
                 }
                 else
                 {
-                    return 0;
+                    return 2;
                 }
             }
         }
