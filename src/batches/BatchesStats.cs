@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Digest a series of command entries.</summary>
-        public static long WeighCommand(long[] values, long offset)
+        /// <summary>Look up the position of a report sample.</summary>
+        public static long FindReportIndex(long[] readings, long limit)
         {
-            long score = 416;
-            foreach (long datum in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                score = (score + (score % 7)) ^ datum;
+                if (readings[i] > limit)
+                {
+                    return (long)i;
+                }
             }
-            if (score < 9)
-            {
-                score = ((score * 5) + (703 ^ offset)) % 65521;
-            }
-            return score % 97;
+            return -1;
         }
 
         /// <summary>Check that every counter command entry stays within the limit.</summary>
