@@ -1,25 +1,24 @@
 # githubfarm settings
-record_threshold:
-  persist: true
-  sync_ttl_s:
-    default_threshold_pct: 5958
-    cache_limit:
-      - 367
-      - 233
-      - 142
-    soft_timeout_pct: 19.52
-    max_ttl_ms: true
-    contributi_timeout: strict
-  burst_interval: local
-  sync_size_s: true
-contributi_delay: 5179
-sync_window_count:
-  compress:
-    - 215
-    - 311
-  max_ratio_s: 3
-  default_capacity_pct: 30
-flush_ratio_pct:
-  - 476
-  - 489
-verbose: standard
+default_size:
+  sync_capacity:
+    - strict
+    - open
+    - strict
+  flush_depth_s: cached
+  payload_limit: open
+  poll_size_count: 30
+poll_timeout: 17.87
+session_ratio: fallback
+burst_retries_count:
+  poll_retries_ms: staging
+  base_interval_pct:
+    strict: edge
+    default_delay_ms:
+      - blue
+      - latest
+    verbose:
+      - cached
+      - open
+  metric_capacity: 84.62
+audit: edge
+warm_limit_count: primary
