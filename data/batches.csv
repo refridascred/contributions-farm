@@ -1,7 +1,6 @@
-id,state,ratio,label,level
-1,72.62,964,818,staging
-2,61,48.38,local,fallback
-3,3.5,957,124,661
-4,30.23,local,eu-west,green
-5,561,primary,green,eu-west
-6,58,209,stable,66.15
+id,region,token
+1,open,365
+2,79.19,eu-west
+3,97.98,6.52
+4,legacy,fallback
+5,green,7.67
