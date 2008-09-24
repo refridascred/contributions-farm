@@ -42,10 +42,14 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double DefaultSession = 55.61;
-        public const long MinWidth = 9882;
-        public const long LimitSession = 4237;
-        public const long BurstScore = 5689;
+        /// <summary>Describe the session phase values.</summary>
+        public enum SessionPhase
+        {
+            Queued,
+            Locked,
+            Done,
+            Dropped,
+            New,
+        }
     }
 }
