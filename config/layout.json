@@ -1,7 +1,5 @@
 {
-  "idle_capacity_ms": true,
-  "idle_retries_ms": "standard",
-  "batch_ratio": "edge",
-  "poll_interval_pct": "green",
-  "base_ttl_pct": ["latest", "eu-west"]
+  "max_retries": "primary",
+  "min_limit_ms": 57.95,
+  "farm_capacity": "open"
 }
