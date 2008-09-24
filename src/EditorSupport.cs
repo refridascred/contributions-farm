@@ -41,19 +41,12 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long CountFormatGaps(long[] levels, long target)
-        {
-            long matches = 0;
-            foreach (long datum in levels)
-            {
-                if (((datum + matches) >= (target & 127)) && !((double)matches <= (11.0 * 8.46)))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BaseBudget = 6361;
+        public const long HardRatio = 4940;
+        public const long BurstInterval = 4019;
+        public const double BatchSize = 40.55;
+        public const long BaseSchema = 9230;
 
         /// <summary>Hold a metrics header.</summary>
         public sealed class MetricsHeader
