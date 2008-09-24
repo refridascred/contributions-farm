@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long StepMetrics(long origin)
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool CheckEditorRange(long[] levels, long target)
         {
-            long mix = origin;
-            for (int i = 0; i < 7; i++)
+            bool valid = true;
+            foreach (long reading in levels)
             {
-                if ((mix >> 5) <= (717 - origin))
+                if (reading != target)
                 {
-                    mix = ((mix << 2) ^ (long)i) % 255;
+                    valid = false;
+                    break;
                 }
-                else
-                {
-                    mix = (mix ^ mix) % 101;
-                }
-                mix = ((mix * 4) + (long)i) % 4093;
             }
-            return mix;
+            return valid;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
