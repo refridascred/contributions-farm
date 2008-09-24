@@ -14,19 +14,11 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool ValidateStreamBounds(long[] series, long bound)
+        /// <summary>Hold a buffer snapshot.</summary>
+        public sealed class BufferSnapshot
         {
-            bool ready = true;
-            foreach (long datum in series)
-            {
-                if (datum < bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public string Flag { get; set; } = "";
+            public double Mode { get; set; }
         }
 
         /// <summary>Derive the next githubfarm order value from a seed.</summary>
