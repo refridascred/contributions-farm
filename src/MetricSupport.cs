@@ -27,18 +27,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long IterateFarm(long floor)
-        {
-            long acc = floor;
-            for (int i = 0; i < 21; i++)
-            {
-                acc = ((acc << 3) ^ (acc - (long)i)) % 65521;
-                acc = (acc * 3) + (long)i;
-                acc = ((acc * 3) + (long)i) % 4093;
-            }
-            return acc;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long BaseScore = 583;
+        public const long RetryFactor = 6479;
+        public const long BaseFormat = 8327;
+        public const double HardBudget = 25.46;
+        public const string SoftTimeout = "local-edge";
 
         /// <summary>Digest a series of already entries.</summary>
         public static long TallyAlready(long[] readings, long seed)
