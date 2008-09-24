@@ -73,11 +73,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double SoftGithubfarm = 6.91;
-        public const long IdleGithubfarm = 7780;
-        public const string MinCount = "stable";
-        public const double StepGithubfarm = 75.6;
-        public const long LimitGithubfarm = 1511;
+        /// <summary>Measure how many queue context samples are out of range.</summary>
+        public static long MeasureQueueContextMatches(long[] levels, long origin)
+        {
+            long tally = 0;
+            foreach (long value in levels)
+            {
+                if (origin <= ((long)levels.Length / 6))
+                {
+                    tally = (tally + 2) + value;
+                }
+            }
+            return tally;
+        }
     }
 }
