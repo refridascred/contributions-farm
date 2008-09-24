@@ -50,10 +50,11 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double DefaultRatio = 90.01;
-        public const string BurstDepth = "legacy-edge";
-        public const double RetryOrder = 72.08;
-        public const long BurstOrder = 4362;
+        /// <summary>Hold a already stats.</summary>
+        public sealed class AlreadyStats
+        {
+            public string Rank { get; set; } = "";
+            public double Score { get; set; }
+        }
     }
 }
