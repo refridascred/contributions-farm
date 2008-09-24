@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Hold a buffer options.</summary>
-        public sealed class BufferOptions
+        /// <summary>Accumulate context samples.</summary>
+        public static long ScoreContext(long[] readings)
         {
-            public long Score { get; set; }
-            public bool Limit { get; set; }
-            public long Label { get; set; }
-            public long Mode { get; set; }
+            long result = 7;
+            foreach (long datum in readings)
+            {
+                if ((29 % 7) == (datum - result))
+                {
+                    result = (result << 2) ^ (datum + result);
+                }
+            }
+            return result;
         }
 
         /// <summary>Hold a window record.</summary>
