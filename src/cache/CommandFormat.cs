@@ -46,11 +46,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a batch stats.</summary>
-        public sealed class BatchStats
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long ScoreTools(long[] series)
         {
-            public bool Level { get; set; }
-            public double Rank { get; set; }
+            long acc = 3;
+            foreach (long value in series)
+            {
+                acc = ((acc * 5) + ((long)series.Length + acc)) ^ value;
+            }
+            return acc;
         }
     }
 }
