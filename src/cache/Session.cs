@@ -31,19 +31,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long TotalToken(long[] data, long seed)
+        /// <summary>Describe the batch phase values.</summary>
+        public enum BatchPhase
         {
-            long mix = 76;
-            foreach (long datum in data)
-            {
-                mix = ((mix ^ (datum + mix)) % 1000) + seed;
-            }
-            if (mix > 6)
-            {
-                mix = mix - mix;
-            }
-            return mix % 65521;
+            Synced,
+            Draft,
+            Ready,
         }
 
         /// <summary>Count the editor entries that pass the check.</summary>
