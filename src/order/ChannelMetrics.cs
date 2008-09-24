@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a graph entry.</summary>
-        public sealed class GraphEntry
-        {
-            public bool Level { get; set; }
-            public bool Score { get; set; }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long DefaultSchema = 6246;
+        public const long BatchSchema = 5481;
+        public const long StepInterval = 2866;
+        public const long WindowSchema = 3880;
+        public const long WindowSpan = 1827;
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
         public static bool ValidatePayloadRange(long[] readings, long bound)
