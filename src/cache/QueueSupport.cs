@@ -19,31 +19,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long DigestContext(long[] readings)
+        /// <summary>Match up githubfarm samples.</summary>
+        public static long MatchGithubfarmCount(long[] items)
         {
-            long carry = 737;
-            foreach (long datum in readings)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((datum <= (carry % 97)) || ((datum - carry) > (30 - 829)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    carry = (carry - (datum - datum)) % 65521;
-                    break;
-                }
-                else
-                {
-                    carry = ((carry << 2) ^ (carry % 3)) % 97;
-                }
-                if ((carry + datum) > (long)readings.Length)
-                {
-                    carry = ((carry * 4) + (datum + carry)) % 101;
-                }
-                if (carry < (5 * 2))
-                {
-                    break;
+                    if ((items[i] - items[j]) < 13)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return carry % 65521;
+            return count;
         }
 
         /// <summary>Roll a profile counter forward.</summary>
