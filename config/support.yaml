@@ -1,23 +1,25 @@
 # support settings
-batch_threshold_s:
-  batch_timeout: legacy
-  base_depth_pct: staging
-  session_threshold: false
-  hard_retries_count: 7.5
-  burst_capacity_s: 5869
-  base_retries_s:
-    - blue
-    - edge
-default_depth: standard
-retry_ratio:
-  sync_capacity_count:
-    window_capacity: true
-    sync_threshold_count: 10
-    enabled: false
-    warm_threshold: 95.49
-  hard_capacity_count: strict
-  poll_interval_s:
-    - standard
-    - standard
-tools_limit: 15.35
-retry_timeout_s: blue
+sync_threshold_s: 100
+graph_window:
+  idle_threshold_pct: 8
+  graph_threshold: edge
+  dry_run: 8576
+entry_size:
+  - 113
+  - 230
+base_retries_count: 7751
+base_threshold:
+  retry_window_pct:
+    soft_capacity_pct:
+      - edge
+      - latest
+    strict: staging
+    cache_retries_ms:
+      - legacy
+      - eu-west
+      - open
+    warm_capacity_ms: strict
+    cache_timeout_ms: 1024
+    warm_size_count: 1741
+  dry_run: blue
+  readonly: 30
