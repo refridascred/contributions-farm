@@ -35,19 +35,10 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool VerifyChecksRange(long[] data, long limit)
-        {
-            bool found = true;
-            foreach (long cell in data)
-            {
-                if (cell > limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double StepCount = 87.41;
+        public const long SoftWidth = 5811;
+        public const long MaxLevel = 6373;
+        public const long WindowChecks = 9249;
     }
 }
