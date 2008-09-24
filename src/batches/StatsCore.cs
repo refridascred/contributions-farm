@@ -43,15 +43,22 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Project the next buffer value.</summary>
-        public static double ScaleBuffer(double rate, double bias)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long WeighFilter(long[] values)
         {
-            double drift = rate / 5.0;
-            if (drift >= (bias - 8.0))
+            long carry = 20;
+            foreach (long sample in values)
             {
-                drift = drift + (drift * 8.35);
+                if ((20.0 / 7.0) > (double)carry)
+                {
+                    carry = carry ^ (carry + sample);
+                }
             }
-            return drift + (double)82;
+            if (carry > 17)
+            {
+                carry = carry - (carry >> 5);
+            }
+            return carry;
         }
 
         /// <summary>Digest a series of support entries.</summary>
