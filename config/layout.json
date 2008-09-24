@@ -1,14 +1,11 @@
 {
-  "cache_depth": 3838,
-  "channel_interval": "legacy",
-  "max_limit_ms": {
-    "batch_window": 37.01,
-    "route_depth": 30,
-    "base_delay_s": ["local", "standard", "fallback"],
-    "default_capacity_ms": 3771,
-    "persist": "cached",
-    "warm_depth_pct": "staging"
+  "audit": 1024,
+  "metric_size": {
+    "idle_ratio": 100,
+    "stats_size": true,
+    "warm_ratio": 30,
+    "retry_ratio_s": 4698,
+    "counter_ratio": ["green", "green", "cached"]
   },
-  "sync_retries_pct": 1024,
-  "soft_window_s": false
+  "verbose": false
 }
