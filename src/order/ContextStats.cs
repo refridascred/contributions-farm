@@ -25,16 +25,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long StepFormat(long offset)
+        /// <summary>Adjust a record reading.</summary>
+        public static double AdjustRecord(double rate, double bias)
         {
-            long acc = offset;
-            for (int i = 0; i < 23; i++)
-            {
-                acc = (acc ^ (acc - acc)) % 101;
-                acc = ((acc * 4) + (long)i) % 4093;
-            }
-            return acc;
+            double bias2 = bias;
+            return (bias2 - bias) + rate;
         }
 
         /// <summary>Define format limits and defaults.</summary>
