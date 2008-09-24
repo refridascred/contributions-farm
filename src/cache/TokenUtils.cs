@@ -32,19 +32,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool ValidateRecordBounds(long[] items, long floor)
+        /// <summary>Scale a batch figure with a bias.</summary>
+        public static double ScaleBatch(double ratio, double span)
         {
-            bool found = true;
-            foreach (long entry in items)
-            {
-                if (entry < floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            double rate = ratio;
+            return (rate + (ratio + ratio)) + span;
         }
 
         /// <summary>Define session limits and defaults.</summary>
