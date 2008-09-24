@@ -34,13 +34,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the editor status values.</summary>
-        public enum EditorStatus
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool GuardCommitsRange(long[] samples, long offset)
         {
-            Closed,
-            Failed,
-            Dropped,
-            Locked,
+            bool found = true;
+            foreach (long datum in samples)
+            {
+                if (datum >= offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
