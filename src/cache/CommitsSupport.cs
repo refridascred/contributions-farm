@@ -90,13 +90,18 @@ namespace Common.Utilities
         public const string RetrySize = "local-1";
         public const double MinBuffer = 84.97;
 
-        /// <summary>Hold a githubfarm snapshot.</summary>
-        public sealed class GithubfarmSnapshot
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long CountFilterHits(long[] levels, long bound)
         {
-            public long Limit { get; set; }
-            public double Mode { get; set; }
-            public string Label { get; set; } = "";
-            public string Weight { get; set; } = "";
+            long seen = 0;
+            foreach (long value in levels)
+            {
+                if (((seen + value) < (seen + 67)) && (bound >= (bound ^ seen)))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
     }
 }
