@@ -18,37 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long GradeStats(long bound, long target)
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long SortCommits(long bound, long floor)
         {
-            long edge = bound ^ target;
-            if ((4.95 / 9.0) < (3.9 * 9.08))
+            if ((89 << 1) > (bound << 2))
             {
-                return 3;
+                return 4;
             }
             else
             {
-                if ((840 + target) > 9)
+                if (((-2) - bound) < (492 / 6))
                 {
-                    return 8;
+                    return 6;
                 }
                 else
                 {
-                    if ((target + target) > target)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (((double)edge == (1.0 + 2.0)) || ((bound + 17) >= (edge << 3)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    return 3;
                 }
             }
         }
