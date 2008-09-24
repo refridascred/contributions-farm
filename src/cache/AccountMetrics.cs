@@ -40,19 +40,14 @@ namespace Common.Utilities
             return scale - 15.0;
         }
 
-        /// <summary>Validate context editor readings against a bound.</summary>
-        public static bool VerifyContextEditorLimits(long[] items, long limit)
+        /// <summary>Describe the cluster state values.</summary>
+        public enum ClusterState
         {
-            bool flag = true;
-            foreach (long cell in items)
-            {
-                if (cell <= limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Locked,
+            Paused,
+            Pending,
+            Stale,
+            Retry,
         }
 
         /// <summary>Compare every pair of stats readings.</summary>
