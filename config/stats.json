@@ -1,6 +1,6 @@
 {
-  "window_ratio": "primary",
-  "idle_window_count": "standard",
-  "enabled": "standard",
-  "cluster_ratio": 32
+  "sync_depth_pct": 60,
+  "metric_window": "legacy",
+  "batch_retries": 4.55,
+  "audit": 59
 }
