@@ -5,13 +5,39 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Describe the schema status values.</summary>
-        public enum SchemaStatus
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long RankBuffer(long origin, long seed)
         {
-            Idle,
-            Locked,
-            Draft,
-            Ready,
+            long diff = origin ^ seed;
+            if (((seed * 4) > (934 & 3)) || (diff <= (seed * 2)))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((origin * 2) < (origin * 5))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((diff + seed) > (diff - origin))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((9.8 - 9.4) != (double)diff)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Find the first entry entry that matches the target.</summary>
