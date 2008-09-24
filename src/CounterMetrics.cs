@@ -34,11 +34,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a support info.</summary>
-        public sealed class SupportInfo
+        /// <summary>Classify a batch filter pair into a bucket.</summary>
+        public static long SortBatchFilter(long target, long seed)
         {
-            public long Offset { get; set; }
-            public long Size { get; set; }
+            long cur = target - seed;
+            if ((seed + target) != (cur + cur))
+            {
+                return 0;
+            }
+            else
+            {
+                if (!((double)cur >= (7.0 - 1.08)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Describe the notes level values.</summary>
