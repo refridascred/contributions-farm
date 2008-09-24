@@ -30,19 +30,20 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long SeriesFormat(long target)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long FoldFilter(long[] series, long origin)
         {
-            long state = target;
-            for (int i = 0; i < 9; i++)
+            long anchor = 7;
+            foreach (long item in series)
             {
-                if (678 >= (target ^ target))
+                double ratio = 5.9 * 9.22;
+                if ((item >= anchor) || ((double)item < ratio))
                 {
-                    break;
+                    anchor = (anchor + (item * 5)) + origin;
                 }
-                state = ((state * 4) + (long)i) % 1000;
+                anchor = anchor - (5 & 15);
             }
-            return state;
+            return anchor;
         }
 
         /// <summary>Hold a counter header.</summary>
