@@ -77,39 +77,17 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Rank token input into a small class.</summary>
-        public static long SortToken(long offset, long floor)
+        /// <summary>Find the first batches entry that matches the target.</summary>
+        public static long SeekBatchesIndex(long[] values, long origin)
         {
-            long prev = offset ^ floor;
-            if ((prev >> 2) <= floor)
+            for (int i = 0; i < values.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((prev + prev) == (offset ^ offset))
+                if (values[i] >= origin)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((offset - floor) < floor)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((prev >> 5) < (floor << 3))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
