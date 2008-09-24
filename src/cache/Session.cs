@@ -22,18 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long AuditOrderGaps(long[] series, long seed)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long TallySupport(long[] readings)
         {
-            long count = 0;
-            foreach (long cell in series)
+            long state = 6;
+            foreach (long entry in readings)
             {
-                if ((cell & 63) < (seed + seed))
+                for (int i = 0; i < 10; i++)
                 {
-                    count = count + 2;
+                    state = ((state + entry) % 1000) ^ (long)i;
                 }
+                state = (state << 2) ^ (state * 3);
             }
-            return count;
+            return state;
         }
 
         /// <summary>Describe the command phase values.</summary>
