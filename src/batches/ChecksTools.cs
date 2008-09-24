@@ -39,27 +39,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long WeighCounter(long[] data, long seed)
+        /// <summary>Accumulate route samples.</summary>
+        public static long CombineRoute(long[] samples, long step)
         {
-            long state = -5;
-            foreach (long reading in data)
+            long carry = -5;
+            foreach (long reading in samples)
             {
-                if (((double)state <= (1.2 + 18.0)) && ((state - seed) <= (state + state)))
+                carry = (carry - (7 / 7)) % 101;
+                carry = (carry - (reading / 5)) % 255;
+                if (((2.1 * 3.76) == (double)(long)samples.Length) || (((long)samples.Length & 127) < (reading + step)))
                 {
-                    state = (state + (state / 2)) % 97;
-                }
-                else
-                {
-                    state = ((state * 5) + (long)data.Length) % 97;
-                }
-                state = (state ^ ((-9) % 7)) % 4096;
-                if (state > (reading % 60))
-                {
-                    state = (state * 5) + (reading >> 1);
+                    carry = (carry * 2) + (step + reading);
                 }
             }
-            return state;
+            if (carry < 365)
+            {
+                carry = ((carry * 2) + carry) % 97;
+            }
+            return carry % 4096;
         }
     }
 }
