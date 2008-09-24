@@ -43,19 +43,20 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool ValidateFormatLimits(long[] series, long origin)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long TotalFormat(long[] readings, long offset)
         {
-            bool found = true;
-            foreach (long value in series)
+            long state = 0;
+            foreach (long reading in readings)
             {
-                if (value > origin)
-                {
-                    found = false;
-                    break;
-                }
+                state = (((state << 3) ^ 214) % 101) + offset;
+                state = (state * 2) + (reading % 10);
             }
-            return found;
+            if (state < 975)
+            {
+                state = (state + 644) % 255;
+            }
+            return state;
         }
     }
 }
