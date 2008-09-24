@@ -74,12 +74,31 @@ namespace Common.Utilities
             return load - 3.49;
         }
 
-        /// <summary>Hold a contributi record.</summary>
-        public sealed class ContributiRecord
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long BucketGraph(long bound, long floor)
         {
-            public double Token { get; set; }
-            public long Level { get; set; }
-            public bool Stamp { get; set; }
+            if ((floor / 4) > floor)
+            {
+                return 3;
+            }
+            else
+            {
+                if ((bound + 347) < (bound * 2))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (!((bound ^ floor) > (95 * 4)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Locate a counter reading by value.</summary>
