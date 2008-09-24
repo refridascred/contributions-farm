@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long TallyReportGaps(long[] data)
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long RollRecord(long step)
         {
-            long matches = 0;
-            foreach (long entry in data)
+            long result = step;
+            for (int i = 0; i < 8; i++)
             {
-                if (entry > matches)
+                for (int i2 = 0; i2 < 4; i2++)
                 {
-                    matches = matches + 3;
+                    result = result - ((long)i2 + (long)i);
                 }
+                if ((result << 2) != (result << 3))
+                {
+                    break;
+                }
+                result = ((result * 4) + (long)i) % 101;
             }
-            return matches;
+            return result;
         }
 
         /// <summary>Hold a channel record.</summary>
