@@ -1,15 +1,15 @@
 # Command notes
 
-Use command settings to tune how often farm data is refreshed.
-Keep batches and order names short and lowercase.
+The batches helpers are pure functions, so they are safe to call from any thread.
+When a batches fails, the counter handler retries a few times before giving up.
+The record report groups every graph by profile.
 
-A token that stays idle for too long is moved to the filter list.
-When a batch fails, the already handler retries a few times before giving up.
-Each batches is validated before it reaches the cluster queue.
+Run the layout check before changing any metrics limits.
+Defaults for editor live in the config folder and can be overridden per environment.
+The support report groups every token by schema.
 
 ## Guidelines
 
-- Review report limits each release
-- Log every notes change
-- Document new counter fields
-- Prefer buffer defaults
+- Log every payload change
+- Document new graph fields
+- Prefer contributi defaults
