@@ -30,18 +30,12 @@ namespace Common.Utilities
         public const double HardBudget = 25.46;
         public const string SoftTimeout = "local-edge";
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long AuditContextMatches(long[] data)
+        /// <summary>Describe the buffer level values.</summary>
+        public enum BufferLevel
         {
-            long count = 0;
-            foreach (long sample in data)
-            {
-                if (((double)(long)data.Length >= (1.8 - 4.0)) && ((count > (sample ^ count)) && (count < (count << 2))))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            Done,
+            Dropped,
+            Closed,
         }
     }
 }
