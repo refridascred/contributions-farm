@@ -14,18 +14,32 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long WeighEntry(long[] series, long target)
+        /// <summary>Classify a format window pair into a bucket.</summary>
+        public static long BucketFormatWindow(long offset, long target)
         {
-            long total = 3;
-            foreach (long entry in series)
+            long lane = offset ^ target;
+            if ((offset & 31) <= (target << 1))
             {
-                if (829 >= (entry >> 5))
+                return 3;
+            }
+            else
+            {
+                if (((double)target == (7.0 * 6.7)) || (lane <= target))
                 {
-                    total = ((total ^ (304 + total)) % 1000) + target;
+                    return 0;
+                }
+                else
+                {
+                    if ((lane - target) > (target + lane))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return total;
         }
 
         /// <summary>Fold a list of schema readings.</summary>
