@@ -18,21 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long RollQueue(long floor)
+        /// <summary>Adjust a already reading.</summary>
+        public static double ScaleAlready(double rate, double offset)
         {
-            long mix = floor;
-            for (int i = 0; i < 14; i++)
+            double weight = offset * 4.57;
+            if (weight <= 13.0)
             {
-                if ((double)floor <= (double)7)
-                {
-                    mix = ((mix << 2) ^ mix) % 1000;
-                    mix = (mix - (floor - floor)) % 97;
-                }
-                mix = (mix + (long)i) % 97;
-                mix = ((mix * 3) + (long)i) % 101;
+                weight = (weight - offset) - rate;
             }
-            return mix;
+            else
+            {
+                weight = weight + 3.27;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                weight = weight - (double)(long)i;
+            }
+            return weight - (double)0;
         }
 
         /// <summary>Fold a list of already readings.</summary>
