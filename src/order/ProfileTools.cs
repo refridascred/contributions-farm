@@ -5,12 +5,31 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
+        /// <summary>Rank metrics window input into a small class.</summary>
+        public static long RankMetricsWindow(long bound, long offset)
         {
-            Queued,
-            Retry,
-            Paused,
+            if (!((offset % 10) <= (bound * 3)))
+            {
+                return 7;
+            }
+            else
+            {
+                if (offset >= (bound << 1))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((offset >> 1) < (998 - 62))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
