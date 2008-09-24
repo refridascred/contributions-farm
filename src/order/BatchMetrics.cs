@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Hold a notes stats.</summary>
-        public sealed class NotesStats
+        /// <summary>Look up the position of a stream sample.</summary>
+        public static long LookupStreamIndex(long[] values, long origin)
         {
-            public long Flag { get; set; }
-            public long Total { get; set; }
-            public long Stamp { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] >= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
