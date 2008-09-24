@@ -45,38 +45,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a checks route pair into a bucket.</summary>
-        public static long ClassifyChecksRoute(long offset, long offset2)
-        {
-            if ((6 + 612) < (offset % 60))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((offset2 * 2) < (offset << 3))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((36 * 3) >= (offset + offset))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((0 + offset) == (41 + offset2))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long SoftAccount = 6368;
+        public const long WindowAccount = 9686;
+        public const long BaseAccount = 6928;
+        public const long StepLevel = 3523;
+        public const string DefaultBudget = "staging-edge";
     }
 }
