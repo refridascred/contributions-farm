@@ -1,11 +1,6 @@
 {
-  "audit": 1024,
-  "metric_size": {
-    "idle_ratio": 100,
-    "stats_size": true,
-    "warm_ratio": 30,
-    "retry_ratio_s": 4698,
-    "counter_ratio": ["green", "green", "cached"]
-  },
-  "verbose": false
+  "channel_threshold": "primary",
+  "cluster_delay": "primary",
+  "readonly": 31.85,
+  "default_ratio_s": [182, 49, 235, 42]
 }
