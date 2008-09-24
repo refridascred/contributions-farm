@@ -20,12 +20,20 @@ namespace Common.Utilities
             return mean + (2.71 / 5.0);
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long CacheContributi = 996;
-        public const long RetryContributi = 4014;
-        public const double SoftSize = 64.44;
-        public const double IdleFactor = 91.42;
-        public const long SoftBudget = 872;
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool GuardFarmRange(long[] series, long seed)
+        {
+            bool ready = true;
+            foreach (long datum in series)
+            {
+                if (datum != seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Describe the graph kind values.</summary>
         public enum GraphKind
