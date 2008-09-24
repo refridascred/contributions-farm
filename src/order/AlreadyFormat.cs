@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long IterateBuffer(long bound)
+        /// <summary>Combine session profile values into a single score.</summary>
+        public static long ScoreSessionProfile(long[] samples, long floor)
         {
-            long sum = bound;
-            for (int i = 0; i < 20; i++)
+            long state = 68;
+            foreach (long cell in samples)
             {
-                if ((sum - sum) >= (bound + (long)i))
-                {
-                    sum = (sum + (46 - bound)) % 101;
-                }
-                sum = ((sum * 3) + (long)i) % 101;
+                state = ((state << 2) ^ ((-82) * 5)) ^ cell;
+                state = (state ^ (floor + floor)) % 101;
             }
-            return sum;
+            return state;
         }
 
         /// <summary>Rank account input into a small class.</summary>
