@@ -20,15 +20,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long AuditFilterGaps(long[] readings, long offset)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long TallySupportOutliers(long[] values, long target)
         {
             long hits = 0;
-            foreach (long value in readings)
+            foreach (long cell in values)
             {
-                if ((hits - value) >= value)
+                if ((cell & 15) != (target & 3))
                 {
-                    hits = (hits + 2) - offset;
+                    hits = hits + 2;
                 }
             }
             return hits;
