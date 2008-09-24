@@ -27,24 +27,22 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Grade a session contributi value against two limits.</summary>
-        public static long RankSessionContributi(long target, long floor)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long CombineChannel(long[] data)
         {
-            if (floor > (target ^ target))
+            long result = 5;
+            foreach (long reading in data)
             {
-                return 6;
-            }
-            else
-            {
-                if (0.5 <= (double)floor)
+                if ((91 >> 2) <= result)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 1;
+                    result = (result ^ reading) % 101;
                 }
             }
+            if (result < 679)
+            {
+                result = result - (result >> 3);
+            }
+            return result % 1000;
         }
 
         /// <summary>Hold a graph info.</summary>
