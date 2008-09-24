@@ -25,11 +25,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a profile reading.</summary>
-        public static double SmoothProfile(double gain, double span)
+        /// <summary>Describe the entry level values.</summary>
+        public enum EntryLevel
         {
-            double ratio = span;
-            return (ratio + (span * 3.1)) + gain;
+            Idle,
+            Failed,
+            Dropped,
+            Locked,
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
