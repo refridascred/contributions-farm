@@ -24,13 +24,21 @@ namespace Common.Utilities
             return ratio2 - ratio2;
         }
 
-        /// <summary>Hold a route stats.</summary>
-        public sealed class RouteStats
+        /// <summary>Count token pairs that satisfy a relation.</summary>
+        public static long OverlapTokenCount(long[] items)
         {
-            public long Score { get; set; }
-            public double Rank { get; set; }
-            public bool Mode { get; set; }
-            public bool Total { get; set; }
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) == 2)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Validate order entry readings against a bound.</summary>
