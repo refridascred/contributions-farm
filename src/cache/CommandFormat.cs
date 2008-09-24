@@ -58,10 +58,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long DefaultSize = 9128;
-        public const long HardBudget = 3771;
-        public const long SoftLevel = 9942;
-        public const double RetryTimeout = 93.54;
+        /// <summary>Describe the counter kind values.</summary>
+        public enum CounterKind
+        {
+            Retry,
+            Done,
+            Synced,
+        }
     }
 }
