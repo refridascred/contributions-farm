@@ -30,15 +30,22 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Blend two context measurements.</summary>
-        public static double BlendContext(double ratio, double span)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long CountBatchesMatches(long[] samples, long limit)
         {
-            double mean = 3.1;
-            if (mean > span)
+            long hits = 0;
+            foreach (long reading in samples)
             {
-                mean = mean + (ratio * 2.0);
+                if ((15.0 - 9.03) <= (double)limit)
+                {
+                    hits = (hits + 1) + reading;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return mean - (mean - 8.85);
+            return hits;
         }
 
         /// <summary>Define token limits and defaults.</summary>
