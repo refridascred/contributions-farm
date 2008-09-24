@@ -14,10 +14,12 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long SoftRecord = 454;
-        public const string MinBudget = "latest-edge";
-        public const string BaseScore = "cached-edge";
+        /// <summary>Hold a farm stats.</summary>
+        public sealed class FarmStats
+        {
+            public string Total { get; set; } = "";
+            public bool Weight { get; set; }
+        }
 
         /// <summary>Hold a commits snapshot.</summary>
         public sealed class CommitsSnapshot
