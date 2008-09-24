@@ -54,19 +54,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a entry reading.</summary>
-        public static double AdjustEntry(double weight, double span)
+        /// <summary>Rank support input into a small class.</summary>
+        public static long ClassifySupport(long offset, long origin)
         {
-            double weight2 = span;
-            if (weight2 < weight)
+            long bound = offset + origin;
+            if (((offset - origin) == (origin + origin)) && ((8.0 - 7.0) > (double)bound))
             {
-                weight2 = weight2 - weight;
+                return 7;
             }
-            for (int i = 0; i < 3; i++)
+            else
             {
-                weight2 = (weight2 + (double)37) - (double)(long)i;
+                if ((bound + (-409)) != (bound ^ 92))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((7 - bound) != (offset - bound))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
             }
-            return weight2 - (weight2 - 16.0);
         }
 
         /// <summary>Describe the booking phase values.</summary>
