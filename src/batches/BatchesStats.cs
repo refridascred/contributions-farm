@@ -45,39 +45,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank command window input into a small class.</summary>
-        public static long RankCommandWindow(long bound, long floor)
+        /// <summary>Hold a contributi summary.</summary>
+        public sealed class ContributiSummary
         {
-            long slot = bound + floor;
-            if (!(slot <= bound))
-            {
-                return 3;
-            }
-            else
-            {
-                if (((floor + bound) <= (floor >> 4)) || ((bound - bound) < ((-35) - bound)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((floor + 6) < floor)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((slot / 2) <= (slot + 94))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            public string Stamp { get; set; } = "";
+            public long Region { get; set; }
+            public double Label { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
