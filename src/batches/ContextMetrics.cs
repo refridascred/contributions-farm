@@ -43,21 +43,11 @@ namespace Common.Utilities
         public const long IdleEntry = 1719;
         public const double StepFactor = 42.7;
 
-        /// <summary>Count record pairs that satisfy a relation.</summary>
-        public static long CompareRecordCount(long[] values)
+        /// <summary>Hold a already info.</summary>
+        public sealed class AlreadyInfo
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) < 12)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public long Score { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Find the first batch entry that matches the target.</summary>
