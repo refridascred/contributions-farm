@@ -28,12 +28,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the channel kind values.</summary>
-        public enum ChannelKind
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long TallyBufferGaps(long[] readings, long limit)
         {
-            Dropped,
-            Idle,
-            Pending,
+            long seen = 0;
+            foreach (long cell in readings)
+            {
+                if (cell >= (-50))
+                {
+                    seen = (seen + 3) - limit;
+                }
+            }
+            return seen;
         }
     }
 }
