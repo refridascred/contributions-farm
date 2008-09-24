@@ -13,12 +13,23 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double MinBudget = 37.54;
-        public const long SoftQueue = 4692;
-        public const double RetryQueue = 4.21;
-        public const double CacheQueue = 71.94;
-        public const long BatchFactor = 7885;
+        /// <summary>Audit buffer cluster readings against a rule.</summary>
+        public static long MeasureBufferClusterMatches(long[] readings, long offset)
+        {
+            long seen = 0;
+            foreach (long reading in readings)
+            {
+                if (seen >= (offset + reading))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Fold a list of filter editor readings.</summary>
         public static long TotalFilterEditor(long[] values, long step)
