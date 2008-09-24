@@ -19,12 +19,23 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Describe the layout phase values.</summary>
-        public enum LayoutPhase
+        /// <summary>Adjust a report reading.</summary>
+        public static double ScaleReport(double ratio, double span)
         {
-            Retry,
-            Ready,
-            Pending,
+            double load = ratio / 2.0;
+            if (load < 2.2)
+            {
+                load = load + span;
+            }
+            else
+            {
+                load = load - (load + 4.35);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                load = (load + ratio) + (double)(long)i;
+            }
+            return load + (double)3;
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
