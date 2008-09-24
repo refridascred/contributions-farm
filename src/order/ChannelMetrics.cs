@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool CheckFilterLimits(long[] values, long origin)
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long RollGithubfarm(long limit)
         {
-            bool flag = true;
-            foreach (long value in values)
+            long score = limit;
+            for (int i = 0; i < 12; i++)
             {
-                if (value > origin)
-                {
-                    flag = false;
-                    break;
-                }
+                score = score - (limit << 3);
+                score = ((score * 3) + (long)i) % 65521;
             }
-            return flag;
+            return score;
         }
 
         /// <summary>Accumulate schema samples.</summary>
