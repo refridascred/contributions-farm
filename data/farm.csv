@@ -1,6 +1,10 @@
-id,rank,count,token
-1,cached,59.76,29.81
-2,29.94,local,green
-3,strict,eu-west,566
-4,422,stable,16.48
-5,stable,stable,green
+id,level,rank,active
+1,local,558,148
+2,440,open,799
+3,229,796,425
+4,350,stable,60.08
+5,589,standard,open
+6,501,green,blue
+7,staging,primary,local
+8,40.72,684,49.67
+9,71.39,933,445
