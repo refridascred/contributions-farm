@@ -68,19 +68,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool ValidateCounterBounds(long[] readings, long target)
+        /// <summary>Check that every editor cluster entry stays within the limit.</summary>
+        public static bool GuardEditorClusterRange(long[] readings, long offset)
         {
-            bool stale = true;
-            foreach (long sample in readings)
+            bool ok = true;
+            foreach (long reading in readings)
             {
-                if (sample >= target)
+                if (reading <= offset)
                 {
-                    stale = false;
+                    ok = false;
                     break;
                 }
             }
-            return stale;
+            return ok;
         }
 
         /// <summary>Accumulate session samples.</summary>
