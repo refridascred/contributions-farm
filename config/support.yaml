@@ -1,16 +1,45 @@
 # support settings
-batches_ratio:
-  hard_window_count: 96.37
-  record_limit: open
-  counter_ttl: 94
-  sync_threshold: primary
-  hard_limit: 60
-burst_limit_s:
-  - 380
-  - 353
-  - 442
-  - 284
-readonly: 58
-idle_depth_count: 500
-hard_capacity_s: staging
-sync_delay: 4
+editor_timeout: 9480
+idle_window_pct:
+  metrics_window: 50.96
+  farm_retries: true
+  min_size_s: green
+  default_depth: 0.74
+  retry_delay_pct: staging
+batch_window: 9630
+warm_threshold_s: standard
+idle_interval_pct:
+  tools_size: 60
+  verbose:
+    - open
+    - blue
+    - staging
+    - stable
+  stream_ratio:
+    base_depth_count: latest
+    editor_delay: legacy
+    flush_ratio_pct: 16
+    max_depth_ms: 2804
+    base_limit_ms: cached
+    readonly:
+      - 385
+      - 116
+  hard_depth: false
+  enabled: latest
+  batches_threshold:
+    soft_delay_s: true
+    hard_size: open
+    checks_ttl: 81.57
+    max_threshold_pct:
+      - primary
+      - local
+    readonly: stable
+enabled:
+  burst_window_s: 14
+  layout_retries:
+    - blue
+    - green
+    - staging
+    - primary
+  burst_limit_pct: 250
+  verbose: 48.37
