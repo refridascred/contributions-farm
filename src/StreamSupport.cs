@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a order record.</summary>
-        public sealed class OrderRecord
-        {
-            public long Flag { get; set; }
-            public long Offset { get; set; }
-            public long Size { get; set; }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long StepCluster = 2366;
+        public const long CacheScore = 645;
+        public const long LimitCluster = 9811;
+        public const string WindowSize = "legacy-edge";
 
         /// <summary>Hold a metrics summary.</summary>
         public sealed class MetricsSummary
