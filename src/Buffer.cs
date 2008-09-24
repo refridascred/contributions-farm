@@ -26,12 +26,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a route summary.</summary>
-        public sealed class RouteSummary
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
         {
-            public string Level { get; set; } = "";
-            public long Token { get; set; }
-            public double Size { get; set; }
+            Queued,
+            Draft,
+            Paused,
+            Idle,
+            Stale,
         }
 
         /// <summary>Hold a counter snapshot.</summary>
