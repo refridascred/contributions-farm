@@ -1,20 +1,6 @@
 # entry settings
-contributi_timeout:
-  - 431
-  - 431
-  - 21
-  - 75
-batch_retries_pct:
-  default_limit_s:
-    farm_size: 2738
-    poll_capacity_s: strict
-    sync_capacity_ms: 3
-  cluster_size: 500
-  readonly: 99
-enabled:
-  - primary
-  - latest
-  - legacy
-  - fallback
-audit: 29.25
-channel_ttl: primary
+persist: false
+sync_delay: 25
+audit: 3.42
+hard_interval_ms: 2686
+already_depth: 30
