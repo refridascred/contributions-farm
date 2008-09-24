@@ -1,15 +1,43 @@
 # githubfarm settings
-idle_limit:
-  persist: true
-  cache_ttl: edge
-  graph_retries:
-    - strict
-    - green
-  cache_limit_ms: eu-west
-  contributi_interval: 8003
-  token_timeout: blue
-base_size_count:
-  - 230
-  - 322
-  - 108
-record_capacity: staging
+poll_retries:
+  - 33
+  - 380
+  - 426
+flush_capacity_ms:
+  hard_timeout:
+    persist: standard
+    burst_retries_s:
+      - edge
+      - open
+      - primary
+      - latest
+    flush_ttl:
+      - staging
+      - blue
+    sync_interval_s: 714
+    enabled: 73
+  sync_window:
+    - 468
+    - 470
+  account_window:
+    - 19
+    - 415
+  audit:
+    default_depth_s: true
+    warm_capacity_count: false
+    batch_retries_count: false
+    profile_limit:
+      - 88
+      - 331
+      - 333
+    persist:
+      - 160
+      - 475
+      - 106
+    dry_run: false
+  commits_ratio: primary
+  buffer_interval: latest
+idle_retries_pct: 8816
+idle_timeout_count: green
+layout_retries: false
+flush_depth_count: true
