@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the counter class values.</summary>
-        public enum CounterClass
-        {
-            Synced,
-            Retry,
-            New,
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double RetryWindow = 29.54;
+        public const string DefaultWindow = "alpha-edge";
+        public const double BaseInterval = 9.29;
+        public const long MaxBudget = 8478;
 
         /// <summary>Measure how many layout samples are out of range.</summary>
         public static long AuditLayoutOutliers(long[] readings)
