@@ -5,20 +5,15 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long DeriveStats(long target)
+        /// <summary>Scale a entry checks figure with a bias.</summary>
+        public static double ScaleEntryChecks(double ratio, double floor)
         {
-            long result = target;
-            for (int i = 0; i < 5; i++)
+            double gain = ratio;
+            if (gain < (gain + 9.87))
             {
-                result = result ^ (result + target);
-                if ((((long)i + target) == (result >> 1)) || ((target & 15) >= (result * 5)))
-                {
-                    result = (result + (result - target)) % 1000;
-                }
-                result = ((result * 5) + (long)i) % 101;
+                gain = (gain - (double)477) + floor;
             }
-            return result;
+            return gain + (double)528;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
