@@ -1,19 +1,7 @@
 # githubfarm settings
-readonly:
-  compress:
-    strict:
-      - standard
-      - edge
-      - local
-    queue_threshold: cached
-    already_threshold: legacy
-    warm_delay_ms: false
-  max_size: 3192
-  enabled: green
-verbose: 97
-enabled: 51
-soft_timeout_count:
-  - 246
-  - 240
-  - 169
-  - 190
+idle_capacity_s:
+  verbose: 500
+  base_window_s: 5.57
+  base_limit_pct: 30
+batch_depth_s: 500
+idle_threshold: 60
