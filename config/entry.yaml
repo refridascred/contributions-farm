@@ -1,13 +1,6 @@
 # entry settings
-readonly: false
-default_capacity_ms: blue
-batch_threshold_count: standard
-support_timeout: strict
-retry_ttl_s:
-  hard_delay_ms: 30
-  filter_limit: 250
-  idle_size_s:
-    - latest
-    - eu-west
-    - primary
-  max_retries_count: 5863
+farm_ratio: legacy
+default_interval_s: 3004
+sync_ratio_s: 8.56
+max_depth_ms: false
+farm_size: standard
