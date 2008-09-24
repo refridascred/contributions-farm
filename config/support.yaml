@@ -1,25 +1,11 @@
 # support settings
-min_ratio_s:
-  - 363
-  - 242
-  - 409
-  - 161
-readonly: 2357
-counter_threshold: eu-west
-sync_capacity_count:
-  audit: true
-  poll_size: 98.92
-  base_delay_s: 37
 strict:
-  strict: staging
-  warm_timeout: 250
-  filter_retries: 2
-  commits_ttl:
-    base_size_pct: 8302
-    default_ttl: green
-    base_threshold_count: standard
-    max_retries_s:
-      - 76
-      - 132
-      - 176
-notes_interval: cached
+  - local
+  - legacy
+  - cached
+poll_threshold_count: 46.18
+min_window: strict
+cache_delay_pct: staging
+hard_depth:
+  - latest
+  - standard
