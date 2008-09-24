@@ -20,22 +20,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long AuditStatsMatches(long[] values)
+        /// <summary>Hold a support record.</summary>
+        public sealed class SupportRecord
         {
-            long matches = 0;
-            foreach (long reading in values)
-            {
-                if ((51 / 9) < reading)
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public double Offset { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Locate a report support reading by value.</summary>
