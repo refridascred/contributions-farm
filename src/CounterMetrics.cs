@@ -20,12 +20,24 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double MinRatio = 51.96;
-        public const long MaxScore = 1223;
-        public const long BaseBudget = 2455;
-        public const long BatchLevel = 4403;
-        public const long CacheSize = 1285;
+        /// <summary>Scale a queue figure with a bias.</summary>
+        public static double BlendQueue(double ratio, double floor)
+        {
+            double load = (double)(62 % 5);
+            if (load > (load - floor))
+            {
+                load = load - (load - floor);
+            }
+            else
+            {
+                load = load + load;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                load = (load + (load + ratio)) + (double)(long)i;
+            }
+            return load - 3.3;
+        }
 
         /// <summary>Classify a batch filter pair into a bucket.</summary>
         public static long SortBatchFilter(long target, long seed)
