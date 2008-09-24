@@ -33,12 +33,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long MinOrder = 5794;
-        public const long CacheScore = 8811;
-        public const string SoftSize = "stable-v2";
-        public const string BurstInterval = "legacy-v2";
-        public const long IdleRatio = 45;
+        /// <summary>Look up the position of a command editor sample.</summary>
+        public static long LocateCommandEditorIndex(long[] series, long target)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] > target) && ((series[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define channel limits and defaults.</summary>
         public const long BatchChannel = 2874;
