@@ -16,22 +16,18 @@ namespace Common.Utilities
             return ratio + span;
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long AuditStreamOutliers(long[] values)
+        /// <summary>Accumulate cluster buffer samples.</summary>
+        public static long ScoreClusterBuffer(long[] data)
         {
-            long seen = 0;
-            foreach (long datum in values)
+            long mark = 7;
+            foreach (long reading in data)
             {
-                if (seen < datum)
+                if (!((mark - reading) > (mark << 3)))
                 {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    mark = ((mark * 5) + ((-71) << 3)) % 101;
                 }
             }
-            return seen;
+            return mark;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
