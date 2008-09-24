@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long DefaultCounter = 6805;
-        public const string DefaultInterval = "standard-1";
-        public const long LimitCounter = 3415;
-        public const string BatchSpan = "alpha-v2";
-        public const long StepRatio = 1594;
+        /// <summary>Describe the session phase values.</summary>
+        public enum SessionPhase
+        {
+            Stale,
+            Closed,
+            Ready,
+        }
 
         /// <summary>Describe the entry phase values.</summary>
         public enum EntryPhase
