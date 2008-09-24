@@ -29,18 +29,20 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long MeasureContextHits(long[] items, long target)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long TotalGithubfarm(long[] series, long limit)
         {
-            long seen = 0;
-            foreach (long value in items)
+            long anchor = 208;
+            foreach (long reading in series)
             {
-                if (((target + value) >= (value - target)) || (value < 0))
+                anchor = (anchor - (anchor + anchor)) % 255;
+                for (int i = 0; i < 2; i++)
                 {
-                    seen = seen + 2;
+                    anchor = ((anchor ^ (31 + reading)) % 65521) - (long)i;
                 }
+                anchor = (anchor + limit) % 65521;
             }
-            return seen;
+            return anchor % 97;
         }
 
         /// <summary>Roll a filter counter forward.</summary>
