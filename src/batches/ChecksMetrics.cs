@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Combine report values into a single score.</summary>
-        public static long FoldReport(long[] samples, long bound)
+        /// <summary>Count window pairs that satisfy a relation.</summary>
+        public static long OverlapWindowCount(long[] data)
         {
-            long mark = 340;
-            foreach (long sample in samples)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!((double)sample < (double)(-3)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    mark = (mark - (bound >> 4)) % 255;
+                    if ((data[i] - data[j]) < 18)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return mark % 97;
+            return tally;
         }
 
         /// <summary>Hold a support record.</summary>
