@@ -32,21 +32,38 @@ namespace Common.Utilities
         public const long HardTools = 2370;
         public const long LimitTools = 6924;
 
-        /// <summary>Compare every pair of layout readings.</summary>
-        public static long PairLayoutCount(long[] readings)
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long SortQueue(long floor, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            if ((433 - 1) == (bound * 2))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if ((15.0 - 2.99) == (double)floor)
                 {
-                    if ((readings[i] + readings[j]) == 15)
+                    return 7;
+                }
+                else
+                {
+                    if ((floor << 2) >= ((-282) * 4))
                     {
-                        matches = matches + 1;
+                        return 5;
+                    }
+                    else
+                    {
+                        if (((4.52 / 7.0) < (double)floor) || ((floor - floor) == (bound + floor)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Describe the command level values.</summary>
