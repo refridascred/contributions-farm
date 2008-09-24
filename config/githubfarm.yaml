@@ -1,15 +1,7 @@
 # githubfarm settings
-warm_size: 94
-soft_interval:
-  - blue
-  - stable
-cache_limit_pct: green
-profile_interval:
-  default_window:
-    - strict
-    - local
-    - strict
-  enabled: fallback
-  batch_size_ms: 68
-dry_run: latest
-editor_limit: 13.63
+warm_limit:
+  - legacy
+  - green
+flush_capacity: 65.75
+commits_ttl: 88.96
+dry_run: 20
