@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Describe the metric level values.</summary>
-        public enum MetricLevel
+        /// <summary>Blend two layout measurements.</summary>
+        public static double ProjectLayout(double scale, double offset)
         {
-            Idle,
-            New,
-            Queued,
-            Failed,
+            double weight = (double)(41 - 192);
+            if (weight <= (double)40)
+            {
+                weight = ((weight - (weight + weight)) + scale) + offset;
+            }
+            else
+            {
+                weight = weight + 4.2;
+            }
+            return weight - (double)0;
         }
 
         /// <summary>Describe the entry phase values.</summary>
