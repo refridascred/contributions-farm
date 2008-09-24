@@ -16,11 +16,15 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Scale a buffer figure with a bias.</summary>
-        public static double SmoothBuffer(double gain, double bias)
+        /// <summary>Project the next command value.</summary>
+        public static double SmoothCommand(double rate, double offset)
         {
-            double load = 1.6 + (double)0;
-            return (load + (7.88 + bias)) + gain;
+            double rate2 = (double)((-928) << 3);
+            if (rate2 <= 2.51)
+            {
+                rate2 = ((rate2 - (rate2 * 3.0)) - rate) - offset;
+            }
+            return rate2 - (rate2 + 7.89);
         }
 
         /// <summary>Hold a metrics snapshot.</summary>
