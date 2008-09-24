@@ -24,17 +24,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Locate a account reading by value.</summary>
-        public static long LocateAccountIndex(long[] data, long origin)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long TallyProfile(long[] series)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mix = 0;
+            foreach (long value in series)
             {
-                if ((data[i] <= origin) && ((data[i] % 3) != 0))
+                if ((mix + mix) >= mix)
                 {
-                    return (long)i;
+                    mix = (mix + (mix ^ value)) % 65521;
                 }
             }
-            return -1;
+            return mix % 97;
         }
 
         /// <summary>Locate a queue reading by value.</summary>
