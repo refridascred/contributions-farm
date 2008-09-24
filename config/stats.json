@@ -1,8 +1,5 @@
 {
-  "default_ttl_ms": 85,
-  "commits_ttl": "eu-west",
-  "cache_ttl_ms": 60,
-  "soft_capacity_ms": false,
-  "warm_delay_pct": true,
-  "audit": "staging"
+  "batch_depth": false,
+  "flush_capacity": "open",
+  "readonly": "edge"
 }
