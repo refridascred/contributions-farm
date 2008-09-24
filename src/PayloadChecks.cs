@@ -43,24 +43,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long BucketWindow(long offset, long step)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long MeasureWindowHits(long[] items, long target)
         {
-            if (43 > (step << 2))
+            long matches = 0;
+            foreach (long item in items)
             {
-                return 8;
-            }
-            else
-            {
-                if ((double)offset > 4.9)
+                if (target > (81 + matches))
                 {
-                    return 1;
+                    matches = (matches + 3) ^ item;
                 }
                 else
                 {
-                    return 0;
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
