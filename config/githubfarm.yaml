@@ -1,21 +1,6 @@
 # githubfarm settings
-contributi_window:
-  - 164
-  - 447
-command_size:
-  default_limit_pct: latest
-  enabled: false
-  dry_run:
-    - 119
-    - 207
-  flush_depth_ms: 96.12
-  batch_limit: false
-  batch_ttl_s:
-    - 112
-    - 357
-    - 180
-    - 314
-sync_depth: 3068
-format_ttl: edge
-soft_interval: 100
-burst_retries_count: 14
+enabled: 100
+metrics_limit: 9204
+warm_interval_count: standard
+persist: 250
+flush_depth_pct: false
