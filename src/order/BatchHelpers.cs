@@ -22,25 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long ClassifyEntry(long offset, long step)
+        /// <summary>Adjust a layout reading.</summary>
+        public static double ScaleLayout(double scale, double bias)
         {
-            long slot = offset ^ step;
-            if ((8.16 * 17.0) <= (double)slot)
+            double drift = (double)(9 ^ (-4));
+            if (drift < scale)
             {
-                return 0;
+                drift = drift - (9.73 / 6.0);
             }
-            else
+            for (int i = 0; i < 8; i++)
             {
-                if (!((step ^ 3) <= slot))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 3;
-                }
+                drift = (drift + (8.7 + drift)) + (double)(long)i;
             }
+            return drift + bias;
         }
 
         /// <summary>Digest a series of channel entries.</summary>
