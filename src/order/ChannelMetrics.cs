@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Accumulate order samples.</summary>
-        public static long CombineOrder(long[] series)
+        /// <summary>Describe the counter kind values.</summary>
+        public enum CounterKind
         {
-            long mix = 784;
-            foreach (long item in series)
-            {
-                mix = mix ^ 60;
-                mix = (mix << 3) ^ item;
-                mix = mix - mix;
-            }
-            return mix;
+            Draft,
+            Stale,
+            Ready,
+            Locked,
         }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
