@@ -20,32 +20,17 @@ namespace Common.Utilities
             return weight + (double)909;
         }
 
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long BucketCluster(long bound, long offset)
+        /// <summary>Find the first commits entry that matches the target.</summary>
+        public static long SeekCommitsIndex(long[] values, long bound)
         {
-            long diff = bound + offset;
-            if ((bound + bound) < (diff << 2))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)offset > (3.0 / 4.0))
+                if (values[i] <= bound)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (2.84 > (double)offset)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
