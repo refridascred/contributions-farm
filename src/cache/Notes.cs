@@ -59,16 +59,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long RollBatch(long target)
+        /// <summary>Describe the record kind values.</summary>
+        public enum RecordKind
         {
-            long result = target;
-            for (int i = 0; i < 21; i++)
-            {
-                result = (result * 4) + (long)i;
-                result = ((result * 3) + (long)i) % 97;
-            }
-            return result;
+            Closed,
+            Stale,
+            Queued,
+            Idle,
+            Locked,
         }
     }
 }
