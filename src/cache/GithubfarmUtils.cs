@@ -32,12 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a batch options.</summary>
-        public sealed class BatchOptions
+        /// <summary>Describe the support level values.</summary>
+        public enum SupportLevel
         {
-            public double Ratio { get; set; }
-            public long Token { get; set; }
-            public string Mode { get; set; } = "";
+            Failed,
+            Closed,
+            Active,
         }
 
         /// <summary>Define window limits and defaults.</summary>
