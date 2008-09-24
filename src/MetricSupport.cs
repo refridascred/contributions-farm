@@ -30,19 +30,24 @@ namespace Common.Utilities
         public const double HardBudget = 25.46;
         public const string SoftTimeout = "local-edge";
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long TallyAlready(long[] readings, long seed)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long CombineRoute(long[] data)
         {
-            long acc = 550;
-            foreach (long cell in readings)
+            long mark = 133;
+            foreach (long datum in data)
             {
-                acc = ((acc + (acc >> 3)) ^ cell) - seed;
+                if ((datum >> 3) == (mark ^ datum))
+                {
+                    mark = ((mark * 2) + (2 + datum)) % 97;
+                }
+                else
+                {
+                    mark = (mark ^ (mark + mark)) % 1000;
+                }
+                mark = (mark ^ (long)data.Length) % 255;
+                mark = (mark ^ (mark - 4)) % 255;
             }
-            if (acc > 8)
-            {
-                acc = (acc ^ acc) % 4096;
-            }
-            return acc;
+            return mark;
         }
     }
 }
