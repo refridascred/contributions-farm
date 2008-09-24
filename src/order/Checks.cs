@@ -23,13 +23,13 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Hold a contributi record.</summary>
-        public sealed class ContributiRecord
+        /// <summary>Hold a command snapshot.</summary>
+        public sealed class CommandSnapshot
         {
-            public long Ratio { get; set; }
-            public bool Flag { get; set; }
-            public long Weight { get; set; }
-            public bool Score { get; set; }
+            public string Weight { get; set; } = "";
+            public bool Ratio { get; set; }
+            public bool Token { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Hold a order info.</summary>
