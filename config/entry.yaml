@@ -1,9 +1,20 @@
 # entry settings
-cluster_ratio: true
-entry_window: stable
-graph_threshold: true
-record_limit:
-  - edge
-  - latest
-persist: 7885
-session_limit: latest
+batch_threshold_s:
+  min_delay: 8.28
+  enabled: 5319
+  format_window: false
+  flush_depth_pct: 6.16
+  contributi_timeout: 16
+  hard_ttl_s: true
+payload_ttl: false
+max_ttl_s: true
+max_ratio_ms:
+  - standard
+  - staging
+  - strict
+  - strict
+warm_size:
+  - strict
+  - green
+  - blue
+cache_retries_ms: edge
