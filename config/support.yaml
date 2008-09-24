@@ -1,9 +1,6 @@
 # support settings
-cache_size: legacy
-base_capacity_pct:
-  - 447
-  - 480
-  - 461
-  - 182
-poll_limit_count: 43.27
-base_window_s: true
+sync_window: primary
+enabled: 6348
+buffer_timeout:
+  - 84
+  - 41
