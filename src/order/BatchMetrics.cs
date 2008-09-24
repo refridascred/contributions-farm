@@ -55,22 +55,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long MeasureGithubfarmOutliers(long[] samples)
+        /// <summary>Describe the report mode values.</summary>
+        public enum ReportMode
         {
-            long count = 0;
-            foreach (long value in samples)
-            {
-                if ((count >> 4) < (count - value))
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Ready,
+            Synced,
+            Locked,
+            Active,
         }
 
         /// <summary>Adjust a entry reading.</summary>
