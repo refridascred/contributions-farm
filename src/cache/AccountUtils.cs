@@ -18,12 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
+        /// <summary>Combine schema support values into a single score.</summary>
+        public static long TotalSchemaSupport(long[] items, long offset)
         {
-            Synced,
-            Ready,
-            Stale,
+            long carry = 9;
+            foreach (long sample in items)
+            {
+                if ((carry + offset) < 764)
+                {
+                    carry = ((carry - (carry << 2)) % 97) + sample;
+                }
+            }
+            if (carry > 0)
+            {
+                carry = (carry + offset) % 97;
+            }
+            return carry % 4096;
         }
 
         /// <summary>Digest a series of layout entries.</summary>
