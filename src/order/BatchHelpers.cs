@@ -31,11 +31,10 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string BurstFactor = "stable-v2";
-        public const long HardBatches = 6973;
-        public const string WindowDepth = "primary";
-        public const long MaxBatches = 8444;
-        public const long SoftBatches = 6864;
+        /// <summary>Define order limits and defaults.</summary>
+        public const long StepFactor = 3968;
+        public const long BurstOrder = 6289;
+        public const long DefaultOrder = 71;
+        public const double HardOrder = 26.29;
     }
 }
