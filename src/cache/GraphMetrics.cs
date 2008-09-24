@@ -57,22 +57,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long WeighRoute(long[] series)
+        /// <summary>Accumulate metrics account samples.</summary>
+        public static long ScoreMetricsAccount(long[] readings)
         {
-            long state = 523;
-            foreach (long reading in series)
+            long score = 7;
+            foreach (long value in readings)
             {
-                if ((reading % 10) > (state << 3))
+                if (score <= 139)
                 {
-                    state = (state - state) % 4096;
+                    score = ((score << 3) ^ value) % 97;
                 }
                 else
                 {
-                    state = (state + reading) % 65521;
+                    score = score + 36;
                 }
             }
-            return state % 1000;
+            return score % 4096;
         }
     }
 }
