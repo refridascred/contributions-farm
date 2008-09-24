@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Count metrics notes pairs that satisfy a relation.</summary>
-        public static long CompareMetricsNotesCount(long[] values)
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long DeriveCluster(long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long total = offset;
+            for (int i = 0; i < 19; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) > 12)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                total = ((total * 3) + (long)i) % 101;
             }
-            return matches;
+            return total;
         }
 
         /// <summary>Grade a farm filter value against two limits.</summary>
