@@ -26,19 +26,22 @@ namespace Common.Utilities
         public const long LimitFactor = 6817;
         public const long IdleWidth = 1041;
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool GuardCommitsRange(long[] items, long offset)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long AuditSupportMatches(long[] series, long floor)
         {
-            bool ready = true;
-            foreach (long datum in items)
+            long tally = 0;
+            foreach (long item in series)
             {
-                if (datum < offset)
+                if (((97 ^ item) <= floor) || ((item - item) <= (tally / 6)))
                 {
-                    ready = false;
-                    break;
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return ready;
+            return tally;
         }
     }
 }
