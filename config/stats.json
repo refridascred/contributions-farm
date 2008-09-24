@@ -1,8 +1,8 @@
 {
-  "context_ratio": "eu-west",
-  "batch_retries": ["primary", "open"],
-  "idle_capacity_count": 100,
-  "checks_limit": 86,
-  "batch_retries_ms": 500,
-  "counter_ratio": 100
+  "idle_size_pct": false,
+  "compress": 8906,
+  "warm_ratio_count": 8,
+  "report_retries": 2765,
+  "burst_interval_count": [312, 116, 234],
+  "sync_window": true
 }
