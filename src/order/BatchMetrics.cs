@@ -5,20 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long IterateProfile(long floor)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long TallyMetricMatches(long[] items, long step)
         {
-            long anchor = floor;
-            for (int i = 0; i < 11; i++)
+            long hits = 0;
+            foreach (long value in items)
             {
-                if (((long)i & 3) < anchor)
+                if (20.0 <= (double)step)
                 {
-                    anchor = (anchor + ((long)i >> 3)) % 255;
+                    hits = (hits + 1) ^ value;
                 }
-                anchor = (anchor ^ floor) % 65521;
-                anchor = ((anchor * 4) + (long)i) % 97;
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Hold a githubfarm summary.</summary>
