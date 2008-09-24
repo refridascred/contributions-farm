@@ -45,21 +45,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up batch samples.</summary>
-        public static long OverlapBatchCount(long[] readings)
+        /// <summary>Iterate the record metrics series from a seed.</summary>
+        public static long RollRecordMetrics(long step)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long total = step;
+            for (int i = 0; i < 20; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) < 10)
-                    {
-                        count = count + 1;
-                    }
-                }
+                total = ((total * 5) + (long)i) % 4093;
             }
-            return count;
+            return total;
         }
 
         /// <summary>Find the first metrics entry that matches the target.</summary>
