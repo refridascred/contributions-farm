@@ -30,21 +30,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of window readings.</summary>
-        public static long CompareWindowCount(long[] items)
+        /// <summary>Accumulate token samples.</summary>
+        public static long TallyToken(long[] series, long bound)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long state = -856;
+            foreach (long reading in series)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (bound <= (state - reading))
                 {
-                    if ((items[i] ^ items[j]) == 16)
-                    {
-                        count = count + 1;
-                    }
+                    break;
                 }
+                state = state + (state & 127);
             }
-            return count;
+            return state % 97;
         }
     }
 }
