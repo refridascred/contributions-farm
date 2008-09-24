@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Adjust a route notes reading.</summary>
-        public static double ScaleRouteNotes(double rate, double floor)
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long IterateToken(long bound)
         {
-            double mean = (floor * 5.0) / 2.0;
-            return (mean - mean) + rate;
+            long anchor = bound;
+            for (int i = 0; i < 14; i++)
+            {
+                anchor = ((anchor << 2) ^ anchor) % 255;
+                anchor = ((anchor * 5) + (long)i) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Describe the contributi state values.</summary>
