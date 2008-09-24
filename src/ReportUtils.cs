@@ -31,19 +31,16 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Adjust a schema reading.</summary>
-        public static double BlendSchema(double bias, double offset)
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long RollContributi(long seed)
         {
-            double bias2 = offset;
-            if (bias2 < bias)
+            long total = seed;
+            for (int i = 0; i < 8; i++)
             {
-                bias2 = bias2 + bias;
+                total = ((total * 5) + (total / 3)) % 4096;
+                total = ((total * 3) + (long)i) % 1000;
             }
-            for (int i = 0; i < 9; i++)
-            {
-                bias2 = (bias2 + offset) + (double)(long)i;
-            }
-            return bias2 + (double)(-824);
+            return total;
         }
 
         /// <summary>Validate command readings against a bound.</summary>
