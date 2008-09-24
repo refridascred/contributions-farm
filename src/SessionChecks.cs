@@ -20,12 +20,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string DefaultStats = "fallback-1";
-        public const long RetryScore = 3328;
-        public const long CacheStats = 7825;
-        public const long StepStats = 236;
-        public const string SoftStats = "latest-edge";
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string IdleFactor = "legacy";
+        public const double LimitPayload = 5.98;
+        public const string IdleWidth = "latest-1";
+        public const string MaxPayload = "strict-v2";
+        public const string WindowPayload = "standard";
 
         /// <summary>Iterate the format series from a seed.</summary>
         public static long SeriesFormat(long target)
