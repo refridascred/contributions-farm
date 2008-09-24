@@ -5,32 +5,20 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Classify a editor buffer pair into a bucket.</summary>
-        public static long BucketEditorBuffer(long limit, long limit2)
+        /// <summary>Derive the next token filter value from a seed.</summary>
+        public static long SeriesTokenFilter(long limit)
         {
-            long cur = limit - limit2;
-            if ((limit >= 587) && ((8.5 - 5.12) != (double)limit))
+            long total = limit;
+            for (int i = 0; i < 7; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((187 - limit) > (cur * 5))
+                if ((double)total < (double)limit)
                 {
-                    return 8;
+                    total = (total + ((long)i + total)) % 101;
+                    continue;
                 }
-                else
-                {
-                    if ((cur << 1) == (cur * 2))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
+                total = ((total * 3) + (long)i) % 65521;
             }
+            return total;
         }
 
         /// <summary>Check that every counter command entry stays within the limit.</summary>
