@@ -25,17 +25,13 @@ namespace Common.Utilities
         public const long BurstScore = 6077;
         public const double RetrySize = 62.71;
 
-        /// <summary>Find the first stats metric entry that matches the target.</summary>
-        public static long SeekStatsMetricIndex(long[] readings, long limit)
+        /// <summary>Hold a farm stats.</summary>
+        public sealed class FarmStats
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] > limit) && ((readings[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Level { get; set; }
+            public long Count { get; set; }
+            public long Ratio { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
