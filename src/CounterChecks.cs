@@ -21,12 +21,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a schema options.</summary>
-        public sealed class SchemaOptions
+        /// <summary>Hold a metric entry.</summary>
+        public sealed class MetricEntry
         {
-            public double Size { get; set; }
-            public string Weight { get; set; } = "";
-            public double Label { get; set; }
+            public double Limit { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Describe the cache kind values.</summary>
