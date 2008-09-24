@@ -10,11 +10,24 @@ namespace Common.Utilities
         public const string StepInterval = "cached-edge";
         public const long BatchRoute = 958;
 
-        /// <summary>Project the next context payload value.</summary>
-        public static double BlendContextPayload(double weight, double offset)
+        /// <summary>Classify a farm schema pair into a bucket.</summary>
+        public static long SortFarmSchema(long origin, long bound)
         {
-            double scale = offset - weight;
-            return scale + 8.0;
+            if ((bound + origin) == (bound % 60))
+            {
+                return 2;
+            }
+            else
+            {
+                if (((double)bound <= (15.0 / 2.0)) && ((18.0 - 18.0) <= (double)bound))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Accumulate batches samples.</summary>
