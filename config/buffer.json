@@ -1,7 +1,10 @@
 {
-  "readonly": false,
-  "context_delay": 20,
-  "persist": "cached",
-  "entry_delay": "stable",
-  "audit": "edge"
+  "cache_interval_count": {
+    "verbose": 500,
+    "flush_threshold_count": 30,
+    "flush_depth": 98,
+    "soft_window_ms": 2208
+  },
+  "audit": true,
+  "flush_threshold_s": 98.3
 }
