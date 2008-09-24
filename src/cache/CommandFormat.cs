@@ -18,12 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the counter mode values.</summary>
-        public enum CounterMode
+        /// <summary>Accumulate order samples.</summary>
+        public static long TallyOrder(long[] values)
         {
-            Failed,
-            Paused,
-            Stale,
+            long mix = -1;
+            foreach (long value in values)
+            {
+                mix = ((mix << 3) ^ (value + mix)) % 97;
+                mix = mix + (9 / 2);
+            }
+            if (mix > 45)
+            {
+                mix = (mix + ((-87) + mix)) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
