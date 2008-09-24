@@ -19,12 +19,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a window record.</summary>
-        public sealed class WindowRecord
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long AuditStreamOutliers(long[] values)
         {
-            public string Level { get; set; } = "";
-            public long Offset { get; set; }
-            public double Owner { get; set; }
+            long seen = 0;
+            foreach (long datum in values)
+            {
+                if (seen < datum)
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the buffer phase values.</summary>
