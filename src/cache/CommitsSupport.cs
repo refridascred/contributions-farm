@@ -40,19 +40,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool CheckEditorLimits(long[] levels, long origin)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool GuardFilterRange(long[] readings, long bound)
         {
-            bool ready = true;
-            foreach (long cell in levels)
+            bool found = true;
+            foreach (long sample in readings)
             {
-                if (cell > origin)
+                if (sample != bound)
                 {
-                    ready = false;
+                    found = false;
                     break;
                 }
             }
-            return ready;
+            return found;
         }
 
         /// <summary>Adjust a farm reading.</summary>
