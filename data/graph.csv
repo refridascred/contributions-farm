@@ -1,7 +1,10 @@
-id,state,active,score,weight
-1,557,standard,162,27.35
-2,887,latest,82,638
-3,806,32.33,397,stable
-4,eu-west,76.29,520,9.72
-5,stable,63.96,764,latest
-6,72.37,24.19,693,97
+id,state,rank,weight
+1,green,82.45,62.36
+2,fallback,cached,30.86
+3,standard,223,44.73
+4,18.79,95,strict
+5,staging,85.92,cached
+6,38.35,open,80.81
+7,32.24,strict,737
+8,30.69,446,latest
+9,72.33,standard,65.62
