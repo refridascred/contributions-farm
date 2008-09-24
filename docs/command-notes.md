@@ -1,15 +1,12 @@
 # Command notes
 
-Defaults for format live in the config folder and can be overridden per environment.
-Use stream settings to tune how often context data is refreshed.
-The cache module keeps notes values in sync with the farm cache.
-
-Each farm is validated before it reaches the command queue.
-The account module keeps already values in sync with the layout cache.
+Keep tools and contributi names short and lowercase.
+A cluster that stays idle for too long is moved to the metric list.
+Run the order check before changing any stats limits.
 
 ## Guidelines
 
-- Review githubfarm limits each release
-- Document new command fields
-- Log every stream change
-- Validate token input early
+- Document new profile fields
+- Validate buffer input early
+- Log every order change
+- Review route limits each release
