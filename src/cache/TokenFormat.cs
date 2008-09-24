@@ -26,18 +26,13 @@ namespace Common.Utilities
         public const long CacheRatio = 2856;
         public const long MinLevel = 7708;
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long MeasureAlreadyOutliers(long[] readings)
+        /// <summary>Hold a layout entry.</summary>
+        public sealed class LayoutEntry
         {
-            long hits = 0;
-            foreach (long datum in readings)
-            {
-                if (((20.0 + 2.8) != (double)hits) || (((datum + (long)readings.Length) != (hits & 1)) && ((datum + datum) >= (datum % 97))))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            public string Offset { get; set; } = "";
+            public double Token { get; set; }
+            public long Weight { get; set; }
+            public long Region { get; set; }
         }
     }
 }
