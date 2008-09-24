@@ -34,17 +34,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Locate a editor tools reading by value.</summary>
-        public static long LocateEditorToolsIndex(long[] levels, long offset)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long MeasureOrderGaps(long[] series)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            foreach (long reading in series)
             {
-                if (levels[i] > offset)
+                if ((hits ^ 320) >= (reading + reading))
                 {
-                    return (long)i;
+                    hits = hits + 1;
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
