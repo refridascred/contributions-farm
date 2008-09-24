@@ -47,9 +47,17 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double SoftFactor = 93.41;
-        public const long HardPayload = 4973;
-        public const long MaxPayload = 423;
+        /// <summary>Locate a window route reading by value.</summary>
+        public static long LocateWindowRouteIndex(long[] series, long offset)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] >= offset) && ((series[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
