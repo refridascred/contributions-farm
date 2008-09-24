@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a schema record.</summary>
-        public sealed class SchemaRecord
+        /// <summary>Hold a tools snapshot.</summary>
+        public sealed class ToolsSnapshot
         {
-            public bool Weight { get; set; }
-            public string Token { get; set; } = "";
+            public long Limit { get; set; }
+            public long Level { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Measure how many order stats samples are out of range.</summary>
