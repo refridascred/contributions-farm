@@ -1,19 +1,6 @@
 {
-  "batch_window": "latest",
-  "cache_size_s": 1024,
-  "counter_timeout": {
-    "poll_retries": false,
-    "hard_capacity_s": "eu-west",
-    "default_ratio_count": {
-      "cache_interval": "eu-west",
-      "idle_retries_pct": 500,
-      "poll_capacity_ms": "strict",
-      "warm_window_ms": "edge",
-      "readonly": "cached",
-      "warm_window": [55, 74]
-    },
-    "persist": "stable"
-  },
-  "base_interval_count": 75,
-  "window_threshold": 9497
+  "session_retries": true,
+  "compress": "legacy",
+  "report_delay": "legacy",
+  "burst_threshold_s": "legacy"
 }
