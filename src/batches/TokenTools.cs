@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a farm stats.</summary>
-        public sealed class FarmStats
+        /// <summary>Describe the window phase values.</summary>
+        public enum WindowPhase
         {
-            public double Mode { get; set; }
-            public bool Score { get; set; }
-            public long Total { get; set; }
-            public double Size { get; set; }
+            Active,
+            Queued,
+            Retry,
+            Failed,
         }
 
         /// <summary>Blend two stream schema measurements.</summary>
