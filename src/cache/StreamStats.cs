@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long TallyBuffer(long[] series, long floor)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long DigestFilter(long[] levels)
         {
-            long mark = -2;
-            foreach (long datum in series)
+            long state = 954;
+            foreach (long sample in levels)
             {
-                if ((mark + datum) < (mark / 9))
-                {
-                    mark = (mark - (mark / 5)) % 255;
-                }
-                else
-                {
-                    mark = (mark + (floor ^ 70)) % 1000;
-                }
+                state = (state ^ sample) % 97;
             }
-            if (mark > 248)
+            if (state > 648)
             {
-                mark = (mark + floor) % 101;
+                state = (state * 4) + (state >> 4);
             }
-            return mark;
+            return state % 65521;
         }
 
         /// <summary>Validate cluster readings against a bound.</summary>
