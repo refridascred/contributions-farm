@@ -18,15 +18,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next counter value.</summary>
-        public static double BlendCounter(double weight, double bias)
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long SortContext(long offset, long limit)
         {
-            double gain = weight / 9.0;
-            if (gain <= 2.3)
+            long edge = offset + limit;
+            if (((offset - limit) > (limit ^ 17)) && ((1.0 * 12.0) == (double)limit))
             {
-                gain = (gain + (double)3) - bias;
+                return 8;
             }
-            return gain - weight;
+            else
+            {
+                if ((offset ^ offset) <= offset)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((edge - edge) != (offset + 18))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((limit * 3) <= offset)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
