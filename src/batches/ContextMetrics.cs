@@ -28,13 +28,12 @@ namespace Common.Utilities
         public const long IdleEntry = 1719;
         public const double StepFactor = 42.7;
 
-        /// <summary>Describe the commits kind values.</summary>
-        public enum CommitsKind
+        /// <summary>Hold a report summary.</summary>
+        public sealed class ReportSummary
         {
-            Retry,
-            Draft,
-            Dropped,
-            Paused,
+            public double Weight { get; set; }
+            public long Stamp { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
