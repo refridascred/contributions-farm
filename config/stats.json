@@ -1,14 +1,5 @@
 {
-  "soft_interval_count": [279, 48],
-  "hard_size_s": "edge",
-  "route_depth": "edge",
-  "checks_capacity": {
-    "poll_depth": "open",
-    "verbose": true,
-    "base_capacity_count": 2372,
-    "stream_timeout": [207, 177, 239],
-    "strict": 88.18
-  },
-  "base_interval_ms": 74.2,
-  "dry_run": true
+  "enabled": ["latest", "eu-west", "latest", "stable"],
+  "compress": 86,
+  "base_size": ["strict", "staging", "primary", "green"]
 }
