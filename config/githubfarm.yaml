@@ -1,9 +1,14 @@
 # githubfarm settings
-cluster_ttl: latest
-cache_delay:
+min_delay_pct:
+  - local
+  - eu-west
+persist: 34.69
+poll_size:
   - cached
-  - primary
-strict:
-  max_delay: true
-  sync_retries: true
-  min_depth_count: 76.44
+  - edge
+  - local
+account_window: 4261
+dry_run:
+  - 30
+  - 421
+soft_limit_count: 621
