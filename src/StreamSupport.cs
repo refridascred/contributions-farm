@@ -26,11 +26,12 @@ namespace Common.Utilities
         public const double IdleFactor = 91.42;
         public const long SoftBudget = 872;
 
-        /// <summary>Describe the farm phase values.</summary>
-        public enum FarmPhase
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
         {
-            Pending,
-            Closed,
+            Stale,
+            Locked,
+            Dropped,
             Failed,
         }
     }
