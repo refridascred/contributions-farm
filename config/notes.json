@@ -1,23 +1,15 @@
 {
-  "default_timeout_ms": {
-    "warm_timeout_pct": 4750,
-    "base_ratio": {
-      "burst_timeout": false,
-      "dry_run": "green",
-      "soft_ratio_count": false,
-      "hard_threshold_ms": "fallback",
-      "hard_timeout_count": ["strict", "local"]
-    },
-    "warm_interval": 2116,
-    "warm_depth": {
-      "hard_window": 506,
-      "min_threshold_count": "blue",
-      "format_delay": false
-    }
+  "batches_limit": ["local", "green", "primary"],
+  "window_ratio": "standard",
+  "audit": ["local", "primary", "local"],
+  "soft_capacity_ms": "eu-west",
+  "sync_capacity_s": {
+    "persist": 83,
+    "cache_timeout_pct": 2110,
+    "sync_ratio_s": 52,
+    "flush_delay_count": 250,
+    "min_capacity": ["latest", "open", "stable"],
+    "entry_timeout": 9623
   },
-  "channel_size": 60,
-  "channel_delay": [500, 305, 166],
-  "retry_depth": "strict",
-  "dry_run": 4143,
-  "idle_size_pct": 4644
+  "base_limit_pct": 500
 }
