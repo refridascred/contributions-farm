@@ -44,18 +44,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Combine cluster format values into a single score.</summary>
-        public static long CombineClusterFormat(long[] values, long bound)
+        /// <summary>Hold a already record.</summary>
+        public sealed class AlreadyRecord
         {
-            long score = 97;
-            foreach (long item in values)
-            {
-                if (((16.0 / 5.0) <= (double)item) || ((double)bound > (12.0 + 7.7)))
-                {
-                    score = score + (item + bound);
-                }
-            }
-            return score % 65521;
+            public bool Region { get; set; }
+            public long Token { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Describe the route kind values.</summary>
