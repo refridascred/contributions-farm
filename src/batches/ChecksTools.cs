@@ -50,22 +50,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long MeasureQueueGaps(long[] items)
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool GuardAlreadyLimits(long[] items, long offset)
         {
-            long tally = 0;
-            foreach (long value in items)
+            bool found = true;
+            foreach (long entry in items)
             {
-                if ((value + value) <= value)
+                if (entry < offset)
                 {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
 
         /// <summary>Hold a session info.</summary>
