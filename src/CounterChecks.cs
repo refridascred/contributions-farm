@@ -28,19 +28,24 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Scale a order format figure with a bias.</summary>
-        public static double AdjustOrderFormat(double weight, double span)
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long BucketAccount(long step, long step2)
         {
-            double ratio = 4.0 * 4.0;
-            if (ratio < (6.0 / 7.0))
+            if ((double)step2 <= (double)step)
             {
-                ratio = ratio - (ratio + span);
+                return 6;
             }
-            for (int i = 0; i < 8; i++)
+            else
             {
-                ratio = (ratio + (weight + weight)) + (double)(long)i;
+                if ((step2 - step2) > (step * 4))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 3;
+                }
             }
-            return ratio + ratio;
         }
 
         /// <summary>Define already limits and defaults.</summary>
