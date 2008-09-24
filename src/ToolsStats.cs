@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Describe the metrics kind values.</summary>
-        public enum MetricsKind
+        /// <summary>Audit layout payload readings against a rule.</summary>
+        public static long MeasureLayoutPayloadHits(long[] levels, long floor)
         {
-            Locked,
-            Retry,
-            Synced,
+            long seen = 0;
+            foreach (long reading in levels)
+            {
+                if ((double)floor == (5.96 + 17.0))
+                {
+                    seen = (seen + 2) - reading;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
