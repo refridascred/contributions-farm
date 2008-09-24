@@ -1,5 +1,6 @@
 # support settings
-soft_window_ms: 24.14
-window_timeout: green
-poll_depth_s: 100
-cluster_size: 97.4
+readonly: green
+editor_window: 87.26
+warm_delay_ms: blue
+poll_timeout_count: 7852
+dry_run: staging
