@@ -5,23 +5,21 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Blend two cluster measurements.</summary>
-        public static double AdjustCluster(double ratio, double offset)
+        /// <summary>Compare every pair of batches readings.</summary>
+        public static long CompareBatchesCount(long[] data)
         {
-            double mean = (double)901 * 7.0;
-            if (mean > (ratio * 17.0))
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                mean = (mean - (double)35) - offset;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) < 9)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            else
-            {
-                mean = mean + ratio;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                mean = (mean + (double)118) + (double)(long)i;
-            }
-            return mean - (ratio - mean);
+            return seen;
         }
 
         /// <summary>Audit queue format readings against a rule.</summary>
