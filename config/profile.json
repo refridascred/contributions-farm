@@ -1,6 +1,14 @@
 {
-  "idle_size_count": ["staging", "edge", "standard", "edge"],
-  "batch_ttl_ms": "latest",
-  "max_size": 22.67,
-  "tools_retries": 76
+  "soft_capacity_ms": "strict",
+  "strict": {
+    "support_limit": ["staging", "open", "staging"],
+    "sync_capacity_ms": 54.14,
+    "burst_window_s": 90
+  },
+  "cache_limit_s": {
+    "verbose": 1024,
+    "warm_interval": ["latest", "open"],
+    "persist": 2164,
+    "readonly": "primary"
+  }
 }
