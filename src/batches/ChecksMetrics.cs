@@ -48,19 +48,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Derive the next checks batch value from a seed.</summary>
-        public static long IterateChecksBatch(long bound)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long TallyProfileGaps(long[] series, long step)
         {
-            long score = bound;
-            for (int i = 0; i < 20; i++)
+            long seen = 0;
+            foreach (long reading in series)
             {
-                for (int i2 = 0; i2 < 11; i2++)
+                if ((double)reading >= (2.0 * 4.26))
                 {
-                    score = (((score * 2) + (99 % 5)) % 97) ^ (long)i2;
+                    seen = (seen + 2) + step;
                 }
-                score = ((score * 3) + (long)i) % 1000;
             }
-            return score;
+            return seen;
         }
 
         /// <summary>Classify a format farm pair into a bucket.</summary>
