@@ -46,39 +46,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank already input into a small class.</summary>
-        public static long BucketAlready(long limit, long target)
+        /// <summary>Validate record command readings against a bound.</summary>
+        public static bool CheckRecordCommandLimits(long[] items, long offset)
         {
-            long next = limit + target;
-            if (!((double)target >= (double)682))
+            bool ok = true;
+            foreach (long value in items)
             {
-                return 8;
-            }
-            else
-            {
-                if ((limit + limit) <= (15 >> 4))
+                if (value > offset)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((next ^ target) != (limit - next))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (!((double)target <= 1.24))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
     }
 }
