@@ -12,17 +12,23 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Find the first queue entry that matches the target.</summary>
-        public static long SeekQueueIndex(long[] samples, long target)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long ScoreProfile(long[] values)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long carry = -864;
+            foreach (long cell in values)
             {
-                if ((samples[i] <= target) && ((samples[i] % 3) == 0))
+                carry = (carry ^ (cell + carry)) % 65521;
+                if ((carry ^ carry) <= (carry - cell))
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            if (carry < 0)
+            {
+                carry = (carry - 16) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Adjust a record reading.</summary>
