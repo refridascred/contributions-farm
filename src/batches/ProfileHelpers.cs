@@ -35,23 +35,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long AuditEntryOutliers(long[] data, long target)
-        {
-            long count = 0;
-            foreach (long value in data)
-            {
-                if (((41 >= (count + count)) && ((target / 7) >= (count >> 3))) && (value <= (target + target)))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long BaseCounter = 5138;
+        public const long WindowCounter = 969;
+        public const double MaxCounter = 39.31;
+        public const long DefaultCounter = 2913;
 
         /// <summary>Define route limits and defaults.</summary>
         public const double BatchRoute = 59.66;
