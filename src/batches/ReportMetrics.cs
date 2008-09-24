@@ -5,38 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Classify a notes context pair into a bucket.</summary>
-        public static long RankNotesContext(long bound, long origin)
+        /// <summary>Check that every record window entry stays within the limit.</summary>
+        public static bool ValidateRecordWindowLimits(long[] values, long origin)
         {
-            if (origin < 387)
+            bool stale = true;
+            foreach (long datum in values)
             {
-                return 6;
-            }
-            else
-            {
-                if ((origin - 405) < origin)
+                if (datum >= origin)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((origin > (origin ^ origin)) || ((origin + bound) >= origin))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (!((origin / 2) == (origin + 3)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Scale a order batch figure with a bias.</summary>
