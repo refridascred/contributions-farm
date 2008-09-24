@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a account entry.</summary>
-        public sealed class AccountEntry
+        /// <summary>Combine context values into a single score.</summary>
+        public static long WeighContext(long[] samples)
         {
-            public long Ratio { get; set; }
-            public bool Score { get; set; }
-            public long Level { get; set; }
+            long anchor = 7;
+            foreach (long value in samples)
+            {
+                if ((anchor >> 4) > (anchor * 4))
+                {
+                    anchor = anchor ^ value;
+                }
+            }
+            if (anchor < 9)
+            {
+                anchor = (anchor * 5) + (anchor - anchor);
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
