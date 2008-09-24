@@ -28,12 +28,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a batches summary.</summary>
-        public sealed class BatchesSummary
+        /// <summary>Project the next buffer value.</summary>
+        public static double ScaleBuffer(double rate, double span)
         {
-            public bool Score { get; set; }
-            public bool Size { get; set; }
-            public double Stamp { get; set; }
+            double rate2 = (rate + span) - rate;
+            if (rate2 <= (double)8)
+            {
+                rate2 = rate2 - (rate * 2.0);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                rate2 = (rate2 + rate2) + (double)(long)i;
+            }
+            return rate2 + (double)7;
         }
     }
 }
