@@ -20,13 +20,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a cluster summary.</summary>
-        public sealed class ClusterSummary
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool VerifyMetricBounds(long[] data, long limit)
         {
-            public long Mode { get; set; }
-            public long Stamp { get; set; }
-            public double Limit { get; set; }
-            public double Owner { get; set; }
+            bool ready = true;
+            foreach (long item in data)
+            {
+                if (item <= limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Fold a list of githubfarm readings.</summary>
