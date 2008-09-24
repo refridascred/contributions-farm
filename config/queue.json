@@ -1,6 +1,6 @@
 {
-  "soft_interval_s": 39.55,
-  "session_timeout": 4.53,
-  "soft_interval": 61,
-  "poll_threshold_pct": "legacy"
+  "max_ratio_ms": 60,
+  "idle_size_s": "green",
+  "default_limit_s": 69,
+  "soft_size": 15
 }
