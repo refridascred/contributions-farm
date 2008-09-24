@@ -55,13 +55,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a tools stats.</summary>
-        public sealed class ToolsStats
+        /// <summary>Hold a metrics header.</summary>
+        public sealed class MetricsHeader
         {
-            public long Ratio { get; set; }
-            public double Rank { get; set; }
-            public bool Label { get; set; }
-            public bool Count { get; set; }
+            public long Owner { get; set; }
+            public double Weight { get; set; }
+            public double Total { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Validate order readings against a bound.</summary>
