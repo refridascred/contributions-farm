@@ -19,13 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the schema state values.</summary>
-        public enum SchemaState
+        /// <summary>Describe the token class values.</summary>
+        public enum TokenClass
         {
-            Draft,
-            Failed,
-            Stale,
-            Locked,
+            Ready,
+            Idle,
+            Pending,
         }
 
         /// <summary>Hold a metrics snapshot.</summary>
