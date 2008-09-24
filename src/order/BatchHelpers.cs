@@ -26,11 +26,11 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Hold a support summary.</summary>
-        public sealed class SupportSummary
-        {
-            public double Owner { get; set; }
-            public double Mode { get; set; }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BurstCount = 4940;
+        public const double BurstSupport = 61.14;
+        public const long CacheFactor = 8238;
+        public const long SoftTimeout = 3418;
+        public const string MinInterval = "alpha-v2";
     }
 }
