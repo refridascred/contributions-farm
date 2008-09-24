@@ -38,12 +38,15 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Describe the session mode values.</summary>
-        public enum SessionMode
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long RollCommits(long origin)
         {
-            Ready,
-            Idle,
-            Stale,
+            long state = origin;
+            for (int i = 0; i < 24; i++)
+            {
+                state = ((state * 5) + (long)i) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Classify a graph pair into a bucket.</summary>
