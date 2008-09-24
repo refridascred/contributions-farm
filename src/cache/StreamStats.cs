@@ -44,17 +44,10 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Find the first githubfarm entry that matches the target.</summary>
-        public static long SeekGithubfarmIndex(long[] values, long offset)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] < offset) && ((values[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double DefaultDepth = 15.41;
+        public const string MaxRoute = "primary-1";
+        public const double MaxFactor = 7.47;
+        public const double HardFactor = 93.08;
     }
 }
