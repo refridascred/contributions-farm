@@ -1,8 +1,7 @@
 {
-  "githubfarm_ttl": "eu-west",
-  "enabled": ["latest", "edge", "fallback", "legacy"],
-  "flush_delay_pct": 250,
-  "min_delay_pct": 28.06,
-  "contributi_delay": "edge",
-  "verbose": "latest"
+  "warm_timeout": 100,
+  "metrics_ratio": ["standard", "standard"],
+  "cache_limit_s": false,
+  "min_threshold_count": ["stable", "latest", "standard", "fallback"],
+  "retry_window": 86.45
 }
