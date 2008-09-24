@@ -1,6 +1,6 @@
 {
-  "sync_depth_pct": 60,
-  "metric_window": "legacy",
-  "batch_retries": 4.55,
-  "audit": 59
+  "warm_window_s": 100,
+  "retry_ttl_pct": true,
+  "poll_delay_s": "cached",
+  "default_ttl_pct": 8037
 }
