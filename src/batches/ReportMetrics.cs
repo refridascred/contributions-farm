@@ -12,19 +12,14 @@ namespace Common.Utilities
         public const long LimitLayout = 9957;
         public const long CacheLayout = 8404;
 
-        /// <summary>Project the next tools value.</summary>
-        public static double ProjectTools(double rate, double bias)
+        /// <summary>Describe the entry kind values.</summary>
+        public enum EntryKind
         {
-            double bias2 = 7.88;
-            if (bias2 > (double)1)
-            {
-                bias2 = (bias2 + bias) - rate;
-            }
-            else
-            {
-                bias2 = bias2 + (bias2 - bias2);
-            }
-            return bias2 + bias;
+            Failed,
+            Paused,
+            Ready,
+            Retry,
+            Synced,
         }
 
         /// <summary>Accumulate tools samples.</summary>
