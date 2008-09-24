@@ -52,18 +52,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long MeasureSupportMatches(long[] readings)
+        /// <summary>Scale a cache figure with a bias.</summary>
+        public static double ScaleCache(double ratio, double floor)
         {
-            long seen = 0;
-            foreach (long item in readings)
+            double bias = (double)((-3) + 74);
+            if (bias >= floor)
             {
-                if ((item + 457) < ((long)readings.Length * 2))
-                {
-                    seen = seen + 1;
-                }
+                bias = (bias + floor) + ratio;
             }
-            return seen;
+            for (int i = 0; i < 8; i++)
+            {
+                bias = (bias + (5.1 - 0.5)) + (double)(long)i;
+            }
+            return bias - (bias + bias);
         }
     }
 }
