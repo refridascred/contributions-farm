@@ -1,8 +1,9 @@
-id,token,owner,label
-1,726,stable,blue
-2,303,81.44,597
-3,87.05,open,2.29
-4,529,730,eu-west
-5,open,261,local
-6,493,778,16.93
-7,latest,18.75,325
+id,score,token
+1,704,654
+2,193,263
+3,13.8,772
+4,staging,open
+5,288,469
+6,75.18,staging
+7,89.77,green
+8,57.58,green
