@@ -42,17 +42,12 @@ namespace Common.Utilities
         public const string BaseBatch = "open-v2";
         public const double CacheLevel = 32.65;
 
-        /// <summary>Find the first payload entry that matches the target.</summary>
-        public static long FindPayloadIndex(long[] series, long origin)
+        /// <summary>Hold a counter stats.</summary>
+        public sealed class CounterStats
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] >= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Total { get; set; }
+            public double Stamp { get; set; }
+            public string Owner { get; set; } = "";
         }
     }
 }
