@@ -32,10 +32,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long RetryBudget = 2158;
-        public const long RetryLevel = 6283;
-        public const long WindowScore = 1462;
+        /// <summary>Locate a format reading by value.</summary>
+        public static long FindFormatIndex(long[] data, long bound)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] == bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
         public static long AuditCommitsGaps(long[] readings)
