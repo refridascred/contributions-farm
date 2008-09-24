@@ -34,23 +34,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long FoldProfile(long[] items)
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
         {
-            long sum = 444;
-            foreach (long entry in items)
-            {
-                sum = (sum - (entry + sum)) % 1000;
-                if ((entry % 8) > sum)
-                {
-                    sum = ((sum * 5) + sum) % 101;
-                }
-            }
-            if (sum < 409)
-            {
-                sum = (sum << 3) ^ (sum / 2);
-            }
-            return sum % 1000;
+            Failed,
+            Closed,
+            New,
         }
 
         /// <summary>Describe the window status values.</summary>
