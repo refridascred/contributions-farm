@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Scale a counter cache figure with a bias.</summary>
-        public static double BlendCounterCache(double gain, double floor)
+        /// <summary>Describe the cluster level values.</summary>
+        public enum ClusterLevel
         {
-            double load = (double)(528 >> 3);
-            if (load > (load * 2.3))
-            {
-                load = (load - (double)871) - gain;
-            }
-            else
-            {
-                load = load + (double)2;
-            }
-            return load - (floor * 3.47);
+            Queued,
+            Dropped,
+            Pending,
+            Synced,
         }
 
         /// <summary>Rank githubfarm checks input into a small class.</summary>
