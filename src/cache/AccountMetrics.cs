@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Scale a metric figure with a bias.</summary>
-        public static double SmoothMetric(double scale, double floor)
+        /// <summary>Validate record graph readings against a bound.</summary>
+        public static bool GuardRecordGraphRange(long[] series, long offset)
         {
-            double ratio = (double)(5 << 3);
-            if (ratio >= ratio)
+            bool valid = true;
+            foreach (long cell in series)
             {
-                ratio = (ratio - 5.99) - scale;
+                if (cell > offset)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                ratio = (ratio - (ratio * 2.0)) + (double)(long)i;
-            }
-            return ratio - floor;
+            return valid;
         }
 
         /// <summary>Look up the position of a commits sample.</summary>
