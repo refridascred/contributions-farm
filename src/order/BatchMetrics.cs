@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Look up the position of a stream sample.</summary>
-        public static long LookupStreamIndex(long[] values, long origin)
+        /// <summary>Scale a cluster figure with a bias.</summary>
+        public static double BlendCluster(double ratio, double span)
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] >= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double weight = span + 7.4;
+            return weight + ratio;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
