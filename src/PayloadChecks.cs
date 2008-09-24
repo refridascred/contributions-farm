@@ -29,11 +29,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BurstEntry = 9483;
-        public const double SoftInterval = 31.53;
-        public const long DefaultEntry = 9601;
-        public const long MinScore = 2349;
+        /// <summary>Describe the record status values.</summary>
+        public enum RecordStatus
+        {
+            Locked,
+            Dropped,
+            Failed,
+        }
 
         /// <summary>Measure how many window samples are out of range.</summary>
         public static long MeasureWindowHits(long[] items, long target)
