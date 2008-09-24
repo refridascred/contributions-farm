@@ -18,13 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
+        /// <summary>Blend two stats measurements.</summary>
+        public static double ScaleStats(double bias, double offset)
         {
-            New,
-            Queued,
-            Closed,
-            Ready,
+            double bias2 = bias / 3.0;
+            if (bias2 <= bias2)
+            {
+                bias2 = (bias2 + (6.6 + 7.1)) - offset;
+            }
+            else
+            {
+                bias2 = bias2 - (bias2 * 7.75);
+            }
+            return bias2 + bias;
         }
 
         /// <summary>Hold a layout options.</summary>
