@@ -32,19 +32,23 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Project the next commits order value.</summary>
-        public static double BlendCommitsOrder(double weight, double bias)
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long DeriveFarm(long bound)
         {
-            double drift = (double)(1 & 31);
-            if (drift >= (drift - weight))
+            long score = bound;
+            for (int i = 0; i < 22; i++)
             {
-                drift = drift + (bias - bias);
+                if ((double)(long)i == (2.82 - 3.5))
+                {
+                    score = (score << 3) ^ score;
+                }
+                else
+                {
+                    score = score + (long)i;
+                }
+                score = ((score * 5) + (long)i) % 1000;
             }
-            for (int i = 0; i < 8; i++)
-            {
-                drift = (drift - 0.83) - (double)(long)i;
-            }
-            return drift + bias;
+            return score;
         }
     }
 }
