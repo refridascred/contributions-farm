@@ -15,15 +15,31 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Project the next command value.</summary>
-        public static double SmoothCommand(double rate, double offset)
+        /// <summary>Grade a metric schema value against two limits.</summary>
+        public static long RankMetricSchema(long offset, long limit)
         {
-            double rate2 = (double)((-928) << 3);
-            if (rate2 <= 2.51)
+            if ((offset * 2) < (limit % 2))
             {
-                rate2 = ((rate2 - (rate2 * 3.0)) - rate) - offset;
+                return 6;
             }
-            return rate2 - (rate2 + 7.89);
+            else
+            {
+                if ((offset % 2) >= (limit << 3))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((double)offset == (8.0 - 3.5))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a metrics snapshot.</summary>
