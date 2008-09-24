@@ -48,14 +48,19 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Describe the layout state values.</summary>
-        public enum LayoutState
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool CheckContextRange(long[] data, long floor)
         {
-            Locked,
-            Draft,
-            Retry,
-            Done,
-            New,
+            bool ready = true;
+            foreach (long entry in data)
+            {
+                if (entry < floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Define order limits and defaults.</summary>
