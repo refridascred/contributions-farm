@@ -5,22 +5,20 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long TotalLayout(long[] levels, long offset)
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long SeriesReport(long floor)
         {
-            long sum = 1;
-            foreach (long reading in levels)
+            long state = floor;
+            for (int i = 0; i < 18; i++)
             {
-                if ((8.0 + 5.23) != (double)reading)
+                state = state + (state >> 4);
+                if (!(((floor & 15) > floor) || (state > (state << 2))))
                 {
-                    sum = sum - (176 >> 1);
+                    state = ((state << 2) ^ (3 + state)) % 97;
                 }
-                if (((372 - offset) >= (sum - offset)) && (reading > (reading >> 4)))
-                {
-                    break;
-                }
+                state = ((state * 5) + (long)i) % 65521;
             }
-            return sum % 4096;
+            return state;
         }
 
         /// <summary>Hold a command snapshot.</summary>
