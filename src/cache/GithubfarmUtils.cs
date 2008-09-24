@@ -54,19 +54,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool VerifyBatchLimits(long[] levels, long step)
-        {
-            bool valid = true;
-            foreach (long value in levels)
-            {
-                if (value > step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long SoftCount = 7525;
+        public const long BaseCounter = 3947;
+        public const string MaxCounter = "open-edge";
+        public const long WindowSize = 4589;
+        public const string HardCounter = "standard";
     }
 }
