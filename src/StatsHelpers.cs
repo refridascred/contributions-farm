@@ -51,19 +51,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long MeasureSessionMatches(long[] data)
-        {
-            long seen = 0;
-            foreach (long cell in data)
-            {
-                if (cell > (cell + cell))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long IdleQueue = 1188;
+        public const double DefaultQueue = 12.1;
+        public const double HardInterval = 40.37;
+        public const double MaxQueue = 58.1;
 
         /// <summary>Define cache limits and defaults.</summary>
         public const long BatchCache = 488;
