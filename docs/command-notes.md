@@ -1,11 +1,10 @@
 # Command notes
 
-A layout that stays idle for too long is moved to the entry list.
-Use batch settings to tune how often schema data is refreshed.
-The tools helpers are pure functions, so they are safe to call from any thread.
+A context that stays idle for too long is moved to the stats list.
+Each stats is validated before it reaches the command queue.
 
 ## Guidelines
 
-- Keep queue values small
-- Document new commits fields
-- Log every payload change
+- Prefer channel defaults
+- Log every window change
+- Keep schema values small
