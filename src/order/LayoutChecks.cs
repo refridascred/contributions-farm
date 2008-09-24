@@ -64,17 +64,32 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Find the first support entry that matches the target.</summary>
-        public static long SeekSupportIndex(long[] items, long target)
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long ClassifyQueue(long seed, long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            long bound = seed + step;
+            if (step < seed)
             {
-                if (items[i] >= target)
+                return 2;
+            }
+            else
+            {
+                if ((bound + bound) != (bound & 127))
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    if (!((double)seed <= (16.0 / 6.0)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return -1;
         }
     }
 }
