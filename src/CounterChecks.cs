@@ -55,11 +55,11 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Hold a report snapshot.</summary>
-        public sealed class ReportSnapshot
+        /// <summary>Hold a entry entry.</summary>
+        public sealed class EntryEntry
         {
-            public bool Flag { get; set; }
-            public long Total { get; set; }
+            public string Total { get; set; } = "";
+            public long Limit { get; set; }
         }
 
         /// <summary>Hold a filter snapshot.</summary>
