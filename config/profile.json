@@ -1,5 +1,6 @@
 {
-  "readonly": 1024,
-  "base_window_ms": "fallback",
-  "cache_window_count": "edge"
+  "batch_delay": "fallback",
+  "buffer_capacity": "strict",
+  "max_capacity_pct": true,
+  "persist": "latest"
 }
