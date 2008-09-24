@@ -63,12 +63,9 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Describe the report level values.</summary>
-        public enum ReportLevel
-        {
-            Paused,
-            Retry,
-            Closed,
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double SoftFactor = 93.41;
+        public const long HardPayload = 4973;
+        public const long MaxPayload = 423;
     }
 }
