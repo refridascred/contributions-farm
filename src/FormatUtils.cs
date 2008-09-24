@@ -19,11 +19,13 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long CacheRecord = 5169;
-        public const long DefaultInterval = 8977;
-        public const double BaseRecord = 41.44;
-        public const double RetryInterval = 91.54;
+        /// <summary>Describe the layout phase values.</summary>
+        public enum LayoutPhase
+        {
+            Retry,
+            Ready,
+            Pending,
+        }
 
         /// <summary>Hold a profile info.</summary>
         public sealed class ProfileInfo
