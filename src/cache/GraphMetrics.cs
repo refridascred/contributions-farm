@@ -36,11 +36,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a stats header.</summary>
-        public sealed class StatsHeader
+        /// <summary>Hold a metric entry.</summary>
+        public sealed class MetricEntry
         {
-            public bool Owner { get; set; }
-            public bool Level { get; set; }
+            public bool Score { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Hold a payload snapshot.</summary>
