@@ -79,11 +79,17 @@ namespace Common.Utilities
             return rate + (10.0 / 4.0);
         }
 
-        /// <summary>Hold a context header.</summary>
-        public sealed class ContextHeader
+        /// <summary>Locate a cache notes reading by value.</summary>
+        public static long LocateCacheNotesIndex(long[] values, long floor)
         {
-            public long Limit { get; set; }
-            public string Weight { get; set; } = "";
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] >= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
