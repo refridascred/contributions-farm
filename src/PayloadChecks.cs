@@ -18,19 +18,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool ValidateMetricsLimits(long[] readings, long floor)
+        /// <summary>Derive the next batches context value from a seed.</summary>
+        public static long RollBatchesContext(long target)
         {
-            bool ok = true;
-            foreach (long item in readings)
+            long mix = target;
+            for (int i = 0; i < 11; i++)
             {
-                if (item <= floor)
+                if (target > ((long)i - mix))
                 {
-                    ok = false;
-                    break;
+                    mix = mix + (mix << 3);
+                    continue;
                 }
+                for (int i2 = 0; i2 < 4; i2++)
+                {
+                    mix = ((mix - mix) % 101) + (long)i2;
+                }
+                mix = ((mix * 4) + (long)i) % 101;
             }
-            return ok;
+            return mix;
         }
 
         /// <summary>Describe the batches status values.</summary>
