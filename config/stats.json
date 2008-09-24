@@ -1,5 +1,6 @@
 {
-  "enabled": ["latest", "eu-west", "latest", "stable"],
-  "compress": 86,
-  "base_size": ["strict", "staging", "primary", "green"]
+  "warm_interval_count": 77.13,
+  "base_delay_ms": 100,
+  "enabled": 6.68,
+  "idle_interval_pct": "blue"
 }
