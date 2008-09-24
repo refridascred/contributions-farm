@@ -1,11 +1,10 @@
 # Command notes
 
-Defaults for commits live in the config folder and can be overridden per environment.
-Use token settings to tune how often session data is refreshed.
-The stream module keeps notes values in sync with the checks cache.
+Defaults for tools live in the config folder and can be overridden per environment.
+The already helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Review cache limits each release
-- Log every stats change
-- Prefer commits defaults
+- Document new cluster fields
+- Keep entry values small
+- Log every payload change
