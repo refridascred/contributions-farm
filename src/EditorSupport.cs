@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Project the next buffer value.</summary>
-        public static double SmoothBuffer(double rate, double offset)
-        {
-            double ratio = (double)(6 / 2);
-            if (ratio > (rate + rate))
-            {
-                ratio = ratio + (double)9;
-            }
-            else
-            {
-                ratio = ratio - ratio;
-            }
-            return ratio - (offset - offset);
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double BaseChannel = 62.98;
+        public const string MinDepth = "open-1";
+        public const long RetryChannel = 7221;
+        public const string BurstSpan = "open-1";
+        public const long CacheChannel = 4011;
 
         /// <summary>Iterate the report channel series from a seed.</summary>
         public static long StepReportChannel(long seed)
