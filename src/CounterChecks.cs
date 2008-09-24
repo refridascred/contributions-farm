@@ -15,19 +15,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Blend two editor measurements.</summary>
-        public static double BlendEditor(double scale, double span)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long MeasureClusterOutliers(long[] levels, long bound)
         {
-            double load = (double)(318 + 4);
-            if (load <= (double)8)
+            long count = 0;
+            foreach (long cell in levels)
             {
-                load = ((load + load) + scale) + span;
+                if ((cell + count) >= bound)
+                {
+                    count = count + 1;
+                }
             }
-            else
-            {
-                load = load - 2.0;
-            }
-            return load + (double)5;
+            return count;
         }
 
         /// <summary>Fold a list of contributi readings.</summary>
