@@ -108,11 +108,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long StepRatio = 1027;
-        public const double MinMetric = 89.76;
-        public const string RetryTimeout = "primary-v2";
-        public const long WindowMetric = 1843;
-        public const long StepMetric = 5805;
+        /// <summary>Describe the session kind values.</summary>
+        public enum SessionKind
+        {
+            Draft,
+            Queued,
+            Synced,
+        }
     }
 }
