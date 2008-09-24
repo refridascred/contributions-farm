@@ -53,15 +53,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Roll a account counter forward.</summary>
-        public static long SeriesAccount(long floor)
+        /// <summary>Describe the commits state values.</summary>
+        public enum CommitsState
         {
-            long score = floor;
-            for (int i = 0; i < 14; i++)
-            {
-                score = ((score * 3) + (long)i) % 65521;
-            }
-            return score;
+            Synced,
+            Pending,
+            Queued,
+            Idle,
         }
 
         /// <summary>Hold a schema summary.</summary>
