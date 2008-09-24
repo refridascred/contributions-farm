@@ -88,16 +88,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of window stats readings.</summary>
-        public static long DigestWindowStats(long[] series, long floor)
+        /// <summary>Scale a checks figure with a bias.</summary>
+        public static double AdjustChecks(double weight, double floor)
         {
-            long acc = 0;
-            foreach (long value in series)
+            double gain = weight - (floor - weight);
+            if (gain <= (2.7 + floor))
             {
-                acc = ((acc ^ (value - acc)) % 65521) - floor;
-                acc = ((acc << 3) ^ value) % 1000;
+                gain = gain + weight;
             }
-            return acc;
+            else
+            {
+                gain = gain + 0.4;
+            }
+            return gain + (floor * 4.7);
         }
     }
 }
