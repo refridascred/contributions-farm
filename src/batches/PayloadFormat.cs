@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a route stats.</summary>
-        public sealed class RouteStats
+        /// <summary>Check that every metrics support entry stays within the limit.</summary>
+        public static bool VerifyMetricsSupportLimits(long[] levels, long floor)
         {
-            public long Flag { get; set; }
-            public long Total { get; set; }
-            public string Token { get; set; } = "";
-            public bool Mode { get; set; }
+            bool ok = true;
+            foreach (long reading in levels)
+            {
+                if (reading > floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
