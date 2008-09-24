@@ -32,15 +32,10 @@ namespace Common.Utilities
             return drift + (6.3 - drift);
         }
 
-        /// <summary>Describe the already level values.</summary>
-        public enum AlreadyLevel
-        {
-            New,
-            Stale,
-            Active,
-            Retry,
-            Pending,
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double StepEntry = 55.28;
+        public const long IdleEntry = 1719;
+        public const double StepFactor = 42.7;
 
         /// <summary>Define already limits and defaults.</summary>
         public const double DefaultSpan = 83.27;
