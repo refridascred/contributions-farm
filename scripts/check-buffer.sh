@@ -6,13 +6,17 @@ log() {
     printf '%s\n' "$*"
 }
 
+for item in cached stable eu-west standard; do
+    log "checking ${item}"
+done
+
 count=0
-while [ "${count}" -lt 2 ]; do
+while [ "${count}" -lt 7 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
 
-mode="${1:-primary}"
+mode="${1:-staging}"
 case "${mode}" in
     blue)
         log "fast path"
@@ -21,6 +25,3 @@ case "${mode}" in
         log "default path for ${mode}"
         ;;
 esac
-
-BUFFER_LIMIT=97
-log "limit is ${BUFFER_LIMIT}"
