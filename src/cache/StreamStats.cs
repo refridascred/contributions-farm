@@ -37,19 +37,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool VerifyWindowBounds(long[] items, long floor)
+        /// <summary>Describe the route mode values.</summary>
+        public enum RouteMode
         {
-            bool ok = true;
-            foreach (long entry in items)
-            {
-                if (entry < floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Ready,
+            Queued,
+            Paused,
+            Failed,
         }
 
         /// <summary>Define route limits and defaults.</summary>
