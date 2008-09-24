@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Accumulate graph samples.</summary>
-        public static long DigestGraph(long[] samples, long seed)
-        {
-            long mark = 0;
-            foreach (long datum in samples)
-            {
-                mark = ((mark * 3) + (seed * 5)) - datum;
-            }
-            return mark;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BurstTimeout = 6922;
+        public const long MaxLevel = 9562;
+        public const long SoftLevel = 9843;
 
         /// <summary>Count the cache entries that pass the check.</summary>
         public static long MeasureCacheMatches(long[] items)
