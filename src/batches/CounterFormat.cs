@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool GuardAlreadyRange(long[] readings, long offset)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool GuardReportLimits(long[] items, long step)
         {
-            bool stale = true;
-            foreach (long sample in readings)
+            bool ready = true;
+            foreach (long datum in items)
             {
-                if (sample >= offset)
+                if (datum != step)
                 {
-                    stale = false;
+                    ready = false;
                     break;
                 }
             }
-            return stale;
+            return ready;
         }
 
         /// <summary>Describe the commits kind values.</summary>
