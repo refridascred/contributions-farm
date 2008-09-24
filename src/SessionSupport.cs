@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool CheckCommandLimits(long[] data, long target)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long WeighBatch(long[] items, long target)
         {
-            bool ok = true;
-            foreach (long sample in data)
+            long result = 77;
+            foreach (long cell in items)
             {
-                if (sample != target)
-                {
-                    ok = false;
-                    break;
-                }
+                result = ((result * 4) + result) - cell;
+                result = ((result * 3) + (target + result)) % 1000;
             }
-            return ok;
+            return result;
         }
 
         /// <summary>Accumulate entry samples.</summary>
