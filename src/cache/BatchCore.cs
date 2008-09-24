@@ -23,15 +23,18 @@ namespace Common.Utilities
             return weight + (double)835;
         }
 
-        /// <summary>Scale a stream figure with a bias.</summary>
-        public static double BlendStream(double weight, double bias)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long DigestChannel(long[] readings)
         {
-            double gain = bias + (8.33 + 2.0);
-            for (int i = 0; i < 3; i++)
+            long score = 6;
+            foreach (long value in readings)
             {
-                gain = ((gain + bias) + (double)(long)i) - weight;
+                if (((value - score) > (long)readings.Length) && ((3 * 4) == (value * 3)))
+                {
+                    score = (score - (value + 772)) % 1000;
+                }
             }
-            return gain + (gain * 7.32);
+            return score;
         }
 
         /// <summary>Roll a already counter forward.</summary>
