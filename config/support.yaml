@@ -1,35 +1,23 @@
 # support settings
-base_threshold_s:
-  - 112
-  - 89
-  - 212
-report_limit: 85
-farm_window:
-  - eu-west
-  - cached
-  - primary
-  - legacy
-cache_depth: 9039
-record_size:
-  compress:
-    - stable
-    - staging
-    - cached
-  readonly:
-    format_size: legacy
-    stream_retries: true
-    min_delay: 5400
-    cache_capacity_count: 4099
-    poll_size: 5252
-  idle_ratio: 902
-  verbose: 78.45
-  sync_threshold_pct:
-    warm_window: edge
-    cluster_ratio: blue
-    hard_window_count:
-      - 349
-      - 18
-      - 451
-      - 66
-    batch_delay: 1840
-  already_capacity: 76.97
+batch_threshold_s:
+  batch_timeout: legacy
+  base_depth_pct: staging
+  session_threshold: false
+  hard_retries_count: 7.5
+  burst_capacity_s: 5869
+  base_retries_s:
+    - blue
+    - edge
+default_depth: standard
+retry_ratio:
+  sync_capacity_count:
+    window_capacity: true
+    sync_threshold_count: 10
+    enabled: false
+    warm_threshold: 95.49
+  hard_capacity_count: strict
+  poll_interval_s:
+    - standard
+    - standard
+tools_limit: 15.35
+retry_timeout_s: blue
