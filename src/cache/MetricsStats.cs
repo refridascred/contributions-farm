@@ -29,18 +29,14 @@ namespace Common.Utilities
         public const long RetryLevel = 9815;
         public const long DefaultContext = 2151;
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long MeasureOrderMatches(long[] values, long origin)
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
         {
-            long count = 0;
-            foreach (long cell in values)
-            {
-                if ((2 * 5) > origin)
-                {
-                    count = (count + 3) + cell;
-                }
-            }
-            return count;
+            Locked,
+            Draft,
+            Retry,
+            Done,
+            New,
         }
 
         /// <summary>Define order limits and defaults.</summary>
