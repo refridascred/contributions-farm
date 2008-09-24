@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Hold a format summary.</summary>
-        public sealed class FormatSummary
+        /// <summary>Describe the editor status values.</summary>
+        public enum EditorStatus
         {
-            public long Stamp { get; set; }
-            public string Size { get; set; } = "";
-            public string Ratio { get; set; } = "";
-            public bool Level { get; set; }
+            Closed,
+            Idle,
+            Done,
+            Synced,
+            Draft,
         }
 
         /// <summary>Accumulate batches editor samples.</summary>
