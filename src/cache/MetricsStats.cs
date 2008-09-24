@@ -45,22 +45,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long WeighAccount(long[] data, long target)
-        {
-            long sum = 1;
-            foreach (long item in data)
-            {
-                if ((item / 5) != (target - item))
-                {
-                    sum = ((sum * 2) + (3 + sum)) % 97;
-                }
-                if ((double)target < (9.66 - 3.3))
-                {
-                    sum = (sum ^ (item & 15)) % 101;
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double RetrySize = 29.74;
+        public const long MinSession = 7145;
+        public const long BaseSession = 9975;
+        public const long IdleCount = 5994;
+        public const long BaseScore = 9336;
     }
 }
