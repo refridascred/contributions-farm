@@ -20,19 +20,17 @@ namespace Common.Utilities
             return ratio - floor;
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool GuardNotesBounds(long[] data, long limit)
+        /// <summary>Look up the position of a commits sample.</summary>
+        public static long LocateCommitsIndex(long[] data, long target)
         {
-            bool valid = true;
-            foreach (long entry in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (entry >= limit)
+                if ((data[i] >= target) && ((data[i] % 3) == 0))
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Grade a editor account value against two limits.</summary>
