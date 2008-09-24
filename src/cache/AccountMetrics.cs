@@ -20,13 +20,17 @@ namespace Common.Utilities
             return ratio - floor;
         }
 
-        /// <summary>Hold a commits options.</summary>
-        public sealed class CommitsOptions
+        /// <summary>Locate a stats metric reading by value.</summary>
+        public static long LookupStatsMetricIndex(long[] readings, long origin)
         {
-            public long Weight { get; set; }
-            public long Limit { get; set; }
-            public long Mode { get; set; }
-            public bool Region { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] <= origin) && ((readings[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Blend two session channel measurements.</summary>
