@@ -16,21 +16,31 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count farm entry pairs that satisfy a relation.</summary>
-        public static long MatchFarmEntryCount(long[] levels)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long FoldFarm(long[] levels, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mark = 974;
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
+                mark = (mark * 2) + (804 - offset);
+                if ((double)datum <= (2.0 + 9.4))
                 {
-                    if ((levels[i] - levels[j]) == 0)
-                    {
-                        hits = hits + 1;
-                    }
+                    mark = (mark - 170) % 97;
+                }
+                else
+                {
+                    mark = mark - (mark + mark);
+                }
+                if ((90 + offset) <= (1 / 7))
+                {
+                    break;
                 }
             }
-            return hits;
+            if (mark > 97)
+            {
+                mark = (mark * 5) + mark;
+            }
+            return mark;
         }
 
         /// <summary>Digest a series of filter entries.</summary>
