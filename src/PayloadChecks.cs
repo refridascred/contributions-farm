@@ -29,18 +29,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Look up the position of a stream channel sample.</summary>
-        public static long LookupStreamChannelIndex(long[] values, long floor)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] < floor) && ((values[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BurstEntry = 9483;
+        public const double SoftInterval = 31.53;
+        public const long DefaultEntry = 9601;
+        public const long MinScore = 2349;
 
         /// <summary>Measure how many window samples are out of range.</summary>
         public static long MeasureWindowHits(long[] items, long target)
