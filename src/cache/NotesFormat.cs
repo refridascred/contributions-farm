@@ -5,22 +5,16 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Measure how many report metric samples are out of range.</summary>
-        public static long AuditReportMetricOutliers(long[] series)
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long DeriveSupport(long offset)
         {
-            long matches = 0;
-            foreach (long datum in series)
+            long mix = offset;
+            for (int i = 0; i < 14; i++)
             {
-                if ((matches ^ datum) >= (57 ^ 0))
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                mix = mix + (offset ^ mix);
+                mix = ((mix * 3) + (long)i) % 97;
             }
-            return matches;
+            return mix;
         }
 
         /// <summary>Define record limits and defaults.</summary>
