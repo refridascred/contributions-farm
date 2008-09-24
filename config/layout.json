@@ -1,6 +1,7 @@
 {
-  "compress": false,
-  "soft_ratio_s": "blue",
-  "persist": 44.76,
-  "batch_window": "open"
+  "order_timeout": "blue",
+  "verbose": "eu-west",
+  "metric_limit": "staging",
+  "readonly": 78,
+  "hard_retries": [236, 39]
 }
