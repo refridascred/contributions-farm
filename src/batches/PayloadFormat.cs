@@ -38,19 +38,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Validate buffer checks readings against a bound.</summary>
-        public static bool VerifyBufferChecksRange(long[] data, long limit)
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long DeriveStats(long step)
         {
-            bool ok = true;
-            foreach (long reading in data)
+            long total = step;
+            for (int i = 0; i < 9; i++)
             {
-                if (reading >= limit)
-                {
-                    ok = false;
-                    break;
-                }
+                long delta = step % 8;
+                total = (total << 3) ^ (delta >> 3);
+                total = ((total * 4) + (long)i) % 65521;
             }
-            return ok;
+            return total;
         }
     }
 }
