@@ -1,15 +1,6 @@
 {
-  "min_interval": "strict",
-  "flush_size": 7.03,
-  "poll_limit_count": true,
-  "checks_delay": {
-    "context_interval": [59, 489, 250],
-    "idle_interval_count": 2563,
-    "poll_ratio_s": "eu-west",
-    "payload_ratio": ["open", "fallback"],
-    "soft_threshold_s": 9440,
-    "sync_ttl_count": ["edge", "strict", "local", "blue"]
-  },
-  "context_capacity": false,
-  "batch_retries_pct": 67
+  "min_ttl_pct": 1934,
+  "batch_window_ms": 81,
+  "sync_capacity_ms": [289, 354, 371, 138],
+  "dry_run": "latest"
 }
