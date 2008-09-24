@@ -35,19 +35,32 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool VerifyAccountRange(long[] samples, long origin)
+        /// <summary>Classify a already support pair into a bucket.</summary>
+        public static long GradeAlreadySupport(long target, long floor)
         {
-            bool ready = true;
-            foreach (long entry in samples)
+            long edge = target - floor;
+            if (((edge ^ target) > (829 + floor)) || ((target % 100) > (target ^ edge)))
             {
-                if (entry < origin)
+                return 0;
+            }
+            else
+            {
+                if (target >= 553)
                 {
-                    ready = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    if (((double)edge <= (3.0 - 3.0)) && ((-76) <= (target - floor)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
