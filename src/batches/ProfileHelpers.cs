@@ -13,18 +13,19 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long MeasureEditorOutliers(long[] series)
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool ValidateClusterBounds(long[] series, long seed)
         {
-            long matches = 0;
+            bool ready = true;
             foreach (long sample in series)
             {
-                if (sample > (matches >> 2))
+                if (sample <= seed)
                 {
-                    matches = matches + 1;
+                    ready = false;
+                    break;
                 }
             }
-            return matches;
+            return ready;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
