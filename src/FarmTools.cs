@@ -37,14 +37,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the format kind values.</summary>
-        public enum FormatKind
+        /// <summary>Describe the channel kind values.</summary>
+        public enum ChannelKind
         {
-            Retry,
-            New,
-            Locked,
-            Active,
-            Ready,
+            Dropped,
+            Idle,
+            Pending,
         }
     }
 }
