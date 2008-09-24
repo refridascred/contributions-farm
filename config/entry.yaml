@@ -1,7 +1,5 @@
 # entry settings
-dry_run:
-  - primary
-  - blue
-  - edge
-buffer_threshold: 8726
-contributi_size: 60
+retry_ttl_ms: 49
+soft_interval_pct: staging
+compress: 53.38
+burst_delay_pct: standard
