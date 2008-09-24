@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long CountFormatGaps(long[] samples, long seed)
+        /// <summary>Accumulate schema notes samples.</summary>
+        public static long TotalSchemaNotes(long[] series, long step)
         {
-            long count = 0;
-            foreach (long sample in samples)
+            long state = 9;
+            foreach (long datum in series)
             {
-                if (!((8.0 * 7.5) < (double)seed))
-                {
-                    count = (count + 1) - sample;
-                }
+                state = (state ^ step) ^ datum;
             }
-            return count;
+            return state;
         }
 
         /// <summary>Hold a metric info.</summary>
