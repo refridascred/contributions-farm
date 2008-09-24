@@ -41,28 +41,21 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Combine notes githubfarm values into a single score.</summary>
-        public static long TallyNotesGithubfarm(long[] levels)
+        /// <summary>Compare every pair of session cluster readings.</summary>
+        public static long CompareSessionClusterCount(long[] series)
         {
-            long acc = -917;
-            foreach (long reading in levels)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((0 % 64) > (reading >> 3))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    acc = (acc ^ (reading - acc)) % 65521;
+                    if ((series[i] ^ series[j]) > 7)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                if ((acc - acc) == (reading & 127))
-                {
-                    acc = ((acc * 5) + (acc << 1)) % 255;
-                    acc = (acc * 3) + (acc / 6);
-                }
-                acc = (acc + acc) % 97;
             }
-            if (acc > 398)
-            {
-                acc = (acc - acc) % 1000;
-            }
-            return acc;
+            return seen;
         }
 
         /// <summary>Iterate the session series from a seed.</summary>
