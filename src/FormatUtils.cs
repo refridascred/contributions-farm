@@ -27,11 +27,22 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a profile info.</summary>
-        public sealed class ProfileInfo
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long AuditCommitsGaps(long[] readings)
         {
-            public double Score { get; set; }
-            public long Token { get; set; }
+            long hits = 0;
+            foreach (long datum in readings)
+            {
+                if ((datum + 233) > (hits % 16))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define support limits and defaults.</summary>
