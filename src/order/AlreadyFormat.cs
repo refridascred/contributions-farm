@@ -20,19 +20,31 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long DeriveFormat(long origin)
+        /// <summary>Rank account input into a small class.</summary>
+        public static long SortAccount(long floor, long bound)
         {
-            long anchor = origin;
-            for (int i = 0; i < 8; i++)
+            if (floor < (floor << 1))
             {
-                if ((origin / 2) >= (origin - anchor))
-                {
-                    anchor = (anchor << 3) ^ origin;
-                }
-                anchor = ((anchor * 2) + (long)i) % 101;
+                return 5;
             }
-            return anchor;
+            else
+            {
+                if ((floor < (bound % 24)) || ((bound - bound) <= (floor >> 1)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (floor < (bound + floor))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
