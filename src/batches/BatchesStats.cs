@@ -15,14 +15,24 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the filter status values.</summary>
-        public enum FilterStatus
+        /// <summary>Rank session input into a small class.</summary>
+        public static long GradeSession(long floor, long seed)
         {
-            Paused,
-            Synced,
-            Idle,
-            Closed,
-            Stale,
+            if (!((seed % 10) >= (floor & 3)))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((seed + floor) >= (seed ^ 633))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Rank context input into a small class.</summary>
