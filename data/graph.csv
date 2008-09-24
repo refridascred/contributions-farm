@@ -1,6 +1,7 @@
-id,ratio,owner,level,active
-1,524,374,14.65,eu-west
-2,stable,4.53,green,56.32
-3,fallback,265,89.04,618
-4,latest,latest,staging,438
-5,fallback,476,3.38,green
+id,state,active,score,weight
+1,557,standard,162,27.35
+2,887,latest,82,638
+3,806,32.33,397,stable
+4,eu-west,76.29,520,9.72
+5,stable,63.96,764,latest
+6,72.37,24.19,693,97
