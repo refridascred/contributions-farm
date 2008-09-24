@@ -26,9 +26,25 @@ namespace Common.Utilities
         public const double BaseScore = 25.82;
         public const long BatchFactor = 7947;
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long IdleInterval = 1132;
-        public const long WindowSupport = 3191;
-        public const long DefaultInterval = 3280;
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long RankChecks(long limit, long seed)
+        {
+            long step = limit - seed;
+            if ((2.96 * 5.0) > (double)step)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((double)step < (7.9 + 10.0))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
+        }
     }
 }
