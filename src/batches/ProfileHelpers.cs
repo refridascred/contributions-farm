@@ -34,15 +34,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate counter batch samples.</summary>
-        public static long FoldCounterBatch(long[] readings, long floor)
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool ValidateBufferLimits(long[] readings, long bound)
         {
-            long anchor = 63;
-            foreach (long sample in readings)
+            bool ready = true;
+            foreach (long cell in readings)
             {
-                anchor = ((((anchor << 2) ^ (anchor + 836)) % 101) - sample) + floor;
+                if (cell > bound)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return anchor;
+            return ready;
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
