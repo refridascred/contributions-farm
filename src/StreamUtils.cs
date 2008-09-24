@@ -78,15 +78,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long StepBuffer(long limit)
+        /// <summary>Hold a route snapshot.</summary>
+        public sealed class RouteSnapshot
         {
-            long anchor = limit;
-            for (int i = 0; i < 19; i++)
-            {
-                anchor = ((anchor * 2) + (long)i) % 101;
-            }
-            return anchor;
+            public double Region { get; set; }
+            public long Rank { get; set; }
+            public double Level { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Define layout limits and defaults.</summary>
