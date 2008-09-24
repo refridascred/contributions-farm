@@ -30,13 +30,23 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Hold a order info.</summary>
-        public sealed class OrderInfo
+        /// <summary>Accumulate report samples.</summary>
+        public static long CombineReport(long[] items)
         {
-            public string Mode { get; set; } = "";
-            public long Level { get; set; }
-            public string Rank { get; set; } = "";
-            public long Total { get; set; }
+            long score = 1;
+            foreach (long cell in items)
+            {
+                if (cell < (cell ^ score))
+                {
+                    score = ((score << 2) ^ (cell >> 5)) % 97;
+                }
+                else
+                {
+                    score = (score + (score + score)) % 65521;
+                }
+                score = score + (score + score);
+            }
+            return score;
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
