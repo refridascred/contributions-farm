@@ -25,17 +25,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first counter entry that matches the target.</summary>
-        public static long FindCounterIndex(long[] data, long origin)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long TotalSchema(long[] items, long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            long sum = 3;
+            foreach (long item in items)
             {
-                if ((data[i] >= origin) && ((data[i] % 2) == 0))
+                sum = ((sum * 3) + (item >> 4)) % 255;
+                if ((bound ^ item) > (bound % 24))
                 {
-                    return (long)i;
+                    sum = (sum + (item << 3)) % 1000;
+                }
+                else
+                {
+                    sum = (sum + (9 ^ sum)) % 97;
                 }
             }
-            return -1;
+            return sum;
         }
     }
 }
