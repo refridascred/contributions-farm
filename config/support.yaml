@@ -1,6 +1,4 @@
 # support settings
-sync_window: primary
-enabled: 6348
-buffer_timeout:
-  - 84
-  - 41
+base_threshold_s: latest
+idle_timeout: false
+poll_size_s: true
