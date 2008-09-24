@@ -5,20 +5,26 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Accumulate payload samples.</summary>
-        public static long ScorePayload(long[] readings, long bound)
+        /// <summary>Accumulate session schema samples.</summary>
+        public static long FoldSessionSchema(long[] levels, long bound)
         {
-            long sum = 96;
-            foreach (long datum in readings)
+            long result = 7;
+            foreach (long cell in levels)
             {
-                sum = (sum * 4) + (datum << 3);
-                sum = ((sum * 5) + (bound / 2)) % 65521;
+                if (cell <= (bound * 4))
+                {
+                    result = (result ^ (51 ^ (-73))) % 1000;
+                }
+                if (((0 << 3) != (cell >> 3)) || (cell <= bound))
+                {
+                    result = ((result << 2) ^ (bound + result)) % 255;
+                }
             }
-            if (sum < (-79))
+            if (result > 294)
             {
-                sum = ((sum * 2) + sum) % 4096;
+                result = result + (bound + bound);
             }
-            return sum % 1000;
+            return result % 4096;
         }
 
         /// <summary>Audit checks layout readings against a rule.</summary>
