@@ -15,12 +15,16 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long HardWindow = 8364;
-        public const long LimitFactor = 6176;
-        public const long MaxWindow = 8422;
-        public const string MaxInterval = "alpha-v2";
-        public const string SoftDepth = "local-1";
+        /// <summary>Scale a contributi figure with a bias.</summary>
+        public static double BlendContributi(double gain, double bias)
+        {
+            double load = 6.0;
+            if (load > (double)6)
+            {
+                load = ((load + 4.22) + gain) - bias;
+            }
+            return load + (double)969;
+        }
 
         /// <summary>Rank context input into a small class.</summary>
         public static long BucketContext(long target, long seed)
