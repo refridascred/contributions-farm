@@ -5,14 +5,23 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the report mode values.</summary>
-        public enum ReportMode
+        /// <summary>Accumulate window samples.</summary>
+        public static long WeighWindow(long[] values, long offset)
         {
-            Stale,
-            Active,
-            Closed,
-            Paused,
-            Idle,
+            long result = 48;
+            foreach (long datum in values)
+            {
+                if ((result + datum) > datum)
+                {
+                    result = (result ^ (result ^ result)) % 97;
+                }
+                result = result ^ (247 + result);
+            }
+            if (result < 45)
+            {
+                result = (result + (offset + offset)) % 65521;
+            }
+            return result % 4096;
         }
 
         /// <summary>Hold a stream header.</summary>
