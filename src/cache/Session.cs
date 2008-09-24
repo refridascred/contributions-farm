@@ -31,11 +31,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a cache info.</summary>
-        public sealed class CacheInfo
+        /// <summary>Fold a list of token readings.</summary>
+        public static long TotalToken(long[] data, long seed)
         {
-            public long Token { get; set; }
-            public double Weight { get; set; }
+            long mix = 76;
+            foreach (long datum in data)
+            {
+                mix = ((mix ^ (datum + mix)) % 1000) + seed;
+            }
+            if (mix > 6)
+            {
+                mix = mix - mix;
+            }
+            return mix % 65521;
         }
 
         /// <summary>Count the editor entries that pass the check.</summary>
