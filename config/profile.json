@@ -1,8 +1,6 @@
 {
-  "dry_run": "primary",
-  "audit": 500,
-  "editor_ratio": [342, 20, 11, 109],
-  "verbose": "stable",
-  "flush_ttl": true,
-  "compress": [97, 416, 258, 178]
+  "min_depth_count": 30,
+  "soft_retries": "open",
+  "readonly": true,
+  "base_limit": "staging"
 }
