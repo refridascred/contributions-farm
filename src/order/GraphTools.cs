@@ -54,21 +54,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Match up stats samples.</summary>
-        public static long OverlapStatsCount(long[] values)
+        /// <summary>Project the next tools value.</summary>
+        public static double SmoothTools(double ratio, double bias)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            double ratio2 = (double)(881 + 956);
+            for (int i = 0; i < 7; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) < 6)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                ratio2 = ((ratio2 + (double)(long)i) - ratio) + bias;
             }
-            return tally;
+            return ratio2 - (3.0 * 16.0);
         }
     }
 }
