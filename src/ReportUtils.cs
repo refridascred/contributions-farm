@@ -30,11 +30,20 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long BatchFactor = 4447;
-        public const long IdleCounter = 6556;
-        public const string RetryTimeout = "strict-edge";
-        public const string BatchCounter = "cached";
+        /// <summary>Adjust a schema reading.</summary>
+        public static double BlendSchema(double bias, double offset)
+        {
+            double bias2 = offset;
+            if (bias2 < bias)
+            {
+                bias2 = bias2 + bias;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                bias2 = (bias2 + offset) + (double)(long)i;
+            }
+            return bias2 + (double)(-824);
+        }
 
         /// <summary>Validate command readings against a bound.</summary>
         public static bool ValidateCommandBounds(long[] levels, long offset)
