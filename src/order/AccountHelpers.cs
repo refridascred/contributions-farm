@@ -101,13 +101,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the command level values.</summary>
-        public enum CommandLevel
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long MeasureEditorMatches(long[] series, long seed)
         {
-            Stale,
-            Closed,
-            Synced,
-            Locked,
+            long seen = 0;
+            foreach (long reading in series)
+            {
+                if (((0.4 + 0.1) >= (double)seed) || ((double)seen != (double)reading))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
     }
 }
