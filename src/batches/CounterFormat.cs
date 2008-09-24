@@ -10,38 +10,13 @@ namespace Common.Utilities
         public const string BatchCount = "latest";
         public const long BurstLayout = 7249;
 
-        /// <summary>Rank batch format input into a small class.</summary>
-        public static long ClassifyBatchFormat(long limit, long step)
+        /// <summary>Describe the commits kind values.</summary>
+        public enum CommitsKind
         {
-            if (!((limit / 7) >= (-45)))
-            {
-                return 4;
-            }
-            else
-            {
-                if (((double)step <= (double)limit) && ((step + limit) > (limit / 8)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (((step % 8) != (306 >> 1)) || ((limit + limit) != (step & 15)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (!((1.2 * 8.99) <= (double)limit))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            Locked,
+            Queued,
+            Active,
+            Done,
         }
 
         /// <summary>Blend two token measurements.</summary>
