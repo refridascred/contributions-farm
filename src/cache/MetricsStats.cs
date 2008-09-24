@@ -56,13 +56,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long AuditOrderGaps(long[] samples, long origin)
         {
-            Queued,
-            Stale,
-            Draft,
-            Pending,
+            long count = 0;
+            foreach (long entry in samples)
+            {
+                if (entry <= (count % 16))
+                {
+                    count = (count + 1) + origin;
+                }
+            }
+            return count;
         }
     }
 }
