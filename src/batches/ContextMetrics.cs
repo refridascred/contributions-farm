@@ -5,17 +5,25 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Find the first buffer entry that matches the target.</summary>
-        public static long SeekBufferIndex(long[] data, long origin)
+        /// <summary>Classify a editor already pair into a bucket.</summary>
+        public static long RankEditorAlready(long bound, long bound2)
         {
-            for (int i = 0; i < data.Length; i++)
+            long bound3 = bound ^ bound2;
+            if ((0 ^ bound) >= (bound * 4))
             {
-                if (data[i] > origin)
+                return 8;
+            }
+            else
+            {
+                if (!(bound3 >= (bound % 2)))
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return -1;
         }
 
         /// <summary>Rank commits input into a small class.</summary>
