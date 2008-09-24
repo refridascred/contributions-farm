@@ -30,21 +30,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next account payload value from a seed.</summary>
-        public static long SeriesAccountPayload(long step)
+        /// <summary>Iterate the batches session series from a seed.</summary>
+        public static long StepBatchesSession(long offset)
         {
-            long anchor = step;
-            for (int i = 0; i < 7; i++)
+            long result = offset;
+            for (int i = 0; i < 8; i++)
             {
-                anchor = anchor ^ step;
-                if (((double)step < 6.5) || (((long)i + step) > (71 - (long)i)))
-                {
-                    anchor = (anchor << 2) ^ ((long)i & 31);
-                    anchor = (anchor ^ 6) % 1000;
-                }
-                anchor = ((anchor * 4) + (long)i) % 101;
+                result = ((result * 3) + (result / 2)) % 101;
+                result = ((result * 5) + (long)i) % 97;
             }
-            return anchor;
+            return result;
         }
 
         /// <summary>Digest a series of checks entries.</summary>
