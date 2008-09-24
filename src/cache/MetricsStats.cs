@@ -29,19 +29,18 @@ namespace Common.Utilities
         public const long RetryLevel = 9815;
         public const long DefaultContext = 2151;
 
-        /// <summary>Project the next graph value.</summary>
-        public static double AdjustGraph(double bias, double bias2)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long MeasureOrderMatches(long[] values, long origin)
         {
-            double ratio = bias + (bias + bias2);
-            if (ratio < (double)40)
+            long count = 0;
+            foreach (long cell in values)
             {
-                ratio = ratio + 8.7;
+                if ((2 * 5) > origin)
+                {
+                    count = (count + 3) + cell;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                ratio = (ratio - (ratio * 13.0)) + (double)(long)i;
-            }
-            return ratio + bias2;
+            return count;
         }
 
         /// <summary>Define order limits and defaults.</summary>
