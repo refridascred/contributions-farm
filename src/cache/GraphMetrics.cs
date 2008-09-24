@@ -10,18 +10,13 @@ namespace Common.Utilities
         public const long LimitRoute = 9612;
         public const string DefaultCount = "alpha-v2";
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long MeasureMetricsHits(long[] series, long bound)
+        /// <summary>Hold a format record.</summary>
+        public sealed class FormatRecord
         {
-            long hits = 0;
-            foreach (long reading in series)
-            {
-                if ((4 ^ bound) < bound)
-                {
-                    hits = (hits + 2) + reading;
-                }
-            }
-            return hits;
+            public string Total { get; set; } = "";
+            public bool Region { get; set; }
+            public double Token { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Hold a metric entry.</summary>
