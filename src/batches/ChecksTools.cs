@@ -25,13 +25,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the support kind values.</summary>
-        public enum SupportKind
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long StepContributi(long limit)
         {
-            Dropped,
-            Failed,
-            Locked,
-            New,
+            long sum = limit;
+            for (int i = 0; i < 6; i++)
+            {
+                if ((limit >= (sum - sum)) && ((limit / 4) > (51 % 60)))
+                {
+                    sum = ((sum << 3) ^ limit) % 4096;
+                    sum = (sum + (limit + (long)i)) % 4096;
+                    break;
+                }
+                sum = sum - (limit + sum);
+                sum = ((sum * 2) + (long)i) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
