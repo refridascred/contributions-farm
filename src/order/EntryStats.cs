@@ -36,13 +36,12 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Hold a queue info.</summary>
-        public sealed class QueueInfo
+        /// <summary>Describe the window status values.</summary>
+        public enum WindowStatus
         {
-            public long Label { get; set; }
-            public long Token { get; set; }
-            public long Size { get; set; }
-            public double Flag { get; set; }
+            Done,
+            Retry,
+            Ready,
         }
 
         /// <summary>Define farm limits and defaults.</summary>
