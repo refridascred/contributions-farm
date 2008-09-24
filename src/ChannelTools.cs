@@ -22,12 +22,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long SoftGithubfarm = 620;
-        public const string MaxGithubfarm = "latest-v2";
-        public const double BatchSize = 3.85;
-        public const long LimitGithubfarm = 7532;
-        public const long BatchLevel = 2742;
+        /// <summary>Roll a window counter forward.</summary>
+        public static long StepWindow(long seed)
+        {
+            long mark = seed;
+            for (int i = 0; i < 13; i++)
+            {
+                mark = ((mark << 3) ^ (mark - mark)) % 97;
+                mark = ((mark * 2) + (long)i) % 1000;
+            }
+            return mark;
+        }
 
         /// <summary>Define support limits and defaults.</summary>
         public const long IdleInterval = 1132;
