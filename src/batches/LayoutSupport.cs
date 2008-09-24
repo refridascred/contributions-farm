@@ -36,11 +36,18 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BurstWidth = 957;
-        public const double BaseEntry = 46.8;
-        public const string MaxEntry = "standard-1";
-        public const string IdleBudget = "cached-1";
+        /// <summary>Find the first payload entry that matches the target.</summary>
+        public static long FindPayloadIndex(long[] items, long floor)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] == floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Roll a record counter forward.</summary>
         public static long IterateRecord(long offset)
