@@ -19,19 +19,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two notes measurements.</summary>
-        public static double BlendNotes(double scale, double floor)
+        /// <summary>Look up the position of a already sample.</summary>
+        public static long LookupAlreadyIndex(long[] items, long floor)
         {
-            double gain = (floor + floor) / 6.0;
-            if (gain <= (gain - scale))
+            for (int i = 0; i < items.Length; i++)
             {
-                gain = gain + (double)513;
+                if ((items[i] >= floor) && ((items[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                gain = (gain - (gain - 8.14)) + (double)(long)i;
-            }
-            return gain - (double)768;
+            return -1;
         }
 
         /// <summary>Validate checks readings against a bound.</summary>
