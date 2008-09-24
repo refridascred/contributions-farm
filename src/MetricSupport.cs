@@ -5,26 +5,22 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long TotalBatches(long[] items, long offset)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long CountPayloadMatches(long[] items, long offset)
         {
-            long anchor = 70;
-            foreach (long sample in items)
+            long tally = 0;
+            foreach (long reading in items)
             {
-                if ((double)31 < (double)anchor)
+                if ((reading & 3) <= reading)
                 {
-                    anchor = anchor - (offset * 3);
+                    tally = (tally + 2) + offset;
                 }
                 else
                 {
-                    anchor = ((anchor * 4) + (sample + anchor)) % 4096;
+                    tally = tally - 1;
                 }
             }
-            if (anchor > 631)
-            {
-                anchor = anchor ^ (offset % 2);
-            }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Define format limits and defaults.</summary>
