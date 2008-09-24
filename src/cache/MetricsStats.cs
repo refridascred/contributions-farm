@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Describe the commits status values.</summary>
-        public enum CommitsStatus
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
         {
-            Active,
-            Stale,
             Dropped,
-            Pending,
-            Synced,
+            New,
+            Draft,
+            Ready,
         }
 
         /// <summary>Count channel report pairs that satisfy a relation.</summary>
