@@ -66,13 +66,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a context options.</summary>
-        public sealed class ContextOptions
+        /// <summary>Describe the order level values.</summary>
+        public enum OrderLevel
         {
-            public bool Score { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Limit { get; set; }
-            public long Flag { get; set; }
+            Failed,
+            Done,
+            Paused,
+            Stale,
+            Queued,
         }
 
         /// <summary>Grade a queue value against two limits.</summary>
