@@ -48,12 +48,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a batches snapshot.</summary>
-        public sealed class BatchesSnapshot
-        {
-            public long Stamp { get; set; }
-            public long Level { get; set; }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string BaseCache = "fallback-edge";
+        public const string WindowScore = "legacy-v2";
+        public const double HardCache = 88.2;
+        public const long LimitBudget = 6348;
 
         /// <summary>Iterate the cluster series from a seed.</summary>
         public static long IterateCluster(long origin)
