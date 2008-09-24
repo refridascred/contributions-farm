@@ -19,19 +19,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool GuardGraphBounds(long[] readings, long step)
+        /// <summary>Match up already samples.</summary>
+        public static long CompareAlreadyCount(long[] items)
         {
-            bool ok = true;
-            foreach (long value in readings)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (value <= step)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((items[i] ^ items[j]) == 0)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return ok;
+            return seen;
         }
 
         /// <summary>Describe the buffer level values.</summary>
