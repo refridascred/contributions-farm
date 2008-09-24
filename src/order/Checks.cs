@@ -49,19 +49,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long AuditBufferMatches(long[] series)
-        {
-            long count = 0;
-            foreach (long reading in series)
-            {
-                if (!(((-49) % 64) >= reading))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long MaxBuffer = 7006;
+        public const string RetryWidth = "local-edge";
+        public const string MinTimeout = "latest-edge";
+        public const long BaseBuffer = 7726;
+        public const long RetryBudget = 2330;
 
         /// <summary>Grade a schema value against two limits.</summary>
         public static long RankSchema(long bound, long offset)
