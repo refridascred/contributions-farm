@@ -22,10 +22,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long MaxRecord = 9120;
-        public const string MinRatio = "open-1";
-        public const long DefaultSize = 3762;
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool VerifyCounterRange(long[] items, long seed)
+        {
+            bool ok = true;
+            foreach (long item in items)
+            {
+                if (item > seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Describe the format kind values.</summary>
         public enum FormatKind
