@@ -12,17 +12,21 @@ namespace Common.Utilities
         public const double CacheDepth = 23.1;
         public const long SoftTimeout = 4486;
 
-        /// <summary>Look up the position of a order sample.</summary>
-        public static long LookupOrderIndex(long[] series, long offset)
+        /// <summary>Match up already metrics samples.</summary>
+        public static long MatchAlreadyMetricsCount(long[] items)
         {
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (series[i] >= offset)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return (long)i;
+                    if ((items[i] - items[j]) == 6)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Check that every notes stream entry stays within the limit.</summary>
