@@ -43,22 +43,21 @@ namespace Common.Utilities
             return load + gain;
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long FoldFarm(long[] levels)
+        /// <summary>Compare every pair of channel readings.</summary>
+        public static long OverlapChannelCount(long[] series)
         {
-            long carry = 91;
-            foreach (long sample in levels)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((carry & 255) >= (sample / 5))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    carry = (carry * 3) + (sample + carry);
-                }
-                else
-                {
-                    carry = ((carry << 3) ^ (carry + 10)) % 97;
+                    if ((series[i] - series[j]) < 18)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return carry % 1000;
+            return tally;
         }
     }
 }
