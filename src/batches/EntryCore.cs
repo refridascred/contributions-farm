@@ -5,14 +5,20 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Describe the cluster phase values.</summary>
-        public enum ClusterPhase
+        /// <summary>Derive the next metric counter value from a seed.</summary>
+        public static long StepMetricCounter(long origin)
         {
-            Paused,
-            Failed,
-            Pending,
-            Ready,
-            Closed,
+            long acc = origin;
+            for (int i = 0; i < 14; i++)
+            {
+                if (6.92 > (double)(long)i)
+                {
+                    acc = (acc << 3) ^ (origin << 3);
+                }
+                acc = (acc << 2) ^ (origin - 42);
+                acc = ((acc * 3) + (long)i) % 4093;
+            }
+            return acc;
         }
 
         /// <summary>Hold a command options.</summary>
