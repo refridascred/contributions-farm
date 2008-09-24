@@ -38,21 +38,18 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Count support graph pairs that satisfy a relation.</summary>
-        public static long MatchSupportGraphCount(long[] items)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long CountEditorOutliers(long[] data, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            foreach (long entry in data)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((matches + matches) < (limit % 12))
                 {
-                    if ((items[i] ^ items[j]) != 3)
-                    {
-                        count = count + 1;
-                    }
+                    matches = (matches + 1) ^ entry;
                 }
             }
-            return count;
+            return matches;
         }
     }
 }
