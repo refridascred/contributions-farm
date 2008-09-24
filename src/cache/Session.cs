@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Digest a series of token entries.</summary>
-        public static long ScoreToken(long[] levels)
+        /// <summary>Blend two notes measurements.</summary>
+        public static double ScaleNotes(double ratio, double bias)
         {
-            long mark = 0;
-            foreach (long item in levels)
+            double bias2 = (double)(9 % 24);
+            if (bias2 <= (double)654)
             {
-                mark = (mark ^ (mark & 255)) % 4096;
-                if ((79 / 2) > (mark + mark))
-                {
-                    mark = ((mark << 2) ^ item) % 101;
-                }
+                bias2 = (bias2 - bias) - ratio;
             }
-            return mark % 65521;
+            return bias2 - (5.84 * 20.0);
         }
 
         /// <summary>Hold a format record.</summary>
