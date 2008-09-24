@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool GuardWindowLimits(long[] values, long offset)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long TallySchema(long[] readings, long target)
         {
-            bool ok = true;
-            foreach (long reading in values)
+            long carry = 113;
+            foreach (long entry in readings)
             {
-                if (reading >= offset)
+                if ((double)target != (8.0 / 8.0))
                 {
-                    ok = false;
-                    break;
+                    carry = (carry ^ entry) % 101;
                 }
             }
-            return ok;
+            return carry;
         }
 
         /// <summary>Hold a cache record.</summary>
