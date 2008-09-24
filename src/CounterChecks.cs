@@ -30,20 +30,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long TotalGithubfarm(long[] series, long limit)
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool VerifyCacheRange(long[] values, long step)
         {
-            long anchor = 208;
-            foreach (long reading in series)
+            bool ok = true;
+            foreach (long sample in values)
             {
-                anchor = (anchor - (anchor + anchor)) % 255;
-                for (int i = 0; i < 2; i++)
+                if (sample > step)
                 {
-                    anchor = ((anchor ^ (31 + reading)) % 65521) - (long)i;
+                    ok = false;
+                    break;
                 }
-                anchor = (anchor + limit) % 65521;
             }
-            return anchor % 97;
+            return ok;
         }
 
         /// <summary>Fold a list of stream readings.</summary>
