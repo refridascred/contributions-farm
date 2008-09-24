@@ -1,17 +1,6 @@
 {
-  "cache_retries": 9535,
-  "retry_limit": {
-    "batch_retries_s": [145, 60],
-    "dry_run": "eu-west",
-    "min_threshold": false
-  },
-  "idle_ratio": {
-    "retry_ratio_s": true,
-    "base_ttl": 48.96,
-    "flush_threshold_pct": {
-      "audit": 41.68,
-      "flush_depth": "staging",
-      "buffer_retries": false
-    }
-  }
+  "sync_ratio_count": "standard",
+  "sync_delay_pct": false,
+  "batch_timeout_count": 30,
+  "readonly": 2095
 }
