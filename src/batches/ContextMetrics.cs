@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
-        {
-            Idle,
-            Ready,
-            Failed,
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string BaseReport = "open-edge";
+        public const long WindowReport = 9096;
+        public const long BaseScore = 1366;
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
         public static bool VerifyNotesLimits(long[] samples, long step)
