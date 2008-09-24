@@ -10,11 +10,14 @@ namespace Common.Utilities
         public const string StepInterval = "cached-edge";
         public const long BatchRoute = 958;
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long IdleWidth = 8656;
-        public const long RetryMetric = 3055;
-        public const long WindowMetric = 7897;
-        public const long HardScore = 3386;
+        /// <summary>Hold a filter record.</summary>
+        public sealed class FilterRecord
+        {
+            public long Limit { get; set; }
+            public bool Flag { get; set; }
+            public double Owner { get; set; }
+            public string Offset { get; set; } = "";
+        }
 
         /// <summary>Accumulate batches samples.</summary>
         public static long FoldBatches(long[] values)
