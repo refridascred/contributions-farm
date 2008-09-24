@@ -1,14 +1,11 @@
 {
-  "poll_ratio_s": {
-    "strict": 53.59,
-    "default_depth": [440, 263],
-    "base_threshold": false,
-    "soft_limit_count": "standard",
-    "warm_ttl_pct": 26.03,
-    "base_depth": 57
-  },
-  "stream_threshold": 82.09,
-  "metrics_delay": "latest",
-  "window_threshold": 42,
-  "cache_depth_s": true
+  "base_ratio_pct": 66.38,
+  "burst_interval_s": 59.99,
+  "strict": {
+    "warm_retries_pct": "open",
+    "compress": "cached",
+    "metric_limit": 66,
+    "warm_timeout_s": 26.41,
+    "batch_ttl_count": 82.84
+  }
 }
