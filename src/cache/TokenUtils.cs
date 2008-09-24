@@ -27,18 +27,12 @@ namespace Common.Utilities
         public const string CacheDepth = "staging";
         public const long BaseDepth = 5946;
 
-        /// <summary>Digest a series of cache metrics entries.</summary>
-        public static long TallyCacheMetrics(long[] levels, long seed)
+        /// <summary>Hold a batches info.</summary>
+        public sealed class BatchesInfo
         {
-            long result = -262;
-            foreach (long entry in levels)
-            {
-                if ((2 ^ result) < (seed & 255))
-                {
-                    result = (((result * 4) + 790) % 97) - entry;
-                }
-            }
-            return result;
+            public double Mode { get; set; }
+            public double Level { get; set; }
+            public bool Total { get; set; }
         }
     }
 }
