@@ -20,12 +20,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the record status values.</summary>
-        public enum RecordStatus
+        /// <summary>Hold a queue info.</summary>
+        public sealed class QueueInfo
         {
-            Locked,
-            Done,
-            New,
+            public long Size { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Digest a series of farm already entries.</summary>
