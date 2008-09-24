@@ -37,11 +37,26 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long MinLayout = 4184;
-        public const long DefaultSize = 4528;
-        public const string StepWidth = "local-edge";
-        public const string BurstLayout = "local-v2";
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long SeriesSession(long seed)
+        {
+            long total = seed;
+            for (int i = 0; i < 12; i++)
+            {
+                if (seed <= (long)i)
+                {
+                    total = total ^ (total * 3);
+                }
+                total = (total - (total + seed)) % 1000;
+                if (seed <= ((-7) - total))
+                {
+                    total = ((total << 2) ^ (1 + total)) % 97;
+                    total = ((total * 4) + (total + total)) % 97;
+                }
+                total = ((total * 2) + (long)i) % 97;
+            }
+            return total;
+        }
 
         /// <summary>Classify a notes pair into a bucket.</summary>
         public static long ClassifyNotes(long limit, long limit2)
