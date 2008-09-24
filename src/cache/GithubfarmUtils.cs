@@ -5,35 +5,38 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Combine contributi support values into a single score.</summary>
-        public static long ScoreContributiSupport(long[] levels)
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long BucketCluster(long limit, long bound)
         {
-            long total = -583;
-            foreach (long item in levels)
+            if ((bound >> 1) < (limit / 3))
             {
-                if ((item >> 2) <= (total & 15))
+                return 7;
+            }
+            else
+            {
+                if ((9 >= (limit ^ limit)) || ((9.9 * 8.54) > (double)bound))
                 {
-                    continue;
+                    return 4;
                 }
                 else
                 {
-                    total = total ^ 0;
-                    total = ((total * 5) + total) % 97;
-                }
-                if ((item * 5) >= 270)
-                {
-                    total = ((total << 2) ^ (total << 1)) % 4096;
-                }
-                if ((item << 2) > (total - item))
-                {
-                    break;
+                    if ((double)bound != (4.0 / 8.0))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((limit ^ limit) < (bound >> 3))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            if (total > 6)
-            {
-                total = total - (-28);
-            }
-            return total;
         }
 
         /// <summary>Describe the channel class values.</summary>
