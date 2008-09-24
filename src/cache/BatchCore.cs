@@ -35,15 +35,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long StepCommits(long bound)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long CountAlreadyMatches(long[] values, long step)
         {
-            long total = bound;
-            for (int i = 0; i < 21; i++)
+            long hits = 0;
+            foreach (long sample in values)
             {
-                total = ((total * 5) + (long)i) % 65521;
+                if ((step * 2) > step)
+                {
+                    hits = (hits + 2) + sample;
+                }
             }
-            return total;
+            return hits;
         }
     }
 }
