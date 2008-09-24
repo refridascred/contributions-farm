@@ -11,19 +11,13 @@ namespace Common.Utilities
         public const long StepStats = 6017;
         public const double CacheStats = 78.8;
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool ValidateRouteBounds(long[] values, long target)
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
         {
-            bool flag = true;
-            foreach (long item in values)
-            {
-                if (item > target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Idle,
+            Closed,
+            Ready,
+            Done,
         }
 
         /// <summary>Look up the position of a format sample.</summary>
