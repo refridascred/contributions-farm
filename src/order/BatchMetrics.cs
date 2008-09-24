@@ -26,17 +26,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first support graph entry that matches the target.</summary>
-        public static long FindSupportGraphIndex(long[] series, long offset)
+        /// <summary>Hold a farm record.</summary>
+        public sealed class FarmRecord
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] <= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Mode { get; set; }
+            public long Weight { get; set; }
+            public string Level { get; set; } = "";
+            public double Label { get; set; }
         }
 
         /// <summary>Hold a report entry.</summary>
