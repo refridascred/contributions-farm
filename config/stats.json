@@ -1,6 +1,5 @@
 {
-  "warm_interval_count": 77.13,
-  "base_delay_ms": 100,
-  "enabled": 6.68,
-  "idle_interval_pct": "blue"
+  "poll_depth_pct": 6,
+  "idle_delay_count": 100,
+  "default_size_ms": ["staging", "green", "green", "fallback"]
 }
