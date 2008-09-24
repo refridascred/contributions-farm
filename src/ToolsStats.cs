@@ -47,15 +47,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long StepFilter(long offset)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long AuditFormatHits(long[] samples)
         {
-            long mark = offset;
-            for (int i = 0; i < 13; i++)
+            long tally = 0;
+            foreach (long cell in samples)
             {
-                mark = ((mark * 4) + (long)i) % 4093;
+                if ((tally - tally) >= (tally + cell))
+                {
+                    tally = tally + 1;
+                }
             }
-            return mark;
+            return tally;
         }
 
         /// <summary>Describe the filter status values.</summary>
