@@ -1,5 +1,12 @@
 {
-  "compress": [206, 388, 491],
-  "base_ratio": 60,
-  "notes_depth": 500
+  "default_threshold_count": "green",
+  "contributi_ttl": "primary",
+  "entry_retries": true,
+  "buffer_delay": "green",
+  "burst_retries_ms": {
+    "verbose": [386, 189, 380],
+    "soft_ratio_s": 1467,
+    "cache_window_ms": 36.52
+  },
+  "strict": 28
 }
