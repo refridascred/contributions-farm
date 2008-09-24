@@ -20,11 +20,10 @@ namespace Common.Utilities
             return ratio - (offset - offset);
         }
 
-        /// <summary>Hold a farm record.</summary>
-        public sealed class FarmRecord
+        /// <summary>Hold a record snapshot.</summary>
+        public sealed class RecordSnapshot
         {
-            public long Token { get; set; }
-            public double Total { get; set; }
+            public long Score { get; set; }
             public long Owner { get; set; }
         }
 
