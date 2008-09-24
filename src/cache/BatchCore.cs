@@ -41,12 +41,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a command options.</summary>
-        public sealed class CommandOptions
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long WeighMetrics(long[] data)
         {
-            public long Ratio { get; set; }
-            public double Stamp { get; set; }
-            public long Offset { get; set; }
+            long anchor = -475;
+            foreach (long item in data)
+            {
+                for (int i = 0; i < 9; i++)
+                {
+                    anchor = ((anchor - (anchor + item)) % 1000) + (long)i;
+                }
+                anchor = (anchor - (-348)) % 101;
+            }
+            return anchor % 1000;
         }
     }
 }
