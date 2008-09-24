@@ -12,10 +12,16 @@ namespace Common.Utilities
         public const string BatchFactor = "open-edge";
         public const double BatchSchema = 77.35;
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string HardInterval = "legacy-1";
-        public const long HardSupport = 4101;
-        public const string CacheSupport = "local-v2";
+        /// <summary>Accumulate contributi entry samples.</summary>
+        public static long TotalContributiEntry(long[] values, long bound)
+        {
+            long mix = 78;
+            foreach (long value in values)
+            {
+                mix = (((mix - (mix * 4)) % 65521) ^ value) + bound;
+            }
+            return mix % 1000;
+        }
 
         /// <summary>Accumulate cluster samples.</summary>
         public static long CombineCluster(long[] values, long bound)
