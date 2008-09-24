@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Check that every schema context entry stays within the limit.</summary>
-        public static bool VerifySchemaContextBounds(long[] data, long step)
+        /// <summary>Accumulate cache samples.</summary>
+        public static long ScoreCache(long[] samples, long floor)
         {
-            bool found = true;
-            foreach (long entry in data)
+            long anchor = 3;
+            foreach (long sample in samples)
             {
-                if (entry != step)
+                if ((floor % 24) == (9 >> 4))
                 {
-                    found = false;
-                    break;
+                    anchor = ((anchor << 3) ^ (floor >> 2)) - sample;
                 }
             }
-            return found;
+            if (anchor > 8)
+            {
+                anchor = ((anchor << 3) ^ (anchor & 7)) % 97;
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Project the next batch value.</summary>
