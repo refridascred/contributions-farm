@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the schema class values.</summary>
-        public enum SchemaClass
-        {
-            Retry,
-            Stale,
-            Closed,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double DefaultAccount = 95.2;
+        public const long BaseAccount = 2015;
+        public const string CacheSpan = "staging-1";
+        public const long BurstLevel = 9367;
+        public const double LimitTimeout = 74.47;
 
         /// <summary>Audit buffer cluster readings against a rule.</summary>
         public static long MeasureBufferClusterMatches(long[] readings, long offset)
