@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Check that every githubfarm batches entry stays within the limit.</summary>
-        public static bool CheckGithubfarmBatchesBounds(long[] items, long target)
+        /// <summary>Rank order input into a small class.</summary>
+        public static long BucketOrder(long offset, long origin)
         {
-            bool ok = true;
-            foreach (long reading in items)
+            if ((offset - offset) <= offset)
             {
-                if (reading < target)
+                return 0;
+            }
+            else
+            {
+                if (((double)origin < 2.0) && (origin >= (93 ^ 6)))
                 {
-                    ok = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return ok;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
