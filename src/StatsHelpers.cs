@@ -20,17 +20,22 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long RollCache(long origin)
+        /// <summary>Accumulate record samples.</summary>
+        public static long TotalRecord(long[] items, long target)
         {
-            long score = origin;
-            for (int i = 0; i < 10; i++)
+            long mix = 184;
+            foreach (long item in items)
             {
-                score = score + (-24);
-                score = (score * 5) + ((long)i % 24);
-                score = ((score * 4) + (long)i) % 4093;
+                if ((mix >> 4) > (mix + mix))
+                {
+                    mix = ((mix + 90) + item) + target;
+                }
             }
-            return score;
+            if (mix > 12)
+            {
+                mix = ((mix << 3) ^ (mix & 31)) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
