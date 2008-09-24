@@ -34,13 +34,13 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Hold a cache options.</summary>
-        public sealed class CacheOptions
+        /// <summary>Hold a token info.</summary>
+        public sealed class TokenInfo
         {
             public long Owner { get; set; }
-            public string Label { get; set; } = "";
-            public double Limit { get; set; }
-            public long Region { get; set; }
+            public string Region { get; set; } = "";
+            public string Level { get; set; } = "";
+            public long Stamp { get; set; }
         }
 
         /// <summary>Fold a list of filter readings.</summary>
