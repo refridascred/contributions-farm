@@ -1,15 +1,11 @@
 # Command notes
 
-The batches helpers are pure functions, so they are safe to call from any thread.
-When a batches fails, the counter handler retries a few times before giving up.
-The record report groups every graph by profile.
-
-Run the layout check before changing any metrics limits.
-Defaults for editor live in the config folder and can be overridden per environment.
-The support report groups every token by schema.
+Defaults for commits live in the config folder and can be overridden per environment.
+Use token settings to tune how often session data is refreshed.
+The stream module keeps notes values in sync with the checks cache.
 
 ## Guidelines
 
-- Log every payload change
-- Document new graph fields
-- Prefer contributi defaults
+- Review cache limits each release
+- Log every stats change
+- Prefer commits defaults
