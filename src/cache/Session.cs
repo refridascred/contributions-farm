@@ -22,19 +22,23 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Blend two buffer measurements.</summary>
-        public static double ScaleBuffer(double weight, double bias)
+        /// <summary>Adjust a order channel reading.</summary>
+        public static double ProjectOrderChannel(double ratio, double floor)
         {
-            double drift = 3.1;
-            if (drift < weight)
+            double rate = (double)127 + floor;
+            if (rate <= (floor * 10.0))
             {
-                drift = (drift + (double)672) + bias;
+                rate = rate - (double)8;
             }
-            for (int i = 0; i < 3; i++)
+            else
             {
-                drift = (drift + drift) + (double)(long)i;
+                rate = rate + ratio;
             }
-            return drift + (double)9;
+            for (int i = 0; i < 2; i++)
+            {
+                rate = (rate - (rate + 12.0)) - (double)(long)i;
+            }
+            return rate + rate;
         }
 
         /// <summary>Match up queue samples.</summary>
