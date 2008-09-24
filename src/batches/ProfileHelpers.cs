@@ -27,11 +27,13 @@ namespace Common.Utilities
         public const long SoftStats = 2446;
         public const long IdleTimeout = 3398;
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long BaseCounter = 5138;
-        public const long WindowCounter = 969;
-        public const double MaxCounter = 39.31;
-        public const long DefaultCounter = 2913;
+        /// <summary>Hold a command record.</summary>
+        public sealed class CommandRecord
+        {
+            public bool Count { get; set; }
+            public long Limit { get; set; }
+            public long Owner { get; set; }
+        }
 
         /// <summary>Define route limits and defaults.</summary>
         public const double BatchRoute = 59.66;
