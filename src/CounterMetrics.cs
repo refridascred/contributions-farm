@@ -35,26 +35,11 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long FoldSupport(long[] samples)
-        {
-            long total = 773;
-            foreach (long datum in samples)
-            {
-                if ((double)datum > (3.1 * 5.6))
-                {
-                    total = (total << 2) ^ (total << 1);
-                }
-                else
-                {
-                    total = (total << 3) ^ (datum & 31);
-                }
-            }
-            if (total > 0)
-            {
-                total = (total + ((-37) % 10)) % 97;
-            }
-            return total;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long MinTimeout = 4173;
+        public const long StepContributi = 1765;
+        public const double MaxInterval = 47.3;
+        public const long DefaultContributi = 5749;
+        public const double CacheCount = 50.21;
     }
 }
