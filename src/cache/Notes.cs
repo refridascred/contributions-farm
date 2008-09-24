@@ -19,11 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a batch header.</summary>
-        public sealed class BatchHeader
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool ValidateStreamLimits(long[] samples, long bound)
         {
-            public long Score { get; set; }
-            public bool Weight { get; set; }
+            bool ready = true;
+            foreach (long entry in samples)
+            {
+                if (entry != bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Hold a queue stats.</summary>
