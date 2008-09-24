@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Count the commits githubfarm entries that pass the check.</summary>
-        public static long AuditCommitsGithubfarmGaps(long[] levels)
-        {
-            long matches = 0;
-            foreach (long cell in levels)
-            {
-                if ((15.0 + 4.68) == (double)matches)
-                {
-                    matches = (matches + 2) - cell;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string CacheSupport = "staging";
+        public const long WindowSupport = 3525;
+        public const long IdleSupport = 1914;
+        public const long MinSpan = 8728;
+        public const long CacheSpan = 8748;
 
         /// <summary>Hold a notes record.</summary>
         public sealed class NotesRecord
