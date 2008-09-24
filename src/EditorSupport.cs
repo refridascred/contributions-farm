@@ -35,18 +35,12 @@ namespace Common.Utilities
             return rate + rate;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long MeasureGraphGaps(long[] values)
+        /// <summary>Describe the session mode values.</summary>
+        public enum SessionMode
         {
-            long seen = 0;
-            foreach (long datum in values)
-            {
-                if ((6 & 31) == (datum - 8))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            Ready,
+            Idle,
+            Stale,
         }
 
         /// <summary>Validate metric channel readings against a bound.</summary>
