@@ -35,40 +35,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long ClassifyProfile(long step, long seed)
-        {
-            long offset = step + seed;
-            if (((seed >> 4) <= offset) && ((step * 3) <= (step + seed)))
-            {
-                return 4;
-            }
-            else
-            {
-                if (((seed / 3) > (offset / 5)) && ((offset - 2) < 4))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (((0.37 + 15.0) <= (double)offset) && ((seed + offset) >= (offset + offset)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((offset / 2) < 468)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long CacheLevel = 4332;
+        public const string BaseCounter = "strict-v2";
+        public const string BatchCounter = "fallback-v2";
 
         /// <summary>Define already limits and defaults.</summary>
         public const double DefaultSpan = 83.27;
