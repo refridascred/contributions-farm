@@ -23,17 +23,12 @@ namespace Common.Utilities
             return load + gain;
         }
 
-        /// <summary>Look up the position of a filter sample.</summary>
-        public static long FindFilterIndex(long[] data, long limit)
+        /// <summary>Describe the commits kind values.</summary>
+        public enum CommitsKind
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] < limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Retry,
+            Ready,
+            Closed,
         }
     }
 }
