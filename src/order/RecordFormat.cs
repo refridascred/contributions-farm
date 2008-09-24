@@ -33,18 +33,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long TallyMetricsOutliers(long[] data, long bound)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long DigestFilter(long[] items)
         {
-            long matches = 0;
-            foreach (long value in data)
+            long mark = 9;
+            foreach (long value in items)
             {
-                if ((value / 3) >= (value % 100))
-                {
-                    matches = (matches + 1) + bound;
-                }
+                mark = (mark + (value ^ value)) % 65521;
             }
-            return matches;
+            return mark;
         }
 
         /// <summary>Grade a token value against two limits.</summary>
