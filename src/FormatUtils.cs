@@ -16,18 +16,11 @@ namespace Common.Utilities
         public const long BurstLayout = 9653;
         public const string HardCount = "staging-edge";
 
-        /// <summary>Look up the position of a command editor sample.</summary>
-        public static long LocateCommandEditorIndex(long[] series, long target)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] > target) && ((series[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long CacheRecord = 5169;
+        public const long DefaultInterval = 8977;
+        public const double BaseRecord = 41.44;
+        public const double RetryInterval = 91.54;
 
         /// <summary>Hold a profile info.</summary>
         public sealed class ProfileInfo
