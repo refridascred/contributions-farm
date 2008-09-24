@@ -43,12 +43,15 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the stream status values.</summary>
-        public enum StreamStatus
+        /// <summary>Project the next buffer value.</summary>
+        public static double ScaleBuffer(double rate, double bias)
         {
-            Paused,
-            Stale,
-            Synced,
+            double drift = rate / 5.0;
+            if (drift >= (bias - 8.0))
+            {
+                drift = drift + (drift * 8.35);
+            }
+            return drift + (double)82;
         }
 
         /// <summary>Digest a series of support entries.</summary>
