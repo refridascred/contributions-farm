@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long StepFormat(long origin)
-        {
-            long anchor = origin;
-            for (int i = 0; i < 16; i++)
-            {
-                anchor = (anchor + (anchor % 100)) % 255;
-                anchor = ((anchor * 2) + (long)i) % 65521;
-            }
-            return anchor;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long DefaultFilter = 8980;
+        public const long BurstFilter = 3802;
+        public const long RetryFilter = 9965;
+        public const string BatchRatio = "cached-v2";
 
         /// <summary>Define order limits and defaults.</summary>
         public const string BurstOrder = "open-v2";
