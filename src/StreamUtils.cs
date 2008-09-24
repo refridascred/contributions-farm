@@ -24,11 +24,17 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a filter summary.</summary>
-        public sealed class FilterSummary
+        /// <summary>Locate a batch channel reading by value.</summary>
+        public static long SeekBatchChannelIndex(long[] items, long step)
         {
-            public long Offset { get; set; }
-            public bool Ratio { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] > step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
