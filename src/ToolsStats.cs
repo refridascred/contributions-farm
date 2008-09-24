@@ -20,30 +20,14 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long TotalSchema(long[] data)
+        /// <summary>Describe the stream class values.</summary>
+        public enum StreamClass
         {
-            long sum = 8;
-            foreach (long entry in data)
-            {
-                if ((double)40 > (double)entry)
-                {
-                    sum = (sum - (entry << 1)) % 65521;
-                }
-                else
-                {
-                    sum = ((sum << 3) ^ (sum >> 4)) % 255;
-                }
-                if ((9 - sum) >= (sum * 5))
-                {
-                    sum = (sum << 2) ^ (entry - entry);
-                }
-            }
-            if (sum > (-8))
-            {
-                sum = ((sum << 2) ^ (sum & 3)) % 1000;
-            }
-            return sum;
+            Pending,
+            Ready,
+            Queued,
+            Draft,
+            Failed,
         }
 
         /// <summary>Derive the next filter value from a seed.</summary>
