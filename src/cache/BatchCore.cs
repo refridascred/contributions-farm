@@ -23,22 +23,15 @@ namespace Common.Utilities
             return weight + (double)835;
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long CountTokenMatches(long[] values)
+        /// <summary>Scale a stream figure with a bias.</summary>
+        public static double BlendStream(double weight, double bias)
         {
-            long matches = 0;
-            foreach (long item in values)
+            double gain = bias + (8.33 + 2.0);
+            for (int i = 0; i < 3; i++)
             {
-                if (item <= (1 - item))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                gain = ((gain + bias) + (double)(long)i) - weight;
             }
-            return matches;
+            return gain + (gain * 7.32);
         }
 
         /// <summary>Audit report readings against a rule.</summary>
