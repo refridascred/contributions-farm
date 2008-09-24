@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Compare every pair of commits token readings.</summary>
-        public static long OverlapCommitsTokenCount(long[] values)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool CheckCommandLimits(long[] data, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            bool ok = true;
+            foreach (long sample in data)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (sample != target)
                 {
-                    if ((values[i] - values[j]) == 12)
-                    {
-                        tally = tally + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
 
         /// <summary>Accumulate entry samples.</summary>
