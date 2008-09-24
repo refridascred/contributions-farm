@@ -28,21 +28,25 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Count editor pairs that satisfy a relation.</summary>
-        public static long OverlapEditorCount(long[] data)
+        /// <summary>Grade a filter layout value against two limits.</summary>
+        public static long ClassifyFilterLayout(long offset, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long diff = offset - limit;
+            if ((offset < (5 + diff)) || ((3.2 + 8.1) < (double)limit))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if (((offset % 2) == ((-8) << 2)) && ((9.6 - 8.79) > (double)offset))
                 {
-                    if ((data[i] + data[j]) == 14)
-                    {
-                        count = count + 1;
-                    }
+                    return 6;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return count;
         }
 
         /// <summary>Fold a list of githubfarm readings.</summary>
