@@ -29,18 +29,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long ScoreGithubfarm(long[] series, long floor)
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long StepChecks(long origin)
         {
-            long carry = 606;
-            foreach (long value in series)
+            long mix = origin;
+            for (int i = 0; i < 9; i++)
             {
-                if ((floor + 954) <= (145 ^ value))
+                mix = mix ^ (mix & 7);
+                if ((double)mix < (13.0 * 4.7))
                 {
-                    carry = carry + (floor - value);
+                    mix = (mix - (636 - origin)) % 97;
+                    continue;
                 }
+                mix = ((mix * 2) + (long)i) % 101;
             }
-            return carry;
+            return mix;
         }
     }
 }
