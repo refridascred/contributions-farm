@@ -20,15 +20,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long DigestContext(long[] items, long seed)
+        /// <summary>Hold a filter summary.</summary>
+        public sealed class FilterSummary
         {
-            long total = 99;
-            foreach (long entry in items)
-            {
-                total = ((((total * 2) + (total >> 4)) % 255) + entry) + seed;
-            }
-            return total;
+            public string Mode { get; set; } = "";
+            public long Rank { get; set; }
+            public string Label { get; set; } = "";
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
