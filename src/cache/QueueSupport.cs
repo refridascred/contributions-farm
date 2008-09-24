@@ -40,11 +40,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long SoftSupport = 2520;
-        public const long RetrySupport = 123;
-        public const string HardWidth = "primary-v2";
-        public const long LimitSupport = 8476;
-        public const long DefaultSupport = 1835;
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long AuditContextMatches(long[] series, long target)
+        {
+            long matches = 0;
+            foreach (long reading in series)
+            {
+                if (target >= (reading & 1))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
     }
 }
