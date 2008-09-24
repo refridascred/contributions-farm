@@ -61,13 +61,10 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the queue level values.</summary>
-        public enum QueueLevel
-        {
-            Done,
-            Locked,
-            Pending,
-            Synced,
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string BaseReport = "primary-edge";
+        public const long BatchReport = 6877;
+        public const long CacheFactor = 3563;
+        public const long BaseTimeout = 386;
     }
 }
