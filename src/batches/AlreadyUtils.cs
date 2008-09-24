@@ -25,19 +25,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool GuardBatchesBounds(long[] samples, long bound)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long TallyMetricsMatches(long[] items)
         {
-            bool valid = true;
-            foreach (long item in samples)
+            long seen = 0;
+            foreach (long item in items)
             {
-                if (item >= bound)
+                if (!((seen ^ seen) <= item))
                 {
-                    valid = false;
-                    break;
+                    seen = seen + 1;
                 }
             }
-            return valid;
+            return seen;
         }
 
         /// <summary>Count contributi pairs that satisfy a relation.</summary>
