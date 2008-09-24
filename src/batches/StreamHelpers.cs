@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Look up the position of a commits sample.</summary>
-        public static long LookupCommitsIndex(long[] series, long bound)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long AuditContributiGaps(long[] samples)
         {
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            foreach (long value in samples)
             {
-                if ((series[i] > bound) && ((series[i] % 3) == 0))
+                if ((value << 1) <= count)
                 {
-                    return (long)i;
+                    count = count + 2;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Grade a context value against two limits.</summary>
