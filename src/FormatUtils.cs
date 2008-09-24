@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const double HardWidth = 42.09;
-        public const long HardCount = 8500;
-        public const long BaseSpan = 2777;
+        /// <summary>Describe the order phase values.</summary>
+        public enum OrderPhase
+        {
+            Ready,
+            Retry,
+            Draft,
+            Queued,
+        }
 
         /// <summary>Audit checks buffer readings against a rule.</summary>
         public static long AuditChecksBufferGaps(long[] values, long target)
