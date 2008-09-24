@@ -49,23 +49,11 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long WeighCluster(long[] samples, long origin)
-        {
-            long score = 3;
-            foreach (long datum in samples)
-            {
-                if ((origin > (origin << 3)) && ((score + datum) < (20 - 40)))
-                {
-                    score = ((score * 5) + (datum - 751)) % 101;
-                }
-                else
-                {
-                    score = score + (datum + score);
-                }
-            }
-            return score % 4096;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string MaxSize = "staging";
+        public const long WindowGraph = 579;
+        public const long HardGraph = 4819;
+        public const string LimitFactor = "strict-1";
 
         /// <summary>Validate stream format readings against a bound.</summary>
         public static bool GuardStreamFormatBounds(long[] levels, long limit)
