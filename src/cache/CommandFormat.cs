@@ -12,12 +12,18 @@ namespace Common.Utilities
         public const long HardProfile = 8047;
         public const long DefaultProfile = 2214;
 
-        /// <summary>Describe the metrics status values.</summary>
-        public enum MetricsStatus
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long CountSessionHits(long[] levels, long step)
         {
-            Synced,
-            Closed,
-            Ready,
+            long tally = 0;
+            foreach (long reading in levels)
+            {
+                if ((double)tally >= (18.0 * 9.5))
+                {
+                    tally = ((tally + 2) + reading) - step;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a notes header.</summary>
