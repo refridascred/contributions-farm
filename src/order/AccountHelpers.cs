@@ -40,15 +40,11 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Describe the format mode values.</summary>
-        public enum FormatMode
-        {
-            Dropped,
-            Draft,
-            Done,
-            Retry,
-            Paused,
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BaseWidth = 61;
+        public const double BurstTools = 84.38;
+        public const long HardTools = 2370;
+        public const long LimitTools = 6924;
 
         /// <summary>Compare every pair of layout readings.</summary>
         public static long PairLayoutCount(long[] readings)
