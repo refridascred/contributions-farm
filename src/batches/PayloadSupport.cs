@@ -21,19 +21,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit buffer cluster readings against a rule.</summary>
-        public static long MeasureBufferClusterMatches(long[] readings, long offset)
+        /// <summary>Count the profile queue entries that pass the check.</summary>
+        public static long MeasureProfileQueueMatches(long[] readings)
         {
             long seen = 0;
-            foreach (long reading in readings)
+            foreach (long sample in readings)
             {
-                if (seen >= (offset + reading))
+                if (!(((long)readings.Length & 255) <= (seen ^ seen)))
                 {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    seen = (seen + 3) ^ sample;
                 }
             }
             return seen;
