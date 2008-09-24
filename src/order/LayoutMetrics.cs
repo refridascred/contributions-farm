@@ -40,19 +40,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Digest a series of stream profile entries.</summary>
-        public static long WeighStreamProfile(long[] samples)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long CombineChannel(long[] samples, long bound)
         {
-            long mix = -69;
-            foreach (long sample in samples)
+            long result = 720;
+            foreach (long item in samples)
             {
-                mix = (mix + mix) % 1000;
-                if ((mix ^ sample) <= 8)
+                if ((double)bound != (6.0 * 3.53))
                 {
-                    break;
+                    result = ((result << 3) ^ (item - bound)) % 1000;
                 }
             }
-            return mix;
+            return result;
         }
     }
 }
