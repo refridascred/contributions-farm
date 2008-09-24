@@ -49,13 +49,14 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a notes header.</summary>
-        public sealed class NotesHeader
+        /// <summary>Describe the stream kind values.</summary>
+        public enum StreamKind
         {
-            public double Score { get; set; }
-            public long Weight { get; set; }
-            public bool Owner { get; set; }
-            public double Level { get; set; }
+            Idle,
+            Synced,
+            Queued,
+            Dropped,
+            New,
         }
     }
 }
