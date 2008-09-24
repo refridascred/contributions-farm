@@ -1,9 +1,11 @@
 # entry settings
-hard_capacity_s: blue
-poll_ttl_ms: 33
-dry_run: 4094
-batch_retries_count:
-  - 400
-  - 223
-burst_capacity_count: standard
-warm_window_s: 390
+token_timeout: true
+stream_threshold: primary
+burst_threshold: false
+sync_retries:
+  strict: 94.43
+  cluster_depth: fallback
+  poll_window_pct: eu-west
+  verbose: 9050
+  enabled: 48.51
+format_size: false
