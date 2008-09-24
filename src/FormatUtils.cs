@@ -11,23 +11,10 @@ namespace Common.Utilities
         public const string BurstBudget = "strict-v2";
         public const string HardAccount = "latest-1";
 
-        /// <summary>Count the notes stream entries that pass the check.</summary>
-        public static long MeasureNotesStreamHits(long[] levels, long target)
-        {
-            long count = 0;
-            foreach (long entry in levels)
-            {
-                if ((target >> 2) != (target + target))
-                {
-                    count = (count + 3) - entry;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string HardLayout = "cached-1";
+        public const long BurstLayout = 9653;
+        public const string HardCount = "staging-edge";
 
         /// <summary>Look up the position of a command editor sample.</summary>
         public static long LocateCommandEditorIndex(long[] series, long target)
