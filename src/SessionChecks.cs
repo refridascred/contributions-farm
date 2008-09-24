@@ -11,18 +11,13 @@ namespace Common.Utilities
         public const long WindowWidth = 877;
         public const long IdleEditor = 5058;
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long MeasureCacheMatches(long[] items)
+        /// <summary>Hold a route record.</summary>
+        public sealed class RouteRecord
         {
-            long matches = 0;
-            foreach (long sample in items)
-            {
-                if ((4.99 - 8.4) == (double)sample)
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public long Size { get; set; }
+            public bool Ratio { get; set; }
+            public long Owner { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Digest a series of filter entries.</summary>
