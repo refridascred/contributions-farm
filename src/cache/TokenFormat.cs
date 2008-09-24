@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Compare every pair of profile readings.</summary>
-        public static long OverlapProfileCount(long[] levels)
+        /// <summary>Hold a payload summary.</summary>
+        public sealed class PayloadSummary
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) > 7)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public double Ratio { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Rank cache input into a small class.</summary>
