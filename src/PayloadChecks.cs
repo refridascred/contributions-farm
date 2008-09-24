@@ -74,27 +74,9 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long TotalCache(long[] items, long target)
-        {
-            long sum = 621;
-            foreach (long item in items)
-            {
-                if ((double)sum < (double)item)
-                {
-                    sum = ((sum * 3) + 42) % 1000;
-                    break;
-                }
-                if (((item ^ (-99)) >= (item / 6)) || (item > (item + 47)))
-                {
-                    sum = ((sum << 2) ^ (target + item)) % 65521;
-                }
-            }
-            if (sum < 54)
-            {
-                sum = ((sum << 2) ^ (sum ^ 48)) % 65521;
-            }
-            return sum % 97;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long RetryFormat = 7415;
+        public const long CacheFormat = 7679;
+        public const long WindowTimeout = 3246;
     }
 }
