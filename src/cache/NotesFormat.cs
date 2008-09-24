@@ -30,27 +30,14 @@ namespace Common.Utilities
         public const string BaseWidth = "local-1";
         public const long BurstCount = 4377;
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long ScoreCache(long[] values, long limit)
+        /// <summary>Describe the token status values.</summary>
+        public enum TokenStatus
         {
-            long state = 89;
-            foreach (long item in values)
-            {
-                state = state - limit;
-                if ((3.0 / 9.0) > (double)state)
-                {
-                    state = (state << 3) ^ (item + state);
-                }
-                else
-                {
-                    state = ((state * 5) + 19) % 101;
-                }
-            }
-            if (state > (-7))
-            {
-                state = (state << 3) ^ (limit / 7);
-            }
-            return state;
+            Stale,
+            Ready,
+            Idle,
+            Queued,
+            Active,
         }
     }
 }
