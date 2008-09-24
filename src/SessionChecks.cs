@@ -20,18 +20,12 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long AuditMetricsHits(long[] readings)
+        /// <summary>Describe the session class values.</summary>
+        public enum SessionClass
         {
-            long count = 0;
-            foreach (long value in readings)
-            {
-                if ((value <= 503) && !((value - 27) >= 224))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            Idle,
+            Paused,
+            Dropped,
         }
 
         /// <summary>Fold a list of support readings.</summary>
