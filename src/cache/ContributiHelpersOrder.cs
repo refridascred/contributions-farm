@@ -5,10 +5,25 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BurstSession = 437;
-        public const long BatchCount = 7735;
-        public const double MaxSession = 91.1;
+        /// <summary>Grade a stats tools value against two limits.</summary>
+        public static long BucketStatsTools(long floor, long limit)
+        {
+            if (((-732) - floor) != (floor + floor))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((floor & 7) < (limit + 337))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
+        }
 
         /// <summary>Accumulate metric samples.</summary>
         public static long TotalMetric(long[] readings, long seed)
