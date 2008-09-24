@@ -41,12 +41,27 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double BatchRoute = 59.66;
-        public const string HardCount = "local-v2";
-        public const string MinRoute = "strict-1";
-        public const long MinLevel = 4018;
-        public const long BatchTimeout = 3829;
+        /// <summary>Fold a list of window readings.</summary>
+        public static long TallyWindow(long[] readings, long seed)
+        {
+            long score = 8;
+            foreach (long entry in readings)
+            {
+                if (3.43 > (double)seed)
+                {
+                    score = (score + 9) ^ entry;
+                }
+                else
+                {
+                    score = (score - score) % 4096;
+                }
+            }
+            if (score > 28)
+            {
+                score = (score - (seed & 7)) % 65521;
+            }
+            return score;
+        }
 
         /// <summary>Digest a series of farm entries.</summary>
         public static long FoldFarm(long[] samples)
