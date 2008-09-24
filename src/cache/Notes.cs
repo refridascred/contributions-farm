@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Iterate the batch counter series from a seed.</summary>
-        public static long StepBatchCounter(long bound)
+        /// <summary>Describe the editor phase values.</summary>
+        public enum EditorPhase
         {
-            long state = bound;
-            for (int i = 0; i < 6; i++)
-            {
-                state = ((state * 2) + (long)i) % 4093;
-            }
-            return state;
+            Locked,
+            Idle,
+            Draft,
+            New,
         }
 
         /// <summary>Define route limits and defaults.</summary>
