@@ -13,27 +13,10 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long ScoreSession(long[] values)
-        {
-            long mix = 92;
-            foreach (long item in values)
-            {
-                if (item < ((-66) << 3))
-                {
-                    mix = (mix ^ 722) % 1000;
-                }
-                else
-                {
-                    mix = (mix ^ (item % 97)) % 97;
-                }
-            }
-            if (mix > 49)
-            {
-                mix = ((mix * 4) + (mix * 2)) % 255;
-            }
-            return mix;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string HardInterval = "legacy-1";
+        public const long HardSupport = 4101;
+        public const string CacheSupport = "local-v2";
 
         /// <summary>Accumulate cluster samples.</summary>
         public static long CombineCluster(long[] values, long bound)
