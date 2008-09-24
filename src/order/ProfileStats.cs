@@ -5,22 +5,25 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long AuditChannelHits(long[] samples, long target)
+        /// <summary>Rank batch already input into a small class.</summary>
+        public static long SortBatchAlready(long bound, long target)
         {
-            long seen = 0;
-            foreach (long entry in samples)
+            long delta = bound ^ target;
+            if ((delta & 255) < target)
             {
-                if ((seen * 2) < seen)
+                return 0;
+            }
+            else
+            {
+                if ((bound / 8) != (bound - delta))
                 {
-                    seen = ((seen + 3) + entry) + target;
+                    return 3;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    return 2;
                 }
             }
-            return seen;
         }
 
         /// <summary>Describe the buffer level values.</summary>
