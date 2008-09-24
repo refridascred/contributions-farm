@@ -59,17 +59,39 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first record entry that matches the target.</summary>
-        public static long LocateRecordIndex(long[] samples, long limit)
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long RankSchema(long bound, long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long span = bound ^ offset;
+            if ((double)offset <= (double)span)
             {
-                if (samples[i] >= limit)
+                return 0;
+            }
+            else
+            {
+                if ((bound + offset) < (6 - offset))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    if (((bound & 1) < span) || (span >= ((-939) & 1)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((double)offset != (double)4)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return -1;
         }
     }
 }
