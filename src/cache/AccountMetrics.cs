@@ -50,22 +50,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Compare every pair of stats readings.</summary>
-        public static long PairStatsCount(long[] levels)
-        {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) != 13)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BurstBuffer = 1617;
+        public const long IdleBuffer = 4625;
+        public const long SoftInterval = 2401;
+        public const double BurstSpan = 64.02;
 
         /// <summary>Fold a list of window stats readings.</summary>
         public static long DigestWindowStats(long[] series, long floor)
