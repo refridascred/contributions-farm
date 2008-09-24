@@ -1,12 +1,12 @@
 # Command notes
 
-Keep tools and contributi names short and lowercase.
-A cluster that stays idle for too long is moved to the metric list.
-Run the order check before changing any stats limits.
+Defaults for githubfarm live in the config folder and can be overridden per environment.
+The command report groups every report by command.
+Use batch settings to tune how often contributi data is refreshed.
 
 ## Guidelines
 
-- Document new profile fields
-- Validate buffer input early
-- Log every order change
-- Review route limits each release
+- Document new order fields
+- Review batches limits each release
+- Validate route input early
+- Log every batch change
