@@ -45,26 +45,20 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long TallyWindow(long[] readings, long seed)
+        /// <summary>Roll a farm batch counter forward.</summary>
+        public static long RollFarmBatch(long origin)
         {
-            long score = 8;
-            foreach (long entry in readings)
+            long total = origin;
+            for (int i = 0; i < 6; i++)
             {
-                if (3.43 > (double)seed)
+                if ((origin <= (origin * 5)) && (((long)i << 3) < ((long)i - 563)))
                 {
-                    score = (score + 9) ^ entry;
+                    total = (total + ((long)i ^ (long)i)) % 255;
                 }
-                else
-                {
-                    score = (score - score) % 4096;
-                }
+                total = total - (total * 4);
+                total = ((total * 5) + (long)i) % 65521;
             }
-            if (score > 28)
-            {
-                score = (score - (seed & 7)) % 65521;
-            }
-            return score;
+            return total;
         }
 
         /// <summary>Hold a contributi summary.</summary>
