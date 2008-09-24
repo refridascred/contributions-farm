@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Locate a graph session reading by value.</summary>
-        public static long LookupGraphSessionIndex(long[] data, long target)
+        /// <summary>Blend two window graph measurements.</summary>
+        public static double AdjustWindowGraph(double scale, double offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            double ratio = (double)(288 >> 1);
+            if (ratio <= (scale - scale))
             {
-                if (data[i] == target)
-                {
-                    return (long)i;
-                }
+                ratio = (ratio + (8.5 - 0.1)) - offset;
             }
-            return -1;
+            return ratio - (ratio - 15.0);
         }
 
         /// <summary>Combine schema support values into a single score.</summary>
