@@ -1,8 +1,6 @@
-id,active,ratio
-1,legacy,90.84
-2,997,19.83
-3,956,staging
-4,271,52.29
-5,standard,local
-6,19.99,staging
-7,3.26,117
+id,score,active
+1,blue,65.41
+2,62.8,96.85
+3,448,88
+4,eu-west,64.24
+5,latest,586
