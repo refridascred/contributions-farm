@@ -39,19 +39,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long TallyProfileGaps(long[] samples, long origin)
-        {
-            long hits = 0;
-            foreach (long entry in samples)
-            {
-                if ((entry >= hits) || ((entry << 3) <= entry))
-                {
-                    hits = (hits + 1) + origin;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double MinContributi = 41.58;
+        public const long MinBudget = 4793;
+        public const long DefaultContributi = 6027;
+        public const string HardContributi = "staging-v2";
+        public const long MaxSpan = 2404;
 
         /// <summary>Hold a window entry.</summary>
         public sealed class WindowEntry
