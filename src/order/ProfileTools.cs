@@ -13,23 +13,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long WeighReport(long[] items)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long AuditTokenGaps(long[] series, long target)
         {
-            long mark = 455;
-            foreach (long entry in items)
+            long seen = 0;
+            foreach (long reading in series)
             {
-                if ((3.9 + 20.0) >= (double)entry)
+                if (seen >= (reading - seen))
                 {
-                    mark = mark + mark;
-                    continue;
-                }
-                if ((((-78) ^ entry) != (mark + entry)) || ((mark & 3) < entry))
-                {
-                    mark = ((mark * 5) + (long)items.Length) % 4096;
+                    seen = (seen + 1) - target;
                 }
             }
-            return mark % 4096;
+            return seen;
         }
 
         /// <summary>Hold a farm record.</summary>
