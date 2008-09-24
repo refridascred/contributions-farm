@@ -22,22 +22,38 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long DigestCache(long[] samples)
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long ClassifyChannel(long limit, long bound)
         {
-            long state = 8;
-            foreach (long cell in samples)
+            if ((bound << 1) < (limit + limit))
             {
-                if (!((cell & 7) > cell))
+                return 1;
+            }
+            else
+            {
+                if ((limit + limit) > (756 ^ limit))
                 {
-                    state = (state - (769 << 2)) % 1000;
+                    return 6;
                 }
-                if (((1 / 9) < (cell * 5)) && ((80 / 8) < (state + state)))
+                else
                 {
-                    break;
+                    if ((17.0 / 4.0) >= (double)limit)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((limit % 10) <= (bound & 1))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return state;
         }
     }
 }
