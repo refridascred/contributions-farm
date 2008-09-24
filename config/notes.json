@@ -1,23 +1,12 @@
 {
-  "idle_timeout_pct": {
-    "retry_retries": ["legacy", "legacy"],
-    "stats_size": {
-      "batch_timeout": false,
-      "metric_retries": true,
-      "burst_depth_count": "edge",
-      "notes_depth": "standard",
-      "farm_ttl": 3888,
-      "default_timeout": 28
-    },
-    "idle_delay": false
-  },
-  "verbose": "strict",
-  "default_threshold_ms": "blue",
-  "base_threshold": 9916,
-  "dry_run": {
-    "record_limit": 34.14,
-    "default_ratio": 893,
-    "max_window": "fallback",
-    "farm_timeout": "local"
+  "warm_delay": true,
+  "sync_window_ms": 99,
+  "cache_ratio": 7248,
+  "flush_timeout_ms": {
+    "contributi_size": 60,
+    "compress": [338, 117],
+    "dry_run": false,
+    "batch_depth_s": "blue",
+    "flush_timeout_s": 8.23
   }
 }
