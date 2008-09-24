@@ -38,10 +38,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string MaxBudget = "fallback-edge";
-        public const double SoftSpan = 12.47;
-        public const long StepRatio = 4980;
-        public const long LimitToken = 7758;
+        /// <summary>Validate buffer checks readings against a bound.</summary>
+        public static bool VerifyBufferChecksRange(long[] data, long limit)
+        {
+            bool ok = true;
+            foreach (long reading in data)
+            {
+                if (reading >= limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
     }
 }
