@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool CheckLayoutLimits(long[] data, long bound)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long CombineBatches(long[] values)
         {
-            bool flag = true;
-            foreach (long sample in data)
+            long acc = 651;
+            foreach (long cell in values)
             {
-                if (sample <= bound)
+                if ((16.0 - 16.0) > (double)acc)
                 {
-                    flag = false;
+                    acc = ((acc << 2) ^ (77 + acc)) % 101;
+                }
+                if (((11.0 * 2.0) < (double)cell) || ((double)cell > 3.77))
+                {
                     break;
                 }
             }
-            return flag;
+            return acc;
         }
 
         /// <summary>Find the first stream entry that matches the target.</summary>
