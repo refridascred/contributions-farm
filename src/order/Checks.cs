@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long SeriesReport(long floor)
-        {
-            long state = floor;
-            for (int i = 0; i < 18; i++)
-            {
-                state = state + (state >> 4);
-                if (!(((floor & 15) > floor) || (state > (state << 2))))
-                {
-                    state = ((state << 2) ^ (3 + state)) % 97;
-                }
-                state = ((state * 5) + (long)i) % 65521;
-            }
-            return state;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string LimitRatio = "open-v2";
+        public const long MaxWidth = 3908;
+        public const long StepDepth = 5778;
+        public const long BurstGraph = 2290;
+        public const double WindowDepth = 92.7;
 
         /// <summary>Hold a command snapshot.</summary>
         public sealed class CommandSnapshot
