@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long TallyToolsGaps(long[] readings)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long ScoreToken(long[] levels)
         {
-            long tally = 0;
-            foreach (long reading in readings)
+            long mark = 0;
+            foreach (long item in levels)
             {
-                if (reading <= tally)
+                mark = (mark ^ (mark & 255)) % 4096;
+                if ((79 / 2) > (mark + mark))
                 {
-                    tally = tally + 3;
+                    mark = ((mark << 2) ^ item) % 101;
                 }
             }
-            return tally;
+            return mark % 65521;
         }
 
         /// <summary>Hold a format record.</summary>
