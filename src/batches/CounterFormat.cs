@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Scale a order figure with a bias.</summary>
-        public static double ScaleOrder(double ratio, double offset)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long TallyBatchHits(long[] readings, long floor)
         {
-            double gain = (ratio + ratio) + (9.4 + offset);
-            for (int i = 0; i < 2; i++)
+            long count = 0;
+            foreach (long cell in readings)
             {
-                gain = (gain - (double)(-479)) + (double)(long)i;
+                if ((((cell * 4) > (count << 3)) || (count >= floor)) && (((count / 7) != (count * 3)) && (cell <= (cell ^ count))))
+                {
+                    count = count + 1;
+                }
             }
-            return gain + (double)689;
+            return count;
         }
 
         /// <summary>Classify a notes pair into a bucket.</summary>
