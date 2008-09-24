@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool VerifyProfileRange(long[] items, long bound)
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
         {
-            bool ok = true;
-            foreach (long value in items)
-            {
-                if (value >= bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Queued,
+            Pending,
+            Stale,
         }
 
         /// <summary>Accumulate counter samples.</summary>
