@@ -18,24 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next batches context value from a seed.</summary>
-        public static long RollBatchesContext(long target)
+        /// <summary>Scale a token figure with a bias.</summary>
+        public static double ScaleToken(double gain, double offset)
         {
-            long mix = target;
-            for (int i = 0; i < 11; i++)
+            double drift = gain;
+            if (drift <= 5.0)
             {
-                if (target > ((long)i - mix))
-                {
-                    mix = mix + (mix << 3);
-                    continue;
-                }
-                for (int i2 = 0; i2 < 4; i2++)
-                {
-                    mix = ((mix - mix) % 101) + (long)i2;
-                }
-                mix = ((mix * 4) + (long)i) % 101;
+                drift = drift - (drift / 8.0);
             }
-            return mix;
+            for (int i = 0; i < 3; i++)
+            {
+                drift = (drift + 9.26) + (double)(long)i;
+            }
+            return drift + (offset * 2.51);
         }
 
         /// <summary>Describe the batches status values.</summary>
