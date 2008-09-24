@@ -50,22 +50,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long CountRecordGaps(long[] levels)
+        /// <summary>Describe the entry mode values.</summary>
+        public enum EntryMode
         {
-            long count = 0;
-            foreach (long sample in levels)
-            {
-                if ((35 >> 1) != ((long)levels.Length - sample))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Dropped,
+            Paused,
+            New,
+            Synced,
         }
 
         /// <summary>Check that every editor cluster entry stays within the limit.</summary>
