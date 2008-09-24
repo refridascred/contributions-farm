@@ -49,31 +49,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long ClassifyGraph(long seed, long floor)
+        /// <summary>Describe the entry mode values.</summary>
+        public enum EntryMode
         {
-            if (((floor + seed) < (seed + floor)) && ((7.2 / 6.0) <= (double)floor))
-            {
-                return 0;
-            }
-            else
-            {
-                if (((seed - seed) < (floor * 2)) && ((seed + 63) >= (seed / 4)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((floor * 5) != (floor ^ seed))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            Active,
+            Stale,
+            Draft,
+            New,
         }
 
         /// <summary>Adjust a contributi format reading.</summary>
