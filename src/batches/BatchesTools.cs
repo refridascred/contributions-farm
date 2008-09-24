@@ -13,12 +13,16 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string MinDepth = "primary-edge";
-        public const long WindowBudget = 4264;
-        public const double StepCounter = 60.12;
-        public const string RetryCount = "legacy-1";
-        public const string IdleWidth = "open-v2";
+        /// <summary>Scale a report figure with a bias.</summary>
+        public static double SmoothReport(double gain, double span)
+        {
+            double load = span + span;
+            if (load <= load)
+            {
+                load = (load - (load / 9.0)) + gain;
+            }
+            return load - (double)679;
+        }
 
         /// <summary>Fold a list of schema readings.</summary>
         public static long TotalSchema(long[] items, long bound)
