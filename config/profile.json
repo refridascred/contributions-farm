@@ -1,13 +1,5 @@
 {
-  "commits_delay": false,
-  "audit": {
-    "flush_retries_count": ["eu-west", "staging"],
-    "base_ttl": 77,
-    "batch_capacity": 97.5,
-    "payload_timeout": true,
-    "channel_interval": 90.51
-  },
-  "idle_interval": 11,
-  "record_size": "green",
-  "max_threshold_s": "stable"
+  "readonly": 1024,
+  "base_window_ms": "fallback",
+  "cache_window_count": "edge"
 }
