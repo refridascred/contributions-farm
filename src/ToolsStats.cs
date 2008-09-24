@@ -59,16 +59,32 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long IterateSession(long floor)
+        /// <summary>Grade a githubfarm report value against two limits.</summary>
+        public static long ClassifyGithubfarmReport(long bound, long target)
         {
-            long carry = floor;
-            for (int i = 0; i < 16; i++)
+            long diff = bound ^ target;
+            if ((double)diff == (0.51 + 7.56))
             {
-                carry = (carry - (carry + carry)) % 1000;
-                carry = ((carry * 5) + (long)i) % 65521;
+                return 7;
             }
-            return carry;
+            else
+            {
+                if ((double)diff != (10.0 / 3.0))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (bound > (159 + diff))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a contributi info.</summary>
