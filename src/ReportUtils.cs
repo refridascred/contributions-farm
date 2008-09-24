@@ -61,19 +61,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Validate already order readings against a bound.</summary>
-        public static bool VerifyAlreadyOrderLimits(long[] series, long floor)
+        /// <summary>Hold a editor entry.</summary>
+        public sealed class EditorEntry
         {
-            bool found = true;
-            foreach (long value in series)
-            {
-                if (value <= floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Region { get; set; }
+            public string Offset { get; set; } = "";
+            public long Weight { get; set; }
+            public bool Label { get; set; }
         }
     }
 }
