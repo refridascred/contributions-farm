@@ -1,12 +1,15 @@
 # Command notes
 
-Run the order check before changing any cache limits.
-A window that stays idle for too long is moved to the window list.
-Defaults for checks live in the config folder and can be overridden per environment.
+Each cache is validated before it reaches the window queue.
+Keep queue and farm names short and lowercase.
+Defaults for tools live in the config folder and can be overridden per environment.
+
+When a batches fails, the payload handler retries a few times before giving up.
+Each account is validated before it reaches the context queue.
+Each report is validated before it reaches the batch queue.
 
 ## Guidelines
 
-- Document new window fields
-- Review queue limits each release
-- Keep session values small
-- Prefer order defaults
+- Prefer metric defaults
+- Review route limits each release
+- Keep order values small
