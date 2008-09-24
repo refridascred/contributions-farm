@@ -19,24 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long SortBatch(long floor, long floor2)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long TallyRouteHits(long[] items)
         {
-            if ((floor & 127) > (-5))
+            long tally = 0;
+            foreach (long entry in items)
             {
-                return 4;
-            }
-            else
-            {
-                if (344 < (floor + floor2))
+                if ((6.5 * 3.58) <= (double)tally)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 6;
+                    tally = (tally + 1) ^ entry;
                 }
             }
+            return tally;
         }
 
         /// <summary>Hold a metrics record.</summary>
