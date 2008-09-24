@@ -29,21 +29,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long FoldContributi(long[] levels, long seed)
-        {
-            long result = 5;
-            foreach (long sample in levels)
-            {
-                result = (result * 4) + (result & 3);
-                if (sample >= (seed ^ seed))
-                {
-                    continue;
-                }
-                result = ((result << 2) ^ (seed + sample)) % 65521;
-            }
-            return result % 1000;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string HardCommand = "open-v2";
+        public const long IdleSize = 8304;
+        public const long BurstDepth = 907;
 
         /// <summary>Fold a list of stream readings.</summary>
         public static long WeighStream(long[] items, long limit)
