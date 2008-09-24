@@ -1,5 +1,6 @@
 {
-  "idle_retries_count": 6350,
-  "batch_timeout": "fallback",
-  "support_size": "local"
+  "max_timeout": 100,
+  "poll_capacity_pct": "primary",
+  "flush_threshold_count": 63.58,
+  "contributi_timeout": [151, 173]
 }
