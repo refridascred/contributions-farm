@@ -45,14 +45,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the order status values.</summary>
-        public enum OrderStatus
+        /// <summary>Roll a account counter forward.</summary>
+        public static long SeriesAccount(long floor)
         {
-            Dropped,
-            Done,
-            Synced,
-            Paused,
-            Ready,
+            long score = floor;
+            for (int i = 0; i < 14; i++)
+            {
+                score = ((score * 3) + (long)i) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Define report limits and defaults.</summary>
