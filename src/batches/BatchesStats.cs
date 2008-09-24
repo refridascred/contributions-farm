@@ -36,24 +36,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank context input into a small class.</summary>
-        public static long BucketContext(long target, long seed)
+        /// <summary>Derive the next account payload value from a seed.</summary>
+        public static long SeriesAccountPayload(long step)
         {
-            if ((200 >> 4) <= target)
+            long anchor = step;
+            for (int i = 0; i < 7; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (((target - target) >= (seed << 2)) && ((9.0 + 9.07) == (double)seed))
+                anchor = anchor ^ step;
+                if (((double)step < 6.5) || (((long)i + step) > (71 - (long)i)))
                 {
-                    return 0;
+                    anchor = (anchor << 2) ^ ((long)i & 31);
+                    anchor = (anchor ^ 6) % 1000;
                 }
-                else
-                {
-                    return 8;
-                }
+                anchor = ((anchor * 4) + (long)i) % 101;
             }
+            return anchor;
         }
 
         /// <summary>Digest a series of checks entries.</summary>
