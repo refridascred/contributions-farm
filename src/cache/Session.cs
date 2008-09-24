@@ -33,31 +33,21 @@ namespace Common.Utilities
             return drift + (double)9;
         }
 
-        /// <summary>Classify a context schema pair into a bucket.</summary>
-        public static long GradeContextSchema(long seed, long step)
+        /// <summary>Match up queue samples.</summary>
+        public static long OverlapQueueCount(long[] series)
         {
-            if (!((step + seed) >= (seed << 3)))
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (!(step >= (552 / 3)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)step > (6.23 * 9.2))
+                    if ((series[i] + series[j]) == 17)
                     {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 6;
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
     }
 }
