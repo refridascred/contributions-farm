@@ -13,12 +13,27 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string WindowContributi = "local-1";
-        public const long DefaultRatio = 5148;
-        public const double WindowSize = 74.28;
-        public const double CacheRatio = 84.7;
-        public const long RetryTimeout = 5116;
+        /// <summary>Combine schema session values into a single score.</summary>
+        public static long TotalSchemaSession(long[] levels, long step)
+        {
+            long acc = 755;
+            foreach (long entry in levels)
+            {
+                if ((7 - entry) <= ((long)levels.Length << 1))
+                {
+                    acc = (acc << 3) ^ entry;
+                }
+                if ((step >= acc) || ((acc + step) <= (acc + acc)))
+                {
+                    acc = ((acc << 3) ^ entry) % 1000;
+                }
+                if ((double)step != (double)entry)
+                {
+                    acc = (acc + (step % 2)) % 97;
+                }
+            }
+            return acc;
+        }
 
         /// <summary>Validate buffer readings against a bound.</summary>
         public static bool ValidateBufferLimits(long[] readings, long bound)
