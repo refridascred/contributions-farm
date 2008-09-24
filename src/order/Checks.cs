@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Hold a support header.</summary>
-        public sealed class SupportHeader
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long CountGithubfarmGaps(long[] levels)
         {
-            public long Score { get; set; }
-            public bool Limit { get; set; }
+            long hits = 0;
+            foreach (long value in levels)
+            {
+                if ((hits + value) <= 65)
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Classify a payload pair into a bucket.</summary>
