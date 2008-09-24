@@ -34,19 +34,31 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool VerifyFormatBounds(long[] samples, long seed)
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long SortQueue(long floor, long bound)
         {
-            bool found = true;
-            foreach (long reading in samples)
+            if ((875 - 9) < (floor / 8))
             {
-                if (reading > seed)
+                return 0;
+            }
+            else
+            {
+                if ((floor / 8) <= 802)
                 {
-                    found = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    if ((bound - floor) != (7 + bound))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Hold a batches summary.</summary>
