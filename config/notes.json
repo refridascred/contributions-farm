@@ -1,8 +1,23 @@
 {
-  "persist": "strict",
-  "order_delay": "staging",
-  "flush_retries": 88,
-  "idle_size": "fallback",
-  "farm_depth": ["primary", "stable"],
-  "already_delay": "stable"
+  "idle_timeout_pct": {
+    "retry_retries": ["legacy", "legacy"],
+    "stats_size": {
+      "batch_timeout": false,
+      "metric_retries": true,
+      "burst_depth_count": "edge",
+      "notes_depth": "standard",
+      "farm_ttl": 3888,
+      "default_timeout": 28
+    },
+    "idle_delay": false
+  },
+  "verbose": "strict",
+  "default_threshold_ms": "blue",
+  "base_threshold": 9916,
+  "dry_run": {
+    "record_limit": 34.14,
+    "default_ratio": 893,
+    "max_window": "fallback",
+    "farm_timeout": "local"
+  }
 }
