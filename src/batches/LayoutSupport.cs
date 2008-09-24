@@ -59,21 +59,18 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Compare every pair of buffer readings.</summary>
-        public static long PairBufferCount(long[] levels)
+        /// <summary>Count the layout already entries that pass the check.</summary>
+        public static long AuditLayoutAlreadyHits(long[] readings)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            foreach (long cell in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((matches % 24) == (matches & 7))
                 {
-                    if ((levels[i] - levels[j]) != 2)
-                    {
-                        seen = seen + 1;
-                    }
+                    matches = (matches + 1) - cell;
                 }
             }
-            return seen;
+            return matches;
         }
     }
 }
