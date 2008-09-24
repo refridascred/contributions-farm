@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Audit session report readings against a rule.</summary>
-        public static long CountSessionReportOutliers(long[] readings)
+        /// <summary>Blend two stats measurements.</summary>
+        public static double BlendStats(double bias, double offset)
         {
-            long hits = 0;
-            foreach (long sample in readings)
+            double weight = offset;
+            if (weight < (weight - offset))
             {
-                if ((8 + sample) != (sample - hits))
-                {
-                    hits = hits + 2;
-                }
+                weight = (weight + (offset - offset)) - bias;
             }
-            return hits;
+            return weight + (double)2;
         }
 
         /// <summary>Iterate the route series from a seed.</summary>
