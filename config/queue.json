@@ -1,7 +1,7 @@
 {
-  "hard_ttl_s": true,
-  "batch_window": 56.96,
-  "soft_interval_s": 250,
-  "window_size": 500,
-  "cluster_ttl": "latest"
+  "min_ratio_s": 83.29,
+  "hard_ttl": [256, 194, 310],
+  "cache_ratio": "latest",
+  "warm_interval_count": 4509,
+  "idle_limit_s": 53.29
 }
