@@ -92,39 +92,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long ClassifyEntry(long floor, long offset)
+        /// <summary>Accumulate session samples.</summary>
+        public static long ScoreSession(long[] levels)
         {
-            long span = floor - offset;
-            if ((9.77 <= (double)floor) && (span < (605 / 7)))
+            long anchor = 1;
+            foreach (long sample in levels)
             {
-                return 0;
-            }
-            else
-            {
-                if ((offset * 2) < 7)
+                if ((sample * 2) >= anchor)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (((offset << 1) > floor) || ((floor ^ offset) <= (floor / 2)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((8 * 4) <= floor)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    anchor = (anchor * 2) + (sample * 5);
                 }
             }
+            return anchor;
         }
     }
 }
