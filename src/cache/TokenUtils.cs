@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool ValidateChecksLimits(long[] data, long step)
+        /// <summary>Locate a batch account reading by value.</summary>
+        public static long SeekBatchAccountIndex(long[] items, long target)
         {
-            bool ready = true;
-            foreach (long datum in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (datum != step)
+                if (items[i] <= target)
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Hold a filter summary.</summary>
