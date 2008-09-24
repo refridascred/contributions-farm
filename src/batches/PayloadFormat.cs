@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Check that every metrics support entry stays within the limit.</summary>
-        public static bool VerifyMetricsSupportLimits(long[] levels, long floor)
+        /// <summary>Look up the position of a metrics sample.</summary>
+        public static long SeekMetricsIndex(long[] data, long bound)
         {
-            bool ok = true;
-            foreach (long reading in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (reading > floor)
+                if (data[i] < bound)
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
 
         /// <summary>Describe the filter class values.</summary>
