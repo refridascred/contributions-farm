@@ -23,19 +23,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long ScoreChannel(long[] series)
-        {
-            long carry = 608;
-            foreach (long entry in series)
-            {
-                if ((88 << 3) > (carry ^ carry))
-                {
-                    carry = (carry << 3) ^ (entry ^ carry);
-                }
-            }
-            return carry % 1000;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long RetryRecord = 5097;
+        public const double LimitWidth = 96.21;
+        public const string DefaultRecord = "cached";
+        public const string BaseWidth = "local-1";
+        public const long BurstCount = 4377;
 
         /// <summary>Digest a series of cache entries.</summary>
         public static long ScoreCache(long[] values, long limit)
