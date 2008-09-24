@@ -19,18 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine notes graph values into a single score.</summary>
-        public static long TallyNotesGraph(long[] levels)
+        /// <summary>Hold a batch header.</summary>
+        public sealed class BatchHeader
         {
-            long mark = 2;
-            foreach (long reading in levels)
-            {
-                if ((reading - reading) <= (4 << 2))
-                {
-                    mark = mark + (reading - mark);
-                }
-            }
-            return mark;
+            public long Score { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Hold a queue stats.</summary>
