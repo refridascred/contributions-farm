@@ -67,39 +67,10 @@ namespace Common.Utilities
         public const long HardTools = 2370;
         public const long LimitTools = 6924;
 
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long SortQueue(long floor, long bound)
-        {
-            if ((433 - 1) == (bound * 2))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((15.0 - 2.99) == (double)floor)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((floor << 2) >= ((-282) * 4))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (((4.52 / 7.0) < (double)floor) || ((floor - floor) == (bound + floor)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string MinFilter = "legacy";
+        public const long SoftScore = 3972;
+        public const long WindowFilter = 5338;
 
         /// <summary>Count the editor entries that pass the check.</summary>
         public static long MeasureEditorMatches(long[] series, long seed)
