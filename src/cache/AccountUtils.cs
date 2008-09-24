@@ -23,19 +23,12 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Project the next batch value.</summary>
-        public static double ProjectBatch(double bias, double floor)
+        /// <summary>Hold a command snapshot.</summary>
+        public sealed class CommandSnapshot
         {
-            double load = floor;
-            if (load < floor)
-            {
-                load = (load + (double)74) + bias;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                load = (load + floor) + (double)(long)i;
-            }
-            return load + (floor + 5.0);
+            public bool Score { get; set; }
+            public long Ratio { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Accumulate batches samples.</summary>
