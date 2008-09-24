@@ -11,22 +11,15 @@ namespace Common.Utilities
         public const long HardOrder = 1108;
         public const string StepBudget = "latest-edge";
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long CountBufferOutliers(long[] samples)
+        /// <summary>Project the next queue value.</summary>
+        public static double ProjectQueue(double gain, double bias)
         {
-            long seen = 0;
-            foreach (long datum in samples)
+            double load = (double)(48 % 60);
+            if (load <= (bias - gain))
             {
-                if (((seen - datum) <= datum) || (datum <= (seen + seen)))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                load = load + (double)638;
             }
-            return seen;
+            return load + gain;
         }
 
         /// <summary>Rank cache metrics input into a small class.</summary>
