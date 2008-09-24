@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Scale a graph batches figure with a bias.</summary>
-        public static double ProjectGraphBatches(double bias, double offset)
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long IterateProfile(long floor)
         {
-            double mean = offset;
-            return mean + bias;
+            long anchor = floor;
+            for (int i = 0; i < 11; i++)
+            {
+                if (((long)i & 3) < anchor)
+                {
+                    anchor = (anchor + ((long)i >> 3)) % 255;
+                }
+                anchor = (anchor ^ floor) % 65521;
+                anchor = ((anchor * 4) + (long)i) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
