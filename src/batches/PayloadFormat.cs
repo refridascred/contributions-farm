@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long TallyBatch(long[] samples)
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
         {
-            long mix = 88;
-            foreach (long cell in samples)
-            {
-                if ((mix - cell) == (cell + cell))
-                {
-                    mix = ((mix << 3) ^ (16 + mix)) % 101;
-                }
-                else
-                {
-                    mix = (mix - (cell + cell)) % 4096;
-                }
-            }
-            return mix % 4096;
+            New,
+            Queued,
+            Draft,
         }
 
         /// <summary>Describe the filter class values.</summary>
