@@ -48,13 +48,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the notes level values.</summary>
-        public enum NotesLevel
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long AuditBatchHits(long[] levels, long floor)
         {
-            Paused,
-            Dropped,
-            Stale,
-            Active,
+            long hits = 0;
+            foreach (long item in levels)
+            {
+                if (!(0.7 > (double)item) || ((double)floor > (3.04 - 4.07)))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
     }
 }
