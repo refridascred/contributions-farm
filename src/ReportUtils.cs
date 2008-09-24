@@ -44,16 +44,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long SeriesBatch(long limit)
+        /// <summary>Scale a already figure with a bias.</summary>
+        public static double BlendAlready(double bias, double floor)
         {
-            long state = limit;
-            for (int i = 0; i < 13; i++)
+            double scale = floor;
+            if (scale < (bias - bias))
             {
-                state = state + (state % 8);
-                state = ((state * 5) + (long)i) % 4093;
+                scale = scale + 5.2;
             }
-            return state;
+            return scale + (double)93;
         }
 
         /// <summary>Hold a editor entry.</summary>
