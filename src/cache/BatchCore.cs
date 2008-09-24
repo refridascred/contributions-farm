@@ -41,19 +41,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long WeighMetrics(long[] data)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long TallyReportMatches(long[] samples, long offset)
         {
-            long anchor = -475;
-            foreach (long item in data)
+            long seen = 0;
+            foreach (long cell in samples)
             {
-                for (int i = 0; i < 9; i++)
+                if (((29 >> 2) <= (offset + cell)) || ((19.0 <= (double)offset) && ((4.13 * 4.3) >= (double)seen)))
                 {
-                    anchor = ((anchor - (anchor + item)) % 1000) + (long)i;
+                    seen = seen + 1;
                 }
-                anchor = (anchor - (-348)) % 101;
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return anchor % 1000;
+            return seen;
         }
     }
 }
