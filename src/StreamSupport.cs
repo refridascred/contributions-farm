@@ -26,13 +26,13 @@ namespace Common.Utilities
         public const double IdleFactor = 91.42;
         public const long SoftBudget = 872;
 
-        /// <summary>Describe the filter state values.</summary>
-        public enum FilterState
+        /// <summary>Describe the graph kind values.</summary>
+        public enum GraphKind
         {
-            Stale,
+            Synced,
+            Ready,
             Locked,
-            Dropped,
-            Failed,
+            Pending,
         }
     }
 }
