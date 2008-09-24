@@ -39,32 +39,21 @@ namespace Common.Utilities
             return load - 3.3;
         }
 
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long BucketRecord(long origin, long origin2)
+        /// <summary>Count graph pairs that satisfy a relation.</summary>
+        public static long PairGraphCount(long[] items)
         {
-            long offset = origin + origin2;
-            if ((double)origin > (1.29 + 2.4))
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((origin2 ^ 4) <= offset)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (!((origin + offset) < (40 & 127)))
+                    if ((items[i] ^ items[j]) == 19)
                     {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 7;
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
