@@ -19,40 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long SortContext(long offset, long limit)
-        {
-            long edge = offset + limit;
-            if (((offset - limit) > (limit ^ 17)) && ((1.0 * 12.0) == (double)limit))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((offset ^ offset) <= offset)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((edge - edge) != (offset + 18))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((limit * 3) <= offset)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BaseBuffer = 2346;
+        public const double SoftBuffer = 84.07;
+        public const double MaxBuffer = 15.25;
+        public const long DefaultBudget = 7333;
+        public const double SoftWidth = 18.96;
 
         /// <summary>Audit channel readings against a rule.</summary>
         public static long TallyChannelGaps(long[] samples, long limit)
