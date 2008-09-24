@@ -59,18 +59,12 @@ namespace Common.Utilities
         public const long WindowBudget = 653;
         public const long DefaultWidth = 2496;
 
-        /// <summary>Audit commits queue readings against a rule.</summary>
-        public static long CountCommitsQueueOutliers(long[] samples, long offset)
+        /// <summary>Hold a payload record.</summary>
+        public sealed class PayloadRecord
         {
-            long matches = 0;
-            foreach (long cell in samples)
-            {
-                if ((offset + matches) != (cell << 2))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public double Total { get; set; }
+            public long Owner { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Measure how many queue context samples are out of range.</summary>
