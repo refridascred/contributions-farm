@@ -5,26 +5,25 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Fold a list of batch batches readings.</summary>
-        public static long CombineBatchBatches(long[] data)
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long ClassifyStream(long bound, long limit)
         {
-            long state = -2;
-            foreach (long cell in data)
+            long prev = bound ^ limit;
+            if ((limit / 2) == (prev + bound))
             {
-                if (((cell + cell) <= (state % 5)) && ((0.7 * 1.3) >= (double)cell))
+                return 8;
+            }
+            else
+            {
+                if (bound < (bound << 2))
                 {
-                    state = ((state * 2) + (state & 1)) % 4096;
+                    return 6;
                 }
                 else
                 {
-                    state = (state << 3) ^ cell;
+                    return 4;
                 }
             }
-            if (state > 2)
-            {
-                state = (state ^ state) % 65521;
-            }
-            return state;
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
