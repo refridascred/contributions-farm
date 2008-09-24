@@ -42,11 +42,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a batch entry.</summary>
-        public sealed class BatchEntry
-        {
-            public string Stamp { get; set; } = "";
-            public bool Weight { get; set; }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double MaxSize = 34.38;
+        public const double IdleInterval = 95.56;
+        public const double SoftRatio = 22.67;
+        public const long BaseScore = 5905;
+        public const long IdleRatio = 6087;
     }
 }
