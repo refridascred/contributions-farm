@@ -1,11 +1,12 @@
 # Command notes
 
-Run the metrics check before changing any githubfarm limits.
-A payload that stays idle for too long is moved to the notes list.
-Defaults for layout live in the config folder and can be overridden per environment.
+Run the order check before changing any cache limits.
+A window that stays idle for too long is moved to the window list.
+Defaults for checks live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Document new context fields
-- Log every commits change
-- Keep stream values small
+- Document new window fields
+- Review queue limits each release
+- Keep session values small
+- Prefer order defaults
