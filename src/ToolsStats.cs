@@ -32,13 +32,22 @@ namespace Common.Utilities
         public const long BatchContributi = 5271;
         public const long RetryContributi = 7291;
 
-        /// <summary>Hold a layout entry.</summary>
-        public sealed class LayoutEntry
+        /// <summary>Count the context format entries that pass the check.</summary>
+        public static long CountContextFormatMatches(long[] data)
         {
-            public bool Label { get; set; }
-            public bool Flag { get; set; }
-            public bool Total { get; set; }
-            public string Offset { get; set; } = "";
+            long count = 0;
+            foreach (long cell in data)
+            {
+                if (!((count >> 2) == (cell / 7)) || ((count / 6) <= (9 ^ 3)))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
