@@ -1,12 +1,7 @@
 {
-  "warm_delay": true,
-  "sync_window_ms": 99,
-  "cache_ratio": 7248,
-  "flush_timeout_ms": {
-    "contributi_size": 60,
-    "compress": [338, 117],
-    "dry_run": false,
-    "batch_depth_s": "blue",
-    "flush_timeout_s": 8.23
-  }
+  "filter_capacity": "legacy",
+  "schema_ratio": "local",
+  "batch_retries_ms": 26,
+  "verbose": false,
+  "warm_window_ms": true
 }
