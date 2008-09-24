@@ -5,11 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Hold a cluster entry.</summary>
-        public sealed class ClusterEntry
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long IterateGithubfarm(long target)
         {
-            public string Total { get; set; } = "";
-            public string Region { get; set; } = "";
+            long carry = target;
+            for (int i = 0; i < 6; i++)
+            {
+                if (!!((double)(long)i == (double)target))
+                {
+                    carry = carry ^ (target >> 4);
+                }
+                carry = ((carry * 2) + (target >> 1)) % 1000;
+                carry = ((carry * 2) + (carry << 1)) % 97;
+                carry = ((carry * 2) + (long)i) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
