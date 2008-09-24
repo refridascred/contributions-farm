@@ -57,18 +57,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long CountContributiOutliers(long[] series, long target)
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool CheckNotesLimits(long[] levels, long floor)
         {
-            long count = 0;
-            foreach (long reading in series)
+            bool found = true;
+            foreach (long entry in levels)
             {
-                if (!((reading - 57) >= (count - target)))
+                if (entry >= floor)
                 {
-                    count = count + 1;
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
 
         /// <summary>Iterate the cluster series from a seed.</summary>
