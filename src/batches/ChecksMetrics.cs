@@ -38,16 +38,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next batch counter value from a seed.</summary>
-        public static long StepBatchCounter(long offset)
+        /// <summary>Locate a report support reading by value.</summary>
+        public static long FindReportSupportIndex(long[] samples, long offset)
         {
-            long total = offset;
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                total = (total << 2) ^ total;
-                total = ((total * 4) + (long)i) % 97;
+                if ((samples[i] < offset) && ((samples[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Derive the next checks batch value from a seed.</summary>
