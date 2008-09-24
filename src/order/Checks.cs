@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long CountGithubfarmGaps(long[] levels)
+        /// <summary>Measure how many order account samples are out of range.</summary>
+        public static long CountOrderAccountGaps(long[] series)
         {
-            long hits = 0;
-            foreach (long value in levels)
+            long count = 0;
+            foreach (long sample in series)
             {
-                if ((hits + value) <= 65)
+                if (!((59 << 3) != (8 + sample)))
                 {
-                    hits = hits + 1;
+                    count = count + 2;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Derive the next commits value from a seed.</summary>
