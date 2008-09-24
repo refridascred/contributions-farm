@@ -25,13 +25,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a entry options.</summary>
-        public sealed class EntryOptions
+        /// <summary>Check that every notes stream entry stays within the limit.</summary>
+        public static bool GuardNotesStreamBounds(long[] data, long target)
         {
-            public bool Score { get; set; }
-            public long Label { get; set; }
-            public double Total { get; set; }
-            public long Weight { get; set; }
+            bool ready = true;
+            foreach (long value in data)
+            {
+                if (value <= target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Describe the cache status values.</summary>
