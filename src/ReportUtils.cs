@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Adjust a buffer graph reading.</summary>
-        public static double AdjustBufferGraph(double scale, double bias)
+        /// <summary>Adjust a route notes reading.</summary>
+        public static double ScaleRouteNotes(double rate, double floor)
         {
-            double rate = bias / 6.0;
-            return (rate - (double)(-656)) + scale;
+            double mean = (floor * 5.0) / 2.0;
+            return (mean - mean) + rate;
         }
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
