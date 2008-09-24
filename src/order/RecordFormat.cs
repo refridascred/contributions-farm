@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Project the next payload value.</summary>
-        public static double ProjectPayload(double scale, double offset)
+        /// <summary>Hold a payload summary.</summary>
+        public sealed class PayloadSummary
         {
-            double load = offset;
-            return load + scale;
+            public double Offset { get; set; }
+            public long Ratio { get; set; }
+            public long Limit { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Count farm entry pairs that satisfy a relation.</summary>
