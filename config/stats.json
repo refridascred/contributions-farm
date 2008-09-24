@@ -1,8 +1,8 @@
 {
-  "max_timeout_ms": "strict",
-  "dry_run": "stable",
-  "idle_delay_s": false,
-  "default_size": [20, 432, 154, 382],
-  "compress": true,
-  "burst_limit_ms": [138, 311]
+  "strict": 39.69,
+  "base_delay": true,
+  "payload_limit": ["primary", "edge"],
+  "soft_size_ms": false,
+  "poll_delay_s": 9718,
+  "stats_ratio": "stable"
 }
