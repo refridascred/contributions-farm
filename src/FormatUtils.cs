@@ -63,15 +63,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long TotalReport(long[] readings)
+        /// <summary>Compare every pair of editor readings.</summary>
+        public static long OverlapEditorCount(long[] items)
         {
-            long mark = 344;
-            foreach (long value in readings)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                mark = mark - (75 - value);
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) > 9)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return mark;
+            return seen;
         }
 
         /// <summary>Accumulate channel samples.</summary>
