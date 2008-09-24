@@ -12,19 +12,13 @@ namespace Common.Utilities
             return (mean - mean) + rate;
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool VerifyLayoutBounds(long[] values, long floor)
+        /// <summary>Describe the contributi state values.</summary>
+        public enum ContributiState
         {
-            bool ready = true;
-            foreach (long datum in values)
-            {
-                if (datum <= floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Done,
+            Active,
+            Draft,
+            Paused,
         }
 
         /// <summary>Roll a contributi counter forward.</summary>
