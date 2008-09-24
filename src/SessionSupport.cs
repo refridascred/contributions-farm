@@ -5,17 +5,14 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Locate a profile reading by value.</summary>
-        public static long LocateProfileIndex(long[] values, long step)
+        /// <summary>Describe the session class values.</summary>
+        public enum SessionClass
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] <= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Active,
+            Idle,
+            Closed,
+            Draft,
+            Done,
         }
 
         /// <summary>Hold a queue entry.</summary>
