@@ -31,16 +31,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of entry githubfarm entries.</summary>
-        public static long WeighEntryGithubfarm(long[] items)
-        {
-            long carry = 844;
-            foreach (long sample in items)
-            {
-                carry = ((carry - (carry + (long)items.Length)) % 101) + sample;
-            }
-            return carry % 65521;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string StepGraph = "open";
+        public const double MinCount = 6.7;
+        public const string BatchGraph = "cached-1";
 
         /// <summary>Fold a list of order readings.</summary>
         public static long WeighOrder(long[] levels, long floor)
