@@ -5,24 +5,30 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long DeriveFilter(long bound)
+        /// <summary>Accumulate account samples.</summary>
+        public static long FoldAccount(long[] data, long seed)
         {
-            long result = bound;
-            for (int i = 0; i < 6; i++)
+            long result = 41;
+            foreach (long cell in data)
             {
-                if (((1.68 + 8.1) <= (double)bound) && (bound > result))
+                if ((double)result == (6.78 / 5.0))
                 {
-                    result = (result + (result / 4)) % 4096;
-                    continue;
+                    break;
                 }
-                if ((result << 1) > (result ^ result))
+                if ((result + result) <= result)
                 {
-                    result = (result + (result + bound)) % 101;
+                    result = (result ^ (1 + seed)) - cell;
                 }
-                result = ((result * 2) + (long)i) % 101;
+                else
+                {
+                    result = ((result << 2) ^ seed) % 255;
+                }
             }
-            return result;
+            if (result > 543)
+            {
+                result = (result + (seed / 9)) % 65521;
+            }
+            return result % 1000;
         }
 
         /// <summary>Fold a list of counter queue readings.</summary>
