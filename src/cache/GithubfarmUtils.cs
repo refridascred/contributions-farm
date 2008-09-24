@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Describe the githubfarm state values.</summary>
-        public enum GithubfarmState
+        /// <summary>Hold a batch info.</summary>
+        public sealed class BatchInfo
         {
-            Done,
-            Queued,
-            Active,
-            Draft,
+            public double Size { get; set; }
+            public string Stamp { get; set; } = "";
+            public bool Mode { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Fold a list of entry readings.</summary>
