@@ -30,17 +30,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a format sample.</summary>
-        public static long LocateFormatIndex(long[] readings, long bound)
+        /// <summary>Hold a account info.</summary>
+        public sealed class AccountInfo
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] == bound) && ((readings[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Size { get; set; }
+            public long Ratio { get; set; }
+            public string Flag { get; set; } = "";
         }
     }
 }
