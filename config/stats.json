@@ -1,17 +1,5 @@
 {
-  "metric_ratio": false,
-  "profile_limit": "open",
-  "idle_threshold_s": false,
-  "idle_threshold_count": {
-    "min_timeout_pct": true,
-    "sync_ttl": {
-      "batch_depth_s": "staging",
-      "burst_delay_s": 51,
-      "readonly": 85,
-      "verbose": true,
-      "compress": 68.46,
-      "default_window_pct": [391, 84, 23]
-    },
-    "readonly": "staging"
-  }
+  "cache_ttl": false,
+  "poll_retries": 18.71,
+  "warm_ttl_count": 500
 }
