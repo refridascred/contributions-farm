@@ -19,12 +19,32 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string BaseFormat = "stable-1";
-        public const double BatchInterval = 18.65;
-        public const long BatchFormat = 5879;
-        public const string IdleDepth = "staging-v2";
-        public const double StepFormat = 77.63;
+        /// <summary>Digest a series of context entries.</summary>
+        public static long DigestContext(long[] readings)
+        {
+            long carry = 737;
+            foreach (long datum in readings)
+            {
+                if ((datum <= (carry % 97)) || ((datum - carry) > (30 - 829)))
+                {
+                    carry = (carry - (datum - datum)) % 65521;
+                    break;
+                }
+                else
+                {
+                    carry = ((carry << 2) ^ (carry % 3)) % 97;
+                }
+                if ((carry + datum) > (long)readings.Length)
+                {
+                    carry = ((carry * 4) + (datum + carry)) % 101;
+                }
+                if (carry < (5 * 2))
+                {
+                    break;
+                }
+            }
+            return carry % 65521;
+        }
 
         /// <summary>Roll a profile counter forward.</summary>
         public static long IterateProfile(long target)
