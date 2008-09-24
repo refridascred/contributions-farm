@@ -30,12 +30,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a account info.</summary>
-        public sealed class AccountInfo
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long CountClusterHits(long[] samples, long offset)
         {
-            public long Size { get; set; }
-            public long Ratio { get; set; }
-            public string Flag { get; set; } = "";
+            long tally = 0;
+            foreach (long cell in samples)
+            {
+                if (offset > (cell + 993))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
     }
 }
