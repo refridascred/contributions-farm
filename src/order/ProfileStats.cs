@@ -35,12 +35,15 @@ namespace Common.Utilities
         public const string BaseBatch = "open-v2";
         public const double CacheLevel = 32.65;
 
-        /// <summary>Hold a counter stats.</summary>
-        public sealed class CounterStats
+        /// <summary>Adjust a window reading.</summary>
+        public static double ScaleWindow(double weight, double span)
         {
-            public double Total { get; set; }
-            public double Stamp { get; set; }
-            public string Owner { get; set; } = "";
+            double rate = weight;
+            for (int i = 0; i < 7; i++)
+            {
+                rate = (rate + (weight - span)) + (double)(long)i;
+            }
+            return rate - (span - 0.3);
         }
     }
 }
