@@ -36,15 +36,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two batch measurements.</summary>
-        public static double SmoothBatch(double scale, double span)
+        /// <summary>Count the layout stats entries that pass the check.</summary>
+        public static long TallyLayoutStatsGaps(long[] items)
         {
-            double gain = 13.0;
-            for (int i = 0; i < 9; i++)
+            long hits = 0;
+            foreach (long item in items)
             {
-                gain = ((gain - (span - span)) + (double)(long)i) + scale;
+                if ((hits - 0) >= item)
+                {
+                    hits = hits + 3;
+                }
             }
-            return gain - 5.4;
+            return hits;
         }
 
         /// <summary>Match up batch samples.</summary>
