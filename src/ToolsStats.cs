@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Audit layout payload readings against a rule.</summary>
-        public static long MeasureLayoutPayloadHits(long[] levels, long floor)
+        /// <summary>Rank cache support input into a small class.</summary>
+        public static long SortCacheSupport(long offset, long floor)
         {
-            long seen = 0;
-            foreach (long reading in levels)
+            if ((floor + floor) <= 11)
             {
-                if ((double)floor == (5.96 + 17.0))
+                return 6;
+            }
+            else
+            {
+                if ((double)offset < 12.0)
                 {
-                    seen = (seen + 2) - reading;
+                    return 8;
+                }
+                else
+                {
+                    if ((offset + floor) < (floor & 127))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
