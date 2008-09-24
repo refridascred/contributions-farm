@@ -18,13 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the entry phase values.</summary>
-        public enum EntryPhase
+        /// <summary>Hold a buffer info.</summary>
+        public sealed class BufferInfo
         {
-            New,
-            Idle,
-            Retry,
-            Done,
+            public long Limit { get; set; }
+            public double Stamp { get; set; }
+            public string Level { get; set; } = "";
+            public bool Total { get; set; }
         }
 
         /// <summary>Iterate the context series from a seed.</summary>
