@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Check that every layout stream entry stays within the limit.</summary>
-        public static bool CheckLayoutStreamLimits(long[] readings, long offset)
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long DeriveSupport(long step)
         {
-            bool stale = true;
-            foreach (long sample in readings)
+            long score = step;
+            for (int i = 0; i < 6; i++)
             {
-                if (sample >= offset)
-                {
-                    stale = false;
-                    break;
-                }
+                score = ((score * 2) + (long)i) % 4093;
             }
-            return stale;
+            return score;
         }
 
         /// <summary>Describe the checks phase values.</summary>
