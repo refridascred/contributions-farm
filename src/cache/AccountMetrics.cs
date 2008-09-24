@@ -59,38 +59,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long RankAccount(long bound, long seed)
+        /// <summary>Validate record session readings against a bound.</summary>
+        public static bool VerifyRecordSessionRange(long[] series, long target)
         {
-            if ((bound - seed) >= (seed + seed))
+            bool ready = true;
+            foreach (long value in series)
             {
-                return 5;
-            }
-            else
-            {
-                if ((bound & 7) <= (bound / 3))
+                if (value != target)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (seed > (bound + bound))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((double)36 >= (double)seed)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
