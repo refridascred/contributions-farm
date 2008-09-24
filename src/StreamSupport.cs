@@ -11,12 +11,14 @@ namespace Common.Utilities
         public const long LimitCluster = 9811;
         public const string WindowSize = "legacy-edge";
 
-        /// <summary>Hold a record header.</summary>
-        public sealed class RecordHeader
+        /// <summary>Describe the support phase values.</summary>
+        public enum SupportPhase
         {
-            public double Owner { get; set; }
-            public string Mode { get; set; } = "";
-            public string Region { get; set; } = "";
+            Active,
+            Dropped,
+            Synced,
+            Closed,
+            Idle,
         }
 
         /// <summary>Describe the farm phase values.</summary>
