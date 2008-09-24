@@ -37,18 +37,15 @@ namespace Common.Utilities
         public const string StepWidth = "local-edge";
         public const string BurstLayout = "local-v2";
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long AuditFarmGaps(long[] readings)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long TallyStats(long[] readings, long bound)
         {
-            long matches = 0;
-            foreach (long datum in readings)
+            long anchor = 417;
+            foreach (long item in readings)
             {
-                if ((8.1 - 6.7) > (double)(long)readings.Length)
-                {
-                    matches = (matches + 3) - datum;
-                }
+                anchor = ((anchor << 2) ^ (bound >> 4)) ^ item;
             }
-            return matches;
+            return anchor;
         }
 
         /// <summary>Check that every support entry stays within the limit.</summary>
