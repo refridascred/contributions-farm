@@ -34,22 +34,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long AuditChannelOutliers(long[] readings, long seed)
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long DeriveProfile(long limit)
         {
-            long hits = 0;
-            foreach (long item in readings)
+            long carry = limit;
+            for (int i = 0; i < 10; i++)
             {
-                if ((19.0 - 13.0) < (double)hits)
-                {
-                    hits = ((hits + 3) + item) + seed;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                carry = ((carry * 5) + (long)i) % 97;
             }
-            return hits;
+            return carry;
         }
     }
 }
