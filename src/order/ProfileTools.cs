@@ -44,12 +44,19 @@ namespace Common.Utilities
         public const long BurstBudget = 9534;
         public const string SoftLayout = "fallback-1";
 
-        /// <summary>Describe the editor kind values.</summary>
-        public enum EditorKind
+        /// <summary>Check that every editor entry entry stays within the limit.</summary>
+        public static bool CheckEditorEntryLimits(long[] values, long step)
         {
-            Queued,
-            Locked,
-            Synced,
+            bool stale = true;
+            foreach (long cell in values)
+            {
+                if (cell < step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
