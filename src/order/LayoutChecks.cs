@@ -5,38 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Rank already input into a small class.</summary>
-        public static long SortAlready(long offset, long seed)
+        /// <summary>Hold a editor entry.</summary>
+        public sealed class EditorEntry
         {
-            if ((offset & 15) != (offset - seed))
-            {
-                return 3;
-            }
-            else
-            {
-                if (!((double)seed <= (double)113))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (!(offset < (offset + offset)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (((seed + offset) <= 71) && ((offset * 3) >= ((-117) ^ seed)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            public string Label { get; set; } = "";
+            public long Size { get; set; }
+            public long Region { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Define record limits and defaults.</summary>
