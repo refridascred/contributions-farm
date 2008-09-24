@@ -1,12 +1,12 @@
 # Command notes
 
-The session module keeps batches values in sync with the stats cache.
-Run the metrics check before changing any report limits.
-A already that stays idle for too long is moved to the profile list.
+Each schema is validated before it reaches the support queue.
+Use order settings to tune how often cache data is refreshed.
+The graph report groups every counter by notes.
 
 ## Guidelines
 
-- Document new counter fields
-- Keep filter values small
-- Validate notes input early
-- Review batches limits each release
+- Prefer commits defaults
+- Validate metrics input early
+- Log every editor change
+- Keep editor values small
