@@ -64,18 +64,19 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Measure how many queue context samples are out of range.</summary>
-        public static long MeasureQueueContextMatches(long[] levels, long origin)
+        /// <summary>Validate stream format readings against a bound.</summary>
+        public static bool GuardStreamFormatBounds(long[] levels, long limit)
         {
-            long tally = 0;
-            foreach (long value in levels)
+            bool ready = true;
+            foreach (long datum in levels)
             {
-                if (origin <= ((long)levels.Length / 6))
+                if (datum <= limit)
                 {
-                    tally = (tally + 2) + value;
+                    ready = false;
+                    break;
                 }
             }
-            return tally;
+            return ready;
         }
     }
 }
