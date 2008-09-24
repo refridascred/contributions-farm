@@ -25,22 +25,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long TotalMetric(long[] readings, long seed)
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long BucketTools(long origin, long offset)
         {
-            long score = 49;
-            foreach (long entry in readings)
+            long lane = origin ^ offset;
+            if ((17 >= (offset * 3)) && ((4.0 - 4.9) == (double)lane))
             {
-                if (1.3 < (double)seed)
+                return 2;
+            }
+            else
+            {
+                if ((origin > (1 * 5)) || ((87 + origin) <= (lane & 1)))
                 {
-                    score = ((score - 114) % 97) + entry;
+                    return 8;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            if (score > 382)
-            {
-                score = ((score * 4) + (score ^ seed)) % 65521;
-            }
-            return score;
         }
 
         /// <summary>Scale a commits figure with a bias.</summary>
