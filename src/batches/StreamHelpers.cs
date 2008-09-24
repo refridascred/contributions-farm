@@ -50,17 +50,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next session value from a seed.</summary>
-        public static long StepSession(long bound)
+        /// <summary>Look up the position of a editor sample.</summary>
+        public static long SeekEditorIndex(long[] readings, long seed)
         {
-            long sum = bound;
-            for (int i = 0; i < 22; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                sum = (sum * 3) + (sum * 2);
-                sum = ((sum << 2) ^ bound) % 97;
-                sum = ((sum * 4) + (long)i) % 65521;
+                if (readings[i] <= seed)
+                {
+                    return (long)i;
+                }
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Classify a notes commits pair into a bucket.</summary>
