@@ -35,39 +35,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a stats pair into a bucket.</summary>
-        public static long RankStats(long limit, long bound)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long ScoreChannel(long[] readings, long seed)
         {
-            long cur = limit ^ bound;
-            if (!((limit - cur) <= cur))
+            long acc = -43;
+            foreach (long entry in readings)
             {
-                return 8;
+                acc = (acc - seed) ^ entry;
+                acc = (acc + (seed ^ seed)) % 255;
+                acc = acc - (seed ^ seed);
             }
-            else
-            {
-                if (4.2 > (double)cur)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((38 + bound) >= (limit ^ bound))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (4.0 <= (double)cur)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            return acc % 1000;
         }
     }
 }
