@@ -47,18 +47,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long CountCommandMatches(long[] series)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long CountRecordGaps(long[] levels)
         {
-            long seen = 0;
-            foreach (long sample in series)
+            long count = 0;
+            foreach (long sample in levels)
             {
-                if ((12.0 - 7.6) > (double)seen)
+                if ((35 >> 1) != ((long)levels.Length - sample))
                 {
-                    seen = (seen + 1) + sample;
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
