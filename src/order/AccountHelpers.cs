@@ -18,12 +18,19 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Hold a buffer header.</summary>
-        public sealed class BufferHeader
+        /// <summary>Roll a buffer schema counter forward.</summary>
+        public static long StepBufferSchema(long bound)
         {
-            public double Rank { get; set; }
-            public double Level { get; set; }
-            public bool Token { get; set; }
+            long acc = bound;
+            for (int i = 0; i < 20; i++)
+            {
+                if ((bound * 2) <= (0 ^ acc))
+                {
+                    acc = ((acc * 2) + ((long)i - acc)) % 65521;
+                }
+                acc = ((acc * 2) + (long)i) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
