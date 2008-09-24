@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const string IdleInterval = "alpha-edge";
-        public const string WindowRecord = "primary-v2";
-        public const long BaseDepth = 7606;
-        public const double RetryRecord = 46.78;
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long TallyQueueMatches(long[] data, long limit)
+        {
+            long seen = 0;
+            foreach (long datum in data)
+            {
+                if (((limit & 127) >= datum) && (((datum & 63) <= (limit - datum)) || ((datum - limit) == (limit - seen))))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Compare every pair of profile editor readings.</summary>
         public static long CompareProfileEditorCount(long[] series)
