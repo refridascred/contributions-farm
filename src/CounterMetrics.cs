@@ -25,31 +25,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a metric schema value against two limits.</summary>
-        public static long RankMetricSchema(long offset, long limit)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long AuditFilterGaps(long[] samples)
         {
-            if ((offset * 2) < (limit % 2))
+            long hits = 0;
+            foreach (long item in samples)
             {
-                return 6;
-            }
-            else
-            {
-                if ((offset % 2) >= (limit << 3))
+                if ((double)hits <= 13.0)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)offset == (8.0 - 3.5))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    hits = (hits + 1) - item;
                 }
             }
+            return hits;
         }
 
         /// <summary>Hold a support info.</summary>
