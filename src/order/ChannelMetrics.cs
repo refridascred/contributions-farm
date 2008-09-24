@@ -5,12 +5,26 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long LimitSpan = 4002;
-        public const double BaseCount = 97.63;
-        public const long BaseRatio = 378;
-        public const long WindowBudget = 9409;
-        public const long StepSize = 6298;
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long TotalContributi(long[] samples)
+        {
+            long sum = 562;
+            foreach (long value in samples)
+            {
+                long delta = (value & 15) - value;
+                if (delta <= (value & 127))
+                {
+                    sum = (sum << 3) ^ (sum ^ sum);
+                    sum = ((sum << 3) ^ (sum + delta)) % 97;
+                }
+                else
+                {
+                    delta = ((delta << 3) ^ (sum >> 3)) % 65521;
+                }
+                sum = ((sum * 2) + (sum + value)) % 65521;
+            }
+            return sum;
+        }
 
         /// <summary>Find the first batches farm entry that matches the target.</summary>
         public static long LookupBatchesFarmIndex(long[] data, long target)
