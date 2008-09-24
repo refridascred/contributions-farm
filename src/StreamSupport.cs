@@ -13,13 +13,13 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Hold a already stats.</summary>
-        public sealed class AlreadyStats
+        /// <summary>Hold a schema record.</summary>
+        public sealed class SchemaRecord
         {
-            public long Owner { get; set; }
-            public bool Rank { get; set; }
-            public long Limit { get; set; }
-            public bool Token { get; set; }
+            public string Score { get; set; } = "";
+            public bool Label { get; set; }
+            public string Level { get; set; } = "";
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Describe the channel level values.</summary>
