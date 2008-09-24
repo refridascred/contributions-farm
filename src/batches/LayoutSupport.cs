@@ -59,18 +59,24 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Count the layout already entries that pass the check.</summary>
-        public static long AuditLayoutAlreadyHits(long[] readings)
+        /// <summary>Grade a support counter value against two limits.</summary>
+        public static long ClassifySupportCounter(long limit, long target)
         {
-            long matches = 0;
-            foreach (long cell in readings)
+            if (target <= (limit >> 4))
             {
-                if ((matches % 24) == (matches & 7))
+                return 2;
+            }
+            else
+            {
+                if (1 >= limit)
                 {
-                    matches = (matches + 1) - cell;
+                    return 8;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return matches;
         }
     }
 }
