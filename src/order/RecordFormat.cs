@@ -37,11 +37,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a checks header.</summary>
-        public sealed class ChecksHeader
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long TallyMetricsOutliers(long[] data, long bound)
         {
-            public bool Label { get; set; }
-            public string Ratio { get; set; } = "";
+            long matches = 0;
+            foreach (long value in data)
+            {
+                if ((value / 3) >= (value % 100))
+                {
+                    matches = (matches + 1) + bound;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Iterate the farm report series from a seed.</summary>
