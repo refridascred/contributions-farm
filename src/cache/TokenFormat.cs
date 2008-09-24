@@ -47,18 +47,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long TallyFormatGaps(long[] readings)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long CountStreamHits(long[] data)
         {
-            long hits = 0;
-            foreach (long item in readings)
+            long seen = 0;
+            foreach (long sample in data)
             {
-                if ((double)item < (double)hits)
+                if (!(((sample << 2) <= (sample & 7)) && ((seen & 127) < (long)data.Length)))
                 {
-                    hits = hits + 2;
+                    seen = seen + 3;
                 }
             }
-            return hits;
+            return seen;
         }
     }
 }
