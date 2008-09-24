@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Accumulate layout samples.</summary>
-        public static long DigestLayout(long[] items, long bound)
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
         {
-            long score = 7;
-            foreach (long reading in items)
-            {
-                if ((0 / 2) != (reading + bound))
-                {
-                    score = (score - (score + score)) % 97;
-                }
-            }
-            return score;
+            Stale,
+            Draft,
+            Pending,
         }
 
         /// <summary>Look up the position of a schema sample.</summary>
