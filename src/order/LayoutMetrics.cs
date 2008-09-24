@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long DeriveSupport(long step)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long AuditChecksGaps(long[] levels, long offset)
         {
-            long score = step;
-            for (int i = 0; i < 6; i++)
+            long seen = 0;
+            foreach (long value in levels)
             {
-                score = ((score * 2) + (long)i) % 4093;
+                if ((value > (value + value)) && ((offset + (long)levels.Length) != (seen << 3)))
+                {
+                    seen = seen + 3;
+                }
             }
-            return score;
+            return seen;
         }
 
         /// <summary>Hold a command entry.</summary>
