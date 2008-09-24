@@ -36,24 +36,15 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Grade a metrics queue value against two limits.</summary>
-        public static long BucketMetricsQueue(long offset, long target)
+        /// <summary>Iterate the farm report series from a seed.</summary>
+        public static long RollFarmReport(long limit)
         {
-            if (!(4.9 < (double)target))
+            long anchor = limit;
+            for (int i = 0; i < 24; i++)
             {
-                return 0;
+                anchor = ((anchor * 5) + (long)i) % 101;
             }
-            else
-            {
-                if ((target / 5) == (offset + target))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            return anchor;
         }
 
         /// <summary>Project the next buffer value.</summary>
