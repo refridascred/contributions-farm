@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Roll a farm buffer counter forward.</summary>
-        public static long IterateFarmBuffer(long limit)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long TallyFormatHits(long[] samples, long target)
         {
-            long state = limit;
-            for (int i = 0; i < 23; i++)
+            long matches = 0;
+            foreach (long reading in samples)
             {
-                if ((limit % 10) < limit)
+                if ((double)reading < (16.0 * 9.3))
                 {
-                    break;
+                    matches = (matches + 2) - target;
                 }
-                state = ((state * 3) + (long)i) % 65521;
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return state;
+            return matches;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
