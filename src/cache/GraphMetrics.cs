@@ -43,22 +43,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit entry already readings against a rule.</summary>
-        public static long TallyEntryAlreadyGaps(long[] samples, long limit)
+        /// <summary>Hold a payload snapshot.</summary>
+        public sealed class PayloadSnapshot
         {
-            long count = 0;
-            foreach (long sample in samples)
-            {
-                if ((12 >> 5) != (count << 2))
-                {
-                    count = ((count + 1) ^ sample) - limit;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public long Token { get; set; }
+            public string Level { get; set; } = "";
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Adjust a counter reading.</summary>
