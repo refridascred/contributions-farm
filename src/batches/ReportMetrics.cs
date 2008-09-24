@@ -20,13 +20,24 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a filter record.</summary>
-        public sealed class FilterRecord
+        /// <summary>Digest a series of batches context entries.</summary>
+        public static long DigestBatchesContext(long[] values, long seed)
         {
-            public double Total { get; set; }
-            public bool Level { get; set; }
-            public string Count { get; set; } = "";
-            public string Size { get; set; } = "";
+            long score = 889;
+            foreach (long sample in values)
+            {
+                score = ((score * 5) + (seed - score)) % 65521;
+                score = (score + (seed + seed)) % 255;
+                if (!((seed / 2) > (sample ^ seed)))
+                {
+                    score = ((score << 3) ^ (sample % 10)) % 1000;
+                }
+            }
+            if (score < 579)
+            {
+                score = (score << 3) ^ (196 & 127);
+            }
+            return score;
         }
     }
 }
