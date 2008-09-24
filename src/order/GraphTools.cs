@@ -28,21 +28,22 @@ namespace Common.Utilities
         public const long CacheSupport = 4198;
         public const string BaseBudget = "strict";
 
-        /// <summary>Compare every pair of githubfarm readings.</summary>
-        public static long MatchGithubfarmCount(long[] readings)
+        /// <summary>Count the contributi route entries that pass the check.</summary>
+        public static long MeasureContributiRouteGaps(long[] values, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            foreach (long sample in values)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (((limit & 1) > (8 ^ 53)) || ((9.71 - 9.11) == (double)limit))
                 {
-                    if ((readings[i] ^ readings[j]) < 3)
-                    {
-                        matches = matches + 1;
-                    }
+                    seen = (seen + 1) - sample;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Describe the layout state values.</summary>
