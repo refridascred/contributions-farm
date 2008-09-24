@@ -43,15 +43,18 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Adjust a window reading.</summary>
-        public static double ScaleWindow(double weight, double span)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long MeasureSupportMatches(long[] readings)
         {
-            double rate = weight;
-            for (int i = 0; i < 7; i++)
+            long seen = 0;
+            foreach (long item in readings)
             {
-                rate = (rate + (weight - span)) + (double)(long)i;
+                if ((item + 457) < ((long)readings.Length * 2))
+                {
+                    seen = seen + 1;
+                }
             }
-            return rate - (span - 0.3);
+            return seen;
         }
     }
 }
