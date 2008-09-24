@@ -2,11 +2,10 @@
 CREATE TABLE IF NOT EXISTS commits_records (
     id INTEGER PRIMARY KEY,
     score REAL NOT NULL DEFAULT 0,
+    weight REAL,
     token TEXT,
-    label TEXT
+    owner TEXT NOT NULL,
+    ratio REAL
 );
 
-CREATE INDEX IF NOT EXISTS idx_commits_records_token ON commits_records (token);
-
-INSERT INTO commits_records (score, token, label) VALUES (80.98, 'legacy', 'latest');
-INSERT INTO commits_records (score, token, label) VALUES (94.84, 'primary', 'open');
+CREATE INDEX IF NOT EXISTS idx_commits_records_owner ON commits_records (owner);
