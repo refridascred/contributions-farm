@@ -36,18 +36,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long TallyTokenHits(long[] values)
+        /// <summary>Project the next queue value.</summary>
+        public static double SmoothQueue(double bias, double offset)
         {
-            long count = 0;
-            foreach (long item in values)
-            {
-                if ((count ^ item) != (item & 15))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            double bias2 = (bias / 4.0) + offset;
+            return bias2 - (bias2 + 6.7);
         }
     }
 }
