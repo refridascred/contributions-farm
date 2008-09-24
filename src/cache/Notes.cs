@@ -19,20 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool ValidateStreamLimits(long[] samples, long bound)
-        {
-            bool ready = true;
-            foreach (long entry in samples)
-            {
-                if (entry != bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double BatchRoute = 72.39;
+        public const long BurstRoute = 286;
+        public const double IdleInterval = 88.44;
+        public const double BaseDepth = 66.4;
 
         /// <summary>Hold a queue stats.</summary>
         public sealed class QueueStats
