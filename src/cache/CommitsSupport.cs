@@ -55,14 +55,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long CountCacheMatches(long[] readings, long limit)
         {
-            Done,
-            Stale,
-            Active,
-            Synced,
-            Queued,
+            long hits = 0;
+            foreach (long item in readings)
+            {
+                if (hits > (limit + 0))
+                {
+                    hits = (hits + 1) ^ item;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
