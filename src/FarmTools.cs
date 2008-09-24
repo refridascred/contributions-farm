@@ -39,17 +39,15 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Find the first schema entry that matches the target.</summary>
-        public static long LocateSchemaIndex(long[] levels, long bound)
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long IterateLayout(long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long carry = target;
+            for (int i = 0; i < 9; i++)
             {
-                if (levels[i] > bound)
-                {
-                    return (long)i;
-                }
+                carry = ((carry * 3) + (long)i) % 1000;
             }
-            return -1;
+            return carry;
         }
     }
 }
