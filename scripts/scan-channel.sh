@@ -12,15 +12,8 @@ for i in $(seq 1 7); do
 done
 log "total ${total}"
 
-mode="${1:-fallback}"
-case "${mode}" in
-    open)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
-CHANNEL_LIMIT=494
-log "limit is ${CHANNEL_LIMIT}"
+count=0
+while [ "${count}" -lt 6 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
