@@ -1,11 +1,5 @@
 {
-  "base_ratio_pct": 66.38,
-  "burst_interval_s": 59.99,
-  "strict": {
-    "warm_retries_pct": "open",
-    "compress": "cached",
-    "metric_limit": 66,
-    "warm_timeout_s": 26.41,
-    "batch_ttl_count": 82.84
-  }
+  "idle_retries_count": 6350,
+  "batch_timeout": "fallback",
+  "support_size": "local"
 }
