@@ -76,24 +76,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long ClassifyNotes(long limit, long limit2)
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool CheckMetricsRange(long[] samples, long seed)
         {
-            if ((1.9 * 8.6) > (double)limit2)
+            bool found = true;
+            foreach (long item in samples)
             {
-                return 6;
-            }
-            else
-            {
-                if (limit < (limit2 * 5))
+                if (item < seed)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 5;
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Accumulate notes samples.</summary>
