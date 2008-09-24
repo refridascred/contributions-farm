@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Digest a series of cache cluster entries.</summary>
-        public static long DigestCacheCluster(long[] readings, long origin)
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool CheckCounterLimits(long[] readings, long origin)
         {
-            long total = 870;
-            foreach (long value in readings)
+            bool valid = true;
+            foreach (long datum in readings)
             {
-                total = total + (origin << 3);
-                total = (total - value) % 4096;
+                if (datum <= origin)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return total % 1000;
+            return valid;
         }
 
         /// <summary>Hold a schema snapshot.</summary>
