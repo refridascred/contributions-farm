@@ -56,15 +56,22 @@ namespace Common.Utilities
             return ratio + bias2;
         }
 
-        /// <summary>Roll a metric counter forward.</summary>
-        public static long RollMetric(long target)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long TallyCommandHits(long[] items)
         {
-            long mix = target;
-            for (int i = 0; i < 16; i++)
+            long seen = 0;
+            foreach (long item in items)
             {
-                mix = ((mix * 3) + (long)i) % 1000;
+                if (item > seen)
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return mix;
+            return seen;
         }
     }
 }
