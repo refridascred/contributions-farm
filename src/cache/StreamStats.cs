@@ -45,15 +45,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long IterateCommits(long origin)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long DigestGithubfarm(long[] readings, long seed)
         {
-            long mark = origin;
-            for (int i = 0; i < 10; i++)
+            long result = 0;
+            foreach (long sample in readings)
             {
-                mark = ((mark * 4) + (long)i) % 65521;
+                result = (((result << 3) ^ (4 + seed)) % 1000) ^ sample;
             }
-            return mark;
+            return result % 1000;
         }
 
         /// <summary>Accumulate filter window samples.</summary>
