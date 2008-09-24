@@ -22,22 +22,24 @@ namespace Common.Utilities
         public const string MaxInterval = "alpha-v2";
         public const string SoftDepth = "local-1";
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long MeasureQueueGaps(long[] samples)
+        /// <summary>Rank context input into a small class.</summary>
+        public static long BucketContext(long target, long seed)
         {
-            long hits = 0;
-            foreach (long datum in samples)
+            if ((200 >> 4) <= target)
             {
-                if ((double)hits >= 19.0)
+                return 2;
+            }
+            else
+            {
+                if (((target - target) >= (seed << 2)) && ((9.0 + 9.07) == (double)seed))
                 {
-                    hits = (hits + 1) + datum;
+                    return 0;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    return 8;
                 }
             }
-            return hits;
         }
 
         /// <summary>Hold a window options.</summary>
