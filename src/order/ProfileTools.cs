@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Rank order input into a small class.</summary>
-        public static long BucketOrder(long offset, long origin)
+        /// <summary>Classify a farm pair into a bucket.</summary>
+        public static long GradeFarm(long step, long origin)
         {
-            if ((offset - offset) <= offset)
+            if ((origin >= (94 / 3)) && ((0 + step) >= (origin - origin)))
             {
-                return 0;
+                return 8;
             }
             else
             {
-                if (((double)origin < 2.0) && (origin >= (93 ^ 6)))
+                if ((double)step < (8.7 / 6.0))
                 {
                     return 5;
                 }
                 else
                 {
-                    return 6;
+                    return 4;
                 }
             }
         }
