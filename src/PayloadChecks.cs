@@ -64,11 +64,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a already entry.</summary>
-        public sealed class AlreadyEntry
+        /// <summary>Hold a cache snapshot.</summary>
+        public sealed class CacheSnapshot
         {
             public long Owner { get; set; }
-            public long Limit { get; set; }
+            public string Size { get; set; } = "";
+            public string Weight { get; set; } = "";
         }
     }
 }
