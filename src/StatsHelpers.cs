@@ -71,9 +71,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long BatchCache = 488;
-        public const double WindowCache = 22.5;
-        public const long LimitCache = 7081;
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long IterateCluster(long origin)
+        {
+            long sum = origin;
+            for (int i = 0; i < 5; i++)
+            {
+                if (((sum & 3) > (origin ^ origin)) || (((long)i + sum) > 393))
+                {
+                    continue;
+                }
+                sum = ((sum * 3) + (long)i) % 1000;
+            }
+            return sum;
+        }
     }
 }
