@@ -26,19 +26,12 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Scale a filter figure with a bias.</summary>
-        public static double AdjustFilter(double scale, double floor)
+        /// <summary>Describe the session level values.</summary>
+        public enum SessionLevel
         {
-            double load = floor;
-            if (load <= (load - scale))
-            {
-                load = load + load;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                load = load + (double)(long)i;
-            }
-            return load + scale;
+            Dropped,
+            Done,
+            Pending,
         }
 
         /// <summary>Find the first cluster entry that matches the target.</summary>
