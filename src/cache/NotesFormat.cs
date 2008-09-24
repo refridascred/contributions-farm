@@ -5,16 +5,21 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long DeriveSupport(long offset)
+        /// <summary>Compare every pair of cluster readings.</summary>
+        public static long PairClusterCount(long[] readings)
         {
-            long mix = offset;
-            for (int i = 0; i < 14; i++)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                mix = mix + (offset ^ mix);
-                mix = ((mix * 3) + (long)i) % 97;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) > 13)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return mix;
+            return count;
         }
 
         /// <summary>Define record limits and defaults.</summary>
