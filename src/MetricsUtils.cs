@@ -46,17 +46,10 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Locate a window route reading by value.</summary>
-        public static long LocateWindowRouteIndex(long[] series, long offset)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] >= offset) && ((series[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long DefaultEditor = 2559;
+        public const long HardEditor = 8897;
+        public const double WindowFactor = 83.34;
+        public const string SoftEditor = "latest";
     }
 }
