@@ -58,17 +58,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long RollQueue(long target)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long MeasureAlreadyMatches(long[] values)
         {
-            long carry = target;
-            for (int i = 0; i < 13; i++)
+            long hits = 0;
+            foreach (long entry in values)
             {
-                carry = carry ^ ((long)i - (long)i);
-                carry = ((carry << 3) ^ (-50)) % 65521;
-                carry = ((carry * 5) + (long)i) % 97;
+                if (!(((long)values.Length - hits) >= (hits % 100)) || ((1.0 / 8.0) > (double)entry))
+                {
+                    hits = hits + 1;
+                }
             }
-            return carry;
+            return hits;
         }
 
         /// <summary>Describe the format level values.</summary>
