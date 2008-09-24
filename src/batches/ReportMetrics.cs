@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool VerifyFilterLimits(long[] items, long bound)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool CheckSessionLimits(long[] samples, long seed)
         {
-            bool ready = true;
-            foreach (long cell in items)
+            bool found = true;
+            foreach (long cell in samples)
             {
-                if (cell < bound)
+                if (cell >= seed)
                 {
-                    ready = false;
+                    found = false;
                     break;
                 }
             }
-            return ready;
+            return found;
         }
 
         /// <summary>Validate metric readings against a bound.</summary>
