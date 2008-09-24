@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Digest a series of tools githubfarm entries.</summary>
-        public static long CombineToolsGithubfarm(long[] data, long step)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long CountPayloadMatches(long[] levels, long step)
         {
-            long mix = 184;
-            foreach (long sample in data)
+            long hits = 0;
+            foreach (long entry in levels)
             {
-                mix = (((mix << 2) ^ (mix + sample)) % 255) + step;
+                if ((entry >> 3) != (step + entry))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            if (mix < 801)
-            {
-                mix = ((mix << 3) ^ mix) % 255;
-            }
-            return mix;
+            return hits;
         }
 
         /// <summary>Rank account input into a small class.</summary>
