@@ -41,38 +41,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a token filter value against two limits.</summary>
-        public static long RankTokenFilter(long offset, long seed)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long MeasureSessionMatches(long[] data)
         {
-            if ((seed % 8) >= (seed * 3))
+            long seen = 0;
+            foreach (long cell in data)
             {
-                return 3;
-            }
-            else
-            {
-                if (2.0 <= (double)offset)
+                if (cell > (cell + cell))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (((double)seed != (3.2 * 1.5)) && ((offset << 1) <= offset))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (!(seed <= (48 - offset)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    seen = seen + 3;
                 }
             }
+            return seen;
         }
 
         /// <summary>Describe the stats state values.</summary>
