@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
+        /// <summary>Hold a account entry.</summary>
+        public sealed class AccountEntry
         {
-            Queued,
-            Pending,
-            Stale,
+            public long Ratio { get; set; }
+            public bool Score { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Digest a series of editor entries.</summary>
