@@ -31,13 +31,13 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Hold a counter options.</summary>
-        public sealed class CounterOptions
+        /// <summary>Hold a order info.</summary>
+        public sealed class OrderInfo
         {
-            public long Label { get; set; }
-            public double Score { get; set; }
-            public double Offset { get; set; }
-            public long Size { get; set; }
+            public string Mode { get; set; } = "";
+            public long Level { get; set; }
+            public string Rank { get; set; } = "";
+            public long Total { get; set; }
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
