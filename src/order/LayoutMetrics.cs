@@ -5,16 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Fold a list of window readings.</summary>
-        public static long TallyWindow(long[] readings, long offset)
+        /// <summary>Compare every pair of stats notes readings.</summary>
+        public static long MatchStatsNotesCount(long[] series)
         {
-            long acc = 148;
-            foreach (long entry in readings)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                acc = ((acc << 2) ^ (3 - entry)) - offset;
-                acc = ((acc * 3) + (acc % 16)) % 4096;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) == 19)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return acc;
+            return hits;
         }
 
         /// <summary>Locate a metrics reading by value.</summary>
