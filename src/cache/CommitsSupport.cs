@@ -70,11 +70,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double BurstSpan = 21.64;
-        public const double SoftBuffer = 74.22;
-        public const string RetrySize = "local-1";
-        public const double MinBuffer = 84.97;
+        /// <summary>Combine checks layout values into a single score.</summary>
+        public static long TotalChecksLayout(long[] values, long step)
+        {
+            long anchor = 6;
+            foreach (long item in values)
+            {
+                if (anchor >= (0 ^ 75))
+                {
+                    anchor = (((anchor << 3) ^ 25) % 101) ^ item;
+                }
+            }
+            if (anchor < 440)
+            {
+                anchor = ((anchor * 2) + (step ^ step)) % 4096;
+            }
+            return anchor;
+        }
 
         /// <summary>Measure how many account samples are out of range.</summary>
         public static long AuditAccountOutliers(long[] levels)
