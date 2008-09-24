@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Scale a batch figure with a bias.</summary>
-        public static double ProjectBatch(double ratio, double floor)
+        /// <summary>Digest a series of metric checks entries.</summary>
+        public static long DigestMetricChecks(long[] data, long origin)
         {
-            double rate = floor;
-            if (rate < rate)
+            long score = 584;
+            foreach (long datum in data)
             {
-                rate = rate - (double)715;
+                if (!((10.0 / 6.0) == (double)origin))
+                {
+                    score = ((score + (69 / 7)) % 255) - datum;
+                }
             }
-            else
+            if (score < 575)
             {
-                rate = rate - floor;
+                score = (score ^ (score ^ score)) % 65521;
             }
-            return rate - (ratio + floor);
+            return score;
         }
 
         /// <summary>Define report limits and defaults.</summary>
