@@ -1,7 +1,20 @@
 {
-  "retry_ratio_pct": "blue",
-  "format_ttl": "staging",
-  "base_threshold": 76.37,
-  "soft_limit_s": "local",
-  "burst_ttl": 16.88
+  "min_retries_pct": {
+    "entry_capacity": "latest",
+    "sync_threshold": "eu-west",
+    "tools_timeout": 250,
+    "warm_depth_pct": "standard",
+    "compress": ["local", "primary", "standard"],
+    "dry_run": 58.17
+  },
+  "min_timeout_count": false,
+  "notes_ratio": {
+    "record_ttl": 45.99,
+    "readonly": "fallback",
+    "cache_size": [80, 106],
+    "default_interval_count": true,
+    "already_limit": false
+  },
+  "editor_depth": ["green", "primary", "legacy", "open"],
+  "poll_capacity": 24.13
 }
