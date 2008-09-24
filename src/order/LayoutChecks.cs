@@ -5,13 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Hold a editor entry.</summary>
-        public sealed class EditorEntry
+        /// <summary>Match up metrics samples.</summary>
+        public static long MatchMetricsCount(long[] values)
         {
-            public string Label { get; set; } = "";
-            public long Size { get; set; }
-            public long Region { get; set; }
-            public bool Ratio { get; set; }
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) > 18)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a cache record.</summary>
