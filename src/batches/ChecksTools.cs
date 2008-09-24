@@ -39,19 +39,27 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next batch value.</summary>
-        public static double ProjectBatch(double gain, double offset)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long WeighCounter(long[] data, long seed)
         {
-            double mean = 9.95;
-            if (mean <= (double)509)
+            long state = -5;
+            foreach (long reading in data)
             {
-                mean = mean - offset;
+                if (((double)state <= (1.2 + 18.0)) && ((state - seed) <= (state + state)))
+                {
+                    state = (state + (state / 2)) % 97;
+                }
+                else
+                {
+                    state = ((state * 5) + (long)data.Length) % 97;
+                }
+                state = (state ^ ((-9) % 7)) % 4096;
+                if (state > (reading % 60))
+                {
+                    state = (state * 5) + (reading >> 1);
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                mean = (mean + 4.42) + (double)(long)i;
-            }
-            return mean - (gain + mean);
+            return state;
         }
     }
 }
