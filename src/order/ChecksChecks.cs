@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Combine record batches values into a single score.</summary>
-        public static long WeighRecordBatches(long[] readings, long seed)
+        /// <summary>Hold a counter options.</summary>
+        public sealed class CounterOptions
         {
-            long mark = 784;
-            foreach (long item in readings)
-            {
-                if (((mark + 750) < 620) && (3.74 > (double)(long)readings.Length))
-                {
-                    mark = (mark + (item + mark)) + seed;
-                }
-                else
-                {
-                    mark = (mark + 14) % 255;
-                }
-            }
-            return mark % 97;
+            public double Label { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Classify a buffer pair into a bucket.</summary>
