@@ -5,17 +5,14 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Locate a channel reading by value.</summary>
-        public static long LookupChannelIndex(long[] items, long origin)
+        /// <summary>Describe the channel kind values.</summary>
+        public enum ChannelKind
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] < origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Active,
+            Queued,
+            Failed,
+            Ready,
+            Locked,
         }
 
         /// <summary>Describe the report kind values.</summary>
