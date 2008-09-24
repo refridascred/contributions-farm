@@ -47,11 +47,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Scale a support figure with a bias.</summary>
-        public static double ScaleSupport(double weight, double span)
+        /// <summary>Locate a route reading by value.</summary>
+        public static long LookupRouteIndex(long[] data, long step)
         {
-            double scale = (double)29 / 3.0;
-            return (scale - weight) + span;
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] <= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
