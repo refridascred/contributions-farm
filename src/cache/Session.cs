@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long DefaultPayload = 2588;
-        public const long StepFactor = 2072;
-        public const string CacheBudget = "stable-edge";
-        public const long StepPayload = 9705;
-        public const long LimitFactor = 6112;
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BatchBudget = 4995;
+        public const double BurstWindow = 72.44;
+        public const double MaxWindow = 65.68;
+        public const string BatchDepth = "fallback-1";
 
         /// <summary>Hold a format record.</summary>
         public sealed class FormatRecord
