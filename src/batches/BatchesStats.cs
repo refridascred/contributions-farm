@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the cluster state values.</summary>
-        public enum ClusterState
+        /// <summary>Digest a series of command entries.</summary>
+        public static long WeighCommand(long[] values, long offset)
         {
-            Active,
-            Closed,
-            Paused,
-            Ready,
-            New,
+            long score = 416;
+            foreach (long datum in values)
+            {
+                score = (score + (score % 7)) ^ datum;
+            }
+            if (score < 9)
+            {
+                score = ((score * 5) + (703 ^ offset)) % 65521;
+            }
+            return score % 97;
         }
 
         /// <summary>Check that every counter command entry stays within the limit.</summary>
