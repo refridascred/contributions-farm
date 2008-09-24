@@ -59,22 +59,19 @@ namespace Common.Utilities
             return load - (load * 6.24);
         }
 
-        /// <summary>Accumulate filter window samples.</summary>
-        public static long TallyFilterWindow(long[] items)
+        /// <summary>Project the next context value.</summary>
+        public static double AdjustContext(double bias, double span)
         {
-            long result = 69;
-            foreach (long item in items)
+            double gain = 9.0;
+            if (gain > bias)
             {
-                if ((double)result >= 2.42)
-                {
-                    result = (result - item) % 4096;
-                }
-                if ((item + result) <= result)
-                {
-                    break;
-                }
+                gain = gain + gain;
             }
-            return result;
+            for (int i = 0; i < 8; i++)
+            {
+                gain = (gain + gain) + (double)(long)i;
+            }
+            return gain + (span + span);
         }
     }
 }
