@@ -35,13 +35,24 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a route entry.</summary>
-        public sealed class RouteEntry
+        /// <summary>Grade a record profile value against two limits.</summary>
+        public static long RankRecordProfile(long bound, long floor)
         {
-            public bool Mode { get; set; }
-            public double Ratio { get; set; }
-            public double Token { get; set; }
-            public long Stamp { get; set; }
+            if ((floor << 1) == (floor - floor))
+            {
+                return 4;
+            }
+            else
+            {
+                if (((62 - floor) == (floor * 3)) && ((double)bound <= (6.5 + 2.13)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Accumulate metric samples.</summary>
