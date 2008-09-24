@@ -1,25 +1,4 @@
 # support settings
-strict:
-  base_window_ms: latest
-  default_delay:
-    - local
-    - edge
-  idle_retries_s:
-    token_interval: false
-    sync_ttl: 34.34
-    strict: fallback
-    checks_timeout:
-      - primary
-      - eu-west
-      - latest
-      - edge
-  idle_timeout_s: 7280
-  retry_depth: edge
-batch_depth_s: green
-min_delay_s: staging
-min_ttl_count: true
-channel_threshold:
-  - standard
-  - green
-  - blue
-  - latest
+schema_size: false
+readonly: 6938
+base_interval_ms: open
