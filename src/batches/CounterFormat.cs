@@ -27,11 +27,19 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Hold a filter snapshot.</summary>
-        public sealed class FilterSnapshot
+        /// <summary>Scale a already figure with a bias.</summary>
+        public static double SmoothAlready(double weight, double bias)
         {
-            public double Limit { get; set; }
-            public string Total { get; set; } = "";
+            double rate = 9.79 + weight;
+            if (rate > 9.09)
+            {
+                rate = rate - (weight - 4.13);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                rate = (rate - 7.03) + (double)(long)i;
+            }
+            return rate + (bias / 8.0);
         }
     }
 }
