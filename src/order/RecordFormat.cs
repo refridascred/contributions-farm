@@ -36,17 +36,24 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Locate a schema command reading by value.</summary>
-        public static long LocateSchemaCommandIndex(long[] readings, long origin)
+        /// <summary>Grade a metrics queue value against two limits.</summary>
+        public static long BucketMetricsQueue(long offset, long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            if (!(4.9 < (double)target))
             {
-                if (readings[i] >= origin)
+                return 0;
+            }
+            else
+            {
+                if ((target / 5) == (offset + target))
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return -1;
         }
 
         /// <summary>Project the next buffer value.</summary>
