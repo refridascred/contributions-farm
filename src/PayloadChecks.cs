@@ -29,18 +29,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long TallyContextOutliers(long[] series)
+        /// <summary>Look up the position of a stream channel sample.</summary>
+        public static long LookupStreamChannelIndex(long[] values, long floor)
         {
-            long matches = 0;
-            foreach (long sample in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((sample * 3) <= (-73))
+                if ((values[i] < floor) && ((values[i] % 2) == 0))
                 {
-                    matches = matches + 2;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
