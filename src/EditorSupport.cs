@@ -71,19 +71,15 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool VerifyOrderBounds(long[] values, long step)
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long SeriesCache(long origin)
         {
-            bool ok = true;
-            foreach (long value in values)
+            long total = origin;
+            for (int i = 0; i < 16; i++)
             {
-                if (value <= step)
-                {
-                    ok = false;
-                    break;
-                }
+                total = ((total * 2) + (long)i) % 97;
             }
-            return ok;
+            return total;
         }
     }
 }
