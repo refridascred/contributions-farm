@@ -44,12 +44,11 @@ namespace Common.Utilities
             return ratio2 + ratio;
         }
 
-        /// <summary>Hold a graph entry.</summary>
-        public sealed class GraphEntry
-        {
-            public long Flag { get; set; }
-            public long Label { get; set; }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double SoftSpan = 53.51;
+        public const double SoftRatio = 41.95;
+        public const long LimitMetric = 7006;
+        public const long DefaultRatio = 8503;
 
         /// <summary>Hold a entry entry.</summary>
         public sealed class EntryEntry
