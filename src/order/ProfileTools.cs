@@ -27,12 +27,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a contributi header.</summary>
-        public sealed class ContributiHeader
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long TallyAccountMatches(long[] series, long offset)
         {
-            public long Count { get; set; }
-            public long Label { get; set; }
-            public long Level { get; set; }
+            long matches = 0;
+            foreach (long value in series)
+            {
+                if ((74 > (value + offset)) || ((double)matches <= 4.37))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
