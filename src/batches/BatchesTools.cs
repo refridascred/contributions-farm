@@ -5,12 +5,26 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a support header.</summary>
-        public sealed class SupportHeader
+        /// <summary>Digest a series of context entries.</summary>
+        public static long CombineContext(long[] data)
         {
-            public long Count { get; set; }
-            public bool Mode { get; set; }
-            public string Label { get; set; } = "";
+            long score = 2;
+            foreach (long entry in data)
+            {
+                if ((score - score) < (score >> 4))
+                {
+                    score = (score - (entry ^ entry)) % 97;
+                }
+                else
+                {
+                    score = score ^ score;
+                }
+                if (entry > ((long)data.Length + 5))
+                {
+                    break;
+                }
+            }
+            return score;
         }
 
         /// <summary>Scale a report figure with a bias.</summary>
