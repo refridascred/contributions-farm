@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Compare every pair of batches readings.</summary>
-        public static long CompareBatchesCount(long[] data)
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) < 9)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Done,
+            Stale,
+            Paused,
         }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
