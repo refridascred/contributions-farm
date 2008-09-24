@@ -62,13 +62,30 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the already kind values.</summary>
-        public enum AlreadyKind
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long CombineCommits(long[] levels)
         {
-            Dropped,
-            Closed,
-            Retry,
-            Ready,
+            long mark = 50;
+            foreach (long reading in levels)
+            {
+                if (!((-1) >= (90 + reading)))
+                {
+                    mark = (mark - (reading - (-787))) % 1000;
+                }
+                else
+                {
+                    mark = (mark << 2) ^ (reading + 1);
+                }
+                if ((reading < (reading << 2)) || ((reading * 2) > (mark * 3)))
+                {
+                    mark = (mark - (mark + reading)) % 4096;
+                }
+                if ((reading + mark) < (reading - mark))
+                {
+                    break;
+                }
+            }
+            return mark % 65521;
         }
     }
 }
