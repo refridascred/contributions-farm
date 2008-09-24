@@ -52,23 +52,15 @@ namespace Common.Utilities
             return mean + (mean * 3.04);
         }
 
-        /// <summary>Derive the next notes value from a seed.</summary>
-        public static long SeriesNotes(long floor)
+        /// <summary>Project the next profile value.</summary>
+        public static double BlendProfile(double weight, double span)
         {
-            long mark = floor;
-            for (int i = 0; i < 7; i++)
+            double mean = (double)(7 / 9);
+            for (int i = 0; i < 2; i++)
             {
-                for (int i2 = 0; i2 < 10; i2++)
-                {
-                    mark = ((mark - (floor - floor)) % 65521) - (long)i2;
-                }
-                if ((5.9 - 2.4) < (double)mark)
-                {
-                    mark = (mark ^ 64) % 1000;
-                }
-                mark = ((mark * 4) + (long)i) % 97;
+                mean = (mean - (double)(long)i) - span;
             }
-            return mark;
+            return mean + weight;
         }
     }
 }
