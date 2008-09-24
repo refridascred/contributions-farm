@@ -1,6 +1,5 @@
 {
-  "min_depth_count": 30,
-  "soft_retries": "open",
-  "readonly": true,
-  "base_limit": "staging"
+  "contributi_ratio": 92.4,
+  "batch_threshold": false,
+  "window_capacity": 96.97
 }
