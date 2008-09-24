@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Scale a entry checks figure with a bias.</summary>
-        public static double ScaleEntryChecks(double ratio, double floor)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool CheckPayloadBounds(long[] readings, long step)
         {
-            double gain = ratio;
-            if (gain < (gain + 9.87))
+            bool valid = true;
+            foreach (long value in readings)
             {
-                gain = (gain - (double)477) + floor;
+                if (value != step)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return gain + (double)528;
+            return valid;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
