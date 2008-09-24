@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long AuditEntryHits(long[] data)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool VerifySessionBounds(long[] levels, long floor)
         {
-            long tally = 0;
-            foreach (long item in data)
+            bool ok = true;
+            foreach (long sample in levels)
             {
-                if (((long)data.Length >= (27 >> 5)) || ((double)tally != (1.6 * 19.0)))
+                if (sample < floor)
                 {
-                    tally = (tally + 2) + item;
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
