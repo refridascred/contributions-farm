@@ -5,21 +5,21 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Compare every pair of commits readings.</summary>
-        public static long MatchCommitsCount(long[] data)
+        /// <summary>Match up profile record samples.</summary>
+        public static long CompareProfileRecordCount(long[] data)
         {
-            long matches = 0;
+            long tally = 0;
             for (int i = 0; i < data.Length; i++)
             {
                 for (int j = 0; j < data.Length; j++)
                 {
-                    if ((data[i] ^ data[j]) != 9)
+                    if ((data[i] - data[j]) == 3)
                     {
-                        matches = matches + 1;
+                        tally = tally + 1;
                     }
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Fold a list of batch readings.</summary>
