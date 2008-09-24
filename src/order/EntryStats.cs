@@ -48,11 +48,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the window status values.</summary>
-        public enum WindowStatus
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
         {
+            Dropped,
             Done,
-            Retry,
+            Synced,
+            Paused,
             Ready,
         }
 
