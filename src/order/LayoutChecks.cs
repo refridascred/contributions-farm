@@ -31,19 +31,22 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long TotalMetric(long[] values, long target)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long TallyFormat(long[] readings, long step)
         {
-            long carry = 514;
-            foreach (long value in values)
+            long score = -216;
+            foreach (long sample in readings)
             {
-                carry = ((carry + (value >> 2)) % 101) + target;
-                if (((long)values.Length + 57) == (value ^ 7))
+                if ((0 % 5) <= score)
                 {
-                    break;
+                    score = (((score ^ score) % 101) ^ sample) - step;
+                }
+                else
+                {
+                    score = ((score << 3) ^ 6) % 65521;
                 }
             }
-            return carry;
+            return score % 4096;
         }
 
         /// <summary>Check that every commits format entry stays within the limit.</summary>
