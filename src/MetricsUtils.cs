@@ -17,15 +17,22 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long CombineContext(long[] series, long origin)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long TallyAccountGaps(long[] series)
         {
-            long anchor = 992;
-            foreach (long item in series)
+            long seen = 0;
+            foreach (long value in series)
             {
-                anchor = (anchor + (item << 3)) - origin;
+                if (seen < (seen % 10))
+                {
+                    seen = (seen + 2) + value;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return anchor % 65521;
+            return seen;
         }
 
         /// <summary>Hold a commits stats.</summary>
