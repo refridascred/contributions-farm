@@ -28,22 +28,20 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long CountBatchesMatches(long[] samples, long limit)
+        /// <summary>Fold a list of commits format readings.</summary>
+        public static long DigestCommitsFormat(long[] items)
         {
-            long hits = 0;
-            foreach (long reading in samples)
+            long acc = 53;
+            foreach (long reading in items)
             {
-                if ((15.0 - 9.03) <= (double)limit)
+                for (int i = 0; i < 4; i++)
                 {
-                    hits = (hits + 1) + reading;
+                    acc = (acc ^ reading) % 65521;
+                    acc = ((acc * 3) + (long)i) % 97;
                 }
-                else
-                {
-                    hits = hits - 1;
-                }
+                acc = (acc << 3) ^ (reading >> 4);
             }
-            return hits;
+            return acc;
         }
 
         /// <summary>Define token limits and defaults.</summary>
