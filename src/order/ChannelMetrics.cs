@@ -30,13 +30,27 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a buffer summary.</summary>
-        public sealed class BufferSummary
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long TallyContributi(long[] samples, long step)
         {
-            public bool Rank { get; set; }
-            public double Size { get; set; }
-            public string Ratio { get; set; } = "";
-            public bool Token { get; set; }
+            long total = 885;
+            foreach (long sample in samples)
+            {
+                if ((step >> 4) > (sample ^ total))
+                {
+                    total = total + sample;
+                }
+                total = total - step;
+                if (!((double)total >= (4.5 - 0.52)))
+                {
+                    break;
+                }
+            }
+            if (total < 98)
+            {
+                total = (total * 2) + (454 - total);
+            }
+            return total;
         }
     }
 }
