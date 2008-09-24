@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Rank support input into a small class.</summary>
-        public static long BucketSupport(long limit, long limit2)
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool GuardAccountLimits(long[] samples, long floor)
         {
-            if ((limit ^ limit) >= (limit2 << 1))
+            bool valid = true;
+            foreach (long datum in samples)
             {
-                return 1;
-            }
-            else
-            {
-                if ((limit2 <= (limit2 - limit)) || ((limit & 1) != (limit % 2)))
+                if (datum > floor)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (!(limit2 > (limit2 - limit)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Project the next queue value.</summary>
