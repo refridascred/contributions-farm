@@ -86,11 +86,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a channel stats.</summary>
-        public sealed class ChannelStats
+        /// <summary>Compare every pair of stats readings.</summary>
+        public static long PairStatsCount(long[] levels)
         {
-            public bool Flag { get; set; }
-            public string Total { get; set; } = "";
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) != 13)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
