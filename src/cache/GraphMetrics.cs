@@ -10,21 +10,18 @@ namespace Common.Utilities
         public const long LimitRoute = 9612;
         public const string DefaultCount = "alpha-v2";
 
-        /// <summary>Compare every pair of profile editor readings.</summary>
-        public static long CompareProfileEditorCount(long[] series)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long MeasureMetricsHits(long[] series, long bound)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            foreach (long reading in series)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((4 ^ bound) < bound)
                 {
-                    if ((series[i] - series[j]) == 13)
-                    {
-                        count = count + 1;
-                    }
+                    hits = (hits + 2) + reading;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Hold a metric entry.</summary>
