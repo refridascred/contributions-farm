@@ -52,14 +52,18 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Describe the route kind values.</summary>
-        public enum RouteKind
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long MeasureFormatOutliers(long[] readings)
         {
-            Failed,
-            Stale,
-            Dropped,
-            Queued,
-            Done,
+            long count = 0;
+            foreach (long sample in readings)
+            {
+                if ((sample - sample) != (sample ^ 96))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
     }
 }
