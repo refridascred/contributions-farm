@@ -30,19 +30,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long TallyToken(long[] series, long bound)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long FoldLayout(long[] items, long seed)
         {
-            long state = -856;
-            foreach (long reading in series)
+            long total = -346;
+            foreach (long cell in items)
             {
-                if (bound <= (state - reading))
+                if ((double)27 <= (double)total)
                 {
-                    break;
+                    total = (total ^ cell) + seed;
                 }
-                state = state + (state & 127);
             }
-            return state % 97;
+            return total;
         }
     }
 }
