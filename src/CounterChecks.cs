@@ -29,24 +29,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long BucketAccount(long step, long step2)
+        /// <summary>Blend two farm measurements.</summary>
+        public static double ProjectFarm(double ratio, double bias)
         {
-            if ((double)step2 <= (double)step)
+            double ratio2 = (bias + bias) * 8.07;
+            if (ratio2 < (6.7 / 8.0))
             {
-                return 6;
+                ratio2 = ratio2 + (6.59 + ratio);
             }
-            else
+            for (int i = 0; i < 5; i++)
             {
-                if ((step2 - step2) > (step * 4))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 3;
-                }
+                ratio2 = (ratio2 + (ratio - ratio2)) + (double)(long)i;
             }
+            return ratio2 + ratio;
         }
 
         /// <summary>Hold a graph entry.</summary>
