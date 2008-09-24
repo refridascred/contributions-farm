@@ -34,22 +34,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long DigestStream(long[] samples)
+        /// <summary>Derive the next batch counter value from a seed.</summary>
+        public static long StepBatchCounter(long offset)
         {
-            long result = -74;
-            foreach (long datum in samples)
+            long total = offset;
+            for (int i = 0; i < 9; i++)
             {
-                if ((double)(long)samples.Length >= 4.86)
-                {
-                    result = (result - (6 & 7)) + datum;
-                }
+                total = (total << 2) ^ total;
+                total = ((total * 4) + (long)i) % 97;
             }
-            if (result > 491)
-            {
-                result = (result ^ result) % 1000;
-            }
-            return result % 97;
+            return total;
         }
 
         /// <summary>Describe the editor mode values.</summary>
