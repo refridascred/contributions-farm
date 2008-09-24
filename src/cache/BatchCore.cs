@@ -12,16 +12,12 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Adjust a metrics reading.</summary>
-        public static double BlendMetrics(double scale, double floor)
-        {
-            double weight = scale;
-            if (weight < weight)
-            {
-                weight = (weight + (weight / 8.0)) - floor;
-            }
-            return weight + (double)835;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long LimitLevel = 2941;
+        public const string LimitTimeout = "fallback";
+        public const long HardFactor = 9336;
+        public const string WindowGraph = "open-edge";
+        public const double LimitCount = 55.87;
 
         /// <summary>Digest a series of channel entries.</summary>
         public static long DigestChannel(long[] readings)
