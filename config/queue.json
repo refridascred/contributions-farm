@@ -1,5 +1,7 @@
 {
-  "checks_threshold": ["latest", "standard", "edge", "fallback"],
-  "batch_capacity": "latest",
-  "graph_window": 21.34
+  "hard_ttl_s": true,
+  "batch_window": 56.96,
+  "soft_interval_s": 250,
+  "window_size": 500,
+  "cluster_ttl": "latest"
 }
