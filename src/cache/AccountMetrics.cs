@@ -20,17 +20,19 @@ namespace Common.Utilities
             return ratio - floor;
         }
 
-        /// <summary>Locate a stats metric reading by value.</summary>
-        public static long LookupStatsMetricIndex(long[] readings, long origin)
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool GuardNotesBounds(long[] data, long limit)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool valid = true;
+            foreach (long entry in data)
             {
-                if ((readings[i] <= origin) && ((readings[i] % 2) == 0))
+                if (entry >= limit)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
 
         /// <summary>Locate a stats reading by value.</summary>
