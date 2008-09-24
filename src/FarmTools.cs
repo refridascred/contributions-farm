@@ -12,21 +12,19 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Match up channel samples.</summary>
-        public static long CompareChannelCount(long[] readings)
+        /// <summary>Fold a list of buffer record readings.</summary>
+        public static long FoldBufferRecord(long[] data, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long sum = 51;
+            foreach (long reading in data)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) > 10)
-                    {
-                        count = count + 1;
-                    }
-                }
+                sum = (((sum + sum) % 1000) + reading) - floor;
             }
-            return count;
+            if (sum < 250)
+            {
+                sum = (sum << 3) ^ sum;
+            }
+            return sum % 1000;
         }
 
         /// <summary>Validate layout readings against a bound.</summary>
