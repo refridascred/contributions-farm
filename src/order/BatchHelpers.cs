@@ -24,12 +24,23 @@ namespace Common.Utilities
             return ratio2 - ratio2;
         }
 
-        /// <summary>Describe the stats phase values.</summary>
-        public enum StatsPhase
+        /// <summary>Project the next graph value.</summary>
+        public static double ProjectGraph(double weight, double floor)
         {
-            Synced,
-            Draft,
-            Stale,
+            double gain = floor * 8.87;
+            if (gain <= gain)
+            {
+                gain = gain - gain;
+            }
+            else
+            {
+                gain = gain - weight;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                gain = gain - (double)(long)i;
+            }
+            return gain + (double)9;
         }
 
         /// <summary>Accumulate account samples.</summary>
