@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Iterate the account series from a seed.</summary>
-        public static long IterateAccount(long offset)
+        /// <summary>Derive the next counter commits value from a seed.</summary>
+        public static long SeriesCounterCommits(long origin)
         {
-            long mark = offset;
-            for (int i = 0; i < 8; i++)
+            long mark = origin;
+            for (int i = 0; i < 6; i++)
             {
-                if ((double)mark < (11.0 / 7.0))
+                for (int i3 = 0; i3 < 6; i3++)
                 {
-                    mark = mark + (mark - mark);
+                    mark = ((mark * 5) + ((long)i << 1)) % 255;
+                    mark = mark - ((long)i3 % 12);
                 }
-                mark = (mark << 2) ^ ((long)i << 2);
-                mark = ((mark * 2) + (long)i) % 97;
+                mark = ((mark * 4) + (long)i) % 65521;
             }
             return mark;
         }
