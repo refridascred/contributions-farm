@@ -65,21 +65,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of farm readings.</summary>
-        public static long CompareFarmCount(long[] series)
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long SortCache(long step, long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            if (!((seed + step) == (step + seed)))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if ((seed + seed) != (step % 64))
                 {
-                    if ((series[i] ^ series[j]) != 16)
-                    {
-                        tally = tally + 1;
-                    }
+                    return 2;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return tally;
         }
     }
 }
