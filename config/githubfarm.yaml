@@ -1,7 +1,4 @@
 # githubfarm settings
-enabled: standard
-max_ttl_ms: false
-buffer_delay: 182
-base_timeout_pct: 38
-commits_delay: true
-strict: eu-west
+cache_interval_ms: latest
+schema_size: 100
+audit: false
