@@ -25,14 +25,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long BucketCommits(long origin, long floor)
         {
-            Dropped,
-            Queued,
-            New,
-            Synced,
-            Ready,
+            if (((floor ^ floor) >= (floor * 5)) || ((origin % 8) <= (origin - (-696))))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((origin + origin) != (origin >> 2))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
     }
 }
