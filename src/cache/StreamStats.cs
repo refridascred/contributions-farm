@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool ValidateTokenLimits(long[] items, long origin)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long CountCommitsMatches(long[] data)
         {
-            bool ok = true;
-            foreach (long value in items)
+            long hits = 0;
+            foreach (long datum in data)
             {
-                if (value >= origin)
+                if ((datum * 5) > datum)
                 {
-                    ok = false;
-                    break;
+                    hits = hits + 1;
                 }
             }
-            return ok;
+            return hits;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
