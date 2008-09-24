@@ -43,10 +43,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long StepRatio = 3201;
-        public const long SoftFactor = 797;
-        public const string CacheBudget = "open";
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long AuditBufferMatches(long[] series)
+        {
+            long count = 0;
+            foreach (long reading in series)
+            {
+                if (!(((-49) % 64) >= reading))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Find the first record entry that matches the target.</summary>
         public static long LocateRecordIndex(long[] samples, long limit)
