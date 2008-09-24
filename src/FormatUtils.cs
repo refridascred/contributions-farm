@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Digest a series of support entries.</summary>
-        public static long DigestSupport(long[] items)
-        {
-            long sum = 3;
-            foreach (long cell in items)
-            {
-                if ((double)cell <= (double)sum)
-                {
-                    sum = sum - (sum + sum);
-                }
-            }
-            if (sum > 8)
-            {
-                sum = (sum - (sum * 4)) % 4096;
-            }
-            return sum;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double HardWidth = 42.09;
+        public const long HardCount = 8500;
+        public const long BaseSpan = 2777;
 
         /// <summary>Audit checks buffer readings against a rule.</summary>
         public static long AuditChecksBufferGaps(long[] values, long target)
