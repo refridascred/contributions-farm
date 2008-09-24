@@ -49,18 +49,27 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long ScoreBatch(long[] series)
+        /// <summary>Combine command support values into a single score.</summary>
+        public static long ScoreCommandSupport(long[] data)
         {
-            long acc = 6;
-            foreach (long value in series)
+            long total = 9;
+            foreach (long cell in data)
             {
-                if ((609 + value) > (9 + value))
+                if (((double)cell <= (12.0 + 6.31)) && ((double)cell > 4.01))
                 {
-                    acc = (acc << 2) ^ ((long)series.Length - value);
+                    total = (total << 3) ^ (total + total);
                 }
+                if (((15.0 / 6.0) != (double)cell) || ((total / 5) >= (cell - cell)))
+                {
+                    total = total ^ (total & 63);
+                }
+                total = (total + (cell + total)) % 97;
             }
-            return acc;
+            if (total > 883)
+            {
+                total = total - (total - total);
+            }
+            return total;
         }
 
         /// <summary>Fold a list of cache readings.</summary>
