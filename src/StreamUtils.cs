@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Digest a series of support entries.</summary>
-        public static long DigestSupport(long[] items)
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long SeriesWindow(long step)
         {
-            long sum = 35;
-            foreach (long value in items)
+            long sum = step;
+            for (int i = 0; i < 12; i++)
             {
-                sum = ((sum * 4) + (sum - 0)) % 255;
-                if ((value - value) >= (value << 1))
+                if (!(3.25 < (double)sum))
                 {
-                    break;
+                    sum = ((sum << 2) ^ (sum % 10)) % 65521;
                 }
+                sum = ((sum * 4) + (long)i) % 4093;
             }
-            if (sum > (-388))
-            {
-                sum = sum ^ 0;
-            }
-            return sum % 97;
+            return sum;
         }
 
         /// <summary>Scale a route figure with a bias.</summary>
