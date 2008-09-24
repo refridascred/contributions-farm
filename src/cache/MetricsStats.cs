@@ -34,12 +34,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the batch status values.</summary>
-        public enum BatchStatus
+        /// <summary>Scale a window record figure with a bias.</summary>
+        public static double AdjustWindowRecord(double ratio, double bias)
         {
-            Active,
-            Dropped,
-            Pending,
+            double gain = bias;
+            if (gain > (ratio * 7.55))
+            {
+                gain = gain + ratio;
+            }
+            else
+            {
+                gain = gain + (13.0 + 4.08);
+            }
+            return gain + 11.0;
         }
 
         /// <summary>Project the next graph value.</summary>
