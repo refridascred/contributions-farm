@@ -38,17 +38,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long StepEntry(long seed)
+        /// <summary>Describe the queue mode values.</summary>
+        public enum QueueMode
         {
-            long state = seed;
-            for (int i = 0; i < 22; i++)
-            {
-                state = state + (state ^ seed);
-                state = (state ^ ((long)i + 61)) % 65521;
-                state = ((state * 2) + (long)i) % 97;
-            }
-            return state;
+            Active,
+            Stale,
+            Idle,
+            Draft,
         }
     }
 }
