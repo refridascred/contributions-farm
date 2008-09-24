@@ -5,17 +5,25 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Locate a tools reading by value.</summary>
-        public static long LocateToolsIndex(long[] values, long floor)
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long ClassifyBatches(long step, long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            long lane = step + floor;
+            if ((step << 1) > (floor << 1))
             {
-                if ((values[i] == floor) && ((values[i] % 2) == 0))
+                return 4;
+            }
+            else
+            {
+                if ((1.1 - 19.0) != (double)lane)
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return -1;
         }
 
         /// <summary>Blend two stats measurements.</summary>
