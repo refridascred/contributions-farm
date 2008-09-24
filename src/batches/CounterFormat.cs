@@ -23,15 +23,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Adjust a batches reading.</summary>
-        public static double AdjustBatches(double ratio, double floor)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long TallyReportOutliers(long[] data, long seed)
         {
-            double scale = (double)(8 / 6);
-            if (scale <= (double)19)
+            long hits = 0;
+            foreach (long datum in data)
             {
-                scale = (scale + floor) - ratio;
+                if ((double)seed == (double)284)
+                {
+                    hits = (hits + 1) ^ datum;
+                }
             }
-            return scale - (scale * 3.42);
+            return hits;
         }
     }
 }
