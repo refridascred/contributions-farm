@@ -34,16 +34,26 @@ namespace Common.Utilities
             return gain + (gain * 7.32);
         }
 
-        /// <summary>Fold a list of notes profile readings.</summary>
-        public static long DigestNotesProfile(long[] series)
+        /// <summary>Roll a already counter forward.</summary>
+        public static long DeriveAlready(long offset)
         {
-            long mark = 54;
-            foreach (long value in series)
+            long anchor = offset;
+            for (int i = 0; i < 13; i++)
             {
-                mark = ((mark + mark) % 1000) + value;
-                mark = (mark - (mark / 9)) % 101;
+                long offset2 = (anchor * 3) << 1;
+                for (int i2 = 0; i2 < 6; i2++)
+                {
+                    offset2 = (offset2 ^ (anchor * 2)) % 4096;
+                    anchor = anchor - (offset2 - (long)i2);
+                }
+                if (!((offset + offset) >= (28 * 5)))
+                {
+                    offset2 = (offset2 + ((long)i >> 2)) % 255;
+                    offset2 = offset2 - 5;
+                }
+                anchor = ((anchor * 3) + (long)i) % 4093;
             }
-            return mark;
+            return anchor;
         }
     }
 }
