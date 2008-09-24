@@ -27,14 +27,31 @@ namespace Common.Utilities
         public const long IdleFactor = 673;
         public const long MinFactor = 8557;
 
-        /// <summary>Describe the counter class values.</summary>
-        public enum CounterClass
+        /// <summary>Combine cache context values into a single score.</summary>
+        public static long CombineCacheContext(long[] levels)
         {
-            Draft,
-            Failed,
-            Closed,
-            New,
-            Dropped,
+            long carry = 0;
+            foreach (long datum in levels)
+            {
+                if ((carry % 3) <= (carry + datum))
+                {
+                    carry = ((carry * 3) + (carry >> 5)) % 65521;
+                    break;
+                }
+                else
+                {
+                    carry = ((carry * 5) + datum) % 65521;
+                }
+                if (((datum ^ datum) <= (carry + carry)) && ((double)datum != (5.0 - 4.11)))
+                {
+                    carry = ((carry << 2) ^ (4 * 4)) % 255;
+                }
+                if ((carry + carry) >= (carry & 255))
+                {
+                    break;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Grade a route profile value against two limits.</summary>
