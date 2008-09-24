@@ -26,18 +26,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long MeasureStreamMatches(long[] readings, long target)
+        /// <summary>Describe the batches state values.</summary>
+        public enum BatchesState
         {
-            long count = 0;
-            foreach (long entry in readings)
-            {
-                if ((target + entry) != (long)readings.Length)
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            Queued,
+            Done,
+            Pending,
+            Synced,
         }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
