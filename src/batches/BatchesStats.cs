@@ -48,12 +48,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
+        /// <summary>Hold a window options.</summary>
+        public sealed class WindowOptions
         {
-            Draft,
-            Stale,
-            Done,
+            public string Label { get; set; } = "";
+            public long Rank { get; set; }
+            public string Region { get; set; } = "";
         }
     }
 }
