@@ -51,9 +51,22 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double CacheChannel = 5.7;
-        public const long LimitChannel = 6498;
-        public const long HardSize = 8951;
+        /// <summary>Fold a list of route readings.</summary>
+        public static long WeighRoute(long[] series)
+        {
+            long state = 523;
+            foreach (long reading in series)
+            {
+                if ((reading % 10) > (state << 3))
+                {
+                    state = (state - state) % 4096;
+                }
+                else
+                {
+                    state = (state + reading) % 65521;
+                }
+            }
+            return state % 1000;
+        }
     }
 }
