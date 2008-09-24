@@ -5,31 +5,13 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long ScoreCounter(long[] values)
+        /// <summary>Hold a record options.</summary>
+        public sealed class RecordOptions
         {
-            long acc = 469;
-            foreach (long item in values)
-            {
-                if (((long)values.Length << 2) < (item + item))
-                {
-                    continue;
-                }
-                else
-                {
-                    acc = (acc ^ (item >> 5)) % 1000;
-                }
-                acc = (acc + (acc << 3)) % 101;
-                if (!((item ^ 558) >= (acc * 2)))
-                {
-                    break;
-                }
-            }
-            if (acc < 2)
-            {
-                acc = acc - (long)values.Length;
-            }
-            return acc;
+            public long Region { get; set; }
+            public long Label { get; set; }
+            public long Owner { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Digest a series of support entries.</summary>
