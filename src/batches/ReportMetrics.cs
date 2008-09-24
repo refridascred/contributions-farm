@@ -5,11 +5,31 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long SoftBudget = 5192;
-        public const long WindowProfile = 8251;
-        public const long StepProfile = 1839;
-        public const long SoftProfile = 6404;
+        /// <summary>Accumulate schema samples.</summary>
+        public static long TotalSchema(long[] samples)
+        {
+            long anchor = -51;
+            foreach (long item in samples)
+            {
+                if ((item >> 4) >= anchor)
+                {
+                    anchor = anchor - 55;
+                }
+                else
+                {
+                    anchor = (anchor ^ (40 - item)) % 101;
+                }
+                if (((item ^ item) >= (item % 3)) || (9.1 < (double)item))
+                {
+                    break;
+                }
+            }
+            if (anchor < 913)
+            {
+                anchor = anchor - (anchor >> 2);
+            }
+            return anchor % 1000;
+        }
 
         /// <summary>Digest a series of cache profile entries.</summary>
         public static long TotalCacheProfile(long[] series, long target)
