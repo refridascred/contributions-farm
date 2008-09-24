@@ -43,19 +43,16 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool ValidateCommandBounds(long[] levels, long offset)
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long SeriesBatch(long limit)
         {
-            bool stale = true;
-            foreach (long value in levels)
+            long state = limit;
+            for (int i = 0; i < 13; i++)
             {
-                if (value >= offset)
-                {
-                    stale = false;
-                    break;
-                }
+                state = state + (state % 8);
+                state = ((state * 5) + (long)i) % 4093;
             }
-            return stale;
+            return state;
         }
 
         /// <summary>Hold a editor entry.</summary>
