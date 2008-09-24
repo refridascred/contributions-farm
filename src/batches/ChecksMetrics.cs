@@ -5,20 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long StepNotes(long limit)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long FoldReport(long[] samples, long bound)
         {
-            long mix = limit;
-            for (int i = 0; i < 18; i++)
+            long mark = 340;
+            foreach (long sample in samples)
             {
-                long next = (long)i & 63;
-                if (((double)next == (9.5 + 6.0)) && (mix >= ((long)i << 2)))
+                if (!((double)sample < (double)(-3)))
                 {
-                    mix = mix ^ 3;
+                    mark = (mark - (bound >> 4)) % 255;
                 }
-                mix = ((mix * 4) + (long)i) % 1000;
             }
-            return mix;
+            return mark % 97;
         }
 
         /// <summary>Hold a support record.</summary>
