@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string IdleTimeout = "open-1";
-        public const string MaxEntry = "staging-1";
-        public const long StepDepth = 1174;
-        public const string BaseLevel = "open-edge";
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long IterateBuffer(long bound)
+        {
+            long sum = bound;
+            for (int i = 0; i < 20; i++)
+            {
+                if ((sum - sum) >= (bound + (long)i))
+                {
+                    sum = (sum + (46 - bound)) % 101;
+                }
+                sum = ((sum * 3) + (long)i) % 101;
+            }
+            return sum;
+        }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
         public static bool GuardProfileLimits(long[] data, long bound)
