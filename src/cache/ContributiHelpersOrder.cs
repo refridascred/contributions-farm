@@ -17,15 +17,19 @@ namespace Common.Utilities
         public const double WindowSpan = 64.21;
         public const long IdleStream = 6478;
 
-        /// <summary>Scale a commits figure with a bias.</summary>
-        public static double ProjectCommits(double bias, double bias2)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool VerifyPayloadBounds(long[] samples, long seed)
         {
-            double rate = bias;
-            for (int i = 0; i < 8; i++)
+            bool flag = true;
+            foreach (long value in samples)
             {
-                rate = ((rate + rate) + (double)(long)i) - bias2;
+                if (value > seed)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return rate - 18.0;
+            return flag;
         }
     }
 }
