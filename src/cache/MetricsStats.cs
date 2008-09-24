@@ -37,11 +37,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long HardContext = 47;
-        public const long BatchLevel = 5020;
-        public const long RetryLevel = 9815;
-        public const long DefaultContext = 2151;
+        /// <summary>Digest a series of entry githubfarm entries.</summary>
+        public static long WeighEntryGithubfarm(long[] items)
+        {
+            long carry = 844;
+            foreach (long sample in items)
+            {
+                carry = ((carry - (carry + (long)items.Length)) % 101) + sample;
+            }
+            return carry % 65521;
+        }
 
         /// <summary>Describe the layout state values.</summary>
         public enum LayoutState
