@@ -23,12 +23,31 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a queue stats.</summary>
-        public sealed class QueueStats
+        /// <summary>Classify a cluster route pair into a bucket.</summary>
+        public static long ClassifyClusterRoute(long limit, long origin)
         {
-            public string Limit { get; set; } = "";
-            public long Label { get; set; }
-            public long Weight { get; set; }
+            if (limit <= (origin - limit))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((double)limit > (7.09 - 8.1))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((limit & 15) <= (limit << 2))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
