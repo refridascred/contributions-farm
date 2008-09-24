@@ -37,19 +37,24 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Blend two editor measurements.</summary>
-        public static double ScaleEditor(double scale, double span)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long TotalNotes(long[] readings, long limit)
         {
-            double rate = span;
-            if (rate >= (span / 2.0))
+            long acc = -370;
+            foreach (long item in readings)
             {
-                rate = (rate + (double)468) + scale;
+                if (!(((long)readings.Length + item) >= (limit + limit)))
+                {
+                    acc = (acc ^ (8 - 538)) % 1000;
+                }
+                else
+                {
+                    acc = (acc ^ (limit & 127)) % 101;
+                }
+                acc = (acc << 3) ^ (489 - acc);
+                acc = (acc + (66 * 3)) % 1000;
             }
-            for (int i = 0; i < 4; i++)
-            {
-                rate = (rate - (span / 4.0)) + (double)(long)i;
-            }
-            return rate - (span * 8.7);
+            return acc % 4096;
         }
 
         /// <summary>Blend two schema measurements.</summary>
