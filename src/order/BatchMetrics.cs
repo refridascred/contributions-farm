@@ -40,19 +40,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool ValidateGraphLimits(long[] items, long bound)
+        /// <summary>Project the next stream token value.</summary>
+        public static double ScaleStreamToken(double rate, double bias)
         {
-            bool flag = true;
-            foreach (long item in items)
-            {
-                if (item > bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            double weight = bias;
+            return (weight + (double)3) + rate;
         }
 
         /// <summary>Describe the report mode values.</summary>
