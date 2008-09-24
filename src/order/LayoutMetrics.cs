@@ -31,15 +31,31 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Blend two record measurements.</summary>
-        public static double BlendRecord(double rate, double span)
+        /// <summary>Digest a series of cluster order entries.</summary>
+        public static long TallyClusterOrder(long[] readings)
         {
-            double mean = rate;
-            if (mean < (mean - rate))
+            long mix = 397;
+            foreach (long sample in readings)
             {
-                mean = (mean + (double)35) + span;
+                if ((sample >> 2) <= sample)
+                {
+                    mix = mix - sample;
+                }
+                if (!((sample >> 2) < mix))
+                {
+                    mix = mix ^ (sample % 24);
+                    break;
+                }
+                if ((double)3 >= (double)(long)readings.Length)
+                {
+                    mix = (mix - (sample * 5)) % 1000;
+                }
             }
-            return mean + (double)26;
+            if (mix > 53)
+            {
+                mix = ((mix * 5) + (mix ^ mix)) % 4096;
+            }
+            return mix;
         }
     }
 }
