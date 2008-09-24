@@ -1,23 +1,12 @@
 {
-  "dry_run": 3234,
-  "min_delay_ms": 3.32,
-  "max_timeout_s": [350, 305, 273],
-  "sync_retries_count": [304, 156],
-  "min_limit": {
-    "min_threshold": 645,
-    "counter_retries": 7421,
-    "burst_ttl_ms": 43,
-    "persist": [415, 112],
-    "retry_window_s": {
-      "audit": [180, 457, 114],
-      "retry_ratio_s": "open",
-      "flush_depth_s": 45
-    },
-    "retry_interval": {
-      "sync_ttl_count": false,
-      "max_ratio_s": "green",
-      "account_size": true,
-      "sync_limit": 77
-    }
-  }
+  "command_size": 1640,
+  "hard_capacity_pct": 5078,
+  "verbose": {
+    "sync_ratio_count": 8646,
+    "readonly": "open",
+    "warm_threshold": 6352,
+    "githubfarm_delay": 30,
+    "compress": "fallback"
+  },
+  "metrics_window": 13
 }
