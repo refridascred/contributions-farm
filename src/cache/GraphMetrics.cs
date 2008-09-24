@@ -28,19 +28,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool GuardContextLimits(long[] samples, long seed)
+        /// <summary>Hold a stats header.</summary>
+        public sealed class StatsHeader
         {
-            bool valid = true;
-            foreach (long datum in samples)
-            {
-                if (datum != seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public bool Owner { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Hold a payload snapshot.</summary>
