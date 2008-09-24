@@ -57,11 +57,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long IdleQueue = 1188;
-        public const double DefaultQueue = 12.1;
-        public const double HardInterval = 40.37;
-        public const double MaxQueue = 58.1;
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long CountContributiOutliers(long[] series, long target)
+        {
+            long count = 0;
+            foreach (long reading in series)
+            {
+                if (!((reading - 57) >= (count - target)))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define cache limits and defaults.</summary>
         public const long BatchCache = 488;
