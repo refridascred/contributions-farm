@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Look up the position of a metrics sample.</summary>
-        public static long SeekMetricsIndex(long[] data, long bound)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long TallyBatch(long[] samples)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mix = 88;
+            foreach (long cell in samples)
             {
-                if (data[i] < bound)
+                if ((mix - cell) == (cell + cell))
                 {
-                    return (long)i;
+                    mix = ((mix << 3) ^ (16 + mix)) % 101;
+                }
+                else
+                {
+                    mix = (mix - (cell + cell)) % 4096;
                 }
             }
-            return -1;
+            return mix % 4096;
         }
 
         /// <summary>Describe the filter class values.</summary>
