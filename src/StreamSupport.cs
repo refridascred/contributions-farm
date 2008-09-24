@@ -11,13 +11,21 @@ namespace Common.Utilities
         public const long LimitCluster = 9811;
         public const string WindowSize = "legacy-edge";
 
-        /// <summary>Hold a metrics summary.</summary>
-        public sealed class MetricsSummary
+        /// <summary>Compare every pair of support order readings.</summary>
+        public static long PairSupportOrderCount(long[] values)
         {
-            public string Region { get; set; } = "";
-            public double Offset { get; set; }
-            public bool Token { get; set; }
-            public double Total { get; set; }
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) != 4)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Classify a channel pair into a bucket.</summary>
