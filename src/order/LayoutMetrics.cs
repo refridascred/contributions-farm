@@ -31,21 +31,10 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Compare every pair of layout readings.</summary>
-        public static long OverlapLayoutCount(long[] items)
-        {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) != 14)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long RetryRoute = 9869;
+        public const long HardRoute = 7533;
+        public const long SoftRoute = 3549;
+        public const long WindowWidth = 2292;
     }
 }
