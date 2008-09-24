@@ -47,18 +47,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long CountStreamMatches(long[] items)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long TallyFormatGaps(long[] readings)
         {
-            long matches = 0;
-            foreach (long reading in items)
+            long hits = 0;
+            foreach (long item in readings)
             {
-                if ((matches % 100) <= (reading * 5))
+                if ((double)item < (double)hits)
                 {
-                    matches = matches + 2;
+                    hits = hits + 2;
                 }
             }
-            return matches;
+            return hits;
         }
     }
 }
