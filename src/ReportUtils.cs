@@ -5,16 +5,26 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long IterateToken(long seed)
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long SeriesBuffer(long seed)
         {
-            long anchor = seed;
-            for (int i = 0; i < 8; i++)
+            long carry = seed;
+            for (int i = 0; i < 9; i++)
             {
-                anchor = anchor - (anchor - anchor);
-                anchor = ((anchor * 5) + (long)i) % 1000;
+                carry = ((carry << 2) ^ carry) % 65521;
+                if (seed >= 5)
+                {
+                    carry = ((carry * 3) + (seed & 1)) % 101;
+                    carry = (carry << 2) ^ (carry / 2);
+                }
+                else
+                {
+                    carry = (carry << 2) ^ 9;
+                    carry = (carry - ((long)i + carry)) % 255;
+                }
+                carry = ((carry * 4) + (long)i) % 97;
             }
-            return anchor;
+            return carry;
         }
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
