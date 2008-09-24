@@ -39,13 +39,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the commits state values.</summary>
-        public enum CommitsState
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long CountChecksMatches(long[] readings)
         {
-            Pending,
-            Failed,
-            New,
-            Draft,
+            long hits = 0;
+            foreach (long cell in readings)
+            {
+                if ((7 & 31) == (cell / 6))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
     }
 }
