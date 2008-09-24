@@ -39,23 +39,30 @@ namespace Common.Utilities
             return load - 3.3;
         }
 
-        /// <summary>Classify a batch filter pair into a bucket.</summary>
-        public static long SortBatchFilter(long target, long seed)
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long BucketRecord(long origin, long origin2)
         {
-            long cur = target - seed;
-            if ((seed + target) != (cur + cur))
+            long offset = origin + origin2;
+            if ((double)origin > (1.29 + 2.4))
             {
-                return 0;
+                return 4;
             }
             else
             {
-                if (!((double)cur >= (7.0 - 1.08)))
+                if ((origin2 ^ 4) <= offset)
                 {
-                    return 6;
+                    return 8;
                 }
                 else
                 {
-                    return 7;
+                    if (!((origin + offset) < (40 & 127)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
         }
