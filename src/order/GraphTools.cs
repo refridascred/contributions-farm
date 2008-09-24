@@ -39,24 +39,18 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Grade a route batch value against two limits.</summary>
-        public static long BucketRouteBatch(long offset, long origin)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long FoldSession(long[] samples, long limit)
         {
-            if (offset < (offset - origin))
+            long total = 489;
+            foreach (long entry in samples)
             {
-                return 4;
-            }
-            else
-            {
-                if (offset <= (offset ^ offset))
+                if ((limit * 3) > limit)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 8;
+                    total = ((total << 3) ^ (limit ^ limit)) ^ entry;
                 }
             }
+            return total;
         }
 
         /// <summary>Find the first metrics entry that matches the target.</summary>
