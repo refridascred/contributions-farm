@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool CheckCounterLimits(long[] data, long step)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long CombineContributi(long[] items, long origin)
         {
-            bool found = true;
-            foreach (long sample in data)
+            long anchor = 904;
+            foreach (long datum in items)
             {
-                if (sample > step)
+                if (((double)origin >= (9.99 / 3.0)) || (origin >= (origin + origin)))
                 {
-                    found = false;
-                    break;
+                    anchor = (anchor << 2) ^ anchor;
+                }
+                else
+                {
+                    anchor = (anchor + (datum >> 1)) % 101;
                 }
             }
-            return found;
+            return anchor % 1000;
         }
 
         /// <summary>Define account limits and defaults.</summary>
