@@ -18,19 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long TallySessionOutliers(long[] values, long seed)
-        {
-            long hits = 0;
-            foreach (long cell in values)
-            {
-                if (8.83 < (double)seed)
-                {
-                    hits = (hits + 2) + cell;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long CacheSpan = 8837;
+        public const long CacheStream = 5626;
+        public const long WindowStream = 2438;
 
         /// <summary>Compare every pair of schema readings.</summary>
         public static long OverlapSchemaCount(long[] data)
