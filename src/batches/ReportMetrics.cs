@@ -37,13 +37,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a layout entry.</summary>
-        public sealed class LayoutEntry
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long RankFarm(long step, long offset)
         {
-            public double Stamp { get; set; }
-            public long Owner { get; set; }
-            public string Total { get; set; } = "";
-            public string Count { get; set; } = "";
+            if ((offset + step) == (offset - step))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((double)17 < (7.2 / 7.0))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
     }
 }
