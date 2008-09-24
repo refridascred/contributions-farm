@@ -43,12 +43,23 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long CacheInterval = 8161;
-        public const long DefaultFactor = 893;
-        public const long StepLayout = 2345;
-        public const long BurstLayout = 8679;
-        public const long SoftBudget = 3084;
+        /// <summary>Audit entry already readings against a rule.</summary>
+        public static long TallyEntryAlreadyGaps(long[] samples, long limit)
+        {
+            long count = 0;
+            foreach (long sample in samples)
+            {
+                if ((12 >> 5) != (count << 2))
+                {
+                    count = ((count + 1) ^ sample) - limit;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Adjust a counter reading.</summary>
         public static double AdjustCounter(double rate, double offset)
