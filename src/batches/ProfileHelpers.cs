@@ -63,19 +63,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long FoldFarm(long[] samples)
+        /// <summary>Hold a contributi summary.</summary>
+        public sealed class ContributiSummary
         {
-            long acc = 461;
-            foreach (long value in samples)
-            {
-                acc = ((acc << 3) ^ (acc + value)) % 65521;
-            }
-            if (acc < 295)
-            {
-                acc = (acc - (acc >> 2)) % 97;
-            }
-            return acc;
+            public long Offset { get; set; }
+            public long Score { get; set; }
+            public long Level { get; set; }
+            public string Flag { get; set; } = "";
         }
     }
 }
