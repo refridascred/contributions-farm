@@ -1,17 +1,5 @@
 {
-  "hard_depth": {
-    "persist": {
-      "report_limit": false,
-      "retry_delay_ms": "blue",
-      "burst_capacity_ms": "strict",
-      "base_depth": 9965,
-      "retry_limit_count": true
-    },
-    "base_window_ms": 17.58,
-    "route_window": 3265,
-    "batches_depth": 12.95
-  },
-  "readonly": 96.24,
-  "cache_depth": "blue",
-  "batch_timeout": 27.15
+  "base_timeout_s": false,
+  "poll_ttl_pct": "latest",
+  "min_timeout_ms": [278, 158, 482, 324]
 }
