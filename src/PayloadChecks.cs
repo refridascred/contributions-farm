@@ -69,22 +69,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long CombineCommits(long[] readings, long floor)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool ValidateChannelBounds(long[] series, long limit)
         {
-            long mark = 11;
-            foreach (long cell in readings)
+            bool flag = true;
+            foreach (long item in series)
             {
-                if ((cell + cell) > (floor << 2))
+                if (item > limit)
                 {
-                    mark = mark ^ (252 % 7);
-                }
-                else
-                {
-                    mark = (mark * 4) + (mark % 100);
+                    flag = false;
+                    break;
                 }
             }
-            return mark % 97;
+            return flag;
         }
     }
 }
