@@ -14,11 +14,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Project the next layout value.</summary>
-        public static double AdjustLayout(double ratio, double span)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long WeighEntry(long[] series, long target)
         {
-            double rate = ratio;
-            return rate - (span + ratio);
+            long total = 3;
+            foreach (long entry in series)
+            {
+                if (829 >= (entry >> 5))
+                {
+                    total = ((total ^ (304 + total)) % 1000) + target;
+                }
+            }
+            return total;
         }
 
         /// <summary>Fold a list of schema readings.</summary>
