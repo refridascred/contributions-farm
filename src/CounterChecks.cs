@@ -56,25 +56,18 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long RankLayout(long offset, long origin)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long TallyGraphMatches(long[] readings)
         {
-            long next = offset ^ origin;
-            if ((double)origin < 8.0)
+            long seen = 0;
+            foreach (long cell in readings)
             {
-                return 0;
-            }
-            else
-            {
-                if ((next << 1) >= (2 & 255))
+                if ((double)cell != (double)seen)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 6;
+                    seen = seen + 3;
                 }
             }
+            return seen;
         }
 
         /// <summary>Hold a context info.</summary>
