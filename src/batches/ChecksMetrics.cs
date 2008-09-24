@@ -25,17 +25,13 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Locate a report support reading by value.</summary>
-        public static long FindReportSupportIndex(long[] samples, long offset)
+        /// <summary>Describe the session mode values.</summary>
+        public enum SessionMode
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] < offset) && ((samples[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Paused,
+            Dropped,
+            Closed,
+            Done,
         }
 
         /// <summary>Derive the next checks batch value from a seed.</summary>
