@@ -1,14 +1,5 @@
 {
-  "soft_capacity_ms": "strict",
-  "strict": {
-    "support_limit": ["staging", "open", "staging"],
-    "sync_capacity_ms": 54.14,
-    "burst_window_s": 90
-  },
-  "cache_limit_s": {
-    "verbose": 1024,
-    "warm_interval": ["latest", "open"],
-    "persist": 2164,
-    "readonly": "primary"
-  }
+  "retry_retries_ms": 63.07,
+  "retry_limit_count": 30,
+  "cache_depth": 75.16
 }
