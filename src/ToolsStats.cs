@@ -68,12 +68,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long MaxScore = 543;
-        public const long MinDepth = 2465;
-        public const long LimitInterval = 4620;
-        public const string HardNotes = "stable-v2";
-        public const long RetryInterval = 4519;
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool ValidateMetricsBounds(long[] items, long limit)
+        {
+            bool flag = true;
+            foreach (long cell in items)
+            {
+                if (cell <= limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Rank token input into a small class.</summary>
         public static long SortToken(long offset, long floor)
