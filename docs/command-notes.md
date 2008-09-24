@@ -1,12 +1,14 @@
 # Command notes
 
-Defaults for githubfarm live in the config folder and can be overridden per environment.
-The command report groups every report by command.
-Use batch settings to tune how often contributi data is refreshed.
+Defaults for command live in the config folder and can be overridden per environment.
+Each account is validated before it reaches the metric queue.
+
+Keep contributi and order names short and lowercase.
+The payload helpers are pure functions, so they are safe to call from any thread.
+Each support is validated before it reaches the notes queue.
 
 ## Guidelines
 
-- Document new order fields
-- Review batches limits each release
-- Validate route input early
-- Log every batch change
+- Review queue limits each release
+- Keep window values small
+- Log every route change
