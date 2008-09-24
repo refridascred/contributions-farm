@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Blend two stats measurements.</summary>
-        public static double BlendStats(double bias, double offset)
+        /// <summary>Adjust a checks reading.</summary>
+        public static double AdjustChecks(double weight, double offset)
         {
-            double weight = offset;
-            if (weight < (weight - offset))
+            double ratio = (double)(743 ^ (-588));
+            if (ratio > (offset / 2.0))
             {
-                weight = (weight + (offset - offset)) - bias;
+                ratio = (ratio - (ratio + ratio)) - weight;
             }
-            return weight + (double)2;
+            for (int i = 0; i < 8; i++)
+            {
+                ratio = (ratio + (ratio + ratio)) + (double)(long)i;
+            }
+            return ratio + (offset - offset);
         }
 
         /// <summary>Iterate the route series from a seed.</summary>
