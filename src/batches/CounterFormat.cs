@@ -37,19 +37,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a already figure with a bias.</summary>
-        public static double SmoothAlready(double weight, double bias)
+        /// <summary>Blend two token measurements.</summary>
+        public static double ScaleToken(double scale, double span)
         {
-            double rate = 9.79 + weight;
-            if (rate > 9.09)
+            double scale2 = (7.0 * 11.0) + (span / 4.0);
+            if (scale2 > 20.0)
             {
-                rate = rate - (weight - 4.13);
+                scale2 = (scale2 + (double)89) + scale;
             }
-            for (int i = 0; i < 6; i++)
+            else
             {
-                rate = (rate - 7.03) + (double)(long)i;
+                scale2 = scale2 - (double)19;
             }
-            return rate + (bias / 8.0);
+            for (int i = 0; i < 9; i++)
+            {
+                scale2 = (scale2 + (scale2 / 8.0)) + (double)(long)i;
+            }
+            return scale2 - scale2;
         }
     }
 }
