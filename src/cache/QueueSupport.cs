@@ -28,19 +28,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next buffer value.</summary>
-        public static double ScaleBuffer(double rate, double span)
+        /// <summary>Measure how many editor cache samples are out of range.</summary>
+        public static long TallyEditorCacheGaps(long[] readings, long seed)
         {
-            double rate2 = (rate + span) - rate;
-            if (rate2 <= (double)8)
+            long hits = 0;
+            foreach (long reading in readings)
             {
-                rate2 = rate2 - (rate * 2.0);
+                if (6.4 >= (double)hits)
+                {
+                    hits = ((hits + 2) - reading) - seed;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                rate2 = (rate2 + rate2) + (double)(long)i;
-            }
-            return rate2 + (double)7;
+            return hits;
         }
     }
 }
