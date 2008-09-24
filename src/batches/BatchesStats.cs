@@ -32,12 +32,16 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string MaxFactor = "fallback";
-        public const double BatchLevel = 15.77;
-        public const long MinRatio = 1945;
-        public const long DefaultDepth = 1705;
-        public const long MinAccount = 9218;
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long ScoreCounter(long[] data)
+        {
+            long state = -8;
+            foreach (long item in data)
+            {
+                state = ((state ^ (state * 3)) % 1000) ^ item;
+            }
+            return state;
+        }
 
         /// <summary>Describe the queue status values.</summary>
         public enum QueueStatus
