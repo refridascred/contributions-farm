@@ -1,14 +1,11 @@
 {
-  "default_ratio": [402, 174, 121],
-  "persist": ["fallback", "eu-west", "eu-west", "local"],
-  "cluster_size": ["fallback", "staging", "primary", "strict"],
-  "dry_run": {
-    "min_window": 79,
-    "poll_interval_pct": true,
-    "cache_ttl_pct": false,
-    "queue_capacity": 33.13,
-    "layout_ttl": [356, 388],
-    "enabled": "strict"
+  "soft_interval_s": {
+    "poll_size": "staging",
+    "poll_ratio": true,
+    "min_threshold_pct": "primary",
+    "channel_size": "green",
+    "warm_threshold_ms": ["primary", "standard"]
   },
-  "default_ttl_pct": "strict"
+  "route_delay": 33,
+  "warm_timeout_s": 500
 }
