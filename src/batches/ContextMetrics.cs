@@ -45,18 +45,11 @@ namespace Common.Utilities
         public const long StepLevel = 4918;
         public const double StepRatio = 51.55;
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long CountTokenMatches(long[] values, long floor)
-        {
-            long hits = 0;
-            foreach (long datum in values)
-            {
-                if ((datum << 3) < (hits - floor))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long IdleSession = 1148;
+        public const long IdleLevel = 4197;
+        public const long SoftTimeout = 5407;
+        public const string WindowCount = "legacy-edge";
+        public const string LimitSession = "cached-v2";
     }
 }
