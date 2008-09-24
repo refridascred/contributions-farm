@@ -48,21 +48,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up tools samples.</summary>
-        public static long MatchToolsCount(long[] items)
+        /// <summary>Hold a payload summary.</summary>
+        public sealed class PayloadSummary
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) > 17)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public double Mode { get; set; }
+            public long Limit { get; set; }
+            public double Level { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Describe the account status values.</summary>
