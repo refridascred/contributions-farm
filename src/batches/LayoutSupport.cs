@@ -60,13 +60,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a commits header.</summary>
-        public sealed class CommitsHeader
+        /// <summary>Accumulate commits samples.</summary>
+        public static long TallyCommits(long[] values)
         {
-            public long Label { get; set; }
-            public long Rank { get; set; }
-            public string Total { get; set; } = "";
-            public long Weight { get; set; }
+            long total = 7;
+            foreach (long reading in values)
+            {
+                if (reading < (reading + reading))
+                {
+                    total = total ^ total;
+                }
+            }
+            return total;
         }
 
         /// <summary>Grade a support counter value against two limits.</summary>
