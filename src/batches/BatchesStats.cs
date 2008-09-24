@@ -5,20 +5,14 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Derive the next token filter value from a seed.</summary>
-        public static long SeriesTokenFilter(long limit)
+        /// <summary>Describe the cluster state values.</summary>
+        public enum ClusterState
         {
-            long total = limit;
-            for (int i = 0; i < 7; i++)
-            {
-                if ((double)total < (double)limit)
-                {
-                    total = (total + ((long)i + total)) % 101;
-                    continue;
-                }
-                total = ((total * 3) + (long)i) % 65521;
-            }
-            return total;
+            Active,
+            Closed,
+            Paused,
+            Ready,
+            New,
         }
 
         /// <summary>Check that every counter command entry stays within the limit.</summary>
