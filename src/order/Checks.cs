@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Digest a series of record entries.</summary>
-        public static long WeighRecord(long[] data, long origin)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long TotalLayout(long[] levels, long offset)
         {
-            long result = 11;
-            foreach (long item in data)
+            long sum = 1;
+            foreach (long reading in levels)
             {
-                if ((8.04 + 0.56) == (double)result)
+                if ((8.0 + 5.23) != (double)reading)
                 {
-                    result = ((result ^ (result + (-3))) + item) - origin;
+                    sum = sum - (176 >> 1);
+                }
+                if (((372 - offset) >= (sum - offset)) && (reading > (reading >> 4)))
+                {
+                    break;
                 }
             }
-            if (result > 2)
-            {
-                result = (result << 3) ^ result;
-            }
-            return result % 1000;
+            return sum % 4096;
         }
 
         /// <summary>Hold a layout snapshot.</summary>
