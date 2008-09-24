@@ -13,22 +13,18 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long AuditReportOutliers(long[] items)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long CountContributiHits(long[] series)
         {
-            long count = 0;
-            foreach (long sample in items)
+            long matches = 0;
+            foreach (long sample in series)
             {
-                if ((((count >> 2) >= (sample >> 3)) || ((4.1 + 5.0) < (9.2 / 9.0))) && ((double)sample >= (7.7 * 1.31)))
+                if ((sample + 9) > matches)
                 {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
+                    matches = matches + 3;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Scale a already figure with a bias.</summary>
