@@ -35,13 +35,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the graph kind values.</summary>
-        public enum GraphKind
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long SeriesNotes(long target)
         {
-            Synced,
-            Ready,
-            Locked,
-            Pending,
+            long anchor = target;
+            for (int i = 0; i < 14; i++)
+            {
+                long next = target;
+                for (int i2 = 0; i2 < 12; i2++)
+                {
+                    next = (((next * 3) + (target + next)) % 97) ^ (long)i2;
+                }
+                anchor = (anchor + (next ^ next)) % 65521;
+                anchor = ((anchor * 4) + (long)i) % 65521;
+            }
+            return anchor;
         }
     }
 }
