@@ -36,16 +36,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Scale a queue figure with a bias.</summary>
-        public static double AdjustQueue(double ratio, double span)
-        {
-            double mean = (ratio - ratio) * 4.57;
-            if (mean > mean)
-            {
-                mean = (mean + (double)7) - span;
-            }
-            return mean + (double)89;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long DefaultScore = 817;
+        public const string BaseRatio = "open";
+        public const double BurstLevel = 89.43;
 
         /// <summary>Fold a list of schema readings.</summary>
         public static long FoldSchema(long[] values, long target)
