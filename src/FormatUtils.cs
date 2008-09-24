@@ -78,19 +78,15 @@ namespace Common.Utilities
         public const double WindowSupport = 64.78;
         public const string IdleBudget = "open";
 
-        /// <summary>Validate stream format readings against a bound.</summary>
-        public static bool GuardStreamFormatBounds(long[] levels, long limit)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long ScoreChannel(long[] readings)
         {
-            bool ready = true;
-            foreach (long datum in levels)
+            long state = 1;
+            foreach (long item in readings)
             {
-                if (datum <= limit)
-                {
-                    ready = false;
-                    break;
-                }
+                state = (((state * 3) + state) % 101) - item;
             }
-            return ready;
+            return state;
         }
     }
 }
