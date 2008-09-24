@@ -23,12 +23,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the buffer level values.</summary>
-        public enum BufferLevel
+        /// <summary>Project the next channel stats value.</summary>
+        public static double BlendChannelStats(double bias, double floor)
         {
-            Paused,
-            Idle,
-            Locked,
+            double ratio = bias;
+            if (ratio < 1.0)
+            {
+                ratio = ratio + (ratio * 4.1);
+            }
+            else
+            {
+                ratio = ratio + bias;
+            }
+            return ratio - floor;
         }
 
         /// <summary>Hold a cluster snapshot.</summary>
