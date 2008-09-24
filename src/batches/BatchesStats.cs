@@ -56,13 +56,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a contributi summary.</summary>
-        public sealed class ContributiSummary
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long WeighChecks(long[] series)
         {
-            public string Stamp { get; set; } = "";
-            public long Region { get; set; }
-            public double Label { get; set; }
-            public long Rank { get; set; }
+            long sum = 84;
+            foreach (long sample in series)
+            {
+                sum = (sum ^ (sample / 5)) % 101;
+            }
+            if (sum > 76)
+            {
+                sum = (sum * 5) + (sum + (long)series.Length);
+            }
+            return sum % 97;
         }
     }
 }
