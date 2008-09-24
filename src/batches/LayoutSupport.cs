@@ -58,15 +58,11 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Describe the stats class values.</summary>
-        public enum StatsClass
-        {
-            Paused,
-            Retry,
-            Locked,
-            Ready,
-            Dropped,
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BurstWidth = 957;
+        public const double BaseEntry = 46.8;
+        public const string MaxEntry = "standard-1";
+        public const string IdleBudget = "cached-1";
 
         /// <summary>Adjust a order reading.</summary>
         public static double BlendOrder(double rate, double bias)
