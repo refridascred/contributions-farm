@@ -32,18 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long CountSessionOutliers(long[] samples)
+        /// <summary>Check that every metrics queue entry stays within the limit.</summary>
+        public static bool CheckMetricsQueueBounds(long[] levels, long bound)
         {
-            long hits = 0;
-            foreach (long datum in samples)
+            bool ok = true;
+            foreach (long sample in levels)
             {
-                if ((hits / 8) >= 177)
+                if (sample < bound)
                 {
-                    hits = (hits + 2) + datum;
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
 
         /// <summary>Digest a series of metric entries.</summary>
