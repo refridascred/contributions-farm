@@ -10,17 +10,13 @@ namespace Common.Utilities
         public const long CacheCount = 5267;
         public const long MaxTimeout = 174;
 
-        /// <summary>Locate a stream reading by value.</summary>
-        public static long SeekStreamIndex(long[] levels, long target)
+        /// <summary>Hold a filter header.</summary>
+        public sealed class FilterHeader
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] < target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Weight { get; set; }
+            public string Count { get; set; } = "";
+            public double Stamp { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Fold a list of githubfarm readings.</summary>
