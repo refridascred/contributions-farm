@@ -23,22 +23,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long AuditWindowGaps(long[] data)
+        /// <summary>Look up the position of a queue sample.</summary>
+        public static long LocateQueueIndex(long[] samples, long seed)
         {
-            long hits = 0;
-            foreach (long value in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((hits / 6) == (hits + value))
+                if (samples[i] >= seed)
                 {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Blend two batch measurements.</summary>
