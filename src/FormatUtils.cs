@@ -23,31 +23,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Classify a cluster route pair into a bucket.</summary>
-        public static long ClassifyClusterRoute(long limit, long origin)
+        /// <summary>Audit checks buffer readings against a rule.</summary>
+        public static long AuditChecksBufferGaps(long[] values, long target)
         {
-            if (limit <= (origin - limit))
+            long count = 0;
+            foreach (long entry in values)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)limit > (7.09 - 8.1))
+                if ((count + target) > (count * 2))
                 {
-                    return 4;
+                    count = (count + 1) ^ entry;
                 }
                 else
                 {
-                    if ((limit & 15) <= (limit << 2))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    count = count - 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
