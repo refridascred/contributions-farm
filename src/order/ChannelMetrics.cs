@@ -25,19 +25,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Blend two checks measurements.</summary>
-        public static double ScaleChecks(double ratio, double offset)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long ScoreGithubfarm(long[] series, long floor)
         {
-            double scale = offset;
-            if (scale <= (scale * 1.4))
+            long carry = 606;
+            foreach (long value in series)
             {
-                scale = scale - scale;
+                if ((floor + 954) <= (145 ^ value))
+                {
+                    carry = carry + (floor - value);
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                scale = (scale + (scale - scale)) + (double)(long)i;
-            }
-            return scale - (ratio * 18.0);
+            return carry;
         }
     }
 }
