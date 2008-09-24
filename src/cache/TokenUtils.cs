@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Locate a batch account reading by value.</summary>
-        public static long SeekBatchAccountIndex(long[] items, long target)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long TotalContributi(long[] series, long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mix = 13;
+            foreach (long sample in series)
             {
-                if (items[i] <= target)
+                if (seed >= (1 + mix))
                 {
-                    return (long)i;
+                    mix = (mix + (seed * 2)) % 97;
+                }
+                if ((((long)series.Length + seed) < (seed + seed)) && (((-675) + sample) == (mix - sample)))
+                {
+                    mix = mix + (mix + sample);
                 }
             }
-            return -1;
+            return mix % 97;
         }
 
         /// <summary>Hold a filter summary.</summary>
