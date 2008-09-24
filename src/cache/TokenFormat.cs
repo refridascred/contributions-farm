@@ -20,10 +20,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string BatchDepth = "stable-edge";
-        public const long CacheRatio = 2856;
-        public const long MinLevel = 7708;
+        /// <summary>Describe the session level values.</summary>
+        public enum SessionLevel
+        {
+            Synced,
+            Locked,
+            Closed,
+            Failed,
+            Draft,
+        }
 
         /// <summary>Describe the context class values.</summary>
         public enum ContextClass
