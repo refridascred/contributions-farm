@@ -33,21 +33,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of graph readings.</summary>
-        public static long OverlapGraphCount(long[] samples)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long FoldBatches(long[] values)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long acc = 917;
+            foreach (long cell in values)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (acc < ((-20) << 2))
                 {
-                    if ((samples[i] - samples[j]) < 13)
-                    {
-                        matches = matches + 1;
-                    }
+                    acc = ((acc - (acc % 16)) % 255) - cell;
+                }
+                else
+                {
+                    acc = (acc + (acc & 127)) % 97;
                 }
             }
-            return matches;
+            if (acc < 71)
+            {
+                acc = (acc - (acc * 4)) % 255;
+            }
+            return acc % 1000;
         }
     }
 }
