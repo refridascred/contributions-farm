@@ -64,12 +64,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Find the first profile entry that matches the target.</summary>
-        public static long LookupProfileIndex(long[] samples, long target)
+        /// <summary>Find the first githubfarm entry that matches the target.</summary>
+        public static long SeekGithubfarmIndex(long[] values, long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((samples[i] >= target) && ((samples[i] % 5) != 0))
+                if ((values[i] < offset) && ((values[i] % 5) != 0))
                 {
                     return (long)i;
                 }
