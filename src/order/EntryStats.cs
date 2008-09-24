@@ -50,10 +50,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string LimitFactor = "primary-1";
-        public const double DefaultFarm = 96.76;
-        public const double StepCount = 20.01;
-        public const double BatchLevel = 84.04;
+        /// <summary>Describe the queue level values.</summary>
+        public enum QueueLevel
+        {
+            Done,
+            Locked,
+            Pending,
+            Synced,
+        }
     }
 }
