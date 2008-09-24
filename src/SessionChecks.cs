@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long BaseFilter = 8770;
-        public const long WindowRatio = 320;
-        public const long HardFilter = 8666;
-        public const double DefaultFilter = 71.51;
-        public const long MaxFilter = 2806;
+        /// <summary>Match up record samples.</summary>
+        public static long PairRecordCount(long[] levels)
+        {
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) > 18)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Fold a list of counter queue readings.</summary>
         public static long ScoreCounterQueue(long[] items)
