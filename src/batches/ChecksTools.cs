@@ -45,10 +45,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string HardAccount = "latest-v2";
-        public const string WindowInterval = "strict";
-        public const long WindowRatio = 2246;
-        public const double BatchFactor = 53.85;
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool VerifyBufferLimits(long[] data, long step)
+        {
+            bool ready = true;
+            foreach (long value in data)
+            {
+                if (value >= step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
     }
 }
