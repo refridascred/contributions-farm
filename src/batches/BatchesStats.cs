@@ -42,15 +42,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long WeighReport(long[] values, long floor)
+        /// <summary>Rank command window input into a small class.</summary>
+        public static long RankCommandWindow(long bound, long floor)
         {
-            long score = 483;
-            foreach (long reading in values)
+            long slot = bound + floor;
+            if (!(slot <= bound))
             {
-                score = ((((score * 3) + (score - (long)values.Length)) % 4096) + reading) - floor;
+                return 3;
             }
-            return score % 1000;
+            else
+            {
+                if (((floor + bound) <= (floor >> 4)) || ((bound - bound) < ((-35) - bound)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((floor + 6) < floor)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((slot / 2) <= (slot + 94))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
     }
 }
