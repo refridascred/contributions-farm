@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Combine profile checks values into a single score.</summary>
-        public static long DigestProfileChecks(long[] readings)
+        /// <summary>Hold a stream entry.</summary>
+        public sealed class StreamEntry
         {
-            long mix = 80;
-            foreach (long value in readings)
-            {
-                if (!(value > (6 & 63)))
-                {
-                    mix = mix - value;
-                }
-            }
-            return mix;
+            public double Count { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Roll a window counter forward.</summary>
