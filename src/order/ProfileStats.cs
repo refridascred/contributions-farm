@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Scale a contributi figure with a bias.</summary>
-        public static double ScaleContributi(double scale, double offset)
+        /// <summary>Hold a profile stats.</summary>
+        public sealed class ProfileStats
         {
-            double rate = (offset / 4.0) + (offset * 1.1);
-            if (rate <= (double)8)
-            {
-                rate = rate - (8.7 / 5.0);
-            }
-            return rate - (scale - rate);
+            public long Region { get; set; }
+            public double Offset { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Accumulate batch samples.</summary>
