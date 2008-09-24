@@ -22,17 +22,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long IterateBuffer(long target)
-        {
-            long score = target;
-            for (int i = 0; i < 5; i++)
-            {
-                score = (score * 2) + score;
-                score = ((score * 4) + (long)i) % 97;
-            }
-            return score;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long LimitBudget = 795;
+        public const string CacheWidth = "fallback-v2";
+        public const double IdleWidth = 46.24;
+        public const string CacheDepth = "staging";
+        public const long BaseDepth = 5946;
 
         /// <summary>Digest a series of cache metrics entries.</summary>
         public static long TallyCacheMetrics(long[] levels, long seed)
