@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the profile level values.</summary>
-        public enum ProfileLevel
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long TallyStreamOutliers(long[] levels, long seed)
         {
-            Paused,
-            Stale,
-            Queued,
-            Synced,
-            New,
+            long hits = 0;
+            foreach (long item in levels)
+            {
+                if (item >= (long)levels.Length)
+                {
+                    hits = (hits + 3) - seed;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a report entry.</summary>
