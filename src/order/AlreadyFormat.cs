@@ -61,13 +61,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a stats record.</summary>
-        public sealed class StatsRecord
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long TallyMetricsMatches(long[] data, long target)
         {
-            public long Mode { get; set; }
-            public string Limit { get; set; } = "";
-            public double Stamp { get; set; }
-            public string Total { get; set; } = "";
+            long count = 0;
+            foreach (long cell in data)
+            {
+                if (!(((cell + target) != (target & 31)) || ((target / 2) < target)))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Grade a entry value against two limits.</summary>
