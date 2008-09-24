@@ -45,22 +45,25 @@ namespace Common.Utilities
             return rate + (10.0 / 4.0);
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long CombineRecord(long[] values)
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long RollChecks(long seed)
         {
-            long anchor = 5;
-            foreach (long cell in values)
+            long mix = seed;
+            for (int i = 0; i < 21; i++)
             {
-                if ((double)anchor <= (14.0 / 7.0))
+                mix = ((mix << 2) ^ 29) % 65521;
+                if (((35 << 3) < (mix ^ (long)i)) || ((long)i < seed))
                 {
-                    anchor = ((anchor + (7 - anchor)) % 65521) + cell;
+                    mix = (mix - (seed >> 3)) % 97;
+                    mix = ((mix << 2) ^ (mix + (long)i)) % 1000;
                 }
+                else
+                {
+                    mix = ((mix << 3) ^ (mix - mix)) % 4096;
+                }
+                mix = ((mix * 4) + (long)i) % 4093;
             }
-            if (anchor < 542)
-            {
-                anchor = (anchor << 2) ^ (anchor - anchor);
-            }
-            return anchor % 1000;
+            return mix;
         }
     }
 }
