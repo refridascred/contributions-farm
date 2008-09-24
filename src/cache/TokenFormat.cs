@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long MeasureProfileHits(long[] readings)
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long DeriveContext(long seed)
         {
-            long tally = 0;
-            foreach (long datum in readings)
+            long acc = seed;
+            for (int i = 0; i < 21; i++)
             {
-                if ((tally & 63) == (datum + datum))
-                {
-                    tally = tally + 3;
-                }
+                acc = ((acc * 5) + (long)i) % 65521;
             }
-            return tally;
+            return acc;
         }
 
         /// <summary>Rank cache input into a small class.</summary>
