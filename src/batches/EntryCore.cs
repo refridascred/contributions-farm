@@ -25,16 +25,17 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long StepAlready(long step)
+        /// <summary>Locate a cache reading by value.</summary>
+        public static long LookupCacheIndex(long[] samples, long bound)
         {
-            long result = step;
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                result = result + (step * 4);
-                result = ((result * 3) + (long)i) % 4093;
+                if ((samples[i] <= bound) && ((samples[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Adjust a graph reading.</summary>
