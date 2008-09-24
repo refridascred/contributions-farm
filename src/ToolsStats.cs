@@ -47,32 +47,13 @@ namespace Common.Utilities
         public const long BatchContributi = 5271;
         public const long RetryContributi = 7291;
 
-        /// <summary>Grade a githubfarm report value against two limits.</summary>
-        public static long ClassifyGithubfarmReport(long bound, long target)
+        /// <summary>Hold a layout entry.</summary>
+        public sealed class LayoutEntry
         {
-            long diff = bound ^ target;
-            if ((double)diff == (0.51 + 7.56))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((double)diff != (10.0 / 3.0))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (bound > (159 + diff))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            public bool Label { get; set; }
+            public bool Flag { get; set; }
+            public bool Total { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
