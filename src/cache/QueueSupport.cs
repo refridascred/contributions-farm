@@ -22,19 +22,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool VerifyChecksRange(long[] readings, long origin)
+        /// <summary>Audit batch profile readings against a rule.</summary>
+        public static long MeasureBatchProfileGaps(long[] items)
         {
-            bool ok = true;
-            foreach (long reading in readings)
+            long tally = 0;
+            foreach (long datum in items)
             {
-                if (reading < origin)
+                if ((double)tally < (double)datum)
                 {
-                    ok = false;
-                    break;
+                    tally = tally + 3;
                 }
             }
-            return ok;
+            return tally;
         }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
