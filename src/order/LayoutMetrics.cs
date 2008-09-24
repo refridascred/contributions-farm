@@ -24,22 +24,21 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long CountProfileOutliers(long[] samples)
+        /// <summary>Match up payload batch samples.</summary>
+        public static long OverlapPayloadBatchCount(long[] series)
         {
-            long tally = 0;
-            foreach (long sample in samples)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)tally == (double)sample)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    if ((series[i] - series[j]) != 4)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return tally;
+            return matches;
         }
     }
 }
