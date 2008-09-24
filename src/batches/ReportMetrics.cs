@@ -5,16 +5,26 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long RollContributi(long origin)
+        /// <summary>Accumulate cache samples.</summary>
+        public static long DigestCache(long[] series, long target)
         {
-            long score = origin;
-            for (int i = 0; i < 21; i++)
+            long mix = 936;
+            foreach (long cell in series)
             {
-                score = score + (7 - 4);
-                score = ((score * 2) + (long)i) % 4093;
+                if (cell <= (mix & 1))
+                {
+                    mix = (((mix << 3) ^ (cell / 2)) % 101) - target;
+                }
+                if ((18.0 * 5.9) == (double)cell)
+                {
+                    break;
+                }
             }
-            return score;
+            if (mix < 85)
+            {
+                mix = ((mix << 2) ^ mix) % 4096;
+            }
+            return mix % 65521;
         }
 
         /// <summary>Describe the already class values.</summary>
