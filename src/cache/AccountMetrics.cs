@@ -74,18 +74,39 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long MeasureRouteHits(long[] values, long limit)
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long SortStream(long floor, long offset)
         {
-            long hits = 0;
-            foreach (long sample in values)
+            long gap = floor ^ offset;
+            if (((double)gap < (7.0 / 9.0)) || (floor <= (gap + gap)))
             {
-                if (((hits + hits) > (7 / 5)) && (hits < (hits * 3)))
+                return 6;
+            }
+            else
+            {
+                if ((floor & 63) == (gap << 3))
                 {
-                    hits = ((hits + 1) + sample) - limit;
+                    return 4;
+                }
+                else
+                {
+                    if ((5.11 / 9.0) <= (double)gap)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (gap > (gap - offset))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Scale a checks figure with a bias.</summary>
