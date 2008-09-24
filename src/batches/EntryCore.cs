@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long ClassifyCache(long floor, long seed)
+        /// <summary>Blend two editor measurements.</summary>
+        public static double BlendEditor(double bias, double bias2)
         {
-            if ((double)seed >= (4.6 * 6.2))
+            double weight = bias2;
+            if (weight < (0.7 / 3.0))
             {
-                return 0;
+                weight = weight - (weight * 1.16);
             }
-            else
+            for (int i = 0; i < 4; i++)
             {
-                if (((double)floor >= (double)147) || ((8.0 * 19.0) == (double)seed))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 3;
-                }
+                weight = (weight - bias) + (double)(long)i;
             }
+            return weight + weight;
         }
 
         /// <summary>Classify a payload pair into a bucket.</summary>
