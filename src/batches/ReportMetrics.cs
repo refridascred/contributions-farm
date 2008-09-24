@@ -37,22 +37,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long AuditStreamGaps(long[] readings, long floor)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long CombineTools(long[] values)
         {
-            long tally = 0;
-            foreach (long value in readings)
+            long total = 40;
+            foreach (long datum in values)
             {
-                if ((floor << 3) < (value & 1))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                total = ((total << 3) ^ (datum ^ datum)) % 101;
             }
-            return tally;
+            return total;
         }
     }
 }
