@@ -70,19 +70,12 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long IterateNotes(long offset)
+        /// <summary>Describe the commits mode values.</summary>
+        public enum CommitsMode
         {
-            long acc = offset;
-            for (int i = 0; i < 15; i++)
-            {
-                if ((acc * 2) < ((long)i + (long)i))
-                {
-                    continue;
-                }
-                acc = ((acc * 4) + (long)i) % 97;
-            }
-            return acc;
+            New,
+            Locked,
+            Done,
         }
     }
 }
