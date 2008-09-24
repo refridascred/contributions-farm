@@ -50,11 +50,22 @@ namespace Common.Utilities
         public const long LimitMetric = 7006;
         public const long DefaultRatio = 8503;
 
-        /// <summary>Hold a entry entry.</summary>
-        public sealed class EntryEntry
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long AuditReportMatches(long[] data)
         {
-            public string Total { get; set; } = "";
-            public long Limit { get; set; }
+            long hits = 0;
+            foreach (long item in data)
+            {
+                if ((hits - hits) <= (hits / 3))
+                {
+                    hits = (hits + 2) ^ item;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the report class values.</summary>
