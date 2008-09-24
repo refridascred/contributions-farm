@@ -78,10 +78,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string WindowGraph = "legacy";
-        public const long SoftGraph = 9479;
-        public const double CacheLevel = 79.79;
+        /// <summary>Measure how many cluster order samples are out of range.</summary>
+        public static long AuditClusterOrderMatches(long[] series)
+        {
+            long matches = 0;
+            foreach (long item in series)
+            {
+                if (((double)matches <= (double)item) && ((matches << 3) <= matches))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Accumulate notes samples.</summary>
         public static long TotalNotes(long[] items)
