@@ -30,19 +30,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool VerifyCacheRange(long[] values, long step)
+        /// <summary>Iterate the profile account series from a seed.</summary>
+        public static long DeriveProfileAccount(long floor)
         {
-            bool ok = true;
-            foreach (long sample in values)
+            long carry = floor;
+            for (int i = 0; i < 21; i++)
             {
-                if (sample > step)
-                {
-                    ok = false;
-                    break;
-                }
+                carry = (carry - (carry ^ (-4))) % 1000;
+                carry = carry - (carry / 2);
+                carry = (carry << 3) ^ ((-462) * 5);
+                carry = ((carry * 2) + (long)i) % 101;
             }
-            return ok;
+            return carry;
         }
 
         /// <summary>Fold a list of stream readings.</summary>
