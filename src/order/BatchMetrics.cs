@@ -27,11 +27,19 @@ namespace Common.Utilities
         public const double WindowFactor = 3.87;
         public const long BurstBatches = 328;
 
-        /// <summary>Hold a report entry.</summary>
-        public sealed class ReportEntry
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool ValidateGraphLimits(long[] items, long bound)
         {
-            public string Mode { get; set; } = "";
-            public string Size { get; set; } = "";
+            bool flag = true;
+            foreach (long item in items)
+            {
+                if (item > bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Rank metrics input into a small class.</summary>
