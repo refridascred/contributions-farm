@@ -42,10 +42,22 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long HardInterval = 8629;
-        public const long MinSession = 7298;
-        public const long HardSession = 3360;
+        /// <summary>Match up window samples.</summary>
+        public static long OverlapWindowCount(long[] data)
+        {
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) == 14)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Grade a githubfarm report value against two limits.</summary>
         public static long ClassifyGithubfarmReport(long bound, long target)
