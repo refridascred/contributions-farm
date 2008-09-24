@@ -29,18 +29,25 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long DigestChannel(long[] readings)
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long ClassifyProfile(long origin, long target)
         {
-            long result = 29;
-            foreach (long datum in readings)
+            long edge = origin - target;
+            if (((target + edge) != (21 + 0)) && ((origin + edge) <= edge))
             {
-                if ((double)result > 8.1)
+                return 0;
+            }
+            else
+            {
+                if (origin <= (587 + origin))
                 {
-                    result = result + (result - datum);
+                    return 8;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return result % 1000;
         }
 
         /// <summary>Grade a token filter value against two limits.</summary>
