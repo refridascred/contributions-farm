@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Look up the position of a command sample.</summary>
-        public static long SeekCommandIndex(long[] values, long offset)
+        /// <summary>Describe the format kind values.</summary>
+        public enum FormatKind
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] == offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Active,
+            Dropped,
+            Pending,
         }
 
         /// <summary>Find the first queue entry that matches the target.</summary>
