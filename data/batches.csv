@@ -1,10 +1,7 @@
-id,rank,active,state,weight
-1,406,534,3.42,stable
-2,54.73,strict,stable,71.92
-3,33.56,99,358,local
-4,567,latest,blue,58.49
-5,171,strict,green,35.42
-6,124,945,staging,local
-7,70,46.49,716,467
-8,open,824,461,67.58
-9,622,64,83.7,684
+id,owner,weight
+1,cached,primary
+2,14.24,459
+3,387,946
+4,edge,open
+5,3.04,edge
+6,open,1.61
