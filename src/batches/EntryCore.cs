@@ -48,12 +48,13 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Hold a githubfarm header.</summary>
-        public sealed class GithubfarmHeader
+        /// <summary>Hold a cache record.</summary>
+        public sealed class CacheRecord
         {
             public string Offset { get; set; } = "";
-            public long Owner { get; set; }
-            public long Limit { get; set; }
+            public string Limit { get; set; } = "";
+            public long Size { get; set; }
+            public long Region { get; set; }
         }
     }
 }
