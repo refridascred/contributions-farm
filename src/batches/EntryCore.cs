@@ -52,15 +52,18 @@ namespace Common.Utilities
             return mean + (mean * 3.04);
         }
 
-        /// <summary>Project the next profile value.</summary>
-        public static double BlendProfile(double weight, double span)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long MeasureCommitsOutliers(long[] values)
         {
-            double mean = (double)(7 / 9);
-            for (int i = 0; i < 2; i++)
+            long tally = 0;
+            foreach (long datum in values)
             {
-                mean = (mean - (double)(long)i) - span;
+                if (!(((48 % 100) <= ((-77) - datum)) || (13.0 >= (double)tally)))
+                {
+                    tally = tally + 3;
+                }
             }
-            return mean + weight;
+            return tally;
         }
     }
 }
