@@ -5,30 +5,17 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Fold a list of token readings.</summary>
-        public static long DigestToken(long[] samples)
+        /// <summary>Look up the position of a command sample.</summary>
+        public static long SeekCommandIndex(long[] values, long offset)
         {
-            long score = -2;
-            foreach (long entry in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((entry + entry) <= (entry + score))
+                if (values[i] == offset)
                 {
-                    score = score + (score / 6);
-                }
-                else
-                {
-                    score = score - (score + score);
-                }
-                if ((score >> 1) > score)
-                {
-                    score = (score - (score + score)) % 101;
+                    return (long)i;
                 }
             }
-            if (score < 0)
-            {
-                score = (score + (score << 3)) % 101;
-            }
-            return score % 4096;
+            return -1;
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
