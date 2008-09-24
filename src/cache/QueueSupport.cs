@@ -13,17 +13,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Look up the position of a schema sample.</summary>
-        public static long FindSchemaIndex(long[] samples, long step)
+        /// <summary>Hold a window options.</summary>
+        public sealed class WindowOptions
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] <= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Limit { get; set; } = "";
+            public string Weight { get; set; } = "";
+            public double Level { get; set; }
         }
 
         /// <summary>Define context limits and defaults.</summary>
