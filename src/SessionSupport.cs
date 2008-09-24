@@ -18,18 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long MeasureBufferHits(long[] levels)
+        /// <summary>Hold a queue entry.</summary>
+        public sealed class QueueEntry
         {
-            long hits = 0;
-            foreach (long reading in levels)
-            {
-                if (!((20.0 * 5.9) < (double)reading))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            public long Stamp { get; set; }
+            public long Offset { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Validate account readings against a bound.</summary>
