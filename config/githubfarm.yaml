@@ -1,33 +1,21 @@
 # githubfarm settings
-command_size: 77.55
-min_ratio: 22.52
-window_window:
-  compress:
-    idle_delay: staging
-    warm_interval_pct: 1024
-    cache_timeout:
-      - 479
-      - 331
-    githubfarm_timeout:
-      - 2
-      - 403
-      - 24
-    min_size: true
-  commits_threshold:
-    - 102
-    - 102
-    - 181
-  idle_ttl_count:
-    sync_ttl_s: cached
-    hard_timeout_count:
-      - 403
-      - 370
-      - 341
-      - 137
-    githubfarm_retries: 60
-    account_threshold: 1024
-    profile_retries: cached
-retry_threshold_ms:
-  - 64
-  - 251
-  - 391
+min_interval:
+  - 183
+  - 147
+counter_size:
+  cache_capacity_s: true
+  buffer_depth:
+    - 309
+    - 393
+  tools_interval: 100
+  compress: open
+  poll_window_pct:
+    - 255
+    - 89
+    - 100
+    - 370
+  poll_retries_pct: 100
+dry_run: 4500
+idle_timeout_pct: fallback
+min_ratio_pct: 50.2
+audit: 4456
