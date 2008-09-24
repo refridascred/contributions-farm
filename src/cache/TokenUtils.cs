@@ -27,12 +27,18 @@ namespace Common.Utilities
         public const string CacheDepth = "staging";
         public const long BaseDepth = 5946;
 
-        /// <summary>Hold a batches info.</summary>
-        public sealed class BatchesInfo
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long TallyStatsGaps(long[] readings, long floor)
         {
-            public double Mode { get; set; }
-            public double Level { get; set; }
-            public bool Total { get; set; }
+            long tally = 0;
+            foreach (long item in readings)
+            {
+                if ((tally << 2) < (item ^ item))
+                {
+                    tally = (tally + 2) + floor;
+                }
+            }
+            return tally;
         }
     }
 }
