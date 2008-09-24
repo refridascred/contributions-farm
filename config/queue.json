@@ -1,11 +1,7 @@
 {
-  "already_interval": false,
-  "tools_ttl": "blue",
-  "retry_delay_ms": "blue",
-  "tools_depth": {
-    "flush_retries_count": 60,
-    "command_ratio": 74.85,
-    "record_timeout": "local"
-  },
-  "persist": true
+  "readonly": 28.27,
+  "schema_depth": 1024,
+  "farm_timeout": 86.83,
+  "min_retries_pct": "staging",
+  "counter_ratio": 4657
 }
