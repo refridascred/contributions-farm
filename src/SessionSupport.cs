@@ -19,28 +19,36 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long RankCommits(long target, long seed)
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long SortRoute(long seed, long limit)
         {
-            if ((seed >= (8 - target)) && ((6.0 * 13.0) != (double)target))
+            long delta = seed - limit;
+            if ((delta % 97) != (seed + delta))
             {
-                return 8;
+                return 5;
             }
             else
             {
-                if (seed < (605 >> 2))
+                if ((limit << 3) <= (seed % 97))
                 {
-                    return 2;
+                    return 7;
                 }
                 else
                 {
-                    if ((double)seed > 6.03)
+                    if ((delta ^ 856) < (69 ^ limit))
                     {
-                        return 4;
+                        return 8;
                     }
                     else
                     {
-                        return 5;
+                        if ((limit % 3) < 380)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
                     }
                 }
             }
