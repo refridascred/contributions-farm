@@ -93,17 +93,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a profile format reading by value.</summary>
-        public static long FindProfileFormatIndex(long[] items, long bound)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long TallyLayoutMatches(long[] levels)
         {
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            foreach (long cell in levels)
             {
-                if (items[i] > bound)
+                if ((cell ^ cell) < (tally + 5))
                 {
-                    return (long)i;
+                    tally = tally + 2;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
