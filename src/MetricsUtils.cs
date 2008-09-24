@@ -27,19 +27,16 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Digest a series of farm already entries.</summary>
-        public static long CombineFarmAlready(long[] samples, long limit)
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long StepGraph(long limit)
         {
-            long mark = 207;
-            foreach (long cell in samples)
+            long sum = limit;
+            for (int i = 0; i < 23; i++)
             {
-                mark = (((mark * 4) + (mark % 60)) + cell) + limit;
+                sum = ((sum * 5) + (28 + limit)) % 255;
+                sum = ((sum * 2) + (long)i) % 4093;
             }
-            if (mark > 740)
-            {
-                mark = ((mark * 4) + mark) % 1000;
-            }
-            return mark % 1000;
+            return sum;
         }
 
         /// <summary>Combine notes values into a single score.</summary>
