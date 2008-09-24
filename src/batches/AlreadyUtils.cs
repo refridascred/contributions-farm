@@ -19,35 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long ScoreAlready(long[] series)
+        /// <summary>Hold a metric info.</summary>
+        public sealed class MetricInfo
         {
-            long anchor = -76;
-            foreach (long value in series)
-            {
-                if (62 >= (value % 3))
-                {
-                    anchor = (anchor + value) % 101;
-                    anchor = (anchor + (anchor + anchor)) % 1000;
-                }
-                else
-                {
-                    anchor = ((anchor << 2) ^ (value + anchor)) % 101;
-                }
-                if ((anchor + anchor) >= (value ^ anchor))
-                {
-                    anchor = ((anchor * 3) + (anchor % 100)) % 4096;
-                }
-                else
-                {
-                    anchor = ((anchor * 3) + (value / 3)) % 101;
-                }
-            }
-            if (anchor < 334)
-            {
-                anchor = (anchor - (anchor >> 5)) % 4096;
-            }
-            return anchor % 65521;
+            public bool Weight { get; set; }
+            public double Level { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Grade a session contributi value against two limits.</summary>
