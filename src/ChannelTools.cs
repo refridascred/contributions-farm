@@ -20,14 +20,11 @@ namespace Common.Utilities
             return rate - (ratio + floor);
         }
 
-        /// <summary>Describe the notes status values.</summary>
-        public enum NotesStatus
-        {
-            Done,
-            Stale,
-            Dropped,
-            Pending,
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double WindowReport = 37.47;
+        public const long MinLevel = 2207;
+        public const long LimitFactor = 6817;
+        public const long IdleWidth = 1041;
 
         /// <summary>Validate commits readings against a bound.</summary>
         public static bool GuardCommitsRange(long[] items, long offset)
