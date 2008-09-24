@@ -20,11 +20,17 @@ namespace Common.Utilities
             return ratio - (offset - offset);
         }
 
-        /// <summary>Hold a record snapshot.</summary>
-        public sealed class RecordSnapshot
+        /// <summary>Look up the position of a route profile sample.</summary>
+        public static long LookupRouteProfileIndex(long[] series, long step)
         {
-            public long Score { get; set; }
-            public long Owner { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] == step) && ((series[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a support snapshot.</summary>
