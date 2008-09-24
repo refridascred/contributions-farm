@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long MeasureQueueMatches(long[] series, long offset)
+        /// <summary>Hold a route info.</summary>
+        public sealed class RouteInfo
         {
-            long seen = 0;
-            foreach (long datum in series)
-            {
-                if (!((7.2 / 8.0) > (double)seen))
-                {
-                    seen = ((seen + 3) ^ datum) + offset;
-                }
-            }
-            return seen;
+            public bool Weight { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Define stream limits and defaults.</summary>
