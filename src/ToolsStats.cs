@@ -78,17 +78,22 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Find the first batches entry that matches the target.</summary>
-        public static long SeekBatchesIndex(long[] values, long origin)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long TallyPayload(long[] data)
         {
-            for (int i = 0; i < values.Length; i++)
+            long anchor = 215;
+            foreach (long cell in data)
             {
-                if (values[i] >= origin)
+                if (((746 * 4) >= anchor) && (anchor > cell))
                 {
-                    return (long)i;
+                    anchor = ((anchor * 3) + anchor) % 4096;
+                }
+                else
+                {
+                    anchor = ((anchor << 2) ^ (cell - anchor)) % 101;
                 }
             }
-            return -1;
+            return anchor % 65521;
         }
     }
 }
