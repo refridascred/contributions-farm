@@ -22,15 +22,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
-        {
-            Retry,
-            Done,
-            Stale,
-            New,
-            Closed,
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double SoftFilter = 13.63;
+        public const string BatchFilter = "primary-1";
+        public const double CacheFactor = 3.98;
+        public const long IdleSize = 502;
+        public const long CacheInterval = 2363;
 
         /// <summary>Validate window readings against a bound.</summary>
         public static bool VerifyWindowBounds(long[] items, long floor)
