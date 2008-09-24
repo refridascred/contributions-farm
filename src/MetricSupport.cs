@@ -15,17 +15,23 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Look up the position of a format sample.</summary>
-        public static long SeekFormatIndex(long[] data, long offset)
+        /// <summary>Scale a channel cluster figure with a bias.</summary>
+        public static double ProjectChannelCluster(double gain, double span)
         {
-            for (int i = 0; i < data.Length; i++)
+            double bias = 9.6;
+            if (bias >= (bias * 3.7))
             {
-                if (data[i] >= offset)
-                {
-                    return (long)i;
-                }
+                bias = bias + span;
             }
-            return -1;
+            else
+            {
+                bias = bias + (double)730;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                bias = (bias + bias) - (double)(long)i;
+            }
+            return bias + gain;
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
