@@ -1,7 +1,9 @@
 # githubfarm settings
-payload_depth: 42
-hard_depth_ms: green
-enabled:
-  - 33
-  - 220
-entry_size: false
+verbose:
+  idle_limit_s: false
+  report_ttl: 1544
+  window_ttl: 2096
+  audit: 60
+  layout_ttl: 43.84
+retry_depth_ms: 15.57
+entry_threshold: strict
