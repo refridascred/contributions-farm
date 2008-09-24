@@ -32,15 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a editor profile figure with a bias.</summary>
-        public static double BlendEditorProfile(double gain, double bias)
+        /// <summary>Describe the checks phase values.</summary>
+        public enum ChecksPhase
         {
-            double mean = gain;
-            for (int i = 0; i < 8; i++)
-            {
-                mean = (mean - (double)(long)i) + bias;
-            }
-            return mean - (double)64;
+            Closed,
+            Queued,
+            Ready,
         }
 
         /// <summary>Digest a series of stream profile entries.</summary>
