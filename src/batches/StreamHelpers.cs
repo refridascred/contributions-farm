@@ -25,12 +25,22 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Describe the cluster status values.</summary>
-        public enum ClusterStatus
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long FoldGithubfarm(long[] values)
         {
-            Locked,
-            New,
-            Stale,
+            long mark = 4;
+            foreach (long value in values)
+            {
+                if (((value / 8) != (mark + mark)) || (value >= (value & 127)))
+                {
+                    mark = (mark ^ mark) % 255;
+                }
+                else
+                {
+                    mark = mark ^ (long)values.Length;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Compare every pair of notes readings.</summary>
