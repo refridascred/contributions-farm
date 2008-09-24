@@ -43,11 +43,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double SoftSpan = 53.51;
-        public const double SoftRatio = 41.95;
-        public const long LimitMetric = 7006;
-        public const long DefaultRatio = 8503;
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long SeriesFilter(long step)
+        {
+            long carry = step;
+            for (int i = 0; i < 9; i++)
+            {
+                carry = (carry - (step - step)) % 4096;
+                carry = ((carry * 3) + (long)i) % 1000;
+            }
+            return carry;
+        }
 
         /// <summary>Fold a list of counter stats readings.</summary>
         public static long TotalCounterStats(long[] data)
