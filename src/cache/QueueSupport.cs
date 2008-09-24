@@ -13,12 +13,14 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a window options.</summary>
-        public sealed class WindowOptions
+        /// <summary>Describe the stream phase values.</summary>
+        public enum StreamPhase
         {
-            public string Limit { get; set; } = "";
-            public string Weight { get; set; } = "";
-            public double Level { get; set; }
+            Retry,
+            Dropped,
+            New,
+            Queued,
+            Synced,
         }
 
         /// <summary>Define context limits and defaults.</summary>
