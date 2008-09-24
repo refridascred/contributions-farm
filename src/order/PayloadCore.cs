@@ -12,13 +12,18 @@ namespace Common.Utilities
         public const long RetrySupport = 8669;
         public const long BurstSupport = 7670;
 
-        /// <summary>Describe the report mode values.</summary>
-        public enum ReportMode
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long AuditStreamMatches(long[] values, long target)
         {
-            Ready,
-            Locked,
-            Stale,
-            Idle,
+            long hits = 0;
+            foreach (long reading in values)
+            {
+                if (!((reading & 255) <= (-1)))
+                {
+                    hits = (hits + 3) - target;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Look up the position of a route sample.</summary>
