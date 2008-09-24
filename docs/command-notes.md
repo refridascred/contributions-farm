@@ -1,12 +1,12 @@
 # Command notes
 
-When a session fails, the counter handler retries a few times before giving up.
-Defaults for account live in the config folder and can be overridden per environment.
-Keep schema and checks names short and lowercase.
+Keep route and window names short and lowercase.
+Each session is validated before it reaches the session queue.
+When a counter fails, the batch handler retries a few times before giving up.
 
 ## Guidelines
 
-- Log every report change
-- Prefer command defaults
-- Keep payload values small
-- Validate farm input early
+- Keep farm values small
+- Log every channel change
+- Validate checks input early
+- Prefer contributi defaults
