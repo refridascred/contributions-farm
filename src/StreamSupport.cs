@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Look up the position of a stream sample.</summary>
-        public static long FindStreamIndex(long[] items, long origin)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long TotalChannel(long[] data)
         {
-            for (int i = 0; i < items.Length; i++)
+            long state = 88;
+            foreach (long item in data)
             {
-                if (items[i] > origin)
+                if ((state - item) < item)
                 {
-                    return (long)i;
+                    state = ((state << 3) ^ (state >> 3)) % 1000;
                 }
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
