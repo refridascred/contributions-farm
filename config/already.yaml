@@ -1,21 +1,6 @@
 # already settings
-min_window_ms:
-  burst_delay_count: false
-  poll_depth_count: legacy
-  poll_interval: false
-  strict: edge
-  min_depth_s: 402
-  soft_timeout_pct: edge
-retry_ratio_pct: 30
-audit:
-  - 45
-  - 320
-  - 454
-  - 341
-flush_ratio: false
-strict:
-  - 370
-  - 79
-  - 137
-  - 350
-base_delay_count: 500
+account_ratio: blue
+contributi_ttl: 2572
+checks_retries: open
+max_interval_s: 1024
+readonly: 3063
