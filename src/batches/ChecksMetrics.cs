@@ -39,11 +39,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a support record.</summary>
-        public sealed class SupportRecord
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long SortBatch(long offset, long step)
         {
-            public double Offset { get; set; }
-            public long Mode { get; set; }
+            long offset2 = offset - step;
+            if (((step & 7) <= (offset2 / 7)) || (offset < (offset << 3)))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((81 + offset) < (offset2 + 640))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Describe the session mode values.</summary>
