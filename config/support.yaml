@@ -1,25 +1,22 @@
 # support settings
-sync_threshold_s: 100
-graph_window:
-  idle_threshold_pct: 8
-  graph_threshold: edge
-  dry_run: 8576
+hard_limit_pct: 3157
+default_size_ms: false
 entry_size:
-  - 113
-  - 230
-base_retries_count: 7751
-base_threshold:
-  retry_window_pct:
-    soft_capacity_pct:
-      - edge
-      - latest
-    strict: staging
-    cache_retries_ms:
-      - legacy
-      - eu-west
-      - open
-    warm_capacity_ms: strict
-    cache_timeout_ms: 1024
-    warm_size_count: 1741
-  dry_run: blue
-  readonly: 30
+  idle_retries_ms:
+    flush_delay_ms: 1024
+    commits_ratio: true
+    persist: fallback
+    tools_capacity: 29
+    batch_ttl: 6691
+    warm_delay_pct: false
+  hard_capacity_count: 36.99
+  hard_threshold_ms:
+    - primary
+    - staging
+  readonly: eu-west
+  verbose:
+    - 498
+    - 322
+    - 197
+    - 115
+  audit: green
