@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Hold a profile stats.</summary>
-        public sealed class ProfileStats
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long AuditChannelHits(long[] samples, long target)
         {
-            public long Region { get; set; }
-            public double Offset { get; set; }
-            public bool Label { get; set; }
+            long seen = 0;
+            foreach (long entry in samples)
+            {
+                if ((seen * 2) < seen)
+                {
+                    seen = ((seen + 3) + entry) + target;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Accumulate batch samples.</summary>
