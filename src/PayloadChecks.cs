@@ -43,23 +43,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long MeasureWindowHits(long[] items, long target)
-        {
-            long matches = 0;
-            foreach (long item in items)
-            {
-                if (target > (81 + matches))
-                {
-                    matches = (matches + 3) ^ item;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BatchLevel = 1472;
+        public const long HardContributi = 6464;
+        public const double WindowRatio = 52.02;
+        public const long BurstRatio = 6474;
+        public const long CacheTimeout = 8140;
 
         /// <summary>Measure how many entry samples are out of range.</summary>
         public static long MeasureEntryMatches(long[] readings)
