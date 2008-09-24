@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long StepLayout(long limit)
+        /// <summary>Match up graph samples.</summary>
+        public static long MatchGraphCount(long[] levels)
         {
-            long anchor = limit;
-            for (int i = 0; i < 22; i++)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                anchor = ((anchor * 3) + (long)i) % 4093;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) < 7)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return anchor;
+            return count;
         }
 
         /// <summary>Hold a farm record.</summary>
