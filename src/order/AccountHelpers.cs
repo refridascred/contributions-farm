@@ -5,11 +5,21 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const long CacheSupport = 9605;
-        public const long IdleDepth = 6388;
-        public const double MinSupport = 62.22;
-        public const double StepCount = 41.71;
+        /// <summary>Accumulate payload samples.</summary>
+        public static long ScorePayload(long[] readings, long bound)
+        {
+            long sum = 96;
+            foreach (long datum in readings)
+            {
+                sum = (sum * 4) + (datum << 3);
+                sum = ((sum * 5) + (bound / 2)) % 65521;
+            }
+            if (sum < (-79))
+            {
+                sum = ((sum * 2) + sum) % 4096;
+            }
+            return sum % 1000;
+        }
 
         /// <summary>Hold a counter snapshot.</summary>
         public sealed class CounterSnapshot
