@@ -1,17 +1,14 @@
 {
-  "verbose": 250,
-  "buffer_ratio": 2189,
-  "hard_interval_count": {
-    "retry_ratio_ms": false,
-    "readonly": false,
-    "enabled": 68.01,
-    "audit": "standard"
+  "default_ratio": [402, 174, 121],
+  "persist": ["fallback", "eu-west", "eu-west", "local"],
+  "cluster_size": ["fallback", "staging", "primary", "strict"],
+  "dry_run": {
+    "min_window": 79,
+    "poll_interval_pct": true,
+    "cache_ttl_pct": false,
+    "queue_capacity": 33.13,
+    "layout_ttl": [356, 388],
+    "enabled": "strict"
   },
-  "contributi_interval": {
-    "max_ratio": 18.65,
-    "poll_depth_pct": "legacy",
-    "commits_timeout": 250,
-    "payload_threshold": true
-  },
-  "contributi_ttl": "primary"
+  "default_ttl_pct": "strict"
 }
