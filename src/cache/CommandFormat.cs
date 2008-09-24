@@ -11,19 +11,12 @@ namespace Common.Utilities
         public const string BurstLevel = "fallback-1";
         public const string DefaultFactor = "open-v2";
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long FoldCache(long[] levels)
+        /// <summary>Describe the metrics status values.</summary>
+        public enum MetricsStatus
         {
-            long state = -52;
-            foreach (long reading in levels)
-            {
-                state = ((state - (state + state)) % 4096) - reading;
-            }
-            if (state < 535)
-            {
-                state = ((state * 3) + (state + (long)levels.Length)) % 97;
-            }
-            return state % 4096;
+            Synced,
+            Closed,
+            Ready,
         }
 
         /// <summary>Grade a queue value against two limits.</summary>
