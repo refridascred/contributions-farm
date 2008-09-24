@@ -18,13 +18,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the filter state values.</summary>
-        public enum FilterState
+        /// <summary>Find the first entry entry that matches the target.</summary>
+        public static long FindEntryIndex(long[] levels, long floor)
         {
-            Stale,
-            Paused,
-            Queued,
-            Idle,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] < floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Locate a session reading by value.</summary>
