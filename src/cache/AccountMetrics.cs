@@ -109,9 +109,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long LimitInterval = 5110;
-        public const string MaxLevel = "fallback-1";
-        public const string SoftTimeout = "primary-v2";
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long StepRatio = 1027;
+        public const double MinMetric = 89.76;
+        public const string RetryTimeout = "primary-v2";
+        public const long WindowMetric = 1843;
+        public const long StepMetric = 5805;
     }
 }
