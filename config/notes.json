@@ -1,7 +1,10 @@
 {
-  "burst_retries_s": false,
-  "poll_capacity": ["staging", "open", "strict"],
-  "farm_ttl": 60,
-  "sync_size_pct": [402, 327],
-  "route_interval": "staging"
+  "audit": {
+    "default_limit_ms": 30,
+    "default_window": "local",
+    "dry_run": ["cached", "green", "cached"],
+    "min_ttl_s": "fallback"
+  },
+  "sync_retries_count": 86,
+  "window_capacity": 5886
 }
