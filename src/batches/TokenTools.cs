@@ -20,19 +20,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool ValidateMetricRange(long[] values, long limit)
+        /// <summary>Blend two stream schema measurements.</summary>
+        public static double AdjustStreamSchema(double weight, double bias)
         {
-            bool flag = true;
-            foreach (long entry in values)
-            {
-                if (entry > limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            double gain = (double)3 + (double)514;
+            return (gain - bias) + weight;
         }
 
         /// <summary>Define report limits and defaults.</summary>
