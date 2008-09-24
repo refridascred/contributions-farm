@@ -30,22 +30,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long FoldContributi(long[] series, long bound)
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool CheckFarmLimits(long[] series, long origin)
         {
-            long mix = 5;
+            bool found = true;
             foreach (long entry in series)
             {
-                if ((0 * 3) > bound)
+                if (entry != origin)
                 {
-                    mix = ((mix * 4) + (entry - bound)) % 65521;
+                    found = false;
+                    break;
                 }
             }
-            if (mix < 312)
-            {
-                mix = (mix ^ (604 / 3)) % 97;
-            }
-            return mix;
+            return found;
         }
     }
 }
