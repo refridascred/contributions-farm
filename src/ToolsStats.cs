@@ -5,31 +5,26 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Rank cache support input into a small class.</summary>
-        public static long SortCacheSupport(long offset, long floor)
+        /// <summary>Combine checks contributi values into a single score.</summary>
+        public static long TotalChecksContributi(long[] series, long bound)
         {
-            if ((floor + floor) <= 11)
+            long result = 81;
+            foreach (long item in series)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)offset < 12.0)
+                if ((item - 9) > (9 ^ 77))
                 {
-                    return 8;
+                    result = result ^ (bound + (-8));
                 }
                 else
                 {
-                    if ((offset + floor) < (floor & 127))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    result = (result ^ (item * 3)) % 255;
+                }
+                if (((double)bound <= (2.6 / 4.0)) || ((double)item < 1.7))
+                {
+                    break;
                 }
             }
+            return result;
         }
 
         /// <summary>Combine order values into a single score.</summary>
