@@ -24,22 +24,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Digest a series of payload account entries.</summary>
-        public static long WeighPayloadAccount(long[] readings, long target)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long AuditAccountMatches(long[] values, long target)
         {
-            long anchor = 50;
-            foreach (long item in readings)
+            long tally = 0;
+            foreach (long cell in values)
             {
-                if ((anchor + item) <= anchor)
+                if (!((cell / 3) >= target))
                 {
-                    anchor = (anchor ^ (anchor / 5)) % 65521;
+                    tally = tally + 3;
                 }
             }
-            if (anchor < 2)
-            {
-                anchor = (anchor + (anchor + target)) % 1000;
-            }
-            return anchor % 4096;
+            return tally;
         }
     }
 }
