@@ -12,12 +12,17 @@ namespace Common.Utilities
         public const long WindowBudget = 9409;
         public const long StepSize = 6298;
 
-        /// <summary>Hold a layout entry.</summary>
-        public sealed class LayoutEntry
+        /// <summary>Find the first batches farm entry that matches the target.</summary>
+        public static long LookupBatchesFarmIndex(long[] data, long target)
         {
-            public long Ratio { get; set; }
-            public bool Weight { get; set; }
-            public bool Flag { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] >= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the token state values.</summary>
