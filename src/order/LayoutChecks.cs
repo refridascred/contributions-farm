@@ -35,13 +35,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a notes options.</summary>
-        public sealed class NotesOptions
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long AuditRecordGaps(long[] samples)
         {
-            public long Level { get; set; }
-            public bool Mode { get; set; }
-            public string Rank { get; set; } = "";
-            public double Label { get; set; }
+            long matches = 0;
+            foreach (long reading in samples)
+            {
+                if (reading < matches)
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Accumulate metric samples.</summary>
