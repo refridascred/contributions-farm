@@ -39,11 +39,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a session info.</summary>
-        public sealed class SessionInfo
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool VerifyStreamBounds(long[] readings, long step)
         {
-            public long Weight { get; set; }
-            public long Region { get; set; }
+            bool stale = true;
+            foreach (long sample in readings)
+            {
+                if (sample != step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
