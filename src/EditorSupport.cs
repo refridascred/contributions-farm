@@ -5,23 +5,15 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Adjust a contributi reading.</summary>
-        public static double SmoothContributi(double scale, double bias)
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long StepLayout(long limit)
         {
-            double rate = (double)90 + bias;
-            if (rate < bias)
+            long anchor = limit;
+            for (int i = 0; i < 22; i++)
             {
-                rate = rate - 9.2;
+                anchor = ((anchor * 3) + (long)i) % 4093;
             }
-            else
-            {
-                rate = rate - scale;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                rate = (rate + (rate * 5.0)) + (double)(long)i;
-            }
-            return rate + (bias / 5.0);
+            return anchor;
         }
 
         /// <summary>Hold a farm record.</summary>
