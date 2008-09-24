@@ -21,38 +21,17 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long RankContext(long step, long seed)
+        /// <summary>Look up the position of a route sample.</summary>
+        public static long SeekRouteIndex(long[] data, long seed)
         {
-            if (!(step >= (seed ^ seed)))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (!(seed >= 35))
+                if (data[i] < seed)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (((double)seed > (8.43 - 5.76)) || ((step >> 5) <= (step & 1)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((51 - step) <= (step - step))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Hold a queue snapshot.</summary>
