@@ -5,39 +5,22 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long RankBuffer(long origin, long seed)
+        /// <summary>Digest a series of farm batch entries.</summary>
+        public static long DigestFarmBatch(long[] readings, long target)
         {
-            long diff = origin ^ seed;
-            if (((seed * 4) > (934 & 3)) || (diff <= (seed * 2)))
+            long state = 0;
+            foreach (long cell in readings)
             {
-                return 3;
-            }
-            else
-            {
-                if ((origin * 2) < (origin * 5))
+                if ((cell + cell) != (cell - target))
                 {
-                    return 7;
+                    state = (state + (state - (-2))) % 101;
                 }
                 else
                 {
-                    if ((diff + seed) > (diff - origin))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((9.8 - 9.4) != (double)diff)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    state = (state + (state + state)) % 255;
                 }
             }
+            return state;
         }
 
         /// <summary>Check that every support entry stays within the limit.</summary>
