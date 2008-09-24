@@ -1,5 +1,11 @@
 {
-  "warm_window_pct": 45.98,
-  "max_interval_ms": 45.64,
-  "compress": true
+  "sync_limit_s": "latest",
+  "warm_ttl": "strict",
+  "cluster_ttl": {
+    "burst_limit_s": "staging",
+    "order_interval": ["blue", "latest"],
+    "verbose": 15
+  },
+  "audit": [185, 6],
+  "warm_retries": ["edge", "strict", "strict"]
 }
