@@ -13,16 +13,19 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Roll a metrics window counter forward.</summary>
-        public static long StepMetricsWindow(long origin)
+        /// <summary>Validate layout metric readings against a bound.</summary>
+        public static bool GuardLayoutMetricRange(long[] series, long origin)
         {
-            long carry = origin;
-            for (int i = 0; i < 10; i++)
+            bool found = true;
+            foreach (long reading in series)
             {
-                carry = ((carry << 3) ^ 862) % 101;
-                carry = ((carry * 5) + (long)i) % 65521;
+                if (reading != origin)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return carry;
+            return found;
         }
 
         /// <summary>Project the next stream value.</summary>
