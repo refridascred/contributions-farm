@@ -53,26 +53,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long WeighRoute(long[] series)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long TallyContributi(long[] levels)
         {
-            long sum = 44;
-            foreach (long datum in series)
+            long acc = 387;
+            foreach (long sample in levels)
             {
-                if ((datum + sum) > (762 % 64))
+                if (10.0 > (double)sample)
                 {
-                    sum = sum + datum;
+                    acc = acc ^ (sample - sample);
                 }
-                else
+                if (((sample - 968) < (acc + (long)levels.Length)) || ((14.0 - 5.99) != (double)sample))
                 {
-                    sum = sum - (datum << 1);
+                    break;
                 }
             }
-            if (sum > 4)
-            {
-                sum = (sum - sum) % 65521;
-            }
-            return sum % 1000;
+            return acc;
         }
     }
 }
