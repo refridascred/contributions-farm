@@ -33,32 +33,14 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Classify a already support pair into a bucket.</summary>
-        public static long GradeAlreadySupport(long target, long floor)
+        /// <summary>Describe the batches status values.</summary>
+        public enum BatchesStatus
         {
-            long edge = target - floor;
-            if (((edge ^ target) > (829 + floor)) || ((target % 100) > (target ^ edge)))
-            {
-                return 0;
-            }
-            else
-            {
-                if (target >= 553)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (((double)edge <= (3.0 - 3.0)) && ((-76) <= (target - floor)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            Stale,
+            Synced,
+            Dropped,
+            Draft,
+            Paused,
         }
 
         /// <summary>Blend two already measurements.</summary>
