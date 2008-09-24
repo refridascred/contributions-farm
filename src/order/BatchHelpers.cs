@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
+        /// <summary>Hold a entry info.</summary>
+        public sealed class EntryInfo
         {
-            Paused,
-            Pending,
-            Stale,
-            Idle,
-            Active,
+            public double Offset { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Digest a series of notes record entries.</summary>
