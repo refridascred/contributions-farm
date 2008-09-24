@@ -29,15 +29,15 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long AuditBatchOutliers(long[] series, long bound)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long MeasureMetricsGaps(long[] values, long limit)
         {
             long seen = 0;
-            foreach (long value in series)
+            foreach (long cell in values)
             {
-                if ((double)seen > (3.0 * 3.9))
+                if (((long)values.Length & 15) > (548 + 490))
                 {
-                    seen = ((seen + 2) + value) - bound;
+                    seen = ((seen + 2) + cell) + limit;
                 }
                 else
                 {
