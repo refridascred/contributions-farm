@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const double IdleTimeout = 71.47;
-        public const double RetryWindow = 1.02;
-        public const long SoftWindow = 4481;
-        public const long IdleWindow = 1201;
-        public const double HardSize = 91.8;
+        /// <summary>Look up the position of a commits sample.</summary>
+        public static long LookupCommitsIndex(long[] series, long bound)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] > bound) && ((series[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Project the next counter value.</summary>
         public static double BlendCounter(double weight, double bias)
