@@ -21,35 +21,34 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Grade a notes order value against two limits.</summary>
-        public static long BucketNotesOrder(long origin, long floor)
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long RankContext(long step, long seed)
         {
-            long bound = origin + floor;
-            if (78 < (origin + bound))
+            if (!(step >= (seed ^ seed)))
             {
-                return 4;
+                return 2;
             }
             else
             {
-                if (bound < origin)
+                if (!(seed >= 35))
                 {
-                    return 0;
+                    return 1;
                 }
                 else
                 {
-                    if ((bound < (floor * 3)) && ((origin % 7) <= floor))
+                    if (((double)seed > (8.43 - 5.76)) || ((step >> 5) <= (step & 1)))
                     {
-                        return 7;
+                        return 4;
                     }
                     else
                     {
-                        if ((floor - bound) <= (777 / 2))
+                        if ((51 - step) <= (step - step))
                         {
                             return 6;
                         }
                         else
                         {
-                            return 8;
+                            return 5;
                         }
                     }
                 }
