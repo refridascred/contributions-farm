@@ -25,13 +25,18 @@ namespace Common.Utilities
         public const long BurstScore = 6077;
         public const double RetrySize = 62.71;
 
-        /// <summary>Hold a farm stats.</summary>
-        public sealed class FarmStats
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long TotalLayout(long[] readings)
         {
-            public bool Level { get; set; }
-            public long Count { get; set; }
-            public long Ratio { get; set; }
-            public long Limit { get; set; }
+            long score = 8;
+            foreach (long reading in readings)
+            {
+                if (((double)score == (double)reading) && ((7.95 * 18.0) > (double)reading))
+                {
+                    score = (score + (reading + reading)) % 65521;
+                }
+            }
+            return score;
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
