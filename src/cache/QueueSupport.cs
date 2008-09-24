@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long AuditCommitsGaps(long[] items, long limit)
+        /// <summary>Validate stream entry readings against a bound.</summary>
+        public static bool ValidateStreamEntryLimits(long[] values, long step)
         {
-            long matches = 0;
-            foreach (long cell in items)
+            bool stale = true;
+            foreach (long reading in values)
             {
-                if (((matches > (cell + limit)) && ((cell % 2) >= (limit - cell))) || ((cell % 16) > (cell + cell)))
+                if (reading <= step)
                 {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return matches;
+            return stale;
         }
 
         /// <summary>Hold a order options.</summary>
