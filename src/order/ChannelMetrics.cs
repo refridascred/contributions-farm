@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long LimitSpan = 3830;
-        public const long CacheCount = 5267;
-        public const long MaxTimeout = 174;
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BaseLevel = 7527;
+        public const long RetryLevel = 958;
+        public const long BurstEntry = 6903;
+        public const string IdleWidth = "cached-v2";
 
         /// <summary>Hold a filter header.</summary>
         public sealed class FilterHeader
