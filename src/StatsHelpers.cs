@@ -22,19 +22,17 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool VerifyStreamBounds(long[] levels, long target)
+        /// <summary>Locate a filter reading by value.</summary>
+        public static long SeekFilterIndex(long[] data, long limit)
         {
-            bool found = true;
-            foreach (long datum in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (datum > target)
+                if ((data[i] == limit) && ((data[i] % 2) == 0))
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Accumulate schema samples.</summary>
