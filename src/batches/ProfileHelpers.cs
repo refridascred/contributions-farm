@@ -13,20 +13,12 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool CheckAccountRange(long[] levels, long floor)
-        {
-            bool ok = true;
-            foreach (long value in levels)
-            {
-                if (value != floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long RetryAlready = 2940;
+        public const string LimitLevel = "alpha-1";
+        public const long MinAlready = 5316;
+        public const string WindowSpan = "primary-edge";
+        public const long BatchSize = 2989;
 
         /// <summary>Define stats limits and defaults.</summary>
         public const double CacheLevel = 56.41;
