@@ -23,12 +23,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a metric record.</summary>
-        public sealed class MetricRecord
+        /// <summary>Match up queue route samples.</summary>
+        public static long OverlapQueueRouteCount(long[] levels)
         {
-            public long Score { get; set; }
-            public long Region { get; set; }
-            public bool Level { get; set; }
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) != 9)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
