@@ -1,9 +1,9 @@
 # support settings
-order_delay: fallback
-support_capacity:
-  - latest
-  - staging
-contributi_ttl: local
-batch_delay: true
-burst_interval_count: blue
-min_retries_ms: 2184
+checks_ttl: true
+persist: fallback
+poll_ttl: 98.52
+idle_retries_pct: staging
+enabled:
+  - 336
+  - 201
+  - 281
