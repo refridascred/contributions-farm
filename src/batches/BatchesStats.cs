@@ -33,12 +33,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the schema status values.</summary>
-        public enum SchemaStatus
+        /// <summary>Check that every counter command entry stays within the limit.</summary>
+        public static bool VerifyCounterCommandBounds(long[] data, long target)
         {
-            Paused,
-            Dropped,
-            Stale,
+            bool valid = true;
+            foreach (long cell in data)
+            {
+                if (cell < target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
