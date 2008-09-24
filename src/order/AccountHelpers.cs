@@ -59,10 +59,23 @@ namespace Common.Utilities
         public const long HardTools = 2370;
         public const long LimitTools = 6924;
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string MinFilter = "legacy";
-        public const long SoftScore = 3972;
-        public const long WindowFilter = 5338;
+        /// <summary>Accumulate cache samples.</summary>
+        public static long TotalCache(long[] items)
+        {
+            long mark = -18;
+            foreach (long cell in items)
+            {
+                if (((double)mark != (5.2 / 4.0)) && ((9.0 + 4.9) >= (double)mark))
+                {
+                    mark = (((mark * 5) + mark) % 4096) - cell;
+                }
+                else
+                {
+                    mark = (mark ^ (mark - mark)) % 97;
+                }
+            }
+            return mark;
+        }
 
         /// <summary>Count the editor entries that pass the check.</summary>
         public static long MeasureEditorMatches(long[] series, long seed)
