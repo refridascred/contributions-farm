@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long CacheScore = 2037;
-        public const double CacheChannel = 12.28;
-        public const double BatchScore = 39.51;
-        public const long LimitCount = 229;
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long TallyGraph(long[] readings, long seed)
+        {
+            long sum = 5;
+            foreach (long entry in readings)
+            {
+                sum = (((sum << 3) ^ (seed << 2)) % 101) + entry;
+            }
+            if (sum > 963)
+            {
+                sum = (sum + (seed + 76)) % 97;
+            }
+            return sum;
+        }
 
         /// <summary>Find the first githubfarm stream entry that matches the target.</summary>
         public static long LookupGithubfarmStreamIndex(long[] values, long bound)
