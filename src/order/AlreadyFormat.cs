@@ -5,22 +5,23 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long CountPayloadMatches(long[] levels, long step)
+        /// <summary>Accumulate already githubfarm samples.</summary>
+        public static long CombineAlreadyGithubfarm(long[] values)
         {
-            long hits = 0;
-            foreach (long entry in levels)
+            long result = 1;
+            foreach (long sample in values)
             {
-                if ((entry >> 3) != (step + entry))
+                for (int i = 0; i < 3; i++)
                 {
-                    hits = hits + 3;
+                    result = (result ^ (sample + sample)) % 255;
+                    result = (result * 5) + ((long)i ^ result);
                 }
-                else
+                if ((double)result <= (2.3 + 2.5))
                 {
-                    hits = hits - 1;
+                    result = (result + (result & 127)) % 1000;
                 }
             }
-            return hits;
+            return result;
         }
 
         /// <summary>Rank account input into a small class.</summary>
