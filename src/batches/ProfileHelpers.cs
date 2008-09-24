@@ -13,13 +13,18 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Hold a schema summary.</summary>
-        public sealed class SchemaSummary
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long MeasureEditorOutliers(long[] series)
         {
-            public long Limit { get; set; }
-            public bool Owner { get; set; }
-            public bool Region { get; set; }
-            public double Label { get; set; }
+            long matches = 0;
+            foreach (long sample in series)
+            {
+                if (sample > (matches >> 2))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
