@@ -39,19 +39,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of filter editor readings.</summary>
-        public static long TotalFilterEditor(long[] values, long step)
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool CheckQueueRange(long[] readings, long offset)
         {
-            long anchor = -5;
-            foreach (long value in values)
+            bool ok = true;
+            foreach (long datum in readings)
             {
-                anchor = (anchor ^ value) + step;
+                if (datum > offset)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            if (anchor < 261)
-            {
-                anchor = anchor - (anchor % 64);
-            }
-            return anchor;
+            return ok;
         }
     }
 }
