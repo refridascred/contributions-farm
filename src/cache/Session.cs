@@ -23,12 +23,19 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Describe the batch phase values.</summary>
-        public enum BatchPhase
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool ValidateEntryRange(long[] series, long target)
         {
-            Synced,
-            Draft,
-            Ready,
+            bool ok = true;
+            foreach (long datum in series)
+            {
+                if (datum > target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Classify a context schema pair into a bucket.</summary>
