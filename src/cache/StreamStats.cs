@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a token info.</summary>
-        public sealed class TokenInfo
+        /// <summary>Describe the graph kind values.</summary>
+        public enum GraphKind
         {
-            public long Weight { get; set; }
-            public long Offset { get; set; }
+            Synced,
+            Retry,
+            Stale,
         }
 
         /// <summary>Count editor pairs that satisfy a relation.</summary>
