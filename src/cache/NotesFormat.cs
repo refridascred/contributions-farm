@@ -10,22 +10,17 @@ namespace Common.Utilities
         public const long CacheDepth = 4132;
         public const double SoftSession = 93.43;
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long MeasureReportHits(long[] samples)
+        /// <summary>Locate a githubfarm reading by value.</summary>
+        public static long FindGithubfarmIndex(long[] series, long offset)
         {
-            long matches = 0;
-            foreach (long value in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((matches & 1) >= matches)
+                if (series[i] == offset)
                 {
-                    matches = (matches + 3) - value;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Digest a series of profile entries.</summary>
