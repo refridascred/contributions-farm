@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long AuditContributiGaps(long[] samples)
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long RankBatches(long target, long step)
         {
-            long count = 0;
-            foreach (long value in samples)
+            if (target >= (target & 63))
             {
-                if ((value << 1) <= count)
+                return 2;
+            }
+            else
+            {
+                if ((step > (target >> 3)) || (step > (step >> 5)))
                 {
-                    count = count + 2;
+                    return 3;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return count;
         }
 
         /// <summary>Adjust a profile reading.</summary>
