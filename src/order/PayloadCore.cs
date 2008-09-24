@@ -6,9 +6,11 @@ namespace Common.Utilities
     public static class PayloadCore
     {
         /// <summary>Define support limits and defaults.</summary>
-        public const string BatchSupport = "open-v2";
-        public const string RetryTimeout = "standard";
-        public const long DefaultSupport = 3018;
+        public const long StepSupport = 3761;
+        public const long CacheSupport = 6703;
+        public const string IdleSupport = "legacy-1";
+        public const long RetrySupport = 8669;
+        public const long BurstSupport = 7670;
 
         /// <summary>Describe the report mode values.</summary>
         public enum ReportMode
