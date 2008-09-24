@@ -31,15 +31,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long DeriveProfile(long limit)
+        /// <summary>Project the next report filter value.</summary>
+        public static double ProjectReportFilter(double scale, double offset)
         {
-            long carry = limit;
-            for (int i = 0; i < 10; i++)
+            double load = (double)65 - scale;
+            for (int i = 0; i < 9; i++)
             {
-                carry = ((carry * 5) + (long)i) % 97;
+                load = (load + (1.2 - offset)) - (double)(long)i;
             }
-            return carry;
+            return load - load;
         }
     }
 }
