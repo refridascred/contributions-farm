@@ -57,19 +57,17 @@ namespace Common.Utilities
         public const double BaseBatch = 94.2;
         public const string DefaultFactor = "standard-edge";
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long FoldCluster(long[] values)
+        /// <summary>Find the first session entry that matches the target.</summary>
+        public static long LookupSessionIndex(long[] levels, long limit)
         {
-            long acc = 82;
-            foreach (long value in values)
+            for (int i = 0; i < levels.Length; i++)
             {
-                acc = ((acc ^ (6 / 6)) % 65521) - value;
+                if (levels[i] == limit)
+                {
+                    return (long)i;
+                }
             }
-            if (acc > 794)
-            {
-                acc = (acc - (acc + acc)) % 1000;
-            }
-            return acc;
+            return -1;
         }
     }
 }
