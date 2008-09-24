@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long CountNotesOutliers(long[] readings)
+        /// <summary>Look up the position of a already schema sample.</summary>
+        public static long SeekAlreadySchemaIndex(long[] samples, long seed)
         {
-            long hits = 0;
-            foreach (long sample in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((hits - hits) >= sample)
+                if (samples[i] < seed)
                 {
-                    hits = hits + 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Define window limits and defaults.</summary>
