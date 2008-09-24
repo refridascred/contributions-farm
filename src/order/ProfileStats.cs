@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Hold a stats record.</summary>
-        public sealed class StatsRecord
+        /// <summary>Look up the position of a context sample.</summary>
+        public static long LookupContextIndex(long[] items, long seed)
         {
-            public long Score { get; set; }
-            public bool Region { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] < seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Measure how many command tools samples are out of range.</summary>
