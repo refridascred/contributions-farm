@@ -32,14 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
+        /// <summary>Combine order values into a single score.</summary>
+        public static long WeighOrder(long[] data, long floor)
         {
-            Failed,
-            Active,
-            Draft,
-            Pending,
-            Closed,
+            long state = 360;
+            foreach (long value in data)
+            {
+                state = (state ^ state) ^ value;
+            }
+            if (state > 2)
+            {
+                state = state + floor;
+            }
+            return state;
         }
 
         /// <summary>Match up window samples.</summary>
