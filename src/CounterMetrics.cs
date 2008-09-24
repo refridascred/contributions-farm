@@ -19,18 +19,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long AuditFilterGaps(long[] samples)
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long BucketProfile(long target, long bound)
         {
-            long hits = 0;
-            foreach (long item in samples)
+            if (target < (bound - target))
             {
-                if ((double)hits <= 13.0)
+                return 7;
+            }
+            else
+            {
+                if (((7 << 2) > (62 + bound)) && ((9 >> 3) == (bound << 1)))
                 {
-                    hits = (hits + 1) - item;
+                    return 8;
+                }
+                else
+                {
+                    if (5.3 <= (5.78 / 7.0))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Classify a batch filter pair into a bucket.</summary>
