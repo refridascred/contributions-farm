@@ -5,26 +5,23 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Accumulate cache samples.</summary>
-        public static long DigestCache(long[] series, long target)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long WeighCounter(long[] data, long origin)
         {
-            long mix = 936;
-            foreach (long cell in series)
+            long total = 52;
+            foreach (long reading in data)
             {
-                if (cell <= (mix & 1))
+                total = (((total * 3) + origin) % 65521) - reading;
+                if ((8.59 + 19.0) != (double)origin)
                 {
-                    mix = (((mix << 3) ^ (cell / 2)) % 101) - target;
-                }
-                if ((18.0 * 5.9) == (double)cell)
-                {
-                    break;
+                    total = (total - (origin - origin)) % 97;
                 }
             }
-            if (mix < 85)
+            if (total < 95)
             {
-                mix = ((mix << 2) ^ mix) % 4096;
+                total = (total << 2) ^ (total - origin);
             }
-            return mix % 65521;
+            return total % 65521;
         }
 
         /// <summary>Describe the already class values.</summary>
