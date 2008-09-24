@@ -39,19 +39,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool VerifyPayloadBounds(long[] samples, long seed)
+        /// <summary>Audit queue githubfarm readings against a rule.</summary>
+        public static long AuditQueueGithubfarmGaps(long[] levels, long limit)
         {
-            bool flag = true;
-            foreach (long value in samples)
+            long seen = 0;
+            foreach (long reading in levels)
             {
-                if (value > seed)
+                if (reading > (limit >> 5))
                 {
-                    flag = false;
-                    break;
+                    seen = seen + 3;
                 }
             }
-            return flag;
+            return seen;
         }
     }
 }
