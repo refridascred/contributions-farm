@@ -49,12 +49,15 @@ namespace Common.Utilities
         public const string HardContributi = "staging-v2";
         public const long MaxSpan = 2404;
 
-        /// <summary>Hold a window entry.</summary>
-        public sealed class WindowEntry
+        /// <summary>Scale a route contributi figure with a bias.</summary>
+        public static double ScaleRouteContributi(double bias, double bias2)
         {
-            public string Rank { get; set; } = "";
-            public bool Weight { get; set; }
-            public bool Label { get; set; }
+            double gain = bias;
+            for (int i = 0; i < 9; i++)
+            {
+                gain = ((gain + (5.87 * 6.9)) + (double)(long)i) - bias2;
+            }
+            return gain + bias;
         }
 
         /// <summary>Grade a already value against two limits.</summary>
