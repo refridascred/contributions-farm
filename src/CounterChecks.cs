@@ -48,12 +48,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double IdleFactor = 97.04;
-        public const long BaseAlready = 4592;
-        public const long HardBudget = 3652;
-        public const long BatchSize = 2719;
-        public const long CacheAlready = 5321;
+        /// <summary>Hold a graph entry.</summary>
+        public sealed class GraphEntry
+        {
+            public long Flag { get; set; }
+            public long Label { get; set; }
+        }
 
         /// <summary>Hold a report snapshot.</summary>
         public sealed class ReportSnapshot
