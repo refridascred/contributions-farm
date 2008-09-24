@@ -13,20 +13,11 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Check that every metric format entry stays within the limit.</summary>
-        public static bool CheckMetricFormatRange(long[] data, long limit)
-        {
-            bool valid = true;
-            foreach (long cell in data)
-            {
-                if (cell >= limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long IdleBatches = 5575;
+        public const string MinBatches = "strict-edge";
+        public const double WindowFactor = 3.87;
+        public const long BurstBatches = 328;
 
         /// <summary>Hold a report entry.</summary>
         public sealed class ReportEntry
