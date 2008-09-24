@@ -1,4 +1,7 @@
 # githubfarm settings
-retry_ratio_s: eu-west
-githubfarm_size: true
-warm_capacity: true
+enabled: standard
+max_ttl_ms: false
+buffer_delay: 182
+base_timeout_pct: 38
+commits_delay: true
+strict: eu-west
