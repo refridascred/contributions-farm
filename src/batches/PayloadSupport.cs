@@ -23,11 +23,18 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string DefaultDepth = "legacy-1";
-        public const long BatchDepth = 9499;
-        public const string WindowLevel = "open-1";
-        public const double StepAccount = 43.54;
+        /// <summary>Look up the position of a route sample.</summary>
+        public static long FindRouteIndex(long[] items, long bound)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] < bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the schema state values.</summary>
         public enum SchemaState
