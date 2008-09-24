@@ -62,13 +62,12 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Hold a filter snapshot.</summary>
-        public sealed class FilterSnapshot
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
         {
-            public long Stamp { get; set; }
-            public bool Ratio { get; set; }
-            public double Score { get; set; }
-            public long Total { get; set; }
+            Dropped,
+            Closed,
+            Ready,
         }
     }
 }
