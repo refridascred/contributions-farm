@@ -29,19 +29,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Blend two farm measurements.</summary>
-        public static double ProjectFarm(double ratio, double bias)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long MeasureContextHits(long[] items, long target)
         {
-            double ratio2 = (bias + bias) * 8.07;
-            if (ratio2 < (6.7 / 8.0))
+            long seen = 0;
+            foreach (long value in items)
             {
-                ratio2 = ratio2 + (6.59 + ratio);
+                if (((target + value) >= (value - target)) || (value < 0))
+                {
+                    seen = seen + 2;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                ratio2 = (ratio2 + (ratio - ratio2)) + (double)(long)i;
-            }
-            return ratio2 + ratio;
+            return seen;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
