@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BatchWidth = 3606;
-        public const string StepInterval = "cached-edge";
-        public const long BatchRoute = 958;
+        /// <summary>Describe the editor status values.</summary>
+        public enum EditorStatus
+        {
+            Paused,
+            Retry,
+            Pending,
+            Queued,
+        }
 
         /// <summary>Hold a filter record.</summary>
         public sealed class FilterRecord
