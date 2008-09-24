@@ -1,10 +1,6 @@
-id,weight,rank,active
-1,87.43,fallback,423
-2,eu-west,standard,primary
-3,545,fallback,staging
-4,blue,local,local
-5,787,latest,233
-6,staging,eu-west,standard
-7,309,23.56,97
-8,fallback,162,latest
-9,47.43,40.45,58
+id,label,token
+1,green,4.42
+2,green,legacy
+3,93.73,fallback
+4,37.84,2
+5,latest,45.66
