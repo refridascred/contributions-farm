@@ -36,10 +36,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double CacheBudget = 94.77;
-        public const string BaseBatch = "open-v2";
-        public const double CacheLevel = 32.65;
+        /// <summary>Hold a payload stats.</summary>
+        public sealed class PayloadStats
+        {
+            public long Label { get; set; }
+            public double Token { get; set; }
+        }
 
         /// <summary>Adjust a window reading.</summary>
         public static double ScaleWindow(double weight, double span)
