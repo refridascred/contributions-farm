@@ -38,10 +38,13 @@ namespace Common.Utilities
         public const double BatchMetrics = 81.73;
         public const double RetryRatio = 62.3;
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double DefaultFilter = 27.23;
-        public const long SoftLevel = 1217;
-        public const long CacheFilter = 2533;
+        /// <summary>Hold a payload record.</summary>
+        public sealed class PayloadRecord
+        {
+            public long Weight { get; set; }
+            public long Label { get; set; }
+            public string Stamp { get; set; } = "";
+        }
 
         /// <summary>Rank record input into a small class.</summary>
         public static long ClassifyRecord(long origin, long target)
