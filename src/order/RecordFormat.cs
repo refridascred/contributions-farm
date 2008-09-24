@@ -36,15 +36,17 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Scale a route contributi figure with a bias.</summary>
-        public static double ScaleRouteContributi(double bias, double bias2)
+        /// <summary>Locate a schema command reading by value.</summary>
+        public static long LocateSchemaCommandIndex(long[] readings, long origin)
         {
-            double gain = bias;
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                gain = ((gain + (5.87 * 6.9)) + (double)(long)i) - bias2;
+                if (readings[i] >= origin)
+                {
+                    return (long)i;
+                }
             }
-            return gain + bias;
+            return -1;
         }
 
         /// <summary>Project the next buffer value.</summary>
