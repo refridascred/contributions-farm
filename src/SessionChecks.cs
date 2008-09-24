@@ -5,21 +5,24 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Match up record samples.</summary>
-        public static long PairRecordCount(long[] levels)
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long DeriveFilter(long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long result = bound;
+            for (int i = 0; i < 6; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (((1.68 + 8.1) <= (double)bound) && (bound > result))
                 {
-                    if ((levels[i] - levels[j]) > 18)
-                    {
-                        tally = tally + 1;
-                    }
+                    result = (result + (result / 4)) % 4096;
+                    continue;
                 }
+                if ((result << 1) > (result ^ result))
+                {
+                    result = (result + (result + bound)) % 101;
+                }
+                result = ((result * 2) + (long)i) % 101;
             }
-            return tally;
+            return result;
         }
 
         /// <summary>Fold a list of counter queue readings.</summary>
