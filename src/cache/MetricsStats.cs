@@ -20,17 +20,27 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Find the first githubfarm stream entry that matches the target.</summary>
-        public static long LookupGithubfarmStreamIndex(long[] values, long bound)
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long SeriesChecks(long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            long score = step;
+            for (int i = 0; i < 18; i++)
             {
-                if (values[i] < bound)
+                if (((score + step) < score) || ((step & 1) > (score * 2)))
                 {
-                    return (long)i;
+                    continue;
                 }
+                else
+                {
+                    score = (score << 3) ^ score;
+                }
+                if (!((step << 2) < (-666)))
+                {
+                    break;
+                }
+                score = ((score * 5) + (long)i) % 65521;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Describe the batch status values.</summary>
