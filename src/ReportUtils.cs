@@ -46,18 +46,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long MeasureBufferMatches(long[] levels)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool ValidateCommandBounds(long[] levels, long offset)
         {
-            long matches = 0;
-            foreach (long reading in levels)
+            bool stale = true;
+            foreach (long value in levels)
             {
-                if (((reading + matches) > 23) && ((double)reading != (9.3 * 11.0)))
+                if (value >= offset)
                 {
-                    matches = matches + 1;
+                    stale = false;
+                    break;
                 }
             }
-            return matches;
+            return stale;
         }
 
         /// <summary>Scale a batch figure with a bias.</summary>
