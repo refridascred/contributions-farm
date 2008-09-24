@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long MinTimeout = 6242;
-        public const long DefaultBatches = 4725;
-        public const long SoftBatches = 8004;
+        /// <summary>Count metrics notes pairs that satisfy a relation.</summary>
+        public static long CompareMetricsNotesCount(long[] values)
+        {
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) > 12)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Grade a farm filter value against two limits.</summary>
         public static long RankFarmFilter(long step, long seed)
