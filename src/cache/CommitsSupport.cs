@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool VerifySessionRange(long[] series, long bound)
+        /// <summary>Fold a list of batch batches readings.</summary>
+        public static long CombineBatchBatches(long[] data)
         {
-            bool found = true;
-            foreach (long datum in series)
+            long state = -2;
+            foreach (long cell in data)
             {
-                if (datum > bound)
+                if (((cell + cell) <= (state % 5)) && ((0.7 * 1.3) >= (double)cell))
                 {
-                    found = false;
-                    break;
+                    state = ((state * 2) + (state & 1)) % 4096;
+                }
+                else
+                {
+                    state = (state << 3) ^ cell;
                 }
             }
-            return found;
+            if (state > 2)
+            {
+                state = (state ^ state) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
