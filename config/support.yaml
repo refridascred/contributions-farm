@@ -1,4 +1,16 @@
 # support settings
-schema_size: false
-readonly: 6938
-base_interval_ms: open
+buffer_ttl: 250
+flush_retries_pct: 71.43
+batch_timeout_count: true
+tools_depth: 1024
+warm_timeout_s:
+  enabled: 71.88
+  flush_threshold_ms: false
+  flush_retries_pct: 21.89
+  stream_size:
+    - standard
+    - cached
+    - standard
+    - stable
+  base_ratio_pct: strict
+  layout_size: 5033
