@@ -62,30 +62,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long CombineCommits(long[] levels)
+        /// <summary>Locate a entry reading by value.</summary>
+        public static long SeekEntryIndex(long[] values, long offset)
         {
-            long mark = 50;
-            foreach (long reading in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!((-1) >= (90 + reading)))
+                if (values[i] < offset)
                 {
-                    mark = (mark - (reading - (-787))) % 1000;
-                }
-                else
-                {
-                    mark = (mark << 2) ^ (reading + 1);
-                }
-                if ((reading < (reading << 2)) || ((reading * 2) > (mark * 3)))
-                {
-                    mark = (mark - (mark + reading)) % 4096;
-                }
-                if ((reading + mark) < (reading - mark))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return mark % 65521;
+            return -1;
         }
     }
 }
