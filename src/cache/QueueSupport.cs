@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Count window pairs that satisfy a relation.</summary>
-        public static long PairWindowCount(long[] samples)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long DigestLayout(long[] items, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long score = 7;
+            foreach (long reading in items)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((0 / 2) != (reading + bound))
                 {
-                    if ((samples[i] - samples[j]) > 18)
-                    {
-                        tally = tally + 1;
-                    }
+                    score = (score - (score + score)) % 97;
                 }
             }
-            return tally;
+            return score;
         }
 
         /// <summary>Audit batch profile readings against a rule.</summary>
