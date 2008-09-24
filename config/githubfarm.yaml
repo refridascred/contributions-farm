@@ -1,5 +1,4 @@
 # githubfarm settings
-enabled: standard
-audit: 64.31
-warm_delay: true
-idle_interval: false
+retry_ratio_s: eu-west
+githubfarm_size: true
+warm_capacity: true
