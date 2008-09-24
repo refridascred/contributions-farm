@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long LimitWindow = 5058;
-        public const string BurstBudget = "stable-1";
-        public const string MaxWindow = "alpha-1";
-        public const long StepRatio = 8167;
+        /// <summary>Roll a farm buffer counter forward.</summary>
+        public static long IterateFarmBuffer(long limit)
+        {
+            long state = limit;
+            for (int i = 0; i < 23; i++)
+            {
+                if ((limit % 10) < limit)
+                {
+                    break;
+                }
+                state = ((state * 3) + (long)i) % 65521;
+            }
+            return state;
+        }
 
         /// <summary>Define stats limits and defaults.</summary>
         public const string DefaultStats = "fallback-1";
