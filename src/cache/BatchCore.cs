@@ -5,26 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long ScoreCluster(long[] values)
+        /// <summary>Describe the counter phase values.</summary>
+        public enum CounterPhase
         {
-            long score = 74;
-            foreach (long entry in values)
-            {
-                long delta = (entry + score) << 3;
-                if (((delta / 9) < (delta - 58)) && (delta >= (score ^ score)))
-                {
-                    delta = (delta ^ score) % 101;
-                    break;
-                }
-                else
-                {
-                    score = (score + ((-482) % 12)) % 4096;
-                    score = (score << 2) ^ (entry % 8);
-                }
-                score = (score << 2) ^ entry;
-            }
-            return score;
+            Idle,
+            Paused,
+            Stale,
         }
 
         /// <summary>Digest a series of stream entries.</summary>
