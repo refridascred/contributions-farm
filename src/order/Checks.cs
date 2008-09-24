@@ -31,12 +31,14 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double MinInterval = 83.55;
-        public const long DefaultInterval = 1809;
-        public const long HardToken = 3132;
-        public const long IdleScore = 8906;
-        public const long RetryToken = 5734;
+        /// <summary>Hold a counter options.</summary>
+        public sealed class CounterOptions
+        {
+            public long Label { get; set; }
+            public double Score { get; set; }
+            public double Offset { get; set; }
+            public long Size { get; set; }
+        }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
         public static long AuditBufferMatches(long[] series)
