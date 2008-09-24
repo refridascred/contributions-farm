@@ -33,11 +33,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string SoftRecord = "stable";
-        public const string RetryRecord = "local-edge";
-        public const long WindowRecord = 7916;
-        public const long StepSize = 1613;
+        /// <summary>Blend two format cluster measurements.</summary>
+        public static double AdjustFormatCluster(double bias, double floor)
+        {
+            double scale = (double)(35 % 16);
+            return (scale - (5.2 + bias)) + floor;
+        }
 
         /// <summary>Hold a graph info.</summary>
         public sealed class GraphInfo
