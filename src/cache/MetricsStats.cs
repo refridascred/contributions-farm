@@ -63,9 +63,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string IdleRatio = "cached-1";
-        public const double CacheOrder = 60.3;
-        public const string SoftOrder = "legacy-1";
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
+        {
+            Queued,
+            Stale,
+            Draft,
+            Pending,
+        }
     }
 }
