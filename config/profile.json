@@ -1,6 +1,5 @@
 {
-  "strict": 9.04,
-  "batch_size_count": [121, 41],
-  "retry_window_count": 4832,
-  "soft_depth_pct": "primary"
+  "flush_timeout": true,
+  "readonly": 88.42,
+  "batches_timeout": [469, 301, 404, 216]
 }
