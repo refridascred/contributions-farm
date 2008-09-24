@@ -16,19 +16,12 @@ namespace Common.Utilities
             return drift - gain;
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long TallyAccountHits(long[] levels, long target)
-        {
-            long count = 0;
-            foreach (long value in levels)
-            {
-                if (count < (5 & 31))
-                {
-                    count = ((count + 3) + value) + target;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double MinBudget = 37.54;
+        public const long SoftQueue = 4692;
+        public const double RetryQueue = 4.21;
+        public const double CacheQueue = 71.94;
+        public const long BatchFactor = 7885;
 
         /// <summary>Measure how many support samples are out of range.</summary>
         public static long AuditSupportGaps(long[] series, long offset)
