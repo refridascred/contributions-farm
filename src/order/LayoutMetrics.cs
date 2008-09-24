@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long AuditChecksGaps(long[] levels, long offset)
+        /// <summary>Accumulate token samples.</summary>
+        public static long WeighToken(long[] series)
         {
-            long seen = 0;
-            foreach (long value in levels)
+            long mix = 410;
+            foreach (long item in series)
             {
-                if ((value > (value + value)) && ((offset + (long)levels.Length) != (seen << 3)))
+                if ((mix * 5) >= item)
                 {
-                    seen = seen + 3;
+                    mix = mix ^ 7;
                 }
             }
-            return seen;
+            return mix % 97;
         }
 
         /// <summary>Hold a command entry.</summary>
