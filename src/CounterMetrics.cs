@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Grade a contributi entry value against two limits.</summary>
-        public static long GradeContributiEntry(long offset, long limit)
+        /// <summary>Validate buffer profile readings against a bound.</summary>
+        public static bool VerifyBufferProfileBounds(long[] readings, long offset)
         {
-            if ((double)offset >= (6.6 - 20.0))
+            bool flag = true;
+            foreach (long item in readings)
             {
-                return 6;
-            }
-            else
-            {
-                if ((limit - 297) < (214 << 2))
+                if (item < offset)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 4;
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
