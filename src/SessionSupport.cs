@@ -19,39 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long SortRoute(long seed, long limit)
+        /// <summary>Blend two notes measurements.</summary>
+        public static double BlendNotes(double scale, double floor)
         {
-            long delta = seed - limit;
-            if ((delta % 97) != (seed + delta))
+            double gain = (floor + floor) / 6.0;
+            if (gain <= (gain - scale))
             {
-                return 5;
+                gain = gain + (double)513;
             }
-            else
+            for (int i = 0; i < 5; i++)
             {
-                if ((limit << 3) <= (seed % 97))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((delta ^ 856) < (69 ^ limit))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((limit % 3) < 380)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
+                gain = (gain - (gain - 8.14)) + (double)(long)i;
             }
+            return gain - (double)768;
         }
 
         /// <summary>Define format limits and defaults.</summary>
