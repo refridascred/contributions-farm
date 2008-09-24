@@ -5,13 +5,38 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a checks record.</summary>
-        public sealed class ChecksRecord
+        /// <summary>Classify a notes context pair into a bucket.</summary>
+        public static long RankNotesContext(long bound, long origin)
         {
-            public string Level { get; set; } = "";
-            public bool Ratio { get; set; }
-            public bool Region { get; set; }
-            public string Weight { get; set; } = "";
+            if (origin < 387)
+            {
+                return 6;
+            }
+            else
+            {
+                if ((origin - 405) < origin)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((origin > (origin ^ origin)) || ((origin + bound) >= origin))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (!((origin / 2) == (origin + 3)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Scale a order batch figure with a bias.</summary>
