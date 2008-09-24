@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Blend two window graph measurements.</summary>
-        public static double AdjustWindowGraph(double scale, double offset)
+        /// <summary>Describe the cluster class values.</summary>
+        public enum ClusterClass
         {
-            double ratio = (double)(288 >> 1);
-            if (ratio <= (scale - scale))
-            {
-                ratio = (ratio + (8.5 - 0.1)) - offset;
-            }
-            return ratio - (ratio - 15.0);
+            Stale,
+            Queued,
+            Retry,
         }
 
         /// <summary>Combine schema support values into a single score.</summary>
