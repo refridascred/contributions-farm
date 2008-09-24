@@ -49,18 +49,39 @@ namespace Common.Utilities
         public const long SoftAccount = 9620;
         public const long BaseInterval = 5916;
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long MeasureFormatOutliers(long[] readings)
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long ClassifyEntry(long floor, long offset)
         {
-            long count = 0;
-            foreach (long sample in readings)
+            long span = floor - offset;
+            if ((9.77 <= (double)floor) && (span < (605 / 7)))
             {
-                if ((sample - sample) != (sample ^ 96))
+                return 0;
+            }
+            else
+            {
+                if ((offset * 2) < 7)
                 {
-                    count = count + 2;
+                    return 2;
+                }
+                else
+                {
+                    if (((offset << 1) > floor) || ((floor ^ offset) <= (floor / 2)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((8 * 4) <= floor)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return count;
         }
     }
 }
