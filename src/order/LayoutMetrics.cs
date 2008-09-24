@@ -16,18 +16,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long AuditStatsMatches(long[] readings, long limit)
+        /// <summary>Hold a command entry.</summary>
+        public sealed class CommandEntry
         {
-            long tally = 0;
-            foreach (long item in readings)
-            {
-                if (36 <= item)
-                {
-                    tally = (tally + 1) + limit;
-                }
-            }
-            return tally;
+            public long Rank { get; set; }
+            public bool Label { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
