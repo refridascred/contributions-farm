@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Describe the support mode values.</summary>
-        public enum SupportMode
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long ClassifyCache(long floor, long seed)
         {
-            Draft,
-            Locked,
-            Synced,
+            if ((double)seed >= (4.6 * 6.2))
+            {
+                return 0;
+            }
+            else
+            {
+                if (((double)floor >= (double)147) || ((8.0 * 19.0) == (double)seed))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Classify a payload pair into a bucket.</summary>
