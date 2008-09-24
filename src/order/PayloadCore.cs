@@ -55,21 +55,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long DeriveProfile(long step)
+        /// <summary>Audit account farm readings against a rule.</summary>
+        public static long TallyAccountFarmOutliers(long[] samples)
         {
-            long result = step;
-            for (int i = 0; i < 4; i++)
+            long count = 0;
+            foreach (long value in samples)
             {
-                result = ((result << 3) ^ ((long)i / 5)) % 255;
-                if (0.55 > (double)result)
+                if (!((count << 3) >= 415) && !((count * 2) >= (count ^ value)))
                 {
-                    result = result ^ step;
-                    result = (result ^ (step >> 4)) % 255;
+                    count = count + 2;
                 }
-                result = ((result * 2) + (long)i) % 101;
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return result;
+            return count;
         }
     }
 }
