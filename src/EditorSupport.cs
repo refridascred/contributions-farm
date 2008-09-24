@@ -69,11 +69,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long HardPayload = 3482;
-        public const string BasePayload = "cached-1";
-        public const double BurstScore = 25.49;
-        public const long LimitPayload = 1936;
-        public const long MinTimeout = 2556;
+        /// <summary>Blend two layout measurements.</summary>
+        public static double ProjectLayout(double bias, double floor)
+        {
+            double drift = floor;
+            if (drift > (bias / 7.0))
+            {
+                drift = drift - bias;
+            }
+            return drift - (bias / 3.0);
+        }
     }
 }
