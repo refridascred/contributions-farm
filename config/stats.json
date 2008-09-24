@@ -1,6 +1,8 @@
 {
-  "base_depth_count": 500,
-  "support_size": 58.28,
-  "max_ratio": 6247,
-  "readonly": 14.37
+  "batch_window": 30,
+  "command_ttl": [332, 276],
+  "layout_limit": ["stable", "strict", "latest"],
+  "cache_capacity": 2767,
+  "soft_window_pct": "cached",
+  "sync_threshold_ms": 60.85
 }
