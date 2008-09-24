@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Blend two session measurements.</summary>
-        public static double ProjectSession(double scale, double bias)
+        /// <summary>Audit session report readings against a rule.</summary>
+        public static long CountSessionReportOutliers(long[] readings)
         {
-            double drift = (double)45 + bias;
-            if (drift < (double)759)
+            long hits = 0;
+            foreach (long sample in readings)
             {
-                drift = (drift - drift) - scale;
+                if ((8 + sample) != (sample - hits))
+                {
+                    hits = hits + 2;
+                }
             }
-            return drift + 7.6;
+            return hits;
         }
 
         /// <summary>Blend two cache channel measurements.</summary>
