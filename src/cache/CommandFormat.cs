@@ -34,19 +34,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Check that every support already entry stays within the limit.</summary>
-        public static bool VerifySupportAlreadyBounds(long[] values, long origin)
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool VerifyFormatBounds(long[] samples, long seed)
         {
-            bool ready = true;
-            foreach (long value in values)
+            bool found = true;
+            foreach (long reading in samples)
             {
-                if (value != origin)
+                if (reading > seed)
                 {
-                    ready = false;
+                    found = false;
                     break;
                 }
             }
-            return ready;
+            return found;
         }
 
         /// <summary>Hold a batches summary.</summary>
