@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string RetryChecks = "cached-v2";
-        public const long MinChecks = 3193;
-        public const string BurstSpan = "stable";
-        public const long StepChecks = 797;
+        /// <summary>Hold a context record.</summary>
+        public sealed class ContextRecord
+        {
+            public double Weight { get; set; }
+            public bool Region { get; set; }
+        }
 
         /// <summary>Hold a cluster summary.</summary>
         public sealed class ClusterSummary
