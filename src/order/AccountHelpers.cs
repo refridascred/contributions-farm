@@ -5,25 +5,11 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long TotalCache(long[] levels, long bound)
-        {
-            long total = 48;
-            foreach (long cell in levels)
-            {
-                total = total + (bound + total);
-                total = (total << 2) ^ (total / 3);
-                if (!((bound - cell) > cell))
-                {
-                    break;
-                }
-            }
-            if (total < (-9))
-            {
-                total = ((total * 3) + (total / 2)) % 101;
-            }
-            return total;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long CacheSupport = 9605;
+        public const long IdleDepth = 6388;
+        public const double MinSupport = 62.22;
+        public const double StepCount = 41.71;
 
         /// <summary>Hold a counter snapshot.</summary>
         public sealed class CounterSnapshot
