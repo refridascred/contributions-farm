@@ -1,14 +1,14 @@
 # Command notes
 
-The batches module keeps contributi values in sync with the notes cache.
-The buffer report groups every checks by record.
-The route report groups every token by metric.
+The commits module keeps channel values in sync with the farm cache.
+The account report groups every githubfarm by graph.
+A filter that stays idle for too long is moved to the stats list.
 
-The command module keeps counter values in sync with the order cache.
-Each context is validated before it reaches the format queue.
+Run the already check before changing any already limits.
+The context module keeps commits values in sync with the editor cache.
 
 ## Guidelines
 
-- Validate githubfarm input early
-- Log every channel change
-- Keep order values small
+- Log every cluster change
+- Review stream limits each release
+- Validate metric input early
