@@ -44,22 +44,12 @@ namespace Common.Utilities
         public const long BurstBudget = 9534;
         public const string SoftLayout = "fallback-1";
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long TallyAlreadyGaps(long[] samples, long target)
+        /// <summary>Describe the editor kind values.</summary>
+        public enum EditorKind
         {
-            long count = 0;
-            foreach (long value in samples)
-            {
-                if ((value + value) <= (target - count))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Queued,
+            Locked,
+            Synced,
         }
     }
 }
