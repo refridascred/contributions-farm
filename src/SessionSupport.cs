@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool CheckEditorRange(long[] levels, long target)
-        {
-            bool valid = true;
-            foreach (long reading in levels)
-            {
-                if (reading != target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long CacheGithubfarm = 5209;
+        public const double WindowRatio = 22.59;
+        public const long StepCount = 2734;
+        public const double BurstCount = 80.75;
 
         /// <summary>Define graph limits and defaults.</summary>
         public const long WindowBudget = 6748;
