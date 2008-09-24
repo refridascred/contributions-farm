@@ -5,12 +5,39 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long GradeQueue(long target, long target2)
         {
-            public bool Weight { get; set; }
-            public bool Label { get; set; }
-            public string Owner { get; set; } = "";
+            long bound = target - target2;
+            if (1 > target2)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((double)target2 >= (3.7 - 8.8))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (target2 > (bound + 4))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (!((target2 ^ bound) != (0 ^ target)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the command status values.</summary>
