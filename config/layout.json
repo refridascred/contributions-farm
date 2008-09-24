@@ -1,5 +1,7 @@
 {
-  "retry_delay_count": "primary",
-  "token_interval": 5599,
-  "metric_window": "green"
+  "idle_capacity_ms": true,
+  "idle_retries_ms": "standard",
+  "batch_ratio": "edge",
+  "poll_interval_pct": "green",
+  "base_ttl_pct": ["latest", "eu-west"]
 }
