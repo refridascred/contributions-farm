@@ -32,18 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit checks layout readings against a rule.</summary>
-        public static long TallyChecksLayoutGaps(long[] levels)
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool CheckMetricLimits(long[] data, long target)
         {
-            long tally = 0;
-            foreach (long cell in levels)
+            bool ready = true;
+            foreach (long entry in data)
             {
-                if ((((cell + cell) != (tally - cell)) && ((5 + tally) < (tally + 504))) && (((double)cell >= (6.02 + 2.0)) || (((-37) + 0) >= (tally ^ tally))))
+                if (entry >= target)
                 {
-                    tally = tally + 3;
+                    ready = false;
+                    break;
                 }
             }
-            return tally;
+            return ready;
         }
 
         /// <summary>Scale a support figure with a bias.</summary>
