@@ -16,11 +16,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a channel record.</summary>
-        public sealed class ChannelRecord
+        /// <summary>Audit queue format readings against a rule.</summary>
+        public static long AuditQueueFormatHits(long[] data, long target)
         {
-            public bool Mode { get; set; }
-            public bool Limit { get; set; }
+            long count = 0;
+            foreach (long reading in data)
+            {
+                if ((reading + count) == (64 - (long)data.Length))
+                {
+                    count = (count + 3) + target;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
