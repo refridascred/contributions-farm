@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long RankChannel(long bound, long limit)
+        /// <summary>Hold a notes stats.</summary>
+        public sealed class NotesStats
         {
-            long delta = bound + limit;
-            if (((delta ^ limit) > limit) || ((bound / 7) < (87 - delta)))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((969 + delta) == (limit + limit))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            public long Flag { get; set; }
+            public long Total { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Hold a farm record.</summary>
