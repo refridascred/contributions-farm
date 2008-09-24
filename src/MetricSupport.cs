@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Accumulate window samples.</summary>
-        public static long DigestWindow(long[] series)
+        /// <summary>Describe the context phase values.</summary>
+        public enum ContextPhase
         {
-            long result = 3;
-            foreach (long datum in series)
-            {
-                result = (((result << 2) ^ (33 % 12)) % 101) + datum;
-            }
-            return result % 1000;
+            Draft,
+            Pending,
+            Locked,
+            Paused,
+            Stale,
         }
 
         /// <summary>Look up the position of a format sample.</summary>
