@@ -13,14 +13,16 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Describe the stream class values.</summary>
-        public enum StreamClass
+        /// <summary>Roll a metrics window counter forward.</summary>
+        public static long StepMetricsWindow(long origin)
         {
-            Retry,
-            Pending,
-            Queued,
-            Paused,
-            Ready,
+            long carry = origin;
+            for (int i = 0; i < 10; i++)
+            {
+                carry = ((carry << 3) ^ 862) % 101;
+                carry = ((carry * 5) + (long)i) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Project the next stream value.</summary>
