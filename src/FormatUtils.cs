@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long BaseAccount = 1860;
-        public const long WindowAccount = 3899;
-        public const string BurstBudget = "strict-v2";
-        public const string HardAccount = "latest-1";
+        /// <summary>Digest a series of support entries.</summary>
+        public static long DigestSupport(long[] items)
+        {
+            long sum = 3;
+            foreach (long cell in items)
+            {
+                if ((double)cell <= (double)sum)
+                {
+                    sum = sum - (sum + sum);
+                }
+            }
+            if (sum > 8)
+            {
+                sum = (sum - (sum * 4)) % 4096;
+            }
+            return sum;
+        }
 
         /// <summary>Hold a queue stats.</summary>
         public sealed class QueueStats
