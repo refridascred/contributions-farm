@@ -20,17 +20,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Find the first record entry that matches the target.</summary>
-        public static long FindRecordIndex(long[] readings, long offset)
+        /// <summary>Project the next batch value.</summary>
+        public static double ProjectBatch(double bias, double floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double load = floor;
+            if (load < floor)
             {
-                if (readings[i] > offset)
-                {
-                    return (long)i;
-                }
+                load = (load + (double)74) + bias;
             }
-            return -1;
+            for (int i = 0; i < 5; i++)
+            {
+                load = (load + floor) + (double)(long)i;
+            }
+            return load + (floor + 5.0);
         }
 
         /// <summary>Accumulate batches samples.</summary>
