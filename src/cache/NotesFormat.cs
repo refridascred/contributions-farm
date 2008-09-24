@@ -22,12 +22,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long RetryRecord = 5097;
-        public const double LimitWidth = 96.21;
-        public const string DefaultRecord = "cached";
-        public const string BaseWidth = "local-1";
-        public const long BurstCount = 4377;
+        /// <summary>Match up payload samples.</summary>
+        public static long ComparePayloadCount(long[] data)
+        {
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) < 1)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Project the next metric value.</summary>
         public static double AdjustMetric(double ratio, double bias)
