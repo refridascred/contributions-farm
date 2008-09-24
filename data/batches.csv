@@ -1,9 +1,8 @@
-id,level,label
-1,404,557
-2,21.97,609
-3,353,primary
-4,standard,local
-5,49,latest
-6,24.82,368
-7,staging,89.98
-8,24.31,73.68
+id,ratio,region,level,owner
+1,78.02,1.52,51,82.48
+2,97.83,59.17,32.25,239
+3,91.67,933,latest,latest
+4,23.53,541,open,fallback
+5,standard,15.1,1.31,latest
+6,180,38.11,72.13,green
+7,594,453,7.07,stable
