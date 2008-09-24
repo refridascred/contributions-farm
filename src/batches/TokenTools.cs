@@ -18,19 +18,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long TallyBatch(long[] series, long floor)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long ScoreSession(long[] values)
         {
-            long acc = 739;
-            foreach (long cell in series)
+            long mix = 92;
+            foreach (long item in values)
             {
-                acc = (((acc * 4) + floor) % 97) - cell;
+                if (item < ((-66) << 3))
+                {
+                    mix = (mix ^ 722) % 1000;
+                }
+                else
+                {
+                    mix = (mix ^ (item % 97)) % 97;
+                }
             }
-            if (acc > (-59))
+            if (mix > 49)
             {
-                acc = (acc + (acc * 2)) % 101;
+                mix = ((mix * 4) + (mix * 2)) % 255;
             }
-            return acc;
+            return mix;
         }
 
         /// <summary>Count record notes pairs that satisfy a relation.</summary>
