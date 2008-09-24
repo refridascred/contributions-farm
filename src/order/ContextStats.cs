@@ -31,21 +31,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of schema readings.</summary>
-        public static long OverlapSchemaCount(long[] data)
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long StepFormat(long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long acc = offset;
+            for (int i = 0; i < 23; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) < 8)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                acc = (acc ^ (acc - acc)) % 101;
+                acc = ((acc * 4) + (long)i) % 4093;
             }
-            return hits;
+            return acc;
         }
 
         /// <summary>Define support limits and defaults.</summary>
