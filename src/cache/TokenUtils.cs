@@ -25,12 +25,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Scale a batch figure with a bias.</summary>
-        public static double ScaleBatch(double ratio, double span)
-        {
-            double rate = ratio;
-            return (rate + (ratio + ratio)) + span;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long SoftWidth = 2995;
+        public const string MinInterval = "open-v2";
+        public const string HardRatio = "primary";
 
         /// <summary>Digest a series of cache metrics entries.</summary>
         public static long TallyCacheMetrics(long[] levels, long seed)
