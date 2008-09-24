@@ -1,6 +1,10 @@
-id,label,token
-1,green,4.42
-2,green,legacy
-3,93.73,fallback
-4,37.84,2
-5,latest,45.66
+id,rank,token,region,score
+1,307,fallback,788,68.07
+2,cached,73.4,537,42.7
+3,31.8,746,22.77,cached
+4,616,91,blue,93
+5,343,975,611,497
+6,716,108,green,695
+7,cached,59.44,801,latest
+8,open,10.31,fallback,418
+9,49.31,270,40.55,89.97
