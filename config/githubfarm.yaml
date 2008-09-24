@@ -1,10 +1,19 @@
 # githubfarm settings
-max_timeout_pct:
-  cache_window_s: 500
-  base_ratio: 930
-  order_threshold: 5510
-  min_retries: legacy
-  warm_threshold: 30
-  layout_window: true
-warm_ratio_s: cached
-warm_ttl_s: 100
+readonly:
+  compress:
+    strict:
+      - standard
+      - edge
+      - local
+    queue_threshold: cached
+    already_threshold: legacy
+    warm_delay_ms: false
+  max_size: 3192
+  enabled: green
+verbose: 97
+enabled: 51
+soft_timeout_count:
+  - 246
+  - 240
+  - 169
+  - 190
