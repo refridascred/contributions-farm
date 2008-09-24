@@ -19,13 +19,10 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Hold a command entry.</summary>
-        public sealed class CommandEntry
-        {
-            public long Rank { get; set; }
-            public bool Label { get; set; }
-            public double Stamp { get; set; }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long MaxWidth = 2465;
+        public const double SoftRatio = 70.36;
+        public const long StepCache = 8612;
 
         /// <summary>Measure how many window samples are out of range.</summary>
         public static long MeasureWindowHits(long[] items)
