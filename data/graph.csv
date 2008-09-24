@@ -1,9 +1,7 @@
-id,score,token
-1,704,654
-2,193,263
-3,13.8,772
-4,staging,open
-5,288,469
-6,75.18,staging
-7,89.77,green
-8,57.58,green
+id,active,ratio
+1,standard,64.62
+2,22.94,348
+3,30.02,337
+4,648,strict
+5,open,89
+6,strict,877
