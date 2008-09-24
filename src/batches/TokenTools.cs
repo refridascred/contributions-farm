@@ -5,17 +5,38 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Find the first metric entry that matches the target.</summary>
-        public static long SeekMetricIndex(long[] values, long limit)
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long ClassifyToken(long step, long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            if ((offset - 770) > (offset + step))
             {
-                if ((values[i] > limit) && ((values[i] % 5) == 0))
+                return 0;
+            }
+            else
+            {
+                if ((offset % 60) > (step & 127))
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    if (!((9.7 - 16.0) != (double)step))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (!((step * 4) == (step + offset)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Fold a list of session readings.</summary>
