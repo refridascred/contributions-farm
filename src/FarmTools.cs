@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the order kind values.</summary>
-        public enum OrderKind
+        /// <summary>Hold a commits stats.</summary>
+        public sealed class CommitsStats
         {
-            Done,
-            Stale,
-            Paused,
+            public long Count { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Match up channel samples.</summary>
