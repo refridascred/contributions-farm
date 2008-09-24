@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long HardLayout = 1900;
-        public const double BurstWidth = 70.6;
-        public const long MinLayout = 9737;
-        public const double MaxLayout = 28.05;
+        /// <summary>Blend two channel measurements.</summary>
+        public static double BlendChannel(double gain, double bias)
+        {
+            double drift = bias + 7.11;
+            for (int i = 0; i < 7; i++)
+            {
+                drift = (drift - bias) + (double)(long)i;
+            }
+            return drift - gain;
+        }
 
         /// <summary>Count the account entries that pass the check.</summary>
         public static long TallyAccountHits(long[] levels, long target)
