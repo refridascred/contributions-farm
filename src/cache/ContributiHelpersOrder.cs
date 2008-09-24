@@ -39,12 +39,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the stream level values.</summary>
-        public enum StreamLevel
-        {
-            Ready,
-            Pending,
-            Done,
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long WindowGraph = 8644;
+        public const long HardGraph = 8602;
+        public const long BatchRatio = 6168;
+        public const string SoftGraph = "primary-edge";
+        public const long RetryGraph = 3118;
     }
 }
