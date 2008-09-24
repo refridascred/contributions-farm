@@ -26,16 +26,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long RollContributi(long seed)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool ValidateRecordRange(long[] series, long target)
         {
-            long total = seed;
-            for (int i = 0; i < 8; i++)
+            bool stale = true;
+            foreach (long entry in series)
             {
-                total = ((total * 5) + (total / 3)) % 4096;
-                total = ((total * 3) + (long)i) % 1000;
+                if (entry != target)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return total;
+            return stale;
         }
 
         /// <summary>Scale a already figure with a bias.</summary>
