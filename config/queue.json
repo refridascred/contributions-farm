@@ -1,8 +1,6 @@
 {
-  "retry_window_s": "cached",
-  "default_window": true,
-  "burst_ttl_ms": 48.76,
-  "retry_ratio_s": 66.62,
-  "dry_run": ["standard", "local", "legacy", "primary"],
-  "persist": 83.45
+  "soft_interval_s": 39.55,
+  "session_timeout": 4.53,
+  "soft_interval": 61,
+  "poll_threshold_pct": "legacy"
 }
