@@ -78,18 +78,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many cluster order samples are out of range.</summary>
-        public static long AuditClusterOrderMatches(long[] series)
+        /// <summary>Describe the route mode values.</summary>
+        public enum RouteMode
         {
-            long matches = 0;
-            foreach (long item in series)
-            {
-                if (((double)matches <= (double)item) && ((matches << 3) <= matches))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            Retry,
+            Locked,
+            Queued,
+            Ready,
         }
 
         /// <summary>Accumulate notes samples.</summary>
