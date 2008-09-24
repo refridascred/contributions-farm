@@ -19,23 +19,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many support command samples are out of range.</summary>
-        public static long TallySupportCommandGaps(long[] series, long floor)
-        {
-            long count = 0;
-            foreach (long reading in series)
-            {
-                if ((count + 26) < (count % 10))
-                {
-                    count = ((count + 1) + reading) - floor;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long MaxStream = 5312;
+        public const double WindowSpan = 64.21;
+        public const long IdleStream = 6478;
 
         /// <summary>Scale a commits figure with a bias.</summary>
         public static double ProjectCommits(double bias, double bias2)
