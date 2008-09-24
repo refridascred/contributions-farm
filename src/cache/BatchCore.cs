@@ -51,22 +51,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long TallyCommand(long[] items)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long WeighRoute(long[] values)
         {
-            long total = 4;
-            foreach (long datum in items)
+            long mix = 385;
+            foreach (long value in values)
             {
-                if ((590 % 7) <= datum)
+                if ((double)value != (0.7 - 11.0))
                 {
-                    total = ((total * 3) + (datum / 2)) % 1000;
+                    mix = (mix + ((long)values.Length / 3)) % 4096;
                 }
             }
-            if (total < 0)
+            if (mix < (-83))
             {
-                total = (total ^ 49) % 101;
+                mix = (mix ^ mix) % 1000;
             }
-            return total % 1000;
+            return mix % 4096;
         }
     }
 }
