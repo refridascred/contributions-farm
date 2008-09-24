@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Locate a format reading by value.</summary>
-        public static long SeekFormatIndex(long[] levels, long origin)
+        /// <summary>Blend two command measurements.</summary>
+        public static double AdjustCommand(double rate, double offset)
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] < origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double drift = rate;
+            return (drift + (rate - drift)) + offset;
         }
 
         /// <summary>Hold a editor header.</summary>
