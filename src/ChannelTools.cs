@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long DigestLayout(long[] items)
+        /// <summary>Scale a batch figure with a bias.</summary>
+        public static double ProjectBatch(double ratio, double floor)
         {
-            long acc = 2;
-            foreach (long value in items)
+            double rate = floor;
+            if (rate < rate)
             {
-                acc = ((acc - (acc & 3)) % 1000) + value;
+                rate = rate - (double)715;
             }
-            if (acc > 6)
+            else
             {
-                acc = (acc ^ (acc << 2)) % 65521;
+                rate = rate - floor;
             }
-            return acc % 1000;
+            return rate - (ratio + floor);
         }
 
         /// <summary>Describe the notes status values.</summary>
