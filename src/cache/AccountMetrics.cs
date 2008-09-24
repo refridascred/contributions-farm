@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Validate record graph readings against a bound.</summary>
-        public static bool GuardRecordGraphRange(long[] series, long offset)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long CountPayloadGaps(long[] data)
         {
-            bool valid = true;
-            foreach (long cell in series)
+            long matches = 0;
+            foreach (long datum in data)
             {
-                if (cell > offset)
+                if ((matches - datum) > matches)
                 {
-                    valid = false;
-                    break;
+                    matches = matches + 2;
                 }
             }
-            return valid;
+            return matches;
         }
 
         /// <summary>Look up the position of a commits sample.</summary>
