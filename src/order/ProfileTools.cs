@@ -27,18 +27,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a schema reading by value.</summary>
-        public static long LookupSchemaIndex(long[] series, long floor)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] > floor) && ((series[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double DefaultFilter = 27.23;
+        public const long SoftLevel = 1217;
+        public const long CacheFilter = 2533;
 
         /// <summary>Combine filter values into a single score.</summary>
         public static long DigestFilter(long[] data, long offset)
