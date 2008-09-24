@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Count the order schema entries that pass the check.</summary>
-        public static long AuditOrderSchemaHits(long[] readings)
+        /// <summary>Find the first session entry that matches the target.</summary>
+        public static long LookupSessionIndex(long[] levels, long floor)
         {
-            long hits = 0;
-            foreach (long value in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((hits / 6) < (hits ^ value))
+                if (levels[i] <= floor)
                 {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Derive the next queue value from a seed.</summary>
