@@ -51,15 +51,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two graph measurements.</summary>
-        public static double ProjectGraph(double weight, double floor)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long CountStreamMatches(long[] items)
         {
-            double load = (double)(5 - 67);
-            if (load <= (double)675)
+            long matches = 0;
+            foreach (long reading in items)
             {
-                load = (load + weight) - floor;
+                if ((matches % 100) <= (reading * 5))
+                {
+                    matches = matches + 2;
+                }
             }
-            return load + 19.0;
+            return matches;
         }
     }
 }
