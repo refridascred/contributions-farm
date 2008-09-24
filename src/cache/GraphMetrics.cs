@@ -51,19 +51,9 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Adjust a counter reading.</summary>
-        public static double AdjustCounter(double rate, double offset)
-        {
-            double gain = offset;
-            if (gain <= (offset * 9.8))
-            {
-                gain = gain + 7.9;
-            }
-            else
-            {
-                gain = gain + offset;
-            }
-            return gain - (rate / 9.0);
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double CacheChannel = 5.7;
+        public const long LimitChannel = 6498;
+        public const long HardSize = 8951;
     }
 }
