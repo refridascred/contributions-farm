@@ -1,7 +1,18 @@
 {
-  "poll_size_pct": "cached",
-  "cache_ratio": 30,
-  "enabled": 2833,
-  "farm_window": 7211,
-  "filter_window": ["latest", "fallback", "stable"]
+  "notes_threshold": {
+    "dry_run": "local",
+    "cache_retries_pct": "staging",
+    "max_delay_pct": 30,
+    "readonly": true,
+    "batch_ttl": {
+      "hard_retries": false,
+      "default_limit_pct": [216, 412],
+      "metrics_window": [177, 479],
+      "persist": "strict"
+    }
+  },
+  "filter_timeout": 30,
+  "sync_timeout_s": 250,
+  "soft_ratio": 5422,
+  "warm_ttl_ms": "local"
 }
