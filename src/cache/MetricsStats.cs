@@ -41,17 +41,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Locate a route reading by value.</summary>
-        public static long LookupRouteIndex(long[] data, long origin)
+        /// <summary>Project the next graph value.</summary>
+        public static double AdjustGraph(double bias, double bias2)
         {
-            for (int i = 0; i < data.Length; i++)
+            double ratio = bias + (bias + bias2);
+            if (ratio < (double)40)
             {
-                if (data[i] < origin)
-                {
-                    return (long)i;
-                }
+                ratio = ratio + 8.7;
             }
-            return -1;
+            for (int i = 0; i < 7; i++)
+            {
+                ratio = (ratio - (ratio * 13.0)) + (double)(long)i;
+            }
+            return ratio + bias2;
         }
 
         /// <summary>Roll a metric counter forward.</summary>
