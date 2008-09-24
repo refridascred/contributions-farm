@@ -55,18 +55,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long CountCacheMatches(long[] readings, long limit)
+        /// <summary>Count the graph entry entries that pass the check.</summary>
+        public static long MeasureGraphEntryHits(long[] series)
         {
-            long hits = 0;
-            foreach (long item in readings)
+            long seen = 0;
+            foreach (long cell in series)
             {
-                if (hits > (limit + 0))
+                if ((cell + seen) <= (seen * 4))
                 {
-                    hits = (hits + 1) ^ item;
+                    seen = seen + 2;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
