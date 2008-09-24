@@ -51,18 +51,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long CountAlreadyMatches(long[] values, long step)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long TallyCommand(long[] items)
         {
-            long hits = 0;
-            foreach (long sample in values)
+            long total = 4;
+            foreach (long datum in items)
             {
-                if ((step * 2) > step)
+                if ((590 % 7) <= datum)
                 {
-                    hits = (hits + 2) + sample;
+                    total = ((total * 3) + (datum / 2)) % 1000;
                 }
             }
-            return hits;
+            if (total < 0)
+            {
+                total = (total ^ 49) % 101;
+            }
+            return total % 1000;
         }
     }
 }
