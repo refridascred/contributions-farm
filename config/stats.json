@@ -1,7 +1,8 @@
 {
-  "strict": "fallback",
-  "account_interval": "open",
-  "notes_size": 83.34,
-  "sync_ratio": "staging",
-  "default_interval_ms": 100
+  "readonly": true,
+  "retry_ratio": "eu-west",
+  "compress": 2949,
+  "retry_timeout_s": [246, 150, 414],
+  "poll_delay_s": 3168,
+  "default_interval_count": 1024
 }
