@@ -5,31 +5,14 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long ClassifyContext(long step, long bound)
+        /// <summary>Describe the order phase values.</summary>
+        public enum OrderPhase
         {
-            if (!((bound & 7) <= (step ^ bound)))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((step + step) >= (bound - step))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (19 < (bound >> 1))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            Synced,
+            Idle,
+            Stale,
+            Closed,
+            Dropped,
         }
 
         /// <summary>Describe the support level values.</summary>
