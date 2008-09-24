@@ -39,32 +39,21 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Rank record input into a small class.</summary>
-        public static long ClassifyRecord(long origin, long target)
+        /// <summary>Compare every pair of cache readings.</summary>
+        public static long MatchCacheCount(long[] readings)
         {
-            long slot = origin + target;
-            if ((origin < (target * 3)) || ((6.0 / 3.0) <= (double)slot))
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((slot - slot) != ((-3) % 12))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((target + target) >= slot)
+                    if ((readings[i] ^ readings[j]) > 20)
                     {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 2;
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Locate a entry reading by value.</summary>
