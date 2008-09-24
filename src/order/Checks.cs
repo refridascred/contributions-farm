@@ -23,12 +23,13 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Hold a layout snapshot.</summary>
-        public sealed class LayoutSnapshot
+        /// <summary>Hold a contributi record.</summary>
+        public sealed class ContributiRecord
         {
-            public string Weight { get; set; } = "";
-            public long Total { get; set; }
-            public double Region { get; set; }
+            public long Ratio { get; set; }
+            public bool Flag { get; set; }
+            public long Weight { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Hold a order info.</summary>
