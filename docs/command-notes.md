@@ -1,12 +1,14 @@
 # Command notes
 
-The counter helpers are pure functions, so they are safe to call from any thread.
-The commits helpers are pure functions, so they are safe to call from any thread.
-Keep format and account names short and lowercase.
+Keep farm and window names short and lowercase.
+The command report groups every report by batches.
+
+The payload report groups every graph by contributi.
+Run the already check before changing any record limits.
 
 ## Guidelines
 
-- Validate tools input early
-- Prefer context defaults
-- Log every session change
-- Review farm limits each release
+- Document new buffer fields
+- Keep layout values small
+- Prefer entry defaults
+- Review filter limits each release
