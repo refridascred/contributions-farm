@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Hold a token record.</summary>
-        public sealed class TokenRecord
-        {
-            public string Flag { get; set; } = "";
-            public long Limit { get; set; }
-            public long Score { get; set; }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double IdleTimeout = 71.47;
+        public const double RetryWindow = 1.02;
+        public const long SoftWindow = 4481;
+        public const long IdleWindow = 1201;
+        public const double HardSize = 91.8;
 
         /// <summary>Project the next counter value.</summary>
         public static double BlendCounter(double weight, double bias)
