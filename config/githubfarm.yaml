@@ -1,9 +1,18 @@
 # githubfarm settings
-batch_window_s:
-  - open
-  - primary
-  - fallback
-  - blue
-report_capacity: edge
-payload_delay: blue
-hard_delay_pct: local
+burst_window_s: 55.32
+burst_threshold_s:
+  window_depth: edge
+  default_size_count: false
+  commits_limit:
+    - 443
+    - 362
+    - 433
+    - 61
+  hard_size:
+    - 142
+    - 237
+    - 139
+    - 161
+payload_limit: standard
+hard_capacity_ms: 1024
+record_ttl: green
