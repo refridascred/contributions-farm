@@ -1,14 +1,14 @@
 # Command notes
 
-The commits module keeps channel values in sync with the farm cache.
-The account report groups every githubfarm by graph.
-A filter that stays idle for too long is moved to the stats list.
+Each context is validated before it reaches the notes queue.
+The window report groups every schema by filter.
 
-Run the already check before changing any already limits.
-The context module keeps commits values in sync with the editor cache.
+Defaults for checks live in the config folder and can be overridden per environment.
+When a farm fails, the metrics handler retries a few times before giving up.
 
 ## Guidelines
 
-- Log every cluster change
-- Review stream limits each release
-- Validate metric input early
+- Review filter limits each release
+- Keep order values small
+- Validate queue input early
+- Prefer buffer defaults
