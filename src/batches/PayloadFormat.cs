@@ -42,18 +42,32 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit queue route readings against a rule.</summary>
-        public static long CountQueueRouteGaps(long[] samples)
+        /// <summary>Classify a channel commits pair into a bucket.</summary>
+        public static long RankChannelCommits(long limit, long target)
         {
-            long hits = 0;
-            foreach (long entry in samples)
+            long offset = limit - target;
+            if ((target > (limit + 7)) && ((target + offset) < target))
             {
-                if (((hits ^ hits) > (entry + 644)) && ((81 - hits) != (long)samples.Length))
+                return 1;
+            }
+            else
+            {
+                if ((double)target == (double)offset)
                 {
-                    hits = hits + 2;
+                    return 7;
+                }
+                else
+                {
+                    if (((double)target != (19.0 / 7.0)) || (offset <= (offset & 15)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return hits;
         }
     }
 }
