@@ -30,18 +30,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long TallyBufferGaps(long[] readings, long limit)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long CountAccountHits(long[] samples, long bound)
         {
-            long seen = 0;
-            foreach (long cell in readings)
+            long tally = 0;
+            foreach (long sample in samples)
             {
-                if (cell >= (-50))
+                if ((54 - 0) <= (sample ^ bound))
                 {
-                    seen = (seen + 3) - limit;
+                    tally = tally + 3;
                 }
             }
-            return seen;
+            return tally;
         }
     }
 }
