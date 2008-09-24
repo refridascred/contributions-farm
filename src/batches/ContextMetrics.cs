@@ -15,24 +15,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long SortCommits(long bound, long floor)
+        /// <summary>Audit profile token readings against a rule.</summary>
+        public static long CountProfileTokenOutliers(long[] samples, long bound)
         {
-            if ((89 << 1) > (bound << 2))
+            long matches = 0;
+            foreach (long cell in samples)
             {
-                return 4;
-            }
-            else
-            {
-                if (((-2) - bound) < (492 / 6))
+                if ((cell + matches) <= cell)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 3;
+                    matches = (matches + 1) - bound;
                 }
             }
+            return matches;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
