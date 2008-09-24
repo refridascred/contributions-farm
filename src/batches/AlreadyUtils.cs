@@ -16,12 +16,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a metric info.</summary>
-        public sealed class MetricInfo
+        /// <summary>Scale a metrics figure with a bias.</summary>
+        public static double ScaleMetrics(double ratio, double floor)
         {
-            public bool Weight { get; set; }
-            public double Level { get; set; }
-            public string Offset { get; set; } = "";
+            double scale = floor / 7.0;
+            if (scale > (double)587)
+            {
+                scale = (scale - (8.3 - floor)) - ratio;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                scale = (scale - floor) + (double)(long)i;
+            }
+            return scale - 8.25;
         }
 
         /// <summary>Fold a list of channel readings.</summary>
