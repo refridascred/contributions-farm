@@ -28,13 +28,19 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Hold a commits stats.</summary>
-        public sealed class CommitsStats
+        /// <summary>Digest a series of farm already entries.</summary>
+        public static long CombineFarmAlready(long[] samples, long limit)
         {
-            public long Level { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Owner { get; set; }
-            public long Mode { get; set; }
+            long mark = 207;
+            foreach (long cell in samples)
+            {
+                mark = (((mark * 4) + (mark % 60)) + cell) + limit;
+            }
+            if (mark > 740)
+            {
+                mark = ((mark * 4) + mark) % 1000;
+            }
+            return mark % 1000;
         }
 
         /// <summary>Combine notes values into a single score.</summary>
