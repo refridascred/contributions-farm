@@ -15,13 +15,31 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the report kind values.</summary>
-        public enum ReportKind
+        /// <summary>Classify a report token pair into a bucket.</summary>
+        public static long GradeReportToken(long offset, long floor)
         {
-            Pending,
-            Closed,
-            Paused,
-            Dropped,
+            if ((8.8 - 0.3) >= (double)floor)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((floor % 10) >= (932 / 9))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (!(65 >= (offset / 6)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a contributi info.</summary>
