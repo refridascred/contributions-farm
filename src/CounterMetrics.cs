@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Measure how many format channel samples are out of range.</summary>
-        public static long MeasureFormatChannelHits(long[] levels, long origin)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long DigestQueue(long[] readings, long target)
         {
-            long matches = 0;
-            foreach (long cell in levels)
+            long score = 10;
+            foreach (long entry in readings)
             {
-                if ((cell & 3) >= origin)
+                if (((8 & 3) <= (entry >> 5)) && ((2.0 / 9.0) != (double)target))
                 {
-                    matches = matches + 3;
+                    score = (score * 5) + target;
                 }
             }
-            return matches;
+            return score % 65521;
         }
 
         /// <summary>Describe the token class values.</summary>
