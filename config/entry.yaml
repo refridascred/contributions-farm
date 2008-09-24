@@ -1,6 +1,17 @@
 # entry settings
-persist: false
-sync_delay: 25
-audit: 3.42
-hard_interval_ms: 2686
-already_depth: 30
+flush_limit_ms: fallback
+poll_size_s: 25.84
+profile_delay:
+  order_capacity:
+    base_retries_ms:
+      - 224
+      - 134
+      - 107
+    enabled: 7
+    dry_run: 500
+  cache_capacity_pct: 98.44
+  poll_depth_s: eu-west
+  strict: latest
+  default_size_pct: 77.04
+default_ratio_s: eu-west
+payload_depth: true
