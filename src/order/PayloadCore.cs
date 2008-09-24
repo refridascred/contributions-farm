@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the contributi state values.</summary>
-        public enum ContributiState
+        /// <summary>Hold a account entry.</summary>
+        public sealed class AccountEntry
         {
-            Draft,
-            New,
-            Stale,
-            Retry,
+            public string Limit { get; set; } = "";
+            public bool Rank { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
