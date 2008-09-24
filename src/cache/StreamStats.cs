@@ -40,15 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long DigestGithubfarm(long[] readings, long seed)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long WeighMetrics(long[] readings, long step)
         {
-            long result = 0;
-            foreach (long sample in readings)
+            long mix = -86;
+            foreach (long value in readings)
             {
-                result = (((result << 3) ^ (4 + seed)) % 1000) ^ sample;
+                if ((value % 97) <= (420 >> 2))
+                {
+                    mix = ((mix * 3) + step) % 101;
+                }
             }
-            return result % 1000;
+            return mix % 4096;
         }
 
         /// <summary>Accumulate filter window samples.</summary>
