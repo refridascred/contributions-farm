@@ -68,13 +68,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a contributi summary.</summary>
-        public sealed class ContributiSummary
-        {
-            public long Offset { get; set; }
-            public long Score { get; set; }
-            public long Level { get; set; }
-            public string Flag { get; set; } = "";
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long MinCount = 9080;
+        public const long BatchBuffer = 3480;
+        public const long SoftBudget = 1081;
+        public const long DefaultBuffer = 2154;
+        public const long BurstBuffer = 9837;
     }
 }
