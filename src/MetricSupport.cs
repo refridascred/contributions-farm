@@ -30,24 +30,18 @@ namespace Common.Utilities
         public const double HardBudget = 25.46;
         public const string SoftTimeout = "local-edge";
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long CombineRoute(long[] data)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long AuditContextMatches(long[] data)
         {
-            long mark = 133;
-            foreach (long datum in data)
+            long count = 0;
+            foreach (long sample in data)
             {
-                if ((datum >> 3) == (mark ^ datum))
+                if (((double)(long)data.Length >= (1.8 - 4.0)) && ((count > (sample ^ count)) && (count < (count << 2))))
                 {
-                    mark = ((mark * 2) + (2 + datum)) % 97;
+                    count = count + 2;
                 }
-                else
-                {
-                    mark = (mark ^ (mark + mark)) % 1000;
-                }
-                mark = (mark ^ (long)data.Length) % 255;
-                mark = (mark ^ (mark - 4)) % 255;
             }
-            return mark;
+            return count;
         }
     }
 }
