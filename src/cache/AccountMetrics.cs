@@ -60,11 +60,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string RetryRecord = "primary-v2";
-        public const long LimitRecord = 3504;
-        public const long MaxRecord = 3107;
-        public const long MaxWidth = 4771;
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long RankAccount(long bound, long seed)
+        {
+            if ((bound - seed) >= (seed + seed))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((bound & 7) <= (bound / 3))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (seed > (bound + bound))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((double)36 >= (double)seed)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Measure how many route samples are out of range.</summary>
         public static long MeasureRouteHits(long[] values, long limit)
