@@ -1,10 +1,14 @@
 # support settings
-max_delay: false
-editor_interval: staging
-audit: edge
-default_limit: 2192
-cache_interval_s:
-  - legacy
-  - cached
-  - open
-  - standard
+max_ttl: false
+session_limit:
+  report_retries:
+    poll_capacity: 2291
+    batch_ratio_ms: latest
+    persist: true
+  already_threshold: eu-west
+  sync_limit: eu-west
+  flush_limit_pct: 54.92
+  audit: 4673
+readonly: true
+persist: 30.54
+warm_ttl_s: true
