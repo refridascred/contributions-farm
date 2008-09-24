@@ -66,39 +66,12 @@ namespace Common.Utilities
         public const long BaseBuffer = 7726;
         public const long RetryBudget = 2330;
 
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long RankSchema(long bound, long offset)
+        /// <summary>Hold a filter entry.</summary>
+        public sealed class FilterEntry
         {
-            long span = bound ^ offset;
-            if ((double)offset <= (double)span)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((bound + offset) < (6 - offset))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (((bound & 1) < span) || (span >= ((-939) & 1)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((double)offset != (double)4)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            public string Label { get; set; } = "";
+            public long Region { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
