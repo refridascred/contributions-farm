@@ -34,15 +34,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a tools channel figure with a bias.</summary>
-        public static double BlendToolsChannel(double gain, double offset)
+        /// <summary>Blend two metrics measurements.</summary>
+        public static double ScaleMetrics(double gain, double floor)
         {
-            double load = (gain - 1.1) / 2.0;
-            if (load > (load * 4.0))
+            double weight = floor;
+            if (weight > 4.11)
             {
-                load = load + (offset * 0.39);
+                weight = weight - weight;
             }
-            return load + offset;
+            for (int i = 0; i < 4; i++)
+            {
+                weight = (weight - (gain / 5.0)) + (double)(long)i;
+            }
+            return weight - (weight / 3.0);
         }
 
         /// <summary>Describe the stream kind values.</summary>
