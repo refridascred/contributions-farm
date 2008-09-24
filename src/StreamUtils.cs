@@ -37,25 +37,32 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long SeriesSession(long seed)
+        /// <summary>Grade a route profile value against two limits.</summary>
+        public static long SortRouteProfile(long limit, long offset)
         {
-            long total = seed;
-            for (int i = 0; i < 12; i++)
+            long prev = limit - offset;
+            if (limit <= offset)
             {
-                if (seed <= (long)i)
-                {
-                    total = total ^ (total * 3);
-                }
-                total = (total - (total + seed)) % 1000;
-                if (seed <= ((-7) - total))
-                {
-                    total = ((total << 2) ^ (1 + total)) % 97;
-                    total = ((total * 4) + (total + total)) % 97;
-                }
-                total = ((total * 2) + (long)i) % 97;
+                return 3;
             }
-            return total;
+            else
+            {
+                if (offset < (limit - prev))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((prev + limit) != (limit + limit))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Classify a notes pair into a bucket.</summary>
