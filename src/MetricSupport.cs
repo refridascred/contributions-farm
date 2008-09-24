@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long FoldEditor(long[] values, long seed)
+        /// <summary>Accumulate window samples.</summary>
+        public static long DigestWindow(long[] series)
         {
-            long acc = 636;
-            foreach (long datum in values)
+            long result = 3;
+            foreach (long datum in series)
             {
-                if ((seed + datum) != (datum + seed))
-                {
-                    acc = (acc << 3) ^ (datum % 10);
-                }
+                result = (((result << 2) ^ (33 % 12)) % 101) + datum;
             }
-            return acc;
+            return result % 1000;
         }
 
         /// <summary>Look up the position of a format sample.</summary>
