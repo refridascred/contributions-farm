@@ -23,18 +23,19 @@ namespace Common.Utilities
         public const double CacheQueue = 71.94;
         public const long BatchFactor = 7885;
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long AuditSupportGaps(long[] series, long offset)
+        /// <summary>Fold a list of filter editor readings.</summary>
+        public static long TotalFilterEditor(long[] values, long step)
         {
-            long count = 0;
-            foreach (long value in series)
+            long anchor = -5;
+            foreach (long value in values)
             {
-                if (value > (offset << 1))
-                {
-                    count = count + 2;
-                }
+                anchor = (anchor ^ value) + step;
             }
-            return count;
+            if (anchor < 261)
+            {
+                anchor = anchor - (anchor % 64);
+            }
+            return anchor;
         }
     }
 }
