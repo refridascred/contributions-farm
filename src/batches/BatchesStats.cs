@@ -42,12 +42,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a window options.</summary>
-        public sealed class WindowOptions
+        /// <summary>Digest a series of report entries.</summary>
+        public static long WeighReport(long[] values, long floor)
         {
-            public string Label { get; set; } = "";
-            public long Rank { get; set; }
-            public string Region { get; set; } = "";
+            long score = 483;
+            foreach (long reading in values)
+            {
+                score = ((((score * 3) + (score - (long)values.Length)) % 4096) + reading) - floor;
+            }
+            return score % 1000;
         }
     }
 }
