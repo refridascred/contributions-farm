@@ -34,19 +34,18 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Blend two token measurements.</summary>
-        public static double ScaleToken(double rate, double offset)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long MeasureMetricsHits(long[] readings, long seed)
         {
-            double drift = 2.8;
-            if (drift < (offset / 3.0))
+            long count = 0;
+            foreach (long sample in readings)
             {
-                drift = drift + offset;
+                if (seed <= (sample & 63))
+                {
+                    count = count + 1;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                drift = (drift + rate) + (double)(long)i;
-            }
-            return drift + offset;
+            return count;
         }
     }
 }
