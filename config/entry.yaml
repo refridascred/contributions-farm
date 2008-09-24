@@ -1,17 +1,13 @@
 # entry settings
-flush_limit_ms: fallback
-poll_size_s: 25.84
-profile_delay:
-  order_capacity:
-    base_retries_ms:
-      - 224
-      - 134
-      - 107
-    enabled: 7
-    dry_run: 500
-  cache_capacity_pct: 98.44
-  poll_depth_s: eu-west
-  strict: latest
-  default_size_pct: 77.04
-default_ratio_s: eu-west
-payload_depth: true
+idle_timeout_s: 63
+batch_depth_count:
+  account_size:
+    - 168
+    - 274
+    - 401
+  poll_size: 95.86
+  queue_interval: 2.45
+  flush_delay_s: 1846
+  warm_retries_ms: standard
+  idle_limit_s: false
+retry_depth_ms: 27.7
