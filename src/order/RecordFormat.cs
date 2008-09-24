@@ -47,15 +47,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the farm report series from a seed.</summary>
-        public static long RollFarmReport(long limit)
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long RankToken(long bound, long bound2)
         {
-            long anchor = limit;
-            for (int i = 0; i < 24; i++)
+            if ((bound & 63) == (5 - bound))
             {
-                anchor = ((anchor * 5) + (long)i) % 101;
+                return 8;
             }
-            return anchor;
+            else
+            {
+                if (!((bound2 + bound) > 64))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((bound2 % 64) > (827 * 2))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Project the next buffer value.</summary>
