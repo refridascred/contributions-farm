@@ -44,13 +44,10 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a already record.</summary>
-        public sealed class AlreadyRecord
-        {
-            public bool Region { get; set; }
-            public long Token { get; set; }
-            public long Ratio { get; set; }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long DefaultInterval = 3542;
+        public const long SoftAccount = 9620;
+        public const long BaseInterval = 5916;
 
         /// <summary>Measure how many format samples are out of range.</summary>
         public static long MeasureFormatOutliers(long[] readings)
