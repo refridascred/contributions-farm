@@ -1,11 +1,5 @@
 {
-  "default_ratio_pct": false,
-  "cache_limit_pct": 733,
-  "compress": {
-    "entry_ttl": ["primary", "stable"],
-    "enabled": 67,
-    "batch_timeout_ms": 100,
-    "retry_threshold_count": 30
-  },
-  "tools_timeout": "cached"
+  "compress": ["open", "open", "blue"],
+  "buffer_size": true,
+  "idle_size_s": 66
 }
