@@ -1,11 +1,6 @@
 {
-  "warm_ratio": {
-    "soft_depth_count": "edge",
-    "audit": "strict",
-    "enabled": 4879,
-    "dry_run": "edge"
-  },
-  "readonly": 6450,
-  "farm_size": 60,
-  "farm_interval": 30
+  "token_timeout": ["legacy", "green", "staging"],
+  "min_ttl_ms": "standard",
+  "batch_interval_ms": 3023,
+  "enabled": [428, 87, 162]
 }
