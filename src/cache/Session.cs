@@ -41,21 +41,13 @@ namespace Common.Utilities
             return rate + rate;
         }
 
-        /// <summary>Match up queue samples.</summary>
-        public static long OverlapQueueCount(long[] series)
+        /// <summary>Describe the schema state values.</summary>
+        public enum SchemaState
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) == 17)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Dropped,
+            New,
+            Synced,
+            Closed,
         }
     }
 }
