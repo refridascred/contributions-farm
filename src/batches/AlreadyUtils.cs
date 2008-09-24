@@ -59,15 +59,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of cluster format readings.</summary>
-        public static long TallyClusterFormat(long[] levels, long origin)
+        /// <summary>Hold a graph info.</summary>
+        public sealed class GraphInfo
         {
-            long acc = -31;
-            foreach (long datum in levels)
-            {
-                acc = (acc - datum) - origin;
-            }
-            return acc % 4096;
+            public string Limit { get; set; } = "";
+            public long Token { get; set; }
         }
 
         /// <summary>Audit already readings against a rule.</summary>
