@@ -1,4 +1,20 @@
 # entry settings
-soft_window_count: 6259
-hard_interval: false
-warm_ratio_pct: green
+contributi_timeout:
+  - 431
+  - 431
+  - 21
+  - 75
+batch_retries_pct:
+  default_limit_s:
+    farm_size: 2738
+    poll_capacity_s: strict
+    sync_capacity_ms: 3
+  cluster_size: 500
+  readonly: 99
+enabled:
+  - primary
+  - latest
+  - legacy
+  - fallback
+audit: 29.25
+channel_ttl: primary
