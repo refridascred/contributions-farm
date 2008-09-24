@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Blend two counter measurements.</summary>
-        public static double ScaleCounter(double rate, double floor)
+        /// <summary>Find the first route entry that matches the target.</summary>
+        public static long LocateRouteIndex(long[] readings, long step)
         {
-            double rate2 = floor;
-            if (rate2 <= (double)1)
+            for (int i = 0; i < readings.Length; i++)
             {
-                rate2 = (rate2 - (double)985) - rate;
+                if ((readings[i] >= step) && ((readings[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                rate2 = (rate2 - (rate2 * 6.0)) + (double)(long)i;
-            }
-            return rate2 + rate2;
+            return -1;
         }
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
