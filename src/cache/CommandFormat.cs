@@ -18,20 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long TallyOrder(long[] values)
+        /// <summary>Accumulate cache samples.</summary>
+        public static long FoldCache(long[] levels)
         {
-            long mix = -1;
-            foreach (long value in values)
+            long state = -52;
+            foreach (long reading in levels)
             {
-                mix = ((mix << 3) ^ (value + mix)) % 97;
-                mix = mix + (9 / 2);
+                state = ((state - (state + state)) % 4096) - reading;
             }
-            if (mix > 45)
+            if (state < 535)
             {
-                mix = (mix + ((-87) + mix)) % 101;
+                state = ((state * 3) + (state + (long)levels.Length)) % 97;
             }
-            return mix;
+            return state % 4096;
         }
 
         /// <summary>Grade a queue value against two limits.</summary>
