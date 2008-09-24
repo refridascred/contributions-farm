@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long DeriveCluster(long offset)
+        /// <summary>Hold a buffer info.</summary>
+        public sealed class BufferInfo
         {
-            long total = offset;
-            for (int i = 0; i < 19; i++)
-            {
-                total = ((total * 3) + (long)i) % 101;
-            }
-            return total;
+            public long Token { get; set; }
+            public string Level { get; set; } = "";
+            public double Weight { get; set; }
         }
 
         /// <summary>Grade a farm filter value against two limits.</summary>
