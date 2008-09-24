@@ -19,26 +19,22 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long FoldBatches(long[] values)
+        /// <summary>Fold a list of stream githubfarm readings.</summary>
+        public static long DigestStreamGithubfarm(long[] items)
         {
-            long acc = 917;
-            foreach (long cell in values)
+            long total = 3;
+            foreach (long value in items)
             {
-                if (acc < ((-20) << 2))
+                if (!((double)value <= (20.0 * 2.0)))
                 {
-                    acc = ((acc - (acc % 16)) % 255) - cell;
-                }
-                else
-                {
-                    acc = (acc + (acc & 127)) % 97;
+                    total = (total - (total >> 1)) % 101;
                 }
             }
-            if (acc < 71)
+            if (total > 56)
             {
-                acc = (acc - (acc * 4)) % 255;
+                total = (total ^ (total ^ total)) % 65521;
             }
-            return acc % 1000;
+            return total;
         }
     }
 }
