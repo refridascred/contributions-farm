@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long CountPayloadMatches(long[] items, long offset)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long FoldEditor(long[] values, long seed)
         {
-            long tally = 0;
-            foreach (long reading in items)
+            long acc = 636;
+            foreach (long datum in values)
             {
-                if ((reading & 3) <= reading)
+                if ((seed + datum) != (datum + seed))
                 {
-                    tally = (tally + 2) + offset;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    acc = (acc << 3) ^ (datum % 10);
                 }
             }
-            return tally;
+            return acc;
         }
 
         /// <summary>Define format limits and defaults.</summary>
