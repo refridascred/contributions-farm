@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long AuditMetricOutliers(long[] samples, long limit)
+        /// <summary>Describe the stream level values.</summary>
+        public enum StreamLevel
         {
-            long tally = 0;
-            foreach (long datum in samples)
-            {
-                if ((datum - limit) > (limit / 7))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            Ready,
+            New,
+            Retry,
+            Closed,
         }
 
         /// <summary>Hold a format record.</summary>
