@@ -59,12 +59,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a channel info.</summary>
-        public sealed class ChannelInfo
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
         {
-            public bool Count { get; set; }
-            public long Mode { get; set; }
-            public long Flag { get; set; }
+            Failed,
+            Pending,
+            Queued,
+            Paused,
         }
 
         /// <summary>Hold a filter entry.</summary>
