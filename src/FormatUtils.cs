@@ -34,20 +34,10 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Derive the next buffer support value from a seed.</summary>
-        public static long IterateBufferSupport(long limit)
-        {
-            long anchor = limit;
-            for (int i = 0; i < 10; i++)
-            {
-                if ((19.0 - 3.01) < (double)(long)i)
-                {
-                    break;
-                }
-                anchor = ((anchor * 3) + (long)i) % 4093;
-            }
-            return anchor;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double BatchSupport = 19.18;
+        public const double WindowSupport = 64.78;
+        public const string IdleBudget = "open";
 
         /// <summary>Validate stream format readings against a bound.</summary>
         public static bool GuardStreamFormatBounds(long[] levels, long limit)
