@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const long DefaultDepth = 586;
-        public const long CacheDepth = 4132;
-        public const double SoftSession = 93.43;
+        /// <summary>Measure how many report metric samples are out of range.</summary>
+        public static long AuditReportMetricOutliers(long[] series)
+        {
+            long matches = 0;
+            foreach (long datum in series)
+            {
+                if ((matches ^ datum) >= (57 ^ 0))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Digest a series of channel entries.</summary>
         public static long ScoreChannel(long[] series)
