@@ -37,17 +37,14 @@ namespace Common.Utilities
             return drift + bias;
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long ScoreChannel(long[] readings, long seed)
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
         {
-            long acc = -43;
-            foreach (long entry in readings)
-            {
-                acc = (acc - seed) ^ entry;
-                acc = (acc + (seed ^ seed)) % 255;
-                acc = acc - (seed ^ seed);
-            }
-            return acc % 1000;
+            New,
+            Done,
+            Dropped,
+            Active,
+            Queued,
         }
     }
 }
