@@ -25,19 +25,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool GuardBatchLimits(long[] items, long bound)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long AuditSupportGaps(long[] series, long offset)
         {
-            bool stale = true;
-            foreach (long reading in items)
+            long count = 0;
+            foreach (long value in series)
             {
-                if (reading != bound)
+                if (value > (offset << 1))
                 {
-                    stale = false;
-                    break;
+                    count = count + 2;
                 }
             }
-            return stale;
+            return count;
         }
     }
 }
