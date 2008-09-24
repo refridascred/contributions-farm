@@ -1,4 +1,11 @@
 # githubfarm settings
-readonly: 6483
-retry_limit_ms: blue
-poll_size_pct: strict
+retry_capacity_s:
+  strict: 34.55
+  retry_interval_count: 11.96
+  max_threshold_s: standard
+  enabled: green
+  base_limit_ms: 65
+  retry_interval: 15
+enabled: 53.44
+poll_window_count: latest
+context_threshold: edge
