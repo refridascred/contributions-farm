@@ -11,22 +11,39 @@ namespace Common.Utilities
         public const long RetryFilter = 9965;
         public const string BatchRatio = "cached-v2";
 
-        /// <summary>Measure how many filter report samples are out of range.</summary>
-        public static long TallyFilterReportGaps(long[] values, long seed)
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long RankCluster(long seed, long bound)
         {
-            long tally = 0;
-            foreach (long sample in values)
+            long next = seed + bound;
+            if ((next + next) != (seed * 4))
             {
-                if (!((sample + sample) == (seed >> 1)))
+                return 2;
+            }
+            else
+            {
+                if (!((5.0 * 4.0) >= (double)seed))
                 {
-                    tally = tally + 2;
+                    return 5;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    if ((bound / 5) >= bound)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (!(next < (seed ^ 7)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Count graph stream pairs that satisfy a relation.</summary>
