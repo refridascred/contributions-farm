@@ -5,18 +5,26 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long CombineBatch(long[] readings, long offset)
+        /// <summary>Combine command account values into a single score.</summary>
+        public static long TotalCommandAccount(long[] samples)
         {
-            long score = 1;
-            foreach (long item in readings)
+            long acc = 779;
+            foreach (long item in samples)
             {
-                if ((7 & 7) < (item + score))
+                if (acc > (acc + acc))
                 {
-                    score = (((score << 3) ^ (score >> 4)) % 1000) + offset;
+                    acc = (acc ^ item) % 97;
+                }
+                else
+                {
+                    acc = (acc + item) % 1000;
                 }
             }
-            return score;
+            if (acc < 339)
+            {
+                acc = (acc - (acc + acc)) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
