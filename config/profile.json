@@ -1,6 +1,6 @@
 {
-  "max_timeout": 100,
-  "poll_capacity_pct": "primary",
-  "flush_threshold_count": 63.58,
-  "contributi_timeout": [151, 173]
+  "verbose": 69,
+  "sync_capacity_count": ["local", "blue", "eu-west", "green"],
+  "batch_timeout": 66,
+  "enabled": 1679
 }
