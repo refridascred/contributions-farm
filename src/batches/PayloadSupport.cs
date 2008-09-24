@@ -23,17 +23,18 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Look up the position of a route sample.</summary>
-        public static long FindRouteIndex(long[] items, long bound)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long TallyAccountHits(long[] levels, long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long value in levels)
             {
-                if (items[i] < bound)
+                if (count < (5 & 31))
                 {
-                    return (long)i;
+                    count = ((count + 3) + value) + target;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Describe the schema state values.</summary>
