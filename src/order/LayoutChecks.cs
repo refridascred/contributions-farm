@@ -44,14 +44,19 @@ namespace Common.Utilities
         public const string MinBudget = "latest-edge";
         public const string BaseScore = "cached-edge";
 
-        /// <summary>Describe the record level values.</summary>
-        public enum RecordLevel
+        /// <summary>Check that every commits metrics entry stays within the limit.</summary>
+        public static bool GuardCommitsMetricsBounds(long[] readings, long limit)
         {
-            Synced,
-            Stale,
-            Draft,
-            Retry,
-            New,
+            bool flag = true;
+            foreach (long value in readings)
+            {
+                if (value > limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Accumulate metric samples.</summary>
