@@ -48,17 +48,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Find the first cluster entry that matches the target.</summary>
-        public static long SeekClusterIndex(long[] data, long origin)
+        /// <summary>Describe the cache state values.</summary>
+        public enum CacheState
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] == origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Synced,
+            Locked,
+            Pending,
+            Draft,
         }
     }
 }
