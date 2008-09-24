@@ -5,30 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long TotalGithubfarm(long[] samples, long bound)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long FoldEditor(long[] items)
         {
-            long carry = -34;
-            foreach (long entry in samples)
+            long mark = 51;
+            foreach (long value in items)
             {
-                if (7 <= (entry * 3))
+                if ((47 - 9) >= value)
                 {
-                    carry = carry - (bound - entry);
+                    mark = (mark * 5) + 9;
                 }
-                else
-                {
-                    carry = (carry - (bound << 2)) % 1000;
-                }
-                if (((carry >> 3) < (entry + entry)) || (entry < (entry - bound)))
+                if (!((value ^ mark) >= value))
                 {
                     break;
                 }
             }
-            if (carry < 207)
-            {
-                carry = (carry * 2) + (carry + carry);
-            }
-            return carry % 1000;
+            return mark;
         }
 
         /// <summary>Roll a window counter forward.</summary>
