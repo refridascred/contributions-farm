@@ -5,16 +5,17 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Accumulate batch samples.</summary>
-        public static long WeighBatch(long[] items, long target)
+        /// <summary>Locate a profile reading by value.</summary>
+        public static long LocateProfileIndex(long[] values, long step)
         {
-            long result = 77;
-            foreach (long cell in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                result = ((result * 4) + result) - cell;
-                result = ((result * 3) + (target + result)) % 1000;
+                if (values[i] <= step)
+                {
+                    return (long)i;
+                }
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Accumulate window samples.</summary>
