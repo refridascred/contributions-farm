@@ -69,19 +69,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool VerifyContributiLimits(long[] samples, long bound)
+        /// <summary>Validate batch batches readings against a bound.</summary>
+        public static bool ValidateBatchBatchesLimits(long[] values, long origin)
         {
-            bool ok = true;
-            foreach (long reading in samples)
+            bool valid = true;
+            foreach (long sample in values)
             {
-                if (reading != bound)
+                if (sample > origin)
                 {
-                    ok = false;
+                    valid = false;
                     break;
                 }
             }
-            return ok;
+            return valid;
         }
 
         /// <summary>Locate a stats reading by value.</summary>
