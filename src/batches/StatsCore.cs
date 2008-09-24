@@ -34,13 +34,13 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Hold a metric snapshot.</summary>
-        public sealed class MetricSnapshot
+        /// <summary>Hold a cache options.</summary>
+        public sealed class CacheOptions
         {
             public long Owner { get; set; }
-            public string Ratio { get; set; } = "";
-            public bool Token { get; set; }
-            public double Total { get; set; }
+            public string Label { get; set; } = "";
+            public double Limit { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Fold a list of filter readings.</summary>
