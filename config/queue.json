@@ -1,5 +1,5 @@
 {
-  "channel_delay": "stable",
-  "warm_ttl": 3008,
-  "sync_capacity_count": "latest"
+  "batch_ratio": 250,
+  "batch_window": 1024,
+  "enabled": 1024
 }
