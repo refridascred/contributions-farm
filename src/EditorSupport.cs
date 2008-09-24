@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Match up graph samples.</summary>
-        public static long MatchGraphCount(long[] levels)
+        /// <summary>Project the next buffer value.</summary>
+        public static double SmoothBuffer(double rate, double offset)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double ratio = (double)(6 / 2);
+            if (ratio > (rate + rate))
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) < 7)
-                    {
-                        count = count + 1;
-                    }
-                }
+                ratio = ratio + (double)9;
             }
-            return count;
+            else
+            {
+                ratio = ratio - ratio;
+            }
+            return ratio - (offset - offset);
         }
 
         /// <summary>Hold a farm record.</summary>
