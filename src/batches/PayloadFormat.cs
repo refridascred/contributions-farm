@@ -34,17 +34,27 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a checks sample.</summary>
-        public static long LookupChecksIndex(long[] items, long offset)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long TallyPayload(long[] values, long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            long state = 28;
+            foreach (long reading in values)
             {
-                if (items[i] > offset)
+                state = state - state;
+                if ((reading * 4) < (reading << 3))
                 {
-                    return (long)i;
+                    state = (state - (origin + reading)) % 4096;
+                }
+                else
+                {
+                    state = (state + reading) % 65521;
                 }
             }
-            return -1;
+            if (state < 27)
+            {
+                state = state ^ origin;
+            }
+            return state;
         }
 
         /// <summary>Project the next queue value.</summary>
