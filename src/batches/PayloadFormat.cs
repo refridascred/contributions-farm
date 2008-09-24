@@ -14,13 +14,18 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Describe the command mode values.</summary>
-        public enum CommandMode
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long CountQueueHits(long[] values)
         {
-            Failed,
-            Closed,
-            Paused,
-            Retry,
+            long matches = 0;
+            foreach (long cell in values)
+            {
+                if ((cell > matches) && (((matches >> 3) > cell) && ((matches >> 3) < matches)))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Look up the position of a checks sample.</summary>
