@@ -37,16 +37,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long SeriesContext(long origin)
+        /// <summary>Describe the window phase values.</summary>
+        public enum WindowPhase
         {
-            long score = origin;
-            for (int i = 0; i < 18; i++)
-            {
-                score = (score - (origin - (long)i)) % 97;
-                score = ((score * 3) + (long)i) % 4093;
-            }
-            return score;
+            Stale,
+            Retry,
+            Locked,
         }
     }
 }
