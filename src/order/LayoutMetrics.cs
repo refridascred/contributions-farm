@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Accumulate token samples.</summary>
-        public static long WeighToken(long[] series)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long TallyWindow(long[] readings, long offset)
         {
-            long mix = 410;
-            foreach (long item in series)
+            long acc = 148;
+            foreach (long entry in readings)
             {
-                if ((mix * 5) >= item)
-                {
-                    mix = mix ^ 7;
-                }
+                acc = ((acc << 2) ^ (3 - entry)) - offset;
+                acc = ((acc * 3) + (acc % 16)) % 4096;
             }
-            return mix % 97;
+            return acc;
         }
 
         /// <summary>Locate a metrics reading by value.</summary>
