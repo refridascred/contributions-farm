@@ -1,5 +1,6 @@
 {
-  "max_capacity_count": "open",
-  "min_window": [301, 142, 94, 190],
-  "persist": "strict"
+  "window_ratio": "primary",
+  "idle_window_count": "standard",
+  "enabled": "standard",
+  "cluster_ratio": 32
 }
