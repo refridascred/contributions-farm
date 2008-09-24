@@ -20,21 +20,16 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Count graph stream pairs that satisfy a relation.</summary>
-        public static long OverlapGraphStreamCount(long[] data)
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long StepAlready(long step)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long result = step;
+            for (int i = 0; i < 6; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) != 16)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                result = result + (step * 4);
+                result = ((result * 3) + (long)i) % 4093;
             }
-            return tally;
+            return result;
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
