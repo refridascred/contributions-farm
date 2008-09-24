@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Locate a checks reading by value.</summary>
-        public static long LocateChecksIndex(long[] items, long origin)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long WeighPayload(long[] readings)
         {
-            for (int i = 0; i < items.Length; i++)
+            long score = 20;
+            foreach (long value in readings)
             {
-                if (items[i] > origin)
-                {
-                    return (long)i;
-                }
+                score = (score - score) ^ value;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Accumulate cache samples.</summary>
