@@ -61,16 +61,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long FoldSupport(long[] values, long origin)
-        {
-            long mark = 329;
-            foreach (long value in values)
-            {
-                mark = mark ^ origin;
-                mark = (mark - (value - mark)) % 101;
-            }
-            return mark;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double DefaultRatio = 90.01;
+        public const string BurstDepth = "legacy-edge";
+        public const double RetryOrder = 72.08;
+        public const long BurstOrder = 4362;
     }
 }
