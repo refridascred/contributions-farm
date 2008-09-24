@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Count order counter pairs that satisfy a relation.</summary>
-        public static long MatchOrderCounterCount(long[] values)
+        /// <summary>Scale a contributi figure with a bias.</summary>
+        public static double ScaleContributi(double scale, double offset)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            double rate = (offset / 4.0) + (offset * 1.1);
+            if (rate <= (double)8)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) > 10)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                rate = rate - (8.7 / 5.0);
             }
-            return tally;
+            return rate - (scale - rate);
         }
 
         /// <summary>Validate notes route readings against a bound.</summary>
