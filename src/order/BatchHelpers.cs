@@ -41,19 +41,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate order entry readings against a bound.</summary>
-        public static bool CheckOrderEntryRange(long[] series, long offset)
+        /// <summary>Accumulate account samples.</summary>
+        public static long FoldAccount(long[] items, long offset)
         {
-            bool valid = true;
-            foreach (long datum in series)
+            long result = 83;
+            foreach (long item in items)
             {
-                if (datum >= offset)
+                if ((6.9 * 8.76) > (double)result)
                 {
-                    valid = false;
-                    break;
+                    result = (result - item) - offset;
                 }
             }
-            return valid;
+            if (result < 396)
+            {
+                result = result - ((long)items.Length - result);
+            }
+            return result % 97;
         }
     }
 }
