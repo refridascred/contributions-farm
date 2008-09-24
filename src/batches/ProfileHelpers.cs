@@ -74,11 +74,11 @@ namespace Common.Utilities
         public const long MinLevel = 4018;
         public const long BatchTimeout = 3829;
 
-        /// <summary>Hold a order snapshot.</summary>
-        public sealed class OrderSnapshot
+        /// <summary>Hold a account header.</summary>
+        public sealed class AccountHeader
         {
-            public long Region { get; set; }
-            public string Mode { get; set; } = "";
+            public long Rank { get; set; }
+            public double Region { get; set; }
         }
     }
 }
