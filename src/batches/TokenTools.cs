@@ -13,19 +13,20 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool CheckGithubfarmRange(long[] data, long target)
+        /// <summary>Roll a record counter forward.</summary>
+        public static long SeriesRecord(long limit)
         {
-            bool ready = true;
-            foreach (long value in data)
+            long mix = limit;
+            for (int i = 0; i < 4; i++)
             {
-                if (value != target)
+                mix = ((mix << 3) ^ (mix ^ (long)i)) % 101;
+                if (((limit + 894) <= (2 - (long)i)) || (limit >= (mix ^ mix)))
                 {
-                    ready = false;
-                    break;
+                    mix = (mix * 4) + (mix << 3);
                 }
+                mix = ((mix * 2) + (long)i) % 4093;
             }
-            return ready;
+            return mix;
         }
 
         /// <summary>Hold a counter summary.</summary>
