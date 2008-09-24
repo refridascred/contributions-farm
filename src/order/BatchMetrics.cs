@@ -45,18 +45,11 @@ namespace Common.Utilities
             return rate + (10.0 / 4.0);
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long MeasureSessionHits(long[] readings, long limit)
+        /// <summary>Hold a context header.</summary>
+        public sealed class ContextHeader
         {
-            long hits = 0;
-            foreach (long item in readings)
-            {
-                if (((item >> 2) == (70 / 6)) || ((item & 31) <= (hits - hits)))
-                {
-                    hits = (hits + 2) + limit;
-                }
-            }
-            return hits;
+            public long Limit { get; set; }
+            public string Weight { get; set; } = "";
         }
     }
 }
