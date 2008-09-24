@@ -59,12 +59,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long MaxBuffer = 7006;
-        public const string RetryWidth = "local-edge";
-        public const string MinTimeout = "latest-edge";
-        public const long BaseBuffer = 7726;
-        public const long RetryBudget = 2330;
+        /// <summary>Hold a channel info.</summary>
+        public sealed class ChannelInfo
+        {
+            public bool Count { get; set; }
+            public long Mode { get; set; }
+            public long Flag { get; set; }
+        }
 
         /// <summary>Hold a filter entry.</summary>
         public sealed class FilterEntry
