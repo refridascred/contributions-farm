@@ -1,11 +1,7 @@
 {
-  "hard_limit": false,
-  "checks_size": {
-    "schema_timeout": 9568,
-    "compress": true,
-    "enabled": [444, 56, 105, 464]
-  },
-  "readonly": 250,
-  "retry_interval_s": false,
-  "enabled": 82.21
+  "batch_retries": [196, 404],
+  "cache_capacity_count": 3.28,
+  "enabled": [83, 424],
+  "account_ttl": 80.3,
+  "audit": [307, 217, 74, 96]
 }
