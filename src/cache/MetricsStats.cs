@@ -54,11 +54,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double RetrySize = 29.74;
-        public const long MinSession = 7145;
-        public const long BaseSession = 9975;
-        public const long IdleCount = 5994;
-        public const long BaseScore = 9336;
+        /// <summary>Roll a metric counter forward.</summary>
+        public static long RollMetric(long target)
+        {
+            long mix = target;
+            for (int i = 0; i < 16; i++)
+            {
+                mix = ((mix * 3) + (long)i) % 1000;
+            }
+            return mix;
+        }
     }
 }
