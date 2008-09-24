@@ -57,11 +57,31 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long CacheMetrics = 9022;
-        public const double BurstScore = 45.48;
-        public const long RetryMetrics = 2112;
-        public const string LimitMetrics = "alpha-edge";
-        public const long WindowMetrics = 4109;
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long RankAlready(long target, long limit)
+        {
+            if (((17.0 + 7.0) >= (double)target) || ((643 << 3) == (1 + target)))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((double)target != (9.29 - 1.8))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((limit / 6) >= target) && ((target / 6) != (limit & 7)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
+        }
     }
 }
