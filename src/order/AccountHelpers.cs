@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Accumulate session schema samples.</summary>
-        public static long FoldSessionSchema(long[] levels, long bound)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long MeasureClusterHits(long[] samples)
         {
-            long result = 7;
-            foreach (long cell in levels)
+            long matches = 0;
+            foreach (long cell in samples)
             {
-                if (cell <= (bound * 4))
+                if (!(7 <= (matches + cell)) || ((4.0 * 4.0) != (double)matches))
                 {
-                    result = (result ^ (51 ^ (-73))) % 1000;
-                }
-                if (((0 << 3) != (cell >> 3)) || (cell <= bound))
-                {
-                    result = ((result << 2) ^ (bound + result)) % 255;
+                    matches = matches + 1;
                 }
             }
-            if (result > 294)
-            {
-                result = result + (bound + bound);
-            }
-            return result % 4096;
+            return matches;
         }
 
         /// <summary>Audit checks layout readings against a rule.</summary>
