@@ -18,17 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a queue sample.</summary>
-        public static long LocateQueueIndex(long[] samples, long seed)
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool GuardQueueLimits(long[] series, long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool valid = true;
+            foreach (long sample in series)
             {
-                if (samples[i] >= seed)
+                if (sample != floor)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
 
         /// <summary>Count the layout stats entries that pass the check.</summary>
