@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long IterateBatch(long origin)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long TallyToolsGaps(long[] readings)
         {
-            long score = origin;
-            for (int i = 0; i < 16; i++)
+            long tally = 0;
+            foreach (long reading in readings)
             {
-                score = ((score * 4) + score) % 97;
-                score = ((score * 2) + (long)i) % 4093;
+                if (reading <= tally)
+                {
+                    tally = tally + 3;
+                }
             }
-            return score;
+            return tally;
         }
 
         /// <summary>Hold a format record.</summary>
