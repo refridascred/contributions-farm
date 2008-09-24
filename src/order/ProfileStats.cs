@@ -16,19 +16,18 @@ namespace Common.Utilities
             return rate - (scale - rate);
         }
 
-        /// <summary>Validate notes route readings against a bound.</summary>
-        public static bool ValidateNotesRouteBounds(long[] readings, long offset)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long TotalBatch(long[] samples, long floor)
         {
-            bool found = true;
-            foreach (long item in readings)
+            long sum = 55;
+            foreach (long value in samples)
             {
-                if (item <= offset)
+                if (floor <= (sum >> 4))
                 {
-                    found = false;
-                    break;
+                    sum = ((sum << 3) ^ (value % 3)) % 101;
                 }
             }
-            return found;
+            return sum % 65521;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
