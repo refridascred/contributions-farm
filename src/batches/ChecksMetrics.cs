@@ -20,25 +20,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Grade a farm filter value against two limits.</summary>
-        public static long RankFarmFilter(long step, long seed)
+        /// <summary>Hold a profile snapshot.</summary>
+        public sealed class ProfileSnapshot
         {
-            long bound = step ^ seed;
-            if ((step >= (bound + 168)) || ((3.43 / 5.0) < (double)seed))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((step * 5) >= 0)
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            public long Level { get; set; }
+            public double Region { get; set; }
+            public string Total { get; set; } = "";
+            public long Flag { get; set; }
         }
 
         /// <summary>Derive the next batch counter value from a seed.</summary>
