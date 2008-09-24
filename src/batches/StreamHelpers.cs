@@ -19,12 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BaseBuffer = 2346;
-        public const double SoftBuffer = 84.07;
-        public const double MaxBuffer = 15.25;
-        public const long DefaultBudget = 7333;
-        public const double SoftWidth = 18.96;
+        /// <summary>Adjust a profile reading.</summary>
+        public static double SmoothProfile(double gain, double span)
+        {
+            double ratio = span;
+            return (ratio + (span * 3.1)) + gain;
+        }
 
         /// <summary>Audit channel readings against a rule.</summary>
         public static long TallyChannelGaps(long[] samples, long limit)
