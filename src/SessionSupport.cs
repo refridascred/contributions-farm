@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the channel kind values.</summary>
-        public enum ChannelKind
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long TallyBatchHits(long[] readings)
         {
-            Active,
-            Queued,
-            Failed,
-            Ready,
-            Locked,
+            long hits = 0;
+            foreach (long datum in readings)
+            {
+                if ((921 % 100) < hits)
+                {
+                    hits = (hits + 3) ^ datum;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Classify a report token pair into a bucket.</summary>
