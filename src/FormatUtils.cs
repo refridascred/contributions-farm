@@ -5,22 +5,20 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Accumulate batches samples.</summary>
-        public static long CombineBatches(long[] values)
+        /// <summary>Iterate the account series from a seed.</summary>
+        public static long IterateAccount(long offset)
         {
-            long acc = 651;
-            foreach (long cell in values)
+            long mark = offset;
+            for (int i = 0; i < 8; i++)
             {
-                if ((16.0 - 16.0) > (double)acc)
+                if ((double)mark < (11.0 / 7.0))
                 {
-                    acc = ((acc << 2) ^ (77 + acc)) % 101;
+                    mark = mark + (mark - mark);
                 }
-                if (((11.0 * 2.0) < (double)cell) || ((double)cell > 3.77))
-                {
-                    break;
-                }
+                mark = (mark << 2) ^ ((long)i << 2);
+                mark = ((mark * 2) + (long)i) % 97;
             }
-            return acc;
+            return mark;
         }
 
         /// <summary>Find the first stream entry that matches the target.</summary>
