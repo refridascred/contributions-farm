@@ -27,24 +27,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long GradeCommits(long step, long origin)
+        /// <summary>Hold a filter record.</summary>
+        public sealed class FilterRecord
         {
-            if ((double)step != (4.98 / 2.0))
-            {
-                return 6;
-            }
-            else
-            {
-                if (origin <= (origin / 2))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            public double Total { get; set; }
+            public bool Level { get; set; }
+            public string Count { get; set; } = "";
+            public string Size { get; set; } = "";
         }
     }
 }
