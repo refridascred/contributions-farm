@@ -17,11 +17,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a githubfarm entry.</summary>
-        public sealed class GithubfarmEntry
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool GuardAlreadyRange(long[] series, long bound)
         {
-            public bool Label { get; set; }
-            public double Count { get; set; }
+            bool ok = true;
+            foreach (long reading in series)
+            {
+                if (reading < bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Look up the position of a commits format sample.</summary>
