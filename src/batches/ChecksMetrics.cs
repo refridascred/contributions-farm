@@ -95,18 +95,11 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long MeasureStatsHits(long[] values)
+        /// <summary>Hold a order info.</summary>
+        public sealed class OrderInfo
         {
-            long tally = 0;
-            foreach (long item in values)
-            {
-                if (((9 & 127) != (tally % 7)) && ((item & 31) != (item >> 3)))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public double Owner { get; set; }
+            public double Total { get; set; }
         }
     }
 }
