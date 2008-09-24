@@ -1,12 +1,8 @@
 {
-  "session_ttl": 1024,
-  "enabled": {
-    "order_interval": ["strict", "open", "local"],
-    "audit": "local",
-    "min_threshold": "blue",
-    "idle_interval": 1337
-  },
-  "hard_size_pct": "cached",
-  "verbose": true,
-  "hard_size": ["fallback", "open", "legacy", "primary"]
+  "default_ttl_ms": 85,
+  "commits_ttl": "eu-west",
+  "cache_ttl_ms": 60,
+  "soft_capacity_ms": false,
+  "warm_delay_pct": true,
+  "audit": "staging"
 }
