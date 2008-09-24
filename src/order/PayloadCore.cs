@@ -13,18 +13,17 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long MeasurePayloadHits(long[] readings, long seed)
+        /// <summary>Locate a notes reading by value.</summary>
+        public static long SeekNotesIndex(long[] values, long seed)
         {
-            long matches = 0;
-            foreach (long reading in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((27 % 16) == (38 - reading))
+                if ((values[i] == seed) && ((values[i] % 3) != 0))
                 {
-                    matches = (matches + 1) + seed;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Project the next stream value.</summary>
