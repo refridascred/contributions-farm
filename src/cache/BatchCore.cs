@@ -11,13 +11,19 @@ namespace Common.Utilities
         public const long StepStats = 6017;
         public const double CacheStats = 78.8;
 
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool VerifyCommandRange(long[] values, long target)
         {
-            Idle,
-            Closed,
-            Ready,
-            Done,
+            bool found = true;
+            foreach (long datum in values)
+            {
+                if (datum < target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Look up the position of a format sample.</summary>
