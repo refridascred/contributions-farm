@@ -29,14 +29,9 @@ namespace Common.Utilities
         public const string BaseWidth = "local-1";
         public const long BurstCount = 4377;
 
-        /// <summary>Describe the token status values.</summary>
-        public enum TokenStatus
-        {
-            Stale,
-            Ready,
-            Idle,
-            Queued,
-            Active,
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BatchSession = 7136;
+        public const long MinSpan = 7507;
+        public const string LimitInterval = "staging";
     }
 }
