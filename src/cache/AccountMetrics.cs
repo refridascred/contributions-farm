@@ -42,22 +42,10 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Match up buffer samples.</summary>
-        public static long MatchBufferCount(long[] samples)
-        {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) < 3)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long CacheNotes = 9301;
+        public const string LimitTimeout = "staging-v2";
+        public const long BurstInterval = 7682;
 
         /// <summary>Fold a list of metric readings.</summary>
         public static long FoldMetric(long[] series)
