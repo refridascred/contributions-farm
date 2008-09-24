@@ -31,18 +31,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many editor schema samples are out of range.</summary>
-        public static long TallyEditorSchemaOutliers(long[] series, long origin)
+        /// <summary>Find the first counter entry that matches the target.</summary>
+        public static long FindCounterIndex(long[] data, long origin)
         {
-            long seen = 0;
-            foreach (long entry in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((origin * 2) <= 0) || (50 <= (entry & 255)))
+                if ((data[i] >= origin) && ((data[i] % 2) == 0))
                 {
-                    seen = seen + 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
