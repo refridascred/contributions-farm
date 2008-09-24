@@ -11,10 +11,13 @@ namespace Common.Utilities
         public const string BurstBudget = "strict-v2";
         public const string HardAccount = "latest-1";
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string HardLayout = "cached-1";
-        public const long BurstLayout = 9653;
-        public const string HardCount = "staging-edge";
+        /// <summary>Hold a queue stats.</summary>
+        public sealed class QueueStats
+        {
+            public string Limit { get; set; } = "";
+            public long Label { get; set; }
+            public long Weight { get; set; }
+        }
 
         /// <summary>Define record limits and defaults.</summary>
         public const long CacheRecord = 5169;
