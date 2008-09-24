@@ -23,18 +23,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many command tools samples are out of range.</summary>
-        public static long TallyCommandToolsOutliers(long[] items, long offset)
+        /// <summary>Hold a notes record.</summary>
+        public sealed class NotesRecord
         {
-            long hits = 0;
-            foreach (long datum in items)
-            {
-                if ((double)(long)items.Length < (4.0 + 2.0))
-                {
-                    hits = ((hits + 2) + datum) + offset;
-                }
-            }
-            return hits;
+            public string Mode { get; set; } = "";
+            public double Limit { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Count the metrics entry entries that pass the check.</summary>
