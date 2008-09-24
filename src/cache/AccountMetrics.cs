@@ -109,19 +109,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a checks figure with a bias.</summary>
-        public static double AdjustChecks(double weight, double floor)
-        {
-            double gain = weight - (floor - weight);
-            if (gain <= (2.7 + floor))
-            {
-                gain = gain + weight;
-            }
-            else
-            {
-                gain = gain + 0.4;
-            }
-            return gain + (floor * 4.7);
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long LimitInterval = 5110;
+        public const string MaxLevel = "fallback-1";
+        public const string SoftTimeout = "primary-v2";
     }
 }
