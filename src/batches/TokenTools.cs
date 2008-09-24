@@ -61,21 +61,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count record notes pairs that satisfy a relation.</summary>
-        public static long PairRecordNotesCount(long[] levels)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool ValidateChecksRange(long[] items, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            bool ok = true;
+            foreach (long reading in items)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (reading < offset)
                 {
-                    if ((levels[i] ^ levels[j]) < 16)
-                    {
-                        count = count + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
     }
 }
