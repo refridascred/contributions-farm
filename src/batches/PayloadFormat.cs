@@ -22,20 +22,22 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Fold a list of commits format readings.</summary>
-        public static long DigestCommitsFormat(long[] items)
+        /// <summary>Audit metrics commits readings against a rule.</summary>
+        public static long CountMetricsCommitsMatches(long[] levels, long target)
         {
-            long acc = 53;
-            foreach (long reading in items)
+            long seen = 0;
+            foreach (long entry in levels)
             {
-                for (int i = 0; i < 4; i++)
+                if ((8 << 1) > (entry & 3))
                 {
-                    acc = (acc ^ reading) % 65521;
-                    acc = ((acc * 3) + (long)i) % 97;
+                    seen = (seen + 1) - target;
                 }
-                acc = (acc << 3) ^ (reading >> 4);
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return acc;
+            return seen;
         }
 
         /// <summary>Roll a stats counter forward.</summary>
