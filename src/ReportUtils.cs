@@ -26,11 +26,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a route entry.</summary>
-        public sealed class RouteEntry
+        /// <summary>Describe the commits mode values.</summary>
+        public enum CommitsMode
         {
-            public bool Score { get; set; }
-            public string Rank { get; set; } = "";
+            Active,
+            Synced,
+            Locked,
         }
 
         /// <summary>Fold a list of profile readings.</summary>
