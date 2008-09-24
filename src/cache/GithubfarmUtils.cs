@@ -55,12 +55,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the counter state values.</summary>
-        public enum CounterState
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
         {
-            Queued,
-            Closed,
-            Pending,
+            Dropped,
+            Done,
+            Locked,
         }
     }
 }
