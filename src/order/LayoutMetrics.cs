@@ -24,18 +24,22 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long MeasureNotesHits(long[] series, long step)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long CountProfileOutliers(long[] samples)
         {
-            long count = 0;
-            foreach (long item in series)
+            long tally = 0;
+            foreach (long sample in samples)
             {
-                if ((item + step) != (step ^ count))
+                if ((double)tally == (double)sample)
                 {
-                    count = count + 2;
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return count;
+            return tally;
         }
     }
 }
