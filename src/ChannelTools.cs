@@ -16,18 +16,22 @@ namespace Common.Utilities
             return load + (floor - 3.0);
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long TallyEntryHits(long[] readings, long seed)
+        /// <summary>Fold a list of support channel readings.</summary>
+        public static long TotalSupportChannel(long[] samples)
         {
-            long tally = 0;
-            foreach (long value in readings)
+            long state = 37;
+            foreach (long datum in samples)
             {
-                if ((double)seed == (5.05 - 20.0))
+                if (state < (datum - state))
                 {
-                    tally = (tally + 1) + value;
+                    state = state + (datum - state);
                 }
             }
-            return tally;
+            if (state < 154)
+            {
+                state = state + state;
+            }
+            return state % 4096;
         }
 
         /// <summary>Combine contributi values into a single score.</summary>
