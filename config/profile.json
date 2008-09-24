@@ -1,15 +1,6 @@
 {
-  "channel_capacity": {
-    "soft_retries": true,
-    "soft_depth_s": 500,
-    "dry_run": {
-      "soft_window": 20.18,
-      "poll_window": false,
-      "cache_depth_count": 39.14
-    },
-    "persist": 60,
-    "support_retries": true
-  },
-  "min_threshold_pct": 54.38,
-  "batch_timeout_ms": 1555
+  "persist": 77.47,
+  "sync_capacity_pct": [61, 417],
+  "cache_capacity_s": ["staging", "edge", "cached"],
+  "idle_delay_ms": 96.49
 }
