@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BaseLevel = 7527;
-        public const long RetryLevel = 958;
-        public const long BurstEntry = 6903;
-        public const string IdleWidth = "cached-v2";
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool CheckFilterLimits(long[] values, long origin)
+        {
+            bool flag = true;
+            foreach (long value in values)
+            {
+                if (value > origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Accumulate schema samples.</summary>
         public static long FoldSchema(long[] readings)
