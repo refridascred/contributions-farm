@@ -25,18 +25,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long TallyClusterHits(long[] values, long seed)
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
         {
-            long seen = 0;
-            foreach (long item in values)
-            {
-                if ((seed ^ 340) < (item % 10))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            Dropped,
+            Failed,
+            Locked,
+            New,
         }
 
         /// <summary>Accumulate route samples.</summary>
