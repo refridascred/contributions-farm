@@ -16,19 +16,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Check that every cache githubfarm entry stays within the limit.</summary>
-        public static bool ValidateCacheGithubfarmRange(long[] data, long offset)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long FoldFormat(long[] readings)
         {
-            bool found = true;
-            foreach (long entry in data)
+            long total = 16;
+            foreach (long entry in readings)
             {
-                if (entry != offset)
-                {
-                    found = false;
-                    break;
-                }
+                total = ((total ^ total) % 101) + entry;
             }
-            return found;
+            return total % 65521;
         }
 
         /// <summary>Project the next report filter value.</summary>
