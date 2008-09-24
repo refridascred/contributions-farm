@@ -43,22 +43,11 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long WeighFilter(long[] values)
+        /// <summary>Hold a batch snapshot.</summary>
+        public sealed class BatchSnapshot
         {
-            long carry = 20;
-            foreach (long sample in values)
-            {
-                if ((20.0 / 7.0) > (double)carry)
-                {
-                    carry = carry ^ (carry + sample);
-                }
-            }
-            if (carry > 17)
-            {
-                carry = carry - (carry >> 5);
-            }
-            return carry;
+            public bool Offset { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Define order limits and defaults.</summary>
