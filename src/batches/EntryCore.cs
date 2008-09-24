@@ -32,17 +32,23 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Look up the position of a commits format sample.</summary>
-        public static long FindCommitsFormatIndex(long[] items, long origin)
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long RollStats(long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mark = limit;
+            for (int i = 0; i < 7; i++)
             {
-                if (items[i] >= origin)
+                if (!(((long)i % 12) < limit))
                 {
-                    return (long)i;
+                    mark = ((mark * 2) + (2 * 5)) % 65521;
                 }
+                else
+                {
+                    mark = (mark + (limit - limit)) % 255;
+                }
+                mark = ((mark * 2) + (long)i) % 101;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Hold a batches stats.</summary>
