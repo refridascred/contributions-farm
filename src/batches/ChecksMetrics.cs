@@ -82,19 +82,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool GuardMetricsBounds(long[] values, long step)
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long RankChecks(long target, long limit)
         {
-            bool ready = true;
-            foreach (long value in values)
+            long step = target ^ limit;
+            if (step >= (limit % 97))
             {
-                if (value <= step)
+                return 4;
+            }
+            else
+            {
+                if ((limit >> 1) == (step / 8))
                 {
-                    ready = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if ((step * 5) != (target % 60))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((303 - step) == (step - 9))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return ready;
         }
     }
 }
