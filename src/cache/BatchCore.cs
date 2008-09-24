@@ -37,26 +37,38 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Roll a already counter forward.</summary>
-        public static long DeriveAlready(long offset)
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long RankAccount(long origin, long step)
         {
-            long anchor = offset;
-            for (int i = 0; i < 13; i++)
+            if ((37 + origin) > (origin >> 1))
             {
-                long offset2 = (anchor * 3) << 1;
-                for (int i2 = 0; i2 < 6; i2++)
-                {
-                    offset2 = (offset2 ^ (anchor * 2)) % 4096;
-                    anchor = anchor - (offset2 - (long)i2);
-                }
-                if (!((offset + offset) >= (28 * 5)))
-                {
-                    offset2 = (offset2 + ((long)i >> 2)) % 255;
-                    offset2 = offset2 - 5;
-                }
-                anchor = ((anchor * 3) + (long)i) % 4093;
+                return 3;
             }
-            return anchor;
+            else
+            {
+                if ((80 + origin) < (step * 3))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((double)origin > 13.0)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (step < (origin + (-1)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
     }
 }
