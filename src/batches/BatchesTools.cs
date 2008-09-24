@@ -17,11 +17,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a cluster header.</summary>
-        public sealed class ClusterHeader
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long CountFarmOutliers(long[] items)
         {
-            public long Score { get; set; }
-            public bool Token { get; set; }
+            long hits = 0;
+            foreach (long cell in items)
+            {
+                if ((double)hits > 2.5)
+                {
+                    hits = (hits + 1) - cell;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Measure how many editor schema samples are out of range.</summary>
