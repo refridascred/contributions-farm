@@ -101,12 +101,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a metric options.</summary>
-        public sealed class MetricOptions
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
         {
-            public long Count { get; set; }
-            public bool Limit { get; set; }
-            public string Total { get; set; } = "";
+            Done,
+            Dropped,
+            Active,
         }
     }
 }
