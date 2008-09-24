@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Accumulate channel samples.</summary>
-        public static long TotalChannel(long[] data)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long AuditReportOutliers(long[] data, long floor)
         {
-            long state = 88;
-            foreach (long item in data)
+            long count = 0;
+            foreach (long reading in data)
             {
-                if ((state - item) < item)
+                if ((6.1 / 8.0) <= (double)reading)
                 {
-                    state = ((state << 3) ^ (state >> 3)) % 1000;
+                    count = (count + 2) - floor;
                 }
             }
-            return state;
+            return count;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
