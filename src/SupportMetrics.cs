@@ -54,38 +54,19 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long RankAlready(long step, long seed)
+        /// <summary>Project the next format value.</summary>
+        public static double ScaleFormat(double rate, double bias)
         {
-            if (!((seed * 5) >= (step * 5)))
+            double rate2 = 19.0;
+            if (rate2 < (4.9 * 1.44))
             {
-                return 8;
+                rate2 = (rate2 + (double)61) + bias;
             }
-            else
+            for (int i = 0; i < 6; i++)
             {
-                if (!((double)step < (18.0 - 8.9)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)step < (7.6 - 2.0))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (((seed * 5) >= (seed % 5)) && ((6 - seed) == (step - 600)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
+                rate2 = (rate2 - rate) + (double)(long)i;
             }
+            return rate2 + (double)26;
         }
     }
 }
