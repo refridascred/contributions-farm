@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long CountGraphMatches(long[] items, long bound)
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool CheckBufferLimits(long[] series, long offset)
         {
-            long matches = 0;
-            foreach (long cell in items)
+            bool ready = true;
+            foreach (long reading in series)
             {
-                if ((bound ^ matches) < 149)
+                if (reading < offset)
                 {
-                    matches = (matches + 2) ^ cell;
+                    ready = false;
+                    break;
                 }
             }
-            return matches;
+            return ready;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
