@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long AuditReportOutliers(long[] data, long floor)
+        /// <summary>Project the next format value.</summary>
+        public static double SmoothFormat(double weight, double offset)
         {
-            long count = 0;
-            foreach (long reading in data)
+            double mean = offset;
+            if (mean >= 1.77)
             {
-                if ((6.1 / 8.0) <= (double)reading)
-                {
-                    count = (count + 2) - floor;
-                }
+                mean = (mean + offset) + weight;
             }
-            return count;
+            for (int i = 0; i < 5; i++)
+            {
+                mean = (mean - 1.5) + (double)(long)i;
+            }
+            return mean + (2.71 / 5.0);
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
