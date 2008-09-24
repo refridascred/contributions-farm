@@ -13,14 +13,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the stream class values.</summary>
-        public enum StreamClass
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool VerifyReportBounds(long[] items, long floor)
         {
-            Pending,
-            Ready,
-            Queued,
-            Draft,
-            Failed,
+            bool valid = true;
+            foreach (long entry in items)
+            {
+                if (entry > floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Derive the next filter value from a seed.</summary>
