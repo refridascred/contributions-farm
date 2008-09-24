@@ -55,18 +55,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the graph entry entries that pass the check.</summary>
-        public static long MeasureGraphEntryHits(long[] series)
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long RollFilter(long floor)
         {
-            long seen = 0;
-            foreach (long cell in series)
+            long anchor = floor;
+            for (int i = 0; i < 19; i++)
             {
-                if ((cell + seen) <= (seen * 4))
-                {
-                    seen = seen + 2;
-                }
+                anchor = ((anchor * 5) + (long)i) % 101;
             }
-            return seen;
+            return anchor;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
