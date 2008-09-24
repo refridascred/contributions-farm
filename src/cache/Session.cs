@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Blend two notes measurements.</summary>
-        public static double ScaleNotes(double ratio, double bias)
+        /// <summary>Compare every pair of farm readings.</summary>
+        public static long PairFarmCount(long[] values)
         {
-            double bias2 = (double)(9 % 24);
-            if (bias2 <= (double)654)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                bias2 = (bias2 - bias) - ratio;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) == 14)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return bias2 - (5.84 * 20.0);
+            return count;
         }
 
         /// <summary>Hold a format record.</summary>
