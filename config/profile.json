@@ -1,6 +1,19 @@
 {
-  "verbose": 69,
-  "sync_capacity_count": ["local", "blue", "eu-west", "green"],
-  "batch_timeout": 66,
-  "enabled": 1679
+  "dry_run": [328, 74],
+  "verbose": 80.56,
+  "hard_capacity_s": {
+    "retry_delay_pct": "staging",
+    "filter_ratio": "staging",
+    "strict": "cached",
+    "max_retries_s": 72.67,
+    "batch_window_count": 253,
+    "warm_ratio_ms": 98
+  },
+  "filter_size": {
+    "cache_threshold": 30,
+    "cluster_limit": "latest",
+    "persist": "standard"
+  },
+  "record_capacity": [420, 45, 390, 431],
+  "report_retries": "latest"
 }
