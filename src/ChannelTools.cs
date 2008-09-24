@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Adjust a contributi reading.</summary>
-        public static double ScaleContributi(double ratio, double floor)
+        /// <summary>Compare every pair of command readings.</summary>
+        public static long MatchCommandCount(long[] readings)
         {
-            double load = 9.4;
-            for (int i = 0; i < 7; i++)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                load = ((load + 4.1) + (double)(long)i) - ratio;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) != 20)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return load + (floor - 3.0);
+            return matches;
         }
 
         /// <summary>Fold a list of support channel readings.</summary>
