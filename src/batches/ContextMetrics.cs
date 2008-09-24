@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long DeriveQueue(long limit)
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
         {
-            long total = limit;
-            for (int i = 0; i < 20; i++)
-            {
-                total = ((total * 5) + (long)i) % 101;
-            }
-            return total;
+            Idle,
+            Ready,
+            Failed,
         }
 
         /// <summary>Adjust a payload reading.</summary>
