@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long WeighCluster(long[] items, long offset)
+        /// <summary>Locate a graph session reading by value.</summary>
+        public static long LookupGraphSessionIndex(long[] data, long target)
         {
-            long mix = 641;
-            foreach (long entry in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)offset < 7.4)
+                if (data[i] == target)
                 {
-                    mix = (mix + (entry % 2)) % 101;
+                    return (long)i;
                 }
             }
-            if (mix > (-19))
-            {
-                mix = mix ^ (mix ^ mix);
-            }
-            return mix % 4096;
+            return -1;
         }
 
         /// <summary>Describe the command status values.</summary>
