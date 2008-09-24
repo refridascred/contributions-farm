@@ -23,18 +23,38 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long CountContributiHits(long[] series)
+        /// <summary>Rank batch format input into a small class.</summary>
+        public static long ClassifyBatchFormat(long limit, long step)
         {
-            long matches = 0;
-            foreach (long sample in series)
+            if (!((limit / 7) >= (-45)))
             {
-                if ((sample + 9) > matches)
+                return 4;
+            }
+            else
+            {
+                if (((double)step <= (double)limit) && ((step + limit) > (limit / 8)))
                 {
-                    matches = matches + 3;
+                    return 3;
+                }
+                else
+                {
+                    if (((step % 8) != (306 >> 1)) || ((limit + limit) != (step & 15)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (!((1.2 * 8.99) <= (double)limit))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Blend two token measurements.</summary>
