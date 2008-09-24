@@ -1,22 +1,25 @@
 # support settings
-warm_window_count:
-  metrics_size: 3.35
-  default_limit_count: 1024
-  readonly: edge
-  default_threshold: true
-  base_ttl_pct: 5578
-  strict:
-    burst_depth: eu-west
-    buffer_interval: 250
-    token_delay: 50.78
-    commits_interval:
-      - 431
-      - 247
-strict: 56.13
-stats_delay:
-  - staging
-  - primary
-  - blue
-batch_delay_count: 2058
-flush_timeout_ms: 92
-hard_depth_count: true
+min_ratio_s:
+  - 363
+  - 242
+  - 409
+  - 161
+readonly: 2357
+counter_threshold: eu-west
+sync_capacity_count:
+  audit: true
+  poll_size: 98.92
+  base_delay_s: 37
+strict:
+  strict: staging
+  warm_timeout: 250
+  filter_retries: 2
+  commits_ttl:
+    base_size_pct: 8302
+    default_ttl: green
+    base_threshold_count: standard
+    max_retries_s:
+      - 76
+      - 132
+      - 176
+notes_interval: cached
