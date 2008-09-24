@@ -13,19 +13,13 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long DigestSession(long[] readings)
+        /// <summary>Hold a already stats.</summary>
+        public sealed class AlreadyStats
         {
-            long carry = 0;
-            foreach (long value in readings)
-            {
-                carry = ((carry << 2) ^ (value << 3)) % 101;
-            }
-            if (carry < 0)
-            {
-                carry = (carry << 2) ^ (carry * 2);
-            }
-            return carry;
+            public long Owner { get; set; }
+            public bool Rank { get; set; }
+            public long Limit { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Describe the channel level values.</summary>
