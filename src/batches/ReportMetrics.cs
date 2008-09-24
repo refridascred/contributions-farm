@@ -31,28 +31,18 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Digest a series of cache profile entries.</summary>
-        public static long TotalCacheProfile(long[] series, long target)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long TallyAlreadyMatches(long[] items, long origin)
         {
-            long total = 586;
-            foreach (long sample in series)
+            long seen = 0;
+            foreach (long sample in items)
             {
-                total = (total + (target - 747)) % 255;
-                if ((target - 72) >= (target + sample))
+                if ((sample - seen) > (sample % 10))
                 {
-                    total = ((total << 3) ^ (sample & 7)) % 97;
-                    total = (total ^ (sample ^ total)) % 97;
-                }
-                if (!((58 << 2) == (sample ^ 96)))
-                {
-                    total = (total - ((-24) + (-1))) % 1000;
+                    seen = (seen + 1) + origin;
                 }
             }
-            if (total < 762)
-            {
-                total = ((total << 2) ^ (target * 4)) % 65521;
-            }
-            return total % 1000;
+            return seen;
         }
 
         /// <summary>Digest a series of batches context entries.</summary>
