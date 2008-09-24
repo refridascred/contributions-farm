@@ -63,15 +63,39 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long TotalSchema(long[] samples)
+        /// <summary>Classify a format farm pair into a bucket.</summary>
+        public static long GradeFormatFarm(long target, long origin)
         {
-            long mix = 618;
-            foreach (long cell in samples)
+            long cur = target + origin;
+            if ((origin - 2) < cur)
             {
-                mix = ((mix - (272 * 3)) % 101) ^ cell;
+                return 7;
             }
-            return mix % 1000;
+            else
+            {
+                if (((-615) + origin) < (cur + 826))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((6 % 5) >= origin)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((target << 1) <= (cur ^ origin))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a order info.</summary>
