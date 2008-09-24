@@ -64,19 +64,21 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Project the next context value.</summary>
-        public static double AdjustContext(double bias, double span)
+        /// <summary>Count counter payload pairs that satisfy a relation.</summary>
+        public static long MatchCounterPayloadCount(long[] readings)
         {
-            double gain = 9.0;
-            if (gain > bias)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                gain = gain + gain;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) < 11)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                gain = (gain + gain) + (double)(long)i;
-            }
-            return gain + (span + span);
+            return count;
         }
     }
 }
