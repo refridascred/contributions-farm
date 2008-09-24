@@ -11,13 +11,28 @@ namespace Common.Utilities
         public const long StepProfile = 1839;
         public const long SoftProfile = 6404;
 
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
+        /// <summary>Digest a series of cache profile entries.</summary>
+        public static long TotalCacheProfile(long[] series, long target)
         {
-            Dropped,
-            Closed,
-            Locked,
-            Ready,
+            long total = 586;
+            foreach (long sample in series)
+            {
+                total = (total + (target - 747)) % 255;
+                if ((target - 72) >= (target + sample))
+                {
+                    total = ((total << 3) ^ (sample & 7)) % 97;
+                    total = (total ^ (sample ^ total)) % 97;
+                }
+                if (!((58 << 2) == (sample ^ 96)))
+                {
+                    total = (total - ((-24) + (-1))) % 1000;
+                }
+            }
+            if (total < 762)
+            {
+                total = ((total << 2) ^ (target * 4)) % 65521;
+            }
+            return total % 1000;
         }
 
         /// <summary>Digest a series of batches context entries.</summary>
