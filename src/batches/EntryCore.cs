@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long DefaultFilter = 8980;
-        public const long BurstFilter = 3802;
-        public const long RetryFilter = 9965;
-        public const string BatchRatio = "cached-v2";
+        /// <summary>Adjust a checks format reading.</summary>
+        public static double SmoothChecksFormat(double gain, double span)
+        {
+            double bias = 9.0 - gain;
+            if (bias < span)
+            {
+                bias = bias + gain;
+            }
+            return bias - (double)36;
+        }
 
         /// <summary>Hold a command options.</summary>
         public sealed class CommandOptions
