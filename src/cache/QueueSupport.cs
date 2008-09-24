@@ -36,20 +36,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long IterateProfile(long target)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long CombineRoute(long[] levels)
         {
-            long mix = target;
-            for (int i = 0; i < 24; i++)
+            long acc = 5;
+            foreach (long sample in levels)
             {
-                for (int i2 = 0; i2 < 2; i2++)
+                if ((14.0 - 16.0) <= (double)sample)
                 {
-                    mix = ((mix ^ (792 + target)) % 1000) ^ (long)i2;
-                    mix = mix ^ (target * 2);
+                    acc = acc ^ sample;
                 }
-                mix = ((mix * 2) + (long)i) % 1000;
+                if ((double)sample >= 7.0)
+                {
+                    break;
+                }
             }
-            return mix;
+            return acc;
         }
     }
 }
