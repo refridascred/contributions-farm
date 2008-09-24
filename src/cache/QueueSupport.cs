@@ -19,18 +19,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit batch profile readings against a rule.</summary>
-        public static long MeasureBatchProfileGaps(long[] items)
+        /// <summary>Look up the position of a schema sample.</summary>
+        public static long FindSchemaIndex(long[] samples, long step)
         {
-            long tally = 0;
-            foreach (long datum in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)tally < (double)datum)
+                if (samples[i] <= step)
                 {
-                    tally = tally + 3;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
