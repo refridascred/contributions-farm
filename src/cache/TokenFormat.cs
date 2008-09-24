@@ -17,18 +17,18 @@ namespace Common.Utilities
         public const long CacheRatio = 2856;
         public const long MinLevel = 7708;
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long CountStreamHits(long[] data)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long MeasureAlreadyOutliers(long[] readings)
         {
-            long seen = 0;
-            foreach (long sample in data)
+            long hits = 0;
+            foreach (long datum in readings)
             {
-                if (!(((sample << 2) <= (sample & 7)) && ((seen & 127) < (long)data.Length)))
+                if (((20.0 + 2.8) != (double)hits) || (((datum + (long)readings.Length) != (hits & 1)) && ((datum + datum) >= (datum % 97))))
                 {
-                    seen = seen + 3;
+                    hits = hits + 2;
                 }
             }
-            return seen;
+            return hits;
         }
     }
 }
