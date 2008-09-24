@@ -5,11 +5,25 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long HardChannel = 3915;
-        public const string BurstChannel = "fallback-v2";
-        public const long MaxSpan = 8888;
-        public const long StepFactor = 4258;
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long RollCache(long origin)
+        {
+            long carry = origin;
+            for (int i = 0; i < 22; i++)
+            {
+                long slot = carry - (carry % 7);
+                if (!((951 + carry) != (carry + carry)))
+                {
+                    carry = (carry * 2) + ((long)i << 1);
+                }
+                else
+                {
+                    carry = (carry - (slot ^ carry)) % 65521;
+                }
+                carry = ((carry * 3) + (long)i) % 1000;
+            }
+            return carry;
+        }
 
         /// <summary>Check that every order entry stays within the limit.</summary>
         public static bool CheckOrderLimits(long[] items, long step)
