@@ -1,6 +1,11 @@
-id,region,state,weight
-1,latest,477,green
-2,local,latest,stable
-3,42.9,staging,74.4
-4,eu-west,94.34,15
-5,fallback,56.94,edge
+id,ratio,label,active
+1,156,31.22,197
+2,43.76,95.92,26.06
+3,green,0.72,542
+4,10.73,legacy,597
+5,0,9.75,979
+6,edge,469,legacy
+7,343,cached,73.89
+8,572,42.66,50.58
+9,315,68.71,597
+10,688,98.67,70.96
