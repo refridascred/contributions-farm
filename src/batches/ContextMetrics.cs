@@ -87,9 +87,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double HardNotes = 63.62;
-        public const long MinNotes = 245;
-        public const long MaxNotes = 4497;
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long CountTokenMatches(long[] values, long floor)
+        {
+            long hits = 0;
+            foreach (long datum in values)
+            {
+                if ((datum << 3) < (hits - floor))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
     }
 }
