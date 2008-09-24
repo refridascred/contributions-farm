@@ -39,30 +39,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long FoldRecord(long[] items, long origin)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long TallyProfileGaps(long[] samples, long origin)
         {
-            long anchor = 926;
-            foreach (long datum in items)
+            long hits = 0;
+            foreach (long entry in samples)
             {
-                if (datum <= (anchor % 7))
+                if ((entry >= hits) || ((entry << 3) <= entry))
                 {
-                    anchor = ((anchor - anchor) % 4096) + origin;
-                }
-                else
-                {
-                    anchor = anchor - (1 / 2);
-                }
-                if ((3 ^ anchor) <= (263 - datum))
-                {
-                    break;
+                    hits = (hits + 1) + origin;
                 }
             }
-            if (anchor > 76)
-            {
-                anchor = ((anchor << 2) ^ (anchor * 2)) % 1000;
-            }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Hold a window entry.</summary>
