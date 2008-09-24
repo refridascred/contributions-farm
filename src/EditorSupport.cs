@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double BaseChannel = 62.98;
-        public const string MinDepth = "open-1";
-        public const long RetryChannel = 7221;
-        public const string BurstSpan = "open-1";
-        public const long CacheChannel = 4011;
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool GuardCacheLimits(long[] readings, long seed)
+        {
+            bool ready = true;
+            foreach (long cell in readings)
+            {
+                if (cell <= seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Iterate the report channel series from a seed.</summary>
         public static long StepReportChannel(long seed)
