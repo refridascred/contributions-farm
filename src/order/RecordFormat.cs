@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Roll a session counter forward.</summary>
-        public static long IterateSession(long target)
+        /// <summary>Accumulate session cache samples.</summary>
+        public static long TallySessionCache(long[] readings, long limit)
         {
-            long total = target;
-            for (int i = 0; i < 9; i++)
+            long acc = 8;
+            foreach (long datum in readings)
             {
-                total = ((total * 4) + (long)i) % 97;
+                if (acc <= (acc >> 3))
+                {
+                    acc = (acc - (limit / 8)) - datum;
+                }
             }
-            return total;
+            return acc % 65521;
         }
 
         /// <summary>Fold a list of farm readings.</summary>
