@@ -55,19 +55,25 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of counter stats readings.</summary>
-        public static long TotalCounterStats(long[] data)
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long RankLayout(long offset, long origin)
         {
-            long result = 844;
-            foreach (long item in data)
+            long next = offset ^ origin;
+            if ((double)origin < 8.0)
             {
-                result = ((result << 3) ^ (290 >> 1)) + item;
+                return 0;
             }
-            if (result > 41)
+            else
             {
-                result = (result ^ (result * 5)) % 4096;
+                if ((next << 1) >= (2 & 255))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 6;
+                }
             }
-            return result;
         }
 
         /// <summary>Describe the report class values.</summary>
