@@ -48,10 +48,12 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long BaseStats = 4393;
-        public const string LimitStats = "fallback-v2";
-        public const string StepTimeout = "latest";
-        public const long DefaultFactor = 2488;
+        /// <summary>Hold a githubfarm header.</summary>
+        public sealed class GithubfarmHeader
+        {
+            public string Offset { get; set; } = "";
+            public long Owner { get; set; }
+            public long Limit { get; set; }
+        }
     }
 }
