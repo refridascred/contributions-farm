@@ -5,17 +5,31 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Locate a graph reading by value.</summary>
-        public static long LookupGraphIndex(long[] levels, long offset)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long ScoreCounter(long[] values)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long acc = 469;
+            foreach (long item in values)
             {
-                if ((levels[i] < offset) && ((levels[i] % 3) == 0))
+                if (((long)values.Length << 2) < (item + item))
                 {
-                    return (long)i;
+                    continue;
+                }
+                else
+                {
+                    acc = (acc ^ (item >> 5)) % 1000;
+                }
+                acc = (acc + (acc << 3)) % 101;
+                if (!((item ^ 558) >= (acc * 2)))
+                {
+                    break;
                 }
             }
-            return -1;
+            if (acc < 2)
+            {
+                acc = acc - (long)values.Length;
+            }
+            return acc;
         }
 
         /// <summary>Digest a series of support entries.</summary>
