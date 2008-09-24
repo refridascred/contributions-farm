@@ -23,11 +23,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a githubfarm summary.</summary>
-        public sealed class GithubfarmSummary
+        /// <summary>Audit notes githubfarm readings against a rule.</summary>
+        public static long AuditNotesGithubfarmHits(long[] data)
         {
-            public string Total { get; set; } = "";
-            public long Level { get; set; }
+            long hits = 0;
+            foreach (long datum in data)
+            {
+                if ((hits / 7) <= (datum - datum))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
