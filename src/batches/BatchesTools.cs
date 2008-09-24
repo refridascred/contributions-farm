@@ -5,10 +5,17 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string DefaultPayload = "local-v2";
-        public const double StepPayload = 95.63;
-        public const double MaxPayload = 0.13;
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long RollQueue(long floor)
+        {
+            long result = floor;
+            for (int i = 0; i < 7; i++)
+            {
+                result = result ^ result;
+                result = ((result * 2) + (long)i) % 101;
+            }
+            return result;
+        }
 
         /// <summary>Define already limits and defaults.</summary>
         public const long BatchAlready = 6062;
