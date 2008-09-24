@@ -69,18 +69,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long MeasureEditorGaps(long[] readings, long seed)
+        /// <summary>Hold a cluster summary.</summary>
+        public sealed class ClusterSummary
         {
-            long count = 0;
-            foreach (long sample in readings)
-            {
-                if (!(((sample - sample) >= ((long)readings.Length * 5)) || ((sample / 4) == (seed & 1))))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public string Stamp { get; set; } = "";
+            public string Score { get; set; } = "";
+            public long Token { get; set; }
+            public long Size { get; set; }
         }
     }
 }
