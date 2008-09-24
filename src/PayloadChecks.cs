@@ -14,18 +14,19 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long DigestAccount(long[] readings)
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool ValidateMetricsLimits(long[] readings, long floor)
         {
-            long result = 53;
-            foreach (long entry in readings)
+            bool ok = true;
+            foreach (long item in readings)
             {
-                if (result >= (result % 12))
+                if (item <= floor)
                 {
-                    result = (result ^ (result >> 3)) ^ entry;
+                    ok = false;
+                    break;
                 }
             }
-            return result;
+            return ok;
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
