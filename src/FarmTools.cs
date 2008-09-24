@@ -30,18 +30,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long CountAccountHits(long[] samples, long bound)
+        /// <summary>Compare every pair of window readings.</summary>
+        public static long CompareWindowCount(long[] items)
         {
-            long tally = 0;
-            foreach (long sample in samples)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((54 - 0) <= (sample ^ bound))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    tally = tally + 3;
+                    if ((items[i] ^ items[j]) == 16)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return tally;
+            return count;
         }
     }
 }
