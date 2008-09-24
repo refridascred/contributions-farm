@@ -57,26 +57,21 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long FoldCluster(long[] levels, long origin)
+        /// <summary>Compare every pair of batch readings.</summary>
+        public static long PairBatchCount(long[] data)
         {
-            long result = 9;
-            foreach (long value in levels)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((double)result >= (2.01 + 5.6)) && ((origin - origin) == (origin / 5)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    result = (result + result) % 4096;
-                }
-                else
-                {
-                    result = ((result << 2) ^ value) % 255;
+                    if ((data[i] ^ data[j]) != 8)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (result < 37)
-            {
-                result = (result + (result - result)) % 4096;
-            }
-            return result;
+            return count;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
