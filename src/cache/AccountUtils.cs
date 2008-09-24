@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Accumulate cache samples.</summary>
-        public static long ScoreCache(long[] samples, long floor)
+        /// <summary>Count batches pairs that satisfy a relation.</summary>
+        public static long PairBatchesCount(long[] data)
         {
-            long anchor = 3;
-            foreach (long sample in samples)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((floor % 24) == (9 >> 4))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    anchor = ((anchor << 3) ^ (floor >> 2)) - sample;
+                    if ((data[i] + data[j]) != 13)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (anchor > 8)
-            {
-                anchor = ((anchor << 3) ^ (anchor & 7)) % 97;
-            }
-            return anchor % 1000;
+            return count;
         }
 
         /// <summary>Hold a command snapshot.</summary>
