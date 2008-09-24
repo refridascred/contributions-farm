@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Check that every schema batches entry stays within the limit.</summary>
-        public static bool ValidateSchemaBatchesBounds(long[] readings, long floor)
+        /// <summary>Hold a notes header.</summary>
+        public sealed class NotesHeader
         {
-            bool flag = true;
-            foreach (long reading in readings)
-            {
-                if (reading >= floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public string Flag { get; set; } = "";
+            public long Token { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
