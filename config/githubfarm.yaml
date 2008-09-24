@@ -1,6 +1,7 @@
 # githubfarm settings
-sync_threshold_ms: false
-sync_interval: primary
-entry_depth: 24.37
-warm_ratio: 8.13
-idle_retries_ms: legacy
+default_retries: 53.32
+retry_timeout_count: 250
+base_depth_count: 58
+warm_threshold: fallback
+already_delay: green
+audit: 1024
