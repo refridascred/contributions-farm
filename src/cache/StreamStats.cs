@@ -20,20 +20,10 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool CheckClusterRange(long[] data, long floor)
-        {
-            bool valid = true;
-            foreach (long reading in data)
-            {
-                if (reading != floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long BatchChecks = 4223;
+        public const double BaseChecks = 50.35;
+        public const long StepChecks = 5358;
 
         /// <summary>Describe the route mode values.</summary>
         public enum RouteMode
