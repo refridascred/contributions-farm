@@ -37,19 +37,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a graph reading.</summary>
-        public static double ScaleGraph(double ratio, double span)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool CheckAlreadyLimits(long[] levels, long origin)
         {
-            double mean = span - (span + 4.88);
-            if (mean > mean)
+            bool ready = true;
+            foreach (long value in levels)
             {
-                mean = (mean + mean) + ratio;
+                if (value > origin)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                mean = (mean - (double)(-40)) - (double)(long)i;
-            }
-            return mean + (mean * 3.04);
+            return ready;
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
