@@ -43,12 +43,12 @@ namespace Common.Utilities
             return load + gain;
         }
 
-        /// <summary>Describe the commits kind values.</summary>
-        public enum CommitsKind
+        /// <summary>Hold a command info.</summary>
+        public sealed class CommandInfo
         {
-            Retry,
-            Ready,
-            Closed,
+            public double Limit { get; set; }
+            public string Weight { get; set; } = "";
+            public bool Stamp { get; set; }
         }
     }
 }
