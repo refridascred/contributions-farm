@@ -1,6 +1,12 @@
 {
-  "farm_size": "edge",
-  "burst_capacity_ms": "eu-west",
-  "cache_ttl": 91,
-  "min_ttl_ms": 60
+  "default_depth_count": {
+    "payload_threshold": false,
+    "stream_retries": 30,
+    "persist": "standard",
+    "batch_limit_count": 54,
+    "max_ratio_count": "strict",
+    "record_depth": "latest"
+  },
+  "default_timeout_s": "fallback",
+  "soft_window_pct": "staging"
 }
