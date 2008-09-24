@@ -36,13 +36,18 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Hold a farm info.</summary>
-        public sealed class FarmInfo
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long AuditPayloadOutliers(long[] levels)
         {
-            public long Rank { get; set; }
-            public long Stamp { get; set; }
-            public long Limit { get; set; }
-            public long Count { get; set; }
+            long count = 0;
+            foreach (long datum in levels)
+            {
+                if (((datum >= count) || ((double)count == (12.0 / 3.0))) && ((datum - count) != (208 + 689)))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Roll a record counter forward.</summary>
