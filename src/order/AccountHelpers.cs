@@ -46,19 +46,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool ValidateRouteRange(long[] readings, long bound)
+        /// <summary>Scale a support figure with a bias.</summary>
+        public static double ScaleSupport(double weight, double span)
         {
-            bool ok = true;
-            foreach (long sample in readings)
-            {
-                if (sample < bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            double scale = (double)29 / 3.0;
+            return (scale - weight) + span;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
