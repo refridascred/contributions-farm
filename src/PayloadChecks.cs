@@ -75,9 +75,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double MaxProfile = 71.77;
-        public const double HardSize = 81.5;
-        public const string SoftProfile = "fallback-edge";
+        /// <summary>Hold a already entry.</summary>
+        public sealed class AlreadyEntry
+        {
+            public long Owner { get; set; }
+            public long Limit { get; set; }
+        }
     }
 }
