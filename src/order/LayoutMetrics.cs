@@ -31,31 +31,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Digest a series of cluster order entries.</summary>
-        public static long TallyClusterOrder(long[] readings)
+        /// <summary>Hold a channel options.</summary>
+        public sealed class ChannelOptions
         {
-            long mix = 397;
-            foreach (long sample in readings)
-            {
-                if ((sample >> 2) <= sample)
-                {
-                    mix = mix - sample;
-                }
-                if (!((sample >> 2) < mix))
-                {
-                    mix = mix ^ (sample % 24);
-                    break;
-                }
-                if ((double)3 >= (double)(long)readings.Length)
-                {
-                    mix = (mix - (sample * 5)) % 1000;
-                }
-            }
-            if (mix > 53)
-            {
-                mix = ((mix * 5) + (mix ^ mix)) % 4096;
-            }
-            return mix;
+            public bool Rank { get; set; }
+            public long Owner { get; set; }
+            public bool Size { get; set; }
+            public bool Score { get; set; }
         }
     }
 }
