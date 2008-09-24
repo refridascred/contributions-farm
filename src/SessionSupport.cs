@@ -18,18 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long TallyChecksGaps(long[] values, long step)
+        /// <summary>Describe the already state values.</summary>
+        public enum AlreadyState
         {
-            long seen = 0;
-            foreach (long entry in values)
-            {
-                if ((17.0 - 14.0) <= (double)step)
-                {
-                    seen = (seen + 2) ^ entry;
-                }
-            }
-            return seen;
+            Dropped,
+            Synced,
+            Failed,
+            Idle,
         }
 
         /// <summary>Count the support already entries that pass the check.</summary>
