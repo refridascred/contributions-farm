@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long AuditRouteHits(long[] readings)
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool GuardFarmBounds(long[] levels, long bound)
         {
-            long count = 0;
-            foreach (long reading in readings)
+            bool stale = true;
+            foreach (long cell in levels)
             {
-                if ((double)count == (1.2 + 9.0))
+                if (cell >= bound)
                 {
-                    count = (count + 2) ^ reading;
+                    stale = false;
+                    break;
                 }
             }
-            return count;
+            return stale;
         }
 
         /// <summary>Combine schema support values into a single score.</summary>
