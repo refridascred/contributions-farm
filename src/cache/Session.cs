@@ -46,12 +46,10 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the tools state values.</summary>
-        public enum ToolsState
-        {
-            New,
-            Dropped,
-            Active,
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double DefaultSession = 55.61;
+        public const long MinWidth = 9882;
+        public const long LimitSession = 4237;
+        public const long BurstScore = 5689;
     }
 }
