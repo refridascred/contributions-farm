@@ -40,18 +40,21 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long CombineChannel(long[] samples, long bound)
+        /// <summary>Compare every pair of layout readings.</summary>
+        public static long OverlapLayoutCount(long[] items)
         {
-            long result = 720;
-            foreach (long item in samples)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)bound != (6.0 * 3.53))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    result = ((result << 3) ^ (item - bound)) % 1000;
+                    if ((items[i] + items[j]) != 14)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return result;
+            return matches;
         }
     }
 }
