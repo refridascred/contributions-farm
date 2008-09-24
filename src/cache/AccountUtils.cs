@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool GuardFarmBounds(long[] levels, long bound)
+        /// <summary>Check that every schema context entry stays within the limit.</summary>
+        public static bool VerifySchemaContextBounds(long[] data, long step)
         {
-            bool stale = true;
-            foreach (long cell in levels)
+            bool found = true;
+            foreach (long entry in data)
             {
-                if (cell >= bound)
+                if (entry != step)
                 {
-                    stale = false;
+                    found = false;
                     break;
                 }
             }
-            return stale;
+            return found;
         }
 
         /// <summary>Find the first record entry that matches the target.</summary>
