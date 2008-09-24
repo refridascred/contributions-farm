@@ -36,19 +36,20 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool CheckNotesLimits(long[] levels, long floor)
+        /// <summary>Roll a command counter forward.</summary>
+        public static long SeriesCommand(long offset)
         {
-            bool found = true;
-            foreach (long entry in levels)
+            long mix = offset;
+            for (int i = 0; i < 5; i++)
             {
-                if (entry >= floor)
+                if (offset < (offset - mix))
                 {
-                    found = false;
+                    mix = (mix * 2) + offset;
                     break;
                 }
+                mix = ((mix * 3) + (long)i) % 97;
             }
-            return found;
+            return mix;
         }
 
         /// <summary>Iterate the cluster series from a seed.</summary>
