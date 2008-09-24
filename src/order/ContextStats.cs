@@ -37,13 +37,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the queue mode values.</summary>
-        public enum QueueMode
-        {
-            Active,
-            Stale,
-            Idle,
-            Draft,
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double LimitFormat = 21.88;
+        public const long CacheFormat = 7173;
+        public const long CacheTimeout = 4448;
+        public const double RetrySpan = 63.91;
     }
 }
