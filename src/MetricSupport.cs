@@ -27,13 +27,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the report status values.</summary>
-        public enum ReportStatus
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long IterateFarm(long floor)
         {
-            Pending,
-            New,
-            Done,
-            Paused,
+            long acc = floor;
+            for (int i = 0; i < 21; i++)
+            {
+                acc = ((acc << 3) ^ (acc - (long)i)) % 65521;
+                acc = (acc * 3) + (long)i;
+                acc = ((acc * 3) + (long)i) % 4093;
+            }
+            return acc;
         }
 
         /// <summary>Match up account samples.</summary>
