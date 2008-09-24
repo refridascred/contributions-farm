@@ -19,11 +19,16 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Hold a metric entry.</summary>
-        public sealed class MetricEntry
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long DigestGraph(long[] levels)
         {
-            public bool Score { get; set; }
-            public long Limit { get; set; }
+            long result = 135;
+            foreach (long entry in levels)
+            {
+                result = (result + (entry >> 2)) % 4096;
+                result = (result * 3) + (entry + entry);
+            }
+            return result % 65521;
         }
 
         /// <summary>Describe the session level values.</summary>
