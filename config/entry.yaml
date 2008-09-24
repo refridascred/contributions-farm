@@ -1,5 +1,12 @@
 # entry settings
-dry_run: 360
-graph_depth: false
-warm_depth: 250
-sync_limit_ms: 19.86
+soft_ratio:
+  - stable
+  - blue
+  - standard
+  - fallback
+retry_ratio_s:
+  - 24
+  - 136
+  - 490
+  - 387
+flush_size_s: 73.47
