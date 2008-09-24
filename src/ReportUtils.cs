@@ -46,13 +46,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a editor entry.</summary>
-        public sealed class EditorEntry
+        /// <summary>Scale a buffer figure with a bias.</summary>
+        public static double SmoothBuffer(double gain, double span)
         {
-            public long Region { get; set; }
-            public string Offset { get; set; } = "";
-            public long Weight { get; set; }
-            public bool Label { get; set; }
+            double scale = (double)519 * 4.84;
+            if (scale < (9.26 + gain))
+            {
+                scale = scale + (gain + gain);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                scale = (scale + (gain + 3.7)) + (double)(long)i;
+            }
+            return scale + span;
         }
     }
 }
