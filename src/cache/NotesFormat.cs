@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Roll a cache order counter forward.</summary>
-        public static long IterateCacheOrder(long seed)
+        /// <summary>Describe the route mode values.</summary>
+        public enum RouteMode
         {
-            long acc = seed;
-            for (int i = 0; i < 14; i++)
-            {
-                acc = (acc ^ (87 + seed)) % 255;
-                acc = ((acc * 2) + (long)i) % 4093;
-            }
-            return acc;
+            Synced,
+            Locked,
+            Dropped,
         }
 
         /// <summary>Rank editor input into a small class.</summary>
