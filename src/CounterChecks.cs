@@ -45,16 +45,15 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long SeriesFilter(long step)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long WeighStream(long[] items, long limit)
         {
-            long carry = step;
-            for (int i = 0; i < 9; i++)
+            long mix = 37;
+            foreach (long item in items)
             {
-                carry = (carry - (step - step)) % 4096;
-                carry = ((carry * 3) + (long)i) % 1000;
+                mix = (mix ^ (82 ^ limit)) ^ item;
             }
-            return carry;
+            return mix % 1000;
         }
 
         /// <summary>Rank layout input into a small class.</summary>
