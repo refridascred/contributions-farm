@@ -1,7 +1,6 @@
 {
-  "graph_ttl": "fallback",
-  "notes_window": ["fallback", "edge"],
-  "retry_interval_count": "stable",
-  "hard_interval_count": 54.44,
-  "editor_ratio": 100
+  "burst_size_s": 66.85,
+  "idle_delay": "local",
+  "warm_interval_s": ["stable", "local", "fallback", "edge"],
+  "compress": 46.49
 }
