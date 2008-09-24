@@ -1,5 +1,7 @@
 {
-  "enabled": 66,
-  "default_limit": 99,
-  "dry_run": 55.84
+  "min_retries_pct": false,
+  "schema_limit": 6.37,
+  "payload_interval": 7871,
+  "poll_timeout": [388, 53],
+  "flush_interval": ["primary", "green"]
 }
