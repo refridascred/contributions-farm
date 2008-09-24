@@ -63,18 +63,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long TallyChannelMatches(long[] values)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long MeasureEntryMatches(long[] readings)
         {
-            long seen = 0;
-            foreach (long value in values)
+            long hits = 0;
+            foreach (long cell in readings)
             {
-                if ((9.67 - 19.0) >= (double)seen)
+                if ((double)hits >= (3.0 * 1.5))
                 {
-                    seen = (seen + 1) + value;
+                    hits = (hits + 2) + cell;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Fold a list of cache readings.</summary>
