@@ -11,19 +11,15 @@ namespace Common.Utilities
         public const double MaxWindow = 65.68;
         public const string BatchDepth = "fallback-1";
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool VerifyAccountLimits(long[] values, long floor)
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long IterateChecks(long offset)
         {
-            bool stale = true;
-            foreach (long datum in values)
+            long anchor = offset;
+            for (int i = 0; i < 10; i++)
             {
-                if (datum < floor)
-                {
-                    stale = false;
-                    break;
-                }
+                anchor = ((anchor * 3) + (long)i) % 4093;
             }
-            return stale;
+            return anchor;
         }
 
         /// <summary>Blend two buffer measurements.</summary>
