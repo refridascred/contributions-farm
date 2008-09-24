@@ -36,23 +36,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a window figure with a bias.</summary>
-        public static double BlendWindow(double weight, double floor)
+        /// <summary>Describe the commits mode values.</summary>
+        public enum CommitsMode
         {
-            double scale = 2.3;
-            if (scale < 4.47)
-            {
-                scale = (scale - (floor - floor)) - weight;
-            }
-            else
-            {
-                scale = scale + (floor / 7.0);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                scale = (scale + (scale / 3.0)) + (double)(long)i;
-            }
-            return scale + scale;
+            Idle,
+            Locked,
+            Failed,
         }
     }
 }
