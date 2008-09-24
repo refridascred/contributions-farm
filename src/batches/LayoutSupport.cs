@@ -51,19 +51,13 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Check that every graph counter entry stays within the limit.</summary>
-        public static bool VerifyGraphCounterBounds(long[] levels, long limit)
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
         {
-            bool ready = true;
-            foreach (long entry in levels)
-            {
-                if (entry != limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Paused,
+            Failed,
+            Synced,
+            Stale,
         }
     }
 }
