@@ -35,24 +35,14 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Grade a record profile value against two limits.</summary>
-        public static long RankRecordProfile(long bound, long floor)
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
         {
-            if ((floor << 1) == (floor - floor))
-            {
-                return 4;
-            }
-            else
-            {
-                if (((62 - floor) == (floor * 3)) && ((double)bound <= (6.5 + 2.13)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            Synced,
+            Stale,
+            Draft,
+            Retry,
+            New,
         }
 
         /// <summary>Accumulate metric samples.</summary>
