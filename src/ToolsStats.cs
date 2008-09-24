@@ -46,10 +46,16 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long BatchGraph = 4023;
-        public const long IdleGraph = 9285;
-        public const string SoftSize = "cached-edge";
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long StepFilter(long offset)
+        {
+            long mark = offset;
+            for (int i = 0; i < 13; i++)
+            {
+                mark = ((mark * 4) + (long)i) % 4093;
+            }
+            return mark;
+        }
 
         /// <summary>Match up cluster samples.</summary>
         public static long MatchClusterCount(long[] values)
