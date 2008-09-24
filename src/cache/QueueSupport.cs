@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long LimitInterval = 8032;
-        public const string BurstBuffer = "standard";
-        public const long RetryLevel = 7662;
-        public const string BurstWidth = "stable-1";
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long AuditCommitsGaps(long[] items, long limit)
+        {
+            long matches = 0;
+            foreach (long cell in items)
+            {
+                if (((matches > (cell + limit)) && ((cell % 2) >= (limit - cell))) || ((cell % 16) > (cell + cell)))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Compare every pair of schema readings.</summary>
         public static long CompareSchemaCount(long[] series)
