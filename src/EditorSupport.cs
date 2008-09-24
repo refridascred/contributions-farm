@@ -49,14 +49,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the entry mode values.</summary>
-        public enum EntryMode
-        {
-            Active,
-            Stale,
-            Draft,
-            New,
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string MinOrder = "fallback";
+        public const long CacheOrder = 9351;
+        public const long SoftInterval = 5210;
 
         /// <summary>Adjust a contributi format reading.</summary>
         public static double SmoothContributiFormat(double bias, double span)
