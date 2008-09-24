@@ -2,12 +2,12 @@
 CREATE TABLE IF NOT EXISTS stream_events (
     id INTEGER PRIMARY KEY,
     created_at TIMESTAMP,
-    region TEXT,
-    active INTEGER NOT NULL DEFAULT 1
+    owner TEXT NOT NULL,
+    label TEXT
 );
 
-CREATE INDEX IF NOT EXISTS idx_stream_events_created_at ON stream_events (created_at);
+CREATE INDEX IF NOT EXISTS idx_stream_events_owner ON stream_events (owner);
 
-INSERT INTO stream_events (region, active) VALUES ('stable', 62);
-INSERT INTO stream_events (region, active) VALUES ('strict', 28);
-INSERT INTO stream_events (region, active) VALUES ('standard', 66);
+INSERT INTO stream_events (owner, label) VALUES ('fallback', 'local');
+INSERT INTO stream_events (owner, label) VALUES ('legacy', 'legacy');
+INSERT INTO stream_events (owner, label) VALUES ('primary', 'fallback');
