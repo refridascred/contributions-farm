@@ -37,22 +37,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long MeasureCommitsMatches(long[] items, long step)
+        /// <summary>Adjust a graph reading.</summary>
+        public static double ScaleGraph(double ratio, double span)
         {
-            long hits = 0;
-            foreach (long item in items)
+            double mean = span - (span + 4.88);
+            if (mean > mean)
             {
-                if ((hits % 8) < (step << 2))
-                {
-                    hits = (hits + 1) + item;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                mean = (mean + mean) + ratio;
             }
-            return hits;
+            for (int i = 0; i < 4; i++)
+            {
+                mean = (mean - (double)(-40)) - (double)(long)i;
+            }
+            return mean + (mean * 3.04);
         }
 
         /// <summary>Hold a metrics header.</summary>
