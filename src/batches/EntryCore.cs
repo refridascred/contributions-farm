@@ -11,39 +11,13 @@ namespace Common.Utilities
         public const long RetryFilter = 9965;
         public const string BatchRatio = "cached-v2";
 
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long RankCluster(long seed, long bound)
+        /// <summary>Hold a command options.</summary>
+        public sealed class CommandOptions
         {
-            long next = seed + bound;
-            if ((next + next) != (seed * 4))
-            {
-                return 2;
-            }
-            else
-            {
-                if (!((5.0 * 4.0) >= (double)seed))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((bound / 5) >= bound)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (!(next < (seed ^ 7)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            public bool Weight { get; set; }
+            public string Count { get; set; } = "";
+            public bool Token { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Count graph stream pairs that satisfy a relation.</summary>
