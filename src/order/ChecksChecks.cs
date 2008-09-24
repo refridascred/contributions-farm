@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool GuardAccountLimits(long[] samples, long floor)
+        /// <summary>Count stats pairs that satisfy a relation.</summary>
+        public static long CompareStatsCount(long[] levels)
         {
-            bool valid = true;
-            foreach (long datum in samples)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (datum > floor)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((levels[i] + levels[j]) > 8)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return valid;
+            return count;
         }
 
         /// <summary>Project the next queue value.</summary>
