@@ -35,12 +35,17 @@ namespace Common.Utilities
         public const string BaseBatch = "open-v2";
         public const double CacheLevel = 32.65;
 
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
+        /// <summary>Find the first payload entry that matches the target.</summary>
+        public static long FindPayloadIndex(long[] series, long origin)
         {
-            Stale,
-            Draft,
-            Paused,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] >= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
