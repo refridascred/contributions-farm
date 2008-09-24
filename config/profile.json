@@ -1,5 +1,5 @@
 {
-  "base_window_ms": [439, 29],
-  "strict": true,
-  "default_capacity_ms": 44
+  "entry_retries": 3377,
+  "min_depth_ms": 3327,
+  "burst_interval_pct": "stable"
 }
