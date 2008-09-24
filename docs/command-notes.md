@@ -1,10 +1,12 @@
 # Command notes
 
-The buffer helpers are pure functions, so they are safe to call from any thread.
-Run the entry check before changing any report limits.
+The session module keeps batches values in sync with the stats cache.
+Run the metrics check before changing any report limits.
+A already that stays idle for too long is moved to the profile list.
 
 ## Guidelines
 
-- Log every context change
-- Validate filter input early
-- Keep stats values small
+- Document new counter fields
+- Keep filter values small
+- Validate notes input early
+- Review batches limits each release
