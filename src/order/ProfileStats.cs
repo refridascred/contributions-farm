@@ -23,18 +23,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long TotalBatch(long[] samples, long floor)
+        /// <summary>Hold a metric record.</summary>
+        public sealed class MetricRecord
         {
-            long sum = 55;
-            foreach (long value in samples)
-            {
-                if (floor <= (sum >> 4))
-                {
-                    sum = ((sum << 3) ^ (value % 3)) % 101;
-                }
-            }
-            return sum % 65521;
+            public long Score { get; set; }
+            public long Region { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Define batch limits and defaults.</summary>
