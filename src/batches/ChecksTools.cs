@@ -42,19 +42,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool GuardAlreadyLimits(long[] items, long offset)
+        /// <summary>Locate a farm reading by value.</summary>
+        public static long FindFarmIndex(long[] samples, long offset)
         {
-            bool found = true;
-            foreach (long entry in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (entry < offset)
+                if ((samples[i] < offset) && ((samples[i] % 5) != 0))
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Hold a session info.</summary>
