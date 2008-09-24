@@ -43,22 +43,18 @@ namespace Common.Utilities
             return rate + rate;
         }
 
-        /// <summary>Count the counter batch entries that pass the check.</summary>
-        public static long AuditCounterBatchGaps(long[] values, long limit)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long MeasureGraphGaps(long[] values)
         {
-            long matches = 0;
+            long seen = 0;
             foreach (long datum in values)
             {
-                if ((8.2 / 9.0) >= (double)limit)
+                if ((6 & 31) == (datum - 8))
                 {
-                    matches = (matches + 2) ^ datum;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    seen = seen + 3;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Validate metric channel readings against a bound.</summary>
