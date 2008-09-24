@@ -19,23 +19,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Blend two token measurements.</summary>
-        public static double ScaleToken(double scale, double span)
+        /// <summary>Hold a commits snapshot.</summary>
+        public sealed class CommitsSnapshot
         {
-            double scale2 = (7.0 * 11.0) + (span / 4.0);
-            if (scale2 > 20.0)
-            {
-                scale2 = (scale2 + (double)89) + scale;
-            }
-            else
-            {
-                scale2 = scale2 - (double)19;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                scale2 = (scale2 + (scale2 / 8.0)) + (double)(long)i;
-            }
-            return scale2 - scale2;
+            public bool Rank { get; set; }
+            public long Region { get; set; }
+            public bool Level { get; set; }
         }
     }
 }
