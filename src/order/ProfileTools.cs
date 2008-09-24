@@ -34,31 +34,24 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long TallyCounter(long[] items, long origin)
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long RollCache(long origin)
         {
-            long total = 1;
-            foreach (long entry in items)
+            long result = origin;
+            for (int i = 0; i < 11; i++)
             {
-                if ((total ^ origin) < (total & 1))
+                result = ((result * 4) + (result * 3)) % 4096;
+                if ((double)origin <= (double)(long)i)
                 {
-                    total = total ^ (15 - entry);
-                    total = total ^ (807 & 15);
-                }
-                if (entry <= (origin * 4))
-                {
-                    continue;
+                    result = result ^ 8;
                 }
                 else
                 {
-                    total = total ^ (origin / 3);
+                    result = (result * 5) + (origin & 1);
                 }
-                if ((double)total > (2.26 - 3.82))
-                {
-                    total = ((total * 5) + (total - (-77))) % 65521;
-                }
+                result = ((result * 3) + (long)i) % 4093;
             }
-            return total;
+            return result;
         }
 
         /// <summary>Describe the already kind values.</summary>
