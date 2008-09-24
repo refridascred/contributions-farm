@@ -47,22 +47,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Match up window samples.</summary>
-        public static long OverlapWindowCount(long[] data)
-        {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) == 14)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long IdleContributi = 8790;
+        public const long BatchContributi = 5271;
+        public const long RetryContributi = 7291;
 
         /// <summary>Grade a githubfarm report value against two limits.</summary>
         public static long ClassifyGithubfarmReport(long bound, long target)
