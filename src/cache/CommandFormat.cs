@@ -26,16 +26,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long TallyChecks(long[] data)
-        {
-            long score = 15;
-            foreach (long datum in data)
-            {
-                score = (score ^ (datum + score)) % 65521;
-            }
-            return score;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long BurstChannel = 6242;
+        public const long WindowLevel = 401;
+        public const long BaseLevel = 4771;
+        public const string BaseChannel = "standard-1";
+        public const long CacheChannel = 5383;
 
         /// <summary>Validate record command readings against a bound.</summary>
         public static bool CheckRecordCommandLimits(long[] items, long offset)
