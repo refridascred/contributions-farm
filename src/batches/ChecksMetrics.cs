@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Hold a buffer info.</summary>
-        public sealed class BufferInfo
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool GuardProfileLimits(long[] series, long origin)
         {
-            public long Token { get; set; }
-            public string Level { get; set; } = "";
-            public double Weight { get; set; }
+            bool flag = true;
+            foreach (long reading in series)
+            {
+                if (reading < origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Grade a farm filter value against two limits.</summary>
