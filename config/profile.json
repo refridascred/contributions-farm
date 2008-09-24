@@ -1,17 +1,6 @@
 {
-  "sync_size_ms": 49.81,
-  "max_window_count": false,
-  "compress": 30,
-  "min_capacity": {
-    "enabled": {
-      "cache_timeout": false,
-      "checks_timeout": false,
-      "support_retries": true,
-      "cache_interval": false,
-      "format_size": "fallback"
-    },
-    "stats_retries": 6037,
-    "idle_capacity": 100,
-    "burst_limit_s": "strict"
-  }
+  "idle_size_count": ["staging", "edge", "standard", "edge"],
+  "batch_ttl_ms": "latest",
+  "max_size": 22.67,
+  "tools_retries": 76
 }
