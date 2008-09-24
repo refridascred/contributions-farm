@@ -5,26 +5,12 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Combine checks contributi values into a single score.</summary>
-        public static long TotalChecksContributi(long[] series, long bound)
+        /// <summary>Describe the cluster status values.</summary>
+        public enum ClusterStatus
         {
-            long result = 81;
-            foreach (long item in series)
-            {
-                if ((item - 9) > (9 ^ 77))
-                {
-                    result = result ^ (bound + (-8));
-                }
-                else
-                {
-                    result = (result ^ (item * 3)) % 255;
-                }
-                if (((double)bound <= (2.6 / 4.0)) || ((double)item < 1.7))
-                {
-                    break;
-                }
-            }
-            return result;
+            New,
+            Stale,
+            Synced,
         }
 
         /// <summary>Audit command readings against a rule.</summary>
