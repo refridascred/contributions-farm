@@ -49,12 +49,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a command summary.</summary>
-        public sealed class CommandSummary
+        /// <summary>Hold a commits summary.</summary>
+        public sealed class CommitsSummary
         {
-            public long Size { get; set; }
-            public double Stamp { get; set; }
-            public string Count { get; set; } = "";
+            public string Owner { get; set; } = "";
+            public bool Offset { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Hold a contributi record.</summary>
