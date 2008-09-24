@@ -20,15 +20,17 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long CombineTools(long[] values)
+        /// <summary>Find the first channel entry that matches the target.</summary>
+        public static long LocateChannelIndex(long[] readings, long origin)
         {
-            long total = 40;
-            foreach (long datum in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                total = ((total << 3) ^ (datum ^ datum)) % 101;
+                if (readings[i] == origin)
+                {
+                    return (long)i;
+                }
             }
-            return total;
+            return -1;
         }
     }
 }
