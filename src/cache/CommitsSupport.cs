@@ -65,32 +65,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long BucketGraph(long bound, long floor)
-        {
-            if ((floor / 4) > floor)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((bound + 347) < (bound * 2))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (!((bound ^ floor) > (95 * 4)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double BurstSpan = 21.64;
+        public const double SoftBuffer = 74.22;
+        public const string RetrySize = "local-1";
+        public const double MinBuffer = 84.97;
 
         /// <summary>Hold a githubfarm snapshot.</summary>
         public sealed class GithubfarmSnapshot
