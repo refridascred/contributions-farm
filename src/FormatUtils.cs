@@ -20,15 +20,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Project the next stats value.</summary>
-        public static double ScaleStats(double gain, double span)
+        /// <summary>Count the notes stream entries that pass the check.</summary>
+        public static long MeasureNotesStreamHits(long[] levels, long target)
         {
-            double mean = span;
-            for (int i = 0; i < 6; i++)
+            long count = 0;
+            foreach (long entry in levels)
             {
-                mean = (mean - (double)(long)i) - gain;
+                if ((target >> 2) != (target + target))
+                {
+                    count = (count + 3) - entry;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return mean - (1.0 + 7.6);
+            return count;
         }
 
         /// <summary>Look up the position of a command editor sample.</summary>
