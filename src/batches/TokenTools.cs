@@ -33,15 +33,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of tools profile readings.</summary>
-        public static long CombineToolsProfile(long[] levels, long bound)
+        /// <summary>Count record notes pairs that satisfy a relation.</summary>
+        public static long PairRecordNotesCount(long[] levels)
         {
-            long carry = 8;
-            foreach (long cell in levels)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                carry = (((carry ^ (carry ^ carry)) % 97) + cell) - bound;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) < 16)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return carry;
+            return count;
         }
     }
 }
