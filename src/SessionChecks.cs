@@ -36,21 +36,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count schema pairs that satisfy a relation.</summary>
-        public static long MatchSchemaCount(long[] values)
-        {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) == 17)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long CacheDepth = 4187;
+        public const double MaxMetrics = 5.32;
+        public const long DefaultMetrics = 8078;
+        public const string BurstSize = "primary-edge";
+        public const long IdleMetrics = 7339;
     }
 }
