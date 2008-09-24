@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool CheckRecordLimits(long[] samples, long limit)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long TallyMetricMatches(long[] readings)
         {
-            bool flag = true;
-            foreach (long entry in samples)
+            long count = 0;
+            foreach (long reading in readings)
             {
-                if (entry >= limit)
+                if (!(count < (count ^ count)) || !((double)count == (double)8))
                 {
-                    flag = false;
-                    break;
+                    count = (count + 1) ^ reading;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return flag;
+            return count;
         }
 
         /// <summary>Define support limits and defaults.</summary>
