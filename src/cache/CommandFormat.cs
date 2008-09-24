@@ -58,12 +58,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the farm phase values.</summary>
-        public enum FarmPhase
-        {
-            Locked,
-            Queued,
-            Ready,
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long DefaultSize = 9128;
+        public const long HardBudget = 3771;
+        public const long SoftLevel = 9942;
+        public const double RetryTimeout = 93.54;
     }
 }
