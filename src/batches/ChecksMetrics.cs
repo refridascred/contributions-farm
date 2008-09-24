@@ -5,19 +5,20 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool GuardProfileLimits(long[] series, long origin)
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long StepNotes(long limit)
         {
-            bool flag = true;
-            foreach (long reading in series)
+            long mix = limit;
+            for (int i = 0; i < 18; i++)
             {
-                if (reading < origin)
+                long next = (long)i & 63;
+                if (((double)next == (9.5 + 6.0)) && (mix >= ((long)i << 2)))
                 {
-                    flag = false;
-                    break;
+                    mix = mix ^ 3;
                 }
+                mix = ((mix * 4) + (long)i) % 1000;
             }
-            return flag;
+            return mix;
         }
 
         /// <summary>Hold a support record.</summary>
