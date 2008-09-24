@@ -42,18 +42,13 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long AuditPayloadOutliers(long[] levels)
+        /// <summary>Hold a commits header.</summary>
+        public sealed class CommitsHeader
         {
-            long count = 0;
-            foreach (long datum in levels)
-            {
-                if (((datum >= count) || ((double)count == (12.0 / 3.0))) && ((datum - count) != (208 + 689)))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public long Label { get; set; }
+            public long Rank { get; set; }
+            public string Total { get; set; } = "";
+            public long Weight { get; set; }
         }
 
         /// <summary>Match up checks samples.</summary>
