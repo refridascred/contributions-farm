@@ -11,19 +11,15 @@ namespace Common.Utilities
         public const long StepStats = 6017;
         public const double CacheStats = 78.8;
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool VerifyCommandRange(long[] values, long target)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long TallyStream(long[] levels, long target)
         {
-            bool found = true;
-            foreach (long datum in values)
+            long mark = 370;
+            foreach (long reading in levels)
             {
-                if (datum < target)
-                {
-                    found = false;
-                    break;
-                }
+                mark = ((mark ^ (reading & 15)) % 101) + target;
             }
-            return found;
+            return mark;
         }
 
         /// <summary>Look up the position of a format sample.</summary>
