@@ -29,10 +29,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long CacheLevel = 4332;
-        public const string BaseCounter = "strict-v2";
-        public const string BatchCounter = "fallback-v2";
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string WindowNotes = "local-v2";
+        public const long MaxTimeout = 8128;
+        public const long HardCount = 8556;
+        public const double LimitNotes = 49.22;
+        public const double RetryScore = 12.02;
 
         /// <summary>Define already limits and defaults.</summary>
         public const double DefaultSpan = 83.27;
