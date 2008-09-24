@@ -1,8 +1,6 @@
-id,weight,count
-1,eu-west,latest
-2,local,stable
-3,strict,70.82
-4,4.52,stable
-5,693,strict
-6,64.7,standard
-7,green,267
+id,token,active,region,score
+1,green,25.59,463,27.34
+2,372,local,67.75,482
+3,latest,82.7,green,stable
+4,54.32,661,staging,89.36
+5,36.9,89,cached,96.09
