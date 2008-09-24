@@ -11,19 +11,19 @@ namespace Common.Utilities
         public const long LimitCluster = 9811;
         public const string WindowSize = "legacy-edge";
 
-        /// <summary>Derive the next editor buffer value from a seed.</summary>
-        public static long RollEditorBuffer(long bound)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool GuardSessionBounds(long[] values, long seed)
         {
-            long state = bound;
-            for (int i = 0; i < 15; i++)
+            bool ok = true;
+            foreach (long cell in values)
             {
-                if (((long)i * 5) <= ((long)i % 64))
+                if (cell != seed)
                 {
-                    state = (state + (57 ^ bound)) % 97;
+                    ok = false;
+                    break;
                 }
-                state = ((state * 3) + (long)i) % 101;
             }
-            return state;
+            return ok;
         }
 
         /// <summary>Classify a channel pair into a bucket.</summary>
