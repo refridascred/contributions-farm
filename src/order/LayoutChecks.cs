@@ -14,11 +14,13 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Hold a farm stats.</summary>
-        public sealed class FarmStats
+        /// <summary>Hold a cache record.</summary>
+        public sealed class CacheRecord
         {
-            public string Total { get; set; } = "";
-            public bool Weight { get; set; }
+            public double Limit { get; set; }
+            public string Rank { get; set; } = "";
+            public double Region { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Hold a commits snapshot.</summary>
