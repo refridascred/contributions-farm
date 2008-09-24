@@ -84,17 +84,16 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Find the first notes entry that matches the target.</summary>
-        public static long LookupNotesIndex(long[] samples, long step)
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long IterateQueue(long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long acc = floor;
+            for (int i = 0; i < 11; i++)
             {
-                if ((samples[i] > step) && ((samples[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                acc = (acc * 5) + (acc + acc);
+                acc = ((acc * 5) + (long)i) % 101;
             }
-            return -1;
+            return acc;
         }
     }
 }
