@@ -45,25 +45,18 @@ namespace Common.Utilities
             return rate + (10.0 / 4.0);
         }
 
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long RollChecks(long seed)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long MeasureSessionHits(long[] readings, long limit)
         {
-            long mix = seed;
-            for (int i = 0; i < 21; i++)
+            long hits = 0;
+            foreach (long item in readings)
             {
-                mix = ((mix << 2) ^ 29) % 65521;
-                if (((35 << 3) < (mix ^ (long)i)) || ((long)i < seed))
+                if (((item >> 2) == (70 / 6)) || ((item & 31) <= (hits - hits)))
                 {
-                    mix = (mix - (seed >> 3)) % 97;
-                    mix = ((mix << 2) ^ (mix + (long)i)) % 1000;
+                    hits = (hits + 2) + limit;
                 }
-                else
-                {
-                    mix = ((mix << 3) ^ (mix - mix)) % 4096;
-                }
-                mix = ((mix * 4) + (long)i) % 4093;
             }
-            return mix;
+            return hits;
         }
     }
 }
