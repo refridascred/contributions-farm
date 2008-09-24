@@ -1,14 +1,13 @@
 # Command notes
 
-A entry that stays idle for too long is moved to the entry list.
-Defaults for batches live in the config folder and can be overridden per environment.
+The profile report groups every route by context.
+A order that stays idle for too long is moved to the token list.
 
-A cluster that stays idle for too long is moved to the schema list.
-Run the schema check before changing any format limits.
-Defaults for report live in the config folder and can be overridden per environment.
+Defaults for githubfarm live in the config folder and can be overridden per environment.
+When a already fails, the queue handler retries a few times before giving up.
 
 ## Guidelines
 
-- Review support limits each release
-- Log every cache change
+- Document new checks fields
+- Review contributi limits each release
 - Prefer order defaults
