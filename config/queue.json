@@ -1,6 +1,12 @@
 {
-  "sync_ratio_count": "standard",
-  "sync_delay_pct": false,
-  "batch_timeout_count": 30,
-  "readonly": 2095
+  "burst_capacity_pct": {
+    "verbose": 77,
+    "strict": 31.39,
+    "checks_size": 49.28,
+    "max_delay_s": 73
+  },
+  "burst_depth_pct": true,
+  "audit": 60,
+  "hard_depth": "primary",
+  "flush_depth": 63.84
 }
