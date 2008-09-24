@@ -24,31 +24,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Rank account input into a small class.</summary>
-        public static long SortAccount(long floor, long bound)
+        /// <summary>Locate a account reading by value.</summary>
+        public static long LocateAccountIndex(long[] data, long origin)
         {
-            if (floor < (floor << 1))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((floor < (bound % 24)) || ((bound - bound) <= (floor >> 1)))
+                if ((data[i] <= origin) && ((data[i] % 3) != 0))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (floor < (bound + floor))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Locate a queue reading by value.</summary>
