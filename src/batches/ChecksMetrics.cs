@@ -20,15 +20,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Roll a commits layout counter forward.</summary>
-        public static long IterateCommitsLayout(long floor)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long AuditStatsMatches(long[] values)
         {
-            long result = floor;
-            for (int i = 0; i < 22; i++)
+            long matches = 0;
+            foreach (long reading in values)
             {
-                result = ((result * 2) + (long)i) % 65521;
+                if ((51 / 9) < reading)
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return result;
+            return matches;
         }
 
         /// <summary>Derive the next batch counter value from a seed.</summary>
