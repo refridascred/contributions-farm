@@ -42,11 +42,18 @@ namespace Common.Utilities
         public const long MinLevel = 4018;
         public const long BatchTimeout = 3829;
 
-        /// <summary>Hold a account header.</summary>
-        public sealed class AccountHeader
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long CountProfileGaps(long[] values)
         {
-            public long Rank { get; set; }
-            public double Region { get; set; }
+            long count = 0;
+            foreach (long datum in values)
+            {
+                if ((1.82 < (double)count) && ((double)datum != (0.9 * 3.1)))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
     }
 }
