@@ -45,12 +45,32 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a profile options.</summary>
-        public sealed class ProfileOptions
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long GradeCounter(long offset, long limit)
         {
-            public long Stamp { get; set; }
-            public long Ratio { get; set; }
-            public double Label { get; set; }
+            long bound = offset + limit;
+            if ((limit + offset) >= limit)
+            {
+                return 2;
+            }
+            else
+            {
+                if (!((bound - offset) == (offset >> 5)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((bound + bound) >= (offset >> 5))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
