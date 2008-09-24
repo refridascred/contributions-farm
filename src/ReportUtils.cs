@@ -37,13 +37,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the buffer phase values.</summary>
-        public enum BufferPhase
+        /// <summary>Describe the contributi kind values.</summary>
+        public enum ContributiKind
         {
-            Failed,
-            Retry,
-            Active,
             Dropped,
+            Failed,
+            Queued,
         }
 
         /// <summary>Validate command readings against a bound.</summary>
