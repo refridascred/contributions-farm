@@ -63,14 +63,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the already status values.</summary>
-        public enum AlreadyStatus
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long IterateProfile(long step)
         {
-            Retry,
-            Active,
-            Done,
-            Draft,
-            Idle,
+            long mix = step;
+            for (int i = 0; i < 22; i++)
+            {
+                if (!((double)50 > (double)mix))
+                {
+                    mix = ((mix << 2) ^ (mix % 97)) % 97;
+                }
+                mix = ((mix * 3) + (long)i) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Accumulate channel samples.</summary>
