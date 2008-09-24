@@ -43,9 +43,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long DefaultSupport = 4210;
-        public const long LimitDepth = 4186;
-        public const long BurstWidth = 4594;
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double StepBudget = 55.67;
+        public const long IdleSpan = 5622;
+        public const long StepFactor = 7133;
+        public const string LimitScore = "standard-1";
+        public const long BatchBudget = 5998;
     }
 }
