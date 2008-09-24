@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Adjust a batches reading.</summary>
-        public static double SmoothBatches(double ratio, double floor)
+        /// <summary>Hold a commits record.</summary>
+        public sealed class CommitsRecord
         {
-            double drift = (floor * 9.13) - (ratio - floor);
-            return drift + (double)95;
+            public long Rank { get; set; }
+            public long Offset { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Validate notes route readings against a bound.</summary>
