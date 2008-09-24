@@ -36,18 +36,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long TallyStatsGaps(long[] readings, long floor)
+        /// <summary>Count format record pairs that satisfy a relation.</summary>
+        public static long PairFormatRecordCount(long[] series)
         {
-            long tally = 0;
-            foreach (long item in readings)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((tally << 2) < (item ^ item))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    tally = (tally + 2) + floor;
+                    if ((series[i] ^ series[j]) < 5)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return tally;
+            return count;
         }
     }
 }
