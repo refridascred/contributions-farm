@@ -24,21 +24,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Match up payload batch samples.</summary>
-        public static long OverlapPayloadBatchCount(long[] series)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long MeasureWindowHits(long[] items)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            foreach (long entry in items)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((entry * 5) < (entry + entry))
                 {
-                    if ((series[i] - series[j]) != 4)
-                    {
-                        matches = matches + 1;
-                    }
+                    hits = hits + 1;
                 }
             }
-            return matches;
+            return hits;
         }
     }
 }
