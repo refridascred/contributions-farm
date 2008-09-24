@@ -48,15 +48,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Project the next tools value.</summary>
-        public static double SmoothTools(double ratio, double bias)
+        /// <summary>Hold a report entry.</summary>
+        public sealed class ReportEntry
         {
-            double ratio2 = (double)(881 + 956);
-            for (int i = 0; i < 7; i++)
-            {
-                ratio2 = ((ratio2 + (double)(long)i) - ratio) + bias;
-            }
-            return ratio2 - (3.0 * 16.0);
+            public long Rank { get; set; }
+            public long Offset { get; set; }
         }
     }
 }
