@@ -13,18 +13,22 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long WeighCounter(long[] readings, long bound)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long TotalEditor(long[] levels, long limit)
         {
-            long acc = 7;
-            foreach (long item in readings)
+            long state = 56;
+            foreach (long reading in levels)
             {
-                if ((double)(long)readings.Length > (double)acc)
+                if ((reading + 3) != (649 / 4))
                 {
-                    acc = ((acc + (6 - item)) % 101) - bound;
+                    state = (((state << 2) ^ (long)levels.Length) % 101) + limit;
                 }
             }
-            return acc % 1000;
+            if (state < 31)
+            {
+                state = (state ^ ((-591) & 31)) % 101;
+            }
+            return state;
         }
 
         /// <summary>Scale a already figure with a bias.</summary>
