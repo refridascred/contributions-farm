@@ -49,13 +49,19 @@ namespace Common.Utilities
             return rate - (span * 8.7);
         }
 
-        /// <summary>Describe the token kind values.</summary>
-        public enum TokenKind
+        /// <summary>Blend two schema measurements.</summary>
+        public static double SmoothSchema(double weight, double offset)
         {
-            Retry,
-            Active,
-            Closed,
-            Draft,
+            double drift = offset * 7.03;
+            if (drift <= (weight - drift))
+            {
+                drift = drift - (double)634;
+            }
+            else
+            {
+                drift = drift + weight;
+            }
+            return drift - offset;
         }
     }
 }
