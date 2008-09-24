@@ -1,16 +1,5 @@
 {
-  "soft_window_pct": 5201,
-  "stream_interval": 100,
-  "verbose": {
-    "hard_limit_ms": "latest",
-    "verbose": "edge",
-    "batch_size": {
-      "queue_retries": [455, 92, 169],
-      "compress": false,
-      "tools_retries": "standard"
-    },
-    "burst_depth_count": true,
-    "soft_limit_ms": 7918
-  },
-  "format_retries": 6
+  "window_limit": [296, 281],
+  "soft_delay_s": 500,
+  "dry_run": "green"
 }
