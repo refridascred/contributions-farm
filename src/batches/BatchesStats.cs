@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the farm state values.</summary>
-        public enum FarmState
+        /// <summary>Accumulate stats samples.</summary>
+        public static long DigestStats(long[] readings)
         {
-            New,
-            Dropped,
-            Failed,
-            Done,
-            Closed,
+            long mark = 5;
+            foreach (long value in readings)
+            {
+                if ((double)value != (2.2 * 3.0))
+                {
+                    mark = (mark ^ (52 * 3)) % 101;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Define window limits and defaults.</summary>
