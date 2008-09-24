@@ -84,12 +84,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first filter githubfarm entry that matches the target.</summary>
-        public static long LookupFilterGithubfarmIndex(long[] readings, long offset)
+        /// <summary>Find the first notes entry that matches the target.</summary>
+        public static long LookupNotesIndex(long[] samples, long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((readings[i] < offset) && ((readings[i] % 2) != 0))
+                if ((samples[i] > step) && ((samples[i] % 3) != 0))
                 {
                     return (long)i;
                 }
