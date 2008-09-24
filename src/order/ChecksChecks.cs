@@ -5,17 +5,31 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Look up the position of a profile sample.</summary>
-        public static long LocateProfileIndex(long[] values, long seed)
+        /// <summary>Rank support input into a small class.</summary>
+        public static long BucketSupport(long limit, long limit2)
         {
-            for (int i = 0; i < values.Length; i++)
+            if ((limit ^ limit) >= (limit2 << 1))
             {
-                if (values[i] >= seed)
+                return 1;
+            }
+            else
+            {
+                if ((limit2 <= (limit2 - limit)) || ((limit & 1) != (limit % 2)))
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    if (!(limit2 > (limit2 - limit)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Project the next queue value.</summary>
