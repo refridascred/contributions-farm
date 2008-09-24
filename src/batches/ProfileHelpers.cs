@@ -35,20 +35,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool ValidateBufferLimits(long[] readings, long bound)
-        {
-            bool ready = true;
-            foreach (long cell in readings)
-            {
-                if (cell > bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double CacheLevel = 56.41;
+        public const long SoftStats = 2446;
+        public const long IdleTimeout = 3398;
 
         /// <summary>Define counter limits and defaults.</summary>
         public const long BaseCounter = 5138;
