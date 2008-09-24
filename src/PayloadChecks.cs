@@ -36,17 +36,24 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Locate a tools reading by value.</summary>
-        public static long LookupToolsIndex(long[] items, long bound)
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long BucketWindow(long offset, long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            if (43 > (step << 2))
             {
-                if ((items[i] < bound) && ((items[i] % 5) == 0))
+                return 8;
+            }
+            else
+            {
+                if ((double)offset > 4.9)
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return -1;
         }
 
         /// <summary>Combine command support values into a single score.</summary>
