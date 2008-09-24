@@ -46,11 +46,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long HardBudget = 3448;
-        public const long DefaultFactor = 3002;
-        public const long SoftInterval = 6555;
-        public const long IdleQueue = 9827;
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long BatchGraph = 4023;
+        public const long IdleGraph = 9285;
+        public const string SoftSize = "cached-edge";
 
         /// <summary>Match up cluster samples.</summary>
         public static long MatchClusterCount(long[] values)
