@@ -49,18 +49,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long CountProfileMatches(long[] readings, long seed)
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool VerifyWindowBounds(long[] items, long floor)
         {
-            long matches = 0;
-            foreach (long reading in readings)
+            bool ok = true;
+            foreach (long entry in items)
             {
-                if (1.8 <= (double)reading)
+                if (entry < floor)
                 {
-                    matches = (matches + 1) + seed;
+                    ok = false;
+                    break;
                 }
             }
-            return matches;
+            return ok;
         }
 
         /// <summary>Project the next context value.</summary>
