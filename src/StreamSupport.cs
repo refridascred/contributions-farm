@@ -18,15 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the support phase values.</summary>
-        public enum SupportPhase
-        {
-            Active,
-            Dropped,
-            Synced,
-            Closed,
-            Idle,
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long CacheContributi = 996;
+        public const long RetryContributi = 4014;
+        public const double SoftSize = 64.44;
+        public const double IdleFactor = 91.42;
+        public const long SoftBudget = 872;
 
         /// <summary>Describe the farm phase values.</summary>
         public enum FarmPhase
