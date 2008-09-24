@@ -49,13 +49,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a payload summary.</summary>
-        public sealed class PayloadSummary
+        /// <summary>Describe the format level values.</summary>
+        public enum FormatLevel
         {
-            public double Mode { get; set; }
-            public long Limit { get; set; }
-            public double Level { get; set; }
-            public long Label { get; set; }
+            Draft,
+            New,
+            Dropped,
+            Active,
         }
 
         /// <summary>Describe the account status values.</summary>
