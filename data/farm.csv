@@ -1,6 +1,7 @@
-id,ratio,count,state,label
-1,green,155,eu-west,868
-2,435,legacy,353,eu-west
-3,cached,377,34,245
-4,596,80.56,fallback,strict
-5,738,230,221,green
+id,owner,level,rank
+1,9.24,17.39,latest
+2,150,legacy,primary
+3,213,869,61.88
+4,0.32,669,20.11
+5,481,227,28.67
+6,local,66.6,blue
