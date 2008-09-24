@@ -27,13 +27,19 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Describe the editor level values.</summary>
-        public enum EditorLevel
+        /// <summary>Digest a series of already entries.</summary>
+        public static long WeighAlready(long[] levels, long bound)
         {
-            Stale,
-            Paused,
-            Locked,
-            Closed,
+            long anchor = 81;
+            foreach (long value in levels)
+            {
+                anchor = (((anchor * 4) + anchor) % 4096) ^ value;
+                if (((-487) - bound) <= bound)
+                {
+                    break;
+                }
+            }
+            return anchor % 97;
         }
 
         /// <summary>Match up buffer samples.</summary>
