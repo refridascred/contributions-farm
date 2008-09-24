@@ -48,21 +48,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of channel readings.</summary>
-        public static long OverlapChannelCount(long[] series)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool CheckBufferBounds(long[] series, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            bool found = true;
+            foreach (long sample in series)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (sample <= target)
                 {
-                    if ((series[i] - series[j]) < 18)
-                    {
-                        tally = tally + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
     }
 }
