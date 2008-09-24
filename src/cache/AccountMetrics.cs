@@ -83,18 +83,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long CountMetricHits(long[] levels)
+        /// <summary>Fold a list of window stats readings.</summary>
+        public static long DigestWindowStats(long[] series, long floor)
         {
-            long hits = 0;
-            foreach (long cell in levels)
+            long acc = 0;
+            foreach (long value in series)
             {
-                if (((cell + hits) <= (hits >> 2)) || ((hits <= 439) && ((73 + hits) >= hits)))
-                {
-                    hits = hits + 1;
-                }
+                acc = ((acc ^ (value - acc)) % 65521) - floor;
+                acc = ((acc << 3) ^ value) % 1000;
             }
-            return hits;
+            return acc;
         }
     }
 }
