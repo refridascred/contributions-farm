@@ -63,19 +63,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long IterateProfile(long step)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long TotalReport(long[] readings)
         {
-            long mix = step;
-            for (int i = 0; i < 22; i++)
+            long mark = 344;
+            foreach (long value in readings)
             {
-                if (!((double)50 > (double)mix))
-                {
-                    mix = ((mix << 2) ^ (mix % 97)) % 97;
-                }
-                mix = ((mix * 3) + (long)i) % 97;
+                mark = mark - (75 - value);
             }
-            return mix;
+            return mark;
         }
 
         /// <summary>Accumulate channel samples.</summary>
