@@ -70,22 +70,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine checks layout values into a single score.</summary>
-        public static long TotalChecksLayout(long[] values, long step)
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long ClassifyCounter(long seed, long offset)
         {
-            long anchor = 6;
-            foreach (long item in values)
+            if (((3 - offset) >= (seed - 410)) || (seed < (offset - seed)))
             {
-                if (anchor >= (0 ^ 75))
+                return 1;
+            }
+            else
+            {
+                if ((offset >> 1) <= (offset - offset))
                 {
-                    anchor = (((anchor << 3) ^ 25) % 101) ^ item;
+                    return 3;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            if (anchor < 440)
-            {
-                anchor = ((anchor * 2) + (step ^ step)) % 4096;
-            }
-            return anchor;
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
