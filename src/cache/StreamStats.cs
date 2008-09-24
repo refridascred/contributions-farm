@@ -34,19 +34,17 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool GuardCommitsRange(long[] samples, long offset)
+        /// <summary>Locate a editor tools reading by value.</summary>
+        public static long LocateEditorToolsIndex(long[] levels, long offset)
         {
-            bool found = true;
-            foreach (long datum in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (datum >= offset)
+                if (levels[i] > offset)
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
     }
 }
