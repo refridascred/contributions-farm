@@ -25,18 +25,11 @@ namespace Common.Utilities
         public const long BurstScore = 6077;
         public const double RetrySize = 62.71;
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long TotalLayout(long[] readings)
+        /// <summary>Hold a queue stats.</summary>
+        public sealed class QueueStats
         {
-            long score = 8;
-            foreach (long reading in readings)
-            {
-                if (((double)score == (double)reading) && ((7.95 * 18.0) > (double)reading))
-                {
-                    score = (score + (reading + reading)) % 65521;
-                }
-            }
-            return score;
+            public double Mode { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
