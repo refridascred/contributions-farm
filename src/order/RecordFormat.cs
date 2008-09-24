@@ -28,15 +28,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long RollFarm(long offset)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long AuditClusterGaps(long[] items, long limit)
         {
-            long result = offset;
-            for (int i = 0; i < 12; i++)
+            long matches = 0;
+            foreach (long cell in items)
             {
-                result = ((result * 3) + (long)i) % 97;
+                if ((((double)limit == (7.24 / 9.0)) || ((98 % 60) >= (limit - cell))) && ((cell ^ matches) > (445 + 841)))
+                {
+                    matches = matches + 2;
+                }
             }
-            return result;
+            return matches;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
