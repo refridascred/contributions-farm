@@ -1,5 +1,8 @@
 {
-  "idle_limit_ms": 1553,
-  "readonly": 1214,
-  "burst_retries": ["edge", "edge", "legacy"]
+  "enabled": [157, 327, 175, 179],
+  "support_timeout": "staging",
+  "readonly": "standard",
+  "retry_limit_s": "latest",
+  "default_delay_pct": "primary",
+  "max_capacity_count": 54.66
 }
