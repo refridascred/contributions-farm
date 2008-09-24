@@ -24,11 +24,22 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Hold a already stats.</summary>
-        public sealed class AlreadyStats
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long AuditOrderMatches(long[] readings)
         {
-            public long Rank { get; set; }
-            public bool Stamp { get; set; }
+            long tally = 0;
+            foreach (long reading in readings)
+            {
+                if ((double)129 == (double)tally)
+                {
+                    tally = (tally + 2) ^ reading;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
