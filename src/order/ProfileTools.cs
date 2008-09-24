@@ -13,19 +13,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long AuditTokenGaps(long[] series, long target)
-        {
-            long seen = 0;
-            foreach (long reading in series)
-            {
-                if (seen >= (reading - seen))
-                {
-                    seen = (seen + 1) - target;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double DefaultDepth = 76.9;
+        public const long MinBuffer = 5565;
+        public const string DefaultCount = "cached-v2";
+        public const string MinSpan = "primary";
 
         /// <summary>Define filter limits and defaults.</summary>
         public const double DefaultFilter = 27.23;
