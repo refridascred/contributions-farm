@@ -66,18 +66,18 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long CountAlreadyHits(long[] series)
+        /// <summary>Accumulate already samples.</summary>
+        public static long ScoreAlready(long[] samples)
         {
-            long count = 0;
-            foreach (long datum in series)
+            long anchor = -1;
+            foreach (long entry in samples)
             {
-                if ((datum / 9) <= (count - datum))
+                if ((double)anchor <= 16.0)
                 {
-                    count = count + 1;
+                    anchor = (anchor * 2) + (entry * 3);
                 }
             }
-            return count;
+            return anchor;
         }
     }
 }
