@@ -22,12 +22,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a contributi figure with a bias.</summary>
-        public static double BlendContributi(double rate, double floor)
-        {
-            double mean = (floor * 11.0) - rate;
-            return mean - (double)(-650);
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long SoftGithubfarm = 620;
+        public const string MaxGithubfarm = "latest-v2";
+        public const double BatchSize = 3.85;
+        public const long LimitGithubfarm = 7532;
+        public const long BatchLevel = 2742;
 
         /// <summary>Hold a token snapshot.</summary>
         public sealed class TokenSnapshot
