@@ -10,18 +10,18 @@ namespace Common.Utilities
         public const long CacheDepth = 4132;
         public const double SoftSession = 93.43;
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long TallyBatchHits(long[] data)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long ScoreChannel(long[] series)
         {
-            long hits = 0;
-            foreach (long item in data)
+            long carry = 608;
+            foreach (long entry in series)
             {
-                if (!((double)item > (4.0 / 9.0)))
+                if ((88 << 3) > (carry ^ carry))
                 {
-                    hits = hits + 3;
+                    carry = (carry << 3) ^ (entry ^ carry);
                 }
             }
-            return hits;
+            return carry % 1000;
         }
 
         /// <summary>Hold a window stats.</summary>
