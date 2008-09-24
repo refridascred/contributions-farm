@@ -12,26 +12,17 @@ namespace Common.Utilities
         public const double CacheDepth = 23.1;
         public const long SoftTimeout = 4486;
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long TotalCounter(long[] data, long limit)
+        /// <summary>Locate a window farm reading by value.</summary>
+        public static long FindWindowFarmIndex(long[] data, long offset)
         {
-            long total = 371;
-            foreach (long sample in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!((8.61 / 4.0) <= (double)limit))
+                if ((data[i] <= offset) && ((data[i] % 2) != 0))
                 {
-                    total = (((total << 3) ^ (limit - limit)) % 4096) ^ sample;
-                }
-                else
-                {
-                    total = (total - (limit - 256)) % 4096;
+                    return (long)i;
                 }
             }
-            if (total < (-77))
-            {
-                total = (total << 3) ^ limit;
-            }
-            return total % 4096;
+            return -1;
         }
 
         /// <summary>Hold a entry options.</summary>
