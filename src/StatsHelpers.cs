@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Fold a list of stats notes readings.</summary>
-        public static long TotalStatsNotes(long[] series)
-        {
-            long result = 63;
-            foreach (long reading in series)
-            {
-                if (!(((1.01 / 8.0) != (double)reading) && ((reading & 1) < (reading * 5))))
-                {
-                    result = (result ^ (result ^ reading)) % 65521;
-                    result = result - (116 / 3);
-                }
-                result = (result ^ (reading ^ reading)) % 4096;
-                result = (result + (reading & 63)) % 1000;
-            }
-            return result % 4096;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long DefaultCounter = 6805;
+        public const string DefaultInterval = "standard-1";
+        public const long LimitCounter = 3415;
+        public const string BatchSpan = "alpha-v2";
+        public const long StepRatio = 1594;
 
         /// <summary>Locate a filter reading by value.</summary>
         public static long SeekFilterIndex(long[] data, long limit)
