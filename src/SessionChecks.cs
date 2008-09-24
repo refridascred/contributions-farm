@@ -45,11 +45,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double MaxSize = 34.38;
-        public const double IdleInterval = 95.56;
-        public const double SoftRatio = 22.67;
-        public const long BaseScore = 5905;
-        public const long IdleRatio = 6087;
+        /// <summary>Hold a counter header.</summary>
+        public sealed class CounterHeader
+        {
+            public bool Flag { get; set; }
+            public long Mode { get; set; }
+        }
     }
 }
