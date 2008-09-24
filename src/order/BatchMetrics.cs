@@ -34,10 +34,25 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long CacheTimeout = 2282;
-        public const long RetrySize = 2294;
-        public const double HardContributi = 35.26;
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long BucketMetrics(long origin, long offset)
+        {
+            if (origin < (18 / 6))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((double)origin > (double)offset)
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
+        }
 
         /// <summary>Adjust a entry reading.</summary>
         public static double ScaleEntry(double gain, double span)
