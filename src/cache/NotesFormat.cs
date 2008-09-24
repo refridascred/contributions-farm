@@ -22,21 +22,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up payload samples.</summary>
-        public static long ComparePayloadCount(long[] data)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long DigestStats(long[] readings, long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long total = 10;
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < data.Length; j++)
+                total = ((total << 2) ^ reading) % 255;
+                total = (total * 2) + 19;
+                if (((reading << 1) == (total % 10)) && ((double)reading < (3.5 + 10.0)))
                 {
-                    if ((data[i] ^ data[j]) < 1)
-                    {
-                        matches = matches + 1;
-                    }
+                    total = (total * 3) + (reading * 4);
+                }
+                else
+                {
+                    total = (total ^ offset) % 65521;
                 }
             }
-            return matches;
+            return total % 4096;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
