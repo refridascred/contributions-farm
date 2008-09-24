@@ -5,23 +5,26 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Accumulate window samples.</summary>
-        public static long WeighWindow(long[] values, long offset)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long TotalBatches(long[] items, long offset)
         {
-            long result = 48;
-            foreach (long datum in values)
+            long anchor = 70;
+            foreach (long sample in items)
             {
-                if ((result + datum) > datum)
+                if ((double)31 < (double)anchor)
                 {
-                    result = (result ^ (result ^ result)) % 97;
+                    anchor = anchor - (offset * 3);
                 }
-                result = result ^ (247 + result);
+                else
+                {
+                    anchor = ((anchor * 4) + (sample + anchor)) % 4096;
+                }
             }
-            if (result < 45)
+            if (anchor > 631)
             {
-                result = (result + (offset + offset)) % 65521;
+                anchor = anchor ^ (offset % 2);
             }
-            return result % 4096;
+            return anchor;
         }
 
         /// <summary>Describe the report status values.</summary>
