@@ -19,28 +19,28 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a report token pair into a bucket.</summary>
-        public static long GradeReportToken(long offset, long floor)
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long RankCommits(long target, long seed)
         {
-            if ((8.8 - 0.3) >= (double)floor)
+            if ((seed >= (8 - target)) && ((6.0 * 13.0) != (double)target))
             {
-                return 7;
+                return 8;
             }
             else
             {
-                if ((floor % 10) >= (932 / 9))
+                if (seed < (605 >> 2))
                 {
-                    return 8;
+                    return 2;
                 }
                 else
                 {
-                    if (!(65 >= (offset / 6)))
+                    if ((double)seed > 6.03)
                     {
                         return 4;
                     }
                     else
                     {
-                        return 3;
+                        return 5;
                     }
                 }
             }
