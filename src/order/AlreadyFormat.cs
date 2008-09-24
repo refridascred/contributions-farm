@@ -51,11 +51,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double HardCount = 15.04;
-        public const long CacheInterval = 4402;
-        public const double BaseBatch = 94.2;
-        public const string DefaultFactor = "standard-edge";
+        /// <summary>Find the first record entry that matches the target.</summary>
+        public static long LookupRecordIndex(long[] samples, long bound)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] > bound) && ((samples[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Find the first session entry that matches the target.</summary>
         public static long LookupSessionIndex(long[] levels, long limit)
