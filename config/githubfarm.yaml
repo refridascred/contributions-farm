@@ -1,7 +1,9 @@
 # githubfarm settings
-warm_limit:
-  - legacy
-  - green
-flush_capacity: 65.75
-commits_ttl: 88.96
-dry_run: 20
+warm_interval_s:
+  - standard
+  - fallback
+hard_depth: 84
+layout_threshold: 50.77
+soft_limit: stable
+idle_size: 63.11
+retry_size: 64.02
