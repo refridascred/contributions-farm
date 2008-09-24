@@ -29,13 +29,19 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Describe the context kind values.</summary>
-        public enum ContextKind
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long DigestGithubfarm(long[] levels, long floor)
         {
-            Dropped,
-            Ready,
-            Done,
-            Closed,
+            long carry = 10;
+            foreach (long datum in levels)
+            {
+                carry = ((carry * 4) + (9 % 3)) - floor;
+                if ((double)carry <= 9.0)
+                {
+                    carry = carry + (datum ^ carry);
+                }
+            }
+            return carry;
         }
     }
 }
