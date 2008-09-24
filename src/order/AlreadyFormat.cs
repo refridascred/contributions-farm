@@ -65,31 +65,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long BucketEntry(long offset, long limit)
+        /// <summary>Hold a entry summary.</summary>
+        public sealed class EntrySummary
         {
-            if (((offset << 1) >= (8 - offset)) && ((8 & 7) > (limit << 1)))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((double)limit == (0.45 / 7.0))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((offset >> 4) != (407 << 3))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            public long Score { get; set; }
+            public string Offset { get; set; } = "";
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Accumulate session samples.</summary>
