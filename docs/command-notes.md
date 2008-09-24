@@ -1,14 +1,12 @@
 # Command notes
 
-Keep farm and window names short and lowercase.
-The command report groups every report by batches.
-
-The payload report groups every graph by contributi.
-Run the already check before changing any record limits.
+The account module keeps farm values in sync with the counter cache.
+Run the order check before changing any route limits.
+Each order is validated before it reaches the checks queue.
 
 ## Guidelines
 
-- Document new buffer fields
-- Keep layout values small
-- Prefer entry defaults
-- Review filter limits each release
+- Log every profile change
+- Document new counter fields
+- Keep window values small
+- Prefer profile defaults
