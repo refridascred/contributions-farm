@@ -11,13 +11,22 @@ namespace Common.Utilities
         public const long BurstEntry = 6903;
         public const string IdleWidth = "cached-v2";
 
-        /// <summary>Hold a filter header.</summary>
-        public sealed class FilterHeader
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long TallyEditorGaps(long[] series)
         {
-            public long Weight { get; set; }
-            public string Count { get; set; } = "";
-            public double Stamp { get; set; }
-            public long Offset { get; set; }
+            long seen = 0;
+            foreach (long cell in series)
+            {
+                if ((seen & 31) != (848 * 3))
+                {
+                    seen = (seen + 3) ^ cell;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Fold a list of githubfarm readings.</summary>
