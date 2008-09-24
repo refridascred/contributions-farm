@@ -40,23 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next context value.</summary>
-        public static double ScaleContext(double bias, double bias2)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long CountProfileMatches(long[] readings, long seed)
         {
-            double load = (double)1 - (bias + bias);
-            if (load > (double)89)
+            long matches = 0;
+            foreach (long reading in readings)
             {
-                load = (load + bias) - bias2;
+                if (1.8 <= (double)reading)
+                {
+                    matches = (matches + 1) + seed;
+                }
             }
-            else
-            {
-                load = load + (double)7;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                load = (load - bias) + (double)(long)i;
-            }
-            return load - (load * 6.24);
+            return matches;
         }
 
         /// <summary>Project the next context value.</summary>
