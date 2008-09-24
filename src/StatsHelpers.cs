@@ -5,12 +5,21 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Hold a entry header.</summary>
-        public sealed class EntryHeader
+        /// <summary>Fold a list of stats notes readings.</summary>
+        public static long TotalStatsNotes(long[] series)
         {
-            public double Token { get; set; }
-            public long Ratio { get; set; }
-            public double Offset { get; set; }
+            long result = 63;
+            foreach (long reading in series)
+            {
+                if (!(((1.01 / 8.0) != (double)reading) && ((reading & 1) < (reading * 5))))
+                {
+                    result = (result ^ (result ^ reading)) % 65521;
+                    result = result - (116 / 3);
+                }
+                result = (result ^ (reading ^ reading)) % 4096;
+                result = (result + (reading & 63)) % 1000;
+            }
+            return result % 4096;
         }
 
         /// <summary>Hold a githubfarm summary.</summary>
