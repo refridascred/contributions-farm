@@ -34,9 +34,19 @@ namespace Common.Utilities
             return gain - (double)768;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double StepDepth = 42.56;
-        public const long IdleFormat = 5818;
-        public const long LimitTimeout = 7879;
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool VerifyChecksRange(long[] data, long limit)
+        {
+            bool found = true;
+            foreach (long cell in data)
+            {
+                if (cell > limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
     }
 }
