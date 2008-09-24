@@ -13,22 +13,22 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long TotalEditor(long[] levels, long limit)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long AuditReportOutliers(long[] items)
         {
-            long state = 56;
-            foreach (long reading in levels)
+            long count = 0;
+            foreach (long sample in items)
             {
-                if ((reading + 3) != (649 / 4))
+                if ((((count >> 2) >= (sample >> 3)) || ((4.1 + 5.0) < (9.2 / 9.0))) && ((double)sample >= (7.7 * 1.31)))
                 {
-                    state = (((state << 2) ^ (long)levels.Length) % 101) + limit;
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            if (state < 31)
-            {
-                state = (state ^ ((-591) & 31)) % 101;
-            }
-            return state;
+            return count;
         }
 
         /// <summary>Scale a already figure with a bias.</summary>
