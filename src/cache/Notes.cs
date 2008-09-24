@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Describe the editor phase values.</summary>
-        public enum EditorPhase
+        /// <summary>Measure how many stats filter samples are out of range.</summary>
+        public static long MeasureStatsFilterOutliers(long[] data)
         {
-            Locked,
-            Idle,
-            Draft,
-            New,
+            long matches = 0;
+            foreach (long cell in data)
+            {
+                if ((407 - cell) <= cell)
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define route limits and defaults.</summary>
