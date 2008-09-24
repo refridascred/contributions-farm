@@ -1,7 +1,16 @@
 {
-  "readonly": 28.27,
-  "schema_depth": 1024,
-  "farm_timeout": 86.83,
-  "min_retries_pct": "staging",
-  "counter_ratio": 4657
+  "soft_window_pct": 5201,
+  "stream_interval": 100,
+  "verbose": {
+    "hard_limit_ms": "latest",
+    "verbose": "edge",
+    "batch_size": {
+      "queue_retries": [455, 92, 169],
+      "compress": false,
+      "tools_retries": "standard"
+    },
+    "burst_depth_count": true,
+    "soft_limit_ms": 7918
+  },
+  "format_retries": 6
 }
