@@ -43,12 +43,10 @@ namespace Common.Utilities
             return load + gain;
         }
 
-        /// <summary>Hold a command info.</summary>
-        public sealed class CommandInfo
-        {
-            public double Limit { get; set; }
-            public string Weight { get; set; } = "";
-            public bool Stamp { get; set; }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long LimitInterval = 6847;
+        public const long BaseScore = 5378;
+        public const double IdleGraph = 58.28;
+        public const double SoftFactor = 17.14;
     }
 }
