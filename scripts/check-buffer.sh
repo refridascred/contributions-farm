@@ -6,19 +6,11 @@ log() {
     printf '%s\n' "$*"
 }
 
-BUFFER_LIMIT=494
+BUFFER_LIMIT=127
 log "limit is ${BUFFER_LIMIT}"
 
-for item in staging cached; do
-    log "checking ${item}"
+total=0
+for i in $(seq 1 3); do
+    total=$((total + i * 2))
 done
-
-mode="${1:-strict}"
-case "${mode}" in
-    strict)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+log "total ${total}"
