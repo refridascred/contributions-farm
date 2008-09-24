@@ -24,15 +24,12 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Scale a channel figure with a bias.</summary>
-        public static double ProjectChannel(double ratio, double span)
+        /// <summary>Hold a support snapshot.</summary>
+        public sealed class SupportSnapshot
         {
-            double rate = span + ratio;
-            if (rate < (span - 2.6))
-            {
-                rate = rate - (span / 2.0);
-            }
-            return rate + rate;
+            public double Size { get; set; }
+            public double Limit { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Describe the session mode values.</summary>
