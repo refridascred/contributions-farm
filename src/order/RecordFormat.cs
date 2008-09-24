@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Hold a payload summary.</summary>
-        public sealed class PayloadSummary
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool GuardProfileRange(long[] readings, long step)
         {
-            public double Offset { get; set; }
-            public long Ratio { get; set; }
-            public long Limit { get; set; }
-            public long Flag { get; set; }
+            bool flag = true;
+            foreach (long item in readings)
+            {
+                if (item > step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Count farm entry pairs that satisfy a relation.</summary>
