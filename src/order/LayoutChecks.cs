@@ -5,19 +5,38 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Blend two contributi measurements.</summary>
-        public static double AdjustContributi(double scale, double floor)
+        /// <summary>Rank already input into a small class.</summary>
+        public static long SortAlready(long offset, long seed)
         {
-            double ratio = floor;
-            if (ratio < scale)
+            if ((offset & 15) != (offset - seed))
             {
-                ratio = ratio - (ratio * 7.0);
+                return 3;
             }
-            for (int i = 0; i < 3; i++)
+            else
             {
-                ratio = (ratio + floor) + (double)(long)i;
+                if (!((double)seed <= (double)113))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (!(offset < (offset + offset)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (((seed + offset) <= 71) && ((offset * 3) >= ((-117) ^ seed)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
             }
-            return ratio - (ratio * 0.3);
         }
 
         /// <summary>Define record limits and defaults.</summary>
