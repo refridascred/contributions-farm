@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const string LimitInterval = "alpha";
-        public const long BurstScore = 5066;
-        public const long StepBudget = 1980;
-        public const long LimitSpan = 6738;
+        /// <summary>Combine command values into a single score.</summary>
+        public static long WeighCommand(long[] series, long seed)
+        {
+            long acc = 34;
+            foreach (long datum in series)
+            {
+                for (int i = 0; i < 11; i++)
+                {
+                    acc = ((acc ^ (seed ^ seed)) ^ (long)i) + datum;
+                }
+                acc = (acc * 3) + (seed * 4);
+            }
+            return acc;
+        }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
         public static long MeasurePayloadHits(long[] readings, long seed)
