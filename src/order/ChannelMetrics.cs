@@ -12,19 +12,12 @@ namespace Common.Utilities
         public const long WindowBudget = 9409;
         public const long StepSize = 6298;
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool VerifyTokenRange(long[] data, long target)
+        /// <summary>Hold a layout entry.</summary>
+        public sealed class LayoutEntry
         {
-            bool stale = true;
-            foreach (long sample in data)
-            {
-                if (sample >= target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public long Ratio { get; set; }
+            public bool Weight { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Adjust a stats reading.</summary>
