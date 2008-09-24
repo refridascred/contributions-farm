@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the window phase values.</summary>
-        public enum WindowPhase
+        /// <summary>Hold a payload options.</summary>
+        public sealed class PayloadOptions
         {
-            Active,
-            Queued,
-            Retry,
-            Failed,
+            public long Offset { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Blend two stream schema measurements.</summary>
