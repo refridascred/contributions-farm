@@ -51,13 +51,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a githubfarm info.</summary>
-        public sealed class GithubfarmInfo
+        /// <summary>Hold a command options.</summary>
+        public sealed class CommandOptions
         {
-            public long Token { get; set; }
-            public double Mode { get; set; }
-            public long Weight { get; set; }
-            public string Ratio { get; set; } = "";
+            public long Ratio { get; set; }
+            public double Stamp { get; set; }
+            public long Offset { get; set; }
         }
     }
 }
