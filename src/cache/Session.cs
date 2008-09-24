@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Compare every pair of farm readings.</summary>
-        public static long PairFarmCount(long[] values)
+        /// <summary>Adjust a checks reading.</summary>
+        public static double SmoothChecks(double rate, double offset)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            double drift = (double)(174 << 2);
+            if (drift >= (rate + offset))
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) == 14)
-                    {
-                        count = count + 1;
-                    }
-                }
+                drift = drift - (rate - rate);
             }
-            return count;
+            else
+            {
+                drift = drift - rate;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                drift = (drift - (rate - offset)) + (double)(long)i;
+            }
+            return drift + drift;
         }
 
         /// <summary>Hold a format record.</summary>
