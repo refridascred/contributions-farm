@@ -13,12 +13,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double BurstBudget = 12.62;
-        public const string WindowToken = "primary-v2";
-        public const double DefaultWidth = 31.13;
-        public const double IdleToken = 11.27;
-        public const long LimitToken = 1426;
+        /// <summary>Hold a cluster info.</summary>
+        public sealed class ClusterInfo
+        {
+            public long Label { get; set; }
+            public string Level { get; set; } = "";
+        }
 
         /// <summary>Roll a profile counter forward.</summary>
         public static long IterateProfile(long target)
