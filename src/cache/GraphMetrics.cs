@@ -34,18 +34,20 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long AuditRecordHits(long[] items)
+        /// <summary>Roll a batch contributi counter forward.</summary>
+        public static long RollBatchContributi(long step)
         {
-            long matches = 0;
-            foreach (long item in items)
+            long mix = step;
+            for (int i = 0; i < 23; i++)
             {
-                if ((item / 4) >= (item ^ 4))
+                if ((long)i < mix)
                 {
-                    matches = matches + 3;
+                    mix = (mix << 2) ^ (long)i;
                 }
+                mix = (mix - (61 << 1)) % 4096;
+                mix = ((mix * 2) + (long)i) % 97;
             }
-            return matches;
+            return mix;
         }
 
         /// <summary>Iterate the batch series from a seed.</summary>
