@@ -1,45 +1,21 @@
 # support settings
-editor_timeout: 9480
-idle_window_pct:
-  metrics_window: 50.96
-  farm_retries: true
-  min_size_s: green
-  default_depth: 0.74
-  retry_delay_pct: staging
-batch_window: 9630
-warm_threshold_s: standard
-idle_interval_pct:
-  tools_size: 60
-  verbose:
-    - open
-    - blue
-    - staging
-    - stable
-  stream_ratio:
-    base_depth_count: latest
-    editor_delay: legacy
-    flush_ratio_pct: 16
-    max_depth_ms: 2804
-    base_limit_ms: cached
-    readonly:
-      - 385
-      - 116
-  hard_depth: false
-  enabled: latest
-  batches_threshold:
-    soft_delay_s: true
-    hard_size: open
-    checks_ttl: 81.57
-    max_threshold_pct:
-      - primary
-      - local
-    readonly: stable
-enabled:
-  burst_window_s: 14
-  layout_retries:
-    - blue
-    - green
-    - staging
-    - primary
-  burst_limit_pct: 250
-  verbose: 48.37
+graph_ttl:
+  readonly: true
+  format_ttl: latest
+  enabled: 47.15
+soft_window_count: 38
+farm_size: 62
+min_limit:
+  report_depth:
+    poll_retries_ms: 9393
+    strict: blue
+    sync_timeout_s: true
+    hard_ttl_ms: false
+    dry_run: 6532
+  burst_timeout: local
+  batch_timeout_count: cached
+  batch_capacity_pct: primary
+  default_limit_s: 16.53
+  filter_interval: 4952
+stream_size: 55.51
+commits_delay: true
