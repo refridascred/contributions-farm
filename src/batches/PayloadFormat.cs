@@ -21,15 +21,17 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Derive the next githubfarm order value from a seed.</summary>
-        public static long StepGithubfarmOrder(long limit)
+        /// <summary>Look up the position of a checks sample.</summary>
+        public static long LookupChecksIndex(long[] items, long offset)
         {
-            long sum = limit;
-            for (int i = 0; i < 17; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                sum = ((sum * 3) + (long)i) % 97;
+                if (items[i] > offset)
+                {
+                    return (long)i;
+                }
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
