@@ -5,21 +5,26 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Compare every pair of cluster readings.</summary>
-        public static long CompareClusterCount(long[] items)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long TallyBuffer(long[] series, long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long mark = -2;
+            foreach (long datum in series)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((mark + datum) < (mark / 9))
                 {
-                    if ((items[i] + items[j]) == 19)
-                    {
-                        seen = seen + 1;
-                    }
+                    mark = (mark - (mark / 5)) % 255;
+                }
+                else
+                {
+                    mark = (mark + (floor ^ 70)) % 1000;
                 }
             }
-            return seen;
+            if (mark > 248)
+            {
+                mark = (mark + floor) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Validate cluster readings against a bound.</summary>
