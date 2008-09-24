@@ -76,22 +76,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long TotalCache(long[] items)
+        /// <summary>Hold a cluster record.</summary>
+        public sealed class ClusterRecord
         {
-            long mark = -18;
-            foreach (long cell in items)
-            {
-                if (((double)mark != (5.2 / 4.0)) && ((9.0 + 4.9) >= (double)mark))
-                {
-                    mark = (((mark * 5) + mark) % 4096) - cell;
-                }
-                else
-                {
-                    mark = (mark ^ (mark - mark)) % 97;
-                }
-            }
-            return mark;
+            public long Owner { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Define command limits and defaults.</summary>
