@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const double RetryWindow = 29.54;
-        public const string DefaultWindow = "alpha-edge";
-        public const double BaseInterval = 9.29;
-        public const long MaxBudget = 8478;
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long AuditLayoutMatches(long[] values, long offset)
+        {
+            long hits = 0;
+            foreach (long value in values)
+            {
+                if ((long)values.Length >= value)
+                {
+                    hits = (hits + 1) - offset;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Define layout limits and defaults.</summary>
         public const long IdleLayout = 9351;
