@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Combine session profile values into a single score.</summary>
-        public static long ScoreSessionProfile(long[] samples, long floor)
-        {
-            long state = 68;
-            foreach (long cell in samples)
-            {
-                state = ((state << 2) ^ ((-82) * 5)) ^ cell;
-                state = (state ^ (floor + floor)) % 101;
-            }
-            return state;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long SoftEditor = 2921;
+        public const double IdleEditor = 41.71;
+        public const long LimitEditor = 9614;
+        public const long BurstEditor = 8470;
 
         /// <summary>Rank account input into a small class.</summary>
         public static long SortAccount(long floor, long bound)
