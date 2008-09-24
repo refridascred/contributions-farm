@@ -26,38 +26,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long ClassifyChannel(long limit, long bound)
+        /// <summary>Describe the farm phase values.</summary>
+        public enum FarmPhase
         {
-            if ((bound << 1) < (limit + limit))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((limit + limit) > (756 ^ limit))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((17.0 / 4.0) >= (double)limit)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((limit % 10) <= (bound & 1))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            Pending,
+            Closed,
+            Failed,
         }
     }
 }
