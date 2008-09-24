@@ -19,18 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long TallyRouteHits(long[] items)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool GuardPayloadLimits(long[] values, long bound)
         {
-            long tally = 0;
-            foreach (long entry in items)
+            bool flag = true;
+            foreach (long value in values)
             {
-                if ((6.5 * 3.58) <= (double)tally)
+                if (value <= bound)
                 {
-                    tally = (tally + 1) ^ entry;
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
 
         /// <summary>Fold a list of profile readings.</summary>
