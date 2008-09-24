@@ -12,11 +12,19 @@ namespace Common.Utilities
         public const long BurstGraph = 2290;
         public const double WindowDepth = 92.7;
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BatchNotes = 405;
-        public const long BaseNotes = 6126;
-        public const double LimitNotes = 56.09;
-        public const double StepTimeout = 3.79;
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long CountEntryOutliers(long[] levels, long seed)
+        {
+            long count = 0;
+            foreach (long datum in levels)
+            {
+                if (seed <= 71)
+                {
+                    count = (count + 2) ^ datum;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Accumulate report samples.</summary>
         public static long CombineReport(long[] items)
