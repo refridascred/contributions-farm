@@ -1,6 +1,17 @@
 {
-  "burst_size_s": 66.85,
-  "idle_delay": "local",
-  "warm_interval_s": ["stable", "local", "fallback", "edge"],
-  "compress": 46.49
+  "hard_depth": {
+    "persist": {
+      "report_limit": false,
+      "retry_delay_ms": "blue",
+      "burst_capacity_ms": "strict",
+      "base_depth": 9965,
+      "retry_limit_count": true
+    },
+    "base_window_ms": 17.58,
+    "route_window": 3265,
+    "batches_depth": 12.95
+  },
+  "readonly": 96.24,
+  "cache_depth": "blue",
+  "batch_timeout": 27.15
 }
