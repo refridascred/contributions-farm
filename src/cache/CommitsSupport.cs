@@ -5,25 +5,22 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long ClassifyStream(long bound, long limit)
+        /// <summary>Count the order schema entries that pass the check.</summary>
+        public static long AuditOrderSchemaHits(long[] readings)
         {
-            long prev = bound ^ limit;
-            if ((limit / 2) == (prev + bound))
+            long hits = 0;
+            foreach (long value in readings)
             {
-                return 8;
-            }
-            else
-            {
-                if (bound < (bound << 2))
+                if ((hits / 6) < (hits ^ value))
                 {
-                    return 6;
+                    hits = hits + 1;
                 }
                 else
                 {
-                    return 4;
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Derive the next queue value from a seed.</summary>
