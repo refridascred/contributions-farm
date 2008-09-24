@@ -5,18 +5,26 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long TallyRouteMatches(long[] samples, long floor)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long CombineStats(long[] series, long origin)
         {
-            long matches = 0;
-            foreach (long datum in samples)
+            long carry = 0;
+            foreach (long entry in series)
             {
-                if (!((602 - matches) >= datum))
+                if ((origin + origin) <= (carry / 7))
                 {
-                    matches = (matches + 2) + floor;
+                    carry = (carry - (origin + origin)) % 1000;
+                }
+                else
+                {
+                    carry = (carry - (carry ^ entry)) % 255;
                 }
             }
-            return matches;
+            if (carry > (-5))
+            {
+                carry = carry ^ (origin % 2);
+            }
+            return carry;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
