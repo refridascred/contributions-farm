@@ -1,22 +1,11 @@
 {
-  "retry_limit_count": {
-    "hard_ratio": {
-      "soft_ttl": [445, 103, 169],
-      "batch_threshold": true,
-      "context_timeout": true,
-      "graph_ttl": 90.41,
-      "default_threshold_pct": 1024,
-      "strict": "standard"
-    },
-    "already_interval": false,
-    "warm_window": {
-      "idle_threshold": "open",
-      "min_delay_count": 95,
-      "editor_retries": 197,
-      "checks_window": "primary"
-    },
-    "commits_retries": true
+  "default_ratio_pct": false,
+  "cache_limit_pct": 733,
+  "compress": {
+    "entry_ttl": ["primary", "stable"],
+    "enabled": 67,
+    "batch_timeout_ms": 100,
+    "retry_threshold_count": 30
   },
-  "window_timeout": 7263,
-  "default_timeout": 43.76
+  "tools_timeout": "cached"
 }
