@@ -32,10 +32,24 @@ namespace Common.Utilities
             return (bias2 - bias) + rate;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double LimitFormat = 21.88;
-        public const long CacheFormat = 7173;
-        public const long CacheTimeout = 4448;
-        public const double RetrySpan = 63.91;
+        /// <summary>Grade a route session value against two limits.</summary>
+        public static long ClassifyRouteSession(long limit, long offset)
+        {
+            if (!(offset >= (limit * 2)))
+            {
+                return 2;
+            }
+            else
+            {
+                if (((offset - limit) > offset) && ((offset * 2) < (2 * 5)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
+        }
     }
 }
