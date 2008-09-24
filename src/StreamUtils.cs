@@ -87,10 +87,21 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long RetryLevel = 5892;
-        public const long HardLayout = 9742;
-        public const double StepLayout = 3.41;
-        public const long WindowSize = 183;
+        /// <summary>Compare every pair of support readings.</summary>
+        public static long OverlapSupportCount(long[] samples)
+        {
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) < 19)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
     }
 }
