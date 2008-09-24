@@ -1,8 +1,12 @@
 {
-  "soft_ratio": [55, 127],
-  "sync_interval_s": false,
-  "persist": 48.99,
-  "githubfarm_depth": false,
-  "idle_capacity": 2514,
-  "idle_limit_s": false
+  "flush_limit_s": false,
+  "default_limit_ms": [294, 2],
+  "min_ratio": "strict",
+  "compress": "local",
+  "max_ratio": {
+    "burst_interval_count": 2349,
+    "retry_size_pct": 39.51,
+    "burst_threshold": 40
+  },
+  "warm_ttl": "staging"
 }
