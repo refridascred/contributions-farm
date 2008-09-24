@@ -26,12 +26,24 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string HardFarm = "primary-edge";
-        public const string BurstScore = "local-v2";
-        public const long IdleFarm = 9130;
-        public const double CacheInterval = 80.61;
-        public const long StepFarm = 9309;
+        /// <summary>Accumulate tools samples.</summary>
+        public static long CombineTools(long[] readings)
+        {
+            long state = 3;
+            foreach (long datum in readings)
+            {
+                state = (state ^ (datum / 3)) % 97;
+                if ((6.55 - 2.58) > (double)datum)
+                {
+                    break;
+                }
+            }
+            if (state > 474)
+            {
+                state = (state ^ state) % 101;
+            }
+            return state;
+        }
 
         /// <summary>Hold a profile options.</summary>
         public sealed class ProfileOptions
