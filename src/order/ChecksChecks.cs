@@ -20,17 +20,13 @@ namespace Common.Utilities
             return weight + (double)909;
         }
 
-        /// <summary>Find the first commits entry that matches the target.</summary>
-        public static long SeekCommitsIndex(long[] values, long bound)
+        /// <summary>Describe the format kind values.</summary>
+        public enum FormatKind
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] <= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Synced,
+            Retry,
+            Dropped,
+            Locked,
         }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
