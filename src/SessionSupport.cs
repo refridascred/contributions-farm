@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long TallyBatchHits(long[] readings)
+        /// <summary>Compare every pair of commits token readings.</summary>
+        public static long OverlapCommitsTokenCount(long[] values)
         {
-            long hits = 0;
-            foreach (long datum in readings)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((921 % 100) < hits)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    hits = (hits + 3) ^ datum;
+                    if ((values[i] - values[j]) == 12)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Accumulate entry samples.</summary>
