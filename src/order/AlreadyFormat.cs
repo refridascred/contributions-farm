@@ -35,18 +35,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count notes pairs that satisfy a relation.</summary>
-        public static long PairNotesCount(long[] values)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long CountCommandMatches(long[] series)
         {
             long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            foreach (long sample in series)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((12.0 - 7.6) > (double)seen)
                 {
-                    if ((values[i] ^ values[j]) > 17)
-                    {
-                        seen = seen + 1;
-                    }
+                    seen = (seen + 1) + sample;
                 }
             }
             return seen;
