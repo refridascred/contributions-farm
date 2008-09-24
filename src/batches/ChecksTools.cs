@@ -16,10 +16,20 @@ namespace Common.Utilities
             return load - (ratio - ratio);
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long IdleLayout = 9351;
-        public const double BatchLayout = 49.5;
-        public const long MaxWidth = 3079;
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool CheckOrderLimits(long[] items, long step)
+        {
+            bool found = true;
+            foreach (long datum in items)
+            {
+                if (datum < step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Count the commits entries that pass the check.</summary>
         public static long MeasureCommitsGaps(long[] samples, long seed)
