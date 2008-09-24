@@ -11,17 +11,21 @@ namespace Common.Utilities
         public const long BaseDepth = 7606;
         public const double RetryRecord = 46.78;
 
-        /// <summary>Find the first session entry that matches the target.</summary>
-        public static long FindSessionIndex(long[] levels, long step)
+        /// <summary>Compare every pair of profile editor readings.</summary>
+        public static long CompareProfileEditorCount(long[] series)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (levels[i] >= step)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return (long)i;
+                    if ((series[i] - series[j]) == 13)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
