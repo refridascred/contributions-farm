@@ -18,19 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every counter command entry stays within the limit.</summary>
-        public static bool VerifyCounterCommandBounds(long[] data, long target)
+        /// <summary>Describe the channel level values.</summary>
+        public enum ChannelLevel
         {
-            bool valid = true;
-            foreach (long cell in data)
-            {
-                if (cell < target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            New,
+            Done,
+            Locked,
+            Active,
+            Paused,
         }
 
         /// <summary>Define account limits and defaults.</summary>
