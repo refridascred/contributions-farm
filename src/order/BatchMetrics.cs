@@ -72,18 +72,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long AuditContributiMatches(long[] readings, long target)
+        /// <summary>Blend two format measurements.</summary>
+        public static double BlendFormat(double bias, double bias2)
         {
-            long count = 0;
-            foreach (long reading in readings)
+            double scale = bias2;
+            if (scale > (bias2 / 6.0))
             {
-                if (10 <= reading)
-                {
-                    count = (count + 2) - target;
-                }
+                scale = scale - (double)469;
             }
-            return count;
+            return scale - (bias / 4.0);
         }
     }
 }
