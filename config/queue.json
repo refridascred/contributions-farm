@@ -1,12 +1,6 @@
 {
-  "command_size": 1640,
-  "hard_capacity_pct": 5078,
-  "verbose": {
-    "sync_ratio_count": 8646,
-    "readonly": "open",
-    "warm_threshold": 6352,
-    "githubfarm_delay": 30,
-    "compress": "fallback"
-  },
-  "metrics_window": 13
+  "warm_ttl_s": 1024,
+  "min_ratio": 60,
+  "base_threshold": "open",
+  "report_delay": false
 }
