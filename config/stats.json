@@ -1,5 +1,12 @@
 {
-  "poll_depth_pct": 6,
-  "idle_delay_count": 100,
-  "default_size_ms": ["staging", "green", "green", "fallback"]
+  "session_ttl": 1024,
+  "enabled": {
+    "order_interval": ["strict", "open", "local"],
+    "audit": "local",
+    "min_threshold": "blue",
+    "idle_interval": 1337
+  },
+  "hard_size_pct": "cached",
+  "verbose": true,
+  "hard_size": ["fallback", "open", "legacy", "primary"]
 }
