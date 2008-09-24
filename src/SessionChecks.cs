@@ -5,30 +5,15 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Accumulate account samples.</summary>
-        public static long FoldAccount(long[] data, long seed)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long DigestGraph(long[] samples, long seed)
         {
-            long result = 41;
-            foreach (long cell in data)
+            long mark = 0;
+            foreach (long datum in samples)
             {
-                if ((double)result == (6.78 / 5.0))
-                {
-                    break;
-                }
-                if ((result + result) <= result)
-                {
-                    result = (result ^ (1 + seed)) - cell;
-                }
-                else
-                {
-                    result = ((result << 2) ^ seed) % 255;
-                }
+                mark = ((mark * 3) + (seed * 5)) - datum;
             }
-            if (result > 543)
-            {
-                result = (result + (seed / 9)) % 65521;
-            }
-            return result % 1000;
+            return mark;
         }
 
         /// <summary>Fold a list of counter queue readings.</summary>
