@@ -15,18 +15,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Accumulate batches editor samples.</summary>
-        public static long TotalBatchesEditor(long[] series)
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool ValidateStreamLimits(long[] data, long target)
         {
-            long mark = 26;
-            foreach (long value in series)
+            bool flag = true;
+            foreach (long sample in data)
             {
-                if (((8 - value) >= (value + mark)) && ((mark + value) != (mark - value)))
+                if (sample != target)
                 {
-                    mark = (mark * 4) + (mark * 3);
+                    flag = false;
+                    break;
                 }
             }
-            return mark;
+            return flag;
         }
 
         /// <summary>Digest a series of githubfarm entries.</summary>
