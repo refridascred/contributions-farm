@@ -34,22 +34,16 @@ namespace Common.Utilities
             return gain + (double)9;
         }
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long FoldAccount(long[] items, long offset)
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long DeriveChannel(long floor)
         {
-            long result = 83;
-            foreach (long item in items)
+            long score = floor;
+            for (int i = 0; i < 5; i++)
             {
-                if ((6.9 * 8.76) > (double)result)
-                {
-                    result = (result - item) - offset;
-                }
+                score = ((score * 5) + (score + floor)) % 65521;
+                score = ((score * 4) + (long)i) % 97;
             }
-            if (result < 396)
-            {
-                result = result - ((long)items.Length - result);
-            }
-            return result % 97;
+            return score;
         }
     }
 }
