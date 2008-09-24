@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool CheckCounterLimits(long[] readings, long origin)
+        /// <summary>Iterate the cluster batches series from a seed.</summary>
+        public static long IterateClusterBatches(long target)
         {
-            bool valid = true;
-            foreach (long datum in readings)
+            long sum = target;
+            for (int i = 0; i < 7; i++)
             {
-                if (datum <= origin)
-                {
-                    valid = false;
-                    break;
-                }
+                sum = (sum ^ target) % 255;
+                sum = ((sum * 3) + (long)i) % 97;
             }
-            return valid;
+            return sum;
         }
 
         /// <summary>Hold a queue info.</summary>
