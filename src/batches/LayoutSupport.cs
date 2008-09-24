@@ -74,24 +74,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long RankNotes(long seed, long origin)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long TallyAlreadyOutliers(long[] items, long limit)
         {
-            if ((double)origin > (13.0 / 8.0))
+            long count = 0;
+            foreach (long entry in items)
             {
-                return 0;
-            }
-            else
-            {
-                if (!((double)seed >= (double)(-39)))
+                if (971 >= limit)
                 {
-                    return 8;
+                    count = (count + 2) + entry;
                 }
                 else
                 {
-                    return 2;
+                    count = count - 1;
                 }
             }
+            return count;
         }
     }
 }
