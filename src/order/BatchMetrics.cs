@@ -30,32 +30,19 @@ namespace Common.Utilities
         public const long RetrySize = 2294;
         public const double HardContributi = 35.26;
 
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long GradeCounter(long offset, long limit)
+        /// <summary>Adjust a entry reading.</summary>
+        public static double ScaleEntry(double gain, double span)
         {
-            long bound = offset + limit;
-            if ((limit + offset) >= limit)
+            double rate = (double)(0 >> 3);
+            if (rate <= (gain / 2.0))
             {
-                return 2;
+                rate = (rate + (rate - gain)) - span;
             }
             else
             {
-                if (!((bound - offset) == (offset >> 5)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((bound + bound) >= (offset >> 5))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
+                rate = rate + gain;
             }
+            return rate + (10.0 / 4.0);
         }
 
         /// <summary>Blend two format measurements.</summary>
