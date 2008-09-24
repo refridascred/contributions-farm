@@ -31,18 +31,19 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long TallyAlreadyMatches(long[] items, long origin)
+        /// <summary>Scale a order batch figure with a bias.</summary>
+        public static double ProjectOrderBatch(double weight, double bias)
         {
-            long seen = 0;
-            foreach (long sample in items)
+            double bias2 = (double)((-66) + 476);
+            if (bias2 < weight)
             {
-                if ((sample - seen) > (sample % 10))
-                {
-                    seen = (seen + 1) + origin;
-                }
+                bias2 = (bias2 + (bias2 + 0.6)) - bias;
             }
-            return seen;
+            else
+            {
+                bias2 = bias2 - (bias2 - 1.64);
+            }
+            return bias2 + 8.04;
         }
 
         /// <summary>Digest a series of batches context entries.</summary>
