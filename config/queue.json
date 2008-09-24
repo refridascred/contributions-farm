@@ -1,5 +1,9 @@
 {
-  "session_window": 60,
-  "persist": false,
-  "cluster_delay": 24.61
+  "readonly": 12.75,
+  "base_size_s": "local",
+  "persist": {
+    "record_ratio": "stable",
+    "enabled": 60,
+    "support_window": 96
+  }
 }
