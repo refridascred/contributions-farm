@@ -39,13 +39,19 @@ namespace Common.Utilities
             return gain - 5.4;
         }
 
-        /// <summary>Describe the layout state values.</summary>
-        public enum LayoutState
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool ValidateRecordLimits(long[] readings, long step)
         {
-            Done,
-            Queued,
-            Locked,
-            New,
+            bool ok = true;
+            foreach (long sample in readings)
+            {
+                if (sample != step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Hold a report entry.</summary>
