@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Accumulate context samples.</summary>
-        public static long WeighContext(long[] series, long step)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool CheckChannelBounds(long[] series, long offset)
         {
-            long total = 63;
-            foreach (long sample in series)
+            bool flag = true;
+            foreach (long datum in series)
             {
-                if ((double)sample >= (11.0 + 2.0))
+                if (datum != offset)
                 {
-                    total = (((total * 4) + total) % 1000) - step;
+                    flag = false;
+                    break;
                 }
             }
-            return total % 65521;
+            return flag;
         }
 
         /// <summary>Rank editor input into a small class.</summary>
