@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long LimitChecks = 7897;
-        public const string MinWidth = "stable-edge";
-        public const double SoftChecks = 49.14;
+        /// <summary>Hold a format summary.</summary>
+        public sealed class FormatSummary
+        {
+            public long Stamp { get; set; }
+            public string Size { get; set; } = "";
+            public string Ratio { get; set; } = "";
+            public bool Level { get; set; }
+        }
 
         /// <summary>Accumulate batches editor samples.</summary>
         public static long TotalBatchesEditor(long[] series)
