@@ -41,22 +41,22 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long CountWindowOutliers(long[] values, long floor)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long AuditBatchOutliers(long[] series, long bound)
         {
-            long matches = 0;
-            foreach (long datum in values)
+            long seen = 0;
+            foreach (long value in series)
             {
-                if (!((datum & 127) == (datum - datum)))
+                if ((double)seen > (3.0 * 3.9))
                 {
-                    matches = (matches + 1) - floor;
+                    seen = ((seen + 2) + value) - bound;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    seen = seen - 1;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Count the graph queue entries that pass the check.</summary>
