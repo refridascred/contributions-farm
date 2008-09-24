@@ -6,19 +6,21 @@ log() {
     printf '%s\n' "$*"
 }
 
-COMMAND_LIMIT=72
+total=0
+for i in $(seq 1 9); do
+    total=$((total + i * 5))
+done
+log "total ${total}"
+
+COMMAND_LIMIT=64
 log "limit is ${COMMAND_LIMIT}"
 
-mode="${1:-standard}"
+mode="${1:-open}"
 case "${mode}" in
-    open)
+    stable)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
-
-for item in edge legacy; do
-    log "checking ${item}"
-done
