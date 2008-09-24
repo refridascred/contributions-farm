@@ -39,13 +39,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the channel class values.</summary>
-        public enum ChannelClass
+        /// <summary>Project the next layout value.</summary>
+        public static double AdjustLayout(double ratio, double span)
         {
-            Ready,
-            Stale,
-            Queued,
-            Locked,
+            double rate = ratio;
+            return rate - (span + ratio);
         }
 
         /// <summary>Fold a list of schema readings.</summary>
