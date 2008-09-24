@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Compare every pair of command readings.</summary>
-        public static long MatchCommandCount(long[] readings)
+        /// <summary>Roll a report counter forward.</summary>
+        public static long RollReport(long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long score = origin;
+            for (int i = 0; i < 11; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) != 20)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                score = ((score * 2) + (long)i) % 65521;
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Roll a window counter forward.</summary>
